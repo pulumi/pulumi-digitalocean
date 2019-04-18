@@ -1,0 +1,11 @@
+/vendor/
+.pulumi
+**/bin/
+Pulumi.*.yaml
+
+**/command-output/
+
+.idea/
+*.iml
+
+yarn.lock
