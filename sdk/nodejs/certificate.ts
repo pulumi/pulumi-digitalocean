@@ -14,17 +14,45 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * #### Custom Certificate
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * import * as fs from "fs";
  * 
- * // Create a new TLS certificate
  * const cert = new digitalocean.Certificate("cert", {
  *     certificateChain: fs.readFileSync("/Users/terraform/certs/fullchain.pem", "utf-8"),
  *     leafCertificate: fs.readFileSync("/Users/terraform/certs/cert.pem", "utf-8"),
  *     privateKey: fs.readFileSync("/Users/terraform/certs/privkey.pem", "utf-8"),
  *     type: "custom",
+ * });
+ * ```
+ * 
+ * #### Let's Encrypt Certificate
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const cert = new digitalocean.Certificate("cert", {
+ *     domains: ["example.com"],
+ *     type: "lets_encrypt",
+ * });
+ * ```
+ * 
+ * #### Use with Other Resources
+ * 
+ * Both custom and Let's Encrypt certificates can be used with other resources
+ * including the `digitalocean_loadbalancer` and `digitalocean_cdn` resources.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const cert = new digitalocean.Certificate("cert", {
+ *     domains: ["example.com"],
+ *     type: "lets_encrypt",
  * });
  * // Create a new Load Balancer with TLS termination
  * const publicLoadBalancer = new digitalocean.LoadBalancer("public", {

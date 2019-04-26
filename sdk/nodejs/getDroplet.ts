@@ -119,6 +119,10 @@ export interface GetDropletResult {
      */
     readonly tags: string[];
     /**
+     * The uniform resource name of the Droplet
+     */
+    readonly urn: string;
+    /**
      * The number of the Droplets virtual CPUs.
      */
     readonly vcpus: number;

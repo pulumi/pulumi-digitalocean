@@ -57,6 +57,7 @@ export interface GetLoadBalancerResult {
     readonly region: string;
     readonly status: string;
     readonly stickySessions: { cookieName: string, cookieTtlSeconds: number, type: string };
+    readonly urn: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

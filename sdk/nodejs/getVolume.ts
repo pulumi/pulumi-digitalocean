@@ -96,6 +96,7 @@ export interface GetVolumeResult {
      * The size of the block storage volume in GiB.
      */
     readonly size: number;
+    readonly urn: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

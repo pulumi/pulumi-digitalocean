@@ -8,6 +8,7 @@
         "sourceMap": true
     },
     "files": [
+        "cdn.ts",
         "certificate.ts",
         "config/index.ts",
         "config/vars.ts",
@@ -36,6 +37,7 @@
         "kubernetesCluster.ts",
         "kubernetesNodePool.ts",
         "loadBalancer.ts",
+        "project.ts",
         "provider.ts",
         "spacesBucket.ts",
         "sshKey.ts",

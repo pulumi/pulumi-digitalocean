@@ -73,6 +73,10 @@ export class SpacesBucket extends pulumi.CustomResource {
      * The region where the bucket resides (Defaults to `nyc3`)
      */
     public readonly region: pulumi.Output<string | undefined>;
+    /**
+     * The uniform resource name for the bucket
+     */
+    public /*out*/ readonly urn: pulumi.Output<string>;
 
     /**
      * Create a SpacesBucket resource with the given unique name, arguments, and options.
@@ -91,6 +95,7 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as SpacesBucketArgs | undefined;
             inputs["acl"] = args ? args.acl : undefined;
@@ -98,6 +103,7 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["bucketDomainName"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
         }
         super("digitalocean:index/spacesBucket:SpacesBucket", name, inputs, opts);
     }
@@ -127,6 +133,10 @@ export interface SpacesBucketState {
      * The region where the bucket resides (Defaults to `nyc3`)
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The uniform resource name for the bucket
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**

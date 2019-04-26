@@ -67,6 +67,7 @@ func NewDroplet(ctx *pulumi.Context,
 	inputs["priceHourly"] = nil
 	inputs["priceMonthly"] = nil
 	inputs["status"] = nil
+	inputs["urn"] = nil
 	inputs["vcpus"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/droplet:Droplet", name, true, inputs, opts...)
 	if err != nil {
@@ -102,6 +103,7 @@ func GetDroplet(ctx *pulumi.Context,
 		inputs["sshKeys"] = state.SshKeys
 		inputs["status"] = state.Status
 		inputs["tags"] = state.Tags
+		inputs["urn"] = state.Urn
 		inputs["userData"] = state.UserData
 		inputs["vcpus"] = state.Vcpus
 		inputs["volumeIds"] = state.VolumeIds
@@ -159,7 +161,6 @@ func (r *Droplet) Ipv6Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipv6Address"])
 }
 
-// The private networking IPv6 address
 func (r *Droplet) Ipv6AddressPrivate() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipv6AddressPrivate"])
 }
@@ -237,6 +238,12 @@ func (r *Droplet) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
+// The uniform resource name of the Droplet
+// * `name`- The name of the Droplet
+func (r *Droplet) Urn() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["urn"])
+}
+
 // A string of the desired User Data for the Droplet.
 func (r *Droplet) UserData() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["userData"])
@@ -269,7 +276,6 @@ type DropletState struct {
 	Ipv6 interface{}
 	// The IPv6 address
 	Ipv6Address interface{}
-	// The private networking IPv6 address
 	Ipv6AddressPrivate interface{}
 	// Is the Droplet locked
 	Locked interface{}
@@ -305,6 +311,9 @@ type DropletState struct {
 	// A list of the tags to label this Droplet. A tag resource
 	// must exist before it can be associated with a Droplet.
 	Tags interface{}
+	// The uniform resource name of the Droplet
+	// * `name`- The name of the Droplet
+	Urn interface{}
 	// A string of the desired User Data for the Droplet.
 	UserData interface{}
 	// The number of the instance's virtual CPUs

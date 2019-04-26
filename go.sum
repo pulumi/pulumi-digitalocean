@@ -493,6 +493,8 @@ github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07/go.mod h1:kDXzergiv9cb
 github.com/terraform-providers/terraform-provider-aws v1.29.0/go.mod h1:uvqaeKnm2ydZ2LuKuW1NDNBu6heC/7IDGXWm36/6oKs=
 github.com/terraform-providers/terraform-provider-digitalocean v1.1.1-0.20190402172329-6eb3f27492ff h1:nTuxAfOpIcalLzsOKMTe/1WPBq0EBtt+x1Wu6syBEXY=
 github.com/terraform-providers/terraform-provider-digitalocean v1.1.1-0.20190402172329-6eb3f27492ff/go.mod h1:s4B7fq/c8OyityX0Wf9hE0lCVOIfTmqxrs2uhzeGFnw=
+github.com/terraform-providers/terraform-provider-digitalocean v1.2.0 h1:EQpq88yGucuEVCg+n16gsxEH037BsERGMViuLbbIH2Q=
+github.com/terraform-providers/terraform-provider-digitalocean v1.2.0/go.mod h1:s4B7fq/c8OyityX0Wf9hE0lCVOIfTmqxrs2uhzeGFnw=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
 github.com/terraform-providers/terraform-provider-template v1.0.0/go.mod h1:/J+B8me5DCMa0rEBH5ic2aKPjhtpWNeScmxFJWxB1EU=
 github.com/terraform-providers/terraform-provider-tls v1.2.0/go.mod h1:Mxe/v5u31LDW4m32O1z6Ursdh95dpc9Puq6otkYg7tU=

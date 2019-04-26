@@ -35,6 +35,11 @@ export interface GetDomainArgs {
 export interface GetDomainResult {
     readonly name: string;
     readonly ttl: number;
+    /**
+     * The uniform resource name of the domain
+     * * `zone_file`: The zone file of the domain.
+     */
+    readonly urn: string;
     readonly zoneFile: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

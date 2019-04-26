@@ -39,9 +39,6 @@ class Droplet(pulumi.CustomResource):
     The IPv6 address
     """
     ipv6_address_private: pulumi.Output[str]
-    """
-    The private networking IPv6 address
-    """
     locked: pulumi.Output[bool]
     """
     Is the Droplet locked
@@ -99,6 +96,11 @@ class Droplet(pulumi.CustomResource):
     """
     A list of the tags to label this Droplet. A tag resource
     must exist before it can be associated with a Droplet.
+    """
+    urn: pulumi.Output[str]
+    """
+    The uniform resource name of the Droplet
+    * `name`- The name of the Droplet
     """
     user_data: pulumi.Output[str]
     """
@@ -201,6 +203,7 @@ class Droplet(pulumi.CustomResource):
         __props__['price_hourly'] = None
         __props__['price_monthly'] = None
         __props__['status'] = None
+        __props__['urn'] = None
         __props__['vcpus'] = None
 
         super(Droplet, __self__).__init__(

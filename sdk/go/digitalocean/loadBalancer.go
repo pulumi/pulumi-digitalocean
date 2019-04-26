@@ -49,6 +49,7 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	}
 	inputs["ip"] = nil
 	inputs["status"] = nil
+	inputs["urn"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/loadBalancer:LoadBalancer", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -74,6 +75,7 @@ func GetLoadBalancer(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["status"] = state.Status
 		inputs["stickySessions"] = state.StickySessions
+		inputs["urn"] = state.Urn
 	}
 	s, err := ctx.ReadResource("digitalocean:index/loadBalancer:LoadBalancer", name, id, inputs, opts...)
 	if err != nil {
@@ -159,6 +161,11 @@ func (r *LoadBalancer) StickySessions() *pulumi.Output {
 	return r.s.State["stickySessions"]
 }
 
+// The uniform resource name for the Load Balancer
+func (r *LoadBalancer) Urn() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["urn"])
+}
+
 // Input properties used for looking up and filtering LoadBalancer resources.
 type LoadBalancerState struct {
 	// The load balancing algorithm used to determine
@@ -192,6 +199,8 @@ type LoadBalancerState struct {
 	// A `sticky_sessions` block to be assigned to the
 	// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
 	StickySessions interface{}
+	// The uniform resource name for the Load Balancer
+	Urn interface{}
 }
 
 // The set of arguments for constructing a LoadBalancer resource.

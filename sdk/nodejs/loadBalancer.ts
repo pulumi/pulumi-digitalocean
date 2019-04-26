@@ -136,6 +136,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
      */
     public readonly stickySessions: pulumi.Output<{ cookieName?: string, cookieTtlSeconds?: number, type?: string }>;
+    /**
+     * The uniform resource name for the Load Balancer
+     */
+    public /*out*/ readonly urn: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -161,6 +165,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["stickySessions"] = state ? state.stickySessions : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if (!args || args.forwardingRules === undefined) {
@@ -181,6 +186,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["stickySessions"] = args ? args.stickySessions : undefined;
             inputs["ip"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
         }
         super("digitalocean:index/loadBalancer:LoadBalancer", name, inputs, opts);
     }
@@ -241,6 +247,10 @@ export interface LoadBalancerState {
      * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
      */
     readonly stickySessions?: pulumi.Input<{ cookieName?: pulumi.Input<string>, cookieTtlSeconds?: pulumi.Input<number>, type?: pulumi.Input<string> }>;
+    /**
+     * The uniform resource name for the Load Balancer
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**

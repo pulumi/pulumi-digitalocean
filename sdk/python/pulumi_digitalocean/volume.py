@@ -49,6 +49,7 @@ class Volume(pulumi.CustomResource):
     """
     The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
     """
+    urn: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
@@ -101,6 +102,7 @@ class Volume(pulumi.CustomResource):
 
         __props__['droplet_ids'] = None
         __props__['filesystem_label'] = None
+        __props__['urn'] = None
 
         super(Volume, __self__).__init__(
             'digitalocean:index/volume:Volume',

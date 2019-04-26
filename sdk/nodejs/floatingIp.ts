@@ -53,6 +53,10 @@ export class FloatingIp extends pulumi.CustomResource {
      * The region that the Floating IP is reserved to.
      */
     public readonly region: pulumi.Output<string>;
+    /**
+     * The uniform resource name of the floating ip
+     */
+    public /*out*/ readonly urn: pulumi.Output<string>;
 
     /**
      * Create a FloatingIp resource with the given unique name, arguments, and options.
@@ -69,6 +73,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["dropletId"] = state ? state.dropletId : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
             if (!args || args.region === undefined) {
@@ -77,6 +82,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["urn"] = undefined /*out*/;
         }
         super("digitalocean:index/floatingIp:FloatingIp", name, inputs, opts);
     }
@@ -98,6 +104,10 @@ export interface FloatingIpState {
      * The region that the Floating IP is reserved to.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The uniform resource name of the floating ip
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**

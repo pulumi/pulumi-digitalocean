@@ -65,9 +65,6 @@ export class Droplet extends pulumi.CustomResource {
      * The IPv6 address
      */
     public /*out*/ readonly ipv6Address: pulumi.Output<string>;
-    /**
-     * The private networking IPv6 address
-     */
     public /*out*/ readonly ipv6AddressPrivate: pulumi.Output<string>;
     /**
      * Is the Droplet locked
@@ -128,6 +125,11 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly tags: pulumi.Output<string[] | undefined>;
     /**
+     * The uniform resource name of the Droplet
+     * * `name`- The name of the Droplet
+     */
+    public /*out*/ readonly urn: pulumi.Output<string>;
+    /**
      * A string of the desired User Data for the Droplet.
      */
     public readonly userData: pulumi.Output<string | undefined>;
@@ -173,6 +175,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["sshKeys"] = state ? state.sshKeys : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["vcpus"] = state ? state.vcpus : undefined;
             inputs["volumeIds"] = state ? state.volumeIds : undefined;
@@ -210,6 +213,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["priceHourly"] = undefined /*out*/;
             inputs["priceMonthly"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
             inputs["vcpus"] = undefined /*out*/;
         }
         super("digitalocean:index/droplet:Droplet", name, inputs, opts);
@@ -249,9 +253,6 @@ export interface DropletState {
      * The IPv6 address
      */
     readonly ipv6Address?: pulumi.Input<string>;
-    /**
-     * The private networking IPv6 address
-     */
     readonly ipv6AddressPrivate?: pulumi.Input<string>;
     /**
      * Is the Droplet locked
@@ -311,6 +312,11 @@ export interface DropletState {
      * must exist before it can be associated with a Droplet.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The uniform resource name of the Droplet
+     * * `name`- The name of the Droplet
+     */
+    readonly urn?: pulumi.Input<string>;
     /**
      * A string of the desired User Data for the Droplet.
      */

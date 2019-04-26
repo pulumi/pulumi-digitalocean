@@ -60,6 +60,10 @@ class LoadBalancer(pulumi.CustomResource):
     A `sticky_sessions` block to be assigned to the
     Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
     """
+    urn: pulumi.Output[str]
+    """
+    The uniform resource name for the Load Balancer
+    """
     def __init__(__self__, resource_name, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, name=None, redirect_http_to_https=None, region=None, sticky_sessions=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
@@ -128,6 +132,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         __props__['ip'] = None
         __props__['status'] = None
+        __props__['urn'] = None
 
         super(LoadBalancer, __self__).__init__(
             'digitalocean:index/loadBalancer:LoadBalancer',

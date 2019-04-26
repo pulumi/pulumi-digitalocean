@@ -51,6 +51,7 @@ export interface GetFloatingIpResult {
     readonly dropletId: number;
     readonly ipAddress: string;
     readonly region: string;
+    readonly urn: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

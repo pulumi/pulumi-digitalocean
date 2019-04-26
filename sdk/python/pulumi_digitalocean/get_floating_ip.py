@@ -12,7 +12,7 @@ class GetFloatingIpResult:
     """
     A collection of values returned by getFloatingIp.
     """
-    def __init__(__self__, droplet_id=None, ip_address=None, region=None, id=None):
+    def __init__(__self__, droplet_id=None, ip_address=None, region=None, urn=None, id=None):
         if droplet_id and not isinstance(droplet_id, float):
             raise TypeError("Expected argument 'droplet_id' to be a float")
         __self__.droplet_id = droplet_id
@@ -22,6 +22,9 @@ class GetFloatingIpResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        __self__.urn = urn
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -47,4 +50,5 @@ async def get_floating_ip(ip_address=None,opts=None):
         droplet_id=__ret__.get('dropletId'),
         ip_address=__ret__.get('ipAddress'),
         region=__ret__.get('region'),
+        urn=__ret__.get('urn'),
         id=__ret__.get('id'))

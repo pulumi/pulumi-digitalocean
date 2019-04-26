@@ -99,6 +99,10 @@ export class Volume extends pulumi.CustomResource {
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
      */
     public readonly snapshotId: pulumi.Output<string | undefined>;
+    /**
+     * the uniform resource name for the volume.
+     */
+    public /*out*/ readonly urn: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -122,6 +126,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if (!args || args.region === undefined) {
@@ -140,6 +145,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
             inputs["dropletIds"] = undefined /*out*/;
             inputs["filesystemLabel"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
         }
         super("digitalocean:index/volume:Volume", name, inputs, opts);
     }
@@ -189,6 +195,10 @@ export interface VolumeState {
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
      */
     readonly snapshotId?: pulumi.Input<string>;
+    /**
+     * the uniform resource name for the volume.
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**

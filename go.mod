@@ -23,5 +23,5 @@ require (
 	github.com/pulumi/scripts v0.0.0-20190410070955-3e8f41455b9c // indirect
 	github.com/smartystreets/assertions v0.0.0-20190116191733-b6c0e53d7304 // indirect
 	github.com/stretchr/testify v1.3.0
-	github.com/terraform-providers/terraform-provider-digitalocean v1.1.1-0.20190402172329-6eb3f27492ff
+	github.com/terraform-providers/terraform-provider-digitalocean v1.2.0
 )
