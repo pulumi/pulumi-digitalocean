@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
  *     dropletId: exampleDroplet.id,
- *     volumeId: exampleVolume.apply(exampleVolume => exampleVolume.id),
+ *     volumeId: exampleVolume.id,
  * });
  * ```
  */

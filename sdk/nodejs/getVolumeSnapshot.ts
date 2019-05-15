@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  * const foobar = new digitalocean.Volume("foobar", {
  *     region: "nyc3",
  *     size: 100,
- *     snapshotId: snapshot.apply(snapshot => snapshot.id),
+ *     snapshotId: snapshot.id,
  * });
  * ```
  */
