@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *     name: "example-1.0.0",
  * }));
  * const example1Droplet = new digitalocean.Droplet("example1", {
- *     image: example1Image.apply(example1Image => example1Image.image),
+ *     image: example1Image.image,
  *     region: "nyc2",
  *     size: "s-1vcpu-1gb",
  * });

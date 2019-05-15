@@ -23,15 +23,22 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var base = integration.ProgramTestOptions{
-	ExpectRefreshChanges: true,
-	// Note: no Config! This package should be usable without any config.
-}
-
 func TestDomain(t *testing.T) {
+	token := os.Getenv("DIGITALOCEAN_TOKEN")
+	if token == "" {
+		t.Skipf("Skipping test due to missing DIGITALOCEAN_TOKEN environment variable")
+	}
+
 	cwd, err := os.Getwd()
 	if !assert.NoError(t, err) {
 		t.FailNow()
+	}
+
+	var base = integration.ProgramTestOptions{
+		ExpectRefreshChanges: true,
+		Config: map[string]string{
+			"digitalocean:token": token,
+		},
 	}
 
 	baseJS := base.With(integration.ProgramTestOptions{

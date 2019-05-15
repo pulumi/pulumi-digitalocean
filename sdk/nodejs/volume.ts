@@ -41,8 +41,8 @@ import * as utilities from "./utilities";
  * }));
  * const foobarVolume = new digitalocean.Volume("foobar", {
  *     region: "lon1",
- *     size: foobarVolumeSnapshot.apply(foobarVolumeSnapshot => foobarVolumeSnapshot.minDiskSize),
- *     snapshotId: foobarVolumeSnapshot.apply(foobarVolumeSnapshot => foobarVolumeSnapshot.id),
+ *     size: foobarVolumeSnapshot.minDiskSize,
+ *     snapshotId: foobarVolumeSnapshot.id,
  * });
  * ```
  */
