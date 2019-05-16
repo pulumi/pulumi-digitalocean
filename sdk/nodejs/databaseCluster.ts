@@ -39,55 +39,55 @@ export class DatabaseCluster extends pulumi.CustomResource {
     /**
      * Name of the cluster's default database.
      */
-    public /*out*/ readonly database: pulumi.Output<string>;
+    public /*out*/ readonly database!: pulumi.Output<string>;
     /**
      * Database engine used by the cluster (ex. `pg` for PostreSQL).
      */
-    public readonly engine: pulumi.Output<string>;
+    public readonly engine!: pulumi.Output<string>;
     /**
      * Database cluster's hostname.
      */
-    public /*out*/ readonly host: pulumi.Output<string>;
+    public /*out*/ readonly host!: pulumi.Output<string>;
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    public readonly maintenanceWindows: pulumi.Output<{ day: string, hour: string }[] | undefined>;
+    public readonly maintenanceWindows!: pulumi.Output<{ day: string, hour: string }[] | undefined>;
     /**
      * The name of the database cluster.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Number of nodes that will be included in the cluster.
      */
-    public readonly nodeCount: pulumi.Output<number>;
+    public readonly nodeCount!: pulumi.Output<number>;
     /**
      * Password for the cluster's default user.
      */
-    public /*out*/ readonly password: pulumi.Output<string>;
+    public /*out*/ readonly password!: pulumi.Output<string>;
     /**
      * Network port that the database cluster is listening on.
      */
-    public /*out*/ readonly port: pulumi.Output<number>;
+    public /*out*/ readonly port!: pulumi.Output<number>;
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
-    public readonly size: pulumi.Output<string>;
+    public readonly size!: pulumi.Output<string>;
     /**
      * The full URI for connecting to the database cluster.
      */
-    public /*out*/ readonly uri: pulumi.Output<string>;
+    public /*out*/ readonly uri!: pulumi.Output<string>;
     /**
      * Username for the cluster's default user.
      */
-    public /*out*/ readonly user: pulumi.Output<string>;
+    public /*out*/ readonly user!: pulumi.Output<string>;
     /**
      * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
      */
-    public readonly version: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string>;
 
     /**
      * Create a DatabaseCluster resource with the given unique name, arguments, and options.
@@ -100,7 +100,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseClusterArgs | DatabaseClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatabaseClusterState = argsOrState as DatabaseClusterState | undefined;
+            const state = argsOrState as DatabaseClusterState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["engine"] = state ? state.engine : undefined;
             inputs["host"] = state ? state.host : undefined;
@@ -144,6 +144,13 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["port"] = undefined /*out*/;
             inputs["uri"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/databaseCluster:DatabaseCluster", name, inputs, opts);
     }

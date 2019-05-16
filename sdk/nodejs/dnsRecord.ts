@@ -42,47 +42,47 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * The domain to add the record to.
      */
-    public readonly domain: pulumi.Output<string>;
+    public readonly domain!: pulumi.Output<string>;
     /**
      * The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
      */
-    public readonly flags: pulumi.Output<number | undefined>;
+    public readonly flags!: pulumi.Output<number | undefined>;
     /**
      * The FQDN of the record
      */
-    public /*out*/ readonly fqdn: pulumi.Output<string>;
+    public /*out*/ readonly fqdn!: pulumi.Output<string>;
     /**
      * The name of the record.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
      */
-    public readonly port: pulumi.Output<number | undefined>;
+    public readonly port!: pulumi.Output<number | undefined>;
     /**
      * The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
      */
-    public readonly priority: pulumi.Output<number | undefined>;
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
      */
-    public readonly tag: pulumi.Output<string | undefined>;
+    public readonly tag!: pulumi.Output<string | undefined>;
     /**
      * The time to live for the record, in seconds. Must be at least 0.
      */
-    public readonly ttl: pulumi.Output<number>;
+    public readonly ttl!: pulumi.Output<number>;
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The value of the record.
      */
-    public readonly value: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string>;
     /**
      * The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
      */
-    public readonly weight: pulumi.Output<number | undefined>;
+    public readonly weight!: pulumi.Output<number | undefined>;
 
     /**
      * Create a DnsRecord resource with the given unique name, arguments, and options.
@@ -95,7 +95,7 @@ export class DnsRecord extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DnsRecordArgs | DnsRecordState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DnsRecordState = argsOrState as DnsRecordState | undefined;
+            const state = argsOrState as DnsRecordState | undefined;
             inputs["domain"] = state ? state.domain : undefined;
             inputs["flags"] = state ? state.flags : undefined;
             inputs["fqdn"] = state ? state.fqdn : undefined;
@@ -129,6 +129,13 @@ export class DnsRecord extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["weight"] = args ? args.weight : undefined;
             inputs["fqdn"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/dnsRecord:DnsRecord", name, inputs, opts);
     }

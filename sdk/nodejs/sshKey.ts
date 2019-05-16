@@ -46,16 +46,16 @@ export class SshKey extends pulumi.CustomResource {
     /**
      * The fingerprint of the SSH key
      */
-    public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The name of the SSH key for identification
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The public key. If this is a file, it
      * can be read using the file interpolation function
      */
-    public readonly publicKey: pulumi.Output<string>;
+    public readonly publicKey!: pulumi.Output<string>;
 
     /**
      * Create a SshKey resource with the given unique name, arguments, and options.
@@ -68,7 +68,7 @@ export class SshKey extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SshKeyArgs | SshKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SshKeyState = argsOrState as SshKeyState | undefined;
+            const state = argsOrState as SshKeyState | undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["publicKey"] = state ? state.publicKey : undefined;
@@ -80,6 +80,13 @@ export class SshKey extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["publicKey"] = args ? args.publicKey : undefined;
             inputs["fingerprint"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/sshKey:SshKey", name, inputs, opts);
     }

@@ -49,11 +49,11 @@ export class VolumeAttachment extends pulumi.CustomResource {
     /**
      * ID of the Droplet to attach the volume to.
      */
-    public readonly dropletId: pulumi.Output<number>;
+    public readonly dropletId!: pulumi.Output<number>;
     /**
      * ID of the Volume to be attached to the Droplet.
      */
-    public readonly volumeId: pulumi.Output<string>;
+    public readonly volumeId!: pulumi.Output<string>;
 
     /**
      * Create a VolumeAttachment resource with the given unique name, arguments, and options.
@@ -66,7 +66,7 @@ export class VolumeAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VolumeAttachmentArgs | VolumeAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VolumeAttachmentState = argsOrState as VolumeAttachmentState | undefined;
+            const state = argsOrState as VolumeAttachmentState | undefined;
             inputs["dropletId"] = state ? state.dropletId : undefined;
             inputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
@@ -79,6 +79,13 @@ export class VolumeAttachment extends pulumi.CustomResource {
             }
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/volumeAttachment:VolumeAttachment", name, inputs, opts);
     }

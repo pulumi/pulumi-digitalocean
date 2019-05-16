@@ -50,6 +50,10 @@ class Provider(pulumi.ProviderResource):
             token = utilities.get_env('DIGITALOCEAN_TOKEN')
         __props__['token'] = token
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Provider, __self__).__init__(
             'digitalocean',
             resource_name,

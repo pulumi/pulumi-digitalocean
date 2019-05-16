@@ -26,6 +26,7 @@ func LookupFloatingIp(ctx *pulumi.Context, args *GetFloatingIpArgs) (*GetFloatin
 		DropletId: outputs["dropletId"],
 		IpAddress: outputs["ipAddress"],
 		Region: outputs["region"],
+		Urn: outputs["urn"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -41,6 +42,7 @@ type GetFloatingIpResult struct {
 	DropletId interface{}
 	IpAddress interface{}
 	Region interface{}
+	Urn interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

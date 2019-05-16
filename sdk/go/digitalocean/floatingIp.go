@@ -31,6 +31,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 		inputs["ipAddress"] = args.IpAddress
 		inputs["region"] = args.Region
 	}
+	inputs["urn"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/floatingIp:FloatingIp", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -47,6 +48,7 @@ func GetFloatingIp(ctx *pulumi.Context,
 		inputs["dropletId"] = state.DropletId
 		inputs["ipAddress"] = state.IpAddress
 		inputs["region"] = state.Region
+		inputs["urn"] = state.Urn
 	}
 	s, err := ctx.ReadResource("digitalocean:index/floatingIp:FloatingIp", name, id, inputs, opts...)
 	if err != nil {
@@ -80,6 +82,11 @@ func (r *FloatingIp) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// The uniform resource name of the floating ip
+func (r *FloatingIp) Urn() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["urn"])
+}
+
 // Input properties used for looking up and filtering FloatingIp resources.
 type FloatingIpState struct {
 	// The ID of Droplet that the Floating IP will be assigned to.
@@ -88,6 +95,8 @@ type FloatingIpState struct {
 	IpAddress interface{}
 	// The region that the Floating IP is reserved to.
 	Region interface{}
+	// The uniform resource name of the floating ip
+	Urn interface{}
 }
 
 // The set of arguments for constructing a FloatingIp resource.

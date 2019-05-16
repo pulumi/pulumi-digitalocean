@@ -21,6 +21,10 @@ class FloatingIp(pulumi.CustomResource):
     """
     The region that the Floating IP is reserved to.
     """
+    urn: pulumi.Output[str]
+    """
+    The uniform resource name of the floating ip
+    """
     def __init__(__self__, resource_name, opts=None, droplet_id=None, ip_address=None, region=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
@@ -56,6 +60,12 @@ class FloatingIp(pulumi.CustomResource):
             raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
+        __props__['urn'] = None
+
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(FloatingIp, __self__).__init__(
             'digitalocean:index/floatingIp:FloatingIp',
             resource_name,

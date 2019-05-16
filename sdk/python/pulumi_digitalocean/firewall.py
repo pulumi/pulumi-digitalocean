@@ -94,6 +94,10 @@ class Firewall(pulumi.CustomResource):
         __props__['pending_changes'] = None
         __props__['status'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Firewall, __self__).__init__(
             'digitalocean:index/firewall:Firewall',
             resource_name,

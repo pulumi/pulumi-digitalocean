@@ -90,52 +90,56 @@ export class LoadBalancer extends pulumi.CustomResource {
      * which backend Droplet will be selected by a client. It must be either `round_robin`
      * or `least_connections`. The default value is `round_robin`.
      */
-    public readonly algorithm: pulumi.Output<string | undefined>;
+    public readonly algorithm!: pulumi.Output<string | undefined>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
-    public readonly dropletIds: pulumi.Output<number[]>;
+    public readonly dropletIds!: pulumi.Output<number[]>;
     /**
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      */
-    public readonly dropletTag: pulumi.Output<string | undefined>;
+    public readonly dropletTag!: pulumi.Output<string | undefined>;
     /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
      * the backend service. Default value is `false`.
      */
-    public readonly enableProxyProtocol: pulumi.Output<boolean | undefined>;
+    public readonly enableProxyProtocol!: pulumi.Output<boolean | undefined>;
     /**
      * A list of `forwarding_rule` to be assigned to the
      * Load Balancer. The `forwarding_rule` block is documented below.
      */
-    public readonly forwardingRules: pulumi.Output<{ certificateId?: string, entryPort: number, entryProtocol: string, targetPort: number, targetProtocol: string, tlsPassthrough?: boolean }[]>;
+    public readonly forwardingRules!: pulumi.Output<{ certificateId?: string, entryPort: number, entryProtocol: string, targetPort: number, targetProtocol: string, tlsPassthrough?: boolean }[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    public readonly healthcheck: pulumi.Output<{ checkIntervalSeconds?: number, healthyThreshold?: number, path?: string, port: number, protocol: string, responseTimeoutSeconds?: number, unhealthyThreshold?: number }>;
-    public /*out*/ readonly ip: pulumi.Output<string>;
+    public readonly healthcheck!: pulumi.Output<{ checkIntervalSeconds?: number, healthyThreshold?: number, path?: string, port: number, protocol: string, responseTimeoutSeconds?: number, unhealthyThreshold?: number }>;
+    public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
      * The Load Balancer name
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
      * Default value is `false`.
      */
-    public readonly redirectHttpToHttps: pulumi.Output<boolean | undefined>;
+    public readonly redirectHttpToHttps!: pulumi.Output<boolean | undefined>;
     /**
      * The region to start in
      */
-    public readonly region: pulumi.Output<string>;
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A `sticky_sessions` block to be assigned to the
      * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
      */
-    public readonly stickySessions: pulumi.Output<{ cookieName?: string, cookieTtlSeconds?: number, type?: string }>;
+    public readonly stickySessions!: pulumi.Output<{ cookieName?: string, cookieTtlSeconds?: number, type?: string }>;
+    /**
+     * The uniform resource name for the Load Balancer
+     */
+    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -148,7 +152,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LoadBalancerState = argsOrState as LoadBalancerState | undefined;
+            const state = argsOrState as LoadBalancerState | undefined;
             inputs["algorithm"] = state ? state.algorithm : undefined;
             inputs["dropletIds"] = state ? state.dropletIds : undefined;
             inputs["dropletTag"] = state ? state.dropletTag : undefined;
@@ -161,6 +165,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["stickySessions"] = state ? state.stickySessions : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if (!args || args.forwardingRules === undefined) {
@@ -181,6 +186,14 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["stickySessions"] = args ? args.stickySessions : undefined;
             inputs["ip"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/loadBalancer:LoadBalancer", name, inputs, opts);
     }
@@ -241,6 +254,10 @@ export interface LoadBalancerState {
      * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
      */
     readonly stickySessions?: pulumi.Input<{ cookieName?: pulumi.Input<string>, cookieTtlSeconds?: pulumi.Input<number>, type?: pulumi.Input<string> }>;
+    /**
+     * The uniform resource name for the Load Balancer
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**

@@ -17,7 +17,6 @@ func GetApiEndpoint(ctx *pulumi.Context) string {
 	if dv, ok := getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL").(string); ok {
 		return dv
 	}
-	panic(err.Error())
 	return v
 }
 
@@ -54,6 +53,5 @@ func GetToken(ctx *pulumi.Context) string {
 	if dv, ok := getEnvOrDefault("", nil, "DIGITALOCEAN_TOKEN").(string); ok {
 		return dv
 	}
-	panic(err.Error())
 	return v
 }

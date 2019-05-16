@@ -14,6 +14,13 @@ import * as utilities from "./utilities";
  * DigitalOcean account.
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     return pulumi.runtime.invoke("digitalocean:index/getDomain:getDomain", {
         "name": args.name,
     }, opts);
@@ -35,6 +42,11 @@ export interface GetDomainArgs {
 export interface GetDomainResult {
     readonly name: string;
     readonly ttl: number;
+    /**
+     * The uniform resource name of the domain
+     * * `zone_file`: The zone file of the domain.
+     */
+    readonly urn: string;
     readonly zoneFile: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

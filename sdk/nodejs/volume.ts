@@ -62,43 +62,47 @@ export class Volume extends pulumi.CustomResource {
     /**
      * A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A list of associated droplet ids.
      */
-    public /*out*/ readonly dropletIds: pulumi.Output<number[]>;
+    public /*out*/ readonly dropletIds!: pulumi.Output<number[]>;
     /**
      * Filesystem label for the block storage volume.
      */
-    public /*out*/ readonly filesystemLabel: pulumi.Output<string>;
+    public /*out*/ readonly filesystemLabel!: pulumi.Output<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    public readonly filesystemType: pulumi.Output<string>;
+    public readonly filesystemType!: pulumi.Output<string>;
     /**
      * Initial filesystem label for the block storage volume.
      */
-    public readonly initialFilesystemLabel: pulumi.Output<string | undefined>;
+    public readonly initialFilesystemLabel!: pulumi.Output<string | undefined>;
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    public readonly initialFilesystemType: pulumi.Output<string | undefined>;
+    public readonly initialFilesystemType!: pulumi.Output<string | undefined>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region that the block storage volume will be created in.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */
-    public readonly size: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
      */
-    public readonly snapshotId: pulumi.Output<string | undefined>;
+    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    /**
+     * the uniform resource name for the volume.
+     */
+    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -111,7 +115,7 @@ export class Volume extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VolumeArgs | VolumeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VolumeState = argsOrState as VolumeState | undefined;
+            const state = argsOrState as VolumeState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dropletIds"] = state ? state.dropletIds : undefined;
             inputs["filesystemLabel"] = state ? state.filesystemLabel : undefined;
@@ -122,6 +126,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if (!args || args.region === undefined) {
@@ -140,6 +145,14 @@ export class Volume extends pulumi.CustomResource {
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
             inputs["dropletIds"] = undefined /*out*/;
             inputs["filesystemLabel"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/volume:Volume", name, inputs, opts);
     }
@@ -189,6 +202,10 @@ export interface VolumeState {
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
      */
     readonly snapshotId?: pulumi.Input<string>;
+    /**
+     * the uniform resource name for the volume.
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**

@@ -25,24 +25,24 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster.
      */
-    public /*out*/ readonly clusterSubnet: pulumi.Output<string>;
+    public /*out*/ readonly clusterSubnet!: pulumi.Output<string>;
     /**
      * The date and time when the Kubernetes cluster was created.
      */
-    public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The base URL of the API server on the Kubernetes master node.
      */
-    public /*out*/ readonly endpoint: pulumi.Output<string>;
+    public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
      * The public IPv4 address of the Kubernetes master node.
      */
-    public /*out*/ readonly ipv4Address: pulumi.Output<string>;
-    public /*out*/ readonly kubeConfigs: pulumi.Output<{ clientCertificate: string, clientKey: string, clusterCaCertificate: string, host: string, rawConfig: string }[]>;
+    public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
+    public /*out*/ readonly kubeConfigs!: pulumi.Output<{ clientCertificate: string, clientKey: string, clusterCaCertificate: string, host: string, rawConfig: string }[]>;
     /**
      * A name for the Kubernetes cluster.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean_kubernetes_node_pool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
@@ -50,23 +50,23 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * - `node_count` - (Required) The number of Droplet instances in the node pool.
      * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
      */
-    public readonly nodePool: pulumi.Output<{ id: string, name: string, nodeCount: number, nodes: { createdAt: string, id: string, name: string, status: string, updatedAt: string }[], size: string, tags?: string[] }>;
+    public readonly nodePool!: pulumi.Output<{ id: string, name: string, nodeCount: number, nodes: { createdAt: string, id: string, name: string, status: string, updatedAt: string }[], size: string, tags?: string[] }>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
-    public /*out*/ readonly serviceSubnet: pulumi.Output<string>;
+    public /*out*/ readonly serviceSubnet!: pulumi.Output<string>;
     /**
      * A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The date and time when the Kubernetes cluster was last updated.
      * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
@@ -76,11 +76,11 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
      * - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
      */
-    public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The slug identifier for the version of Kubernetes used for the cluster.
      */
-    public readonly version: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string>;
 
     /**
      * Create a KubernetesCluster resource with the given unique name, arguments, and options.
@@ -93,7 +93,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KubernetesClusterArgs | KubernetesClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KubernetesClusterState = argsOrState as KubernetesClusterState | undefined;
+            const state = argsOrState as KubernetesClusterState | undefined;
             inputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
@@ -131,6 +131,13 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["serviceSubnet"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/kubernetesCluster:KubernetesCluster", name, inputs, opts);
     }

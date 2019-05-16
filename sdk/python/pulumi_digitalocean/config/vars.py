@@ -10,7 +10,7 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('digitalocean')
 
-api_endpoint = utilities.require_with_default(lambda: __config__.require('apiEndpoint'), (utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com'))
+api_endpoint = __config__.get('apiEndpoint') or (utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
 """
 The URL to use for the DigitalOcean API.
 """
@@ -25,7 +25,7 @@ spaces_secret_key = __config__.get('spacesSecretKey') or utilities.get_env('SPAC
 The secret access key for Spaces API operations.
 """
 
-token = utilities.require_with_default(lambda: __config__.require('token'), utilities.get_env('DIGITALOCEAN_TOKEN'))
+token = __config__.get('token') or utilities.get_env('DIGITALOCEAN_TOKEN')
 """
 The token key for API operations.
 """

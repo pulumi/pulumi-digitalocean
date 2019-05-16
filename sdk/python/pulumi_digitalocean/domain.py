@@ -18,6 +18,10 @@ class Domain(pulumi.CustomResource):
     """
     The name of the domain
     """
+    urn: pulumi.Output[str]
+    """
+    The uniform resource name of the domain
+    """
     def __init__(__self__, resource_name, opts=None, ip_address=None, name=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean domain resource.
@@ -47,6 +51,12 @@ class Domain(pulumi.CustomResource):
 
         __props__['name'] = name
 
+        __props__['urn'] = None
+
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Domain, __self__).__init__(
             'digitalocean:index/domain:Domain',
             resource_name,

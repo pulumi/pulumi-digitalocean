@@ -39,9 +39,6 @@ class Droplet(pulumi.CustomResource):
     The IPv6 address
     """
     ipv6_address_private: pulumi.Output[str]
-    """
-    The private networking IPv6 address
-    """
     locked: pulumi.Output[bool]
     """
     Is the Droplet locked
@@ -97,8 +94,12 @@ class Droplet(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    A list of the tags to label this Droplet. A tag resource
-    must exist before it can be associated with a Droplet.
+    A list of the tags to be applied to this Droplet.
+    """
+    urn: pulumi.Output[str]
+    """
+    The uniform resource name of the Droplet
+    * `name`- The name of the Droplet
     """
     user_data: pulumi.Output[str]
     """
@@ -139,8 +140,7 @@ class Droplet(pulumi.CustomResource):
                the format `[12345, 123456]`. To retrieve this info, use a tool such
                as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
                to retrieve them.
-        :param pulumi.Input[list] tags: A list of the tags to label this Droplet. A tag resource
-               must exist before it can be associated with a Droplet.
+        :param pulumi.Input[list] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[list] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
         """
@@ -201,8 +201,13 @@ class Droplet(pulumi.CustomResource):
         __props__['price_hourly'] = None
         __props__['price_monthly'] = None
         __props__['status'] = None
+        __props__['urn'] = None
         __props__['vcpus'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Droplet, __self__).__init__(
             'digitalocean:index/droplet:Droplet',
             resource_name,
