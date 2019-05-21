@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./cdn";
 export * from "./certificate";
 export * from "./databaseCluster";
 export * from "./dnsRecord";
@@ -27,6 +28,7 @@ export * from "./getVolumeSnapshot";
 export * from "./kubernetesCluster";
 export * from "./kubernetesNodePool";
 export * from "./loadBalancer";
+export * from "./project";
 export * from "./provider";
 export * from "./spacesBucket";
 export * from "./sshKey";

@@ -10,6 +10,7 @@ for pkg in __all__:
         importlib.import_module(f'{__name__}.{pkg}')
 
 # Export this package's modules as members:
+from .cdn import *
 from .certificate import *
 from .database_cluster import *
 from .domain import *
@@ -21,6 +22,7 @@ from .floating_ip_assignment import *
 from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
+from .project import *
 from .dns_record import *
 from .spaces_bucket import *
 from .ssh_key import *

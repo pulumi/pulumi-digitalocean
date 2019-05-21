@@ -92,6 +92,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			"digitalocean_cdn":                    {Tok: digitalOceanResource(digitalOceanMod, "Cdn")},
 			"digitalocean_certificate":            {Tok: digitalOceanResource(digitalOceanMod, "Certificate")},
 			"digitalocean_database_cluster":       {Tok: digitalOceanResource(digitalOceanMod, "DatabaseCluster")},
 			"digitalocean_domain":                 {Tok: digitalOceanResource(digitalOceanMod, "Domain")},
@@ -105,6 +106,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_loadbalancer": {
 				Tok: digitalOceanResource(digitalOceanMod, "LoadBalancer"),
 			},
+			"digitalocean_project":           {Tok: digitalOceanResource(digitalOceanMod, "Project")},
 			"digitalocean_record":            {Tok: digitalOceanResource(digitalOceanMod, "DnsRecord")},
 			"digitalocean_ssh_key":           {Tok: digitalOceanResource(digitalOceanMod, "SshKey")},
 			"digitalocean_spaces_bucket":     {Tok: digitalOceanResource(digitalOceanMod, "SpacesBucket")},
