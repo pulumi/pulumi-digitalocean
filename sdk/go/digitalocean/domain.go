@@ -23,6 +23,7 @@ func NewDomain(ctx *pulumi.Context,
 		inputs["ipAddress"] = args.IpAddress
 		inputs["name"] = args.Name
 	}
+	inputs["urn"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/domain:Domain", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -38,6 +39,7 @@ func GetDomain(ctx *pulumi.Context,
 	if state != nil {
 		inputs["ipAddress"] = state.IpAddress
 		inputs["name"] = state.Name
+		inputs["urn"] = state.Urn
 	}
 	s, err := ctx.ReadResource("digitalocean:index/domain:Domain", name, id, inputs, opts...)
 	if err != nil {
@@ -67,6 +69,11 @@ func (r *Domain) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The uniform resource name of the domain
+func (r *Domain) Urn() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["urn"])
+}
+
 // Input properties used for looking up and filtering Domain resources.
 type DomainState struct {
 	// The IP address of the domain. If specified, this IP
@@ -74,6 +81,8 @@ type DomainState struct {
 	IpAddress interface{}
 	// The name of the domain
 	Name interface{}
+	// The uniform resource name of the domain
+	Urn interface{}
 }
 
 // The set of arguments for constructing a Domain resource.

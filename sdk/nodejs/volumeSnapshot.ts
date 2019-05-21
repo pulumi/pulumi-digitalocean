@@ -39,27 +39,27 @@ export class VolumeSnapshot extends pulumi.CustomResource {
     /**
      * The date and time the volume snapshot was created.
      */
-    public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
      */
-    public /*out*/ readonly minDiskSize: pulumi.Output<number>;
+    public /*out*/ readonly minDiskSize!: pulumi.Output<number>;
     /**
      * A name for the volume snapshot.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
      */
-    public /*out*/ readonly regions: pulumi.Output<string[]>;
+    public /*out*/ readonly regions!: pulumi.Output<string[]>;
     /**
      * The billable size of the volume snapshot in gigabytes.
      */
-    public /*out*/ readonly size: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
      * The ID of the volume from which the volume snapshot originated.
      */
-    public readonly volumeId: pulumi.Output<string>;
+    public readonly volumeId!: pulumi.Output<string>;
 
     /**
      * Create a VolumeSnapshot resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ export class VolumeSnapshot extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VolumeSnapshotArgs | VolumeSnapshotState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VolumeSnapshotState = argsOrState as VolumeSnapshotState | undefined;
+            const state = argsOrState as VolumeSnapshotState | undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["minDiskSize"] = state ? state.minDiskSize : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -90,6 +90,13 @@ export class VolumeSnapshot extends pulumi.CustomResource {
             inputs["minDiskSize"] = undefined /*out*/;
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/volumeSnapshot:VolumeSnapshot", name, inputs, opts);
     }

@@ -119,6 +119,10 @@ async def get_kubernetes_cluster(name=None,tags=None,opts=None):
 
     __args__['name'] = name
     __args__['tags'] = tags
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts)
 
     return GetKubernetesClusterResult(

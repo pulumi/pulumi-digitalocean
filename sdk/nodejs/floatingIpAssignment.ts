@@ -47,11 +47,11 @@ export class FloatingIpAssignment extends pulumi.CustomResource {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    public readonly dropletId: pulumi.Output<number>;
+    public readonly dropletId!: pulumi.Output<number>;
     /**
      * The Floating IP to assign to the Droplet.
      */
-    public readonly ipAddress: pulumi.Output<string>;
+    public readonly ipAddress!: pulumi.Output<string>;
 
     /**
      * Create a FloatingIpAssignment resource with the given unique name, arguments, and options.
@@ -64,7 +64,7 @@ export class FloatingIpAssignment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FloatingIpAssignmentArgs | FloatingIpAssignmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FloatingIpAssignmentState = argsOrState as FloatingIpAssignmentState | undefined;
+            const state = argsOrState as FloatingIpAssignmentState | undefined;
             inputs["dropletId"] = state ? state.dropletId : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
         } else {
@@ -77,6 +77,13 @@ export class FloatingIpAssignment extends pulumi.CustomResource {
             }
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", name, inputs, opts);
     }

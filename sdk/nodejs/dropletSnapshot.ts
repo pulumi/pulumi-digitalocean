@@ -39,27 +39,27 @@ export class DropletSnapshot extends pulumi.CustomResource {
     /**
      * The date and time the Droplet snapshot was created.
      */
-    public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The ID of the Droplet from which the snapshot will be taken.
      */
-    public readonly dropletId: pulumi.Output<string>;
+    public readonly dropletId!: pulumi.Output<string>;
     /**
      * The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
      */
-    public /*out*/ readonly minDiskSize: pulumi.Output<number>;
+    public /*out*/ readonly minDiskSize!: pulumi.Output<number>;
     /**
      * A name for the Droplet snapshot.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
      */
-    public /*out*/ readonly regions: pulumi.Output<string[]>;
+    public /*out*/ readonly regions!: pulumi.Output<string[]>;
     /**
      * The billable size of the Droplet snapshot in gigabytes.
      */
-    public /*out*/ readonly size: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
 
     /**
      * Create a DropletSnapshot resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ export class DropletSnapshot extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DropletSnapshotArgs | DropletSnapshotState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DropletSnapshotState = argsOrState as DropletSnapshotState | undefined;
+            const state = argsOrState as DropletSnapshotState | undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["dropletId"] = state ? state.dropletId : undefined;
             inputs["minDiskSize"] = state ? state.minDiskSize : undefined;
@@ -90,6 +90,13 @@ export class DropletSnapshot extends pulumi.CustomResource {
             inputs["minDiskSize"] = undefined /*out*/;
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/dropletSnapshot:DropletSnapshot", name, inputs, opts);
     }

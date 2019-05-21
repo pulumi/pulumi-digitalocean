@@ -44,15 +44,19 @@ export class FloatingIp extends pulumi.CustomResource {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    public readonly dropletId: pulumi.Output<number | undefined>;
+    public readonly dropletId!: pulumi.Output<number | undefined>;
     /**
      * The IP Address of the resource
      */
-    public readonly ipAddress: pulumi.Output<string>;
+    public readonly ipAddress!: pulumi.Output<string>;
     /**
      * The region that the Floating IP is reserved to.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * The uniform resource name of the floating ip
+     */
+    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a FloatingIp resource with the given unique name, arguments, and options.
@@ -65,10 +69,11 @@ export class FloatingIp extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FloatingIpArgs | FloatingIpState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FloatingIpState = argsOrState as FloatingIpState | undefined;
+            const state = argsOrState as FloatingIpState | undefined;
             inputs["dropletId"] = state ? state.dropletId : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
             if (!args || args.region === undefined) {
@@ -77,6 +82,14 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["urn"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/floatingIp:FloatingIp", name, inputs, opts);
     }
@@ -98,6 +111,10 @@ export interface FloatingIpState {
      * The region that the Floating IP is reserved to.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The uniform resource name of the floating ip
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**

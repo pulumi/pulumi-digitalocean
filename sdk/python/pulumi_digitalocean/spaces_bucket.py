@@ -29,6 +29,10 @@ class SpacesBucket(pulumi.CustomResource):
     """
     The region where the bucket resides (Defaults to `nyc3`)
     """
+    urn: pulumi.Output[str]
+    """
+    The uniform resource name for the bucket
+    """
     def __init__(__self__, resource_name, opts=None, acl=None, force_destroy=None, name=None, region=None, __name__=None, __opts__=None):
         """
         Provides a bucket resource for Spaces, DigitalOcean's object storage product.
@@ -79,7 +83,12 @@ class SpacesBucket(pulumi.CustomResource):
         __props__['region'] = region
 
         __props__['bucket_domain_name'] = None
+        __props__['urn'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(SpacesBucket, __self__).__init__(
             'digitalocean:index/spacesBucket:SpacesBucket',
             resource_name,

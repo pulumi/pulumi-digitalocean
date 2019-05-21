@@ -12,7 +12,7 @@ class GetDropletResult:
     """
     A collection of values returned by getDroplet.
     """
-    def __init__(__self__, backups=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tags=None, vcpus=None, volume_ids=None, id=None):
+    def __init__(__self__, backups=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tags=None, urn=None, vcpus=None, volume_ids=None, id=None):
         if backups and not isinstance(backups, bool):
             raise TypeError("Expected argument 'backups' to be a bool")
         __self__.backups = backups
@@ -124,6 +124,12 @@ class GetDropletResult:
         """
         A list of the tags associated to the Droplet.
         """
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        __self__.urn = urn
+        """
+        The uniform resource name of the Droplet
+        """
         if vcpus and not isinstance(vcpus, float):
             raise TypeError("Expected argument 'vcpus' to be a float")
         __self__.vcpus = vcpus
@@ -155,6 +161,10 @@ async def get_droplet(name=None,opts=None):
     __args__ = dict()
 
     __args__['name'] = name
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts)
 
     return GetDropletResult(
@@ -177,6 +187,7 @@ async def get_droplet(name=None,opts=None):
         size=__ret__.get('size'),
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
+        urn=__ret__.get('urn'),
         vcpus=__ret__.get('vcpus'),
         volume_ids=__ret__.get('volumeIds'),
         id=__ret__.get('id'))

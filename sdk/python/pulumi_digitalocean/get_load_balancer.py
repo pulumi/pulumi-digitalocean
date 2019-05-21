@@ -12,7 +12,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, id=None):
+    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, id=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         __self__.algorithm = algorithm
@@ -49,6 +49,9 @@ class GetLoadBalancerResult:
         if sticky_sessions and not isinstance(sticky_sessions, dict):
             raise TypeError("Expected argument 'sticky_sessions' to be a dict")
         __self__.sticky_sessions = sticky_sessions
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        __self__.urn = urn
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -68,6 +71,10 @@ async def get_load_balancer(name=None,opts=None):
     __args__ = dict()
 
     __args__['name'] = name
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts)
 
     return GetLoadBalancerResult(
@@ -83,4 +90,5 @@ async def get_load_balancer(name=None,opts=None):
         region=__ret__.get('region'),
         status=__ret__.get('status'),
         sticky_sessions=__ret__.get('stickySessions'),
+        urn=__ret__.get('urn'),
         id=__ret__.get('id'))

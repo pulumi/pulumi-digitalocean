@@ -43,7 +43,7 @@ export class Tag extends pulumi.CustomResource {
     /**
      * The name of the tag
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Tag resource with the given unique name, arguments, and options.
@@ -56,11 +56,18 @@ export class Tag extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TagArgs | TagState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TagState = argsOrState as TagState | undefined;
+            const state = argsOrState as TagState | undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/tag:Tag", name, inputs, opts);
     }

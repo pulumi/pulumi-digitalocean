@@ -26,6 +26,13 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDroplet(args: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     return pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
         "name": args.name,
     }, opts);
@@ -118,6 +125,10 @@ export interface GetDropletResult {
      * A list of the tags associated to the Droplet.
      */
     readonly tags: string[];
+    /**
+     * The uniform resource name of the Droplet
+     */
+    readonly urn: string;
     /**
      * The number of the Droplets virtual CPUs.
      */

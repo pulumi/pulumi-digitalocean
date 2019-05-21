@@ -99,42 +99,42 @@ export class Firewall extends pulumi.CustomResource {
      * A time value given in ISO8601 combined date and time format
      * that represents when the Firewall was created.
      */
-    public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The list of the IDs of the Droplets assigned
      * to the Firewall.
      */
-    public readonly dropletIds: pulumi.Output<number[] | undefined>;
+    public readonly dropletIds!: pulumi.Output<number[] | undefined>;
     /**
      * The inbound access rule block for the Firewall.
      * The `inbound_rule` block is documented below.
      */
-    public readonly inboundRules: pulumi.Output<{ portRange?: string, protocol: string, sourceAddresses?: string[], sourceDropletIds?: number[], sourceLoadBalancerUids?: string[], sourceTags?: string[] }[] | undefined>;
+    public readonly inboundRules!: pulumi.Output<{ portRange?: string, protocol: string, sourceAddresses?: string[], sourceDropletIds?: number[], sourceLoadBalancerUids?: string[], sourceTags?: string[] }[] | undefined>;
     /**
      * The Firewall name
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The outbound access rule block for the Firewall.
      * The `outbound_rule` block is documented below.
      */
-    public readonly outboundRules: pulumi.Output<{ destinationAddresses?: string[], destinationDropletIds?: number[], destinationLoadBalancerUids?: string[], destinationTags?: string[], portRange?: string, protocol: string }[] | undefined>;
+    public readonly outboundRules!: pulumi.Output<{ destinationAddresses?: string[], destinationDropletIds?: number[], destinationLoadBalancerUids?: string[], destinationTags?: string[], portRange?: string, protocol: string }[] | undefined>;
     /**
      * An list of object containing the fields, "droplet_id",
      * "removing", and "status".  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.
      */
-    public /*out*/ readonly pendingChanges: pulumi.Output<{ dropletId?: number, removing?: boolean, status?: string }[]>;
+    public /*out*/ readonly pendingChanges!: pulumi.Output<{ dropletId?: number, removing?: boolean, status?: string }[]>;
     /**
      * A status string indicating the current state of the Firewall.
      * This can be "waiting", "succeeded", or "failed".
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The names of the Tags assigned to the Firewall.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -147,7 +147,7 @@ export class Firewall extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FirewallState = argsOrState as FirewallState | undefined;
+            const state = argsOrState as FirewallState | undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["dropletIds"] = state ? state.dropletIds : undefined;
             inputs["inboundRules"] = state ? state.inboundRules : undefined;
@@ -166,6 +166,13 @@ export class Firewall extends pulumi.CustomResource {
             inputs["createdAt"] = undefined /*out*/;
             inputs["pendingChanges"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/firewall:Firewall", name, inputs, opts);
     }

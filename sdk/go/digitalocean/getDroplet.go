@@ -42,6 +42,7 @@ func LookupDroplet(ctx *pulumi.Context, args *GetDropletArgs) (*GetDropletResult
 		Size: outputs["size"],
 		Status: outputs["status"],
 		Tags: outputs["tags"],
+		Urn: outputs["urn"],
 		Vcpus: outputs["vcpus"],
 		VolumeIds: outputs["volumeIds"],
 		Id: outputs["id"],
@@ -93,6 +94,8 @@ type GetDropletResult struct {
 	Status interface{}
 	// A list of the tags associated to the Droplet.
 	Tags interface{}
+	// The uniform resource name of the Droplet
+	Urn interface{}
 	// The number of the Droplets virtual CPUs.
 	Vcpus interface{}
 	// List of the IDs of each volumes attached to the Droplet.

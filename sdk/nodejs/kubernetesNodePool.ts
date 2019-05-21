@@ -48,15 +48,15 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     /**
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
-    public readonly clusterId: pulumi.Output<string>;
+    public readonly clusterId!: pulumi.Output<string>;
     /**
      * A name for the node pool.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The number of Droplet instances in the node pool.
      */
-    public readonly nodeCount: pulumi.Output<number>;
+    public readonly nodeCount!: pulumi.Output<number>;
     /**
      * A list of nodes in the pool. Each node exports the following attributes:
      * - `id` -  A unique ID that can be used to identify and reference the node.
@@ -65,15 +65,15 @@ export class KubernetesNodePool extends pulumi.CustomResource {
      * - `created_at` - The date and time when the node was created.
      * - `updated_at` - The date and time when the node was last updated.
      */
-    public /*out*/ readonly nodes: pulumi.Output<{ createdAt: string, id: string, name: string, status: string, updatedAt: string }[]>;
+    public /*out*/ readonly nodes!: pulumi.Output<{ createdAt: string, id: string, name: string, status: string, updatedAt: string }[]>;
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    public readonly size: pulumi.Output<string>;
+    public readonly size!: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a KubernetesNodePool resource with the given unique name, arguments, and options.
@@ -86,7 +86,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KubernetesNodePoolArgs | KubernetesNodePoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KubernetesNodePoolState = argsOrState as KubernetesNodePoolState | undefined;
+            const state = argsOrState as KubernetesNodePoolState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
@@ -110,6 +110,13 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["size"] = args ? args.size : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["nodes"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, inputs, opts);
     }

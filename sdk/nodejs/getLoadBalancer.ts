@@ -26,6 +26,13 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     return pulumi.runtime.invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", {
         "name": args.name,
     }, opts);
@@ -57,6 +64,7 @@ export interface GetLoadBalancerResult {
     readonly region: string;
     readonly status: string;
     readonly stickySessions: { cookieName: string, cookieTtlSeconds: number, type: string };
+    readonly urn: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

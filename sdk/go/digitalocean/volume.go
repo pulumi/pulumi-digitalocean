@@ -44,6 +44,7 @@ func NewVolume(ctx *pulumi.Context,
 	}
 	inputs["dropletIds"] = nil
 	inputs["filesystemLabel"] = nil
+	inputs["urn"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/volume:Volume", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -67,6 +68,7 @@ func GetVolume(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["size"] = state.Size
 		inputs["snapshotId"] = state.SnapshotId
+		inputs["urn"] = state.Urn
 	}
 	s, err := ctx.ReadResource("digitalocean:index/volume:Volume", name, id, inputs, opts...)
 	if err != nil {
@@ -135,6 +137,11 @@ func (r *Volume) SnapshotId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["snapshotId"])
 }
 
+// the uniform resource name for the volume.
+func (r *Volume) Urn() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["urn"])
+}
+
 // Input properties used for looking up and filtering Volume resources.
 type VolumeState struct {
 	// A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
@@ -157,6 +164,8 @@ type VolumeState struct {
 	Size interface{}
 	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
 	SnapshotId interface{}
+	// the uniform resource name for the volume.
+	Urn interface{}
 }
 
 // The set of arguments for constructing a Volume resource.

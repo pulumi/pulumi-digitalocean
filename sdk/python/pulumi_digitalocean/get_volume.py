@@ -12,7 +12,7 @@ class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, name=None, region=None, size=None, id=None):
+    def __init__(__self__, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, name=None, region=None, size=None, urn=None, id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -49,6 +49,9 @@ class GetVolumeResult:
         """
         The size of the block storage volume in GiB.
         """
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        __self__.urn = urn
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -70,6 +73,10 @@ async def get_volume(description=None,name=None,region=None,opts=None):
     __args__['description'] = description
     __args__['name'] = name
     __args__['region'] = region
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts)
 
     return GetVolumeResult(
@@ -80,4 +87,5 @@ async def get_volume(description=None,name=None,region=None,opts=None):
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),
+        urn=__ret__.get('urn'),
         id=__ret__.get('id'))

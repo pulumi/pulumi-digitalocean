@@ -43,6 +43,7 @@ func NewSpacesBucket(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 	}
 	inputs["bucketDomainName"] = nil
+	inputs["urn"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/spacesBucket:SpacesBucket", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -61,6 +62,7 @@ func GetSpacesBucket(ctx *pulumi.Context,
 		inputs["forceDestroy"] = state.ForceDestroy
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
+		inputs["urn"] = state.Urn
 	}
 	s, err := ctx.ReadResource("digitalocean:index/spacesBucket:SpacesBucket", name, id, inputs, opts...)
 	if err != nil {
@@ -104,6 +106,11 @@ func (r *SpacesBucket) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// The uniform resource name for the bucket
+func (r *SpacesBucket) Urn() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["urn"])
+}
+
 // Input properties used for looking up and filtering SpacesBucket resources.
 type SpacesBucketState struct {
 	// Canned ACL applied on bucket creation (`private` or `public-read`)
@@ -116,6 +123,8 @@ type SpacesBucketState struct {
 	Name interface{}
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region interface{}
+	// The uniform resource name for the bucket
+	Urn interface{}
 }
 
 // The set of arguments for constructing a SpacesBucket resource.

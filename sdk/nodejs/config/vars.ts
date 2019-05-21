@@ -9,7 +9,7 @@ let __config = new pulumi.Config("digitalocean");
 /**
  * The URL to use for the DigitalOcean API.
  */
-export let apiEndpoint: string = utilities.requireWithDefault(() => __config.require("apiEndpoint"), (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com"));
+export let apiEndpoint: string | undefined = __config.get("apiEndpoint") || (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
 /**
  * The access key ID for Spaces API operations.
  */
@@ -21,4 +21,4 @@ export let spacesSecretKey: string | undefined = __config.get("spacesSecretKey")
 /**
  * The token key for API operations.
  */
-export let token: string = utilities.requireWithDefault(() => __config.require("token"), utilities.getEnv("DIGITALOCEAN_TOKEN"));
+export let token: string | undefined = __config.get("token") || utilities.getEnv("DIGITALOCEAN_TOKEN");

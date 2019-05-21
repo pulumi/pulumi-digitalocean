@@ -35,6 +35,7 @@ func LookupLoadBalancer(ctx *pulumi.Context, args *GetLoadBalancerArgs) (*GetLoa
 		Region: outputs["region"],
 		Status: outputs["status"],
 		StickySessions: outputs["stickySessions"],
+		Urn: outputs["urn"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -59,6 +60,7 @@ type GetLoadBalancerResult struct {
 	Region interface{}
 	Status interface{}
 	StickySessions interface{}
+	Urn interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

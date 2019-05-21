@@ -36,11 +36,15 @@ export class Domain extends pulumi.CustomResource {
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
      */
-    public readonly ipAddress: pulumi.Output<string | undefined>;
+    public readonly ipAddress!: pulumi.Output<string | undefined>;
     /**
      * The name of the domain
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The uniform resource name of the domain
+     */
+    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -53,13 +57,22 @@ export class Domain extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DomainState = argsOrState as DomainState | undefined;
+            const state = argsOrState as DomainState | undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["urn"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/domain:Domain", name, inputs, opts);
     }
@@ -78,6 +91,10 @@ export interface DomainState {
      * The name of the domain
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The uniform resource name of the domain
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**

@@ -56,23 +56,27 @@ export class SpacesBucket extends pulumi.CustomResource {
     /**
      * Canned ACL applied on bucket creation (`private` or `public-read`)
      */
-    public readonly acl: pulumi.Output<string | undefined>;
+    public readonly acl!: pulumi.Output<string | undefined>;
     /**
      * The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
      */
-    public /*out*/ readonly bucketDomainName: pulumi.Output<string>;
+    public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
      */
-    public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the bucket
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    public readonly region: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * The uniform resource name for the bucket
+     */
+    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a SpacesBucket resource with the given unique name, arguments, and options.
@@ -85,12 +89,13 @@ export class SpacesBucket extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SpacesBucketArgs | SpacesBucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SpacesBucketState = argsOrState as SpacesBucketState | undefined;
+            const state = argsOrState as SpacesBucketState | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as SpacesBucketArgs | undefined;
             inputs["acl"] = args ? args.acl : undefined;
@@ -98,6 +103,14 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["bucketDomainName"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("digitalocean:index/spacesBucket:SpacesBucket", name, inputs, opts);
     }
@@ -127,6 +140,10 @@ export interface SpacesBucketState {
      * The region where the bucket resides (Defaults to `nyc3`)
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The uniform resource name for the bucket
+     */
+    readonly urn?: pulumi.Input<string>;
 }
 
 /**
