@@ -41,7 +41,7 @@ been added to make development easier and to help avoid common mistakes, and to 
 ## Reference
 
 For detailed reference documentation, please visit [the API docs](
-https://pulumi.io/reference/pkg/nodejs/@pulumi/digitalocean/index.html).
+https://pulumi.io/reference/pkg/nodejs/pulumi/digitalocean/).
 
 ## Updating this provider
 
