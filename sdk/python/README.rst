@@ -62,7 +62,7 @@ Reference
 ---------
 
 For detailed reference documentation, please visit `the API
-docs <https://pulumi.io/reference/pkg/nodejs/@pulumi/digitalocean/index.html>`__.
+docs <https://pulumi.io/reference/pkg/nodejs/pulumi/digitalocean/>`__.
 
 Updating this provider
 ----------------------
