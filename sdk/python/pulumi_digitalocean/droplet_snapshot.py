@@ -68,10 +68,6 @@ class DropletSnapshot(pulumi.CustomResource):
         __props__['regions'] = None
         __props__['size'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(DropletSnapshot, __self__).__init__(
             'digitalocean:index/dropletSnapshot:DropletSnapshot',
             resource_name,

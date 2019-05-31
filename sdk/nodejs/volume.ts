@@ -147,13 +147,6 @@ export class Volume extends pulumi.CustomResource {
             inputs["filesystemLabel"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/volume:Volume", name, inputs, opts);
     }
 }

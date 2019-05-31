@@ -26,13 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDroplet(args: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
         "name": args.name,
     }, opts);

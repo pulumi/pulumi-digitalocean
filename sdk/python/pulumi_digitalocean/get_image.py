@@ -71,10 +71,6 @@ async def get_image(name=None,slug=None,opts=None):
 
     __args__['name'] = name
     __args__['slug'] = slug
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts)
 
     return GetImageResult(

@@ -74,10 +74,6 @@ async def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['region'] = region
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts)
 
     return GetDropletSnapshotResult(

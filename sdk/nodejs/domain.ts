@@ -67,13 +67,6 @@ export class Domain extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["urn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/domain:Domain", name, inputs, opts);
     }
 }

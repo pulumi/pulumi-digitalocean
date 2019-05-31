@@ -204,10 +204,6 @@ class Droplet(pulumi.CustomResource):
         __props__['urn'] = None
         __props__['vcpus'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(Droplet, __self__).__init__(
             'digitalocean:index/droplet:Droplet',
             resource_name,

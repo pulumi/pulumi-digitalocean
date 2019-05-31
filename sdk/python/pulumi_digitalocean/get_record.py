@@ -63,10 +63,6 @@ async def get_record(domain=None,name=None,opts=None):
 
     __args__['domain'] = domain
     __args__['name'] = name
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts)
 
     return GetRecordResult(

@@ -78,13 +78,6 @@ export class FloatingIpAssignment extends pulumi.CustomResource {
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", name, inputs, opts);
     }
 }

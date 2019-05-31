@@ -44,10 +44,6 @@ async def get_floating_ip(ip_address=None,opts=None):
     __args__ = dict()
 
     __args__['ipAddress'] = ip_address
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts)
 
     return GetFloatingIpResult(

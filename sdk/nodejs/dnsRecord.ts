@@ -130,13 +130,6 @@ export class DnsRecord extends pulumi.CustomResource {
             inputs["weight"] = args ? args.weight : undefined;
             inputs["fqdn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/dnsRecord:DnsRecord", name, inputs, opts);
     }
 }

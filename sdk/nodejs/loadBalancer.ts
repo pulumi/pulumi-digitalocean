@@ -188,13 +188,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/loadBalancer:LoadBalancer", name, inputs, opts);
     }
 }

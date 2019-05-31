@@ -14,13 +14,6 @@ import * as utilities from "./utilities";
  * DigitalOcean account.
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("digitalocean:index/getDomain:getDomain", {
         "name": args.name,
     }, opts);
