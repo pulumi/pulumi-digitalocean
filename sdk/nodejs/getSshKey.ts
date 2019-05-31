@@ -26,13 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("digitalocean:index/getSshKey:getSshKey", {
         "name": args.name,
     }, opts);

@@ -73,10 +73,6 @@ async def get_volume(description=None,name=None,region=None,opts=None):
     __args__['description'] = description
     __args__['name'] = name
     __args__['region'] = region
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts)
 
     return GetVolumeResult(

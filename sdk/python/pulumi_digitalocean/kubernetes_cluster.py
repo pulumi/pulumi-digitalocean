@@ -126,10 +126,6 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__['status'] = None
         __props__['updated_at'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(KubernetesCluster, __self__).__init__(
             'digitalocean:index/kubernetesCluster:KubernetesCluster',
             resource_name,

@@ -68,10 +68,6 @@ class VolumeSnapshot(pulumi.CustomResource):
         __props__['regions'] = None
         __props__['size'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(VolumeSnapshot, __self__).__init__(
             'digitalocean:index/volumeSnapshot:VolumeSnapshot',
             resource_name,

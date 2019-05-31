@@ -215,13 +215,6 @@ export class Droplet extends pulumi.CustomResource {
             inputs["urn"] = undefined /*out*/;
             inputs["vcpus"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/droplet:Droplet", name, inputs, opts);
     }
 }

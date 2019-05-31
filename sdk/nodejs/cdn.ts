@@ -122,13 +122,6 @@ export class Cdn extends pulumi.CustomResource {
             inputs["createdAt"] = undefined /*out*/;
             inputs["endpoint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/cdn:Cdn", name, inputs, opts);
     }
 }

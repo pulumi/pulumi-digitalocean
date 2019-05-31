@@ -29,13 +29,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("digitalocean:index/getFloatingIp:getFloatingIp", {
         "ipAddress": args.ipAddress,
     }, opts);

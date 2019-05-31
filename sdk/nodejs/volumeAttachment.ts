@@ -80,13 +80,6 @@ export class VolumeAttachment extends pulumi.CustomResource {
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/volumeAttachment:VolumeAttachment", name, inputs, opts);
     }
 }

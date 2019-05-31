@@ -27,13 +27,6 @@ export class Provider extends pulumi.ProviderResource {
             inputs["spacesSecretKey"] = (args ? args.spacesSecretKey : undefined) || utilities.getEnv("SPACES_SECRET_ACCESS_KEY");
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("DIGITALOCEAN_TOKEN");
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean", name, inputs, opts);
     }
 }

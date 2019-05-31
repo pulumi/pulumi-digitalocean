@@ -145,13 +145,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["uri"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/databaseCluster:DatabaseCluster", name, inputs, opts);
     }
 }

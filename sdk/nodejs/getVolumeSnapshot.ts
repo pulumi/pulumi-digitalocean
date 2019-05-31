@@ -44,13 +44,6 @@ import * as utilities from "./utilities";
  */
 export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", {
         "mostRecent": args.mostRecent,
         "name": args.name,

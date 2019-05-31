@@ -132,13 +132,6 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/kubernetesCluster:KubernetesCluster", name, inputs, opts);
     }
 }

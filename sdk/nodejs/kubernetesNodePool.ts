@@ -111,13 +111,6 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["nodes"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, inputs, opts);
     }
 }
