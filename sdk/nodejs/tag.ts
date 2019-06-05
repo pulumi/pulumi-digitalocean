@@ -40,6 +40,20 @@ export class Tag extends pulumi.CustomResource {
         return new Tag(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/tag:Tag';
+
+    /**
+     * Returns true if the given object is an instance of Tag.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Tag {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Tag.__pulumiType;
+    }
+
     /**
      * The name of the tag
      */
@@ -62,7 +76,7 @@ export class Tag extends pulumi.CustomResource {
             const args = argsOrState as TagArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("digitalocean:index/tag:Tag", name, inputs, opts);
+        super(Tag.__pulumiType, name, inputs, opts);
     }
 }
 

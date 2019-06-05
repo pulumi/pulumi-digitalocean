@@ -36,6 +36,20 @@ export class DatabaseCluster extends pulumi.CustomResource {
         return new DatabaseCluster(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/databaseCluster:DatabaseCluster';
+
+    /**
+     * Returns true if the given object is an instance of DatabaseCluster.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DatabaseCluster {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DatabaseCluster.__pulumiType;
+    }
+
     /**
      * Name of the cluster's default database.
      */
@@ -145,7 +159,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["uri"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
-        super("digitalocean:index/databaseCluster:DatabaseCluster", name, inputs, opts);
+        super(DatabaseCluster.__pulumiType, name, inputs, opts);
     }
 }
 

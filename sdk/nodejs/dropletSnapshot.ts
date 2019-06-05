@@ -36,6 +36,20 @@ export class DropletSnapshot extends pulumi.CustomResource {
         return new DropletSnapshot(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/dropletSnapshot:DropletSnapshot';
+
+    /**
+     * Returns true if the given object is an instance of DropletSnapshot.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DropletSnapshot {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DropletSnapshot.__pulumiType;
+    }
+
     /**
      * The date and time the Droplet snapshot was created.
      */
@@ -91,7 +105,7 @@ export class DropletSnapshot extends pulumi.CustomResource {
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
-        super("digitalocean:index/dropletSnapshot:DropletSnapshot", name, inputs, opts);
+        super(DropletSnapshot.__pulumiType, name, inputs, opts);
     }
 }
 
