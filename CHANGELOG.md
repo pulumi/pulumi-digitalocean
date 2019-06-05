@@ -1,16 +1,14 @@
-# `@pulumi/digitalocean` Changelog
+CHANGELOG
+=========
 
-This CHANGELOG details important changes made in each version of the
-`digitalocean` provider, and the `@pulumi/digitalocean` Node.js package.
+## HEAD (Unreleased)
+_(none)_
 
-## 0.18.2 (Unreleased)  
+---
 
+## 0.18.1 (2019-05-31)
+* Upgraded to v1.4.0 of the Digital Ocean Terraform Provider
 
-## 0.18.1 (Released 31 May, 2019)
-
-- Upgraded to v1.4.0 of the DigitalOcean Terraform Provider
-
-## 0.18.0 (Released 21 May, 2019)
-
-- Initial Release
+## 0.18.0 (2019-05-21)
+* Initial Release
 
