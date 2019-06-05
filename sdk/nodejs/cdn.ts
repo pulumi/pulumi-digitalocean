@@ -66,6 +66,20 @@ export class Cdn extends pulumi.CustomResource {
         return new Cdn(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/cdn:Cdn';
+
+    /**
+     * Returns true if the given object is an instance of Cdn.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Cdn {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Cdn.__pulumiType;
+    }
+
     /**
      * ID of a DigitalOcean managed TLS certificate for use with custom domains
      */
@@ -122,7 +136,7 @@ export class Cdn extends pulumi.CustomResource {
             inputs["createdAt"] = undefined /*out*/;
             inputs["endpoint"] = undefined /*out*/;
         }
-        super("digitalocean:index/cdn:Cdn", name, inputs, opts);
+        super(Cdn.__pulumiType, name, inputs, opts);
     }
 }
 

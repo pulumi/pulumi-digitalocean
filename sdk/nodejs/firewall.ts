@@ -95,6 +95,20 @@ export class Firewall extends pulumi.CustomResource {
         return new Firewall(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/firewall:Firewall';
+
+    /**
+     * Returns true if the given object is an instance of Firewall.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Firewall {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Firewall.__pulumiType;
+    }
+
     /**
      * A time value given in ISO8601 combined date and time format
      * that represents when the Firewall was created.
@@ -167,7 +181,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["pendingChanges"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        super("digitalocean:index/firewall:Firewall", name, inputs, opts);
+        super(Firewall.__pulumiType, name, inputs, opts);
     }
 }
 

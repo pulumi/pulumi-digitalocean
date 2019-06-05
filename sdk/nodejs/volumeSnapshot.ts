@@ -36,6 +36,20 @@ export class VolumeSnapshot extends pulumi.CustomResource {
         return new VolumeSnapshot(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/volumeSnapshot:VolumeSnapshot';
+
+    /**
+     * Returns true if the given object is an instance of VolumeSnapshot.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VolumeSnapshot {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VolumeSnapshot.__pulumiType;
+    }
+
     /**
      * The date and time the volume snapshot was created.
      */
@@ -91,7 +105,7 @@ export class VolumeSnapshot extends pulumi.CustomResource {
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
-        super("digitalocean:index/volumeSnapshot:VolumeSnapshot", name, inputs, opts);
+        super(VolumeSnapshot.__pulumiType, name, inputs, opts);
     }
 }
 

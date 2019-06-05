@@ -53,6 +53,20 @@ export class SpacesBucket extends pulumi.CustomResource {
         return new SpacesBucket(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/spacesBucket:SpacesBucket';
+
+    /**
+     * Returns true if the given object is an instance of SpacesBucket.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SpacesBucket {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SpacesBucket.__pulumiType;
+    }
+
     /**
      * Canned ACL applied on bucket creation (`private` or `public-read`)
      */
@@ -105,7 +119,7 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["bucketDomainName"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
-        super("digitalocean:index/spacesBucket:SpacesBucket", name, inputs, opts);
+        super(SpacesBucket.__pulumiType, name, inputs, opts);
     }
 }
 

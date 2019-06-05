@@ -46,6 +46,20 @@ export class VolumeAttachment extends pulumi.CustomResource {
         return new VolumeAttachment(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/volumeAttachment:VolumeAttachment';
+
+    /**
+     * Returns true if the given object is an instance of VolumeAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VolumeAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VolumeAttachment.__pulumiType;
+    }
+
     /**
      * ID of the Droplet to attach the volume to.
      */
@@ -80,7 +94,7 @@ export class VolumeAttachment extends pulumi.CustomResource {
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
         }
-        super("digitalocean:index/volumeAttachment:VolumeAttachment", name, inputs, opts);
+        super(VolumeAttachment.__pulumiType, name, inputs, opts);
     }
 }
 

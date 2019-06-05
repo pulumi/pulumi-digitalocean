@@ -32,6 +32,20 @@ export class Domain extends pulumi.CustomResource {
         return new Domain(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/domain:Domain';
+
+    /**
+     * Returns true if the given object is an instance of Domain.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Domain {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Domain.__pulumiType;
+    }
+
     /**
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
@@ -67,7 +81,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["urn"] = undefined /*out*/;
         }
-        super("digitalocean:index/domain:Domain", name, inputs, opts);
+        super(Domain.__pulumiType, name, inputs, opts);
     }
 }
 
