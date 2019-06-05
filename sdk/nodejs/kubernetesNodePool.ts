@@ -45,6 +45,20 @@ export class KubernetesNodePool extends pulumi.CustomResource {
         return new KubernetesNodePool(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/kubernetesNodePool:KubernetesNodePool';
+
+    /**
+     * Returns true if the given object is an instance of KubernetesNodePool.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is KubernetesNodePool {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === KubernetesNodePool.__pulumiType;
+    }
+
     /**
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
@@ -111,7 +125,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["nodes"] = undefined /*out*/;
         }
-        super("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, inputs, opts);
+        super(KubernetesNodePool.__pulumiType, name, inputs, opts);
     }
 }
 

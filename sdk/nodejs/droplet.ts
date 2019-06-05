@@ -36,6 +36,20 @@ export class Droplet extends pulumi.CustomResource {
         return new Droplet(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/droplet:Droplet';
+
+    /**
+     * Returns true if the given object is an instance of Droplet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Droplet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Droplet.__pulumiType;
+    }
+
     /**
      * Boolean controlling if backups are made. Defaults to
      * false.
@@ -215,7 +229,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["urn"] = undefined /*out*/;
             inputs["vcpus"] = undefined /*out*/;
         }
-        super("digitalocean:index/droplet:Droplet", name, inputs, opts);
+        super(Droplet.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -85,6 +85,20 @@ export class LoadBalancer extends pulumi.CustomResource {
         return new LoadBalancer(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/loadBalancer:LoadBalancer';
+
+    /**
+     * Returns true if the given object is an instance of LoadBalancer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LoadBalancer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === LoadBalancer.__pulumiType;
+    }
+
     /**
      * The load balancing algorithm used to determine
      * which backend Droplet will be selected by a client. It must be either `round_robin`
@@ -188,7 +202,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
-        super("digitalocean:index/loadBalancer:LoadBalancer", name, inputs, opts);
+        super(LoadBalancer.__pulumiType, name, inputs, opts);
     }
 }
 

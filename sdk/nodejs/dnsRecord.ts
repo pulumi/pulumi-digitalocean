@@ -39,6 +39,20 @@ export class DnsRecord extends pulumi.CustomResource {
         return new DnsRecord(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/dnsRecord:DnsRecord';
+
+    /**
+     * Returns true if the given object is an instance of DnsRecord.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DnsRecord {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DnsRecord.__pulumiType;
+    }
+
     /**
      * The domain to add the record to.
      */
@@ -130,7 +144,7 @@ export class DnsRecord extends pulumi.CustomResource {
             inputs["weight"] = args ? args.weight : undefined;
             inputs["fqdn"] = undefined /*out*/;
         }
-        super("digitalocean:index/dnsRecord:DnsRecord", name, inputs, opts);
+        super(DnsRecord.__pulumiType, name, inputs, opts);
     }
 }
 

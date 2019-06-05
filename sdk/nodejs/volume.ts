@@ -59,6 +59,20 @@ export class Volume extends pulumi.CustomResource {
         return new Volume(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/volume:Volume';
+
+    /**
+     * Returns true if the given object is an instance of Volume.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Volume {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Volume.__pulumiType;
+    }
+
     /**
      * A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
      */
@@ -147,7 +161,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["filesystemLabel"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
-        super("digitalocean:index/volume:Volume", name, inputs, opts);
+        super(Volume.__pulumiType, name, inputs, opts);
     }
 }
 

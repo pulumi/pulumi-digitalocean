@@ -41,6 +41,20 @@ export class FloatingIp extends pulumi.CustomResource {
         return new FloatingIp(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'digitalocean:index/floatingIp:FloatingIp';
+
+    /**
+     * Returns true if the given object is an instance of FloatingIp.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is FloatingIp {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === FloatingIp.__pulumiType;
+    }
+
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
@@ -84,7 +98,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["urn"] = undefined /*out*/;
         }
-        super("digitalocean:index/floatingIp:FloatingIp", name, inputs, opts);
+        super(FloatingIp.__pulumiType, name, inputs, opts);
     }
 }
 
