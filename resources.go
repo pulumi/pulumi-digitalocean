@@ -112,6 +112,9 @@ func Provider() tfbridge.ProviderInfo {
 					"region": {
 						Type: digitalOceanType(digitalOceanMod, "Region"),
 					},
+					"size": {
+						Type: digitalOceanType(digitalOceanMod, "DropletSlug"),
+					},
 				},
 			},
 			"digitalocean_droplet_snapshot":       {Tok: digitalOceanResource(digitalOceanMod, "DropletSnapshot")},
@@ -186,6 +189,7 @@ func Provider() tfbridge.ProviderInfo {
 			Overlay: &tfbridge.OverlayInfo{
 				DestFiles: []string{
 					"databaseSlug.ts",
+					"dropletSlug.ts",
 					"region.ts", // Region union type and constants
 				},
 				Modules: map[string]*tfbridge.OverlayInfo{},

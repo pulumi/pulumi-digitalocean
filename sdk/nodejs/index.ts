@@ -9,6 +9,7 @@ export * from "./databaseSlug";
 export * from "./dnsRecord";
 export * from "./domain";
 export * from "./droplet";
+export * from "./dropletSlug";
 export * from "./dropletSnapshot";
 export * from "./firewall";
 export * from "./floatingIp";

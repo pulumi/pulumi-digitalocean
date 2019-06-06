@@ -4,7 +4,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-import {Region} from "./index";
+import {DropletSlug, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Droplet resource. This can be used to create,
@@ -123,7 +123,7 @@ export class Droplet extends pulumi.CustomResource {
     /**
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
      */
-    public readonly size!: pulumi.Output<string>;
+    public readonly size!: pulumi.Output<DropletSlug>;
     /**
      * A list of SSH IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use a tool such
@@ -310,7 +310,7 @@ export interface DropletState {
     /**
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
      */
-    readonly size?: pulumi.Input<string>;
+    readonly size?: pulumi.Input<DropletSlug>;
     /**
      * A list of SSH IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use a tool such
@@ -390,7 +390,7 @@ export interface DropletArgs {
     /**
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
      */
-    readonly size: pulumi.Input<string>;
+    readonly size: pulumi.Input<DropletSlug>;
     /**
      * A list of SSH IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use a tool such

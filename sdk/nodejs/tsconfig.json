@@ -22,6 +22,7 @@
         "dnsRecord.ts",
         "domain.ts",
         "droplet.ts",
+        "dropletSlug.ts",
         "dropletSnapshot.ts",
         "firewall.ts",
         "floatingIp.ts",
