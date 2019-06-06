@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {Region} from "./index";
+
 /**
  * Provides a DigitalOcean Droplet resource. This can be used to create,
  * modify, and delete Droplets. Droplets also support
@@ -110,7 +112,7 @@ export class Droplet extends pulumi.CustomResource {
     /**
      * The region to start in.
      */
-    public readonly region!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<Region>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -297,7 +299,7 @@ export interface DropletState {
     /**
      * The region to start in.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<Region>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -377,7 +379,7 @@ export interface DropletArgs {
     /**
      * The region to start in.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region: pulumi.Input<Region>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,

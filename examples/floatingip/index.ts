@@ -15,7 +15,7 @@
 import * as digitalocean from "@pulumi/digitalocean";
 
  const ip = new digitalocean.FloatingIp("ip", {
-     region: "nyc1",
+     region: digitalocean.NYC1Region,
  });
 
  export let ipAddress = ip.ipAddress;

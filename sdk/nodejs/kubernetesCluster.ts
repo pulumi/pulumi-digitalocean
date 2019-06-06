@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {Region} from "./index";
+
 /**
  * > **NOTE:** DigitalOcean Kubernetes is currently in [Limited Availability](https://www.digitalocean.com/docs/platform/product-lifecycle/). In order to access its API, you must first enable Kubernetes on your account by opting-in via the [cloud control panel](https://cloud.digitalocean.com/kubernetes/clusters). While the Kubernetes Cluster functionality is currently in limited availability the structure of this resource may change over time. Please share any feedback you may have by [opening an issue on GitHub](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).
  * 
@@ -68,7 +70,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    public readonly region!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<Region>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
@@ -186,7 +188,7 @@ export interface KubernetesClusterState {
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<Region>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
@@ -234,7 +236,7 @@ export interface KubernetesClusterArgs {
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region: pulumi.Input<Region>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */

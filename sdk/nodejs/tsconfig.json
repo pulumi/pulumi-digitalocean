@@ -44,6 +44,7 @@
         "loadBalancer.ts",
         "project.ts",
         "provider.ts",
+        "region.ts",
         "spacesBucket.ts",
         "sshKey.ts",
         "tag.ts",

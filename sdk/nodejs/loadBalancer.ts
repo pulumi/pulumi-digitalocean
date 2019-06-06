@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {Region} from "./index";
+
 /**
  * Provides a DigitalOcean Load Balancer resource. This can be used to create,
  * modify, and delete Load Balancers.
@@ -143,7 +145,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The region to start in
      */
-    public readonly region!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<Region>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A `sticky_sessions` block to be assigned to the
@@ -254,7 +256,7 @@ export interface LoadBalancerState {
     /**
      * The region to start in
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<Region>;
     readonly status?: pulumi.Input<string>;
     /**
      * A `sticky_sessions` block to be assigned to the
@@ -314,7 +316,7 @@ export interface LoadBalancerArgs {
     /**
      * The region to start in
      */
-    readonly region: pulumi.Input<string>;
+    readonly region: pulumi.Input<Region>;
     /**
      * A `sticky_sessions` block to be assigned to the
      * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.

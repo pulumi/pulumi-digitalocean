@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {Region} from "./index";
+
 /**
  * Provides a DigitalOcean database cluster resource.
  * 
@@ -85,7 +87,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    public readonly region!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<Region>;
     /**
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
@@ -202,7 +204,7 @@ export interface DatabaseClusterState {
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<Region>;
     /**
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
@@ -244,7 +246,7 @@ export interface DatabaseClusterArgs {
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region: pulumi.Input<Region>;
     /**
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */

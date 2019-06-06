@@ -92,26 +92,66 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"digitalocean_cdn":                    {Tok: digitalOceanResource(digitalOceanMod, "Cdn")},
-			"digitalocean_certificate":            {Tok: digitalOceanResource(digitalOceanMod, "Certificate")},
-			"digitalocean_database_cluster":       {Tok: digitalOceanResource(digitalOceanMod, "DatabaseCluster")},
-			"digitalocean_domain":                 {Tok: digitalOceanResource(digitalOceanMod, "Domain")},
-			"digitalocean_droplet":                {Tok: digitalOceanResource(digitalOceanMod, "Droplet")},
+			"digitalocean_cdn":         {Tok: digitalOceanResource(digitalOceanMod, "Cdn")},
+			"digitalocean_certificate": {Tok: digitalOceanResource(digitalOceanMod, "Certificate")},
+			"digitalocean_database_cluster": {
+				Tok: digitalOceanResource(digitalOceanMod, "DatabaseCluster"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"region": {
+						Type: digitalOceanType(digitalOceanMod, "Region"),
+					},
+				},
+			},
+			"digitalocean_domain": {Tok: digitalOceanResource(digitalOceanMod, "Domain")},
+			"digitalocean_droplet": {
+				Tok: digitalOceanResource(digitalOceanMod, "Droplet"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"region": {
+						Type: digitalOceanType(digitalOceanMod, "Region"),
+					},
+				},
+			},
 			"digitalocean_droplet_snapshot":       {Tok: digitalOceanResource(digitalOceanMod, "DropletSnapshot")},
 			"digitalocean_firewall":               {Tok: digitalOceanResource(digitalOceanMod, "Firewall")},
 			"digitalocean_floating_ip":            {Tok: digitalOceanResource(digitalOceanMod, "FloatingIp")},
 			"digitalocean_floating_ip_assignment": {Tok: digitalOceanResource(digitalOceanMod, "FloatingIpAssignment")},
-			"digitalocean_kubernetes_cluster":     {Tok: digitalOceanResource(digitalOceanMod, "KubernetesCluster")},
-			"digitalocean_kubernetes_node_pool":   {Tok: digitalOceanResource(digitalOceanMod, "KubernetesNodePool")},
+			"digitalocean_kubernetes_cluster": {
+				Tok: digitalOceanResource(digitalOceanMod, "KubernetesCluster"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"region": {
+						Type: digitalOceanType(digitalOceanMod, "Region"),
+					},
+				},
+			},
+			"digitalocean_kubernetes_node_pool": {Tok: digitalOceanResource(digitalOceanMod, "KubernetesNodePool")},
 			"digitalocean_loadbalancer": {
 				Tok: digitalOceanResource(digitalOceanMod, "LoadBalancer"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"region": {
+						Type: digitalOceanType(digitalOceanMod, "Region"),
+					},
+				},
 			},
-			"digitalocean_project":           {Tok: digitalOceanResource(digitalOceanMod, "Project")},
-			"digitalocean_record":            {Tok: digitalOceanResource(digitalOceanMod, "DnsRecord")},
-			"digitalocean_ssh_key":           {Tok: digitalOceanResource(digitalOceanMod, "SshKey")},
-			"digitalocean_spaces_bucket":     {Tok: digitalOceanResource(digitalOceanMod, "SpacesBucket")},
-			"digitalocean_tag":               {Tok: digitalOceanResource(digitalOceanMod, "Tag")},
-			"digitalocean_volume":            {Tok: digitalOceanResource(digitalOceanMod, "Volume")},
+			"digitalocean_project": {Tok: digitalOceanResource(digitalOceanMod, "Project")},
+			"digitalocean_record":  {Tok: digitalOceanResource(digitalOceanMod, "DnsRecord")},
+			"digitalocean_ssh_key": {Tok: digitalOceanResource(digitalOceanMod, "SshKey")},
+			"digitalocean_spaces_bucket": {
+				Tok: digitalOceanResource(digitalOceanMod, "SpacesBucket"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"region": {
+						Type: digitalOceanType(digitalOceanMod, "Region"),
+					},
+				},
+			},
+			"digitalocean_tag": {Tok: digitalOceanResource(digitalOceanMod, "Tag")},
+			"digitalocean_volume": {
+				Tok: digitalOceanResource(digitalOceanMod, "Volume"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"region": {
+						Type: digitalOceanType(digitalOceanMod, "Region"),
+					},
+				},
+			},
 			"digitalocean_volume_attachment": {Tok: digitalOceanResource(digitalOceanMod, "VolumeAttachment")},
 			"digitalocean_volume_snapshot":   {Tok: digitalOceanResource(digitalOceanMod, "VolumeSnapshot")},
 		},
@@ -141,7 +181,9 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},
 			Overlay: &tfbridge.OverlayInfo{
-				Files:   []string{},
+				DestFiles: []string{
+					"region.ts", // Region union type and constants
+				},
 				Modules: map[string]*tfbridge.OverlayInfo{},
 			},
 		},
