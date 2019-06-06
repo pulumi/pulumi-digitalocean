@@ -18,6 +18,7 @@
         "config/index.ts",
         "config/vars.ts",
         "databaseCluster.ts",
+        "databaseSlug.ts",
         "dnsRecord.ts",
         "domain.ts",
         "droplet.ts",

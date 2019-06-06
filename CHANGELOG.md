@@ -4,6 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Add TypeScript type guards for each resource class
 * Add a Region mixin for Region typing
+* Add a DatabaseSlug mixin for Database Cluster size types
 
 ---
 

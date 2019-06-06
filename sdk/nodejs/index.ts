@@ -5,6 +5,7 @@
 export * from "./cdn";
 export * from "./certificate";
 export * from "./databaseCluster";
+export * from "./databaseSlug";
 export * from "./dnsRecord";
 export * from "./domain";
 export * from "./droplet";
