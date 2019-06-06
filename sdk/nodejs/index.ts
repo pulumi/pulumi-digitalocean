@@ -30,6 +30,7 @@ export * from "./kubernetesNodePool";
 export * from "./loadBalancer";
 export * from "./project";
 export * from "./provider";
+export * from "./region";
 export * from "./spacesBucket";
 export * from "./sshKey";
 export * from "./tag";

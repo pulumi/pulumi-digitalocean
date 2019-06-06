@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {Region} from "./index";
+
 /**
  * Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
  * 
@@ -104,7 +106,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * The region that the block storage volume will be created in.
      */
-    public readonly region!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<Region>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */
@@ -200,7 +202,7 @@ export interface VolumeState {
     /**
      * The region that the block storage volume will be created in.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<Region>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */
@@ -242,7 +244,7 @@ export interface VolumeArgs {
     /**
      * The region that the block storage volume will be created in.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region: pulumi.Input<Region>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */

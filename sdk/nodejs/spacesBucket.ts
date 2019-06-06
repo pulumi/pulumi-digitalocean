@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {Region} from "./index";
+
 /**
  * Provides a bucket resource for Spaces, DigitalOcean's object storage product.
  * 
@@ -86,7 +88,7 @@ export class SpacesBucket extends pulumi.CustomResource {
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<Region | undefined>;
     /**
      * The uniform resource name for the bucket
      */
@@ -146,7 +148,7 @@ export interface SpacesBucketState {
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<Region>;
     /**
      * The uniform resource name for the bucket
      */
@@ -172,5 +174,5 @@ export interface SpacesBucketArgs {
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<Region>;
 }
