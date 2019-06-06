@@ -48,6 +48,7 @@ func TestDomain(t *testing.T) {
 	})
 
 	tests := []integration.ProgramTestOptions{
+		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "databaseCluster")}),
 		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "domain")}),
 		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "droplet")}),
 		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "floatingip")}),

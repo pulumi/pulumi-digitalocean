@@ -14,11 +14,12 @@
 
 import * as digitalocean from "@pulumi/digitalocean";
 
- const web = new digitalocean.Droplet("web", {
-     image: "ubuntu-18-04-x64",
-     region: digitalocean.NYC1Region,
-     size: digitalocean.DropletS1VPCU1GB,
- });
+const example = new digitalocean.DatabaseCluster("example", {
+    engine: "pg",
+    nodeCount: 1,
+    region: digitalocean.NYC1Region,
+    size: digitalocean.Database1VPCU1GB,
+    version: "11",
+});
 
- export let ipAddress = web.ipv4Address;
- export let status = web.status;
+export let name = example.name;
