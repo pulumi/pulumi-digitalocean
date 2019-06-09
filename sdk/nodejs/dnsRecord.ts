@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {RecordType} from "./index";
+
 /**
  * Provides a DigitalOcean DNS record resource.
  * 
@@ -88,7 +90,7 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
-    public readonly type!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<RecordType>;
     /**
      * The value of the record.
      */
@@ -187,7 +189,7 @@ export interface DnsRecordState {
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
-    readonly type?: pulumi.Input<string>;
+    readonly type?: pulumi.Input<RecordType>;
     /**
      * The value of the record.
      */
@@ -233,7 +235,7 @@ export interface DnsRecordArgs {
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
-    readonly type: pulumi.Input<string>;
+    readonly type: pulumi.Input<RecordType>;
     /**
      * The value of the record.
      */

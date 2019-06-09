@@ -35,6 +35,7 @@ export * from "./loadbalancerAlgorithm";
 export * from "./project";
 export * from "./protocol";
 export * from "./provider";
+export * from "./recordType";
 export * from "./region";
 export * from "./spacesBucket";
 export * from "./sshKey";

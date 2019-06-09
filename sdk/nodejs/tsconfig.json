@@ -49,6 +49,7 @@
         "project.ts",
         "protocol.ts",
         "provider.ts",
+        "recordType.ts",
         "region.ts",
         "spacesBucket.ts",
         "sshKey.ts",

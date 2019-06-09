@@ -9,6 +9,7 @@ CHANGELOG
 * Add Constants for Certificate types
 * Add Constants for Protocol types
 * Add Constants for Loadbalancer Algorithms
+* Add Contansts for DNS Record types
 
 ---
 

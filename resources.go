@@ -143,7 +143,14 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_kubernetes_node_pool": {Tok: digitalOceanResource(digitalOceanMod, "KubernetesNodePool")},
+			"digitalocean_kubernetes_node_pool": {
+				Tok: digitalOceanResource(digitalOceanMod, "KubernetesNodePool"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"size": {
+						Type: digitalOceanType(digitalOceanMod, "DropletSlug"),
+					},
+				},
+			},
 			"digitalocean_loadbalancer": {
 				Tok: digitalOceanResource(digitalOceanMod, "LoadBalancer"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -156,7 +163,14 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"digitalocean_project": {Tok: digitalOceanResource(digitalOceanMod, "Project")},
-			"digitalocean_record":  {Tok: digitalOceanResource(digitalOceanMod, "DnsRecord")},
+			"digitalocean_record": {
+				Tok: digitalOceanResource(digitalOceanMod, "DnsRecord"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"type": {
+						Type: digitalOceanType(digitalOceanMod, "RecordType"),
+					},
+				},
+			},
 			"digitalocean_ssh_key": {Tok: digitalOceanResource(digitalOceanMod, "SshKey")},
 			"digitalocean_spaces_bucket": {
 				Tok: digitalOceanResource(digitalOceanMod, "SpacesBucket"),
@@ -210,6 +224,7 @@ func Provider() tfbridge.ProviderInfo {
 					"dropletSlug.ts",
 					"loadbalancerAlgorithm.ts",
 					"protocol.ts",
+					"recordType.ts",
 					"region.ts",
 				},
 				Modules: map[string]*tfbridge.OverlayInfo{},
