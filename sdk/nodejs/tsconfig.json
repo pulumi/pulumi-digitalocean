@@ -45,6 +45,7 @@
         "kubernetesCluster.ts",
         "kubernetesNodePool.ts",
         "loadBalancer.ts",
+        "loadbalancerAlgorithm.ts",
         "project.ts",
         "protocol.ts",
         "provider.ts",

@@ -150,6 +150,9 @@ func Provider() tfbridge.ProviderInfo {
 					"region": {
 						Type: digitalOceanType(digitalOceanMod, "Region"),
 					},
+					"algorithm": {
+						Type: digitalOceanType(digitalOceanMod, "Algorithm"),
+					},
 				},
 			},
 			"digitalocean_project": {Tok: digitalOceanResource(digitalOceanMod, "Project")},
@@ -205,6 +208,7 @@ func Provider() tfbridge.ProviderInfo {
 					"certificateType.ts",
 					"databaseSlug.ts",
 					"dropletSlug.ts",
+					"loadbalancerAlgorithm.ts",
 					"protocol.ts",
 					"region.ts",
 				},

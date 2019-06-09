@@ -31,6 +31,7 @@ export * from "./getVolumeSnapshot";
 export * from "./kubernetesCluster";
 export * from "./kubernetesNodePool";
 export * from "./loadBalancer";
+export * from "./loadbalancerAlgorithm";
 export * from "./project";
 export * from "./protocol";
 export * from "./provider";

@@ -4,7 +4,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-import {Region} from "./index";
+import {Algorithm, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Load Balancer resource. This can be used to create,
@@ -106,7 +106,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * which backend Droplet will be selected by a client. It must be either `round_robin`
      * or `least_connections`. The default value is `round_robin`.
      */
-    public readonly algorithm!: pulumi.Output<string | undefined>;
+    public readonly algorithm!: pulumi.Output<Algorithm | undefined>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -217,7 +217,7 @@ export interface LoadBalancerState {
      * which backend Droplet will be selected by a client. It must be either `round_robin`
      * or `least_connections`. The default value is `round_robin`.
      */
-    readonly algorithm?: pulumi.Input<string>;
+    readonly algorithm?: pulumi.Input<Algorithm>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -278,7 +278,7 @@ export interface LoadBalancerArgs {
      * which backend Droplet will be selected by a client. It must be either `round_robin`
      * or `least_connections`. The default value is `round_robin`.
      */
-    readonly algorithm?: pulumi.Input<string>;
+    readonly algorithm?: pulumi.Input<Algorithm>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */

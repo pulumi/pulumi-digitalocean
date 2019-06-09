@@ -8,6 +8,7 @@ CHANGELOG
 * Add DropletSlug constants for Droplet size types
 * Add Constants for Certificate types
 * Add Constants for Protocol types
+* Add Constants for Loadbalancer Algorithms
 
 ---
 
