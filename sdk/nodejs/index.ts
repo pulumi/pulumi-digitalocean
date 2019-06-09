@@ -4,6 +4,7 @@
 // Export members:
 export * from "./cdn";
 export * from "./certificate";
+export * from "./certificateType";
 export * from "./databaseCluster";
 export * from "./databaseSlug";
 export * from "./dnsRecord";

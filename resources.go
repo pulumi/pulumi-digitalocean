@@ -92,8 +92,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"digitalocean_cdn":         {Tok: digitalOceanResource(digitalOceanMod, "Cdn")},
-			"digitalocean_certificate": {Tok: digitalOceanResource(digitalOceanMod, "Certificate")},
+			"digitalocean_cdn": {Tok: digitalOceanResource(digitalOceanMod, "Cdn")},
+			"digitalocean_certificate": {
+				Tok: digitalOceanResource(digitalOceanMod, "Certificate"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"type": {
+						Type: digitalOceanType(digitalOceanMod, "CertificateType"),
+					},
+				},
+			},
 			"digitalocean_database_cluster": {
 				Tok: digitalOceanResource(digitalOceanMod, "DatabaseCluster"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -188,9 +195,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			Overlay: &tfbridge.OverlayInfo{
 				DestFiles: []string{
+					"certificateType.ts",
 					"databaseSlug.ts",
 					"dropletSlug.ts",
-					"region.ts", // Region union type and constants
+					"region.ts",
 				},
 				Modules: map[string]*tfbridge.OverlayInfo{},
 			},

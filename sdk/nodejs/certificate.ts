@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {CertificateType} from "./index";
+
 /**
  * Provides a DigitalOcean Certificate resource that allows you to manage
  * certificates for configuring TLS termination in Load Balancers.
@@ -134,7 +136,7 @@ export class Certificate extends pulumi.CustomResource {
      * The type of certificate to provision. Can be either
      * `custom` or `lets_encrypt`. Defaults to `custom`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<CertificateType | undefined>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -216,7 +218,7 @@ export interface CertificateState {
      * The type of certificate to provision. Can be either
      * `custom` or `lets_encrypt`. Defaults to `custom`.
      */
-    readonly type?: pulumi.Input<string>;
+    readonly type?: pulumi.Input<CertificateType>;
 }
 
 /**
@@ -253,5 +255,5 @@ export interface CertificateArgs {
      * The type of certificate to provision. Can be either
      * `custom` or `lets_encrypt`. Defaults to `custom`.
      */
-    readonly type?: pulumi.Input<string>;
+    readonly type?: pulumi.Input<CertificateType>;
 }
