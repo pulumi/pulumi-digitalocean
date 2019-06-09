@@ -124,7 +124,14 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_droplet_snapshot":       {Tok: digitalOceanResource(digitalOceanMod, "DropletSnapshot")},
+			"digitalocean_droplet_snapshot":       {
+				Tok: digitalOceanResource(digitalOceanMod, "DropletSnapshot"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"regions": {
+						Elem: &tfbridge.SchemaInfo{Type: digitalOceanType(digitalOceanMod, "Region")},
+					},
+				},
+			},
 			"digitalocean_firewall":               {Tok: digitalOceanResource(digitalOceanMod, "Firewall")},
 			"digitalocean_floating_ip":            {Tok: digitalOceanResource(digitalOceanMod, "FloatingIp")},
 			"digitalocean_floating_ip_assignment": {Tok: digitalOceanResource(digitalOceanMod, "FloatingIpAssignment")},
