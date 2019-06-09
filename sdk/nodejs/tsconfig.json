@@ -46,6 +46,7 @@
         "kubernetesNodePool.ts",
         "loadBalancer.ts",
         "project.ts",
+        "protocol.ts",
         "provider.ts",
         "region.ts",
         "spacesBucket.ts",

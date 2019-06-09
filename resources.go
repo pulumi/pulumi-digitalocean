@@ -124,7 +124,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_droplet_snapshot":       {
+			"digitalocean_droplet_snapshot": {
 				Tok: digitalOceanResource(digitalOceanMod, "DropletSnapshot"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"regions": {
@@ -205,6 +205,7 @@ func Provider() tfbridge.ProviderInfo {
 					"certificateType.ts",
 					"databaseSlug.ts",
 					"dropletSlug.ts",
+					"protocol.ts",
 					"region.ts",
 				},
 				Modules: map[string]*tfbridge.OverlayInfo{},

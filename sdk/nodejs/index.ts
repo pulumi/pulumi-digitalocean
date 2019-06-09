@@ -32,6 +32,7 @@ export * from "./kubernetesCluster";
 export * from "./kubernetesNodePool";
 export * from "./loadBalancer";
 export * from "./project";
+export * from "./protocol";
 export * from "./provider";
 export * from "./region";
 export * from "./spacesBucket";

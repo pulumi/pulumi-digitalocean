@@ -7,6 +7,7 @@ CHANGELOG
 * Add DatabaseSlug constants for Database Cluster size types
 * Add DropletSlug constants for Droplet size types
 * Add Constants for Certificate types
+* Add Constants for Protocol types
 
 ---
 
