@@ -12,6 +12,7 @@ export * from "./domain";
 export * from "./droplet";
 export * from "./dropletSlug";
 export * from "./dropletSnapshot";
+export * from "./filesystemType";
 export * from "./firewall";
 export * from "./floatingIp";
 export * from "./floatingIpAssignment";

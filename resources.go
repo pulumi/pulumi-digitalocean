@@ -187,6 +187,9 @@ func Provider() tfbridge.ProviderInfo {
 					"region": {
 						Type: digitalOceanType(digitalOceanMod, "Region"),
 					},
+					"initial_filesystem_type": {
+						Type: digitalOceanType(digitalOceanMod, "FilesystemType"),
+					},
 				},
 			},
 			"digitalocean_volume_attachment": {Tok: digitalOceanResource(digitalOceanMod, "VolumeAttachment")},
@@ -222,6 +225,7 @@ func Provider() tfbridge.ProviderInfo {
 					"certificateType.ts",
 					"databaseSlug.ts",
 					"dropletSlug.ts",
+					"filesystemType.ts",
 					"loadbalancerAlgorithm.ts",
 					"protocol.ts",
 					"recordType.ts",

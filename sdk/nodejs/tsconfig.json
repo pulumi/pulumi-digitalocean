@@ -25,6 +25,7 @@
         "droplet.ts",
         "dropletSlug.ts",
         "dropletSnapshot.ts",
+        "filesystemType.ts",
         "firewall.ts",
         "floatingIp.ts",
         "floatingIpAssignment.ts",

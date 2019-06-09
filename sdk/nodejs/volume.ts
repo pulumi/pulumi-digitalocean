@@ -4,7 +4,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-import {Region} from "./index";
+import {FilesystemType, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
@@ -98,7 +98,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    public readonly initialFilesystemType!: pulumi.Output<string | undefined>;
+    public readonly initialFilesystemType!: pulumi.Output<FilesystemType | undefined>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
@@ -194,7 +194,7 @@ export interface VolumeState {
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    readonly initialFilesystemType?: pulumi.Input<string>;
+    readonly initialFilesystemType?: pulumi.Input<FilesystemType>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
@@ -236,7 +236,7 @@ export interface VolumeArgs {
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    readonly initialFilesystemType?: pulumi.Input<string>;
+    readonly initialFilesystemType?: pulumi.Input<FilesystemType>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
