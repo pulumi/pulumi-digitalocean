@@ -3,9 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Add TypeScript type guards for each resource class
-* Add a Region mixin for Region typing
-* Add a DatabaseSlug mixin for Database Cluster size types
-* Add a DropletSlug mixin for Droplet size types
+* Add Region constants for Region types
+* Add DatabaseSlug constants for Database Cluster size types
+* Add DropletSlug constants for Droplet size types
 
 ---
 
