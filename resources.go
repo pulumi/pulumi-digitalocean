@@ -193,7 +193,14 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"digitalocean_volume_attachment": {Tok: digitalOceanResource(digitalOceanMod, "VolumeAttachment")},
-			"digitalocean_volume_snapshot":   {Tok: digitalOceanResource(digitalOceanMod, "VolumeSnapshot")},
+			"digitalocean_volume_snapshot": {
+				Tok: digitalOceanResource(digitalOceanMod, "VolumeSnapshot"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"regions": {
+						Elem: &tfbridge.SchemaInfo{Type: digitalOceanType(digitalOceanMod, "Region")},
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"digitalocean_certificate":        {Tok: digitalOceanDataSource(digitalOceanMod, "getCertificate")},

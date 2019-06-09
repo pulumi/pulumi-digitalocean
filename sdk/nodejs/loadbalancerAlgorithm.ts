@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export let RoundRobin:       Algorithm = "round_robin";
-export let LeastConnections: Algorithm = "least_connections";
+export const RoundRobin:       Algorithm = "round_robin";
+export const LeastConnections: Algorithm = "least_connections";
 
 export type Algorithm =
     "round_robin"       |

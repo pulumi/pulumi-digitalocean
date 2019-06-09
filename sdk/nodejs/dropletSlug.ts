@@ -12,49 +12,49 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export let Droplet512mb:         DropletSlug = "512mb";
-export let Droplet1GB:           DropletSlug = "1gb";
-export let Droplet2GB:           DropletSlug = "2gb";
-export let Droplet4GB:           DropletSlug = "4gb";
-export let Droplet8GB:           DropletSlug = "8gb";
-export let Droplet16GB:          DropletSlug = "16gb";
-export let Droplet32GB:          DropletSlug = "32gb";
-export let Droplet48GB:          DropletSlug = "48gb";
-export let Droplet64GB:          DropletSlug = "64gb";
-export let DropletC2:            DropletSlug = "c-2";
-export let DropletC4:            DropletSlug = "c-4";
-export let DropletC8:            DropletSlug = "c-8";
-export let DropletC16:           DropletSlug = "c-16";
-export let DropletC32:           DropletSlug = "c-32";
-export let DropletS1VPCU1GB:     DropletSlug = "s-1vcpu-1gb";
-export let DropletS1VPCU2GB:     DropletSlug = "s-1vcpu-2gb";
-export let DropletS1VPCU3GB:     DropletSlug = "s-1vcpu-3gb";
-export let DropletS2VPCU2GB:     DropletSlug = "s-2vcpu-2gb";
-export let DropletS2VPCU4GB:     DropletSlug = "s-2vcpu-4gb";
-export let DropletS3VPCU1GB:     DropletSlug = "s-3vcpu-1gb";
-export let DropletS4VPCU8GB:     DropletSlug = "s-4vcpu-8gb";
-export let DropletS6VPCU16GB:    DropletSlug = "s-6vcpu-16gb";
-export let DropletS8VPCU32GB:    DropletSlug = "s-8vcpu-32gb";
-export let DropletS12VPCU48GB:   DropletSlug = "s-12vcpu-48gb";
-export let DropletS16VPCU64GB:   DropletSlug = "s-16vcpu-64gb";
-export let DropletS20VPCU96GB:   DropletSlug = "s-20vcpu-96gb";
-export let DropletS24VPCU128GB:  DropletSlug = "s-24vcpu-128gb";
-export let DropletS32VPCU192GB:  DropletSlug = "s-32vcpu-192gb";
-export let DropletG2VPCU8GB:     DropletSlug = "g-2vcpu-8gb";
-export let DropletG4VPCU16GB:    DropletSlug = "g-4vcpu-16gb";
-export let DropletG8VPCU32GB:    DropletSlug = "g-8vcpu-32gb";
-export let DropletG16VPCU64GB:   DropletSlug = "g-16vcpu-64gb";
-export let DropletG32VPCU128GB:  DropletSlug = "g-32vcpu-128gb";
-export let DropletG40VPCU160GB:  DropletSlug = "g-40vcpu-160gb";
-export let DropletGD2VPCU8GB:    DropletSlug = "gd-2vcpu-8gb";
-export let DropletGD4VPCU16GB:   DropletSlug = "gd-4vcpu-16gb";
-export let DropletGD8VPCU32GB:   DropletSlug = "gd-8vcpu-32gb";
-export let DropletGD16VPCU64GB:  DropletSlug = "gd-16vcpu-64gb";
-export let DropletGD32VPCU128GB: DropletSlug = "gd-32vcpu-128gb";
-export let DropletGD40VPCU160GB: DropletSlug = "gd-40vcpu-160gb";
+export const Droplet512mb:         DropletSlug = "512mb";
+export const Droplet1GB:           DropletSlug = "1gb";
+export const Droplet2GB:           DropletSlug = "2gb";
+export const Droplet4GB:           DropletSlug = "4gb";
+export const Droplet8GB:           DropletSlug = "8gb";
+export const Droplet16GB:          DropletSlug = "16gb";
+export const Droplet32GB:          DropletSlug = "32gb";
+export const Droplet48GB:          DropletSlug = "48gb";
+export const Droplet64GB:          DropletSlug = "64gb";
+export const DropletC2:            DropletSlug = "c-2";
+export const DropletC4:            DropletSlug = "c-4";
+export const DropletC8:            DropletSlug = "c-8";
+export const DropletC16:           DropletSlug = "c-16";
+export const DropletC32:           DropletSlug = "c-32";
+export const DropletS1VPCU1GB:     DropletSlug = "s-1vcpu-1gb";
+export const DropletS1VPCU2GB:     DropletSlug = "s-1vcpu-2gb";
+export const DropletS1VPCU3GB:     DropletSlug = "s-1vcpu-3gb";
+export const DropletS2VPCU2GB:     DropletSlug = "s-2vcpu-2gb";
+export const DropletS2VPCU4GB:     DropletSlug = "s-2vcpu-4gb";
+export const DropletS3VPCU1GB:     DropletSlug = "s-3vcpu-1gb";
+export const DropletS4VPCU8GB:     DropletSlug = "s-4vcpu-8gb";
+export const DropletS6VPCU16GB:    DropletSlug = "s-6vcpu-16gb";
+export const DropletS8VPCU32GB:    DropletSlug = "s-8vcpu-32gb";
+export const DropletS12VPCU48GB:   DropletSlug = "s-12vcpu-48gb";
+export const DropletS16VPCU64GB:   DropletSlug = "s-16vcpu-64gb";
+export const DropletS20VPCU96GB:   DropletSlug = "s-20vcpu-96gb";
+export const DropletS24VPCU128GB:  DropletSlug = "s-24vcpu-128gb";
+export const DropletS32VPCU192GB:  DropletSlug = "s-32vcpu-192gb";
+export const DropletG2VPCU8GB:     DropletSlug = "g-2vcpu-8gb";
+export const DropletG4VPCU16GB:    DropletSlug = "g-4vcpu-16gb";
+export const DropletG8VPCU32GB:    DropletSlug = "g-8vcpu-32gb";
+export const DropletG16VPCU64GB:   DropletSlug = "g-16vcpu-64gb";
+export const DropletG32VPCU128GB:  DropletSlug = "g-32vcpu-128gb";
+export const DropletG40VPCU160GB:  DropletSlug = "g-40vcpu-160gb";
+export const DropletGD2VPCU8GB:    DropletSlug = "gd-2vcpu-8gb";
+export const DropletGD4VPCU16GB:   DropletSlug = "gd-4vcpu-16gb";
+export const DropletGD8VPCU32GB:   DropletSlug = "gd-8vcpu-32gb";
+export const DropletGD16VPCU64GB:  DropletSlug = "gd-16vcpu-64gb";
+export const DropletGD32VPCU128GB: DropletSlug = "gd-32vcpu-128gb";
+export const DropletGD40VPCU160GB: DropletSlug = "gd-40vcpu-160gb";
 
 /**
- * A DropletSlug represents any valid DigitalOcean droplet slug size that may be targeted for deployment.
+ * A DropletSlug represents any valid DigitalOcean dropconst slug size that may be targeted for deployment.
  */
 export type DropletSlug =
     "512mb"           |

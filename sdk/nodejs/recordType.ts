@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export let ARecord:     RecordType = "A";
-export let AAAARecord:  RecordType = "AAAA";
-export let CAARecord:   RecordType = "CAA";
-export let CNAMERecord: RecordType = "CNAME";
-export let MXResord:    RecordType = "MX";
-export let NSRecord:    RecordType = "NS";
-export let TXTRecord:   RecordType = "TXT";
-export let SRVRecord:   RecordType = "SRV";
+export const ARecord:     RecordType = "A";
+export const AAAARecord:  RecordType = "AAAA";
+export const CAARecord:   RecordType = "CAA";
+export const CNAMERecord: RecordType = "CNAME";
+export const MXResord:    RecordType = "MX";
+export const NSRecord:    RecordType = "NS";
+export const TXTRecord:   RecordType = "TXT";
+export const SRVRecord:   RecordType = "SRV";
 
 export type RecordType =
     "A"     |
