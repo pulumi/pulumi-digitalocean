@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {DropletSlug} from "./index";
+
 /**
  * > **NOTE:** DigitalOcean Kubernetes is currently in [Limited Availability](https://www.digitalocean.com/docs/platform/product-lifecycle/). In order to access its API, you must first enable Kubernetes on your account by opting-in via the [cloud control panel](https://cloud.digitalocean.com/kubernetes/clusters). While the Kubernetes Cluster functionality is currently in limited availability the structure of this resource may change over time. Please share any feedback you may have by [opening an issue on GitHub](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).
  * 
@@ -83,7 +85,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    public readonly size!: pulumi.Output<string>;
+    public readonly size!: pulumi.Output<DropletSlug>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
@@ -157,7 +159,7 @@ export interface KubernetesNodePoolState {
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    readonly size?: pulumi.Input<string>;
+    readonly size?: pulumi.Input<DropletSlug>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
@@ -183,7 +185,7 @@ export interface KubernetesNodePoolArgs {
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    readonly size: pulumi.Input<string>;
+    readonly size: pulumi.Input<DropletSlug>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
