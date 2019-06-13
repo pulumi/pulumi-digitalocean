@@ -8,7 +8,7 @@ CHANGELOG
 * Add constants for Droplet sizes
 * Add constants for Certificate types
 * Add constants for Protocols
-* Add Constants for Loadbalancer Algorithms
+* Add constants for Load Balancer Algorithms
 * Add Contansts for DNS Record types
 * Add Constants for Filesystem types
 
