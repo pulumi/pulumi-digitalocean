@@ -12,8 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export const RoundRobin:       Algorithm = "round_robin";
-export const LeastConnections: Algorithm = "least_connections";
+export module LoadBalancerAlgorithms {
+    export const RoundRobin:       Algorithm = "round_robin";
+    export const LeastConnections: Algorithm = "least_connections";
+}
 
 export type Algorithm =
     "round_robin"       |

@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export const CustomCertificate:       CertificateType = "custom";
-export const constsEncryptCertificate:  CertificateType = "consts_encrypt";
+export module CertificateTypes {
+    export const Custom:      CertificateType = "custom";
+    export const LetsEncrypt: CertificateType = "lets_encrypt";
+}
 
 export type CertificateType =
     "custom"       |
-    "consts_encrypt" ;
+    "lets_encrypt" ;

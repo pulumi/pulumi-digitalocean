@@ -12,8 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export const XFS:  FilesystemType = "xfs";
-export const EXT4: FilesystemType = "ext4";
+export module FilesystemTypes {
+    export const XFS:  FilesystemType = "xfs";
+    export const EXT4: FilesystemType = "ext4";
+}
 
 export type FilesystemType =
     "xfs"  |

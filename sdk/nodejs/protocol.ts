@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export let TCP:   Protocol = "tcp";
-export let UDP:   Protocol = "udp";
-export let ICMP:  Protocol = "icmp";
-export let HTTP:  Protocol = "http";
-export let HTTPS: Protocol = "https";
+export module Protocols {
+    export const TCP:   Protocol = "tcp";
+    export const UDP:   Protocol = "udp";
+    export const ICMP:  Protocol = "icmp";
+    export const HTTP:  Protocol = "http";
+    export const HTTPS: Protocol = "https";
+}
 
 export type Protocol =
     "tcp"   |
