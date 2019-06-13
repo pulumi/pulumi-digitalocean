@@ -12,18 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export let NYC1Region: Region = "nyc1";
-export let NYC2Region: Region = "nyc2";
-export let NYC3Region: Region = "nyc3";
-export let SGP1Region: Region = "sgp1"
-export let LON1Region: Region = "lon1"
-export let AMS2Region: Region = "ams2"
-export let AMS3Region: Region = "ams3"
-export let FRA1Region: Region = "fra1"
-export let TOR1Region: Region = "tor1"
-export let SFO1Region: Region = "sfo1"
-export let SFO2Region: Region = "sfo2"
-export let BLR1Region: Region = "blr1"
+export module Regions {
+    export const NYC1: Region = "nyc1";
+    export const NYC2: Region = "nyc2";
+    export const NYC3: Region = "nyc3";
+    export const SGP1: Region = "sgp1"
+    export const LON1: Region = "lon1"
+    export const AMS2: Region = "ams2"
+    export const AMS3: Region = "ams3"
+    export const FRA1: Region = "fra1"
+    export const TOR1: Region = "tor1"
+    export const SFO1: Region = "sfo1"
+    export const SFO2: Region = "sfo2"
+    export const BLR1: Region = "blr1"
+}
 
 /**
  * A Region represents any valid DigitalOcean region that may be targeted with deployments.

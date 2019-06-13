@@ -12,13 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import * as digitalocean from "@pulumi/digitalocean";
+export module RecordTypes {
+    export const A:     RecordType = "A";
+    export const AAAA:  RecordType = "AAAA";
+    export const CAA:   RecordType = "CAA";
+    export const CNAME: RecordType = "CNAME";
+    export const MX:    RecordType = "MX";
+    export const NS:    RecordType = "NS";
+    export const TXT:   RecordType = "TXT";
+    export const SRV:   RecordType = "SRV";
+}
 
- const web = new digitalocean.Droplet("web", {
-     image: "ubuntu-18-04-x64",
-     region: digitalocean.Regions.NYC1,
-     size: digitalocean.DropletSlugs.DropletS1VPCU1GB,
- });
-
- export let ipAddress = web.ipv4Address;
- export let status = web.status;
+export type RecordType =
+    "A"     |
+    "AAAA"  |
+    "CAA"   |
+    "CNAME" |
+    "MX"    |
+    "NS"    |
+    "TXT"   |
+    "SRV"   ;

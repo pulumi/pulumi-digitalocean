@@ -4,6 +4,7 @@
 // Export members:
 export * from "./cdn";
 export * from "./certificate";
+export * from "./certificateType";
 export * from "./databaseCluster";
 export * from "./databaseSlug";
 export * from "./dnsRecord";
@@ -11,6 +12,7 @@ export * from "./domain";
 export * from "./droplet";
 export * from "./dropletSlug";
 export * from "./dropletSnapshot";
+export * from "./filesystemType";
 export * from "./firewall";
 export * from "./floatingIp";
 export * from "./floatingIpAssignment";
@@ -30,8 +32,11 @@ export * from "./getVolumeSnapshot";
 export * from "./kubernetesCluster";
 export * from "./kubernetesNodePool";
 export * from "./loadBalancer";
+export * from "./loadbalancerAlgorithm";
 export * from "./project";
+export * from "./protocol";
 export * from "./provider";
+export * from "./recordType";
 export * from "./region";
 export * from "./spacesBucket";
 export * from "./sshKey";

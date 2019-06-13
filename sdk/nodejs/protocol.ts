@@ -12,13 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import * as digitalocean from "@pulumi/digitalocean";
+export module Protocols {
+    export const TCP:   Protocol = "tcp";
+    export const UDP:   Protocol = "udp";
+    export const ICMP:  Protocol = "icmp";
+    export const HTTP:  Protocol = "http";
+    export const HTTPS: Protocol = "https";
+}
 
- const web = new digitalocean.Droplet("web", {
-     image: "ubuntu-18-04-x64",
-     region: digitalocean.Regions.NYC1,
-     size: digitalocean.DropletSlugs.DropletS1VPCU1GB,
- });
-
- export let ipAddress = web.ipv4Address;
- export let status = web.status;
+export type Protocol =
+    "tcp"   |
+    "icmp"  |
+    "udp"   |
+    "http"  |
+    "https" ;

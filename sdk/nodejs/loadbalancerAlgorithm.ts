@@ -12,13 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import * as digitalocean from "@pulumi/digitalocean";
+export module LoadBalancerAlgorithms {
+    export const RoundRobin:       Algorithm = "round_robin";
+    export const LeastConnections: Algorithm = "least_connections";
+}
 
- const web = new digitalocean.Droplet("web", {
-     image: "ubuntu-18-04-x64",
-     region: digitalocean.Regions.NYC1,
-     size: digitalocean.DropletSlugs.DropletS1VPCU1GB,
- });
-
- export let ipAddress = web.ipv4Address;
- export let status = web.status;
+export type Algorithm =
+    "round_robin"       |
+    "least_connections" ;

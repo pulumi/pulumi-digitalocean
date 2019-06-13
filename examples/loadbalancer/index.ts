@@ -18,7 +18,7 @@ const foobar = new digitalocean.Tag("foobar", {});
 
 const web = new digitalocean.Droplet("web", {
     image: "ubuntu-18-04-x64",
-    region: digitalocean.NYC1Region,
+    region: digitalocean.Regions.NYC1,
     size: "s-1vcpu-1gb",
     tags: [foobar.id],
 });
@@ -35,7 +35,7 @@ const lb = new digitalocean.LoadBalancer("public", {
         port: 22,
         protocol: "tcp",
     },
-    region: digitalocean.NYC1Region,
+    region: digitalocean.Regions.NYC1,
 });
 
 export let status = lb.status;

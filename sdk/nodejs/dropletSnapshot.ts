@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {Region} from "./index";
+
 /**
  * Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
  * 
@@ -69,7 +71,7 @@ export class DropletSnapshot extends pulumi.CustomResource {
     /**
      * A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
      */
-    public /*out*/ readonly regions!: pulumi.Output<string[]>;
+    public /*out*/ readonly regions!: pulumi.Output<Region[]>;
     /**
      * The billable size of the Droplet snapshot in gigabytes.
      */
@@ -132,7 +134,7 @@ export interface DropletSnapshotState {
     /**
      * A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
      */
-    readonly regions?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly regions?: pulumi.Input<pulumi.Input<Region>[]>;
     /**
      * The billable size of the Droplet snapshot in gigabytes.
      */
