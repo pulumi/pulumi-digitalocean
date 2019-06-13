@@ -4,7 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Add TypeScript type guards for each resource class
 * Add constants for Regions
-* Add DatabaseSlug constants for Database Cluster size types
+* Add constants for Database Cluster sizes
 * Add constants for Droplet sizes
 * Add constants for Certificate types
 * Add constants for Protocols
