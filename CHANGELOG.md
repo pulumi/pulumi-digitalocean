@@ -6,7 +6,7 @@ CHANGELOG
 * Add Region constants for Region types
 * Add DatabaseSlug constants for Database Cluster size types
 * Add DropletSlug constants for Droplet size types
-* Add Constants for Certificate types
+* Add constants for Certificate types
 * Add Constants for Protocol types
 * Add Constants for Loadbalancer Algorithms
 * Add Contansts for DNS Record types
