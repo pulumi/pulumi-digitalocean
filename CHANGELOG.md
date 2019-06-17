@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Fix an issue with publish-plugin.sh script that was breaking installs
+___HEAD___
 
 ---
 
-## 0.18.2 (2019-05-15)
+## 0.18.3 (2019-05-17)
+* Update the provider publish script to prevent user install problems 
+
+## 0.18.2 (2019-06-15)
 * Add TypeScript type guards for each resource class
 * Add constants for Regions
 * Add constants for Database Cluster sizes
