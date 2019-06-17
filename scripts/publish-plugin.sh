@@ -18,7 +18,7 @@ fi
 
 go build \
    -ldflags "-X github.com/pulumi/pulumi-digitalocean/pkg/version.Version=${VERSION}" \
-   -o "${WORK_PATH}/pulumi-resource-digitalocean{BIN_SUFFIX}" \
+   -o "${WORK_PATH}/pulumi-resource-digitalocean${BIN_SUFFIX}" \
    "${ROOT}/cmd/pulumi-resource-digitalocean"
 
 # Tar up the plugin

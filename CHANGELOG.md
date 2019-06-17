@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-__NULL__
+* Fix an issue with publish-plugin.sh script that was breaking installs
 
 ---
 
