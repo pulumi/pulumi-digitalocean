@@ -16,7 +16,7 @@ import * as digitalocean from "@pulumi/digitalocean";
 
  const web = new digitalocean.Droplet("web", {
      image: "ubuntu-18-04-x64",
-     region: digitalocean.Regions.NYC1,
+     region: digitalocean.Regions.NYC3,
      size: digitalocean.DropletSlugs.DropletS1VPCU1GB,
  });
 

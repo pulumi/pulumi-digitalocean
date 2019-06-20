@@ -49,6 +49,8 @@ class Domain(pulumi.CustomResource):
 
         __props__['ip_address'] = ip_address
 
+        if name is None:
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['urn'] = None

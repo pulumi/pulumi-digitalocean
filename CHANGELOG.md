@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___HEAD___
+* Add ability to set an explicit domain name via the `name` property on domain resource.
 
 ---
 

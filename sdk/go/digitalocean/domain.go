@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
@@ -15,6 +16,9 @@ type Domain struct {
 // NewDomain registers a new resource with the given unique name, arguments, and options.
 func NewDomain(ctx *pulumi.Context,
 	name string, args *DomainArgs, opts ...pulumi.ResourceOpt) (*Domain, error) {
+	if args == nil || args.Name == nil {
+		return nil, errors.New("missing required argument 'Name'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["ipAddress"] = nil

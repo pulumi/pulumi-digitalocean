@@ -14,6 +14,8 @@
 
 import * as digitalocean from "@pulumi/digitalocean";
 
-let domain = new digitalocean.Domain("pulumi-test.com");
+let domain = new digitalocean.Domain("my-domain", {
+    name: "my-domain.io"
+});
 
 export let name = domain.name;
