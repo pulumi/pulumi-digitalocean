@@ -6,7 +6,10 @@ ___HEAD___
 
 ---
 
-## 0.18.3 (2019-05-17)
+## 0.18.4 (2019-06-21)
+* Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.
+
+## 0.18.3 (2019-06-17)
 * Update the provider publish script to prevent user install problems 
 
 ## 0.18.2 (2019-06-15)
