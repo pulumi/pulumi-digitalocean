@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Add ability to set an explicit domain name via the `name` property on domain resource.
+___NULL___
 
 ---
+
+## 0.18.5 (2019-06-25)
+* Disable automatic naming for domain names. The `name` property on `Domain` resources is now required.
 
 ## 0.18.4 (2019-06-21)
 * Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.
