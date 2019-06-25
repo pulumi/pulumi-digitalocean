@@ -17,7 +17,7 @@ import * as digitalocean from "@pulumi/digitalocean";
 const example = new digitalocean.DatabaseCluster("example", {
     engine: "pg",
     nodeCount: 1,
-    region: digitalocean.Regions.NYC1,
+    region: digitalocean.Regions.NYC3,
     size: digitalocean.DatabaseSlugs.DB_1VPCU1GB,
     version: "11",
 });

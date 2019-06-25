@@ -16,7 +16,9 @@ import {RecordType} from "./index";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
  * // Create a new domain
- * const defaultDomain = new digitalocean.Domain("default", {});
+ * const defaultDomain = new digitalocean.Domain("default", {
+ *     name: "example.com",
+ * });
  * // Add a record to the domain
  * const www = new digitalocean.DnsRecord("www", {
  *     domain: defaultDomain.name,

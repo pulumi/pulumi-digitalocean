@@ -112,7 +112,12 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_domain": {Tok: digitalOceanResource(digitalOceanMod, "Domain")},
+			"digitalocean_domain": {
+				Tok: digitalOceanResource(digitalOceanMod, "Domain"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": {Name: "name"},
+				},
+			},
 			"digitalocean_droplet": {
 				Tok: digitalOceanResource(digitalOceanMod, "Droplet"),
 				Fields: map[string]*tfbridge.SchemaInfo{

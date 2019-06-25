@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * // Create a new domain
  * const defaultDomain = new digitalocean.Domain("default", {
  *     ipAddress: digitalocean_droplet_foo.ipv4Address,
+ *     name: "example.com",
  * });
  * ```
  */
@@ -67,7 +68,7 @@ export class Domain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: DomainArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -77,6 +78,9 @@ export class Domain extends pulumi.CustomResource {
             inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
+            if (!args || args.name === undefined) {
+                throw new Error("Missing required property 'name'");
+            }
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["urn"] = undefined /*out*/;
@@ -116,5 +120,5 @@ export interface DomainArgs {
     /**
      * The name of the domain
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name: pulumi.Input<string>;
 }
