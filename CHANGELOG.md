@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
+* Upgraded to v1.5.0 of the Digital Ocean Terraform Provider
 
 ---
 
