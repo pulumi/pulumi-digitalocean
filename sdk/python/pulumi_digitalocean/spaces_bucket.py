@@ -19,7 +19,7 @@ class SpacesBucket(pulumi.CustomResource):
     """
     force_destroy: pulumi.Output[bool]
     """
-    Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+    Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
     """
     name: pulumi.Output[str]
     """
@@ -55,7 +55,7 @@ class SpacesBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
-        :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+        :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
         """

@@ -70,8 +70,6 @@ class KubernetesCluster(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, name=None, node_pool=None, region=None, tags=None, version=None, __name__=None, __opts__=None):
         """
-        > **NOTE:** DigitalOcean Kubernetes is currently in [Limited Availability](https://www.digitalocean.com/docs/platform/product-lifecycle/). In order to access its API, you must first enable Kubernetes on your account by opting-in via the [cloud control panel](https://cloud.digitalocean.com/kubernetes/clusters). While the Kubernetes Cluster functionality is currently in limited availability the structure of this resource may change over time. Please share any feedback you may have by [opening an issue on GitHub](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).
-        
         Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
         
         :param str resource_name: The name of the resource.

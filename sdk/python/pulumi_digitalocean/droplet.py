@@ -38,7 +38,6 @@ class Droplet(pulumi.CustomResource):
     """
     The IPv6 address
     """
-    ipv6_address_private: pulumi.Output[str]
     locked: pulumi.Output[bool]
     """
     Is the Droplet locked
@@ -195,7 +194,6 @@ class Droplet(pulumi.CustomResource):
         __props__['ipv4_address'] = None
         __props__['ipv4_address_private'] = None
         __props__['ipv6_address'] = None
-        __props__['ipv6_address_private'] = None
         __props__['locked'] = None
         __props__['memory'] = None
         __props__['price_hourly'] = None
