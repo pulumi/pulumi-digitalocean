@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgraded to v1.5.0 of the Digital Ocean Terraform Provider
+___NULL___
 
 ---
+
+## 0.18.6 (2019-07-04)
+* Upgraded to v1.5.0 of the Digital Ocean Terraform Provider
 
 ## 0.18.5 (2019-06-25)
 * Disable automatic naming for domain names. The `name` property on `Domain` resources is now required.
