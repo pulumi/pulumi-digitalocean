@@ -30,6 +30,7 @@
         "floatingIp.ts",
         "floatingIpAssignment.ts",
         "getCertificate.ts",
+        "getDatabaseCluster.ts",
         "getDomain.ts",
         "getDroplet.ts",
         "getDropletSnapshot.ts",

@@ -78,7 +78,7 @@ export class SpacesBucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     /**
-     * Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+     * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -138,7 +138,7 @@ export interface SpacesBucketState {
      */
     readonly bucketDomainName?: pulumi.Input<string>;
     /**
-     * Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+     * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
@@ -164,7 +164,7 @@ export interface SpacesBucketArgs {
      */
     readonly acl?: pulumi.Input<string>;
     /**
-     * Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+     * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**

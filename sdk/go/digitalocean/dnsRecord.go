@@ -122,7 +122,7 @@ func (r *DnsRecord) Priority() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["priority"])
 }
 
-// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
+// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
 func (r *DnsRecord) Tag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tag"])
 }
@@ -161,7 +161,7 @@ type DnsRecordState struct {
 	Port interface{}
 	// The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
 	Priority interface{}
-	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
+	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
 	Tag interface{}
 	// The time to live for the record, in seconds. Must be at least 0.
 	Ttl interface{}
@@ -185,7 +185,7 @@ type DnsRecordArgs struct {
 	Port interface{}
 	// The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
 	Priority interface{}
-	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
+	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
 	Tag interface{}
 	// The time to live for the record, in seconds. Must be at least 0.
 	Ttl interface{}

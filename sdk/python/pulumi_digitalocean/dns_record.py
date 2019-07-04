@@ -35,7 +35,7 @@ class DnsRecord(pulumi.CustomResource):
     """
     tag: pulumi.Output[str]
     """
-    The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
+    The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
     """
     ttl: pulumi.Output[float]
     """
@@ -64,7 +64,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the record.
         :param pulumi.Input[float] port: The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
         :param pulumi.Input[float] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
-        :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
+        :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
         :param pulumi.Input[float] ttl: The time to live for the record, in seconds. Must be at least 0.
         :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.

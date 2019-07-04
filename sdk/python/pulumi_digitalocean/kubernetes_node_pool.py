@@ -40,8 +40,6 @@ class KubernetesNodePool(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, cluster_id=None, name=None, node_count=None, size=None, tags=None, __name__=None, __opts__=None):
         """
-        > **NOTE:** DigitalOcean Kubernetes is currently in [Limited Availability](https://www.digitalocean.com/docs/platform/product-lifecycle/). In order to access its API, you must first enable Kubernetes on your account by opting-in via the [cloud control panel](https://cloud.digitalocean.com/kubernetes/clusters). While the Kubernetes Cluster functionality is currently in limited availability the structure of this resource may change over time. Please share any feedback you may have by [opening an issue on GitHub](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).
-        
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean_kubernetes_cluster` resource, this resource can be used to add additional ones to a cluster.
         
         :param str resource_name: The name of the resource.

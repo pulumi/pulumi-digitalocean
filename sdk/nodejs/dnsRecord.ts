@@ -82,7 +82,7 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
+     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      */
     public readonly tag!: pulumi.Output<string | undefined>;
     /**
@@ -181,7 +181,7 @@ export interface DnsRecordState {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
+     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      */
     readonly tag?: pulumi.Input<string>;
     /**
@@ -227,7 +227,7 @@ export interface DnsRecordArgs {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
+     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      */
     readonly tag?: pulumi.Input<string>;
     /**

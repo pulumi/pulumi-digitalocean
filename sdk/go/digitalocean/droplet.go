@@ -61,7 +61,6 @@ func NewDroplet(ctx *pulumi.Context,
 	inputs["ipv4Address"] = nil
 	inputs["ipv4AddressPrivate"] = nil
 	inputs["ipv6Address"] = nil
-	inputs["ipv6AddressPrivate"] = nil
 	inputs["locked"] = nil
 	inputs["memory"] = nil
 	inputs["priceHourly"] = nil
@@ -89,7 +88,6 @@ func GetDroplet(ctx *pulumi.Context,
 		inputs["ipv4AddressPrivate"] = state.Ipv4AddressPrivate
 		inputs["ipv6"] = state.Ipv6
 		inputs["ipv6Address"] = state.Ipv6Address
-		inputs["ipv6AddressPrivate"] = state.Ipv6AddressPrivate
 		inputs["locked"] = state.Locked
 		inputs["memory"] = state.Memory
 		inputs["monitoring"] = state.Monitoring
@@ -159,10 +157,6 @@ func (r *Droplet) Ipv6() *pulumi.BoolOutput {
 // The IPv6 address
 func (r *Droplet) Ipv6Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipv6Address"])
-}
-
-func (r *Droplet) Ipv6AddressPrivate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv6AddressPrivate"])
 }
 
 // Is the Droplet locked
@@ -275,7 +269,6 @@ type DropletState struct {
 	Ipv6 interface{}
 	// The IPv6 address
 	Ipv6Address interface{}
-	Ipv6AddressPrivate interface{}
 	// Is the Droplet locked
 	Locked interface{}
 	Memory interface{}

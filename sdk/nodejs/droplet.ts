@@ -81,7 +81,6 @@ export class Droplet extends pulumi.CustomResource {
      * The IPv6 address
      */
     public /*out*/ readonly ipv6Address!: pulumi.Output<string>;
-    public /*out*/ readonly ipv6AddressPrivate!: pulumi.Output<string>;
     /**
      * Is the Droplet locked
      */
@@ -176,7 +175,6 @@ export class Droplet extends pulumi.CustomResource {
             inputs["ipv4AddressPrivate"] = state ? state.ipv4AddressPrivate : undefined;
             inputs["ipv6"] = state ? state.ipv6 : undefined;
             inputs["ipv6Address"] = state ? state.ipv6Address : undefined;
-            inputs["ipv6AddressPrivate"] = state ? state.ipv6AddressPrivate : undefined;
             inputs["locked"] = state ? state.locked : undefined;
             inputs["memory"] = state ? state.memory : undefined;
             inputs["monitoring"] = state ? state.monitoring : undefined;
@@ -222,7 +220,6 @@ export class Droplet extends pulumi.CustomResource {
             inputs["ipv4Address"] = undefined /*out*/;
             inputs["ipv4AddressPrivate"] = undefined /*out*/;
             inputs["ipv6Address"] = undefined /*out*/;
-            inputs["ipv6AddressPrivate"] = undefined /*out*/;
             inputs["locked"] = undefined /*out*/;
             inputs["memory"] = undefined /*out*/;
             inputs["priceHourly"] = undefined /*out*/;
@@ -268,7 +265,6 @@ export interface DropletState {
      * The IPv6 address
      */
     readonly ipv6Address?: pulumi.Input<string>;
-    readonly ipv6AddressPrivate?: pulumi.Input<string>;
     /**
      * Is the Droplet locked
      */
