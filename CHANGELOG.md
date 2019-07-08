@@ -6,6 +6,9 @@ ___NULL___
 
 ---
 
+## 0.18.7 (2019-07-08)
+* Communicate detailed information about the difference between a resource's desired and actual state during a Pulumi update
+
 ## 0.18.6 (2019-07-04)
 * Upgraded to v1.5.0 of the Digital Ocean Terraform Provider
 
