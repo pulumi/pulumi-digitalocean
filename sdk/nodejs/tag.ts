@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  *     tags: [foobar.id],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/tag.html.markdown.
  */
 export class Tag extends pulumi.CustomResource {
     /**

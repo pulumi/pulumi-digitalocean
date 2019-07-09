@@ -47,6 +47,8 @@ import {FilesystemType, Region} from "./index";
  *     snapshotId: foobarVolumeSnapshot.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
  */
 export class Volume extends pulumi.CustomResource {
     /**

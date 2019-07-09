@@ -24,6 +24,8 @@ import {Region} from "./index";
  *     dropletId: web.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
  */
 export class DropletSnapshot extends pulumi.CustomResource {
     /**

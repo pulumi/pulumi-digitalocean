@@ -36,6 +36,8 @@ class FloatingIp(pulumi.CustomResource):
         :param pulumi.Input[float] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

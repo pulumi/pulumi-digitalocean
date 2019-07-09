@@ -7,12 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Get information on a Droplet for use in other resources. This data source provides
-// all of the Droplet's properties as configured on your DigitalOcean account. This
-// is useful if the Droplet in question is not managed by Terraform or you need to
-// utilize any of the Droplets data.
-// 
-// An error is triggered if the provided Droplet name does not exist.
 func LookupDroplet(ctx *pulumi.Context, args *GetDropletArgs) (*GetDropletResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

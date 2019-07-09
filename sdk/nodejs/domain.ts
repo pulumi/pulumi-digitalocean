@@ -19,6 +19,8 @@ import * as utilities from "./utilities";
  *     name: "example.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
  */
 export class Domain extends pulumi.CustomResource {
     /**

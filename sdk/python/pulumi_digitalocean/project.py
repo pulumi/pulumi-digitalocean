@@ -71,6 +71,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Project
         :param pulumi.Input[str] purpose: the purpose of the project, (Default: "Web Application")
         :param pulumi.Input[list] resources: a list of uniform resource names (URNs) for the resources associated with the project
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

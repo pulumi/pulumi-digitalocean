@@ -24,6 +24,8 @@ import {DropletSlug, Region} from "./index";
  *     size: "s-1vcpu-1gb",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
  */
 export class Droplet extends pulumi.CustomResource {
     /**

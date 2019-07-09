@@ -67,6 +67,8 @@ async def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=
     Volume snapshots are saved instances of a block storage volume. Use this data
     source to retrieve the ID of a DigitalOcean volume snapshot for use in other
     resources.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.markdown.
     """
     __args__ = dict()
 

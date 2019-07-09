@@ -13,6 +13,8 @@ import (
 // Load Balancer configuration via their ID. The certificate can either
 // be a custom one provided by you or automatically generated one with
 // Let's Encrypt.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
 type Certificate struct {
 	s *pulumi.ResourceState
 }

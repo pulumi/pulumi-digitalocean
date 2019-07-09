@@ -21,13 +21,13 @@ To use from JavaScript or TypeScript in Node.js, install using either
 
 ::
 
-   $ npm install @pulumi/digitalocean
+    $ npm install @pulumi/digitalocean
 
 or ``yarn``:
 
 ::
 
-   $ yarn add @pulumi/digitalocean
+    $ yarn add @pulumi/digitalocean
 
 Python
 ~~~~~~
@@ -36,7 +36,7 @@ To use from Python, install using ``pip``:
 
 ::
 
-   $ pip install pulumi_digitalocean
+    $ pip install pulumi_digitalocean
 
 Go
 ~~
@@ -45,7 +45,7 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
 ::
 
-   $ go get github.com/pulumi/pulumi-digitalocean/sdk/go/...
+    $ go get github.com/pulumi/pulumi-digitalocean/sdk/go/...
 
 Concepts
 --------

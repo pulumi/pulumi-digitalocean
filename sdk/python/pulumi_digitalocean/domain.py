@@ -31,6 +31,8 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address: The IP address of the domain. If specified, this IP
                is used to created an initial A record for the domain.
         :param pulumi.Input[str] name: The name of the domain
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

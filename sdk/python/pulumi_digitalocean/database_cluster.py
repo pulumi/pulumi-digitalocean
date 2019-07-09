@@ -74,6 +74,8 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[str] size: Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

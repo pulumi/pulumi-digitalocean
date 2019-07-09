@@ -7,12 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Get information on an images for use in other resources (e.g. creating a Droplet
-// based on snapshot). This data source provides all of the image properties as
-// configured on your DigitalOcean account. This is useful if the image in question
-// is not managed by Terraform or you need to utilize any of the image's data.
-// 
-// An error is triggered if zero or more than one result is returned by the query.
 func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

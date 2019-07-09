@@ -4,32 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a DigitalOcean SSH key resource to allow you to manage SSH
- * keys for Droplet access. Keys created with this resource
- * can be referenced in your Droplet configuration via their ID or
- * fingerprint.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * import * as fs from "fs";
- * 
- * // Create a new SSH key
- * const defaultSshKey = new digitalocean.SshKey("default", {
- *     publicKey: fs.readFileSync("/Users/terraform/.ssh/id_rsa.pub", "utf-8"),
- * });
- * // Create a new Droplet using the SSH key
- * const web = new digitalocean.Droplet("web", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
- *     size: "s-1vcpu-1gb",
- *     sshKeys: [defaultSshKey.fingerprint],
- * });
- * ```
- */
 export class SshKey extends pulumi.CustomResource {
     /**
      * Get an existing SshKey resource's state with the given name, ID, and optional extra

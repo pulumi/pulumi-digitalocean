@@ -64,6 +64,8 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[list] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
         :param pulumi.Input[list] tags: The names of the Tags assigned to the Firewall.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

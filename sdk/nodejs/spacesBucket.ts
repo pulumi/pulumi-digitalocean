@@ -41,6 +41,8 @@ import {Region} from "./index";
  *     region: "nyc3",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
  */
 export class SpacesBucket extends pulumi.CustomResource {
     /**

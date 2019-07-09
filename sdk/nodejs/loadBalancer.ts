@@ -73,6 +73,8 @@ import {Algorithm, Region} from "./index";
  *     region: "nyc3",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

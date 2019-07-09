@@ -73,6 +73,8 @@ class Certificate(pulumi.CustomResource):
                corresponding to the SSL certificate. Only valid when type is `custom`.
         :param pulumi.Input[str] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
