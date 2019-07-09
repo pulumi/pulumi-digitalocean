@@ -24,13 +24,6 @@ class GetTagResult:
         """
 
 async def get_tag(name=None,opts=None):
-    """
-    Get information on a tag. This data source provides the name as configured on
-    your DigitalOcean account. This is useful if the tag name in question is not
-    managed by Terraform or you need validate if the tag exists in the account.
-    
-    An error is triggered if the provided tag name does not exist.
-    """
     __args__ = dict()
 
     __args__['name'] = name

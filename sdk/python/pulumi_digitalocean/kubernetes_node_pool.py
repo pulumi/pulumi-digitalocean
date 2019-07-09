@@ -49,6 +49,8 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[float] node_count: The number of Droplet instances in the node pool.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

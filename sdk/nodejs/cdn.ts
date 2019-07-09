@@ -52,6 +52,8 @@ import * as utilities from "./utilities";
  *     origin: mybucket.bucketDomainName,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
  */
 export class Cdn extends pulumi.CustomResource {
     /**

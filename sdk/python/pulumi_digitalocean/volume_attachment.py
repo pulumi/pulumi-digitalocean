@@ -27,6 +27,8 @@ class VolumeAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] droplet_id: ID of the Droplet to attach the volume to.
         :param pulumi.Input[str] volume_id: ID of the Volume to be attached to the Droplet.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

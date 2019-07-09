@@ -142,6 +142,8 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[list] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

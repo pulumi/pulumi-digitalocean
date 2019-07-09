@@ -69,6 +69,8 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[float] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

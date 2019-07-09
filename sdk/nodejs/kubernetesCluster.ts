@@ -8,6 +8,8 @@ import {Region} from "./index";
 
 /**
  * Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**

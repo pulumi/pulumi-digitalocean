@@ -10,6 +10,8 @@ import (
 // Volume snapshots are saved instances of a block storage volume. Use this data
 // source to retrieve the ID of a DigitalOcean volume snapshot for use in other
 // resources.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.markdown.
 func LookupVolumeSnapshot(ctx *pulumi.Context, args *GetVolumeSnapshotArgs) (*GetVolumeSnapshotResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

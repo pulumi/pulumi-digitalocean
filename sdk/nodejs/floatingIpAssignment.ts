@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  *     ipAddress: foobarFloatingIp.ipAddress,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip_assignment.html.markdown.
  */
 export class FloatingIpAssignment extends pulumi.CustomResource {
     /**

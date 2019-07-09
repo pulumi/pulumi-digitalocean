@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  *     region: foobarDroplet.region,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
  */
 export class FloatingIp extends pulumi.CustomResource {
     /**

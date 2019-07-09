@@ -31,6 +31,8 @@ import {DropletSlug} from "./index";
  *     tags: ["backend"],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
  */
 export class KubernetesNodePool extends pulumi.CustomResource {
     /**

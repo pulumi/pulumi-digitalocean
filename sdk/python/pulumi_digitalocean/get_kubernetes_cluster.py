@@ -110,9 +110,6 @@ class GetKubernetesClusterResult:
         """
 
 async def get_kubernetes_cluster(name=None,tags=None,opts=None):
-    """
-    Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
-    """
     __args__ = dict()
 
     __args__['name'] = name

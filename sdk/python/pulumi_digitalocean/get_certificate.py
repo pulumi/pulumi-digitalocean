@@ -39,14 +39,6 @@ class GetCertificateResult:
         """
 
 async def get_certificate(name=None,opts=None):
-    """
-    Get information on a certificate. This data source provides the name, type, state,
-    domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-    This is useful if the certificate in question is not managed by Terraform or you need to utilize
-    any of the certificates data.
-    
-    An error is triggered if the provided certificate name does not exist.
-    """
     __args__ = dict()
 
     __args__['name'] = name

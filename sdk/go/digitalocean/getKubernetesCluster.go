@@ -7,7 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
 func LookupKubernetesCluster(ctx *pulumi.Context, args *GetKubernetesClusterArgs) (*GetKubernetesClusterResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

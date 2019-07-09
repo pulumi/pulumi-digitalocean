@@ -18,6 +18,8 @@ import * as utilities from "./utilities";
  *     name: "example-cluster",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
  */
 export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseClusterResult> {
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {

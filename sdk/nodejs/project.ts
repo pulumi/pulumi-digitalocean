@@ -55,6 +55,8 @@ import * as utilities from "./utilities";
  *     resources: [foobar.urn],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**

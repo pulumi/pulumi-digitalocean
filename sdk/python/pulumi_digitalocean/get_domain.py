@@ -37,15 +37,6 @@ class GetDomainResult:
         """
 
 async def get_domain(name=None,opts=None):
-    """
-    Get information on a domain. This data source provides the name, TTL, and zone
-    file as configured on your DigitalOcean account. This is useful if the domain
-    name in question is not managed by Terraform or you need to utilize TTL or zone
-    file data.
-    
-    An error is triggered if the provided domain name is not managed with your
-    DigitalOcean account.
-    """
     __args__ = dict()
 
     __args__['name'] = name

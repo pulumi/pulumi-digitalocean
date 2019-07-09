@@ -24,6 +24,8 @@ import {DatabaseSlug, Region} from "./index";
  *     version: "11",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
  */
 export class DatabaseCluster extends pulumi.CustomResource {
     /**

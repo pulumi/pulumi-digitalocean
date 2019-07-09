@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  *     volumeId: foobarVolume.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_attachment.html.markdown.
  */
 export class VolumeAttachment extends pulumi.CustomResource {
     /**

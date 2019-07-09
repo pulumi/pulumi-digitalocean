@@ -29,6 +29,8 @@ import {RecordType} from "./index";
  * // Output the FQDN for the record
  * export const fqdn = www.fqdn;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
  */
 export class DnsRecord extends pulumi.CustomResource {
     /**
