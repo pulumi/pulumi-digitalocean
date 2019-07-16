@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/ssh_key.html.markdown.
 func LookupSshKey(ctx *pulumi.Context, args *GetSshKeyArgs) (*GetSshKeyResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

@@ -30,6 +30,9 @@ class GetSshKeyResult:
         """
 
 async def get_ssh_key(name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/ssh_key.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name

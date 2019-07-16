@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume.html.markdown.
 func LookupVolume(ctx *pulumi.Context, args *GetVolumeArgs) (*GetVolumeResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

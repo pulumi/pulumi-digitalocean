@@ -59,6 +59,9 @@ class GetImageResult:
         """
 
 async def get_image(name=None,slug=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/image.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name

@@ -110,6 +110,9 @@ class GetKubernetesClusterResult:
         """
 
 async def get_kubernetes_cluster(name=None,tags=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_cluster.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name

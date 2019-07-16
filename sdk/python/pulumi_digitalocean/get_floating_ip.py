@@ -33,6 +33,9 @@ class GetFloatingIpResult:
         """
 
 async def get_floating_ip(ip_address=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/floating_ip.html.markdown.
+    """
     __args__ = dict()
 
     __args__['ipAddress'] = ip_address

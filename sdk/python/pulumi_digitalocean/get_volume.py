@@ -60,6 +60,9 @@ class GetVolumeResult:
         """
 
 async def get_volume(description=None,name=None,region=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume.html.markdown.
+    """
     __args__ = dict()
 
     __args__['description'] = description

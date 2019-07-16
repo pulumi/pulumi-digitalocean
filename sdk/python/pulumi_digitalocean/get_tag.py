@@ -24,6 +24,9 @@ class GetTagResult:
         """
 
 async def get_tag(name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/tag.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name
