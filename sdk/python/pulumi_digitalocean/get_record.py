@@ -51,6 +51,9 @@ class GetRecordResult:
         """
 
 async def get_record(domain=None,name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
+    """
     __args__ = dict()
 
     __args__['domain'] = domain

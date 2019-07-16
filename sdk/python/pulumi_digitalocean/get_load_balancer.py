@@ -60,6 +60,9 @@ class GetLoadBalancerResult:
         """
 
 async def get_load_balancer(name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/loadbalancer.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name

@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/tag.html.markdown.
 func LookupTag(ctx *pulumi.Context, args *GetTagArgs) (*GetTagResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

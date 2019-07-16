@@ -6,6 +6,9 @@ import * as utilities from "./utilities";
 
 import {CertificateType} from "./index";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
+ */
 export class Certificate extends pulumi.CustomResource {
     /**
      * Get an existing Certificate resource's state with the given name, ID, and optional extra

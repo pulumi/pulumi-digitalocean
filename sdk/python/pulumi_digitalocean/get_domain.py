@@ -37,6 +37,9 @@ class GetDomainResult:
         """
 
 async def get_domain(name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/domain.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name

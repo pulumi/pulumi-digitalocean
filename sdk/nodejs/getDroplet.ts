@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
+ */
 export function getDroplet(args: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
     return pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
         "name": args.name,

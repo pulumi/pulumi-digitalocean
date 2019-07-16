@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
 func LookupRecord(ctx *pulumi.Context, args *GetRecordArgs) (*GetRecordResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

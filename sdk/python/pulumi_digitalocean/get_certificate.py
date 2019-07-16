@@ -39,6 +39,9 @@ class GetCertificateResult:
         """
 
 async def get_certificate(name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/certificate.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name
