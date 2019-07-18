@@ -5,4 +5,5 @@ workflow "Issue Management" {
 
 action "Update Label" {
   uses = "lannonbr/issue-label-manager-action@master"
+  secrets = ["GITHUB_TOKEN"]
 }
