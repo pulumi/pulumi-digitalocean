@@ -1,5 +1,5 @@
 workflow "Issue Management" {
-  on = "check_run"
+  on = "issues"
   resolves = ["Update Label"]
 }
 
