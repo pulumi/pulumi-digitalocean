@@ -1,0 +1,154 @@
+[
+  {
+    "name": "area/cli",
+    "color": "#fbca04"
+  },
+  {
+    "name": "area/core",
+    "color": "#fbca04"
+  },
+  {
+    "name": "area/docs",
+    "color": "#fbca04"
+  },
+  {
+    "name": "area/examples",
+    "color": "#fbca04"
+  },
+  {
+    "name": "area/languages",
+    "color": "#fbca04"
+  },
+  {
+    "name": "area/providers",
+    "color": "#fbca04"
+  },
+  {
+    "name": "area/service",
+    "color": "#fbca04"
+  },
+  {
+    "name": "area/tests",
+    "color": "#fbca04"
+  },
+  {
+    "name": "area/tools",
+    "color": "#fbca04"
+  },
+  {
+    "name": "customer/feedback",
+    "color": "#7f61a1"
+  },
+  {
+    "name": "customer/onboarding",
+    "color": "#7f61a1"
+  },
+  {
+    "name": "demo",
+    "color": "#fc0cdc"
+  },
+  {
+    "name": "Epic",
+    "color": "#3E4B9E"
+  },
+  {
+    "name": "help wanted",
+    "color": "#0e8a16"
+  },
+  {
+    "name": "impact/breaking",
+    "color": "#d93f0b"
+  },
+  {
+    "name": "impact/changelog",
+    "color": "#bfe5bf"
+  },
+  {
+    "name": "impact/no-changelog-required",
+    "color": "#bfe5bf"
+  },
+  {
+    "name": "impact-performance",
+    "color": "#bfe5bf"
+  },
+  {
+    "name": "impact-reliability",
+    "color": "#bfe5bf"
+  },
+  {
+    "name": "impact-security",
+    "color": "#800000"
+  },
+  {
+    "name": "impact-usability",
+    "color": "#bfe5bf"
+  },
+  {
+    "name": "in progress",
+    "color": "#ededed"
+  },
+  {
+    "name": "kind-bug",
+    "color": "#FF8C94"
+  },
+  {
+    "name": "kind-design",
+    "color": "#1d76db"
+  },
+  {
+    "name": "kind-engineering",
+    "color": "#bfd4f2"
+  },
+  {
+    "name": "kind-enhancement",
+    "color": "#E8CAAF"
+  },
+  {
+    "name": "kind-feature",
+    "color": "#AAB3AB"
+  },
+  {
+    "name": "kind-question",
+    "color": "#EBEFC9"
+  },
+  {
+    "name": "known-issue",
+    "color": "#FF8C94"
+  },
+  {
+    "name": "priority/P0",
+    "color": "#e11d21"
+  },
+  {
+    "name": "priority/P1",
+    "color": "#eb6420"
+  },
+  {
+    "name": "priority/P2",
+    "color": "#fad8c7"
+  },
+  {
+    "name": "reason/duplicate",
+    "color": "#ededed"
+  },
+  {
+    "name": "resolution/norepo",
+    "color": "#ededed"
+  },
+  {
+    "name": "resolution/wont-fix",
+    "color": "#ededed"
+  },
+  {
+    "name": "status/eng-design",
+    "color": "#fef2c0"
+  },
+  {
+    "name": "status/product-design",
+    "color": "#fef2c0"
+  },
+  {
+    "name": "needs-triage",
+    "color": "#323293"
+  }
+]
