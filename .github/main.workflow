@@ -1,6 +1,6 @@
 workflow "Issue Management" {
-  on = "issues"
-  resolves = "Update Label"
+  on = "check_run"
+  resolves = ["Update Label"]
 }
 
 action "Update Label" {
