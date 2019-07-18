@@ -1,12 +1,6 @@
-workflow "Issue triage" {
+workflow "Issue Management" {
   on = "issues"
-  resolves = "Apply Triage Label"
-}
-
-action "Apply Triage Label" {
-  uses = "actions/github@v1.0.0"
-  args = "label needs-triage --action=opened"
-  secrets = ["GITHUB_TOKEN"]
+  resolves = "Update Label"
 }
 
 action "Update Label" {
