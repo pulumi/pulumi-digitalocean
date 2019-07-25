@@ -26,14 +26,16 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.markdown.
  */
-export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
+export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> & GetDropletSnapshotResult {
     args = args || {};
-    return pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
+    const promise: Promise<GetDropletSnapshotResult> = pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
         "mostRecent": args.mostRecent,
         "name": args.name,
         "nameRegex": args.nameRegex,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

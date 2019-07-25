@@ -21,10 +21,12 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
  */
-export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseClusterResult> {
-    return pulumi.runtime.invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {
+export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseClusterResult> & GetDatabaseClusterResult {
+    const promise: Promise<GetDatabaseClusterResult> = pulumi.runtime.invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
