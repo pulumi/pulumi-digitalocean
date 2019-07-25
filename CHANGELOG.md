@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Update pulumu-terraform to fdafc00b3f
+* Update pulumi-terraform to fdafc00b3f
 
 ---
 
