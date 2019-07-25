@@ -3,13 +3,6 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Update pulumu-terraform to fdafc00b3f
-* Update pulumu-terraform to fdafc00b3f
-* Update pulumu-terraform to fdafc00b3f
-* Update pulumu-terraform to fdafc00b3f
-* Update pulumu-terraform to fdafc00b3f
-* Update pulumu-terraform to fdafc00b3f
-* Update pulumu-terraform to fdafc00b3f
-* Update pulumu-terraform to fdafc00b3f
 
 ---
 
