@@ -104,6 +104,10 @@ class Project(pulumi.CustomResource):
         __props__['owner_uuid'] = None
         __props__['updated_at'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Project, __self__).__init__(
             'digitalocean:index/project:Project',
             resource_name,

@@ -183,6 +183,13 @@ export class Firewall extends pulumi.CustomResource {
             inputs["pendingChanges"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Firewall.__pulumiType, name, inputs, opts);
     }
 }

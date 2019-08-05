@@ -128,6 +128,10 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__['urn'] = None
         __props__['user'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DatabaseCluster, __self__).__init__(
             'digitalocean:index/databaseCluster:DatabaseCluster',
             resource_name,

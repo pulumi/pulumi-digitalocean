@@ -169,6 +169,13 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["urn"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DatabaseCluster.__pulumiType, name, inputs, opts);
     }
 }

@@ -62,7 +62,15 @@ class GetVolumeSnapshotResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
     """
     Volume snapshots are saved instances of a block storage volume. Use this data
     source to retrieve the ID of a DigitalOcean volume snapshot for use in other
@@ -76,7 +84,11 @@ async def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getVolumeSnapshot:getVolumeSnapshot', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolumeSnapshot:getVolumeSnapshot', __args__, opts=opts).value
 
     return GetVolumeSnapshotResult(
         created_at=__ret__.get('createdAt'),

@@ -53,6 +53,10 @@ class FloatingIpAssignment(pulumi.CustomResource):
             raise TypeError("Missing required property 'ip_address'")
         __props__['ip_address'] = ip_address
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(FloatingIpAssignment, __self__).__init__(
             'digitalocean:index/floatingIpAssignment:FloatingIpAssignment',
             resource_name,

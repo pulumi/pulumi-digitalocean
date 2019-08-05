@@ -95,7 +95,15 @@ class GetDatabaseClusterResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_database_cluster(name=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_database_cluster(name=None,opts=None):
     """
     Provides information on a DigitalOcean database cluster resource.
 
@@ -104,7 +112,11 @@ async def get_database_cluster(name=None,opts=None):
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts).value
 
     return GetDatabaseClusterResult(
         database=__ret__.get('database'),
