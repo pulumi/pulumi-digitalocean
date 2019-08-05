@@ -30,6 +30,7 @@ func LookupDatabaseCluster(ctx *pulumi.Context, args *GetDatabaseClusterArgs) (*
 		Region: outputs["region"],
 		Size: outputs["size"],
 		Uri: outputs["uri"],
+		Urn: outputs["urn"],
 		User: outputs["user"],
 		Version: outputs["version"],
 		Id: outputs["id"],
@@ -63,6 +64,8 @@ type GetDatabaseClusterResult struct {
 	Size interface{}
 	// The full URI for connecting to the database cluster.
 	Uri interface{}
+	// The uniform resource name of the database cluster.
+	Urn interface{}
 	// Username for the cluster's default user.
 	User interface{}
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).

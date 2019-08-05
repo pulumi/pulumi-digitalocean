@@ -53,6 +53,10 @@ class DatabaseCluster(pulumi.CustomResource):
     """
     The full URI for connecting to the database cluster.
     """
+    urn: pulumi.Output[str]
+    """
+    The uniform resource name of the database cluster.
+    """
     user: pulumi.Output[str]
     """
     Username for the cluster's default user.
@@ -121,6 +125,7 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__['password'] = None
         __props__['port'] = None
         __props__['uri'] = None
+        __props__['urn'] = None
         __props__['user'] = None
 
         super(DatabaseCluster, __self__).__init__(

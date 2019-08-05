@@ -79,6 +79,10 @@ export interface GetDatabaseClusterResult {
      */
     readonly uri: string;
     /**
+     * The uniform resource name of the database cluster.
+     */
+    readonly urn: string;
+    /**
      * Username for the cluster's default user.
      */
     readonly user: string;
