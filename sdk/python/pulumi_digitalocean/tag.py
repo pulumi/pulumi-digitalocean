@@ -43,6 +43,10 @@ class Tag(pulumi.CustomResource):
 
         __props__['name'] = name
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Tag, __self__).__init__(
             'digitalocean:index/tag:Tag',
             resource_name,

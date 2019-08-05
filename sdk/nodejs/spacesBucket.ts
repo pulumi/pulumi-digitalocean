@@ -123,6 +123,13 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["bucketDomainName"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SpacesBucket.__pulumiType, name, inputs, opts);
     }
 }

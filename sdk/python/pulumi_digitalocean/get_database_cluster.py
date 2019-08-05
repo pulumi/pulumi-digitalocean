@@ -12,7 +12,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, port=None, region=None, size=None, uri=None, user=None, version=None, id=None):
+    def __init__(__self__, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, port=None, region=None, size=None, uri=None, urn=None, user=None, version=None, id=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         __self__.database = database
@@ -70,6 +70,12 @@ class GetDatabaseClusterResult:
         """
         The full URI for connecting to the database cluster.
         """
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        __self__.urn = urn
+        """
+        The uniform resource name of the database cluster.
+        """
         if user and not isinstance(user, str):
             raise TypeError("Expected argument 'user' to be a str")
         __self__.user = user
@@ -89,7 +95,15 @@ class GetDatabaseClusterResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_database_cluster(name=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_database_cluster(name=None,opts=None):
     """
     Provides information on a DigitalOcean database cluster resource.
 
@@ -98,7 +112,11 @@ async def get_database_cluster(name=None,opts=None):
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts).value
 
     return GetDatabaseClusterResult(
         database=__ret__.get('database'),
@@ -111,6 +129,7 @@ async def get_database_cluster(name=None,opts=None):
         region=__ret__.get('region'),
         size=__ret__.get('size'),
         uri=__ret__.get('uri'),
+        urn=__ret__.get('urn'),
         user=__ret__.get('user'),
         version=__ret__.get('version'),
         id=__ret__.get('id'))

@@ -100,6 +100,13 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["urn"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(FloatingIp.__pulumiType, name, inputs, opts);
     }
 }

@@ -62,7 +62,15 @@ class GetDropletSnapshotResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
     """
     Droplet snapshots are saved instances of a Droplet. Use this data
     source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
@@ -76,7 +84,11 @@ async def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts).value
 
     return GetDropletSnapshotResult(
         created_at=__ret__.get('createdAt'),

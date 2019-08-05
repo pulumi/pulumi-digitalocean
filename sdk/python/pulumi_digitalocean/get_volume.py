@@ -59,7 +59,15 @@ class GetVolumeResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_volume(description=None,name=None,region=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_volume(description=None,name=None,region=None,opts=None):
     """
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume.html.markdown.
     """
@@ -68,7 +76,11 @@ async def get_volume(description=None,name=None,region=None,opts=None):
     __args__['description'] = description
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts).value
 
     return GetVolumeResult(
         description=__ret__.get('description'),

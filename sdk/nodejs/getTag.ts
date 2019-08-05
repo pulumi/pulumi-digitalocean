@@ -7,10 +7,19 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/tag.html.markdown.
  */
-export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
-    return pulumi.runtime.invoke("digitalocean:index/getTag:getTag", {
+export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> & GetTagResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetTagResult> = pulumi.runtime.invoke("digitalocean:index/getTag:getTag", {
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

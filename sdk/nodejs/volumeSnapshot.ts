@@ -109,6 +109,13 @@ export class VolumeSnapshot extends pulumi.CustomResource {
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VolumeSnapshot.__pulumiType, name, inputs, opts);
     }
 }

@@ -85,6 +85,10 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         __props__['nodes'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(KubernetesNodePool, __self__).__init__(
             'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
             resource_name,

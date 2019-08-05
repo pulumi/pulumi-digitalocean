@@ -110,6 +110,13 @@ export class Certificate extends pulumi.CustomResource {
             inputs["sha1Fingerprint"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Certificate.__pulumiType, name, inputs, opts);
     }
 }

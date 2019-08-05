@@ -87,6 +87,10 @@ class SpacesBucket(pulumi.CustomResource):
         __props__['bucket_domain_name'] = None
         __props__['urn'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(SpacesBucket, __self__).__init__(
             'digitalocean:index/spacesBucket:SpacesBucket',
             resource_name,

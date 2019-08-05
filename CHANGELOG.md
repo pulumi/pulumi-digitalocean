@@ -2,8 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
-
+* Upgrade to v1.6.0 of the DigitalOcean Terraform Provider
+* Update to pulumi-terraform@013b95b1c8
 ---
 
 ## 0.18.8 (2019-07-09)
