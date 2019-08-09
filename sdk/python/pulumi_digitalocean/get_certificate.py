@@ -37,14 +37,19 @@ class GetCertificateResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetCertificateResult(
+            domains=self.domains,
+            name=self.name,
+            not_after=self.not_after,
+            sha1_fingerprint=self.sha1_fingerprint,
+            state=self.state,
+            type=self.type,
+            id=self.id)
 
 def get_certificate(name=None,opts=None):
     """
@@ -59,7 +64,7 @@ def get_certificate(name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getCertificate:getCertificate', __args__, opts=opts).value
 
-    return GetCertificateResult(
+    return AwaitableGetCertificateResult(
         domains=__ret__.get('domains'),
         name=__ret__.get('name'),
         not_after=__ret__.get('notAfter'),

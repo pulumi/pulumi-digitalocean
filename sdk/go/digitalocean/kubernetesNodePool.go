@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean_kubernetes_cluster` resource, this resource can be used to add additional ones to a cluster.
+// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
 type KubernetesNodePool struct {
@@ -98,8 +98,8 @@ func (r *KubernetesNodePool) NodeCount() *pulumi.IntOutput {
 // - `id` -  A unique ID that can be used to identify and reference the node.
 // - `name` - The auto-generated name for the node.
 // - `status` -  A string indicating the current status of the individual node.
-// - `created_at` - The date and time when the node was created.
-// - `updated_at` - The date and time when the node was last updated.
+// - `createdAt` - The date and time when the node was created.
+// - `updatedAt` - The date and time when the node was last updated.
 func (r *KubernetesNodePool) Nodes() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nodes"])
 }
@@ -126,8 +126,8 @@ type KubernetesNodePoolState struct {
 	// - `id` -  A unique ID that can be used to identify and reference the node.
 	// - `name` - The auto-generated name for the node.
 	// - `status` -  A string indicating the current status of the individual node.
-	// - `created_at` - The date and time when the node was created.
-	// - `updated_at` - The date and time when the node was last updated.
+	// - `createdAt` - The date and time when the node was created.
+	// - `updatedAt` - The date and time when the node was last updated.
 	Nodes interface{}
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size interface{}

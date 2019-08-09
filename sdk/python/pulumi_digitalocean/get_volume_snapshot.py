@@ -61,14 +61,22 @@ class GetVolumeSnapshotResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetVolumeSnapshotResult(GetVolumeSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetVolumeSnapshotResult(
+            created_at=self.created_at,
+            min_disk_size=self.min_disk_size,
+            most_recent=self.most_recent,
+            name=self.name,
+            name_regex=self.name_regex,
+            region=self.region,
+            regions=self.regions,
+            size=self.size,
+            volume_id=self.volume_id,
+            id=self.id)
 
 def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
     """
@@ -90,7 +98,7 @@ def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,o
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolumeSnapshot:getVolumeSnapshot', __args__, opts=opts).value
 
-    return GetVolumeSnapshotResult(
+    return AwaitableGetVolumeSnapshotResult(
         created_at=__ret__.get('createdAt'),
         min_disk_size=__ret__.get('minDiskSize'),
         most_recent=__ret__.get('mostRecent'),

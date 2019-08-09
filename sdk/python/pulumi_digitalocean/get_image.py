@@ -57,14 +57,21 @@ class GetImageResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetImageResult(
+            distribution=self.distribution,
+            image=self.image,
+            min_disk_size=self.min_disk_size,
+            name=self.name,
+            private=self.private,
+            regions=self.regions,
+            slug=self.slug,
+            type=self.type,
+            id=self.id)
 
 def get_image(name=None,slug=None,opts=None):
     """
@@ -80,7 +87,7 @@ def get_image(name=None,slug=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts).value
 
-    return GetImageResult(
+    return AwaitableGetImageResult(
         distribution=__ret__.get('distribution'),
         image=__ret__.get('image'),
         min_disk_size=__ret__.get('minDiskSize'),

@@ -22,14 +22,14 @@ class GetTagResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetTagResult(GetTagResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetTagResult(
+            name=self.name,
+            id=self.id)
 
 def get_tag(name=None,opts=None):
     """
@@ -44,6 +44,6 @@ def get_tag(name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getTag:getTag', __args__, opts=opts).value
 
-    return GetTagResult(
+    return AwaitableGetTagResult(
         name=__ret__.get('name'),
         id=__ret__.get('id'))

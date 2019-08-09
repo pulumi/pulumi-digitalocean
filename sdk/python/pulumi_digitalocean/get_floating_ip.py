@@ -31,14 +31,17 @@ class GetFloatingIpResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetFloatingIpResult(GetFloatingIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetFloatingIpResult(
+            droplet_id=self.droplet_id,
+            ip_address=self.ip_address,
+            region=self.region,
+            urn=self.urn,
+            id=self.id)
 
 def get_floating_ip(ip_address=None,opts=None):
     """
@@ -53,7 +56,7 @@ def get_floating_ip(ip_address=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts).value
 
-    return GetFloatingIpResult(
+    return AwaitableGetFloatingIpResult(
         droplet_id=__ret__.get('dropletId'),
         ip_address=__ret__.get('ipAddress'),
         region=__ret__.get('region'),

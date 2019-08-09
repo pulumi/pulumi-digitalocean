@@ -59,14 +59,14 @@ type GetKubernetesClusterResult struct {
 	// - `id` -  The unique ID that can be used to identify and reference the node pool.
 	// - `name` - The name of the node pool.
 	// - `size` - The slug identifier for the type of Droplet used as workers in the node pool.
-	// - `node_count` - The number of Droplet instances in the node pool.
+	// - `nodeCount` - The number of Droplet instances in the node pool.
 	// - `tags` - A list of tag names applied to the node pool.
 	// - `nodes` - A list of nodes in the pool. Each node exports the following attributes:
 	// + `id` -  A unique ID that can be used to identify and reference the node.
 	// + `name` - The auto-generated name for the node.
 	// + `status` -  A string indicating the current status of the individual node.
-	// + `created_at` - The date and time when the node was created.
-	// + `updated_at` - The date and time when the node was last updated.
+	// + `createdAt` - The date and time when the node was created.
+	// + `updatedAt` - The date and time when the node was last updated.
 	NodePools interface{}
 	// The slug identifier for the region where the Kubernetes cluster is located.
 	Region interface{}
@@ -78,11 +78,11 @@ type GetKubernetesClusterResult struct {
 	Tags interface{}
 	// The date and time when the Kubernetes cluster was last updated.
 	// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-	// - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+	// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
 	// - `host` - The URL of the API server on the Kubernetes master node.
-	// - `client_key` - The base64 encoded private key used by clients to access the cluster.
-	// - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
-	// - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+	// - `clientKey` - The base64 encoded private key used by clients to access the cluster.
+	// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster.
+	// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
 	UpdatedAt interface{}
 	// The slug identifier for the version of Kubernetes used for the cluster.
 	Version interface{}

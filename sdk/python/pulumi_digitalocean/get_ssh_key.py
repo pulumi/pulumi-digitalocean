@@ -28,14 +28,16 @@ class GetSshKeyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetSshKeyResult(GetSshKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetSshKeyResult(
+            fingerprint=self.fingerprint,
+            name=self.name,
+            public_key=self.public_key,
+            id=self.id)
 
 def get_ssh_key(name=None,opts=None):
     """
@@ -50,7 +52,7 @@ def get_ssh_key(name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getSshKey:getSshKey', __args__, opts=opts).value
 
-    return GetSshKeyResult(
+    return AwaitableGetSshKeyResult(
         fingerprint=__ret__.get('fingerprint'),
         name=__ret__.get('name'),
         public_key=__ret__.get('publicKey'),

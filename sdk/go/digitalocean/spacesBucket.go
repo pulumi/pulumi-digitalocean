@@ -17,7 +17,7 @@ import (
 // 
 // The authentication requirement can be met by either setting the
 // `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
 // access ID and secret you generate via the DigitalOcean control panel. For
 // example:
 // 

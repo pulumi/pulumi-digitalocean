@@ -94,14 +94,26 @@ class GetDatabaseClusterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetDatabaseClusterResult(
+            database=self.database,
+            engine=self.engine,
+            host=self.host,
+            maintenance_windows=self.maintenance_windows,
+            name=self.name,
+            node_count=self.node_count,
+            port=self.port,
+            region=self.region,
+            size=self.size,
+            uri=self.uri,
+            urn=self.urn,
+            user=self.user,
+            version=self.version,
+            id=self.id)
 
 def get_database_cluster(name=None,opts=None):
     """
@@ -118,7 +130,7 @@ def get_database_cluster(name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts).value
 
-    return GetDatabaseClusterResult(
+    return AwaitableGetDatabaseClusterResult(
         database=__ret__.get('database'),
         engine=__ret__.get('engine'),
         host=__ret__.get('host'),

@@ -17,7 +17,7 @@ import {Region} from "./index";
  * 
  * The authentication requirement can be met by either setting the
  * `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
- * the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+ * the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  * 
@@ -25,7 +25,7 @@ import {Region} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
+ * const staticAssets = new digitalocean.SpacesBucket("static-assets", {});
  * ```
  * 
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)

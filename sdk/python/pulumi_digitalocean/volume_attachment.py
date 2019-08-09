@@ -17,11 +17,11 @@ class VolumeAttachment(pulumi.CustomResource):
     """
     ID of the Volume to be attached to the Droplet.
     """
-    def __init__(__self__, resource_name, opts=None, droplet_id=None, volume_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, droplet_id=None, volume_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages attaching a Volume to a Droplet.
         
-        > **NOTE:** Volumes can be attached either directly on the `digitalocean_droplet` resource, or using the `digitalocean_volume_attachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
+        > **NOTE:** Volumes can be attached either directly on the `.Droplet` resource, or using the `.VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -36,34 +36,48 @@ class VolumeAttachment(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if droplet_id is None:
-            raise TypeError("Missing required property 'droplet_id'")
-        __props__['droplet_id'] = droplet_id
-
-        if volume_id is None:
-            raise TypeError("Missing required property 'volume_id'")
-        __props__['volume_id'] = volume_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if droplet_id is None:
+                raise TypeError("Missing required property 'droplet_id'")
+            __props__['droplet_id'] = droplet_id
+            if volume_id is None:
+                raise TypeError("Missing required property 'volume_id'")
+            __props__['volume_id'] = volume_id
         super(VolumeAttachment, __self__).__init__(
             'digitalocean:index/volumeAttachment:VolumeAttachment',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, droplet_id=None, volume_id=None):
+        """
+        Get an existing VolumeAttachment resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] droplet_id: ID of the Droplet to attach the volume to.
+        :param pulumi.Input[str] volume_id: ID of the Volume to be attached to the Droplet.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_attachment.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["droplet_id"] = droplet_id
+        __props__["volume_id"] = volume_id
+        return VolumeAttachment(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
