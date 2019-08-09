@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform@9db2fc93cd
+___NULL___
 
 ---
+
+## 0.18.10 (2019-08-09)
+* Upgrade to pulumi-terraform@9db2fc93cd
 
 ## 0.18.9 (2019-08-08)
 * Upgrade to v1.6.0 of the DigitalOcean Terraform Provider
