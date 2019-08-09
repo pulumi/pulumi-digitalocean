@@ -44,7 +44,7 @@ export interface GetImageArgs {
 export interface GetImageResult {
     /**
      * The name of the distribution of the OS of the image.
-     * * `min_disk_size`: The minimum 'disk' required for the image.
+     * * `minDiskSize`: The minimum 'disk' required for the image.
      */
     readonly distribution: string;
     /**

@@ -37,7 +37,7 @@ type GetDomainResult struct {
 	Name interface{}
 	Ttl interface{}
 	// The uniform resource name of the domain
-	// * `zone_file`: The zone file of the domain.
+	// * `zoneFile`: The zone file of the domain.
 	Urn interface{}
 	ZoneFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.

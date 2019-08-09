@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 import {DropletSlug} from "./index";
 
 /**
- * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean_kubernetes_cluster` resource, this resource can be used to add additional ones to a cluster.
+ * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
  * 
  * ## Example Usage
  * 
@@ -78,8 +78,8 @@ export class KubernetesNodePool extends pulumi.CustomResource {
      * - `id` -  A unique ID that can be used to identify and reference the node.
      * - `name` - The auto-generated name for the node.
      * - `status` -  A string indicating the current status of the individual node.
-     * - `created_at` - The date and time when the node was created.
-     * - `updated_at` - The date and time when the node was last updated.
+     * - `createdAt` - The date and time when the node was created.
+     * - `updatedAt` - The date and time when the node was last updated.
      */
     public /*out*/ readonly nodes!: pulumi.Output<{ createdAt: string, id: string, name: string, status: string, updatedAt: string }[]>;
     /**
@@ -159,8 +159,8 @@ export interface KubernetesNodePoolState {
      * - `id` -  A unique ID that can be used to identify and reference the node.
      * - `name` - The auto-generated name for the node.
      * - `status` -  A string indicating the current status of the individual node.
-     * - `created_at` - The date and time when the node was created.
-     * - `updated_at` - The date and time when the node was last updated.
+     * - `createdAt` - The date and time when the node was created.
+     * - `updatedAt` - The date and time when the node was last updated.
      */
     readonly nodes?: pulumi.Input<pulumi.Input<{ createdAt?: pulumi.Input<string>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, status?: pulumi.Input<string>, updatedAt?: pulumi.Input<string> }>[]>;
     /**

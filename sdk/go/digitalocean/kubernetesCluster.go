@@ -122,10 +122,10 @@ func (r *KubernetesCluster) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean_kubernetes_node_pool` resource. The following arguments may be specified:
+// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
 // - `name` - (Required) A name for the node pool.
 // - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-// - `node_count` - (Required) The number of Droplet instances in the node pool.
+// - `nodeCount` - (Required) The number of Droplet instances in the node pool.
 // - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
 func (r *KubernetesCluster) NodePool() *pulumi.Output {
 	return r.s.State["nodePool"]
@@ -153,11 +153,11 @@ func (r *KubernetesCluster) Tags() *pulumi.ArrayOutput {
 
 // The date and time when the Kubernetes cluster was last updated.
 // * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-// - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
 // - `host` - The URL of the API server on the Kubernetes master node.
-// - `client_key` - The base64 encoded private key used by clients to access the cluster.
-// - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
-// - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+// - `clientKey` - The base64 encoded private key used by clients to access the cluster.
+// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster.
+// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
 func (r *KubernetesCluster) UpdatedAt() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
 }
@@ -180,10 +180,10 @@ type KubernetesClusterState struct {
 	KubeConfigs interface{}
 	// A name for the Kubernetes cluster.
 	Name interface{}
-	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean_kubernetes_node_pool` resource. The following arguments may be specified:
+	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
 	// - `name` - (Required) A name for the node pool.
 	// - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-	// - `node_count` - (Required) The number of Droplet instances in the node pool.
+	// - `nodeCount` - (Required) The number of Droplet instances in the node pool.
 	// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
 	NodePool interface{}
 	// The slug identifier for the region where the Kubernetes cluster will be created.
@@ -196,11 +196,11 @@ type KubernetesClusterState struct {
 	Tags interface{}
 	// The date and time when the Kubernetes cluster was last updated.
 	// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-	// - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+	// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
 	// - `host` - The URL of the API server on the Kubernetes master node.
-	// - `client_key` - The base64 encoded private key used by clients to access the cluster.
-	// - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
-	// - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+	// - `clientKey` - The base64 encoded private key used by clients to access the cluster.
+	// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster.
+	// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
 	UpdatedAt interface{}
 	// The slug identifier for the version of Kubernetes used for the cluster.
 	Version interface{}
@@ -210,10 +210,10 @@ type KubernetesClusterState struct {
 type KubernetesClusterArgs struct {
 	// A name for the Kubernetes cluster.
 	Name interface{}
-	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean_kubernetes_node_pool` resource. The following arguments may be specified:
+	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
 	// - `name` - (Required) A name for the node pool.
 	// - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-	// - `node_count` - (Required) The number of Droplet instances in the node pool.
+	// - `nodeCount` - (Required) The number of Droplet instances in the node pool.
 	// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
 	NodePool interface{}
 	// The slug identifier for the region where the Kubernetes cluster will be created.

@@ -97,8 +97,8 @@ func (r *LoadBalancer) ID() *pulumi.IDOutput {
 }
 
 // The load balancing algorithm used to determine
-// which backend Droplet will be selected by a client. It must be either `round_robin`
-// or `least_connections`. The default value is `round_robin`.
+// which backend Droplet will be selected by a client. It must be either `roundRobin`
+// or `leastConnections`. The default value is `roundRobin`.
 func (r *LoadBalancer) Algorithm() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["algorithm"])
 }
@@ -120,8 +120,8 @@ func (r *LoadBalancer) EnableProxyProtocol() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableProxyProtocol"])
 }
 
-// A list of `forwarding_rule` to be assigned to the
-// Load Balancer. The `forwarding_rule` block is documented below.
+// A list of `forwardingRule` to be assigned to the
+// Load Balancer. The `forwardingRule` block is documented below.
 func (r *LoadBalancer) ForwardingRules() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["forwardingRules"])
 }
@@ -157,8 +157,8 @@ func (r *LoadBalancer) Status() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["status"])
 }
 
-// A `sticky_sessions` block to be assigned to the
-// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+// A `stickySessions` block to be assigned to the
+// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 func (r *LoadBalancer) StickySessions() *pulumi.Output {
 	return r.s.State["stickySessions"]
 }
@@ -171,8 +171,8 @@ func (r *LoadBalancer) Urn() *pulumi.StringOutput {
 // Input properties used for looking up and filtering LoadBalancer resources.
 type LoadBalancerState struct {
 	// The load balancing algorithm used to determine
-	// which backend Droplet will be selected by a client. It must be either `round_robin`
-	// or `least_connections`. The default value is `round_robin`.
+	// which backend Droplet will be selected by a client. It must be either `roundRobin`
+	// or `leastConnections`. The default value is `roundRobin`.
 	Algorithm interface{}
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds interface{}
@@ -182,8 +182,8 @@ type LoadBalancerState struct {
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
 	EnableProxyProtocol interface{}
-	// A list of `forwarding_rule` to be assigned to the
-	// Load Balancer. The `forwarding_rule` block is documented below.
+	// A list of `forwardingRule` to be assigned to the
+	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules interface{}
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -198,8 +198,8 @@ type LoadBalancerState struct {
 	// The region to start in
 	Region interface{}
 	Status interface{}
-	// A `sticky_sessions` block to be assigned to the
-	// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+	// A `stickySessions` block to be assigned to the
+	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions interface{}
 	// The uniform resource name for the Load Balancer
 	Urn interface{}
@@ -208,8 +208,8 @@ type LoadBalancerState struct {
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
 	// The load balancing algorithm used to determine
-	// which backend Droplet will be selected by a client. It must be either `round_robin`
-	// or `least_connections`. The default value is `round_robin`.
+	// which backend Droplet will be selected by a client. It must be either `roundRobin`
+	// or `leastConnections`. The default value is `roundRobin`.
 	Algorithm interface{}
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds interface{}
@@ -219,8 +219,8 @@ type LoadBalancerArgs struct {
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
 	EnableProxyProtocol interface{}
-	// A list of `forwarding_rule` to be assigned to the
-	// Load Balancer. The `forwarding_rule` block is documented below.
+	// A list of `forwardingRule` to be assigned to the
+	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules interface{}
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -233,7 +233,7 @@ type LoadBalancerArgs struct {
 	RedirectHttpToHttps interface{}
 	// The region to start in
 	Region interface{}
-	// A `sticky_sessions` block to be assigned to the
-	// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+	// A `stickySessions` block to be assigned to the
+	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions interface{}
 }

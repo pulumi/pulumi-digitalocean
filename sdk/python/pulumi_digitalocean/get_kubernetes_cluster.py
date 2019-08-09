@@ -108,14 +108,26 @@ class GetKubernetesClusterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetKubernetesClusterResult(
+            cluster_subnet=self.cluster_subnet,
+            created_at=self.created_at,
+            endpoint=self.endpoint,
+            ipv4_address=self.ipv4_address,
+            kube_configs=self.kube_configs,
+            name=self.name,
+            node_pools=self.node_pools,
+            region=self.region,
+            service_subnet=self.service_subnet,
+            status=self.status,
+            tags=self.tags,
+            updated_at=self.updated_at,
+            version=self.version,
+            id=self.id)
 
 def get_kubernetes_cluster(name=None,tags=None,opts=None):
     """
@@ -131,7 +143,7 @@ def get_kubernetes_cluster(name=None,tags=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts).value
 
-    return GetKubernetesClusterResult(
+    return AwaitableGetKubernetesClusterResult(
         cluster_subnet=__ret__.get('clusterSubnet'),
         created_at=__ret__.get('createdAt'),
         endpoint=__ret__.get('endpoint'),

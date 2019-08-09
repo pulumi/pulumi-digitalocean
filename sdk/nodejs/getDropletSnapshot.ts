@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const web_snapshot = pulumi.output(digitalocean.getDropletSnapshot({
+ * const webSnapshot = pulumi.output(digitalocean.getDropletSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",

@@ -42,7 +42,7 @@ type GetImageArgs struct {
 // A collection of values returned by getImage.
 type GetImageResult struct {
 	// The name of the distribution of the OS of the image.
-	// * `min_disk_size`: The minimum 'disk' required for the image.
+	// * `minDiskSize`: The minimum 'disk' required for the image.
 	Distribution interface{}
 	// The id of the image.
 	Image interface{}

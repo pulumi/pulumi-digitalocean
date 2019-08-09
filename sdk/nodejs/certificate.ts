@@ -45,7 +45,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+     * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
      */
     public readonly domains!: pulumi.Output<string[] | undefined>;
     /**
@@ -73,7 +73,7 @@ export class Certificate extends pulumi.CustomResource {
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The type of certificate to provision. Can be either
-     * `custom` or `lets_encrypt`. Defaults to `custom`.
+     * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
     public readonly type!: pulumi.Output<CertificateType | undefined>;
 
@@ -134,7 +134,7 @@ export interface CertificateState {
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+     * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
      */
     readonly domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -162,7 +162,7 @@ export interface CertificateState {
     readonly state?: pulumi.Input<string>;
     /**
      * The type of certificate to provision. Can be either
-     * `custom` or `lets_encrypt`. Defaults to `custom`.
+     * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
     readonly type?: pulumi.Input<CertificateType>;
 }
@@ -180,7 +180,7 @@ export interface CertificateArgs {
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+     * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
      */
     readonly domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -199,7 +199,7 @@ export interface CertificateArgs {
     readonly privateKey?: pulumi.Input<string>;
     /**
      * The type of certificate to provision. Can be either
-     * `custom` or `lets_encrypt`. Defaults to `custom`.
+     * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
     readonly type?: pulumi.Input<CertificateType>;
 }

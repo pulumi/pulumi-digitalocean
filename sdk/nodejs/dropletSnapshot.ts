@@ -20,7 +20,7 @@ import {Region} from "./index";
  *     region: "nyc3",
  *     size: "s-1vcpu-1gb",
  * });
- * const web_snapshot = new digitalocean.DropletSnapshot("web-snapshot", {
+ * const webSnapshot = new digitalocean.DropletSnapshot("web-snapshot", {
  *     dropletId: web.id,
  * });
  * ```

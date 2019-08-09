@@ -58,14 +58,21 @@ class GetVolumeResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetVolumeResult(GetVolumeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetVolumeResult(
+            description=self.description,
+            droplet_ids=self.droplet_ids,
+            filesystem_label=self.filesystem_label,
+            filesystem_type=self.filesystem_type,
+            name=self.name,
+            region=self.region,
+            size=self.size,
+            urn=self.urn,
+            id=self.id)
 
 def get_volume(description=None,name=None,region=None,opts=None):
     """
@@ -82,7 +89,7 @@ def get_volume(description=None,name=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts).value
 
-    return GetVolumeResult(
+    return AwaitableGetVolumeResult(
         description=__ret__.get('description'),
         droplet_ids=__ret__.get('dropletIds'),
         filesystem_label=__ret__.get('filesystemLabel'),

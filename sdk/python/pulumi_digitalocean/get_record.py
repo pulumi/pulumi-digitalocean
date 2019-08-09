@@ -49,14 +49,23 @@ class GetRecordResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetRecordResult(GetRecordResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetRecordResult(
+            data=self.data,
+            domain=self.domain,
+            flags=self.flags,
+            name=self.name,
+            port=self.port,
+            priority=self.priority,
+            tag=self.tag,
+            ttl=self.ttl,
+            type=self.type,
+            weight=self.weight,
+            id=self.id)
 
 def get_record(domain=None,name=None,opts=None):
     """
@@ -72,7 +81,7 @@ def get_record(domain=None,name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts).value
 
-    return GetRecordResult(
+    return AwaitableGetRecordResult(
         data=__ret__.get('data'),
         domain=__ret__.get('domain'),
         flags=__ret__.get('flags'),
