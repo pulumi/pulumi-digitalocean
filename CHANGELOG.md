@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
+_(none)_
 
 ---
+
+## 0.18.11 (2019-08-20)
+* Depend on latest pulumi package
 
 ## 0.18.10 (2019-08-09)
 * Upgrade to pulumi-terraform@9db2fc93cd
