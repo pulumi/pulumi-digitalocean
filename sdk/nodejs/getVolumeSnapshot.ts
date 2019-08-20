@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const snapshot = pulumi.output(digitalocean.getVolumeSnapshot({
+ * const snapshot = digitalocean.getVolumeSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
- * }));
+ * });
  * ```
  * 
  * Reuse the data about a volume snapshot to create a new volume based on it:
@@ -30,11 +30,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const snapshot = pulumi.output(digitalocean.getVolumeSnapshot({
+ * const snapshot = digitalocean.getVolumeSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
- * }));
+ * });
  * const foobar = new digitalocean.Volume("foobar", {
  *     region: "nyc3",
  *     size: 100,

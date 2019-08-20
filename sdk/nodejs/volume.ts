@@ -38,9 +38,9 @@ import {FilesystemType, Region} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const foobarVolumeSnapshot = pulumi.output(digitalocean.getVolumeSnapshot({
+ * const foobarVolumeSnapshot = digitalocean.getVolumeSnapshot({
  *     name: "baz",
- * }));
+ * });
  * const foobarVolume = new digitalocean.Volume("foobar", {
  *     region: "lon1",
  *     size: foobarVolumeSnapshot.minDiskSize,

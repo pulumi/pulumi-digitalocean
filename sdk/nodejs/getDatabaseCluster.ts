@@ -14,9 +14,9 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
  * // Create a new database cluster
- * const example = pulumi.output(digitalocean.getDatabaseCluster({
+ * const example = digitalocean.getDatabaseCluster({
  *     name: "example-cluster",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
