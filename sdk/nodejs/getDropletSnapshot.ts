@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const webSnapshot = pulumi.output(digitalocean.getDropletSnapshot({
+ * const webSnapshot = digitalocean.getDropletSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.markdown.
