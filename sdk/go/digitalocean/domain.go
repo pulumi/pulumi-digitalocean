@@ -9,8 +9,6 @@ import (
 )
 
 // Provides a DigitalOcean domain resource.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
 type Domain struct {
 	s *pulumi.ResourceState
 }

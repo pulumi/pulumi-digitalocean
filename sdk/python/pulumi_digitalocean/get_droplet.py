@@ -148,50 +148,22 @@ class GetDropletResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-class AwaitableGetDropletResult(GetDropletResult):
-    # pylint: disable=using-constant-test
-    def __await__(self):
-        if False:
-            yield self
-        return GetDropletResult(
-            backups=self.backups,
-            disk=self.disk,
-            image=self.image,
-            ipv4_address=self.ipv4_address,
-            ipv4_address_private=self.ipv4_address_private,
-            ipv6=self.ipv6,
-            ipv6_address=self.ipv6_address,
-            ipv6_address_private=self.ipv6_address_private,
-            locked=self.locked,
-            memory=self.memory,
-            monitoring=self.monitoring,
-            name=self.name,
-            price_hourly=self.price_hourly,
-            price_monthly=self.price_monthly,
-            private_networking=self.private_networking,
-            region=self.region,
-            size=self.size,
-            status=self.status,
-            tags=self.tags,
-            urn=self.urn,
-            vcpus=self.vcpus,
-            volume_ids=self.volume_ids,
-            id=self.id)
 
-def get_droplet(name=None,opts=None):
+async def get_droplet(name=None,opts=None):
     """
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
+    Get information on a Droplet for use in other resources. This data source provides
+    all of the Droplet's properties as configured on your DigitalOcean account. This
+    is useful if the Droplet in question is not managed by Terraform or you need to
+    utilize any of the Droplets data.
+    
+    An error is triggered if the provided Droplet name does not exist.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts).value
+    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts)
 
-    return AwaitableGetDropletResult(
+    return GetDropletResult(
         backups=__ret__.get('backups'),
         disk=__ret__.get('disk'),
         image=__ret__.get('image'),

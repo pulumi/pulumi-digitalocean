@@ -20,12 +20,10 @@ import {Region} from "./index";
  *     region: "nyc3",
  *     size: "s-1vcpu-1gb",
  * });
- * const webSnapshot = new digitalocean.DropletSnapshot("web-snapshot", {
+ * const web_snapshot = new digitalocean.DropletSnapshot("web-snapshot", {
  *     dropletId: web.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
  */
 export class DropletSnapshot extends pulumi.CustomResource {
     /**
@@ -108,13 +106,6 @@ export class DropletSnapshot extends pulumi.CustomResource {
             inputs["minDiskSize"] = undefined /*out*/;
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
-        }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
         }
         super(DropletSnapshot.__pulumiType, name, inputs, opts);
     }

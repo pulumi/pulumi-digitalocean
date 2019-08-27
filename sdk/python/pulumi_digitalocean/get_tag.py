@@ -22,28 +22,20 @@ class GetTagResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-class AwaitableGetTagResult(GetTagResult):
-    # pylint: disable=using-constant-test
-    def __await__(self):
-        if False:
-            yield self
-        return GetTagResult(
-            name=self.name,
-            id=self.id)
 
-def get_tag(name=None,opts=None):
+async def get_tag(name=None,opts=None):
     """
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/tag.html.markdown.
+    Get information on a tag. This data source provides the name as configured on
+    your DigitalOcean account. This is useful if the tag name in question is not
+    managed by Terraform or you need validate if the tag exists in the account.
+    
+    An error is triggered if the provided tag name does not exist.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getTag:getTag', __args__, opts=opts).value
+    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getTag:getTag', __args__, opts=opts)
 
-    return AwaitableGetTagResult(
+    return GetTagResult(
         name=__ret__.get('name'),
         id=__ret__.get('id'))

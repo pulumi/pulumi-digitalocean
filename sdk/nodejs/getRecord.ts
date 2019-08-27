@@ -5,22 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
+ * Get information on a DNS record. This data source provides the name, TTL, and zone
+ * file as configured on your DigitalOcean account. This is useful if the record
+ * in question is not managed by Terraform.
+ * 
+ * An error is triggered if the provided domain name or record are not managed with
+ * your DigitalOcean account.
  */
-export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> & GetRecordResult {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
-    const promise: Promise<GetRecordResult> = pulumi.runtime.invoke("digitalocean:index/getRecord:getRecord", {
+export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> {
+    return pulumi.runtime.invoke("digitalocean:index/getRecord:getRecord", {
         "domain": args.domain,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

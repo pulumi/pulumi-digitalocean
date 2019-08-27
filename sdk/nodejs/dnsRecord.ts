@@ -29,8 +29,6 @@ import {RecordType} from "./index";
  * // Output the FQDN for the record
  * export const fqdn = www.fqdn;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
  */
 export class DnsRecord extends pulumi.CustomResource {
     /**
@@ -84,7 +82,7 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
      */
     public readonly tag!: pulumi.Output<string | undefined>;
     /**
@@ -150,13 +148,6 @@ export class DnsRecord extends pulumi.CustomResource {
             inputs["weight"] = args ? args.weight : undefined;
             inputs["fqdn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super(DnsRecord.__pulumiType, name, inputs, opts);
     }
 }
@@ -190,7 +181,7 @@ export interface DnsRecordState {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
      */
     readonly tag?: pulumi.Input<string>;
     /**
@@ -236,7 +227,7 @@ export interface DnsRecordArgs {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+     * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `wildissue`, or `iodef`.
      */
     readonly tag?: pulumi.Input<string>;
     /**

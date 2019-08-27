@@ -55,8 +55,6 @@ import * as utilities from "./utilities";
  *     resources: [foobar.urn],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -154,13 +152,6 @@ export class Project extends pulumi.CustomResource {
             inputs["ownerId"] = undefined /*out*/;
             inputs["ownerUuid"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
-        }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
         }
         super(Project.__pulumiType, name, inputs, opts);
     }

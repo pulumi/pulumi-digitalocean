@@ -10,9 +10,7 @@ import (
 
 // Manages attaching a Volume to a Droplet.
 // 
-// > **NOTE:** Volumes can be attached either directly on the `.Droplet` resource, or using the `.VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_attachment.html.markdown.
+// > **NOTE:** Volumes can be attached either directly on the `digitalocean_droplet` resource, or using the `digitalocean_volume_attachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
 type VolumeAttachment struct {
 	s *pulumi.ResourceState
 }

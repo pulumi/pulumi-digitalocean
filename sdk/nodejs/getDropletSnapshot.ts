@@ -17,32 +17,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const webSnapshot = digitalocean.getDropletSnapshot({
+ * const web_snapshot = digitalocean.getDropletSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.markdown.
  */
-export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> & GetDropletSnapshotResult {
+export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
-    const promise: Promise<GetDropletSnapshotResult> = pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
+    return pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
         "mostRecent": args.mostRecent,
         "name": args.name,
         "nameRegex": args.nameRegex,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

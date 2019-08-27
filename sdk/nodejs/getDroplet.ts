@@ -5,21 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
+ * Get information on a Droplet for use in other resources. This data source provides
+ * all of the Droplet's properties as configured on your DigitalOcean account. This
+ * is useful if the Droplet in question is not managed by Terraform or you need to
+ * utilize any of the Droplets data.
+ * 
+ * An error is triggered if the provided Droplet name does not exist.
+ * 
+ * ## Example Usage
+ * 
+ * Get the Droplet:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const example = digitalocean.getDroplet({
+ *     name: "web",
+ * });
+ * ```
  */
-export function getDroplet(args: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> & GetDropletResult {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
-    const promise: Promise<GetDropletResult> = pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
+export function getDroplet(args: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
+    return pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

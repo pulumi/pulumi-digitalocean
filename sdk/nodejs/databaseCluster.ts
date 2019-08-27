@@ -24,8 +24,6 @@ import {DatabaseSlug, Region} from "./index";
  *     version: "11",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
  */
 export class DatabaseCluster extends pulumi.CustomResource {
     /**
@@ -99,10 +97,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
     /**
-     * The uniform resource name of the database cluster.
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
-    /**
      * Username for the cluster's default user.
      */
     public /*out*/ readonly user!: pulumi.Output<string>;
@@ -134,7 +128,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["uri"] = state ? state.uri : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
             inputs["user"] = state ? state.user : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
@@ -166,15 +159,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["password"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
             inputs["uri"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
-        }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
         }
         super(DatabaseCluster.__pulumiType, name, inputs, opts);
     }
@@ -228,10 +213,6 @@ export interface DatabaseClusterState {
      * The full URI for connecting to the database cluster.
      */
     readonly uri?: pulumi.Input<string>;
-    /**
-     * The uniform resource name of the database cluster.
-     */
-    readonly urn?: pulumi.Input<string>;
     /**
      * Username for the cluster's default user.
      */

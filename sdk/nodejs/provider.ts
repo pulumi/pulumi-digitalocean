@@ -8,9 +8,7 @@ import * as utilities from "./utilities";
  * The provider type for the digitalocean package. By default, resources use package-wide configuration
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
- * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/index.html.markdown.
+ * [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
  */
 export class Provider extends pulumi.ProviderResource {
     /** @internal */
@@ -42,13 +40,6 @@ export class Provider extends pulumi.ProviderResource {
             inputs["spacesAccessId"] = (args ? args.spacesAccessId : undefined) || utilities.getEnv("SPACES_ACCESS_KEY_ID");
             inputs["spacesSecretKey"] = (args ? args.spacesSecretKey : undefined) || utilities.getEnv("SPACES_SECRET_ACCESS_KEY");
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("DIGITALOCEAN_TOKEN");
-        }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

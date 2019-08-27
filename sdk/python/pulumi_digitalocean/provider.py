@@ -9,17 +9,15 @@ import pulumi.runtime
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, api_endpoint=None, spaces_access_id=None, spaces_secret_key=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, api_endpoint=None, spaces_access_id=None, spaces_secret_key=None, token=None, __name__=None, __opts__=None):
         """
         The provider type for the digitalocean package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
-        [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+        [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/index.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -27,50 +25,38 @@ class Provider(pulumi.ProviderResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if not isinstance(opts, pulumi.ResourceOptions):
+        if not resource_name:
+            raise TypeError('Missing resource name argument (for URN creation)')
+        if not isinstance(resource_name, str):
+            raise TypeError('Expected resource name to be a string')
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = utilities.get_version()
-        if opts.id is None:
-            if __props__ is not None:
-                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
 
-            if api_endpoint is None:
-                api_endpoint = (utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
-            __props__['api_endpoint'] = api_endpoint
-            if spaces_access_id is None:
-                spaces_access_id = utilities.get_env('SPACES_ACCESS_KEY_ID')
-            __props__['spaces_access_id'] = spaces_access_id
-            if spaces_secret_key is None:
-                spaces_secret_key = utilities.get_env('SPACES_SECRET_ACCESS_KEY')
-            __props__['spaces_secret_key'] = spaces_secret_key
-            if token is None:
-                token = utilities.get_env('DIGITALOCEAN_TOKEN')
-            __props__['token'] = token
+        __props__ = dict()
+
+        if api_endpoint is None:
+            api_endpoint = (utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
+        __props__['api_endpoint'] = api_endpoint
+
+        if spaces_access_id is None:
+            spaces_access_id = utilities.get_env('SPACES_ACCESS_KEY_ID')
+        __props__['spaces_access_id'] = spaces_access_id
+
+        if spaces_secret_key is None:
+            spaces_secret_key = utilities.get_env('SPACES_SECRET_ACCESS_KEY')
+        __props__['spaces_secret_key'] = spaces_secret_key
+
+        if token is None:
+            token = utilities.get_env('DIGITALOCEAN_TOKEN')
+        __props__['token'] = token
+
         super(Provider, __self__).__init__(
             'digitalocean',
             resource_name,
             __props__,
             opts)
 
-    @staticmethod
-    def get(resource_name, id, opts=None):
-        """
-        Get an existing Provider resource's state with the given name, id, and optional extra
-        properties used to qualify the lookup.
-        :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/index.html.markdown.
-        """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
-
-        __props__ = dict()
-        return Provider(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

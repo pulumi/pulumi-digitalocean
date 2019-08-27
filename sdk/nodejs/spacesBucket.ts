@@ -17,7 +17,7 @@ import {Region} from "./index";
  * 
  * The authentication requirement can be met by either setting the
  * `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
- * the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
+ * the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  * 
@@ -25,7 +25,7 @@ import {Region} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const staticAssets = new digitalocean.SpacesBucket("static-assets", {});
+ * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
  * ```
  * 
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -41,8 +41,6 @@ import {Region} from "./index";
  *     region: "nyc3",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
  */
 export class SpacesBucket extends pulumi.CustomResource {
     /**
@@ -80,7 +78,7 @@ export class SpacesBucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     /**
-     * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+     * Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -123,13 +121,6 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["bucketDomainName"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super(SpacesBucket.__pulumiType, name, inputs, opts);
     }
 }
@@ -147,7 +138,7 @@ export interface SpacesBucketState {
      */
     readonly bucketDomainName?: pulumi.Input<string>;
     /**
-     * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+     * Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
@@ -173,7 +164,7 @@ export interface SpacesBucketArgs {
      */
     readonly acl?: pulumi.Input<string>;
     /**
-     * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+     * Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**

@@ -28,31 +28,22 @@ class GetSshKeyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-class AwaitableGetSshKeyResult(GetSshKeyResult):
-    # pylint: disable=using-constant-test
-    def __await__(self):
-        if False:
-            yield self
-        return GetSshKeyResult(
-            fingerprint=self.fingerprint,
-            name=self.name,
-            public_key=self.public_key,
-            id=self.id)
 
-def get_ssh_key(name=None,opts=None):
+async def get_ssh_key(name=None,opts=None):
     """
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/ssh_key.html.markdown.
+    Get information on a ssh key. This data source provides the name, public key,
+    and fingerprint as configured on your DigitalOcean account. This is useful if
+    the ssh key in question is not managed by Terraform or you need to utilize any
+    of the keys data.
+    
+    An error is triggered if the provided ssh key name does not exist.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getSshKey:getSshKey', __args__, opts=opts).value
+    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getSshKey:getSshKey', __args__, opts=opts)
 
-    return AwaitableGetSshKeyResult(
+    return GetSshKeyResult(
         fingerprint=__ret__.get('fingerprint'),
         name=__ret__.get('name'),
         public_key=__ret__.get('publicKey'),

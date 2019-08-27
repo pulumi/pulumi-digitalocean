@@ -47,8 +47,6 @@ import {FilesystemType, Region} from "./index";
  *     snapshotId: foobarVolumeSnapshot.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
  */
 export class Volume extends pulumi.CustomResource {
     /**
@@ -164,13 +162,6 @@ export class Volume extends pulumi.CustomResource {
             inputs["dropletIds"] = undefined /*out*/;
             inputs["filesystemLabel"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
-        }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
         }
         super(Volume.__pulumiType, name, inputs, opts);
     }

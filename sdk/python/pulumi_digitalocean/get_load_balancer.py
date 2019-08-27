@@ -58,41 +58,22 @@ class GetLoadBalancerResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
-    # pylint: disable=using-constant-test
-    def __await__(self):
-        if False:
-            yield self
-        return GetLoadBalancerResult(
-            algorithm=self.algorithm,
-            droplet_ids=self.droplet_ids,
-            droplet_tag=self.droplet_tag,
-            enable_proxy_protocol=self.enable_proxy_protocol,
-            forwarding_rules=self.forwarding_rules,
-            healthcheck=self.healthcheck,
-            ip=self.ip,
-            name=self.name,
-            redirect_http_to_https=self.redirect_http_to_https,
-            region=self.region,
-            status=self.status,
-            sticky_sessions=self.sticky_sessions,
-            urn=self.urn,
-            id=self.id)
 
-def get_load_balancer(name=None,opts=None):
+async def get_load_balancer(name=None,opts=None):
     """
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/loadbalancer.html.markdown.
+    Get information on a load balancer for use in other resources. This data source
+    provides all of the load balancers properties as configured on your DigitalOcean
+    account. This is useful if the load balancer in question is not managed by
+    Terraform or you need to utilize any of the load balancers data.
+    
+    An error is triggered if the provided load balancer name does not exist.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts).value
+    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts)
 
-    return AwaitableGetLoadBalancerResult(
+    return GetLoadBalancerResult(
         algorithm=__ret__.get('algorithm'),
         droplet_ids=__ret__.get('dropletIds'),
         droplet_tag=__ret__.get('dropletTag'),

@@ -9,8 +9,6 @@ import (
 )
 
 // Provides a DigitalOcean database cluster resource.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
 type DatabaseCluster struct {
 	s *pulumi.ResourceState
 }
@@ -56,7 +54,6 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 	inputs["password"] = nil
 	inputs["port"] = nil
 	inputs["uri"] = nil
-	inputs["urn"] = nil
 	inputs["user"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/databaseCluster:DatabaseCluster", name, true, inputs, opts...)
 	if err != nil {
@@ -82,7 +79,6 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["size"] = state.Size
 		inputs["uri"] = state.Uri
-		inputs["urn"] = state.Urn
 		inputs["user"] = state.User
 		inputs["version"] = state.Version
 	}
@@ -158,11 +154,6 @@ func (r *DatabaseCluster) Uri() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["uri"])
 }
 
-// The uniform resource name of the database cluster.
-func (r *DatabaseCluster) Urn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["urn"])
-}
-
 // Username for the cluster's default user.
 func (r *DatabaseCluster) User() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["user"])
@@ -197,8 +188,6 @@ type DatabaseClusterState struct {
 	Size interface{}
 	// The full URI for connecting to the database cluster.
 	Uri interface{}
-	// The uniform resource name of the database cluster.
-	Urn interface{}
 	// Username for the cluster's default user.
 	User interface{}
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).

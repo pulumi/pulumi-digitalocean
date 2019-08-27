@@ -31,7 +31,6 @@ from .volume import *
 from .volume_attachment import *
 from .volume_snapshot import *
 from .get_certificate import *
-from .get_database_cluster import *
 from .get_domain import *
 from .get_droplet import *
 from .get_droplet_snapshot import *

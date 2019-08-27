@@ -49,39 +49,23 @@ class GetRecordResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-class AwaitableGetRecordResult(GetRecordResult):
-    # pylint: disable=using-constant-test
-    def __await__(self):
-        if False:
-            yield self
-        return GetRecordResult(
-            data=self.data,
-            domain=self.domain,
-            flags=self.flags,
-            name=self.name,
-            port=self.port,
-            priority=self.priority,
-            tag=self.tag,
-            ttl=self.ttl,
-            type=self.type,
-            weight=self.weight,
-            id=self.id)
 
-def get_record(domain=None,name=None,opts=None):
+async def get_record(domain=None,name=None,opts=None):
     """
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
+    Get information on a DNS record. This data source provides the name, TTL, and zone
+    file as configured on your DigitalOcean account. This is useful if the record
+    in question is not managed by Terraform.
+    
+    An error is triggered if the provided domain name or record are not managed with
+    your DigitalOcean account.
     """
     __args__ = dict()
 
     __args__['domain'] = domain
     __args__['name'] = name
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts).value
+    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts)
 
-    return AwaitableGetRecordResult(
+    return GetRecordResult(
         data=__ret__.get('data'),
         domain=__ret__.get('domain'),
         flags=__ret__.get('flags'),

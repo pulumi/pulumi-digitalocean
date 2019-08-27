@@ -7,7 +7,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
+// Get information on a DNS record. This data source provides the name, TTL, and zone
+// file as configured on your DigitalOcean account. This is useful if the record
+// in question is not managed by Terraform.
+// 
+// An error is triggered if the provided domain name or record are not managed with
+// your DigitalOcean account.
 func LookupRecord(ctx *pulumi.Context, args *GetRecordArgs) (*GetRecordResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

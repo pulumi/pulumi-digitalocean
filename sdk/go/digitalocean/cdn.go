@@ -9,8 +9,6 @@ import (
 )
 
 // Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
 type Cdn struct {
 	s *pulumi.ResourceState
 }
@@ -98,7 +96,7 @@ func (r *Cdn) Origin() *pulumi.StringOutput {
 }
 
 // The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-// * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+// * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 func (r *Cdn) Ttl() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["ttl"])
 }
@@ -116,7 +114,7 @@ type CdnState struct {
 	// The fully qualified domain name, (FQDN) for a Space.
 	Origin interface{}
 	// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-	// * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	// * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	Ttl interface{}
 }
 
@@ -129,6 +127,6 @@ type CdnArgs struct {
 	// The fully qualified domain name, (FQDN) for a Space.
 	Origin interface{}
 	// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-	// * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	// * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	Ttl interface{}
 }

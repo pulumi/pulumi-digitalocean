@@ -10,9 +10,7 @@ import (
 
 // Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
 // 
-// > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `.FloatingIp` resource by setting a `dropletId` or using the `.FloatingIpAssignment` resource, but the two cannot be used together.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
+// > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean_floating_ip` resource by setting a `droplet_id` or using the `digitalocean_floating_ip_assignment` resource, but the two cannot be used together.
 type FloatingIp struct {
 	s *pulumi.ResourceState
 }

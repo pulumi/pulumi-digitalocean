@@ -19,8 +19,6 @@ import * as utilities from "./utilities";
  *     name: "example.com",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
  */
 export class Domain extends pulumi.CustomResource {
     /**
@@ -86,13 +84,6 @@ export class Domain extends pulumi.CustomResource {
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["urn"] = undefined /*out*/;
-        }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
         }
         super(Domain.__pulumiType, name, inputs, opts);
     }

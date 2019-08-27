@@ -81,8 +81,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
  */
 export class Firewall extends pulumi.CustomResource {
     /**
@@ -123,7 +121,7 @@ export class Firewall extends pulumi.CustomResource {
     public readonly dropletIds!: pulumi.Output<number[] | undefined>;
     /**
      * The inbound access rule block for the Firewall.
-     * The `inboundRule` block is documented below.
+     * The `inbound_rule` block is documented below.
      */
     public readonly inboundRules!: pulumi.Output<{ portRange?: string, protocol: string, sourceAddresses?: string[], sourceDropletIds?: number[], sourceLoadBalancerUids?: string[], sourceTags?: string[] }[] | undefined>;
     /**
@@ -132,11 +130,11 @@ export class Firewall extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The outbound access rule block for the Firewall.
-     * The `outboundRule` block is documented below.
+     * The `outbound_rule` block is documented below.
      */
     public readonly outboundRules!: pulumi.Output<{ destinationAddresses?: string[], destinationDropletIds?: number[], destinationLoadBalancerUids?: string[], destinationTags?: string[], portRange?: string, protocol: string }[] | undefined>;
     /**
-     * An list of object containing the fields, "dropletId",
+     * An list of object containing the fields, "droplet_id",
      * "removing", and "status".  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.
@@ -183,13 +181,6 @@ export class Firewall extends pulumi.CustomResource {
             inputs["pendingChanges"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super(Firewall.__pulumiType, name, inputs, opts);
     }
 }
@@ -210,7 +201,7 @@ export interface FirewallState {
     readonly dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The inbound access rule block for the Firewall.
-     * The `inboundRule` block is documented below.
+     * The `inbound_rule` block is documented below.
      */
     readonly inboundRules?: pulumi.Input<pulumi.Input<{ portRange?: pulumi.Input<string>, protocol: pulumi.Input<string>, sourceAddresses?: pulumi.Input<pulumi.Input<string>[]>, sourceDropletIds?: pulumi.Input<pulumi.Input<number>[]>, sourceLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[]>, sourceTags?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
     /**
@@ -219,11 +210,11 @@ export interface FirewallState {
     readonly name?: pulumi.Input<string>;
     /**
      * The outbound access rule block for the Firewall.
-     * The `outboundRule` block is documented below.
+     * The `outbound_rule` block is documented below.
      */
     readonly outboundRules?: pulumi.Input<pulumi.Input<{ destinationAddresses?: pulumi.Input<pulumi.Input<string>[]>, destinationDropletIds?: pulumi.Input<pulumi.Input<number>[]>, destinationLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[]>, destinationTags?: pulumi.Input<pulumi.Input<string>[]>, portRange?: pulumi.Input<string>, protocol: pulumi.Input<string> }>[]>;
     /**
-     * An list of object containing the fields, "dropletId",
+     * An list of object containing the fields, "droplet_id",
      * "removing", and "status".  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.
@@ -251,7 +242,7 @@ export interface FirewallArgs {
     readonly dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The inbound access rule block for the Firewall.
-     * The `inboundRule` block is documented below.
+     * The `inbound_rule` block is documented below.
      */
     readonly inboundRules?: pulumi.Input<pulumi.Input<{ portRange?: pulumi.Input<string>, protocol: pulumi.Input<string>, sourceAddresses?: pulumi.Input<pulumi.Input<string>[]>, sourceDropletIds?: pulumi.Input<pulumi.Input<number>[]>, sourceLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[]>, sourceTags?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
     /**
@@ -260,7 +251,7 @@ export interface FirewallArgs {
     readonly name?: pulumi.Input<string>;
     /**
      * The outbound access rule block for the Firewall.
-     * The `outboundRule` block is documented below.
+     * The `outbound_rule` block is documented below.
      */
     readonly outboundRules?: pulumi.Input<pulumi.Input<{ destinationAddresses?: pulumi.Input<pulumi.Input<string>[]>, destinationDropletIds?: pulumi.Input<pulumi.Input<number>[]>, destinationLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[]>, destinationTags?: pulumi.Input<pulumi.Input<string>[]>, portRange?: pulumi.Input<string>, protocol: pulumi.Input<string> }>[]>;
     /**

@@ -7,7 +7,68 @@ import * as utilities from "./utilities";
 import {CertificateType} from "./index";
 
 /**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
+ * Provides a DigitalOcean Certificate resource that allows you to manage
+ * certificates for configuring TLS termination in Load Balancers.
+ * Certificates created with this resource can be referenced in your
+ * Load Balancer configuration via their ID. The certificate can either
+ * be a custom one provided by you or automatically generated one with
+ * Let's Encrypt.
+ * 
+ * ## Example Usage
+ * 
+ * #### Custom Certificate
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * import * as fs from "fs";
+ * 
+ * const cert = new digitalocean.Certificate("cert", {
+ *     certificateChain: fs.readFileSync("/Users/terraform/certs/fullchain.pem", "utf-8"),
+ *     leafCertificate: fs.readFileSync("/Users/terraform/certs/cert.pem", "utf-8"),
+ *     privateKey: fs.readFileSync("/Users/terraform/certs/privkey.pem", "utf-8"),
+ *     type: "custom",
+ * });
+ * ```
+ * 
+ * #### Let's Encrypt Certificate
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const cert = new digitalocean.Certificate("cert", {
+ *     domains: ["example.com"],
+ *     type: "lets_encrypt",
+ * });
+ * ```
+ * 
+ * #### Use with Other Resources
+ * 
+ * Both custom and Let's Encrypt certificates can be used with other resources
+ * including the `digitalocean_loadbalancer` and `digitalocean_cdn` resources.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const cert = new digitalocean.Certificate("cert", {
+ *     domains: ["example.com"],
+ *     type: "lets_encrypt",
+ * });
+ * // Create a new Load Balancer with TLS termination
+ * const publicLoadBalancer = new digitalocean.LoadBalancer("public", {
+ *     dropletTag: "backend",
+ *     forwardingRules: [{
+ *         certificateId: cert.id,
+ *         entryPort: 443,
+ *         entryProtocol: "https",
+ *         targetPort: 80,
+ *         targetProtocol: "http",
+ *     }],
+ *     region: "nyc3",
+ * });
+ * ```
  */
 export class Certificate extends pulumi.CustomResource {
     /**
@@ -45,7 +106,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
+     * DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
      */
     public readonly domains!: pulumi.Output<string[] | undefined>;
     /**
@@ -73,7 +134,7 @@ export class Certificate extends pulumi.CustomResource {
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The type of certificate to provision. Can be either
-     * `custom` or `letsEncrypt`. Defaults to `custom`.
+     * `custom` or `lets_encrypt`. Defaults to `custom`.
      */
     public readonly type!: pulumi.Output<CertificateType | undefined>;
 
@@ -110,13 +171,6 @@ export class Certificate extends pulumi.CustomResource {
             inputs["sha1Fingerprint"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super(Certificate.__pulumiType, name, inputs, opts);
     }
 }
@@ -134,7 +188,7 @@ export interface CertificateState {
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
+     * DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
      */
     readonly domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -162,7 +216,7 @@ export interface CertificateState {
     readonly state?: pulumi.Input<string>;
     /**
      * The type of certificate to provision. Can be either
-     * `custom` or `letsEncrypt`. Defaults to `custom`.
+     * `custom` or `lets_encrypt`. Defaults to `custom`.
      */
     readonly type?: pulumi.Input<CertificateType>;
 }
@@ -180,7 +234,7 @@ export interface CertificateArgs {
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
+     * DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
      */
     readonly domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -199,7 +253,7 @@ export interface CertificateArgs {
     readonly privateKey?: pulumi.Input<string>;
     /**
      * The type of certificate to provision. Can be either
-     * `custom` or `letsEncrypt`. Defaults to `custom`.
+     * `custom` or `lets_encrypt`. Defaults to `custom`.
      */
     readonly type?: pulumi.Input<CertificateType>;
 }

@@ -7,7 +7,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/floating_ip.html.markdown.
+// Get information on a floating ip. This data source provides the region and Droplet id
+// as configured on your DigitalOcean account. This is useful if the floating IP
+// in question is not managed by Terraform or you need to find the Droplet the IP is
+// attached to.
+// 
+// An error is triggered if the provided floating IP does not exist.
 func LookupFloatingIp(ctx *pulumi.Context, args *GetFloatingIpArgs) (*GetFloatingIpResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

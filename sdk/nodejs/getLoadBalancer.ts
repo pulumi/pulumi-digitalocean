@@ -5,21 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/loadbalancer.html.markdown.
+ * Get information on a load balancer for use in other resources. This data source
+ * provides all of the load balancers properties as configured on your DigitalOcean
+ * account. This is useful if the load balancer in question is not managed by
+ * Terraform or you need to utilize any of the load balancers data.
+ * 
+ * An error is triggered if the provided load balancer name does not exist.
+ * 
+ * ## Example Usage
+ * 
+ * Get the load balancer:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const example = digitalocean.getLoadBalancer({
+ *     name: "app",
+ * });
+ * ```
  */
-export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> & GetLoadBalancerResult {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
-    const promise: Promise<GetLoadBalancerResult> = pulumi.runtime.invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", {
+export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
+    return pulumi.runtime.invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

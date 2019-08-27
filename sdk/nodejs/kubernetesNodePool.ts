@@ -7,7 +7,9 @@ import * as utilities from "./utilities";
 import {DropletSlug} from "./index";
 
 /**
- * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
+ * > **NOTE:** DigitalOcean Kubernetes is currently in [Limited Availability](https://www.digitalocean.com/docs/platform/product-lifecycle/). In order to access its API, you must first enable Kubernetes on your account by opting-in via the [cloud control panel](https://cloud.digitalocean.com/kubernetes/clusters). While the Kubernetes Cluster functionality is currently in limited availability the structure of this resource may change over time. Please share any feedback you may have by [opening an issue on GitHub](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).
+ * 
+ * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean_kubernetes_cluster` resource, this resource can be used to add additional ones to a cluster.
  * 
  * ## Example Usage
  * 
@@ -31,8 +33,6 @@ import {DropletSlug} from "./index";
  *     tags: ["backend"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
  */
 export class KubernetesNodePool extends pulumi.CustomResource {
     /**
@@ -78,8 +78,8 @@ export class KubernetesNodePool extends pulumi.CustomResource {
      * - `id` -  A unique ID that can be used to identify and reference the node.
      * - `name` - The auto-generated name for the node.
      * - `status` -  A string indicating the current status of the individual node.
-     * - `createdAt` - The date and time when the node was created.
-     * - `updatedAt` - The date and time when the node was last updated.
+     * - `created_at` - The date and time when the node was created.
+     * - `updated_at` - The date and time when the node was last updated.
      */
     public /*out*/ readonly nodes!: pulumi.Output<{ createdAt: string, id: string, name: string, status: string, updatedAt: string }[]>;
     /**
@@ -127,13 +127,6 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["nodes"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super(KubernetesNodePool.__pulumiType, name, inputs, opts);
     }
 }
@@ -159,8 +152,8 @@ export interface KubernetesNodePoolState {
      * - `id` -  A unique ID that can be used to identify and reference the node.
      * - `name` - The auto-generated name for the node.
      * - `status` -  A string indicating the current status of the individual node.
-     * - `createdAt` - The date and time when the node was created.
-     * - `updatedAt` - The date and time when the node was last updated.
+     * - `created_at` - The date and time when the node was created.
+     * - `updated_at` - The date and time when the node was last updated.
      */
     readonly nodes?: pulumi.Input<pulumi.Input<{ createdAt?: pulumi.Input<string>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, status?: pulumi.Input<string>, updatedAt?: pulumi.Input<string> }>[]>;
     /**

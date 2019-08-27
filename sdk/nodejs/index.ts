@@ -17,7 +17,6 @@ export * from "./firewall";
 export * from "./floatingIp";
 export * from "./floatingIpAssignment";
 export * from "./getCertificate";
-export * from "./getDatabaseCluster";
 export * from "./getDomain";
 export * from "./getDroplet";
 export * from "./getDropletSnapshot";

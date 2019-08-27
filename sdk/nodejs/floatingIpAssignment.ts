@@ -27,11 +27,9 @@ import * as utilities from "./utilities";
  * });
  * const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobar", {
  *     dropletId: foobarDroplet.id,
- *     ipAddress: foobarFloatingIp.ipAddress,
+ *     ipAddress: foobarFloatingIp.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip_assignment.html.markdown.
  */
 export class FloatingIpAssignment extends pulumi.CustomResource {
     /**
@@ -93,13 +91,6 @@ export class FloatingIpAssignment extends pulumi.CustomResource {
             }
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
-        }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
         }
         super(FloatingIpAssignment.__pulumiType, name, inputs, opts);
     }

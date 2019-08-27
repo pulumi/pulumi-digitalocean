@@ -24,8 +24,6 @@ import {Region} from "./index";
  *     volumeId: foobarVolume.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
  */
 export class VolumeSnapshot extends pulumi.CustomResource {
     /**
@@ -108,13 +106,6 @@ export class VolumeSnapshot extends pulumi.CustomResource {
             inputs["minDiskSize"] = undefined /*out*/;
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
-        }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
         }
         super(VolumeSnapshot.__pulumiType, name, inputs, opts);
     }

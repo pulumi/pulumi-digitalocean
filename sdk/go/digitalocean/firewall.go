@@ -9,8 +9,6 @@ import (
 
 // Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
 // modify, and delete Firewalls.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
 type Firewall struct {
 	s *pulumi.ResourceState
 }
@@ -87,7 +85,7 @@ func (r *Firewall) DropletIds() *pulumi.ArrayOutput {
 }
 
 // The inbound access rule block for the Firewall.
-// The `inboundRule` block is documented below.
+// The `inbound_rule` block is documented below.
 func (r *Firewall) InboundRules() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["inboundRules"])
 }
@@ -98,12 +96,12 @@ func (r *Firewall) Name() *pulumi.StringOutput {
 }
 
 // The outbound access rule block for the Firewall.
-// The `outboundRule` block is documented below.
+// The `outbound_rule` block is documented below.
 func (r *Firewall) OutboundRules() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["outboundRules"])
 }
 
-// An list of object containing the fields, "dropletId",
+// An list of object containing the fields, "droplet_id",
 // "removing", and "status".  It is provided to detail exactly which Droplets
 // are having their security policies updated.  When empty, all changes
 // have been successfully applied.
@@ -131,14 +129,14 @@ type FirewallState struct {
 	// to the Firewall.
 	DropletIds interface{}
 	// The inbound access rule block for the Firewall.
-	// The `inboundRule` block is documented below.
+	// The `inbound_rule` block is documented below.
 	InboundRules interface{}
 	// The Firewall name
 	Name interface{}
 	// The outbound access rule block for the Firewall.
-	// The `outboundRule` block is documented below.
+	// The `outbound_rule` block is documented below.
 	OutboundRules interface{}
-	// An list of object containing the fields, "dropletId",
+	// An list of object containing the fields, "droplet_id",
 	// "removing", and "status".  It is provided to detail exactly which Droplets
 	// are having their security policies updated.  When empty, all changes
 	// have been successfully applied.
@@ -156,12 +154,12 @@ type FirewallArgs struct {
 	// to the Firewall.
 	DropletIds interface{}
 	// The inbound access rule block for the Firewall.
-	// The `inboundRule` block is documented below.
+	// The `inbound_rule` block is documented below.
 	InboundRules interface{}
 	// The Firewall name
 	Name interface{}
 	// The outbound access rule block for the Firewall.
-	// The `outboundRule` block is documented below.
+	// The `outbound_rule` block is documented below.
 	OutboundRules interface{}
 	// The names of the Tags assigned to the Firewall.
 	Tags interface{}

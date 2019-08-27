@@ -31,32 +31,22 @@ class GetFloatingIpResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-class AwaitableGetFloatingIpResult(GetFloatingIpResult):
-    # pylint: disable=using-constant-test
-    def __await__(self):
-        if False:
-            yield self
-        return GetFloatingIpResult(
-            droplet_id=self.droplet_id,
-            ip_address=self.ip_address,
-            region=self.region,
-            urn=self.urn,
-            id=self.id)
 
-def get_floating_ip(ip_address=None,opts=None):
+async def get_floating_ip(ip_address=None,opts=None):
     """
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/floating_ip.html.markdown.
+    Get information on a floating ip. This data source provides the region and Droplet id
+    as configured on your DigitalOcean account. This is useful if the floating IP
+    in question is not managed by Terraform or you need to find the Droplet the IP is
+    attached to.
+    
+    An error is triggered if the provided floating IP does not exist.
     """
     __args__ = dict()
 
     __args__['ipAddress'] = ip_address
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts).value
+    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts)
 
-    return AwaitableGetFloatingIpResult(
+    return GetFloatingIpResult(
         droplet_id=__ret__.get('dropletId'),
         ip_address=__ret__.get('ipAddress'),
         region=__ret__.get('region'),

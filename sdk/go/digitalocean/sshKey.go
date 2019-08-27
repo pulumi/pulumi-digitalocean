@@ -12,8 +12,6 @@ import (
 // keys for Droplet access. Keys created with this resource
 // can be referenced in your Droplet configuration via their ID or
 // fingerprint.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/ssh_key.html.markdown.
 type SshKey struct {
 	s *pulumi.ResourceState
 }
