@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Update to v1.7.0 of the DigitalOcean Terraform Provider
+* Upgrade pulumi-terraform to 3f206601e7
 
 ---
 
