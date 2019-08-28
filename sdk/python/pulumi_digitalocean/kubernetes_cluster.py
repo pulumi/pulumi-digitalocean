@@ -205,11 +205,11 @@ class KubernetesCluster(pulumi.CustomResource):
         
         The **kube_configs** object supports the following:
         
-          * `client_certificate` (`pulumi.Input[str]`)
-          * `client_key` (`pulumi.Input[str]`)
-          * `cluster_ca_certificate` (`pulumi.Input[str]`)
+          * `clientCertificate` (`pulumi.Input[str]`)
+          * `clientKey` (`pulumi.Input[str]`)
+          * `clusterCaCertificate` (`pulumi.Input[str]`)
           * `host` (`pulumi.Input[str]`)
-          * `raw_config` (`pulumi.Input[str]`)
+          * `rawConfig` (`pulumi.Input[str]`)
         
         The **node_pool** object supports the following:
         

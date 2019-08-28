@@ -25,20 +25,20 @@ class Firewall(pulumi.CustomResource):
     The inbound access rule block for the Firewall.
     The `inbound_rule` block is documented below.
     
-      * `port_range` (`str`) - The ports on which traffic will be allowed
+      * `portRange` (`str`) - The ports on which traffic will be allowed
         specified as a string containing a single port, a range (e.g. "8000-9000"),
         or "1-65535" to open all ports for a protocol. Required for when protocol is
         `tcp` or `udp`.
       * `protocol` (`str`) - The type of traffic to be allowed.
         This may be one of "tcp", "udp", or "icmp".
-      * `source_addresses` (`list`) - An array of strings containing the IPv4
+      * `sourceAddresses` (`list`) - An array of strings containing the IPv4
         addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
         inbound traffic will be accepted.
-      * `source_droplet_ids` (`list`) - An array containing the IDs of
+      * `sourceDropletIds` (`list`) - An array containing the IDs of
         the Droplets from which the inbound traffic will be accepted.
-      * `source_load_balancer_uids` (`list`) - An array containing the IDs
+      * `sourceLoadBalancerUids` (`list`) - An array containing the IDs
         of the Load Balancers from which the inbound traffic will be accepted.
-      * `source_tags` (`list`) - An array containing the names of Tags
+      * `sourceTags` (`list`) - An array containing the names of Tags
         corresponding to groups of Droplets from which the inbound traffic
         will be accepted.
     """
@@ -51,18 +51,18 @@ class Firewall(pulumi.CustomResource):
     The outbound access rule block for the Firewall.
     The `outbound_rule` block is documented below.
     
-      * `destination_addresses` (`list`) - An array of strings containing the IPv4
+      * `destinationAddresses` (`list`) - An array of strings containing the IPv4
         addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
         outbound traffic will be allowed.
-      * `destination_droplet_ids` (`list`) - An array containing the IDs of
+      * `destinationDropletIds` (`list`) - An array containing the IDs of
         the Droplets to which the outbound traffic will be allowed.
-      * `destination_load_balancer_uids` (`list`) - An array containing the IDs
+      * `destinationLoadBalancerUids` (`list`) - An array containing the IDs
         of the Load Balancers to which the outbound traffic will be allowed.
-      * `destination_tags` (`list`) - An array containing the names of Tags
+      * `destinationTags` (`list`) - An array containing the names of Tags
         corresponding to groups of Droplets to which the outbound traffic will
         be allowed.
         traffic.
-      * `port_range` (`str`) - The ports on which traffic will be allowed
+      * `portRange` (`str`) - The ports on which traffic will be allowed
         specified as a string containing a single port, a range (e.g. "8000-9000"),
         or "1-65535" to open all ports for a protocol. Required for when protocol is
         `tcp` or `udp`.
@@ -108,37 +108,37 @@ class Firewall(pulumi.CustomResource):
         
         The **inbound_rules** object supports the following:
         
-          * `port_range` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
+          * `portRange` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
             specified as a string containing a single port, a range (e.g. "8000-9000"),
             or "1-65535" to open all ports for a protocol. Required for when protocol is
             `tcp` or `udp`.
           * `protocol` (`pulumi.Input[str]`) - The type of traffic to be allowed.
             This may be one of "tcp", "udp", or "icmp".
-          * `source_addresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
+          * `sourceAddresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
             addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
             inbound traffic will be accepted.
-          * `source_droplet_ids` (`pulumi.Input[list]`) - An array containing the IDs of
+          * `sourceDropletIds` (`pulumi.Input[list]`) - An array containing the IDs of
             the Droplets from which the inbound traffic will be accepted.
-          * `source_load_balancer_uids` (`pulumi.Input[list]`) - An array containing the IDs
+          * `sourceLoadBalancerUids` (`pulumi.Input[list]`) - An array containing the IDs
             of the Load Balancers from which the inbound traffic will be accepted.
-          * `source_tags` (`pulumi.Input[list]`) - An array containing the names of Tags
+          * `sourceTags` (`pulumi.Input[list]`) - An array containing the names of Tags
             corresponding to groups of Droplets from which the inbound traffic
             will be accepted.
         
         The **outbound_rules** object supports the following:
         
-          * `destination_addresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
+          * `destinationAddresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
             addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
             outbound traffic will be allowed.
-          * `destination_droplet_ids` (`pulumi.Input[list]`) - An array containing the IDs of
+          * `destinationDropletIds` (`pulumi.Input[list]`) - An array containing the IDs of
             the Droplets to which the outbound traffic will be allowed.
-          * `destination_load_balancer_uids` (`pulumi.Input[list]`) - An array containing the IDs
+          * `destinationLoadBalancerUids` (`pulumi.Input[list]`) - An array containing the IDs
             of the Load Balancers to which the outbound traffic will be allowed.
-          * `destination_tags` (`pulumi.Input[list]`) - An array containing the names of Tags
+          * `destinationTags` (`pulumi.Input[list]`) - An array containing the names of Tags
             corresponding to groups of Droplets to which the outbound traffic will
             be allowed.
             traffic.
-          * `port_range` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
+          * `portRange` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
             specified as a string containing a single port, a range (e.g. "8000-9000"),
             or "1-65535" to open all ports for a protocol. Required for when protocol is
             `tcp` or `udp`.
@@ -206,37 +206,37 @@ class Firewall(pulumi.CustomResource):
         
         The **inbound_rules** object supports the following:
         
-          * `port_range` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
+          * `portRange` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
             specified as a string containing a single port, a range (e.g. "8000-9000"),
             or "1-65535" to open all ports for a protocol. Required for when protocol is
             `tcp` or `udp`.
           * `protocol` (`pulumi.Input[str]`) - The type of traffic to be allowed.
             This may be one of "tcp", "udp", or "icmp".
-          * `source_addresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
+          * `sourceAddresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
             addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
             inbound traffic will be accepted.
-          * `source_droplet_ids` (`pulumi.Input[list]`) - An array containing the IDs of
+          * `sourceDropletIds` (`pulumi.Input[list]`) - An array containing the IDs of
             the Droplets from which the inbound traffic will be accepted.
-          * `source_load_balancer_uids` (`pulumi.Input[list]`) - An array containing the IDs
+          * `sourceLoadBalancerUids` (`pulumi.Input[list]`) - An array containing the IDs
             of the Load Balancers from which the inbound traffic will be accepted.
-          * `source_tags` (`pulumi.Input[list]`) - An array containing the names of Tags
+          * `sourceTags` (`pulumi.Input[list]`) - An array containing the names of Tags
             corresponding to groups of Droplets from which the inbound traffic
             will be accepted.
         
         The **outbound_rules** object supports the following:
         
-          * `destination_addresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
+          * `destinationAddresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
             addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
             outbound traffic will be allowed.
-          * `destination_droplet_ids` (`pulumi.Input[list]`) - An array containing the IDs of
+          * `destinationDropletIds` (`pulumi.Input[list]`) - An array containing the IDs of
             the Droplets to which the outbound traffic will be allowed.
-          * `destination_load_balancer_uids` (`pulumi.Input[list]`) - An array containing the IDs
+          * `destinationLoadBalancerUids` (`pulumi.Input[list]`) - An array containing the IDs
             of the Load Balancers to which the outbound traffic will be allowed.
-          * `destination_tags` (`pulumi.Input[list]`) - An array containing the names of Tags
+          * `destinationTags` (`pulumi.Input[list]`) - An array containing the names of Tags
             corresponding to groups of Droplets to which the outbound traffic will
             be allowed.
             traffic.
-          * `port_range` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
+          * `portRange` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
             specified as a string containing a single port, a range (e.g. "8000-9000"),
             or "1-65535" to open all ports for a protocol. Required for when protocol is
             `tcp` or `udp`.
