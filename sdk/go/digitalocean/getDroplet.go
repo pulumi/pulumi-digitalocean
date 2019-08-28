@@ -19,6 +19,7 @@ func LookupDroplet(ctx *pulumi.Context, args *GetDropletArgs) (*GetDropletResult
 	}
 	return &GetDropletResult{
 		Backups: outputs["backups"],
+		CreatedAt: outputs["createdAt"],
 		Disk: outputs["disk"],
 		Image: outputs["image"],
 		Ipv4Address: outputs["ipv4Address"],
@@ -54,6 +55,7 @@ type GetDropletArgs struct {
 type GetDropletResult struct {
 	// Whether backups are enabled.
 	Backups interface{}
+	CreatedAt interface{}
 	// The size of the Droplets disk in GB.
 	Disk interface{}
 	// The Droplet image ID or slug.

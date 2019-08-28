@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetVolumeSnapshotResult:
@@ -83,6 +84,11 @@ def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,o
     Volume snapshots are saved instances of a block storage volume. Use this data
     source to retrieve the ID of a DigitalOcean volume snapshot for use in other
     resources.
+    
+    :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.
+    :param str name: The name of the volume snapshot.
+    :param str name_regex: A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+    :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.markdown.
     """
@@ -93,7 +99,7 @@ def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,o
     __args__['nameRegex'] = name_regex
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolumeSnapshot:getVolumeSnapshot', __args__, opts=opts).value

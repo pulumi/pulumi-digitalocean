@@ -59,6 +59,7 @@ func NewDroplet(ctx *pulumi.Context,
 		inputs["userData"] = args.UserData
 		inputs["volumeIds"] = args.VolumeIds
 	}
+	inputs["createdAt"] = nil
 	inputs["disk"] = nil
 	inputs["ipv4Address"] = nil
 	inputs["ipv4AddressPrivate"] = nil
@@ -84,6 +85,7 @@ func GetDroplet(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["backups"] = state.Backups
+		inputs["createdAt"] = state.CreatedAt
 		inputs["disk"] = state.Disk
 		inputs["image"] = state.Image
 		inputs["ipv4Address"] = state.Ipv4Address
@@ -129,6 +131,10 @@ func (r *Droplet) ID() *pulumi.IDOutput {
 // false.
 func (r *Droplet) Backups() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["backups"])
+}
+
+func (r *Droplet) CreatedAt() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The size of the instance's disk in GB
@@ -259,6 +265,7 @@ type DropletState struct {
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups interface{}
+	CreatedAt interface{}
 	// The size of the instance's disk in GB
 	Disk interface{}
 	// The Droplet image ID or slug.

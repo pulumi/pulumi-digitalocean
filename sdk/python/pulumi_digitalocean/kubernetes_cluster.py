@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class KubernetesCluster(pulumi.CustomResource):
@@ -37,6 +38,26 @@ class KubernetesCluster(pulumi.CustomResource):
     - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
     - `node_count` - (Required) The number of Droplet instances in the node pool.
     - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+    
+      * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+      * `name` (`str`) - A name for the Kubernetes cluster.
+      * `node_count` (`float`)
+      * `nodes` (`list`)
+    
+        * `created_at` (`str`) - The date and time when the Kubernetes cluster was created.
+        * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+        * `name` (`str`) - A name for the Kubernetes cluster.
+        * `status` (`str`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+        * `updated_at` (`str`) - The date and time when the Kubernetes cluster was last updated.
+          * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+          - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+          - `host` - The URL of the API server on the Kubernetes master node.
+          - `client_key` - The base64 encoded private key used by clients to access the cluster.
+          - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
+          - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+    
+      * `size` (`str`)
+      * `tags` (`list`) - A list of tag names to be applied to the Kubernetes cluster.
     """
     region: pulumi.Output[str]
     """
@@ -83,6 +104,28 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster.
+        
+        The **node_pool** object supports the following:
+        
+          * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+          * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
+          * `node_count` (`pulumi.Input[float]`)
+          * `nodes` (`pulumi.Input[list]`)
+        
+            * `created_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was created.
+            * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+            * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
+            * `status` (`pulumi.Input[str]`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+            * `updated_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was last updated.
+              * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+              - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+              - `host` - The URL of the API server on the Kubernetes master node.
+              - `client_key` - The base64 encoded private key used by clients to access the cluster.
+              - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
+              - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+        
+          * `size` (`pulumi.Input[str]`)
+          * `tags` (`pulumi.Input[list]`) - A list of tag names to be applied to the Kubernetes cluster.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
         """
@@ -133,6 +176,7 @@ class KubernetesCluster(pulumi.CustomResource):
         """
         Get an existing KubernetesCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -158,10 +202,40 @@ class KubernetesCluster(pulumi.CustomResource):
                - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
                - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster.
+        
+        The **kube_configs** object supports the following:
+        
+          * `client_certificate` (`pulumi.Input[str]`)
+          * `client_key` (`pulumi.Input[str]`)
+          * `cluster_ca_certificate` (`pulumi.Input[str]`)
+          * `host` (`pulumi.Input[str]`)
+          * `raw_config` (`pulumi.Input[str]`)
+        
+        The **node_pool** object supports the following:
+        
+          * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+          * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
+          * `node_count` (`pulumi.Input[float]`)
+          * `nodes` (`pulumi.Input[list]`)
+        
+            * `created_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was created.
+            * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+            * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
+            * `status` (`pulumi.Input[str]`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+            * `updated_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was last updated.
+              * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+              - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+              - `host` - The URL of the API server on the Kubernetes master node.
+              - `client_key` - The base64 encoded private key used by clients to access the cluster.
+              - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
+              - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+        
+          * `size` (`pulumi.Input[str]`)
+          * `tags` (`pulumi.Input[list]`) - A list of tag names to be applied to the Kubernetes cluster.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["cluster_subnet"] = cluster_subnet

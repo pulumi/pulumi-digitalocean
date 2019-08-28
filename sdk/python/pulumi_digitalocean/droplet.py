@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class Droplet(pulumi.CustomResource):
@@ -14,6 +15,7 @@ class Droplet(pulumi.CustomResource):
     Boolean controlling if backups are made. Defaults to
     false.
     """
+    created_at: pulumi.Output[str]
     disk: pulumi.Output[float]
     """
     The size of the instance's disk in GB
@@ -181,6 +183,7 @@ class Droplet(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['user_data'] = user_data
             __props__['volume_ids'] = volume_ids
+            __props__['created_at'] = None
             __props__['disk'] = None
             __props__['ipv4_address'] = None
             __props__['ipv4_address_private'] = None
@@ -199,10 +202,11 @@ class Droplet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backups=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, resize_disk=None, size=None, ssh_keys=None, status=None, tags=None, urn=None, user_data=None, vcpus=None, volume_ids=None):
+    def get(resource_name, id, opts=None, backups=None, created_at=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, resize_disk=None, size=None, ssh_keys=None, status=None, tags=None, urn=None, user_data=None, vcpus=None, volume_ids=None):
         """
         Get an existing Droplet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -242,10 +246,11 @@ class Droplet(pulumi.CustomResource):
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["backups"] = backups
+        __props__["created_at"] = created_at
         __props__["disk"] = disk
         __props__["image"] = image
         __props__["ipv4_address"] = ipv4_address

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetCertificateResult:
@@ -53,13 +54,17 @@ class AwaitableGetCertificateResult(GetCertificateResult):
 
 def get_certificate(name=None,opts=None):
     """
+    Use this data source to access information about an existing resource.
+    
+    :param str name: The name of certificate.
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/certificate.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getCertificate:getCertificate', __args__, opts=opts).value

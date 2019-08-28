@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetKubernetesClusterResult:
@@ -131,6 +132,10 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
 
 def get_kubernetes_cluster(name=None,tags=None,opts=None):
     """
+    Use this data source to access information about an existing resource.
+    
+    :param str name: The name of Kubernetes cluster.
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_cluster.html.markdown.
     """
     __args__ = dict()
@@ -138,7 +143,7 @@ def get_kubernetes_cluster(name=None,tags=None,opts=None):
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts).value

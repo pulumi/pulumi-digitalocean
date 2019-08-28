@@ -638,6 +638,8 @@ github.com/pulumi/pulumi-terraform v0.18.4-0.20190805204638-013b95b1c891 h1:mPKG
 github.com/pulumi/pulumi-terraform v0.18.4-0.20190805204638-013b95b1c891/go.mod h1:HVA/Fkv+5PvaVY7LaBARUq1fzprob6GMLUgPZyHUXSs=
 github.com/pulumi/pulumi-terraform v0.18.4-0.20190809001837-9db2fc93cdf5 h1:k34JNaNxiwGF8ev6F9gAyZPwgMSDNCSqeofS2XMmFsM=
 github.com/pulumi/pulumi-terraform v0.18.4-0.20190809001837-9db2fc93cdf5/go.mod h1:/rpxRQe8RtRHrrmgmCXHA/9bSj7qxL2NvjmHCDfK77U=
+github.com/pulumi/pulumi-terraform v0.18.4-0.20190827150722-0e77e7dbedd5 h1:9/vjELlblRZEoNIhxY3kvsTUb8iKAuf9yXAzSPe5VZM=
+github.com/pulumi/pulumi-terraform v0.18.4-0.20190827150722-0e77e7dbedd5/go.mod h1:/rpxRQe8RtRHrrmgmCXHA/9bSj7qxL2NvjmHCDfK77U=
 github.com/pulumi/scripts v0.0.0-20190410070955-3e8f41455b9c h1:drINzqHlyUAhoSSn9bjUCfjg0RKLbD2166OXy/g1sxw=
 github.com/pulumi/scripts v0.0.0-20190410070955-3e8f41455b9c/go.mod h1:ZEj/wbB9HtXA9U6xWWpe9U+7vuDpiTIIt7Gca/XpfsA=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
@@ -744,6 +746,8 @@ github.com/terraform-providers/terraform-provider-digitalocean v1.5.0 h1:HrfxiVi
 github.com/terraform-providers/terraform-provider-digitalocean v1.5.0/go.mod h1:kqZ89MaM5SdLl06dGlAoKqcEPH2LK68x62orrvLjJaQ=
 github.com/terraform-providers/terraform-provider-digitalocean v1.6.0 h1:w6WH705bYjGkM15Igd7dJGkGNkc2+/+5kXNnDVZ9CJo=
 github.com/terraform-providers/terraform-provider-digitalocean v1.6.0/go.mod h1:mmQbW7ptDLLP/MO52bn3fQupr5A9B/whkHW+LPw7RG4=
+github.com/terraform-providers/terraform-provider-digitalocean v1.7.0 h1:7bhBfldbDSR0RmKSjf+Dj6RMzIHtkS15Ar4soPf2XfM=
+github.com/terraform-providers/terraform-provider-digitalocean v1.7.0/go.mod h1:mmQbW7ptDLLP/MO52bn3fQupr5A9B/whkHW+LPw7RG4=
 github.com/terraform-providers/terraform-provider-google v1.20.0/go.mod h1:Ay9UTdQsm6vHYRjhyFRLPis39XspOYHmgy5pwNrgsco=
 github.com/terraform-providers/terraform-provider-kubernetes v1.7.0/go.mod h1:51+WwAiQsHX1tvpXEXgoanCx2jrKwPcD/oD9WjiVqPw=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=

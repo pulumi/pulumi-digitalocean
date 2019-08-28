@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {DropletSlug} from "./index";
@@ -81,7 +83,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
      * - `createdAt` - The date and time when the node was created.
      * - `updatedAt` - The date and time when the node was last updated.
      */
-    public /*out*/ readonly nodes!: pulumi.Output<{ createdAt: string, id: string, name: string, status: string, updatedAt: string }[]>;
+    public /*out*/ readonly nodes!: pulumi.Output<outputs.KubernetesNodePoolNode[]>;
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
@@ -162,7 +164,7 @@ export interface KubernetesNodePoolState {
      * - `createdAt` - The date and time when the node was created.
      * - `updatedAt` - The date and time when the node was last updated.
      */
-    readonly nodes?: pulumi.Input<pulumi.Input<{ createdAt?: pulumi.Input<string>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, status?: pulumi.Input<string>, updatedAt?: pulumi.Input<string> }>[]>;
+    readonly nodes?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolNode>[]>;
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -54,7 +56,7 @@ export interface GetKubernetesClusterResult {
      * The public IPv4 address of the Kubernetes master node.
      */
     readonly ipv4Address: string;
-    readonly kubeConfigs: { clientCertificate: string, clientKey: string, clusterCaCertificate: string, host: string, rawConfig: string }[];
+    readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];
     readonly name: string;
     /**
      * A list of node pools associated with the cluster. Each node pool exports the following attributes:
@@ -70,7 +72,7 @@ export interface GetKubernetesClusterResult {
      * + `createdAt` - The date and time when the node was created.
      * + `updatedAt` - The date and time when the node was last updated.
      */
-    readonly nodePools: { id: string, name: string, nodeCount: number, nodes: { createdAt: string, id: string, name: string, status: string, updatedAt: string }[], size: string, tags?: string[] }[];
+    readonly nodePools: outputs.GetKubernetesClusterNodePool[];
     /**
      * The slug identifier for the region where the Kubernetes cluster is located.
      */

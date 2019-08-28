@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class LoadBalancer(pulumi.CustomResource):
@@ -33,11 +34,26 @@ class LoadBalancer(pulumi.CustomResource):
     """
     A list of `forwarding_rule` to be assigned to the
     Load Balancer. The `forwarding_rule` block is documented below.
+    
+      * `certificate_id` (`str`) - The ID of the TLS certificate to be used for SSL termination.
+      * `entry_port` (`float`) - An integer representing the port on which the Load Balancer instance will listen.
+      * `entry_protocol` (`str`) - The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+      * `target_port` (`float`) - An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
+      * `target_protocol` (`str`) - The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+      * `tls_passthrough` (`bool`) - A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
     """
     healthcheck: pulumi.Output[dict]
     """
     A `healthcheck` block to be assigned to the
     Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+    
+      * `check_interval_seconds` (`float`) - The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+      * `healthy_threshold` (`float`) - The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+      * `path` (`str`) - The path on the backend Droplets to which the Load Balancer instance will send a request.
+      * `port` (`float`) - An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+      * `protocol` (`str`) - The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+      * `response_timeout_seconds` (`float`) - The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+      * `unhealthy_threshold` (`float`) - The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
     """
     ip: pulumi.Output[str]
     name: pulumi.Output[str]
@@ -59,6 +75,10 @@ class LoadBalancer(pulumi.CustomResource):
     """
     A `sticky_sessions` block to be assigned to the
     Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+    
+      * `cookie_name` (`str`) - The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
+      * `cookie_ttl_seconds` (`float`) - The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
+      * `type` (`str`) - An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
     """
     urn: pulumi.Output[str]
     """
@@ -90,6 +110,31 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region to start in
         :param pulumi.Input[dict] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        
+        The **forwarding_rules** object supports the following:
+        
+          * `certificate_id` (`pulumi.Input[str]`) - The ID of the TLS certificate to be used for SSL termination.
+          * `entry_port` (`pulumi.Input[float]`) - An integer representing the port on which the Load Balancer instance will listen.
+          * `entry_protocol` (`pulumi.Input[str]`) - The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+          * `target_port` (`pulumi.Input[float]`) - An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
+          * `target_protocol` (`pulumi.Input[str]`) - The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+          * `tls_passthrough` (`pulumi.Input[bool]`) - A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
+        
+        The **healthcheck** object supports the following:
+        
+          * `check_interval_seconds` (`pulumi.Input[float]`) - The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+          * `healthy_threshold` (`pulumi.Input[float]`) - The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+          * `path` (`pulumi.Input[str]`) - The path on the backend Droplets to which the Load Balancer instance will send a request.
+          * `port` (`pulumi.Input[float]`) - An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+          * `protocol` (`pulumi.Input[str]`) - The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+          * `response_timeout_seconds` (`pulumi.Input[float]`) - The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+          * `unhealthy_threshold` (`pulumi.Input[float]`) - The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
+        
+        The **sticky_sessions** object supports the following:
+        
+          * `cookie_name` (`pulumi.Input[str]`) - The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
+          * `cookie_ttl_seconds` (`pulumi.Input[float]`) - The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
+          * `type` (`pulumi.Input[str]`) - An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
         """
@@ -138,6 +183,7 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -161,10 +207,35 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[dict] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] urn: The uniform resource name for the Load Balancer
+        
+        The **forwarding_rules** object supports the following:
+        
+          * `certificate_id` (`pulumi.Input[str]`) - The ID of the TLS certificate to be used for SSL termination.
+          * `entry_port` (`pulumi.Input[float]`) - An integer representing the port on which the Load Balancer instance will listen.
+          * `entry_protocol` (`pulumi.Input[str]`) - The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+          * `target_port` (`pulumi.Input[float]`) - An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
+          * `target_protocol` (`pulumi.Input[str]`) - The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+          * `tls_passthrough` (`pulumi.Input[bool]`) - A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
+        
+        The **healthcheck** object supports the following:
+        
+          * `check_interval_seconds` (`pulumi.Input[float]`) - The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+          * `healthy_threshold` (`pulumi.Input[float]`) - The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+          * `path` (`pulumi.Input[str]`) - The path on the backend Droplets to which the Load Balancer instance will send a request.
+          * `port` (`pulumi.Input[float]`) - An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+          * `protocol` (`pulumi.Input[str]`) - The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+          * `response_timeout_seconds` (`pulumi.Input[float]`) - The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+          * `unhealthy_threshold` (`pulumi.Input[float]`) - The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
+        
+        The **sticky_sessions** object supports the following:
+        
+          * `cookie_name` (`pulumi.Input[str]`) - The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
+          * `cookie_ttl_seconds` (`pulumi.Input[float]`) - The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
+          * `type` (`pulumi.Input[str]`) - An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["algorithm"] = algorithm

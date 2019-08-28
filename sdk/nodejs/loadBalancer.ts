@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {Algorithm, Region} from "./index";
@@ -127,12 +129,12 @@ export class LoadBalancer extends pulumi.CustomResource {
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    public readonly forwardingRules!: pulumi.Output<{ certificateId?: string, entryPort: number, entryProtocol: string, targetPort: number, targetProtocol: string, tlsPassthrough?: boolean }[]>;
+    public readonly forwardingRules!: pulumi.Output<outputs.LoadBalancerForwardingRule[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    public readonly healthcheck!: pulumi.Output<{ checkIntervalSeconds?: number, healthyThreshold?: number, path?: string, port: number, protocol: string, responseTimeoutSeconds?: number, unhealthyThreshold?: number }>;
+    public readonly healthcheck!: pulumi.Output<outputs.LoadBalancerHealthcheck>;
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
      * The Load Balancer name
@@ -153,7 +155,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    public readonly stickySessions!: pulumi.Output<{ cookieName?: string, cookieTtlSeconds?: number, type?: string }>;
+    public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
     /**
      * The uniform resource name for the Load Balancer
      */
@@ -245,12 +247,12 @@ export interface LoadBalancerState {
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    readonly forwardingRules?: pulumi.Input<pulumi.Input<{ certificateId?: pulumi.Input<string>, entryPort: pulumi.Input<number>, entryProtocol: pulumi.Input<string>, targetPort: pulumi.Input<number>, targetProtocol: pulumi.Input<string>, tlsPassthrough?: pulumi.Input<boolean> }>[]>;
+    readonly forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    readonly healthcheck?: pulumi.Input<{ checkIntervalSeconds?: pulumi.Input<number>, healthyThreshold?: pulumi.Input<number>, path?: pulumi.Input<string>, port: pulumi.Input<number>, protocol: pulumi.Input<string>, responseTimeoutSeconds?: pulumi.Input<number>, unhealthyThreshold?: pulumi.Input<number> }>;
+    readonly healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
     readonly ip?: pulumi.Input<string>;
     /**
      * The Load Balancer name
@@ -271,7 +273,7 @@ export interface LoadBalancerState {
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    readonly stickySessions?: pulumi.Input<{ cookieName?: pulumi.Input<string>, cookieTtlSeconds?: pulumi.Input<number>, type?: pulumi.Input<string> }>;
+    readonly stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
      * The uniform resource name for the Load Balancer
      */
@@ -306,12 +308,12 @@ export interface LoadBalancerArgs {
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    readonly forwardingRules: pulumi.Input<pulumi.Input<{ certificateId?: pulumi.Input<string>, entryPort: pulumi.Input<number>, entryProtocol: pulumi.Input<string>, targetPort: pulumi.Input<number>, targetProtocol: pulumi.Input<string>, tlsPassthrough?: pulumi.Input<boolean> }>[]>;
+    readonly forwardingRules: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    readonly healthcheck?: pulumi.Input<{ checkIntervalSeconds?: pulumi.Input<number>, healthyThreshold?: pulumi.Input<number>, path?: pulumi.Input<string>, port: pulumi.Input<number>, protocol: pulumi.Input<string>, responseTimeoutSeconds?: pulumi.Input<number>, unhealthyThreshold?: pulumi.Input<number> }>;
+    readonly healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
     /**
      * The Load Balancer name
      */
@@ -330,5 +332,5 @@ export interface LoadBalancerArgs {
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    readonly stickySessions?: pulumi.Input<{ cookieName?: pulumi.Input<string>, cookieTtlSeconds?: pulumi.Input<number>, type?: pulumi.Input<string> }>;
+    readonly stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
 }

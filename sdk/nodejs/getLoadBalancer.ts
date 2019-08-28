@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -40,14 +42,14 @@ export interface GetLoadBalancerResult {
     readonly dropletIds: number[];
     readonly dropletTag: string;
     readonly enableProxyProtocol: boolean;
-    readonly forwardingRules: { certificateId: string, entryPort: number, entryProtocol: string, targetPort: number, targetProtocol: string, tlsPassthrough: boolean }[];
-    readonly healthcheck: { checkIntervalSeconds: number, healthyThreshold: number, path: string, port: number, protocol: string, responseTimeoutSeconds: number, unhealthyThreshold: number };
+    readonly forwardingRules: outputs.GetLoadBalancerForwardingRule[];
+    readonly healthcheck: outputs.GetLoadBalancerHealthcheck;
     readonly ip: string;
     readonly name: string;
     readonly redirectHttpToHttps: boolean;
     readonly region: string;
     readonly status: string;
-    readonly stickySessions: { cookieName: string, cookieTtlSeconds: number, type: string };
+    readonly stickySessions: outputs.GetLoadBalancerStickySessions;
     readonly urn: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

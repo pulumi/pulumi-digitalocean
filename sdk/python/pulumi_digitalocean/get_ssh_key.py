@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetSshKeyResult:
@@ -41,13 +42,17 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
 
 def get_ssh_key(name=None,opts=None):
     """
+    Use this data source to access information about an existing resource.
+    
+    :param str name: The name of the ssh key.
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/ssh_key.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getSshKey:getSshKey', __args__, opts=opts).value

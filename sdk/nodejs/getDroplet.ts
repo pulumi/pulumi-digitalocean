@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -40,6 +42,7 @@ export interface GetDropletResult {
      * Whether backups are enabled.
      */
     readonly backups: boolean;
+    readonly createdAt: string;
     /**
      * The size of the Droplets disk in GB.
      */

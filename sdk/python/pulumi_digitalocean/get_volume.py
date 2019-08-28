@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetVolumeResult:
@@ -76,6 +77,11 @@ class AwaitableGetVolumeResult(GetVolumeResult):
 
 def get_volume(description=None,name=None,region=None,opts=None):
     """
+    Use this data source to access information about an existing resource.
+    
+    :param str name: The name of block storage volume.
+    :param str region: The region the block storage volume is provisioned in.
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume.html.markdown.
     """
     __args__ = dict()
@@ -84,7 +90,7 @@ def get_volume(description=None,name=None,region=None,opts=None):
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts).value

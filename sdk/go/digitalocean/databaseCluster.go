@@ -30,9 +30,6 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 	if args == nil || args.Size == nil {
 		return nil, errors.New("missing required argument 'Size'")
 	}
-	if args == nil || args.Version == nil {
-		return nil, errors.New("missing required argument 'Version'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["engine"] = nil
@@ -108,7 +105,7 @@ func (r *DatabaseCluster) Database() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["database"])
 }
 
-// Database engine used by the cluster (ex. `pg` for PostreSQL).
+// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
 func (r *DatabaseCluster) Engine() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["engine"])
 }
@@ -177,7 +174,7 @@ func (r *DatabaseCluster) Version() *pulumi.StringOutput {
 type DatabaseClusterState struct {
 	// Name of the cluster's default database.
 	Database interface{}
-	// Database engine used by the cluster (ex. `pg` for PostreSQL).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
 	Engine interface{}
 	// Database cluster's hostname.
 	Host interface{}
@@ -207,7 +204,7 @@ type DatabaseClusterState struct {
 
 // The set of arguments for constructing a DatabaseCluster resource.
 type DatabaseClusterArgs struct {
-	// Database engine used by the cluster (ex. `pg` for PostreSQL).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
 	Engine interface{}
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows interface{}

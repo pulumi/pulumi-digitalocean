@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class Firewall(pulumi.CustomResource):
@@ -23,6 +24,23 @@ class Firewall(pulumi.CustomResource):
     """
     The inbound access rule block for the Firewall.
     The `inbound_rule` block is documented below.
+    
+      * `port_range` (`str`) - The ports on which traffic will be allowed
+        specified as a string containing a single port, a range (e.g. "8000-9000"),
+        or "1-65535" to open all ports for a protocol. Required for when protocol is
+        `tcp` or `udp`.
+      * `protocol` (`str`) - The type of traffic to be allowed.
+        This may be one of "tcp", "udp", or "icmp".
+      * `source_addresses` (`list`) - An array of strings containing the IPv4
+        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+        inbound traffic will be accepted.
+      * `source_droplet_ids` (`list`) - An array containing the IDs of
+        the Droplets from which the inbound traffic will be accepted.
+      * `source_load_balancer_uids` (`list`) - An array containing the IDs
+        of the Load Balancers from which the inbound traffic will be accepted.
+      * `source_tags` (`list`) - An array containing the names of Tags
+        corresponding to groups of Droplets from which the inbound traffic
+        will be accepted.
     """
     name: pulumi.Output[str]
     """
@@ -32,6 +50,24 @@ class Firewall(pulumi.CustomResource):
     """
     The outbound access rule block for the Firewall.
     The `outbound_rule` block is documented below.
+    
+      * `destination_addresses` (`list`) - An array of strings containing the IPv4
+        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+        outbound traffic will be allowed.
+      * `destination_droplet_ids` (`list`) - An array containing the IDs of
+        the Droplets to which the outbound traffic will be allowed.
+      * `destination_load_balancer_uids` (`list`) - An array containing the IDs
+        of the Load Balancers to which the outbound traffic will be allowed.
+      * `destination_tags` (`list`) - An array containing the names of Tags
+        corresponding to groups of Droplets to which the outbound traffic will
+        be allowed.
+        traffic.
+      * `port_range` (`str`) - The ports on which traffic will be allowed
+        specified as a string containing a single port, a range (e.g. "8000-9000"),
+        or "1-65535" to open all ports for a protocol. Required for when protocol is
+        `tcp` or `udp`.
+      * `protocol` (`str`) - The type of traffic to be allowed.
+        This may be one of "tcp", "udp", or "icmp".
     """
     pending_changes: pulumi.Output[list]
     """
@@ -39,6 +75,11 @@ class Firewall(pulumi.CustomResource):
     "removing", and "status".  It is provided to detail exactly which Droplets
     are having their security policies updated.  When empty, all changes
     have been successfully applied.
+    
+      * `droplet_id` (`float`)
+      * `removing` (`bool`)
+      * `status` (`str`) - A status string indicating the current state of the Firewall.
+        This can be "waiting", "succeeded", or "failed".
     """
     status: pulumi.Output[str]
     """
@@ -64,6 +105,45 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[list] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
         :param pulumi.Input[list] tags: The names of the Tags assigned to the Firewall.
+        
+        The **inbound_rules** object supports the following:
+        
+          * `port_range` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
+            specified as a string containing a single port, a range (e.g. "8000-9000"),
+            or "1-65535" to open all ports for a protocol. Required for when protocol is
+            `tcp` or `udp`.
+          * `protocol` (`pulumi.Input[str]`) - The type of traffic to be allowed.
+            This may be one of "tcp", "udp", or "icmp".
+          * `source_addresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
+            addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+            inbound traffic will be accepted.
+          * `source_droplet_ids` (`pulumi.Input[list]`) - An array containing the IDs of
+            the Droplets from which the inbound traffic will be accepted.
+          * `source_load_balancer_uids` (`pulumi.Input[list]`) - An array containing the IDs
+            of the Load Balancers from which the inbound traffic will be accepted.
+          * `source_tags` (`pulumi.Input[list]`) - An array containing the names of Tags
+            corresponding to groups of Droplets from which the inbound traffic
+            will be accepted.
+        
+        The **outbound_rules** object supports the following:
+        
+          * `destination_addresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
+            addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+            outbound traffic will be allowed.
+          * `destination_droplet_ids` (`pulumi.Input[list]`) - An array containing the IDs of
+            the Droplets to which the outbound traffic will be allowed.
+          * `destination_load_balancer_uids` (`pulumi.Input[list]`) - An array containing the IDs
+            of the Load Balancers to which the outbound traffic will be allowed.
+          * `destination_tags` (`pulumi.Input[list]`) - An array containing the names of Tags
+            corresponding to groups of Droplets to which the outbound traffic will
+            be allowed.
+            traffic.
+          * `port_range` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
+            specified as a string containing a single port, a range (e.g. "8000-9000"),
+            or "1-65535" to open all ports for a protocol. Required for when protocol is
+            `tcp` or `udp`.
+          * `protocol` (`pulumi.Input[str]`) - The type of traffic to be allowed.
+            This may be one of "tcp", "udp", or "icmp".
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
         """
@@ -103,6 +183,7 @@ class Firewall(pulumi.CustomResource):
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,10 +203,56 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] status: A status string indicating the current state of the Firewall.
                This can be "waiting", "succeeded", or "failed".
         :param pulumi.Input[list] tags: The names of the Tags assigned to the Firewall.
+        
+        The **inbound_rules** object supports the following:
+        
+          * `port_range` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
+            specified as a string containing a single port, a range (e.g. "8000-9000"),
+            or "1-65535" to open all ports for a protocol. Required for when protocol is
+            `tcp` or `udp`.
+          * `protocol` (`pulumi.Input[str]`) - The type of traffic to be allowed.
+            This may be one of "tcp", "udp", or "icmp".
+          * `source_addresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
+            addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+            inbound traffic will be accepted.
+          * `source_droplet_ids` (`pulumi.Input[list]`) - An array containing the IDs of
+            the Droplets from which the inbound traffic will be accepted.
+          * `source_load_balancer_uids` (`pulumi.Input[list]`) - An array containing the IDs
+            of the Load Balancers from which the inbound traffic will be accepted.
+          * `source_tags` (`pulumi.Input[list]`) - An array containing the names of Tags
+            corresponding to groups of Droplets from which the inbound traffic
+            will be accepted.
+        
+        The **outbound_rules** object supports the following:
+        
+          * `destination_addresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
+            addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+            outbound traffic will be allowed.
+          * `destination_droplet_ids` (`pulumi.Input[list]`) - An array containing the IDs of
+            the Droplets to which the outbound traffic will be allowed.
+          * `destination_load_balancer_uids` (`pulumi.Input[list]`) - An array containing the IDs
+            of the Load Balancers to which the outbound traffic will be allowed.
+          * `destination_tags` (`pulumi.Input[list]`) - An array containing the names of Tags
+            corresponding to groups of Droplets to which the outbound traffic will
+            be allowed.
+            traffic.
+          * `port_range` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
+            specified as a string containing a single port, a range (e.g. "8000-9000"),
+            or "1-65535" to open all ports for a protocol. Required for when protocol is
+            `tcp` or `udp`.
+          * `protocol` (`pulumi.Input[str]`) - The type of traffic to be allowed.
+            This may be one of "tcp", "udp", or "icmp".
+        
+        The **pending_changes** object supports the following:
+        
+          * `droplet_id` (`pulumi.Input[float]`)
+          * `removing` (`pulumi.Input[bool]`)
+          * `status` (`pulumi.Input[str]`) - A status string indicating the current state of the Firewall.
+            This can be "waiting", "succeeded", or "failed".
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["created_at"] = created_at

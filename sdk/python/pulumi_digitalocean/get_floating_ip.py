@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetFloatingIpResult:
@@ -45,13 +46,17 @@ class AwaitableGetFloatingIpResult(GetFloatingIpResult):
 
 def get_floating_ip(ip_address=None,opts=None):
     """
+    Use this data source to access information about an existing resource.
+    
+    :param str ip_address: The allocated IP address of the specific floating IP to retrieve.
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/floating_ip.html.markdown.
     """
     __args__ = dict()
 
     __args__['ipAddress'] = ip_address
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts).value

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetImageResult:
@@ -75,6 +76,11 @@ class AwaitableGetImageResult(GetImageResult):
 
 def get_image(name=None,slug=None,opts=None):
     """
+    Use this data source to access information about an existing resource.
+    
+    :param str name: The name of the private image.
+    :param str slug: The slug of the official image.
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/image.html.markdown.
     """
     __args__ = dict()
@@ -82,7 +88,7 @@ def get_image(name=None,slug=None,opts=None):
     __args__['name'] = name
     __args__['slug'] = slug
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts).value

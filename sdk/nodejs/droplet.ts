@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {DropletSlug, Region} from "./index";
@@ -59,6 +61,7 @@ export class Droplet extends pulumi.CustomResource {
      * false.
      */
     public readonly backups!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The size of the instance's disk in GB
      */
@@ -171,6 +174,7 @@ export class Droplet extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as DropletState | undefined;
             inputs["backups"] = state ? state.backups : undefined;
+            inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["disk"] = state ? state.disk : undefined;
             inputs["image"] = state ? state.image : undefined;
             inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
@@ -218,6 +222,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["volumeIds"] = args ? args.volumeIds : undefined;
+            inputs["createdAt"] = undefined /*out*/;
             inputs["disk"] = undefined /*out*/;
             inputs["ipv4Address"] = undefined /*out*/;
             inputs["ipv4AddressPrivate"] = undefined /*out*/;
@@ -250,6 +255,7 @@ export interface DropletState {
      * false.
      */
     readonly backups?: pulumi.Input<boolean>;
+    readonly createdAt?: pulumi.Input<string>;
     /**
      * The size of the instance's disk in GB
      */

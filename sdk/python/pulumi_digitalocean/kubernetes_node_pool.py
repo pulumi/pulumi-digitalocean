@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class KubernetesNodePool(pulumi.CustomResource):
@@ -29,6 +30,12 @@ class KubernetesNodePool(pulumi.CustomResource):
     - `status` -  A string indicating the current status of the individual node.
     - `created_at` - The date and time when the node was created.
     - `updated_at` - The date and time when the node was last updated.
+    
+      * `created_at` (`str`)
+      * `id` (`str`) - A unique ID that can be used to identify and reference the node pool.
+      * `name` (`str`) - A name for the node pool.
+      * `status` (`str`)
+      * `updated_at` (`str`)
     """
     size: pulumi.Output[str]
     """
@@ -92,6 +99,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         """
         Get an existing KubernetesNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -106,10 +114,18 @@ class KubernetesNodePool(pulumi.CustomResource):
                - `updated_at` - The date and time when the node was last updated.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
+        
+        The **nodes** object supports the following:
+        
+          * `created_at` (`pulumi.Input[str]`)
+          * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference the node pool.
+          * `name` (`pulumi.Input[str]`) - A name for the node pool.
+          * `status` (`pulumi.Input[str]`)
+          * `updated_at` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["cluster_id"] = cluster_id
