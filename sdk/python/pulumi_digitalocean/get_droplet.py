@@ -6,19 +6,23 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetDropletResult:
     """
     A collection of values returned by getDroplet.
     """
-    def __init__(__self__, backups=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tags=None, urn=None, vcpus=None, volume_ids=None, id=None):
+    def __init__(__self__, backups=None, created_at=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tags=None, urn=None, vcpus=None, volume_ids=None, id=None):
         if backups and not isinstance(backups, bool):
             raise TypeError("Expected argument 'backups' to be a bool")
         __self__.backups = backups
         """
         Whether backups are enabled.
         """
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        __self__.created_at = created_at
         if disk and not isinstance(disk, float):
             raise TypeError("Expected argument 'disk' to be a float")
         __self__.disk = disk
@@ -148,23 +152,57 @@ class GetDropletResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetDropletResult(GetDropletResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetDropletResult(
+            backups=self.backups,
+            created_at=self.created_at,
+            disk=self.disk,
+            image=self.image,
+            ipv4_address=self.ipv4_address,
+            ipv4_address_private=self.ipv4_address_private,
+            ipv6=self.ipv6,
+            ipv6_address=self.ipv6_address,
+            ipv6_address_private=self.ipv6_address_private,
+            locked=self.locked,
+            memory=self.memory,
+            monitoring=self.monitoring,
+            name=self.name,
+            price_hourly=self.price_hourly,
+            price_monthly=self.price_monthly,
+            private_networking=self.private_networking,
+            region=self.region,
+            size=self.size,
+            status=self.status,
+            tags=self.tags,
+            urn=self.urn,
+            vcpus=self.vcpus,
+            volume_ids=self.volume_ids,
+            id=self.id)
 
-async def get_droplet(name=None,opts=None):
+def get_droplet(name=None,opts=None):
     """
-    Get information on a Droplet for use in other resources. This data source provides
-    all of the Droplet's properties as configured on your DigitalOcean account. This
-    is useful if the Droplet in question is not managed by Terraform or you need to
-    utilize any of the Droplets data.
+    Use this data source to access information about an existing resource.
     
-    An error is triggered if the provided Droplet name does not exist.
+    :param str name: The name of Droplet.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts).value
 
-    return GetDropletResult(
+    return AwaitableGetDropletResult(
         backups=__ret__.get('backups'),
+        created_at=__ret__.get('createdAt'),
         disk=__ret__.get('disk'),
         image=__ret__.get('image'),
         ipv4_address=__ret__.get('ipv4Address'),

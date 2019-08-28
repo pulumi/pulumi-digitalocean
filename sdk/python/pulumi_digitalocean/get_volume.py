@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetVolumeResult:
@@ -58,24 +59,43 @@ class GetVolumeResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetVolumeResult(GetVolumeResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetVolumeResult(
+            description=self.description,
+            droplet_ids=self.droplet_ids,
+            filesystem_label=self.filesystem_label,
+            filesystem_type=self.filesystem_type,
+            name=self.name,
+            region=self.region,
+            size=self.size,
+            urn=self.urn,
+            id=self.id)
 
-async def get_volume(description=None,name=None,region=None,opts=None):
+def get_volume(description=None,name=None,region=None,opts=None):
     """
-    Get information on a volume for use in other resources. This data source provides
-    all of the volumes properties as configured on your DigitalOcean account. This is
-    useful if the volume in question is not managed by Terraform or you need to utilize
-    any of the volumes data.
+    Use this data source to access information about an existing resource.
     
-    An error is triggered if the provided volume name does not exist.
+    :param str name: The name of block storage volume.
+    :param str region: The region the block storage volume is provisioned in.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume.html.markdown.
     """
     __args__ = dict()
 
     __args__['description'] = description
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts).value
 
-    return GetVolumeResult(
+    return AwaitableGetVolumeResult(
         description=__ret__.get('description'),
         droplet_ids=__ret__.get('dropletIds'),
         filesystem_label=__ret__.get('filesystemLabel'),

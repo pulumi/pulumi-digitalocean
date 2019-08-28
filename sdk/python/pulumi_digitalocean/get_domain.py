@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetDomainResult:
@@ -35,23 +36,36 @@ class GetDomainResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetDomainResult(GetDomainResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetDomainResult(
+            name=self.name,
+            ttl=self.ttl,
+            urn=self.urn,
+            zone_file=self.zone_file,
+            id=self.id)
 
-async def get_domain(name=None,opts=None):
+def get_domain(name=None,opts=None):
     """
-    Get information on a domain. This data source provides the name, TTL, and zone
-    file as configured on your DigitalOcean account. This is useful if the domain
-    name in question is not managed by Terraform or you need to utilize TTL or zone
-    file data.
+    Use this data source to access information about an existing resource.
     
-    An error is triggered if the provided domain name is not managed with your
-    DigitalOcean account.
+    :param str name: The name of the domain.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/domain.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDomain:getDomain', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDomain:getDomain', __args__, opts=opts).value
 
-    return GetDomainResult(
+    return AwaitableGetDomainResult(
         name=__ret__.get('name'),
         ttl=__ret__.get('ttl'),
         urn=__ret__.get('urn'),

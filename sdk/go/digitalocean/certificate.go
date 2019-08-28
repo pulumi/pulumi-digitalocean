@@ -13,6 +13,8 @@ import (
 // Load Balancer configuration via their ID. The certificate can either
 // be a custom one provided by you or automatically generated one with
 // Let's Encrypt.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
 type Certificate struct {
 	s *pulumi.ResourceState
 }
@@ -88,7 +90,7 @@ func (r *Certificate) CertificateChain() *pulumi.StringOutput {
 
 // List of fully qualified domain names (FQDNs) for
 // which the certificate will be issued. The domains must be managed using
-// DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+// DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
 func (r *Certificate) Domains() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["domains"])
 }
@@ -125,7 +127,7 @@ func (r *Certificate) State() *pulumi.StringOutput {
 }
 
 // The type of certificate to provision. Can be either
-// `custom` or `lets_encrypt`. Defaults to `custom`.
+// `custom` or `letsEncrypt`. Defaults to `custom`.
 func (r *Certificate) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
@@ -138,7 +140,7 @@ type CertificateState struct {
 	CertificateChain interface{}
 	// List of fully qualified domain names (FQDNs) for
 	// which the certificate will be issued. The domains must be managed using
-	// DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+	// DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
 	Domains interface{}
 	// The contents of a PEM-formatted public
 	// TLS certificate. Only valid when type is `custom`.
@@ -154,7 +156,7 @@ type CertificateState struct {
 	Sha1Fingerprint interface{}
 	State interface{}
 	// The type of certificate to provision. Can be either
-	// `custom` or `lets_encrypt`. Defaults to `custom`.
+	// `custom` or `letsEncrypt`. Defaults to `custom`.
 	Type interface{}
 }
 
@@ -166,7 +168,7 @@ type CertificateArgs struct {
 	CertificateChain interface{}
 	// List of fully qualified domain names (FQDNs) for
 	// which the certificate will be issued. The domains must be managed using
-	// DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+	// DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
 	Domains interface{}
 	// The contents of a PEM-formatted public
 	// TLS certificate. Only valid when type is `custom`.
@@ -177,6 +179,6 @@ type CertificateArgs struct {
 	// corresponding to the SSL certificate. Only valid when type is `custom`.
 	PrivateKey interface{}
 	// The type of certificate to provision. Can be either
-	// `custom` or `lets_encrypt`. Defaults to `custom`.
+	// `custom` or `letsEncrypt`. Defaults to `custom`.
 	Type interface{}
 }

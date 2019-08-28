@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetRecordResult:
@@ -49,23 +50,44 @@ class GetRecordResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetRecordResult(GetRecordResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetRecordResult(
+            data=self.data,
+            domain=self.domain,
+            flags=self.flags,
+            name=self.name,
+            port=self.port,
+            priority=self.priority,
+            tag=self.tag,
+            ttl=self.ttl,
+            type=self.type,
+            weight=self.weight,
+            id=self.id)
 
-async def get_record(domain=None,name=None,opts=None):
+def get_record(domain=None,name=None,opts=None):
     """
-    Get information on a DNS record. This data source provides the name, TTL, and zone
-    file as configured on your DigitalOcean account. This is useful if the record
-    in question is not managed by Terraform.
+    Use this data source to access information about an existing resource.
     
-    An error is triggered if the provided domain name or record are not managed with
-    your DigitalOcean account.
+    :param str domain: The domain name of the record.
+    :param str name: The name of the record.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
     """
     __args__ = dict()
 
     __args__['domain'] = domain
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts).value
 
-    return GetRecordResult(
+    return AwaitableGetRecordResult(
         data=__ret__.get('data'),
         domain=__ret__.get('domain'),
         flags=__ret__.get('flags'),

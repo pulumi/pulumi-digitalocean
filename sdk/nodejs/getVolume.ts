@@ -2,57 +2,28 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a volume for use in other resources. This data source provides
- * all of the volumes properties as configured on your DigitalOcean account. This is
- * useful if the volume in question is not managed by Terraform or you need to utilize
- * any of the volumes data.
- * 
- * An error is triggered if the provided volume name does not exist.
- * 
- * ## Example Usage
- * 
- * Get the volume:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const example = digitalocean.getVolume({
- *     name: "app-data",
- *     region: "nyc3",
- * });
- * ```
- * 
- * Reuse the data about a volume to attach it to a Droplet:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const exampleVolume = digitalocean.getVolume({
- *     name: "app-data",
- *     region: "nyc3",
- * });
- * const exampleDroplet = new digitalocean.Droplet("example", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
- *     size: "s-1vcpu-1gb",
- * });
- * const foobar = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: exampleDroplet.id,
- *     volumeId: exampleVolume.id,
- * });
- * ```
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume.html.markdown.
  */
-export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
-    return pulumi.runtime.invoke("digitalocean:index/getVolume:getVolume", {
+export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> & GetVolumeResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetVolumeResult> = pulumi.runtime.invoke("digitalocean:index/getVolume:getVolume", {
         "description": args.description,
         "name": args.name,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

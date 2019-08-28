@@ -2,14 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {Region} from "./index";
 
 /**
- * > **NOTE:** DigitalOcean Kubernetes is currently in [Limited Availability](https://www.digitalocean.com/docs/platform/product-lifecycle/). In order to access its API, you must first enable Kubernetes on your account by opting-in via the [cloud control panel](https://cloud.digitalocean.com/kubernetes/clusters). While the Kubernetes Cluster functionality is currently in limited availability the structure of this resource may change over time. Please share any feedback you may have by [opening an issue on GitHub](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).
- * 
  * Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**
@@ -54,19 +56,19 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The public IPv4 address of the Kubernetes master node.
      */
     public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
-    public /*out*/ readonly kubeConfigs!: pulumi.Output<{ clientCertificate: string, clientKey: string, clusterCaCertificate: string, host: string, rawConfig: string }[]>;
+    public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
     /**
      * A name for the Kubernetes cluster.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean_kubernetes_node_pool` resource. The following arguments may be specified:
+     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `node_count` - (Required) The number of Droplet instances in the node pool.
+     * - `nodeCount` - (Required) The number of Droplet instances in the node pool.
      * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
      */
-    public readonly nodePool!: pulumi.Output<{ id: string, name: string, nodeCount: number, nodes: { createdAt: string, id: string, name: string, status: string, updatedAt: string }[], size: string, tags?: string[] }>;
+    public readonly nodePool!: pulumi.Output<outputs.KubernetesClusterNodePool>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
@@ -86,11 +88,11 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The date and time when the Kubernetes cluster was last updated.
      * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
      * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `client_key` - The base64 encoded private key used by clients to access the cluster.
-     * - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
-     * - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+     * - `clientKey` - The base64 encoded private key used by clients to access the cluster.
+     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster.
+     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
@@ -148,6 +150,13 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(KubernetesCluster.__pulumiType, name, inputs, opts);
     }
 }
@@ -172,19 +181,19 @@ export interface KubernetesClusterState {
      * The public IPv4 address of the Kubernetes master node.
      */
     readonly ipv4Address?: pulumi.Input<string>;
-    readonly kubeConfigs?: pulumi.Input<pulumi.Input<{ clientCertificate?: pulumi.Input<string>, clientKey?: pulumi.Input<string>, clusterCaCertificate?: pulumi.Input<string>, host?: pulumi.Input<string>, rawConfig?: pulumi.Input<string> }>[]>;
+    readonly kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;
     /**
      * A name for the Kubernetes cluster.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean_kubernetes_node_pool` resource. The following arguments may be specified:
+     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `node_count` - (Required) The number of Droplet instances in the node pool.
+     * - `nodeCount` - (Required) The number of Droplet instances in the node pool.
      * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
      */
-    readonly nodePool?: pulumi.Input<{ id?: pulumi.Input<string>, name: pulumi.Input<string>, nodeCount: pulumi.Input<number>, nodes?: pulumi.Input<pulumi.Input<{ createdAt?: pulumi.Input<string>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, status?: pulumi.Input<string>, updatedAt?: pulumi.Input<string> }>[]>, size: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly nodePool?: pulumi.Input<inputs.KubernetesClusterNodePool>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
@@ -204,11 +213,11 @@ export interface KubernetesClusterState {
     /**
      * The date and time when the Kubernetes cluster was last updated.
      * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
      * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `client_key` - The base64 encoded private key used by clients to access the cluster.
-     * - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
-     * - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+     * - `clientKey` - The base64 encoded private key used by clients to access the cluster.
+     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster.
+     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
      */
     readonly updatedAt?: pulumi.Input<string>;
     /**
@@ -226,13 +235,13 @@ export interface KubernetesClusterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean_kubernetes_node_pool` resource. The following arguments may be specified:
+     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `node_count` - (Required) The number of Droplet instances in the node pool.
+     * - `nodeCount` - (Required) The number of Droplet instances in the node pool.
      * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
      */
-    readonly nodePool: pulumi.Input<{ id?: pulumi.Input<string>, name: pulumi.Input<string>, nodeCount: pulumi.Input<number>, nodes?: pulumi.Input<pulumi.Input<{ createdAt?: pulumi.Input<string>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, status?: pulumi.Input<string>, updatedAt?: pulumi.Input<string> }>[]>, size: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly nodePool: pulumi.Input<inputs.KubernetesClusterNodePool>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */

@@ -2,12 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Manages attaching a Volume to a Droplet.
  * 
- * > **NOTE:** Volumes can be attached either directly on the `digitalocean_droplet` resource, or using the `digitalocean_volume_attachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
+ * > **NOTE:** Volumes can be attached either directly on the `digitalocean..Droplet` resource, or using the `digitalocean..VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
  * 
  * 
  * ## Example Usage
@@ -32,6 +34,8 @@ import * as utilities from "./utilities";
  *     volumeId: foobarVolume.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_attachment.html.markdown.
  */
 export class VolumeAttachment extends pulumi.CustomResource {
     /**
@@ -93,6 +97,13 @@ export class VolumeAttachment extends pulumi.CustomResource {
             }
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super(VolumeAttachment.__pulumiType, name, inputs, opts);
     }

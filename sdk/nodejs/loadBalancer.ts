@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {Algorithm, Region} from "./index";
@@ -37,7 +39,7 @@ import {Algorithm, Region} from "./index";
  * });
  * ```
  * 
- * When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
+ * When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
  * lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
  * operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
  * `Delete old certificate`. When doing so, you must also change the name of the certificate,
@@ -73,6 +75,8 @@ import {Algorithm, Region} from "./index";
  *     region: "nyc3",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -103,8 +107,8 @@ export class LoadBalancer extends pulumi.CustomResource {
 
     /**
      * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
-     * or `least_connections`. The default value is `round_robin`.
+     * which backend Droplet will be selected by a client. It must be either `roundRobin`
+     * or `leastConnections`. The default value is `roundRobin`.
      */
     public readonly algorithm!: pulumi.Output<Algorithm | undefined>;
     /**
@@ -122,15 +126,15 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean | undefined>;
     /**
-     * A list of `forwarding_rule` to be assigned to the
-     * Load Balancer. The `forwarding_rule` block is documented below.
+     * A list of `forwardingRule` to be assigned to the
+     * Load Balancer. The `forwardingRule` block is documented below.
      */
-    public readonly forwardingRules!: pulumi.Output<{ certificateId?: string, entryPort: number, entryProtocol: string, targetPort: number, targetProtocol: string, tlsPassthrough?: boolean }[]>;
+    public readonly forwardingRules!: pulumi.Output<outputs.LoadBalancerForwardingRule[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    public readonly healthcheck!: pulumi.Output<{ checkIntervalSeconds?: number, healthyThreshold?: number, path?: string, port: number, protocol: string, responseTimeoutSeconds?: number, unhealthyThreshold?: number }>;
+    public readonly healthcheck!: pulumi.Output<outputs.LoadBalancerHealthcheck>;
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
      * The Load Balancer name
@@ -148,10 +152,10 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<Region>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A `sticky_sessions` block to be assigned to the
-     * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+     * A `stickySessions` block to be assigned to the
+     * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    public readonly stickySessions!: pulumi.Output<{ cookieName?: string, cookieTtlSeconds?: number, type?: string }>;
+    public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
     /**
      * The uniform resource name for the Load Balancer
      */
@@ -204,6 +208,13 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(LoadBalancer.__pulumiType, name, inputs, opts);
     }
 }
@@ -214,8 +225,8 @@ export class LoadBalancer extends pulumi.CustomResource {
 export interface LoadBalancerState {
     /**
      * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
-     * or `least_connections`. The default value is `round_robin`.
+     * which backend Droplet will be selected by a client. It must be either `roundRobin`
+     * or `leastConnections`. The default value is `roundRobin`.
      */
     readonly algorithm?: pulumi.Input<Algorithm>;
     /**
@@ -233,15 +244,15 @@ export interface LoadBalancerState {
      */
     readonly enableProxyProtocol?: pulumi.Input<boolean>;
     /**
-     * A list of `forwarding_rule` to be assigned to the
-     * Load Balancer. The `forwarding_rule` block is documented below.
+     * A list of `forwardingRule` to be assigned to the
+     * Load Balancer. The `forwardingRule` block is documented below.
      */
-    readonly forwardingRules?: pulumi.Input<pulumi.Input<{ certificateId?: pulumi.Input<string>, entryPort: pulumi.Input<number>, entryProtocol: pulumi.Input<string>, targetPort: pulumi.Input<number>, targetProtocol: pulumi.Input<string>, tlsPassthrough?: pulumi.Input<boolean> }>[]>;
+    readonly forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    readonly healthcheck?: pulumi.Input<{ checkIntervalSeconds?: pulumi.Input<number>, healthyThreshold?: pulumi.Input<number>, path?: pulumi.Input<string>, port: pulumi.Input<number>, protocol: pulumi.Input<string>, responseTimeoutSeconds?: pulumi.Input<number>, unhealthyThreshold?: pulumi.Input<number> }>;
+    readonly healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
     readonly ip?: pulumi.Input<string>;
     /**
      * The Load Balancer name
@@ -259,10 +270,10 @@ export interface LoadBalancerState {
     readonly region?: pulumi.Input<Region>;
     readonly status?: pulumi.Input<string>;
     /**
-     * A `sticky_sessions` block to be assigned to the
-     * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+     * A `stickySessions` block to be assigned to the
+     * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    readonly stickySessions?: pulumi.Input<{ cookieName?: pulumi.Input<string>, cookieTtlSeconds?: pulumi.Input<number>, type?: pulumi.Input<string> }>;
+    readonly stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
      * The uniform resource name for the Load Balancer
      */
@@ -275,8 +286,8 @@ export interface LoadBalancerState {
 export interface LoadBalancerArgs {
     /**
      * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
-     * or `least_connections`. The default value is `round_robin`.
+     * which backend Droplet will be selected by a client. It must be either `roundRobin`
+     * or `leastConnections`. The default value is `roundRobin`.
      */
     readonly algorithm?: pulumi.Input<Algorithm>;
     /**
@@ -294,15 +305,15 @@ export interface LoadBalancerArgs {
      */
     readonly enableProxyProtocol?: pulumi.Input<boolean>;
     /**
-     * A list of `forwarding_rule` to be assigned to the
-     * Load Balancer. The `forwarding_rule` block is documented below.
+     * A list of `forwardingRule` to be assigned to the
+     * Load Balancer. The `forwardingRule` block is documented below.
      */
-    readonly forwardingRules: pulumi.Input<pulumi.Input<{ certificateId?: pulumi.Input<string>, entryPort: pulumi.Input<number>, entryProtocol: pulumi.Input<string>, targetPort: pulumi.Input<number>, targetProtocol: pulumi.Input<string>, tlsPassthrough?: pulumi.Input<boolean> }>[]>;
+    readonly forwardingRules: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    readonly healthcheck?: pulumi.Input<{ checkIntervalSeconds?: pulumi.Input<number>, healthyThreshold?: pulumi.Input<number>, path?: pulumi.Input<string>, port: pulumi.Input<number>, protocol: pulumi.Input<string>, responseTimeoutSeconds?: pulumi.Input<number>, unhealthyThreshold?: pulumi.Input<number> }>;
+    readonly healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
     /**
      * The Load Balancer name
      */
@@ -318,8 +329,8 @@ export interface LoadBalancerArgs {
      */
     readonly region: pulumi.Input<Region>;
     /**
-     * A `sticky_sessions` block to be assigned to the
-     * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+     * A `stickySessions` block to be assigned to the
+     * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    readonly stickySessions?: pulumi.Input<{ cookieName?: pulumi.Input<string>, cookieTtlSeconds?: pulumi.Input<number>, type?: pulumi.Input<string> }>;
+    readonly stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
 }

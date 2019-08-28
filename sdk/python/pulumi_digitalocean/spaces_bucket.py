@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class SpacesBucket(pulumi.CustomResource):
@@ -19,7 +20,7 @@ class SpacesBucket(pulumi.CustomResource):
     """
     force_destroy: pulumi.Output[bool]
     """
-    Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+    Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
     """
     name: pulumi.Output[str]
     """
@@ -33,7 +34,7 @@ class SpacesBucket(pulumi.CustomResource):
     """
     The uniform resource name for the bucket
     """
-    def __init__(__self__, resource_name, opts=None, acl=None, force_destroy=None, name=None, region=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, acl=None, force_destroy=None, name=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a bucket resource for Spaces, DigitalOcean's object storage product.
         
@@ -55,9 +56,11 @@ class SpacesBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
-        :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+        :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -65,33 +68,57 @@ class SpacesBucket(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
+        if opts.version is None:
+            opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
 
-        __props__ = dict()
-
-        __props__['acl'] = acl
-
-        __props__['force_destroy'] = force_destroy
-
-        __props__['name'] = name
-
-        __props__['region'] = region
-
-        __props__['bucket_domain_name'] = None
-        __props__['urn'] = None
-
+            __props__['acl'] = acl
+            __props__['force_destroy'] = force_destroy
+            __props__['name'] = name
+            __props__['region'] = region
+            __props__['bucket_domain_name'] = None
+            __props__['urn'] = None
         super(SpacesBucket, __self__).__init__(
             'digitalocean:index/spacesBucket:SpacesBucket',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, acl=None, bucket_domain_name=None, force_destroy=None, name=None, region=None, urn=None):
+        """
+        Get an existing SpacesBucket resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
+        :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+        :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+        :param pulumi.Input[str] name: The name of the bucket
+        :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
+        :param pulumi.Input[str] urn: The uniform resource name for the bucket
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
+        """
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["acl"] = acl
+        __props__["bucket_domain_name"] = bucket_domain_name
+        __props__["force_destroy"] = force_destroy
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["urn"] = urn
+        return SpacesBucket(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

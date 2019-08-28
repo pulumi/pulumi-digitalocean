@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetDatabaseClusterResult:
@@ -118,6 +119,8 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
 def get_database_cluster(name=None,opts=None):
     """
     Provides information on a DigitalOcean database cluster resource.
+    
+    :param str name: The name of the database cluster.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
     """
@@ -125,7 +128,7 @@ def get_database_cluster(name=None,opts=None):
 
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts).value

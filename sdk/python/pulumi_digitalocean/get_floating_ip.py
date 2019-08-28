@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetFloatingIpResult:
@@ -31,22 +32,36 @@ class GetFloatingIpResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetFloatingIpResult(GetFloatingIpResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetFloatingIpResult(
+            droplet_id=self.droplet_id,
+            ip_address=self.ip_address,
+            region=self.region,
+            urn=self.urn,
+            id=self.id)
 
-async def get_floating_ip(ip_address=None,opts=None):
+def get_floating_ip(ip_address=None,opts=None):
     """
-    Get information on a floating ip. This data source provides the region and Droplet id
-    as configured on your DigitalOcean account. This is useful if the floating IP
-    in question is not managed by Terraform or you need to find the Droplet the IP is
-    attached to.
+    Use this data source to access information about an existing resource.
     
-    An error is triggered if the provided floating IP does not exist.
+    :param str ip_address: The allocated IP address of the specific floating IP to retrieve.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/floating_ip.html.markdown.
     """
     __args__ = dict()
 
     __args__['ipAddress'] = ip_address
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts).value
 
-    return GetFloatingIpResult(
+    return AwaitableGetFloatingIpResult(
         droplet_id=__ret__.get('dropletId'),
         ip_address=__ret__.get('ipAddress'),
         region=__ret__.get('region'),

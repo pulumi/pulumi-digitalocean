@@ -11,6 +11,8 @@ import (
 // Provides a DigitalOcean Droplet resource. This can be used to create,
 // modify, and delete Droplets. Droplets also support
 // [provisioning](https://www.terraform.io/docs/provisioners/index.html).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
 type Droplet struct {
 	s *pulumi.ResourceState
 }
@@ -57,11 +59,11 @@ func NewDroplet(ctx *pulumi.Context,
 		inputs["userData"] = args.UserData
 		inputs["volumeIds"] = args.VolumeIds
 	}
+	inputs["createdAt"] = nil
 	inputs["disk"] = nil
 	inputs["ipv4Address"] = nil
 	inputs["ipv4AddressPrivate"] = nil
 	inputs["ipv6Address"] = nil
-	inputs["ipv6AddressPrivate"] = nil
 	inputs["locked"] = nil
 	inputs["memory"] = nil
 	inputs["priceHourly"] = nil
@@ -83,13 +85,13 @@ func GetDroplet(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["backups"] = state.Backups
+		inputs["createdAt"] = state.CreatedAt
 		inputs["disk"] = state.Disk
 		inputs["image"] = state.Image
 		inputs["ipv4Address"] = state.Ipv4Address
 		inputs["ipv4AddressPrivate"] = state.Ipv4AddressPrivate
 		inputs["ipv6"] = state.Ipv6
 		inputs["ipv6Address"] = state.Ipv6Address
-		inputs["ipv6AddressPrivate"] = state.Ipv6AddressPrivate
 		inputs["locked"] = state.Locked
 		inputs["memory"] = state.Memory
 		inputs["monitoring"] = state.Monitoring
@@ -131,6 +133,10 @@ func (r *Droplet) Backups() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["backups"])
 }
 
+func (r *Droplet) CreatedAt() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+}
+
 // The size of the instance's disk in GB
 func (r *Droplet) Disk() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["disk"])
@@ -159,10 +165,6 @@ func (r *Droplet) Ipv6() *pulumi.BoolOutput {
 // The IPv6 address
 func (r *Droplet) Ipv6Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipv6Address"])
-}
-
-func (r *Droplet) Ipv6AddressPrivate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv6AddressPrivate"])
 }
 
 // Is the Droplet locked
@@ -263,6 +265,7 @@ type DropletState struct {
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups interface{}
+	CreatedAt interface{}
 	// The size of the instance's disk in GB
 	Disk interface{}
 	// The Droplet image ID or slug.
@@ -275,7 +278,6 @@ type DropletState struct {
 	Ipv6 interface{}
 	// The IPv6 address
 	Ipv6Address interface{}
-	Ipv6AddressPrivate interface{}
 	// Is the Droplet locked
 	Locked interface{}
 	Memory interface{}

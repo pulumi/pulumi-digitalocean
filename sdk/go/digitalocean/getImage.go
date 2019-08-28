@@ -7,12 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Get information on an images for use in other resources (e.g. creating a Droplet
-// based on snapshot). This data source provides all of the image properties as
-// configured on your DigitalOcean account. This is useful if the image in question
-// is not managed by Terraform or you need to utilize any of the image's data.
-// 
-// An error is triggered if zero or more than one result is returned by the query.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/image.html.markdown.
 func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -47,7 +42,7 @@ type GetImageArgs struct {
 // A collection of values returned by getImage.
 type GetImageResult struct {
 	// The name of the distribution of the OS of the image.
-	// * `min_disk_size`: The minimum 'disk' required for the image.
+	// * `minDiskSize`: The minimum 'disk' required for the image.
 	Distribution interface{}
 	// The id of the image.
 	Image interface{}

@@ -7,13 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Get information on a domain. This data source provides the name, TTL, and zone
-// file as configured on your DigitalOcean account. This is useful if the domain
-// name in question is not managed by Terraform or you need to utilize TTL or zone
-// file data.
-// 
-// An error is triggered if the provided domain name is not managed with your
-// DigitalOcean account.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/domain.html.markdown.
 func LookupDomain(ctx *pulumi.Context, args *GetDomainArgs) (*GetDomainResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -43,7 +37,7 @@ type GetDomainResult struct {
 	Name interface{}
 	Ttl interface{}
 	// The uniform resource name of the domain
-	// * `zone_file`: The zone file of the domain.
+	// * `zoneFile`: The zone file of the domain.
 	Urn interface{}
 	ZoneFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.

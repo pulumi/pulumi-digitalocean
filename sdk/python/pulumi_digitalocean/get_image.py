@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetImageResult:
@@ -57,23 +58,42 @@ class GetImageResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetImageResult(GetImageResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetImageResult(
+            distribution=self.distribution,
+            image=self.image,
+            min_disk_size=self.min_disk_size,
+            name=self.name,
+            private=self.private,
+            regions=self.regions,
+            slug=self.slug,
+            type=self.type,
+            id=self.id)
 
-async def get_image(name=None,slug=None,opts=None):
+def get_image(name=None,slug=None,opts=None):
     """
-    Get information on an images for use in other resources (e.g. creating a Droplet
-    based on snapshot). This data source provides all of the image properties as
-    configured on your DigitalOcean account. This is useful if the image in question
-    is not managed by Terraform or you need to utilize any of the image's data.
+    Use this data source to access information about an existing resource.
     
-    An error is triggered if zero or more than one result is returned by the query.
+    :param str name: The name of the private image.
+    :param str slug: The slug of the official image.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/image.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
     __args__['slug'] = slug
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts).value
 
-    return GetImageResult(
+    return AwaitableGetImageResult(
         distribution=__ret__.get('distribution'),
         image=__ret__.get('image'),
         min_disk_size=__ret__.get('minDiskSize'),

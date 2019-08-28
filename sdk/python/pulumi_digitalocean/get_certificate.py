@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetCertificateResult:
@@ -37,22 +38,38 @@ class GetCertificateResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetCertificateResult(GetCertificateResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetCertificateResult(
+            domains=self.domains,
+            name=self.name,
+            not_after=self.not_after,
+            sha1_fingerprint=self.sha1_fingerprint,
+            state=self.state,
+            type=self.type,
+            id=self.id)
 
-async def get_certificate(name=None,opts=None):
+def get_certificate(name=None,opts=None):
     """
-    Get information on a certificate. This data source provides the name, type, state,
-    domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-    This is useful if the certificate in question is not managed by Terraform or you need to utilize
-    any of the certificates data.
+    Use this data source to access information about an existing resource.
     
-    An error is triggered if the provided certificate name does not exist.
+    :param str name: The name of certificate.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/certificate.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getCertificate:getCertificate', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getCertificate:getCertificate', __args__, opts=opts).value
 
-    return GetCertificateResult(
+    return AwaitableGetCertificateResult(
         domains=__ret__.get('domains'),
         name=__ret__.get('name'),
         not_after=__ret__.get('notAfter'),

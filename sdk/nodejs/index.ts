@@ -17,6 +17,7 @@ export * from "./firewall";
 export * from "./floatingIp";
 export * from "./floatingIpAssignment";
 export * from "./getCertificate";
+export * from "./getDatabaseCluster";
 export * from "./getDomain";
 export * from "./getDroplet";
 export * from "./getDropletSnapshot";
@@ -47,4 +48,5 @@ export * from "./volumeSnapshot";
 
 // Export sub-modules:
 import * as config from "./config/index";
-export {config};
+import * as types from "./types/index";
+export {config, types};

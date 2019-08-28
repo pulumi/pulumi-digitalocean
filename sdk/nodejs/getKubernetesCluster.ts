@@ -2,18 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **NOTE:** DigitalOcean Kubernetes is currently in [Limited Availability](https://www.digitalocean.com/docs/platform/product-lifecycle/). In order to access its API, you must first enable Kubernetes on your account by opting-in via the [cloud control panel](https://cloud.digitalocean.com/kubernetes/clusters). While the Kubernetes Cluster functionality is currently in limited availability the structure of this resource may change over time. Please share any feedback you may have by [opening an issue on GitHub](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).
- * 
- * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_cluster.html.markdown.
  */
-export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
-    return pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
+export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> & GetKubernetesClusterResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetKubernetesClusterResult> = pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
         "name": args.name,
         "tags": args.tags,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -47,23 +56,23 @@ export interface GetKubernetesClusterResult {
      * The public IPv4 address of the Kubernetes master node.
      */
     readonly ipv4Address: string;
-    readonly kubeConfigs: { clientCertificate: string, clientKey: string, clusterCaCertificate: string, host: string, rawConfig: string }[];
+    readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];
     readonly name: string;
     /**
      * A list of node pools associated with the cluster. Each node pool exports the following attributes:
      * - `id` -  The unique ID that can be used to identify and reference the node pool.
      * - `name` - The name of the node pool.
      * - `size` - The slug identifier for the type of Droplet used as workers in the node pool.
-     * - `node_count` - The number of Droplet instances in the node pool.
+     * - `nodeCount` - The number of Droplet instances in the node pool.
      * - `tags` - A list of tag names applied to the node pool.
      * - `nodes` - A list of nodes in the pool. Each node exports the following attributes:
      * + `id` -  A unique ID that can be used to identify and reference the node.
      * + `name` - The auto-generated name for the node.
      * + `status` -  A string indicating the current status of the individual node.
-     * + `created_at` - The date and time when the node was created.
-     * + `updated_at` - The date and time when the node was last updated.
+     * + `createdAt` - The date and time when the node was created.
+     * + `updatedAt` - The date and time when the node was last updated.
      */
-    readonly nodePools: { id: string, name: string, nodeCount: number, nodes: { createdAt: string, id: string, name: string, status: string, updatedAt: string }[], size: string, tags?: string[] }[];
+    readonly nodePools: outputs.GetKubernetesClusterNodePool[];
     /**
      * The slug identifier for the region where the Kubernetes cluster is located.
      */
@@ -83,11 +92,11 @@ export interface GetKubernetesClusterResult {
     /**
      * The date and time when the Kubernetes cluster was last updated.
      * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
+     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
      * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `client_key` - The base64 encoded private key used by clients to access the cluster.
-     * - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
-     * - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+     * - `clientKey` - The base64 encoded private key used by clients to access the cluster.
+     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster.
+     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
      */
     readonly updatedAt: string;
     /**

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetKubernetesClusterResult:
@@ -108,20 +109,46 @@ class GetKubernetesClusterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetKubernetesClusterResult(
+            cluster_subnet=self.cluster_subnet,
+            created_at=self.created_at,
+            endpoint=self.endpoint,
+            ipv4_address=self.ipv4_address,
+            kube_configs=self.kube_configs,
+            name=self.name,
+            node_pools=self.node_pools,
+            region=self.region,
+            service_subnet=self.service_subnet,
+            status=self.status,
+            tags=self.tags,
+            updated_at=self.updated_at,
+            version=self.version,
+            id=self.id)
 
-async def get_kubernetes_cluster(name=None,tags=None,opts=None):
+def get_kubernetes_cluster(name=None,tags=None,opts=None):
     """
-    > **NOTE:** DigitalOcean Kubernetes is currently in [Limited Availability](https://www.digitalocean.com/docs/platform/product-lifecycle/). In order to access its API, you must first enable Kubernetes on your account by opting-in via the [cloud control panel](https://cloud.digitalocean.com/kubernetes/clusters). While the Kubernetes Cluster functionality is currently in limited availability the structure of this resource may change over time. Please share any feedback you may have by [opening an issue on GitHub](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).
+    Use this data source to access information about an existing resource.
     
-    Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
+    :param str name: The name of Kubernetes cluster.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_cluster.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
     __args__['tags'] = tags
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts).value
 
-    return GetKubernetesClusterResult(
+    return AwaitableGetKubernetesClusterResult(
         cluster_subnet=__ret__.get('clusterSubnet'),
         created_at=__ret__.get('createdAt'),
         endpoint=__ret__.get('endpoint'),

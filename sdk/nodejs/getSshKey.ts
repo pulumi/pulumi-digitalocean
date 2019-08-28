@@ -2,33 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a ssh key. This data source provides the name, public key,
- * and fingerprint as configured on your DigitalOcean account. This is useful if
- * the ssh key in question is not managed by Terraform or you need to utilize any
- * of the keys data.
- * 
- * An error is triggered if the provided ssh key name does not exist.
- * 
- * ## Example Usage
- * 
- * Get the ssh key:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const example = digitalocean.getSshKey({
- *     name: "example",
- * });
- * ```
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/ssh_key.html.markdown.
  */
-export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
-    return pulumi.runtime.invoke("digitalocean:index/getSshKey:getSshKey", {
+export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> & GetSshKeyResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetSshKeyResult> = pulumi.runtime.invoke("digitalocean:index/getSshKey:getSshKey", {
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

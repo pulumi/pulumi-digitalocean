@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {DatabaseSlug, Region} from "./index";
@@ -11,12 +13,12 @@ import {DatabaseSlug, Region} from "./index";
  * 
  * ## Example Usage
  * 
+ * ### Create a new PostgreSQL database cluster
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * // Create a new database cluster
- * const example = new digitalocean.DatabaseCluster("example", {
+ * const postgresExample = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     nodeCount: 1,
  *     region: "nyc1",
@@ -24,6 +26,34 @@ import {DatabaseSlug, Region} from "./index";
  *     version: "11",
  * });
  * ```
+ * 
+ * ### Create a new MySQL database cluster
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const mysqlExample = new digitalocean.DatabaseCluster("mysql-example", {
+ *     engine: "mysql",
+ *     nodeCount: 1,
+ *     region: "nyc1",
+ *     size: "db-s-1vcpu-1gb",
+ * });
+ * ```
+ * 
+ * ### Create a new Redis database cluster
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const redisExample = new digitalocean.DatabaseCluster("redis-example", {
+ *     engine: "redis",
+ *     nodeCount: 1,
+ *     region: "nyc1",
+ *     size: "db-s-1vcpu-1gb",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
  */
 export class DatabaseCluster extends pulumi.CustomResource {
     /**
@@ -57,7 +87,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly database!: pulumi.Output<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -67,7 +97,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    public readonly maintenanceWindows!: pulumi.Output<{ day: string, hour: string }[] | undefined>;
+    public readonly maintenanceWindows!: pulumi.Output<outputs.DatabaseClusterMaintenanceWindow[] | undefined>;
     /**
      * The name of the database cluster.
      */
@@ -97,13 +127,17 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
     /**
+     * The uniform resource name of the database cluster.
+     */
+    public /*out*/ readonly urn!: pulumi.Output<string>;
+    /**
      * Username for the cluster's default user.
      */
     public /*out*/ readonly user!: pulumi.Output<string>;
     /**
      * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
      */
-    public readonly version!: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DatabaseCluster resource with the given unique name, arguments, and options.
@@ -128,6 +162,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["uri"] = state ? state.uri : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
             inputs["user"] = state ? state.user : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
@@ -144,9 +179,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
             if (!args || args.size === undefined) {
                 throw new Error("Missing required property 'size'");
             }
-            if (!args || args.version === undefined) {
-                throw new Error("Missing required property 'version'");
-            }
             inputs["engine"] = args ? args.engine : undefined;
             inputs["maintenanceWindows"] = args ? args.maintenanceWindows : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -159,7 +191,15 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["password"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
             inputs["uri"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super(DatabaseCluster.__pulumiType, name, inputs, opts);
     }
@@ -174,7 +214,7 @@ export interface DatabaseClusterState {
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
      */
     readonly engine?: pulumi.Input<string>;
     /**
@@ -184,7 +224,7 @@ export interface DatabaseClusterState {
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    readonly maintenanceWindows?: pulumi.Input<pulumi.Input<{ day: pulumi.Input<string>, hour: pulumi.Input<string> }>[]>;
+    readonly maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
     /**
      * The name of the database cluster.
      */
@@ -214,6 +254,10 @@ export interface DatabaseClusterState {
      */
     readonly uri?: pulumi.Input<string>;
     /**
+     * The uniform resource name of the database cluster.
+     */
+    readonly urn?: pulumi.Input<string>;
+    /**
      * Username for the cluster's default user.
      */
     readonly user?: pulumi.Input<string>;
@@ -228,13 +272,13 @@ export interface DatabaseClusterState {
  */
 export interface DatabaseClusterArgs {
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
      */
     readonly engine: pulumi.Input<string>;
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    readonly maintenanceWindows?: pulumi.Input<pulumi.Input<{ day: pulumi.Input<string>, hour: pulumi.Input<string> }>[]>;
+    readonly maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
     /**
      * The name of the database cluster.
      */
@@ -254,5 +298,5 @@ export interface DatabaseClusterArgs {
     /**
      * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
      */
-    readonly version: pulumi.Input<string>;
+    readonly version?: pulumi.Input<string>;
 }

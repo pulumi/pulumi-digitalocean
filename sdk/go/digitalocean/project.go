@@ -23,6 +23,8 @@ import (
 // * Spaces Bucket
 // 
 // **Note:** A Terrafrom managed project cannot be set as a default project.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
 type Project struct {
 	s *pulumi.ResourceState
 }

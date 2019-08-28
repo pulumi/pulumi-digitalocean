@@ -17,12 +17,14 @@ import (
 // 
 // The authentication requirement can be met by either setting the
 // `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
 // access ID and secret you generate via the DigitalOcean control panel. For
 // example:
 // 
 // 
 // For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
 type SpacesBucket struct {
 	s *pulumi.ResourceState
 }
@@ -91,7 +93,7 @@ func (r *SpacesBucket) BucketDomainName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["bucketDomainName"])
 }
 
-// Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 func (r *SpacesBucket) ForceDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["forceDestroy"])
 }
@@ -117,7 +119,7 @@ type SpacesBucketState struct {
 	Acl interface{}
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName interface{}
-	// Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy interface{}
 	// The name of the bucket
 	Name interface{}
@@ -131,7 +133,7 @@ type SpacesBucketState struct {
 type SpacesBucketArgs struct {
 	// Canned ACL applied on bucket creation (`private` or `public-read`)
 	Acl interface{}
-	// Unless `true`, the bucket will only be destroyed if empty (Defalts to `false`)
+	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy interface{}
 	// The name of the bucket
 	Name interface{}

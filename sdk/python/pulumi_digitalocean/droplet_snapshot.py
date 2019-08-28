@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class DropletSnapshot(pulumi.CustomResource):
@@ -33,7 +34,7 @@ class DropletSnapshot(pulumi.CustomResource):
     """
     The billable size of the Droplet snapshot in gigabytes.
     """
-    def __init__(__self__, resource_name, opts=None, droplet_id=None, name=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, droplet_id=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
         
@@ -41,6 +42,8 @@ class DropletSnapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
         :param pulumi.Input[str] name: A name for the Droplet snapshot.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -48,33 +51,59 @@ class DropletSnapshot(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
+        if opts.version is None:
+            opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
 
-        __props__ = dict()
-
-        if droplet_id is None:
-            raise TypeError("Missing required property 'droplet_id'")
-        __props__['droplet_id'] = droplet_id
-
-        __props__['name'] = name
-
-        __props__['created_at'] = None
-        __props__['min_disk_size'] = None
-        __props__['regions'] = None
-        __props__['size'] = None
-
+            if droplet_id is None:
+                raise TypeError("Missing required property 'droplet_id'")
+            __props__['droplet_id'] = droplet_id
+            __props__['name'] = name
+            __props__['created_at'] = None
+            __props__['min_disk_size'] = None
+            __props__['regions'] = None
+            __props__['size'] = None
         super(DropletSnapshot, __self__).__init__(
             'digitalocean:index/dropletSnapshot:DropletSnapshot',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, created_at=None, droplet_id=None, min_disk_size=None, name=None, regions=None, size=None):
+        """
+        Get an existing DropletSnapshot resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created_at: The date and time the Droplet snapshot was created.
+        :param pulumi.Input[str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
+        :param pulumi.Input[float] min_disk_size: The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
+        :param pulumi.Input[str] name: A name for the Droplet snapshot.
+        :param pulumi.Input[list] regions: A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
+        :param pulumi.Input[float] size: The billable size of the Droplet snapshot in gigabytes.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
+        """
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["created_at"] = created_at
+        __props__["droplet_id"] = droplet_id
+        __props__["min_disk_size"] = min_disk_size
+        __props__["name"] = name
+        __props__["regions"] = regions
+        __props__["size"] = size
+        return DropletSnapshot(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

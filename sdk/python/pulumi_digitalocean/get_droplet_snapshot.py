@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetDropletSnapshotResult:
@@ -61,12 +62,35 @@ class GetDropletSnapshotResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+class AwaitableGetDropletSnapshotResult(GetDropletSnapshotResult):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return GetDropletSnapshotResult(
+            created_at=self.created_at,
+            droplet_id=self.droplet_id,
+            min_disk_size=self.min_disk_size,
+            most_recent=self.most_recent,
+            name=self.name,
+            name_regex=self.name_regex,
+            region=self.region,
+            regions=self.regions,
+            size=self.size,
+            id=self.id)
 
-async def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
+def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
     """
     Droplet snapshots are saved instances of a Droplet. Use this data
     source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
     resources.
+    
+    :param bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.
+    :param str name: The name of the Droplet snapshot.
+    :param str name_regex: A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+    :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.markdown.
     """
     __args__ = dict()
 
@@ -74,9 +98,13 @@ async def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.InvokeOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts).value
 
-    return GetDropletSnapshotResult(
+    return AwaitableGetDropletSnapshotResult(
         created_at=__ret__.get('createdAt'),
         droplet_id=__ret__.get('dropletId'),
         min_disk_size=__ret__.get('minDiskSize'),

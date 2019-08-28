@@ -2,32 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a tag. This data source provides the name as configured on
- * your DigitalOcean account. This is useful if the tag name in question is not
- * managed by Terraform or you need validate if the tag exists in the account.
- * 
- * An error is triggered if the provided tag name does not exist.
- * 
- * ## Example Usage
- * 
- * Get the tag:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const example = digitalocean.getTag({
- *     name: "example",
- * });
- * ```
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/tag.html.markdown.
  */
-export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
-    return pulumi.runtime.invoke("digitalocean:index/getTag:getTag", {
+export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> & GetTagResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetTagResult> = pulumi.runtime.invoke("digitalocean:index/getTag:getTag", {
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

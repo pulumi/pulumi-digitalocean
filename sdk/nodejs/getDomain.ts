@@ -2,21 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a domain. This data source provides the name, TTL, and zone
- * file as configured on your DigitalOcean account. This is useful if the domain
- * name in question is not managed by Terraform or you need to utilize TTL or zone
- * file data.
- * 
- * An error is triggered if the provided domain name is not managed with your
- * DigitalOcean account.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/domain.html.markdown.
  */
-export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
-    return pulumi.runtime.invoke("digitalocean:index/getDomain:getDomain", {
+export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> & GetDomainResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetDomainResult> = pulumi.runtime.invoke("digitalocean:index/getDomain:getDomain", {
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -37,7 +42,7 @@ export interface GetDomainResult {
     readonly ttl: number;
     /**
      * The uniform resource name of the domain
-     * * `zone_file`: The zone file of the domain.
+     * * `zoneFile`: The zone file of the domain.
      */
     readonly urn: string;
     readonly zoneFile: string;

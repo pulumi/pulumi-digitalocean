@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {DropletSlug, Region} from "./index";
@@ -24,6 +26,8 @@ import {DropletSlug, Region} from "./index";
  *     size: "s-1vcpu-1gb",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
  */
 export class Droplet extends pulumi.CustomResource {
     /**
@@ -57,6 +61,7 @@ export class Droplet extends pulumi.CustomResource {
      * false.
      */
     public readonly backups!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The size of the instance's disk in GB
      */
@@ -81,7 +86,6 @@ export class Droplet extends pulumi.CustomResource {
      * The IPv6 address
      */
     public /*out*/ readonly ipv6Address!: pulumi.Output<string>;
-    public /*out*/ readonly ipv6AddressPrivate!: pulumi.Output<string>;
     /**
      * Is the Droplet locked
      */
@@ -170,13 +174,13 @@ export class Droplet extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as DropletState | undefined;
             inputs["backups"] = state ? state.backups : undefined;
+            inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["disk"] = state ? state.disk : undefined;
             inputs["image"] = state ? state.image : undefined;
             inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
             inputs["ipv4AddressPrivate"] = state ? state.ipv4AddressPrivate : undefined;
             inputs["ipv6"] = state ? state.ipv6 : undefined;
             inputs["ipv6Address"] = state ? state.ipv6Address : undefined;
-            inputs["ipv6AddressPrivate"] = state ? state.ipv6AddressPrivate : undefined;
             inputs["locked"] = state ? state.locked : undefined;
             inputs["memory"] = state ? state.memory : undefined;
             inputs["monitoring"] = state ? state.monitoring : undefined;
@@ -218,11 +222,11 @@ export class Droplet extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["volumeIds"] = args ? args.volumeIds : undefined;
+            inputs["createdAt"] = undefined /*out*/;
             inputs["disk"] = undefined /*out*/;
             inputs["ipv4Address"] = undefined /*out*/;
             inputs["ipv4AddressPrivate"] = undefined /*out*/;
             inputs["ipv6Address"] = undefined /*out*/;
-            inputs["ipv6AddressPrivate"] = undefined /*out*/;
             inputs["locked"] = undefined /*out*/;
             inputs["memory"] = undefined /*out*/;
             inputs["priceHourly"] = undefined /*out*/;
@@ -230,6 +234,13 @@ export class Droplet extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
             inputs["vcpus"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super(Droplet.__pulumiType, name, inputs, opts);
     }
@@ -244,6 +255,7 @@ export interface DropletState {
      * false.
      */
     readonly backups?: pulumi.Input<boolean>;
+    readonly createdAt?: pulumi.Input<string>;
     /**
      * The size of the instance's disk in GB
      */
@@ -268,7 +280,6 @@ export interface DropletState {
      * The IPv6 address
      */
     readonly ipv6Address?: pulumi.Input<string>;
-    readonly ipv6AddressPrivate?: pulumi.Input<string>;
     /**
      * Is the Droplet locked
      */

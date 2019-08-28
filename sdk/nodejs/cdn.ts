@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  * // Create a DigitalOcean managed Let's Encrypt Certificate
  * const cert = new digitalocean.Certificate("cert", {
  *     domains: ["static.example.com"],
- *     type: "lets_encrypt",
+ *     type: "letsEncrypt",
  * });
  * // Create a new Spaces Bucket
  * const mybucket = new digitalocean.SpacesBucket("mybucket", {
@@ -52,6 +52,8 @@ import * as utilities from "./utilities";
  *     origin: mybucket.bucketDomainName,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
  */
 export class Cdn extends pulumi.CustomResource {
     /**
@@ -102,7 +104,7 @@ export class Cdn extends pulumi.CustomResource {
     public readonly origin!: pulumi.Output<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-     * * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     * * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     public readonly ttl!: pulumi.Output<number>;
 
@@ -136,6 +138,13 @@ export class Cdn extends pulumi.CustomResource {
             inputs["createdAt"] = undefined /*out*/;
             inputs["endpoint"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Cdn.__pulumiType, name, inputs, opts);
     }
 }
@@ -166,7 +175,7 @@ export interface CdnState {
     readonly origin?: pulumi.Input<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-     * * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     * * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     readonly ttl?: pulumi.Input<number>;
 }
@@ -189,7 +198,7 @@ export interface CdnArgs {
     readonly origin: pulumi.Input<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-     * * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     * * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     readonly ttl?: pulumi.Input<number>;
 }
