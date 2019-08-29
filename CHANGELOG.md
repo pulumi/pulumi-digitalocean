@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Update to v1.7.0 of the DigitalOcean Terraform Provider
-* Upgrade pulumi-terraform to 3f206601e7
+_(none)_
 
 ---
+
+## 0.18.12 (2019-08-29)
+* Update to v1.7.0 of the DigitalOcean Terraform Provider
+* Upgrade pulumi-terraform to 3f206601e7
 
 ## 0.18.11 (2019-08-20)
 * Depend on latest pulumi package
@@ -33,7 +36,7 @@ CHANGELOG
 * Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.
 
 ## 0.18.3 (2019-06-17)
-* Update the provider publish script to prevent user install problems 
+* Update the provider publish script to prevent user install problems
 
 ## 0.18.2 (2019-06-15)
 * Add TypeScript type guards for each resource class
@@ -51,4 +54,3 @@ CHANGELOG
 
 ## 0.18.0 (2019-05-21)
 * Initial Release
-
