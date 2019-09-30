@@ -9,7 +9,8 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
  */
-export function getDroplet(args: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> & GetDropletResult {
+export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> & GetDropletResult {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -19,6 +20,7 @@ export function getDroplet(args: GetDropletArgs, opts?: pulumi.InvokeOptions): P
     }
     const promise: Promise<GetDropletResult> = pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
         "name": args.name,
+        "tag": args.tag,
     }, opts);
 
     return pulumi.utils.liftProperties(promise, opts);
@@ -31,7 +33,11 @@ export interface GetDropletArgs {
     /**
      * The name of Droplet.
      */
-    readonly name: string;
+    readonly name?: string;
+    /**
+     * A tag applied to the Droplet.
+     */
+    readonly tag?: string;
 }
 
 /**
@@ -83,7 +89,7 @@ export interface GetDropletResult {
      * Whether monitoring agent is installed.
      */
     readonly monitoring: boolean;
-    readonly name: string;
+    readonly name?: string;
     /**
      * Droplet hourly price.
      */
@@ -108,6 +114,7 @@ export interface GetDropletResult {
      * The status of the Droplet.
      */
     readonly status: string;
+    readonly tag?: string;
     /**
      * A list of the tags associated to the Droplet.
      */

@@ -13,6 +13,7 @@ for pkg in __all__:
 from .cdn import *
 from .certificate import *
 from .database_cluster import *
+from .database_replica import *
 from .domain import *
 from .droplet import *
 from .droplet_snapshot import *

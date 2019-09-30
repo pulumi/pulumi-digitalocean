@@ -162,7 +162,7 @@ func (r *KubernetesCluster) UpdatedAt() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
-// The slug identifier for the version of Kubernetes used for the cluster.
+// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
 func (r *KubernetesCluster) Version() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["version"])
 }
@@ -202,7 +202,7 @@ type KubernetesClusterState struct {
 	// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster.
 	// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
 	UpdatedAt interface{}
-	// The slug identifier for the version of Kubernetes used for the cluster.
+	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
 	Version interface{}
 }
 
@@ -220,6 +220,6 @@ type KubernetesClusterArgs struct {
 	Region interface{}
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags interface{}
-	// The slug identifier for the version of Kubernetes used for the cluster.
+	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
 	Version interface{}
 }

@@ -13,7 +13,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, port=None, region=None, size=None, uri=None, urn=None, user=None, version=None, id=None):
+    def __init__(__self__, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, port=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None, id=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         __self__.database = database
@@ -65,6 +65,9 @@ class GetDatabaseClusterResult:
         """
         Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         """
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        __self__.tags = tags
         if uri and not isinstance(uri, str):
             raise TypeError("Expected argument 'uri' to be a str")
         __self__.uri = uri
@@ -110,13 +113,14 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             port=self.port,
             region=self.region,
             size=self.size,
+            tags=self.tags,
             uri=self.uri,
             urn=self.urn,
             user=self.user,
             version=self.version,
             id=self.id)
 
-def get_database_cluster(name=None,opts=None):
+def get_database_cluster(name=None,tags=None,opts=None):
     """
     Provides information on a DigitalOcean database cluster resource.
     
@@ -127,6 +131,7 @@ def get_database_cluster(name=None,opts=None):
     __args__ = dict()
 
     __args__['name'] = name
+    __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -143,6 +148,7 @@ def get_database_cluster(name=None,opts=None):
         port=__ret__.get('port'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),
+        tags=__ret__.get('tags'),
         uri=__ret__.get('uri'),
         urn=__ret__.get('urn'),
         user=__ret__.get('user'),
