@@ -53,6 +53,10 @@ class DatabaseCluster(pulumi.CustomResource):
     """
     Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
     """
+    tags: pulumi.Output[list]
+    """
+    A list of tag names to be applied to the database cluster.
+    """
     uri: pulumi.Output[str]
     """
     The full URI for connecting to the database cluster.
@@ -69,7 +73,7 @@ class DatabaseCluster(pulumi.CustomResource):
     """
     Engine version used by the cluster (ex. `11` for PostgreSQL 11).
     """
-    def __init__(__self__, resource_name, opts=None, engine=None, maintenance_windows=None, name=None, node_count=None, region=None, size=None, version=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, engine=None, maintenance_windows=None, name=None, node_count=None, region=None, size=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean database cluster resource.
         
@@ -81,6 +85,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[float] node_count: Number of nodes that will be included in the cluster.
         :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[str] size: Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[list] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
         
         The **maintenance_windows** object supports the following:
@@ -121,6 +126,7 @@ class DatabaseCluster(pulumi.CustomResource):
             if size is None:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
+            __props__['tags'] = tags
             __props__['version'] = version
             __props__['database'] = None
             __props__['host'] = None
@@ -136,7 +142,7 @@ class DatabaseCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, region=None, size=None, uri=None, urn=None, user=None, version=None):
+    def get(resource_name, id, opts=None, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
         """
         Get an existing DatabaseCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -154,6 +160,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[float] port: Network port that the database cluster is listening on.
         :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[str] size: Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[list] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
         :param pulumi.Input[str] urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
@@ -179,6 +186,7 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__["port"] = port
         __props__["region"] = region
         __props__["size"] = size
+        __props__["tags"] = tags
         __props__["uri"] = uri
         __props__["urn"] = urn
         __props__["user"] = user

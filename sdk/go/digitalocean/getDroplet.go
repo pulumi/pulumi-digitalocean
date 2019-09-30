@@ -12,6 +12,7 @@ func LookupDroplet(ctx *pulumi.Context, args *GetDropletArgs) (*GetDropletResult
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["name"] = args.Name
+		inputs["tag"] = args.Tag
 	}
 	outputs, err := ctx.Invoke("digitalocean:index/getDroplet:getDroplet", inputs)
 	if err != nil {
@@ -37,6 +38,7 @@ func LookupDroplet(ctx *pulumi.Context, args *GetDropletArgs) (*GetDropletResult
 		Region: outputs["region"],
 		Size: outputs["size"],
 		Status: outputs["status"],
+		Tag: outputs["tag"],
 		Tags: outputs["tags"],
 		Urn: outputs["urn"],
 		Vcpus: outputs["vcpus"],
@@ -49,6 +51,8 @@ func LookupDroplet(ctx *pulumi.Context, args *GetDropletArgs) (*GetDropletResult
 type GetDropletArgs struct {
 	// The name of Droplet.
 	Name interface{}
+	// A tag applied to the Droplet.
+	Tag interface{}
 }
 
 // A collection of values returned by getDroplet.
@@ -89,6 +93,7 @@ type GetDropletResult struct {
 	Size interface{}
 	// The status of the Droplet.
 	Status interface{}
+	Tag interface{}
 	// A list of the tags associated to the Droplet.
 	Tags interface{}
 	// The uniform resource name of the Droplet

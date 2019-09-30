@@ -14,6 +14,7 @@ func LookupDatabaseCluster(ctx *pulumi.Context, args *GetDatabaseClusterArgs) (*
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["name"] = args.Name
+		inputs["tags"] = args.Tags
 	}
 	outputs, err := ctx.Invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", inputs)
 	if err != nil {
@@ -29,6 +30,7 @@ func LookupDatabaseCluster(ctx *pulumi.Context, args *GetDatabaseClusterArgs) (*
 		Port: outputs["port"],
 		Region: outputs["region"],
 		Size: outputs["size"],
+		Tags: outputs["tags"],
 		Uri: outputs["uri"],
 		Urn: outputs["urn"],
 		User: outputs["user"],
@@ -41,6 +43,7 @@ func LookupDatabaseCluster(ctx *pulumi.Context, args *GetDatabaseClusterArgs) (*
 type GetDatabaseClusterArgs struct {
 	// The name of the database cluster.
 	Name interface{}
+	Tags interface{}
 }
 
 // A collection of values returned by getDatabaseCluster.
@@ -62,6 +65,7 @@ type GetDatabaseClusterResult struct {
 	Region interface{}
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
 	Size interface{}
+	Tags interface{}
 	// The full URI for connecting to the database cluster.
 	Uri interface{}
 	// The uniform resource name of the database cluster.

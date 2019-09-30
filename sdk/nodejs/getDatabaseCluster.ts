@@ -33,6 +33,7 @@ export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.I
     }
     const promise: Promise<GetDatabaseClusterResult> = pulumi.runtime.invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {
         "name": args.name,
+        "tags": args.tags,
     }, opts);
 
     return pulumi.utils.liftProperties(promise, opts);
@@ -46,6 +47,7 @@ export interface GetDatabaseClusterArgs {
      * The name of the database cluster.
      */
     readonly name: string;
+    readonly tags?: string[];
 }
 
 /**
@@ -85,6 +87,7 @@ export interface GetDatabaseClusterResult {
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
     readonly size: string;
+    readonly tags?: string[];
     /**
      * The full URI for connecting to the database cluster.
      */

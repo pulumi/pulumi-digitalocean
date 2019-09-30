@@ -13,7 +13,7 @@ class GetDropletResult:
     """
     A collection of values returned by getDroplet.
     """
-    def __init__(__self__, backups=None, created_at=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tags=None, urn=None, vcpus=None, volume_ids=None, id=None):
+    def __init__(__self__, backups=None, created_at=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None, id=None):
         if backups and not isinstance(backups, bool):
             raise TypeError("Expected argument 'backups' to be a bool")
         __self__.backups = backups
@@ -122,6 +122,9 @@ class GetDropletResult:
         """
         The status of the Droplet.
         """
+        if tag and not isinstance(tag, str):
+            raise TypeError("Expected argument 'tag' to be a str")
+        __self__.tag = tag
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         __self__.tags = tags
@@ -177,23 +180,26 @@ class AwaitableGetDropletResult(GetDropletResult):
             region=self.region,
             size=self.size,
             status=self.status,
+            tag=self.tag,
             tags=self.tags,
             urn=self.urn,
             vcpus=self.vcpus,
             volume_ids=self.volume_ids,
             id=self.id)
 
-def get_droplet(name=None,opts=None):
+def get_droplet(name=None,tag=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     
     :param str name: The name of Droplet.
+    :param str tag: A tag applied to the Droplet.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
+    __args__['tag'] = tag
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -220,6 +226,7 @@ def get_droplet(name=None,opts=None):
         region=__ret__.get('region'),
         size=__ret__.get('size'),
         status=__ret__.get('status'),
+        tag=__ret__.get('tag'),
         tags=__ret__.get('tags'),
         urn=__ret__.get('urn'),
         vcpus=__ret__.get('vcpus'),

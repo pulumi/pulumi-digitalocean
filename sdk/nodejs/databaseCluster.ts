@@ -123,6 +123,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<DatabaseSlug>;
     /**
+     * A list of tag names to be applied to the database cluster.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The full URI for connecting to the database cluster.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
@@ -161,6 +165,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["port"] = state ? state.port : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["uri"] = state ? state.uri : undefined;
             inputs["urn"] = state ? state.urn : undefined;
             inputs["user"] = state ? state.user : undefined;
@@ -185,6 +190,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["size"] = args ? args.size : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["database"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
@@ -250,6 +256,10 @@ export interface DatabaseClusterState {
      */
     readonly size?: pulumi.Input<DatabaseSlug>;
     /**
+     * A list of tag names to be applied to the database cluster.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The full URI for connecting to the database cluster.
      */
     readonly uri?: pulumi.Input<string>;
@@ -295,6 +305,10 @@ export interface DatabaseClusterArgs {
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
     readonly size: pulumi.Input<DatabaseSlug>;
+    /**
+     * A list of tag names to be applied to the database cluster.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
      */

@@ -38,6 +38,7 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 		inputs["nodeCount"] = nil
 		inputs["region"] = nil
 		inputs["size"] = nil
+		inputs["tags"] = nil
 		inputs["version"] = nil
 	} else {
 		inputs["engine"] = args.Engine
@@ -46,6 +47,7 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 		inputs["nodeCount"] = args.NodeCount
 		inputs["region"] = args.Region
 		inputs["size"] = args.Size
+		inputs["tags"] = args.Tags
 		inputs["version"] = args.Version
 	}
 	inputs["database"] = nil
@@ -78,6 +80,7 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 		inputs["port"] = state.Port
 		inputs["region"] = state.Region
 		inputs["size"] = state.Size
+		inputs["tags"] = state.Tags
 		inputs["uri"] = state.Uri
 		inputs["urn"] = state.Urn
 		inputs["user"] = state.User
@@ -150,6 +153,11 @@ func (r *DatabaseCluster) Size() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["size"])
 }
 
+// A list of tag names to be applied to the database cluster.
+func (r *DatabaseCluster) Tags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The full URI for connecting to the database cluster.
 func (r *DatabaseCluster) Uri() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["uri"])
@@ -192,6 +200,8 @@ type DatabaseClusterState struct {
 	Region interface{}
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
 	Size interface{}
+	// A list of tag names to be applied to the database cluster.
+	Tags interface{}
 	// The full URI for connecting to the database cluster.
 	Uri interface{}
 	// The uniform resource name of the database cluster.
@@ -216,6 +226,8 @@ type DatabaseClusterArgs struct {
 	Region interface{}
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
 	Size interface{}
+	// A list of tag names to be applied to the database cluster.
+	Tags interface{}
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
 	Version interface{}
 }

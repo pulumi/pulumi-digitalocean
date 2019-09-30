@@ -96,7 +96,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The slug identifier for the version of Kubernetes used for the cluster.
+     * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -221,7 +221,7 @@ export interface KubernetesClusterState {
      */
     readonly updatedAt?: pulumi.Input<string>;
     /**
-     * The slug identifier for the version of Kubernetes used for the cluster.
+     * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
      */
     readonly version?: pulumi.Input<string>;
 }
@@ -251,7 +251,7 @@ export interface KubernetesClusterArgs {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The slug identifier for the version of Kubernetes used for the cluster.
+     * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
      */
     readonly version: pulumi.Input<string>;
 }
