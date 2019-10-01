@@ -17,15 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
+ * const foobarFloatingIp = new digitalocean.FloatingIp("foobar", {
+ *     region: "sgp1",
+ * });
  * const foobarDroplet = new digitalocean.Droplet("foobar", {
  *     image: "ubuntu-18-04-x64",
  *     ipv6: true,
  *     privateNetworking: true,
  *     region: "sgp1",
  *     size: "s-1vcpu-1gb",
- * });
- * const foobarFloatingIp = new digitalocean.FloatingIp("foobar", {
- *     region: "sgp1",
  * });
  * const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobar", {
  *     dropletId: foobarDroplet.id,

@@ -35,15 +35,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * // Create a DigitalOcean managed Let's Encrypt Certificate
- * const cert = new digitalocean.Certificate("cert", {
- *     domains: ["static.example.com"],
- *     type: "letsEncrypt",
- * });
  * // Create a new Spaces Bucket
  * const mybucket = new digitalocean.SpacesBucket("mybucket", {
  *     acl: "public-read",
  *     region: "sfo2",
+ * });
+ * // Create a DigitalOcean managed Let's Encrypt Certificate
+ * const cert = new digitalocean.Certificate("cert", {
+ *     domains: ["static.example.com"],
+ *     type: "letsEncrypt",
  * });
  * // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
  * const mycdn = new digitalocean.Cdn("mycdn", {
