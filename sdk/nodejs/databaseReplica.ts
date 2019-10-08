@@ -86,6 +86,14 @@ export class DatabaseReplica extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<number>;
     /**
+     * Same as `host`, but only accessible from resources within the account and in the same region.
+     */
+    public /*out*/ readonly privateHost!: pulumi.Output<string>;
+    /**
+     * Same as `uri`, but only accessible from resources within the account and in the same region.
+     */
+    public /*out*/ readonly privateUri!: pulumi.Output<string>;
+    /**
      * DigitalOcean region where the replica will reside.
      */
     public readonly region!: pulumi.Output<Region | undefined>;
@@ -121,6 +129,8 @@ export class DatabaseReplica extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["port"] = state ? state.port : undefined;
+            inputs["privateHost"] = state ? state.privateHost : undefined;
+            inputs["privateUri"] = state ? state.privateUri : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -140,6 +150,8 @@ export class DatabaseReplica extends pulumi.CustomResource {
             inputs["host"] = undefined /*out*/;
             inputs["password"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+            inputs["privateHost"] = undefined /*out*/;
+            inputs["privateUri"] = undefined /*out*/;
             inputs["uri"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
@@ -182,6 +194,14 @@ export interface DatabaseReplicaState {
      * Network port that the database replica is listening on.
      */
     readonly port?: pulumi.Input<number>;
+    /**
+     * Same as `host`, but only accessible from resources within the account and in the same region.
+     */
+    readonly privateHost?: pulumi.Input<string>;
+    /**
+     * Same as `uri`, but only accessible from resources within the account and in the same region.
+     */
+    readonly privateUri?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the replica will reside.
      */

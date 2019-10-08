@@ -27,7 +27,10 @@ func LookupDatabaseCluster(ctx *pulumi.Context, args *GetDatabaseClusterArgs) (*
 		MaintenanceWindows: outputs["maintenanceWindows"],
 		Name: outputs["name"],
 		NodeCount: outputs["nodeCount"],
+		Password: outputs["password"],
 		Port: outputs["port"],
+		PrivateHost: outputs["privateHost"],
+		PrivateUri: outputs["privateUri"],
 		Region: outputs["region"],
 		Size: outputs["size"],
 		Tags: outputs["tags"],
@@ -59,8 +62,14 @@ type GetDatabaseClusterResult struct {
 	Name interface{}
 	// Number of nodes that will be included in the cluster.
 	NodeCount interface{}
+	// Password for the cluster's default user.
+	Password interface{}
 	// Network port that the database cluster is listening on.
 	Port interface{}
+	// Same as `host`, but only accessible from resources within the account and in the same region.
+	PrivateHost interface{}
+	// Same as `uri`, but only accessible from resources within the account and in the same region.
+	PrivateUri interface{}
 	// DigitalOcean region where the cluster will reside.
 	Region interface{}
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).

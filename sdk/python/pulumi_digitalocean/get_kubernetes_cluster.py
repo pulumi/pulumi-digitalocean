@@ -93,9 +93,11 @@ class GetKubernetesClusterResult:
         * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
         - `host` - The URL of the API server on the Kubernetes master node.
-        - `client_key` - The base64 encoded private key used by clients to access the cluster.
-        - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster.
         - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
+        - `token` - The DigitalOcean API access token used by clients to access the cluster.
+        - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+        - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+        - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
         """
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")

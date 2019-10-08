@@ -76,9 +76,21 @@ export interface GetDatabaseClusterResult {
      */
     readonly nodeCount: number;
     /**
+     * Password for the cluster's default user.
+     */
+    readonly password: string;
+    /**
      * Network port that the database cluster is listening on.
      */
     readonly port: number;
+    /**
+     * Same as `host`, but only accessible from resources within the account and in the same region.
+     */
+    readonly privateHost: string;
+    /**
+     * Same as `uri`, but only accessible from resources within the account and in the same region.
+     */
+    readonly privateUri: string;
     /**
      * DigitalOcean region where the cluster will reside.
      */

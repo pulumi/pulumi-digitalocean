@@ -206,6 +206,8 @@ github.com/digitalocean/godo v1.19.0 h1:9ApuchfzGD/XI8Zm0RRnZnytdfYHPjPTRKTnmzQN
 github.com/digitalocean/godo v1.19.0/go.mod h1:AAPQ+tiM4st79QHlEBTg8LM7JQNre4SAQCbn56wEyKY=
 github.com/digitalocean/godo v1.21.0 h1:oSgoZGague6FDPSRjhCiYd8s66QjkWJn+Jt4R/1kEyo=
 github.com/digitalocean/godo v1.21.0/go.mod h1:AAPQ+tiM4st79QHlEBTg8LM7JQNre4SAQCbn56wEyKY=
+github.com/digitalocean/godo v1.22.0 h1:bVFBKXW2TlynZ9SqmlM6ZSW6UPEzFckltSIUT5NC8L4=
+github.com/digitalocean/godo v1.22.0/go.mod h1:iJnN9rVu6K5LioLxLimlq0uRI+y/eAQjROUmeU/r0hY=
 github.com/dimchansky/utfbom v1.0.0/go.mod h1:rO41eb7gLfo8SF1jd9F8HplJm1Fewwi4mQvIirEdv+8=
 github.com/dimchansky/utfbom v1.1.0 h1:FcM3g+nofKgUteL8dm/UpdRXNC9KmADgTpLKsu0TRo4=
 github.com/dimchansky/utfbom v1.1.0/go.mod h1:rO41eb7gLfo8SF1jd9F8HplJm1Fewwi4mQvIirEdv+8=
@@ -869,6 +871,8 @@ github.com/terraform-providers/terraform-provider-digitalocean v1.7.0 h1:7bhBfld
 github.com/terraform-providers/terraform-provider-digitalocean v1.7.0/go.mod h1:mmQbW7ptDLLP/MO52bn3fQupr5A9B/whkHW+LPw7RG4=
 github.com/terraform-providers/terraform-provider-digitalocean v1.8.0 h1:rCTyDUaqONtZ24noWFlASQXT2EBOHOJKl9GI0R23qAU=
 github.com/terraform-providers/terraform-provider-digitalocean v1.8.0/go.mod h1:cZS0PeAbt9eG1ZXtFI8SjT6/Ckiye8FbRniDsA/1hK8=
+github.com/terraform-providers/terraform-provider-digitalocean v1.9.0 h1:RD/VNB4gMNwdFfv9hgNWECaxt4wJMBZnRGxdzr6+obY=
+github.com/terraform-providers/terraform-provider-digitalocean v1.9.0/go.mod h1:3Iw3uXLDr60OCn3sRsFcLjF+AYW8L+g1QnjyNCabe6I=
 github.com/terraform-providers/terraform-provider-google v1.20.0 h1:GCVLdJ49gSQxrI3b9Hu8BrNXKSyfGvLrlTJFyuWzsa4=
 github.com/terraform-providers/terraform-provider-google v1.20.0/go.mod h1:Ay9UTdQsm6vHYRjhyFRLPis39XspOYHmgy5pwNrgsco=
 github.com/terraform-providers/terraform-provider-kubernetes v1.7.0 h1:F/KCcYlWNo7mYhl/k6erFPOB1X/a0RFvaoCImEHCK74=

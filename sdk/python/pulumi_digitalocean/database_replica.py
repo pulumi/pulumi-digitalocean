@@ -34,6 +34,14 @@ class DatabaseReplica(pulumi.CustomResource):
     """
     Network port that the database replica is listening on.
     """
+    private_host: pulumi.Output[str]
+    """
+    Same as `host`, but only accessible from resources within the account and in the same region.
+    """
+    private_uri: pulumi.Output[str]
+    """
+    Same as `uri`, but only accessible from resources within the account and in the same region.
+    """
     region: pulumi.Output[str]
     """
     DigitalOcean region where the replica will reside.
@@ -92,6 +100,8 @@ class DatabaseReplica(pulumi.CustomResource):
             __props__['host'] = None
             __props__['password'] = None
             __props__['port'] = None
+            __props__['private_host'] = None
+            __props__['private_uri'] = None
             __props__['uri'] = None
             __props__['user'] = None
         super(DatabaseReplica, __self__).__init__(
@@ -101,7 +111,7 @@ class DatabaseReplica(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, database=None, host=None, name=None, password=None, port=None, region=None, size=None, tags=None, uri=None, user=None):
+    def get(resource_name, id, opts=None, cluster_id=None, database=None, host=None, name=None, password=None, port=None, private_host=None, private_uri=None, region=None, size=None, tags=None, uri=None, user=None):
         """
         Get an existing DatabaseReplica resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -115,6 +125,8 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for the database replica.
         :param pulumi.Input[str] password: Password for the replica's default user.
         :param pulumi.Input[float] port: Network port that the database replica is listening on.
+        :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
         :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[str] uri: The full URI for connecting to the database replica.
@@ -131,6 +143,8 @@ class DatabaseReplica(pulumi.CustomResource):
         __props__["name"] = name
         __props__["password"] = password
         __props__["port"] = port
+        __props__["private_host"] = private_host
+        __props__["private_uri"] = private_uri
         __props__["region"] = region
         __props__["size"] = size
         __props__["tags"] = tags

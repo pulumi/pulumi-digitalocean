@@ -13,7 +13,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, port=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None, id=None):
+    def __init__(__self__, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_uri=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None, id=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         __self__.database = database
@@ -47,11 +47,29 @@ class GetDatabaseClusterResult:
         """
         Number of nodes that will be included in the cluster.
         """
+        if password and not isinstance(password, str):
+            raise TypeError("Expected argument 'password' to be a str")
+        __self__.password = password
+        """
+        Password for the cluster's default user.
+        """
         if port and not isinstance(port, float):
             raise TypeError("Expected argument 'port' to be a float")
         __self__.port = port
         """
         Network port that the database cluster is listening on.
+        """
+        if private_host and not isinstance(private_host, str):
+            raise TypeError("Expected argument 'private_host' to be a str")
+        __self__.private_host = private_host
+        """
+        Same as `host`, but only accessible from resources within the account and in the same region.
+        """
+        if private_uri and not isinstance(private_uri, str):
+            raise TypeError("Expected argument 'private_uri' to be a str")
+        __self__.private_uri = private_uri
+        """
+        Same as `uri`, but only accessible from resources within the account and in the same region.
         """
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
@@ -110,7 +128,10 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             maintenance_windows=self.maintenance_windows,
             name=self.name,
             node_count=self.node_count,
+            password=self.password,
             port=self.port,
+            private_host=self.private_host,
+            private_uri=self.private_uri,
             region=self.region,
             size=self.size,
             tags=self.tags,
@@ -145,7 +166,10 @@ def get_database_cluster(name=None,tags=None,opts=None):
         maintenance_windows=__ret__.get('maintenanceWindows'),
         name=__ret__.get('name'),
         node_count=__ret__.get('nodeCount'),
+        password=__ret__.get('password'),
         port=__ret__.get('port'),
+        private_host=__ret__.get('privateHost'),
+        private_uri=__ret__.get('privateUri'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),
         tags=__ret__.get('tags'),
