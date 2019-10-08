@@ -39,6 +39,8 @@ func NewDatabaseReplica(ctx *pulumi.Context,
 	inputs["host"] = nil
 	inputs["password"] = nil
 	inputs["port"] = nil
+	inputs["privateHost"] = nil
+	inputs["privateUri"] = nil
 	inputs["uri"] = nil
 	inputs["user"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/databaseReplica:DatabaseReplica", name, true, inputs, opts...)
@@ -60,6 +62,8 @@ func GetDatabaseReplica(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["password"] = state.Password
 		inputs["port"] = state.Port
+		inputs["privateHost"] = state.PrivateHost
+		inputs["privateUri"] = state.PrivateUri
 		inputs["region"] = state.Region
 		inputs["size"] = state.Size
 		inputs["tags"] = state.Tags
@@ -113,6 +117,16 @@ func (r *DatabaseReplica) Port() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["port"])
 }
 
+// Same as `host`, but only accessible from resources within the account and in the same region.
+func (r *DatabaseReplica) PrivateHost() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["privateHost"])
+}
+
+// Same as `uri`, but only accessible from resources within the account and in the same region.
+func (r *DatabaseReplica) PrivateUri() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["privateUri"])
+}
+
 // DigitalOcean region where the replica will reside.
 func (r *DatabaseReplica) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
@@ -151,6 +165,10 @@ type DatabaseReplicaState struct {
 	Password interface{}
 	// Network port that the database replica is listening on.
 	Port interface{}
+	// Same as `host`, but only accessible from resources within the account and in the same region.
+	PrivateHost interface{}
+	// Same as `uri`, but only accessible from resources within the account and in the same region.
+	PrivateUri interface{}
 	// DigitalOcean region where the replica will reside.
 	Region interface{}
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).

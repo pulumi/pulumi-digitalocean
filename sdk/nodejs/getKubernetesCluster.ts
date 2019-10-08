@@ -94,9 +94,11 @@ export interface GetKubernetesClusterResult {
      * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
      * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `clientKey` - The base64 encoded private key used by clients to access the cluster.
-     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster.
      * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
+     * - `token` - The DigitalOcean API access token used by clients to access the cluster.
+     * - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+     * - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
      */
     readonly updatedAt: string;
     /**

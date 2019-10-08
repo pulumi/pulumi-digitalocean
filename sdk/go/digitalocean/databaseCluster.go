@@ -54,6 +54,8 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 	inputs["host"] = nil
 	inputs["password"] = nil
 	inputs["port"] = nil
+	inputs["privateHost"] = nil
+	inputs["privateUri"] = nil
 	inputs["uri"] = nil
 	inputs["urn"] = nil
 	inputs["user"] = nil
@@ -78,6 +80,8 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 		inputs["nodeCount"] = state.NodeCount
 		inputs["password"] = state.Password
 		inputs["port"] = state.Port
+		inputs["privateHost"] = state.PrivateHost
+		inputs["privateUri"] = state.PrivateUri
 		inputs["region"] = state.Region
 		inputs["size"] = state.Size
 		inputs["tags"] = state.Tags
@@ -143,6 +147,16 @@ func (r *DatabaseCluster) Port() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["port"])
 }
 
+// Same as `host`, but only accessible from resources within the account and in the same region.
+func (r *DatabaseCluster) PrivateHost() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["privateHost"])
+}
+
+// Same as `uri`, but only accessible from resources within the account and in the same region.
+func (r *DatabaseCluster) PrivateUri() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["privateUri"])
+}
+
 // DigitalOcean region where the cluster will reside.
 func (r *DatabaseCluster) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
@@ -196,6 +210,10 @@ type DatabaseClusterState struct {
 	Password interface{}
 	// Network port that the database cluster is listening on.
 	Port interface{}
+	// Same as `host`, but only accessible from resources within the account and in the same region.
+	PrivateHost interface{}
+	// Same as `uri`, but only accessible from resources within the account and in the same region.
+	PrivateUri interface{}
 	// DigitalOcean region where the cluster will reside.
 	Region interface{}
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
