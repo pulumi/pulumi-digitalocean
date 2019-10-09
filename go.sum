@@ -873,6 +873,8 @@ github.com/terraform-providers/terraform-provider-digitalocean v1.8.0 h1:rCTyDUa
 github.com/terraform-providers/terraform-provider-digitalocean v1.8.0/go.mod h1:cZS0PeAbt9eG1ZXtFI8SjT6/Ckiye8FbRniDsA/1hK8=
 github.com/terraform-providers/terraform-provider-digitalocean v1.9.0 h1:RD/VNB4gMNwdFfv9hgNWECaxt4wJMBZnRGxdzr6+obY=
 github.com/terraform-providers/terraform-provider-digitalocean v1.9.0/go.mod h1:3Iw3uXLDr60OCn3sRsFcLjF+AYW8L+g1QnjyNCabe6I=
+github.com/terraform-providers/terraform-provider-digitalocean v1.9.1 h1:iHRvIycJypGNmXdv+8fDVVFoW6N9WhN33BA4DGhX3Es=
+github.com/terraform-providers/terraform-provider-digitalocean v1.9.1/go.mod h1:3Iw3uXLDr60OCn3sRsFcLjF+AYW8L+g1QnjyNCabe6I=
 github.com/terraform-providers/terraform-provider-google v1.20.0 h1:GCVLdJ49gSQxrI3b9Hu8BrNXKSyfGvLrlTJFyuWzsa4=
 github.com/terraform-providers/terraform-provider-google v1.20.0/go.mod h1:Ay9UTdQsm6vHYRjhyFRLPis39XspOYHmgy5pwNrgsco=
 github.com/terraform-providers/terraform-provider-kubernetes v1.7.0 h1:F/KCcYlWNo7mYhl/k6erFPOB1X/a0RFvaoCImEHCK74=
