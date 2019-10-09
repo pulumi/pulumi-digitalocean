@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.9.1 of the DigitalOcean Terraform Provider
+_(none)_
 
 ---
+
+## 1.0.1 (2019-10-09)
+* Upgrade to v1.9.1 of the DigitalOcean Terraform Provider
 
 ## 1.0.0 (2019-10-08)
 * Regenerate SDK based on tf2pulumi 0.6.0
