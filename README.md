@@ -30,6 +30,19 @@ To use from Python, install using `pip`:
 To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-digitalocean/sdk/go/...
+    
+## Configuration
+
+The following configuration points are available:
+
+- `digitalocean:token` - (Required) This is the DO API token. Alternatively, this can also be specified using environment 
+  variables, ordered by precedence, `DIGITALOCEAN_TOKEN` or `DIGITALOCEAN_ACCESS_TOKEN`.
+- `digitalocean:spacesAccessId` - (Optional) The access key ID used for Spaces API operations. May be set via the 
+  `SPACES_ACCESS_KEY_ID` environment variable.
+- `digitalocean:spacesSecretId` - (Optional) The access key ID used for Spaces API operations. May be set via the 
+  `SPACES_SECRET_ACCESS_KEY` environment variable.
+- `digitalocean:apiEndpoint` - (Optional) This can be used to override the base URL for DigitalOcean API requests. May 
+  be set via the `DIGITALOCEAN_API_URL` environment variable. Default is `https://api.digitalocean.com`.
 
 ## Concepts
 
