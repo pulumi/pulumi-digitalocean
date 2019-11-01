@@ -10,30 +10,6 @@ import * as utilities from "./utilities";
  * Manages attaching a Volume to a Droplet.
  * 
  * > **NOTE:** Volumes can be attached either directly on the `digitalocean..Droplet` resource, or using the `digitalocean..VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const foobarVolume = new digitalocean.Volume("foobar", {
- *     description: "an example volume",
- *     initialFilesystemType: "ext4",
- *     region: "nyc1",
- *     size: 100,
- * });
- * const foobarDroplet = new digitalocean.Droplet("foobar", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc1",
- *     size: "s-1vcpu-1gb",
- * });
- * const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: foobarDroplet.id,
- *     volumeId: foobarVolume.id,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_attachment.html.markdown.
  */

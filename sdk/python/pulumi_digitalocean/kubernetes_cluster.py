@@ -36,10 +36,17 @@ class KubernetesCluster(pulumi.CustomResource):
     A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
     - `name` - (Required) A name for the node pool.
     - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-    - `node_count` - (Required) The number of Droplet instances in the node pool.
+    - `node_count` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+    - `auto_scale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+    - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+    - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
     - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
     
+      * `actual_node_count` (`float`)
+      * `auto_scale` (`bool`)
       * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+      * `max_nodes` (`float`)
+      * `min_nodes` (`float`)
       * `name` (`str`) - A name for the Kubernetes cluster.
       * `node_count` (`float`)
       * `nodes` (`list`)
@@ -103,7 +110,10 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[dict] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
                - `name` - (Required) A name for the node pool.
                - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-               - `node_count` - (Required) The number of Droplet instances in the node pool.
+               - `node_count` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+               - `auto_scale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+               - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+               - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
                - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
@@ -111,7 +121,11 @@ class KubernetesCluster(pulumi.CustomResource):
         
         The **node_pool** object supports the following:
         
+          * `actual_node_count` (`pulumi.Input[float]`)
+          * `auto_scale` (`pulumi.Input[bool]`)
           * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+          * `max_nodes` (`pulumi.Input[float]`)
+          * `min_nodes` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
           * `node_count` (`pulumi.Input[float]`)
           * `nodes` (`pulumi.Input[list]`)
@@ -194,7 +208,10 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[dict] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
                - `name` - (Required) A name for the node pool.
                - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-               - `node_count` - (Required) The number of Droplet instances in the node pool.
+               - `node_count` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+               - `auto_scale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+               - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+               - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
                - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
@@ -223,7 +240,11 @@ class KubernetesCluster(pulumi.CustomResource):
         
         The **node_pool** object supports the following:
         
+          * `actual_node_count` (`pulumi.Input[float]`)
+          * `auto_scale` (`pulumi.Input[bool]`)
           * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+          * `max_nodes` (`pulumi.Input[float]`)
+          * `min_nodes` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
           * `node_count` (`pulumi.Input[float]`)
           * `nodes` (`pulumi.Input[list]`)

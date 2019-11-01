@@ -10,45 +10,6 @@ import {FilesystemType, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const foobarVolume = new digitalocean.Volume("foobar", {
- *     description: "an example volume",
- *     initialFilesystemType: "ext4",
- *     region: "nyc1",
- *     size: 100,
- * });
- * const foobarDroplet = new digitalocean.Droplet("foobar", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc1",
- *     size: "s-1vcpu-1gb",
- * });
- * const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: foobarDroplet.id,
- *     volumeId: foobarVolume.id,
- * });
- * ```
- * 
- * You can also create a volume from an existing snapshot.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const foobarVolumeSnapshot = digitalocean.getVolumeSnapshot({
- *     name: "baz",
- * });
- * const foobarVolume = new digitalocean.Volume("foobar", {
- *     region: "lon1",
- *     size: foobarVolumeSnapshot.minDiskSize,
- *     snapshotId: foobarVolumeSnapshot.id,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
  */

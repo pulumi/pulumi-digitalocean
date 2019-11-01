@@ -13,7 +13,9 @@ for pkg in __all__:
 from .cdn import *
 from .certificate import *
 from .database_cluster import *
+from .database_db import *
 from .database_replica import *
+from .database_user import *
 from .domain import *
 from .droplet import *
 from .droplet_snapshot import *
@@ -31,6 +33,7 @@ from .tag import *
 from .volume import *
 from .volume_attachment import *
 from .volume_snapshot import *
+from .get_account import *
 from .get_certificate import *
 from .get_database_cluster import *
 from .get_domain import *
@@ -41,6 +44,7 @@ from .get_image import *
 from .get_kubernetes_cluster import *
 from .get_load_balancer import *
 from .get_record import *
+from .get_sizes import *
 from .get_ssh_key import *
 from .get_tag import *
 from .get_volume import *

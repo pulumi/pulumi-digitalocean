@@ -21,26 +21,30 @@ func NewKubernetesNodePool(ctx *pulumi.Context,
 	if args == nil || args.ClusterId == nil {
 		return nil, errors.New("missing required argument 'ClusterId'")
 	}
-	if args == nil || args.NodeCount == nil {
-		return nil, errors.New("missing required argument 'NodeCount'")
-	}
 	if args == nil || args.Size == nil {
 		return nil, errors.New("missing required argument 'Size'")
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["autoScale"] = nil
 		inputs["clusterId"] = nil
+		inputs["maxNodes"] = nil
+		inputs["minNodes"] = nil
 		inputs["name"] = nil
 		inputs["nodeCount"] = nil
 		inputs["size"] = nil
 		inputs["tags"] = nil
 	} else {
+		inputs["autoScale"] = args.AutoScale
 		inputs["clusterId"] = args.ClusterId
+		inputs["maxNodes"] = args.MaxNodes
+		inputs["minNodes"] = args.MinNodes
 		inputs["name"] = args.Name
 		inputs["nodeCount"] = args.NodeCount
 		inputs["size"] = args.Size
 		inputs["tags"] = args.Tags
 	}
+	inputs["actualNodeCount"] = nil
 	inputs["nodes"] = nil
 	s, err := ctx.RegisterResource("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, true, inputs, opts...)
 	if err != nil {
@@ -55,7 +59,11 @@ func GetKubernetesNodePool(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *KubernetesNodePoolState, opts ...pulumi.ResourceOpt) (*KubernetesNodePool, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["actualNodeCount"] = state.ActualNodeCount
+		inputs["autoScale"] = state.AutoScale
 		inputs["clusterId"] = state.ClusterId
+		inputs["maxNodes"] = state.MaxNodes
+		inputs["minNodes"] = state.MinNodes
 		inputs["name"] = state.Name
 		inputs["nodeCount"] = state.NodeCount
 		inputs["nodes"] = state.Nodes
@@ -79,9 +87,29 @@ func (r *KubernetesNodePool) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+func (r *KubernetesNodePool) ActualNodeCount() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["actualNodeCount"])
+}
+
+// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+func (r *KubernetesNodePool) AutoScale() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["autoScale"])
+}
+
 // The ID of the Kubernetes cluster to which the node pool is associated.
 func (r *KubernetesNodePool) ClusterId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["clusterId"])
+}
+
+// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+func (r *KubernetesNodePool) MaxNodes() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["maxNodes"])
+}
+
+// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+func (r *KubernetesNodePool) MinNodes() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["minNodes"])
 }
 
 // A name for the node pool.
@@ -89,7 +117,7 @@ func (r *KubernetesNodePool) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The number of Droplet instances in the node pool.
+// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
 func (r *KubernetesNodePool) NodeCount() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["nodeCount"])
 }
@@ -116,11 +144,19 @@ func (r *KubernetesNodePool) Tags() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering KubernetesNodePool resources.
 type KubernetesNodePoolState struct {
+	// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+	ActualNodeCount interface{}
+	// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+	AutoScale interface{}
 	// The ID of the Kubernetes cluster to which the node pool is associated.
 	ClusterId interface{}
+	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+	MaxNodes interface{}
+	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+	MinNodes interface{}
 	// A name for the node pool.
 	Name interface{}
-	// The number of Droplet instances in the node pool.
+	// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
 	NodeCount interface{}
 	// A list of nodes in the pool. Each node exports the following attributes:
 	// - `id` -  A unique ID that can be used to identify and reference the node.
@@ -137,11 +173,17 @@ type KubernetesNodePoolState struct {
 
 // The set of arguments for constructing a KubernetesNodePool resource.
 type KubernetesNodePoolArgs struct {
+	// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+	AutoScale interface{}
 	// The ID of the Kubernetes cluster to which the node pool is associated.
 	ClusterId interface{}
+	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+	MaxNodes interface{}
+	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+	MinNodes interface{}
 	// A name for the node pool.
 	Name interface{}
-	// The number of Droplet instances in the node pool.
+	// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
 	NodeCount interface{}
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size interface{}

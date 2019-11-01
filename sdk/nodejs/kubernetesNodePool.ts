@@ -10,29 +10,6 @@ import {DropletSlug} from "./index";
 
 /**
  * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const foo = new digitalocean.KubernetesCluster("foo", {
- *     nodePool: {
- *         name: "front-end-pool",
- *         nodeCount: 3,
- *         size: "s-2vcpu-2gb",
- *     },
- *     region: "nyc1",
- *     version: "1.12.1-do.2",
- * });
- * const bar = new digitalocean.KubernetesNodePool("bar", {
- *     clusterId: foo.id,
- *     nodeCount: 2,
- *     size: "c-2",
- *     tags: ["backend"],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
  */
@@ -64,17 +41,33 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     }
 
     /**
+     * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+     */
+    public /*out*/ readonly actualNodeCount!: pulumi.Output<number>;
+    /**
+     * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+     */
+    public readonly autoScale!: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
     public readonly clusterId!: pulumi.Output<string>;
+    /**
+     * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+     */
+    public readonly maxNodes!: pulumi.Output<number | undefined>;
+    /**
+     * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     */
+    public readonly minNodes!: pulumi.Output<number | undefined>;
     /**
      * A name for the node pool.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The number of Droplet instances in the node pool.
+     * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    public readonly nodeCount!: pulumi.Output<number | undefined>;
     /**
      * A list of nodes in the pool. Each node exports the following attributes:
      * - `id` -  A unique ID that can be used to identify and reference the node.
@@ -105,7 +98,11 @@ export class KubernetesNodePool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as KubernetesNodePoolState | undefined;
+            inputs["actualNodeCount"] = state ? state.actualNodeCount : undefined;
+            inputs["autoScale"] = state ? state.autoScale : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
+            inputs["maxNodes"] = state ? state.maxNodes : undefined;
+            inputs["minNodes"] = state ? state.minNodes : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
             inputs["nodes"] = state ? state.nodes : undefined;
@@ -116,17 +113,18 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             if (!args || args.clusterId === undefined) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.nodeCount === undefined) {
-                throw new Error("Missing required property 'nodeCount'");
-            }
             if (!args || args.size === undefined) {
                 throw new Error("Missing required property 'size'");
             }
+            inputs["autoScale"] = args ? args.autoScale : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
+            inputs["maxNodes"] = args ? args.maxNodes : undefined;
+            inputs["minNodes"] = args ? args.minNodes : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["actualNodeCount"] = undefined /*out*/;
             inputs["nodes"] = undefined /*out*/;
         }
         if (!opts) {
@@ -145,15 +143,31 @@ export class KubernetesNodePool extends pulumi.CustomResource {
  */
 export interface KubernetesNodePoolState {
     /**
+     * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+     */
+    readonly actualNodeCount?: pulumi.Input<number>;
+    /**
+     * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+     */
+    readonly autoScale?: pulumi.Input<boolean>;
+    /**
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+     */
+    readonly maxNodes?: pulumi.Input<number>;
+    /**
+     * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     */
+    readonly minNodes?: pulumi.Input<number>;
     /**
      * A name for the node pool.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The number of Droplet instances in the node pool.
+     * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      */
     readonly nodeCount?: pulumi.Input<number>;
     /**
@@ -180,17 +194,29 @@ export interface KubernetesNodePoolState {
  */
 export interface KubernetesNodePoolArgs {
     /**
+     * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+     */
+    readonly autoScale?: pulumi.Input<boolean>;
+    /**
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
     readonly clusterId: pulumi.Input<string>;
+    /**
+     * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+     */
+    readonly maxNodes?: pulumi.Input<number>;
+    /**
+     * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     */
+    readonly minNodes?: pulumi.Input<number>;
     /**
      * A name for the node pool.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The number of Droplet instances in the node pool.
+     * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      */
-    readonly nodeCount: pulumi.Input<number>;
+    readonly nodeCount?: pulumi.Input<number>;
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */

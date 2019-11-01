@@ -7,6 +7,13 @@ import * as utilities from "./utilities";
 import {CertificateType} from "./index";
 
 /**
+ * Provides a DigitalOcean Certificate resource that allows you to manage
+ * certificates for configuring TLS termination in Load Balancers.
+ * Certificates created with this resource can be referenced in your
+ * Load Balancer configuration via their ID. The certificate can either
+ * be a custom one provided by you or automatically generated one with
+ * Let's Encrypt.
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
  */
 export class Certificate extends pulumi.CustomResource {

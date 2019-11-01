@@ -10,28 +10,6 @@ import * as utilities from "./utilities";
  * Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
  * makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
  * Droplet.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const foobarFloatingIp = new digitalocean.FloatingIp("foobar", {
- *     region: "sgp1",
- * });
- * const foobarDroplet = new digitalocean.Droplet("foobar", {
- *     image: "ubuntu-18-04-x64",
- *     ipv6: true,
- *     privateNetworking: true,
- *     region: "sgp1",
- *     size: "s-1vcpu-1gb",
- * });
- * const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobar", {
- *     dropletId: foobarDroplet.id,
- *     ipAddress: foobarFloatingIp.ipAddress,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip_assignment.html.markdown.
  */

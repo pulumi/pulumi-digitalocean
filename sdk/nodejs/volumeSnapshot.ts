@@ -10,22 +10,6 @@ import {Region} from "./index";
 
 /**
  * Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const foobarVolume = new digitalocean.Volume("foobar", {
- *     description: "an example volume",
- *     region: "nyc1",
- *     size: 100,
- * });
- * const foobarVolumeSnapshot = new digitalocean.VolumeSnapshot("foobar", {
- *     volumeId: foobarVolume.id,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
  */

@@ -100,6 +100,31 @@ export interface FirewallPendingChange {
     status?: pulumi.Input<string>;
 }
 
+export interface GetSizesFilter {
+    /**
+     * Sort the sizes by this key. This may be one of `slug`,
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+     */
+    key: string;
+    /**
+     * Only retrieves images which keys has value that matches
+     * one of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetSizesSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the sizes by this key. This may be one of `slug`,
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+     */
+    key: string;
+}
+
 export interface KubernetesClusterKubeConfig {
     clientCertificate?: pulumi.Input<string>;
     clientKey?: pulumi.Input<string>;
@@ -111,15 +136,19 @@ export interface KubernetesClusterKubeConfig {
 }
 
 export interface KubernetesClusterNodePool {
+    actualNodeCount?: pulumi.Input<number>;
+    autoScale?: pulumi.Input<boolean>;
     /**
      * A unique ID that can be used to identify and reference a Kubernetes cluster.
      */
     id?: pulumi.Input<string>;
+    maxNodes?: pulumi.Input<number>;
+    minNodes?: pulumi.Input<number>;
     /**
      * A name for the Kubernetes cluster.
      */
     name: pulumi.Input<string>;
-    nodeCount: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number>;
     nodes?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterNodePoolNode>[]>;
     size: pulumi.Input<string>;
     /**
@@ -244,4 +273,23 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: pulumi.Input<string>;
+}
+
+export interface SpacesBucketCorsRule {
+    /**
+     * A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
+     */
+    allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
+     */
+    allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+     */
+    allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The time in seconds that browser can cache the response for a preflight request.
+     */
+    maxAgeSeconds?: pulumi.Input<number>;
 }

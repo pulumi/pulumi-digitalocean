@@ -10,9 +10,25 @@ from typing import Union
 from . import utilities, tables
 
 class KubernetesNodePool(pulumi.CustomResource):
+    actual_node_count: pulumi.Output[float]
+    """
+    A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+    """
+    auto_scale: pulumi.Output[bool]
+    """
+    Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+    """
     cluster_id: pulumi.Output[str]
     """
     The ID of the Kubernetes cluster to which the node pool is associated.
+    """
+    max_nodes: pulumi.Output[float]
+    """
+    If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+    """
+    min_nodes: pulumi.Output[float]
+    """
+    If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
     """
     name: pulumi.Output[str]
     """
@@ -20,7 +36,7 @@ class KubernetesNodePool(pulumi.CustomResource):
     """
     node_count: pulumi.Output[float]
     """
-    The number of Droplet instances in the node pool.
+    The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
     """
     nodes: pulumi.Output[list]
     """
@@ -45,15 +61,18 @@ class KubernetesNodePool(pulumi.CustomResource):
     """
     A list of tag names to be applied to the Kubernetes cluster.
     """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, name=None, node_count=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_scale=None, cluster_id=None, max_nodes=None, min_nodes=None, name=None, node_count=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
+        :param pulumi.Input[float] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+        :param pulumi.Input[float] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[str] name: A name for the node pool.
-        :param pulumi.Input[float] node_count: The number of Droplet instances in the node pool.
+        :param pulumi.Input[float] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
 
@@ -76,17 +95,19 @@ class KubernetesNodePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['auto_scale'] = auto_scale
             if cluster_id is None:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
+            __props__['max_nodes'] = max_nodes
+            __props__['min_nodes'] = min_nodes
             __props__['name'] = name
-            if node_count is None:
-                raise TypeError("Missing required property 'node_count'")
             __props__['node_count'] = node_count
             if size is None:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['tags'] = tags
+            __props__['actual_node_count'] = None
             __props__['nodes'] = None
         super(KubernetesNodePool, __self__).__init__(
             'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
@@ -95,7 +116,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, name=None, node_count=None, nodes=None, size=None, tags=None):
+    def get(resource_name, id, opts=None, actual_node_count=None, auto_scale=None, cluster_id=None, max_nodes=None, min_nodes=None, name=None, node_count=None, nodes=None, size=None, tags=None):
         """
         Get an existing KubernetesNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -103,9 +124,13 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+        :param pulumi.Input[bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
+        :param pulumi.Input[float] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+        :param pulumi.Input[float] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[str] name: A name for the node pool.
-        :param pulumi.Input[float] node_count: The number of Droplet instances in the node pool.
+        :param pulumi.Input[float] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[list] nodes: A list of nodes in the pool. Each node exports the following attributes:
                - `id` -  A unique ID that can be used to identify and reference the node.
                - `name` - The auto-generated name for the node.
@@ -128,7 +153,11 @@ class KubernetesNodePool(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["actual_node_count"] = actual_node_count
+        __props__["auto_scale"] = auto_scale
         __props__["cluster_id"] = cluster_id
+        __props__["max_nodes"] = max_nodes
+        __props__["min_nodes"] = min_nodes
         __props__["name"] = name
         __props__["node_count"] = node_count
         __props__["nodes"] = nodes

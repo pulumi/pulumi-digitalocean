@@ -3,12 +3,15 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 _SNAKE_TO_CAMEL_CASE_TABLE = {
+    "actual_node_count": "actualNodeCount",
     "api_endpoint": "apiEndpoint",
+    "auto_scale": "autoScale",
     "bucket_domain_name": "bucketDomainName",
     "certificate_chain": "certificateChain",
     "certificate_id": "certificateId",
     "cluster_id": "clusterId",
     "cluster_subnet": "clusterSubnet",
+    "cors_rules": "corsRules",
     "created_at": "createdAt",
     "custom_domain": "customDomain",
     "droplet_id": "dropletId",
@@ -29,7 +32,9 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "kube_configs": "kubeConfigs",
     "leaf_certificate": "leafCertificate",
     "maintenance_windows": "maintenanceWindows",
+    "max_nodes": "maxNodes",
     "min_disk_size": "minDiskSize",
+    "min_nodes": "minNodes",
     "node_count": "nodeCount",
     "node_pool": "nodePool",
     "not_after": "notAfter",
@@ -60,12 +65,15 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 }
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
+    "actualNodeCount": "actual_node_count",
     "apiEndpoint": "api_endpoint",
+    "autoScale": "auto_scale",
     "bucketDomainName": "bucket_domain_name",
     "certificateChain": "certificate_chain",
     "certificateId": "certificate_id",
     "clusterId": "cluster_id",
     "clusterSubnet": "cluster_subnet",
+    "corsRules": "cors_rules",
     "createdAt": "created_at",
     "customDomain": "custom_domain",
     "dropletId": "droplet_id",
@@ -86,7 +94,9 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "kubeConfigs": "kube_configs",
     "leafCertificate": "leaf_certificate",
     "maintenanceWindows": "maintenance_windows",
+    "maxNodes": "max_nodes",
     "minDiskSize": "min_disk_size",
+    "minNodes": "min_nodes",
     "nodeCount": "node_count",
     "nodePool": "node_pool",
     "notAfter": "not_after",

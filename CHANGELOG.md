@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.10.0 of the DigitalOcean Terraform Provider
+* Add support for DotNet SDK Generation
 
 ---
 
