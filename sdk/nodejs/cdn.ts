@@ -6,52 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
- * 
- * ## Example Usage
- * 
- * #### Basic Example
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * // Create a new Spaces Bucket
- * const mybucket = new digitalocean.SpacesBucket("mybucket", {
- *     acl: "public-read",
- *     region: "sfo2",
- * });
- * // Add a CDN endpoint to the Spaces Bucket
- * const mycdn = new digitalocean.Cdn("mycdn", {
- *     origin: mybucket.bucketDomainName,
- * });
- * 
- * // Output the endpoint for the CDN resource
- * export const fqdn = mycdn.endpoint;
- * ```
- * 
- * #### Custom Sub-Domain Example
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * // Create a new Spaces Bucket
- * const mybucket = new digitalocean.SpacesBucket("mybucket", {
- *     acl: "public-read",
- *     region: "sfo2",
- * });
- * // Create a DigitalOcean managed Let's Encrypt Certificate
- * const cert = new digitalocean.Certificate("cert", {
- *     domains: ["static.example.com"],
- *     type: "letsEncrypt",
- * });
- * // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
- * const mycdn = new digitalocean.Cdn("mycdn", {
- *     certificateId: cert.id,
- *     customDomain: "static.example.com",
- *     origin: mybucket.bucketDomainName,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
  */

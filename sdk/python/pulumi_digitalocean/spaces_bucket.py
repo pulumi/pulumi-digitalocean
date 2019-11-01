@@ -18,6 +18,7 @@ class SpacesBucket(pulumi.CustomResource):
     """
     The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
     """
+    cors_rules: pulumi.Output[list]
     force_destroy: pulumi.Output[bool]
     """
     Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
@@ -34,7 +35,7 @@ class SpacesBucket(pulumi.CustomResource):
     """
     The uniform resource name for the bucket
     """
-    def __init__(__self__, resource_name, opts=None, acl=None, force_destroy=None, name=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, acl=None, cors_rules=None, force_destroy=None, name=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a bucket resource for Spaces, DigitalOcean's object storage product.
         
@@ -59,6 +60,13 @@ class SpacesBucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
+        
+        The **cors_rules** object supports the following:
+        
+          * `allowedHeaders` (`pulumi.Input[list]`) - A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
+          * `allowedMethods` (`pulumi.Input[list]`) - A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
+          * `allowedOrigins` (`pulumi.Input[list]`) - A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+          * `maxAgeSeconds` (`pulumi.Input[float]`) - The time in seconds that browser can cache the response for a preflight request.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
         """
@@ -80,6 +88,7 @@ class SpacesBucket(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['acl'] = acl
+            __props__['cors_rules'] = cors_rules
             __props__['force_destroy'] = force_destroy
             __props__['name'] = name
             __props__['region'] = region
@@ -92,7 +101,7 @@ class SpacesBucket(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl=None, bucket_domain_name=None, force_destroy=None, name=None, region=None, urn=None):
+    def get(resource_name, id, opts=None, acl=None, bucket_domain_name=None, cors_rules=None, force_destroy=None, name=None, region=None, urn=None):
         """
         Get an existing SpacesBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -106,6 +115,13 @@ class SpacesBucket(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input[str] urn: The uniform resource name for the bucket
+        
+        The **cors_rules** object supports the following:
+        
+          * `allowedHeaders` (`pulumi.Input[list]`) - A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
+          * `allowedMethods` (`pulumi.Input[list]`) - A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
+          * `allowedOrigins` (`pulumi.Input[list]`) - A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+          * `maxAgeSeconds` (`pulumi.Input[float]`) - The time in seconds that browser can cache the response for a preflight request.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
         """
@@ -114,6 +130,7 @@ class SpacesBucket(pulumi.CustomResource):
         __props__ = dict()
         __props__["acl"] = acl
         __props__["bucket_domain_name"] = bucket_domain_name
+        __props__["cors_rules"] = cors_rules
         __props__["force_destroy"] = force_destroy
         __props__["name"] = name
         __props__["region"] = region

@@ -23,23 +23,47 @@ import {Region} from "./index";
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const staticAssets = new digitalocean.SpacesBucket("static-assets", {});
- * ```
  * 
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  * 
  * ## Example Usage
  * 
+ * ### Create a New Bucket
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * // Create a new bucket
  * const foobar = new digitalocean.SpacesBucket("foobar", {
+ *     region: "nyc3",
+ * });
+ * ```
+ * 
+ * ### Create a New Bucket With CORS Rules
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const foobar = new digitalocean.SpacesBucket("foobar", {
+ *     corsRules: [
+ *         {
+ *             allowedHeaders: ["*"],
+ *             allowedMethods: ["GET"],
+ *             allowedOrigins: ["*"],
+ *             maxAgeSeconds: 3000,
+ *         },
+ *         {
+ *             allowedHeaders: ["*"],
+ *             allowedMethods: [
+ *                 "PUT",
+ *                 "POST",
+ *                 "DELETE",
+ *             ],
+ *             allowedOrigins: ["https://www.example.com"],
+ *             maxAgeSeconds: 3000,
+ *         },
+ *     ],
  *     region: "nyc3",
  * });
  * ```
@@ -82,6 +106,10 @@ export class SpacesBucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     /**
+     * A container holding a list of elements describing allowed methods for a specific origin.
+     */
+    public readonly corsRules!: pulumi.Output<outputs.SpacesBucketCorsRule[] | undefined>;
+    /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
@@ -112,6 +140,7 @@ export class SpacesBucket extends pulumi.CustomResource {
             const state = argsOrState as SpacesBucketState | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
+            inputs["corsRules"] = state ? state.corsRules : undefined;
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -119,6 +148,7 @@ export class SpacesBucket extends pulumi.CustomResource {
         } else {
             const args = argsOrState as SpacesBucketArgs | undefined;
             inputs["acl"] = args ? args.acl : undefined;
+            inputs["corsRules"] = args ? args.corsRules : undefined;
             inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -149,6 +179,10 @@ export interface SpacesBucketState {
      */
     readonly bucketDomainName?: pulumi.Input<string>;
     /**
+     * A container holding a list of elements describing allowed methods for a specific origin.
+     */
+    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
+    /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
@@ -174,6 +208,10 @@ export interface SpacesBucketArgs {
      * Canned ACL applied on bucket creation (`private` or `public-read`)
      */
     readonly acl?: pulumi.Input<string>;
+    /**
+     * A container holding a list of elements describing allowed methods for a specific origin.
+     */
+    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */

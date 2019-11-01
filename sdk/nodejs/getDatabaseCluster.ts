@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information on a DigitalOcean database cluster resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * // Create a new database cluster
- * const example = digitalocean.getDatabaseCluster({
- *     name: "example-cluster",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
  */

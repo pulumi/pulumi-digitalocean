@@ -65,7 +65,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `nodeCount` - (Required) The number of Droplet instances in the node pool.
+     * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+     * - `autoScale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+     * - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     * - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
      */
     public readonly nodePool!: pulumi.Output<outputs.KubernetesClusterNodePool>;
@@ -192,7 +195,10 @@ export interface KubernetesClusterState {
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `nodeCount` - (Required) The number of Droplet instances in the node pool.
+     * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+     * - `autoScale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+     * - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     * - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
      */
     readonly nodePool?: pulumi.Input<inputs.KubernetesClusterNodePool>;
@@ -242,7 +248,10 @@ export interface KubernetesClusterArgs {
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `nodeCount` - (Required) The number of Droplet instances in the node pool.
+     * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+     * - `autoScale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+     * - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     * - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
      */
     readonly nodePool: pulumi.Input<inputs.KubernetesClusterNodePool>;

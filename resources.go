@@ -17,8 +17,8 @@ package digitalocean
 import (
 	"unicode"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-digitalocean/digitalocean"
 )
@@ -123,6 +123,8 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"digitalocean_database_user": {Tok: digitalOceanType(digitalOceanMod, "DatabaseUser")},
+			"digitalocean_database_db":   {Tok: digitalOceanType(digitalOceanMod, "DatabaseDb")},
 			"digitalocean_domain": {
 				Tok: digitalOceanResource(digitalOceanMod, "Domain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -233,6 +235,8 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_tag":                {Tok: digitalOceanDataSource(digitalOceanMod, "getTag")},
 			"digitalocean_volume":             {Tok: digitalOceanDataSource(digitalOceanMod, "getVolume")},
 			"digitalocean_volume_snapshot":    {Tok: digitalOceanDataSource(digitalOceanMod, "getVolumeSnapshot")},
+			"digitalocean_sizes":              {Tok: digitalOceanDataSource(digitalOceanMod, "getSizes")},
+			"digitalocean_account":            {Tok: digitalOceanDataSource(digitalOceanMod, "getAccount")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

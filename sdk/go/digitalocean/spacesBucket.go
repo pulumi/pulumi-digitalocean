@@ -35,11 +35,13 @@ func NewSpacesBucket(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["acl"] = nil
+		inputs["corsRules"] = nil
 		inputs["forceDestroy"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
 	} else {
 		inputs["acl"] = args.Acl
+		inputs["corsRules"] = args.CorsRules
 		inputs["forceDestroy"] = args.ForceDestroy
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
@@ -61,6 +63,7 @@ func GetSpacesBucket(ctx *pulumi.Context,
 	if state != nil {
 		inputs["acl"] = state.Acl
 		inputs["bucketDomainName"] = state.BucketDomainName
+		inputs["corsRules"] = state.CorsRules
 		inputs["forceDestroy"] = state.ForceDestroy
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
@@ -93,6 +96,11 @@ func (r *SpacesBucket) BucketDomainName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["bucketDomainName"])
 }
 
+// A container holding a list of elements describing allowed methods for a specific origin.
+func (r *SpacesBucket) CorsRules() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["corsRules"])
+}
+
 // Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 func (r *SpacesBucket) ForceDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["forceDestroy"])
@@ -119,6 +127,8 @@ type SpacesBucketState struct {
 	Acl interface{}
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName interface{}
+	// A container holding a list of elements describing allowed methods for a specific origin.
+	CorsRules interface{}
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy interface{}
 	// The name of the bucket
@@ -133,6 +143,8 @@ type SpacesBucketState struct {
 type SpacesBucketArgs struct {
 	// Canned ACL applied on bucket creation (`private` or `public-read`)
 	Acl interface{}
+	// A container holding a list of elements describing allowed methods for a specific origin.
+	CorsRules interface{}
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy interface{}
 	// The name of the bucket

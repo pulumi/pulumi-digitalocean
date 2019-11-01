@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a DigitalOcean SSH key resource to allow you to manage SSH
+ * keys for Droplet access. Keys created with this resource
+ * can be referenced in your Droplet configuration via their ID or
+ * fingerprint.
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/ssh_key.html.markdown.
  */
 export class SshKey extends pulumi.CustomResource {

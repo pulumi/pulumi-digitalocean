@@ -15,9 +15,12 @@ require (
 	github.com/Azure/go-autorest/autorest/azure/auth v0.3.0 // indirect
 	github.com/Azure/go-autorest/autorest/to v0.3.0 // indirect
 	github.com/Azure/go-autorest/autorest/validation v0.2.0 // indirect
-	github.com/hashicorp/terraform v0.12.8
+	github.com/golangci/go-tools v0.0.0-20190318055746-e32c54105b7c // indirect
+	github.com/golangci/gosec v0.0.0-20190211064107-66fb7fc33547 // indirect
+	github.com/hashicorp/terraform-plugin-sdk v1.1.1
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.0.0
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190924145130-e75e14d70f0f
-	github.com/terraform-providers/terraform-provider-digitalocean v1.9.1
+	github.com/pulumi/pulumi v1.2.0
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190924145130-e75e14d70f0f // indirect
+	github.com/pulumi/pulumi-terraform-bridge v1.2.0
+	github.com/terraform-providers/terraform-provider-digitalocean v1.10.0
 )
