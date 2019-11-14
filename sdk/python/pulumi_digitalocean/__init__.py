@@ -13,6 +13,7 @@ for pkg in __all__:
 from .cdn import *
 from .certificate import *
 from .database_cluster import *
+from .database_connection_pool import *
 from .database_db import *
 from .database_replica import *
 from .database_user import *

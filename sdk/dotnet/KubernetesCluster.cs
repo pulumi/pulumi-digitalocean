@@ -99,7 +99,7 @@ namespace Pulumi.Digitalocean
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+        /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.Digitalocean
         }
 
         /// <summary>
-        /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+        /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -296,7 +296,7 @@ namespace Pulumi.Digitalocean
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+        /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
