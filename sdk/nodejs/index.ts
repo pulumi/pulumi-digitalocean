@@ -6,6 +6,7 @@ export * from "./cdn";
 export * from "./certificate";
 export * from "./certificateType";
 export * from "./databaseCluster";
+export * from "./databaseConnectionPool";
 export * from "./databaseDb";
 export * from "./databaseReplica";
 export * from "./databaseSlug";

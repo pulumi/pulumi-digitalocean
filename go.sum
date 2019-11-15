@@ -859,6 +859,8 @@ github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07/go.mod h1:kDXzergiv9cb
 github.com/terraform-providers/terraform-provider-aws v2.32.0+incompatible/go.mod h1:zIXqcyUvJSpWRGXf+x6knh3NIZLjVqjH954yShO3YPE=
 github.com/terraform-providers/terraform-provider-digitalocean v1.10.0 h1:Pes1brUmjz6Tn/P2+bpP1e6lbdAyt6coPnbas/u9Oq8=
 github.com/terraform-providers/terraform-provider-digitalocean v1.10.0/go.mod h1:KmkENut0+iclpdGz6PrJVFcCSEfDeBa9QwgGs17yJqU=
+github.com/terraform-providers/terraform-provider-digitalocean v1.11.0 h1:IGhAkBP4ia5Pta3ZFtwZ/lqITEcY9wQhS/4AFTj0Psw=
+github.com/terraform-providers/terraform-provider-digitalocean v1.11.0/go.mod h1:axIaRwhXJdiGdUG7y3KZr1IoSRFqAA81WCWKDHcqXzM=
 github.com/terraform-providers/terraform-provider-google v2.17.0+incompatible/go.mod h1:cdfYuxcAyBAISVCiSYei5GIjhXbB3wth/feTmx8iD8A=
 github.com/terraform-providers/terraform-provider-kubernetes v1.9.1-0.20191018170806-2c80accb5635/go.mod h1:lFCVWzD5Og9uVHwGwB35fHBsje+y2OJxt0G2v1Gz1Zs=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=

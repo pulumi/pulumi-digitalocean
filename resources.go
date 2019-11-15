@@ -112,6 +112,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"digitalocean_database_connection_pool": {
+				Tok: digitalOceanResource(digitalOceanMod, "DatabaseConnectionPool"),
+			},
 			"digitalocean_database_replica": {
 				Tok: digitalOceanResource(digitalOceanMod, "DatabaseReplica"),
 				Fields: map[string]*tfbridge.SchemaInfo{

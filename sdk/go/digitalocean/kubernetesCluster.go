@@ -167,7 +167,7 @@ func (r *KubernetesCluster) UpdatedAt() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
-// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 func (r *KubernetesCluster) Version() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["version"])
 }
@@ -212,7 +212,7 @@ type KubernetesClusterState struct {
 	// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 	// - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
 	UpdatedAt interface{}
-	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version interface{}
 }
 
@@ -233,6 +233,6 @@ type KubernetesClusterArgs struct {
 	Region interface{}
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags interface{}
-	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version interface{}
 }

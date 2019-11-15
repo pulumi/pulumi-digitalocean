@@ -98,7 +98,7 @@ class KubernetesCluster(pulumi.CustomResource):
     """
     version: pulumi.Output[str]
     """
-    The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+    The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
     """
     def __init__(__self__, resource_name, opts=None, name=None, node_pool=None, region=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -117,7 +117,7 @@ class KubernetesCluster(pulumi.CustomResource):
                - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
-        :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+        :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         
         The **node_pool** object supports the following:
         
@@ -226,7 +226,7 @@ class KubernetesCluster(pulumi.CustomResource):
                - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
                - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
                - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
-        :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`.
+        :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         
         The **kube_configs** object supports the following:
         

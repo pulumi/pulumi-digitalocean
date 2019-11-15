@@ -10,27 +10,6 @@ import {DatabaseSlug, Region} from "./index";
 
 /**
  * Provides a DigitalOcean database replica resource.
- * 
- * ## Example Usage
- * 
- * ### Create a new PostgreSQL database replica
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const postgresExample = new digitalocean.DatabaseCluster("postgres-example", {
- *     engine: "pg",
- *     nodeCount: 1,
- *     region: "nyc1",
- *     size: "db-s-1vcpu-1gb",
- *     version: "11",
- * });
- * const readReplica = new digitalocean.DatabaseReplica("read-replica", {
- *     clusterId: postgres_example.id,
- *     region: "nyc1",
- *     size: "db-s-1vcpu-1gb",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_replica.html.markdown.
  */
