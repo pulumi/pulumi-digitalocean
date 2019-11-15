@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.1.0 (2019-11-15)
 * Upgrade to v1.11.0 of the DigitalOcean Terraform Provider
 * Add support for DotNet SDK Generation
 * Rename the Droplet slugs to be `VCPU` not `VPCU`
-
----
 
 ## 1.0.1 (2019-10-09)
 * Upgrade to v1.9.1 of the DigitalOcean Terraform Provider
