@@ -19,8 +19,7 @@
         "resolve": "^1.7.1"
     },
     "devDependencies": {
-        "@types/node": "^8.0.25",
-        "typescript": "^3.4.1"
+        "@types/node": "^8.0.25"
     },
     "pulumi": {
         "resource": true

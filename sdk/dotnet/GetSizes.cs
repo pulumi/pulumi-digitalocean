@@ -15,7 +15,7 @@ namespace Pulumi.Digitalocean
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.markdown.
         /// </summary>
         public static Task<GetSizesResult> GetSizes(GetSizesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetSizesArgs : Pulumi.ResourceArgs

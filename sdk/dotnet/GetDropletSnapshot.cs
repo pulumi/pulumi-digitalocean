@@ -17,7 +17,7 @@ namespace Pulumi.Digitalocean
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.markdown.
         /// </summary>
         public static Task<GetDropletSnapshotResult> GetDropletSnapshot(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDropletSnapshotArgs : Pulumi.ResourceArgs

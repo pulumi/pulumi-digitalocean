@@ -80,68 +80,68 @@ func GetVolume(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Volume) URN() *pulumi.URNOutput {
+func (r *Volume) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Volume) ID() *pulumi.IDOutput {
+func (r *Volume) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
-func (r *Volume) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Volume) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A list of associated droplet ids.
-func (r *Volume) DropletIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dropletIds"])
+func (r *Volume) DropletIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dropletIds"])
 }
 
 // Filesystem label for the block storage volume.
-func (r *Volume) FilesystemLabel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filesystemLabel"])
+func (r *Volume) FilesystemLabel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filesystemLabel"])
 }
 
 // Filesystem type (`xfs` or `ext4`) for the block storage volume.
-func (r *Volume) FilesystemType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filesystemType"])
+func (r *Volume) FilesystemType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filesystemType"])
 }
 
 // Initial filesystem label for the block storage volume.
-func (r *Volume) InitialFilesystemLabel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["initialFilesystemLabel"])
+func (r *Volume) InitialFilesystemLabel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["initialFilesystemLabel"])
 }
 
 // Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-func (r *Volume) InitialFilesystemType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["initialFilesystemType"])
+func (r *Volume) InitialFilesystemType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["initialFilesystemType"])
 }
 
 // A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
-func (r *Volume) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Volume) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region that the block storage volume will be created in.
-func (r *Volume) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Volume) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The size of the block storage volume in GiB. If updated, can only be expanded.
-func (r *Volume) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *Volume) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
-func (r *Volume) SnapshotId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snapshotId"])
+func (r *Volume) SnapshotId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snapshotId"])
 }
 
 // the uniform resource name for the volume.
-func (r *Volume) Urn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["urn"])
+func (r *Volume) Urn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["urn"])
 }
 
 // Input properties used for looking up and filtering Volume resources.

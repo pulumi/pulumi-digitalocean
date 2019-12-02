@@ -81,58 +81,58 @@ func GetProject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Project) URN() *pulumi.URNOutput {
+func (r *Project) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Project) ID() *pulumi.IDOutput {
+func (r *Project) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // the date and time when the project was created, (ISO8601)
-func (r *Project) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *Project) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // the description of the project
-func (r *Project) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Project) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
-func (r *Project) Environment() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["environment"])
+func (r *Project) Environment() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["environment"])
 }
 
 // The name of the Project
-func (r *Project) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Project) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // the id of the project owner.
-func (r *Project) OwnerId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ownerId"])
+func (r *Project) OwnerId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ownerId"])
 }
 
 // the unique universal identifier of the project owner.
-func (r *Project) OwnerUuid() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ownerUuid"])
+func (r *Project) OwnerUuid() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ownerUuid"])
 }
 
 // the purpose of the project, (Default: "Web Application")
-func (r *Project) Purpose() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["purpose"])
+func (r *Project) Purpose() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["purpose"])
 }
 
 // a list of uniform resource names (URNs) for the resources associated with the project
-func (r *Project) Resources() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["resources"])
+func (r *Project) Resources() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["resources"])
 }
 
 // the date and time when the project was last updated, (ISO8601)
-func (r *Project) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *Project) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // Input properties used for looking up and filtering Project resources.

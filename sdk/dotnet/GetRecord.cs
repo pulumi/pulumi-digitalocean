@@ -13,7 +13,7 @@ namespace Pulumi.Digitalocean
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
         /// </summary>
         public static Task<GetRecordResult> GetRecord(GetRecordArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetRecordArgs : Pulumi.ResourceArgs

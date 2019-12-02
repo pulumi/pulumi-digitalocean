@@ -88,7 +88,7 @@ namespace Pulumi.Digitalocean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KubernetesNodePool(string name, KubernetesNodePoolArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, args, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -15,7 +15,7 @@ namespace Pulumi.Digitalocean
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
         /// </summary>
         public static Task<GetDatabaseClusterResult> GetDatabaseCluster(GetDatabaseClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDatabaseClusterArgs : Pulumi.ResourceArgs

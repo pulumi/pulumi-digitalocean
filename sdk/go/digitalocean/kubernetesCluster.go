@@ -84,42 +84,42 @@ func GetKubernetesCluster(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KubernetesCluster) URN() *pulumi.URNOutput {
+func (r *KubernetesCluster) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KubernetesCluster) ID() *pulumi.IDOutput {
+func (r *KubernetesCluster) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The range of IP addresses in the overlay network of the Kubernetes cluster.
-func (r *KubernetesCluster) ClusterSubnet() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterSubnet"])
+func (r *KubernetesCluster) ClusterSubnet() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterSubnet"])
 }
 
 // The date and time when the Kubernetes cluster was created.
-func (r *KubernetesCluster) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *KubernetesCluster) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The base URL of the API server on the Kubernetes master node.
-func (r *KubernetesCluster) Endpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endpoint"])
+func (r *KubernetesCluster) Endpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endpoint"])
 }
 
 // The public IPv4 address of the Kubernetes master node.
-func (r *KubernetesCluster) Ipv4Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv4Address"])
+func (r *KubernetesCluster) Ipv4Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipv4Address"])
 }
 
-func (r *KubernetesCluster) KubeConfigs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["kubeConfigs"])
+func (r *KubernetesCluster) KubeConfigs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["kubeConfigs"])
 }
 
 // A name for the Kubernetes cluster.
-func (r *KubernetesCluster) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *KubernetesCluster) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
@@ -130,28 +130,28 @@ func (r *KubernetesCluster) Name() *pulumi.StringOutput {
 // - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 // - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 // - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
-func (r *KubernetesCluster) NodePool() *pulumi.Output {
+func (r *KubernetesCluster) NodePool() pulumi.Output {
 	return r.s.State["nodePool"]
 }
 
 // The slug identifier for the region where the Kubernetes cluster will be created.
-func (r *KubernetesCluster) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *KubernetesCluster) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The range of assignable IP addresses for services running in the Kubernetes cluster.
-func (r *KubernetesCluster) ServiceSubnet() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceSubnet"])
+func (r *KubernetesCluster) ServiceSubnet() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceSubnet"])
 }
 
 // A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
-func (r *KubernetesCluster) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *KubernetesCluster) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // A list of tag names to be applied to the Kubernetes cluster.
-func (r *KubernetesCluster) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *KubernetesCluster) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The date and time when the Kubernetes cluster was last updated.
@@ -163,13 +163,13 @@ func (r *KubernetesCluster) Tags() *pulumi.ArrayOutput {
 // - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 // - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 // - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
-func (r *KubernetesCluster) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *KubernetesCluster) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
-func (r *KubernetesCluster) Version() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["version"])
+func (r *KubernetesCluster) Version() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["version"])
 }
 
 // Input properties used for looking up and filtering KubernetesCluster resources.

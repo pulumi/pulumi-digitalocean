@@ -89,73 +89,73 @@ func GetDatabaseConnectionPool(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DatabaseConnectionPool) URN() *pulumi.URNOutput {
+func (r *DatabaseConnectionPool) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DatabaseConnectionPool) ID() *pulumi.IDOutput {
+func (r *DatabaseConnectionPool) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
-func (r *DatabaseConnectionPool) ClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterId"])
+func (r *DatabaseConnectionPool) ClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterId"])
 }
 
 // The database for use with the connection pool.
-func (r *DatabaseConnectionPool) DbName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dbName"])
+func (r *DatabaseConnectionPool) DbName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dbName"])
 }
 
 // The hostname used to connect to the database connection pool.
-func (r *DatabaseConnectionPool) Host() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["host"])
+func (r *DatabaseConnectionPool) Host() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["host"])
 }
 
 // The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
-func (r *DatabaseConnectionPool) Mode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mode"])
+func (r *DatabaseConnectionPool) Mode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mode"])
 }
 
 // The name for the database connection pool.
-func (r *DatabaseConnectionPool) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DatabaseConnectionPool) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Password for the connection pool's user.
-func (r *DatabaseConnectionPool) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *DatabaseConnectionPool) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Network port that the database connection pool is listening on.
-func (r *DatabaseConnectionPool) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *DatabaseConnectionPool) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // Same as `host`, but only accessible from resources within the account and in the same region.
-func (r *DatabaseConnectionPool) PrivateHost() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateHost"])
+func (r *DatabaseConnectionPool) PrivateHost() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateHost"])
 }
 
 // Same as `uri`, but only accessible from resources within the account and in the same region.
-func (r *DatabaseConnectionPool) PrivateUri() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateUri"])
+func (r *DatabaseConnectionPool) PrivateUri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateUri"])
 }
 
 // The desired size of the PGBouncer connection pool.
-func (r *DatabaseConnectionPool) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *DatabaseConnectionPool) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The full URI for connecting to the database connection pool.
-func (r *DatabaseConnectionPool) Uri() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["uri"])
+func (r *DatabaseConnectionPool) Uri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["uri"])
 }
 
 // The name of the database user for use with the connection pool.
-func (r *DatabaseConnectionPool) User() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["user"])
+func (r *DatabaseConnectionPool) User() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["user"])
 }
 
 // Input properties used for looking up and filtering DatabaseConnectionPool resources.

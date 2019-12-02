@@ -58,29 +58,29 @@ func GetSshKey(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SshKey) URN() *pulumi.URNOutput {
+func (r *SshKey) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SshKey) ID() *pulumi.IDOutput {
+func (r *SshKey) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The fingerprint of the SSH key
-func (r *SshKey) Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
+func (r *SshKey) Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
 // The name of the SSH key for identification
-func (r *SshKey) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SshKey) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The public key. If this is a file, it
 // can be read using the file interpolation function
-func (r *SshKey) PublicKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["publicKey"])
+func (r *SshKey) PublicKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["publicKey"])
 }
 
 // Input properties used for looking up and filtering SshKey resources.

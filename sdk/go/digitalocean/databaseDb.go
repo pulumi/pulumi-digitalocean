@@ -53,23 +53,23 @@ func GetDatabaseDb(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DatabaseDb) URN() *pulumi.URNOutput {
+func (r *DatabaseDb) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DatabaseDb) ID() *pulumi.IDOutput {
+func (r *DatabaseDb) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the original source database cluster.
-func (r *DatabaseDb) ClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterId"])
+func (r *DatabaseDb) ClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterId"])
 }
 
 // The name for the database.
-func (r *DatabaseDb) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DatabaseDb) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering DatabaseDb resources.
