@@ -13,7 +13,7 @@ namespace Pulumi.Digitalocean
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/image.html.markdown.
         /// </summary>
         public static Task<GetImageResult> GetImage(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetImageArgs : Pulumi.ResourceArgs

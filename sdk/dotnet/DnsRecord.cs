@@ -89,7 +89,7 @@ namespace Pulumi.Digitalocean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DnsRecord(string name, DnsRecordArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/dnsRecord:DnsRecord", name, args, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/dnsRecord:DnsRecord", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -32,7 +32,7 @@ namespace Pulumi.Digitalocean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Tag(string name, TagArgs? args = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index/tag:Tag", name, args, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/tag:Tag", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -49,18 +49,18 @@ func GetTag(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Tag) URN() *pulumi.URNOutput {
+func (r *Tag) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Tag) ID() *pulumi.IDOutput {
+func (r *Tag) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the tag
-func (r *Tag) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Tag) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Tag resources.

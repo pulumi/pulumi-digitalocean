@@ -118,146 +118,146 @@ func GetDroplet(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Droplet) URN() *pulumi.URNOutput {
+func (r *Droplet) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Droplet) ID() *pulumi.IDOutput {
+func (r *Droplet) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Boolean controlling if backups are made. Defaults to
 // false.
-func (r *Droplet) Backups() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["backups"])
+func (r *Droplet) Backups() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["backups"])
 }
 
-func (r *Droplet) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *Droplet) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The size of the instance's disk in GB
-func (r *Droplet) Disk() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["disk"])
+func (r *Droplet) Disk() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["disk"])
 }
 
 // The Droplet image ID or slug.
-func (r *Droplet) Image() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["image"])
+func (r *Droplet) Image() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["image"])
 }
 
 // The IPv4 address
-func (r *Droplet) Ipv4Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv4Address"])
+func (r *Droplet) Ipv4Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipv4Address"])
 }
 
 // The private networking IPv4 address
-func (r *Droplet) Ipv4AddressPrivate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv4AddressPrivate"])
+func (r *Droplet) Ipv4AddressPrivate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipv4AddressPrivate"])
 }
 
 // Boolean controlling if IPv6 is enabled. Defaults to false.
-func (r *Droplet) Ipv6() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ipv6"])
+func (r *Droplet) Ipv6() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ipv6"])
 }
 
 // The IPv6 address
-func (r *Droplet) Ipv6Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv6Address"])
+func (r *Droplet) Ipv6Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipv6Address"])
 }
 
 // Is the Droplet locked
-func (r *Droplet) Locked() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["locked"])
+func (r *Droplet) Locked() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["locked"])
 }
 
-func (r *Droplet) Memory() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memory"])
+func (r *Droplet) Memory() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memory"])
 }
 
 // Boolean controlling whether monitoring agent is installed.
 // Defaults to false.
-func (r *Droplet) Monitoring() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["monitoring"])
+func (r *Droplet) Monitoring() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["monitoring"])
 }
 
 // The Droplet name.
-func (r *Droplet) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Droplet) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Droplet hourly price
-func (r *Droplet) PriceHourly() *pulumi.Float64Output {
-	return (*pulumi.Float64Output)(r.s.State["priceHourly"])
+func (r *Droplet) PriceHourly() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["priceHourly"])
 }
 
 // Droplet monthly price
-func (r *Droplet) PriceMonthly() *pulumi.Float64Output {
-	return (*pulumi.Float64Output)(r.s.State["priceMonthly"])
+func (r *Droplet) PriceMonthly() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["priceMonthly"])
 }
 
 // Boolean controlling if private networks are
 // enabled. Defaults to false.
-func (r *Droplet) PrivateNetworking() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["privateNetworking"])
+func (r *Droplet) PrivateNetworking() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["privateNetworking"])
 }
 
 // The region to start in.
-func (r *Droplet) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Droplet) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Boolean controlling whether to increase the disk
 // size when resizing a Droplet. It defaults to `true`. When set to `false`,
 // only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 // size is a permanent change**. Increasing only RAM and CPU is reversible.
-func (r *Droplet) ResizeDisk() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["resizeDisk"])
+func (r *Droplet) ResizeDisk() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["resizeDisk"])
 }
 
 // The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
-func (r *Droplet) Size() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["size"])
+func (r *Droplet) Size() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["size"])
 }
 
 // A list of SSH IDs or fingerprints to enable in
 // the format `[12345, 123456]`. To retrieve this info, use a tool such
 // as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
 // to retrieve them.
-func (r *Droplet) SshKeys() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["sshKeys"])
+func (r *Droplet) SshKeys() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["sshKeys"])
 }
 
 // The status of the Droplet
-func (r *Droplet) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Droplet) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // A list of the tags to be applied to this Droplet.
-func (r *Droplet) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Droplet) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The uniform resource name of the Droplet
 // * `name`- The name of the Droplet
-func (r *Droplet) Urn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["urn"])
+func (r *Droplet) Urn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["urn"])
 }
 
 // A string of the desired User Data for the Droplet.
-func (r *Droplet) UserData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userData"])
+func (r *Droplet) UserData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userData"])
 }
 
 // The number of the instance's virtual CPUs
-func (r *Droplet) Vcpus() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["vcpus"])
+func (r *Droplet) Vcpus() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["vcpus"])
 }
 
 // A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
-func (r *Droplet) VolumeIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["volumeIds"])
+func (r *Droplet) VolumeIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["volumeIds"])
 }
 
 // Input properties used for looking up and filtering Droplet resources.

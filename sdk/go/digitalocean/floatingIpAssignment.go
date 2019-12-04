@@ -58,23 +58,23 @@ func GetFloatingIpAssignment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FloatingIpAssignment) URN() *pulumi.URNOutput {
+func (r *FloatingIpAssignment) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FloatingIpAssignment) ID() *pulumi.IDOutput {
+func (r *FloatingIpAssignment) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of Droplet that the Floating IP will be assigned to.
-func (r *FloatingIpAssignment) DropletId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dropletId"])
+func (r *FloatingIpAssignment) DropletId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["dropletId"])
 }
 
 // The Floating IP to assign to the Droplet.
-func (r *FloatingIpAssignment) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *FloatingIpAssignment) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // Input properties used for looking up and filtering FloatingIpAssignment resources.

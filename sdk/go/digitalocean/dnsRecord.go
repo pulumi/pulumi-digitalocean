@@ -85,68 +85,68 @@ func GetDnsRecord(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DnsRecord) URN() *pulumi.URNOutput {
+func (r *DnsRecord) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DnsRecord) ID() *pulumi.IDOutput {
+func (r *DnsRecord) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The domain to add the record to.
-func (r *DnsRecord) Domain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domain"])
+func (r *DnsRecord) Domain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domain"])
 }
 
 // The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
-func (r *DnsRecord) Flags() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["flags"])
+func (r *DnsRecord) Flags() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["flags"])
 }
 
 // The FQDN of the record
-func (r *DnsRecord) Fqdn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fqdn"])
+func (r *DnsRecord) Fqdn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fqdn"])
 }
 
 // The name of the record.
-func (r *DnsRecord) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DnsRecord) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
-func (r *DnsRecord) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *DnsRecord) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
-func (r *DnsRecord) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *DnsRecord) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
-func (r *DnsRecord) Tag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tag"])
+func (r *DnsRecord) Tag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tag"])
 }
 
 // The time to live for the record, in seconds. Must be at least 0.
-func (r *DnsRecord) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *DnsRecord) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
 // The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
-func (r *DnsRecord) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *DnsRecord) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The value of the record.
-func (r *DnsRecord) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *DnsRecord) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
-func (r *DnsRecord) Weight() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["weight"])
+func (r *DnsRecord) Weight() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["weight"])
 }
 
 // Input properties used for looking up and filtering DnsRecord resources.

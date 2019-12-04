@@ -61,43 +61,43 @@ func GetDropletSnapshot(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DropletSnapshot) URN() *pulumi.URNOutput {
+func (r *DropletSnapshot) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DropletSnapshot) ID() *pulumi.IDOutput {
+func (r *DropletSnapshot) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The date and time the Droplet snapshot was created.
-func (r *DropletSnapshot) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *DropletSnapshot) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The ID of the Droplet from which the snapshot will be taken.
-func (r *DropletSnapshot) DropletId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dropletId"])
+func (r *DropletSnapshot) DropletId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dropletId"])
 }
 
 // The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
-func (r *DropletSnapshot) MinDiskSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minDiskSize"])
+func (r *DropletSnapshot) MinDiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minDiskSize"])
 }
 
 // A name for the Droplet snapshot.
-func (r *DropletSnapshot) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DropletSnapshot) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
-func (r *DropletSnapshot) Regions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["regions"])
+func (r *DropletSnapshot) Regions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["regions"])
 }
 
 // The billable size of the Droplet snapshot in gigabytes.
-func (r *DropletSnapshot) Size() *pulumi.Float64Output {
-	return (*pulumi.Float64Output)(r.s.State["size"])
+func (r *DropletSnapshot) Size() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["size"])
 }
 
 // Input properties used for looking up and filtering DropletSnapshot resources.

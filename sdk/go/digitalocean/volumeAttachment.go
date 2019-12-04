@@ -58,23 +58,23 @@ func GetVolumeAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VolumeAttachment) URN() *pulumi.URNOutput {
+func (r *VolumeAttachment) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VolumeAttachment) ID() *pulumi.IDOutput {
+func (r *VolumeAttachment) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // ID of the Droplet to attach the volume to.
-func (r *VolumeAttachment) DropletId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dropletId"])
+func (r *VolumeAttachment) DropletId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["dropletId"])
 }
 
 // ID of the Volume to be attached to the Droplet.
-func (r *VolumeAttachment) VolumeId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["volumeId"])
+func (r *VolumeAttachment) VolumeId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["volumeId"])
 }
 
 // Input properties used for looking up and filtering VolumeAttachment resources.

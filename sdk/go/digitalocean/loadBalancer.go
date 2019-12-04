@@ -87,85 +87,85 @@ func GetLoadBalancer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LoadBalancer) URN() *pulumi.URNOutput {
+func (r *LoadBalancer) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LoadBalancer) ID() *pulumi.IDOutput {
+func (r *LoadBalancer) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The load balancing algorithm used to determine
 // which backend Droplet will be selected by a client. It must be either `roundRobin`
 // or `leastConnections`. The default value is `roundRobin`.
-func (r *LoadBalancer) Algorithm() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["algorithm"])
+func (r *LoadBalancer) Algorithm() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["algorithm"])
 }
 
 // A list of the IDs of each droplet to be attached to the Load Balancer.
-func (r *LoadBalancer) DropletIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dropletIds"])
+func (r *LoadBalancer) DropletIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dropletIds"])
 }
 
 // The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
-func (r *LoadBalancer) DropletTag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dropletTag"])
+func (r *LoadBalancer) DropletTag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dropletTag"])
 }
 
 // A boolean value indicating whether PROXY
 // Protocol should be used to pass information from connecting client requests to
 // the backend service. Default value is `false`.
-func (r *LoadBalancer) EnableProxyProtocol() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableProxyProtocol"])
+func (r *LoadBalancer) EnableProxyProtocol() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableProxyProtocol"])
 }
 
 // A list of `forwardingRule` to be assigned to the
 // Load Balancer. The `forwardingRule` block is documented below.
-func (r *LoadBalancer) ForwardingRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["forwardingRules"])
+func (r *LoadBalancer) ForwardingRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["forwardingRules"])
 }
 
 // A `healthcheck` block to be assigned to the
 // Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
-func (r *LoadBalancer) Healthcheck() *pulumi.Output {
+func (r *LoadBalancer) Healthcheck() pulumi.Output {
 	return r.s.State["healthcheck"]
 }
 
-func (r *LoadBalancer) Ip() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ip"])
+func (r *LoadBalancer) Ip() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ip"])
 }
 
 // The Load Balancer name
-func (r *LoadBalancer) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *LoadBalancer) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A boolean value indicating whether
 // HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
 // Default value is `false`.
-func (r *LoadBalancer) RedirectHttpToHttps() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["redirectHttpToHttps"])
+func (r *LoadBalancer) RedirectHttpToHttps() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["redirectHttpToHttps"])
 }
 
 // The region to start in
-func (r *LoadBalancer) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *LoadBalancer) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-func (r *LoadBalancer) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *LoadBalancer) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // A `stickySessions` block to be assigned to the
 // Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
-func (r *LoadBalancer) StickySessions() *pulumi.Output {
+func (r *LoadBalancer) StickySessions() pulumi.Output {
 	return r.s.State["stickySessions"]
 }
 
 // The uniform resource name for the Load Balancer
-func (r *LoadBalancer) Urn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["urn"])
+func (r *LoadBalancer) Urn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["urn"])
 }
 
 // Input properties used for looking up and filtering LoadBalancer resources.

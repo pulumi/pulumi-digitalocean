@@ -63,44 +63,44 @@ func GetCdn(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Cdn) URN() *pulumi.URNOutput {
+func (r *Cdn) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Cdn) ID() *pulumi.IDOutput {
+func (r *Cdn) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // ID of a DigitalOcean managed TLS certificate for use with custom domains
-func (r *Cdn) CertificateId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["certificateId"])
+func (r *Cdn) CertificateId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["certificateId"])
 }
 
 // The date and time when the CDN Endpoint was created.
-func (r *Cdn) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *Cdn) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
-func (r *Cdn) CustomDomain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["customDomain"])
+func (r *Cdn) CustomDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["customDomain"])
 }
 
 // The fully qualified domain name (FQDN) from which the CDN-backed content is served.
-func (r *Cdn) Endpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endpoint"])
+func (r *Cdn) Endpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endpoint"])
 }
 
 // The fully qualified domain name, (FQDN) for a Space.
-func (r *Cdn) Origin() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["origin"])
+func (r *Cdn) Origin() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["origin"])
 }
 
 // The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
 // * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-func (r *Cdn) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *Cdn) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
 // Input properties used for looking up and filtering Cdn resources.

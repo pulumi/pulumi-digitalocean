@@ -72,64 +72,64 @@ func GetCertificate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Certificate) URN() *pulumi.URNOutput {
+func (r *Certificate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Certificate) ID() *pulumi.IDOutput {
+func (r *Certificate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The full PEM-formatted trust chain
 // between the certificate authority's certificate and your domain's TLS
 // certificate. Only valid when type is `custom`.
-func (r *Certificate) CertificateChain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["certificateChain"])
+func (r *Certificate) CertificateChain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["certificateChain"])
 }
 
 // List of fully qualified domain names (FQDNs) for
 // which the certificate will be issued. The domains must be managed using
 // DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
-func (r *Certificate) Domains() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["domains"])
+func (r *Certificate) Domains() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["domains"])
 }
 
 // The contents of a PEM-formatted public
 // TLS certificate. Only valid when type is `custom`.
-func (r *Certificate) LeafCertificate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["leafCertificate"])
+func (r *Certificate) LeafCertificate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["leafCertificate"])
 }
 
 // The name of the certificate for identification.
-func (r *Certificate) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Certificate) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The expiration date of the certificate
-func (r *Certificate) NotAfter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["notAfter"])
+func (r *Certificate) NotAfter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["notAfter"])
 }
 
 // The contents of a PEM-formatted private-key
 // corresponding to the SSL certificate. Only valid when type is `custom`.
-func (r *Certificate) PrivateKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateKey"])
+func (r *Certificate) PrivateKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateKey"])
 }
 
 // The SHA-1 fingerprint of the certificate
-func (r *Certificate) Sha1Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sha1Fingerprint"])
+func (r *Certificate) Sha1Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sha1Fingerprint"])
 }
 
-func (r *Certificate) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *Certificate) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // The type of certificate to provision. Can be either
 // `custom` or `letsEncrypt`. Defaults to `custom`.
-func (r *Certificate) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Certificate) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering Certificate resources.

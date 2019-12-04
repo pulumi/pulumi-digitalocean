@@ -59,33 +59,33 @@ func GetDatabaseUser(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DatabaseUser) URN() *pulumi.URNOutput {
+func (r *DatabaseUser) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DatabaseUser) ID() *pulumi.IDOutput {
+func (r *DatabaseUser) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the original source database cluster.
-func (r *DatabaseUser) ClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterId"])
+func (r *DatabaseUser) ClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterId"])
 }
 
 // The name for the database user.
-func (r *DatabaseUser) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DatabaseUser) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Password for the database user.
-func (r *DatabaseUser) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *DatabaseUser) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Role for the database user. The value will be either "primary" or "normal".
-func (r *DatabaseUser) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *DatabaseUser) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering DatabaseUser resources.

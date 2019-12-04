@@ -98,7 +98,7 @@ namespace Pulumi.Digitalocean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseReplica(string name, DatabaseReplicaArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/databaseReplica:DatabaseReplica", name, args, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/databaseReplica:DatabaseReplica", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

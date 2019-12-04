@@ -61,43 +61,43 @@ func GetVolumeSnapshot(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VolumeSnapshot) URN() *pulumi.URNOutput {
+func (r *VolumeSnapshot) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VolumeSnapshot) ID() *pulumi.IDOutput {
+func (r *VolumeSnapshot) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The date and time the volume snapshot was created.
-func (r *VolumeSnapshot) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *VolumeSnapshot) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
-func (r *VolumeSnapshot) MinDiskSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minDiskSize"])
+func (r *VolumeSnapshot) MinDiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minDiskSize"])
 }
 
 // A name for the volume snapshot.
-func (r *VolumeSnapshot) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *VolumeSnapshot) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
-func (r *VolumeSnapshot) Regions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["regions"])
+func (r *VolumeSnapshot) Regions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["regions"])
 }
 
 // The billable size of the volume snapshot in gigabytes.
-func (r *VolumeSnapshot) Size() *pulumi.Float64Output {
-	return (*pulumi.Float64Output)(r.s.State["size"])
+func (r *VolumeSnapshot) Size() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["size"])
 }
 
 // The ID of the volume from which the volume snapshot originated.
-func (r *VolumeSnapshot) VolumeId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["volumeId"])
+func (r *VolumeSnapshot) VolumeId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["volumeId"])
 }
 
 // Input properties used for looking up and filtering VolumeSnapshot resources.

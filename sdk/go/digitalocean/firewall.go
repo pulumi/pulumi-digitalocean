@@ -65,61 +65,61 @@ func GetFirewall(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Firewall) URN() *pulumi.URNOutput {
+func (r *Firewall) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Firewall) ID() *pulumi.IDOutput {
+func (r *Firewall) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A time value given in ISO8601 combined date and time format
 // that represents when the Firewall was created.
-func (r *Firewall) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *Firewall) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The list of the IDs of the Droplets assigned
 // to the Firewall.
-func (r *Firewall) DropletIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dropletIds"])
+func (r *Firewall) DropletIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dropletIds"])
 }
 
 // The inbound access rule block for the Firewall.
 // The `inboundRule` block is documented below.
-func (r *Firewall) InboundRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["inboundRules"])
+func (r *Firewall) InboundRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["inboundRules"])
 }
 
 // The Firewall name
-func (r *Firewall) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Firewall) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The outbound access rule block for the Firewall.
 // The `outboundRule` block is documented below.
-func (r *Firewall) OutboundRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["outboundRules"])
+func (r *Firewall) OutboundRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["outboundRules"])
 }
 
 // An list of object containing the fields, "dropletId",
 // "removing", and "status".  It is provided to detail exactly which Droplets
 // are having their security policies updated.  When empty, all changes
 // have been successfully applied.
-func (r *Firewall) PendingChanges() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["pendingChanges"])
+func (r *Firewall) PendingChanges() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["pendingChanges"])
 }
 
 // A status string indicating the current state of the Firewall.
 // This can be "waiting", "succeeded", or "failed".
-func (r *Firewall) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Firewall) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // The names of the Tags assigned to the Firewall.
-func (r *Firewall) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Firewall) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Firewall resources.

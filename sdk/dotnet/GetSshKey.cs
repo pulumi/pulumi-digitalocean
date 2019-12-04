@@ -13,7 +13,7 @@ namespace Pulumi.Digitalocean
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/ssh_key.html.markdown.
         /// </summary>
         public static Task<GetSshKeyResult> GetSshKey(GetSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetSshKeyArgs : Pulumi.ResourceArgs

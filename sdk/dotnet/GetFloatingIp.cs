@@ -13,7 +13,7 @@ namespace Pulumi.Digitalocean
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/floating_ip.html.markdown.
         /// </summary>
         public static Task<GetFloatingIpResult> GetFloatingIp(GetFloatingIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetFloatingIpArgs : Pulumi.ResourceArgs

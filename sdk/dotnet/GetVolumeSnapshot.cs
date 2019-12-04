@@ -17,7 +17,7 @@ namespace Pulumi.Digitalocean
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.markdown.
         /// </summary>
         public static Task<GetVolumeSnapshotResult> GetVolumeSnapshot(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetVolumeSnapshotArgs : Pulumi.ResourceArgs

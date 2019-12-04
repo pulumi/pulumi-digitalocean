@@ -77,48 +77,48 @@ func GetSpacesBucket(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SpacesBucket) URN() *pulumi.URNOutput {
+func (r *SpacesBucket) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SpacesBucket) ID() *pulumi.IDOutput {
+func (r *SpacesBucket) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Canned ACL applied on bucket creation (`private` or `public-read`)
-func (r *SpacesBucket) Acl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["acl"])
+func (r *SpacesBucket) Acl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["acl"])
 }
 
 // The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
-func (r *SpacesBucket) BucketDomainName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucketDomainName"])
+func (r *SpacesBucket) BucketDomainName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucketDomainName"])
 }
 
 // A container holding a list of elements describing allowed methods for a specific origin.
-func (r *SpacesBucket) CorsRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["corsRules"])
+func (r *SpacesBucket) CorsRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["corsRules"])
 }
 
 // Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-func (r *SpacesBucket) ForceDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forceDestroy"])
+func (r *SpacesBucket) ForceDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceDestroy"])
 }
 
 // The name of the bucket
-func (r *SpacesBucket) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SpacesBucket) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region where the bucket resides (Defaults to `nyc3`)
-func (r *SpacesBucket) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *SpacesBucket) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The uniform resource name for the bucket
-func (r *SpacesBucket) Urn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["urn"])
+func (r *SpacesBucket) Urn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["urn"])
 }
 
 // Input properties used for looking up and filtering SpacesBucket resources.

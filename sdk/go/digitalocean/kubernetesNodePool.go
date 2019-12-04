@@ -78,48 +78,48 @@ func GetKubernetesNodePool(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KubernetesNodePool) URN() *pulumi.URNOutput {
+func (r *KubernetesNodePool) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KubernetesNodePool) ID() *pulumi.IDOutput {
+func (r *KubernetesNodePool) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
-func (r *KubernetesNodePool) ActualNodeCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["actualNodeCount"])
+func (r *KubernetesNodePool) ActualNodeCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["actualNodeCount"])
 }
 
 // Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-func (r *KubernetesNodePool) AutoScale() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["autoScale"])
+func (r *KubernetesNodePool) AutoScale() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["autoScale"])
 }
 
 // The ID of the Kubernetes cluster to which the node pool is associated.
-func (r *KubernetesNodePool) ClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterId"])
+func (r *KubernetesNodePool) ClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterId"])
 }
 
 // If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-func (r *KubernetesNodePool) MaxNodes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxNodes"])
+func (r *KubernetesNodePool) MaxNodes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxNodes"])
 }
 
 // If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-func (r *KubernetesNodePool) MinNodes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minNodes"])
+func (r *KubernetesNodePool) MinNodes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minNodes"])
 }
 
 // A name for the node pool.
-func (r *KubernetesNodePool) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *KubernetesNodePool) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-func (r *KubernetesNodePool) NodeCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["nodeCount"])
+func (r *KubernetesNodePool) NodeCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["nodeCount"])
 }
 
 // A list of nodes in the pool. Each node exports the following attributes:
@@ -128,18 +128,18 @@ func (r *KubernetesNodePool) NodeCount() *pulumi.IntOutput {
 // - `status` -  A string indicating the current status of the individual node.
 // - `createdAt` - The date and time when the node was created.
 // - `updatedAt` - The date and time when the node was last updated.
-func (r *KubernetesNodePool) Nodes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["nodes"])
+func (r *KubernetesNodePool) Nodes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["nodes"])
 }
 
 // The slug identifier for the type of Droplet to be used as workers in the node pool.
-func (r *KubernetesNodePool) Size() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["size"])
+func (r *KubernetesNodePool) Size() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["size"])
 }
 
 // A list of tag names to be applied to the Kubernetes cluster.
-func (r *KubernetesNodePool) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *KubernetesNodePool) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering KubernetesNodePool resources.

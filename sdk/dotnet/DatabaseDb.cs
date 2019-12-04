@@ -35,7 +35,7 @@ namespace Pulumi.Digitalocean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseDb(string name, DatabaseDbArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseDb", name, args, MakeResourceOptions(options, ""))
+            : base("digitalocean:index:DatabaseDb", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

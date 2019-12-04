@@ -60,33 +60,33 @@ func GetFloatingIp(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FloatingIp) URN() *pulumi.URNOutput {
+func (r *FloatingIp) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FloatingIp) ID() *pulumi.IDOutput {
+func (r *FloatingIp) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of Droplet that the Floating IP will be assigned to.
-func (r *FloatingIp) DropletId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dropletId"])
+func (r *FloatingIp) DropletId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["dropletId"])
 }
 
 // The IP Address of the resource
-func (r *FloatingIp) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *FloatingIp) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // The region that the Floating IP is reserved to.
-func (r *FloatingIp) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *FloatingIp) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The uniform resource name of the floating ip
-func (r *FloatingIp) Urn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["urn"])
+func (r *FloatingIp) Urn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["urn"])
 }
 
 // Input properties used for looking up and filtering FloatingIp resources.

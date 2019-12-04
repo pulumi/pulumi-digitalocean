@@ -80,7 +80,7 @@ namespace Pulumi.Digitalocean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SpacesBucket(string name, SpacesBucketArgs? args = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index/spacesBucket:SpacesBucket", name, args, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/spacesBucket:SpacesBucket", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
