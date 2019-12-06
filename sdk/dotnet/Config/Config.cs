@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Digitalocean
+namespace Pulumi.DigitalOcean
 {
     public static class Config
     {
