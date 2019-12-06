@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to pulumi-terraform-bridge v1.4.3
+* Namespace names in .NET SDK are adjusted to PascalCase
+([#52](https://github.com/pulumi/pulumi-digitalocean/pull/52)).
 
 ---
 
