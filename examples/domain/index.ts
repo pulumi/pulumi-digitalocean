@@ -13,9 +13,13 @@
 // limitations under the License.
 
 import * as digitalocean from "@pulumi/digitalocean";
+import * as random from "@pulumi/random";
+import * as pulumi from "@pulumi/pulumi";
+
+let randomPet = new random.RandomPet("my-random-domain-name");
 
 let domain = new digitalocean.Domain("my-domain", {
-    name: "my-domain.io"
+    name: pulumi.interpolate`${randomPet.id}.io`,
 });
 
 export let name = domain.name;
