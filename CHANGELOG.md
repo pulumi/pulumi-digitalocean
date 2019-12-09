@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v1.4.3
-* Upgrade to support go 1.13.x
+_(none)_
 
 ---
+
+## 1.2.0 (2019-12-09)
+* Upgrade to pulumi-terraform-bridge v1.4.3
+* Upgrade to support go 1.13.x
 
 ## 1.1.0 (2019-11-15)
 * Upgrade to v1.11.0 of the DigitalOcean Terraform Provider
