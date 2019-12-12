@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Digitalocean
+namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This

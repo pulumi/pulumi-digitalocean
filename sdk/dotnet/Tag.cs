@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Digitalocean
+namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean Tag resource. A Tag is a label that can be applied to a

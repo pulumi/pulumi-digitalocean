@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Digitalocean
+namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
