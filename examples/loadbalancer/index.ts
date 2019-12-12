@@ -13,14 +13,24 @@
 // limitations under the License.
 
 import * as digitalocean from "@pulumi/digitalocean";
+import * as tls from "@pulumi/tls";
 
-const foobar = new digitalocean.Tag("foobar", {});
+const privateKey = new tls.PrivateKey("my-private-key", {
+    algorithm: "RSA",
+});
+
+const sshKey = new digitalocean.SshKey("my-ssh-key", {
+    publicKey: privateKey.publicKeyOpenssh,
+});
+
+const foobar = new digitalocean.Tag("foobar");
 
 const web = new digitalocean.Droplet("web", {
     image: "ubuntu-18-04-x64",
     region: digitalocean.Regions.NYC3,
     size: "s-1vcpu-1gb",
     tags: [foobar.id],
+    sshKeys: [sshKey.id],
 });
 
 const lb = new digitalocean.LoadBalancer("public", {

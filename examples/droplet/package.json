@@ -8,11 +8,11 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "dev"
+    "@pulumi/pulumi": "latest",
+    "@pulumi/tls": "latest"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "peerDependencies": {
-    "@pulumi/digitalocean": "latest"
+    "@pulumi/digitalocean": "dev"
   }
 }
