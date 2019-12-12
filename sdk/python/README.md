@@ -30,25 +30,25 @@ To use from Python, install using `pip`:
 To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-digitalocean/sdk/go/...
-    
+
 ## Configuration
 
 The following configuration points are available:
 
-- `digitalocean:token` - (Required) This is the DO API token. Alternatively, this can also be specified using environment 
+- `digitalocean:token` - (Required) This is the DO API token. Alternatively, this can also be specified using environment
   variables, ordered by precedence, `DIGITALOCEAN_TOKEN` or `DIGITALOCEAN_ACCESS_TOKEN`.
-- `digitalocean:spacesAccessId` - (Optional) The access key ID used for Spaces API operations. May be set via the 
+- `digitalocean:spacesAccessId` - (Optional) The access key ID used for Spaces API operations. May be set via the
   `SPACES_ACCESS_KEY_ID` environment variable.
-- `digitalocean:spacesSecretId` - (Optional) The access key ID used for Spaces API operations. May be set via the 
+- `digitalocean:spacesSecretKey` - (Optional) The secret key used for Spaces API operations. May be set via the 
   `SPACES_SECRET_ACCESS_KEY` environment variable.
-- `digitalocean:apiEndpoint` - (Optional) This can be used to override the base URL for DigitalOcean API requests. May 
+- `digitalocean:apiEndpoint` - (Optional) This can be used to override the base URL for DigitalOcean API requests. May
   be set via the `DIGITALOCEAN_API_URL` environment variable. Default is `https://api.digitalocean.com`.
 
 ## Concepts
 
 The `@pulumi/digitalocean` package provides a strongly-typed means to create cloud applications that create and interact
-closely with DigitalOcean resources.  Resources are exposed for the entirety of DigitalOcean resources and their 
-properties, including (but not limited to), 'droplet', 'floatingIp', 'firewalls', etc.  Many convenience APIs have also 
+closely with DigitalOcean resources.  Resources are exposed for the entirety of DigitalOcean resources and their
+properties, including (but not limited to), 'droplet', 'floatingIp', 'firewalls', etc.  Many convenience APIs have also
 been added to make development easier and to help avoid common mistakes, and to get stronger typing.
 
 ## Reference

@@ -8,7 +8,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "dev"
+    "@pulumi/pulumi": "latest",
+    "@pulumi/random": "latest"
   },
   "devDependencies": {
   },
