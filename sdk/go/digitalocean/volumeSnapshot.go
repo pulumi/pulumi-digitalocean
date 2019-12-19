@@ -24,9 +24,11 @@ func NewVolumeSnapshot(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["name"] = nil
+		inputs["tags"] = nil
 		inputs["volumeId"] = nil
 	} else {
 		inputs["name"] = args.Name
+		inputs["tags"] = args.Tags
 		inputs["volumeId"] = args.VolumeId
 	}
 	inputs["createdAt"] = nil
@@ -51,6 +53,7 @@ func GetVolumeSnapshot(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["regions"] = state.Regions
 		inputs["size"] = state.Size
+		inputs["tags"] = state.Tags
 		inputs["volumeId"] = state.VolumeId
 	}
 	s, err := ctx.ReadResource("digitalocean:index/volumeSnapshot:VolumeSnapshot", name, id, inputs, opts...)
@@ -95,6 +98,11 @@ func (r *VolumeSnapshot) Size() pulumi.Float64Output {
 	return (pulumi.Float64Output)(r.s.State["size"])
 }
 
+// A list of the tags to be applied to this volume snapshot.
+func (r *VolumeSnapshot) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The ID of the volume from which the volume snapshot originated.
 func (r *VolumeSnapshot) VolumeId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["volumeId"])
@@ -112,6 +120,8 @@ type VolumeSnapshotState struct {
 	Regions interface{}
 	// The billable size of the volume snapshot in gigabytes.
 	Size interface{}
+	// A list of the tags to be applied to this volume snapshot.
+	Tags interface{}
 	// The ID of the volume from which the volume snapshot originated.
 	VolumeId interface{}
 }
@@ -120,6 +130,8 @@ type VolumeSnapshotState struct {
 type VolumeSnapshotArgs struct {
 	// A name for the volume snapshot.
 	Name interface{}
+	// A list of the tags to be applied to this volume snapshot.
+	Tags interface{}
 	// The ID of the volume from which the volume snapshot originated.
 	VolumeId interface{}
 }

@@ -13,7 +13,7 @@ class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, name=None, region=None, size=None, urn=None, id=None):
+    def __init__(__self__, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, name=None, region=None, size=None, tags=None, urn=None, id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -50,6 +50,12 @@ class GetVolumeResult:
         """
         The size of the block storage volume in GiB.
         """
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        __self__.tags = tags
+        """
+        A list of the tags associated to the Volume.
+        """
         if urn and not isinstance(urn, str):
             raise TypeError("Expected argument 'urn' to be a str")
         __self__.urn = urn
@@ -72,6 +78,7 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             name=self.name,
             region=self.region,
             size=self.size,
+            tags=self.tags,
             urn=self.urn,
             id=self.id)
 
@@ -103,5 +110,6 @@ def get_volume(description=None,name=None,region=None,opts=None):
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),
+        tags=__ret__.get('tags'),
         urn=__ret__.get('urn'),
         id=__ret__.get('id'))

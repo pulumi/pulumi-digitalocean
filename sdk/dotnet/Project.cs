@@ -14,14 +14,15 @@ namespace Pulumi.DigitalOcean
     /// You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
     /// in ways that align with the applications you host on DigitalOcean.
     /// 
-    /// The following resources can be associated with a project:
+    /// The following resource types can be associated with a project:
     /// 
-    /// * Droplet
-    /// * Load Balancer
-    /// * Domain
-    /// * Volume
+    /// * Database Clusters
+    /// * Domains
+    /// * Droplets
     /// * Floating IP
+    /// * Load Balancers
     /// * Spaces Bucket
+    /// * Volume
     /// 
     /// **Note:** A Terrafrom managed project cannot be set as a default project.
     /// 

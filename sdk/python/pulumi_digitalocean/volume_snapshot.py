@@ -30,17 +30,22 @@ class VolumeSnapshot(pulumi.CustomResource):
     """
     The billable size of the volume snapshot in gigabytes.
     """
+    tags: pulumi.Output[list]
+    """
+    A list of the tags to be applied to this volume snapshot.
+    """
     volume_id: pulumi.Output[str]
     """
     The ID of the volume from which the volume snapshot originated.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, volume_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, name=None, tags=None, volume_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A name for the volume snapshot.
+        :param pulumi.Input[list] tags: A list of the tags to be applied to this volume snapshot.
         :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
@@ -63,6 +68,7 @@ class VolumeSnapshot(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
+            __props__['tags'] = tags
             if volume_id is None:
                 raise TypeError("Missing required property 'volume_id'")
             __props__['volume_id'] = volume_id
@@ -77,7 +83,7 @@ class VolumeSnapshot(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_at=None, min_disk_size=None, name=None, regions=None, size=None, volume_id=None):
+    def get(resource_name, id, opts=None, created_at=None, min_disk_size=None, name=None, regions=None, size=None, tags=None, volume_id=None):
         """
         Get an existing VolumeSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -90,6 +96,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name for the volume snapshot.
         :param pulumi.Input[list] regions: A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
         :param pulumi.Input[float] size: The billable size of the volume snapshot in gigabytes.
+        :param pulumi.Input[list] tags: A list of the tags to be applied to this volume snapshot.
         :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
@@ -102,6 +109,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         __props__["name"] = name
         __props__["regions"] = regions
         __props__["size"] = size
+        __props__["tags"] = tags
         __props__["volume_id"] = volume_id
         return VolumeSnapshot(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

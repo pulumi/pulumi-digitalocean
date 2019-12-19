@@ -33,6 +33,7 @@ func LookupVolumeSnapshot(ctx *pulumi.Context, args *GetVolumeSnapshotArgs) (*Ge
 		Region: outputs["region"],
 		Regions: outputs["regions"],
 		Size: outputs["size"],
+		Tags: outputs["tags"],
 		VolumeId: outputs["volumeId"],
 		Id: outputs["id"],
 	}, nil
@@ -64,6 +65,8 @@ type GetVolumeSnapshotResult struct {
 	Regions interface{}
 	// The billable size of the volume snapshot in gigabytes.
 	Size interface{}
+	// A list of the tags associated to the volume snapshot.
+	Tags interface{}
 	// The ID of the volume from which the volume snapshot originated.
 	VolumeId interface{}
 	// id is the provider-assigned unique ID for this managed resource.

@@ -91,6 +91,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly engine!: pulumi.Output<string>;
     /**
+     * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+     */
+    public readonly evictionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * Database cluster's hostname.
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
@@ -127,9 +131,13 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<Region>;
     /**
-     * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
     public readonly size!: pulumi.Output<DatabaseSlug>;
+    /**
+     * A comma separated string specifying the  SQL modes for a MySQL cluster.
+     */
+    public readonly sqlMode!: pulumi.Output<string | undefined>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
@@ -165,6 +173,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             const state = argsOrState as DatabaseClusterState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["engine"] = state ? state.engine : undefined;
+            inputs["evictionPolicy"] = state ? state.evictionPolicy : undefined;
             inputs["host"] = state ? state.host : undefined;
             inputs["maintenanceWindows"] = state ? state.maintenanceWindows : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -175,6 +184,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["privateUri"] = state ? state.privateUri : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
+            inputs["sqlMode"] = state ? state.sqlMode : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["uri"] = state ? state.uri : undefined;
             inputs["urn"] = state ? state.urn : undefined;
@@ -195,11 +205,13 @@ export class DatabaseCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'size'");
             }
             inputs["engine"] = args ? args.engine : undefined;
+            inputs["evictionPolicy"] = args ? args.evictionPolicy : undefined;
             inputs["maintenanceWindows"] = args ? args.maintenanceWindows : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["size"] = args ? args.size : undefined;
+            inputs["sqlMode"] = args ? args.sqlMode : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["database"] = undefined /*out*/;
@@ -235,6 +247,10 @@ export interface DatabaseClusterState {
      * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
      */
     readonly engine?: pulumi.Input<string>;
+    /**
+     * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+     */
+    readonly evictionPolicy?: pulumi.Input<string>;
     /**
      * Database cluster's hostname.
      */
@@ -272,9 +288,13 @@ export interface DatabaseClusterState {
      */
     readonly region?: pulumi.Input<Region>;
     /**
-     * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
     readonly size?: pulumi.Input<DatabaseSlug>;
+    /**
+     * A comma separated string specifying the  SQL modes for a MySQL cluster.
+     */
+    readonly sqlMode?: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
@@ -306,6 +326,10 @@ export interface DatabaseClusterArgs {
      */
     readonly engine: pulumi.Input<string>;
     /**
+     * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+     */
+    readonly evictionPolicy?: pulumi.Input<string>;
+    /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
     readonly maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
@@ -322,9 +346,13 @@ export interface DatabaseClusterArgs {
      */
     readonly region: pulumi.Input<Region>;
     /**
-     * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
     readonly size: pulumi.Input<DatabaseSlug>;
+    /**
+     * A comma separated string specifying the  SQL modes for a MySQL cluster.
+     */
+    readonly sqlMode?: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */

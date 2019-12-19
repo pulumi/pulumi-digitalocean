@@ -34,6 +34,7 @@ func NewVolume(ctx *pulumi.Context,
 		inputs["region"] = nil
 		inputs["size"] = nil
 		inputs["snapshotId"] = nil
+		inputs["tags"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["filesystemType"] = args.FilesystemType
@@ -43,6 +44,7 @@ func NewVolume(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 		inputs["size"] = args.Size
 		inputs["snapshotId"] = args.SnapshotId
+		inputs["tags"] = args.Tags
 	}
 	inputs["dropletIds"] = nil
 	inputs["filesystemLabel"] = nil
@@ -70,6 +72,7 @@ func GetVolume(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["size"] = state.Size
 		inputs["snapshotId"] = state.SnapshotId
+		inputs["tags"] = state.Tags
 		inputs["urn"] = state.Urn
 	}
 	s, err := ctx.ReadResource("digitalocean:index/volume:Volume", name, id, inputs, opts...)
@@ -139,6 +142,11 @@ func (r *Volume) SnapshotId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["snapshotId"])
 }
 
+// A list of the tags to be applied to this Volume.
+func (r *Volume) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // the uniform resource name for the volume.
 func (r *Volume) Urn() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["urn"])
@@ -166,6 +174,8 @@ type VolumeState struct {
 	Size interface{}
 	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
 	SnapshotId interface{}
+	// A list of the tags to be applied to this Volume.
+	Tags interface{}
 	// the uniform resource name for the volume.
 	Urn interface{}
 }
@@ -188,4 +198,6 @@ type VolumeArgs struct {
 	Size interface{}
 	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
 	SnapshotId interface{}
+	// A list of the tags to be applied to this Volume.
+	Tags interface{}
 }

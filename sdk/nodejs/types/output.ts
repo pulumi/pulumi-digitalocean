@@ -15,6 +15,19 @@ export interface DatabaseClusterMaintenanceWindow {
     hour: string;
 }
 
+export interface DatabaseFirewallRule {
+    /**
+     * The date and time when the firewall rule was created.
+     */
+    createdAt: string;
+    type: string;
+    /**
+     * A unique identifier for the firewall rule.
+     */
+    uuid: string;
+    value: string;
+}
+
 export interface FirewallInboundRule {
     /**
      * The ports on which traffic will be allowed

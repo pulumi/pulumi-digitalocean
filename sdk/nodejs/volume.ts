@@ -81,6 +81,10 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
+     * A list of the tags to be applied to this Volume.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * the uniform resource name for the volume.
      */
     public /*out*/ readonly urn!: pulumi.Output<string>;
@@ -107,6 +111,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
@@ -124,6 +129,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["dropletIds"] = undefined /*out*/;
             inputs["filesystemLabel"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
@@ -184,6 +190,10 @@ export interface VolumeState {
      */
     readonly snapshotId?: pulumi.Input<string>;
     /**
+     * A list of the tags to be applied to this Volume.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * the uniform resource name for the volume.
      */
     readonly urn?: pulumi.Input<string>;
@@ -225,4 +235,8 @@ export interface VolumeArgs {
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
      */
     readonly snapshotId?: pulumi.Input<string>;
+    /**
+     * A list of the tags to be applied to this Volume.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
