@@ -27,6 +27,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
+        /// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        /// </summary>
+        [Output("evictionPolicy")]
+        public Output<string?> EvictionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Database cluster's hostname.
         /// </summary>
         [Output("host")]
@@ -81,10 +87,16 @@ namespace Pulumi.DigitalOcean
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         /// </summary>
         [Output("size")]
         public Output<string> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// A comma separated string specifying the  SQL modes for a MySQL cluster.
+        /// </summary>
+        [Output("sqlMode")]
+        public Output<string?> SqlMode { get; private set; } = null!;
 
         /// <summary>
         /// A list of tag names to be applied to the database cluster.
@@ -168,6 +180,12 @@ namespace Pulumi.DigitalOcean
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
+        /// <summary>
+        /// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        /// </summary>
+        [Input("evictionPolicy")]
+        public Input<string>? EvictionPolicy { get; set; }
+
         [Input("maintenanceWindows")]
         private InputList<Inputs.DatabaseClusterMaintenanceWindowsArgs>? _maintenanceWindows;
 
@@ -199,10 +217,16 @@ namespace Pulumi.DigitalOcean
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         /// </summary>
         [Input("size", required: true)]
         public Input<string> Size { get; set; } = null!;
+
+        /// <summary>
+        /// A comma separated string specifying the  SQL modes for a MySQL cluster.
+        /// </summary>
+        [Input("sqlMode")]
+        public Input<string>? SqlMode { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -240,6 +264,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        /// </summary>
+        [Input("evictionPolicy")]
+        public Input<string>? EvictionPolicy { get; set; }
 
         /// <summary>
         /// Database cluster's hostname.
@@ -302,10 +332,16 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// A comma separated string specifying the  SQL modes for a MySQL cluster.
+        /// </summary>
+        [Input("sqlMode")]
+        public Input<string>? SqlMode { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

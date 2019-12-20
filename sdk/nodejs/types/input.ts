@@ -15,6 +15,19 @@ export interface DatabaseClusterMaintenanceWindow {
     hour: pulumi.Input<string>;
 }
 
+export interface DatabaseFirewallRule {
+    /**
+     * The date and time when the firewall rule was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+    /**
+     * A unique identifier for the firewall rule.
+     */
+    uuid?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
 export interface FirewallInboundRule {
     /**
      * The ports on which traffic will be allowed

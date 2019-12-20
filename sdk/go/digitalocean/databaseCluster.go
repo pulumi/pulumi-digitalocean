@@ -33,20 +33,24 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["engine"] = nil
+		inputs["evictionPolicy"] = nil
 		inputs["maintenanceWindows"] = nil
 		inputs["name"] = nil
 		inputs["nodeCount"] = nil
 		inputs["region"] = nil
 		inputs["size"] = nil
+		inputs["sqlMode"] = nil
 		inputs["tags"] = nil
 		inputs["version"] = nil
 	} else {
 		inputs["engine"] = args.Engine
+		inputs["evictionPolicy"] = args.EvictionPolicy
 		inputs["maintenanceWindows"] = args.MaintenanceWindows
 		inputs["name"] = args.Name
 		inputs["nodeCount"] = args.NodeCount
 		inputs["region"] = args.Region
 		inputs["size"] = args.Size
+		inputs["sqlMode"] = args.SqlMode
 		inputs["tags"] = args.Tags
 		inputs["version"] = args.Version
 	}
@@ -74,6 +78,7 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 	if state != nil {
 		inputs["database"] = state.Database
 		inputs["engine"] = state.Engine
+		inputs["evictionPolicy"] = state.EvictionPolicy
 		inputs["host"] = state.Host
 		inputs["maintenanceWindows"] = state.MaintenanceWindows
 		inputs["name"] = state.Name
@@ -84,6 +89,7 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 		inputs["privateUri"] = state.PrivateUri
 		inputs["region"] = state.Region
 		inputs["size"] = state.Size
+		inputs["sqlMode"] = state.SqlMode
 		inputs["tags"] = state.Tags
 		inputs["uri"] = state.Uri
 		inputs["urn"] = state.Urn
@@ -115,6 +121,11 @@ func (r *DatabaseCluster) Database() pulumi.StringOutput {
 // Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
 func (r *DatabaseCluster) Engine() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["engine"])
+}
+
+// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+func (r *DatabaseCluster) EvictionPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["evictionPolicy"])
 }
 
 // Database cluster's hostname.
@@ -162,9 +173,14 @@ func (r *DatabaseCluster) Region() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
 func (r *DatabaseCluster) Size() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["size"])
+}
+
+// A comma separated string specifying the  SQL modes for a MySQL cluster.
+func (r *DatabaseCluster) SqlMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sqlMode"])
 }
 
 // A list of tag names to be applied to the database cluster.
@@ -198,6 +214,8 @@ type DatabaseClusterState struct {
 	Database interface{}
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
 	Engine interface{}
+	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+	EvictionPolicy interface{}
 	// Database cluster's hostname.
 	Host interface{}
 	// Defines when the automatic maintenance should be performed for the database cluster.
@@ -216,8 +234,10 @@ type DatabaseClusterState struct {
 	PrivateUri interface{}
 	// DigitalOcean region where the cluster will reside.
 	Region interface{}
-	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
 	Size interface{}
+	// A comma separated string specifying the  SQL modes for a MySQL cluster.
+	SqlMode interface{}
 	// A list of tag names to be applied to the database cluster.
 	Tags interface{}
 	// The full URI for connecting to the database cluster.
@@ -234,6 +254,8 @@ type DatabaseClusterState struct {
 type DatabaseClusterArgs struct {
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
 	Engine interface{}
+	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+	EvictionPolicy interface{}
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows interface{}
 	// The name of the database cluster.
@@ -242,8 +264,10 @@ type DatabaseClusterArgs struct {
 	NodeCount interface{}
 	// DigitalOcean region where the cluster will reside.
 	Region interface{}
-	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
 	Size interface{}
+	// A comma separated string specifying the  SQL modes for a MySQL cluster.
+	SqlMode interface{}
 	// A list of tag names to be applied to the database cluster.
 	Tags interface{}
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).

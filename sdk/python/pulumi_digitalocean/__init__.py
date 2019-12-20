@@ -15,6 +15,7 @@ from .certificate import *
 from .database_cluster import *
 from .database_connection_pool import *
 from .database_db import *
+from .database_firewall import *
 from .database_replica import *
 from .database_user import *
 from .domain import *
@@ -43,6 +44,7 @@ from .get_droplet_snapshot import *
 from .get_floating_ip import *
 from .get_image import *
 from .get_kubernetes_cluster import *
+from .get_kubernetes_versions import *
 from .get_load_balancer import *
 from .get_record import *
 from .get_sizes import *

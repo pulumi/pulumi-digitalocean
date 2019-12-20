@@ -50,8 +50,12 @@ class Volume(pulumi.CustomResource):
     """
     The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
     """
+    tags: pulumi.Output[list]
+    """
+    A list of the tags to be applied to this Volume.
+    """
     urn: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
         
@@ -65,6 +69,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region that the block storage volume will be created in.
         :param pulumi.Input[float] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+        :param pulumi.Input[list] tags: A list of the tags to be applied to this Volume.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
         """
@@ -97,6 +102,7 @@ class Volume(pulumi.CustomResource):
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['snapshot_id'] = snapshot_id
+            __props__['tags'] = tags
             __props__['droplet_ids'] = None
             __props__['filesystem_label'] = None
             __props__['urn'] = None
@@ -107,7 +113,7 @@ class Volume(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, urn=None):
+    def get(resource_name, id, opts=None, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, tags=None, urn=None):
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -125,6 +131,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region that the block storage volume will be created in.
         :param pulumi.Input[float] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+        :param pulumi.Input[list] tags: A list of the tags to be applied to this Volume.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
         """
@@ -141,6 +148,7 @@ class Volume(pulumi.CustomResource):
         __props__["region"] = region
         __props__["size"] = size
         __props__["snapshot_id"] = snapshot_id
+        __props__["tags"] = tags
         __props__["urn"] = urn
         return Volume(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

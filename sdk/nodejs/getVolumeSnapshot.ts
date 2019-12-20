@@ -79,6 +79,10 @@ export interface GetVolumeSnapshotResult {
      */
     readonly size: number;
     /**
+     * A list of the tags associated to the volume snapshot.
+     */
+    readonly tags: string[];
+    /**
      * The ID of the volume from which the volume snapshot originated.
      */
     readonly volumeId: string;

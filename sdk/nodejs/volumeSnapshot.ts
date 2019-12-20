@@ -61,6 +61,10 @@ export class VolumeSnapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
     /**
+     * A list of the tags to be applied to this volume snapshot.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The ID of the volume from which the volume snapshot originated.
      */
     public readonly volumeId!: pulumi.Output<string>;
@@ -82,6 +86,7 @@ export class VolumeSnapshot extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["regions"] = state ? state.regions : undefined;
             inputs["size"] = state ? state.size : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeSnapshotArgs | undefined;
@@ -89,6 +94,7 @@ export class VolumeSnapshot extends pulumi.CustomResource {
                 throw new Error("Missing required property 'volumeId'");
             }
             inputs["name"] = args ? args.name : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["minDiskSize"] = undefined /*out*/;
@@ -131,6 +137,10 @@ export interface VolumeSnapshotState {
      */
     readonly size?: pulumi.Input<number>;
     /**
+     * A list of the tags to be applied to this volume snapshot.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The ID of the volume from which the volume snapshot originated.
      */
     readonly volumeId?: pulumi.Input<string>;
@@ -144,6 +154,10 @@ export interface VolumeSnapshotArgs {
      * A name for the volume snapshot.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A list of the tags to be applied to this volume snapshot.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the volume from which the volume snapshot originated.
      */

@@ -75,6 +75,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly double Size;
         /// <summary>
+        /// A list of the tags associated to the volume snapshot.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
         /// The ID of the volume from which the volume snapshot originated.
         /// </summary>
         public readonly string VolumeId;
@@ -93,6 +97,7 @@ namespace Pulumi.DigitalOcean
             string? region,
             ImmutableArray<string> regions,
             double size,
+            ImmutableArray<string> tags,
             string volumeId,
             string id)
         {
@@ -104,6 +109,7 @@ namespace Pulumi.DigitalOcean
             Region = region;
             Regions = regions;
             Size = size;
+            Tags = tags;
             VolumeId = volumeId;
             Id = id;
         }

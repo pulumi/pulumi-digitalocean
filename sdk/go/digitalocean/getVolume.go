@@ -27,6 +27,7 @@ func LookupVolume(ctx *pulumi.Context, args *GetVolumeArgs) (*GetVolumeResult, e
 		Name: outputs["name"],
 		Region: outputs["region"],
 		Size: outputs["size"],
+		Tags: outputs["tags"],
 		Urn: outputs["urn"],
 		Id: outputs["id"],
 	}, nil
@@ -55,6 +56,8 @@ type GetVolumeResult struct {
 	Region interface{}
 	// The size of the block storage volume in GiB.
 	Size interface{}
+	// A list of the tags associated to the Volume.
+	Tags interface{}
 	Urn interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

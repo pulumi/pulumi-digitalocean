@@ -75,6 +75,12 @@ namespace Pulumi.DigitalOcean
         public Output<string?> SnapshotId { get; private set; } = null!;
 
         /// <summary>
+        /// A list of the tags to be applied to this Volume.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// the uniform resource name for the volume.
         /// </summary>
         [Output("urn")]
@@ -174,6 +180,18 @@ namespace Pulumi.DigitalOcean
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of the tags to be applied to this Volume.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         public VolumeArgs()
         {
         }
@@ -246,6 +264,18 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of the tags to be applied to this Volume.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// the uniform resource name for the volume.

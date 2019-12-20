@@ -13,7 +13,7 @@ class GetVolumeSnapshotResult:
     """
     A collection of values returned by getVolumeSnapshot.
     """
-    def __init__(__self__, created_at=None, min_disk_size=None, most_recent=None, name=None, name_regex=None, region=None, regions=None, size=None, volume_id=None, id=None):
+    def __init__(__self__, created_at=None, min_disk_size=None, most_recent=None, name=None, name_regex=None, region=None, regions=None, size=None, tags=None, volume_id=None, id=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         __self__.created_at = created_at
@@ -50,6 +50,12 @@ class GetVolumeSnapshotResult:
         """
         The billable size of the volume snapshot in gigabytes.
         """
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        __self__.tags = tags
+        """
+        A list of the tags associated to the volume snapshot.
+        """
         if volume_id and not isinstance(volume_id, str):
             raise TypeError("Expected argument 'volume_id' to be a str")
         __self__.volume_id = volume_id
@@ -76,6 +82,7 @@ class AwaitableGetVolumeSnapshotResult(GetVolumeSnapshotResult):
             region=self.region,
             regions=self.regions,
             size=self.size,
+            tags=self.tags,
             volume_id=self.volume_id,
             id=self.id)
 
@@ -113,5 +120,6 @@ def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,o
         region=__ret__.get('region'),
         regions=__ret__.get('regions'),
         size=__ret__.get('size'),
+        tags=__ret__.get('tags'),
         volume_id=__ret__.get('volumeId'),
         id=__ret__.get('id'))

@@ -63,6 +63,10 @@ namespace Pulumi.DigitalOcean
         /// The size of the block storage volume in GiB.
         /// </summary>
         public readonly int Size;
+        /// <summary>
+        /// A list of the tags associated to the Volume.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
         public readonly string Urn;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -78,6 +82,7 @@ namespace Pulumi.DigitalOcean
             string name,
             string? region,
             int size,
+            ImmutableArray<string> tags,
             string urn,
             string id)
         {
@@ -88,6 +93,7 @@ namespace Pulumi.DigitalOcean
             Name = name;
             Region = region;
             Size = size;
+            Tags = tags;
             Urn = urn;
             Id = id;
         }
