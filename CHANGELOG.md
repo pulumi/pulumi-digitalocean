@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v1.12.0 of the DigitalOcean Terraform Provider
+* Upgrade to pulumi-terraform-bridge v1.5.2
 
 ---
 
