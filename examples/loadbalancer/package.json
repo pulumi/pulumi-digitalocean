@@ -8,8 +8,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "latest",
-    "@pulumi/tls": "latest"
+    "@pulumi/pulumi": "feature-2.0",
+    "@pulumi/tls": "feature-2.0"
   },
   "devDependencies": {
   },
