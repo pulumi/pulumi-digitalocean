@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
  */
-export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> & GetRecordResult {
+export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> {
     if (!opts) {
         opts = {}
     }
@@ -17,12 +17,10 @@ export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRecordResult> = pulumi.runtime.invoke("digitalocean:index/getRecord:getRecord", {
+    return pulumi.runtime.invoke("digitalocean:index/getRecord:getRecord", {
         "domain": args.domain,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

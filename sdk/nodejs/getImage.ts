@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/image.html.markdown.
  */
-export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> & GetImageResult {
+export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -18,12 +18,10 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetImageResult> = pulumi.runtime.invoke("digitalocean:index/getImage:getImage", {
+    return pulumi.runtime.invoke("digitalocean:index/getImage:getImage", {
         "name": args.name,
         "slug": args.slug,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

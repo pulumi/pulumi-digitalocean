@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.markdown.
  */
-export function getSizes(args?: GetSizesArgs, opts?: pulumi.InvokeOptions): Promise<GetSizesResult> & GetSizesResult {
+export function getSizes(args?: GetSizesArgs, opts?: pulumi.InvokeOptions): Promise<GetSizesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -20,12 +20,10 @@ export function getSizes(args?: GetSizesArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSizesResult> = pulumi.runtime.invoke("digitalocean:index/getSizes:getSizes", {
+    return pulumi.runtime.invoke("digitalocean:index/getSizes:getSizes", {
         "filters": args.filters,
         "sorts": args.sorts,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

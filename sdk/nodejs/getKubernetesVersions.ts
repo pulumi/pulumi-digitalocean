@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.markdown.
  */
-export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionsResult> & GetKubernetesVersionsResult {
+export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -20,11 +20,9 @@ export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: p
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKubernetesVersionsResult> = pulumi.runtime.invoke("digitalocean:index/getKubernetesVersions:getKubernetesVersions", {
+    return pulumi.runtime.invoke("digitalocean:index/getKubernetesVersions:getKubernetesVersions", {
         "versionPrefix": args.versionPrefix,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/domain.html.markdown.
  */
-export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> & GetDomainResult {
+export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     if (!opts) {
         opts = {}
     }
@@ -17,11 +17,9 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainResult> = pulumi.runtime.invoke("digitalocean:index/getDomain:getDomain", {
+    return pulumi.runtime.invoke("digitalocean:index/getDomain:getDomain", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
  */
-export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> & GetDropletResult {
+export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -18,12 +18,10 @@ export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDropletResult> = pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
+    return pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
         "name": args.name,
         "tag": args.tag,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/floating_ip.html.markdown.
  */
-export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> & GetFloatingIpResult {
+export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     if (!opts) {
         opts = {}
     }
@@ -17,11 +17,9 @@ export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetFloatingIpResult> = pulumi.runtime.invoke("digitalocean:index/getFloatingIp:getFloatingIp", {
+    return pulumi.runtime.invoke("digitalocean:index/getFloatingIp:getFloatingIp", {
         "ipAddress": args.ipAddress,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

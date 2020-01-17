@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/ssh_key.html.markdown.
  */
-export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> & GetSshKeyResult {
+export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
     if (!opts) {
         opts = {}
     }
@@ -17,11 +17,9 @@ export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSshKeyResult> = pulumi.runtime.invoke("digitalocean:index/getSshKey:getSshKey", {
+    return pulumi.runtime.invoke("digitalocean:index/getSshKey:getSshKey", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
