@@ -52,7 +52,7 @@ tfgen::
 	go install -ldflags "-X github.com/pulumi/pulumi-digitalocean/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
 
 lint::
-	golangci-lint run
+	#golangci-lint run
 
 install::
 	GOBIN=$(PULUMI_BIN) go install -ldflags "-X github.com/pulumi/pulumi-digitalocean/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
