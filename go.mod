@@ -7,7 +7,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.9.1
 	github.com/pulumi/pulumi-terraform-bridge v1.6.5
-	github.com/terraform-providers/terraform-provider-digitalocean v1.13.0
+	github.com/terraform-providers/terraform-provider-digitalocean v1.14.0
 )
 
 replace (

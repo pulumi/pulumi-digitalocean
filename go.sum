@@ -931,8 +931,8 @@ github.com/svanharmelen/jsonapi v0.0.0-20180618144545-0c0828c3f16d/go.mod h1:BST
 github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07/go.mod h1:kDXzergiv9cbyO7IOYJZWg1U88JhDg3PB6klq9Hg2pA=
 github.com/terraform-providers/terraform-provider-aws v1.60.1-0.20191010190908-1261a98537f2 h1:FcaZW1YFs3K5PKvPY8EJvqYDHx6JojcjnEDQ+h/VK48=
 github.com/terraform-providers/terraform-provider-aws v1.60.1-0.20191010190908-1261a98537f2/go.mod h1:zIXqcyUvJSpWRGXf+x6knh3NIZLjVqjH954yShO3YPE=
-github.com/terraform-providers/terraform-provider-digitalocean v1.13.0 h1:hZsHc4DwBMJXSzlH1tljRu8c5iQEAGhaFp7UufGY6LM=
-github.com/terraform-providers/terraform-provider-digitalocean v1.13.0/go.mod h1:D9M+GdQVJ7PKR1KNNIoRLFFilbhXBDGv65/usDgfKnw=
+github.com/terraform-providers/terraform-provider-digitalocean v1.14.0 h1:LCNyWXCaKn5EojjxBl0QXbFD4xJrBzncUntbKv5qy0Q=
+github.com/terraform-providers/terraform-provider-digitalocean v1.14.0/go.mod h1:D9M+GdQVJ7PKR1KNNIoRLFFilbhXBDGv65/usDgfKnw=
 github.com/terraform-providers/terraform-provider-google v1.20.1-0.20191008212436-363f2d283518 h1:IGwWsLdt9TtiafPwVMv9ePxbZYdVHTBfdVtXUr8+PEU=
 github.com/terraform-providers/terraform-provider-google v1.20.1-0.20191008212436-363f2d283518/go.mod h1:cdfYuxcAyBAISVCiSYei5GIjhXbB3wth/feTmx8iD8A=
 github.com/terraform-providers/terraform-provider-kubernetes v1.9.1-0.20191018170806-2c80accb5635 h1:NY8xVhh8DXoU3kfgo4J9UwzRULgKP+gByCZW/T2qK+g=
