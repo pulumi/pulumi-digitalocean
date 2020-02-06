@@ -161,6 +161,7 @@ export interface GetKubernetesClusterNodePoolNode {
      * The date and time when the Kubernetes cluster was created.
      */
     createdAt: string;
+    dropletId: string;
     /**
      * The unique ID that can be used to identify and reference a Kubernetes cluster.
      */
@@ -313,6 +314,7 @@ export interface KubernetesClusterNodePoolNode {
      * The date and time when the Kubernetes cluster was created.
      */
     createdAt: string;
+    dropletId: string;
     /**
      * A unique ID that can be used to identify and reference a Kubernetes cluster.
      */
@@ -341,6 +343,7 @@ export interface KubernetesClusterNodePoolNode {
 
 export interface KubernetesNodePoolNode {
     createdAt: string;
+    dropletId: string;
     /**
      * A unique ID that can be used to identify and reference the node pool.
      */

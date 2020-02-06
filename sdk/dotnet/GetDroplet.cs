@@ -20,7 +20,13 @@ namespace Pulumi.DigitalOcean
     public sealed class GetDropletArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of Droplet.
+        /// The ID of the Droplet
+        /// </summary>
+        [Input("id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// The name of the Droplet.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -48,6 +54,7 @@ namespace Pulumi.DigitalOcean
         /// The size of the Droplets disk in GB.
         /// </summary>
         public readonly int Disk;
+        public readonly int? Id;
         /// <summary>
         /// The Droplet image ID or slug.
         /// </summary>
@@ -126,16 +133,13 @@ namespace Pulumi.DigitalOcean
         /// List of the IDs of each volumes attached to the Droplet.
         /// </summary>
         public readonly ImmutableArray<string> VolumeIds;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDropletResult(
             bool backups,
             string createdAt,
             int disk,
+            int? id,
             string image,
             string ipv4Address,
             string ipv4AddressPrivate,
@@ -156,12 +160,12 @@ namespace Pulumi.DigitalOcean
             ImmutableArray<string> tags,
             string urn,
             int vcpus,
-            ImmutableArray<string> volumeIds,
-            string id)
+            ImmutableArray<string> volumeIds)
         {
             Backups = backups;
             CreatedAt = createdAt;
             Disk = disk;
+            Id = id;
             Image = image;
             Ipv4Address = ipv4Address;
             Ipv4AddressPrivate = ipv4AddressPrivate;
@@ -183,7 +187,6 @@ namespace Pulumi.DigitalOcean
             Urn = urn;
             Vcpus = vcpus;
             VolumeIds = volumeIds;
-            Id = id;
         }
     }
 }

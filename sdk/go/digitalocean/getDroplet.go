@@ -20,7 +20,9 @@ func LookupDroplet(ctx *pulumi.Context, args *LookupDropletArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getDroplet.
 type LookupDropletArgs struct {
-	// The name of Droplet.
+	// The ID of the Droplet
+	Id *int `pulumi:"id"`
+	// The name of the Droplet.
 	Name *string `pulumi:"name"`
 	// A tag applied to the Droplet.
 	Tag *string `pulumi:"tag"`
@@ -34,8 +36,7 @@ type LookupDropletResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The size of the Droplets disk in GB.
 	Disk int `pulumi:"disk"`
-	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id *int `pulumi:"id"`
 	// The Droplet image ID or slug.
 	Image string `pulumi:"image"`
 	// The Droplets public IPv4 address

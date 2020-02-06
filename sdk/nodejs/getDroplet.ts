@@ -19,6 +19,7 @@ export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): 
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetDropletResult> = pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
+        "id": args.id,
         "name": args.name,
         "tag": args.tag,
     }, opts);
@@ -31,7 +32,11 @@ export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetDropletArgs {
     /**
-     * The name of Droplet.
+     * The ID of the Droplet
+     */
+    readonly id?: number;
+    /**
+     * The name of the Droplet.
      */
     readonly name?: string;
     /**
@@ -53,6 +58,7 @@ export interface GetDropletResult {
      * The size of the Droplets disk in GB.
      */
     readonly disk: number;
+    readonly id?: number;
     /**
      * The Droplet image ID or slug.
      */
@@ -131,8 +137,4 @@ export interface GetDropletResult {
      * List of the IDs of each volumes attached to the Droplet.
      */
     readonly volumeIds: string[];
-    /**
-     * id is the provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

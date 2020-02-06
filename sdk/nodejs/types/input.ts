@@ -175,6 +175,7 @@ export interface KubernetesClusterNodePoolNode {
      * The date and time when the Kubernetes cluster was created.
      */
     createdAt?: pulumi.Input<string>;
+    dropletId?: pulumi.Input<string>;
     /**
      * A unique ID that can be used to identify and reference a Kubernetes cluster.
      */
@@ -203,6 +204,7 @@ export interface KubernetesClusterNodePoolNode {
 
 export interface KubernetesNodePoolNode {
     createdAt?: pulumi.Input<string>;
+    dropletId?: pulumi.Input<string>;
     /**
      * A unique ID that can be used to identify and reference the node pool.
      */

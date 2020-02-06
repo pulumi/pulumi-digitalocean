@@ -989,6 +989,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Tags() pulumi.StringArrayOutput {
 type KubernetesClusterNodePoolNode struct {
 	// The date and time when the Kubernetes cluster was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	DropletId *string `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference a Kubernetes cluster.
 	Id *string `pulumi:"id"`
 	// A name for the Kubernetes cluster.
@@ -1017,6 +1018,7 @@ type KubernetesClusterNodePoolNodeInput interface {
 type KubernetesClusterNodePoolNodeArgs struct {
 	// The date and time when the Kubernetes cluster was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	DropletId pulumi.StringPtrInput `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference a Kubernetes cluster.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A name for the Kubernetes cluster.
@@ -1087,6 +1089,10 @@ func (o KubernetesClusterNodePoolNodeOutput) CreatedAt() pulumi.StringPtrOutput 
 	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+func (o KubernetesClusterNodePoolNodeOutput) DropletId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.DropletId }).(pulumi.StringPtrOutput)
+}
+
 // A unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o KubernetesClusterNodePoolNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1137,6 +1143,7 @@ func (o KubernetesClusterNodePoolNodeArrayOutput) Index(i pulumi.IntInput) Kuber
 
 type KubernetesNodePoolNode struct {
 	CreatedAt *string `pulumi:"createdAt"`
+	DropletId *string `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference the node pool.
 	Id *string `pulumi:"id"`
 	// A name for the node pool.
@@ -1154,6 +1161,7 @@ type KubernetesNodePoolNodeInput interface {
 
 type KubernetesNodePoolNodeArgs struct {
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	DropletId pulumi.StringPtrInput `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference the node pool.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A name for the node pool.
@@ -1211,6 +1219,10 @@ func (o KubernetesNodePoolNodeOutput) ToKubernetesNodePoolNodeOutputWithContext(
 
 func (o KubernetesNodePoolNodeOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesNodePoolNode) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesNodePoolNodeOutput) DropletId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v KubernetesNodePoolNode) *string { return v.DropletId }).(pulumi.StringPtrOutput)
 }
 
 // A unique ID that can be used to identify and reference the node pool.
@@ -2209,6 +2221,7 @@ func (o GetKubernetesClusterNodePoolArrayOutput) Index(i pulumi.IntInput) GetKub
 type GetKubernetesClusterNodePoolNode struct {
 	// The date and time when the Kubernetes cluster was created.
 	CreatedAt string `pulumi:"createdAt"`
+	DropletId string `pulumi:"dropletId"`
 	// The unique ID that can be used to identify and reference a Kubernetes cluster.
 	Id string `pulumi:"id"`
 	// The name of Kubernetes cluster.
@@ -2237,6 +2250,7 @@ type GetKubernetesClusterNodePoolNodeInput interface {
 type GetKubernetesClusterNodePoolNodeArgs struct {
 	// The date and time when the Kubernetes cluster was created.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	DropletId pulumi.StringInput `pulumi:"dropletId"`
 	// The unique ID that can be used to identify and reference a Kubernetes cluster.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of Kubernetes cluster.
@@ -2305,6 +2319,10 @@ func (o GetKubernetesClusterNodePoolNodeOutput) ToGetKubernetesClusterNodePoolNo
 // The date and time when the Kubernetes cluster was created.
 func (o GetKubernetesClusterNodePoolNodeOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func (v GetKubernetesClusterNodePoolNode) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesClusterNodePoolNodeOutput) DropletId() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKubernetesClusterNodePoolNode) string { return v.DropletId }).(pulumi.StringOutput)
 }
 
 // The unique ID that can be used to identify and reference a Kubernetes cluster.

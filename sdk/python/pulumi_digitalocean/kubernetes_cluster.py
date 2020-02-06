@@ -52,6 +52,7 @@ class KubernetesCluster(pulumi.CustomResource):
       * `nodes` (`list`)
     
         * `created_at` (`str`) - The date and time when the Kubernetes cluster was created.
+        * `droplet_id` (`str`)
         * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
         * `name` (`str`) - A name for the Kubernetes cluster.
         * `status` (`str`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
@@ -131,6 +132,7 @@ class KubernetesCluster(pulumi.CustomResource):
           * `nodes` (`pulumi.Input[list]`)
         
             * `created_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was created.
+            * `droplet_id` (`pulumi.Input[str]`)
             * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
             * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
             * `status` (`pulumi.Input[str]`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
@@ -250,6 +252,7 @@ class KubernetesCluster(pulumi.CustomResource):
           * `nodes` (`pulumi.Input[list]`)
         
             * `created_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was created.
+            * `droplet_id` (`pulumi.Input[str]`)
             * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
             * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
             * `status` (`pulumi.Input[str]`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
