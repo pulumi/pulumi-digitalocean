@@ -190,6 +190,7 @@ namespace Pulumi.DigitalOcean
         /// The date and time when the Kubernetes cluster was created.
         /// </summary>
         public readonly string CreatedAt;
+        public readonly string DropletId;
         /// <summary>
         /// The unique ID that can be used to identify and reference a Kubernetes cluster.
         /// </summary>
@@ -218,12 +219,14 @@ namespace Pulumi.DigitalOcean
         [OutputConstructor]
         private GetKubernetesClusterNodePoolsNodesResult(
             string createdAt,
+            string dropletId,
             string id,
             string name,
             string status,
             string updatedAt)
         {
             CreatedAt = createdAt;
+            DropletId = dropletId;
             Id = id;
             Name = name;
             Status = status;

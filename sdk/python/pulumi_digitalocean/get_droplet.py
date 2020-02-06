@@ -13,7 +13,7 @@ class GetDropletResult:
     """
     A collection of values returned by getDroplet.
     """
-    def __init__(__self__, backups=None, created_at=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None, id=None):
+    def __init__(__self__, backups=None, created_at=None, disk=None, id=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None):
         if backups and not isinstance(backups, bool):
             raise TypeError("Expected argument 'backups' to be a bool")
         __self__.backups = backups
@@ -29,6 +29,9 @@ class GetDropletResult:
         """
         The size of the Droplets disk in GB.
         """
+        if id and not isinstance(id, float):
+            raise TypeError("Expected argument 'id' to be a float")
+        __self__.id = id
         if image and not isinstance(image, str):
             raise TypeError("Expected argument 'image' to be a str")
         __self__.image = image
@@ -149,12 +152,6 @@ class GetDropletResult:
         """
         List of the IDs of each volumes attached to the Droplet.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDropletResult(GetDropletResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -164,6 +161,7 @@ class AwaitableGetDropletResult(GetDropletResult):
             backups=self.backups,
             created_at=self.created_at,
             disk=self.disk,
+            id=self.id,
             image=self.image,
             ipv4_address=self.ipv4_address,
             ipv4_address_private=self.ipv4_address_private,
@@ -184,20 +182,21 @@ class AwaitableGetDropletResult(GetDropletResult):
             tags=self.tags,
             urn=self.urn,
             vcpus=self.vcpus,
-            volume_ids=self.volume_ids,
-            id=self.id)
+            volume_ids=self.volume_ids)
 
-def get_droplet(name=None,tag=None,opts=None):
+def get_droplet(id=None,name=None,tag=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     
-    :param str name: The name of Droplet.
+    :param float id: The ID of the Droplet
+    :param str name: The name of the Droplet.
     :param str tag: A tag applied to the Droplet.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
     """
     __args__ = dict()
 
+    __args__['id'] = id
     __args__['name'] = name
     __args__['tag'] = tag
     if opts is None:
@@ -210,6 +209,7 @@ def get_droplet(name=None,tag=None,opts=None):
         backups=__ret__.get('backups'),
         created_at=__ret__.get('createdAt'),
         disk=__ret__.get('disk'),
+        id=__ret__.get('id'),
         image=__ret__.get('image'),
         ipv4_address=__ret__.get('ipv4Address'),
         ipv4_address_private=__ret__.get('ipv4AddressPrivate'),
@@ -230,5 +230,4 @@ def get_droplet(name=None,tag=None,opts=None):
         tags=__ret__.get('tags'),
         urn=__ret__.get('urn'),
         vcpus=__ret__.get('vcpus'),
-        volume_ids=__ret__.get('volumeIds'),
-        id=__ret__.get('id'))
+        volume_ids=__ret__.get('volumeIds'))

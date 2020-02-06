@@ -44,10 +44,12 @@ class KubernetesNodePool(pulumi.CustomResource):
     - `id` -  A unique ID that can be used to identify and reference the node.
     - `name` - The auto-generated name for the node.
     - `status` -  A string indicating the current status of the individual node.
+    - `droplet_id` - The id of the node's droplet
     - `created_at` - The date and time when the node was created.
     - `updated_at` - The date and time when the node was last updated.
     
       * `created_at` (`str`)
+      * `droplet_id` (`str`)
       * `id` (`str`) - A unique ID that can be used to identify and reference the node pool.
       * `name` (`str`) - A name for the node pool.
       * `status` (`str`)
@@ -135,6 +137,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                - `id` -  A unique ID that can be used to identify and reference the node.
                - `name` - The auto-generated name for the node.
                - `status` -  A string indicating the current status of the individual node.
+               - `droplet_id` - The id of the node's droplet
                - `created_at` - The date and time when the node was created.
                - `updated_at` - The date and time when the node was last updated.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
@@ -143,6 +146,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         The **nodes** object supports the following:
         
           * `created_at` (`pulumi.Input[str]`)
+          * `droplet_id` (`pulumi.Input[str]`)
           * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference the node pool.
           * `name` (`pulumi.Input[str]`) - A name for the node pool.
           * `status` (`pulumi.Input[str]`)

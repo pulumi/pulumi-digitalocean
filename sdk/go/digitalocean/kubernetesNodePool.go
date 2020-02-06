@@ -35,6 +35,7 @@ type KubernetesNodePool struct {
 	// - `id` -  A unique ID that can be used to identify and reference the node.
 	// - `name` - The auto-generated name for the node.
 	// - `status` -  A string indicating the current status of the individual node.
+	// - `dropletId` - The id of the node's droplet
 	// - `createdAt` - The date and time when the node was created.
 	// - `updatedAt` - The date and time when the node was last updated.
 	Nodes KubernetesNodePoolNodeArrayOutput `pulumi:"nodes"`
@@ -96,6 +97,7 @@ type kubernetesNodePoolState struct {
 	// - `id` -  A unique ID that can be used to identify and reference the node.
 	// - `name` - The auto-generated name for the node.
 	// - `status` -  A string indicating the current status of the individual node.
+	// - `dropletId` - The id of the node's droplet
 	// - `createdAt` - The date and time when the node was created.
 	// - `updatedAt` - The date and time when the node was last updated.
 	Nodes []KubernetesNodePoolNode `pulumi:"nodes"`
@@ -124,6 +126,7 @@ type KubernetesNodePoolState struct {
 	// - `id` -  A unique ID that can be used to identify and reference the node.
 	// - `name` - The auto-generated name for the node.
 	// - `status` -  A string indicating the current status of the individual node.
+	// - `dropletId` - The id of the node's droplet
 	// - `createdAt` - The date and time when the node was created.
 	// - `updatedAt` - The date and time when the node was last updated.
 	Nodes KubernetesNodePoolNodeArrayInput

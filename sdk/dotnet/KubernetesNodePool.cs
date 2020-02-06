@@ -62,6 +62,7 @@ namespace Pulumi.DigitalOcean
         /// - `id` -  A unique ID that can be used to identify and reference the node.
         /// - `name` - The auto-generated name for the node.
         /// - `status` -  A string indicating the current status of the individual node.
+        /// - `droplet_id` - The id of the node's droplet
         /// - `created_at` - The date and time when the node was created.
         /// - `updated_at` - The date and time when the node was last updated.
         /// </summary>
@@ -237,6 +238,7 @@ namespace Pulumi.DigitalOcean
         /// - `id` -  A unique ID that can be used to identify and reference the node.
         /// - `name` - The auto-generated name for the node.
         /// - `status` -  A string indicating the current status of the individual node.
+        /// - `droplet_id` - The id of the node's droplet
         /// - `created_at` - The date and time when the node was created.
         /// - `updated_at` - The date and time when the node was last updated.
         /// </summary>
@@ -277,6 +279,9 @@ namespace Pulumi.DigitalOcean
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        [Input("dropletId")]
+        public Input<string>? DropletId { get; set; }
+
         /// <summary>
         /// A unique ID that can be used to identify and reference the node pool.
         /// </summary>
@@ -308,6 +313,7 @@ namespace Pulumi.DigitalOcean
     public sealed class KubernetesNodePoolNodes
     {
         public readonly string CreatedAt;
+        public readonly string DropletId;
         /// <summary>
         /// A unique ID that can be used to identify and reference the node pool.
         /// </summary>
@@ -322,12 +328,14 @@ namespace Pulumi.DigitalOcean
         [OutputConstructor]
         private KubernetesNodePoolNodes(
             string createdAt,
+            string dropletId,
             string id,
             string name,
             string status,
             string updatedAt)
         {
             CreatedAt = createdAt;
+            DropletId = dropletId;
             Id = id;
             Name = name;
             Status = status;
