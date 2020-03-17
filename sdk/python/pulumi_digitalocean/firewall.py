@@ -24,7 +24,7 @@ class Firewall(pulumi.CustomResource):
     """
     The inbound access rule block for the Firewall.
     The `inbound_rule` block is documented below.
-    
+
       * `portRange` (`str`) - The ports on which traffic will be allowed
         specified as a string containing a single port, a range (e.g. "8000-9000"),
         or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -50,7 +50,7 @@ class Firewall(pulumi.CustomResource):
     """
     The outbound access rule block for the Firewall.
     The `outbound_rule` block is documented below.
-    
+
       * `destinationAddresses` (`list`) - An array of strings containing the IPv4
         addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
         outbound traffic will be allowed.
@@ -75,7 +75,7 @@ class Firewall(pulumi.CustomResource):
     "removing", and "status".  It is provided to detail exactly which Droplets
     are having their security policies updated.  When empty, all changes
     have been successfully applied.
-    
+
       * `droplet_id` (`float`)
       * `removing` (`bool`)
       * `status` (`str`) - A status string indicating the current state of the Firewall.
@@ -94,7 +94,9 @@ class Firewall(pulumi.CustomResource):
         """
         Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
         modify, and delete Firewalls.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] droplet_ids: The list of the IDs of the Droplets assigned
@@ -105,9 +107,9 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[list] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
         :param pulumi.Input[list] tags: The names of the Tags assigned to the Firewall.
-        
+
         The **inbound_rules** object supports the following:
-        
+
           * `portRange` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
             specified as a string containing a single port, a range (e.g. "8000-9000"),
             or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -124,9 +126,9 @@ class Firewall(pulumi.CustomResource):
           * `sourceTags` (`pulumi.Input[list]`) - An array containing the names of Tags
             corresponding to groups of Droplets from which the inbound traffic
             will be accepted.
-        
+
         The **outbound_rules** object supports the following:
-        
+
           * `destinationAddresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
             addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
             outbound traffic will be allowed.
@@ -144,8 +146,6 @@ class Firewall(pulumi.CustomResource):
             `tcp` or `udp`.
           * `protocol` (`pulumi.Input[str]`) - The type of traffic to be allowed.
             This may be one of "tcp", "udp", or "icmp".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -183,7 +183,7 @@ class Firewall(pulumi.CustomResource):
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,9 +203,9 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] status: A status string indicating the current state of the Firewall.
                This can be "waiting", "succeeded", or "failed".
         :param pulumi.Input[list] tags: The names of the Tags assigned to the Firewall.
-        
+
         The **inbound_rules** object supports the following:
-        
+
           * `portRange` (`pulumi.Input[str]`) - The ports on which traffic will be allowed
             specified as a string containing a single port, a range (e.g. "8000-9000"),
             or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -222,9 +222,9 @@ class Firewall(pulumi.CustomResource):
           * `sourceTags` (`pulumi.Input[list]`) - An array containing the names of Tags
             corresponding to groups of Droplets from which the inbound traffic
             will be accepted.
-        
+
         The **outbound_rules** object supports the following:
-        
+
           * `destinationAddresses` (`pulumi.Input[list]`) - An array of strings containing the IPv4
             addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
             outbound traffic will be allowed.
@@ -242,19 +242,18 @@ class Firewall(pulumi.CustomResource):
             `tcp` or `udp`.
           * `protocol` (`pulumi.Input[str]`) - The type of traffic to be allowed.
             This may be one of "tcp", "udp", or "icmp".
-        
+
         The **pending_changes** object supports the following:
-        
+
           * `droplet_id` (`pulumi.Input[float]`)
           * `removing` (`pulumi.Input[bool]`)
           * `status` (`pulumi.Input[str]`) - A status string indicating the current state of the Firewall.
             This can be "waiting", "succeeded", or "failed".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created_at"] = created_at
         __props__["droplet_ids"] = droplet_ids
         __props__["inbound_rules"] = inbound_rules

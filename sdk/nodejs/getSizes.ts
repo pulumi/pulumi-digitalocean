@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Retrieves information about droplet sizes that DigitalOcean supports. This data source provides all of droplet size properties, with the ability to filter and sort the results.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
  */
 export function getSizes(args?: GetSizesArgs, opts?: pulumi.InvokeOptions): Promise<GetSizesResult> & GetSizesResult {
     args = args || {};

@@ -37,13 +37,13 @@ class DropletSnapshot(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, droplet_id=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
         :param pulumi.Input[str] name: A name for the Droplet snapshot.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,7 +81,7 @@ class DropletSnapshot(pulumi.CustomResource):
         """
         Get an existing DropletSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -91,12 +91,11 @@ class DropletSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name for the Droplet snapshot.
         :param pulumi.Input[list] regions: A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
         :param pulumi.Input[float] size: The billable size of the Droplet snapshot in gigabytes.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created_at"] = created_at
         __props__["droplet_id"] = droplet_id
         __props__["min_disk_size"] = min_disk_size

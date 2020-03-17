@@ -23,13 +23,13 @@ class FloatingIpAssignment(pulumi.CustomResource):
         Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
         makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
         Droplet.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip_assignment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[str] ip_address: The Floating IP to assign to the Droplet.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip_assignment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -65,18 +65,17 @@ class FloatingIpAssignment(pulumi.CustomResource):
         """
         Get an existing FloatingIpAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[str] ip_address: The Floating IP to assign to the Droplet.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip_assignment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["droplet_id"] = droplet_id
         __props__["ip_address"] = ip_address
         return FloatingIpAssignment(resource_name, opts=opts, __props__=__props__)

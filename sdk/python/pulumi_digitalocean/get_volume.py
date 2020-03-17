@@ -13,7 +13,7 @@ class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, name=None, region=None, size=None, tags=None, urn=None, id=None):
+    def __init__(__self__, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, id=None, name=None, region=None, size=None, tags=None, urn=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -38,6 +38,12 @@ class GetVolumeResult:
         """
         Filesystem type currently in-use on the block storage volume.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -59,12 +65,6 @@ class GetVolumeResult:
         if urn and not isinstance(urn, str):
             raise TypeError("Expected argument 'urn' to be a str")
         __self__.urn = urn
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetVolumeResult(GetVolumeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,23 +75,22 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             droplet_ids=self.droplet_ids,
             filesystem_label=self.filesystem_label,
             filesystem_type=self.filesystem_type,
+            id=self.id,
             name=self.name,
             region=self.region,
             size=self.size,
             tags=self.tags,
-            urn=self.urn,
-            id=self.id)
+            urn=self.urn)
 
 def get_volume(description=None,name=None,region=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
+
     :param str name: The name of block storage volume.
     :param str region: The region the block storage volume is provisioned in.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['name'] = name
@@ -107,9 +106,9 @@ def get_volume(description=None,name=None,region=None,opts=None):
         droplet_ids=__ret__.get('dropletIds'),
         filesystem_label=__ret__.get('filesystemLabel'),
         filesystem_type=__ret__.get('filesystemType'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),
         tags=__ret__.get('tags'),
-        urn=__ret__.get('urn'),
-        id=__ret__.get('id'))
+        urn=__ret__.get('urn'))

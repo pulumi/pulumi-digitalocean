@@ -21,13 +21,13 @@ class DatabaseDb(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cluster_id=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_db.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] name: The name for the database.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_db.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,18 +61,17 @@ class DatabaseDb(pulumi.CustomResource):
         """
         Get an existing DatabaseDb resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] name: The name for the database.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_db.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_id"] = cluster_id
         __props__["name"] = name
         return DatabaseDb(resource_name, opts=opts, __props__=__props__)

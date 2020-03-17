@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * source to retrieve the ID of a DigitalOcean volume snapshot for use in other
  * resources.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
  */
 export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> & GetVolumeSnapshotResult {
     args = args || {};

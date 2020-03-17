@@ -13,13 +13,19 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, distribution=None, image=None, min_disk_size=None, name=None, private=None, regions=None, slug=None, type=None, id=None):
+    def __init__(__self__, distribution=None, id=None, image=None, min_disk_size=None, name=None, private=None, regions=None, slug=None, type=None):
         if distribution and not isinstance(distribution, str):
             raise TypeError("Expected argument 'distribution' to be a str")
         __self__.distribution = distribution
         """
         The name of the distribution of the OS of the image.
         * `min_disk_size`: The minimum 'disk' required for the image.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if image and not isinstance(image, str):
             raise TypeError("Expected argument 'image' to be a str")
@@ -52,12 +58,6 @@ class GetImageResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -65,25 +65,24 @@ class AwaitableGetImageResult(GetImageResult):
             yield self
         return GetImageResult(
             distribution=self.distribution,
+            id=self.id,
             image=self.image,
             min_disk_size=self.min_disk_size,
             name=self.name,
             private=self.private,
             regions=self.regions,
             slug=self.slug,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_image(name=None,slug=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
+
     :param str name: The name of the private image.
     :param str slug: The slug of the official image.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/image.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['slug'] = slug
@@ -95,11 +94,11 @@ def get_image(name=None,slug=None,opts=None):
 
     return AwaitableGetImageResult(
         distribution=__ret__.get('distribution'),
+        id=__ret__.get('id'),
         image=__ret__.get('image'),
         min_disk_size=__ret__.get('minDiskSize'),
         name=__ret__.get('name'),
         private=__ret__.get('private'),
         regions=__ret__.get('regions'),
         slug=__ret__.get('slug'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

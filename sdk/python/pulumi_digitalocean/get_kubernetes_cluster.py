@@ -13,7 +13,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, cluster_subnet=None, created_at=None, endpoint=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None, id=None):
+    def __init__(__self__, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None):
         if cluster_subnet and not isinstance(cluster_subnet, str):
             raise TypeError("Expected argument 'cluster_subnet' to be a str")
         __self__.cluster_subnet = cluster_subnet
@@ -31,6 +31,12 @@ class GetKubernetesClusterResult:
         __self__.endpoint = endpoint
         """
         The base URL of the API server on the Kubernetes master node.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ipv4_address and not isinstance(ipv4_address, str):
             raise TypeError("Expected argument 'ipv4_address' to be a str")
@@ -109,12 +115,6 @@ class GetKubernetesClusterResult:
         """
         The slug identifier for the version of Kubernetes used for the cluster.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -124,6 +124,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             cluster_subnet=self.cluster_subnet,
             created_at=self.created_at,
             endpoint=self.endpoint,
+            id=self.id,
             ipv4_address=self.ipv4_address,
             kube_configs=self.kube_configs,
             name=self.name,
@@ -133,18 +134,16 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             status=self.status,
             tags=self.tags,
             updated_at=self.updated_at,
-            version=self.version,
-            id=self.id)
+            version=self.version)
 
 def get_kubernetes_cluster(name=None,tags=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    :param str name: The name of Kubernetes cluster.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_cluster.html.markdown.
+    :param str name: The name of Kubernetes cluster.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['tags'] = tags
@@ -158,6 +157,7 @@ def get_kubernetes_cluster(name=None,tags=None,opts=None):
         cluster_subnet=__ret__.get('clusterSubnet'),
         created_at=__ret__.get('createdAt'),
         endpoint=__ret__.get('endpoint'),
+        id=__ret__.get('id'),
         ipv4_address=__ret__.get('ipv4Address'),
         kube_configs=__ret__.get('kubeConfigs'),
         name=__ret__.get('name'),
@@ -167,5 +167,4 @@ def get_kubernetes_cluster(name=None,tags=None,opts=None):
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
         updated_at=__ret__.get('updatedAt'),
-        version=__ret__.get('version'),
-        id=__ret__.get('id'))
+        version=__ret__.get('version'))

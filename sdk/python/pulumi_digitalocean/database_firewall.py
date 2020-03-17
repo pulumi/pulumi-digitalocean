@@ -19,7 +19,7 @@ class DatabaseFirewall(pulumi.CustomResource):
     A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
     - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
     - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-    
+
       * `created_at` (`str`) - The date and time when the firewall rule was created.
       * `type` (`str`)
       * `uuid` (`str`) - A unique identifier for the firewall rule.
@@ -30,22 +30,22 @@ class DatabaseFirewall(pulumi.CustomResource):
         Provides a DigitalOcean database firewall resource allowing you to restrict
         connections to your database to trusted sources. You may limit connections to
         specific Droplets, Kubernetes clusters, or IP addresses.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_firewall.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the target database cluster.
         :param pulumi.Input[list] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
                - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
                - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-        
+
         The **rules** object supports the following:
-        
+
           * `created_at` (`pulumi.Input[str]`) - The date and time when the firewall rule was created.
           * `type` (`pulumi.Input[str]`)
           * `uuid` (`pulumi.Input[str]`) - A unique identifier for the firewall rule.
           * `value` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_firewall.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,7 +81,7 @@ class DatabaseFirewall(pulumi.CustomResource):
         """
         Get an existing DatabaseFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -89,19 +89,18 @@ class DatabaseFirewall(pulumi.CustomResource):
         :param pulumi.Input[list] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
                - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
                - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-        
+
         The **rules** object supports the following:
-        
+
           * `created_at` (`pulumi.Input[str]`) - The date and time when the firewall rule was created.
           * `type` (`pulumi.Input[str]`)
           * `uuid` (`pulumi.Input[str]`) - A unique identifier for the firewall rule.
           * `value` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_firewall.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_id"] = cluster_id
         __props__["rules"] = rules
         return DatabaseFirewall(resource_name, opts=opts, __props__=__props__)

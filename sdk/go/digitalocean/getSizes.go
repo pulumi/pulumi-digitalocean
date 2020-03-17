@@ -9,8 +9,8 @@ import (
 )
 
 // Retrieves information about droplet sizes that DigitalOcean supports. This data source provides all of droplet size properties, with the ability to filter and sort the results.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
 func GetSizes(ctx *pulumi.Context, args *GetSizesArgs, opts ...pulumi.InvokeOption) (*GetSizesResult, error) {
 	var rv GetSizesResult
 	err := ctx.Invoke("digitalocean:index/getSizes:getSizes", args, &rv, opts...)

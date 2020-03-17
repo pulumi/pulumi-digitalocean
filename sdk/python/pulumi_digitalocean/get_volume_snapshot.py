@@ -13,12 +13,18 @@ class GetVolumeSnapshotResult:
     """
     A collection of values returned by getVolumeSnapshot.
     """
-    def __init__(__self__, created_at=None, min_disk_size=None, most_recent=None, name=None, name_regex=None, region=None, regions=None, size=None, tags=None, volume_id=None, id=None):
+    def __init__(__self__, created_at=None, id=None, min_disk_size=None, most_recent=None, name=None, name_regex=None, region=None, regions=None, size=None, tags=None, volume_id=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         __self__.created_at = created_at
         """
         The date and time the volume snapshot was created.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if min_disk_size and not isinstance(min_disk_size, float):
             raise TypeError("Expected argument 'min_disk_size' to be a float")
@@ -62,12 +68,6 @@ class GetVolumeSnapshotResult:
         """
         The ID of the volume from which the volume snapshot originated.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetVolumeSnapshotResult(GetVolumeSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,6 +75,7 @@ class AwaitableGetVolumeSnapshotResult(GetVolumeSnapshotResult):
             yield self
         return GetVolumeSnapshotResult(
             created_at=self.created_at,
+            id=self.id,
             min_disk_size=self.min_disk_size,
             most_recent=self.most_recent,
             name=self.name,
@@ -83,23 +84,24 @@ class AwaitableGetVolumeSnapshotResult(GetVolumeSnapshotResult):
             regions=self.regions,
             size=self.size,
             tags=self.tags,
-            volume_id=self.volume_id,
-            id=self.id)
+            volume_id=self.volume_id)
 
 def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
     """
     Volume snapshots are saved instances of a block storage volume. Use this data
     source to retrieve the ID of a DigitalOcean volume snapshot for use in other
     resources.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
+
+
     :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.
     :param str name: The name of the volume snapshot.
     :param str name_regex: A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
     :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
@@ -113,6 +115,7 @@ def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,o
 
     return AwaitableGetVolumeSnapshotResult(
         created_at=__ret__.get('createdAt'),
+        id=__ret__.get('id'),
         min_disk_size=__ret__.get('minDiskSize'),
         most_recent=__ret__.get('mostRecent'),
         name=__ret__.get('name'),
@@ -121,5 +124,4 @@ def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,o
         regions=__ret__.get('regions'),
         size=__ret__.get('size'),
         tags=__ret__.get('tags'),
-        volume_id=__ret__.get('volumeId'),
-        id=__ret__.get('id'))
+        volume_id=__ret__.get('volumeId'))

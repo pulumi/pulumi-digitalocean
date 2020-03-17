@@ -187,14 +187,13 @@ class AwaitableGetDropletResult(GetDropletResult):
 def get_droplet(id=None,name=None,tag=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
+
     :param float id: The ID of the Droplet
     :param str name: The name of the Droplet.
     :param str tag: A tag applied to the Droplet.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['id'] = id
     __args__['name'] = name

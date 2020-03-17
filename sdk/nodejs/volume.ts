@@ -163,6 +163,8 @@ export interface VolumeState {
     readonly filesystemLabel?: pulumi.Input<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
+     * 
+     * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     readonly filesystemType?: pulumi.Input<string>;
     /**
@@ -209,6 +211,8 @@ export interface VolumeArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
+     * 
+     * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     readonly filesystemType?: pulumi.Input<string>;
     /**

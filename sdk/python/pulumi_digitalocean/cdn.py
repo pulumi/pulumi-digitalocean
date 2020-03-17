@@ -11,6 +11,9 @@ from . import utilities, tables
 
 class Cdn(pulumi.CustomResource):
     certificate_id: pulumi.Output[str]
+    """
+    ID of a DigitalOcean managed TLS certificate for use with custom domains
+    """
     created_at: pulumi.Output[str]
     """
     The date and time when the CDN Endpoint was created.
@@ -35,15 +38,16 @@ class Cdn(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, certificate_id=None, custom_domain=None, origin=None, ttl=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_id: ID of a DigitalOcean managed TLS certificate for use with custom domains
         :param pulumi.Input[str] custom_domain: The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         :param pulumi.Input[str] origin: The fully qualified domain name, (FQDN) for a Space.
         :param pulumi.Input[float] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
                * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,22 +85,22 @@ class Cdn(pulumi.CustomResource):
         """
         Get an existing Cdn resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_id: ID of a DigitalOcean managed TLS certificate for use with custom domains
         :param pulumi.Input[str] created_at: The date and time when the CDN Endpoint was created.
         :param pulumi.Input[str] custom_domain: The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         :param pulumi.Input[str] endpoint: The fully qualified domain name (FQDN) from which the CDN-backed content is served.
         :param pulumi.Input[str] origin: The fully qualified domain name, (FQDN) for a Space.
         :param pulumi.Input[float] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
                * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["certificate_id"] = certificate_id
         __props__["created_at"] = created_at
         __props__["custom_domain"] = custom_domain

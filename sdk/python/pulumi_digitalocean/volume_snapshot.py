@@ -41,14 +41,14 @@ class VolumeSnapshot(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, tags=None, volume_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A name for the volume snapshot.
         :param pulumi.Input[list] tags: A list of the tags to be applied to this volume snapshot.
         :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +87,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         """
         Get an existing VolumeSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -98,12 +98,11 @@ class VolumeSnapshot(pulumi.CustomResource):
         :param pulumi.Input[float] size: The billable size of the volume snapshot in gigabytes.
         :param pulumi.Input[list] tags: A list of the tags to be applied to this volume snapshot.
         :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created_at"] = created_at
         __props__["min_disk_size"] = min_disk_size
         __props__["name"] = name

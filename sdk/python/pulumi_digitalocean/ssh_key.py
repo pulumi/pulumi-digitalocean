@@ -29,14 +29,14 @@ class SshKey(pulumi.CustomResource):
         keys for Droplet access. Keys created with this resource
         can be referenced in your Droplet configuration via their ID or
         fingerprint.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/ssh_key.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the SSH key for identification
         :param pulumi.Input[str] public_key: The public key. If this is a file, it
                can be read using the file interpolation function
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/ssh_key.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,7 +71,7 @@ class SshKey(pulumi.CustomResource):
         """
         Get an existing SshKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -79,12 +79,11 @@ class SshKey(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the SSH key for identification
         :param pulumi.Input[str] public_key: The public key. If this is a file, it
                can be read using the file interpolation function
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/ssh_key.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["fingerprint"] = fingerprint
         __props__["name"] = name
         __props__["public_key"] = public_key

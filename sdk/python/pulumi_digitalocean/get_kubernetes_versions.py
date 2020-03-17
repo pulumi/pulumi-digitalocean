@@ -13,7 +13,13 @@ class GetKubernetesVersionsResult:
     """
     A collection of values returned by getKubernetesVersions.
     """
-    def __init__(__self__, latest_version=None, valid_versions=None, version_prefix=None, id=None):
+    def __init__(__self__, id=None, latest_version=None, valid_versions=None, version_prefix=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if latest_version and not isinstance(latest_version, str):
             raise TypeError("Expected argument 'latest_version' to be a str")
         __self__.latest_version = latest_version
@@ -29,31 +35,25 @@ class GetKubernetesVersionsResult:
         if version_prefix and not isinstance(version_prefix, str):
             raise TypeError("Expected argument 'version_prefix' to be a str")
         __self__.version_prefix = version_prefix
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKubernetesVersionsResult(GetKubernetesVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetKubernetesVersionsResult(
+            id=self.id,
             latest_version=self.latest_version,
             valid_versions=self.valid_versions,
-            version_prefix=self.version_prefix,
-            id=self.id)
+            version_prefix=self.version_prefix)
 
 def get_kubernetes_versions(version_prefix=None,opts=None):
     """
     Provides access to the available DigitalOcean Kubernetes Service versions.
-    
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
     """
     __args__ = dict()
+
 
     __args__['versionPrefix'] = version_prefix
     if opts is None:
@@ -63,7 +63,7 @@ def get_kubernetes_versions(version_prefix=None,opts=None):
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesVersions:getKubernetesVersions', __args__, opts=opts).value
 
     return AwaitableGetKubernetesVersionsResult(
+        id=__ret__.get('id'),
         latest_version=__ret__.get('latestVersion'),
         valid_versions=__ret__.get('validVersions'),
-        version_prefix=__ret__.get('versionPrefix'),
-        id=__ret__.get('id'))
+        version_prefix=__ret__.get('versionPrefix'))

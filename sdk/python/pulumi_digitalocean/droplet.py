@@ -119,7 +119,9 @@ class Droplet(pulumi.CustomResource):
         Provides a DigitalOcean Droplet resource. This can be used to create,
         modify, and delete Droplets. Droplets also support
         [provisioning](https://www.terraform.io/docs/provisioners/index.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
@@ -144,8 +146,6 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[list] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -206,7 +206,7 @@ class Droplet(pulumi.CustomResource):
         """
         Get an existing Droplet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -243,12 +243,11 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[float] vcpus: The number of the instance's virtual CPUs
         :param pulumi.Input[list] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backups"] = backups
         __props__["created_at"] = created_at
         __props__["disk"] = disk

@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a DigitalOcean database replica resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_replica.html.markdown.
 type DatabaseReplica struct {
 	pulumi.CustomResourceState

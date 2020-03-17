@@ -34,7 +34,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     A list of `forwarding_rule` to be assigned to the
     Load Balancer. The `forwarding_rule` block is documented below.
-    
+
       * `certificate_id` (`str`) - The ID of the TLS certificate to be used for SSL termination.
       * `entryPort` (`float`) - An integer representing the port on which the Load Balancer instance will listen.
       * `entryProtocol` (`str`) - The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
@@ -46,7 +46,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     A `healthcheck` block to be assigned to the
     Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
-    
+
       * `checkIntervalSeconds` (`float`) - The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
       * `healthyThreshold` (`float`) - The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
       * `path` (`str`) - The path on the backend Droplets to which the Load Balancer instance will send a request.
@@ -75,7 +75,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     A `sticky_sessions` block to be assigned to the
     Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
-    
+
       * `cookieName` (`str`) - The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
       * `cookieTtlSeconds` (`float`) - The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
       * `type` (`str`) - An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
@@ -88,7 +88,9 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
         modify, and delete Load Balancers.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine
@@ -110,18 +112,18 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region to start in
         :param pulumi.Input[dict] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
-        
+
         The **forwarding_rules** object supports the following:
-        
+
           * `certificate_id` (`pulumi.Input[str]`) - The ID of the TLS certificate to be used for SSL termination.
           * `entryPort` (`pulumi.Input[float]`) - An integer representing the port on which the Load Balancer instance will listen.
           * `entryProtocol` (`pulumi.Input[str]`) - The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
           * `targetPort` (`pulumi.Input[float]`) - An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
           * `targetProtocol` (`pulumi.Input[str]`) - The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
           * `tlsPassthrough` (`pulumi.Input[bool]`) - A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-        
+
         The **healthcheck** object supports the following:
-        
+
           * `checkIntervalSeconds` (`pulumi.Input[float]`) - The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
           * `healthyThreshold` (`pulumi.Input[float]`) - The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
           * `path` (`pulumi.Input[str]`) - The path on the backend Droplets to which the Load Balancer instance will send a request.
@@ -129,14 +131,12 @@ class LoadBalancer(pulumi.CustomResource):
           * `protocol` (`pulumi.Input[str]`) - The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
           * `responseTimeoutSeconds` (`pulumi.Input[float]`) - The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
           * `unhealthyThreshold` (`pulumi.Input[float]`) - The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
-        
+
         The **sticky_sessions** object supports the following:
-        
+
           * `cookieName` (`pulumi.Input[str]`) - The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
           * `cookieTtlSeconds` (`pulumi.Input[float]`) - The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
           * `type` (`pulumi.Input[str]`) - An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -183,7 +183,7 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -207,18 +207,18 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[dict] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] urn: The uniform resource name for the Load Balancer
-        
+
         The **forwarding_rules** object supports the following:
-        
+
           * `certificate_id` (`pulumi.Input[str]`) - The ID of the TLS certificate to be used for SSL termination.
           * `entryPort` (`pulumi.Input[float]`) - An integer representing the port on which the Load Balancer instance will listen.
           * `entryProtocol` (`pulumi.Input[str]`) - The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
           * `targetPort` (`pulumi.Input[float]`) - An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
           * `targetProtocol` (`pulumi.Input[str]`) - The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
           * `tlsPassthrough` (`pulumi.Input[bool]`) - A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-        
+
         The **healthcheck** object supports the following:
-        
+
           * `checkIntervalSeconds` (`pulumi.Input[float]`) - The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
           * `healthyThreshold` (`pulumi.Input[float]`) - The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
           * `path` (`pulumi.Input[str]`) - The path on the backend Droplets to which the Load Balancer instance will send a request.
@@ -226,18 +226,17 @@ class LoadBalancer(pulumi.CustomResource):
           * `protocol` (`pulumi.Input[str]`) - The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
           * `responseTimeoutSeconds` (`pulumi.Input[float]`) - The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
           * `unhealthyThreshold` (`pulumi.Input[float]`) - The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
-        
+
         The **sticky_sessions** object supports the following:
-        
+
           * `cookieName` (`pulumi.Input[str]`) - The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
           * `cookieTtlSeconds` (`pulumi.Input[float]`) - The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
           * `type` (`pulumi.Input[str]`) - An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["algorithm"] = algorithm
         __props__["droplet_ids"] = droplet_ids
         __props__["droplet_tag"] = droplet_tag

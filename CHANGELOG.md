@@ -6,6 +6,10 @@ _(none)_
 
 ---
 
+## 1.7.0 (2020-03-17)
+* Upgrade to Pulumi v1.12.1
+* Upgrade to pulumi-terraform-bridge v1.8.2
+
 ## 1.6.0 (2020-02-07)
 * Upgrade to v1.14.0 of the DigitalOcean Terraform Provider
 

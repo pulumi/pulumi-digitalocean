@@ -11,8 +11,8 @@ import (
 // Droplet snapshots are saved instances of a Droplet. Use this data
 // source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
 // resources.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
 func LookupDropletSnapshot(ctx *pulumi.Context, args *LookupDropletSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupDropletSnapshotResult, error) {
 	var rv LookupDropletSnapshotResult
 	err := ctx.Invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args, &rv, opts...)
