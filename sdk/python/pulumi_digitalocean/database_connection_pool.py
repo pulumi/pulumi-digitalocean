@@ -61,7 +61,9 @@ class DatabaseConnectionPool(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cluster_id=None, db_name=None, mode=None, name=None, size=None, user=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean database connection pool resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_connection_pool.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
@@ -70,8 +72,6 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for the database connection pool.
         :param pulumi.Input[float] size: The desired size of the PGBouncer connection pool.
         :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_connection_pool.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,7 +123,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         """
         Get an existing DatabaseConnectionPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -139,12 +139,11 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[float] size: The desired size of the PGBouncer connection pool.
         :param pulumi.Input[str] uri: The full URI for connecting to the database connection pool.
         :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_connection_pool.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_id"] = cluster_id
         __props__["db_name"] = db_name
         __props__["host"] = host

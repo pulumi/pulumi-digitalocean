@@ -13,7 +13,7 @@ class GetDropletSnapshotResult:
     """
     A collection of values returned by getDropletSnapshot.
     """
-    def __init__(__self__, created_at=None, droplet_id=None, min_disk_size=None, most_recent=None, name=None, name_regex=None, region=None, regions=None, size=None, id=None):
+    def __init__(__self__, created_at=None, droplet_id=None, id=None, min_disk_size=None, most_recent=None, name=None, name_regex=None, region=None, regions=None, size=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         __self__.created_at = created_at
@@ -25,6 +25,12 @@ class GetDropletSnapshotResult:
         __self__.droplet_id = droplet_id
         """
         The ID of the Droplet from which the Droplet snapshot originated.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if min_disk_size and not isinstance(min_disk_size, float):
             raise TypeError("Expected argument 'min_disk_size' to be a float")
@@ -56,12 +62,6 @@ class GetDropletSnapshotResult:
         """
         The billable size of the Droplet snapshot in gigabytes.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDropletSnapshotResult(GetDropletSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,29 +70,31 @@ class AwaitableGetDropletSnapshotResult(GetDropletSnapshotResult):
         return GetDropletSnapshotResult(
             created_at=self.created_at,
             droplet_id=self.droplet_id,
+            id=self.id,
             min_disk_size=self.min_disk_size,
             most_recent=self.most_recent,
             name=self.name,
             name_regex=self.name_regex,
             region=self.region,
             regions=self.regions,
-            size=self.size,
-            id=self.id)
+            size=self.size)
 
 def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
     """
     Droplet snapshots are saved instances of a Droplet. Use this data
     source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
     resources.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
+
+
     :param bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.
     :param str name: The name of the Droplet snapshot.
     :param str name_regex: A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
     :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
@@ -107,11 +109,11 @@ def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,
     return AwaitableGetDropletSnapshotResult(
         created_at=__ret__.get('createdAt'),
         droplet_id=__ret__.get('dropletId'),
+        id=__ret__.get('id'),
         min_disk_size=__ret__.get('minDiskSize'),
         most_recent=__ret__.get('mostRecent'),
         name=__ret__.get('name'),
         name_regex=__ret__.get('nameRegex'),
         region=__ret__.get('region'),
         regions=__ret__.get('regions'),
-        size=__ret__.get('size'),
-        id=__ret__.get('id'))
+        size=__ret__.get('size'))

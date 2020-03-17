@@ -9,7 +9,7 @@ import (
 )
 
 // Provides information on a DigitalOcean database cluster resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
 func LookupDatabaseCluster(ctx *pulumi.Context, args *LookupDatabaseClusterArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseClusterResult, error) {
 	var rv LookupDatabaseClusterResult

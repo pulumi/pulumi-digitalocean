@@ -9,8 +9,8 @@ import (
 )
 
 // Get information on your DigitalOcean account.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
 func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
 	var rv GetAccountResult
 	err := ctx.Invoke("digitalocean:index/getAccount:getAccount", nil, &rv, opts...)

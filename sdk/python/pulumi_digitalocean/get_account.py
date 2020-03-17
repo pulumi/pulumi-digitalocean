@@ -13,7 +13,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, droplet_limit=None, email=None, email_verified=None, floating_ip_limit=None, status=None, status_message=None, uuid=None, id=None):
+    def __init__(__self__, droplet_limit=None, email=None, email_verified=None, floating_ip_limit=None, id=None, status=None, status_message=None, uuid=None):
         if droplet_limit and not isinstance(droplet_limit, float):
             raise TypeError("Expected argument 'droplet_limit' to be a float")
         __self__.droplet_limit = droplet_limit
@@ -26,6 +26,12 @@ class GetAccountResult:
         if floating_ip_limit and not isinstance(floating_ip_limit, float):
             raise TypeError("Expected argument 'floating_ip_limit' to be a float")
         __self__.floating_ip_limit = floating_ip_limit
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         __self__.status = status
@@ -35,12 +41,6 @@ class GetAccountResult:
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         __self__.uuid = uuid
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,18 +51,19 @@ class AwaitableGetAccountResult(GetAccountResult):
             email=self.email,
             email_verified=self.email_verified,
             floating_ip_limit=self.floating_ip_limit,
+            id=self.id,
             status=self.status,
             status_message=self.status_message,
-            uuid=self.uuid,
-            id=self.id)
+            uuid=self.uuid)
 
 def get_account(opts=None):
     """
     Get information on your DigitalOcean account.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
     """
     __args__ = dict()
+
 
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -75,7 +76,7 @@ def get_account(opts=None):
         email=__ret__.get('email'),
         email_verified=__ret__.get('emailVerified'),
         floating_ip_limit=__ret__.get('floatingIpLimit'),
+        id=__ret__.get('id'),
         status=__ret__.get('status'),
         status_message=__ret__.get('statusMessage'),
-        uuid=__ret__.get('uuid'),
-        id=__ret__.get('id'))
+        uuid=__ret__.get('uuid'))

@@ -47,7 +47,7 @@ class KubernetesNodePool(pulumi.CustomResource):
     - `droplet_id` - The id of the node's droplet
     - `created_at` - The date and time when the node was created.
     - `updated_at` - The date and time when the node was last updated.
-    
+
       * `created_at` (`str`)
       * `droplet_id` (`str`)
       * `id` (`str`) - A unique ID that can be used to identify and reference the node pool.
@@ -66,7 +66,9 @@ class KubernetesNodePool(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_scale=None, cluster_id=None, max_nodes=None, min_nodes=None, name=None, node_count=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
@@ -77,8 +79,6 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[float] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,7 +122,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         """
         Get an existing KubernetesNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -142,21 +142,20 @@ class KubernetesNodePool(pulumi.CustomResource):
                - `updated_at` - The date and time when the node was last updated.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
-        
+
         The **nodes** object supports the following:
-        
+
           * `created_at` (`pulumi.Input[str]`)
           * `droplet_id` (`pulumi.Input[str]`)
           * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference the node pool.
           * `name` (`pulumi.Input[str]`) - A name for the node pool.
           * `status` (`pulumi.Input[str]`)
           * `updated_at` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["actual_node_count"] = actual_node_count
         __props__["auto_scale"] = auto_scale
         __props__["cluster_id"] = cluster_id

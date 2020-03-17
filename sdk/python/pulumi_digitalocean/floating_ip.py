@@ -29,16 +29,16 @@ class FloatingIp(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, droplet_id=None, ip_address=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
-        
+
         > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `.FloatingIp` resource by setting a `droplet_id` or using the `.FloatingIpAssignment` resource, but the two cannot be used together.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -74,7 +74,7 @@ class FloatingIp(pulumi.CustomResource):
         """
         Get an existing FloatingIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -82,12 +82,11 @@ class FloatingIp(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
         :param pulumi.Input[str] urn: The uniform resource name of the floating ip
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["droplet_id"] = droplet_id
         __props__["ip_address"] = ip_address
         __props__["region"] = region

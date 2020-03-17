@@ -26,14 +26,14 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, ip_address=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean domain resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_address: The IP address of the domain. If specified, this IP
                is used to created an initial A record for the domain.
         :param pulumi.Input[str] name: The name of the domain
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -68,7 +68,7 @@ class Domain(pulumi.CustomResource):
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -76,12 +76,11 @@ class Domain(pulumi.CustomResource):
                is used to created an initial A record for the domain.
         :param pulumi.Input[str] name: The name of the domain
         :param pulumi.Input[str] urn: The uniform resource name of the domain
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ip_address"] = ip_address
         __props__["name"] = name
         __props__["urn"] = urn

@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/record.html.markdown.
 func GetRecord(ctx *pulumi.Context, args *GetRecordArgs, opts ...pulumi.InvokeOption) (*GetRecordResult, error) {
 	var rv GetRecordResult
 	err := ctx.Invoke("digitalocean:index/getRecord:getRecord", args, &rv, opts...)

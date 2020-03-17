@@ -41,7 +41,7 @@ class KubernetesCluster(pulumi.CustomResource):
     - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
     - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
     - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
-    
+
       * `actual_node_count` (`float`)
       * `auto_scale` (`bool`)
       * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
@@ -50,7 +50,6 @@ class KubernetesCluster(pulumi.CustomResource):
       * `name` (`str`) - A name for the Kubernetes cluster.
       * `node_count` (`float`)
       * `nodes` (`list`)
-    
         * `created_at` (`str`) - The date and time when the Kubernetes cluster was created.
         * `droplet_id` (`str`)
         * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
@@ -65,7 +64,7 @@ class KubernetesCluster(pulumi.CustomResource):
           - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
           - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
           - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
-    
+
       * `size` (`str`)
       * `tags` (`list`) - A list of tag names to be applied to the Kubernetes cluster.
     """
@@ -104,7 +103,9 @@ class KubernetesCluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, node_pool=None, region=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A name for the Kubernetes cluster.
@@ -119,9 +120,9 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
-        
+
         The **node_pool** object supports the following:
-        
+
           * `actual_node_count` (`pulumi.Input[float]`)
           * `auto_scale` (`pulumi.Input[bool]`)
           * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
@@ -130,7 +131,6 @@ class KubernetesCluster(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
           * `node_count` (`pulumi.Input[float]`)
           * `nodes` (`pulumi.Input[list]`)
-        
             * `created_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was created.
             * `droplet_id` (`pulumi.Input[str]`)
             * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
@@ -145,11 +145,9 @@ class KubernetesCluster(pulumi.CustomResource):
               - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
               - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
               - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
-        
+
           * `size` (`pulumi.Input[str]`)
           * `tags` (`pulumi.Input[list]`) - A list of tag names to be applied to the Kubernetes cluster.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -198,7 +196,7 @@ class KubernetesCluster(pulumi.CustomResource):
         """
         Get an existing KubernetesCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -229,9 +227,9 @@ class KubernetesCluster(pulumi.CustomResource):
                - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
                - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
-        
+
         The **kube_configs** object supports the following:
-        
+
           * `clientCertificate` (`pulumi.Input[str]`)
           * `clientKey` (`pulumi.Input[str]`)
           * `clusterCaCertificate` (`pulumi.Input[str]`)
@@ -239,9 +237,9 @@ class KubernetesCluster(pulumi.CustomResource):
           * `host` (`pulumi.Input[str]`)
           * `rawConfig` (`pulumi.Input[str]`)
           * `token` (`pulumi.Input[str]`)
-        
+
         The **node_pool** object supports the following:
-        
+
           * `actual_node_count` (`pulumi.Input[float]`)
           * `auto_scale` (`pulumi.Input[bool]`)
           * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
@@ -250,7 +248,6 @@ class KubernetesCluster(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
           * `node_count` (`pulumi.Input[float]`)
           * `nodes` (`pulumi.Input[list]`)
-        
             * `created_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was created.
             * `droplet_id` (`pulumi.Input[str]`)
             * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
@@ -265,15 +262,14 @@ class KubernetesCluster(pulumi.CustomResource):
               - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
               - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
               - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
-        
+
           * `size` (`pulumi.Input[str]`)
           * `tags` (`pulumi.Input[list]`) - A list of tag names to be applied to the Kubernetes cluster.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_subnet"] = cluster_subnet
         __props__["created_at"] = created_at
         __props__["endpoint"] = endpoint

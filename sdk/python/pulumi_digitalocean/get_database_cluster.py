@@ -13,7 +13,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_uri=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None, id=None):
+    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_uri=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         __self__.database = database
@@ -31,6 +31,12 @@ class GetDatabaseClusterResult:
         __self__.host = host
         """
         Database cluster's hostname.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if maintenance_windows and not isinstance(maintenance_windows, list):
             raise TypeError("Expected argument 'maintenance_windows' to be a list")
@@ -110,12 +116,6 @@ class GetDatabaseClusterResult:
         """
         Engine version used by the cluster (ex. `11` for PostgreSQL 11).
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -125,6 +125,7 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             database=self.database,
             engine=self.engine,
             host=self.host,
+            id=self.id,
             maintenance_windows=self.maintenance_windows,
             name=self.name,
             node_count=self.node_count,
@@ -138,18 +139,19 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             uri=self.uri,
             urn=self.urn,
             user=self.user,
-            version=self.version,
-            id=self.id)
+            version=self.version)
 
 def get_database_cluster(name=None,tags=None,opts=None):
     """
     Provides information on a DigitalOcean database cluster resource.
-    
-    :param str name: The name of the database cluster.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
+
+
+    :param str name: The name of the database cluster.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['tags'] = tags
@@ -163,6 +165,7 @@ def get_database_cluster(name=None,tags=None,opts=None):
         database=__ret__.get('database'),
         engine=__ret__.get('engine'),
         host=__ret__.get('host'),
+        id=__ret__.get('id'),
         maintenance_windows=__ret__.get('maintenanceWindows'),
         name=__ret__.get('name'),
         node_count=__ret__.get('nodeCount'),
@@ -176,5 +179,4 @@ def get_database_cluster(name=None,tags=None,opts=None):
         uri=__ret__.get('uri'),
         urn=__ret__.get('urn'),
         user=__ret__.get('user'),
-        version=__ret__.get('version'),
-        id=__ret__.get('id'))
+        version=__ret__.get('version'))

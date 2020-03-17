@@ -49,13 +49,13 @@ class Project(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, environment=None, name=None, purpose=None, resources=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Project resource.
-        
+
         Projects allow you to organize your resources into groups that fit the way you work.
         You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
         in ways that align with the applications you host on DigitalOcean.
-        
+
         The following resource types can be associated with a project:
-        
+
         * Database Clusters
         * Domains
         * Droplets
@@ -63,9 +63,11 @@ class Project(pulumi.CustomResource):
         * Load Balancers
         * Spaces Bucket
         * Volume
-        
+
         **Note:** A Terrafrom managed project cannot be set as a default project.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: the description of the project
@@ -73,8 +75,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Project
         :param pulumi.Input[str] purpose: the purpose of the project, (Default: "Web Application")
         :param pulumi.Input[list] resources: a list of uniform resource names (URNs) for the resources associated with the project
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,7 +113,7 @@ class Project(pulumi.CustomResource):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,12 +126,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] purpose: the purpose of the project, (Default: "Web Application")
         :param pulumi.Input[list] resources: a list of uniform resource names (URNs) for the resources associated with the project
         :param pulumi.Input[str] updated_at: the date and time when the project was last updated, (ISO8601)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created_at"] = created_at
         __props__["description"] = description
         __props__["environment"] = environment

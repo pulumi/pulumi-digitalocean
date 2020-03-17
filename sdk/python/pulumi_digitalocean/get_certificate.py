@@ -13,10 +13,16 @@ class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
     """
-    def __init__(__self__, domains=None, name=None, not_after=None, sha1_fingerprint=None, state=None, type=None, id=None):
+    def __init__(__self__, domains=None, id=None, name=None, not_after=None, sha1_fingerprint=None, state=None, type=None):
         if domains and not isinstance(domains, list):
             raise TypeError("Expected argument 'domains' to be a list")
         __self__.domains = domains
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -32,12 +38,6 @@ class GetCertificateResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,22 +45,21 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             yield self
         return GetCertificateResult(
             domains=self.domains,
+            id=self.id,
             name=self.name,
             not_after=self.not_after,
             sha1_fingerprint=self.sha1_fingerprint,
             state=self.state,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_certificate(name=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    :param str name: The name of certificate.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/certificate.html.markdown.
+    :param str name: The name of certificate.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     if opts is None:
@@ -71,9 +70,9 @@ def get_certificate(name=None,opts=None):
 
     return AwaitableGetCertificateResult(
         domains=__ret__.get('domains'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         not_after=__ret__.get('notAfter'),
         sha1_fingerprint=__ret__.get('sha1Fingerprint'),
         state=__ret__.get('state'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

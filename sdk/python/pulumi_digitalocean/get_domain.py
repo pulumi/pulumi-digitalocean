@@ -13,7 +13,13 @@ class GetDomainResult:
     """
     A collection of values returned by getDomain.
     """
-    def __init__(__self__, name=None, ttl=None, urn=None, zone_file=None, id=None):
+    def __init__(__self__, id=None, name=None, ttl=None, urn=None, zone_file=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -30,33 +36,26 @@ class GetDomainResult:
         if zone_file and not isinstance(zone_file, str):
             raise TypeError("Expected argument 'zone_file' to be a str")
         __self__.zone_file = zone_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDomainResult(GetDomainResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetDomainResult(
+            id=self.id,
             name=self.name,
             ttl=self.ttl,
             urn=self.urn,
-            zone_file=self.zone_file,
-            id=self.id)
+            zone_file=self.zone_file)
 
 def get_domain(name=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    :param str name: The name of the domain.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/domain.html.markdown.
+    :param str name: The name of the domain.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     if opts is None:
@@ -66,8 +65,8 @@ def get_domain(name=None,opts=None):
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDomain:getDomain', __args__, opts=opts).value
 
     return AwaitableGetDomainResult(
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         ttl=__ret__.get('ttl'),
         urn=__ret__.get('urn'),
-        zone_file=__ret__.get('zoneFile'),
-        id=__ret__.get('id'))
+        zone_file=__ret__.get('zoneFile'))

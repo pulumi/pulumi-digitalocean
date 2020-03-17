@@ -58,7 +58,9 @@ class Certificate(pulumi.CustomResource):
         Load Balancer configuration via their ID. The certificate can either
         be a custom one provided by you or automatically generated one with
         Let's Encrypt.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain
@@ -74,8 +76,6 @@ class Certificate(pulumi.CustomResource):
                corresponding to the SSL certificate. Only valid when type is `custom`.
         :param pulumi.Input[str] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,7 +114,7 @@ class Certificate(pulumi.CustomResource):
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -133,12 +133,11 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] sha1_fingerprint: The SHA-1 fingerprint of the certificate
         :param pulumi.Input[str] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["certificate_chain"] = certificate_chain
         __props__["domains"] = domains
         __props__["leaf_certificate"] = leaf_certificate

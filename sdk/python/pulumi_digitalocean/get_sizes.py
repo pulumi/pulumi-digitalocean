@@ -13,22 +13,22 @@ class GetSizesResult:
     """
     A collection of values returned by getSizes.
     """
-    def __init__(__self__, filters=None, sizes=None, sorts=None, id=None):
+    def __init__(__self__, filters=None, id=None, sizes=None, sorts=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         __self__.filters = filters
-        if sizes and not isinstance(sizes, list):
-            raise TypeError("Expected argument 'sizes' to be a list")
-        __self__.sizes = sizes
-        if sorts and not isinstance(sorts, list):
-            raise TypeError("Expected argument 'sorts' to be a list")
-        __self__.sorts = sorts
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if sizes and not isinstance(sizes, list):
+            raise TypeError("Expected argument 'sizes' to be a list")
+        __self__.sizes = sizes
+        if sorts and not isinstance(sorts, list):
+            raise TypeError("Expected argument 'sorts' to be a list")
+        __self__.sorts = sorts
 class AwaitableGetSizesResult(GetSizesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -36,35 +36,37 @@ class AwaitableGetSizesResult(GetSizesResult):
             yield self
         return GetSizesResult(
             filters=self.filters,
+            id=self.id,
             sizes=self.sizes,
-            sorts=self.sorts,
-            id=self.id)
+            sorts=self.sorts)
 
 def get_sizes(filters=None,sorts=None,opts=None):
     """
     Retrieves information about droplet sizes that DigitalOcean supports. This data source provides all of droplet size properties, with the ability to filter and sort the results.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
+
+
     :param list filters: Filter the results.
            The `filter` block is documented below.
     :param list sorts: Sort the results.
            The `sort` block is documented below.
-    
+
     The **filters** object supports the following:
-    
+
       * `key` (`str`) - Sort the sizes by this key. This may be one of `slug`,
         `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
       * `values` (`list`) - Only retrieves images which keys has value that matches
         one of the values provided here.
-    
+
     The **sorts** object supports the following:
-    
+
       * `direction` (`str`) - The sort direction. This may be either `asc` or `desc`.
       * `key` (`str`) - Sort the sizes by this key. This may be one of `slug`,
         `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['filters'] = filters
     __args__['sorts'] = sorts
@@ -76,6 +78,6 @@ def get_sizes(filters=None,sorts=None,opts=None):
 
     return AwaitableGetSizesResult(
         filters=__ret__.get('filters'),
+        id=__ret__.get('id'),
         sizes=__ret__.get('sizes'),
-        sorts=__ret__.get('sorts'),
-        id=__ret__.get('id'))
+        sorts=__ret__.get('sorts'))

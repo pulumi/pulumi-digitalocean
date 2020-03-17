@@ -14,7 +14,7 @@ import (
 // Droplet resource in order to better organize or facilitate the lookups and
 // actions on it. Tags created with this resource can be referenced in your Droplet
 // configuration via their ID or name.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/tag.html.markdown.
 type Tag struct {
 	pulumi.CustomResourceState

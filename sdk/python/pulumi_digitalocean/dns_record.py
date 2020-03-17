@@ -57,7 +57,9 @@ class DnsRecord(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, domain=None, flags=None, name=None, port=None, priority=None, tag=None, ttl=None, type=None, value=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean DNS record resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to.
@@ -70,8 +72,6 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[float] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,7 +118,7 @@ class DnsRecord(pulumi.CustomResource):
         """
         Get an existing DnsRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -133,12 +133,11 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[float] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["domain"] = domain
         __props__["flags"] = flags
         __props__["fqdn"] = fqdn

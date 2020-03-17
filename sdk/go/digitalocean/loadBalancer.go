@@ -13,7 +13,7 @@ import (
 
 // Provides a DigitalOcean Load Balancer resource. This can be used to create,
 // modify, and delete Load Balancers.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
 type LoadBalancer struct {
 	pulumi.CustomResourceState

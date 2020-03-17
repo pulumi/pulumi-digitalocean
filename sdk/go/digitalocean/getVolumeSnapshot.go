@@ -11,8 +11,8 @@ import (
 // Volume snapshots are saved instances of a block storage volume. Use this data
 // source to retrieve the ID of a DigitalOcean volume snapshot for use in other
 // resources.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
 func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupVolumeSnapshotResult, error) {
 	var rv LookupVolumeSnapshotResult
 	err := ctx.Invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args, &rv, opts...)

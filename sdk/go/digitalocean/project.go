@@ -11,13 +11,13 @@ import (
 )
 
 // Provides a DigitalOcean Project resource.
-// 
+//
 // Projects allow you to organize your resources into groups that fit the way you work.
 // You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
 // in ways that align with the applications you host on DigitalOcean.
-// 
+//
 // The following resource types can be associated with a project:
-// 
+//
 // * Database Clusters
 // * Domains
 // * Droplets
@@ -25,9 +25,9 @@ import (
 // * Load Balancers
 // * Spaces Bucket
 // * Volume
-// 
+//
 // **Note:** A Terrafrom managed project cannot be set as a default project.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
 type Project struct {
 	pulumi.CustomResourceState

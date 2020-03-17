@@ -13,7 +13,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, id=None):
+    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         __self__.algorithm = algorithm
@@ -32,6 +32,12 @@ class GetLoadBalancerResult:
         if healthcheck and not isinstance(healthcheck, dict):
             raise TypeError("Expected argument 'healthcheck' to be a dict")
         __self__.healthcheck = healthcheck
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ip and not isinstance(ip, str):
             raise TypeError("Expected argument 'ip' to be a str")
         __self__.ip = ip
@@ -53,12 +59,6 @@ class GetLoadBalancerResult:
         if urn and not isinstance(urn, str):
             raise TypeError("Expected argument 'urn' to be a str")
         __self__.urn = urn
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,24 +71,23 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             enable_proxy_protocol=self.enable_proxy_protocol,
             forwarding_rules=self.forwarding_rules,
             healthcheck=self.healthcheck,
+            id=self.id,
             ip=self.ip,
             name=self.name,
             redirect_http_to_https=self.redirect_http_to_https,
             region=self.region,
             status=self.status,
             sticky_sessions=self.sticky_sessions,
-            urn=self.urn,
-            id=self.id)
+            urn=self.urn)
 
 def get_load_balancer(name=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    :param str name: The name of load balancer.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/loadbalancer.html.markdown.
+    :param str name: The name of load balancer.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     if opts is None:
@@ -104,11 +103,11 @@ def get_load_balancer(name=None,opts=None):
         enable_proxy_protocol=__ret__.get('enableProxyProtocol'),
         forwarding_rules=__ret__.get('forwardingRules'),
         healthcheck=__ret__.get('healthcheck'),
+        id=__ret__.get('id'),
         ip=__ret__.get('ip'),
         name=__ret__.get('name'),
         redirect_http_to_https=__ret__.get('redirectHttpToHttps'),
         region=__ret__.get('region'),
         status=__ret__.get('status'),
         sticky_sessions=__ret__.get('stickySessions'),
-        urn=__ret__.get('urn'),
-        id=__ret__.get('id'))
+        urn=__ret__.get('urn'))

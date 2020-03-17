@@ -55,10 +55,15 @@ class Volume(pulumi.CustomResource):
     A list of the tags to be applied to this Volume.
     """
     urn: pulumi.Output[str]
+    """
+    the uniform resource name for the volume.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
@@ -70,8 +75,6 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[float] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
         :param pulumi.Input[list] tags: A list of the tags to be applied to this Volume.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,7 +120,7 @@ class Volume(pulumi.CustomResource):
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -132,12 +135,12 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[float] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
         :param pulumi.Input[list] tags: A list of the tags to be applied to this Volume.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
+        :param pulumi.Input[str] urn: the uniform resource name for the volume.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["droplet_ids"] = droplet_ids
         __props__["filesystem_label"] = filesystem_label

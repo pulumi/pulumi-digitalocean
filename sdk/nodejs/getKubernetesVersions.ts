@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Provides access to the available DigitalOcean Kubernetes Service versions.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
  */
 export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionsResult> & GetKubernetesVersionsResult {
     args = args || {};

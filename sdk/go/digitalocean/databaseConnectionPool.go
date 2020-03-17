@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a DigitalOcean database connection pool resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_connection_pool.html.markdown.
 type DatabaseConnectionPool struct {
 	pulumi.CustomResourceState

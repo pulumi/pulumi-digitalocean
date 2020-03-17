@@ -9,8 +9,8 @@ import (
 )
 
 // Provides access to the available DigitalOcean Kubernetes Service versions.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
 func GetKubernetesVersions(ctx *pulumi.Context, args *GetKubernetesVersionsArgs, opts ...pulumi.InvokeOption) (*GetKubernetesVersionsResult, error) {
 	var rv GetKubernetesVersionsResult
 	err := ctx.Invoke("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args, &rv, opts...)

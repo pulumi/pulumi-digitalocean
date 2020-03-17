@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const example = digitalocean.getAccount();
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> & GetAccountResult {
     if (!opts) {
