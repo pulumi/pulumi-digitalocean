@@ -39,7 +39,7 @@ type Volume struct {
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
 	// A list of the tags to be applied to this Volume.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// the uniform resource name for the volume.
+	// The uniform resource name for the volume.
 	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
@@ -99,7 +99,7 @@ type volumeState struct {
 	SnapshotId *string `pulumi:"snapshotId"`
 	// A list of the tags to be applied to this Volume.
 	Tags []string `pulumi:"tags"`
-	// the uniform resource name for the volume.
+	// The uniform resource name for the volume.
 	Urn *string `pulumi:"urn"`
 }
 
@@ -126,7 +126,7 @@ type VolumeState struct {
 	SnapshotId pulumi.StringPtrInput
 	// A list of the tags to be applied to this Volume.
 	Tags pulumi.StringArrayInput
-	// the uniform resource name for the volume.
+	// The uniform resource name for the volume.
 	Urn pulumi.StringPtrInput
 }
 

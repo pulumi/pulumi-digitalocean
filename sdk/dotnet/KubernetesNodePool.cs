@@ -35,6 +35,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         /// </summary>
         [Output("maxNodes")]
@@ -140,6 +146,18 @@ namespace Pulumi.DigitalOcean
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         /// </summary>
@@ -206,6 +224,18 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.

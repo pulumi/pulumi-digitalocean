@@ -124,6 +124,48 @@ export interface GetDatabaseClusterMaintenanceWindow {
     hour: string;
 }
 
+export interface GetImagesFilter {
+    /**
+     * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+     */
+    key: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves images
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetImagesImage {
+    created: string;
+    distribution: string;
+    errorMessage: string;
+    id: number;
+    image: string;
+    minDiskSize: number;
+    name: string;
+    private: boolean;
+    regions: string[];
+    sizeGigabytes: number;
+    slug: string;
+    status: string;
+    tags: string[];
+    type: string;
+}
+
+export interface GetImagesSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+     */
+    key: string;
+}
+
 export interface GetKubernetesClusterKubeConfig {
     clientCertificate: string;
     clientKey: string;
@@ -141,6 +183,7 @@ export interface GetKubernetesClusterNodePool {
      * The unique ID that can be used to identify and reference a Kubernetes cluster.
      */
     id: string;
+    labels: {[key: string]: string};
     maxNodes: number;
     minNodes: number;
     /**
@@ -211,6 +254,78 @@ export interface GetLoadBalancerStickySessions {
     cookieName: string;
     cookieTtlSeconds: number;
     type: string;
+}
+
+export interface GetProjectsFilter {
+    /**
+     * Sort the projects by this key. This may be one of `name`,
+     * `purpose`, `description`, or `environment`.
+     */
+    key: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves projects
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetProjectsProject {
+    createdAt: string;
+    description: string;
+    environment: string;
+    id: string;
+    isDefault: boolean;
+    name: string;
+    ownerId: number;
+    ownerUuid: string;
+    purpose: string;
+    resources: string[];
+    updatedAt: string;
+}
+
+export interface GetProjectsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the projects by this key. This may be one of `name`,
+     * `purpose`, `description`, or `environment`.
+     */
+    key: string;
+}
+
+export interface GetRegionsFilter {
+    /**
+     * Sort the regions by this key. This may be one of `slug`,
+     * `name`, or `available`.
+     */
+    key: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves regions
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetRegionsRegion {
+    available: boolean;
+    features: string[];
+    name: string;
+    sizes: string[];
+    slug: string;
+}
+
+export interface GetRegionsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the regions by this key. This may be one of `slug`,
+     * `name`, or `available`.
+     */
+    key: string;
 }
 
 export interface GetSizesFilter {
@@ -294,6 +409,7 @@ export interface KubernetesClusterNodePool {
      * A unique ID that can be used to identify and reference a Kubernetes cluster.
      */
     id: string;
+    labels?: {[key: string]: string};
     maxNodes?: number;
     minNodes?: number;
     /**

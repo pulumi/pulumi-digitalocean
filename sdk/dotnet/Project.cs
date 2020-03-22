@@ -9,27 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    /// <summary>
-    /// Provides a DigitalOcean Project resource.
-    /// 
-    /// Projects allow you to organize your resources into groups that fit the way you work.
-    /// You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
-    /// in ways that align with the applications you host on DigitalOcean.
-    /// 
-    /// The following resource types can be associated with a project:
-    /// 
-    /// * Database Clusters
-    /// * Domains
-    /// * Droplets
-    /// * Floating IP
-    /// * Load Balancers
-    /// * Spaces Bucket
-    /// * Volume
-    /// 
-    /// **Note:** A Terrafrom managed project cannot be set as a default project.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
-    /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
@@ -49,6 +28,9 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
+
+        [Output("isDefault")]
+        public Output<bool> IsDefault { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Project
@@ -192,6 +174,9 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
+
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
 
         /// <summary>
         /// The name of the Project

@@ -22,6 +22,7 @@ class Project(pulumi.CustomResource):
     """
     the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
     """
+    is_default: pulumi.Output[bool]
     name: pulumi.Output[str]
     """
     The name of the Project
@@ -48,26 +49,7 @@ class Project(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, environment=None, name=None, purpose=None, resources=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a DigitalOcean Project resource.
-
-        Projects allow you to organize your resources into groups that fit the way you work.
-        You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
-        in ways that align with the applications you host on DigitalOcean.
-
-        The following resource types can be associated with a project:
-
-        * Database Clusters
-        * Domains
-        * Droplets
-        * Floating IP
-        * Load Balancers
-        * Spaces Bucket
-        * Volume
-
-        **Note:** A Terrafrom managed project cannot be set as a default project.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
-
+        Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: the description of the project
@@ -99,6 +81,7 @@ class Project(pulumi.CustomResource):
             __props__['purpose'] = purpose
             __props__['resources'] = resources
             __props__['created_at'] = None
+            __props__['is_default'] = None
             __props__['owner_id'] = None
             __props__['owner_uuid'] = None
             __props__['updated_at'] = None
@@ -109,7 +92,7 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_at=None, description=None, environment=None, name=None, owner_id=None, owner_uuid=None, purpose=None, resources=None, updated_at=None):
+    def get(resource_name, id, opts=None, created_at=None, description=None, environment=None, is_default=None, name=None, owner_id=None, owner_uuid=None, purpose=None, resources=None, updated_at=None):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -134,6 +117,7 @@ class Project(pulumi.CustomResource):
         __props__["created_at"] = created_at
         __props__["description"] = description
         __props__["environment"] = environment
+        __props__["is_default"] = is_default
         __props__["name"] = name
         __props__["owner_id"] = owner_id
         __props__["owner_uuid"] = owner_uuid

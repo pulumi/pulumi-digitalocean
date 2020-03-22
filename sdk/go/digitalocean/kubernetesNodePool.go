@@ -23,6 +23,8 @@ type KubernetesNodePool struct {
 	AutoScale pulumi.BoolPtrOutput `pulumi:"autoScale"`
 	// The ID of the Kubernetes cluster to which the node pool is associated.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	MaxNodes pulumi.IntPtrOutput `pulumi:"maxNodes"`
 	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -85,6 +87,8 @@ type kubernetesNodePoolState struct {
 	AutoScale *bool `pulumi:"autoScale"`
 	// The ID of the Kubernetes cluster to which the node pool is associated.
 	ClusterId *string `pulumi:"clusterId"`
+	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels map[string]string `pulumi:"labels"`
 	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	MaxNodes *int `pulumi:"maxNodes"`
 	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -114,6 +118,8 @@ type KubernetesNodePoolState struct {
 	AutoScale pulumi.BoolPtrInput
 	// The ID of the Kubernetes cluster to which the node pool is associated.
 	ClusterId pulumi.StringPtrInput
+	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels pulumi.StringMapInput
 	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	MaxNodes pulumi.IntPtrInput
 	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -145,6 +151,8 @@ type kubernetesNodePoolArgs struct {
 	AutoScale *bool `pulumi:"autoScale"`
 	// The ID of the Kubernetes cluster to which the node pool is associated.
 	ClusterId string `pulumi:"clusterId"`
+	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels map[string]string `pulumi:"labels"`
 	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	MaxNodes *int `pulumi:"maxNodes"`
 	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -165,6 +173,8 @@ type KubernetesNodePoolArgs struct {
 	AutoScale pulumi.BoolPtrInput
 	// The ID of the Kubernetes cluster to which the node pool is associated.
 	ClusterId pulumi.StringInput
+	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels pulumi.StringMapInput
 	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	MaxNodes pulumi.IntPtrInput
 	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.

@@ -58,6 +58,7 @@ namespace Pulumi.DigitalOcean
         /// - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         /// - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         /// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+        /// - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         /// </summary>
         [Output("nodePool")]
         public Output<Outputs.KubernetesClusterNodePool> NodePool { get; private set; } = null!;
@@ -167,6 +168,7 @@ namespace Pulumi.DigitalOcean
         /// - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         /// - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         /// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+        /// - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         /// </summary>
         [Input("nodePool", required: true)]
         public Input<Inputs.KubernetesClusterNodePoolArgs> NodePool { get; set; } = null!;
@@ -249,6 +251,7 @@ namespace Pulumi.DigitalOcean
         /// - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         /// - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         /// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+        /// - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         /// </summary>
         [Input("nodePool")]
         public Input<Inputs.KubernetesClusterNodePoolGetArgs>? NodePool { get; set; }
@@ -353,6 +356,14 @@ namespace Pulumi.DigitalOcean
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         [Input("maxNodes")]
         public Input<int>? MaxNodes { get; set; }
 
@@ -409,6 +420,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("maxNodes")]
         public Input<int>? MaxNodes { get; set; }
@@ -593,6 +612,7 @@ namespace Pulumi.DigitalOcean
         /// A unique ID that can be used to identify and reference a Kubernetes cluster.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableDictionary<string, string>? Labels;
         public readonly int? MaxNodes;
         public readonly int? MinNodes;
         /// <summary>
@@ -612,6 +632,7 @@ namespace Pulumi.DigitalOcean
             int actualNodeCount,
             bool? autoScale,
             string id,
+            ImmutableDictionary<string, string>? labels,
             int? maxNodes,
             int? minNodes,
             string name,
@@ -623,6 +644,7 @@ namespace Pulumi.DigitalOcean
             ActualNodeCount = actualNodeCount;
             AutoScale = autoScale;
             Id = id;
+            Labels = labels;
             MaxNodes = maxNodes;
             MinNodes = minNodes;
             Name = name;

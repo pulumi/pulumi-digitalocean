@@ -45,6 +45,10 @@ export class DatabaseUser extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
+     * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+     */
+    public readonly mysqlAuthPlugin!: pulumi.Output<string | undefined>;
+    /**
      * The name for the database user.
      */
     public readonly name!: pulumi.Output<string>;
@@ -70,6 +74,7 @@ export class DatabaseUser extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as DatabaseUserState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
+            inputs["mysqlAuthPlugin"] = state ? state.mysqlAuthPlugin : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["role"] = state ? state.role : undefined;
@@ -79,6 +84,7 @@ export class DatabaseUser extends pulumi.CustomResource {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
+            inputs["mysqlAuthPlugin"] = args ? args.mysqlAuthPlugin : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["password"] = undefined /*out*/;
             inputs["role"] = undefined /*out*/;
@@ -103,6 +109,10 @@ export interface DatabaseUserState {
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
+     * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+     */
+    readonly mysqlAuthPlugin?: pulumi.Input<string>;
+    /**
      * The name for the database user.
      */
     readonly name?: pulumi.Input<string>;
@@ -124,6 +134,10 @@ export interface DatabaseUserArgs {
      * The ID of the original source database cluster.
      */
     readonly clusterId: pulumi.Input<string>;
+    /**
+     * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+     */
+    readonly mysqlAuthPlugin?: pulumi.Input<string>;
     /**
      * The name for the database user.
      */

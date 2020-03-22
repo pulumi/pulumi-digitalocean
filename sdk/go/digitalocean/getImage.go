@@ -19,32 +19,49 @@ func GetImage(ctx *pulumi.Context, args *GetImageArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getImage.
 type GetImageArgs struct {
-	// The name of the private image.
+	// The id of the image
+	Id *int `pulumi:"id"`
+	// The name of the image.
 	Name *string `pulumi:"name"`
 	// The slug of the official image.
 	Slug *string `pulumi:"slug"`
+	// Restrict the search to one of the following categories of images:
+	// - `all` - All images (whether public or private)
+	// - `applications` - One-click applications
+	// - `distributions` - Distributions
+	// - `user` - (Default) User (private) images
+	Source *string `pulumi:"source"`
 }
 
 
 // A collection of values returned by getImage.
 type GetImageResult struct {
+	Created string `pulumi:"created"`
 	// The name of the distribution of the OS of the image.
 	// * `minDiskSize`: The minimum 'disk' required for the image.
+	// * `sizeGigabytes`: The size of the image in GB.
 	Distribution string `pulumi:"distribution"`
-	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The id of the image.
+	ErrorMessage string `pulumi:"errorMessage"`
+	Id int `pulumi:"id"`
+	// The id of the image (legacy parameter).
 	Image string `pulumi:"image"`
 	MinDiskSize int `pulumi:"minDiskSize"`
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Is image a public image or not. Public images represent
 	// Linux distributions or One-Click Applications, while non-public images represent
 	// snapshots and backups and are only available within your account.
-	// * `regions`: The regions that the image is available in.
-	// * `type`: Type of the image.
+	// * `regions`: A set of the regions that the image is available in.
+	// * `tags`: A set of tags applied to the image
+	// * `created`: When the image was created
+	// * `status`: Current status of the image
+	// * `errorMessage`: Any applicable error message pertaining to the image
 	Private bool `pulumi:"private"`
 	Regions []string `pulumi:"regions"`
-	Slug *string `pulumi:"slug"`
+	SizeGigabytes float64 `pulumi:"sizeGigabytes"`
+	Slug string `pulumi:"slug"`
+	Source *string `pulumi:"source"`
+	Status string `pulumi:"status"`
+	Tags []string `pulumi:"tags"`
 	Type string `pulumi:"type"`
 }
 
