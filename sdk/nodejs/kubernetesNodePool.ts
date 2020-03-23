@@ -53,6 +53,10 @@ export class KubernetesNodePool extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
+     * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      */
     public readonly maxNodes!: pulumi.Output<number | undefined>;
@@ -102,6 +106,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["actualNodeCount"] = state ? state.actualNodeCount : undefined;
             inputs["autoScale"] = state ? state.autoScale : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["maxNodes"] = state ? state.maxNodes : undefined;
             inputs["minNodes"] = state ? state.minNodes : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -119,6 +124,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             }
             inputs["autoScale"] = args ? args.autoScale : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["maxNodes"] = args ? args.maxNodes : undefined;
             inputs["minNodes"] = args ? args.minNodes : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -155,6 +161,10 @@ export interface KubernetesNodePoolState {
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      */
@@ -203,6 +213,10 @@ export interface KubernetesNodePoolArgs {
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
     readonly clusterId: pulumi.Input<string>;
+    /**
+     * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      */

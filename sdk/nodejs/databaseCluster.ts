@@ -37,6 +37,7 @@ import {DatabaseSlug, Region} from "./index";
  *     nodeCount: 1,
  *     region: "nyc1",
  *     size: "db-s-1vcpu-1gb",
+ *     version: "8",
  * });
  * ```
  * 
@@ -50,6 +51,7 @@ import {DatabaseSlug, Region} from "./index";
  *     nodeCount: 1,
  *     region: "nyc1",
  *     size: "db-s-1vcpu-1gb",
+ *     version: "5",
  * });
  * ```
  *

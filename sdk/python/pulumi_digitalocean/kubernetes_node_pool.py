@@ -22,6 +22,10 @@ class KubernetesNodePool(pulumi.CustomResource):
     """
     The ID of the Kubernetes cluster to which the node pool is associated.
     """
+    labels: pulumi.Output[dict]
+    """
+    A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+    """
     max_nodes: pulumi.Output[float]
     """
     If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
@@ -63,7 +67,7 @@ class KubernetesNodePool(pulumi.CustomResource):
     """
     A list of tag names to be applied to the Kubernetes cluster.
     """
-    def __init__(__self__, resource_name, opts=None, auto_scale=None, cluster_id=None, max_nodes=None, min_nodes=None, name=None, node_count=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_scale=None, cluster_id=None, labels=None, max_nodes=None, min_nodes=None, name=None, node_count=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
 
@@ -73,6 +77,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
+        :param pulumi.Input[dict] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[float] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         :param pulumi.Input[float] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[str] name: A name for the node pool.
@@ -101,6 +106,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             if cluster_id is None:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
+            __props__['labels'] = labels
             __props__['max_nodes'] = max_nodes
             __props__['min_nodes'] = min_nodes
             __props__['name'] = name
@@ -118,7 +124,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, actual_node_count=None, auto_scale=None, cluster_id=None, max_nodes=None, min_nodes=None, name=None, node_count=None, nodes=None, size=None, tags=None):
+    def get(resource_name, id, opts=None, actual_node_count=None, auto_scale=None, cluster_id=None, labels=None, max_nodes=None, min_nodes=None, name=None, node_count=None, nodes=None, size=None, tags=None):
         """
         Get an existing KubernetesNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,6 +135,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[float] actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param pulumi.Input[bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
+        :param pulumi.Input[dict] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[float] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         :param pulumi.Input[float] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[str] name: A name for the node pool.
@@ -159,6 +166,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         __props__["actual_node_count"] = actual_node_count
         __props__["auto_scale"] = auto_scale
         __props__["cluster_id"] = cluster_id
+        __props__["labels"] = labels
         __props__["max_nodes"] = max_nodes
         __props__["min_nodes"] = min_nodes
         __props__["name"] = name

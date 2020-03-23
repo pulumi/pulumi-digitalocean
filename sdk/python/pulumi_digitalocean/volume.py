@@ -56,7 +56,7 @@ class Volume(pulumi.CustomResource):
     """
     urn: pulumi.Output[str]
     """
-    the uniform resource name for the volume.
+    The uniform resource name for the volume.
     """
     def __init__(__self__, resource_name, opts=None, description=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -135,7 +135,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[float] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
         :param pulumi.Input[list] tags: A list of the tags to be applied to this Volume.
-        :param pulumi.Input[str] urn: the uniform resource name for the volume.
+        :param pulumi.Input[str] urn: The uniform resource name for the volume.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        /// </summary>
+        [Output("mysqlAuthPlugin")]
+        public Output<string?> MysqlAuthPlugin { get; private set; } = null!;
+
+        /// <summary>
         /// The name for the database user.
         /// </summary>
         [Output("name")]
@@ -95,6 +101,12 @@ namespace Pulumi.DigitalOcean
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
+        /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        /// </summary>
+        [Input("mysqlAuthPlugin")]
+        public Input<string>? MysqlAuthPlugin { get; set; }
+
+        /// <summary>
         /// The name for the database user.
         /// </summary>
         [Input("name")]
@@ -112,6 +124,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        /// </summary>
+        [Input("mysqlAuthPlugin")]
+        public Input<string>? MysqlAuthPlugin { get; set; }
 
         /// <summary>
         /// The name for the database user.

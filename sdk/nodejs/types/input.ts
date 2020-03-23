@@ -113,6 +113,81 @@ export interface FirewallPendingChange {
     status?: pulumi.Input<string>;
 }
 
+export interface GetImagesFilter {
+    /**
+     * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+     */
+    key: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves images
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetImagesSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+     */
+    key: string;
+}
+
+export interface GetProjectsFilter {
+    /**
+     * Sort the projects by this key. This may be one of `name`,
+     * `purpose`, `description`, or `environment`.
+     */
+    key: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves projects
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetProjectsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the projects by this key. This may be one of `name`,
+     * `purpose`, `description`, or `environment`.
+     */
+    key: string;
+}
+
+export interface GetRegionsFilter {
+    /**
+     * Sort the regions by this key. This may be one of `slug`,
+     * `name`, or `available`.
+     */
+    key: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves regions
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetRegionsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the regions by this key. This may be one of `slug`,
+     * `name`, or `available`.
+     */
+    key: string;
+}
+
 export interface GetSizesFilter {
     /**
      * Sort the sizes by this key. This may be one of `slug`,
@@ -155,6 +230,7 @@ export interface KubernetesClusterNodePool {
      * A unique ID that can be used to identify and reference a Kubernetes cluster.
      */
     id?: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     maxNodes?: pulumi.Input<number>;
     minNodes?: pulumi.Input<number>;
     /**

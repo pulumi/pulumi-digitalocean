@@ -8,7 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Retrieves information about droplet sizes that DigitalOcean supports. This data source provides all of droplet size properties, with the ability to filter and sort the results.
+// Retrieves information about the Droplet sizes that DigitalOcean supports, with
+// the ability to filter and sort the results. If no filters are specified, all sizes
+// will be returned.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
 func GetSizes(ctx *pulumi.Context, args *GetSizesArgs, opts ...pulumi.InvokeOption) (*GetSizesResult, error) {

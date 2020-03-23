@@ -6,27 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a DigitalOcean Project resource.
- * 
- * Projects allow you to organize your resources into groups that fit the way you work.
- * You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
- * in ways that align with the applications you host on DigitalOcean.
- * 
- * The following resource types can be associated with a project:
- * 
- * * Database Clusters
- * * Domains
- * * Droplets
- * * Floating IP
- * * Load Balancers
- * * Spaces Bucket
- * * Volume
- * 
- * **Note:** A Terrafrom managed project cannot be set as a default project.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
- */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
@@ -66,6 +45,7 @@ export class Project extends pulumi.CustomResource {
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
     public readonly environment!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly isDefault!: pulumi.Output<boolean>;
     /**
      * The name of the Project
      */
@@ -85,7 +65,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    public readonly resources!: pulumi.Output<string[] | undefined>;
+    public readonly resources!: pulumi.Output<string[]>;
     /**
      * the date and time when the project was last updated, (ISO8601)
      */
@@ -106,6 +86,7 @@ export class Project extends pulumi.CustomResource {
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["environment"] = state ? state.environment : undefined;
+            inputs["isDefault"] = state ? state.isDefault : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["ownerId"] = state ? state.ownerId : undefined;
             inputs["ownerUuid"] = state ? state.ownerUuid : undefined;
@@ -120,6 +101,7 @@ export class Project extends pulumi.CustomResource {
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["resources"] = args ? args.resources : undefined;
             inputs["createdAt"] = undefined /*out*/;
+            inputs["isDefault"] = undefined /*out*/;
             inputs["ownerId"] = undefined /*out*/;
             inputs["ownerUuid"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
@@ -151,6 +133,7 @@ export interface ProjectState {
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
     readonly environment?: pulumi.Input<string>;
+    readonly isDefault?: pulumi.Input<boolean>;
     /**
      * The name of the Project
      */

@@ -83,7 +83,7 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// the uniform resource name for the volume.
+        /// The uniform resource name for the volume.
         /// </summary>
         [Output("urn")]
         public Output<string> Urn { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// the uniform resource name for the volume.
+        /// The uniform resource name for the volume.
         /// </summary>
         [Input("urn")]
         public Input<string>? Urn { get; set; }

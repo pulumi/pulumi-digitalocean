@@ -85,7 +85,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * the uniform resource name for the volume.
+     * The uniform resource name for the volume.
      */
     public /*out*/ readonly urn!: pulumi.Output<string>;
 
@@ -196,7 +196,7 @@ export interface VolumeState {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * the uniform resource name for the volume.
+     * The uniform resource name for the volume.
      */
     readonly urn?: pulumi.Input<string>;
 }

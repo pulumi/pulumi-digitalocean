@@ -35,7 +35,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Fqdn { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the record.
+        /// The name of the record. Use `@` for records on domain's name itself.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Flags { get; set; }
 
         /// <summary>
-        /// The name of the record.
+        /// The name of the record. Use `@` for records on domain's name itself.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Fqdn { get; set; }
 
         /// <summary>
-        /// The name of the record.
+        /// The name of the record. Use `@` for records on domain's name itself.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -781,6 +781,7 @@ type KubernetesClusterNodePool struct {
 	AutoScale *bool `pulumi:"autoScale"`
 	// A unique ID that can be used to identify and reference a Kubernetes cluster.
 	Id *string `pulumi:"id"`
+	Labels map[string]string `pulumi:"labels"`
 	MaxNodes *int `pulumi:"maxNodes"`
 	MinNodes *int `pulumi:"minNodes"`
 	// A name for the Kubernetes cluster.
@@ -804,6 +805,7 @@ type KubernetesClusterNodePoolArgs struct {
 	AutoScale pulumi.BoolPtrInput `pulumi:"autoScale"`
 	// A unique ID that can be used to identify and reference a Kubernetes cluster.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
 	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
 	// A name for the Kubernetes cluster.
@@ -895,6 +897,10 @@ func (o KubernetesClusterNodePoolOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+func (o KubernetesClusterNodePoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func (v KubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 func (o KubernetesClusterNodePoolOutput) MaxNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
 }
@@ -954,6 +960,10 @@ func (o KubernetesClusterNodePoolPtrOutput) AutoScale() pulumi.BoolPtrOutput {
 // A unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o KubernetesClusterNodePoolPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesClusterNodePoolPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func (v KubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) MaxNodes() pulumi.IntPtrOutput {
@@ -1947,6 +1957,375 @@ func (o GetDatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 	}).(GetDatabaseClusterMaintenanceWindowOutput)
 }
 
+type GetImagesFilter struct {
+	// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+	// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+	Key string `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves images
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+type GetImagesFilterInput interface {
+	pulumi.Input
+
+	ToGetImagesFilterOutput() GetImagesFilterOutput
+	ToGetImagesFilterOutputWithContext(context.Context) GetImagesFilterOutput
+}
+
+type GetImagesFilterArgs struct {
+	// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+	// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves images
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetImagesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesFilter)(nil)).Elem()
+}
+
+func (i GetImagesFilterArgs) ToGetImagesFilterOutput() GetImagesFilterOutput {
+	return i.ToGetImagesFilterOutputWithContext(context.Background())
+}
+
+func (i GetImagesFilterArgs) ToGetImagesFilterOutputWithContext(ctx context.Context) GetImagesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesFilterOutput)
+}
+
+type GetImagesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesFilterArrayOutput() GetImagesFilterArrayOutput
+	ToGetImagesFilterArrayOutputWithContext(context.Context) GetImagesFilterArrayOutput
+}
+
+type GetImagesFilterArray []GetImagesFilterInput
+
+func (GetImagesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesFilter)(nil)).Elem()
+}
+
+func (i GetImagesFilterArray) ToGetImagesFilterArrayOutput() GetImagesFilterArrayOutput {
+	return i.ToGetImagesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesFilterArray) ToGetImagesFilterArrayOutputWithContext(ctx context.Context) GetImagesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesFilterArrayOutput)
+}
+
+type GetImagesFilterOutput struct { *pulumi.OutputState }
+
+func (GetImagesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesFilter)(nil)).Elem()
+}
+
+func (o GetImagesFilterOutput) ToGetImagesFilterOutput() GetImagesFilterOutput {
+	return o
+}
+
+func (o GetImagesFilterOutput) ToGetImagesFilterOutputWithContext(ctx context.Context) GetImagesFilterOutput {
+	return o
+}
+
+// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+func (o GetImagesFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves images
+// where the `key` field takes on one or more of the values provided here.
+func (o GetImagesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetImagesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetImagesFilterArrayOutput struct { *pulumi.OutputState}
+
+func (GetImagesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesFilter)(nil)).Elem()
+}
+
+func (o GetImagesFilterArrayOutput) ToGetImagesFilterArrayOutput() GetImagesFilterArrayOutput {
+	return o
+}
+
+func (o GetImagesFilterArrayOutput) ToGetImagesFilterArrayOutputWithContext(ctx context.Context) GetImagesFilterArrayOutput {
+	return o
+}
+
+func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImagesFilter {
+		return vs[0].([]GetImagesFilter)[vs[1].(int)]
+	}).(GetImagesFilterOutput)
+}
+
+type GetImagesImage struct {
+	Created string `pulumi:"created"`
+	Distribution string `pulumi:"distribution"`
+	ErrorMessage string `pulumi:"errorMessage"`
+	Id int `pulumi:"id"`
+	Image string `pulumi:"image"`
+	MinDiskSize int `pulumi:"minDiskSize"`
+	Name string `pulumi:"name"`
+	Private bool `pulumi:"private"`
+	Regions []string `pulumi:"regions"`
+	SizeGigabytes float64 `pulumi:"sizeGigabytes"`
+	Slug string `pulumi:"slug"`
+	Status string `pulumi:"status"`
+	Tags []string `pulumi:"tags"`
+	Type string `pulumi:"type"`
+}
+
+type GetImagesImageInput interface {
+	pulumi.Input
+
+	ToGetImagesImageOutput() GetImagesImageOutput
+	ToGetImagesImageOutputWithContext(context.Context) GetImagesImageOutput
+}
+
+type GetImagesImageArgs struct {
+	Created pulumi.StringInput `pulumi:"created"`
+	Distribution pulumi.StringInput `pulumi:"distribution"`
+	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
+	Id pulumi.IntInput `pulumi:"id"`
+	Image pulumi.StringInput `pulumi:"image"`
+	MinDiskSize pulumi.IntInput `pulumi:"minDiskSize"`
+	Name pulumi.StringInput `pulumi:"name"`
+	Private pulumi.BoolInput `pulumi:"private"`
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	SizeGigabytes pulumi.Float64Input `pulumi:"sizeGigabytes"`
+	Slug pulumi.StringInput `pulumi:"slug"`
+	Status pulumi.StringInput `pulumi:"status"`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetImagesImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutput() GetImagesImageOutput {
+	return i.ToGetImagesImageOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageOutput)
+}
+
+type GetImagesImageArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesImageArrayOutput() GetImagesImageArrayOutput
+	ToGetImagesImageArrayOutputWithContext(context.Context) GetImagesImageArrayOutput
+}
+
+type GetImagesImageArray []GetImagesImageInput
+
+func (GetImagesImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return i.ToGetImagesImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageArrayOutput)
+}
+
+type GetImagesImageOutput struct { *pulumi.OutputState }
+
+func (GetImagesImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutput() GetImagesImageOutput {
+	return o
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return o
+}
+
+func (o GetImagesImageOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesImage) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) Distribution() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesImage) string { return v.Distribution }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesImage) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func (v GetImagesImage) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetImagesImageOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesImage) string { return v.Image }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) MinDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func (v GetImagesImage) int { return v.MinDiskSize }).(pulumi.IntOutput)
+}
+
+func (o GetImagesImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) Private() pulumi.BoolOutput {
+	return o.ApplyT(func (v GetImagesImage) bool { return v.Private }).(pulumi.BoolOutput)
+}
+
+func (o GetImagesImageOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetImagesImage) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImagesImageOutput) SizeGigabytes() pulumi.Float64Output {
+	return o.ApplyT(func (v GetImagesImage) float64 { return v.SizeGigabytes }).(pulumi.Float64Output)
+}
+
+func (o GetImagesImageOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesImage) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetImagesImage) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImagesImageOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesImage) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetImagesImageArrayOutput struct { *pulumi.OutputState}
+
+func (GetImagesImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImagesImage {
+		return vs[0].([]GetImagesImage)[vs[1].(int)]
+	}).(GetImagesImageOutput)
+}
+
+type GetImagesSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+	// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+	Key string `pulumi:"key"`
+}
+
+type GetImagesSortInput interface {
+	pulumi.Input
+
+	ToGetImagesSortOutput() GetImagesSortOutput
+	ToGetImagesSortOutputWithContext(context.Context) GetImagesSortOutput
+}
+
+type GetImagesSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+	// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetImagesSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesSort)(nil)).Elem()
+}
+
+func (i GetImagesSortArgs) ToGetImagesSortOutput() GetImagesSortOutput {
+	return i.ToGetImagesSortOutputWithContext(context.Background())
+}
+
+func (i GetImagesSortArgs) ToGetImagesSortOutputWithContext(ctx context.Context) GetImagesSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesSortOutput)
+}
+
+type GetImagesSortArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesSortArrayOutput() GetImagesSortArrayOutput
+	ToGetImagesSortArrayOutputWithContext(context.Context) GetImagesSortArrayOutput
+}
+
+type GetImagesSortArray []GetImagesSortInput
+
+func (GetImagesSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesSort)(nil)).Elem()
+}
+
+func (i GetImagesSortArray) ToGetImagesSortArrayOutput() GetImagesSortArrayOutput {
+	return i.ToGetImagesSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesSortArray) ToGetImagesSortArrayOutputWithContext(ctx context.Context) GetImagesSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesSortArrayOutput)
+}
+
+type GetImagesSortOutput struct { *pulumi.OutputState }
+
+func (GetImagesSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesSort)(nil)).Elem()
+}
+
+func (o GetImagesSortOutput) ToGetImagesSortOutput() GetImagesSortOutput {
+	return o
+}
+
+func (o GetImagesSortOutput) ToGetImagesSortOutputWithContext(ctx context.Context) GetImagesSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetImagesSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetImagesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+func (o GetImagesSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func (v GetImagesSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetImagesSortArrayOutput struct { *pulumi.OutputState}
+
+func (GetImagesSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesSort)(nil)).Elem()
+}
+
+func (o GetImagesSortArrayOutput) ToGetImagesSortArrayOutput() GetImagesSortArrayOutput {
+	return o
+}
+
+func (o GetImagesSortArrayOutput) ToGetImagesSortArrayOutputWithContext(ctx context.Context) GetImagesSortArrayOutput {
+	return o
+}
+
+func (o GetImagesSortArrayOutput) Index(i pulumi.IntInput) GetImagesSortOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImagesSort {
+		return vs[0].([]GetImagesSort)[vs[1].(int)]
+	}).(GetImagesSortOutput)
+}
+
 type GetKubernetesClusterKubeConfig struct {
 	ClientCertificate string `pulumi:"clientCertificate"`
 	ClientKey string `pulumi:"clientKey"`
@@ -2074,6 +2453,7 @@ type GetKubernetesClusterNodePool struct {
 	AutoScale bool `pulumi:"autoScale"`
 	// The unique ID that can be used to identify and reference a Kubernetes cluster.
 	Id string `pulumi:"id"`
+	Labels map[string]string `pulumi:"labels"`
 	MaxNodes int `pulumi:"maxNodes"`
 	MinNodes int `pulumi:"minNodes"`
 	// The name of Kubernetes cluster.
@@ -2097,6 +2477,7 @@ type GetKubernetesClusterNodePoolArgs struct {
 	AutoScale pulumi.BoolInput `pulumi:"autoScale"`
 	// The unique ID that can be used to identify and reference a Kubernetes cluster.
 	Id pulumi.StringInput `pulumi:"id"`
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
 	MinNodes pulumi.IntInput `pulumi:"minNodes"`
 	// The name of Kubernetes cluster.
@@ -2166,6 +2547,10 @@ func (o GetKubernetesClusterNodePoolOutput) AutoScale() pulumi.BoolOutput {
 // The unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o GetKubernetesClusterNodePoolOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func (v GetKubernetesClusterNodePool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesClusterNodePoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetKubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o GetKubernetesClusterNodePoolOutput) MaxNodes() pulumi.IntOutput {
@@ -2627,6 +3012,672 @@ func (o GetLoadBalancerStickySessionsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func (v GetLoadBalancerStickySessions) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type GetProjectsFilter struct {
+	// Sort the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, or `environment`.
+	Key string `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves projects
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+type GetProjectsFilterInput interface {
+	pulumi.Input
+
+	ToGetProjectsFilterOutput() GetProjectsFilterOutput
+	ToGetProjectsFilterOutputWithContext(context.Context) GetProjectsFilterOutput
+}
+
+type GetProjectsFilterArgs struct {
+	// Sort the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, or `environment`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves projects
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetProjectsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsFilter)(nil)).Elem()
+}
+
+func (i GetProjectsFilterArgs) ToGetProjectsFilterOutput() GetProjectsFilterOutput {
+	return i.ToGetProjectsFilterOutputWithContext(context.Background())
+}
+
+func (i GetProjectsFilterArgs) ToGetProjectsFilterOutputWithContext(ctx context.Context) GetProjectsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsFilterOutput)
+}
+
+type GetProjectsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput
+	ToGetProjectsFilterArrayOutputWithContext(context.Context) GetProjectsFilterArrayOutput
+}
+
+type GetProjectsFilterArray []GetProjectsFilterInput
+
+func (GetProjectsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsFilter)(nil)).Elem()
+}
+
+func (i GetProjectsFilterArray) ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput {
+	return i.ToGetProjectsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsFilterArray) ToGetProjectsFilterArrayOutputWithContext(ctx context.Context) GetProjectsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsFilterArrayOutput)
+}
+
+type GetProjectsFilterOutput struct { *pulumi.OutputState }
+
+func (GetProjectsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsFilter)(nil)).Elem()
+}
+
+func (o GetProjectsFilterOutput) ToGetProjectsFilterOutput() GetProjectsFilterOutput {
+	return o
+}
+
+func (o GetProjectsFilterOutput) ToGetProjectsFilterOutputWithContext(ctx context.Context) GetProjectsFilterOutput {
+	return o
+}
+
+// Sort the projects by this key. This may be one of `name`,
+// `purpose`, `description`, or `environment`.
+func (o GetProjectsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves projects
+// where the `key` field takes on one or more of the values provided here.
+func (o GetProjectsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetProjectsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetProjectsFilterArrayOutput struct { *pulumi.OutputState}
+
+func (GetProjectsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsFilter)(nil)).Elem()
+}
+
+func (o GetProjectsFilterArrayOutput) ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput {
+	return o
+}
+
+func (o GetProjectsFilterArrayOutput) ToGetProjectsFilterArrayOutputWithContext(ctx context.Context) GetProjectsFilterArrayOutput {
+	return o
+}
+
+func (o GetProjectsFilterArrayOutput) Index(i pulumi.IntInput) GetProjectsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProjectsFilter {
+		return vs[0].([]GetProjectsFilter)[vs[1].(int)]
+	}).(GetProjectsFilterOutput)
+}
+
+type GetProjectsProject struct {
+	CreatedAt string `pulumi:"createdAt"`
+	Description string `pulumi:"description"`
+	Environment string `pulumi:"environment"`
+	Id string `pulumi:"id"`
+	IsDefault bool `pulumi:"isDefault"`
+	Name string `pulumi:"name"`
+	OwnerId int `pulumi:"ownerId"`
+	OwnerUuid string `pulumi:"ownerUuid"`
+	Purpose string `pulumi:"purpose"`
+	Resources []string `pulumi:"resources"`
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+type GetProjectsProjectInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectOutput() GetProjectsProjectOutput
+	ToGetProjectsProjectOutputWithContext(context.Context) GetProjectsProjectOutput
+}
+
+type GetProjectsProjectArgs struct {
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	Description pulumi.StringInput `pulumi:"description"`
+	Environment pulumi.StringInput `pulumi:"environment"`
+	Id pulumi.StringInput `pulumi:"id"`
+	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
+	Name pulumi.StringInput `pulumi:"name"`
+	OwnerId pulumi.IntInput `pulumi:"ownerId"`
+	OwnerUuid pulumi.StringInput `pulumi:"ownerUuid"`
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetProjectsProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
+}
+
+func (i GetProjectsProjectArgs) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
+	return i.ToGetProjectsProjectOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectOutput)
+}
+
+type GetProjectsProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput
+	ToGetProjectsProjectArrayOutputWithContext(context.Context) GetProjectsProjectArrayOutput
+}
+
+type GetProjectsProjectArray []GetProjectsProjectInput
+
+func (GetProjectsProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
+}
+
+func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
+	return i.ToGetProjectsProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectArrayOutput)
+}
+
+type GetProjectsProjectOutput struct { *pulumi.OutputState }
+
+func (GetProjectsProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
+}
+
+func (o GetProjectsProjectOutput) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
+	return o
+}
+
+func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
+	return o
+}
+
+func (o GetProjectsProjectOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsProject) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsProject) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func (v GetProjectsProject) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) OwnerId() pulumi.IntOutput {
+	return o.ApplyT(func (v GetProjectsProject) int { return v.OwnerId }).(pulumi.IntOutput)
+}
+
+func (o GetProjectsProjectOutput) OwnerUuid() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsProject) string { return v.OwnerUuid }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsProject) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetProjectsProject) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProjectsProjectOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsProject) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetProjectsProjectArrayOutput struct { *pulumi.OutputState}
+
+func (GetProjectsProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
+}
+
+func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProjectsProject {
+		return vs[0].([]GetProjectsProject)[vs[1].(int)]
+	}).(GetProjectsProjectOutput)
+}
+
+type GetProjectsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, or `environment`.
+	Key string `pulumi:"key"`
+}
+
+type GetProjectsSortInput interface {
+	pulumi.Input
+
+	ToGetProjectsSortOutput() GetProjectsSortOutput
+	ToGetProjectsSortOutputWithContext(context.Context) GetProjectsSortOutput
+}
+
+type GetProjectsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, or `environment`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetProjectsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsSort)(nil)).Elem()
+}
+
+func (i GetProjectsSortArgs) ToGetProjectsSortOutput() GetProjectsSortOutput {
+	return i.ToGetProjectsSortOutputWithContext(context.Background())
+}
+
+func (i GetProjectsSortArgs) ToGetProjectsSortOutputWithContext(ctx context.Context) GetProjectsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsSortOutput)
+}
+
+type GetProjectsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput
+	ToGetProjectsSortArrayOutputWithContext(context.Context) GetProjectsSortArrayOutput
+}
+
+type GetProjectsSortArray []GetProjectsSortInput
+
+func (GetProjectsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsSort)(nil)).Elem()
+}
+
+func (i GetProjectsSortArray) ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput {
+	return i.ToGetProjectsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsSortArray) ToGetProjectsSortArrayOutputWithContext(ctx context.Context) GetProjectsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsSortArrayOutput)
+}
+
+type GetProjectsSortOutput struct { *pulumi.OutputState }
+
+func (GetProjectsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsSort)(nil)).Elem()
+}
+
+func (o GetProjectsSortOutput) ToGetProjectsSortOutput() GetProjectsSortOutput {
+	return o
+}
+
+func (o GetProjectsSortOutput) ToGetProjectsSortOutputWithContext(ctx context.Context) GetProjectsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetProjectsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetProjectsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the projects by this key. This may be one of `name`,
+// `purpose`, `description`, or `environment`.
+func (o GetProjectsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetProjectsSortArrayOutput struct { *pulumi.OutputState}
+
+func (GetProjectsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsSort)(nil)).Elem()
+}
+
+func (o GetProjectsSortArrayOutput) ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput {
+	return o
+}
+
+func (o GetProjectsSortArrayOutput) ToGetProjectsSortArrayOutputWithContext(ctx context.Context) GetProjectsSortArrayOutput {
+	return o
+}
+
+func (o GetProjectsSortArrayOutput) Index(i pulumi.IntInput) GetProjectsSortOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProjectsSort {
+		return vs[0].([]GetProjectsSort)[vs[1].(int)]
+	}).(GetProjectsSortOutput)
+}
+
+type GetRegionsFilter struct {
+	// Sort the regions by this key. This may be one of `slug`,
+	// `name`, or `available`.
+	Key string `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves regions
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+type GetRegionsFilterInput interface {
+	pulumi.Input
+
+	ToGetRegionsFilterOutput() GetRegionsFilterOutput
+	ToGetRegionsFilterOutputWithContext(context.Context) GetRegionsFilterOutput
+}
+
+type GetRegionsFilterArgs struct {
+	// Sort the regions by this key. This may be one of `slug`,
+	// `name`, or `available`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves regions
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRegionsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
+}
+
+func (i GetRegionsFilterArgs) ToGetRegionsFilterOutput() GetRegionsFilterOutput {
+	return i.ToGetRegionsFilterOutputWithContext(context.Background())
+}
+
+func (i GetRegionsFilterArgs) ToGetRegionsFilterOutputWithContext(ctx context.Context) GetRegionsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterOutput)
+}
+
+type GetRegionsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput
+	ToGetRegionsFilterArrayOutputWithContext(context.Context) GetRegionsFilterArrayOutput
+}
+
+type GetRegionsFilterArray []GetRegionsFilterInput
+
+func (GetRegionsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
+}
+
+func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput {
+	return i.ToGetRegionsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutputWithContext(ctx context.Context) GetRegionsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterArrayOutput)
+}
+
+type GetRegionsFilterOutput struct { *pulumi.OutputState }
+
+func (GetRegionsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
+}
+
+func (o GetRegionsFilterOutput) ToGetRegionsFilterOutput() GetRegionsFilterOutput {
+	return o
+}
+
+func (o GetRegionsFilterOutput) ToGetRegionsFilterOutputWithContext(ctx context.Context) GetRegionsFilterOutput {
+	return o
+}
+
+// Sort the regions by this key. This may be one of `slug`,
+// `name`, or `available`.
+func (o GetRegionsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func (v GetRegionsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves regions
+// where the `key` field takes on one or more of the values provided here.
+func (o GetRegionsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetRegionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionsFilterArrayOutput struct { *pulumi.OutputState}
+
+func (GetRegionsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
+}
+
+func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput {
+	return o
+}
+
+func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutputWithContext(ctx context.Context) GetRegionsFilterArrayOutput {
+	return o
+}
+
+func (o GetRegionsFilterArrayOutput) Index(i pulumi.IntInput) GetRegionsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRegionsFilter {
+		return vs[0].([]GetRegionsFilter)[vs[1].(int)]
+	}).(GetRegionsFilterOutput)
+}
+
+type GetRegionsRegion struct {
+	Available bool `pulumi:"available"`
+	Features []string `pulumi:"features"`
+	Name string `pulumi:"name"`
+	Sizes []string `pulumi:"sizes"`
+	Slug string `pulumi:"slug"`
+}
+
+type GetRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionOutput() GetRegionsRegionOutput
+	ToGetRegionsRegionOutputWithContext(context.Context) GetRegionsRegionOutput
+}
+
+type GetRegionsRegionArgs struct {
+	Available pulumi.BoolInput `pulumi:"available"`
+	Features pulumi.StringArrayInput `pulumi:"features"`
+	Name pulumi.StringInput `pulumi:"name"`
+	Sizes pulumi.StringArrayInput `pulumi:"sizes"`
+	Slug pulumi.StringInput `pulumi:"slug"`
+}
+
+func (GetRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
+}
+
+func (i GetRegionsRegionArgs) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
+	return i.ToGetRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
+}
+
+type GetRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput
+	ToGetRegionsRegionArrayOutputWithContext(context.Context) GetRegionsRegionArrayOutput
+}
+
+type GetRegionsRegionArray []GetRegionsRegionInput
+
+func (GetRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
+}
+
+func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
+	return i.ToGetRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
+}
+
+type GetRegionsRegionOutput struct { *pulumi.OutputState }
+
+func (GetRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
+}
+
+func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
+	return o
+}
+
+func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
+	return o
+}
+
+func (o GetRegionsRegionOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func (v GetRegionsRegion) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+func (o GetRegionsRegionOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetRegionsRegion) []string { return v.Features }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRegionsRegionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v GetRegionsRegion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRegionsRegionOutput) Sizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetRegionsRegion) []string { return v.Sizes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRegionsRegionOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func (v GetRegionsRegion) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+type GetRegionsRegionArrayOutput struct { *pulumi.OutputState}
+
+func (GetRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
+}
+
+func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRegionsRegion {
+		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
+	}).(GetRegionsRegionOutput)
+}
+
+type GetRegionsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the regions by this key. This may be one of `slug`,
+	// `name`, or `available`.
+	Key string `pulumi:"key"`
+}
+
+type GetRegionsSortInput interface {
+	pulumi.Input
+
+	ToGetRegionsSortOutput() GetRegionsSortOutput
+	ToGetRegionsSortOutputWithContext(context.Context) GetRegionsSortOutput
+}
+
+type GetRegionsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the regions by this key. This may be one of `slug`,
+	// `name`, or `available`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetRegionsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsSort)(nil)).Elem()
+}
+
+func (i GetRegionsSortArgs) ToGetRegionsSortOutput() GetRegionsSortOutput {
+	return i.ToGetRegionsSortOutputWithContext(context.Background())
+}
+
+func (i GetRegionsSortArgs) ToGetRegionsSortOutputWithContext(ctx context.Context) GetRegionsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsSortOutput)
+}
+
+type GetRegionsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput
+	ToGetRegionsSortArrayOutputWithContext(context.Context) GetRegionsSortArrayOutput
+}
+
+type GetRegionsSortArray []GetRegionsSortInput
+
+func (GetRegionsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsSort)(nil)).Elem()
+}
+
+func (i GetRegionsSortArray) ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput {
+	return i.ToGetRegionsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsSortArray) ToGetRegionsSortArrayOutputWithContext(ctx context.Context) GetRegionsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsSortArrayOutput)
+}
+
+type GetRegionsSortOutput struct { *pulumi.OutputState }
+
+func (GetRegionsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsSort)(nil)).Elem()
+}
+
+func (o GetRegionsSortOutput) ToGetRegionsSortOutput() GetRegionsSortOutput {
+	return o
+}
+
+func (o GetRegionsSortOutput) ToGetRegionsSortOutputWithContext(ctx context.Context) GetRegionsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetRegionsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetRegionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the regions by this key. This may be one of `slug`,
+// `name`, or `available`.
+func (o GetRegionsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func (v GetRegionsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetRegionsSortArrayOutput struct { *pulumi.OutputState}
+
+func (GetRegionsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsSort)(nil)).Elem()
+}
+
+func (o GetRegionsSortArrayOutput) ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput {
+	return o
+}
+
+func (o GetRegionsSortArrayOutput) ToGetRegionsSortArrayOutputWithContext(ctx context.Context) GetRegionsSortArrayOutput {
+	return o
+}
+
+func (o GetRegionsSortArrayOutput) Index(i pulumi.IntInput) GetRegionsSortOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRegionsSort {
+		return vs[0].([]GetRegionsSort)[vs[1].(int)]
+	}).(GetRegionsSortOutput)
+}
+
 type GetSizesFilter struct {
 	// Sort the sizes by this key. This may be one of `slug`,
 	// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
@@ -3022,6 +4073,12 @@ func init() {
 	pulumi.RegisterOutputType(SpacesBucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetImagesFilterOutput{})
+	pulumi.RegisterOutputType(GetImagesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetImagesImageOutput{})
+	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
+	pulumi.RegisterOutputType(GetImagesSortOutput{})
+	pulumi.RegisterOutputType(GetImagesSortArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolOutput{})
@@ -3032,6 +4089,18 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionsOutput{})
+	pulumi.RegisterOutputType(GetProjectsFilterOutput{})
+	pulumi.RegisterOutputType(GetProjectsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectsSortOutput{})
+	pulumi.RegisterOutputType(GetProjectsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsFilterOutput{})
+	pulumi.RegisterOutputType(GetRegionsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsSortOutput{})
+	pulumi.RegisterOutputType(GetRegionsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetSizesFilterOutput{})
 	pulumi.RegisterOutputType(GetSizesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetSizesSizeOutput{})

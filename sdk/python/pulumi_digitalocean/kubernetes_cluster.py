@@ -41,10 +41,12 @@ class KubernetesCluster(pulumi.CustomResource):
     - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
     - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
     - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+    - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 
       * `actual_node_count` (`float`)
       * `auto_scale` (`bool`)
       * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+      * `labels` (`dict`)
       * `max_nodes` (`float`)
       * `min_nodes` (`float`)
       * `name` (`str`) - A name for the Kubernetes cluster.
@@ -117,6 +119,7 @@ class KubernetesCluster(pulumi.CustomResource):
                - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
                - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
                - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+               - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -126,6 +129,7 @@ class KubernetesCluster(pulumi.CustomResource):
           * `actual_node_count` (`pulumi.Input[float]`)
           * `auto_scale` (`pulumi.Input[bool]`)
           * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+          * `labels` (`pulumi.Input[dict]`)
           * `max_nodes` (`pulumi.Input[float]`)
           * `min_nodes` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
@@ -213,6 +217,7 @@ class KubernetesCluster(pulumi.CustomResource):
                - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
                - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
                - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+               - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
@@ -243,6 +248,7 @@ class KubernetesCluster(pulumi.CustomResource):
           * `actual_node_count` (`pulumi.Input[float]`)
           * `auto_scale` (`pulumi.Input[bool]`)
           * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
+          * `labels` (`pulumi.Input[dict]`)
           * `max_nodes` (`pulumi.Input[float]`)
           * `min_nodes` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.

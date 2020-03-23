@@ -13,25 +13,29 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, distribution=None, id=None, image=None, min_disk_size=None, name=None, private=None, regions=None, slug=None, type=None):
+    def __init__(__self__, created=None, distribution=None, error_message=None, id=None, image=None, min_disk_size=None, name=None, private=None, regions=None, size_gigabytes=None, slug=None, source=None, status=None, tags=None, type=None):
+        if created and not isinstance(created, str):
+            raise TypeError("Expected argument 'created' to be a str")
+        __self__.created = created
         if distribution and not isinstance(distribution, str):
             raise TypeError("Expected argument 'distribution' to be a str")
         __self__.distribution = distribution
         """
         The name of the distribution of the OS of the image.
         * `min_disk_size`: The minimum 'disk' required for the image.
+        * `size_gigabytes`: The size of the image in GB.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if error_message and not isinstance(error_message, str):
+            raise TypeError("Expected argument 'error_message' to be a str")
+        __self__.error_message = error_message
+        if id and not isinstance(id, float):
+            raise TypeError("Expected argument 'id' to be a float")
         __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
         if image and not isinstance(image, str):
             raise TypeError("Expected argument 'image' to be a str")
         __self__.image = image
         """
-        The id of the image.
+        The id of the image (legacy parameter).
         """
         if min_disk_size and not isinstance(min_disk_size, float):
             raise TypeError("Expected argument 'min_disk_size' to be a float")
@@ -46,15 +50,30 @@ class GetImageResult:
         Is image a public image or not. Public images represent
         Linux distributions or One-Click Applications, while non-public images represent
         snapshots and backups and are only available within your account.
-        * `regions`: The regions that the image is available in.
-        * `type`: Type of the image.
+        * `regions`: A set of the regions that the image is available in.
+        * `tags`: A set of tags applied to the image
+        * `created`: When the image was created
+        * `status`: Current status of the image
+        * `error_message`: Any applicable error message pertaining to the image
         """
         if regions and not isinstance(regions, list):
             raise TypeError("Expected argument 'regions' to be a list")
         __self__.regions = regions
+        if size_gigabytes and not isinstance(size_gigabytes, float):
+            raise TypeError("Expected argument 'size_gigabytes' to be a float")
+        __self__.size_gigabytes = size_gigabytes
         if slug and not isinstance(slug, str):
             raise TypeError("Expected argument 'slug' to be a str")
         __self__.slug = slug
+        if source and not isinstance(source, str):
+            raise TypeError("Expected argument 'source' to be a str")
+        __self__.source = source
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        __self__.status = status
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        __self__.tags = tags
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
@@ -64,28 +83,42 @@ class AwaitableGetImageResult(GetImageResult):
         if False:
             yield self
         return GetImageResult(
+            created=self.created,
             distribution=self.distribution,
+            error_message=self.error_message,
             id=self.id,
             image=self.image,
             min_disk_size=self.min_disk_size,
             name=self.name,
             private=self.private,
             regions=self.regions,
+            size_gigabytes=self.size_gigabytes,
             slug=self.slug,
+            source=self.source,
+            status=self.status,
+            tags=self.tags,
             type=self.type)
 
-def get_image(name=None,slug=None,opts=None):
+def get_image(id=None,name=None,slug=None,source=None,opts=None):
     """
     Use this data source to access information about an existing resource.
 
-    :param str name: The name of the private image.
+    :param float id: The id of the image
+    :param str name: The name of the image.
     :param str slug: The slug of the official image.
+    :param str source: Restrict the search to one of the following categories of images:
+           - `all` - All images (whether public or private)
+           - `applications` - One-click applications
+           - `distributions` - Distributions
+           - `user` - (Default) User (private) images
     """
     __args__ = dict()
 
 
+    __args__['id'] = id
     __args__['name'] = name
     __args__['slug'] = slug
+    __args__['source'] = source
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -93,12 +126,18 @@ def get_image(name=None,slug=None,opts=None):
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts).value
 
     return AwaitableGetImageResult(
+        created=__ret__.get('created'),
         distribution=__ret__.get('distribution'),
+        error_message=__ret__.get('errorMessage'),
         id=__ret__.get('id'),
         image=__ret__.get('image'),
         min_disk_size=__ret__.get('minDiskSize'),
         name=__ret__.get('name'),
         private=__ret__.get('private'),
         regions=__ret__.get('regions'),
+        size_gigabytes=__ret__.get('sizeGigabytes'),
         slug=__ret__.get('slug'),
+        source=__ret__.get('source'),
+        status=__ret__.get('status'),
+        tags=__ret__.get('tags'),
         type=__ret__.get('type'))

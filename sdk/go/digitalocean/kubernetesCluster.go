@@ -36,6 +36,7 @@ type KubernetesCluster struct {
 	// - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 	// - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+	// - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 	NodePool KubernetesClusterNodePoolOutput `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -115,6 +116,7 @@ type kubernetesClusterState struct {
 	// - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 	// - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+	// - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 	NodePool *KubernetesClusterNodePool `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region *string `pulumi:"region"`
@@ -158,6 +160,7 @@ type KubernetesClusterState struct {
 	// - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 	// - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+	// - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 	NodePool KubernetesClusterNodePoolPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringPtrInput
@@ -196,6 +199,7 @@ type kubernetesClusterArgs struct {
 	// - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 	// - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+	// - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region string `pulumi:"region"`
@@ -217,6 +221,7 @@ type KubernetesClusterArgs struct {
 	// - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 	// - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 	// - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
+	// - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 	NodePool KubernetesClusterNodePoolInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringInput

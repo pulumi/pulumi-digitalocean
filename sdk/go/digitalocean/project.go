@@ -10,25 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a DigitalOcean Project resource.
-//
-// Projects allow you to organize your resources into groups that fit the way you work.
-// You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
-// in ways that align with the applications you host on DigitalOcean.
-//
-// The following resource types can be associated with a project:
-//
-// * Database Clusters
-// * Domains
-// * Droplets
-// * Floating IP
-// * Load Balancers
-// * Spaces Bucket
-// * Volume
-//
-// **Note:** A Terrafrom managed project cannot be set as a default project.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/project.html.markdown.
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -38,6 +19,7 @@ type Project struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
+	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// The name of the Project
 	Name pulumi.StringOutput `pulumi:"name"`
 	// the id of the project owner.
@@ -86,6 +68,7 @@ type projectState struct {
 	Description *string `pulumi:"description"`
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment *string `pulumi:"environment"`
+	IsDefault *bool `pulumi:"isDefault"`
 	// The name of the Project
 	Name *string `pulumi:"name"`
 	// the id of the project owner.
@@ -107,6 +90,7 @@ type ProjectState struct {
 	Description pulumi.StringPtrInput
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment pulumi.StringPtrInput
+	IsDefault pulumi.BoolPtrInput
 	// The name of the Project
 	Name pulumi.StringPtrInput
 	// the id of the project owner.

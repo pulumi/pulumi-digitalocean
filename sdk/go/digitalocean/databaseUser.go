@@ -21,6 +21,8 @@ type DatabaseUser struct {
 
 	// The ID of the original source database cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+	MysqlAuthPlugin pulumi.StringPtrOutput `pulumi:"mysqlAuthPlugin"`
 	// The name for the database user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Password for the database user.
@@ -62,6 +64,8 @@ func GetDatabaseUser(ctx *pulumi.Context,
 type databaseUserState struct {
 	// The ID of the original source database cluster.
 	ClusterId *string `pulumi:"clusterId"`
+	// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+	MysqlAuthPlugin *string `pulumi:"mysqlAuthPlugin"`
 	// The name for the database user.
 	Name *string `pulumi:"name"`
 	// Password for the database user.
@@ -73,6 +77,8 @@ type databaseUserState struct {
 type DatabaseUserState struct {
 	// The ID of the original source database cluster.
 	ClusterId pulumi.StringPtrInput
+	// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+	MysqlAuthPlugin pulumi.StringPtrInput
 	// The name for the database user.
 	Name pulumi.StringPtrInput
 	// Password for the database user.
@@ -88,6 +94,8 @@ func (DatabaseUserState) ElementType() reflect.Type {
 type databaseUserArgs struct {
 	// The ID of the original source database cluster.
 	ClusterId string `pulumi:"clusterId"`
+	// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+	MysqlAuthPlugin *string `pulumi:"mysqlAuthPlugin"`
 	// The name for the database user.
 	Name *string `pulumi:"name"`
 }
@@ -96,6 +104,8 @@ type databaseUserArgs struct {
 type DatabaseUserArgs struct {
 	// The ID of the original source database cluster.
 	ClusterId pulumi.StringInput
+	// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+	MysqlAuthPlugin pulumi.StringPtrInput
 	// The name for the database user.
 	Name pulumi.StringPtrInput
 }

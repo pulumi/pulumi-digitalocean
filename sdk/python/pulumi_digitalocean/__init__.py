@@ -33,10 +33,15 @@ from .get_droplet import *
 from .get_droplet_snapshot import *
 from .get_floating_ip import *
 from .get_image import *
+from .get_images import *
 from .get_kubernetes_cluster import *
 from .get_kubernetes_versions import *
 from .get_load_balancer import *
+from .get_project import *
+from .get_projects import *
 from .get_record import *
+from .get_region import *
+from .get_regions import *
 from .get_sizes import *
 from .get_ssh_key import *
 from .get_tag import *

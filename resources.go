@@ -242,6 +242,11 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_volume_snapshot":     {Tok: digitalOceanDataSource(digitalOceanMod, "getVolumeSnapshot")},
 			"digitalocean_sizes":               {Tok: digitalOceanDataSource(digitalOceanMod, "getSizes")},
 			"digitalocean_account":             {Tok: digitalOceanDataSource(digitalOceanMod, "getAccount")},
+			"digitalocean_images":              {Tok: digitalOceanDataSource(digitalOceanMod, "getImages")},
+			"digitalocean_project":             {Tok: digitalOceanDataSource(digitalOceanMod, "getProject")},
+			"digitalocean_projects":            {Tok: digitalOceanDataSource(digitalOceanMod, "getProjects")},
+			"digitalocean_region":              {Tok: digitalOceanDataSource(digitalOceanMod, "getRegion")},
+			"digitalocean_regions":             {Tok: digitalOceanDataSource(digitalOceanMod, "getRegions")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
