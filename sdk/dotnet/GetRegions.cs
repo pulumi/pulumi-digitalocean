@@ -20,7 +20,22 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/regions.html.md.
         /// </summary>
+        [Obsolete("Use GetRegions.InvokeAsync() instead")]
         public static Task<GetRegionsResult> GetRegions(GetRegionsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRegions
+    {
+        /// <summary>
+        /// Retrieve information about all supported DigitalOcean regions, with the ability to
+        /// filter and sort the results. If no filters are specified, all regions will be returned.
+        /// 
+        /// Note: You can use the [`digitalocean..getRegion`](https://www.terraform.io/docs/providers/do/d/region.html) data source
+        /// to obtain metadata about a single region if you already know the `slug` to retrieve.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/regions.html.md.
+        /// </summary>
+        public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -96,8 +111,8 @@ namespace Pulumi.DigitalOcean
     public sealed class GetRegionsFiltersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Sort the regions by this key. This may be one of `slug`,
-        /// `name`, or `available`.
+        /// Filter the regions by this key. This may be one of `slug`,
+        /// `name`, `available`, `features`, or `sizes`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
@@ -148,8 +163,8 @@ namespace Pulumi.DigitalOcean
     public sealed class GetRegionsFiltersResult
     {
         /// <summary>
-        /// Sort the regions by this key. This may be one of `slug`,
-        /// `name`, or `available`.
+        /// Filter the regions by this key. This may be one of `slug`,
+        /// `name`, `available`, `features`, or `sizes`.
         /// </summary>
         public readonly string Key;
         /// <summary>

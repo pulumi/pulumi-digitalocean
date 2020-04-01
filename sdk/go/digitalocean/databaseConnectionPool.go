@@ -177,4 +177,3 @@ type DatabaseConnectionPoolArgs struct {
 func (DatabaseConnectionPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseConnectionPoolArgs)(nil)).Elem()
 }
-

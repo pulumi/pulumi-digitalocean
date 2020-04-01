@@ -23,16 +23,14 @@ type LookupDomainArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getDomain.
 type LookupDomainResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
-	Ttl int `pulumi:"ttl"`
+	Ttl  int    `pulumi:"ttl"`
 	// The uniform resource name of the domain
 	// * `zoneFile`: The zone file of the domain.
-	Urn string `pulumi:"urn"`
+	Urn      string `pulumi:"urn"`
 	ZoneFile string `pulumi:"zoneFile"`
 }
-

@@ -66,8 +66,8 @@ def get_regions(filters=None,sorts=None,opts=None):
 
     The **filters** object supports the following:
 
-      * `key` (`str`) - Sort the regions by this key. This may be one of `slug`,
-        `name`, or `available`.
+      * `key` (`str`) - Filter the regions by this key. This may be one of `slug`,
+        `name`, `available`, `features`, or `sizes`.
       * `values` (`list`) - A list of values to match against the `key` field. Only retrieves regions
         where the `key` field takes on one or more of the values provided here.
 

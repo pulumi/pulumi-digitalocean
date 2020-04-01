@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetImages.InvokeAsync() instead")]
         public static Task<GetImagesResult> GetImages(GetImagesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetImages
+    {
+        public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -98,8 +104,9 @@ namespace Pulumi.DigitalOcean
     public sealed class GetImagesFiltersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-        /// `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+        /// Filter the images by this key. This may be one of `distribution`, `error_message`,
+        /// `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+        /// `tags`, or `type`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
@@ -150,8 +157,9 @@ namespace Pulumi.DigitalOcean
     public sealed class GetImagesFiltersResult
     {
         /// <summary>
-        /// Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-        /// `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+        /// Filter the images by this key. This may be one of `distribution`, `error_message`,
+        /// `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+        /// `tags`, or `type`.
         /// </summary>
         public readonly string Key;
         /// <summary>

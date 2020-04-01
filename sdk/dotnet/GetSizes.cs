@@ -18,7 +18,20 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
         /// </summary>
+        [Obsolete("Use GetSizes.InvokeAsync() instead")]
         public static Task<GetSizesResult> GetSizes(GetSizesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSizes
+    {
+        /// <summary>
+        /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
+        /// the ability to filter and sort the results. If no filters are specified, all sizes
+        /// will be returned.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
+        /// </summary>
+        public static Task<GetSizesResult> InvokeAsync(GetSizesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -86,8 +99,9 @@ namespace Pulumi.DigitalOcean
     public sealed class GetSizesFiltersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Sort the sizes by this key. This may be one of `slug`,
-        /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+        /// Filter the sizes by this key. This may be one of `slug`,
+        /// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
+        /// `price_hourly`, or `available`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
@@ -138,8 +152,9 @@ namespace Pulumi.DigitalOcean
     public sealed class GetSizesFiltersResult
     {
         /// <summary>
-        /// Sort the sizes by this key. This may be one of `slug`,
-        /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+        /// Filter the sizes by this key. This may be one of `slug`,
+        /// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
+        /// `price_hourly`, or `available`.
         /// </summary>
         public readonly string Key;
         /// <summary>

@@ -36,7 +36,6 @@ type GetProjectsArgs struct {
 	Sorts []GetProjectsSort `pulumi:"sorts"`
 }
 
-
 // A collection of values returned by getProjects.
 type GetProjectsResult struct {
 	Filters []GetProjectsFilter `pulumi:"filters"`
@@ -55,6 +54,5 @@ type GetProjectsResult struct {
 	// - `createdAt` - The date and time when the project was created, (ISO8601)
 	// - `updatedAt` - The date and time when the project was last updated, (ISO8601)
 	Projects []GetProjectsProject `pulumi:"projects"`
-	Sorts []GetProjectsSort `pulumi:"sorts"`
+	Sorts    []GetProjectsSort    `pulumi:"sorts"`
 }
-

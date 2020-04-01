@@ -27,6 +27,9 @@ export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getVolume.
  */
 export interface GetVolumeArgs {
+    /**
+     * Text describing a block storage volume.
+     */
     readonly description?: string;
     /**
      * The name of block storage volume.

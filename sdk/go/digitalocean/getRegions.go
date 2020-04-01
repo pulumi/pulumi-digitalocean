@@ -34,19 +34,17 @@ type GetRegionsArgs struct {
 	Sorts []GetRegionsSort `pulumi:"sorts"`
 }
 
-
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
 	Filters []GetRegionsFilter `pulumi:"filters"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:  
+	// A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
 	// - `slug` - A human-readable string that is used as a unique identifier for each region.
 	// - `name` - The display name of the region.
 	// - `available` - A boolean value that represents whether new Droplets can be created in this region.
 	// - `sizes` - A set of identifying slugs for the Droplet sizes available in this region.
 	// - `features` - A set of features available in this region.
 	Regions []GetRegionsRegion `pulumi:"regions"`
-	Sorts []GetRegionsSort `pulumi:"sorts"`
+	Sorts   []GetRegionsSort   `pulumi:"sorts"`
 }
-

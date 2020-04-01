@@ -33,7 +33,6 @@ type GetImageArgs struct {
 	Source *string `pulumi:"source"`
 }
 
-
 // A collection of values returned by getImage.
 type GetImageResult struct {
 	Created string `pulumi:"created"`
@@ -42,11 +41,11 @@ type GetImageResult struct {
 	// * `sizeGigabytes`: The size of the image in GB.
 	Distribution string `pulumi:"distribution"`
 	ErrorMessage string `pulumi:"errorMessage"`
-	Id int `pulumi:"id"`
+	Id           int    `pulumi:"id"`
 	// The id of the image (legacy parameter).
-	Image string `pulumi:"image"`
-	MinDiskSize int `pulumi:"minDiskSize"`
-	Name string `pulumi:"name"`
+	Image       string `pulumi:"image"`
+	MinDiskSize int    `pulumi:"minDiskSize"`
+	Name        string `pulumi:"name"`
 	// Is image a public image or not. Public images represent
 	// Linux distributions or One-Click Applications, while non-public images represent
 	// snapshots and backups and are only available within your account.
@@ -55,13 +54,12 @@ type GetImageResult struct {
 	// * `created`: When the image was created
 	// * `status`: Current status of the image
 	// * `errorMessage`: Any applicable error message pertaining to the image
-	Private bool `pulumi:"private"`
-	Regions []string `pulumi:"regions"`
-	SizeGigabytes float64 `pulumi:"sizeGigabytes"`
-	Slug string `pulumi:"slug"`
-	Source *string `pulumi:"source"`
-	Status string `pulumi:"status"`
-	Tags []string `pulumi:"tags"`
-	Type string `pulumi:"type"`
+	Private       bool     `pulumi:"private"`
+	Regions       []string `pulumi:"regions"`
+	SizeGigabytes float64  `pulumi:"sizeGigabytes"`
+	Slug          string   `pulumi:"slug"`
+	Source        *string  `pulumi:"source"`
+	Status        string   `pulumi:"status"`
+	Tags          []string `pulumi:"tags"`
+	Type          string   `pulumi:"type"`
 }
-

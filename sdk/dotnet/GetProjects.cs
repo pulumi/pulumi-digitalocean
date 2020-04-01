@@ -22,7 +22,24 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
         /// </summary>
+        [Obsolete("Use GetProjects.InvokeAsync() instead")]
         public static Task<GetProjectsResult> GetProjects(GetProjectsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProjects
+    {
+        /// <summary>
+        /// Retrieve information about all DigitalOcean projects associated with an account, with
+        /// the ability to filter and sort the results. If no filters are specified, all projects
+        /// will be returned.
+        /// 
+        /// Note: You can use the [`digitalocean..Project`](https://www.terraform.io/docs/providers/do/d/project.html) data source to
+        /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
+        /// `name` of the project.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
+        /// </summary>
+        public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -104,8 +121,8 @@ namespace Pulumi.DigitalOcean
     public sealed class GetProjectsFiltersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Sort the projects by this key. This may be one of `name`,
-        /// `purpose`, `description`, or `environment`.
+        /// Filter the projects by this key. This may be one of `name`,
+        /// `purpose`, `description`, `environment`, or `is_default`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
@@ -156,8 +173,8 @@ namespace Pulumi.DigitalOcean
     public sealed class GetProjectsFiltersResult
     {
         /// <summary>
-        /// Sort the projects by this key. This may be one of `name`,
-        /// `purpose`, `description`, or `environment`.
+        /// Filter the projects by this key. This may be one of `name`,
+        /// `purpose`, `description`, `environment`, or `is_default`.
         /// </summary>
         public readonly string Key;
         /// <summary>

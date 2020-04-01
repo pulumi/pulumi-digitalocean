@@ -94,4 +94,3 @@ type FloatingIpAssignmentArgs struct {
 func (FloatingIpAssignmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpAssignmentArgs)(nil)).Elem()
 }
-

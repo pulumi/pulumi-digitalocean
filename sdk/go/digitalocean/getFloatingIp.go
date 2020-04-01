@@ -23,14 +23,12 @@ type LookupFloatingIpArgs struct {
 	IpAddress string `pulumi:"ipAddress"`
 }
 
-
 // A collection of values returned by getFloatingIp.
 type LookupFloatingIpResult struct {
 	DropletId int `pulumi:"dropletId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string `pulumi:"id"`
 	IpAddress string `pulumi:"ipAddress"`
-	Region string `pulumi:"region"`
-	Urn string `pulumi:"urn"`
+	Region    string `pulumi:"region"`
+	Urn       string `pulumi:"urn"`
 }
-

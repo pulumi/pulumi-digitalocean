@@ -56,8 +56,9 @@ def get_sizes(filters=None,sorts=None,opts=None):
 
     The **filters** object supports the following:
 
-      * `key` (`str`) - Sort the sizes by this key. This may be one of `slug`,
-        `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+      * `key` (`str`) - Filter the sizes by this key. This may be one of `slug`,
+        `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
+        `price_hourly`, or `available`.
       * `values` (`list`) - Only retrieves images which keys has value that matches
         one of the values provided here.
 

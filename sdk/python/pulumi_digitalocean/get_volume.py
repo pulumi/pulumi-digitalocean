@@ -86,6 +86,7 @@ def get_volume(description=None,name=None,region=None,opts=None):
     """
     Use this data source to access information about an existing resource.
 
+    :param str description: Text describing a block storage volume.
     :param str name: The name of block storage volume.
     :param str region: The region the block storage volume is provisioned in.
     """

@@ -17,8 +17,8 @@ package main
 import (
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
 
-	"github.com/pulumi/pulumi-digitalocean"
-	"github.com/pulumi/pulumi-digitalocean/pkg/version"
+	digitalocean "github.com/pulumi/pulumi-digitalocean/provider"
+	"github.com/pulumi/pulumi-digitalocean/provider/pkg/version"
 )
 
 func main() {

@@ -23,10 +23,9 @@ func LookupDatabaseCluster(ctx *pulumi.Context, args *LookupDatabaseClusterArgs,
 // A collection of arguments for invoking getDatabaseCluster.
 type LookupDatabaseClusterArgs struct {
 	// The name of the database cluster.
-	Name string `pulumi:"name"`
+	Name string   `pulumi:"name"`
 	Tags []string `pulumi:"tags"`
 }
-
 
 // A collection of values returned by getDatabaseCluster.
 type LookupDatabaseClusterResult struct {
@@ -40,7 +39,7 @@ type LookupDatabaseClusterResult struct {
 	Id string `pulumi:"id"`
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows []GetDatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
-	Name string `pulumi:"name"`
+	Name               string                                `pulumi:"name"`
 	// Number of nodes that will be included in the cluster.
 	NodeCount int `pulumi:"nodeCount"`
 	// Password for the cluster's default user.
@@ -54,7 +53,7 @@ type LookupDatabaseClusterResult struct {
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
-	Size string `pulumi:"size"`
+	Size string   `pulumi:"size"`
 	Tags []string `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
 	Uri string `pulumi:"uri"`
@@ -65,4 +64,3 @@ type LookupDatabaseClusterResult struct {
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
 	Version string `pulumi:"version"`
 }
-

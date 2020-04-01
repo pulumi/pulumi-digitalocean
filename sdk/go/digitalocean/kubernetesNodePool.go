@@ -192,4 +192,3 @@ type KubernetesNodePoolArgs struct {
 func (KubernetesNodePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesNodePoolArgs)(nil)).Elem()
 }
-

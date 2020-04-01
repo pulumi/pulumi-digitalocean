@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetImage.InvokeAsync() instead")]
         public static Task<GetImageResult> GetImage(GetImageArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetImage
+    {
+        public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

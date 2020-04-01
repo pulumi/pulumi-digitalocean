@@ -126,4 +126,3 @@ type CdnArgs struct {
 func (CdnArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cdnArgs)(nil)).Elem()
 }
-

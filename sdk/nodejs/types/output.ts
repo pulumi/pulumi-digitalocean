@@ -126,8 +126,9 @@ export interface GetDatabaseClusterMaintenanceWindow {
 
 export interface GetImagesFilter {
     /**
-     * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
-     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+     * Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+     * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
+     * `tags`, or `type`.
      */
     key: string;
     /**
@@ -258,8 +259,8 @@ export interface GetLoadBalancerStickySessions {
 
 export interface GetProjectsFilter {
     /**
-     * Sort the projects by this key. This may be one of `name`,
-     * `purpose`, `description`, or `environment`.
+     * Filter the projects by this key. This may be one of `name`,
+     * `purpose`, `description`, `environment`, or `isDefault`.
      */
     key: string;
     /**
@@ -297,8 +298,8 @@ export interface GetProjectsSort {
 
 export interface GetRegionsFilter {
     /**
-     * Sort the regions by this key. This may be one of `slug`,
-     * `name`, or `available`.
+     * Filter the regions by this key. This may be one of `slug`,
+     * `name`, `available`, `features`, or `sizes`.
      */
     key: string;
     /**
@@ -330,8 +331,9 @@ export interface GetRegionsSort {
 
 export interface GetSizesFilter {
     /**
-     * Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+     * Filter the sizes by this key. This may be one of `slug`,
+     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+     * `priceHourly`, or `available`.
      */
     key: string;
     /**

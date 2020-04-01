@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetTag.InvokeAsync() instead")]
         public static Task<GetTagResult> GetTag(GetTagArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("digitalocean:index/getTag:getTag", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTag
+    {
+        public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("digitalocean:index/getTag:getTag", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

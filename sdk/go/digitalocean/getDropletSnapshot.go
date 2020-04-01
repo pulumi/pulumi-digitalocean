@@ -34,7 +34,6 @@ type LookupDropletSnapshotArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getDropletSnapshot.
 type LookupDropletSnapshotResult struct {
 	// The date and time the Droplet snapshot was created.
@@ -44,14 +43,13 @@ type LookupDropletSnapshotResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The minimum size in gigabytes required for a Droplet to be created based on this Droplet snapshot.
-	MinDiskSize int `pulumi:"minDiskSize"`
-	MostRecent *bool `pulumi:"mostRecent"`
-	Name *string `pulumi:"name"`
-	NameRegex *string `pulumi:"nameRegex"`
-	Region *string `pulumi:"region"`
+	MinDiskSize int     `pulumi:"minDiskSize"`
+	MostRecent  *bool   `pulumi:"mostRecent"`
+	Name        *string `pulumi:"name"`
+	NameRegex   *string `pulumi:"nameRegex"`
+	Region      *string `pulumi:"region"`
 	// A list of DigitalOcean region "slugs" indicating where the Droplet snapshot is available.
 	Regions []string `pulumi:"regions"`
 	// The billable size of the Droplet snapshot in gigabytes.
 	Size float64 `pulumi:"size"`
 }
-

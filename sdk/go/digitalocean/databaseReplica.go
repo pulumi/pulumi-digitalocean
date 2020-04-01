@@ -36,7 +36,7 @@ type DatabaseReplica struct {
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
-	Size pulumi.StringPtrOutput `pulumi:"size"`
+	Size pulumi.StringPtrOutput   `pulumi:"size"`
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The full URI for connecting to the database replica.
 	Uri pulumi.StringOutput `pulumi:"uri"`
@@ -94,7 +94,7 @@ type databaseReplicaState struct {
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
-	Size *string `pulumi:"size"`
+	Size *string  `pulumi:"size"`
 	Tags []string `pulumi:"tags"`
 	// The full URI for connecting to the database replica.
 	Uri *string `pulumi:"uri"`
@@ -142,7 +142,7 @@ type databaseReplicaArgs struct {
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
-	Size *string `pulumi:"size"`
+	Size *string  `pulumi:"size"`
 	Tags []string `pulumi:"tags"`
 }
 
@@ -162,4 +162,3 @@ type DatabaseReplicaArgs struct {
 func (DatabaseReplicaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseReplicaArgs)(nil)).Elem()
 }
-

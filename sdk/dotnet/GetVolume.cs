@@ -11,12 +11,21 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetVolume.InvokeAsync() instead")]
         public static Task<GetVolumeResult> GetVolume(GetVolumeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetVolume
+    {
+        public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetVolumeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Text describing a block storage volume.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 

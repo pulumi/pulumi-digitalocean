@@ -89,4 +89,3 @@ type DatabaseDbArgs struct {
 func (DatabaseDbArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseDbArgs)(nil)).Elem()
 }
-

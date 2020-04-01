@@ -142,4 +142,3 @@ type SpacesBucketArgs struct {
 func (SpacesBucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*spacesBucketArgs)(nil)).Elem()
 }
-

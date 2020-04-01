@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetFloatingIp.InvokeAsync() instead")]
         public static Task<GetFloatingIpResult> GetFloatingIp(GetFloatingIpArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetFloatingIp
+    {
+        public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

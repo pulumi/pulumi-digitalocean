@@ -232,4 +232,3 @@ type DatabaseClusterArgs struct {
 func (DatabaseClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseClusterArgs)(nil)).Elem()
 }
-

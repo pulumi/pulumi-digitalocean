@@ -41,7 +41,7 @@ type Certificate struct {
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
 	// The SHA-1 fingerprint of the certificate
 	Sha1Fingerprint pulumi.StringOutput `pulumi:"sha1Fingerprint"`
-	State pulumi.StringOutput `pulumi:"state"`
+	State           pulumi.StringOutput `pulumi:"state"`
 	// The type of certificate to provision. Can be either
 	// `custom` or `letsEncrypt`. Defaults to `custom`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -95,7 +95,7 @@ type certificateState struct {
 	PrivateKey *string `pulumi:"privateKey"`
 	// The SHA-1 fingerprint of the certificate
 	Sha1Fingerprint *string `pulumi:"sha1Fingerprint"`
-	State *string `pulumi:"state"`
+	State           *string `pulumi:"state"`
 	// The type of certificate to provision. Can be either
 	// `custom` or `letsEncrypt`. Defaults to `custom`.
 	Type *string `pulumi:"type"`
@@ -122,7 +122,7 @@ type CertificateState struct {
 	PrivateKey pulumi.StringPtrInput
 	// The SHA-1 fingerprint of the certificate
 	Sha1Fingerprint pulumi.StringPtrInput
-	State pulumi.StringPtrInput
+	State           pulumi.StringPtrInput
 	// The type of certificate to provision. Can be either
 	// `custom` or `letsEncrypt`. Defaults to `custom`.
 	Type pulumi.StringPtrInput
@@ -180,4 +180,3 @@ type CertificateArgs struct {
 func (CertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateArgs)(nil)).Elem()
 }
-

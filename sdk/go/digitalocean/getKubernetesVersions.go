@@ -25,7 +25,6 @@ type GetKubernetesVersionsArgs struct {
 	VersionPrefix *string `pulumi:"versionPrefix"`
 }
 
-
 // A collection of values returned by getKubernetesVersions.
 type GetKubernetesVersionsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -34,6 +33,5 @@ type GetKubernetesVersionsResult struct {
 	LatestVersion string `pulumi:"latestVersion"`
 	// A list of available versions.
 	ValidVersions []string `pulumi:"validVersions"`
-	VersionPrefix *string `pulumi:"versionPrefix"`
+	VersionPrefix *string  `pulumi:"versionPrefix"`
 }
-

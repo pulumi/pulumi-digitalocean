@@ -23,16 +23,14 @@ type LookupCertificateArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getCertificate.
 type LookupCertificateResult struct {
 	Domains []string `pulumi:"domains"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	NotAfter string `pulumi:"notAfter"`
+	Id              string `pulumi:"id"`
+	Name            string `pulumi:"name"`
+	NotAfter        string `pulumi:"notAfter"`
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
-	State string `pulumi:"state"`
-	Type string `pulumi:"type"`
+	State           string `pulumi:"state"`
+	Type            string `pulumi:"type"`
 }
-

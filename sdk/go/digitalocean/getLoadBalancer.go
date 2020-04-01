@@ -23,23 +23,21 @@ type LookupLoadBalancerArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getLoadBalancer.
 type LookupLoadBalancerResult struct {
-	Algorithm string `pulumi:"algorithm"`
-	DropletIds []int `pulumi:"dropletIds"`
-	DropletTag string `pulumi:"dropletTag"`
-	EnableProxyProtocol bool `pulumi:"enableProxyProtocol"`
-	ForwardingRules []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
-	Healthcheck GetLoadBalancerHealthcheck `pulumi:"healthcheck"`
+	Algorithm           string                          `pulumi:"algorithm"`
+	DropletIds          []int                           `pulumi:"dropletIds"`
+	DropletTag          string                          `pulumi:"dropletTag"`
+	EnableProxyProtocol bool                            `pulumi:"enableProxyProtocol"`
+	ForwardingRules     []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
+	Healthcheck         GetLoadBalancerHealthcheck      `pulumi:"healthcheck"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Ip string `pulumi:"ip"`
-	Name string `pulumi:"name"`
-	RedirectHttpToHttps bool `pulumi:"redirectHttpToHttps"`
-	Region string `pulumi:"region"`
-	Status string `pulumi:"status"`
-	StickySessions GetLoadBalancerStickySessions `pulumi:"stickySessions"`
-	Urn string `pulumi:"urn"`
+	Id                  string                        `pulumi:"id"`
+	Ip                  string                        `pulumi:"ip"`
+	Name                string                        `pulumi:"name"`
+	RedirectHttpToHttps bool                          `pulumi:"redirectHttpToHttps"`
+	Region              string                        `pulumi:"region"`
+	Status              string                        `pulumi:"status"`
+	StickySessions      GetLoadBalancerStickySessions `pulumi:"stickySessions"`
+	Urn                 string                        `pulumi:"urn"`
 }
-

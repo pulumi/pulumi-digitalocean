@@ -25,20 +25,18 @@ type GetRecordArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getRecord.
 type GetRecordResult struct {
-	Data string `pulumi:"data"`
+	Data   string `pulumi:"data"`
 	Domain string `pulumi:"domain"`
-	Flags int `pulumi:"flags"`
+	Flags  int    `pulumi:"flags"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	Port int `pulumi:"port"`
-	Priority int `pulumi:"priority"`
-	Tag string `pulumi:"tag"`
-	Ttl int `pulumi:"ttl"`
-	Type string `pulumi:"type"`
-	Weight int `pulumi:"weight"`
+	Id       string `pulumi:"id"`
+	Name     string `pulumi:"name"`
+	Port     int    `pulumi:"port"`
+	Priority int    `pulumi:"priority"`
+	Tag      string `pulumi:"tag"`
+	Ttl      int    `pulumi:"ttl"`
+	Type     string `pulumi:"type"`
+	Weight   int    `pulumi:"weight"`
 }
-

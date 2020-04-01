@@ -19,13 +19,13 @@ func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getVolume.
 type LookupVolumeArgs struct {
+	// Text describing a block storage volume.
 	Description *string `pulumi:"description"`
 	// The name of block storage volume.
 	Name string `pulumi:"name"`
 	// The region the block storage volume is provisioned in.
 	Region *string `pulumi:"region"`
 }
-
 
 // A collection of values returned by getVolume.
 type LookupVolumeResult struct {
@@ -38,13 +38,12 @@ type LookupVolumeResult struct {
 	// Filesystem type currently in-use on the block storage volume.
 	FilesystemType string `pulumi:"filesystemType"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id     string  `pulumi:"id"`
+	Name   string  `pulumi:"name"`
 	Region *string `pulumi:"region"`
 	// The size of the block storage volume in GiB.
 	Size int `pulumi:"size"`
 	// A list of the tags associated to the Volume.
 	Tags []string `pulumi:"tags"`
-	Urn string `pulumi:"urn"`
+	Urn  string   `pulumi:"urn"`
 }
-

@@ -113,4 +113,3 @@ type DropletSnapshotArgs struct {
 func (DropletSnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dropletSnapshotArgs)(nil)).Elem()
 }
-

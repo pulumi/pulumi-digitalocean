@@ -16,7 +16,18 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
         /// </summary>
+        [Obsolete("Use GetAccount.InvokeAsync() instead")]
         public static Task<GetAccountResult> GetAccount(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("digitalocean:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAccount
+    {
+        /// <summary>
+        /// Get information on your DigitalOcean account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
+        /// </summary>
+        public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("digitalocean:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Get information on a single DigitalOcean region. This is useful to find out 
+// Get information on a single DigitalOcean region. This is useful to find out
 // what Droplet sizes and features are supported within a region.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
@@ -27,7 +27,6 @@ type GetRegionArgs struct {
 	Slug string `pulumi:"slug"`
 }
 
-
 // A collection of values returned by getRegion.
 type GetRegionResult struct {
 	// A boolean value that represents whether new Droplets can be created in this region.
@@ -43,4 +42,3 @@ type GetRegionResult struct {
 	// A human-readable string that is used as a unique identifier for each region.
 	Slug string `pulumi:"slug"`
 }
-

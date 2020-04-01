@@ -123,4 +123,3 @@ type VolumeSnapshotArgs struct {
 func (VolumeSnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeSnapshotArgs)(nil)).Elem()
 }
-
