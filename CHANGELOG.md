@@ -2,11 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-- Upgrade to pulumi-terraform-bridge v1.8.4
-- Upgrade to Pulumi v1.13.1
-- Change layout to support Go modules
-
+_(none)_
 ---
+
+## 1.9.0 (2020-04-01)
+* Upgrade to pulumi-terraform-bridge v1.8.4
+* Upgrade to Pulumi v1.13.1
+* Change layout to support Go modules
 
 ## 1.8.0 (2020-03-23)
 * Upgrade to v1.15.1 of the DigitalOcean Terraform Provider
