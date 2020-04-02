@@ -28,6 +28,10 @@ var (
 		`^v(?P<version>\d+\.\d+\.\d+)(?P<dirty>\+dirty)?$`)
 	rcVersionRegex = regexp.MustCompile(
 		`^v(?P<version>\d+\.\d+\.\d+)-rc\.(?P<rcN>\d+)(?P<dirty>\+dirty)?$`)
+	betaVersionRegex = regexp.MustCompile(
+		`^v(?P<version>\d+\.\d+\.\d+)-beta\.(?P<betaN>\d+)(?P<dirty>.dirty)?$`)
+	alphaVersionRegex = regexp.MustCompile(
+		`^v(?P<version>\d+\.\d+\.\d+)-alpha\.(?P<time>\d+)\+(?P<gitInfo>g[a-z0-9]+)(?P<dirty>.dirty)?$`)
 	devVersionRegex = regexp.MustCompile(
 		`^v(?P<version>\d+\.\d+\.\d+)-dev\.(?P<time>\d+)\+(?P<gitInfo>g[a-z0-9]+)(?P<dirty>.dirty)?$`)
 )
