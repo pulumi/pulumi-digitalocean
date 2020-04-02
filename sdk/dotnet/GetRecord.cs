@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetRecord.InvokeAsync() instead")]
         public static Task<GetRecordResult> GetRecord(GetRecordArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRecord
+    {
+        public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

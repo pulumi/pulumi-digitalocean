@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetDomain.InvokeAsync() instead")]
         public static Task<GetDomainResult> GetDomain(GetDomainArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDomain
+    {
+        public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

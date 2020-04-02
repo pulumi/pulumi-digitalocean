@@ -16,10 +16,10 @@ if [ "$(go env GOOS)" = "windows" ]; then
     BIN_SUFFIX=".exe"
 fi
 
-go build \
-   -ldflags "-X github.com/pulumi/pulumi-digitalocean/pkg/version.Version=${VERSION}" \
+(cd provider && go build \
+   -ldflags "-X github.com/pulumi/pulumi-digitalocean/provider/pkg/version.Version=${VERSION}" \
    -o "${WORK_PATH}/pulumi-resource-digitalocean${BIN_SUFFIX}" \
-   "${ROOT}/cmd/pulumi-resource-digitalocean"
+   "${ROOT}/cmd/pulumi-resource-digitalocean")
 
 # Tar up the plugin
 tar -czf ${PLUGIN_PACKAGE_PATH} -C ${WORK_PATH} .

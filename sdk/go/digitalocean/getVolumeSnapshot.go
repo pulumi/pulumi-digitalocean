@@ -34,7 +34,6 @@ type LookupVolumeSnapshotArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getVolumeSnapshot.
 type LookupVolumeSnapshotResult struct {
 	// The date and time the volume snapshot was created.
@@ -42,11 +41,11 @@ type LookupVolumeSnapshotResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
-	MinDiskSize int `pulumi:"minDiskSize"`
-	MostRecent *bool `pulumi:"mostRecent"`
-	Name *string `pulumi:"name"`
-	NameRegex *string `pulumi:"nameRegex"`
-	Region *string `pulumi:"region"`
+	MinDiskSize int     `pulumi:"minDiskSize"`
+	MostRecent  *bool   `pulumi:"mostRecent"`
+	Name        *string `pulumi:"name"`
+	NameRegex   *string `pulumi:"nameRegex"`
+	Region      *string `pulumi:"region"`
 	// A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
 	Regions []string `pulumi:"regions"`
 	// The billable size of the volume snapshot in gigabytes.
@@ -56,4 +55,3 @@ type LookupVolumeSnapshotResult struct {
 	// The ID of the volume from which the volume snapshot originated.
 	VolumeId string `pulumi:"volumeId"`
 }
-

@@ -142,6 +142,7 @@ def get_kubernetes_cluster(name=None,tags=None,opts=None):
     Use this data source to access information about an existing resource.
 
     :param str name: The name of Kubernetes cluster.
+    :param list tags: A list of tag names to be applied to the Kubernetes cluster.
     """
     __args__ = dict()
 

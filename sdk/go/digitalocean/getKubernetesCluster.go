@@ -21,9 +21,9 @@ func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterA
 type LookupKubernetesClusterArgs struct {
 	// The name of Kubernetes cluster.
 	Name string `pulumi:"name"`
+	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 }
-
 
 // A collection of values returned by getKubernetesCluster.
 type LookupKubernetesClusterResult struct {
@@ -36,9 +36,9 @@ type LookupKubernetesClusterResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The public IPv4 address of the Kubernetes master node.
-	Ipv4Address string `pulumi:"ipv4Address"`
+	Ipv4Address string                           `pulumi:"ipv4Address"`
 	KubeConfigs []GetKubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
-	Name string `pulumi:"name"`
+	Name        string                           `pulumi:"name"`
 	// A list of node pools associated with the cluster. Each node pool exports the following attributes:
 	// - `id` -  The unique ID that can be used to identify and reference the node pool.
 	// - `name` - The name of the node pool.
@@ -78,4 +78,3 @@ type LookupKubernetesClusterResult struct {
 	// The slug identifier for the version of Kubernetes used for the cluster.
 	Version string `pulumi:"version"`
 }
-

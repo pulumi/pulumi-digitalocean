@@ -181,4 +181,3 @@ type DnsRecordArgs struct {
 func (DnsRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsRecordArgs)(nil)).Elem()
 }
-

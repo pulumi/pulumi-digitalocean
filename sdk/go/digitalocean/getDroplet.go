@@ -27,15 +27,14 @@ type LookupDropletArgs struct {
 	Tag *string `pulumi:"tag"`
 }
 
-
 // A collection of values returned by getDroplet.
 type LookupDropletResult struct {
 	// Whether backups are enabled.
-	Backups bool `pulumi:"backups"`
+	Backups   bool   `pulumi:"backups"`
 	CreatedAt string `pulumi:"createdAt"`
 	// The size of the Droplets disk in GB.
-	Disk int `pulumi:"disk"`
-	Id *int `pulumi:"id"`
+	Disk int  `pulumi:"disk"`
+	Id   *int `pulumi:"id"`
 	// The Droplet image ID or slug.
 	Image string `pulumi:"image"`
 	// The Droplets public IPv4 address
@@ -53,8 +52,8 @@ type LookupDropletResult struct {
 	// The amount of the Droplets memory in MB.
 	Memory int `pulumi:"memory"`
 	// Whether monitoring agent is installed.
-	Monitoring bool `pulumi:"monitoring"`
-	Name *string `pulumi:"name"`
+	Monitoring bool    `pulumi:"monitoring"`
+	Name       *string `pulumi:"name"`
 	// Droplet hourly price.
 	PriceHourly float64 `pulumi:"priceHourly"`
 	// Droplet monthly price.
@@ -66,8 +65,8 @@ type LookupDropletResult struct {
 	// The unique slug that indentifies the type of Droplet.
 	Size string `pulumi:"size"`
 	// The status of the Droplet.
-	Status string `pulumi:"status"`
-	Tag *string `pulumi:"tag"`
+	Status string  `pulumi:"status"`
+	Tag    *string `pulumi:"tag"`
 	// A list of the tags associated to the Droplet.
 	Tags []string `pulumi:"tags"`
 	// The uniform resource name of the Droplet
@@ -77,4 +76,3 @@ type LookupDropletResult struct {
 	// List of the IDs of each volumes attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
 }
-

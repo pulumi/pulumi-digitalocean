@@ -74,8 +74,8 @@ def get_projects(filters=None,sorts=None,opts=None):
 
     The **filters** object supports the following:
 
-      * `key` (`str`) - Sort the projects by this key. This may be one of `name`,
-        `purpose`, `description`, or `environment`.
+      * `key` (`str`) - Filter the projects by this key. This may be one of `name`,
+        `purpose`, `description`, `environment`, or `is_default`.
       * `values` (`list`) - A list of values to match against the `key` field. Only retrieves projects
         where the `key` field takes on one or more of the values provided here.
 

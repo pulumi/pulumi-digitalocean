@@ -22,14 +22,13 @@ func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountRe
 
 // A collection of values returned by getAccount.
 type GetAccountResult struct {
-	DropletLimit int `pulumi:"dropletLimit"`
-	Email string `pulumi:"email"`
-	EmailVerified bool `pulumi:"emailVerified"`
-	FloatingIpLimit int `pulumi:"floatingIpLimit"`
+	DropletLimit    int    `pulumi:"dropletLimit"`
+	Email           string `pulumi:"email"`
+	EmailVerified   bool   `pulumi:"emailVerified"`
+	FloatingIpLimit int    `pulumi:"floatingIpLimit"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Status string `pulumi:"status"`
+	Id            string `pulumi:"id"`
+	Status        string `pulumi:"status"`
 	StatusMessage string `pulumi:"statusMessage"`
-	Uuid string `pulumi:"uuid"`
+	Uuid          string `pulumi:"uuid"`
 }
-

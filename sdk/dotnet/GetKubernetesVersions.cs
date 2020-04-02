@@ -16,7 +16,18 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
         /// </summary>
+        [Obsolete("Use GetKubernetesVersions.InvokeAsync() instead")]
         public static Task<GetKubernetesVersionsResult> GetKubernetesVersions(GetKubernetesVersionsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKubernetesVersions
+    {
+        /// <summary>
+        /// Provides access to the available DigitalOcean Kubernetes Service versions.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
+        /// </summary>
+        public static Task<GetKubernetesVersionsResult> InvokeAsync(GetKubernetesVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

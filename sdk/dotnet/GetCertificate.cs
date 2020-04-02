@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetCertificate.InvokeAsync() instead")]
         public static Task<GetCertificateResult> GetCertificate(GetCertificateArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("digitalocean:index/getCertificate:getCertificate", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCertificate
+    {
+        public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("digitalocean:index/getCertificate:getCertificate", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

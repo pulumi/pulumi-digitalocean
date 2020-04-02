@@ -70,8 +70,9 @@ def get_images(filters=None,sorts=None,opts=None):
 
     The **filters** object supports the following:
 
-      * `key` (`str`) - Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-        `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+      * `key` (`str`) - Filter the images by this key. This may be one of `distribution`, `error_message`,
+        `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+        `tags`, or `type`.
       * `values` (`list`) - A list of values to match against the `key` field. Only retrieves images
         where the `key` field takes on one or more of the values provided here.
 

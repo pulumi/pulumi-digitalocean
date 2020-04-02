@@ -21,8 +21,8 @@ type Droplet struct {
 
 	// Boolean controlling if backups are made. Defaults to
 	// false.
-	Backups pulumi.BoolPtrOutput `pulumi:"backups"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	Backups   pulumi.BoolPtrOutput `pulumi:"backups"`
+	CreatedAt pulumi.StringOutput  `pulumi:"createdAt"`
 	// The size of the instance's disk in GB
 	Disk pulumi.IntOutput `pulumi:"disk"`
 	// The Droplet image ID or slug.
@@ -37,7 +37,7 @@ type Droplet struct {
 	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
 	// Is the Droplet locked
 	Locked pulumi.BoolOutput `pulumi:"locked"`
-	Memory pulumi.IntOutput `pulumi:"memory"`
+	Memory pulumi.IntOutput  `pulumi:"memory"`
 	// Boolean controlling whether monitoring agent is installed.
 	// Defaults to false.
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
@@ -118,7 +118,7 @@ func GetDroplet(ctx *pulumi.Context,
 type dropletState struct {
 	// Boolean controlling if backups are made. Defaults to
 	// false.
-	Backups *bool `pulumi:"backups"`
+	Backups   *bool   `pulumi:"backups"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// The size of the instance's disk in GB
 	Disk *int `pulumi:"disk"`
@@ -134,7 +134,7 @@ type dropletState struct {
 	Ipv6Address *string `pulumi:"ipv6Address"`
 	// Is the Droplet locked
 	Locked *bool `pulumi:"locked"`
-	Memory *int `pulumi:"memory"`
+	Memory *int  `pulumi:"memory"`
 	// Boolean controlling whether monitoring agent is installed.
 	// Defaults to false.
 	Monitoring *bool `pulumi:"monitoring"`
@@ -179,7 +179,7 @@ type dropletState struct {
 type DropletState struct {
 	// Boolean controlling if backups are made. Defaults to
 	// false.
-	Backups pulumi.BoolPtrInput
+	Backups   pulumi.BoolPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// The size of the instance's disk in GB
 	Disk pulumi.IntPtrInput
@@ -321,4 +321,3 @@ type DropletArgs struct {
 func (DropletArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dropletArgs)(nil)).Elem()
 }
-

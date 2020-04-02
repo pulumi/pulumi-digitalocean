@@ -65,7 +65,7 @@ func (i DatabaseClusterMaintenanceWindowArray) ToDatabaseClusterMaintenanceWindo
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterMaintenanceWindowArrayOutput)
 }
 
-type DatabaseClusterMaintenanceWindowOutput struct { *pulumi.OutputState }
+type DatabaseClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (DatabaseClusterMaintenanceWindowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseClusterMaintenanceWindow)(nil)).Elem()
@@ -81,15 +81,15 @@ func (o DatabaseClusterMaintenanceWindowOutput) ToDatabaseClusterMaintenanceWind
 
 // The day of the week on which to apply maintenance updates.
 func (o DatabaseClusterMaintenanceWindowOutput) Day() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
 }
 
 // The hour in UTC at which maintenance updates will be applied in 24 hour format.
 func (o DatabaseClusterMaintenanceWindowOutput) Hour() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseClusterMaintenanceWindow) string { return v.Hour }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseClusterMaintenanceWindow) string { return v.Hour }).(pulumi.StringOutput)
 }
 
-type DatabaseClusterMaintenanceWindowArrayOutput struct { *pulumi.OutputState}
+type DatabaseClusterMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseClusterMaintenanceWindowArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DatabaseClusterMaintenanceWindow)(nil)).Elem()
@@ -104,7 +104,7 @@ func (o DatabaseClusterMaintenanceWindowArrayOutput) ToDatabaseClusterMaintenanc
 }
 
 func (o DatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) DatabaseClusterMaintenanceWindowOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DatabaseClusterMaintenanceWindow {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseClusterMaintenanceWindow {
 		return vs[0].([]DatabaseClusterMaintenanceWindow)[vs[1].(int)]
 	}).(DatabaseClusterMaintenanceWindowOutput)
 }
@@ -112,10 +112,10 @@ func (o DatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) Da
 type DatabaseFirewallRule struct {
 	// The date and time when the firewall rule was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	Type string `pulumi:"type"`
+	Type      string  `pulumi:"type"`
 	// A unique identifier for the firewall rule.
-	Uuid *string `pulumi:"uuid"`
-	Value string `pulumi:"value"`
+	Uuid  *string `pulumi:"uuid"`
+	Value string  `pulumi:"value"`
 }
 
 type DatabaseFirewallRuleInput interface {
@@ -128,10 +128,10 @@ type DatabaseFirewallRuleInput interface {
 type DatabaseFirewallRuleArgs struct {
 	// The date and time when the firewall rule was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Type      pulumi.StringInput    `pulumi:"type"`
 	// A unique identifier for the firewall rule.
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Uuid  pulumi.StringPtrInput `pulumi:"uuid"`
+	Value pulumi.StringInput    `pulumi:"value"`
 }
 
 func (DatabaseFirewallRuleArgs) ElementType() reflect.Type {
@@ -167,7 +167,7 @@ func (i DatabaseFirewallRuleArray) ToDatabaseFirewallRuleArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallRuleArrayOutput)
 }
 
-type DatabaseFirewallRuleOutput struct { *pulumi.OutputState }
+type DatabaseFirewallRuleOutput struct{ *pulumi.OutputState }
 
 func (DatabaseFirewallRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseFirewallRule)(nil)).Elem()
@@ -183,23 +183,23 @@ func (o DatabaseFirewallRuleOutput) ToDatabaseFirewallRuleOutputWithContext(ctx 
 
 // The date and time when the firewall rule was created.
 func (o DatabaseFirewallRuleOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseFirewallRule) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseFirewallRule) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseFirewallRuleOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseFirewallRule) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseFirewallRule) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // A unique identifier for the firewall rule.
 func (o DatabaseFirewallRuleOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseFirewallRule) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseFirewallRule) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseFirewallRuleOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseFirewallRule) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseFirewallRule) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type DatabaseFirewallRuleArrayOutput struct { *pulumi.OutputState}
+type DatabaseFirewallRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseFirewallRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DatabaseFirewallRule)(nil)).Elem()
@@ -214,7 +214,7 @@ func (o DatabaseFirewallRuleArrayOutput) ToDatabaseFirewallRuleArrayOutputWithCo
 }
 
 func (o DatabaseFirewallRuleArrayOutput) Index(i pulumi.IntInput) DatabaseFirewallRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DatabaseFirewallRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseFirewallRule {
 		return vs[0].([]DatabaseFirewallRule)[vs[1].(int)]
 	}).(DatabaseFirewallRuleOutput)
 }
@@ -309,7 +309,7 @@ func (i FirewallInboundRuleArray) ToFirewallInboundRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallInboundRuleArrayOutput)
 }
 
-type FirewallInboundRuleOutput struct { *pulumi.OutputState }
+type FirewallInboundRuleOutput struct{ *pulumi.OutputState }
 
 func (FirewallInboundRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FirewallInboundRule)(nil)).Elem()
@@ -328,42 +328,42 @@ func (o FirewallInboundRuleOutput) ToFirewallInboundRuleOutputWithContext(ctx co
 // or "1-65535" to open all ports for a protocol. Required for when protocol is
 // `tcp` or `udp`.
 func (o FirewallInboundRuleOutput) PortRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FirewallInboundRule) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FirewallInboundRule) *string { return v.PortRange }).(pulumi.StringPtrOutput)
 }
 
 // The type of traffic to be allowed.
 // This may be one of "tcp", "udp", or "icmp".
 func (o FirewallInboundRuleOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v FirewallInboundRule) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FirewallInboundRule) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // An array of strings containing the IPv4
 // addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
 // inbound traffic will be accepted.
 func (o FirewallInboundRuleOutput) SourceAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v FirewallInboundRule) []string { return v.SourceAddresses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v FirewallInboundRule) []string { return v.SourceAddresses }).(pulumi.StringArrayOutput)
 }
 
 // An array containing the IDs of
 // the Droplets from which the inbound traffic will be accepted.
 func (o FirewallInboundRuleOutput) SourceDropletIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func (v FirewallInboundRule) []int { return v.SourceDropletIds }).(pulumi.IntArrayOutput)
+	return o.ApplyT(func(v FirewallInboundRule) []int { return v.SourceDropletIds }).(pulumi.IntArrayOutput)
 }
 
 // An array containing the IDs
 // of the Load Balancers from which the inbound traffic will be accepted.
 func (o FirewallInboundRuleOutput) SourceLoadBalancerUids() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v FirewallInboundRule) []string { return v.SourceLoadBalancerUids }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v FirewallInboundRule) []string { return v.SourceLoadBalancerUids }).(pulumi.StringArrayOutput)
 }
 
 // An array containing the names of Tags
 // corresponding to groups of Droplets from which the inbound traffic
 // will be accepted.
 func (o FirewallInboundRuleOutput) SourceTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v FirewallInboundRule) []string { return v.SourceTags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v FirewallInboundRule) []string { return v.SourceTags }).(pulumi.StringArrayOutput)
 }
 
-type FirewallInboundRuleArrayOutput struct { *pulumi.OutputState}
+type FirewallInboundRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallInboundRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]FirewallInboundRule)(nil)).Elem()
@@ -378,7 +378,7 @@ func (o FirewallInboundRuleArrayOutput) ToFirewallInboundRuleArrayOutputWithCont
 }
 
 func (o FirewallInboundRuleArrayOutput) Index(i pulumi.IntInput) FirewallInboundRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) FirewallInboundRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallInboundRule {
 		return vs[0].([]FirewallInboundRule)[vs[1].(int)]
 	}).(FirewallInboundRuleOutput)
 }
@@ -475,7 +475,7 @@ func (i FirewallOutboundRuleArray) ToFirewallOutboundRuleArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallOutboundRuleArrayOutput)
 }
 
-type FirewallOutboundRuleOutput struct { *pulumi.OutputState }
+type FirewallOutboundRuleOutput struct{ *pulumi.OutputState }
 
 func (FirewallOutboundRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FirewallOutboundRule)(nil)).Elem()
@@ -493,19 +493,19 @@ func (o FirewallOutboundRuleOutput) ToFirewallOutboundRuleOutputWithContext(ctx 
 // addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
 // outbound traffic will be allowed.
 func (o FirewallOutboundRuleOutput) DestinationAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v FirewallOutboundRule) []string { return v.DestinationAddresses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v FirewallOutboundRule) []string { return v.DestinationAddresses }).(pulumi.StringArrayOutput)
 }
 
 // An array containing the IDs of
 // the Droplets to which the outbound traffic will be allowed.
 func (o FirewallOutboundRuleOutput) DestinationDropletIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func (v FirewallOutboundRule) []int { return v.DestinationDropletIds }).(pulumi.IntArrayOutput)
+	return o.ApplyT(func(v FirewallOutboundRule) []int { return v.DestinationDropletIds }).(pulumi.IntArrayOutput)
 }
 
 // An array containing the IDs
 // of the Load Balancers to which the outbound traffic will be allowed.
 func (o FirewallOutboundRuleOutput) DestinationLoadBalancerUids() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v FirewallOutboundRule) []string { return v.DestinationLoadBalancerUids }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v FirewallOutboundRule) []string { return v.DestinationLoadBalancerUids }).(pulumi.StringArrayOutput)
 }
 
 // An array containing the names of Tags
@@ -513,7 +513,7 @@ func (o FirewallOutboundRuleOutput) DestinationLoadBalancerUids() pulumi.StringA
 // be allowed.
 // traffic.
 func (o FirewallOutboundRuleOutput) DestinationTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v FirewallOutboundRule) []string { return v.DestinationTags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v FirewallOutboundRule) []string { return v.DestinationTags }).(pulumi.StringArrayOutput)
 }
 
 // The ports on which traffic will be allowed
@@ -521,16 +521,16 @@ func (o FirewallOutboundRuleOutput) DestinationTags() pulumi.StringArrayOutput {
 // or "1-65535" to open all ports for a protocol. Required for when protocol is
 // `tcp` or `udp`.
 func (o FirewallOutboundRuleOutput) PortRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FirewallOutboundRule) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FirewallOutboundRule) *string { return v.PortRange }).(pulumi.StringPtrOutput)
 }
 
 // The type of traffic to be allowed.
 // This may be one of "tcp", "udp", or "icmp".
 func (o FirewallOutboundRuleOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v FirewallOutboundRule) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FirewallOutboundRule) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-type FirewallOutboundRuleArrayOutput struct { *pulumi.OutputState}
+type FirewallOutboundRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallOutboundRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]FirewallOutboundRule)(nil)).Elem()
@@ -545,14 +545,14 @@ func (o FirewallOutboundRuleArrayOutput) ToFirewallOutboundRuleArrayOutputWithCo
 }
 
 func (o FirewallOutboundRuleArrayOutput) Index(i pulumi.IntInput) FirewallOutboundRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) FirewallOutboundRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallOutboundRule {
 		return vs[0].([]FirewallOutboundRule)[vs[1].(int)]
 	}).(FirewallOutboundRuleOutput)
 }
 
 type FirewallPendingChange struct {
-	DropletId *int `pulumi:"dropletId"`
-	Removing *bool `pulumi:"removing"`
+	DropletId *int  `pulumi:"dropletId"`
+	Removing  *bool `pulumi:"removing"`
 	// A status string indicating the current state of the Firewall.
 	// This can be "waiting", "succeeded", or "failed".
 	Status *string `pulumi:"status"`
@@ -566,8 +566,8 @@ type FirewallPendingChangeInput interface {
 }
 
 type FirewallPendingChangeArgs struct {
-	DropletId pulumi.IntPtrInput `pulumi:"dropletId"`
-	Removing pulumi.BoolPtrInput `pulumi:"removing"`
+	DropletId pulumi.IntPtrInput  `pulumi:"dropletId"`
+	Removing  pulumi.BoolPtrInput `pulumi:"removing"`
 	// A status string indicating the current state of the Firewall.
 	// This can be "waiting", "succeeded", or "failed".
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -606,7 +606,7 @@ func (i FirewallPendingChangeArray) ToFirewallPendingChangeArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPendingChangeArrayOutput)
 }
 
-type FirewallPendingChangeOutput struct { *pulumi.OutputState }
+type FirewallPendingChangeOutput struct{ *pulumi.OutputState }
 
 func (FirewallPendingChangeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FirewallPendingChange)(nil)).Elem()
@@ -621,20 +621,20 @@ func (o FirewallPendingChangeOutput) ToFirewallPendingChangeOutputWithContext(ct
 }
 
 func (o FirewallPendingChangeOutput) DropletId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v FirewallPendingChange) *int { return v.DropletId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v FirewallPendingChange) *int { return v.DropletId }).(pulumi.IntPtrOutput)
 }
 
 func (o FirewallPendingChangeOutput) Removing() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v FirewallPendingChange) *bool { return v.Removing }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v FirewallPendingChange) *bool { return v.Removing }).(pulumi.BoolPtrOutput)
 }
 
 // A status string indicating the current state of the Firewall.
 // This can be "waiting", "succeeded", or "failed".
 func (o FirewallPendingChangeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FirewallPendingChange) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FirewallPendingChange) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-type FirewallPendingChangeArrayOutput struct { *pulumi.OutputState}
+type FirewallPendingChangeArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallPendingChangeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]FirewallPendingChange)(nil)).Elem()
@@ -649,19 +649,19 @@ func (o FirewallPendingChangeArrayOutput) ToFirewallPendingChangeArrayOutputWith
 }
 
 func (o FirewallPendingChangeArrayOutput) Index(i pulumi.IntInput) FirewallPendingChangeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) FirewallPendingChange {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallPendingChange {
 		return vs[0].([]FirewallPendingChange)[vs[1].(int)]
 	}).(FirewallPendingChangeOutput)
 }
 
 type KubernetesClusterKubeConfig struct {
-	ClientCertificate *string `pulumi:"clientCertificate"`
-	ClientKey *string `pulumi:"clientKey"`
+	ClientCertificate    *string `pulumi:"clientCertificate"`
+	ClientKey            *string `pulumi:"clientKey"`
 	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
-	ExpiresAt *string `pulumi:"expiresAt"`
-	Host *string `pulumi:"host"`
-	RawConfig *string `pulumi:"rawConfig"`
-	Token *string `pulumi:"token"`
+	ExpiresAt            *string `pulumi:"expiresAt"`
+	Host                 *string `pulumi:"host"`
+	RawConfig            *string `pulumi:"rawConfig"`
+	Token                *string `pulumi:"token"`
 }
 
 type KubernetesClusterKubeConfigInput interface {
@@ -672,13 +672,13 @@ type KubernetesClusterKubeConfigInput interface {
 }
 
 type KubernetesClusterKubeConfigArgs struct {
-	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
-	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	ClientCertificate    pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	ClientKey            pulumi.StringPtrInput `pulumi:"clientKey"`
 	ClusterCaCertificate pulumi.StringPtrInput `pulumi:"clusterCaCertificate"`
-	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	RawConfig pulumi.StringPtrInput `pulumi:"rawConfig"`
-	Token pulumi.StringPtrInput `pulumi:"token"`
+	ExpiresAt            pulumi.StringPtrInput `pulumi:"expiresAt"`
+	Host                 pulumi.StringPtrInput `pulumi:"host"`
+	RawConfig            pulumi.StringPtrInput `pulumi:"rawConfig"`
+	Token                pulumi.StringPtrInput `pulumi:"token"`
 }
 
 func (KubernetesClusterKubeConfigArgs) ElementType() reflect.Type {
@@ -714,7 +714,7 @@ func (i KubernetesClusterKubeConfigArray) ToKubernetesClusterKubeConfigArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterKubeConfigArrayOutput)
 }
 
-type KubernetesClusterKubeConfigOutput struct { *pulumi.OutputState }
+type KubernetesClusterKubeConfigOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterKubeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesClusterKubeConfig)(nil)).Elem()
@@ -729,34 +729,34 @@ func (o KubernetesClusterKubeConfigOutput) ToKubernetesClusterKubeConfigOutputWi
 }
 
 func (o KubernetesClusterKubeConfigOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterKubeConfig) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterKubeConfigOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterKubeConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterKubeConfigOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterKubeConfig) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterKubeConfigOutput) ExpiresAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterKubeConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterKubeConfigOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterKubeConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterKubeConfigOutput) RawConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterKubeConfig) *string { return v.RawConfig }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.RawConfig }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterKubeConfigOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterKubeConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesClusterKubeConfigArrayOutput struct { *pulumi.OutputState}
+type KubernetesClusterKubeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterKubeConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KubernetesClusterKubeConfig)(nil)).Elem()
@@ -771,24 +771,24 @@ func (o KubernetesClusterKubeConfigArrayOutput) ToKubernetesClusterKubeConfigArr
 }
 
 func (o KubernetesClusterKubeConfigArrayOutput) Index(i pulumi.IntInput) KubernetesClusterKubeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KubernetesClusterKubeConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesClusterKubeConfig {
 		return vs[0].([]KubernetesClusterKubeConfig)[vs[1].(int)]
 	}).(KubernetesClusterKubeConfigOutput)
 }
 
 type KubernetesClusterNodePool struct {
-	ActualNodeCount *int `pulumi:"actualNodeCount"`
-	AutoScale *bool `pulumi:"autoScale"`
+	ActualNodeCount *int  `pulumi:"actualNodeCount"`
+	AutoScale       *bool `pulumi:"autoScale"`
 	// A unique ID that can be used to identify and reference a Kubernetes cluster.
-	Id *string `pulumi:"id"`
-	Labels map[string]string `pulumi:"labels"`
-	MaxNodes *int `pulumi:"maxNodes"`
-	MinNodes *int `pulumi:"minNodes"`
+	Id       *string           `pulumi:"id"`
+	Labels   map[string]string `pulumi:"labels"`
+	MaxNodes *int              `pulumi:"maxNodes"`
+	MinNodes *int              `pulumi:"minNodes"`
 	// A name for the Kubernetes cluster.
-	Name string `pulumi:"name"`
-	NodeCount *int `pulumi:"nodeCount"`
-	Nodes []KubernetesClusterNodePoolNode `pulumi:"nodes"`
-	Size string `pulumi:"size"`
+	Name      string                          `pulumi:"name"`
+	NodeCount *int                            `pulumi:"nodeCount"`
+	Nodes     []KubernetesClusterNodePoolNode `pulumi:"nodes"`
+	Size      string                          `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 }
@@ -801,18 +801,18 @@ type KubernetesClusterNodePoolInput interface {
 }
 
 type KubernetesClusterNodePoolArgs struct {
-	ActualNodeCount pulumi.IntPtrInput `pulumi:"actualNodeCount"`
-	AutoScale pulumi.BoolPtrInput `pulumi:"autoScale"`
+	ActualNodeCount pulumi.IntPtrInput  `pulumi:"actualNodeCount"`
+	AutoScale       pulumi.BoolPtrInput `pulumi:"autoScale"`
 	// A unique ID that can be used to identify and reference a Kubernetes cluster.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
-	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	Labels   pulumi.StringMapInput `pulumi:"labels"`
+	MaxNodes pulumi.IntPtrInput    `pulumi:"maxNodes"`
+	MinNodes pulumi.IntPtrInput    `pulumi:"minNodes"`
 	// A name for the Kubernetes cluster.
-	Name pulumi.StringInput `pulumi:"name"`
-	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
-	Nodes KubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
-	Size pulumi.StringInput `pulumi:"size"`
+	Name      pulumi.StringInput                      `pulumi:"name"`
+	NodeCount pulumi.IntPtrInput                      `pulumi:"nodeCount"`
+	Nodes     KubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
+	Size      pulumi.StringInput                      `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
@@ -846,7 +846,8 @@ type KubernetesClusterNodePoolPtrInput interface {
 
 type kubernetesClusterNodePoolPtrType KubernetesClusterNodePoolArgs
 
-func KubernetesClusterNodePoolPtr(v *KubernetesClusterNodePoolArgs) KubernetesClusterNodePoolPtrInput {	return (*kubernetesClusterNodePoolPtrType)(v)
+func KubernetesClusterNodePoolPtr(v *KubernetesClusterNodePoolArgs) KubernetesClusterNodePoolPtrInput {
+	return (*kubernetesClusterNodePoolPtrType)(v)
 }
 
 func (*kubernetesClusterNodePoolPtrType) ElementType() reflect.Type {
@@ -861,7 +862,7 @@ func (i *kubernetesClusterNodePoolPtrType) ToKubernetesClusterNodePoolPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNodePoolPtrOutput)
 }
 
-type KubernetesClusterNodePoolOutput struct { *pulumi.OutputState }
+type KubernetesClusterNodePoolOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterNodePoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesClusterNodePool)(nil)).Elem()
@@ -885,53 +886,53 @@ func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolPtrOutputWit
 	}).(KubernetesClusterNodePoolPtrOutput)
 }
 func (o KubernetesClusterNodePoolOutput) ActualNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.ActualNodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.ActualNodeCount }).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolOutput) AutoScale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *bool { return v.AutoScale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *bool { return v.AutoScale }).(pulumi.BoolPtrOutput)
 }
 
 // A unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o KubernetesClusterNodePoolOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o KubernetesClusterNodePoolOutput) MaxNodes() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolOutput) MinNodes() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
 }
 
 // A name for the Kubernetes cluster.
 func (o KubernetesClusterNodePoolOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o KubernetesClusterNodePoolOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolOutput) Nodes() KubernetesClusterNodePoolNodeArrayOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) []KubernetesClusterNodePoolNode { return v.Nodes }).(KubernetesClusterNodePoolNodeArrayOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) []KubernetesClusterNodePoolNode { return v.Nodes }).(KubernetesClusterNodePoolNodeArrayOutput)
 }
 
 func (o KubernetesClusterNodePoolOutput) Size() pulumi.StringOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
 }
 
 // A list of tag names to be applied to the Kubernetes cluster.
 func (o KubernetesClusterNodePoolOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-type KubernetesClusterNodePoolPtrOutput struct { *pulumi.OutputState}
+type KubernetesClusterNodePoolPtrOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterNodePoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KubernetesClusterNodePool)(nil)).Elem()
@@ -946,54 +947,54 @@ func (o KubernetesClusterNodePoolPtrOutput) ToKubernetesClusterNodePoolPtrOutput
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) Elem() KubernetesClusterNodePoolOutput {
-	return o.ApplyT(func (v *KubernetesClusterNodePool) KubernetesClusterNodePool { return *v }).(KubernetesClusterNodePoolOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) KubernetesClusterNodePool { return *v }).(KubernetesClusterNodePoolOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) ActualNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.ActualNodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.ActualNodeCount }).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) AutoScale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *bool { return v.AutoScale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *bool { return v.AutoScale }).(pulumi.BoolPtrOutput)
 }
 
 // A unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o KubernetesClusterNodePoolPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) MaxNodes() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) MinNodes() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
 }
 
 // A name for the Kubernetes cluster.
 func (o KubernetesClusterNodePoolPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) Nodes() KubernetesClusterNodePoolNodeArrayOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) []KubernetesClusterNodePoolNode { return v.Nodes }).(KubernetesClusterNodePoolNodeArrayOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) []KubernetesClusterNodePoolNode { return v.Nodes }).(KubernetesClusterNodePoolNodeArrayOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) Size() pulumi.StringOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
 }
 
 // A list of tag names to be applied to the Kubernetes cluster.
 func (o KubernetesClusterNodePoolPtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 type KubernetesClusterNodePoolNode struct {
@@ -1080,7 +1081,7 @@ func (i KubernetesClusterNodePoolNodeArray) ToKubernetesClusterNodePoolNodeArray
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNodePoolNodeArrayOutput)
 }
 
-type KubernetesClusterNodePoolNodeOutput struct { *pulumi.OutputState }
+type KubernetesClusterNodePoolNodeOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterNodePoolNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesClusterNodePoolNode)(nil)).Elem()
@@ -1096,26 +1097,26 @@ func (o KubernetesClusterNodePoolNodeOutput) ToKubernetesClusterNodePoolNodeOutp
 
 // The date and time when the Kubernetes cluster was created.
 func (o KubernetesClusterNodePoolNodeOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolNodeOutput) DropletId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.DropletId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.DropletId }).(pulumi.StringPtrOutput)
 }
 
 // A unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o KubernetesClusterNodePoolNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // A name for the Kubernetes cluster.
 func (o KubernetesClusterNodePoolNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
 func (o KubernetesClusterNodePoolNodeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // The date and time when the Kubernetes cluster was last updated.
@@ -1128,10 +1129,10 @@ func (o KubernetesClusterNodePoolNodeOutput) Status() pulumi.StringPtrOutput {
 // - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 // - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
 func (o KubernetesClusterNodePoolNodeOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesClusterNodePoolNode) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesClusterNodePoolNodeArrayOutput struct { *pulumi.OutputState}
+type KubernetesClusterNodePoolNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterNodePoolNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KubernetesClusterNodePoolNode)(nil)).Elem()
@@ -1146,7 +1147,7 @@ func (o KubernetesClusterNodePoolNodeArrayOutput) ToKubernetesClusterNodePoolNod
 }
 
 func (o KubernetesClusterNodePoolNodeArrayOutput) Index(i pulumi.IntInput) KubernetesClusterNodePoolNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KubernetesClusterNodePoolNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesClusterNodePoolNode {
 		return vs[0].([]KubernetesClusterNodePoolNode)[vs[1].(int)]
 	}).(KubernetesClusterNodePoolNodeOutput)
 }
@@ -1157,8 +1158,8 @@ type KubernetesNodePoolNode struct {
 	// A unique ID that can be used to identify and reference the node pool.
 	Id *string `pulumi:"id"`
 	// A name for the node pool.
-	Name *string `pulumi:"name"`
-	Status *string `pulumi:"status"`
+	Name      *string `pulumi:"name"`
+	Status    *string `pulumi:"status"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -1175,8 +1176,8 @@ type KubernetesNodePoolNodeArgs struct {
 	// A unique ID that can be used to identify and reference the node pool.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A name for the node pool.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	Status    pulumi.StringPtrInput `pulumi:"status"`
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
@@ -1213,7 +1214,7 @@ func (i KubernetesNodePoolNodeArray) ToKubernetesNodePoolNodeArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolNodeArrayOutput)
 }
 
-type KubernetesNodePoolNodeOutput struct { *pulumi.OutputState }
+type KubernetesNodePoolNodeOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodePoolNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesNodePoolNode)(nil)).Elem()
@@ -1228,32 +1229,32 @@ func (o KubernetesNodePoolNodeOutput) ToKubernetesNodePoolNodeOutputWithContext(
 }
 
 func (o KubernetesNodePoolNodeOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesNodePoolNode) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesNodePoolNodeOutput) DropletId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesNodePoolNode) *string { return v.DropletId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.DropletId }).(pulumi.StringPtrOutput)
 }
 
 // A unique ID that can be used to identify and reference the node pool.
 func (o KubernetesNodePoolNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // A name for the node pool.
 func (o KubernetesNodePoolNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesNodePoolNodeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesNodePoolNode) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesNodePoolNodeOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesNodePoolNode) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesNodePoolNodeArrayOutput struct { *pulumi.OutputState}
+type KubernetesNodePoolNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodePoolNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KubernetesNodePoolNode)(nil)).Elem()
@@ -1268,7 +1269,7 @@ func (o KubernetesNodePoolNodeArrayOutput) ToKubernetesNodePoolNodeArrayOutputWi
 }
 
 func (o KubernetesNodePoolNodeArrayOutput) Index(i pulumi.IntInput) KubernetesNodePoolNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KubernetesNodePoolNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesNodePoolNode {
 		return vs[0].([]KubernetesNodePoolNode)[vs[1].(int)]
 	}).(KubernetesNodePoolNodeOutput)
 }
@@ -1343,7 +1344,7 @@ func (i LoadBalancerForwardingRuleArray) ToLoadBalancerForwardingRuleArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerForwardingRuleArrayOutput)
 }
 
-type LoadBalancerForwardingRuleOutput struct { *pulumi.OutputState }
+type LoadBalancerForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerForwardingRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancerForwardingRule)(nil)).Elem()
@@ -1359,35 +1360,35 @@ func (o LoadBalancerForwardingRuleOutput) ToLoadBalancerForwardingRuleOutputWith
 
 // The ID of the TLS certificate to be used for SSL termination.
 func (o LoadBalancerForwardingRuleOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LoadBalancerForwardingRule) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LoadBalancerForwardingRule) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
 // An integer representing the port on which the Load Balancer instance will listen.
 func (o LoadBalancerForwardingRuleOutput) EntryPort() pulumi.IntOutput {
-	return o.ApplyT(func (v LoadBalancerForwardingRule) int { return v.EntryPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v LoadBalancerForwardingRule) int { return v.EntryPort }).(pulumi.IntOutput)
 }
 
 // The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
 func (o LoadBalancerForwardingRuleOutput) EntryProtocol() pulumi.StringOutput {
-	return o.ApplyT(func (v LoadBalancerForwardingRule) string { return v.EntryProtocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v LoadBalancerForwardingRule) string { return v.EntryProtocol }).(pulumi.StringOutput)
 }
 
 // An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
 func (o LoadBalancerForwardingRuleOutput) TargetPort() pulumi.IntOutput {
-	return o.ApplyT(func (v LoadBalancerForwardingRule) int { return v.TargetPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v LoadBalancerForwardingRule) int { return v.TargetPort }).(pulumi.IntOutput)
 }
 
 // The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
 func (o LoadBalancerForwardingRuleOutput) TargetProtocol() pulumi.StringOutput {
-	return o.ApplyT(func (v LoadBalancerForwardingRule) string { return v.TargetProtocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v LoadBalancerForwardingRule) string { return v.TargetProtocol }).(pulumi.StringOutput)
 }
 
 // A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
 func (o LoadBalancerForwardingRuleOutput) TlsPassthrough() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v LoadBalancerForwardingRule) *bool { return v.TlsPassthrough }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v LoadBalancerForwardingRule) *bool { return v.TlsPassthrough }).(pulumi.BoolPtrOutput)
 }
 
-type LoadBalancerForwardingRuleArrayOutput struct { *pulumi.OutputState}
+type LoadBalancerForwardingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerForwardingRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]LoadBalancerForwardingRule)(nil)).Elem()
@@ -1402,7 +1403,7 @@ func (o LoadBalancerForwardingRuleArrayOutput) ToLoadBalancerForwardingRuleArray
 }
 
 func (o LoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) LoadBalancerForwardingRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) LoadBalancerForwardingRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerForwardingRule {
 		return vs[0].([]LoadBalancerForwardingRule)[vs[1].(int)]
 	}).(LoadBalancerForwardingRuleOutput)
 }
@@ -1477,7 +1478,8 @@ type LoadBalancerHealthcheckPtrInput interface {
 
 type loadBalancerHealthcheckPtrType LoadBalancerHealthcheckArgs
 
-func LoadBalancerHealthcheckPtr(v *LoadBalancerHealthcheckArgs) LoadBalancerHealthcheckPtrInput {	return (*loadBalancerHealthcheckPtrType)(v)
+func LoadBalancerHealthcheckPtr(v *LoadBalancerHealthcheckArgs) LoadBalancerHealthcheckPtrInput {
+	return (*loadBalancerHealthcheckPtrType)(v)
 }
 
 func (*loadBalancerHealthcheckPtrType) ElementType() reflect.Type {
@@ -1492,7 +1494,7 @@ func (i *loadBalancerHealthcheckPtrType) ToLoadBalancerHealthcheckPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerHealthcheckPtrOutput)
 }
 
-type LoadBalancerHealthcheckOutput struct { *pulumi.OutputState }
+type LoadBalancerHealthcheckOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerHealthcheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancerHealthcheck)(nil)).Elem()
@@ -1515,42 +1517,43 @@ func (o LoadBalancerHealthcheckOutput) ToLoadBalancerHealthcheckPtrOutputWithCon
 		return &v
 	}).(LoadBalancerHealthcheckPtrOutput)
 }
+
 // The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
 func (o LoadBalancerHealthcheckOutput) CheckIntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *int { return v.CheckIntervalSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.CheckIntervalSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
 func (o LoadBalancerHealthcheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
 // The path on the backend Droplets to which the Load Balancer instance will send a request.
 func (o LoadBalancerHealthcheckOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // An integer representing the port on the backend Droplets on which the health check will attempt a connection.
 func (o LoadBalancerHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
 func (o LoadBalancerHealthcheckOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
 func (o LoadBalancerHealthcheckOutput) ResponseTimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *int { return v.ResponseTimeoutSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.ResponseTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
 func (o LoadBalancerHealthcheckOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-type LoadBalancerHealthcheckPtrOutput struct { *pulumi.OutputState}
+type LoadBalancerHealthcheckPtrOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerHealthcheckPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LoadBalancerHealthcheck)(nil)).Elem()
@@ -1565,42 +1568,42 @@ func (o LoadBalancerHealthcheckPtrOutput) ToLoadBalancerHealthcheckPtrOutputWith
 }
 
 func (o LoadBalancerHealthcheckPtrOutput) Elem() LoadBalancerHealthcheckOutput {
-	return o.ApplyT(func (v *LoadBalancerHealthcheck) LoadBalancerHealthcheck { return *v }).(LoadBalancerHealthcheckOutput)
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) LoadBalancerHealthcheck { return *v }).(LoadBalancerHealthcheckOutput)
 }
 
 // The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
 func (o LoadBalancerHealthcheckPtrOutput) CheckIntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *int { return v.CheckIntervalSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.CheckIntervalSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
 func (o LoadBalancerHealthcheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
 // The path on the backend Droplets to which the Load Balancer instance will send a request.
 func (o LoadBalancerHealthcheckPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // An integer representing the port on the backend Droplets on which the health check will attempt a connection.
 func (o LoadBalancerHealthcheckPtrOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
 func (o LoadBalancerHealthcheckPtrOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
 func (o LoadBalancerHealthcheckPtrOutput) ResponseTimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *int { return v.ResponseTimeoutSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.ResponseTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
 func (o LoadBalancerHealthcheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerHealthcheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
 type LoadBalancerStickySessions struct {
@@ -1657,7 +1660,8 @@ type LoadBalancerStickySessionsPtrInput interface {
 
 type loadBalancerStickySessionsPtrType LoadBalancerStickySessionsArgs
 
-func LoadBalancerStickySessionsPtr(v *LoadBalancerStickySessionsArgs) LoadBalancerStickySessionsPtrInput {	return (*loadBalancerStickySessionsPtrType)(v)
+func LoadBalancerStickySessionsPtr(v *LoadBalancerStickySessionsArgs) LoadBalancerStickySessionsPtrInput {
+	return (*loadBalancerStickySessionsPtrType)(v)
 }
 
 func (*loadBalancerStickySessionsPtrType) ElementType() reflect.Type {
@@ -1672,7 +1676,7 @@ func (i *loadBalancerStickySessionsPtrType) ToLoadBalancerStickySessionsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerStickySessionsPtrOutput)
 }
 
-type LoadBalancerStickySessionsOutput struct { *pulumi.OutputState }
+type LoadBalancerStickySessionsOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerStickySessionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancerStickySessions)(nil)).Elem()
@@ -1695,22 +1699,23 @@ func (o LoadBalancerStickySessionsOutput) ToLoadBalancerStickySessionsPtrOutputW
 		return &v
 	}).(LoadBalancerStickySessionsPtrOutput)
 }
+
 // The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
 func (o LoadBalancerStickySessionsOutput) CookieName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LoadBalancerStickySessions) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LoadBalancerStickySessions) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
 
 // The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
 func (o LoadBalancerStickySessionsOutput) CookieTtlSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerStickySessions) *int { return v.CookieTtlSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerStickySessions) *int { return v.CookieTtlSeconds }).(pulumi.IntPtrOutput)
 }
 
 // An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
 func (o LoadBalancerStickySessionsOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LoadBalancerStickySessions) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LoadBalancerStickySessions) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type LoadBalancerStickySessionsPtrOutput struct { *pulumi.OutputState}
+type LoadBalancerStickySessionsPtrOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerStickySessionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LoadBalancerStickySessions)(nil)).Elem()
@@ -1725,22 +1730,22 @@ func (o LoadBalancerStickySessionsPtrOutput) ToLoadBalancerStickySessionsPtrOutp
 }
 
 func (o LoadBalancerStickySessionsPtrOutput) Elem() LoadBalancerStickySessionsOutput {
-	return o.ApplyT(func (v *LoadBalancerStickySessions) LoadBalancerStickySessions { return *v }).(LoadBalancerStickySessionsOutput)
+	return o.ApplyT(func(v *LoadBalancerStickySessions) LoadBalancerStickySessions { return *v }).(LoadBalancerStickySessionsOutput)
 }
 
 // The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
 func (o LoadBalancerStickySessionsPtrOutput) CookieName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LoadBalancerStickySessions) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LoadBalancerStickySessions) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
 
 // The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
 func (o LoadBalancerStickySessionsPtrOutput) CookieTtlSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LoadBalancerStickySessions) *int { return v.CookieTtlSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LoadBalancerStickySessions) *int { return v.CookieTtlSeconds }).(pulumi.IntPtrOutput)
 }
 
 // An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
 func (o LoadBalancerStickySessionsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LoadBalancerStickySessions) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LoadBalancerStickySessions) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type SpacesBucketCorsRule struct {
@@ -1805,7 +1810,7 @@ func (i SpacesBucketCorsRuleArray) ToSpacesBucketCorsRuleArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketCorsRuleArrayOutput)
 }
 
-type SpacesBucketCorsRuleOutput struct { *pulumi.OutputState }
+type SpacesBucketCorsRuleOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketCorsRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SpacesBucketCorsRule)(nil)).Elem()
@@ -1821,25 +1826,25 @@ func (o SpacesBucketCorsRuleOutput) ToSpacesBucketCorsRuleOutputWithContext(ctx 
 
 // A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
 func (o SpacesBucketCorsRuleOutput) AllowedHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v SpacesBucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v SpacesBucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
 }
 
 // A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
 func (o SpacesBucketCorsRuleOutput) AllowedMethods() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v SpacesBucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v SpacesBucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
 }
 
 // A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
 func (o SpacesBucketCorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v SpacesBucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v SpacesBucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
 // The time in seconds that browser can cache the response for a preflight request.
 func (o SpacesBucketCorsRuleOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v SpacesBucketCorsRule) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v SpacesBucketCorsRule) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }
 
-type SpacesBucketCorsRuleArrayOutput struct { *pulumi.OutputState}
+type SpacesBucketCorsRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketCorsRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SpacesBucketCorsRule)(nil)).Elem()
@@ -1854,7 +1859,7 @@ func (o SpacesBucketCorsRuleArrayOutput) ToSpacesBucketCorsRuleArrayOutputWithCo
 }
 
 func (o SpacesBucketCorsRuleArrayOutput) Index(i pulumi.IntInput) SpacesBucketCorsRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SpacesBucketCorsRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpacesBucketCorsRule {
 		return vs[0].([]SpacesBucketCorsRule)[vs[1].(int)]
 	}).(SpacesBucketCorsRuleOutput)
 }
@@ -1913,7 +1918,7 @@ func (i GetDatabaseClusterMaintenanceWindowArray) ToGetDatabaseClusterMaintenanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseClusterMaintenanceWindowArrayOutput)
 }
 
-type GetDatabaseClusterMaintenanceWindowOutput struct { *pulumi.OutputState }
+type GetDatabaseClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseClusterMaintenanceWindowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDatabaseClusterMaintenanceWindow)(nil)).Elem()
@@ -1929,15 +1934,15 @@ func (o GetDatabaseClusterMaintenanceWindowOutput) ToGetDatabaseClusterMaintenan
 
 // The day of the week on which to apply maintenance updates.
 func (o GetDatabaseClusterMaintenanceWindowOutput) Day() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabaseClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabaseClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
 }
 
 // The hour in UTC at which maintenance updates will be applied in 24 hour format.
 func (o GetDatabaseClusterMaintenanceWindowOutput) Hour() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabaseClusterMaintenanceWindow) string { return v.Hour }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabaseClusterMaintenanceWindow) string { return v.Hour }).(pulumi.StringOutput)
 }
 
-type GetDatabaseClusterMaintenanceWindowArrayOutput struct { *pulumi.OutputState}
+type GetDatabaseClusterMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseClusterMaintenanceWindowArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDatabaseClusterMaintenanceWindow)(nil)).Elem()
@@ -1952,14 +1957,15 @@ func (o GetDatabaseClusterMaintenanceWindowArrayOutput) ToGetDatabaseClusterMain
 }
 
 func (o GetDatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetDatabaseClusterMaintenanceWindowOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDatabaseClusterMaintenanceWindow {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseClusterMaintenanceWindow {
 		return vs[0].([]GetDatabaseClusterMaintenanceWindow)[vs[1].(int)]
 	}).(GetDatabaseClusterMaintenanceWindowOutput)
 }
 
 type GetImagesFilter struct {
-	// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
-	// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+	// Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+	// `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
+	// `tags`, or `type`.
 	Key string `pulumi:"key"`
 	// A list of values to match against the `key` field. Only retrieves images
 	// where the `key` field takes on one or more of the values provided here.
@@ -1974,8 +1980,9 @@ type GetImagesFilterInput interface {
 }
 
 type GetImagesFilterArgs struct {
-	// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
-	// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+	// Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+	// `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
+	// `tags`, or `type`.
 	Key pulumi.StringInput `pulumi:"key"`
 	// A list of values to match against the `key` field. Only retrieves images
 	// where the `key` field takes on one or more of the values provided here.
@@ -2015,7 +2022,7 @@ func (i GetImagesFilterArray) ToGetImagesFilterArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetImagesFilterArrayOutput)
 }
 
-type GetImagesFilterOutput struct { *pulumi.OutputState }
+type GetImagesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetImagesFilterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetImagesFilter)(nil)).Elem()
@@ -2029,19 +2036,20 @@ func (o GetImagesFilterOutput) ToGetImagesFilterOutputWithContext(ctx context.Co
 	return o
 }
 
-// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
-// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+// Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+// `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
+// `tags`, or `type`.
 func (o GetImagesFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesFilter) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesFilter) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // A list of values to match against the `key` field. Only retrieves images
 // where the `key` field takes on one or more of the values provided here.
 func (o GetImagesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetImagesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetImagesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetImagesFilterArrayOutput struct { *pulumi.OutputState}
+type GetImagesFilterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetImagesFilterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetImagesFilter)(nil)).Elem()
@@ -2056,26 +2064,26 @@ func (o GetImagesFilterArrayOutput) ToGetImagesFilterArrayOutputWithContext(ctx 
 }
 
 func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImagesFilter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesFilter {
 		return vs[0].([]GetImagesFilter)[vs[1].(int)]
 	}).(GetImagesFilterOutput)
 }
 
 type GetImagesImage struct {
-	Created string `pulumi:"created"`
-	Distribution string `pulumi:"distribution"`
-	ErrorMessage string `pulumi:"errorMessage"`
-	Id int `pulumi:"id"`
-	Image string `pulumi:"image"`
-	MinDiskSize int `pulumi:"minDiskSize"`
-	Name string `pulumi:"name"`
-	Private bool `pulumi:"private"`
-	Regions []string `pulumi:"regions"`
-	SizeGigabytes float64 `pulumi:"sizeGigabytes"`
-	Slug string `pulumi:"slug"`
-	Status string `pulumi:"status"`
-	Tags []string `pulumi:"tags"`
-	Type string `pulumi:"type"`
+	Created       string   `pulumi:"created"`
+	Distribution  string   `pulumi:"distribution"`
+	ErrorMessage  string   `pulumi:"errorMessage"`
+	Id            int      `pulumi:"id"`
+	Image         string   `pulumi:"image"`
+	MinDiskSize   int      `pulumi:"minDiskSize"`
+	Name          string   `pulumi:"name"`
+	Private       bool     `pulumi:"private"`
+	Regions       []string `pulumi:"regions"`
+	SizeGigabytes float64  `pulumi:"sizeGigabytes"`
+	Slug          string   `pulumi:"slug"`
+	Status        string   `pulumi:"status"`
+	Tags          []string `pulumi:"tags"`
+	Type          string   `pulumi:"type"`
 }
 
 type GetImagesImageInput interface {
@@ -2086,20 +2094,20 @@ type GetImagesImageInput interface {
 }
 
 type GetImagesImageArgs struct {
-	Created pulumi.StringInput `pulumi:"created"`
-	Distribution pulumi.StringInput `pulumi:"distribution"`
-	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
-	Id pulumi.IntInput `pulumi:"id"`
-	Image pulumi.StringInput `pulumi:"image"`
-	MinDiskSize pulumi.IntInput `pulumi:"minDiskSize"`
-	Name pulumi.StringInput `pulumi:"name"`
-	Private pulumi.BoolInput `pulumi:"private"`
-	Regions pulumi.StringArrayInput `pulumi:"regions"`
-	SizeGigabytes pulumi.Float64Input `pulumi:"sizeGigabytes"`
-	Slug pulumi.StringInput `pulumi:"slug"`
-	Status pulumi.StringInput `pulumi:"status"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Created       pulumi.StringInput      `pulumi:"created"`
+	Distribution  pulumi.StringInput      `pulumi:"distribution"`
+	ErrorMessage  pulumi.StringInput      `pulumi:"errorMessage"`
+	Id            pulumi.IntInput         `pulumi:"id"`
+	Image         pulumi.StringInput      `pulumi:"image"`
+	MinDiskSize   pulumi.IntInput         `pulumi:"minDiskSize"`
+	Name          pulumi.StringInput      `pulumi:"name"`
+	Private       pulumi.BoolInput        `pulumi:"private"`
+	Regions       pulumi.StringArrayInput `pulumi:"regions"`
+	SizeGigabytes pulumi.Float64Input     `pulumi:"sizeGigabytes"`
+	Slug          pulumi.StringInput      `pulumi:"slug"`
+	Status        pulumi.StringInput      `pulumi:"status"`
+	Tags          pulumi.StringArrayInput `pulumi:"tags"`
+	Type          pulumi.StringInput      `pulumi:"type"`
 }
 
 func (GetImagesImageArgs) ElementType() reflect.Type {
@@ -2135,7 +2143,7 @@ func (i GetImagesImageArray) ToGetImagesImageArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageArrayOutput)
 }
 
-type GetImagesImageOutput struct { *pulumi.OutputState }
+type GetImagesImageOutput struct{ *pulumi.OutputState }
 
 func (GetImagesImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
@@ -2150,62 +2158,62 @@ func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Cont
 }
 
 func (o GetImagesImageOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Created }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Created }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) Distribution() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Distribution }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Distribution }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) ErrorMessage() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.ErrorMessage }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func (v GetImagesImage) int { return v.Id }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetImagesImage) int { return v.Id }).(pulumi.IntOutput)
 }
 
 func (o GetImagesImageOutput) Image() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Image }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Image }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) MinDiskSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetImagesImage) int { return v.MinDiskSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetImagesImage) int { return v.MinDiskSize }).(pulumi.IntOutput)
 }
 
 func (o GetImagesImageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) Private() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetImagesImage) bool { return v.Private }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetImagesImage) bool { return v.Private }).(pulumi.BoolOutput)
 }
 
 func (o GetImagesImageOutput) Regions() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetImagesImage) []string { return v.Regions }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetImagesImage) []string { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
 func (o GetImagesImageOutput) SizeGigabytes() pulumi.Float64Output {
-	return o.ApplyT(func (v GetImagesImage) float64 { return v.SizeGigabytes }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetImagesImage) float64 { return v.SizeGigabytes }).(pulumi.Float64Output)
 }
 
 func (o GetImagesImageOutput) Slug() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Slug }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Slug }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetImagesImage) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetImagesImage) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o GetImagesImageOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetImagesImageArrayOutput struct { *pulumi.OutputState}
+type GetImagesImageArrayOutput struct{ *pulumi.OutputState }
 
 func (GetImagesImageArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
@@ -2220,7 +2228,7 @@ func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutputWithContext(ctx co
 }
 
 func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImagesImage {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImage {
 		return vs[0].([]GetImagesImage)[vs[1].(int)]
 	}).(GetImagesImageOutput)
 }
@@ -2281,7 +2289,7 @@ func (i GetImagesSortArray) ToGetImagesSortArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetImagesSortArrayOutput)
 }
 
-type GetImagesSortOutput struct { *pulumi.OutputState }
+type GetImagesSortOutput struct{ *pulumi.OutputState }
 
 func (GetImagesSortOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetImagesSort)(nil)).Elem()
@@ -2297,16 +2305,16 @@ func (o GetImagesSortOutput) ToGetImagesSortOutputWithContext(ctx context.Contex
 
 // The sort direction. This may be either `asc` or `desc`.
 func (o GetImagesSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetImagesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetImagesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
 // Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
 // `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
 func (o GetImagesSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesSort) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesSort) string { return v.Key }).(pulumi.StringOutput)
 }
 
-type GetImagesSortArrayOutput struct { *pulumi.OutputState}
+type GetImagesSortArrayOutput struct{ *pulumi.OutputState }
 
 func (GetImagesSortArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetImagesSort)(nil)).Elem()
@@ -2321,19 +2329,19 @@ func (o GetImagesSortArrayOutput) ToGetImagesSortArrayOutputWithContext(ctx cont
 }
 
 func (o GetImagesSortArrayOutput) Index(i pulumi.IntInput) GetImagesSortOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImagesSort {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesSort {
 		return vs[0].([]GetImagesSort)[vs[1].(int)]
 	}).(GetImagesSortOutput)
 }
 
 type GetKubernetesClusterKubeConfig struct {
-	ClientCertificate string `pulumi:"clientCertificate"`
-	ClientKey string `pulumi:"clientKey"`
+	ClientCertificate    string `pulumi:"clientCertificate"`
+	ClientKey            string `pulumi:"clientKey"`
 	ClusterCaCertificate string `pulumi:"clusterCaCertificate"`
-	ExpiresAt string `pulumi:"expiresAt"`
-	Host string `pulumi:"host"`
-	RawConfig string `pulumi:"rawConfig"`
-	Token string `pulumi:"token"`
+	ExpiresAt            string `pulumi:"expiresAt"`
+	Host                 string `pulumi:"host"`
+	RawConfig            string `pulumi:"rawConfig"`
+	Token                string `pulumi:"token"`
 }
 
 type GetKubernetesClusterKubeConfigInput interface {
@@ -2344,13 +2352,13 @@ type GetKubernetesClusterKubeConfigInput interface {
 }
 
 type GetKubernetesClusterKubeConfigArgs struct {
-	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
-	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+	ClientCertificate    pulumi.StringInput `pulumi:"clientCertificate"`
+	ClientKey            pulumi.StringInput `pulumi:"clientKey"`
 	ClusterCaCertificate pulumi.StringInput `pulumi:"clusterCaCertificate"`
-	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
-	Host pulumi.StringInput `pulumi:"host"`
-	RawConfig pulumi.StringInput `pulumi:"rawConfig"`
-	Token pulumi.StringInput `pulumi:"token"`
+	ExpiresAt            pulumi.StringInput `pulumi:"expiresAt"`
+	Host                 pulumi.StringInput `pulumi:"host"`
+	RawConfig            pulumi.StringInput `pulumi:"rawConfig"`
+	Token                pulumi.StringInput `pulumi:"token"`
 }
 
 func (GetKubernetesClusterKubeConfigArgs) ElementType() reflect.Type {
@@ -2386,7 +2394,7 @@ func (i GetKubernetesClusterKubeConfigArray) ToGetKubernetesClusterKubeConfigArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterKubeConfigArrayOutput)
 }
 
-type GetKubernetesClusterKubeConfigOutput struct { *pulumi.OutputState }
+type GetKubernetesClusterKubeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClusterKubeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKubernetesClusterKubeConfig)(nil)).Elem()
@@ -2401,34 +2409,34 @@ func (o GetKubernetesClusterKubeConfigOutput) ToGetKubernetesClusterKubeConfigOu
 }
 
 func (o GetKubernetesClusterKubeConfigOutput) ClientCertificate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterKubeConfig) string { return v.ClientCertificate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.ClientCertificate }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterKubeConfigOutput) ClientKey() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterKubeConfig) string { return v.ClientKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.ClientKey }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterKubeConfigOutput) ClusterCaCertificate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterKubeConfig) string { return v.ClusterCaCertificate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.ClusterCaCertificate }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterKubeConfigOutput) ExpiresAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterKubeConfig) string { return v.ExpiresAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterKubeConfigOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterKubeConfig) string { return v.Host }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.Host }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterKubeConfigOutput) RawConfig() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterKubeConfig) string { return v.RawConfig }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.RawConfig }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterKubeConfigOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterKubeConfig) string { return v.Token }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.Token }).(pulumi.StringOutput)
 }
 
-type GetKubernetesClusterKubeConfigArrayOutput struct { *pulumi.OutputState}
+type GetKubernetesClusterKubeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClusterKubeConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKubernetesClusterKubeConfig)(nil)).Elem()
@@ -2443,24 +2451,24 @@ func (o GetKubernetesClusterKubeConfigArrayOutput) ToGetKubernetesClusterKubeCon
 }
 
 func (o GetKubernetesClusterKubeConfigArrayOutput) Index(i pulumi.IntInput) GetKubernetesClusterKubeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKubernetesClusterKubeConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterKubeConfig {
 		return vs[0].([]GetKubernetesClusterKubeConfig)[vs[1].(int)]
 	}).(GetKubernetesClusterKubeConfigOutput)
 }
 
 type GetKubernetesClusterNodePool struct {
-	ActualNodeCount int `pulumi:"actualNodeCount"`
-	AutoScale bool `pulumi:"autoScale"`
+	ActualNodeCount int  `pulumi:"actualNodeCount"`
+	AutoScale       bool `pulumi:"autoScale"`
 	// The unique ID that can be used to identify and reference a Kubernetes cluster.
-	Id string `pulumi:"id"`
-	Labels map[string]string `pulumi:"labels"`
-	MaxNodes int `pulumi:"maxNodes"`
-	MinNodes int `pulumi:"minNodes"`
+	Id       string            `pulumi:"id"`
+	Labels   map[string]string `pulumi:"labels"`
+	MaxNodes int               `pulumi:"maxNodes"`
+	MinNodes int               `pulumi:"minNodes"`
 	// The name of Kubernetes cluster.
-	Name string `pulumi:"name"`
-	NodeCount int `pulumi:"nodeCount"`
-	Nodes []GetKubernetesClusterNodePoolNode `pulumi:"nodes"`
-	Size string `pulumi:"size"`
+	Name      string                             `pulumi:"name"`
+	NodeCount int                                `pulumi:"nodeCount"`
+	Nodes     []GetKubernetesClusterNodePoolNode `pulumi:"nodes"`
+	Size      string                             `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 }
@@ -2473,18 +2481,18 @@ type GetKubernetesClusterNodePoolInput interface {
 }
 
 type GetKubernetesClusterNodePoolArgs struct {
-	ActualNodeCount pulumi.IntInput `pulumi:"actualNodeCount"`
-	AutoScale pulumi.BoolInput `pulumi:"autoScale"`
+	ActualNodeCount pulumi.IntInput  `pulumi:"actualNodeCount"`
+	AutoScale       pulumi.BoolInput `pulumi:"autoScale"`
 	// The unique ID that can be used to identify and reference a Kubernetes cluster.
-	Id pulumi.StringInput `pulumi:"id"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
-	MinNodes pulumi.IntInput `pulumi:"minNodes"`
+	Id       pulumi.StringInput    `pulumi:"id"`
+	Labels   pulumi.StringMapInput `pulumi:"labels"`
+	MaxNodes pulumi.IntInput       `pulumi:"maxNodes"`
+	MinNodes pulumi.IntInput       `pulumi:"minNodes"`
 	// The name of Kubernetes cluster.
-	Name pulumi.StringInput `pulumi:"name"`
-	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
-	Nodes GetKubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
-	Size pulumi.StringInput `pulumi:"size"`
+	Name      pulumi.StringInput                         `pulumi:"name"`
+	NodeCount pulumi.IntInput                            `pulumi:"nodeCount"`
+	Nodes     GetKubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
+	Size      pulumi.StringInput                         `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
@@ -2522,7 +2530,7 @@ func (i GetKubernetesClusterNodePoolArray) ToGetKubernetesClusterNodePoolArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNodePoolArrayOutput)
 }
 
-type GetKubernetesClusterNodePoolOutput struct { *pulumi.OutputState }
+type GetKubernetesClusterNodePoolOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClusterNodePoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKubernetesClusterNodePool)(nil)).Elem()
@@ -2537,53 +2545,53 @@ func (o GetKubernetesClusterNodePoolOutput) ToGetKubernetesClusterNodePoolOutput
 }
 
 func (o GetKubernetesClusterNodePoolOutput) ActualNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) int { return v.ActualNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) int { return v.ActualNodeCount }).(pulumi.IntOutput)
 }
 
 func (o GetKubernetesClusterNodePoolOutput) AutoScale() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) bool { return v.AutoScale }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) bool { return v.AutoScale }).(pulumi.BoolOutput)
 }
 
 // The unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o GetKubernetesClusterNodePoolOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterNodePoolOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o GetKubernetesClusterNodePoolOutput) MaxNodes() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) int { return v.MaxNodes }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) int { return v.MaxNodes }).(pulumi.IntOutput)
 }
 
 func (o GetKubernetesClusterNodePoolOutput) MinNodes() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) int { return v.MinNodes }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) int { return v.MinNodes }).(pulumi.IntOutput)
 }
 
 // The name of Kubernetes cluster.
 func (o GetKubernetesClusterNodePoolOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterNodePoolOutput) NodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) int { return v.NodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
 func (o GetKubernetesClusterNodePoolOutput) Nodes() GetKubernetesClusterNodePoolNodeArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) []GetKubernetesClusterNodePoolNode { return v.Nodes }).(GetKubernetesClusterNodePoolNodeArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) []GetKubernetesClusterNodePoolNode { return v.Nodes }).(GetKubernetesClusterNodePoolNodeArrayOutput)
 }
 
 func (o GetKubernetesClusterNodePoolOutput) Size() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
 }
 
 // A list of tag names to be applied to the Kubernetes cluster.
 func (o GetKubernetesClusterNodePoolOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-type GetKubernetesClusterNodePoolArrayOutput struct { *pulumi.OutputState}
+type GetKubernetesClusterNodePoolArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClusterNodePoolArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKubernetesClusterNodePool)(nil)).Elem()
@@ -2598,7 +2606,7 @@ func (o GetKubernetesClusterNodePoolArrayOutput) ToGetKubernetesClusterNodePoolA
 }
 
 func (o GetKubernetesClusterNodePoolArrayOutput) Index(i pulumi.IntInput) GetKubernetesClusterNodePoolOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKubernetesClusterNodePool {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterNodePool {
 		return vs[0].([]GetKubernetesClusterNodePool)[vs[1].(int)]
 	}).(GetKubernetesClusterNodePoolOutput)
 }
@@ -2687,7 +2695,7 @@ func (i GetKubernetesClusterNodePoolNodeArray) ToGetKubernetesClusterNodePoolNod
 	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNodePoolNodeArrayOutput)
 }
 
-type GetKubernetesClusterNodePoolNodeOutput struct { *pulumi.OutputState }
+type GetKubernetesClusterNodePoolNodeOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClusterNodePoolNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKubernetesClusterNodePoolNode)(nil)).Elem()
@@ -2703,26 +2711,26 @@ func (o GetKubernetesClusterNodePoolNodeOutput) ToGetKubernetesClusterNodePoolNo
 
 // The date and time when the Kubernetes cluster was created.
 func (o GetKubernetesClusterNodePoolNodeOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePoolNode) string { return v.CreatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterNodePoolNodeOutput) DropletId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePoolNode) string { return v.DropletId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.DropletId }).(pulumi.StringOutput)
 }
 
 // The unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o GetKubernetesClusterNodePoolNodeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePoolNode) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of Kubernetes cluster.
 func (o GetKubernetesClusterNodePoolNodeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePoolNode) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
 func (o GetKubernetesClusterNodePoolNodeOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePoolNode) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The date and time when the Kubernetes cluster was last updated.
@@ -2735,10 +2743,10 @@ func (o GetKubernetesClusterNodePoolNodeOutput) Status() pulumi.StringOutput {
 // - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 // - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
 func (o GetKubernetesClusterNodePoolNodeOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClusterNodePoolNode) string { return v.UpdatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-type GetKubernetesClusterNodePoolNodeArrayOutput struct { *pulumi.OutputState}
+type GetKubernetesClusterNodePoolNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClusterNodePoolNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKubernetesClusterNodePoolNode)(nil)).Elem()
@@ -2753,18 +2761,18 @@ func (o GetKubernetesClusterNodePoolNodeArrayOutput) ToGetKubernetesClusterNodeP
 }
 
 func (o GetKubernetesClusterNodePoolNodeArrayOutput) Index(i pulumi.IntInput) GetKubernetesClusterNodePoolNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKubernetesClusterNodePoolNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterNodePoolNode {
 		return vs[0].([]GetKubernetesClusterNodePoolNode)[vs[1].(int)]
 	}).(GetKubernetesClusterNodePoolNodeOutput)
 }
 
 type GetLoadBalancerForwardingRule struct {
-	CertificateId string `pulumi:"certificateId"`
-	EntryPort int `pulumi:"entryPort"`
-	EntryProtocol string `pulumi:"entryProtocol"`
-	TargetPort int `pulumi:"targetPort"`
+	CertificateId  string `pulumi:"certificateId"`
+	EntryPort      int    `pulumi:"entryPort"`
+	EntryProtocol  string `pulumi:"entryProtocol"`
+	TargetPort     int    `pulumi:"targetPort"`
 	TargetProtocol string `pulumi:"targetProtocol"`
-	TlsPassthrough bool `pulumi:"tlsPassthrough"`
+	TlsPassthrough bool   `pulumi:"tlsPassthrough"`
 }
 
 type GetLoadBalancerForwardingRuleInput interface {
@@ -2775,12 +2783,12 @@ type GetLoadBalancerForwardingRuleInput interface {
 }
 
 type GetLoadBalancerForwardingRuleArgs struct {
-	CertificateId pulumi.StringInput `pulumi:"certificateId"`
-	EntryPort pulumi.IntInput `pulumi:"entryPort"`
-	EntryProtocol pulumi.StringInput `pulumi:"entryProtocol"`
-	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	CertificateId  pulumi.StringInput `pulumi:"certificateId"`
+	EntryPort      pulumi.IntInput    `pulumi:"entryPort"`
+	EntryProtocol  pulumi.StringInput `pulumi:"entryProtocol"`
+	TargetPort     pulumi.IntInput    `pulumi:"targetPort"`
 	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
-	TlsPassthrough pulumi.BoolInput `pulumi:"tlsPassthrough"`
+	TlsPassthrough pulumi.BoolInput   `pulumi:"tlsPassthrough"`
 }
 
 func (GetLoadBalancerForwardingRuleArgs) ElementType() reflect.Type {
@@ -2816,7 +2824,7 @@ func (i GetLoadBalancerForwardingRuleArray) ToGetLoadBalancerForwardingRuleArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerForwardingRuleArrayOutput)
 }
 
-type GetLoadBalancerForwardingRuleOutput struct { *pulumi.OutputState }
+type GetLoadBalancerForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancerForwardingRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetLoadBalancerForwardingRule)(nil)).Elem()
@@ -2831,30 +2839,30 @@ func (o GetLoadBalancerForwardingRuleOutput) ToGetLoadBalancerForwardingRuleOutp
 }
 
 func (o GetLoadBalancerForwardingRuleOutput) CertificateId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancerForwardingRule) string { return v.CertificateId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.CertificateId }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancerForwardingRuleOutput) EntryPort() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLoadBalancerForwardingRule) int { return v.EntryPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLoadBalancerForwardingRule) int { return v.EntryPort }).(pulumi.IntOutput)
 }
 
 func (o GetLoadBalancerForwardingRuleOutput) EntryProtocol() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancerForwardingRule) string { return v.EntryProtocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.EntryProtocol }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancerForwardingRuleOutput) TargetPort() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLoadBalancerForwardingRule) int { return v.TargetPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLoadBalancerForwardingRule) int { return v.TargetPort }).(pulumi.IntOutput)
 }
 
 func (o GetLoadBalancerForwardingRuleOutput) TargetProtocol() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancerForwardingRule) string { return v.TargetProtocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.TargetProtocol }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancerForwardingRuleOutput) TlsPassthrough() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetLoadBalancerForwardingRule) bool { return v.TlsPassthrough }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetLoadBalancerForwardingRule) bool { return v.TlsPassthrough }).(pulumi.BoolOutput)
 }
 
-type GetLoadBalancerForwardingRuleArrayOutput struct { *pulumi.OutputState}
+type GetLoadBalancerForwardingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancerForwardingRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetLoadBalancerForwardingRule)(nil)).Elem()
@@ -2869,19 +2877,19 @@ func (o GetLoadBalancerForwardingRuleArrayOutput) ToGetLoadBalancerForwardingRul
 }
 
 func (o GetLoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerForwardingRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetLoadBalancerForwardingRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerForwardingRule {
 		return vs[0].([]GetLoadBalancerForwardingRule)[vs[1].(int)]
 	}).(GetLoadBalancerForwardingRuleOutput)
 }
 
 type GetLoadBalancerHealthcheck struct {
-	CheckIntervalSeconds int `pulumi:"checkIntervalSeconds"`
-	HealthyThreshold int `pulumi:"healthyThreshold"`
-	Path string `pulumi:"path"`
-	Port int `pulumi:"port"`
-	Protocol string `pulumi:"protocol"`
-	ResponseTimeoutSeconds int `pulumi:"responseTimeoutSeconds"`
-	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+	CheckIntervalSeconds   int    `pulumi:"checkIntervalSeconds"`
+	HealthyThreshold       int    `pulumi:"healthyThreshold"`
+	Path                   string `pulumi:"path"`
+	Port                   int    `pulumi:"port"`
+	Protocol               string `pulumi:"protocol"`
+	ResponseTimeoutSeconds int    `pulumi:"responseTimeoutSeconds"`
+	UnhealthyThreshold     int    `pulumi:"unhealthyThreshold"`
 }
 
 type GetLoadBalancerHealthcheckInput interface {
@@ -2892,13 +2900,13 @@ type GetLoadBalancerHealthcheckInput interface {
 }
 
 type GetLoadBalancerHealthcheckArgs struct {
-	CheckIntervalSeconds pulumi.IntInput `pulumi:"checkIntervalSeconds"`
-	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
-	Path pulumi.StringInput `pulumi:"path"`
-	Port pulumi.IntInput `pulumi:"port"`
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-	ResponseTimeoutSeconds pulumi.IntInput `pulumi:"responseTimeoutSeconds"`
-	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
+	CheckIntervalSeconds   pulumi.IntInput    `pulumi:"checkIntervalSeconds"`
+	HealthyThreshold       pulumi.IntInput    `pulumi:"healthyThreshold"`
+	Path                   pulumi.StringInput `pulumi:"path"`
+	Port                   pulumi.IntInput    `pulumi:"port"`
+	Protocol               pulumi.StringInput `pulumi:"protocol"`
+	ResponseTimeoutSeconds pulumi.IntInput    `pulumi:"responseTimeoutSeconds"`
+	UnhealthyThreshold     pulumi.IntInput    `pulumi:"unhealthyThreshold"`
 }
 
 func (GetLoadBalancerHealthcheckArgs) ElementType() reflect.Type {
@@ -2913,7 +2921,7 @@ func (i GetLoadBalancerHealthcheckArgs) ToGetLoadBalancerHealthcheckOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerHealthcheckOutput)
 }
 
-type GetLoadBalancerHealthcheckOutput struct { *pulumi.OutputState }
+type GetLoadBalancerHealthcheckOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancerHealthcheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetLoadBalancerHealthcheck)(nil)).Elem()
@@ -2928,37 +2936,37 @@ func (o GetLoadBalancerHealthcheckOutput) ToGetLoadBalancerHealthcheckOutputWith
 }
 
 func (o GetLoadBalancerHealthcheckOutput) CheckIntervalSeconds() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLoadBalancerHealthcheck) int { return v.CheckIntervalSeconds }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.CheckIntervalSeconds }).(pulumi.IntOutput)
 }
 
 func (o GetLoadBalancerHealthcheckOutput) HealthyThreshold() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLoadBalancerHealthcheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
 func (o GetLoadBalancerHealthcheckOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancerHealthcheck) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancerHealthcheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancerHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
 func (o GetLoadBalancerHealthcheckOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancerHealthcheckOutput) ResponseTimeoutSeconds() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLoadBalancerHealthcheck) int { return v.ResponseTimeoutSeconds }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.ResponseTimeoutSeconds }).(pulumi.IntOutput)
 }
 
 func (o GetLoadBalancerHealthcheckOutput) UnhealthyThreshold() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLoadBalancerHealthcheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }
 
 type GetLoadBalancerStickySessions struct {
-	CookieName string `pulumi:"cookieName"`
-	CookieTtlSeconds int `pulumi:"cookieTtlSeconds"`
-	Type string `pulumi:"type"`
+	CookieName       string `pulumi:"cookieName"`
+	CookieTtlSeconds int    `pulumi:"cookieTtlSeconds"`
+	Type             string `pulumi:"type"`
 }
 
 type GetLoadBalancerStickySessionsInput interface {
@@ -2969,9 +2977,9 @@ type GetLoadBalancerStickySessionsInput interface {
 }
 
 type GetLoadBalancerStickySessionsArgs struct {
-	CookieName pulumi.StringInput `pulumi:"cookieName"`
-	CookieTtlSeconds pulumi.IntInput `pulumi:"cookieTtlSeconds"`
-	Type pulumi.StringInput `pulumi:"type"`
+	CookieName       pulumi.StringInput `pulumi:"cookieName"`
+	CookieTtlSeconds pulumi.IntInput    `pulumi:"cookieTtlSeconds"`
+	Type             pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetLoadBalancerStickySessionsArgs) ElementType() reflect.Type {
@@ -2986,7 +2994,7 @@ func (i GetLoadBalancerStickySessionsArgs) ToGetLoadBalancerStickySessionsOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerStickySessionsOutput)
 }
 
-type GetLoadBalancerStickySessionsOutput struct { *pulumi.OutputState }
+type GetLoadBalancerStickySessionsOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancerStickySessionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetLoadBalancerStickySessions)(nil)).Elem()
@@ -3001,20 +3009,20 @@ func (o GetLoadBalancerStickySessionsOutput) ToGetLoadBalancerStickySessionsOutp
 }
 
 func (o GetLoadBalancerStickySessionsOutput) CookieName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancerStickySessions) string { return v.CookieName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancerStickySessions) string { return v.CookieName }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancerStickySessionsOutput) CookieTtlSeconds() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLoadBalancerStickySessions) int { return v.CookieTtlSeconds }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLoadBalancerStickySessions) int { return v.CookieTtlSeconds }).(pulumi.IntOutput)
 }
 
 func (o GetLoadBalancerStickySessionsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancerStickySessions) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancerStickySessions) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetProjectsFilter struct {
-	// Sort the projects by this key. This may be one of `name`,
-	// `purpose`, `description`, or `environment`.
+	// Filter the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, `environment`, or `isDefault`.
 	Key string `pulumi:"key"`
 	// A list of values to match against the `key` field. Only retrieves projects
 	// where the `key` field takes on one or more of the values provided here.
@@ -3029,8 +3037,8 @@ type GetProjectsFilterInput interface {
 }
 
 type GetProjectsFilterArgs struct {
-	// Sort the projects by this key. This may be one of `name`,
-	// `purpose`, `description`, or `environment`.
+	// Filter the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, `environment`, or `isDefault`.
 	Key pulumi.StringInput `pulumi:"key"`
 	// A list of values to match against the `key` field. Only retrieves projects
 	// where the `key` field takes on one or more of the values provided here.
@@ -3070,7 +3078,7 @@ func (i GetProjectsFilterArray) ToGetProjectsFilterArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsFilterArrayOutput)
 }
 
-type GetProjectsFilterOutput struct { *pulumi.OutputState }
+type GetProjectsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsFilterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProjectsFilter)(nil)).Elem()
@@ -3084,19 +3092,19 @@ func (o GetProjectsFilterOutput) ToGetProjectsFilterOutputWithContext(ctx contex
 	return o
 }
 
-// Sort the projects by this key. This may be one of `name`,
-// `purpose`, `description`, or `environment`.
+// Filter the projects by this key. This may be one of `name`,
+// `purpose`, `description`, `environment`, or `isDefault`.
 func (o GetProjectsFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsFilter) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsFilter) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // A list of values to match against the `key` field. Only retrieves projects
 // where the `key` field takes on one or more of the values provided here.
 func (o GetProjectsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetProjectsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetProjectsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetProjectsFilterArrayOutput struct { *pulumi.OutputState}
+type GetProjectsFilterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsFilterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProjectsFilter)(nil)).Elem()
@@ -3111,23 +3119,23 @@ func (o GetProjectsFilterArrayOutput) ToGetProjectsFilterArrayOutputWithContext(
 }
 
 func (o GetProjectsFilterArrayOutput) Index(i pulumi.IntInput) GetProjectsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProjectsFilter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsFilter {
 		return vs[0].([]GetProjectsFilter)[vs[1].(int)]
 	}).(GetProjectsFilterOutput)
 }
 
 type GetProjectsProject struct {
-	CreatedAt string `pulumi:"createdAt"`
-	Description string `pulumi:"description"`
-	Environment string `pulumi:"environment"`
-	Id string `pulumi:"id"`
-	IsDefault bool `pulumi:"isDefault"`
-	Name string `pulumi:"name"`
-	OwnerId int `pulumi:"ownerId"`
-	OwnerUuid string `pulumi:"ownerUuid"`
-	Purpose string `pulumi:"purpose"`
-	Resources []string `pulumi:"resources"`
-	UpdatedAt string `pulumi:"updatedAt"`
+	CreatedAt   string   `pulumi:"createdAt"`
+	Description string   `pulumi:"description"`
+	Environment string   `pulumi:"environment"`
+	Id          string   `pulumi:"id"`
+	IsDefault   bool     `pulumi:"isDefault"`
+	Name        string   `pulumi:"name"`
+	OwnerId     int      `pulumi:"ownerId"`
+	OwnerUuid   string   `pulumi:"ownerUuid"`
+	Purpose     string   `pulumi:"purpose"`
+	Resources   []string `pulumi:"resources"`
+	UpdatedAt   string   `pulumi:"updatedAt"`
 }
 
 type GetProjectsProjectInput interface {
@@ -3138,17 +3146,17 @@ type GetProjectsProjectInput interface {
 }
 
 type GetProjectsProjectArgs struct {
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	Description pulumi.StringInput `pulumi:"description"`
-	Environment pulumi.StringInput `pulumi:"environment"`
-	Id pulumi.StringInput `pulumi:"id"`
-	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
-	Name pulumi.StringInput `pulumi:"name"`
-	OwnerId pulumi.IntInput `pulumi:"ownerId"`
-	OwnerUuid pulumi.StringInput `pulumi:"ownerUuid"`
-	Purpose pulumi.StringInput `pulumi:"purpose"`
-	Resources pulumi.StringArrayInput `pulumi:"resources"`
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	CreatedAt   pulumi.StringInput      `pulumi:"createdAt"`
+	Description pulumi.StringInput      `pulumi:"description"`
+	Environment pulumi.StringInput      `pulumi:"environment"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	IsDefault   pulumi.BoolInput        `pulumi:"isDefault"`
+	Name        pulumi.StringInput      `pulumi:"name"`
+	OwnerId     pulumi.IntInput         `pulumi:"ownerId"`
+	OwnerUuid   pulumi.StringInput      `pulumi:"ownerUuid"`
+	Purpose     pulumi.StringInput      `pulumi:"purpose"`
+	Resources   pulumi.StringArrayInput `pulumi:"resources"`
+	UpdatedAt   pulumi.StringInput      `pulumi:"updatedAt"`
 }
 
 func (GetProjectsProjectArgs) ElementType() reflect.Type {
@@ -3184,7 +3192,7 @@ func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectArrayOutput)
 }
 
-type GetProjectsProjectOutput struct { *pulumi.OutputState }
+type GetProjectsProjectOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
@@ -3199,50 +3207,50 @@ func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx cont
 }
 
 func (o GetProjectsProjectOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsProject) string { return v.CreatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsProject) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) Environment() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsProject) string { return v.Environment }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Environment }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) IsDefault() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetProjectsProject) bool { return v.IsDefault }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
 func (o GetProjectsProjectOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) OwnerId() pulumi.IntOutput {
-	return o.ApplyT(func (v GetProjectsProject) int { return v.OwnerId }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetProjectsProject) int { return v.OwnerId }).(pulumi.IntOutput)
 }
 
 func (o GetProjectsProjectOutput) OwnerUuid() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsProject) string { return v.OwnerUuid }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsProject) string { return v.OwnerUuid }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) Purpose() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsProject) string { return v.Purpose }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Purpose }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetProjectsProject) []string { return v.Resources }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetProjectsProject) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
 func (o GetProjectsProjectOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsProject) string { return v.UpdatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsProject) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-type GetProjectsProjectArrayOutput struct { *pulumi.OutputState}
+type GetProjectsProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
@@ -3257,7 +3265,7 @@ func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutputWithContex
 }
 
 func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProjectsProject {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsProject {
 		return vs[0].([]GetProjectsProject)[vs[1].(int)]
 	}).(GetProjectsProjectOutput)
 }
@@ -3318,7 +3326,7 @@ func (i GetProjectsSortArray) ToGetProjectsSortArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsSortArrayOutput)
 }
 
-type GetProjectsSortOutput struct { *pulumi.OutputState }
+type GetProjectsSortOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsSortOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProjectsSort)(nil)).Elem()
@@ -3334,16 +3342,16 @@ func (o GetProjectsSortOutput) ToGetProjectsSortOutputWithContext(ctx context.Co
 
 // The sort direction. This may be either `asc` or `desc`.
 func (o GetProjectsSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetProjectsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetProjectsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
 // Sort the projects by this key. This may be one of `name`,
 // `purpose`, `description`, or `environment`.
 func (o GetProjectsSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectsSort) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectsSort) string { return v.Key }).(pulumi.StringOutput)
 }
 
-type GetProjectsSortArrayOutput struct { *pulumi.OutputState}
+type GetProjectsSortArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsSortArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProjectsSort)(nil)).Elem()
@@ -3358,14 +3366,14 @@ func (o GetProjectsSortArrayOutput) ToGetProjectsSortArrayOutputWithContext(ctx 
 }
 
 func (o GetProjectsSortArrayOutput) Index(i pulumi.IntInput) GetProjectsSortOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProjectsSort {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsSort {
 		return vs[0].([]GetProjectsSort)[vs[1].(int)]
 	}).(GetProjectsSortOutput)
 }
 
 type GetRegionsFilter struct {
-	// Sort the regions by this key. This may be one of `slug`,
-	// `name`, or `available`.
+	// Filter the regions by this key. This may be one of `slug`,
+	// `name`, `available`, `features`, or `sizes`.
 	Key string `pulumi:"key"`
 	// A list of values to match against the `key` field. Only retrieves regions
 	// where the `key` field takes on one or more of the values provided here.
@@ -3380,8 +3388,8 @@ type GetRegionsFilterInput interface {
 }
 
 type GetRegionsFilterArgs struct {
-	// Sort the regions by this key. This may be one of `slug`,
-	// `name`, or `available`.
+	// Filter the regions by this key. This may be one of `slug`,
+	// `name`, `available`, `features`, or `sizes`.
 	Key pulumi.StringInput `pulumi:"key"`
 	// A list of values to match against the `key` field. Only retrieves regions
 	// where the `key` field takes on one or more of the values provided here.
@@ -3421,7 +3429,7 @@ func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterArrayOutput)
 }
 
-type GetRegionsFilterOutput struct { *pulumi.OutputState }
+type GetRegionsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsFilterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
@@ -3435,19 +3443,19 @@ func (o GetRegionsFilterOutput) ToGetRegionsFilterOutputWithContext(ctx context.
 	return o
 }
 
-// Sort the regions by this key. This may be one of `slug`,
-// `name`, or `available`.
+// Filter the regions by this key. This may be one of `slug`,
+// `name`, `available`, `features`, or `sizes`.
 func (o GetRegionsFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionsFilter) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionsFilter) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // A list of values to match against the `key` field. Only retrieves regions
 // where the `key` field takes on one or more of the values provided here.
 func (o GetRegionsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetRegionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetRegionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetRegionsFilterArrayOutput struct { *pulumi.OutputState}
+type GetRegionsFilterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsFilterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
@@ -3462,17 +3470,17 @@ func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutputWithContext(ct
 }
 
 func (o GetRegionsFilterArrayOutput) Index(i pulumi.IntInput) GetRegionsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRegionsFilter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsFilter {
 		return vs[0].([]GetRegionsFilter)[vs[1].(int)]
 	}).(GetRegionsFilterOutput)
 }
 
 type GetRegionsRegion struct {
-	Available bool `pulumi:"available"`
-	Features []string `pulumi:"features"`
-	Name string `pulumi:"name"`
-	Sizes []string `pulumi:"sizes"`
-	Slug string `pulumi:"slug"`
+	Available bool     `pulumi:"available"`
+	Features  []string `pulumi:"features"`
+	Name      string   `pulumi:"name"`
+	Sizes     []string `pulumi:"sizes"`
+	Slug      string   `pulumi:"slug"`
 }
 
 type GetRegionsRegionInput interface {
@@ -3483,11 +3491,11 @@ type GetRegionsRegionInput interface {
 }
 
 type GetRegionsRegionArgs struct {
-	Available pulumi.BoolInput `pulumi:"available"`
-	Features pulumi.StringArrayInput `pulumi:"features"`
-	Name pulumi.StringInput `pulumi:"name"`
-	Sizes pulumi.StringArrayInput `pulumi:"sizes"`
-	Slug pulumi.StringInput `pulumi:"slug"`
+	Available pulumi.BoolInput        `pulumi:"available"`
+	Features  pulumi.StringArrayInput `pulumi:"features"`
+	Name      pulumi.StringInput      `pulumi:"name"`
+	Sizes     pulumi.StringArrayInput `pulumi:"sizes"`
+	Slug      pulumi.StringInput      `pulumi:"slug"`
 }
 
 func (GetRegionsRegionArgs) ElementType() reflect.Type {
@@ -3523,7 +3531,7 @@ func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
 }
 
-type GetRegionsRegionOutput struct { *pulumi.OutputState }
+type GetRegionsRegionOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
@@ -3538,26 +3546,26 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.
 }
 
 func (o GetRegionsRegionOutput) Available() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetRegionsRegion) bool { return v.Available }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetRegionsRegion) bool { return v.Available }).(pulumi.BoolOutput)
 }
 
 func (o GetRegionsRegionOutput) Features() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetRegionsRegion) []string { return v.Features }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Features }).(pulumi.StringArrayOutput)
 }
 
 func (o GetRegionsRegionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionsRegion) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetRegionsRegionOutput) Sizes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetRegionsRegion) []string { return v.Sizes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Sizes }).(pulumi.StringArrayOutput)
 }
 
 func (o GetRegionsRegionOutput) Slug() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionsRegion) string { return v.Slug }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Slug }).(pulumi.StringOutput)
 }
 
-type GetRegionsRegionArrayOutput struct { *pulumi.OutputState}
+type GetRegionsRegionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
@@ -3572,7 +3580,7 @@ func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ct
 }
 
 func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRegionsRegion {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegion {
 		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
 	}).(GetRegionsRegionOutput)
 }
@@ -3633,7 +3641,7 @@ func (i GetRegionsSortArray) ToGetRegionsSortArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsSortArrayOutput)
 }
 
-type GetRegionsSortOutput struct { *pulumi.OutputState }
+type GetRegionsSortOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsSortOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRegionsSort)(nil)).Elem()
@@ -3649,16 +3657,16 @@ func (o GetRegionsSortOutput) ToGetRegionsSortOutputWithContext(ctx context.Cont
 
 // The sort direction. This may be either `asc` or `desc`.
 func (o GetRegionsSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetRegionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetRegionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
 // Sort the regions by this key. This may be one of `slug`,
 // `name`, or `available`.
 func (o GetRegionsSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionsSort) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionsSort) string { return v.Key }).(pulumi.StringOutput)
 }
 
-type GetRegionsSortArrayOutput struct { *pulumi.OutputState}
+type GetRegionsSortArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsSortArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRegionsSort)(nil)).Elem()
@@ -3673,14 +3681,15 @@ func (o GetRegionsSortArrayOutput) ToGetRegionsSortArrayOutputWithContext(ctx co
 }
 
 func (o GetRegionsSortArrayOutput) Index(i pulumi.IntInput) GetRegionsSortOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRegionsSort {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsSort {
 		return vs[0].([]GetRegionsSort)[vs[1].(int)]
 	}).(GetRegionsSortOutput)
 }
 
 type GetSizesFilter struct {
-	// Sort the sizes by this key. This may be one of `slug`,
-	// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+	// Filter the sizes by this key. This may be one of `slug`,
+	// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+	// `priceHourly`, or `available`.
 	Key string `pulumi:"key"`
 	// Only retrieves images which keys has value that matches
 	// one of the values provided here.
@@ -3695,8 +3704,9 @@ type GetSizesFilterInput interface {
 }
 
 type GetSizesFilterArgs struct {
-	// Sort the sizes by this key. This may be one of `slug`,
-	// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+	// Filter the sizes by this key. This may be one of `slug`,
+	// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+	// `priceHourly`, or `available`.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Only retrieves images which keys has value that matches
 	// one of the values provided here.
@@ -3736,7 +3746,7 @@ func (i GetSizesFilterArray) ToGetSizesFilterArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetSizesFilterArrayOutput)
 }
 
-type GetSizesFilterOutput struct { *pulumi.OutputState }
+type GetSizesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetSizesFilterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSizesFilter)(nil)).Elem()
@@ -3750,19 +3760,20 @@ func (o GetSizesFilterOutput) ToGetSizesFilterOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Sort the sizes by this key. This may be one of `slug`,
-// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+// Filter the sizes by this key. This may be one of `slug`,
+// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+// `priceHourly`, or `available`.
 func (o GetSizesFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSizesFilter) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSizesFilter) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Only retrieves images which keys has value that matches
 // one of the values provided here.
 func (o GetSizesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetSizesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetSizesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetSizesFilterArrayOutput struct { *pulumi.OutputState}
+type GetSizesFilterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSizesFilterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSizesFilter)(nil)).Elem()
@@ -3777,7 +3788,7 @@ func (o GetSizesFilterArrayOutput) ToGetSizesFilterArrayOutputWithContext(ctx co
 }
 
 func (o GetSizesFilterArrayOutput) Index(i pulumi.IntInput) GetSizesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSizesFilter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesFilter {
 		return vs[0].([]GetSizesFilter)[vs[1].(int)]
 	}).(GetSizesFilterOutput)
 }
@@ -3864,7 +3875,7 @@ func (i GetSizesSizeArray) ToGetSizesSizeArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeArrayOutput)
 }
 
-type GetSizesSizeOutput struct { *pulumi.OutputState }
+type GetSizesSizeOutput struct{ *pulumi.OutputState }
 
 func (GetSizesSizeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSizesSize)(nil)).Elem()
@@ -3880,50 +3891,50 @@ func (o GetSizesSizeOutput) ToGetSizesSizeOutputWithContext(ctx context.Context)
 
 // This represents whether new Droplets can be created with this size.
 func (o GetSizesSizeOutput) Available() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetSizesSize) bool { return v.Available }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetSizesSize) bool { return v.Available }).(pulumi.BoolOutput)
 }
 
 // The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
 func (o GetSizesSizeOutput) Disk() pulumi.IntOutput {
-	return o.ApplyT(func (v GetSizesSize) int { return v.Disk }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetSizesSize) int { return v.Disk }).(pulumi.IntOutput)
 }
 
 // The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
 func (o GetSizesSizeOutput) Memory() pulumi.IntOutput {
-	return o.ApplyT(func (v GetSizesSize) int { return v.Memory }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetSizesSize) int { return v.Memory }).(pulumi.IntOutput)
 }
 
 // The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
 func (o GetSizesSizeOutput) PriceHourly() pulumi.Float64Output {
-	return o.ApplyT(func (v GetSizesSize) float64 { return v.PriceHourly }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetSizesSize) float64 { return v.PriceHourly }).(pulumi.Float64Output)
 }
 
 // The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
 func (o GetSizesSizeOutput) PriceMonthly() pulumi.Float64Output {
-	return o.ApplyT(func (v GetSizesSize) float64 { return v.PriceMonthly }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetSizesSize) float64 { return v.PriceMonthly }).(pulumi.Float64Output)
 }
 
 // List of region slugs where Droplets can be created in this size.
 func (o GetSizesSizeOutput) Regions() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetSizesSize) []string { return v.Regions }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetSizesSize) []string { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
 // A human-readable string that is used to uniquely identify each size.
 func (o GetSizesSizeOutput) Slug() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSizesSize) string { return v.Slug }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSizesSize) string { return v.Slug }).(pulumi.StringOutput)
 }
 
 // The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
 func (o GetSizesSizeOutput) Transfer() pulumi.Float64Output {
-	return o.ApplyT(func (v GetSizesSize) float64 { return v.Transfer }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetSizesSize) float64 { return v.Transfer }).(pulumi.Float64Output)
 }
 
 // The number of CPUs allocated to Droplets of this size.
 func (o GetSizesSizeOutput) Vcpus() pulumi.IntOutput {
-	return o.ApplyT(func (v GetSizesSize) int { return v.Vcpus }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetSizesSize) int { return v.Vcpus }).(pulumi.IntOutput)
 }
 
-type GetSizesSizeArrayOutput struct { *pulumi.OutputState}
+type GetSizesSizeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSizesSizeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSizesSize)(nil)).Elem()
@@ -3938,7 +3949,7 @@ func (o GetSizesSizeArrayOutput) ToGetSizesSizeArrayOutputWithContext(ctx contex
 }
 
 func (o GetSizesSizeArrayOutput) Index(i pulumi.IntInput) GetSizesSizeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSizesSize {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSize {
 		return vs[0].([]GetSizesSize)[vs[1].(int)]
 	}).(GetSizesSizeOutput)
 }
@@ -3999,7 +4010,7 @@ func (i GetSizesSortArray) ToGetSizesSortArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSortArrayOutput)
 }
 
-type GetSizesSortOutput struct { *pulumi.OutputState }
+type GetSizesSortOutput struct{ *pulumi.OutputState }
 
 func (GetSizesSortOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSizesSort)(nil)).Elem()
@@ -4015,16 +4026,16 @@ func (o GetSizesSortOutput) ToGetSizesSortOutputWithContext(ctx context.Context)
 
 // The sort direction. This may be either `asc` or `desc`.
 func (o GetSizesSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetSizesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetSizesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
 // Sort the sizes by this key. This may be one of `slug`,
 // `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
 func (o GetSizesSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSizesSort) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSizesSort) string { return v.Key }).(pulumi.StringOutput)
 }
 
-type GetSizesSortArrayOutput struct { *pulumi.OutputState}
+type GetSizesSortArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSizesSortArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSizesSort)(nil)).Elem()
@@ -4039,7 +4050,7 @@ func (o GetSizesSortArrayOutput) ToGetSizesSortArrayOutputWithContext(ctx contex
 }
 
 func (o GetSizesSortArrayOutput) Index(i pulumi.IntInput) GetSizesSortOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSizesSort {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSort {
 		return vs[0].([]GetSizesSort)[vs[1].(int)]
 	}).(GetSizesSortOutput)
 }

@@ -18,7 +18,20 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
         /// </summary>
+        [Obsolete("Use GetDropletSnapshot.InvokeAsync() instead")]
         public static Task<GetDropletSnapshotResult> GetDropletSnapshot(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDropletSnapshot
+    {
+        /// <summary>
+        /// Droplet snapshots are saved instances of a Droplet. Use this data
+        /// source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
+        /// resources.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
+        /// </summary>
+        public static Task<GetDropletSnapshotResult> InvokeAsync(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

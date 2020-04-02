@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetDroplet.InvokeAsync() instead")]
         public static Task<GetDropletResult> GetDroplet(GetDropletArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDroplet
+    {
+        public static Task<GetDropletResult> InvokeAsync(GetDropletArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

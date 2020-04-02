@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+- Upgrade to pulumi-terraform-bridge v1.8.4
+- Upgrade to Pulumi v1.13.1
+- Change layout to support Go modules
 
 ---
 

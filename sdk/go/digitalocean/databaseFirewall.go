@@ -104,4 +104,3 @@ type DatabaseFirewallArgs struct {
 func (DatabaseFirewallArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseFirewallArgs)(nil)).Elem()
 }
-

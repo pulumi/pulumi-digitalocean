@@ -17,7 +17,19 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.
         /// </summary>
+        [Obsolete("Use GetProject.InvokeAsync() instead")]
         public static Task<GetProjectResult> GetProject(GetProjectArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProject
+    {
+        /// <summary>
+        /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
+        /// then this data source returns the default project.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.
+        /// </summary>
+        public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -27,13 +27,12 @@ type GetImagesArgs struct {
 	Sorts []GetImagesSort `pulumi:"sorts"`
 }
 
-
 // A collection of values returned by getImages.
 type GetImagesResult struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:  
+	// A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
 	// - `slug`: Unique text identifier of the image.
 	// - `id`: The ID of the image.
 	// - `name`: The name of the image.
@@ -51,6 +50,5 @@ type GetImagesResult struct {
 	// - `errorMessage`: Any applicable error message pertaining to the image
 	// - `image` - The id of the image (legacy parameter).
 	Images []GetImagesImage `pulumi:"images"`
-	Sorts []GetImagesSort `pulumi:"sorts"`
+	Sorts  []GetImagesSort  `pulumi:"sorts"`
 }
-

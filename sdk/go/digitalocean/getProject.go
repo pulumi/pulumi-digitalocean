@@ -30,7 +30,6 @@ type LookupProjectArgs struct {
 	Name *string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
 	// The date and time when the project was created, (ISO8601)
@@ -39,9 +38,9 @@ type LookupProjectResult struct {
 	Description string `pulumi:"description"`
 	// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
 	Environment string `pulumi:"environment"`
-	Id string `pulumi:"id"`
-	IsDefault bool `pulumi:"isDefault"`
-	Name string `pulumi:"name"`
+	Id          string `pulumi:"id"`
+	IsDefault   bool   `pulumi:"isDefault"`
+	Name        string `pulumi:"name"`
 	// The ID of the project owner.
 	OwnerId int `pulumi:"ownerId"`
 	// The unique universal identifier of the project owner.
@@ -53,4 +52,3 @@ type LookupProjectResult struct {
 	// The date and time when the project was last updated, (ISO8601)
 	UpdatedAt string `pulumi:"updatedAt"`
 }
-

@@ -19,7 +19,7 @@ type Project struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
-	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
+	IsDefault   pulumi.BoolOutput      `pulumi:"isDefault"`
 	// The name of the Project
 	Name pulumi.StringOutput `pulumi:"name"`
 	// the id of the project owner.
@@ -68,7 +68,7 @@ type projectState struct {
 	Description *string `pulumi:"description"`
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment *string `pulumi:"environment"`
-	IsDefault *bool `pulumi:"isDefault"`
+	IsDefault   *bool   `pulumi:"isDefault"`
 	// The name of the Project
 	Name *string `pulumi:"name"`
 	// the id of the project owner.
@@ -90,7 +90,7 @@ type ProjectState struct {
 	Description pulumi.StringPtrInput
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment pulumi.StringPtrInput
-	IsDefault pulumi.BoolPtrInput
+	IsDefault   pulumi.BoolPtrInput
 	// The name of the Project
 	Name pulumi.StringPtrInput
 	// the id of the project owner.
@@ -139,4 +139,3 @@ type ProjectArgs struct {
 func (ProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectArgs)(nil)).Elem()
 }
-

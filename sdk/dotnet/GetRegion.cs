@@ -17,7 +17,19 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
         /// </summary>
+        [Obsolete("Use GetRegion.InvokeAsync() instead")]
         public static Task<GetRegionResult> GetRegion(GetRegionArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRegion
+    {
+        /// <summary>
+        /// Get information on a single DigitalOcean region. This is useful to find out 
+        /// what Droplet sizes and features are supported within a region.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
+        /// </summary>
+        public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

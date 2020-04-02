@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetSshKey.InvokeAsync() instead")]
         public static Task<GetSshKeyResult> GetSshKey(GetSshKeyArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSshKey
+    {
+        public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -36,7 +36,7 @@ type LoadBalancer struct {
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckOutput `pulumi:"healthcheck"`
-	Ip pulumi.StringOutput `pulumi:"ip"`
+	Ip          pulumi.StringOutput           `pulumi:"ip"`
 	// The Load Balancer name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A boolean value indicating whether
@@ -105,7 +105,7 @@ type loadBalancerState struct {
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck *LoadBalancerHealthcheck `pulumi:"healthcheck"`
-	Ip *string `pulumi:"ip"`
+	Ip          *string                  `pulumi:"ip"`
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
 	// A boolean value indicating whether
@@ -141,7 +141,7 @@ type LoadBalancerState struct {
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckPtrInput
-	Ip pulumi.StringPtrInput
+	Ip          pulumi.StringPtrInput
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
 	// A boolean value indicating whether
@@ -230,4 +230,3 @@ type LoadBalancerArgs struct {
 func (LoadBalancerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerArgs)(nil)).Elem()
 }
-

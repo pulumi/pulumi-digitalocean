@@ -24,7 +24,7 @@ type KubernetesCluster struct {
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The public IPv4 address of the Kubernetes master node.
-	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
+	Ipv4Address pulumi.StringOutput                    `pulumi:"ipv4Address"`
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
 	// A name for the Kubernetes cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -104,7 +104,7 @@ type kubernetesClusterState struct {
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint *string `pulumi:"endpoint"`
 	// The public IPv4 address of the Kubernetes master node.
-	Ipv4Address *string `pulumi:"ipv4Address"`
+	Ipv4Address *string                       `pulumi:"ipv4Address"`
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
@@ -234,4 +234,3 @@ type KubernetesClusterArgs struct {
 func (KubernetesClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesClusterArgs)(nil)).Elem()
 }
-

@@ -11,7 +11,13 @@ namespace Pulumi.DigitalOcean
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetKubernetesCluster.InvokeAsync() instead")]
         public static Task<GetKubernetesClusterResult> GetKubernetesCluster(GetKubernetesClusterArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClusterResult>("digitalocean:index/getKubernetesCluster:getKubernetesCluster", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKubernetesCluster
+    {
+        public static Task<GetKubernetesClusterResult> InvokeAsync(GetKubernetesClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClusterResult>("digitalocean:index/getKubernetesCluster:getKubernetesCluster", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -25,6 +31,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("tags")]
         private List<string>? _tags;
+
+        /// <summary>
+        /// A list of tag names to be applied to the Kubernetes cluster.
+        /// </summary>
         public List<string> Tags
         {
             get => _tags ?? (_tags = new List<string>());
