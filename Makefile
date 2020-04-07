@@ -25,7 +25,7 @@ TESTPARALLELISM := 20
 # NOTE: Since the plugin is published using the nodejs style semver version
 # We set the PLUGIN_VERSION to be the same as the version we use when building
 # the provider (e.g. x.y.z-dev-... instead of x.y.zdev...)
-build:: provider tfgen
+build:: provider
 	cd provider && for LANGUAGE in "nodejs" "python" "go" "dotnet"  ; do \
 		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ../${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
 	done
@@ -49,7 +49,7 @@ generate_schema:: tfgen
 	$(TFGEN) schema --out ./provider/cmd/${PROVIDER}
 
 provider:: generate_schema
-	go generate ${PROJECT}/provider/cmd/${PROVIDER}
+	cd provider && go generate cmd/${PROVIDER}/main.go
 	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-digitalocean/provider/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${PROVIDER}
 
 tfgen::
@@ -58,7 +58,7 @@ tfgen::
 lint::
 	#golangci-lint run
 
-install:: tfgen provider
+install:: provider
 	[ ! -e "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" ] || rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
 	mkdir -p "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
 	cp -r ${PACKDIR}/nodejs/bin/. "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
