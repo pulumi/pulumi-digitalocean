@@ -38,6 +38,8 @@ class DropletSnapshot(pulumi.CustomResource):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
 
         :param str resource_name: The name of the resource.

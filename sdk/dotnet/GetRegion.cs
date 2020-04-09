@@ -15,6 +15,8 @@ namespace Pulumi.DigitalOcean
         /// Get information on a single DigitalOcean region. This is useful to find out 
         /// what Droplet sizes and features are supported within a region.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
         /// </summary>
         [Obsolete("Use GetRegion.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Get information on a single DigitalOcean region. This is useful to find out 
         /// what Droplet sizes and features are supported within a region.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
         /// </summary>

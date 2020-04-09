@@ -62,6 +62,8 @@ class SpacesBucket(pulumi.CustomResource):
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
 
         :param str resource_name: The name of the resource.

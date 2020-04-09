@@ -13,6 +13,8 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Load Balancer resource. This can be used to create,
     /// modify, and delete Load Balancers.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
     /// </summary>
     public partial class LoadBalancer : Pulumi.CustomResource

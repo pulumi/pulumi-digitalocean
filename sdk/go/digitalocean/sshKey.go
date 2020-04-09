@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a DigitalOcean SSH key resource to allow you to manage SSH
 // keys for Droplet access. Keys created with this resource
 // can be referenced in your Droplet configuration via their ID or
 // fingerprint.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/ssh_key.html.markdown.
 type SshKey struct {

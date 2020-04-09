@@ -16,6 +16,8 @@ namespace Pulumi.DigitalOcean
         /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
         /// resources.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
         /// </summary>
         [Obsolete("Use GetVolumeSnapshot.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.DigitalOcean
         /// Volume snapshots are saved instances of a block storage volume. Use this data
         /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
         /// resources.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
         /// </summary>

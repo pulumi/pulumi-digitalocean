@@ -32,6 +32,8 @@ class FloatingIp(pulumi.CustomResource):
 
         > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `.FloatingIp` resource by setting a `droplet_id` or using the `.FloatingIpAssignment` resource, but the two cannot be used together.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
 
         :param str resource_name: The name of the resource.

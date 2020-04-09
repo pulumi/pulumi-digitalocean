@@ -21,6 +21,8 @@ class Tag(pulumi.CustomResource):
         actions on it. Tags created with this resource can be referenced in your Droplet
         configuration via their ID or name.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/tag.html.markdown.
 
         :param str resource_name: The name of the resource.

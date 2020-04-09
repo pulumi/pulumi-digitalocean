@@ -5,7 +5,7 @@
 package digitalocean
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Retrieve information about all supported DigitalOcean regions, with the ability to
@@ -13,6 +13,8 @@ import (
 //
 // Note: You can use the [`.getRegion`](https://www.terraform.io/docs/providers/do/d/region.html) data source
 // to obtain metadata about a single region if you already know the `slug` to retrieve.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/regions.html.md.
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {

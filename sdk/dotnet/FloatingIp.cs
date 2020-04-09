@@ -14,6 +14,8 @@ namespace Pulumi.DigitalOcean
     /// 
     /// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean..FloatingIp` resource by setting a `droplet_id` or using the `digitalocean..FloatingIpAssignment` resource, but the two cannot be used together.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource

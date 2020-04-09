@@ -12,6 +12,8 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean database connection pool resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_connection_pool.html.markdown.
     /// </summary>
     public partial class DatabaseConnectionPool : Pulumi.CustomResource

@@ -15,6 +15,8 @@ namespace Pulumi.DigitalOcean
     /// can be referenced in your Droplet configuration via their ID or
     /// fingerprint.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/ssh_key.html.markdown.
     /// </summary>
     public partial class SshKey : Pulumi.CustomResource

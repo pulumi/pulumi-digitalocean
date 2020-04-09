@@ -15,9 +15,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * Use the `filter` block with a `key` string and `values` list to filter regions.
  * 
- * For example to find all available regions:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,34 +28,10 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * 
- * You can filter on multiple fields and sort the results as well:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const available = digitalocean.getRegions({
- *     filters: [
- *         {
- *             key: "available",
- *             values: ["true"],
- *         },
- *         {
- *             key: "features",
- *             values: ["privateNetworking"],
- *         },
- *     ],
- *     sorts: [{
- *         direction: "desc",
- *         key: "name",
- *     }],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/regions.html.md.
  */
-export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> & GetRegionsResult {
+export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -66,12 +40,10 @@ export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRegionsResult> = pulumi.runtime.invoke("digitalocean:index/getRegions:getRegions", {
+    return pulumi.runtime.invoke("digitalocean:index/getRegions:getRegions", {
         "filters": args.filters,
         "sorts": args.sorts,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

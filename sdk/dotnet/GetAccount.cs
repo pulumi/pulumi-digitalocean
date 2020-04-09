@@ -14,6 +14,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Get information on your DigitalOcean account.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
         /// </summary>
         [Obsolete("Use GetAccount.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// Get information on your DigitalOcean account.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
         /// </summary>

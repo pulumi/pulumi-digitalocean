@@ -14,6 +14,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Provides access to the available DigitalOcean Kubernetes Service versions.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
         /// </summary>
         [Obsolete("Use GetKubernetesVersions.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// Provides access to the available DigitalOcean Kubernetes Service versions.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
         /// </summary>

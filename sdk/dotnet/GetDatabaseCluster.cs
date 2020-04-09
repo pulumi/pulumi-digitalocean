@@ -14,6 +14,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Provides information on a DigitalOcean database cluster resource.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
         /// </summary>
         [Obsolete("Use GetDatabaseCluster.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// Provides information on a DigitalOcean database cluster resource.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
         /// </summary>

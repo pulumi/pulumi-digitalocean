@@ -145,6 +145,8 @@ def get_database_cluster(name=None,tags=None,opts=None):
     """
     Provides information on a DigitalOcean database cluster resource.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
 
 

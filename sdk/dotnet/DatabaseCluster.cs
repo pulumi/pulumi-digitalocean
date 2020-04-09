@@ -12,6 +12,8 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean database cluster resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
     /// </summary>
     public partial class DatabaseCluster : Pulumi.CustomResource

@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
  * makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
  * Droplet.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip_assignment.html.markdown.
  */

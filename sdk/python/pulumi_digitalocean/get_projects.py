@@ -64,6 +64,8 @@ def get_projects(filters=None,sorts=None,opts=None):
     obtain metadata about a single project if you already know the `id` to retrieve or the unique
     `name` of the project.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
 
 

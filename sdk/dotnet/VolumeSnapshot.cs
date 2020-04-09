@@ -12,6 +12,8 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
     /// </summary>
     public partial class VolumeSnapshot : Pulumi.CustomResource

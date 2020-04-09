@@ -9,10 +9,11 @@ import * as utilities from "./utilities";
 /**
  * Get information on a single DigitalOcean region. This is useful to find out 
  * what Droplet sizes and features are supported within a region.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
  */
-export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> & GetRegionResult {
+export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
     if (!opts) {
         opts = {}
     }
@@ -20,11 +21,9 @@ export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRegionResult> = pulumi.runtime.invoke("digitalocean:index/getRegion:getRegion", {
+    return pulumi.runtime.invoke("digitalocean:index/getRegion:getRegion", {
         "slug": args.slug,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

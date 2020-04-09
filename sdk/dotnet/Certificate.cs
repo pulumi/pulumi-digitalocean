@@ -17,6 +17,8 @@ namespace Pulumi.DigitalOcean
     /// be a custom one provided by you or automatically generated one with
     /// Let's Encrypt.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource

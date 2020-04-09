@@ -14,6 +14,8 @@ namespace Pulumi.DigitalOcean
     /// connections to your database to trusted sources. You may limit connections to
     /// specific Droplets, Kubernetes clusters, or IP addresses.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_firewall.html.markdown.
     /// </summary>
     public partial class DatabaseFirewall : Pulumi.CustomResource

@@ -8,12 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a DigitalOcean Droplet resource. This can be used to create,
 // modify, and delete Droplets. Droplets also support
 // [provisioning](https://www.terraform.io/docs/provisioners/index.html).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
 type Droplet struct {

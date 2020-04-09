@@ -13,6 +13,8 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
     /// modify, and delete Firewalls.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
     /// </summary>
     public partial class Firewall : Pulumi.CustomResource

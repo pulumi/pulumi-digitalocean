@@ -58,6 +58,8 @@ class DnsRecord(pulumi.CustomResource):
         """
         Provides a DigitalOcean DNS record resource.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -5,7 +5,7 @@
 package digitalocean
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Retrieve information about all DigitalOcean projects associated with an account, with
@@ -15,6 +15,8 @@ import (
 // Note: You can use the [`.Project`](https://www.terraform.io/docs/providers/do/d/project.html) data source to
 // obtain metadata about a single project if you already know the `id` to retrieve or the unique
 // `name` of the project.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {

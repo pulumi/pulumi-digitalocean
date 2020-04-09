@@ -33,9 +33,6 @@ import {Region} from "./index";
  * 
  * ### Autoscaling Example
  * 
- * Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
- * For example:
- * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -52,8 +49,6 @@ import {Region} from "./index";
  *     version: "1.15.5-do.1",
  * });
  * ```
- * 
- * Note that, while individual node pools may scale to 0, a cluster must always include at least one node.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
  */

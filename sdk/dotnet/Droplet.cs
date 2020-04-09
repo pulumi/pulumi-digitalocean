@@ -14,6 +14,8 @@ namespace Pulumi.DigitalOcean
     /// modify, and delete Droplets. Droplets also support
     /// [provisioning](https://www.terraform.io/docs/provisioners/index.html).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
     /// </summary>
     public partial class Droplet : Pulumi.CustomResource

@@ -15,6 +15,8 @@ namespace Pulumi.DigitalOcean
         /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
         /// then this data source returns the default project.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.
         /// </summary>
         [Obsolete("Use GetProject.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
         /// then this data source returns the default project.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.
         /// </summary>

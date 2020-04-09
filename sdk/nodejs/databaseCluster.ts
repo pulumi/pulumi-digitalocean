@@ -14,6 +14,7 @@ import {DatabaseSlug, Region} from "./index";
  * ## Example Usage
  * 
  * ### Create a new PostgreSQL database cluster
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -28,6 +29,7 @@ import {DatabaseSlug, Region} from "./index";
  * ```
  * 
  * ### Create a new MySQL database cluster
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -42,6 +44,7 @@ import {DatabaseSlug, Region} from "./index";
  * ```
  * 
  * ### Create a new Redis database cluster
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";

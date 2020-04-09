@@ -7,7 +7,7 @@ package digitalocean
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a DigitalOcean Certificate resource that allows you to manage
@@ -16,6 +16,8 @@ import (
 // Load Balancer configuration via their ID. The certificate can either
 // be a custom one provided by you or automatically generated one with
 // Let's Encrypt.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/certificate.html.markdown.
 type Certificate struct {

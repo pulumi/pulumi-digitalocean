@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> & GetDropletResult {
+export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -15,13 +15,11 @@ export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDropletResult> = pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
+    return pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
         "id": args.id,
         "name": args.name,
         "tag": args.tag,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

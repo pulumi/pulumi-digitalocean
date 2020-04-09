@@ -18,6 +18,8 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the [`digitalocean..getRegion`](https://www.terraform.io/docs/providers/do/d/region.html) data source
         /// to obtain metadata about a single region if you already know the `slug` to retrieve.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/regions.html.md.
         /// </summary>
         [Obsolete("Use GetRegions.InvokeAsync() instead")]
@@ -32,6 +34,8 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Note: You can use the [`digitalocean..getRegion`](https://www.terraform.io/docs/providers/do/d/region.html) data source
         /// to obtain metadata about a single region if you already know the `slug` to retrieve.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/regions.html.md.
         /// </summary>

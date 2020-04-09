@@ -27,6 +27,8 @@ namespace Pulumi.DigitalOcean
     /// 
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
     /// </summary>
     public partial class SpacesBucket : Pulumi.CustomResource

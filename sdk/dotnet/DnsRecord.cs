@@ -12,6 +12,8 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean DNS record resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
     /// </summary>
     public partial class DnsRecord : Pulumi.CustomResource

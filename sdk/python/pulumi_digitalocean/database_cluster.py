@@ -93,6 +93,8 @@ class DatabaseCluster(pulumi.CustomResource):
         """
         Provides a DigitalOcean database cluster resource.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
 
         :param str resource_name: The name of the resource.

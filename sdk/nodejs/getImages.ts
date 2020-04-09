@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> & GetImagesResult {
+export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -15,12 +15,10 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetImagesResult> = pulumi.runtime.invoke("digitalocean:index/getImages:getImages", {
+    return pulumi.runtime.invoke("digitalocean:index/getImages:getImages", {
         "filters": args.filters,
         "sorts": args.sorts,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

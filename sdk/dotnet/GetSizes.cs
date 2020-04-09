@@ -16,6 +16,8 @@ namespace Pulumi.DigitalOcean
         /// the ability to filter and sort the results. If no filters are specified, all sizes
         /// will be returned.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
         /// </summary>
         [Obsolete("Use GetSizes.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.DigitalOcean
         /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
         /// the ability to filter and sort the results. If no filters are specified, all sizes
         /// will be returned.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
         /// </summary>

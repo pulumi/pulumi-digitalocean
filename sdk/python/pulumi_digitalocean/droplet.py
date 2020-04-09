@@ -120,6 +120,8 @@ class Droplet(pulumi.CustomResource):
         modify, and delete Droplets. Droplets also support
         [provisioning](https://www.terraform.io/docs/provisioners/index.html).
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
 
         :param str resource_name: The name of the resource.

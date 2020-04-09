@@ -12,6 +12,8 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean domain resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
     /// </summary>
     public partial class Domain : Pulumi.CustomResource

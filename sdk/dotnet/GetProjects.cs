@@ -20,6 +20,8 @@ namespace Pulumi.DigitalOcean
         /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
         /// `name` of the project.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
         /// </summary>
         [Obsolete("Use GetProjects.InvokeAsync() instead")]
@@ -36,6 +38,8 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the [`digitalocean..Project`](https://www.terraform.io/docs/providers/do/d/project.html) data source to
         /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
         /// `name` of the project.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
         /// </summary>

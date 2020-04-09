@@ -36,6 +36,8 @@ class DatabaseUser(pulumi.CustomResource):
 
         > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_user.html.markdown.
 
         :param str resource_name: The name of the resource.

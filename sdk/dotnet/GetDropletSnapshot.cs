@@ -16,6 +16,8 @@ namespace Pulumi.DigitalOcean
         /// source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
         /// resources.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
         /// </summary>
         [Obsolete("Use GetDropletSnapshot.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.DigitalOcean
         /// Droplet snapshots are saved instances of a Droplet. Use this data
         /// source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
         /// resources.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
         /// </summary>
