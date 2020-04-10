@@ -48,8 +48,6 @@ def get_sizes(filters=None,sorts=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
-
 
     :param list filters: Filter the results.
            The `filter` block is documented below.

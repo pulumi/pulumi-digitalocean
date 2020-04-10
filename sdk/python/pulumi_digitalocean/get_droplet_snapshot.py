@@ -87,8 +87,6 @@ def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
-
 
     :param bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.
     :param str name: The name of the Droplet snapshot.

@@ -94,8 +94,6 @@ def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,o
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
-
 
     :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.
     :param str name: The name of the volume snapshot.

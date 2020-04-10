@@ -8,12 +8,10 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "latest",
-    "@pulumi/random": "latest"
-  },
-  "devDependencies": {
+    "@pulumi/pulumi": "2.0.0-beta.3",
+    "@pulumi/random": "2.0.0-beta.3"
   },
   "peerDependencies": {
-    "@pulumi/digitalocean": "latest"
+    "@pulumi/digitalocean": "dev"
   }
 }

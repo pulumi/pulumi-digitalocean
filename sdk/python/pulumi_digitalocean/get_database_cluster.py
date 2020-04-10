@@ -147,8 +147,6 @@ def get_database_cluster(name=None,tags=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
-
 
     :param str name: The name of the database cluster.
     """

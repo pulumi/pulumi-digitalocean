@@ -96,8 +96,6 @@ def get_project(id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.
-
 
     :param str id: the ID of the project to retrieve
     :param str name: the name of the project to retrieve. The data source will raise an error if more than
