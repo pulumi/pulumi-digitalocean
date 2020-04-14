@@ -13,8 +13,6 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database firewall resource allowing you to restrict
     /// connections to your database to trusted sources. You may limit connections to
     /// specific Droplets, Kubernetes clusters, or IP addresses.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_firewall.html.markdown.
     /// </summary>
     public partial class DatabaseFirewall : Pulumi.CustomResource
     {
@@ -30,7 +28,7 @@ namespace Pulumi.DigitalOcean
         /// - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
         /// </summary>
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.DatabaseFirewallRules>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DatabaseFirewallRule>> Rules { get; private set; } = null!;
 
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseFirewall(string name, DatabaseFirewallArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseFirewall", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index:DatabaseFirewall", name, args ?? new DatabaseFirewallArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -85,16 +83,16 @@ namespace Pulumi.DigitalOcean
         public Input<string> ClusterId { get; set; } = null!;
 
         [Input("rules", required: true)]
-        private InputList<Inputs.DatabaseFirewallRulesArgs>? _rules;
+        private InputList<Inputs.DatabaseFirewallRuleArgs>? _rules;
 
         /// <summary>
         /// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         /// - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
         /// - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
         /// </summary>
-        public InputList<Inputs.DatabaseFirewallRulesArgs> Rules
+        public InputList<Inputs.DatabaseFirewallRuleArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.DatabaseFirewallRulesArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.DatabaseFirewallRuleArgs>());
             set => _rules = value;
         }
 
@@ -112,107 +110,21 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ClusterId { get; set; }
 
         [Input("rules")]
-        private InputList<Inputs.DatabaseFirewallRulesGetArgs>? _rules;
+        private InputList<Inputs.DatabaseFirewallRuleGetArgs>? _rules;
 
         /// <summary>
         /// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         /// - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
         /// - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
         /// </summary>
-        public InputList<Inputs.DatabaseFirewallRulesGetArgs> Rules
+        public InputList<Inputs.DatabaseFirewallRuleGetArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.DatabaseFirewallRulesGetArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.DatabaseFirewallRuleGetArgs>());
             set => _rules = value;
         }
 
         public DatabaseFirewallState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DatabaseFirewallRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The date and time when the firewall rule was created.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        /// <summary>
-        /// A unique identifier for the firewall rule.
-        /// </summary>
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
-
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public DatabaseFirewallRulesArgs()
-        {
-        }
-    }
-
-    public sealed class DatabaseFirewallRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The date and time when the firewall rule was created.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        /// <summary>
-        /// A unique identifier for the firewall rule.
-        /// </summary>
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
-
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public DatabaseFirewallRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DatabaseFirewallRules
-    {
-        /// <summary>
-        /// The date and time when the firewall rule was created.
-        /// </summary>
-        public readonly string CreatedAt;
-        public readonly string Type;
-        /// <summary>
-        /// A unique identifier for the firewall rule.
-        /// </summary>
-        public readonly string Uuid;
-        public readonly string Value;
-
-        [OutputConstructor]
-        private DatabaseFirewallRules(
-            string createdAt,
-            string type,
-            string uuid,
-            string value)
-        {
-            CreatedAt = createdAt;
-            Type = type;
-            Uuid = uuid;
-            Value = value;
-        }
-    }
     }
 }

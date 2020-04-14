@@ -13,8 +13,6 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
     /// 
     /// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean..FloatingIp` resource by setting a `droplet_id` or using the `digitalocean..FloatingIpAssignment` resource, but the two cannot be used together.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip.html.markdown.
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource
     {
@@ -51,7 +49,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FloatingIp(string name, FloatingIpArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/floatingIp:FloatingIp", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/floatingIp:FloatingIp", name, args ?? new FloatingIpArgs(), MakeResourceOptions(options, ""))
         {
         }
 

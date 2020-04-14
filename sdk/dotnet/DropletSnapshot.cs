@@ -11,8 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
     /// </summary>
     public partial class DropletSnapshot : Pulumi.CustomResource
     {
@@ -61,7 +59,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DropletSnapshot(string name, DropletSnapshotArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/dropletSnapshot:DropletSnapshot", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/dropletSnapshot:DropletSnapshot", name, args ?? new DropletSnapshotArgs(), MakeResourceOptions(options, ""))
         {
         }
 

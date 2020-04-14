@@ -11,8 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_db.html.markdown.
     /// </summary>
     public partial class DatabaseDb : Pulumi.CustomResource
     {
@@ -37,7 +35,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseDb(string name, DatabaseDbArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseDb", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index:DatabaseDb", name, args ?? new DatabaseDbArgs(), MakeResourceOptions(options, ""))
         {
         }
 

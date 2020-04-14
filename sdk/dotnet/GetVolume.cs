@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetVolume.InvokeAsync() instead")]
-        public static Task<GetVolumeResult> GetVolume(GetVolumeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetVolume
     {
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithVersion());
     }
+
 
     public sealed class GetVolumeArgs : Pulumi.InvokeArgs
     {
@@ -46,6 +41,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetVolumeResult
     {
@@ -65,6 +61,10 @@ namespace Pulumi.DigitalOcean
         /// Filesystem type currently in-use on the block storage volume.
         /// </summary>
         public readonly string FilesystemType;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string? Region;
         /// <summary>
@@ -76,34 +76,39 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         public readonly string Urn;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetVolumeResult(
             string? description,
+
             ImmutableArray<int> dropletIds,
+
             string filesystemLabel,
+
             string filesystemType,
+
+            string id,
+
             string name,
+
             string? region,
+
             int size,
+
             ImmutableArray<string> tags,
-            string urn,
-            string id)
+
+            string urn)
         {
             Description = description;
             DropletIds = dropletIds;
             FilesystemLabel = filesystemLabel;
             FilesystemType = filesystemType;
+            Id = id;
             Name = name;
             Region = region;
             Size = size;
             Tags = tags;
             Urn = urn;
-            Id = id;
         }
     }
 }

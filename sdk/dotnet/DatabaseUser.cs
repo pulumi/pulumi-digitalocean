@@ -13,8 +13,6 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
     /// 
     /// &gt; **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_user.html.markdown.
     /// </summary>
     public partial class DatabaseUser : Pulumi.CustomResource
     {
@@ -57,7 +55,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseUser(string name, DatabaseUserArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseUser", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index:DatabaseUser", name, args ?? new DatabaseUserArgs(), MakeResourceOptions(options, ""))
         {
         }
 

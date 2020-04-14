@@ -11,8 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean database connection pool resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_connection_pool.html.markdown.
     /// </summary>
     public partial class DatabaseConnectionPool : Pulumi.CustomResource
     {
@@ -97,7 +95,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseConnectionPool(string name, DatabaseConnectionPoolArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/databaseConnectionPool:DatabaseConnectionPool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/databaseConnectionPool:DatabaseConnectionPool", name, args ?? new DatabaseConnectionPoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 

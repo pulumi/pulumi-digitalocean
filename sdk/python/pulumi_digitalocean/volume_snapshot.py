@@ -42,7 +42,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         """
         Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_snapshot.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

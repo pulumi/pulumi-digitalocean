@@ -12,8 +12,6 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean Load Balancer resource. This can be used to create,
     /// modify, and delete Load Balancers.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
     /// </summary>
     public partial class LoadBalancer : Pulumi.CustomResource
     {
@@ -50,7 +48,7 @@ namespace Pulumi.DigitalOcean
         /// Load Balancer. The `forwarding_rule` block is documented below.
         /// </summary>
         [Output("forwardingRules")]
-        public Output<ImmutableArray<Outputs.LoadBalancerForwardingRules>> ForwardingRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.LoadBalancerForwardingRule>> ForwardingRules { get; private set; } = null!;
 
         /// <summary>
         /// A `healthcheck` block to be assigned to the
@@ -107,7 +105,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LoadBalancer(string name, LoadBalancerArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/loadBalancer:LoadBalancer", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/loadBalancer:LoadBalancer", name, args ?? new LoadBalancerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -179,15 +177,15 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? EnableProxyProtocol { get; set; }
 
         [Input("forwardingRules", required: true)]
-        private InputList<Inputs.LoadBalancerForwardingRulesArgs>? _forwardingRules;
+        private InputList<Inputs.LoadBalancerForwardingRuleArgs>? _forwardingRules;
 
         /// <summary>
         /// A list of `forwarding_rule` to be assigned to the
         /// Load Balancer. The `forwarding_rule` block is documented below.
         /// </summary>
-        public InputList<Inputs.LoadBalancerForwardingRulesArgs> ForwardingRules
+        public InputList<Inputs.LoadBalancerForwardingRuleArgs> ForwardingRules
         {
-            get => _forwardingRules ?? (_forwardingRules = new InputList<Inputs.LoadBalancerForwardingRulesArgs>());
+            get => _forwardingRules ?? (_forwardingRules = new InputList<Inputs.LoadBalancerForwardingRuleArgs>());
             set => _forwardingRules = value;
         }
 
@@ -267,15 +265,15 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? EnableProxyProtocol { get; set; }
 
         [Input("forwardingRules")]
-        private InputList<Inputs.LoadBalancerForwardingRulesGetArgs>? _forwardingRules;
+        private InputList<Inputs.LoadBalancerForwardingRuleGetArgs>? _forwardingRules;
 
         /// <summary>
         /// A list of `forwarding_rule` to be assigned to the
         /// Load Balancer. The `forwarding_rule` block is documented below.
         /// </summary>
-        public InputList<Inputs.LoadBalancerForwardingRulesGetArgs> ForwardingRules
+        public InputList<Inputs.LoadBalancerForwardingRuleGetArgs> ForwardingRules
         {
-            get => _forwardingRules ?? (_forwardingRules = new InputList<Inputs.LoadBalancerForwardingRulesGetArgs>());
+            get => _forwardingRules ?? (_forwardingRules = new InputList<Inputs.LoadBalancerForwardingRuleGetArgs>());
             set => _forwardingRules = value;
         }
 
@@ -328,373 +326,5 @@ namespace Pulumi.DigitalOcean
         public LoadBalancerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class LoadBalancerForwardingRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the TLS certificate to be used for SSL termination.
-        /// </summary>
-        [Input("certificateId")]
-        public Input<string>? CertificateId { get; set; }
-
-        /// <summary>
-        /// An integer representing the port on which the Load Balancer instance will listen.
-        /// </summary>
-        [Input("entryPort", required: true)]
-        public Input<int> EntryPort { get; set; } = null!;
-
-        /// <summary>
-        /// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
-        /// </summary>
-        [Input("entryProtocol", required: true)]
-        public Input<string> EntryProtocol { get; set; } = null!;
-
-        /// <summary>
-        /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
-        /// </summary>
-        [Input("targetPort", required: true)]
-        public Input<int> TargetPort { get; set; } = null!;
-
-        /// <summary>
-        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
-        /// </summary>
-        [Input("targetProtocol", required: true)]
-        public Input<string> TargetProtocol { get; set; } = null!;
-
-        /// <summary>
-        /// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-        /// </summary>
-        [Input("tlsPassthrough")]
-        public Input<bool>? TlsPassthrough { get; set; }
-
-        public LoadBalancerForwardingRulesArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerForwardingRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the TLS certificate to be used for SSL termination.
-        /// </summary>
-        [Input("certificateId")]
-        public Input<string>? CertificateId { get; set; }
-
-        /// <summary>
-        /// An integer representing the port on which the Load Balancer instance will listen.
-        /// </summary>
-        [Input("entryPort", required: true)]
-        public Input<int> EntryPort { get; set; } = null!;
-
-        /// <summary>
-        /// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
-        /// </summary>
-        [Input("entryProtocol", required: true)]
-        public Input<string> EntryProtocol { get; set; } = null!;
-
-        /// <summary>
-        /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
-        /// </summary>
-        [Input("targetPort", required: true)]
-        public Input<int> TargetPort { get; set; } = null!;
-
-        /// <summary>
-        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
-        /// </summary>
-        [Input("targetProtocol", required: true)]
-        public Input<string> TargetProtocol { get; set; } = null!;
-
-        /// <summary>
-        /// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-        /// </summary>
-        [Input("tlsPassthrough")]
-        public Input<bool>? TlsPassthrough { get; set; }
-
-        public LoadBalancerForwardingRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerHealthcheckArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
-        /// </summary>
-        [Input("checkIntervalSeconds")]
-        public Input<int>? CheckIntervalSeconds { get; set; }
-
-        /// <summary>
-        /// The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
-        /// </summary>
-        [Input("healthyThreshold")]
-        public Input<int>? HealthyThreshold { get; set; }
-
-        /// <summary>
-        /// The path on the backend Droplets to which the Load Balancer instance will send a request.
-        /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        /// <summary>
-        /// An integer representing the port on the backend Droplets on which the health check will attempt a connection.
-        /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        /// <summary>
-        /// The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
-        /// </summary>
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
-
-        /// <summary>
-        /// The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
-        /// </summary>
-        [Input("responseTimeoutSeconds")]
-        public Input<int>? ResponseTimeoutSeconds { get; set; }
-
-        /// <summary>
-        /// The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
-        /// </summary>
-        [Input("unhealthyThreshold")]
-        public Input<int>? UnhealthyThreshold { get; set; }
-
-        public LoadBalancerHealthcheckArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerHealthcheckGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
-        /// </summary>
-        [Input("checkIntervalSeconds")]
-        public Input<int>? CheckIntervalSeconds { get; set; }
-
-        /// <summary>
-        /// The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
-        /// </summary>
-        [Input("healthyThreshold")]
-        public Input<int>? HealthyThreshold { get; set; }
-
-        /// <summary>
-        /// The path on the backend Droplets to which the Load Balancer instance will send a request.
-        /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        /// <summary>
-        /// An integer representing the port on the backend Droplets on which the health check will attempt a connection.
-        /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        /// <summary>
-        /// The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
-        /// </summary>
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
-
-        /// <summary>
-        /// The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
-        /// </summary>
-        [Input("responseTimeoutSeconds")]
-        public Input<int>? ResponseTimeoutSeconds { get; set; }
-
-        /// <summary>
-        /// The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
-        /// </summary>
-        [Input("unhealthyThreshold")]
-        public Input<int>? UnhealthyThreshold { get; set; }
-
-        public LoadBalancerHealthcheckGetArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerStickySessionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
-        /// </summary>
-        [Input("cookieName")]
-        public Input<string>? CookieName { get; set; }
-
-        /// <summary>
-        /// The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
-        /// </summary>
-        [Input("cookieTtlSeconds")]
-        public Input<int>? CookieTtlSeconds { get; set; }
-
-        /// <summary>
-        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public LoadBalancerStickySessionsArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerStickySessionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
-        /// </summary>
-        [Input("cookieName")]
-        public Input<string>? CookieName { get; set; }
-
-        /// <summary>
-        /// The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
-        /// </summary>
-        [Input("cookieTtlSeconds")]
-        public Input<int>? CookieTtlSeconds { get; set; }
-
-        /// <summary>
-        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public LoadBalancerStickySessionsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class LoadBalancerForwardingRules
-    {
-        /// <summary>
-        /// The ID of the TLS certificate to be used for SSL termination.
-        /// </summary>
-        public readonly string? CertificateId;
-        /// <summary>
-        /// An integer representing the port on which the Load Balancer instance will listen.
-        /// </summary>
-        public readonly int EntryPort;
-        /// <summary>
-        /// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
-        /// </summary>
-        public readonly string EntryProtocol;
-        /// <summary>
-        /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
-        /// </summary>
-        public readonly int TargetPort;
-        /// <summary>
-        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
-        /// </summary>
-        public readonly string TargetProtocol;
-        /// <summary>
-        /// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-        /// </summary>
-        public readonly bool? TlsPassthrough;
-
-        [OutputConstructor]
-        private LoadBalancerForwardingRules(
-            string? certificateId,
-            int entryPort,
-            string entryProtocol,
-            int targetPort,
-            string targetProtocol,
-            bool? tlsPassthrough)
-        {
-            CertificateId = certificateId;
-            EntryPort = entryPort;
-            EntryProtocol = entryProtocol;
-            TargetPort = targetPort;
-            TargetProtocol = targetProtocol;
-            TlsPassthrough = tlsPassthrough;
-        }
-    }
-
-    [OutputType]
-    public sealed class LoadBalancerHealthcheck
-    {
-        /// <summary>
-        /// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
-        /// </summary>
-        public readonly int? CheckIntervalSeconds;
-        /// <summary>
-        /// The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
-        /// </summary>
-        public readonly int? HealthyThreshold;
-        /// <summary>
-        /// The path on the backend Droplets to which the Load Balancer instance will send a request.
-        /// </summary>
-        public readonly string? Path;
-        /// <summary>
-        /// An integer representing the port on the backend Droplets on which the health check will attempt a connection.
-        /// </summary>
-        public readonly int Port;
-        /// <summary>
-        /// The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
-        /// </summary>
-        public readonly string Protocol;
-        /// <summary>
-        /// The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
-        /// </summary>
-        public readonly int? ResponseTimeoutSeconds;
-        /// <summary>
-        /// The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
-        /// </summary>
-        public readonly int? UnhealthyThreshold;
-
-        [OutputConstructor]
-        private LoadBalancerHealthcheck(
-            int? checkIntervalSeconds,
-            int? healthyThreshold,
-            string? path,
-            int port,
-            string protocol,
-            int? responseTimeoutSeconds,
-            int? unhealthyThreshold)
-        {
-            CheckIntervalSeconds = checkIntervalSeconds;
-            HealthyThreshold = healthyThreshold;
-            Path = path;
-            Port = port;
-            Protocol = protocol;
-            ResponseTimeoutSeconds = responseTimeoutSeconds;
-            UnhealthyThreshold = unhealthyThreshold;
-        }
-    }
-
-    [OutputType]
-    public sealed class LoadBalancerStickySessions
-    {
-        /// <summary>
-        /// The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
-        /// </summary>
-        public readonly string? CookieName;
-        /// <summary>
-        /// The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
-        /// </summary>
-        public readonly int? CookieTtlSeconds;
-        /// <summary>
-        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-        /// </summary>
-        public readonly string? Type;
-
-        [OutputConstructor]
-        private LoadBalancerStickySessions(
-            string? cookieName,
-            int? cookieTtlSeconds,
-            string? type)
-        {
-            CookieName = cookieName;
-            CookieTtlSeconds = cookieTtlSeconds;
-            Type = type;
-        }
-    }
     }
 }

@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetDroplet.InvokeAsync() instead")]
-        public static Task<GetDropletResult> GetDroplet(GetDropletArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDroplet
     {
         public static Task<GetDropletResult> InvokeAsync(GetDropletArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDropletArgs : Pulumi.InvokeArgs
     {
@@ -45,6 +40,7 @@ namespace Pulumi.DigitalOcean
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetDropletResult
@@ -141,29 +137,53 @@ namespace Pulumi.DigitalOcean
         [OutputConstructor]
         private GetDropletResult(
             bool backups,
+
             string createdAt,
+
             int disk,
+
             int? id,
+
             string image,
+
             string ipv4Address,
+
             string ipv4AddressPrivate,
+
             bool ipv6,
+
             string ipv6Address,
+
             string ipv6AddressPrivate,
+
             bool locked,
+
             int memory,
+
             bool monitoring,
+
             string? name,
+
             double priceHourly,
+
             double priceMonthly,
+
             bool privateNetworking,
+
             string region,
+
             string size,
+
             string status,
+
             string? tag,
+
             ImmutableArray<string> tags,
+
             string urn,
+
             int vcpus,
+
             ImmutableArray<string> volumeIds)
         {
             Backups = backups;

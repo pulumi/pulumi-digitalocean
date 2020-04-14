@@ -14,8 +14,6 @@ namespace Pulumi.DigitalOcean
     /// Droplet resource in order to better organize or facilitate the lookups and
     /// actions on it. Tags created with this resource can be referenced in your Droplet
     /// configuration via their ID or name.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/tag.html.markdown.
     /// </summary>
     public partial class Tag : Pulumi.CustomResource
     {
@@ -34,7 +32,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Tag(string name, TagArgs? args = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index/tag:Tag", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/tag:Tag", name, args ?? new TagArgs(), MakeResourceOptions(options, ""))
         {
         }
 

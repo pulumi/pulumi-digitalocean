@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to the available DigitalOcean Kubernetes Service versions.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
-        /// </summary>
-        [Obsolete("Use GetKubernetesVersions.InvokeAsync() instead")]
-        public static Task<GetKubernetesVersionsResult> GetKubernetesVersions(GetKubernetesVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKubernetesVersions
     {
         /// <summary>
         /// Provides access to the available DigitalOcean Kubernetes Service versions.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesVersionsResult> InvokeAsync(GetKubernetesVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKubernetesVersionsArgs : Pulumi.InvokeArgs
     {
@@ -41,9 +32,14 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetKubernetesVersionsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The most recent version available.
         /// </summary>
@@ -53,22 +49,21 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly ImmutableArray<string> ValidVersions;
         public readonly string? VersionPrefix;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetKubernetesVersionsResult(
+            string id,
+
             string latestVersion,
+
             ImmutableArray<string> validVersions,
-            string? versionPrefix,
-            string id)
+
+            string? versionPrefix)
         {
+            Id = id;
             LatestVersion = latestVersion;
             ValidVersions = validVersions;
             VersionPrefix = versionPrefix;
-            Id = id;
         }
     }
 }

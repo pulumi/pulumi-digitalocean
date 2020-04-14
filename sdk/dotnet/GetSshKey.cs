@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetSshKey.InvokeAsync() instead")]
-        public static Task<GetSshKeyResult> GetSshKey(GetSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSshKey
     {
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSshKeyArgs : Pulumi.InvokeArgs
     {
@@ -34,28 +29,32 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetSshKeyResult
     {
         public readonly string Fingerprint;
-        public readonly string Name;
-        public readonly string PublicKey;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
+        public readonly string PublicKey;
 
         [OutputConstructor]
         private GetSshKeyResult(
             string fingerprint,
+
+            string id,
+
             string name,
-            string publicKey,
-            string id)
+
+            string publicKey)
         {
             Fingerprint = fingerprint;
+            Id = id;
             Name = name;
             PublicKey = publicKey;
-            Id = id;
         }
     }
 }

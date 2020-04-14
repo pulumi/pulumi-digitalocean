@@ -8,7 +8,6 @@ namespace Pulumi.DigitalOcean
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("digitalocean");
-
         /// <summary>
         /// The URL to use for the DigitalOcean API.
         /// </summary>
@@ -29,8 +28,5 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("DIGITALOCEAN_TOKEN");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

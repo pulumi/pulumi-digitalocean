@@ -89,7 +89,7 @@ class LoadBalancer(pulumi.CustomResource):
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
         modify, and delete Load Balancers.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/loadbalancer.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

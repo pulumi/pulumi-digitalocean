@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetRecord.InvokeAsync() instead")]
-        public static Task<GetRecordResult> GetRecord(GetRecordArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRecord
     {
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRecordArgs : Pulumi.InvokeArgs
     {
@@ -40,12 +35,17 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetRecordResult
     {
         public readonly string Data;
         public readonly string Domain;
         public readonly int Flags;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly int Port;
         public readonly int Priority;
@@ -53,28 +53,35 @@ namespace Pulumi.DigitalOcean
         public readonly int Ttl;
         public readonly string Type;
         public readonly int Weight;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRecordResult(
             string data,
+
             string domain,
+
             int flags,
+
+            string id,
+
             string name,
+
             int port,
+
             int priority,
+
             string tag,
+
             int ttl,
+
             string type,
-            int weight,
-            string id)
+
+            int weight)
         {
             Data = data;
             Domain = domain;
             Flags = flags;
+            Id = id;
             Name = name;
             Port = port;
             Priority = priority;
@@ -82,7 +89,6 @@ namespace Pulumi.DigitalOcean
             Ttl = ttl;
             Type = type;
             Weight = weight;
-            Id = id;
         }
     }
 }

@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> & GetKubernetesClusterResult {
+export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,12 +14,10 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKubernetesClusterResult> = pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
+    return pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
         "name": args.name,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

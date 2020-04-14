@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Droplet snapshots are saved instances of a Droplet. Use this data
-        /// source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
-        /// resources.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
-        /// </summary>
-        [Obsolete("Use GetDropletSnapshot.InvokeAsync() instead")]
-        public static Task<GetDropletSnapshotResult> GetDropletSnapshot(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDropletSnapshot
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.DigitalOcean
         /// source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
         /// resources.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDropletSnapshotResult> InvokeAsync(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDropletSnapshotArgs : Pulumi.InvokeArgs
     {
@@ -66,6 +55,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetDropletSnapshotResult
     {
@@ -77,6 +67,10 @@ namespace Pulumi.DigitalOcean
         /// The ID of the Droplet from which the Droplet snapshot originated.
         /// </summary>
         public readonly string DropletId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The minimum size in gigabytes required for a Droplet to be created based on this Droplet snapshot.
         /// </summary>
@@ -93,26 +87,32 @@ namespace Pulumi.DigitalOcean
         /// The billable size of the Droplet snapshot in gigabytes.
         /// </summary>
         public readonly double Size;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDropletSnapshotResult(
             string createdAt,
+
             string dropletId,
+
+            string id,
+
             int minDiskSize,
+
             bool? mostRecent,
+
             string? name,
+
             string? nameRegex,
+
             string? region,
+
             ImmutableArray<string> regions,
-            double size,
-            string id)
+
+            double size)
         {
             CreatedAt = createdAt;
             DropletId = dropletId;
+            Id = id;
             MinDiskSize = minDiskSize;
             MostRecent = mostRecent;
             Name = name;
@@ -120,7 +120,6 @@ namespace Pulumi.DigitalOcean
             Region = region;
             Regions = regions;
             Size = size;
-            Id = id;
         }
     }
 }

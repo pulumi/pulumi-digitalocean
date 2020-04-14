@@ -26,8 +26,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// 
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/spaces_bucket.html.markdown.
     /// </summary>
     public partial class SpacesBucket : Pulumi.CustomResource
     {
@@ -47,7 +45,7 @@ namespace Pulumi.DigitalOcean
         /// A container holding a list of elements describing allowed methods for a specific origin.
         /// </summary>
         [Output("corsRules")]
-        public Output<ImmutableArray<Outputs.SpacesBucketCorsRules>> CorsRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SpacesBucketCorsRule>> CorsRules { get; private set; } = null!;
 
         /// <summary>
         /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
@@ -82,7 +80,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SpacesBucket(string name, SpacesBucketArgs? args = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index/spacesBucket:SpacesBucket", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/spacesBucket:SpacesBucket", name, args ?? new SpacesBucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -126,14 +124,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Acl { get; set; }
 
         [Input("corsRules")]
-        private InputList<Inputs.SpacesBucketCorsRulesArgs>? _corsRules;
+        private InputList<Inputs.SpacesBucketCorsRuleArgs>? _corsRules;
 
         /// <summary>
         /// A container holding a list of elements describing allowed methods for a specific origin.
         /// </summary>
-        public InputList<Inputs.SpacesBucketCorsRulesArgs> CorsRules
+        public InputList<Inputs.SpacesBucketCorsRuleArgs> CorsRules
         {
-            get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRulesArgs>());
+            get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRuleArgs>());
             set => _corsRules = value;
         }
 
@@ -175,14 +173,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? BucketDomainName { get; set; }
 
         [Input("corsRules")]
-        private InputList<Inputs.SpacesBucketCorsRulesGetArgs>? _corsRules;
+        private InputList<Inputs.SpacesBucketCorsRuleGetArgs>? _corsRules;
 
         /// <summary>
         /// A container holding a list of elements describing allowed methods for a specific origin.
         /// </summary>
-        public InputList<Inputs.SpacesBucketCorsRulesGetArgs> CorsRules
+        public InputList<Inputs.SpacesBucketCorsRuleGetArgs> CorsRules
         {
-            get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRulesGetArgs>());
+            get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRuleGetArgs>());
             set => _corsRules = value;
         }
 
@@ -213,145 +211,5 @@ namespace Pulumi.DigitalOcean
         public SpacesBucketState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SpacesBucketCorsRulesArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedHeaders")]
-        private InputList<string>? _allowedHeaders;
-
-        /// <summary>
-        /// A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-        /// </summary>
-        public InputList<string> AllowedHeaders
-        {
-            get => _allowedHeaders ?? (_allowedHeaders = new InputList<string>());
-            set => _allowedHeaders = value;
-        }
-
-        [Input("allowedMethods", required: true)]
-        private InputList<string>? _allowedMethods;
-
-        /// <summary>
-        /// A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-        /// </summary>
-        public InputList<string> AllowedMethods
-        {
-            get => _allowedMethods ?? (_allowedMethods = new InputList<string>());
-            set => _allowedMethods = value;
-        }
-
-        [Input("allowedOrigins", required: true)]
-        private InputList<string>? _allowedOrigins;
-
-        /// <summary>
-        /// A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-        /// </summary>
-        public InputList<string> AllowedOrigins
-        {
-            get => _allowedOrigins ?? (_allowedOrigins = new InputList<string>());
-            set => _allowedOrigins = value;
-        }
-
-        /// <summary>
-        /// The time in seconds that browser can cache the response for a preflight request.
-        /// </summary>
-        [Input("maxAgeSeconds")]
-        public Input<int>? MaxAgeSeconds { get; set; }
-
-        public SpacesBucketCorsRulesArgs()
-        {
-        }
-    }
-
-    public sealed class SpacesBucketCorsRulesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedHeaders")]
-        private InputList<string>? _allowedHeaders;
-
-        /// <summary>
-        /// A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-        /// </summary>
-        public InputList<string> AllowedHeaders
-        {
-            get => _allowedHeaders ?? (_allowedHeaders = new InputList<string>());
-            set => _allowedHeaders = value;
-        }
-
-        [Input("allowedMethods", required: true)]
-        private InputList<string>? _allowedMethods;
-
-        /// <summary>
-        /// A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-        /// </summary>
-        public InputList<string> AllowedMethods
-        {
-            get => _allowedMethods ?? (_allowedMethods = new InputList<string>());
-            set => _allowedMethods = value;
-        }
-
-        [Input("allowedOrigins", required: true)]
-        private InputList<string>? _allowedOrigins;
-
-        /// <summary>
-        /// A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-        /// </summary>
-        public InputList<string> AllowedOrigins
-        {
-            get => _allowedOrigins ?? (_allowedOrigins = new InputList<string>());
-            set => _allowedOrigins = value;
-        }
-
-        /// <summary>
-        /// The time in seconds that browser can cache the response for a preflight request.
-        /// </summary>
-        [Input("maxAgeSeconds")]
-        public Input<int>? MaxAgeSeconds { get; set; }
-
-        public SpacesBucketCorsRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SpacesBucketCorsRules
-    {
-        /// <summary>
-        /// A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-        /// </summary>
-        public readonly ImmutableArray<string> AllowedHeaders;
-        /// <summary>
-        /// A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-        /// </summary>
-        public readonly ImmutableArray<string> AllowedMethods;
-        /// <summary>
-        /// A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-        /// </summary>
-        public readonly ImmutableArray<string> AllowedOrigins;
-        /// <summary>
-        /// The time in seconds that browser can cache the response for a preflight request.
-        /// </summary>
-        public readonly int? MaxAgeSeconds;
-
-        [OutputConstructor]
-        private SpacesBucketCorsRules(
-            ImmutableArray<string> allowedHeaders,
-            ImmutableArray<string> allowedMethods,
-            ImmutableArray<string> allowedOrigins,
-            int? maxAgeSeconds)
-        {
-            AllowedHeaders = allowedHeaders;
-            AllowedMethods = allowedMethods;
-            AllowedOrigins = allowedOrigins;
-            MaxAgeSeconds = maxAgeSeconds;
-        }
-    }
     }
 }

@@ -17,9 +17,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * Use the `filter` block with a `key` string and `values` list to filter projects.
  * 
- * For example to find all staging environment projects:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,34 +30,10 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * 
- * You can filter on multiple fields and sort the results as well:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * 
- * const nonDefaultProduction = digitalocean.getProjects({
- *     filters: [
- *         {
- *             key: "environment",
- *             values: ["Production"],
- *         },
- *         {
- *             key: "isDefault",
- *             values: ["false"],
- *         },
- *     ],
- *     sorts: [{
- *         direction: "asc",
- *         key: "name",
- *     }],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
  */
-export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> & GetProjectsResult {
+export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -68,12 +42,10 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectsResult> = pulumi.runtime.invoke("digitalocean:index/getProjects:getProjects", {
+    return pulumi.runtime.invoke("digitalocean:index/getProjects:getProjects", {
         "filters": args.filters,
         "sorts": args.sorts,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

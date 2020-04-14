@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides information on a DigitalOcean database cluster resource.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDatabaseCluster.InvokeAsync() instead")]
-        public static Task<GetDatabaseClusterResult> GetDatabaseCluster(GetDatabaseClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDatabaseCluster
     {
         /// <summary>
         /// Provides information on a DigitalOcean database cluster resource.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/database_cluster.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseClusterResult> InvokeAsync(GetDatabaseClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDatabaseClusterArgs : Pulumi.InvokeArgs
     {
@@ -52,6 +43,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetDatabaseClusterResult
     {
@@ -68,9 +60,13 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Host;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Defines when the automatic maintenance should be performed for the database cluster.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetDatabaseClusterMaintenanceWindowsResult> MaintenanceWindows;
+        public readonly ImmutableArray<Outputs.GetDatabaseClusterMaintenanceWindowResult> MaintenanceWindows;
         public readonly string Name;
         /// <summary>
         /// Number of nodes that will be included in the cluster.
@@ -117,35 +113,49 @@ namespace Pulumi.DigitalOcean
         /// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
         /// </summary>
         public readonly string Version;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDatabaseClusterResult(
             string database,
+
             string engine,
+
             string host,
-            ImmutableArray<Outputs.GetDatabaseClusterMaintenanceWindowsResult> maintenanceWindows,
+
+            string id,
+
+            ImmutableArray<Outputs.GetDatabaseClusterMaintenanceWindowResult> maintenanceWindows,
+
             string name,
+
             int nodeCount,
+
             string password,
+
             int port,
+
             string privateHost,
+
             string privateUri,
+
             string region,
+
             string size,
+
             ImmutableArray<string> tags,
+
             string uri,
+
             string urn,
+
             string user,
-            string version,
-            string id)
+
+            string version)
         {
             Database = database;
             Engine = engine;
             Host = host;
+            Id = id;
             MaintenanceWindows = maintenanceWindows;
             Name = name;
             NodeCount = nodeCount;
@@ -160,33 +170,6 @@ namespace Pulumi.DigitalOcean
             Urn = urn;
             User = user;
             Version = version;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDatabaseClusterMaintenanceWindowsResult
-    {
-        /// <summary>
-        /// The day of the week on which to apply maintenance updates.
-        /// </summary>
-        public readonly string Day;
-        /// <summary>
-        /// The hour in UTC at which maintenance updates will be applied in 24 hour format.
-        /// </summary>
-        public readonly string Hour;
-
-        [OutputConstructor]
-        private GetDatabaseClusterMaintenanceWindowsResult(
-            string day,
-            string hour)
-        {
-            Day = day;
-            Hour = hour;
-        }
-    }
     }
 }

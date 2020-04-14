@@ -46,7 +46,7 @@ def get_sizes(filters=None,sorts=None,opts=None):
     the ability to filter and sort the results. If no filters are specified, all sizes
     will be returned.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
+
 
 
     :param list filters: Filter the results.

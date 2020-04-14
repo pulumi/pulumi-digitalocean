@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetLoadBalancer.InvokeAsync() instead")]
-        public static Task<GetLoadBalancerResult> GetLoadBalancer(GetLoadBalancerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetLoadBalancer
     {
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
     }
+
 
     public sealed class GetLoadBalancerArgs : Pulumi.InvokeArgs
     {
@@ -34,6 +29,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetLoadBalancerResult
     {
@@ -41,8 +37,12 @@ namespace Pulumi.DigitalOcean
         public readonly ImmutableArray<int> DropletIds;
         public readonly string DropletTag;
         public readonly bool EnableProxyProtocol;
-        public readonly ImmutableArray<Outputs.GetLoadBalancerForwardingRulesResult> ForwardingRules;
+        public readonly ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> ForwardingRules;
         public readonly Outputs.GetLoadBalancerHealthcheckResult Healthcheck;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Ip;
         public readonly string Name;
         public readonly bool RedirectHttpToHttps;
@@ -50,27 +50,36 @@ namespace Pulumi.DigitalOcean
         public readonly string Status;
         public readonly Outputs.GetLoadBalancerStickySessionsResult StickySessions;
         public readonly string Urn;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetLoadBalancerResult(
             string algorithm,
+
             ImmutableArray<int> dropletIds,
+
             string dropletTag,
+
             bool enableProxyProtocol,
-            ImmutableArray<Outputs.GetLoadBalancerForwardingRulesResult> forwardingRules,
+
+            ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> forwardingRules,
+
             Outputs.GetLoadBalancerHealthcheckResult healthcheck,
+
+            string id,
+
             string ip,
+
             string name,
+
             bool redirectHttpToHttps,
+
             string region,
+
             string status,
+
             Outputs.GetLoadBalancerStickySessionsResult stickySessions,
-            string urn,
-            string id)
+
+            string urn)
         {
             Algorithm = algorithm;
             DropletIds = dropletIds;
@@ -78,6 +87,7 @@ namespace Pulumi.DigitalOcean
             EnableProxyProtocol = enableProxyProtocol;
             ForwardingRules = forwardingRules;
             Healthcheck = healthcheck;
+            Id = id;
             Ip = ip;
             Name = name;
             RedirectHttpToHttps = redirectHttpToHttps;
@@ -85,89 +95,6 @@ namespace Pulumi.DigitalOcean
             Status = status;
             StickySessions = stickySessions;
             Urn = urn;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetLoadBalancerForwardingRulesResult
-    {
-        public readonly string CertificateId;
-        public readonly int EntryPort;
-        public readonly string EntryProtocol;
-        public readonly int TargetPort;
-        public readonly string TargetProtocol;
-        public readonly bool TlsPassthrough;
-
-        [OutputConstructor]
-        private GetLoadBalancerForwardingRulesResult(
-            string certificateId,
-            int entryPort,
-            string entryProtocol,
-            int targetPort,
-            string targetProtocol,
-            bool tlsPassthrough)
-        {
-            CertificateId = certificateId;
-            EntryPort = entryPort;
-            EntryProtocol = entryProtocol;
-            TargetPort = targetPort;
-            TargetProtocol = targetProtocol;
-            TlsPassthrough = tlsPassthrough;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetLoadBalancerHealthcheckResult
-    {
-        public readonly int CheckIntervalSeconds;
-        public readonly int HealthyThreshold;
-        public readonly string Path;
-        public readonly int Port;
-        public readonly string Protocol;
-        public readonly int ResponseTimeoutSeconds;
-        public readonly int UnhealthyThreshold;
-
-        [OutputConstructor]
-        private GetLoadBalancerHealthcheckResult(
-            int checkIntervalSeconds,
-            int healthyThreshold,
-            string path,
-            int port,
-            string protocol,
-            int responseTimeoutSeconds,
-            int unhealthyThreshold)
-        {
-            CheckIntervalSeconds = checkIntervalSeconds;
-            HealthyThreshold = healthyThreshold;
-            Path = path;
-            Port = port;
-            Protocol = protocol;
-            ResponseTimeoutSeconds = responseTimeoutSeconds;
-            UnhealthyThreshold = unhealthyThreshold;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetLoadBalancerStickySessionsResult
-    {
-        public readonly string CookieName;
-        public readonly int CookieTtlSeconds;
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetLoadBalancerStickySessionsResult(
-            string cookieName,
-            int cookieTtlSeconds,
-            string type)
-        {
-            CookieName = cookieName;
-            CookieTtlSeconds = cookieTtlSeconds;
-            Type = type;
-        }
-    }
     }
 }

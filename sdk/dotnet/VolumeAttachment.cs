@@ -13,8 +13,6 @@ namespace Pulumi.DigitalOcean
     /// Manages attaching a Volume to a Droplet.
     /// 
     /// &gt; **NOTE:** Volumes can be attached either directly on the `digitalocean..Droplet` resource, or using the `digitalocean..VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume_attachment.html.markdown.
     /// </summary>
     public partial class VolumeAttachment : Pulumi.CustomResource
     {
@@ -39,7 +37,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VolumeAttachment(string name, VolumeAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/volumeAttachment:VolumeAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/volumeAttachment:VolumeAttachment", name, args ?? new VolumeAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

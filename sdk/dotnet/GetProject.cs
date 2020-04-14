@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
-        /// then this data source returns the default project.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.
-        /// </summary>
-        [Obsolete("Use GetProject.InvokeAsync() instead")]
-        public static Task<GetProjectResult> GetProject(GetProjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProject
     {
         /// <summary>
         /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
         /// then this data source returns the default project.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
@@ -52,6 +42,7 @@ namespace Pulumi.DigitalOcean
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetProjectResult
@@ -95,15 +86,25 @@ namespace Pulumi.DigitalOcean
         [OutputConstructor]
         private GetProjectResult(
             string createdAt,
+
             string description,
+
             string environment,
+
             string id,
+
             bool isDefault,
+
             string name,
+
             int ownerId,
+
             string ownerUuid,
+
             string purpose,
+
             ImmutableArray<string> resources,
+
             string updatedAt)
         {
             CreatedAt = createdAt;

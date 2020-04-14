@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Retrieve information about all DigitalOcean projects associated with an account, with
-        /// the ability to filter and sort the results. If no filters are specified, all projects
-        /// will be returned.
-        /// 
-        /// Note: You can use the [`digitalocean..Project`](https://www.terraform.io/docs/providers/do/d/project.html) data source to
-        /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
-        /// `name` of the project.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
-        /// </summary>
-        [Obsolete("Use GetProjects.InvokeAsync() instead")]
-        public static Task<GetProjectsResult> GetProjects(GetProjectsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProjects
     {
         /// <summary>
@@ -37,37 +20,39 @@ namespace Pulumi.DigitalOcean
         /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
         /// `name` of the project.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectsArgs : Pulumi.InvokeArgs
     {
         [Input("filters")]
-        private List<Inputs.GetProjectsFiltersArgs>? _filters;
+        private List<Inputs.GetProjectsFilterArgs>? _filters;
 
         /// <summary>
         /// Filter the results.
         /// The `filter` block is documented below.
         /// </summary>
-        public List<Inputs.GetProjectsFiltersArgs> Filters
+        public List<Inputs.GetProjectsFilterArgs> Filters
         {
-            get => _filters ?? (_filters = new List<Inputs.GetProjectsFiltersArgs>());
+            get => _filters ?? (_filters = new List<Inputs.GetProjectsFilterArgs>());
             set => _filters = value;
         }
 
         [Input("sorts")]
-        private List<Inputs.GetProjectsSortsArgs>? _sorts;
+        private List<Inputs.GetProjectsSortArgs>? _sorts;
 
         /// <summary>
         /// Sort the results.
         /// The `sort` block is documented below.
         /// </summary>
-        public List<Inputs.GetProjectsSortsArgs> Sorts
+        public List<Inputs.GetProjectsSortArgs> Sorts
         {
-            get => _sorts ?? (_sorts = new List<Inputs.GetProjectsSortsArgs>());
+            get => _sorts ?? (_sorts = new List<Inputs.GetProjectsSortArgs>());
             set => _sorts = value;
         }
 
@@ -76,10 +61,15 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetProjectsResult
     {
-        public readonly ImmutableArray<Outputs.GetProjectsFiltersResult> Filters;
+        public readonly ImmutableArray<Outputs.GetProjectsFilterResult> Filters;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A set of projects satisfying any `filter` and `sort` criteria. Each project has
         /// the following attributes:
@@ -94,169 +84,23 @@ namespace Pulumi.DigitalOcean
         /// - `created_at` - The date and time when the project was created, (ISO8601)
         /// - `updated_at` - The date and time when the project was last updated, (ISO8601)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetProjectsProjectsResult> Projects;
-        public readonly ImmutableArray<Outputs.GetProjectsSortsResult> Sorts;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectResult> Projects;
+        public readonly ImmutableArray<Outputs.GetProjectsSortResult> Sorts;
 
         [OutputConstructor]
         private GetProjectsResult(
-            ImmutableArray<Outputs.GetProjectsFiltersResult> filters,
-            ImmutableArray<Outputs.GetProjectsProjectsResult> projects,
-            ImmutableArray<Outputs.GetProjectsSortsResult> sorts,
-            string id)
+            ImmutableArray<Outputs.GetProjectsFilterResult> filters,
+
+            string id,
+
+            ImmutableArray<Outputs.GetProjectsProjectResult> projects,
+
+            ImmutableArray<Outputs.GetProjectsSortResult> sorts)
         {
             Filters = filters;
+            Id = id;
             Projects = projects;
             Sorts = sorts;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetProjectsFiltersArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// Filter the projects by this key. This may be one of `name`,
-        /// `purpose`, `description`, `environment`, or `is_default`.
-        /// </summary>
-        [Input("key", required: true)]
-        public string Key { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private List<string>? _values;
-
-        /// <summary>
-        /// A list of values to match against the `key` field. Only retrieves projects
-        /// where the `key` field takes on one or more of the values provided here.
-        /// </summary>
-        public List<string> Values
-        {
-            get => _values ?? (_values = new List<string>());
-            set => _values = value;
-        }
-
-        public GetProjectsFiltersArgs()
-        {
-        }
-    }
-
-    public sealed class GetProjectsSortsArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
-        /// </summary>
-        [Input("direction")]
-        public string? Direction { get; set; }
-
-        /// <summary>
-        /// Sort the projects by this key. This may be one of `name`,
-        /// `purpose`, `description`, or `environment`.
-        /// </summary>
-        [Input("key", required: true)]
-        public string Key { get; set; } = null!;
-
-        public GetProjectsSortsArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetProjectsFiltersResult
-    {
-        /// <summary>
-        /// Filter the projects by this key. This may be one of `name`,
-        /// `purpose`, `description`, `environment`, or `is_default`.
-        /// </summary>
-        public readonly string Key;
-        /// <summary>
-        /// A list of values to match against the `key` field. Only retrieves projects
-        /// where the `key` field takes on one or more of the values provided here.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private GetProjectsFiltersResult(
-            string key,
-            ImmutableArray<string> values)
-        {
-            Key = key;
-            Values = values;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectsProjectsResult
-    {
-        public readonly string CreatedAt;
-        public readonly string Description;
-        public readonly string Environment;
-        public readonly string Id;
-        public readonly bool IsDefault;
-        public readonly string Name;
-        public readonly int OwnerId;
-        public readonly string OwnerUuid;
-        public readonly string Purpose;
-        public readonly ImmutableArray<string> Resources;
-        public readonly string UpdatedAt;
-
-        [OutputConstructor]
-        private GetProjectsProjectsResult(
-            string createdAt,
-            string description,
-            string environment,
-            string id,
-            bool isDefault,
-            string name,
-            int ownerId,
-            string ownerUuid,
-            string purpose,
-            ImmutableArray<string> resources,
-            string updatedAt)
-        {
-            CreatedAt = createdAt;
-            Description = description;
-            Environment = environment;
-            Id = id;
-            IsDefault = isDefault;
-            Name = name;
-            OwnerId = ownerId;
-            OwnerUuid = ownerUuid;
-            Purpose = purpose;
-            Resources = resources;
-            UpdatedAt = updatedAt;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectsSortsResult
-    {
-        /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
-        /// </summary>
-        public readonly string? Direction;
-        /// <summary>
-        /// Sort the projects by this key. This may be one of `name`,
-        /// `purpose`, `description`, or `environment`.
-        /// </summary>
-        public readonly string Key;
-
-        [OutputConstructor]
-        private GetProjectsSortsResult(
-            string? direction,
-            string key)
-        {
-            Direction = direction;
-            Key = key;
-        }
-    }
     }
 }

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * Get the Droplet snapshot:
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
  */
-export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> & GetDropletSnapshotResult {
+export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -37,14 +37,12 @@ export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDropletSnapshotResult> = pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
+    return pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
         "mostRecent": args.mostRecent,
         "name": args.name,
         "nameRegex": args.nameRegex,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

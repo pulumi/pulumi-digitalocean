@@ -94,7 +94,7 @@ def get_project(id=None,name=None,opts=None):
     Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
     then this data source returns the default project.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.
+
 
 
     :param str id: the ID of the project to retrieve

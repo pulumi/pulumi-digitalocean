@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetFloatingIp.InvokeAsync() instead")]
-        public static Task<GetFloatingIpResult> GetFloatingIp(GetFloatingIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFloatingIp
     {
         public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFloatingIpArgs : Pulumi.InvokeArgs
     {
@@ -34,31 +29,36 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetFloatingIpResult
     {
         public readonly int DropletId;
-        public readonly string IpAddress;
-        public readonly string Region;
-        public readonly string Urn;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string IpAddress;
+        public readonly string Region;
+        public readonly string Urn;
 
         [OutputConstructor]
         private GetFloatingIpResult(
             int dropletId,
+
+            string id,
+
             string ipAddress,
+
             string region,
-            string urn,
-            string id)
+
+            string urn)
         {
             DropletId = dropletId;
+            Id = id;
             IpAddress = ipAddress;
             Region = region;
             Urn = urn;
-            Id = id;
         }
     }
 }

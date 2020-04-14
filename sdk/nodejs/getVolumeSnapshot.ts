@@ -10,10 +10,11 @@ import * as utilities from "./utilities";
  * Volume snapshots are saved instances of a block storage volume. Use this data
  * source to retrieve the ID of a DigitalOcean volume snapshot for use in other
  * resources.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
  */
-export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> & GetVolumeSnapshotResult {
+export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -22,14 +23,12 @@ export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetVolumeSnapshotResult> = pulumi.runtime.invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", {
+    return pulumi.runtime.invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", {
         "mostRecent": args.mostRecent,
         "name": args.name,
         "nameRegex": args.nameRegex,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

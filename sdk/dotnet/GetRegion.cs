@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get information on a single DigitalOcean region. This is useful to find out 
-        /// what Droplet sizes and features are supported within a region.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
-        /// </summary>
-        [Obsolete("Use GetRegion.InvokeAsync() instead")]
-        public static Task<GetRegionResult> GetRegion(GetRegionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRegion
     {
         /// <summary>
         /// Get information on a single DigitalOcean region. This is useful to find out 
         /// what Droplet sizes and features are supported within a region.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRegionArgs : Pulumi.InvokeArgs
     {
@@ -46,6 +36,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetRegionResult
     {
@@ -58,6 +49,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly ImmutableArray<string> Features;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The display name of the region.
         /// </summary>
         public readonly string Name;
@@ -69,26 +64,27 @@ namespace Pulumi.DigitalOcean
         /// A human-readable string that is used as a unique identifier for each region.
         /// </summary>
         public readonly string Slug;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRegionResult(
             bool available,
+
             ImmutableArray<string> features,
+
+            string id,
+
             string name,
+
             ImmutableArray<string> sizes,
-            string slug,
-            string id)
+
+            string slug)
         {
             Available = available;
             Features = features;
+            Id = id;
             Name = name;
             Sizes = sizes;
             Slug = slug;
-            Id = id;
         }
     }
 }

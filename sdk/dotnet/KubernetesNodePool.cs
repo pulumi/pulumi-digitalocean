@@ -11,8 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
     /// </summary>
     public partial class KubernetesNodePool : Pulumi.CustomResource
     {
@@ -74,7 +72,7 @@ namespace Pulumi.DigitalOcean
         /// - `updated_at` - The date and time when the node was last updated.
         /// </summary>
         [Output("nodes")]
-        public Output<ImmutableArray<Outputs.KubernetesNodePoolNodes>> Nodes { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KubernetesNodePoolNode>> Nodes { get; private set; } = null!;
 
         /// <summary>
         /// The slug identifier for the type of Droplet to be used as workers in the node pool.
@@ -97,7 +95,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KubernetesNodePool(string name, KubernetesNodePoolArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, args ?? new KubernetesNodePoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -262,7 +260,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? NodeCount { get; set; }
 
         [Input("nodes")]
-        private InputList<Inputs.KubernetesNodePoolNodesGetArgs>? _nodes;
+        private InputList<Inputs.KubernetesNodePoolNodeGetArgs>? _nodes;
 
         /// <summary>
         /// A list of nodes in the pool. Each node exports the following attributes:
@@ -273,9 +271,9 @@ namespace Pulumi.DigitalOcean
         /// - `created_at` - The date and time when the node was created.
         /// - `updated_at` - The date and time when the node was last updated.
         /// </summary>
-        public InputList<Inputs.KubernetesNodePoolNodesGetArgs> Nodes
+        public InputList<Inputs.KubernetesNodePoolNodeGetArgs> Nodes
         {
-            get => _nodes ?? (_nodes = new InputList<Inputs.KubernetesNodePoolNodesGetArgs>());
+            get => _nodes ?? (_nodes = new InputList<Inputs.KubernetesNodePoolNodeGetArgs>());
             set => _nodes = value;
         }
 
@@ -300,78 +298,5 @@ namespace Pulumi.DigitalOcean
         public KubernetesNodePoolState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class KubernetesNodePoolNodesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        [Input("dropletId")]
-        public Input<string>? DropletId { get; set; }
-
-        /// <summary>
-        /// A unique ID that can be used to identify and reference the node pool.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// A name for the node pool.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
-
-        public KubernetesNodePoolNodesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class KubernetesNodePoolNodes
-    {
-        public readonly string CreatedAt;
-        public readonly string DropletId;
-        /// <summary>
-        /// A unique ID that can be used to identify and reference the node pool.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// A name for the node pool.
-        /// </summary>
-        public readonly string Name;
-        public readonly string Status;
-        public readonly string UpdatedAt;
-
-        [OutputConstructor]
-        private KubernetesNodePoolNodes(
-            string createdAt,
-            string dropletId,
-            string id,
-            string name,
-            string status,
-            string updatedAt)
-        {
-            CreatedAt = createdAt;
-            DropletId = dropletId;
-            Id = id;
-            Name = name;
-            Status = status;
-            UpdatedAt = updatedAt;
-        }
-    }
     }
 }

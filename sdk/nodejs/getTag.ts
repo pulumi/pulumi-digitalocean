@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> & GetTagResult {
+export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,11 +14,9 @@ export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<G
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetTagResult> = pulumi.runtime.invoke("digitalocean:index/getTag:getTag", {
+    return pulumi.runtime.invoke("digitalocean:index/getTag:getTag", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

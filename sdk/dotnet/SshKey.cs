@@ -14,8 +14,6 @@ namespace Pulumi.DigitalOcean
     /// keys for Droplet access. Keys created with this resource
     /// can be referenced in your Droplet configuration via their ID or
     /// fingerprint.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/ssh_key.html.markdown.
     /// </summary>
     public partial class SshKey : Pulumi.CustomResource
     {
@@ -47,7 +45,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SshKey(string name, SshKeyArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/sshKey:SshKey", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/sshKey:SshKey", name, args ?? new SshKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

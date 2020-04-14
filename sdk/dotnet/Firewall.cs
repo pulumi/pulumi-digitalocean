@@ -12,8 +12,6 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
     /// modify, and delete Firewalls.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
     /// </summary>
     public partial class Firewall : Pulumi.CustomResource
     {
@@ -36,7 +34,7 @@ namespace Pulumi.DigitalOcean
         /// The `inbound_rule` block is documented below.
         /// </summary>
         [Output("inboundRules")]
-        public Output<ImmutableArray<Outputs.FirewallInboundRules>> InboundRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.FirewallInboundRule>> InboundRules { get; private set; } = null!;
 
         /// <summary>
         /// The Firewall name
@@ -49,7 +47,7 @@ namespace Pulumi.DigitalOcean
         /// The `outbound_rule` block is documented below.
         /// </summary>
         [Output("outboundRules")]
-        public Output<ImmutableArray<Outputs.FirewallOutboundRules>> OutboundRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.FirewallOutboundRule>> OutboundRules { get; private set; } = null!;
 
         /// <summary>
         /// An list of object containing the fields, "droplet_id",
@@ -58,7 +56,7 @@ namespace Pulumi.DigitalOcean
         /// have been successfully applied.
         /// </summary>
         [Output("pendingChanges")]
-        public Output<ImmutableArray<Outputs.FirewallPendingChanges>> PendingChanges { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.FirewallPendingChange>> PendingChanges { get; private set; } = null!;
 
         /// <summary>
         /// A status string indicating the current state of the Firewall.
@@ -82,7 +80,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Firewall(string name, FirewallArgs? args = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index/firewall:Firewall", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/firewall:Firewall", name, args ?? new FirewallArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -133,15 +131,15 @@ namespace Pulumi.DigitalOcean
         }
 
         [Input("inboundRules")]
-        private InputList<Inputs.FirewallInboundRulesArgs>? _inboundRules;
+        private InputList<Inputs.FirewallInboundRuleArgs>? _inboundRules;
 
         /// <summary>
         /// The inbound access rule block for the Firewall.
         /// The `inbound_rule` block is documented below.
         /// </summary>
-        public InputList<Inputs.FirewallInboundRulesArgs> InboundRules
+        public InputList<Inputs.FirewallInboundRuleArgs> InboundRules
         {
-            get => _inboundRules ?? (_inboundRules = new InputList<Inputs.FirewallInboundRulesArgs>());
+            get => _inboundRules ?? (_inboundRules = new InputList<Inputs.FirewallInboundRuleArgs>());
             set => _inboundRules = value;
         }
 
@@ -152,15 +150,15 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         [Input("outboundRules")]
-        private InputList<Inputs.FirewallOutboundRulesArgs>? _outboundRules;
+        private InputList<Inputs.FirewallOutboundRuleArgs>? _outboundRules;
 
         /// <summary>
         /// The outbound access rule block for the Firewall.
         /// The `outbound_rule` block is documented below.
         /// </summary>
-        public InputList<Inputs.FirewallOutboundRulesArgs> OutboundRules
+        public InputList<Inputs.FirewallOutboundRuleArgs> OutboundRules
         {
-            get => _outboundRules ?? (_outboundRules = new InputList<Inputs.FirewallOutboundRulesArgs>());
+            get => _outboundRules ?? (_outboundRules = new InputList<Inputs.FirewallOutboundRuleArgs>());
             set => _outboundRules = value;
         }
 
@@ -204,15 +202,15 @@ namespace Pulumi.DigitalOcean
         }
 
         [Input("inboundRules")]
-        private InputList<Inputs.FirewallInboundRulesGetArgs>? _inboundRules;
+        private InputList<Inputs.FirewallInboundRuleGetArgs>? _inboundRules;
 
         /// <summary>
         /// The inbound access rule block for the Firewall.
         /// The `inbound_rule` block is documented below.
         /// </summary>
-        public InputList<Inputs.FirewallInboundRulesGetArgs> InboundRules
+        public InputList<Inputs.FirewallInboundRuleGetArgs> InboundRules
         {
-            get => _inboundRules ?? (_inboundRules = new InputList<Inputs.FirewallInboundRulesGetArgs>());
+            get => _inboundRules ?? (_inboundRules = new InputList<Inputs.FirewallInboundRuleGetArgs>());
             set => _inboundRules = value;
         }
 
@@ -223,20 +221,20 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         [Input("outboundRules")]
-        private InputList<Inputs.FirewallOutboundRulesGetArgs>? _outboundRules;
+        private InputList<Inputs.FirewallOutboundRuleGetArgs>? _outboundRules;
 
         /// <summary>
         /// The outbound access rule block for the Firewall.
         /// The `outbound_rule` block is documented below.
         /// </summary>
-        public InputList<Inputs.FirewallOutboundRulesGetArgs> OutboundRules
+        public InputList<Inputs.FirewallOutboundRuleGetArgs> OutboundRules
         {
-            get => _outboundRules ?? (_outboundRules = new InputList<Inputs.FirewallOutboundRulesGetArgs>());
+            get => _outboundRules ?? (_outboundRules = new InputList<Inputs.FirewallOutboundRuleGetArgs>());
             set => _outboundRules = value;
         }
 
         [Input("pendingChanges")]
-        private InputList<Inputs.FirewallPendingChangesGetArgs>? _pendingChanges;
+        private InputList<Inputs.FirewallPendingChangeGetArgs>? _pendingChanges;
 
         /// <summary>
         /// An list of object containing the fields, "droplet_id",
@@ -244,9 +242,9 @@ namespace Pulumi.DigitalOcean
         /// are having their security policies updated.  When empty, all changes
         /// have been successfully applied.
         /// </summary>
-        public InputList<Inputs.FirewallPendingChangesGetArgs> PendingChanges
+        public InputList<Inputs.FirewallPendingChangeGetArgs> PendingChanges
         {
-            get => _pendingChanges ?? (_pendingChanges = new InputList<Inputs.FirewallPendingChangesGetArgs>());
+            get => _pendingChanges ?? (_pendingChanges = new InputList<Inputs.FirewallPendingChangeGetArgs>());
             set => _pendingChanges = value;
         }
 
@@ -272,479 +270,5 @@ namespace Pulumi.DigitalOcean
         public FirewallState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class FirewallInboundRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ports on which traffic will be allowed
-        /// specified as a string containing a single port, a range (e.g. "8000-9000"),
-        /// or "1-65535" to open all ports for a protocol. Required for when protocol is
-        /// `tcp` or `udp`.
-        /// </summary>
-        [Input("portRange")]
-        public Input<string>? PortRange { get; set; }
-
-        /// <summary>
-        /// The type of traffic to be allowed.
-        /// This may be one of "tcp", "udp", or "icmp".
-        /// </summary>
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
-
-        [Input("sourceAddresses")]
-        private InputList<string>? _sourceAddresses;
-
-        /// <summary>
-        /// An array of strings containing the IPv4
-        /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
-        /// inbound traffic will be accepted.
-        /// </summary>
-        public InputList<string> SourceAddresses
-        {
-            get => _sourceAddresses ?? (_sourceAddresses = new InputList<string>());
-            set => _sourceAddresses = value;
-        }
-
-        [Input("sourceDropletIds")]
-        private InputList<int>? _sourceDropletIds;
-
-        /// <summary>
-        /// An array containing the IDs of
-        /// the Droplets from which the inbound traffic will be accepted.
-        /// </summary>
-        public InputList<int> SourceDropletIds
-        {
-            get => _sourceDropletIds ?? (_sourceDropletIds = new InputList<int>());
-            set => _sourceDropletIds = value;
-        }
-
-        [Input("sourceLoadBalancerUids")]
-        private InputList<string>? _sourceLoadBalancerUids;
-
-        /// <summary>
-        /// An array containing the IDs
-        /// of the Load Balancers from which the inbound traffic will be accepted.
-        /// </summary>
-        public InputList<string> SourceLoadBalancerUids
-        {
-            get => _sourceLoadBalancerUids ?? (_sourceLoadBalancerUids = new InputList<string>());
-            set => _sourceLoadBalancerUids = value;
-        }
-
-        [Input("sourceTags")]
-        private InputList<string>? _sourceTags;
-
-        /// <summary>
-        /// An array containing the names of Tags
-        /// corresponding to groups of Droplets from which the inbound traffic
-        /// will be accepted.
-        /// </summary>
-        public InputList<string> SourceTags
-        {
-            get => _sourceTags ?? (_sourceTags = new InputList<string>());
-            set => _sourceTags = value;
-        }
-
-        public FirewallInboundRulesArgs()
-        {
-        }
-    }
-
-    public sealed class FirewallInboundRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ports on which traffic will be allowed
-        /// specified as a string containing a single port, a range (e.g. "8000-9000"),
-        /// or "1-65535" to open all ports for a protocol. Required for when protocol is
-        /// `tcp` or `udp`.
-        /// </summary>
-        [Input("portRange")]
-        public Input<string>? PortRange { get; set; }
-
-        /// <summary>
-        /// The type of traffic to be allowed.
-        /// This may be one of "tcp", "udp", or "icmp".
-        /// </summary>
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
-
-        [Input("sourceAddresses")]
-        private InputList<string>? _sourceAddresses;
-
-        /// <summary>
-        /// An array of strings containing the IPv4
-        /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
-        /// inbound traffic will be accepted.
-        /// </summary>
-        public InputList<string> SourceAddresses
-        {
-            get => _sourceAddresses ?? (_sourceAddresses = new InputList<string>());
-            set => _sourceAddresses = value;
-        }
-
-        [Input("sourceDropletIds")]
-        private InputList<int>? _sourceDropletIds;
-
-        /// <summary>
-        /// An array containing the IDs of
-        /// the Droplets from which the inbound traffic will be accepted.
-        /// </summary>
-        public InputList<int> SourceDropletIds
-        {
-            get => _sourceDropletIds ?? (_sourceDropletIds = new InputList<int>());
-            set => _sourceDropletIds = value;
-        }
-
-        [Input("sourceLoadBalancerUids")]
-        private InputList<string>? _sourceLoadBalancerUids;
-
-        /// <summary>
-        /// An array containing the IDs
-        /// of the Load Balancers from which the inbound traffic will be accepted.
-        /// </summary>
-        public InputList<string> SourceLoadBalancerUids
-        {
-            get => _sourceLoadBalancerUids ?? (_sourceLoadBalancerUids = new InputList<string>());
-            set => _sourceLoadBalancerUids = value;
-        }
-
-        [Input("sourceTags")]
-        private InputList<string>? _sourceTags;
-
-        /// <summary>
-        /// An array containing the names of Tags
-        /// corresponding to groups of Droplets from which the inbound traffic
-        /// will be accepted.
-        /// </summary>
-        public InputList<string> SourceTags
-        {
-            get => _sourceTags ?? (_sourceTags = new InputList<string>());
-            set => _sourceTags = value;
-        }
-
-        public FirewallInboundRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class FirewallOutboundRulesArgs : Pulumi.ResourceArgs
-    {
-        [Input("destinationAddresses")]
-        private InputList<string>? _destinationAddresses;
-
-        /// <summary>
-        /// An array of strings containing the IPv4
-        /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
-        /// outbound traffic will be allowed.
-        /// </summary>
-        public InputList<string> DestinationAddresses
-        {
-            get => _destinationAddresses ?? (_destinationAddresses = new InputList<string>());
-            set => _destinationAddresses = value;
-        }
-
-        [Input("destinationDropletIds")]
-        private InputList<int>? _destinationDropletIds;
-
-        /// <summary>
-        /// An array containing the IDs of
-        /// the Droplets to which the outbound traffic will be allowed.
-        /// </summary>
-        public InputList<int> DestinationDropletIds
-        {
-            get => _destinationDropletIds ?? (_destinationDropletIds = new InputList<int>());
-            set => _destinationDropletIds = value;
-        }
-
-        [Input("destinationLoadBalancerUids")]
-        private InputList<string>? _destinationLoadBalancerUids;
-
-        /// <summary>
-        /// An array containing the IDs
-        /// of the Load Balancers to which the outbound traffic will be allowed.
-        /// </summary>
-        public InputList<string> DestinationLoadBalancerUids
-        {
-            get => _destinationLoadBalancerUids ?? (_destinationLoadBalancerUids = new InputList<string>());
-            set => _destinationLoadBalancerUids = value;
-        }
-
-        [Input("destinationTags")]
-        private InputList<string>? _destinationTags;
-
-        /// <summary>
-        /// An array containing the names of Tags
-        /// corresponding to groups of Droplets to which the outbound traffic will
-        /// be allowed.
-        /// traffic.
-        /// </summary>
-        public InputList<string> DestinationTags
-        {
-            get => _destinationTags ?? (_destinationTags = new InputList<string>());
-            set => _destinationTags = value;
-        }
-
-        /// <summary>
-        /// The ports on which traffic will be allowed
-        /// specified as a string containing a single port, a range (e.g. "8000-9000"),
-        /// or "1-65535" to open all ports for a protocol. Required for when protocol is
-        /// `tcp` or `udp`.
-        /// </summary>
-        [Input("portRange")]
-        public Input<string>? PortRange { get; set; }
-
-        /// <summary>
-        /// The type of traffic to be allowed.
-        /// This may be one of "tcp", "udp", or "icmp".
-        /// </summary>
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
-
-        public FirewallOutboundRulesArgs()
-        {
-        }
-    }
-
-    public sealed class FirewallOutboundRulesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("destinationAddresses")]
-        private InputList<string>? _destinationAddresses;
-
-        /// <summary>
-        /// An array of strings containing the IPv4
-        /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
-        /// outbound traffic will be allowed.
-        /// </summary>
-        public InputList<string> DestinationAddresses
-        {
-            get => _destinationAddresses ?? (_destinationAddresses = new InputList<string>());
-            set => _destinationAddresses = value;
-        }
-
-        [Input("destinationDropletIds")]
-        private InputList<int>? _destinationDropletIds;
-
-        /// <summary>
-        /// An array containing the IDs of
-        /// the Droplets to which the outbound traffic will be allowed.
-        /// </summary>
-        public InputList<int> DestinationDropletIds
-        {
-            get => _destinationDropletIds ?? (_destinationDropletIds = new InputList<int>());
-            set => _destinationDropletIds = value;
-        }
-
-        [Input("destinationLoadBalancerUids")]
-        private InputList<string>? _destinationLoadBalancerUids;
-
-        /// <summary>
-        /// An array containing the IDs
-        /// of the Load Balancers to which the outbound traffic will be allowed.
-        /// </summary>
-        public InputList<string> DestinationLoadBalancerUids
-        {
-            get => _destinationLoadBalancerUids ?? (_destinationLoadBalancerUids = new InputList<string>());
-            set => _destinationLoadBalancerUids = value;
-        }
-
-        [Input("destinationTags")]
-        private InputList<string>? _destinationTags;
-
-        /// <summary>
-        /// An array containing the names of Tags
-        /// corresponding to groups of Droplets to which the outbound traffic will
-        /// be allowed.
-        /// traffic.
-        /// </summary>
-        public InputList<string> DestinationTags
-        {
-            get => _destinationTags ?? (_destinationTags = new InputList<string>());
-            set => _destinationTags = value;
-        }
-
-        /// <summary>
-        /// The ports on which traffic will be allowed
-        /// specified as a string containing a single port, a range (e.g. "8000-9000"),
-        /// or "1-65535" to open all ports for a protocol. Required for when protocol is
-        /// `tcp` or `udp`.
-        /// </summary>
-        [Input("portRange")]
-        public Input<string>? PortRange { get; set; }
-
-        /// <summary>
-        /// The type of traffic to be allowed.
-        /// This may be one of "tcp", "udp", or "icmp".
-        /// </summary>
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
-
-        public FirewallOutboundRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class FirewallPendingChangesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("dropletId")]
-        public Input<int>? DropletId { get; set; }
-
-        [Input("removing")]
-        public Input<bool>? Removing { get; set; }
-
-        /// <summary>
-        /// A status string indicating the current state of the Firewall.
-        /// This can be "waiting", "succeeded", or "failed".
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        public FirewallPendingChangesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class FirewallInboundRules
-    {
-        /// <summary>
-        /// The ports on which traffic will be allowed
-        /// specified as a string containing a single port, a range (e.g. "8000-9000"),
-        /// or "1-65535" to open all ports for a protocol. Required for when protocol is
-        /// `tcp` or `udp`.
-        /// </summary>
-        public readonly string? PortRange;
-        /// <summary>
-        /// The type of traffic to be allowed.
-        /// This may be one of "tcp", "udp", or "icmp".
-        /// </summary>
-        public readonly string Protocol;
-        /// <summary>
-        /// An array of strings containing the IPv4
-        /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
-        /// inbound traffic will be accepted.
-        /// </summary>
-        public readonly ImmutableArray<string> SourceAddresses;
-        /// <summary>
-        /// An array containing the IDs of
-        /// the Droplets from which the inbound traffic will be accepted.
-        /// </summary>
-        public readonly ImmutableArray<int> SourceDropletIds;
-        /// <summary>
-        /// An array containing the IDs
-        /// of the Load Balancers from which the inbound traffic will be accepted.
-        /// </summary>
-        public readonly ImmutableArray<string> SourceLoadBalancerUids;
-        /// <summary>
-        /// An array containing the names of Tags
-        /// corresponding to groups of Droplets from which the inbound traffic
-        /// will be accepted.
-        /// </summary>
-        public readonly ImmutableArray<string> SourceTags;
-
-        [OutputConstructor]
-        private FirewallInboundRules(
-            string? portRange,
-            string protocol,
-            ImmutableArray<string> sourceAddresses,
-            ImmutableArray<int> sourceDropletIds,
-            ImmutableArray<string> sourceLoadBalancerUids,
-            ImmutableArray<string> sourceTags)
-        {
-            PortRange = portRange;
-            Protocol = protocol;
-            SourceAddresses = sourceAddresses;
-            SourceDropletIds = sourceDropletIds;
-            SourceLoadBalancerUids = sourceLoadBalancerUids;
-            SourceTags = sourceTags;
-        }
-    }
-
-    [OutputType]
-    public sealed class FirewallOutboundRules
-    {
-        /// <summary>
-        /// An array of strings containing the IPv4
-        /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
-        /// outbound traffic will be allowed.
-        /// </summary>
-        public readonly ImmutableArray<string> DestinationAddresses;
-        /// <summary>
-        /// An array containing the IDs of
-        /// the Droplets to which the outbound traffic will be allowed.
-        /// </summary>
-        public readonly ImmutableArray<int> DestinationDropletIds;
-        /// <summary>
-        /// An array containing the IDs
-        /// of the Load Balancers to which the outbound traffic will be allowed.
-        /// </summary>
-        public readonly ImmutableArray<string> DestinationLoadBalancerUids;
-        /// <summary>
-        /// An array containing the names of Tags
-        /// corresponding to groups of Droplets to which the outbound traffic will
-        /// be allowed.
-        /// traffic.
-        /// </summary>
-        public readonly ImmutableArray<string> DestinationTags;
-        /// <summary>
-        /// The ports on which traffic will be allowed
-        /// specified as a string containing a single port, a range (e.g. "8000-9000"),
-        /// or "1-65535" to open all ports for a protocol. Required for when protocol is
-        /// `tcp` or `udp`.
-        /// </summary>
-        public readonly string? PortRange;
-        /// <summary>
-        /// The type of traffic to be allowed.
-        /// This may be one of "tcp", "udp", or "icmp".
-        /// </summary>
-        public readonly string Protocol;
-
-        [OutputConstructor]
-        private FirewallOutboundRules(
-            ImmutableArray<string> destinationAddresses,
-            ImmutableArray<int> destinationDropletIds,
-            ImmutableArray<string> destinationLoadBalancerUids,
-            ImmutableArray<string> destinationTags,
-            string? portRange,
-            string protocol)
-        {
-            DestinationAddresses = destinationAddresses;
-            DestinationDropletIds = destinationDropletIds;
-            DestinationLoadBalancerUids = destinationLoadBalancerUids;
-            DestinationTags = destinationTags;
-            PortRange = portRange;
-            Protocol = protocol;
-        }
-    }
-
-    [OutputType]
-    public sealed class FirewallPendingChanges
-    {
-        public readonly int? DropletId;
-        public readonly bool? Removing;
-        /// <summary>
-        /// A status string indicating the current state of the Firewall.
-        /// This can be "waiting", "succeeded", or "failed".
-        /// </summary>
-        public readonly string? Status;
-
-        [OutputConstructor]
-        private FirewallPendingChanges(
-            int? dropletId,
-            bool? removing,
-            string? status)
-        {
-            DropletId = dropletId;
-            Removing = removing;
-            Status = status;
-        }
-    }
     }
 }

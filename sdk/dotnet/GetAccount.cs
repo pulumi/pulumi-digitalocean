@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get information on your DigitalOcean account.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
-        /// </summary>
-        [Obsolete("Use GetAccount.InvokeAsync() instead")]
-        public static Task<GetAccountResult> GetAccount(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("digitalocean:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAccount
     {
         /// <summary>
         /// Get information on your DigitalOcean account.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("digitalocean:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
     }
+
 
     [OutputType]
     public sealed class GetAccountResult
@@ -38,33 +29,40 @@ namespace Pulumi.DigitalOcean
         public readonly string Email;
         public readonly bool EmailVerified;
         public readonly int FloatingIpLimit;
-        public readonly string Status;
-        public readonly string StatusMessage;
-        public readonly string Uuid;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Status;
+        public readonly string StatusMessage;
+        public readonly string Uuid;
 
         [OutputConstructor]
         private GetAccountResult(
             int dropletLimit,
+
             string email,
+
             bool emailVerified,
+
             int floatingIpLimit,
+
+            string id,
+
             string status,
+
             string statusMessage,
-            string uuid,
-            string id)
+
+            string uuid)
         {
             DropletLimit = dropletLimit;
             Email = email;
             EmailVerified = emailVerified;
             FloatingIpLimit = floatingIpLimit;
+            Id = id;
             Status = status;
             StatusMessage = statusMessage;
             Uuid = uuid;
-            Id = id;
         }
     }
 }

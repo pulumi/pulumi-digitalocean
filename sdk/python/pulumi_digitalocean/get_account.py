@@ -59,8 +59,6 @@ class AwaitableGetAccountResult(GetAccountResult):
 def get_account(opts=None):
     """
     Get information on your DigitalOcean account.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
     """
     __args__ = dict()
 

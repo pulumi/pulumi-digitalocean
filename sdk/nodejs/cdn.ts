@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
  */

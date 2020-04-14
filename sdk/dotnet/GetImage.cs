@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetImage.InvokeAsync() instead")]
-        public static Task<GetImageResult> GetImage(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetImage
     {
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
     }
+
 
     public sealed class GetImageArgs : Pulumi.InvokeArgs
     {
@@ -55,6 +50,7 @@ namespace Pulumi.DigitalOcean
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetImageResult
@@ -96,19 +92,33 @@ namespace Pulumi.DigitalOcean
         [OutputConstructor]
         private GetImageResult(
             string created,
+
             string distribution,
+
             string errorMessage,
+
             int id,
+
             string image,
+
             int minDiskSize,
+
             string name,
+
             bool @private,
+
             ImmutableArray<string> regions,
+
             double sizeGigabytes,
+
             string slug,
+
             string? source,
+
             string status,
+
             ImmutableArray<string> tags,
+
             string type)
         {
             Created = created;

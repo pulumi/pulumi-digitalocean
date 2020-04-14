@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
-        /// the ability to filter and sort the results. If no filters are specified, all sizes
-        /// will be returned.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
-        /// </summary>
-        [Obsolete("Use GetSizes.InvokeAsync() instead")]
-        public static Task<GetSizesResult> GetSizes(GetSizesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSizes
     {
         /// <summary>
@@ -29,37 +16,39 @@ namespace Pulumi.DigitalOcean
         /// the ability to filter and sort the results. If no filters are specified, all sizes
         /// will be returned.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSizesResult> InvokeAsync(GetSizesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSizesArgs : Pulumi.InvokeArgs
     {
         [Input("filters")]
-        private List<Inputs.GetSizesFiltersArgs>? _filters;
+        private List<Inputs.GetSizesFilterArgs>? _filters;
 
         /// <summary>
         /// Filter the results.
         /// The `filter` block is documented below.
         /// </summary>
-        public List<Inputs.GetSizesFiltersArgs> Filters
+        public List<Inputs.GetSizesFilterArgs> Filters
         {
-            get => _filters ?? (_filters = new List<Inputs.GetSizesFiltersArgs>());
+            get => _filters ?? (_filters = new List<Inputs.GetSizesFilterArgs>());
             set => _filters = value;
         }
 
         [Input("sorts")]
-        private List<Inputs.GetSizesSortsArgs>? _sorts;
+        private List<Inputs.GetSizesSortArgs>? _sorts;
 
         /// <summary>
         /// Sort the results.
         /// The `sort` block is documented below.
         /// </summary>
-        public List<Inputs.GetSizesSortsArgs> Sorts
+        public List<Inputs.GetSizesSortArgs> Sorts
         {
-            get => _sorts ?? (_sorts = new List<Inputs.GetSizesSortsArgs>());
+            get => _sorts ?? (_sorts = new List<Inputs.GetSizesSortArgs>());
             set => _sorts = value;
         }
 
@@ -68,196 +57,32 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetSizesResult
     {
-        public readonly ImmutableArray<Outputs.GetSizesFiltersResult> Filters;
-        public readonly ImmutableArray<Outputs.GetSizesSizesResult> Sizes;
-        public readonly ImmutableArray<Outputs.GetSizesSortsResult> Sorts;
+        public readonly ImmutableArray<Outputs.GetSizesFilterResult> Filters;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetSizesSizeResult> Sizes;
+        public readonly ImmutableArray<Outputs.GetSizesSortResult> Sorts;
 
         [OutputConstructor]
         private GetSizesResult(
-            ImmutableArray<Outputs.GetSizesFiltersResult> filters,
-            ImmutableArray<Outputs.GetSizesSizesResult> sizes,
-            ImmutableArray<Outputs.GetSizesSortsResult> sorts,
-            string id)
+            ImmutableArray<Outputs.GetSizesFilterResult> filters,
+
+            string id,
+
+            ImmutableArray<Outputs.GetSizesSizeResult> sizes,
+
+            ImmutableArray<Outputs.GetSizesSortResult> sorts)
         {
             Filters = filters;
+            Id = id;
             Sizes = sizes;
             Sorts = sorts;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetSizesFiltersArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// Filter the sizes by this key. This may be one of `slug`,
-        /// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-        /// `price_hourly`, or `available`.
-        /// </summary>
-        [Input("key", required: true)]
-        public string Key { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private List<string>? _values;
-
-        /// <summary>
-        /// Only retrieves images which keys has value that matches
-        /// one of the values provided here.
-        /// </summary>
-        public List<string> Values
-        {
-            get => _values ?? (_values = new List<string>());
-            set => _values = value;
-        }
-
-        public GetSizesFiltersArgs()
-        {
-        }
-    }
-
-    public sealed class GetSizesSortsArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
-        /// </summary>
-        [Input("direction")]
-        public string? Direction { get; set; }
-
-        /// <summary>
-        /// Sort the sizes by this key. This may be one of `slug`,
-        /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
-        /// </summary>
-        [Input("key", required: true)]
-        public string Key { get; set; } = null!;
-
-        public GetSizesSortsArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSizesFiltersResult
-    {
-        /// <summary>
-        /// Filter the sizes by this key. This may be one of `slug`,
-        /// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-        /// `price_hourly`, or `available`.
-        /// </summary>
-        public readonly string Key;
-        /// <summary>
-        /// Only retrieves images which keys has value that matches
-        /// one of the values provided here.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private GetSizesFiltersResult(
-            string key,
-            ImmutableArray<string> values)
-        {
-            Key = key;
-            Values = values;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetSizesSizesResult
-    {
-        /// <summary>
-        /// This represents whether new Droplets can be created with this size.
-        /// </summary>
-        public readonly bool Available;
-        /// <summary>
-        /// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
-        /// </summary>
-        public readonly int Disk;
-        /// <summary>
-        /// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
-        /// </summary>
-        public readonly int Memory;
-        /// <summary>
-        /// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
-        /// </summary>
-        public readonly double PriceHourly;
-        /// <summary>
-        /// The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
-        /// </summary>
-        public readonly double PriceMonthly;
-        /// <summary>
-        /// List of region slugs where Droplets can be created in this size.
-        /// </summary>
-        public readonly ImmutableArray<string> Regions;
-        /// <summary>
-        /// A human-readable string that is used to uniquely identify each size.
-        /// </summary>
-        public readonly string Slug;
-        /// <summary>
-        /// The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
-        /// </summary>
-        public readonly double Transfer;
-        /// <summary>
-        /// The number of CPUs allocated to Droplets of this size.
-        /// </summary>
-        public readonly int Vcpus;
-
-        [OutputConstructor]
-        private GetSizesSizesResult(
-            bool available,
-            int disk,
-            int memory,
-            double priceHourly,
-            double priceMonthly,
-            ImmutableArray<string> regions,
-            string slug,
-            double transfer,
-            int vcpus)
-        {
-            Available = available;
-            Disk = disk;
-            Memory = memory;
-            PriceHourly = priceHourly;
-            PriceMonthly = priceMonthly;
-            Regions = regions;
-            Slug = slug;
-            Transfer = transfer;
-            Vcpus = vcpus;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetSizesSortsResult
-    {
-        /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
-        /// </summary>
-        public readonly string? Direction;
-        /// <summary>
-        /// Sort the sizes by this key. This may be one of `slug`,
-        /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
-        /// </summary>
-        public readonly string Key;
-
-        [OutputConstructor]
-        private GetSizesSortsResult(
-            string? direction,
-            string key)
-        {
-            Direction = direction;
-            Key = key;
-        }
-    }
     }
 }

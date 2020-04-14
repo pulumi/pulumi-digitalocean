@@ -11,8 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
     /// </summary>
     public partial class Cdn : Pulumi.CustomResource
     {
@@ -62,7 +60,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Cdn(string name, CdnArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/cdn:Cdn", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/cdn:Cdn", name, args ?? new CdnArgs(), MakeResourceOptions(options, ""))
         {
         }
 

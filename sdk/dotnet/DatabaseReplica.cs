@@ -11,8 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean database replica resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_replica.html.markdown.
     /// </summary>
     public partial class DatabaseReplica : Pulumi.CustomResource
     {
@@ -100,7 +98,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseReplica(string name, DatabaseReplicaArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/databaseReplica:DatabaseReplica", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/databaseReplica:DatabaseReplica", name, args ?? new DatabaseReplicaArgs(), MakeResourceOptions(options, ""))
         {
         }
 

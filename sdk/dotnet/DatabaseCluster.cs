@@ -11,8 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean database cluster resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
     /// </summary>
     public partial class DatabaseCluster : Pulumi.CustomResource
     {
@@ -44,7 +42,7 @@ namespace Pulumi.DigitalOcean
         /// Defines when the automatic maintenance should be performed for the database cluster.
         /// </summary>
         [Output("maintenanceWindows")]
-        public Output<ImmutableArray<Outputs.DatabaseClusterMaintenanceWindows>> MaintenanceWindows { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DatabaseClusterMaintenanceWindow>> MaintenanceWindows { get; private set; } = null!;
 
         /// <summary>
         /// The name of the database cluster.
@@ -139,7 +137,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseCluster(string name, DatabaseClusterArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/databaseCluster:DatabaseCluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/databaseCluster:DatabaseCluster", name, args ?? new DatabaseClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -189,14 +187,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? EvictionPolicy { get; set; }
 
         [Input("maintenanceWindows")]
-        private InputList<Inputs.DatabaseClusterMaintenanceWindowsArgs>? _maintenanceWindows;
+        private InputList<Inputs.DatabaseClusterMaintenanceWindowArgs>? _maintenanceWindows;
 
         /// <summary>
         /// Defines when the automatic maintenance should be performed for the database cluster.
         /// </summary>
-        public InputList<Inputs.DatabaseClusterMaintenanceWindowsArgs> MaintenanceWindows
+        public InputList<Inputs.DatabaseClusterMaintenanceWindowArgs> MaintenanceWindows
         {
-            get => _maintenanceWindows ?? (_maintenanceWindows = new InputList<Inputs.DatabaseClusterMaintenanceWindowsArgs>());
+            get => _maintenanceWindows ?? (_maintenanceWindows = new InputList<Inputs.DatabaseClusterMaintenanceWindowArgs>());
             set => _maintenanceWindows = value;
         }
 
@@ -280,14 +278,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Host { get; set; }
 
         [Input("maintenanceWindows")]
-        private InputList<Inputs.DatabaseClusterMaintenanceWindowsGetArgs>? _maintenanceWindows;
+        private InputList<Inputs.DatabaseClusterMaintenanceWindowGetArgs>? _maintenanceWindows;
 
         /// <summary>
         /// Defines when the automatic maintenance should be performed for the database cluster.
         /// </summary>
-        public InputList<Inputs.DatabaseClusterMaintenanceWindowsGetArgs> MaintenanceWindows
+        public InputList<Inputs.DatabaseClusterMaintenanceWindowGetArgs> MaintenanceWindows
         {
-            get => _maintenanceWindows ?? (_maintenanceWindows = new InputList<Inputs.DatabaseClusterMaintenanceWindowsGetArgs>());
+            get => _maintenanceWindows ?? (_maintenanceWindows = new InputList<Inputs.DatabaseClusterMaintenanceWindowGetArgs>());
             set => _maintenanceWindows = value;
         }
 
@@ -384,73 +382,5 @@ namespace Pulumi.DigitalOcean
         public DatabaseClusterState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DatabaseClusterMaintenanceWindowsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The day of the week on which to apply maintenance updates.
-        /// </summary>
-        [Input("day", required: true)]
-        public Input<string> Day { get; set; } = null!;
-
-        /// <summary>
-        /// The hour in UTC at which maintenance updates will be applied in 24 hour format.
-        /// </summary>
-        [Input("hour", required: true)]
-        public Input<string> Hour { get; set; } = null!;
-
-        public DatabaseClusterMaintenanceWindowsArgs()
-        {
-        }
-    }
-
-    public sealed class DatabaseClusterMaintenanceWindowsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The day of the week on which to apply maintenance updates.
-        /// </summary>
-        [Input("day", required: true)]
-        public Input<string> Day { get; set; } = null!;
-
-        /// <summary>
-        /// The hour in UTC at which maintenance updates will be applied in 24 hour format.
-        /// </summary>
-        [Input("hour", required: true)]
-        public Input<string> Hour { get; set; } = null!;
-
-        public DatabaseClusterMaintenanceWindowsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DatabaseClusterMaintenanceWindows
-    {
-        /// <summary>
-        /// The day of the week on which to apply maintenance updates.
-        /// </summary>
-        public readonly string Day;
-        /// <summary>
-        /// The hour in UTC at which maintenance updates will be applied in 24 hour format.
-        /// </summary>
-        public readonly string Hour;
-
-        [OutputConstructor]
-        private DatabaseClusterMaintenanceWindows(
-            string day,
-            string hour)
-        {
-            Day = day;
-            Hour = hour;
-        }
-    }
     }
 }

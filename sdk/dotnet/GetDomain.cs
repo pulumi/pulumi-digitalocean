@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetDomain.InvokeAsync() instead")]
-        public static Task<GetDomainResult> GetDomain(GetDomainArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDomain
     {
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDomainArgs : Pulumi.InvokeArgs
     {
@@ -34,9 +29,14 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetDomainResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly int Ttl;
         /// <summary>
@@ -45,24 +45,24 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Urn;
         public readonly string ZoneFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDomainResult(
+            string id,
+
             string name,
+
             int ttl,
+
             string urn,
-            string zoneFile,
-            string id)
+
+            string zoneFile)
         {
+            Id = id;
             Name = name;
             Ttl = ttl;
             Urn = urn;
             ZoneFile = zoneFile;
-            Id = id;
         }
     }
 }

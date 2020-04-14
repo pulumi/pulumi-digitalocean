@@ -13,8 +13,6 @@ namespace Pulumi.DigitalOcean
     /// Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
     /// makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
     /// Droplet.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/floating_ip_assignment.html.markdown.
     /// </summary>
     public partial class FloatingIpAssignment : Pulumi.CustomResource
     {
@@ -39,7 +37,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FloatingIpAssignment(string name, FloatingIpAssignmentArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", name, args ?? new FloatingIpAssignmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

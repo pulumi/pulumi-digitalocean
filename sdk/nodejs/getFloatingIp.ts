@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> & GetFloatingIpResult {
+export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,11 +14,9 @@ export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetFloatingIpResult> = pulumi.runtime.invoke("digitalocean:index/getFloatingIp:getFloatingIp", {
+    return pulumi.runtime.invoke("digitalocean:index/getFloatingIp:getFloatingIp", {
         "ipAddress": args.ipAddress,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

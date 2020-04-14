@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to pulumi-terraform-bridge v2.0.0-beta.1
+* Upgrade to Pulumi v2.0.0-beta.1
+
 ---
 
 ## 1.9.0 (2020-04-01)

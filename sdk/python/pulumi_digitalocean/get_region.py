@@ -68,7 +68,7 @@ def get_region(slug=None,opts=None):
     Get information on a single DigitalOcean region. This is useful to find out 
     what Droplet sizes and features are supported within a region.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
+
 
 
     :param str slug: A human-readable string that is used as a unique identifier for each region.

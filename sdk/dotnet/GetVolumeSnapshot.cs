@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Volume snapshots are saved instances of a block storage volume. Use this data
-        /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
-        /// resources.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
-        /// </summary>
-        [Obsolete("Use GetVolumeSnapshot.InvokeAsync() instead")]
-        public static Task<GetVolumeSnapshotResult> GetVolumeSnapshot(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetVolumeSnapshot
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.DigitalOcean
         /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
         /// resources.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeSnapshotResult> InvokeAsync(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotArgs(), options.WithVersion());
     }
+
 
     public sealed class GetVolumeSnapshotArgs : Pulumi.InvokeArgs
     {
@@ -66,6 +55,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
+
     [OutputType]
     public sealed class GetVolumeSnapshotResult
     {
@@ -73,6 +63,10 @@ namespace Pulumi.DigitalOcean
         /// The date and time the volume snapshot was created.
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
         /// </summary>
@@ -97,26 +91,33 @@ namespace Pulumi.DigitalOcean
         /// The ID of the volume from which the volume snapshot originated.
         /// </summary>
         public readonly string VolumeId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetVolumeSnapshotResult(
             string createdAt,
+
+            string id,
+
             int minDiskSize,
+
             bool? mostRecent,
+
             string? name,
+
             string? nameRegex,
+
             string? region,
+
             ImmutableArray<string> regions,
+
             double size,
+
             ImmutableArray<string> tags,
-            string volumeId,
-            string id)
+
+            string volumeId)
         {
             CreatedAt = createdAt;
+            Id = id;
             MinDiskSize = minDiskSize;
             MostRecent = mostRecent;
             Name = name;
@@ -126,7 +127,6 @@ namespace Pulumi.DigitalOcean
             Size = size;
             Tags = tags;
             VolumeId = volumeId;
-            Id = id;
         }
     }
 }
