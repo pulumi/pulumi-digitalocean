@@ -75,6 +75,10 @@ export interface GetDatabaseClusterResult {
      */
     readonly privateHost: string;
     /**
+     * The ID of the VPC where the database cluster is located.
+     */
+    readonly privateNetworkUuid: string;
+    /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
     readonly privateUri: string;

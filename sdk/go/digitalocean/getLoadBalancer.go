@@ -39,4 +39,5 @@ type LookupLoadBalancerResult struct {
 	Status              string                        `pulumi:"status"`
 	StickySessions      GetLoadBalancerStickySessions `pulumi:"stickySessions"`
 	Urn                 string                        `pulumi:"urn"`
+	VpcUuid             string                        `pulumi:"vpcUuid"`
 }

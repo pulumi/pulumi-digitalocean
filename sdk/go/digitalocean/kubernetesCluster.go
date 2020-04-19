@@ -55,6 +55,8 @@ type KubernetesCluster struct {
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version pulumi.StringOutput `pulumi:"version"`
+	// The ID of the VPC where the Kubernetes cluster will be located.
+	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
 }
 
 // NewKubernetesCluster registers a new resource with the given unique name, arguments, and options.
@@ -135,6 +137,8 @@ type kubernetesClusterState struct {
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version *string `pulumi:"version"`
+	// The ID of the VPC where the Kubernetes cluster will be located.
+	VpcUuid *string `pulumi:"vpcUuid"`
 }
 
 type KubernetesClusterState struct {
@@ -179,6 +183,8 @@ type KubernetesClusterState struct {
 	UpdatedAt pulumi.StringPtrInput
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version pulumi.StringPtrInput
+	// The ID of the VPC where the Kubernetes cluster will be located.
+	VpcUuid pulumi.StringPtrInput
 }
 
 func (KubernetesClusterState) ElementType() reflect.Type {
@@ -204,6 +210,8 @@ type kubernetesClusterArgs struct {
 	Tags []string `pulumi:"tags"`
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version string `pulumi:"version"`
+	// The ID of the VPC where the Kubernetes cluster will be located.
+	VpcUuid *string `pulumi:"vpcUuid"`
 }
 
 // The set of arguments for constructing a KubernetesCluster resource.
@@ -226,6 +234,8 @@ type KubernetesClusterArgs struct {
 	Tags pulumi.StringArrayInput
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version pulumi.StringInput
+	// The ID of the VPC where the Kubernetes cluster will be located.
+	VpcUuid pulumi.StringPtrInput
 }
 
 func (KubernetesClusterArgs) ElementType() reflect.Type {

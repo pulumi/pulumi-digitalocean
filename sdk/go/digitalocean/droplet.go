@@ -44,9 +44,11 @@ type Droplet struct {
 	PriceHourly pulumi.Float64Output `pulumi:"priceHourly"`
 	// Droplet monthly price
 	PriceMonthly pulumi.Float64Output `pulumi:"priceMonthly"`
-	// Boolean controlling if private networks are
-	// enabled. Defaults to false.
-	PrivateNetworking pulumi.BoolPtrOutput `pulumi:"privateNetworking"`
+	// Boolean controlling if private networking
+	// is enabled. When VPC is enabled on an account, this will provision the
+	// Droplet inside of your account's default VPC for the region. Use the
+	// `vpcUuid` attribute to specify a different VPC.
+	PrivateNetworking pulumi.BoolOutput `pulumi:"privateNetworking"`
 	// The region to start in.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Boolean controlling whether to increase the disk
@@ -74,6 +76,8 @@ type Droplet struct {
 	Vcpus pulumi.IntOutput `pulumi:"vcpus"`
 	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayOutput `pulumi:"volumeIds"`
+	// The ID of the VPC where the Droplet will be located.
+	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
 }
 
 // NewDroplet registers a new resource with the given unique name, arguments, and options.
@@ -141,8 +145,10 @@ type dropletState struct {
 	PriceHourly *float64 `pulumi:"priceHourly"`
 	// Droplet monthly price
 	PriceMonthly *float64 `pulumi:"priceMonthly"`
-	// Boolean controlling if private networks are
-	// enabled. Defaults to false.
+	// Boolean controlling if private networking
+	// is enabled. When VPC is enabled on an account, this will provision the
+	// Droplet inside of your account's default VPC for the region. Use the
+	// `vpcUuid` attribute to specify a different VPC.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
 	// The region to start in.
 	Region *string `pulumi:"region"`
@@ -171,6 +177,8 @@ type dropletState struct {
 	Vcpus *int `pulumi:"vcpus"`
 	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
+	// The ID of the VPC where the Droplet will be located.
+	VpcUuid *string `pulumi:"vpcUuid"`
 }
 
 type DropletState struct {
@@ -202,8 +210,10 @@ type DropletState struct {
 	PriceHourly pulumi.Float64PtrInput
 	// Droplet monthly price
 	PriceMonthly pulumi.Float64PtrInput
-	// Boolean controlling if private networks are
-	// enabled. Defaults to false.
+	// Boolean controlling if private networking
+	// is enabled. When VPC is enabled on an account, this will provision the
+	// Droplet inside of your account's default VPC for the region. Use the
+	// `vpcUuid` attribute to specify a different VPC.
 	PrivateNetworking pulumi.BoolPtrInput
 	// The region to start in.
 	Region pulumi.StringPtrInput
@@ -232,6 +242,8 @@ type DropletState struct {
 	Vcpus pulumi.IntPtrInput
 	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayInput
+	// The ID of the VPC where the Droplet will be located.
+	VpcUuid pulumi.StringPtrInput
 }
 
 func (DropletState) ElementType() reflect.Type {
@@ -251,8 +263,10 @@ type dropletArgs struct {
 	Monitoring *bool `pulumi:"monitoring"`
 	// The Droplet name.
 	Name *string `pulumi:"name"`
-	// Boolean controlling if private networks are
-	// enabled. Defaults to false.
+	// Boolean controlling if private networking
+	// is enabled. When VPC is enabled on an account, this will provision the
+	// Droplet inside of your account's default VPC for the region. Use the
+	// `vpcUuid` attribute to specify a different VPC.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
 	// The region to start in.
 	Region string `pulumi:"region"`
@@ -274,6 +288,8 @@ type dropletArgs struct {
 	UserData *string `pulumi:"userData"`
 	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
+	// The ID of the VPC where the Droplet will be located.
+	VpcUuid *string `pulumi:"vpcUuid"`
 }
 
 // The set of arguments for constructing a Droplet resource.
@@ -290,8 +306,10 @@ type DropletArgs struct {
 	Monitoring pulumi.BoolPtrInput
 	// The Droplet name.
 	Name pulumi.StringPtrInput
-	// Boolean controlling if private networks are
-	// enabled. Defaults to false.
+	// Boolean controlling if private networking
+	// is enabled. When VPC is enabled on an account, this will provision the
+	// Droplet inside of your account's default VPC for the region. Use the
+	// `vpcUuid` attribute to specify a different VPC.
 	PrivateNetworking pulumi.BoolPtrInput
 	// The region to start in.
 	Region pulumi.StringInput
@@ -313,6 +331,8 @@ type DropletArgs struct {
 	UserData pulumi.StringPtrInput
 	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayInput
+	// The ID of the VPC where the Droplet will be located.
+	VpcUuid pulumi.StringPtrInput
 }
 
 func (DropletArgs) ElementType() reflect.Type {

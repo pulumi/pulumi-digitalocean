@@ -13,7 +13,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None):
+    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         __self__.algorithm = algorithm
@@ -59,6 +59,9 @@ class GetLoadBalancerResult:
         if urn and not isinstance(urn, str):
             raise TypeError("Expected argument 'urn' to be a str")
         __self__.urn = urn
+        if vpc_uuid and not isinstance(vpc_uuid, str):
+            raise TypeError("Expected argument 'vpc_uuid' to be a str")
+        __self__.vpc_uuid = vpc_uuid
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,7 +81,8 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             region=self.region,
             status=self.status,
             sticky_sessions=self.sticky_sessions,
-            urn=self.urn)
+            urn=self.urn,
+            vpc_uuid=self.vpc_uuid)
 
 def get_load_balancer(name=None,opts=None):
     """
@@ -110,4 +114,5 @@ def get_load_balancer(name=None,opts=None):
         region=__ret__.get('region'),
         status=__ret__.get('status'),
         sticky_sessions=__ret__.get('stickySessions'),
-        urn=__ret__.get('urn'))
+        urn=__ret__.get('urn'),
+        vpc_uuid=__ret__.get('vpcUuid'))

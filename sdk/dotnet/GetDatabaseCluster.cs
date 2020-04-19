@@ -85,6 +85,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string PrivateHost;
         /// <summary>
+        /// The ID of the VPC where the database cluster is located.
+        /// </summary>
+        public readonly string PrivateNetworkUuid;
+        /// <summary>
         /// Same as `uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
         public readonly string PrivateUri;
@@ -136,6 +140,8 @@ namespace Pulumi.DigitalOcean
 
             string privateHost,
 
+            string privateNetworkUuid,
+
             string privateUri,
 
             string region,
@@ -162,6 +168,7 @@ namespace Pulumi.DigitalOcean
             Password = password;
             Port = port;
             PrivateHost = privateHost;
+            PrivateNetworkUuid = privateNetworkUuid;
             PrivateUri = privateUri;
             Region = region;
             Size = size;

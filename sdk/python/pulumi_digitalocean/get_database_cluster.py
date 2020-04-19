@@ -13,7 +13,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_uri=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
+    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         __self__.database = database
@@ -70,6 +70,12 @@ class GetDatabaseClusterResult:
         __self__.private_host = private_host
         """
         Same as `host`, but only accessible from resources within the account and in the same region.
+        """
+        if private_network_uuid and not isinstance(private_network_uuid, str):
+            raise TypeError("Expected argument 'private_network_uuid' to be a str")
+        __self__.private_network_uuid = private_network_uuid
+        """
+        The ID of the VPC where the database cluster is located.
         """
         if private_uri and not isinstance(private_uri, str):
             raise TypeError("Expected argument 'private_uri' to be a str")
@@ -132,6 +138,7 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             password=self.password,
             port=self.port,
             private_host=self.private_host,
+            private_network_uuid=self.private_network_uuid,
             private_uri=self.private_uri,
             region=self.region,
             size=self.size,
@@ -172,6 +179,7 @@ def get_database_cluster(name=None,tags=None,opts=None):
         password=__ret__.get('password'),
         port=__ret__.get('port'),
         private_host=__ret__.get('privateHost'),
+        private_network_uuid=__ret__.get('privateNetworkUuid'),
         private_uri=__ret__.get('privateUri'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),

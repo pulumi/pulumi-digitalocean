@@ -84,7 +84,11 @@ class LoadBalancer(pulumi.CustomResource):
     """
     The uniform resource name for the Load Balancer
     """
-    def __init__(__self__, resource_name, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, name=None, redirect_http_to_https=None, region=None, sticky_sessions=None, __props__=None, __name__=None, __opts__=None):
+    vpc_uuid: pulumi.Output[str]
+    """
+    The ID of the VPC where the load balancer will be located.
+    """
+    def __init__(__self__, resource_name, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, name=None, redirect_http_to_https=None, region=None, sticky_sessions=None, vpc_uuid=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
         modify, and delete Load Balancers.
@@ -112,6 +116,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region to start in
         :param pulumi.Input[dict] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
 
         The **forwarding_rules** object supports the following:
 
@@ -169,6 +174,7 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['sticky_sessions'] = sticky_sessions
+            __props__['vpc_uuid'] = vpc_uuid
             __props__['ip'] = None
             __props__['status'] = None
             __props__['urn'] = None
@@ -179,7 +185,7 @@ class LoadBalancer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None):
+    def get(resource_name, id, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, vpc_uuid=None):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -207,6 +213,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[dict] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] urn: The uniform resource name for the Load Balancer
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
 
         The **forwarding_rules** object supports the following:
 
@@ -250,6 +257,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["status"] = status
         __props__["sticky_sessions"] = sticky_sessions
         __props__["urn"] = urn
+        __props__["vpc_uuid"] = vpc_uuid
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

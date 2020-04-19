@@ -64,8 +64,10 @@ class Droplet(pulumi.CustomResource):
     """
     private_networking: pulumi.Output[bool]
     """
-    Boolean controlling if private networks are
-    enabled. Defaults to false.
+    Boolean controlling if private networking
+    is enabled. When VPC is enabled on an account, this will provision the
+    Droplet inside of your account's default VPC for the region. Use the
+    `vpc_uuid` attribute to specify a different VPC.
     """
     region: pulumi.Output[str]
     """
@@ -114,7 +116,11 @@ class Droplet(pulumi.CustomResource):
     """
     A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
     """
-    def __init__(__self__, resource_name, opts=None, backups=None, image=None, ipv6=None, monitoring=None, name=None, private_networking=None, region=None, resize_disk=None, size=None, ssh_keys=None, tags=None, user_data=None, volume_ids=None, __props__=None, __name__=None, __opts__=None):
+    vpc_uuid: pulumi.Output[str]
+    """
+    The ID of the VPC where the Droplet will be located.
+    """
+    def __init__(__self__, resource_name, opts=None, backups=None, image=None, ipv6=None, monitoring=None, name=None, private_networking=None, region=None, resize_disk=None, size=None, ssh_keys=None, tags=None, user_data=None, volume_ids=None, vpc_uuid=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Droplet resource. This can be used to create,
         modify, and delete Droplets. Droplets also support
@@ -131,8 +137,10 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
                Defaults to false.
         :param pulumi.Input[str] name: The Droplet name.
-        :param pulumi.Input[bool] private_networking: Boolean controlling if private networks are
-               enabled. Defaults to false.
+        :param pulumi.Input[bool] private_networking: Boolean controlling if private networking
+               is enabled. When VPC is enabled on an account, this will provision the
+               Droplet inside of your account's default VPC for the region. Use the
+               `vpc_uuid` attribute to specify a different VPC.
         :param pulumi.Input[str] region: The region to start in.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -146,6 +154,7 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[list] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -183,6 +192,7 @@ class Droplet(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['user_data'] = user_data
             __props__['volume_ids'] = volume_ids
+            __props__['vpc_uuid'] = vpc_uuid
             __props__['created_at'] = None
             __props__['disk'] = None
             __props__['ipv4_address'] = None
@@ -202,7 +212,7 @@ class Droplet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backups=None, created_at=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, resize_disk=None, size=None, ssh_keys=None, status=None, tags=None, urn=None, user_data=None, vcpus=None, volume_ids=None):
+    def get(resource_name, id, opts=None, backups=None, created_at=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, resize_disk=None, size=None, ssh_keys=None, status=None, tags=None, urn=None, user_data=None, vcpus=None, volume_ids=None, vpc_uuid=None):
         """
         Get an existing Droplet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -224,8 +234,10 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Droplet name.
         :param pulumi.Input[float] price_hourly: Droplet hourly price
         :param pulumi.Input[float] price_monthly: Droplet monthly price
-        :param pulumi.Input[bool] private_networking: Boolean controlling if private networks are
-               enabled. Defaults to false.
+        :param pulumi.Input[bool] private_networking: Boolean controlling if private networking
+               is enabled. When VPC is enabled on an account, this will provision the
+               Droplet inside of your account's default VPC for the region. Use the
+               `vpc_uuid` attribute to specify a different VPC.
         :param pulumi.Input[str] region: The region to start in.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -243,6 +255,7 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[float] vcpus: The number of the instance's virtual CPUs
         :param pulumi.Input[list] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -273,6 +286,7 @@ class Droplet(pulumi.CustomResource):
         __props__["user_data"] = user_data
         __props__["vcpus"] = vcpus
         __props__["volume_ids"] = volume_ids
+        __props__["vpc_uuid"] = vpc_uuid
         return Droplet(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

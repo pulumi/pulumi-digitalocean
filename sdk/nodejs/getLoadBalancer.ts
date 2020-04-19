@@ -46,6 +46,7 @@ export interface GetLoadBalancerResult {
     readonly status: string;
     readonly stickySessions: outputs.GetLoadBalancerStickySessions;
     readonly urn: string;
+    readonly vpcUuid: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

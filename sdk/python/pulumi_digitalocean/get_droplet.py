@@ -13,7 +13,7 @@ class GetDropletResult:
     """
     A collection of values returned by getDroplet.
     """
-    def __init__(__self__, backups=None, created_at=None, disk=None, id=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None):
+    def __init__(__self__, backups=None, created_at=None, disk=None, id=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None, vpc_uuid=None):
         if backups and not isinstance(backups, bool):
             raise TypeError("Expected argument 'backups' to be a bool")
         __self__.backups = backups
@@ -152,6 +152,12 @@ class GetDropletResult:
         """
         List of the IDs of each volumes attached to the Droplet.
         """
+        if vpc_uuid and not isinstance(vpc_uuid, str):
+            raise TypeError("Expected argument 'vpc_uuid' to be a str")
+        __self__.vpc_uuid = vpc_uuid
+        """
+        The ID of the VPC where the Droplet is located.
+        """
 class AwaitableGetDropletResult(GetDropletResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -182,7 +188,8 @@ class AwaitableGetDropletResult(GetDropletResult):
             tags=self.tags,
             urn=self.urn,
             vcpus=self.vcpus,
-            volume_ids=self.volume_ids)
+            volume_ids=self.volume_ids,
+            vpc_uuid=self.vpc_uuid)
 
 def get_droplet(id=None,name=None,tag=None,opts=None):
     """
@@ -229,4 +236,5 @@ def get_droplet(id=None,name=None,tag=None,opts=None):
         tags=__ret__.get('tags'),
         urn=__ret__.get('urn'),
         vcpus=__ret__.get('vcpus'),
-        volume_ids=__ret__.get('volumeIds'))
+        volume_ids=__ret__.get('volumeIds'),
+        vpc_uuid=__ret__.get('vpcUuid'))

@@ -202,7 +202,8 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_tag": {Tok: digitalOceanResource(digitalOceanMod, "Tag")},
+			"digitalocean_spaces_bucket_object": {Tok: digitalOceanResource(digitalOceanMod, "SpacesBucketObject")},
+			"digitalocean_tag":                  {Tok: digitalOceanResource(digitalOceanMod, "Tag")},
 			"digitalocean_volume": {
 				Tok: digitalOceanResource(digitalOceanMod, "Volume"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -223,6 +224,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"digitalocean_vpc": {Tok: digitalOceanResource(digitalOceanMod, "Vpc")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"digitalocean_certificate":         {Tok: digitalOceanDataSource(digitalOceanMod, "getCertificate")},
@@ -247,6 +249,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_projects":            {Tok: digitalOceanDataSource(digitalOceanMod, "getProjects")},
 			"digitalocean_region":              {Tok: digitalOceanDataSource(digitalOceanMod, "getRegion")},
 			"digitalocean_regions":             {Tok: digitalOceanDataSource(digitalOceanMod, "getRegions")},
+			"digitalocean_vpc":                 {Tok: digitalOceanDataSource(digitalOceanMod, "getVpc")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			AsyncDataSources: true,

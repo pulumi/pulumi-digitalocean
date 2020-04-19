@@ -74,4 +74,6 @@ type LookupDropletResult struct {
 	Vcpus int `pulumi:"vcpus"`
 	// List of the IDs of each volumes attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
+	// The ID of the VPC where the Droplet is located.
+	VpcUuid string `pulumi:"vpcUuid"`
 }

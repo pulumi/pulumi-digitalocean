@@ -76,4 +76,6 @@ type LookupKubernetesClusterResult struct {
 	UpdatedAt string `pulumi:"updatedAt"`
 	// The slug identifier for the version of Kubernetes used for the cluster.
 	Version string `pulumi:"version"`
+	// The ID of the VPC where the Kubernetes cluster is located.
+	VpcUuid string `pulumi:"vpcUuid"`
 }

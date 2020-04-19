@@ -144,6 +144,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      */
     public readonly version!: pulumi.Output<string>;
+    /**
+     * The ID of the VPC where the Kubernetes cluster will be located.
+     */
+    public readonly vpcUuid!: pulumi.Output<string>;
 
     /**
      * Create a KubernetesCluster resource with the given unique name, arguments, and options.
@@ -170,6 +174,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
             inputs["version"] = state ? state.version : undefined;
+            inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as KubernetesClusterArgs | undefined;
             if (!args || args.nodePool === undefined) {
@@ -186,6 +191,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["version"] = args ? args.version : undefined;
+            inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             inputs["clusterSubnet"] = undefined /*out*/;
             inputs["createdAt"] = undefined /*out*/;
             inputs["endpoint"] = undefined /*out*/;
@@ -275,6 +281,10 @@ export interface KubernetesClusterState {
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      */
     readonly version?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC where the Kubernetes cluster will be located.
+     */
+    readonly vpcUuid?: pulumi.Input<string>;
 }
 
 /**
@@ -309,4 +319,8 @@ export interface KubernetesClusterArgs {
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      */
     readonly version: pulumi.Input<string>;
+    /**
+     * The ID of the VPC where the Kubernetes cluster will be located.
+     */
+    readonly vpcUuid?: pulumi.Input<string>;
 }

@@ -2005,6 +2005,581 @@ func (o SpacesBucketCorsRuleArrayOutput) Index(i pulumi.IntInput) SpacesBucketCo
 	}).(SpacesBucketCorsRuleOutput)
 }
 
+type SpacesBucketLifecycleRule struct {
+	// Specifies the number of days after initiating a multipart
+	// upload when the multipart upload must be completed or else Spaces will abort the upload.
+	AbortIncompleteMultipartUploadDays *int `pulumi:"abortIncompleteMultipartUploadDays"`
+	// Specifies lifecycle rule status.
+	Enabled bool `pulumi:"enabled"`
+	// Specifies a time period after which applicable objects expire (documented below).
+	Expiration *SpacesBucketLifecycleRuleExpiration `pulumi:"expiration"`
+	// Unique identifier for the rule.
+	Id *string `pulumi:"id"`
+	// Specifies when non-current object versions expire (documented below).
+	NoncurrentVersionExpiration *SpacesBucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpiration"`
+	// Object key prefix identifying one or more objects to which the rule applies.
+	Prefix *string `pulumi:"prefix"`
+}
+
+// SpacesBucketLifecycleRuleInput is an input type that accepts SpacesBucketLifecycleRuleArgs and SpacesBucketLifecycleRuleOutput values.
+// You can construct a concrete instance of `SpacesBucketLifecycleRuleInput` via:
+//
+// 		 SpacesBucketLifecycleRuleArgs{...}
+//
+type SpacesBucketLifecycleRuleInput interface {
+	pulumi.Input
+
+	ToSpacesBucketLifecycleRuleOutput() SpacesBucketLifecycleRuleOutput
+	ToSpacesBucketLifecycleRuleOutputWithContext(context.Context) SpacesBucketLifecycleRuleOutput
+}
+
+type SpacesBucketLifecycleRuleArgs struct {
+	// Specifies the number of days after initiating a multipart
+	// upload when the multipart upload must be completed or else Spaces will abort the upload.
+	AbortIncompleteMultipartUploadDays pulumi.IntPtrInput `pulumi:"abortIncompleteMultipartUploadDays"`
+	// Specifies lifecycle rule status.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Specifies a time period after which applicable objects expire (documented below).
+	Expiration SpacesBucketLifecycleRuleExpirationPtrInput `pulumi:"expiration"`
+	// Unique identifier for the rule.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Specifies when non-current object versions expire (documented below).
+	NoncurrentVersionExpiration SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput `pulumi:"noncurrentVersionExpiration"`
+	// Object key prefix identifying one or more objects to which the rule applies.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (SpacesBucketLifecycleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketLifecycleRule)(nil)).Elem()
+}
+
+func (i SpacesBucketLifecycleRuleArgs) ToSpacesBucketLifecycleRuleOutput() SpacesBucketLifecycleRuleOutput {
+	return i.ToSpacesBucketLifecycleRuleOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketLifecycleRuleArgs) ToSpacesBucketLifecycleRuleOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketLifecycleRuleOutput)
+}
+
+// SpacesBucketLifecycleRuleArrayInput is an input type that accepts SpacesBucketLifecycleRuleArray and SpacesBucketLifecycleRuleArrayOutput values.
+// You can construct a concrete instance of `SpacesBucketLifecycleRuleArrayInput` via:
+//
+// 		 SpacesBucketLifecycleRuleArray{ SpacesBucketLifecycleRuleArgs{...} }
+//
+type SpacesBucketLifecycleRuleArrayInput interface {
+	pulumi.Input
+
+	ToSpacesBucketLifecycleRuleArrayOutput() SpacesBucketLifecycleRuleArrayOutput
+	ToSpacesBucketLifecycleRuleArrayOutputWithContext(context.Context) SpacesBucketLifecycleRuleArrayOutput
+}
+
+type SpacesBucketLifecycleRuleArray []SpacesBucketLifecycleRuleInput
+
+func (SpacesBucketLifecycleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpacesBucketLifecycleRule)(nil)).Elem()
+}
+
+func (i SpacesBucketLifecycleRuleArray) ToSpacesBucketLifecycleRuleArrayOutput() SpacesBucketLifecycleRuleArrayOutput {
+	return i.ToSpacesBucketLifecycleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketLifecycleRuleArray) ToSpacesBucketLifecycleRuleArrayOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketLifecycleRuleArrayOutput)
+}
+
+type SpacesBucketLifecycleRuleOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketLifecycleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketLifecycleRule)(nil)).Elem()
+}
+
+func (o SpacesBucketLifecycleRuleOutput) ToSpacesBucketLifecycleRuleOutput() SpacesBucketLifecycleRuleOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleOutput) ToSpacesBucketLifecycleRuleOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleOutput {
+	return o
+}
+
+// Specifies the number of days after initiating a multipart
+// upload when the multipart upload must be completed or else Spaces will abort the upload.
+func (o SpacesBucketLifecycleRuleOutput) AbortIncompleteMultipartUploadDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRule) *int { return v.AbortIncompleteMultipartUploadDays }).(pulumi.IntPtrOutput)
+}
+
+// Specifies lifecycle rule status.
+func (o SpacesBucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Specifies a time period after which applicable objects expire (documented below).
+func (o SpacesBucketLifecycleRuleOutput) Expiration() SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRule) *SpacesBucketLifecycleRuleExpiration { return v.Expiration }).(SpacesBucketLifecycleRuleExpirationPtrOutput)
+}
+
+// Unique identifier for the rule.
+func (o SpacesBucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when non-current object versions expire (documented below).
+func (o SpacesBucketLifecycleRuleOutput) NoncurrentVersionExpiration() SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRule) *SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
+		return v.NoncurrentVersionExpiration
+	}).(SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
+}
+
+// Object key prefix identifying one or more objects to which the rule applies.
+func (o SpacesBucketLifecycleRuleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type SpacesBucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpacesBucketLifecycleRule)(nil)).Elem()
+}
+
+func (o SpacesBucketLifecycleRuleArrayOutput) ToSpacesBucketLifecycleRuleArrayOutput() SpacesBucketLifecycleRuleArrayOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleArrayOutput) ToSpacesBucketLifecycleRuleArrayOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleArrayOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) SpacesBucketLifecycleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpacesBucketLifecycleRule {
+		return vs[0].([]SpacesBucketLifecycleRule)[vs[1].(int)]
+	}).(SpacesBucketLifecycleRuleOutput)
+}
+
+type SpacesBucketLifecycleRuleExpiration struct {
+	// Specifies the date/time after which you want applicable objects to expire. The argument uses
+	// RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
+	Date *string `pulumi:"date"`
+	// Specifies the number of days after object creation when the applicable objects will expire.
+	Days *int `pulumi:"days"`
+	// On a versioned bucket (versioning-enabled or versioning-suspended
+	// bucket), setting this to true directs Spaces to delete expired object delete markers.
+	ExpiredObjectDeleteMarker *bool `pulumi:"expiredObjectDeleteMarker"`
+}
+
+// SpacesBucketLifecycleRuleExpirationInput is an input type that accepts SpacesBucketLifecycleRuleExpirationArgs and SpacesBucketLifecycleRuleExpirationOutput values.
+// You can construct a concrete instance of `SpacesBucketLifecycleRuleExpirationInput` via:
+//
+// 		 SpacesBucketLifecycleRuleExpirationArgs{...}
+//
+type SpacesBucketLifecycleRuleExpirationInput interface {
+	pulumi.Input
+
+	ToSpacesBucketLifecycleRuleExpirationOutput() SpacesBucketLifecycleRuleExpirationOutput
+	ToSpacesBucketLifecycleRuleExpirationOutputWithContext(context.Context) SpacesBucketLifecycleRuleExpirationOutput
+}
+
+type SpacesBucketLifecycleRuleExpirationArgs struct {
+	// Specifies the date/time after which you want applicable objects to expire. The argument uses
+	// RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
+	Date pulumi.StringPtrInput `pulumi:"date"`
+	// Specifies the number of days after object creation when the applicable objects will expire.
+	Days pulumi.IntPtrInput `pulumi:"days"`
+	// On a versioned bucket (versioning-enabled or versioning-suspended
+	// bucket), setting this to true directs Spaces to delete expired object delete markers.
+	ExpiredObjectDeleteMarker pulumi.BoolPtrInput `pulumi:"expiredObjectDeleteMarker"`
+}
+
+func (SpacesBucketLifecycleRuleExpirationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketLifecycleRuleExpiration)(nil)).Elem()
+}
+
+func (i SpacesBucketLifecycleRuleExpirationArgs) ToSpacesBucketLifecycleRuleExpirationOutput() SpacesBucketLifecycleRuleExpirationOutput {
+	return i.ToSpacesBucketLifecycleRuleExpirationOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketLifecycleRuleExpirationArgs) ToSpacesBucketLifecycleRuleExpirationOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleExpirationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketLifecycleRuleExpirationOutput)
+}
+
+func (i SpacesBucketLifecycleRuleExpirationArgs) ToSpacesBucketLifecycleRuleExpirationPtrOutput() SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return i.ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketLifecycleRuleExpirationArgs) ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketLifecycleRuleExpirationOutput).ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(ctx)
+}
+
+// SpacesBucketLifecycleRuleExpirationPtrInput is an input type that accepts SpacesBucketLifecycleRuleExpirationArgs, SpacesBucketLifecycleRuleExpirationPtr and SpacesBucketLifecycleRuleExpirationPtrOutput values.
+// You can construct a concrete instance of `SpacesBucketLifecycleRuleExpirationPtrInput` via:
+//
+// 		 SpacesBucketLifecycleRuleExpirationArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SpacesBucketLifecycleRuleExpirationPtrInput interface {
+	pulumi.Input
+
+	ToSpacesBucketLifecycleRuleExpirationPtrOutput() SpacesBucketLifecycleRuleExpirationPtrOutput
+	ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(context.Context) SpacesBucketLifecycleRuleExpirationPtrOutput
+}
+
+type spacesBucketLifecycleRuleExpirationPtrType SpacesBucketLifecycleRuleExpirationArgs
+
+func SpacesBucketLifecycleRuleExpirationPtr(v *SpacesBucketLifecycleRuleExpirationArgs) SpacesBucketLifecycleRuleExpirationPtrInput {
+	return (*spacesBucketLifecycleRuleExpirationPtrType)(v)
+}
+
+func (*spacesBucketLifecycleRuleExpirationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpacesBucketLifecycleRuleExpiration)(nil)).Elem()
+}
+
+func (i *spacesBucketLifecycleRuleExpirationPtrType) ToSpacesBucketLifecycleRuleExpirationPtrOutput() SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return i.ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i *spacesBucketLifecycleRuleExpirationPtrType) ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketLifecycleRuleExpirationPtrOutput)
+}
+
+type SpacesBucketLifecycleRuleExpirationOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketLifecycleRuleExpirationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketLifecycleRuleExpiration)(nil)).Elem()
+}
+
+func (o SpacesBucketLifecycleRuleExpirationOutput) ToSpacesBucketLifecycleRuleExpirationOutput() SpacesBucketLifecycleRuleExpirationOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleExpirationOutput) ToSpacesBucketLifecycleRuleExpirationOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleExpirationOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleExpirationOutput) ToSpacesBucketLifecycleRuleExpirationPtrOutput() SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return o.ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(context.Background())
+}
+
+func (o SpacesBucketLifecycleRuleExpirationOutput) ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *SpacesBucketLifecycleRuleExpiration {
+		return &v
+	}).(SpacesBucketLifecycleRuleExpirationPtrOutput)
+}
+
+// Specifies the date/time after which you want applicable objects to expire. The argument uses
+// RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
+func (o SpacesBucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of days after object creation when the applicable objects will expire.
+func (o SpacesBucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+// On a versioned bucket (versioning-enabled or versioning-suspended
+// bucket), setting this to true directs Spaces to delete expired object delete markers.
+func (o SpacesBucketLifecycleRuleExpirationOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
+}
+
+type SpacesBucketLifecycleRuleExpirationPtrOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketLifecycleRuleExpirationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpacesBucketLifecycleRuleExpiration)(nil)).Elem()
+}
+
+func (o SpacesBucketLifecycleRuleExpirationPtrOutput) ToSpacesBucketLifecycleRuleExpirationPtrOutput() SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleExpirationPtrOutput) ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleExpirationPtrOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleExpirationPtrOutput) Elem() SpacesBucketLifecycleRuleExpirationOutput {
+	return o.ApplyT(func(v *SpacesBucketLifecycleRuleExpiration) SpacesBucketLifecycleRuleExpiration { return *v }).(SpacesBucketLifecycleRuleExpirationOutput)
+}
+
+// Specifies the date/time after which you want applicable objects to expire. The argument uses
+// RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
+func (o SpacesBucketLifecycleRuleExpirationPtrOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of days after object creation when the applicable objects will expire.
+func (o SpacesBucketLifecycleRuleExpirationPtrOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+// On a versioned bucket (versioning-enabled or versioning-suspended
+// bucket), setting this to true directs Spaces to delete expired object delete markers.
+func (o SpacesBucketLifecycleRuleExpirationPtrOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
+}
+
+type SpacesBucketLifecycleRuleNoncurrentVersionExpiration struct {
+	// Specifies the number of days after which an object's non-current versions expire.
+	Days *int `pulumi:"days"`
+}
+
+// SpacesBucketLifecycleRuleNoncurrentVersionExpirationInput is an input type that accepts SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs and SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput values.
+// You can construct a concrete instance of `SpacesBucketLifecycleRuleNoncurrentVersionExpirationInput` via:
+//
+// 		 SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
+//
+type SpacesBucketLifecycleRuleNoncurrentVersionExpirationInput interface {
+	pulumi.Input
+
+	ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput() SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput
+	ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput
+}
+
+type SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
+	// Specifies the number of days after which an object's non-current versions expire.
+	Days pulumi.IntPtrInput `pulumi:"days"`
+}
+
+func (SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (i SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput() SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return i.ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput)
+}
+
+func (i SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return i.ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput).ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx)
+}
+
+// SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput is an input type that accepts SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs, SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtr and SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput values.
+// You can construct a concrete instance of `SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput` via:
+//
+// 		 SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput interface {
+	pulumi.Input
+
+	ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput
+	ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput
+}
+
+type spacesBucketLifecycleRuleNoncurrentVersionExpirationPtrType SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs
+
+func SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtr(v *SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs) SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput {
+	return (*spacesBucketLifecycleRuleNoncurrentVersionExpirationPtrType)(v)
+}
+
+func (*spacesBucketLifecycleRuleNoncurrentVersionExpirationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpacesBucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (i *spacesBucketLifecycleRuleNoncurrentVersionExpirationPtrType) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return i.ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i *spacesBucketLifecycleRuleNoncurrentVersionExpirationPtrType) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
+}
+
+type SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput() SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o.ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(context.Background())
+}
+
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleNoncurrentVersionExpiration) *SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
+		return &v
+	}).(SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
+}
+
+// Specifies the number of days after which an object's non-current versions expire.
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleNoncurrentVersionExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+type SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpacesBucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o
+}
+
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Elem() SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return o.ApplyT(func(v *SpacesBucketLifecycleRuleNoncurrentVersionExpiration) SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
+		return *v
+	}).(SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput)
+}
+
+// Specifies the number of days after which an object's non-current versions expire.
+func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SpacesBucketLifecycleRuleNoncurrentVersionExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+type SpacesBucketVersioning struct {
+	// Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
+	// state. You can, however, suspend versioning on that bucket.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SpacesBucketVersioningInput is an input type that accepts SpacesBucketVersioningArgs and SpacesBucketVersioningOutput values.
+// You can construct a concrete instance of `SpacesBucketVersioningInput` via:
+//
+// 		 SpacesBucketVersioningArgs{...}
+//
+type SpacesBucketVersioningInput interface {
+	pulumi.Input
+
+	ToSpacesBucketVersioningOutput() SpacesBucketVersioningOutput
+	ToSpacesBucketVersioningOutputWithContext(context.Context) SpacesBucketVersioningOutput
+}
+
+type SpacesBucketVersioningArgs struct {
+	// Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
+	// state. You can, however, suspend versioning on that bucket.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SpacesBucketVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketVersioning)(nil)).Elem()
+}
+
+func (i SpacesBucketVersioningArgs) ToSpacesBucketVersioningOutput() SpacesBucketVersioningOutput {
+	return i.ToSpacesBucketVersioningOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketVersioningArgs) ToSpacesBucketVersioningOutputWithContext(ctx context.Context) SpacesBucketVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketVersioningOutput)
+}
+
+func (i SpacesBucketVersioningArgs) ToSpacesBucketVersioningPtrOutput() SpacesBucketVersioningPtrOutput {
+	return i.ToSpacesBucketVersioningPtrOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketVersioningArgs) ToSpacesBucketVersioningPtrOutputWithContext(ctx context.Context) SpacesBucketVersioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketVersioningOutput).ToSpacesBucketVersioningPtrOutputWithContext(ctx)
+}
+
+// SpacesBucketVersioningPtrInput is an input type that accepts SpacesBucketVersioningArgs, SpacesBucketVersioningPtr and SpacesBucketVersioningPtrOutput values.
+// You can construct a concrete instance of `SpacesBucketVersioningPtrInput` via:
+//
+// 		 SpacesBucketVersioningArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SpacesBucketVersioningPtrInput interface {
+	pulumi.Input
+
+	ToSpacesBucketVersioningPtrOutput() SpacesBucketVersioningPtrOutput
+	ToSpacesBucketVersioningPtrOutputWithContext(context.Context) SpacesBucketVersioningPtrOutput
+}
+
+type spacesBucketVersioningPtrType SpacesBucketVersioningArgs
+
+func SpacesBucketVersioningPtr(v *SpacesBucketVersioningArgs) SpacesBucketVersioningPtrInput {
+	return (*spacesBucketVersioningPtrType)(v)
+}
+
+func (*spacesBucketVersioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpacesBucketVersioning)(nil)).Elem()
+}
+
+func (i *spacesBucketVersioningPtrType) ToSpacesBucketVersioningPtrOutput() SpacesBucketVersioningPtrOutput {
+	return i.ToSpacesBucketVersioningPtrOutputWithContext(context.Background())
+}
+
+func (i *spacesBucketVersioningPtrType) ToSpacesBucketVersioningPtrOutputWithContext(ctx context.Context) SpacesBucketVersioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketVersioningPtrOutput)
+}
+
+type SpacesBucketVersioningOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketVersioning)(nil)).Elem()
+}
+
+func (o SpacesBucketVersioningOutput) ToSpacesBucketVersioningOutput() SpacesBucketVersioningOutput {
+	return o
+}
+
+func (o SpacesBucketVersioningOutput) ToSpacesBucketVersioningOutputWithContext(ctx context.Context) SpacesBucketVersioningOutput {
+	return o
+}
+
+func (o SpacesBucketVersioningOutput) ToSpacesBucketVersioningPtrOutput() SpacesBucketVersioningPtrOutput {
+	return o.ToSpacesBucketVersioningPtrOutputWithContext(context.Background())
+}
+
+func (o SpacesBucketVersioningOutput) ToSpacesBucketVersioningPtrOutputWithContext(ctx context.Context) SpacesBucketVersioningPtrOutput {
+	return o.ApplyT(func(v SpacesBucketVersioning) *SpacesBucketVersioning {
+		return &v
+	}).(SpacesBucketVersioningPtrOutput)
+}
+
+// Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
+// state. You can, however, suspend versioning on that bucket.
+func (o SpacesBucketVersioningOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SpacesBucketVersioning) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SpacesBucketVersioningPtrOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketVersioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpacesBucketVersioning)(nil)).Elem()
+}
+
+func (o SpacesBucketVersioningPtrOutput) ToSpacesBucketVersioningPtrOutput() SpacesBucketVersioningPtrOutput {
+	return o
+}
+
+func (o SpacesBucketVersioningPtrOutput) ToSpacesBucketVersioningPtrOutputWithContext(ctx context.Context) SpacesBucketVersioningPtrOutput {
+	return o
+}
+
+func (o SpacesBucketVersioningPtrOutput) Elem() SpacesBucketVersioningOutput {
+	return o.ApplyT(func(v *SpacesBucketVersioning) SpacesBucketVersioning { return *v }).(SpacesBucketVersioningOutput)
+}
+
+// Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
+// state. You can, however, suspend versioning on that bucket.
+func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SpacesBucketVersioning) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 type GetDatabaseClusterMaintenanceWindow struct {
 	// The day of the week on which to apply maintenance updates.
 	Day string `pulumi:"day"`
@@ -4403,6 +4978,14 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsPtrOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsRuleArrayOutput{})
+	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleOutput{})
+	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleArrayOutput{})
+	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleExpirationOutput{})
+	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleExpirationPtrOutput{})
+	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput{})
+	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput{})
+	pulumi.RegisterOutputType(SpacesBucketVersioningOutput{})
+	pulumi.RegisterOutputType(SpacesBucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterOutput{})

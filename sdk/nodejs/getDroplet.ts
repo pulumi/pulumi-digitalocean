@@ -132,4 +132,8 @@ export interface GetDropletResult {
      * List of the IDs of each volumes attached to the Droplet.
      */
     readonly volumeIds: string[];
+    /**
+     * The ID of the VPC where the Droplet is located.
+     */
+    readonly vpcUuid: string;
 }

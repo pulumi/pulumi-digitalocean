@@ -106,13 +106,17 @@ export class SpacesBucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     /**
-     * A container holding a list of elements describing allowed methods for a specific origin.
+     * A rule of Cross-Origin Resource Sharing (documented below).
      */
     public readonly corsRules!: pulumi.Output<outputs.SpacesBucketCorsRule[] | undefined>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * A configuration of object lifecycle management (documented below).
+     */
+    public readonly lifecycleRules!: pulumi.Output<outputs.SpacesBucketLifecycleRule[] | undefined>;
     /**
      * The name of the bucket
      */
@@ -125,6 +129,10 @@ export class SpacesBucket extends pulumi.CustomResource {
      * The uniform resource name for the bucket
      */
     public /*out*/ readonly urn!: pulumi.Output<string>;
+    /**
+     * A state of versioning (documented below)
+     */
+    public readonly versioning!: pulumi.Output<outputs.SpacesBucketVersioning | undefined>;
 
     /**
      * Create a SpacesBucket resource with the given unique name, arguments, and options.
@@ -142,16 +150,20 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
             inputs["corsRules"] = state ? state.corsRules : undefined;
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["urn"] = state ? state.urn : undefined;
+            inputs["versioning"] = state ? state.versioning : undefined;
         } else {
             const args = argsOrState as SpacesBucketArgs | undefined;
             inputs["acl"] = args ? args.acl : undefined;
             inputs["corsRules"] = args ? args.corsRules : undefined;
             inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            inputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["versioning"] = args ? args.versioning : undefined;
             inputs["bucketDomainName"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
         }
@@ -179,13 +191,17 @@ export interface SpacesBucketState {
      */
     readonly bucketDomainName?: pulumi.Input<string>;
     /**
-     * A container holding a list of elements describing allowed methods for a specific origin.
+     * A rule of Cross-Origin Resource Sharing (documented below).
      */
     readonly corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * A configuration of object lifecycle management (documented below).
+     */
+    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[]>;
     /**
      * The name of the bucket
      */
@@ -198,6 +214,10 @@ export interface SpacesBucketState {
      * The uniform resource name for the bucket
      */
     readonly urn?: pulumi.Input<string>;
+    /**
+     * A state of versioning (documented below)
+     */
+    readonly versioning?: pulumi.Input<inputs.SpacesBucketVersioning>;
 }
 
 /**
@@ -209,13 +229,17 @@ export interface SpacesBucketArgs {
      */
     readonly acl?: pulumi.Input<string>;
     /**
-     * A container holding a list of elements describing allowed methods for a specific origin.
+     * A rule of Cross-Origin Resource Sharing (documented below).
      */
     readonly corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * A configuration of object lifecycle management (documented below).
+     */
+    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[]>;
     /**
      * The name of the bucket
      */
@@ -224,4 +248,8 @@ export interface SpacesBucketArgs {
      * The region where the bucket resides (Defaults to `nyc3`)
      */
     readonly region?: pulumi.Input<Region>;
+    /**
+     * A state of versioning (documented below)
+     */
+    readonly versioning?: pulumi.Input<inputs.SpacesBucketVersioning>;
 }

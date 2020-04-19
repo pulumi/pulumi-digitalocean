@@ -45,6 +45,8 @@ type LookupDatabaseClusterResult struct {
 	Port int `pulumi:"port"`
 	// Same as `host`, but only accessible from resources within the account and in the same region.
 	PrivateHost string `pulumi:"privateHost"`
+	// The ID of the VPC where the database cluster is located.
+	PrivateNetworkUuid string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri string `pulumi:"privateUri"`
 	// DigitalOcean region where the cluster will reside.

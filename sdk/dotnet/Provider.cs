@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("digitalocean", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -55,6 +55,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("spacesAccessId")]
         public Input<string>? SpacesAccessId { get; set; }
+
+        /// <summary>
+        /// The URL to use for the DigitalOcean Spaces API.
+        /// </summary>
+        [Input("spacesEndpoint", required: true)]
+        public Input<string> SpacesEndpoint { get; set; } = null!;
 
         /// <summary>
         /// The secret access key for Spaces API operations.

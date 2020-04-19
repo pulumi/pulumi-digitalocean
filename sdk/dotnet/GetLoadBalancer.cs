@@ -50,6 +50,7 @@ namespace Pulumi.DigitalOcean
         public readonly string Status;
         public readonly Outputs.GetLoadBalancerStickySessionsResult StickySessions;
         public readonly string Urn;
+        public readonly string VpcUuid;
 
         [OutputConstructor]
         private GetLoadBalancerResult(
@@ -79,7 +80,9 @@ namespace Pulumi.DigitalOcean
 
             Outputs.GetLoadBalancerStickySessionsResult stickySessions,
 
-            string urn)
+            string urn,
+
+            string vpcUuid)
         {
             Algorithm = algorithm;
             DropletIds = dropletIds;
@@ -95,6 +98,7 @@ namespace Pulumi.DigitalOcean
             Status = status;
             StickySessions = stickySessions;
             Urn = urn;
+            VpcUuid = vpcUuid;
         }
     }
 }

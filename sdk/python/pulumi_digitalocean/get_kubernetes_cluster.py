@@ -13,7 +13,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None):
+    def __init__(__self__, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None, vpc_uuid=None):
         if cluster_subnet and not isinstance(cluster_subnet, str):
             raise TypeError("Expected argument 'cluster_subnet' to be a str")
         __self__.cluster_subnet = cluster_subnet
@@ -116,6 +116,12 @@ class GetKubernetesClusterResult:
         """
         The slug identifier for the version of Kubernetes used for the cluster.
         """
+        if vpc_uuid and not isinstance(vpc_uuid, str):
+            raise TypeError("Expected argument 'vpc_uuid' to be a str")
+        __self__.vpc_uuid = vpc_uuid
+        """
+        The ID of the VPC where the Kubernetes cluster is located.
+        """
 class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -135,7 +141,8 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             status=self.status,
             tags=self.tags,
             updated_at=self.updated_at,
-            version=self.version)
+            version=self.version,
+            vpc_uuid=self.vpc_uuid)
 
 def get_kubernetes_cluster(name=None,tags=None,opts=None):
     """
@@ -169,4 +176,5 @@ def get_kubernetes_cluster(name=None,tags=None,opts=None):
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
         updated_at=__ret__.get('updatedAt'),
-        version=__ret__.get('version'))
+        version=__ret__.get('version'),
+        vpc_uuid=__ret__.get('vpcUuid'))

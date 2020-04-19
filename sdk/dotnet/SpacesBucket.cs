@@ -42,7 +42,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> BucketDomainName { get; private set; } = null!;
 
         /// <summary>
-        /// A container holding a list of elements describing allowed methods for a specific origin.
+        /// A rule of Cross-Origin Resource Sharing (documented below).
         /// </summary>
         [Output("corsRules")]
         public Output<ImmutableArray<Outputs.SpacesBucketCorsRule>> CorsRules { get; private set; } = null!;
@@ -52,6 +52,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
+        /// A configuration of object lifecycle management (documented below).
+        /// </summary>
+        [Output("lifecycleRules")]
+        public Output<ImmutableArray<Outputs.SpacesBucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
         /// <summary>
         /// The name of the bucket
@@ -70,6 +76,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("urn")]
         public Output<string> Urn { get; private set; } = null!;
+
+        /// <summary>
+        /// A state of versioning (documented below)
+        /// </summary>
+        [Output("versioning")]
+        public Output<Outputs.SpacesBucketVersioning?> Versioning { get; private set; } = null!;
 
 
         /// <summary>
@@ -127,7 +139,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.SpacesBucketCorsRuleArgs>? _corsRules;
 
         /// <summary>
-        /// A container holding a list of elements describing allowed methods for a specific origin.
+        /// A rule of Cross-Origin Resource Sharing (documented below).
         /// </summary>
         public InputList<Inputs.SpacesBucketCorsRuleArgs> CorsRules
         {
@@ -141,6 +153,18 @@ namespace Pulumi.DigitalOcean
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        [Input("lifecycleRules")]
+        private InputList<Inputs.SpacesBucketLifecycleRuleArgs>? _lifecycleRules;
+
+        /// <summary>
+        /// A configuration of object lifecycle management (documented below).
+        /// </summary>
+        public InputList<Inputs.SpacesBucketLifecycleRuleArgs> LifecycleRules
+        {
+            get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.SpacesBucketLifecycleRuleArgs>());
+            set => _lifecycleRules = value;
+        }
+
         /// <summary>
         /// The name of the bucket
         /// </summary>
@@ -152,6 +176,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// A state of versioning (documented below)
+        /// </summary>
+        [Input("versioning")]
+        public Input<Inputs.SpacesBucketVersioningArgs>? Versioning { get; set; }
 
         public SpacesBucketArgs()
         {
@@ -176,7 +206,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.SpacesBucketCorsRuleGetArgs>? _corsRules;
 
         /// <summary>
-        /// A container holding a list of elements describing allowed methods for a specific origin.
+        /// A rule of Cross-Origin Resource Sharing (documented below).
         /// </summary>
         public InputList<Inputs.SpacesBucketCorsRuleGetArgs> CorsRules
         {
@@ -189,6 +219,18 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
+
+        [Input("lifecycleRules")]
+        private InputList<Inputs.SpacesBucketLifecycleRuleGetArgs>? _lifecycleRules;
+
+        /// <summary>
+        /// A configuration of object lifecycle management (documented below).
+        /// </summary>
+        public InputList<Inputs.SpacesBucketLifecycleRuleGetArgs> LifecycleRules
+        {
+            get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.SpacesBucketLifecycleRuleGetArgs>());
+            set => _lifecycleRules = value;
+        }
 
         /// <summary>
         /// The name of the bucket
@@ -207,6 +249,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("urn")]
         public Input<string>? Urn { get; set; }
+
+        /// <summary>
+        /// A state of versioning (documented below)
+        /// </summary>
+        [Input("versioning")]
+        public Input<Inputs.SpacesBucketVersioningGetArgs>? Versioning { get; set; }
 
         public SpacesBucketState()
         {

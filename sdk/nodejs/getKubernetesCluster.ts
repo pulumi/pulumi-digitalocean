@@ -109,6 +109,10 @@ export interface GetKubernetesClusterResult {
      */
     readonly version: string;
     /**
+     * The ID of the VPC where the Kubernetes cluster is located.
+     */
+    readonly vpcUuid: string;
+    /**
      * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
