@@ -43,6 +43,7 @@ export * from "./getSshKey";
 export * from "./getTag";
 export * from "./getVolume";
 export * from "./getVolumeSnapshot";
+export * from "./getVpc";
 export * from "./kubernetesCluster";
 export * from "./kubernetesNodePool";
 export * from "./loadBalancer";
@@ -53,11 +54,13 @@ export * from "./provider";
 export * from "./recordType";
 export * from "./region";
 export * from "./spacesBucket";
+export * from "./spacesBucketObject";
 export * from "./sshKey";
 export * from "./tag";
 export * from "./volume";
 export * from "./volumeAttachment";
 export * from "./volumeSnapshot";
+export * from "./vpc";
 
 // Export sub-modules:
 import * as config from "./config/index";

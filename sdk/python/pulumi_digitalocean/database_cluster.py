@@ -53,6 +53,10 @@ class DatabaseCluster(pulumi.CustomResource):
     """
     Same as `host`, but only accessible from resources within the account and in the same region.
     """
+    private_network_uuid: pulumi.Output[str]
+    """
+    The ID of the VPC where the database cluster will be located.
+    """
     private_uri: pulumi.Output[str]
     """
     Same as `uri`, but only accessible from resources within the account and in the same region.
@@ -89,7 +93,7 @@ class DatabaseCluster(pulumi.CustomResource):
     """
     Engine version used by the cluster (ex. `11` for PostgreSQL 11).
     """
-    def __init__(__self__, resource_name, opts=None, engine=None, eviction_policy=None, maintenance_windows=None, name=None, node_count=None, region=None, size=None, sql_mode=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, engine=None, eviction_policy=None, maintenance_windows=None, name=None, node_count=None, private_network_uuid=None, region=None, size=None, sql_mode=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean database cluster resource.
 
@@ -102,6 +106,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[list] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
         :param pulumi.Input[float] node_count: Number of nodes that will be included in the cluster.
+        :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
@@ -139,6 +144,7 @@ class DatabaseCluster(pulumi.CustomResource):
             if node_count is None:
                 raise TypeError("Missing required property 'node_count'")
             __props__['node_count'] = node_count
+            __props__['private_network_uuid'] = private_network_uuid
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
@@ -164,7 +170,7 @@ class DatabaseCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database=None, engine=None, eviction_policy=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_uri=None, region=None, size=None, sql_mode=None, tags=None, uri=None, urn=None, user=None, version=None):
+    def get(resource_name, id, opts=None, database=None, engine=None, eviction_policy=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, sql_mode=None, tags=None, uri=None, urn=None, user=None, version=None):
         """
         Get an existing DatabaseCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -182,6 +188,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] password: Password for the cluster's default user.
         :param pulumi.Input[float] port: Network port that the database cluster is listening on.
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
@@ -211,6 +218,7 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__["password"] = password
         __props__["port"] = port
         __props__["private_host"] = private_host
+        __props__["private_network_uuid"] = private_network_uuid
         __props__["private_uri"] = private_uri
         __props__["region"] = region
         __props__["size"] = size

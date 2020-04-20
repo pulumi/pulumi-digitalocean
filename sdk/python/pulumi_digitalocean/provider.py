@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, api_endpoint=None, spaces_access_id=None, spaces_secret_key=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, api_endpoint=None, spaces_access_id=None, spaces_endpoint=None, spaces_secret_key=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the digitalocean package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -21,6 +21,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_endpoint: The URL to use for the DigitalOcean API.
         :param pulumi.Input[str] spaces_access_id: The access key ID for Spaces API operations.
+        :param pulumi.Input[str] spaces_endpoint: The URL to use for the DigitalOcean Spaces API.
         :param pulumi.Input[str] spaces_secret_key: The secret access key for Spaces API operations.
         :param pulumi.Input[str] token: The token key for API operations.
         """
@@ -47,6 +48,9 @@ class Provider(pulumi.ProviderResource):
             if spaces_access_id is None:
                 spaces_access_id = utilities.get_env('SPACES_ACCESS_KEY_ID')
             __props__['spaces_access_id'] = spaces_access_id
+            if spaces_endpoint is None:
+                raise TypeError("Missing required property 'spaces_endpoint'")
+            __props__['spaces_endpoint'] = spaces_endpoint
             if spaces_secret_key is None:
                 spaces_secret_key = utilities.get_env('SPACES_SECRET_ACCESS_KEY')
             __props__['spaces_secret_key'] = spaces_secret_key

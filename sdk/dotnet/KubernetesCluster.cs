@@ -105,6 +105,12 @@ namespace Pulumi.DigitalOcean
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the VPC where the Kubernetes cluster will be located.
+        /// </summary>
+        [Output("vpcUuid")]
+        public Output<string> VpcUuid { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a KubernetesCluster resource with the given unique name, arguments, and options.
@@ -194,6 +200,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC where the Kubernetes cluster will be located.
+        /// </summary>
+        [Input("vpcUuid")]
+        public Input<string>? VpcUuid { get; set; }
 
         public KubernetesClusterArgs()
         {
@@ -303,6 +315,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC where the Kubernetes cluster will be located.
+        /// </summary>
+        [Input("vpcUuid")]
+        public Input<string>? VpcUuid { get; set; }
 
         public KubernetesClusterState()
         {

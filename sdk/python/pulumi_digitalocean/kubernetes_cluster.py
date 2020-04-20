@@ -102,7 +102,11 @@ class KubernetesCluster(pulumi.CustomResource):
     """
     The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
     """
-    def __init__(__self__, resource_name, opts=None, name=None, node_pool=None, region=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
+    vpc_uuid: pulumi.Output[str]
+    """
+    The ID of the VPC where the Kubernetes cluster will be located.
+    """
+    def __init__(__self__, resource_name, opts=None, name=None, node_pool=None, region=None, tags=None, version=None, vpc_uuid=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
 
@@ -123,6 +127,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
 
         The **node_pool** object supports the following:
 
@@ -181,6 +186,7 @@ class KubernetesCluster(pulumi.CustomResource):
             if version is None:
                 raise TypeError("Missing required property 'version'")
             __props__['version'] = version
+            __props__['vpc_uuid'] = vpc_uuid
             __props__['cluster_subnet'] = None
             __props__['created_at'] = None
             __props__['endpoint'] = None
@@ -196,7 +202,7 @@ class KubernetesCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_subnet=None, created_at=None, endpoint=None, ipv4_address=None, kube_configs=None, name=None, node_pool=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None):
+    def get(resource_name, id, opts=None, cluster_subnet=None, created_at=None, endpoint=None, ipv4_address=None, kube_configs=None, name=None, node_pool=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None, vpc_uuid=None):
         """
         Get an existing KubernetesCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -232,6 +238,7 @@ class KubernetesCluster(pulumi.CustomResource):
                - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
                - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
 
         The **kube_configs** object supports the following:
 
@@ -289,6 +296,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["updated_at"] = updated_at
         __props__["version"] = version
+        __props__["vpc_uuid"] = vpc_uuid
         return KubernetesCluster(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

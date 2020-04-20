@@ -48,6 +48,8 @@ type LoadBalancer struct {
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
 	// The uniform resource name for the Load Balancer
 	Urn pulumi.StringOutput `pulumi:"urn"`
+	// The ID of the VPC where the load balancer will be located.
+	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
 }
 
 // NewLoadBalancer registers a new resource with the given unique name, arguments, and options.
@@ -117,6 +119,8 @@ type loadBalancerState struct {
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
 	// The uniform resource name for the Load Balancer
 	Urn *string `pulumi:"urn"`
+	// The ID of the VPC where the load balancer will be located.
+	VpcUuid *string `pulumi:"vpcUuid"`
 }
 
 type LoadBalancerState struct {
@@ -153,6 +157,8 @@ type LoadBalancerState struct {
 	StickySessions LoadBalancerStickySessionsPtrInput
 	// The uniform resource name for the Load Balancer
 	Urn pulumi.StringPtrInput
+	// The ID of the VPC where the load balancer will be located.
+	VpcUuid pulumi.StringPtrInput
 }
 
 func (LoadBalancerState) ElementType() reflect.Type {
@@ -189,6 +195,8 @@ type loadBalancerArgs struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
+	// The ID of the VPC where the load balancer will be located.
+	VpcUuid *string `pulumi:"vpcUuid"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
@@ -222,6 +230,8 @@ type LoadBalancerArgs struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
+	// The ID of the VPC where the load balancer will be located.
+	VpcUuid pulumi.StringPtrInput
 }
 
 func (LoadBalancerArgs) ElementType() reflect.Type {

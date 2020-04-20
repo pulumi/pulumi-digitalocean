@@ -128,6 +128,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly privateHost!: pulumi.Output<string>;
     /**
+     * The ID of the VPC where the database cluster will be located.
+     */
+    public readonly privateNetworkUuid!: pulumi.Output<string>;
+    /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
     public /*out*/ readonly privateUri!: pulumi.Output<string>;
@@ -186,6 +190,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["password"] = state ? state.password : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["privateHost"] = state ? state.privateHost : undefined;
+            inputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
             inputs["privateUri"] = state ? state.privateUri : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
@@ -214,6 +219,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["maintenanceWindows"] = args ? args.maintenanceWindows : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
+            inputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["sqlMode"] = args ? args.sqlMode : undefined;
@@ -285,6 +291,10 @@ export interface DatabaseClusterState {
      */
     readonly privateHost?: pulumi.Input<string>;
     /**
+     * The ID of the VPC where the database cluster will be located.
+     */
+    readonly privateNetworkUuid?: pulumi.Input<string>;
+    /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
     readonly privateUri?: pulumi.Input<string>;
@@ -346,6 +356,10 @@ export interface DatabaseClusterArgs {
      * Number of nodes that will be included in the cluster.
      */
     readonly nodeCount: pulumi.Input<number>;
+    /**
+     * The ID of the VPC where the database cluster will be located.
+     */
+    readonly privateNetworkUuid?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the cluster will reside.
      */

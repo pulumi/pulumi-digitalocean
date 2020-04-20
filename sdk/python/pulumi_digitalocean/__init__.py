@@ -47,14 +47,17 @@ from .get_ssh_key import *
 from .get_tag import *
 from .get_volume import *
 from .get_volume_snapshot import *
+from .get_vpc import *
 from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
 from .project import *
 from .provider import *
 from .spaces_bucket import *
+from .spaces_bucket_object import *
 from .ssh_key import *
 from .tag import *
 from .volume import *
 from .volume_attachment import *
 from .volume_snapshot import *
+from .vpc import *

@@ -34,6 +34,8 @@ type DatabaseCluster struct {
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Same as `host`, but only accessible from resources within the account and in the same region.
 	PrivateHost pulumi.StringOutput `pulumi:"privateHost"`
+	// The ID of the VPC where the database cluster will be located.
+	PrivateNetworkUuid pulumi.StringOutput `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringOutput `pulumi:"privateUri"`
 	// DigitalOcean region where the cluster will reside.
@@ -114,6 +116,8 @@ type databaseClusterState struct {
 	Port *int `pulumi:"port"`
 	// Same as `host`, but only accessible from resources within the account and in the same region.
 	PrivateHost *string `pulumi:"privateHost"`
+	// The ID of the VPC where the database cluster will be located.
+	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri *string `pulumi:"privateUri"`
 	// DigitalOcean region where the cluster will reside.
@@ -155,6 +159,8 @@ type DatabaseClusterState struct {
 	Port pulumi.IntPtrInput
 	// Same as `host`, but only accessible from resources within the account and in the same region.
 	PrivateHost pulumi.StringPtrInput
+	// The ID of the VPC where the database cluster will be located.
+	PrivateNetworkUuid pulumi.StringPtrInput
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
@@ -190,6 +196,8 @@ type databaseClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// Number of nodes that will be included in the cluster.
 	NodeCount int `pulumi:"nodeCount"`
+	// The ID of the VPC where the database cluster will be located.
+	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
@@ -214,6 +222,8 @@ type DatabaseClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// Number of nodes that will be included in the cluster.
 	NodeCount pulumi.IntInput
+	// The ID of the VPC where the database cluster will be located.
+	PrivateNetworkUuid pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringInput
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).

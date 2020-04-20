@@ -96,6 +96,12 @@ namespace Pulumi.DigitalOcean
         [Output("urn")]
         public Output<string> Urn { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the VPC where the load balancer will be located.
+        /// </summary>
+        [Output("vpcUuid")]
+        public Output<string> VpcUuid { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -223,6 +229,12 @@ namespace Pulumi.DigitalOcean
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsArgs>? StickySessions { get; set; }
 
+        /// <summary>
+        /// The ID of the VPC where the load balancer will be located.
+        /// </summary>
+        [Input("vpcUuid")]
+        public Input<string>? VpcUuid { get; set; }
+
         public LoadBalancerArgs()
         {
         }
@@ -322,6 +334,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("urn")]
         public Input<string>? Urn { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC where the load balancer will be located.
+        /// </summary>
+        [Input("vpcUuid")]
+        public Input<string>? VpcUuid { get; set; }
 
         public LoadBalancerState()
         {

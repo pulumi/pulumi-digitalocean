@@ -32,16 +32,20 @@ type SpacesBucket struct {
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName pulumi.StringOutput `pulumi:"bucketDomainName"`
-	// A container holding a list of elements describing allowed methods for a specific origin.
+	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules SpacesBucketCorsRuleArrayOutput `pulumi:"corsRules"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	// A configuration of object lifecycle management (documented below).
+	LifecycleRules SpacesBucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
 	// The name of the bucket
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The uniform resource name for the bucket
 	Urn pulumi.StringOutput `pulumi:"urn"`
+	// A state of versioning (documented below)
+	Versioning SpacesBucketVersioningPtrOutput `pulumi:"versioning"`
 }
 
 // NewSpacesBucket registers a new resource with the given unique name, arguments, and options.
@@ -76,16 +80,20 @@ type spacesBucketState struct {
 	Acl *string `pulumi:"acl"`
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName *string `pulumi:"bucketDomainName"`
-	// A container holding a list of elements describing allowed methods for a specific origin.
+	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules []SpacesBucketCorsRule `pulumi:"corsRules"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// A configuration of object lifecycle management (documented below).
+	LifecycleRules []SpacesBucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The name of the bucket
 	Name *string `pulumi:"name"`
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region *string `pulumi:"region"`
 	// The uniform resource name for the bucket
 	Urn *string `pulumi:"urn"`
+	// A state of versioning (documented below)
+	Versioning *SpacesBucketVersioning `pulumi:"versioning"`
 }
 
 type SpacesBucketState struct {
@@ -93,16 +101,20 @@ type SpacesBucketState struct {
 	Acl pulumi.StringPtrInput
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName pulumi.StringPtrInput
-	// A container holding a list of elements describing allowed methods for a specific origin.
+	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules SpacesBucketCorsRuleArrayInput
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrInput
+	// A configuration of object lifecycle management (documented below).
+	LifecycleRules SpacesBucketLifecycleRuleArrayInput
 	// The name of the bucket
 	Name pulumi.StringPtrInput
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region pulumi.StringPtrInput
 	// The uniform resource name for the bucket
 	Urn pulumi.StringPtrInput
+	// A state of versioning (documented below)
+	Versioning SpacesBucketVersioningPtrInput
 }
 
 func (SpacesBucketState) ElementType() reflect.Type {
@@ -112,28 +124,36 @@ func (SpacesBucketState) ElementType() reflect.Type {
 type spacesBucketArgs struct {
 	// Canned ACL applied on bucket creation (`private` or `public-read`)
 	Acl *string `pulumi:"acl"`
-	// A container holding a list of elements describing allowed methods for a specific origin.
+	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules []SpacesBucketCorsRule `pulumi:"corsRules"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// A configuration of object lifecycle management (documented below).
+	LifecycleRules []SpacesBucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The name of the bucket
 	Name *string `pulumi:"name"`
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region *string `pulumi:"region"`
+	// A state of versioning (documented below)
+	Versioning *SpacesBucketVersioning `pulumi:"versioning"`
 }
 
 // The set of arguments for constructing a SpacesBucket resource.
 type SpacesBucketArgs struct {
 	// Canned ACL applied on bucket creation (`private` or `public-read`)
 	Acl pulumi.StringPtrInput
-	// A container holding a list of elements describing allowed methods for a specific origin.
+	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules SpacesBucketCorsRuleArrayInput
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrInput
+	// A configuration of object lifecycle management (documented below).
+	LifecycleRules SpacesBucketLifecycleRuleArrayInput
 	// The name of the bucket
 	Name pulumi.StringPtrInput
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region pulumi.StringPtrInput
+	// A state of versioning (documented below)
+	Versioning SpacesBucketVersioningPtrInput
 }
 
 func (SpacesBucketArgs) ElementType() reflect.Type {

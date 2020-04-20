@@ -97,11 +97,13 @@ namespace Pulumi.DigitalOcean
         public Output<double> PriceMonthly { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean controlling if private networks are
-        /// enabled. Defaults to false.
+        /// Boolean controlling if private networking
+        /// is enabled. When VPC is enabled on an account, this will provision the
+        /// Droplet inside of your account's default VPC for the region. Use the
+        /// `vpc_uuid` attribute to specify a different VPC.
         /// </summary>
         [Output("privateNetworking")]
-        public Output<bool?> PrivateNetworking { get; private set; } = null!;
+        public Output<bool> PrivateNetworking { get; private set; } = null!;
 
         /// <summary>
         /// The region to start in.
@@ -169,6 +171,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("volumeIds")]
         public Output<ImmutableArray<string>> VolumeIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC where the Droplet will be located.
+        /// </summary>
+        [Output("vpcUuid")]
+        public Output<string> VpcUuid { get; private set; } = null!;
 
 
         /// <summary>
@@ -249,8 +257,10 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Boolean controlling if private networks are
-        /// enabled. Defaults to false.
+        /// Boolean controlling if private networking
+        /// is enabled. When VPC is enabled on an account, this will provision the
+        /// Droplet inside of your account's default VPC for the region. Use the
+        /// `vpc_uuid` attribute to specify a different VPC.
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }
@@ -320,6 +330,12 @@ namespace Pulumi.DigitalOcean
             get => _volumeIds ?? (_volumeIds = new InputList<string>());
             set => _volumeIds = value;
         }
+
+        /// <summary>
+        /// The ID of the VPC where the Droplet will be located.
+        /// </summary>
+        [Input("vpcUuid")]
+        public Input<string>? VpcUuid { get; set; }
 
         public DropletArgs()
         {
@@ -409,8 +425,10 @@ namespace Pulumi.DigitalOcean
         public Input<double>? PriceMonthly { get; set; }
 
         /// <summary>
-        /// Boolean controlling if private networks are
-        /// enabled. Defaults to false.
+        /// Boolean controlling if private networking
+        /// is enabled. When VPC is enabled on an account, this will provision the
+        /// Droplet inside of your account's default VPC for the region. Use the
+        /// `vpc_uuid` attribute to specify a different VPC.
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }
@@ -499,6 +517,12 @@ namespace Pulumi.DigitalOcean
             get => _volumeIds ?? (_volumeIds = new InputList<string>());
             set => _volumeIds = value;
         }
+
+        /// <summary>
+        /// The ID of the VPC where the Droplet will be located.
+        /// </summary>
+        [Input("vpcUuid")]
+        public Input<string>? VpcUuid { get; set; }
 
         public DropletState()
         {

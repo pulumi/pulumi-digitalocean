@@ -97,6 +97,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The uniform resource name for the Load Balancer
      */
     public /*out*/ readonly urn!: pulumi.Output<string>;
+    /**
+     * The ID of the VPC where the load balancer will be located.
+     */
+    public readonly vpcUuid!: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -123,6 +127,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
             inputs["stickySessions"] = state ? state.stickySessions : undefined;
             inputs["urn"] = state ? state.urn : undefined;
+            inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if (!args || args.forwardingRules === undefined) {
@@ -141,6 +146,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["stickySessions"] = args ? args.stickySessions : undefined;
+            inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             inputs["ip"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["urn"] = undefined /*out*/;
@@ -215,6 +221,10 @@ export interface LoadBalancerState {
      * The uniform resource name for the Load Balancer
      */
     readonly urn?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC where the load balancer will be located.
+     */
+    readonly vpcUuid?: pulumi.Input<string>;
 }
 
 /**
@@ -270,4 +280,8 @@ export interface LoadBalancerArgs {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     readonly stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    /**
+     * The ID of the VPC where the load balancer will be located.
+     */
+    readonly vpcUuid?: pulumi.Input<string>;
 }

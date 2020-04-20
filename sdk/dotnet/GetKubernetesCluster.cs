@@ -119,6 +119,10 @@ namespace Pulumi.DigitalOcean
         /// The slug identifier for the version of Kubernetes used for the cluster.
         /// </summary>
         public readonly string Version;
+        /// <summary>
+        /// The ID of the VPC where the Kubernetes cluster is located.
+        /// </summary>
+        public readonly string VpcUuid;
 
         [OutputConstructor]
         private GetKubernetesClusterResult(
@@ -148,7 +152,9 @@ namespace Pulumi.DigitalOcean
 
             string updatedAt,
 
-            string version)
+            string version,
+
+            string vpcUuid)
         {
             ClusterSubnet = clusterSubnet;
             CreatedAt = createdAt;
@@ -164,6 +170,7 @@ namespace Pulumi.DigitalOcean
             Tags = tags;
             UpdatedAt = updatedAt;
             Version = version;
+            VpcUuid = vpcUuid;
         }
     }
 }

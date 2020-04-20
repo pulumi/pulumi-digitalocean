@@ -111,10 +111,12 @@ export class Droplet extends pulumi.CustomResource {
      */
     public /*out*/ readonly priceMonthly!: pulumi.Output<number>;
     /**
-     * Boolean controlling if private networks are
-     * enabled. Defaults to false.
+     * Boolean controlling if private networking
+     * is enabled. When VPC is enabled on an account, this will provision the
+     * Droplet inside of your account's default VPC for the region. Use the
+     * `vpcUuid` attribute to specify a different VPC.
      */
-    public readonly privateNetworking!: pulumi.Output<boolean | undefined>;
+    public readonly privateNetworking!: pulumi.Output<boolean>;
     /**
      * The region to start in.
      */
@@ -162,6 +164,10 @@ export class Droplet extends pulumi.CustomResource {
      * A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
      */
     public readonly volumeIds!: pulumi.Output<string[]>;
+    /**
+     * The ID of the VPC where the Droplet will be located.
+     */
+    public readonly vpcUuid!: pulumi.Output<string>;
 
     /**
      * Create a Droplet resource with the given unique name, arguments, and options.
@@ -200,6 +206,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["userData"] = state ? state.userData : undefined;
             inputs["vcpus"] = state ? state.vcpus : undefined;
             inputs["volumeIds"] = state ? state.volumeIds : undefined;
+            inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as DropletArgs | undefined;
             if (!args || args.image === undefined) {
@@ -224,6 +231,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["volumeIds"] = args ? args.volumeIds : undefined;
+            inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["disk"] = undefined /*out*/;
             inputs["ipv4Address"] = undefined /*out*/;
@@ -305,8 +313,10 @@ export interface DropletState {
      */
     readonly priceMonthly?: pulumi.Input<number>;
     /**
-     * Boolean controlling if private networks are
-     * enabled. Defaults to false.
+     * Boolean controlling if private networking
+     * is enabled. When VPC is enabled on an account, this will provision the
+     * Droplet inside of your account's default VPC for the region. Use the
+     * `vpcUuid` attribute to specify a different VPC.
      */
     readonly privateNetworking?: pulumi.Input<boolean>;
     /**
@@ -356,6 +366,10 @@ export interface DropletState {
      * A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
      */
     readonly volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the VPC where the Droplet will be located.
+     */
+    readonly vpcUuid?: pulumi.Input<string>;
 }
 
 /**
@@ -385,8 +399,10 @@ export interface DropletArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Boolean controlling if private networks are
-     * enabled. Defaults to false.
+     * Boolean controlling if private networking
+     * is enabled. When VPC is enabled on an account, this will provision the
+     * Droplet inside of your account's default VPC for the region. Use the
+     * `vpcUuid` attribute to specify a different VPC.
      */
     readonly privateNetworking?: pulumi.Input<boolean>;
     /**
@@ -423,4 +439,8 @@ export interface DropletArgs {
      * A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
      */
     readonly volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the VPC where the Droplet will be located.
+     */
+    readonly vpcUuid?: pulumi.Input<string>;
 }

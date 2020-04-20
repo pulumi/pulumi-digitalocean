@@ -75,6 +75,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> PrivateHost { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the VPC where the database cluster will be located.
+        /// </summary>
+        [Output("privateNetworkUuid")]
+        public Output<string> PrivateNetworkUuid { get; private set; } = null!;
+
+        /// <summary>
         /// Same as `uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
         [Output("privateUri")]
@@ -211,6 +217,12 @@ namespace Pulumi.DigitalOcean
         public Input<int> NodeCount { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the VPC where the database cluster will be located.
+        /// </summary>
+        [Input("privateNetworkUuid")]
+        public Input<string>? PrivateNetworkUuid { get; set; }
+
+        /// <summary>
         /// DigitalOcean region where the cluster will reside.
         /// </summary>
         [Input("region", required: true)]
@@ -318,6 +330,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("privateHost")]
         public Input<string>? PrivateHost { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC where the database cluster will be located.
+        /// </summary>
+        [Input("privateNetworkUuid")]
+        public Input<string>? PrivateNetworkUuid { get; set; }
 
         /// <summary>
         /// Same as `uri`, but only accessible from resources within the account and in the same region.

@@ -133,6 +133,10 @@ namespace Pulumi.DigitalOcean
         /// List of the IDs of each volumes attached to the Droplet.
         /// </summary>
         public readonly ImmutableArray<string> VolumeIds;
+        /// <summary>
+        /// The ID of the VPC where the Droplet is located.
+        /// </summary>
+        public readonly string VpcUuid;
 
         [OutputConstructor]
         private GetDropletResult(
@@ -184,7 +188,9 @@ namespace Pulumi.DigitalOcean
 
             int vcpus,
 
-            ImmutableArray<string> volumeIds)
+            ImmutableArray<string> volumeIds,
+
+            string vpcUuid)
         {
             Backups = backups;
             CreatedAt = createdAt;
@@ -211,6 +217,7 @@ namespace Pulumi.DigitalOcean
             Urn = urn;
             Vcpus = vcpus;
             VolumeIds = volumeIds;
+            VpcUuid = vpcUuid;
         }
     }
 }

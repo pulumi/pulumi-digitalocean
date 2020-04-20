@@ -565,3 +565,63 @@ export interface SpacesBucketCorsRule {
      */
     maxAgeSeconds?: number;
 }
+
+export interface SpacesBucketLifecycleRule {
+    /**
+     * Specifies the number of days after initiating a multipart
+     * upload when the multipart upload must be completed or else Spaces will abort the upload.
+     */
+    abortIncompleteMultipartUploadDays?: number;
+    /**
+     * Specifies lifecycle rule status.
+     */
+    enabled: boolean;
+    /**
+     * Specifies a time period after which applicable objects expire (documented below).
+     */
+    expiration?: outputs.SpacesBucketLifecycleRuleExpiration;
+    /**
+     * Unique identifier for the rule.
+     */
+    id: string;
+    /**
+     * Specifies when non-current object versions expire (documented below).
+     */
+    noncurrentVersionExpiration?: outputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration;
+    /**
+     * Object key prefix identifying one or more objects to which the rule applies.
+     */
+    prefix?: string;
+}
+
+export interface SpacesBucketLifecycleRuleExpiration {
+    /**
+     * Specifies the date/time after which you want applicable objects to expire. The argument uses
+     * RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
+     */
+    date?: string;
+    /**
+     * Specifies the number of days after object creation when the applicable objects will expire.
+     */
+    days?: number;
+    /**
+     * On a versioned bucket (versioning-enabled or versioning-suspended
+     * bucket), setting this to true directs Spaces to delete expired object delete markers.
+     */
+    expiredObjectDeleteMarker?: boolean;
+}
+
+export interface SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
+    /**
+     * Specifies the number of days after which an object's non-current versions expire.
+     */
+    days?: number;
+}
+
+export interface SpacesBucketVersioning {
+    /**
+     * Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
+     * state. You can, however, suspend versioning on that bucket.
+     */
+    enabled?: boolean;
+}
