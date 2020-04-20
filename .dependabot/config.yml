@@ -1,0 +1,30 @@
+version: 1
+update_configs:
+  - package_manager: "go:modules"
+    directory: "/examples"
+    update_schedule: "daily"
+    default_reviewers:
+      - "stack72"
+    allowed_updates:
+      - match:
+          dependency_name: "pulumi"
+  - package_manager: "go:modules"
+    directory: "/scripts"
+    update_schedule: "daily"
+    default_reviewers:
+      - "stack72"
+    allowed_updates:
+      - match:
+          dependency_name: "pulumi"
+  - package_manager: "go:modules"
+    directory: "/provider"
+    update_schedule: "daily"
+    default_reviewers:
+      - "stack72"
+    allowed_updates:
+      - match:
+          dependency_name: "pulumi-terraform-bridge"
+      - match:
+          dependency_name: "pulumi"
+      - match:
+          dependency_name: "terraform-provider-digitalocean"
