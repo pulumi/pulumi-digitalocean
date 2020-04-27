@@ -34,7 +34,7 @@ type GetRegionsArgs struct {
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
 	Filters []GetRegionsFilter `pulumi:"filters"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
 	// - `slug` - A human-readable string that is used as a unique identifier for each region.

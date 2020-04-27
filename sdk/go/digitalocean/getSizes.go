@@ -32,7 +32,7 @@ type GetSizesArgs struct {
 // A collection of values returned by getSizes.
 type GetSizesResult struct {
 	Filters []GetSizesFilter `pulumi:"filters"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id    string         `pulumi:"id"`
 	Sizes []GetSizesSize `pulumi:"sizes"`
 	Sorts []GetSizesSort `pulumi:"sorts"`

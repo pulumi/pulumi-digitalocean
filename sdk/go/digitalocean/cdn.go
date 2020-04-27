@@ -14,7 +14,7 @@ import (
 type Cdn struct {
 	pulumi.CustomResourceState
 
-	// ID of a DigitalOcean managed TLS certificate for use with custom domains
+	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
 	// The date and time when the CDN Endpoint was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -25,7 +25,6 @@ type Cdn struct {
 	// The fully qualified domain name, (FQDN) for a Space.
 	Origin pulumi.StringOutput `pulumi:"origin"`
 	// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-	// * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
 }
 
@@ -60,7 +59,7 @@ func GetCdn(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cdn resources.
 type cdnState struct {
-	// ID of a DigitalOcean managed TLS certificate for use with custom domains
+	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	CertificateId *string `pulumi:"certificateId"`
 	// The date and time when the CDN Endpoint was created.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -71,12 +70,11 @@ type cdnState struct {
 	// The fully qualified domain name, (FQDN) for a Space.
 	Origin *string `pulumi:"origin"`
 	// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-	// * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	Ttl *int `pulumi:"ttl"`
 }
 
 type CdnState struct {
-	// ID of a DigitalOcean managed TLS certificate for use with custom domains
+	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	CertificateId pulumi.StringPtrInput
 	// The date and time when the CDN Endpoint was created.
 	CreatedAt pulumi.StringPtrInput
@@ -87,7 +85,6 @@ type CdnState struct {
 	// The fully qualified domain name, (FQDN) for a Space.
 	Origin pulumi.StringPtrInput
 	// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-	// * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	Ttl pulumi.IntPtrInput
 }
 
@@ -96,27 +93,25 @@ func (CdnState) ElementType() reflect.Type {
 }
 
 type cdnArgs struct {
-	// ID of a DigitalOcean managed TLS certificate for use with custom domains
+	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	CertificateId *string `pulumi:"certificateId"`
 	// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
 	CustomDomain *string `pulumi:"customDomain"`
 	// The fully qualified domain name, (FQDN) for a Space.
 	Origin string `pulumi:"origin"`
 	// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-	// * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	Ttl *int `pulumi:"ttl"`
 }
 
 // The set of arguments for constructing a Cdn resource.
 type CdnArgs struct {
-	// ID of a DigitalOcean managed TLS certificate for use with custom domains
+	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	CertificateId pulumi.StringPtrInput
 	// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
 	CustomDomain pulumi.StringPtrInput
 	// The fully qualified domain name, (FQDN) for a Space.
 	Origin pulumi.StringInput
 	// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-	// * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	Ttl pulumi.IntPtrInput
 }
 

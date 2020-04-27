@@ -30,7 +30,7 @@ class GetAccountResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")

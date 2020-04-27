@@ -29,7 +29,7 @@ type GetImagesArgs struct {
 // A collection of values returned by getImages.
 type GetImagesResult struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
 	// - `slug`: Unique text identifier of the image.

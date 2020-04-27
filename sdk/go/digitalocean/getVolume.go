@@ -36,7 +36,7 @@ type LookupVolumeResult struct {
 	FilesystemLabel string `pulumi:"filesystemLabel"`
 	// Filesystem type currently in-use on the block storage volume.
 	FilesystemType string `pulumi:"filesystemType"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id     string  `pulumi:"id"`
 	Name   string  `pulumi:"name"`
 	Region *string `pulumi:"region"`

@@ -64,7 +64,7 @@ export interface GetImagesResult {
     readonly images: outputs.GetImagesImage[];
     readonly sorts?: outputs.GetImagesSort[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

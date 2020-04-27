@@ -30,7 +30,7 @@ type GetRegionResult struct {
 	Available bool `pulumi:"available"`
 	// A set of features available in this region.
 	Features []string `pulumi:"features"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The display name of the region.
 	Name string `pulumi:"name"`

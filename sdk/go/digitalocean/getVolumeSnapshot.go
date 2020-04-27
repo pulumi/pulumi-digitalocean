@@ -35,7 +35,7 @@ type LookupVolumeSnapshotArgs struct {
 type LookupVolumeSnapshotResult struct {
 	// The date and time the volume snapshot was created.
 	CreatedAt string `pulumi:"createdAt"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
 	MinDiskSize int     `pulumi:"minDiskSize"`

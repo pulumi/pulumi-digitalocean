@@ -32,7 +32,7 @@ type LookupDatabaseClusterResult struct {
 	Engine string `pulumi:"engine"`
 	// Database cluster's hostname.
 	Host string `pulumi:"host"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows []GetDatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
