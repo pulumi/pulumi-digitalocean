@@ -23,12 +23,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const staging = digitalocean.getProjects({
+ * const staging = pulumi.output(digitalocean.getProjects({
  *     filters: [{
  *         key: "environment",
  *         values: ["Staging"],
  *     }],
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/projects.html.md.
