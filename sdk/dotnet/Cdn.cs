@@ -15,7 +15,7 @@ namespace Pulumi.DigitalOcean
     public partial class Cdn : Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of a DigitalOcean managed TLS certificate for use with custom domains
+        /// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Output("certificateId")]
         public Output<string?> CertificateId { get; private set; } = null!;
@@ -46,7 +46,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-        /// * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Output("ttl")]
         public Output<int> Ttl { get; private set; } = null!;
@@ -98,7 +97,7 @@ namespace Pulumi.DigitalOcean
     public sealed class CdnArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of a DigitalOcean managed TLS certificate for use with custom domains
+        /// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -117,7 +116,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-        /// * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -130,7 +128,7 @@ namespace Pulumi.DigitalOcean
     public sealed class CdnState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of a DigitalOcean managed TLS certificate for use with custom domains
+        /// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -161,7 +159,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-        /// * `certificate_id`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }

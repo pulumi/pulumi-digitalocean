@@ -23,7 +23,7 @@ type GetAccountResult struct {
 	Email           string `pulumi:"email"`
 	EmailVerified   bool   `pulumi:"emailVerified"`
 	FloatingIpLimit int    `pulumi:"floatingIpLimit"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id            string `pulumi:"id"`
 	Status        string `pulumi:"status"`
 	StatusMessage string `pulumi:"statusMessage"`

@@ -55,7 +55,7 @@ namespace Pulumi.DigitalOcean
     {
         public readonly ImmutableArray<Outputs.GetImagesFilterResult> Filters;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

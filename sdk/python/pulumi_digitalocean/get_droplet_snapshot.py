@@ -30,7 +30,7 @@ class GetDropletSnapshotResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if min_disk_size and not isinstance(min_disk_size, float):
             raise TypeError("Expected argument 'min_disk_size' to be a float")

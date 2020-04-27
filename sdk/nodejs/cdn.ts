@@ -38,7 +38,7 @@ export class Cdn extends pulumi.CustomResource {
     }
 
     /**
-     * ID of a DigitalOcean managed TLS certificate for use with custom domains
+     * The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     public readonly certificateId!: pulumi.Output<string | undefined>;
     /**
@@ -59,7 +59,6 @@ export class Cdn extends pulumi.CustomResource {
     public readonly origin!: pulumi.Output<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-     * * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     public readonly ttl!: pulumi.Output<number>;
 
@@ -109,7 +108,7 @@ export class Cdn extends pulumi.CustomResource {
  */
 export interface CdnState {
     /**
-     * ID of a DigitalOcean managed TLS certificate for use with custom domains
+     * The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     readonly certificateId?: pulumi.Input<string>;
     /**
@@ -130,7 +129,6 @@ export interface CdnState {
     readonly origin?: pulumi.Input<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-     * * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     readonly ttl?: pulumi.Input<number>;
 }
@@ -140,7 +138,7 @@ export interface CdnState {
  */
 export interface CdnArgs {
     /**
-     * ID of a DigitalOcean managed TLS certificate for use with custom domains
+     * The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     readonly certificateId?: pulumi.Input<string>;
     /**
@@ -153,7 +151,6 @@ export interface CdnArgs {
     readonly origin: pulumi.Input<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-     * * `certificateId`- (Optional) The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
     readonly ttl?: pulumi.Input<number>;
 }

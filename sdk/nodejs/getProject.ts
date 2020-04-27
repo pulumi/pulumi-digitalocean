@@ -18,10 +18,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const defaultProject = digitalocean.getProject();
- * const staging = digitalocean.getProject({
+ * const defaultProject = pulumi.output(digitalocean.getProject({ async: true }));
+ * const staging = pulumi.output(digitalocean.getProject({
  *     name: "My Staging Project",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/project.html.md.

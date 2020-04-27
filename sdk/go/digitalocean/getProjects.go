@@ -36,7 +36,7 @@ type GetProjectsArgs struct {
 // A collection of values returned by getProjects.
 type GetProjectsResult struct {
 	Filters []GetProjectsFilter `pulumi:"filters"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of projects satisfying any `filter` and `sort` criteria. Each project has
 	// the following attributes:

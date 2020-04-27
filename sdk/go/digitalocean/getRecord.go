@@ -29,7 +29,7 @@ type GetRecordResult struct {
 	Data   string `pulumi:"data"`
 	Domain string `pulumi:"domain"`
 	Flags  int    `pulumi:"flags"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
 	Name     string `pulumi:"name"`
 	Port     int    `pulumi:"port"`

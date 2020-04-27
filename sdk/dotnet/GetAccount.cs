@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean
         public readonly bool EmailVerified;
         public readonly int FloatingIpLimit;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Status;

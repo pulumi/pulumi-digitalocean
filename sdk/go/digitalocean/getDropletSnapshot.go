@@ -37,7 +37,7 @@ type LookupDropletSnapshotResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The ID of the Droplet from which the Droplet snapshot originated.
 	DropletId string `pulumi:"dropletId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The minimum size in gigabytes required for a Droplet to be created based on this Droplet snapshot.
 	MinDiskSize int     `pulumi:"minDiskSize"`

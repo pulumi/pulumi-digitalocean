@@ -30,7 +30,7 @@ type LookupLoadBalancerResult struct {
 	EnableProxyProtocol bool                            `pulumi:"enableProxyProtocol"`
 	ForwardingRules     []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
 	Healthcheck         GetLoadBalancerHealthcheck      `pulumi:"healthcheck"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                  string                        `pulumi:"id"`
 	Ip                  string                        `pulumi:"ip"`
 	Name                string                        `pulumi:"name"`

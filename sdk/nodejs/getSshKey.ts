@@ -37,7 +37,7 @@ export interface GetSshKeyResult {
     readonly name: string;
     readonly publicKey: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

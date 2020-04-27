@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const example = digitalocean.getAccount();
+ * const example = pulumi.output(digitalocean.getAccount({ async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
@@ -46,7 +46,7 @@ export interface GetAccountResult {
     readonly statusMessage: string;
     readonly uuid: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

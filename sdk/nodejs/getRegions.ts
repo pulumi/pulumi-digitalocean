@@ -21,12 +21,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  * 
- * const available = digitalocean.getRegions({
+ * const available = pulumi.output(digitalocean.getRegions({
  *     filters: [{
  *         key: "available",
  *         values: ["true"],
  *     }],
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/regions.html.md.
@@ -78,7 +78,7 @@ export interface GetRegionsResult {
     readonly regions: outputs.GetRegionsRegion[];
     readonly sorts?: outputs.GetRegionsSort[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

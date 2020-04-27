@@ -1024,50 +1024,105 @@ func (o KubernetesClusterNodePoolPtrOutput) Elem() KubernetesClusterNodePoolOutp
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) ActualNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.ActualNodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ActualNodeCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) AutoScale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) *bool { return v.AutoScale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScale
+	}).(pulumi.BoolPtrOutput)
 }
 
 // A unique ID that can be used to identify and reference a Kubernetes cluster.
 func (o KubernetesClusterNodePoolPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) MaxNodes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) MinNodes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodes
+	}).(pulumi.IntPtrOutput)
 }
 
 // A name for the Kubernetes cluster.
-func (o KubernetesClusterNodePoolPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
+func (o KubernetesClusterNodePoolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) Nodes() KubernetesClusterNodePoolNodeArrayOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) []KubernetesClusterNodePoolNode { return v.Nodes }).(KubernetesClusterNodePoolNodeArrayOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) []KubernetesClusterNodePoolNode {
+		if v == nil {
+			return nil
+		}
+		return v.Nodes
+	}).(KubernetesClusterNodePoolNodeArrayOutput)
 }
 
-func (o KubernetesClusterNodePoolPtrOutput) Size() pulumi.StringOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
+func (o KubernetesClusterNodePoolPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Size
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of tag names to be applied to the Kubernetes cluster.
 func (o KubernetesClusterNodePoolPtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
 }
 
 type KubernetesClusterNodePoolNode struct {
@@ -1690,37 +1745,72 @@ func (o LoadBalancerHealthcheckPtrOutput) Elem() LoadBalancerHealthcheckOutput {
 
 // The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
 func (o LoadBalancerHealthcheckPtrOutput) CheckIntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.CheckIntervalSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CheckIntervalSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
 func (o LoadBalancerHealthcheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthyThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 // The path on the backend Droplets to which the Load Balancer instance will send a request.
 func (o LoadBalancerHealthcheckPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadBalancerHealthcheck) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
 // An integer representing the port on the backend Droplets on which the health check will attempt a connection.
-func (o LoadBalancerHealthcheckPtrOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v LoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+func (o LoadBalancerHealthcheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 // The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
-func (o LoadBalancerHealthcheckPtrOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v LoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
+func (o LoadBalancerHealthcheckPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Protocol
+	}).(pulumi.StringPtrOutput)
 }
 
 // The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
 func (o LoadBalancerHealthcheckPtrOutput) ResponseTimeoutSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.ResponseTimeoutSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseTimeoutSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
 func (o LoadBalancerHealthcheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 type LoadBalancerStickySessions struct {
@@ -1866,17 +1956,32 @@ func (o LoadBalancerStickySessionsPtrOutput) Elem() LoadBalancerStickySessionsOu
 
 // The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
 func (o LoadBalancerStickySessionsPtrOutput) CookieName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadBalancerStickySessions) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *LoadBalancerStickySessions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CookieName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
 func (o LoadBalancerStickySessionsPtrOutput) CookieTtlSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LoadBalancerStickySessions) *int { return v.CookieTtlSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *LoadBalancerStickySessions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CookieTtlSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
 func (o LoadBalancerStickySessionsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadBalancerStickySessions) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *LoadBalancerStickySessions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type SpacesBucketCorsRule struct {
@@ -2304,18 +2409,33 @@ func (o SpacesBucketLifecycleRuleExpirationPtrOutput) Elem() SpacesBucketLifecyc
 // Specifies the date/time after which you want applicable objects to expire. The argument uses
 // RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
 func (o SpacesBucketLifecycleRuleExpirationPtrOutput) Date() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *SpacesBucketLifecycleRuleExpiration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Date
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the number of days after object creation when the applicable objects will expire.
 func (o SpacesBucketLifecycleRuleExpirationPtrOutput) Days() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *SpacesBucketLifecycleRuleExpiration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.IntPtrOutput)
 }
 
 // On a versioned bucket (versioning-enabled or versioning-suspended
 // bucket), setting this to true directs Spaces to delete expired object delete markers.
 func (o SpacesBucketLifecycleRuleExpirationPtrOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *SpacesBucketLifecycleRuleExpiration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiredObjectDeleteMarker
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SpacesBucketLifecycleRuleNoncurrentVersionExpiration struct {
@@ -2445,7 +2565,12 @@ func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Elem() Sp
 
 // Specifies the number of days after which an object's non-current versions expire.
 func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Days() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SpacesBucketLifecycleRuleNoncurrentVersionExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *SpacesBucketLifecycleRuleNoncurrentVersionExpiration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.IntPtrOutput)
 }
 
 type SpacesBucketVersioning struct {
@@ -2577,7 +2702,12 @@ func (o SpacesBucketVersioningPtrOutput) Elem() SpacesBucketVersioningOutput {
 // Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
 // state. You can, however, suspend versioning on that bucket.
 func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SpacesBucketVersioning) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *SpacesBucketVersioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetDatabaseClusterMaintenanceWindow struct {
