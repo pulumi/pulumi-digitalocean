@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-digitalocean/sdk
+module github.com/pulumi/pulumi-digitalocean/sdk/v2
 
 go 1.13
 
