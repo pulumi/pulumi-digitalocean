@@ -31,6 +31,7 @@ from .get_database_cluster import *
 from .get_domain import *
 from .get_droplet import *
 from .get_droplet_snapshot import *
+from .get_droplets import *
 from .get_floating_ip import *
 from .get_image import *
 from .get_images import *
@@ -43,6 +44,10 @@ from .get_record import *
 from .get_region import *
 from .get_regions import *
 from .get_sizes import *
+from .get_spaces_bucket import *
+from .get_spaces_bucket_object import *
+from .get_spaces_bucket_objects import *
+from .get_spaces_buckets import *
 from .get_ssh_key import *
 from .get_tag import *
 from .get_volume import *

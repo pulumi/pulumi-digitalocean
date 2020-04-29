@@ -32,8 +32,8 @@ type LookupDropletResult struct {
 	Backups   bool   `pulumi:"backups"`
 	CreatedAt string `pulumi:"createdAt"`
 	// The size of the Droplets disk in GB.
-	Disk int  `pulumi:"disk"`
-	Id   *int `pulumi:"id"`
+	Disk int `pulumi:"disk"`
+	Id   int `pulumi:"id"`
 	// The Droplet image ID or slug.
 	Image string `pulumi:"image"`
 	// The Droplets public IPv4 address
@@ -51,8 +51,8 @@ type LookupDropletResult struct {
 	// The amount of the Droplets memory in MB.
 	Memory int `pulumi:"memory"`
 	// Whether monitoring agent is installed.
-	Monitoring bool    `pulumi:"monitoring"`
-	Name       *string `pulumi:"name"`
+	Monitoring bool   `pulumi:"monitoring"`
+	Name       string `pulumi:"name"`
 	// Droplet hourly price.
 	PriceHourly float64 `pulumi:"priceHourly"`
 	// Droplet monthly price.

@@ -53,7 +53,7 @@ export interface GetDropletResult {
      * The size of the Droplets disk in GB.
      */
     readonly disk: number;
-    readonly id?: number;
+    readonly id: number;
     /**
      * The Droplet image ID or slug.
      */
@@ -90,7 +90,7 @@ export interface GetDropletResult {
      * Whether monitoring agent is installed.
      */
     readonly monitoring: boolean;
-    readonly name?: string;
+    readonly name: string;
     /**
      * Droplet hourly price.
      */

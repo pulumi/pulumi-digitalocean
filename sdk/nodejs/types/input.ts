@@ -113,6 +113,35 @@ export interface FirewallPendingChange {
     status?: pulumi.Input<string>;
 }
 
+export interface GetDropletsFilter {
+    /**
+     * Filter the Droplets by this key. This may be one of '`backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`'.
+     */
+    key: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves Droplets
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetDropletsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `urn`, `vcpus`, or `vpcUuid`.
+     */
+    key: string;
+}
+
 export interface GetImagesFilter {
     /**
      * Filter the images by this key. This may be one of `distribution`, `errorMessage`,
@@ -211,6 +240,29 @@ export interface GetSizesSort {
     /**
      * Sort the sizes by this key. This may be one of `slug`,
      * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+     */
+    key: string;
+}
+
+export interface GetSpacesBucketsFilter {
+    /**
+     * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     */
+    key: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves images
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetSpacesBucketsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
     key: string;
 }

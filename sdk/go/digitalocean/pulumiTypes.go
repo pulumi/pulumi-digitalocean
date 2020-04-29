@@ -2818,6 +2818,483 @@ func (o GetDatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 	}).(GetDatabaseClusterMaintenanceWindowOutput)
 }
 
+type GetDropletsDroplet struct {
+	Backups            bool     `pulumi:"backups"`
+	CreatedAt          string   `pulumi:"createdAt"`
+	Disk               int      `pulumi:"disk"`
+	Id                 int      `pulumi:"id"`
+	Image              string   `pulumi:"image"`
+	Ipv4Address        string   `pulumi:"ipv4Address"`
+	Ipv4AddressPrivate string   `pulumi:"ipv4AddressPrivate"`
+	Ipv6               bool     `pulumi:"ipv6"`
+	Ipv6Address        string   `pulumi:"ipv6Address"`
+	Ipv6AddressPrivate string   `pulumi:"ipv6AddressPrivate"`
+	Locked             bool     `pulumi:"locked"`
+	Memory             int      `pulumi:"memory"`
+	Monitoring         bool     `pulumi:"monitoring"`
+	Name               string   `pulumi:"name"`
+	PriceHourly        float64  `pulumi:"priceHourly"`
+	PriceMonthly       float64  `pulumi:"priceMonthly"`
+	PrivateNetworking  bool     `pulumi:"privateNetworking"`
+	Region             string   `pulumi:"region"`
+	Size               string   `pulumi:"size"`
+	Status             string   `pulumi:"status"`
+	Tags               []string `pulumi:"tags"`
+	Urn                string   `pulumi:"urn"`
+	Vcpus              int      `pulumi:"vcpus"`
+	VolumeIds          []string `pulumi:"volumeIds"`
+	VpcUuid            string   `pulumi:"vpcUuid"`
+}
+
+// GetDropletsDropletInput is an input type that accepts GetDropletsDropletArgs and GetDropletsDropletOutput values.
+// You can construct a concrete instance of `GetDropletsDropletInput` via:
+//
+// 		 GetDropletsDropletArgs{...}
+//
+type GetDropletsDropletInput interface {
+	pulumi.Input
+
+	ToGetDropletsDropletOutput() GetDropletsDropletOutput
+	ToGetDropletsDropletOutputWithContext(context.Context) GetDropletsDropletOutput
+}
+
+type GetDropletsDropletArgs struct {
+	Backups            pulumi.BoolInput        `pulumi:"backups"`
+	CreatedAt          pulumi.StringInput      `pulumi:"createdAt"`
+	Disk               pulumi.IntInput         `pulumi:"disk"`
+	Id                 pulumi.IntInput         `pulumi:"id"`
+	Image              pulumi.StringInput      `pulumi:"image"`
+	Ipv4Address        pulumi.StringInput      `pulumi:"ipv4Address"`
+	Ipv4AddressPrivate pulumi.StringInput      `pulumi:"ipv4AddressPrivate"`
+	Ipv6               pulumi.BoolInput        `pulumi:"ipv6"`
+	Ipv6Address        pulumi.StringInput      `pulumi:"ipv6Address"`
+	Ipv6AddressPrivate pulumi.StringInput      `pulumi:"ipv6AddressPrivate"`
+	Locked             pulumi.BoolInput        `pulumi:"locked"`
+	Memory             pulumi.IntInput         `pulumi:"memory"`
+	Monitoring         pulumi.BoolInput        `pulumi:"monitoring"`
+	Name               pulumi.StringInput      `pulumi:"name"`
+	PriceHourly        pulumi.Float64Input     `pulumi:"priceHourly"`
+	PriceMonthly       pulumi.Float64Input     `pulumi:"priceMonthly"`
+	PrivateNetworking  pulumi.BoolInput        `pulumi:"privateNetworking"`
+	Region             pulumi.StringInput      `pulumi:"region"`
+	Size               pulumi.StringInput      `pulumi:"size"`
+	Status             pulumi.StringInput      `pulumi:"status"`
+	Tags               pulumi.StringArrayInput `pulumi:"tags"`
+	Urn                pulumi.StringInput      `pulumi:"urn"`
+	Vcpus              pulumi.IntInput         `pulumi:"vcpus"`
+	VolumeIds          pulumi.StringArrayInput `pulumi:"volumeIds"`
+	VpcUuid            pulumi.StringInput      `pulumi:"vpcUuid"`
+}
+
+func (GetDropletsDropletArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletsDroplet)(nil)).Elem()
+}
+
+func (i GetDropletsDropletArgs) ToGetDropletsDropletOutput() GetDropletsDropletOutput {
+	return i.ToGetDropletsDropletOutputWithContext(context.Background())
+}
+
+func (i GetDropletsDropletArgs) ToGetDropletsDropletOutputWithContext(ctx context.Context) GetDropletsDropletOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletsDropletOutput)
+}
+
+// GetDropletsDropletArrayInput is an input type that accepts GetDropletsDropletArray and GetDropletsDropletArrayOutput values.
+// You can construct a concrete instance of `GetDropletsDropletArrayInput` via:
+//
+// 		 GetDropletsDropletArray{ GetDropletsDropletArgs{...} }
+//
+type GetDropletsDropletArrayInput interface {
+	pulumi.Input
+
+	ToGetDropletsDropletArrayOutput() GetDropletsDropletArrayOutput
+	ToGetDropletsDropletArrayOutputWithContext(context.Context) GetDropletsDropletArrayOutput
+}
+
+type GetDropletsDropletArray []GetDropletsDropletInput
+
+func (GetDropletsDropletArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletsDroplet)(nil)).Elem()
+}
+
+func (i GetDropletsDropletArray) ToGetDropletsDropletArrayOutput() GetDropletsDropletArrayOutput {
+	return i.ToGetDropletsDropletArrayOutputWithContext(context.Background())
+}
+
+func (i GetDropletsDropletArray) ToGetDropletsDropletArrayOutputWithContext(ctx context.Context) GetDropletsDropletArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletsDropletArrayOutput)
+}
+
+type GetDropletsDropletOutput struct{ *pulumi.OutputState }
+
+func (GetDropletsDropletOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletsDroplet)(nil)).Elem()
+}
+
+func (o GetDropletsDropletOutput) ToGetDropletsDropletOutput() GetDropletsDropletOutput {
+	return o
+}
+
+func (o GetDropletsDropletOutput) ToGetDropletsDropletOutputWithContext(ctx context.Context) GetDropletsDropletOutput {
+	return o
+}
+
+func (o GetDropletsDropletOutput) Backups() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Backups }).(pulumi.BoolOutput)
+}
+
+func (o GetDropletsDropletOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+func (o GetDropletsDropletOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetDropletsDropletOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Image }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Ipv4AddressPrivate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Ipv4AddressPrivate }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Ipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Ipv6 }).(pulumi.BoolOutput)
+}
+
+func (o GetDropletsDropletOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Ipv6AddressPrivate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Ipv6AddressPrivate }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Locked }).(pulumi.BoolOutput)
+}
+
+func (o GetDropletsDropletOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+func (o GetDropletsDropletOutput) Monitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Monitoring }).(pulumi.BoolOutput)
+}
+
+func (o GetDropletsDropletOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) PriceHourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDropletsDroplet) float64 { return v.PriceHourly }).(pulumi.Float64Output)
+}
+
+func (o GetDropletsDropletOutput) PriceMonthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDropletsDroplet) float64 { return v.PriceMonthly }).(pulumi.Float64Output)
+}
+
+func (o GetDropletsDropletOutput) PrivateNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.PrivateNetworking }).(pulumi.BoolOutput)
+}
+
+func (o GetDropletsDropletOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Size }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDropletsDropletOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsDropletOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+func (o GetDropletsDropletOutput) VolumeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) []string { return v.VolumeIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDropletsDropletOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+type GetDropletsDropletArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDropletsDropletArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletsDroplet)(nil)).Elem()
+}
+
+func (o GetDropletsDropletArrayOutput) ToGetDropletsDropletArrayOutput() GetDropletsDropletArrayOutput {
+	return o
+}
+
+func (o GetDropletsDropletArrayOutput) ToGetDropletsDropletArrayOutputWithContext(ctx context.Context) GetDropletsDropletArrayOutput {
+	return o
+}
+
+func (o GetDropletsDropletArrayOutput) Index(i pulumi.IntInput) GetDropletsDropletOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDropletsDroplet {
+		return vs[0].([]GetDropletsDroplet)[vs[1].(int)]
+	}).(GetDropletsDropletOutput)
+}
+
+type GetDropletsFilter struct {
+	// Filter the Droplets by this key. This may be one of '`backups`, `createdAt`, `disk`, `id`,
+	// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+	// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+	// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`'.
+	Key string `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves Droplets
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetDropletsFilterInput is an input type that accepts GetDropletsFilterArgs and GetDropletsFilterOutput values.
+// You can construct a concrete instance of `GetDropletsFilterInput` via:
+//
+// 		 GetDropletsFilterArgs{...}
+//
+type GetDropletsFilterInput interface {
+	pulumi.Input
+
+	ToGetDropletsFilterOutput() GetDropletsFilterOutput
+	ToGetDropletsFilterOutputWithContext(context.Context) GetDropletsFilterOutput
+}
+
+type GetDropletsFilterArgs struct {
+	// Filter the Droplets by this key. This may be one of '`backups`, `createdAt`, `disk`, `id`,
+	// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+	// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+	// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`'.
+	Key pulumi.StringInput `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves Droplets
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDropletsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletsFilter)(nil)).Elem()
+}
+
+func (i GetDropletsFilterArgs) ToGetDropletsFilterOutput() GetDropletsFilterOutput {
+	return i.ToGetDropletsFilterOutputWithContext(context.Background())
+}
+
+func (i GetDropletsFilterArgs) ToGetDropletsFilterOutputWithContext(ctx context.Context) GetDropletsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletsFilterOutput)
+}
+
+// GetDropletsFilterArrayInput is an input type that accepts GetDropletsFilterArray and GetDropletsFilterArrayOutput values.
+// You can construct a concrete instance of `GetDropletsFilterArrayInput` via:
+//
+// 		 GetDropletsFilterArray{ GetDropletsFilterArgs{...} }
+//
+type GetDropletsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetDropletsFilterArrayOutput() GetDropletsFilterArrayOutput
+	ToGetDropletsFilterArrayOutputWithContext(context.Context) GetDropletsFilterArrayOutput
+}
+
+type GetDropletsFilterArray []GetDropletsFilterInput
+
+func (GetDropletsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletsFilter)(nil)).Elem()
+}
+
+func (i GetDropletsFilterArray) ToGetDropletsFilterArrayOutput() GetDropletsFilterArrayOutput {
+	return i.ToGetDropletsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDropletsFilterArray) ToGetDropletsFilterArrayOutputWithContext(ctx context.Context) GetDropletsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletsFilterArrayOutput)
+}
+
+type GetDropletsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetDropletsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletsFilter)(nil)).Elem()
+}
+
+func (o GetDropletsFilterOutput) ToGetDropletsFilterOutput() GetDropletsFilterOutput {
+	return o
+}
+
+func (o GetDropletsFilterOutput) ToGetDropletsFilterOutputWithContext(ctx context.Context) GetDropletsFilterOutput {
+	return o
+}
+
+// Filter the Droplets by this key. This may be one of '`backups`, `createdAt`, `disk`, `id`,
+// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`'.
+func (o GetDropletsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves Droplets
+// where the `key` field takes on one or more of the values provided here.
+func (o GetDropletsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDropletsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDropletsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDropletsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletsFilter)(nil)).Elem()
+}
+
+func (o GetDropletsFilterArrayOutput) ToGetDropletsFilterArrayOutput() GetDropletsFilterArrayOutput {
+	return o
+}
+
+func (o GetDropletsFilterArrayOutput) ToGetDropletsFilterArrayOutputWithContext(ctx context.Context) GetDropletsFilterArrayOutput {
+	return o
+}
+
+func (o GetDropletsFilterArrayOutput) Index(i pulumi.IntInput) GetDropletsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDropletsFilter {
+		return vs[0].([]GetDropletsFilter)[vs[1].(int)]
+	}).(GetDropletsFilterOutput)
+}
+
+type GetDropletsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+	// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+	// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+	// `status`, `urn`, `vcpus`, or `vpcUuid`.
+	Key string `pulumi:"key"`
+}
+
+// GetDropletsSortInput is an input type that accepts GetDropletsSortArgs and GetDropletsSortOutput values.
+// You can construct a concrete instance of `GetDropletsSortInput` via:
+//
+// 		 GetDropletsSortArgs{...}
+//
+type GetDropletsSortInput interface {
+	pulumi.Input
+
+	ToGetDropletsSortOutput() GetDropletsSortOutput
+	ToGetDropletsSortOutputWithContext(context.Context) GetDropletsSortOutput
+}
+
+type GetDropletsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+	// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+	// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+	// `status`, `urn`, `vcpus`, or `vpcUuid`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetDropletsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletsSort)(nil)).Elem()
+}
+
+func (i GetDropletsSortArgs) ToGetDropletsSortOutput() GetDropletsSortOutput {
+	return i.ToGetDropletsSortOutputWithContext(context.Background())
+}
+
+func (i GetDropletsSortArgs) ToGetDropletsSortOutputWithContext(ctx context.Context) GetDropletsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletsSortOutput)
+}
+
+// GetDropletsSortArrayInput is an input type that accepts GetDropletsSortArray and GetDropletsSortArrayOutput values.
+// You can construct a concrete instance of `GetDropletsSortArrayInput` via:
+//
+// 		 GetDropletsSortArray{ GetDropletsSortArgs{...} }
+//
+type GetDropletsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetDropletsSortArrayOutput() GetDropletsSortArrayOutput
+	ToGetDropletsSortArrayOutputWithContext(context.Context) GetDropletsSortArrayOutput
+}
+
+type GetDropletsSortArray []GetDropletsSortInput
+
+func (GetDropletsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletsSort)(nil)).Elem()
+}
+
+func (i GetDropletsSortArray) ToGetDropletsSortArrayOutput() GetDropletsSortArrayOutput {
+	return i.ToGetDropletsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetDropletsSortArray) ToGetDropletsSortArrayOutputWithContext(ctx context.Context) GetDropletsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletsSortArrayOutput)
+}
+
+type GetDropletsSortOutput struct{ *pulumi.OutputState }
+
+func (GetDropletsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletsSort)(nil)).Elem()
+}
+
+func (o GetDropletsSortOutput) ToGetDropletsSortOutput() GetDropletsSortOutput {
+	return o
+}
+
+func (o GetDropletsSortOutput) ToGetDropletsSortOutputWithContext(ctx context.Context) GetDropletsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetDropletsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDropletsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+// `status`, `urn`, `vcpus`, or `vpcUuid`.
+func (o GetDropletsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetDropletsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDropletsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletsSort)(nil)).Elem()
+}
+
+func (o GetDropletsSortArrayOutput) ToGetDropletsSortArrayOutput() GetDropletsSortArrayOutput {
+	return o
+}
+
+func (o GetDropletsSortArrayOutput) ToGetDropletsSortArrayOutputWithContext(ctx context.Context) GetDropletsSortArrayOutput {
+	return o
+}
+
+func (o GetDropletsSortArrayOutput) Index(i pulumi.IntInput) GetDropletsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDropletsSort {
+		return vs[0].([]GetDropletsSort)[vs[1].(int)]
+	}).(GetDropletsSortOutput)
+}
+
 type GetImagesFilter struct {
 	// Filter the images by this key. This may be one of `distribution`, `errorMessage`,
 	// `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
@@ -5081,6 +5558,339 @@ func (o GetSizesSortArrayOutput) Index(i pulumi.IntInput) GetSizesSortOutput {
 	}).(GetSizesSortOutput)
 }
 
+type GetSpacesBucketsBucket struct {
+	BucketDomainName string `pulumi:"bucketDomainName"`
+	Name             string `pulumi:"name"`
+	Region           string `pulumi:"region"`
+	Urn              string `pulumi:"urn"`
+}
+
+// GetSpacesBucketsBucketInput is an input type that accepts GetSpacesBucketsBucketArgs and GetSpacesBucketsBucketOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsBucketInput` via:
+//
+// 		 GetSpacesBucketsBucketArgs{...}
+//
+type GetSpacesBucketsBucketInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput
+	ToGetSpacesBucketsBucketOutputWithContext(context.Context) GetSpacesBucketsBucketOutput
+}
+
+type GetSpacesBucketsBucketArgs struct {
+	BucketDomainName pulumi.StringInput `pulumi:"bucketDomainName"`
+	Name             pulumi.StringInput `pulumi:"name"`
+	Region           pulumi.StringInput `pulumi:"region"`
+	Urn              pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetSpacesBucketsBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsBucket)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsBucketArgs) ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput {
+	return i.ToGetSpacesBucketsBucketOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsBucketArgs) ToGetSpacesBucketsBucketOutputWithContext(ctx context.Context) GetSpacesBucketsBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsBucketOutput)
+}
+
+// GetSpacesBucketsBucketArrayInput is an input type that accepts GetSpacesBucketsBucketArray and GetSpacesBucketsBucketArrayOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsBucketArrayInput` via:
+//
+// 		 GetSpacesBucketsBucketArray{ GetSpacesBucketsBucketArgs{...} }
+//
+type GetSpacesBucketsBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput
+	ToGetSpacesBucketsBucketArrayOutputWithContext(context.Context) GetSpacesBucketsBucketArrayOutput
+}
+
+type GetSpacesBucketsBucketArray []GetSpacesBucketsBucketInput
+
+func (GetSpacesBucketsBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsBucket)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsBucketArray) ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput {
+	return i.ToGetSpacesBucketsBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsBucketArray) ToGetSpacesBucketsBucketArrayOutputWithContext(ctx context.Context) GetSpacesBucketsBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsBucketArrayOutput)
+}
+
+type GetSpacesBucketsBucketOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsBucket)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsBucketOutput) ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput {
+	return o
+}
+
+func (o GetSpacesBucketsBucketOutput) ToGetSpacesBucketsBucketOutputWithContext(ctx context.Context) GetSpacesBucketsBucketOutput {
+	return o
+}
+
+func (o GetSpacesBucketsBucketOutput) BucketDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.BucketDomainName }).(pulumi.StringOutput)
+}
+
+func (o GetSpacesBucketsBucketOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetSpacesBucketsBucketOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetSpacesBucketsBucketOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetSpacesBucketsBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsBucket)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsBucketArrayOutput) ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsBucketArrayOutput) ToGetSpacesBucketsBucketArrayOutputWithContext(ctx context.Context) GetSpacesBucketsBucketArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsBucket {
+		return vs[0].([]GetSpacesBucketsBucket)[vs[1].(int)]
+	}).(GetSpacesBucketsBucketOutput)
+}
+
+type GetSpacesBucketsFilter struct {
+	// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+	Key string `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves images
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetSpacesBucketsFilterInput is an input type that accepts GetSpacesBucketsFilterArgs and GetSpacesBucketsFilterOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsFilterInput` via:
+//
+// 		 GetSpacesBucketsFilterArgs{...}
+//
+type GetSpacesBucketsFilterInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput
+	ToGetSpacesBucketsFilterOutputWithContext(context.Context) GetSpacesBucketsFilterOutput
+}
+
+type GetSpacesBucketsFilterArgs struct {
+	// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// A list of values to match against the `key` field. Only retrieves images
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetSpacesBucketsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsFilter)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsFilterArgs) ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput {
+	return i.ToGetSpacesBucketsFilterOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsFilterArgs) ToGetSpacesBucketsFilterOutputWithContext(ctx context.Context) GetSpacesBucketsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsFilterOutput)
+}
+
+// GetSpacesBucketsFilterArrayInput is an input type that accepts GetSpacesBucketsFilterArray and GetSpacesBucketsFilterArrayOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsFilterArrayInput` via:
+//
+// 		 GetSpacesBucketsFilterArray{ GetSpacesBucketsFilterArgs{...} }
+//
+type GetSpacesBucketsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput
+	ToGetSpacesBucketsFilterArrayOutputWithContext(context.Context) GetSpacesBucketsFilterArrayOutput
+}
+
+type GetSpacesBucketsFilterArray []GetSpacesBucketsFilterInput
+
+func (GetSpacesBucketsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsFilter)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsFilterArray) ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput {
+	return i.ToGetSpacesBucketsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsFilterArray) ToGetSpacesBucketsFilterArrayOutputWithContext(ctx context.Context) GetSpacesBucketsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsFilterArrayOutput)
+}
+
+type GetSpacesBucketsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsFilter)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsFilterOutput) ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput {
+	return o
+}
+
+func (o GetSpacesBucketsFilterOutput) ToGetSpacesBucketsFilterOutputWithContext(ctx context.Context) GetSpacesBucketsFilterOutput {
+	return o
+}
+
+// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+func (o GetSpacesBucketsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves images
+// where the `key` field takes on one or more of the values provided here.
+func (o GetSpacesBucketsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpacesBucketsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetSpacesBucketsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsFilter)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsFilterArrayOutput) ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsFilterArrayOutput) ToGetSpacesBucketsFilterArrayOutputWithContext(ctx context.Context) GetSpacesBucketsFilterArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsFilterArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsFilter {
+		return vs[0].([]GetSpacesBucketsFilter)[vs[1].(int)]
+	}).(GetSpacesBucketsFilterOutput)
+}
+
+type GetSpacesBucketsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+	Key string `pulumi:"key"`
+}
+
+// GetSpacesBucketsSortInput is an input type that accepts GetSpacesBucketsSortArgs and GetSpacesBucketsSortOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsSortInput` via:
+//
+// 		 GetSpacesBucketsSortArgs{...}
+//
+type GetSpacesBucketsSortInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput
+	ToGetSpacesBucketsSortOutputWithContext(context.Context) GetSpacesBucketsSortOutput
+}
+
+type GetSpacesBucketsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetSpacesBucketsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsSort)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsSortArgs) ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput {
+	return i.ToGetSpacesBucketsSortOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsSortArgs) ToGetSpacesBucketsSortOutputWithContext(ctx context.Context) GetSpacesBucketsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsSortOutput)
+}
+
+// GetSpacesBucketsSortArrayInput is an input type that accepts GetSpacesBucketsSortArray and GetSpacesBucketsSortArrayOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsSortArrayInput` via:
+//
+// 		 GetSpacesBucketsSortArray{ GetSpacesBucketsSortArgs{...} }
+//
+type GetSpacesBucketsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput
+	ToGetSpacesBucketsSortArrayOutputWithContext(context.Context) GetSpacesBucketsSortArrayOutput
+}
+
+type GetSpacesBucketsSortArray []GetSpacesBucketsSortInput
+
+func (GetSpacesBucketsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsSort)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsSortArray) ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput {
+	return i.ToGetSpacesBucketsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsSortArray) ToGetSpacesBucketsSortArrayOutputWithContext(ctx context.Context) GetSpacesBucketsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsSortArrayOutput)
+}
+
+type GetSpacesBucketsSortOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsSort)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsSortOutput) ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput {
+	return o
+}
+
+func (o GetSpacesBucketsSortOutput) ToGetSpacesBucketsSortOutputWithContext(ctx context.Context) GetSpacesBucketsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetSpacesBucketsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+func (o GetSpacesBucketsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetSpacesBucketsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsSort)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsSortArrayOutput) ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsSortArrayOutput) ToGetSpacesBucketsSortArrayOutputWithContext(ctx context.Context) GetSpacesBucketsSortArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsSort {
+		return vs[0].([]GetSpacesBucketsSort)[vs[1].(int)]
+	}).(GetSpacesBucketsSortOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowArrayOutput{})
@@ -5118,6 +5928,12 @@ func init() {
 	pulumi.RegisterOutputType(SpacesBucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetDropletsDropletOutput{})
+	pulumi.RegisterOutputType(GetDropletsDropletArrayOutput{})
+	pulumi.RegisterOutputType(GetDropletsFilterOutput{})
+	pulumi.RegisterOutputType(GetDropletsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDropletsSortOutput{})
+	pulumi.RegisterOutputType(GetDropletsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
@@ -5152,4 +5968,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSizesSizeArrayOutput{})
 	pulumi.RegisterOutputType(GetSizesSortOutput{})
 	pulumi.RegisterOutputType(GetSizesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsBucketOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsFilterOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsSortOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsSortArrayOutput{})
 }

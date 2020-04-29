@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean
         /// The size of the Droplets disk in GB.
         /// </summary>
         public readonly int Disk;
-        public readonly int? Id;
+        public readonly int Id;
         /// <summary>
         /// The Droplet image ID or slug.
         /// </summary>
@@ -91,7 +91,7 @@ namespace Pulumi.DigitalOcean
         /// Whether monitoring agent is installed.
         /// </summary>
         public readonly bool Monitoring;
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Droplet hourly price.
         /// </summary>
@@ -146,7 +146,7 @@ namespace Pulumi.DigitalOcean
 
             int disk,
 
-            int? id,
+            int id,
 
             string image,
 
@@ -166,7 +166,7 @@ namespace Pulumi.DigitalOcean
 
             bool monitoring,
 
-            string? name,
+            string name,
 
             double priceHourly,
 
