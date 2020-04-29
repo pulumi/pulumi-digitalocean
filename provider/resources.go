@@ -31,30 +31,30 @@ const (
 	digitalOceanMod = "index" // the root index.
 )
 
-// digitalOceanMember manufactures a type token for the Digital Ocean package and the given module and type.
-func digitalOceanMember(mod string, mem string) tokens.ModuleMember {
+// makeMember manufactures a type token for the Digital Ocean package and the given module and type.
+func makeMember(mod string, mem string) tokens.ModuleMember {
 	return tokens.ModuleMember(digitalOceanPkg + ":" + mod + ":" + mem)
 }
 
-// digitalOceanType manufactures a type token for the Digital Ocean package and the given module and type.
-func digitalOceanType(mod string, typ string) tokens.Type {
-	return tokens.Type(digitalOceanMember(mod, typ))
+// makeType manufactures a type token for the Digital Ocean package and the given module and type.
+func makeType(mod string, typ string) tokens.Type {
+	return tokens.Type(makeMember(mod, typ))
 }
 
-// digitalOceanDataSource manufactures a standard resource token given a module and resource name.
+// makeDataSource manufactures a standard resource token given a module and resource name.
 // It automatically uses the Digital Ocean package and names the file by simply lower casing the data
 // source's first character.
-func digitalOceanDataSource(mod string, res string) tokens.ModuleMember {
+func makeDataSource(mod string, res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return digitalOceanMember(mod+"/"+fn, res)
+	return makeMember(mod+"/"+fn, res)
 }
 
-// digitalOceanResource manufactures a standard resource token given a module and resource name.
+// makeResource manufactures a standard resource token given a module and resource name.
 // It automatically uses the DigitalOcean package and names the file by simply lower casing the resource's
 // first character.
-func digitalOceanResource(mod string, res string) tokens.Type {
+func makeResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return digitalOceanType(mod+"/"+fn, res)
+	return makeType(mod+"/"+fn, res)
 }
 
 // Provider returns additional overlaid schema and metadata associated with the Digital Ocean package.
@@ -92,164 +92,169 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"digitalocean_cdn": {Tok: digitalOceanResource(digitalOceanMod, "Cdn")},
+			"digitalocean_cdn": {Tok: makeResource(digitalOceanMod, "Cdn")},
 			"digitalocean_certificate": {
-				Tok: digitalOceanResource(digitalOceanMod, "Certificate"),
+				Tok: makeResource(digitalOceanMod, "Certificate"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
-						Type: digitalOceanType(digitalOceanMod, "CertificateType"),
+						Type: makeType(digitalOceanMod, "CertificateType"),
 					},
 				},
 			},
 			"digitalocean_database_cluster": {
-				Tok: digitalOceanResource(digitalOceanMod, "DatabaseCluster"),
+				Tok: makeResource(digitalOceanMod, "DatabaseCluster"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: digitalOceanType(digitalOceanMod, "Region"),
+						Type: makeType(digitalOceanMod, "Region"),
 					},
 					"size": {
-						Type: digitalOceanType(digitalOceanMod, "DatabaseSlug"),
+						Type: makeType(digitalOceanMod, "DatabaseSlug"),
 					},
 				},
 			},
 			"digitalocean_database_connection_pool": {
-				Tok: digitalOceanResource(digitalOceanMod, "DatabaseConnectionPool"),
+				Tok: makeResource(digitalOceanMod, "DatabaseConnectionPool"),
 			},
 			"digitalocean_database_replica": {
-				Tok: digitalOceanResource(digitalOceanMod, "DatabaseReplica"),
+				Tok: makeResource(digitalOceanMod, "DatabaseReplica"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: digitalOceanType(digitalOceanMod, "Region"),
+						Type: makeType(digitalOceanMod, "Region"),
 					},
 					"size": {
-						Type: digitalOceanType(digitalOceanMod, "DatabaseSlug"),
+						Type: makeType(digitalOceanMod, "DatabaseSlug"),
 					},
 				},
 			},
-			"digitalocean_database_user":     {Tok: digitalOceanType(digitalOceanMod, "DatabaseUser")},
-			"digitalocean_database_db":       {Tok: digitalOceanType(digitalOceanMod, "DatabaseDb")},
-			"digitalocean_database_firewall": {Tok: digitalOceanType(digitalOceanMod, "DatabaseFirewall")},
+			"digitalocean_database_user":     {Tok: makeType(digitalOceanMod, "DatabaseUser")},
+			"digitalocean_database_db":       {Tok: makeType(digitalOceanMod, "DatabaseDb")},
+			"digitalocean_database_firewall": {Tok: makeType(digitalOceanMod, "DatabaseFirewall")},
 			"digitalocean_domain": {
-				Tok: digitalOceanResource(digitalOceanMod, "Domain"),
+				Tok: makeResource(digitalOceanMod, "Domain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"name": {Name: "name"},
 				},
 			},
 			"digitalocean_droplet": {
-				Tok: digitalOceanResource(digitalOceanMod, "Droplet"),
+				Tok: makeResource(digitalOceanMod, "Droplet"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: digitalOceanType(digitalOceanMod, "Region"),
+						Type: makeType(digitalOceanMod, "Region"),
 					},
 					"size": {
-						Type: digitalOceanType(digitalOceanMod, "DropletSlug"),
+						Type: makeType(digitalOceanMod, "DropletSlug"),
 					},
 				},
 			},
 			"digitalocean_droplet_snapshot": {
-				Tok: digitalOceanResource(digitalOceanMod, "DropletSnapshot"),
+				Tok: makeResource(digitalOceanMod, "DropletSnapshot"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"regions": {
-						Elem: &tfbridge.SchemaInfo{Type: digitalOceanType(digitalOceanMod, "Region")},
+						Elem: &tfbridge.SchemaInfo{Type: makeType(digitalOceanMod, "Region")},
 					},
 				},
 			},
-			"digitalocean_firewall":               {Tok: digitalOceanResource(digitalOceanMod, "Firewall")},
-			"digitalocean_floating_ip":            {Tok: digitalOceanResource(digitalOceanMod, "FloatingIp")},
-			"digitalocean_floating_ip_assignment": {Tok: digitalOceanResource(digitalOceanMod, "FloatingIpAssignment")},
+			"digitalocean_firewall":               {Tok: makeResource(digitalOceanMod, "Firewall")},
+			"digitalocean_floating_ip":            {Tok: makeResource(digitalOceanMod, "FloatingIp")},
+			"digitalocean_floating_ip_assignment": {Tok: makeResource(digitalOceanMod, "FloatingIpAssignment")},
 			"digitalocean_kubernetes_cluster": {
-				Tok: digitalOceanResource(digitalOceanMod, "KubernetesCluster"),
+				Tok: makeResource(digitalOceanMod, "KubernetesCluster"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: digitalOceanType(digitalOceanMod, "Region"),
+						Type: makeType(digitalOceanMod, "Region"),
 					},
 				},
 			},
 			"digitalocean_kubernetes_node_pool": {
-				Tok: digitalOceanResource(digitalOceanMod, "KubernetesNodePool"),
+				Tok: makeResource(digitalOceanMod, "KubernetesNodePool"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"size": {
-						Type: digitalOceanType(digitalOceanMod, "DropletSlug"),
+						Type: makeType(digitalOceanMod, "DropletSlug"),
 					},
 				},
 			},
 			"digitalocean_loadbalancer": {
-				Tok: digitalOceanResource(digitalOceanMod, "LoadBalancer"),
+				Tok: makeResource(digitalOceanMod, "LoadBalancer"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: digitalOceanType(digitalOceanMod, "Region"),
+						Type: makeType(digitalOceanMod, "Region"),
 					},
 					"algorithm": {
-						Type: digitalOceanType(digitalOceanMod, "Algorithm"),
+						Type: makeType(digitalOceanMod, "Algorithm"),
 					},
 				},
 			},
-			"digitalocean_project": {Tok: digitalOceanResource(digitalOceanMod, "Project")},
+			"digitalocean_project": {Tok: makeResource(digitalOceanMod, "Project")},
 			"digitalocean_record": {
-				Tok: digitalOceanResource(digitalOceanMod, "DnsRecord"),
+				Tok: makeResource(digitalOceanMod, "DnsRecord"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
-						Type: digitalOceanType(digitalOceanMod, "RecordType"),
+						Type: makeType(digitalOceanMod, "RecordType"),
 					},
 				},
 			},
-			"digitalocean_ssh_key": {Tok: digitalOceanResource(digitalOceanMod, "SshKey")},
+			"digitalocean_ssh_key": {Tok: makeResource(digitalOceanMod, "SshKey")},
 			"digitalocean_spaces_bucket": {
-				Tok: digitalOceanResource(digitalOceanMod, "SpacesBucket"),
+				Tok: makeResource(digitalOceanMod, "SpacesBucket"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: digitalOceanType(digitalOceanMod, "Region"),
+						Type: makeType(digitalOceanMod, "Region"),
 					},
 				},
 			},
-			"digitalocean_spaces_bucket_object": {Tok: digitalOceanResource(digitalOceanMod, "SpacesBucketObject")},
-			"digitalocean_tag":                  {Tok: digitalOceanResource(digitalOceanMod, "Tag")},
+			"digitalocean_spaces_bucket_object": {Tok: makeResource(digitalOceanMod, "SpacesBucketObject")},
+			"digitalocean_tag":                  {Tok: makeResource(digitalOceanMod, "Tag")},
 			"digitalocean_volume": {
-				Tok: digitalOceanResource(digitalOceanMod, "Volume"),
+				Tok: makeResource(digitalOceanMod, "Volume"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: digitalOceanType(digitalOceanMod, "Region"),
+						Type: makeType(digitalOceanMod, "Region"),
 					},
 					"initial_filesystem_type": {
-						Type: digitalOceanType(digitalOceanMod, "FilesystemType"),
+						Type: makeType(digitalOceanMod, "FilesystemType"),
 					},
 				},
 			},
-			"digitalocean_volume_attachment": {Tok: digitalOceanResource(digitalOceanMod, "VolumeAttachment")},
+			"digitalocean_volume_attachment": {Tok: makeResource(digitalOceanMod, "VolumeAttachment")},
 			"digitalocean_volume_snapshot": {
-				Tok: digitalOceanResource(digitalOceanMod, "VolumeSnapshot"),
+				Tok: makeResource(digitalOceanMod, "VolumeSnapshot"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"regions": {
-						Elem: &tfbridge.SchemaInfo{Type: digitalOceanType(digitalOceanMod, "Region")},
+						Elem: &tfbridge.SchemaInfo{Type: makeType(digitalOceanMod, "Region")},
 					},
 				},
 			},
-			"digitalocean_vpc": {Tok: digitalOceanResource(digitalOceanMod, "Vpc")},
+			"digitalocean_vpc": {Tok: makeResource(digitalOceanMod, "Vpc")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"digitalocean_certificate":         {Tok: digitalOceanDataSource(digitalOceanMod, "getCertificate")},
-			"digitalocean_database_cluster":    {Tok: digitalOceanDataSource(digitalOceanMod, "getDatabaseCluster")},
-			"digitalocean_domain":              {Tok: digitalOceanDataSource(digitalOceanMod, "getDomain")},
-			"digitalocean_droplet":             {Tok: digitalOceanDataSource(digitalOceanMod, "getDroplet")},
-			"digitalocean_droplet_snapshot":    {Tok: digitalOceanDataSource(digitalOceanMod, "getDropletSnapshot")},
-			"digitalocean_floating_ip":         {Tok: digitalOceanDataSource(digitalOceanMod, "getFloatingIp")},
-			"digitalocean_image":               {Tok: digitalOceanDataSource(digitalOceanMod, "getImage")},
-			"digitalocean_kubernetes_cluster":  {Tok: digitalOceanDataSource(digitalOceanMod, "getKubernetesCluster")},
-			"digitalocean_kubernetes_versions": {Tok: digitalOceanDataSource(digitalOceanMod, "getKubernetesVersions")},
-			"digitalocean_loadbalancer":        {Tok: digitalOceanDataSource(digitalOceanMod, "getLoadBalancer")},
-			"digitalocean_record":              {Tok: digitalOceanDataSource(digitalOceanMod, "getRecord")},
-			"digitalocean_ssh_key":             {Tok: digitalOceanDataSource(digitalOceanMod, "getSshKey")},
-			"digitalocean_tag":                 {Tok: digitalOceanDataSource(digitalOceanMod, "getTag")},
-			"digitalocean_volume":              {Tok: digitalOceanDataSource(digitalOceanMod, "getVolume")},
-			"digitalocean_volume_snapshot":     {Tok: digitalOceanDataSource(digitalOceanMod, "getVolumeSnapshot")},
-			"digitalocean_sizes":               {Tok: digitalOceanDataSource(digitalOceanMod, "getSizes")},
-			"digitalocean_account":             {Tok: digitalOceanDataSource(digitalOceanMod, "getAccount")},
-			"digitalocean_images":              {Tok: digitalOceanDataSource(digitalOceanMod, "getImages")},
-			"digitalocean_project":             {Tok: digitalOceanDataSource(digitalOceanMod, "getProject")},
-			"digitalocean_projects":            {Tok: digitalOceanDataSource(digitalOceanMod, "getProjects")},
-			"digitalocean_region":              {Tok: digitalOceanDataSource(digitalOceanMod, "getRegion")},
-			"digitalocean_regions":             {Tok: digitalOceanDataSource(digitalOceanMod, "getRegions")},
-			"digitalocean_vpc":                 {Tok: digitalOceanDataSource(digitalOceanMod, "getVpc")},
+			"digitalocean_certificate":           {Tok: makeDataSource(digitalOceanMod, "getCertificate")},
+			"digitalocean_database_cluster":      {Tok: makeDataSource(digitalOceanMod, "getDatabaseCluster")},
+			"digitalocean_domain":                {Tok: makeDataSource(digitalOceanMod, "getDomain")},
+			"digitalocean_droplet":               {Tok: makeDataSource(digitalOceanMod, "getDroplet")},
+			"digitalocean_droplet_snapshot":      {Tok: makeDataSource(digitalOceanMod, "getDropletSnapshot")},
+			"digitalocean_floating_ip":           {Tok: makeDataSource(digitalOceanMod, "getFloatingIp")},
+			"digitalocean_image":                 {Tok: makeDataSource(digitalOceanMod, "getImage")},
+			"digitalocean_kubernetes_cluster":    {Tok: makeDataSource(digitalOceanMod, "getKubernetesCluster")},
+			"digitalocean_kubernetes_versions":   {Tok: makeDataSource(digitalOceanMod, "getKubernetesVersions")},
+			"digitalocean_loadbalancer":          {Tok: makeDataSource(digitalOceanMod, "getLoadBalancer")},
+			"digitalocean_record":                {Tok: makeDataSource(digitalOceanMod, "getRecord")},
+			"digitalocean_ssh_key":               {Tok: makeDataSource(digitalOceanMod, "getSshKey")},
+			"digitalocean_tag":                   {Tok: makeDataSource(digitalOceanMod, "getTag")},
+			"digitalocean_volume":                {Tok: makeDataSource(digitalOceanMod, "getVolume")},
+			"digitalocean_volume_snapshot":       {Tok: makeDataSource(digitalOceanMod, "getVolumeSnapshot")},
+			"digitalocean_sizes":                 {Tok: makeDataSource(digitalOceanMod, "getSizes")},
+			"digitalocean_account":               {Tok: makeDataSource(digitalOceanMod, "getAccount")},
+			"digitalocean_images":                {Tok: makeDataSource(digitalOceanMod, "getImages")},
+			"digitalocean_project":               {Tok: makeDataSource(digitalOceanMod, "getProject")},
+			"digitalocean_projects":              {Tok: makeDataSource(digitalOceanMod, "getProjects")},
+			"digitalocean_region":                {Tok: makeDataSource(digitalOceanMod, "getRegion")},
+			"digitalocean_regions":               {Tok: makeDataSource(digitalOceanMod, "getRegions")},
+			"digitalocean_vpc":                   {Tok: makeDataSource(digitalOceanMod, "getVpc")},
+			"digitalocean_spaces_bucket":         {Tok: makeDataSource(digitalOceanMod, "getSpacesBucket")},
+			"digitalocean_spaces_buckets":        {Tok: makeDataSource(digitalOceanMod, "getSpacesBuckets")},
+			"digitalocean_spaces_bucket_object":  {Tok: makeDataSource(digitalOceanMod, "getSpacesBucketObject")},
+			"digitalocean_spaces_bucket_objects": {Tok: makeDataSource(digitalOceanMod, "getSpacesBucketObjects")},
+			"digitalocean_droplets":              {Tok: makeDataSource(digitalOceanMod, "getDroplets")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			AsyncDataSources: true,
