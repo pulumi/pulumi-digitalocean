@@ -45,6 +45,32 @@ class Vpc(pulumi.CustomResource):
         VPCs are virtual networks containing resources that can communicate with each
         other in full isolation, using private IP addresses.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example = digitalocean.Vpc("example",
+            ip_range="10.10.10.0/24",
+            region="nyc3")
+        ```
+
+        ### Resource Assignment
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
+        example_droplet = digitalocean.Droplet("exampleDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3",
+            vpc_uuid=example_vpc.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

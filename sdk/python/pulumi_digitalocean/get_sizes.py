@@ -46,6 +46,23 @@ def get_sizes(filters=None,sorts=None,opts=None):
     the ability to filter and sort the results. If no filters are specified, all sizes
     will be returned.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    main = digitalocean.get_sizes(filter=[{
+        "key": "slug",
+        "values": ["s-1vcpu-1gb"],
+    }])
+    web = digitalocean.Droplet("web",
+        image="ubuntu-18-04-x64",
+        region="sgp1",
+        size=main.sizes[0]["slug"])
+    ```
 
 
 

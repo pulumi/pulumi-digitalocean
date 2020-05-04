@@ -9,6 +9,29 @@ import * as utilities from "./utilities";
 /**
  * Provides a DigitalOcean database connection pool resource.
  * 
+ * ## Example Usage
+ * 
+ * ### Create a new PostgreSQL database connection pool
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ * });
+ * const pool-01 = new digitalocean.DatabaseConnectionPool("pool-01", {
+ *     clusterId: postgres-example.id,
+ *     mode: "transaction",
+ *     size: 20,
+ *     dbName: "defaultdb",
+ *     user: "doadmin",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_connection_pool.html.markdown.
  */

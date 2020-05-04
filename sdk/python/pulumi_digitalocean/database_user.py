@@ -36,6 +36,22 @@ class DatabaseUser(pulumi.CustomResource):
 
         > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
 
+        ## Example Usage
+
+        ### Create a new PostgreSQL database user
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

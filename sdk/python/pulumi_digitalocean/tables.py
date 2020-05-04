@@ -4,7 +4,6 @@
 
 _SNAKE_TO_CAMEL_CASE_TABLE = {
     "actual_node_count": "actualNodeCount",
-    "api_endpoint": "apiEndpoint",
     "auto_scale": "autoScale",
     "bucket_domain_name": "bucketDomainName",
     "cache_control": "cacheControl",
@@ -67,9 +66,6 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "service_subnet": "serviceSubnet",
     "sha1_fingerprint": "sha1Fingerprint",
     "snapshot_id": "snapshotId",
-    "spaces_access_id": "spacesAccessId",
-    "spaces_endpoint": "spacesEndpoint",
-    "spaces_secret_key": "spacesSecretKey",
     "sql_mode": "sqlMode",
     "ssh_keys": "sshKeys",
     "sticky_sessions": "stickySessions",
@@ -84,7 +80,6 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
     "actualNodeCount": "actual_node_count",
-    "apiEndpoint": "api_endpoint",
     "autoScale": "auto_scale",
     "bucketDomainName": "bucket_domain_name",
     "cacheControl": "cache_control",
@@ -147,9 +142,6 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "serviceSubnet": "service_subnet",
     "sha1Fingerprint": "sha1_fingerprint",
     "snapshotId": "snapshot_id",
-    "spacesAccessId": "spaces_access_id",
-    "spacesEndpoint": "spaces_endpoint",
-    "spacesSecretKey": "spaces_secret_key",
     "sqlMode": "sql_mode",
     "sshKeys": "ssh_keys",
     "stickySessions": "sticky_sessions",

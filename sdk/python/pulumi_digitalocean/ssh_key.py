@@ -25,13 +25,7 @@ class SshKey(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, name=None, public_key=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a DigitalOcean SSH key resource to allow you to manage SSH
-        keys for Droplet access. Keys created with this resource
-        can be referenced in your Droplet configuration via their ID or
-        fingerprint.
-
-
-
+        Create a SshKey resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the SSH key for identification

@@ -58,6 +58,29 @@ class DnsRecord(pulumi.CustomResource):
         """
         Provides a DigitalOcean DNS record resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        default = digitalocean.Domain("default", name="example.com")
+        # Add an A record to the domain for www.example.com.
+        www = digitalocean.DnsRecord("www",
+            domain=default.name,
+            type="A",
+            value="192.168.0.11")
+        # Add a MX record for the example.com domain itself.
+        mx = digitalocean.DnsRecord("mx",
+            domain=default.name,
+            type="MX",
+            priority=10,
+            value="mail.example.com.")
+        pulumi.export("wwwFqdn", www.fqdn)
+        pulumi.export("mxFqdn", mx.fqdn)
+        ```
 
 
         :param str resource_name: The name of the resource.

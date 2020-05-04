@@ -85,6 +85,18 @@ def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,
     source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
     resources.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    web_snapshot = digitalocean.get_droplet_snapshot(most_recent=True,
+        name_regex="^web",
+        region="nyc3")
+    ```
 
 
 

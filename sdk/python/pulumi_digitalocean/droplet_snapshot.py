@@ -38,6 +38,20 @@ class DropletSnapshot(pulumi.CustomResource):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="centos-7-x64",
+            region="nyc3")
+        web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

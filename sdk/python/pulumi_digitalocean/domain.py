@@ -27,6 +27,19 @@ class Domain(pulumi.CustomResource):
         """
         Provides a DigitalOcean domain resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new domain
+        default = digitalocean.Domain("default",
+            name="example.com",
+            ip_address=digitalocean_droplet["foo"]["ipv4_address"])
+        ```
 
 
         :param str resource_name: The name of the resource.

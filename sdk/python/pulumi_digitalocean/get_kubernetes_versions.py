@@ -49,6 +49,52 @@ class AwaitableGetKubernetesVersionsResult(GetKubernetesVersionsResult):
 def get_kubernetes_versions(version_prefix=None,opts=None):
     """
     Provides access to the available DigitalOcean Kubernetes Service versions.
+
+    ## Example Usage
+
+    ### Output a list of all available versions
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_versions()
+    pulumi.export("k8s-versions", example.valid_versions)
+    ```
+
+    ### Create a Kubernetes cluster using the most recent version available
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_versions()
+    example_cluster = digitalocean.KubernetesCluster("example-cluster",
+        region="lon1",
+        version=example.latest_version,
+        node_pool={
+            "name": "default",
+            "size": "s-1vcpu-2gb",
+            "nodeCount": 3,
+        })
+    ```
+
+    ### Pin a Kubernetes cluster to a specific minor version
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_versions(version_prefix="1.16.")
+    example_cluster = digitalocean.KubernetesCluster("example-cluster",
+        region="lon1",
+        version=example.latest_version,
+        node_pool={
+            "name": "default",
+            "size": "s-1vcpu-2gb",
+            "nodeCount": 3,
+        })
+    ```
     """
     __args__ = dict()
 

@@ -38,6 +38,22 @@ class Cdn(pulumi.CustomResource):
         """
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 
+        ## Example Usage
+
+        ### Basic Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new Spaces Bucket
+        mybucket = digitalocean.SpacesBucket("mybucket",
+            region="sfo2",
+            acl="public-read")
+        # Add a CDN endpoint to the Spaces Bucket
+        mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
+        pulumi.export("fqdn", mycdn.endpoint)
+        ```
 
 
         :param str resource_name: The name of the resource.

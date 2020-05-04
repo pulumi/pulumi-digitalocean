@@ -92,6 +92,18 @@ def get_volume_snapshot(most_recent=None,name=None,name_regex=None,region=None,o
     source to retrieve the ID of a DigitalOcean volume snapshot for use in other
     resources.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    snapshot = digitalocean.get_volume_snapshot(most_recent=True,
+        name_regex="^web",
+        region="nyc3")
+    ```
 
 
 

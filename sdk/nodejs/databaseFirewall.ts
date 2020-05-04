@@ -11,6 +11,62 @@ import * as utilities from "./utilities";
  * connections to your database to trusted sources. You may limit connections to
  * specific Droplets, Kubernetes clusters, or IP addresses.
  * 
+ * ## Example Usage
+ * 
+ * ### Create a new database firewall allowing multiple IP addresses
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ * });
+ * const example-fw = new digitalocean.DatabaseFirewall("example-fw", {
+ *     clusterId: postgres-example.id,
+ *     rule: [
+ *         {
+ *             type: "ipAddr",
+ *             value: "192.168.1.1",
+ *         },
+ *         {
+ *             type: "ipAddr",
+ *             value: "192.0.2.0",
+ *         },
+ *     ],
+ * });
+ * ```
+ * 
+ * ### Create a new database firewall allowing a Droplet
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const web = new digitalocean.Droplet("web", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "centos-7-x64",
+ *     region: "nyc3",
+ * });
+ * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ * });
+ * const example-fw = new digitalocean.DatabaseFirewall("example-fw", {
+ *     clusterId: postgres-example.id,
+ *     rule: [{
+ *         type: "droplet",
+ *         value: web.id,
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_firewall.html.markdown.
  */

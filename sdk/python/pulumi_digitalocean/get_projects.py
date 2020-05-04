@@ -64,6 +64,19 @@ def get_projects(filters=None,sorts=None,opts=None):
     obtain metadata about a single project if you already know the `id` to retrieve or the unique
     `name` of the project.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    staging = digitalocean.get_projects(filters=[{
+        "key": "environment",
+        "values": ["Staging"],
+    }])
+    ```
 
 
 

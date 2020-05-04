@@ -25,6 +25,21 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * ```
+ * 
+ * ### Resource Assignment
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const exampleVpc = new digitalocean.Vpc("exampleVpc", {region: "nyc3"});
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ *     vpcUuid: exampleVpc.id,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/vpc.html.markdown.
  */

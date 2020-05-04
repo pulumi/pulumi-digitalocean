@@ -110,6 +110,41 @@ class KubernetesCluster(pulumi.CustomResource):
         """
         Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
 
+        ## Example Usage
+
+        ### Basic Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            node_pool={
+                "name": "worker-pool",
+                "nodeCount": 3,
+                "size": "s-2vcpu-2gb",
+            },
+            region="nyc1",
+            version="1.15.5-do.1")
+        ```
+
+        ### Autoscaling Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            node_pool={
+                "autoScale": True,
+                "maxNodes": 5,
+                "minNodes": 1,
+                "name": "autoscale-worker-pool",
+                "size": "s-2vcpu-2gb",
+            },
+            region="nyc1",
+            version="1.15.5-do.1")
+        ```
 
 
         :param str resource_name: The name of the resource.

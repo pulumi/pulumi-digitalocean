@@ -68,6 +68,17 @@ def get_region(slug=None,opts=None):
     Get information on a single DigitalOcean region. This is useful to find out 
     what Droplet sizes and features are supported within a region.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    sfo2 = digitalocean.get_region(slug="sfo2")
+    pulumi.export("regionName", sfo2.name)
+    ```
 
 
 

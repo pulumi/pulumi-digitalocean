@@ -71,6 +71,46 @@ class KubernetesNodePool(pulumi.CustomResource):
         """
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
 
+        ## Example Usage
+
+        ### Basic Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            region="nyc1",
+            version="1.15.5-do.1",
+            node_pool={
+                "name": "front-end-pool",
+                "size": "s-2vcpu-2gb",
+                "nodeCount": 3,
+            })
+        bar = digitalocean.KubernetesNodePool("bar",
+            cluster_id=foo.id,
+            size="c-2",
+            node_count=2,
+            tags=["backend"],
+            labels={
+                "service": "backend",
+                "priority": "high",
+            })
+        ```
+
+        ### Autoscaling Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        autoscale_pool_01 = digitalocean.KubernetesNodePool("autoscale-pool-01",
+            cluster_id=digitalocean_kubernetes_cluster["foo"]["id"],
+            size="s-1vcpu-2gb",
+            auto_scale=True,
+            min_nodes=0,
+            max_nodes=5)
+        ```
 
 
         :param str resource_name: The name of the resource.
