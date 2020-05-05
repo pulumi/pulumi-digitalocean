@@ -80,6 +80,11 @@ func Provider() tfbridge.ProviderInfo {
 					Value:   "https://api.digitalocean.com",
 				},
 			},
+			"spaces_endpoint": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"SPACES_ENDPOINT_URL"},
+				},
+			},
 			"spaces_access_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"SPACES_ACCESS_KEY_ID"},

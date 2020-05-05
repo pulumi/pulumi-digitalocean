@@ -21,7 +21,7 @@ spaces_access_id = __config__.get('spacesAccessId') or utilities.get_env('SPACES
 The access key ID for Spaces API operations.
 """
 
-spaces_endpoint = __config__.get('spacesEndpoint')
+spaces_endpoint = __config__.get('spacesEndpoint') or utilities.get_env('SPACES_ENDPOINT_URL')
 """
 The URL to use for the DigitalOcean Spaces API.
 """

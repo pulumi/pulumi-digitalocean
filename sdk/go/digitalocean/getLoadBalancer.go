@@ -24,12 +24,13 @@ type LookupLoadBalancerArgs struct {
 
 // A collection of values returned by getLoadBalancer.
 type LookupLoadBalancerResult struct {
-	Algorithm           string                          `pulumi:"algorithm"`
-	DropletIds          []int                           `pulumi:"dropletIds"`
-	DropletTag          string                          `pulumi:"dropletTag"`
-	EnableProxyProtocol bool                            `pulumi:"enableProxyProtocol"`
-	ForwardingRules     []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
-	Healthcheck         GetLoadBalancerHealthcheck      `pulumi:"healthcheck"`
+	Algorithm              string                          `pulumi:"algorithm"`
+	DropletIds             []int                           `pulumi:"dropletIds"`
+	DropletTag             string                          `pulumi:"dropletTag"`
+	EnableBackendKeepalive bool                            `pulumi:"enableBackendKeepalive"`
+	EnableProxyProtocol    bool                            `pulumi:"enableProxyProtocol"`
+	ForwardingRules        []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
+	Healthcheck            GetLoadBalancerHealthcheck      `pulumi:"healthcheck"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string                        `pulumi:"id"`
 	Ip                  string                        `pulumi:"ip"`

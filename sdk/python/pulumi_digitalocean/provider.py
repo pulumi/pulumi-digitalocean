@@ -49,7 +49,7 @@ class Provider(pulumi.ProviderResource):
                 spaces_access_id = utilities.get_env('SPACES_ACCESS_KEY_ID')
             __props__['spaces_access_id'] = spaces_access_id
             if spaces_endpoint is None:
-                raise TypeError("Missing required property 'spaces_endpoint'")
+                spaces_endpoint = utilities.get_env('SPACES_ENDPOINT_URL')
             __props__['spaces_endpoint'] = spaces_endpoint
             if spaces_secret_key is None:
                 spaces_secret_key = utilities.get_env('SPACES_SECRET_ACCESS_KEY')

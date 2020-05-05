@@ -57,6 +57,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly dropletTag!: pulumi.Output<string | undefined>;
     /**
+     * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+     */
+    public readonly enableBackendKeepalive!: pulumi.Output<boolean | undefined>;
+    /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
      * the backend service. Default value is `false`.
@@ -117,6 +121,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["algorithm"] = state ? state.algorithm : undefined;
             inputs["dropletIds"] = state ? state.dropletIds : undefined;
             inputs["dropletTag"] = state ? state.dropletTag : undefined;
+            inputs["enableBackendKeepalive"] = state ? state.enableBackendKeepalive : undefined;
             inputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
             inputs["forwardingRules"] = state ? state.forwardingRules : undefined;
             inputs["healthcheck"] = state ? state.healthcheck : undefined;
@@ -139,6 +144,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["algorithm"] = args ? args.algorithm : undefined;
             inputs["dropletIds"] = args ? args.dropletIds : undefined;
             inputs["dropletTag"] = args ? args.dropletTag : undefined;
+            inputs["enableBackendKeepalive"] = args ? args.enableBackendKeepalive : undefined;
             inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
             inputs["forwardingRules"] = args ? args.forwardingRules : undefined;
             inputs["healthcheck"] = args ? args.healthcheck : undefined;
@@ -180,6 +186,10 @@ export interface LoadBalancerState {
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      */
     readonly dropletTag?: pulumi.Input<string>;
+    /**
+     * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+     */
+    readonly enableBackendKeepalive?: pulumi.Input<boolean>;
     /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
@@ -245,6 +255,10 @@ export interface LoadBalancerArgs {
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      */
     readonly dropletTag?: pulumi.Input<string>;
+    /**
+     * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+     */
+    readonly enableBackendKeepalive?: pulumi.Input<boolean>;
     /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
