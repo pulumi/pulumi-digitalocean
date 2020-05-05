@@ -6,7 +6,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.3.0
 	github.com/pulumi/pulumi/sdk/v2 v2.1.1-0.20200501142137-f36a8b4ca0ce
-	github.com/terraform-providers/terraform-provider-digitalocean v1.17.0
+	github.com/terraform-providers/terraform-provider-digitalocean v1.18.0
 )
 
 replace (
