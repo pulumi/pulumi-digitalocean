@@ -37,15 +37,12 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            if (!args || args.spacesEndpoint === undefined) {
-                throw new Error("Missing required property 'spacesEndpoint'");
-            }
             inputs["apiEndpoint"] = (args ? args.apiEndpoint : undefined) || (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
             inputs["spacesAccessId"] = (args ? args.spacesAccessId : undefined) || utilities.getEnv("SPACES_ACCESS_KEY_ID");
-            inputs["spacesEndpoint"] = args ? args.spacesEndpoint : undefined;
+            inputs["spacesEndpoint"] = (args ? args.spacesEndpoint : undefined) || utilities.getEnv("SPACES_ENDPOINT_URL");
             inputs["spacesSecretKey"] = (args ? args.spacesSecretKey : undefined) || utilities.getEnv("SPACES_SECRET_ACCESS_KEY");
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("DIGITALOCEAN_TOKEN");
         }
@@ -75,7 +72,7 @@ export interface ProviderArgs {
     /**
      * The URL to use for the DigitalOcean Spaces API.
      */
-    readonly spacesEndpoint: pulumi.Input<string>;
+    readonly spacesEndpoint?: pulumi.Input<string>;
     /**
      * The secret access key for Spaces API operations.
      */

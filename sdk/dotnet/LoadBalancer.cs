@@ -36,6 +36,12 @@ namespace Pulumi.DigitalOcean
         public Output<string?> DropletTag { get; private set; } = null!;
 
         /// <summary>
+        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+        /// </summary>
+        [Output("enableBackendKeepalive")]
+        public Output<bool?> EnableBackendKeepalive { get; private set; } = null!;
+
+        /// <summary>
         /// A boolean value indicating whether PROXY
         /// Protocol should be used to pass information from connecting client requests to
         /// the backend service. Default value is `false`.
@@ -175,6 +181,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DropletTag { get; set; }
 
         /// <summary>
+        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+        /// </summary>
+        [Input("enableBackendKeepalive")]
+        public Input<bool>? EnableBackendKeepalive { get; set; }
+
+        /// <summary>
         /// A boolean value indicating whether PROXY
         /// Protocol should be used to pass information from connecting client requests to
         /// the backend service. Default value is `false`.
@@ -267,6 +279,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("dropletTag")]
         public Input<string>? DropletTag { get; set; }
+
+        /// <summary>
+        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+        /// </summary>
+        [Input("enableBackendKeepalive")]
+        public Input<bool>? EnableBackendKeepalive { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether PROXY

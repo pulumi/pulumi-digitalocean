@@ -24,6 +24,10 @@ class LoadBalancer(pulumi.CustomResource):
     """
     The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
     """
+    enable_backend_keepalive: pulumi.Output[bool]
+    """
+    A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+    """
     enable_proxy_protocol: pulumi.Output[bool]
     """
     A boolean value indicating whether PROXY
@@ -88,7 +92,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     The ID of the VPC where the load balancer will be located.
     """
-    def __init__(__self__, resource_name, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, name=None, redirect_http_to_https=None, region=None, sticky_sessions=None, vpc_uuid=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, name=None, redirect_http_to_https=None, region=None, sticky_sessions=None, vpc_uuid=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
         modify, and delete Load Balancers.
@@ -102,6 +106,7 @@ class LoadBalancer(pulumi.CustomResource):
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[list] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
+        :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
@@ -163,6 +168,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['algorithm'] = algorithm
             __props__['droplet_ids'] = droplet_ids
             __props__['droplet_tag'] = droplet_tag
+            __props__['enable_backend_keepalive'] = enable_backend_keepalive
             __props__['enable_proxy_protocol'] = enable_proxy_protocol
             if forwarding_rules is None:
                 raise TypeError("Missing required property 'forwarding_rules'")
@@ -185,7 +191,7 @@ class LoadBalancer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, vpc_uuid=None):
+    def get(resource_name, id, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, vpc_uuid=None):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -198,6 +204,7 @@ class LoadBalancer(pulumi.CustomResource):
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[list] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
+        :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
@@ -247,6 +254,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["algorithm"] = algorithm
         __props__["droplet_ids"] = droplet_ids
         __props__["droplet_tag"] = droplet_tag
+        __props__["enable_backend_keepalive"] = enable_backend_keepalive
         __props__["enable_proxy_protocol"] = enable_proxy_protocol
         __props__["forwarding_rules"] = forwarding_rules
         __props__["healthcheck"] = healthcheck

@@ -13,7 +13,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         __self__.algorithm = algorithm
@@ -23,6 +23,9 @@ class GetLoadBalancerResult:
         if droplet_tag and not isinstance(droplet_tag, str):
             raise TypeError("Expected argument 'droplet_tag' to be a str")
         __self__.droplet_tag = droplet_tag
+        if enable_backend_keepalive and not isinstance(enable_backend_keepalive, bool):
+            raise TypeError("Expected argument 'enable_backend_keepalive' to be a bool")
+        __self__.enable_backend_keepalive = enable_backend_keepalive
         if enable_proxy_protocol and not isinstance(enable_proxy_protocol, bool):
             raise TypeError("Expected argument 'enable_proxy_protocol' to be a bool")
         __self__.enable_proxy_protocol = enable_proxy_protocol
@@ -71,6 +74,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             algorithm=self.algorithm,
             droplet_ids=self.droplet_ids,
             droplet_tag=self.droplet_tag,
+            enable_backend_keepalive=self.enable_backend_keepalive,
             enable_proxy_protocol=self.enable_proxy_protocol,
             forwarding_rules=self.forwarding_rules,
             healthcheck=self.healthcheck,
@@ -104,6 +108,7 @@ def get_load_balancer(name=None,opts=None):
         algorithm=__ret__.get('algorithm'),
         droplet_ids=__ret__.get('dropletIds'),
         droplet_tag=__ret__.get('dropletTag'),
+        enable_backend_keepalive=__ret__.get('enableBackendKeepalive'),
         enable_proxy_protocol=__ret__.get('enableProxyProtocol'),
         forwarding_rules=__ret__.get('forwardingRules'),
         healthcheck=__ret__.get('healthcheck'),

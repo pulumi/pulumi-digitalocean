@@ -6,7 +6,6 @@ package digitalocean
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -21,9 +20,6 @@ type Provider struct {
 // NewProvider registers a new resource with the given unique name, arguments, and options.
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
-	if args == nil || args.SpacesEndpoint == nil {
-		return nil, errors.New("missing required argument 'SpacesEndpoint'")
-	}
 	if args == nil {
 		args = &ProviderArgs{}
 	}
@@ -32,6 +28,9 @@ func NewProvider(ctx *pulumi.Context,
 	}
 	if args.SpacesAccessId == nil {
 		args.SpacesAccessId = pulumi.StringPtr(getEnvOrDefault("", nil, "SPACES_ACCESS_KEY_ID").(string))
+	}
+	if args.SpacesEndpoint == nil {
+		args.SpacesEndpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "SPACES_ENDPOINT_URL").(string))
 	}
 	if args.SpacesSecretKey == nil {
 		args.SpacesSecretKey = pulumi.StringPtr(getEnvOrDefault("", nil, "SPACES_SECRET_ACCESS_KEY").(string))
@@ -53,7 +52,7 @@ type providerArgs struct {
 	// The access key ID for Spaces API operations.
 	SpacesAccessId *string `pulumi:"spacesAccessId"`
 	// The URL to use for the DigitalOcean Spaces API.
-	SpacesEndpoint string `pulumi:"spacesEndpoint"`
+	SpacesEndpoint *string `pulumi:"spacesEndpoint"`
 	// The secret access key for Spaces API operations.
 	SpacesSecretKey *string `pulumi:"spacesSecretKey"`
 	// The token key for API operations.
@@ -67,7 +66,7 @@ type ProviderArgs struct {
 	// The access key ID for Spaces API operations.
 	SpacesAccessId pulumi.StringPtrInput
 	// The URL to use for the DigitalOcean Spaces API.
-	SpacesEndpoint pulumi.StringInput
+	SpacesEndpoint pulumi.StringPtrInput
 	// The secret access key for Spaces API operations.
 	SpacesSecretKey pulumi.StringPtrInput
 	// The token key for API operations.

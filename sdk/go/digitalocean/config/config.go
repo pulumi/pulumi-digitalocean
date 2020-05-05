@@ -28,7 +28,11 @@ func GetSpacesAccessId(ctx *pulumi.Context) string {
 
 // The URL to use for the DigitalOcean Spaces API.
 func GetSpacesEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "digitalocean:spacesEndpoint")
+	v, err := config.Try(ctx, "digitalocean:spacesEndpoint")
+	if err == nil {
+		return v
+	}
+	return getEnvOrDefault("", nil, "SPACES_ENDPOINT_URL").(string)
 }
 
 // The secret access key for Spaces API operations.

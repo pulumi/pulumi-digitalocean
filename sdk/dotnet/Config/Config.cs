@@ -21,7 +21,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The URL to use for the DigitalOcean Spaces API.
         /// </summary>
-        public static string? SpacesEndpoint { get; set; } = __config.Get("spacesEndpoint");
+        public static string? SpacesEndpoint { get; set; } = __config.Get("spacesEndpoint") ?? Utilities.GetEnv("SPACES_ENDPOINT_URL");
 
         /// <summary>
         /// The secret access key for Spaces API operations.

@@ -23,6 +23,8 @@ type LoadBalancer struct {
 	DropletIds pulumi.IntArrayOutput `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
 	DropletTag pulumi.StringPtrOutput `pulumi:"dropletTag"`
+	// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+	EnableBackendKeepalive pulumi.BoolPtrOutput `pulumi:"enableBackendKeepalive"`
 	// A boolean value indicating whether PROXY
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
@@ -94,6 +96,8 @@ type loadBalancerState struct {
 	DropletIds []int `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
 	DropletTag *string `pulumi:"dropletTag"`
+	// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+	EnableBackendKeepalive *bool `pulumi:"enableBackendKeepalive"`
 	// A boolean value indicating whether PROXY
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
@@ -132,6 +136,8 @@ type LoadBalancerState struct {
 	DropletIds pulumi.IntArrayInput
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
 	DropletTag pulumi.StringPtrInput
+	// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+	EnableBackendKeepalive pulumi.BoolPtrInput
 	// A boolean value indicating whether PROXY
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
@@ -174,6 +180,8 @@ type loadBalancerArgs struct {
 	DropletIds []int `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
 	DropletTag *string `pulumi:"dropletTag"`
+	// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+	EnableBackendKeepalive *bool `pulumi:"enableBackendKeepalive"`
 	// A boolean value indicating whether PROXY
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
@@ -209,6 +217,8 @@ type LoadBalancerArgs struct {
 	DropletIds pulumi.IntArrayInput
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
 	DropletTag pulumi.StringPtrInput
+	// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+	EnableBackendKeepalive pulumi.BoolPtrInput
 	// A boolean value indicating whether PROXY
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
