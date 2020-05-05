@@ -62,6 +62,27 @@ class Volume(pulumi.CustomResource):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="nyc1",
+            size=100,
+            initial_filesystem_type="ext4",
+            description="an example volume")
+        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc1")
+        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
+            droplet_id=foobar_droplet.id,
+            volume_id=foobar_volume.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

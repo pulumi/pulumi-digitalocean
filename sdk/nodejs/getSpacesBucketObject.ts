@@ -14,6 +14,26 @@ import * as utilities from "./utilities";
  * `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
  * downloading large amount of data which would be thrown away in favor of metadata.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const bootstrapScript = digitalocean.getSpacesBucketObject({
+ *     bucket: "ourcorp-deploy-config",
+ *     region: "nyc3",
+ *     key: "droplet-bootstrap-script.sh",
+ * });
+ * const web = new digitalocean.Droplet("web", {
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc2",
+ *     size: "s-1vcpu-1gb",
+ *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/spaces_bucket_object.html.md.
  */

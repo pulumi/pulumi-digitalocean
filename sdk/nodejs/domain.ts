@@ -9,6 +9,20 @@ import * as utilities from "./utilities";
 /**
  * Provides a DigitalOcean domain resource.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * // Create a new domain
+ * const default = new digitalocean.Domain("default", {
+ *     name: "example.com",
+ *     ipAddress: digitalocean_droplet.foo.ipv4_address,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/domain.html.markdown.
  */

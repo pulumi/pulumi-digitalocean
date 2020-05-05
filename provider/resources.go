@@ -257,7 +257,6 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_droplets":              {Tok: makeDataSource(digitalOceanMod, "getDroplets")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi":    "^2.0.0",
 				"builtin-modules":   "3.0.0",

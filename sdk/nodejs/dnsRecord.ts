@@ -11,6 +11,31 @@ import {RecordType} from "./index";
 /**
  * Provides a DigitalOcean DNS record resource.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const default = new digitalocean.Domain("default", {name: "example.com"});
+ * // Add an A record to the domain for www.example.com.
+ * const www = new digitalocean.DnsRecord("www", {
+ *     domain: default.name,
+ *     type: "A",
+ *     value: "192.168.0.11",
+ * });
+ * // Add a MX record for the example.com domain itself.
+ * const mx = new digitalocean.DnsRecord("mx", {
+ *     domain: default.name,
+ *     type: "MX",
+ *     priority: 10,
+ *     value: "mail.example.com.",
+ * });
+ * export const wwwFqdn = www.fqdn;
+ * export const mxFqdn = mx.fqdn;
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
  */

@@ -94,6 +94,17 @@ def get_project(id=None,name=None,opts=None):
     Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
     then this data source returns the default project.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    default = digitalocean.get_project()
+    staging = digitalocean.get_project(name="My Staging Project")
+    ```
 
 
 

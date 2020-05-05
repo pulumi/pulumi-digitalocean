@@ -152,6 +152,17 @@ def get_database_cluster(name=None,tags=None,opts=None):
     """
     Provides information on a DigitalOcean database cluster resource.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_database_cluster(name="example-cluster")
+    pulumi.export("databaseOutput", example.uri)
+    ```
 
 
 

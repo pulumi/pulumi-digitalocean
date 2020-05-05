@@ -52,15 +52,7 @@ class Certificate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, certificate_chain=None, domains=None, leaf_certificate=None, name=None, private_key=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a DigitalOcean Certificate resource that allows you to manage
-        certificates for configuring TLS termination in Load Balancers.
-        Certificates created with this resource can be referenced in your
-        Load Balancer configuration via their ID. The certificate can either
-        be a custom one provided by you or automatically generated one with
-        Let's Encrypt.
-
-
-
+        Create a Certificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain

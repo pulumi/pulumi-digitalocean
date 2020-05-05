@@ -51,6 +51,19 @@ def get_spaces_buckets(filters=None,sorts=None,opts=None):
     Note: You can use the [`.SpacesBucket`](https://www.terraform.io/docs/providers/do/d/spaces_bucket.html) data source to
     obtain metadata about a single bucket if you already know its `name` and `region`.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    nyc3 = digitalocean.get_spaces_buckets(filters=[{
+        "key": "region",
+        "values": ["nyc3"],
+    }])
+    ```
 
 
 

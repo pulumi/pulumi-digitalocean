@@ -11,6 +11,20 @@ import * as utilities from "./utilities";
  * source to retrieve the ID of a DigitalOcean volume snapshot for use in other
  * resources.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const snapshot = pulumi.output(digitalocean.getVolumeSnapshot({
+ *     mostRecent: true,
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ * }, { async: true }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/volume_snapshot.html.md.
  */

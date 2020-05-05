@@ -11,6 +11,26 @@ import * as utilities from "./utilities";
  * the ability to filter and sort the results. If no filters are specified, all sizes
  * will be returned.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * 
+ * const main = digitalocean.getSizes({
+ *     filter: [{
+ *         key: "slug",
+ *         values: ["s-1vcpu-1gb"],
+ *     }],
+ * });
+ * const web = new digitalocean.Droplet("web", {
+ *     image: "ubuntu-18-04-x64",
+ *     region: "sgp1",
+ *     size: main.then(main => main.sizes)[0].then(main => main.slug),
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
  */

@@ -95,6 +95,79 @@ class Firewall(pulumi.CustomResource):
         Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
         modify, and delete Firewalls.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web_droplet = digitalocean.Droplet("webDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3")
+        web_firewall = digitalocean.Firewall("webFirewall",
+            droplet_ids=[web_droplet.id],
+            inbound_rule=[
+                {
+                    "protocol": "tcp",
+                    "portRange": "22",
+                    "sourceAddresses": [
+                        "192.168.1.0/24",
+                        "2002:1:2::/48",
+                    ],
+                },
+                {
+                    "protocol": "tcp",
+                    "portRange": "80",
+                    "sourceAddresses": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+                {
+                    "protocol": "tcp",
+                    "portRange": "443",
+                    "sourceAddresses": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+                {
+                    "protocol": "icmp",
+                    "sourceAddresses": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+            ],
+            outbound_rule=[
+                {
+                    "protocol": "tcp",
+                    "portRange": "53",
+                    "destinationAddresses": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+                {
+                    "protocol": "udp",
+                    "portRange": "53",
+                    "destinationAddresses": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+                {
+                    "protocol": "icmp",
+                    "destinationAddresses": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.

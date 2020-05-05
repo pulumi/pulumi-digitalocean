@@ -126,6 +126,20 @@ class Droplet(pulumi.CustomResource):
         modify, and delete Droplets. Droplets also support
         [provisioning](https://www.terraform.io/docs/provisioners/index.html).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new Web Droplet in the nyc2 region
+        web = digitalocean.Droplet("web",
+            image="ubuntu-18-04-x64",
+            region="nyc2",
+            size="s-1vcpu-1gb")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -56,6 +56,19 @@ def get_regions(filters=None,sorts=None,opts=None):
     Note: You can use the [`.getRegion`](https://www.terraform.io/docs/providers/do/d/region.html) data source
     to obtain metadata about a single region if you already know the `slug` to retrieve.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    available = digitalocean.get_regions(filters=[{
+        "key": "available",
+        "values": ["true"],
+    }])
+    ```
 
 
 

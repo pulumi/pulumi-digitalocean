@@ -63,6 +63,25 @@ class DatabaseReplica(pulumi.CustomResource):
         """
         Provides a DigitalOcean database replica resource.
 
+        ## Example Usage
+
+        ### Create a new PostgreSQL database replica
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        read_replica = digitalocean.DatabaseReplica("read-replica",
+            cluster_id=postgres_example.id,
+            size="db-s-1vcpu-1gb",
+            region="nyc1")
+        ```
 
 
         :param str resource_name: The name of the resource.

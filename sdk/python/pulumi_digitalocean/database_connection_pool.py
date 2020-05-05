@@ -62,6 +62,27 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         """
         Provides a DigitalOcean database connection pool resource.
 
+        ## Example Usage
+
+        ### Create a new PostgreSQL database connection pool
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        pool_01 = digitalocean.DatabaseConnectionPool("pool-01",
+            cluster_id=postgres_example.id,
+            mode="transaction",
+            size=20,
+            db_name="defaultdb",
+            user="doadmin")
+        ```
 
 
         :param str resource_name: The name of the resource.

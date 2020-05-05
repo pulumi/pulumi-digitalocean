@@ -59,6 +59,17 @@ class AwaitableGetAccountResult(GetAccountResult):
 def get_account(opts=None):
     """
     Get information on your DigitalOcean account.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_account()
+    ```
     """
     __args__ = dict()
 

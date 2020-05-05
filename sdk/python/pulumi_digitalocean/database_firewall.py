@@ -31,6 +31,57 @@ class DatabaseFirewall(pulumi.CustomResource):
         connections to your database to trusted sources. You may limit connections to
         specific Droplets, Kubernetes clusters, or IP addresses.
 
+        ## Example Usage
+
+        ### Create a new database firewall allowing multiple IP addresses
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        example_fw = digitalocean.DatabaseFirewall("example-fw",
+            cluster_id=postgres_example.id,
+            rule=[
+                {
+                    "type": "ip_addr",
+                    "value": "192.168.1.1",
+                },
+                {
+                    "type": "ip_addr",
+                    "value": "192.0.2.0",
+                },
+            ])
+        ```
+
+        ### Create a new database firewall allowing a Droplet
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="centos-7-x64",
+            region="nyc3")
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        example_fw = digitalocean.DatabaseFirewall("example-fw",
+            cluster_id=postgres_example.id,
+            rule=[{
+                "type": "droplet",
+                "value": web.id,
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.
