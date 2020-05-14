@@ -24,6 +24,7 @@ export module Regions {
     export const TOR1: Region = "tor1"
     export const SFO1: Region = "sfo1"
     export const SFO2: Region = "sfo2"
+    export const SFO3: Region = "sfo3"
     export const BLR1: Region = "blr1"
 }
 
@@ -42,5 +43,6 @@ export type Region =
     "tor1" |
     "sfo1" |
     "sfo2" |
+    "sfo3" |
     "blr1" ;
 
