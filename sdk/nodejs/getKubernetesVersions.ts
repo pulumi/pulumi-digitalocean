@@ -8,25 +8,25 @@ import * as utilities from "./utilities";
 
 /**
  * Provides access to the available DigitalOcean Kubernetes Service versions.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Output a list of all available versions
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const example = digitalocean.getKubernetesVersions({});
  * export const k8sVersions = example.then(example => example.validVersions);
  * ```
- * 
+ *
  * ### Create a Kubernetes cluster using the most recent version available
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const example = digitalocean.getKubernetesVersions({});
  * const example-cluster = new digitalocean.KubernetesCluster("example-cluster", {
  *     region: "lon1",
@@ -38,13 +38,13 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ### Pin a Kubernetes cluster to a specific minor version
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const example = digitalocean.getKubernetesVersions({
  *     versionPrefix: "1.16.",
  * });
@@ -58,8 +58,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/kubernetes_versions.html.md.
  */
 export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionsResult> {
     args = args || {};

@@ -10,15 +10,15 @@ import {DatabaseSlug, Region} from "./index";
 
 /**
  * Provides a DigitalOcean database cluster resource.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a new PostgreSQL database cluster
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const postgresExample = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     nodeCount: 1,
@@ -27,13 +27,13 @@ import {DatabaseSlug, Region} from "./index";
  *     version: "11",
  * });
  * ```
- * 
+ *
  * ### Create a new MySQL database cluster
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const mysqlExample = new digitalocean.DatabaseCluster("mysql-example", {
  *     engine: "mysql",
  *     nodeCount: 1,
@@ -42,13 +42,13 @@ import {DatabaseSlug, Region} from "./index";
  *     version: "8",
  * });
  * ```
- * 
+ *
  * ### Create a new Redis database cluster
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const redisExample = new digitalocean.DatabaseCluster("redis-example", {
  *     engine: "redis",
  *     nodeCount: 1,
@@ -57,8 +57,6 @@ import {DatabaseSlug, Region} from "./index";
  *     version: "5",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_cluster.html.markdown.
  */
 export class DatabaseCluster extends pulumi.CustomResource {
     /**

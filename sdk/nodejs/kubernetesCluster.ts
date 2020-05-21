@@ -10,15 +10,15 @@ import {Region} from "./index";
 
 /**
  * Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Basic Example
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const foo = new digitalocean.KubernetesCluster("foo", {
  *     nodePool: {
  *         name: "worker-pool",
@@ -30,13 +30,13 @@ import {Region} from "./index";
  *     version: "1.15.5-do.1",
  * });
  * ```
- * 
+ *
  * ### Autoscaling Example
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const foo = new digitalocean.KubernetesCluster("foo", {
  *     nodePool: {
  *         autoScale: true,
@@ -49,8 +49,6 @@ import {Region} from "./index";
  *     version: "1.15.5-do.1",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_cluster.html.markdown.
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**

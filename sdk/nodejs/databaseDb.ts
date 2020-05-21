@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a new PostgreSQL database
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
@@ -26,8 +26,6 @@ import * as utilities from "./utilities";
  * });
  * const database-example = new digitalocean.DatabaseDb("database-example", {clusterId: postgres-example.id});
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_db.html.markdown.
  */
 export class DatabaseDb extends pulumi.CustomResource {
     /**

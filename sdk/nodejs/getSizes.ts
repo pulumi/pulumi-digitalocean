@@ -10,15 +10,15 @@ import * as utilities from "./utilities";
  * Retrieves information about the Droplet sizes that DigitalOcean supports, with
  * the ability to filter and sort the results. If no filters are specified, all sizes
  * will be returned.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const main = digitalocean.getSizes({
  *     filter: [{
  *         key: "slug",
@@ -31,8 +31,6 @@ import * as utilities from "./utilities";
  *     size: main.then(main => main.sizes)[0].then(sizes => sizes.slug),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/sizes.html.md.
  */
 export function getSizes(args?: GetSizesArgs, opts?: pulumi.InvokeOptions): Promise<GetSizesResult> {
     args = args || {};

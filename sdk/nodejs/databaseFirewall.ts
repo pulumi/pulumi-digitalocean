@@ -10,15 +10,15 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean database firewall resource allowing you to restrict
  * connections to your database to trusted sources. You may limit connections to
  * specific Droplets, Kubernetes clusters, or IP addresses.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a new database firewall allowing multiple IP addresses
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
@@ -40,13 +40,13 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * 
+ *
  * ### Create a new database firewall allowing a Droplet
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const web = new digitalocean.Droplet("web", {
  *     size: "s-1vcpu-1gb",
  *     image: "centos-7-x64",
@@ -67,8 +67,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/database_firewall.html.markdown.
  */
 export class DatabaseFirewall extends pulumi.CustomResource {
     /**

@@ -9,22 +9,20 @@ import * as utilities from "./utilities";
 /**
  * Get information on a single DigitalOcean region. This is useful to find out 
  * what Droplet sizes and features are supported within a region.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const sfo2 = digitalocean.getRegion({
  *     slug: "sfo2",
  * });
  * export const regionName = sfo2.then(sfo2 => sfo2.name);
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/region.html.md.
  */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
     if (!opts) {

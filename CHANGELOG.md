@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Add const for new SFO3 region.
+* Upgrade to pulumi-terraform-bridge v2.3.3
 
 ---
 

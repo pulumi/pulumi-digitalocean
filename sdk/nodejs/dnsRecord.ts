@@ -10,15 +10,15 @@ import {RecordType} from "./index";
 
 /**
  * Provides a DigitalOcean DNS record resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const default = new digitalocean.Domain("default", {name: "example.com"});
  * // Add an A record to the domain for www.example.com.
  * const www = new digitalocean.DnsRecord("www", {
@@ -36,8 +36,6 @@ import {RecordType} from "./index";
  * export const wwwFqdn = www.fqdn;
  * export const mxFqdn = mx.fqdn;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/record.html.markdown.
  */
 export class DnsRecord extends pulumi.CustomResource {
     /**

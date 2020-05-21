@@ -12,15 +12,15 @@ import {DropletSlug, Region} from "./index";
  * Provides a DigitalOcean Droplet resource. This can be used to create,
  * modify, and delete Droplets. Droplets also support
  * [provisioning](https://www.terraform.io/docs/provisioners/index.html).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * // Create a new Web Droplet in the nyc2 region
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
@@ -28,8 +28,6 @@ import {DropletSlug, Region} from "./index";
  *     size: "s-1vcpu-1gb",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet.html.markdown.
  */
 export class Droplet extends pulumi.CustomResource {
     /**

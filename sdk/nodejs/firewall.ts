@@ -9,15 +9,15 @@ import * as utilities from "./utilities";
 /**
  * Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
  * modify, and delete Firewalls.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const webDroplet = new digitalocean.Droplet("webDroplet", {
  *     size: "s-1vcpu-1gb",
  *     image: "ubuntu-18-04-x64",
@@ -85,8 +85,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/firewall.html.markdown.
  */
 export class Firewall extends pulumi.CustomResource {
     /**
