@@ -31,6 +31,12 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-digitalocean/sdk/go/...
 
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+    $ dotnet add package Pulumi.Digitalocean
+
 ## Configuration
 
 The following configuration points are available:
@@ -53,12 +59,4 @@ been added to make development easier and to help avoid common mistakes, and to 
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs](
-https://pulumi.io/reference/pkg/nodejs/pulumi/digitalocean/).
-
-## Updating this provider
-
-The DigitalOcean Resource Provider for Pulumi is based on the Terraform Provider for
-DigitalOcean. Instructions for keeping it up to date are available [here][updating].
-
-[updating]: https://github.com/pulumi/pulumi-terraform/wiki/Updating-Pulumi-Providers-Backed-By-Terraform-Providers
+For further information, please visit [the DigitalOcean provider docs](https://www.pulumi.com/docs/intro/cloud-providers/digitalocean) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/digitalocean).
