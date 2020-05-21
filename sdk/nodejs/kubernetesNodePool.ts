@@ -10,15 +10,15 @@ import {DropletSlug} from "./index";
 
 /**
  * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Basic Example
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const foo = new digitalocean.KubernetesCluster("foo", {
  *     region: "nyc1",
  *     version: "1.15.5-do.1",
@@ -39,13 +39,13 @@ import {DropletSlug} from "./index";
  *     },
  * });
  * ```
- * 
+ *
  * ### Autoscaling Example
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const autoscale-pool-01 = new digitalocean.KubernetesNodePool("autoscale-pool-01", {
  *     clusterId: digitalocean_kubernetes_cluster.foo.id,
  *     size: "s-1vcpu-2gb",
@@ -54,8 +54,6 @@ import {DropletSlug} from "./index";
  *     maxNodes: 5,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/kubernetes_node_pool.html.markdown.
  */
 export class KubernetesNodePool extends pulumi.CustomResource {
     /**

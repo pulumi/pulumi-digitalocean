@@ -9,18 +9,18 @@ import * as utilities from "./utilities";
 /**
  * Retrieve information about all supported DigitalOcean regions, with the ability to
  * filter and sort the results. If no filters are specified, all regions will be returned.
- * 
+ *
  * Note: You can use the [`digitalocean..getRegion`](https://www.terraform.io/docs/providers/do/d/region.html) data source
  * to obtain metadata about a single region if you already know the `slug` to retrieve.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const available = pulumi.output(digitalocean.getRegions({
  *     filters: [{
  *         key: "available",
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     }],
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/regions.html.md.
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};

@@ -10,15 +10,15 @@ import {Region} from "./index";
 
 /**
  * Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const web = new digitalocean.Droplet("web", {
  *     size: "s-1vcpu-1gb",
  *     image: "centos-7-x64",
@@ -26,8 +26,6 @@ import {Region} from "./index";
  * });
  * const web-snapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/droplet_snapshot.html.markdown.
  */
 export class DropletSnapshot extends pulumi.CustomResource {
     /**

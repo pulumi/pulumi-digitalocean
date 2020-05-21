@@ -10,15 +10,15 @@ import {FilesystemType, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const foobarVolume = new digitalocean.Volume("foobarVolume", {
  *     region: "nyc1",
  *     size: 100,
@@ -35,8 +35,6 @@ import {FilesystemType, Region} from "./index";
  *     volumeId: foobarVolume.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/volume.html.markdown.
  */
 export class Volume extends pulumi.CustomResource {
     /**
@@ -188,7 +186,6 @@ export interface VolumeState {
     readonly filesystemLabel?: pulumi.Input<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
-     * 
      * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     readonly filesystemType?: pulumi.Input<string>;
@@ -236,7 +233,6 @@ export interface VolumeArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
-     * 
      * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     readonly filesystemType?: pulumi.Input<string>;

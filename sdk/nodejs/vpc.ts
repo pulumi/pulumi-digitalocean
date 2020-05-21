@@ -8,30 +8,30 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a [DigitalOcean VPC](https://developers.digitalocean.com/documentation/v2/#vpcs) resource.
- * 
+ *
  * VPCs are virtual networks containing resources that can communicate with each
  * other in full isolation, using private IP addresses.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const example = new digitalocean.Vpc("example", {
  *     ipRange: "10.10.10.0/24",
  *     region: "nyc3",
  * });
  * ```
- * 
+ *
  * ### Resource Assignment
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const exampleVpc = new digitalocean.Vpc("exampleVpc", {region: "nyc3"});
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
  *     size: "s-1vcpu-1gb",
@@ -40,8 +40,6 @@ import * as utilities from "./utilities";
  *     vpcUuid: exampleVpc.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/vpc.html.markdown.
  */
 export class Vpc extends pulumi.CustomResource {
     /**

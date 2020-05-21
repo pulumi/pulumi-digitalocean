@@ -9,19 +9,19 @@ import * as utilities from "./utilities";
 /**
  * The Spaces object data source allows access to the metadata and
  * _optionally_ (see below) content of an object stored inside a Spaces bucket.
- * 
+ *
  * > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
  * `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
  * downloading large amount of data which would be thrown away in favor of metadata.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const bootstrapScript = digitalocean.getSpacesBucketObject({
  *     bucket: "ourcorp-deploy-config",
  *     region: "nyc3",
@@ -34,8 +34,6 @@ import * as utilities from "./utilities";
  *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/spaces_bucket_object.html.md.
  */
 export function getSpacesBucketObject(args: GetSpacesBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectResult> {
     if (!opts) {

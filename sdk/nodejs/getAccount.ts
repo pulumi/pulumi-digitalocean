@@ -8,19 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Get information on your DigitalOcean account.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const example = pulumi.output(digitalocean.getAccount({ async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/account.html.md.
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     if (!opts) {

@@ -9,18 +9,18 @@ import * as utilities from "./utilities";
 /**
  * Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
  * If no filters are specified, all Spaces buckets will be returned.
- * 
+ *
  * Note: You can use the [`digitalocean..SpacesBucket`](https://www.terraform.io/docs/providers/do/d/spaces_bucket.html) data source to
  * obtain metadata about a single bucket if you already know its `name` and `region`.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const nyc3 = pulumi.output(digitalocean.getSpacesBuckets({
  *     filters: [{
  *         key: "region",
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     }],
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/spaces_buckets.html.md.
  */
 export function getSpacesBuckets(args?: GetSpacesBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketsResult> {
     args = args || {};

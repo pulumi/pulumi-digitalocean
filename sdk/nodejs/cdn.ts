@@ -6,15 +6,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Basic Example
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * // Create a new Spaces Bucket
  * const mybucket = new digitalocean.SpacesBucket("mybucket", {
  *     region: "sfo2",
@@ -24,13 +24,13 @@ import * as utilities from "./utilities";
  * const mycdn = new digitalocean.Cdn("mycdn", {origin: mybucket.bucketDomainName});
  * export const fqdn = mycdn.endpoint;
  * ```
- * 
+ *
  * ### Custom Sub-Domain Example
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * // Create a new Spaces Bucket
  * const mybucket = new digitalocean.SpacesBucket("mybucket", {
  *     region: "sfo2",
@@ -48,8 +48,6 @@ import * as utilities from "./utilities";
  *     certificateId: cert.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/cdn.html.markdown.
  */
 export class Cdn extends pulumi.CustomResource {
     /**

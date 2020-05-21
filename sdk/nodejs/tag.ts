@@ -11,15 +11,15 @@ import * as utilities from "./utilities";
  * Droplet resource in order to better organize or facilitate the lookups and
  * actions on it. Tags created with this resource can be referenced in your Droplet
  * configuration via their ID or name.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * // Create a new tag
  * const foobar = new digitalocean.Tag("foobar", {});
  * // Create a new Droplet in nyc3 with the foobar tag
@@ -30,8 +30,6 @@ import * as utilities from "./utilities";
  *     tags: [foobar.id],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/r/tag.html.markdown.
  */
 export class Tag extends pulumi.CustomResource {
     /**

@@ -10,23 +10,21 @@ import * as utilities from "./utilities";
  * Droplet snapshots are saved instances of a Droplet. Use this data
  * source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
  * resources.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * 
+ *
  * const webSnapshot = pulumi.output(digitalocean.getDropletSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-digitalocean/blob/master/website/docs/d/droplet_snapshot.html.md.
  */
 export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
     args = args || {};
