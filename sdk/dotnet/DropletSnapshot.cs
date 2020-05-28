@@ -11,6 +11,33 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "centos-7-x64",
+    ///             Region = "nyc3",
+    ///         });
+    ///         var web_snapshot = new DigitalOcean.DropletSnapshot("web-snapshot", new DigitalOcean.DropletSnapshotArgs
+    ///         {
+    ///             DropletId = web.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DropletSnapshot : Pulumi.CustomResource
     {

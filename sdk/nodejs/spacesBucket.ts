@@ -27,7 +27,7 @@ import {Region} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const static-assets = new digitalocean.SpacesBucket("static-assets", {});
+ * const staticAssets = new digitalocean.SpacesBucket("static-assets", {});
  * // ...
  * ```
  *

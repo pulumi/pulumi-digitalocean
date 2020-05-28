@@ -11,6 +11,31 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Autoscaling Example
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool("autoscale-pool-01", new DigitalOcean.KubernetesNodePoolArgs
+    ///         {
+    ///             ClusterId = digitalocean_kubernetes_cluster.Foo.Id,
+    ///             Size = "s-1vcpu-2gb",
+    ///             AutoScale = true,
+    ///             MinNodes = 0,
+    ///             MaxNodes = 5,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class KubernetesNodePool : Pulumi.CustomResource
     {

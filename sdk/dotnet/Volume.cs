@@ -11,6 +11,41 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobarVolume = new DigitalOcean.Volume("foobarVolume", new DigitalOcean.VolumeArgs
+    ///         {
+    ///             Region = "nyc1",
+    ///             Size = 100,
+    ///             InitialFilesystemType = "ext4",
+    ///             Description = "an example volume",
+    ///         });
+    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "nyc1",
+    ///         });
+    ///         var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new DigitalOcean.VolumeAttachmentArgs
+    ///         {
+    ///             DropletId = foobarDroplet.Id,
+    ///             VolumeId = foobarVolume.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Volume : Pulumi.CustomResource
     {

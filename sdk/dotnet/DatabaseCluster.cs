@@ -11,6 +11,77 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean database cluster resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a new PostgreSQL database cluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
+    ///         {
+    ///             Engine = "pg",
+    ///             NodeCount = 1,
+    ///             Region = "nyc1",
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Version = "11",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Create a new MySQL database cluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mysql_example = new DigitalOcean.DatabaseCluster("mysql-example", new DigitalOcean.DatabaseClusterArgs
+    ///         {
+    ///             Engine = "mysql",
+    ///             NodeCount = 1,
+    ///             Region = "nyc1",
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Version = "8",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Create a new Redis database cluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var redis_example = new DigitalOcean.DatabaseCluster("redis-example", new DigitalOcean.DatabaseClusterArgs
+    ///         {
+    ///             Engine = "redis",
+    ///             NodeCount = 1,
+    ///             Region = "nyc1",
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Version = "5",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatabaseCluster : Pulumi.CustomResource
     {

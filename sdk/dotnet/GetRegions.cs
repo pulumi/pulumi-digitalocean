@@ -19,6 +19,86 @@ namespace Pulumi.DigitalOcean
         /// to obtain metadata about a single region if you already know the `slug` to retrieve.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter regions.
+        /// 
+        /// For example to find all available regions:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var available = Output.Create(DigitalOcean.GetRegions.InvokeAsync(new DigitalOcean.GetRegionsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
+        ///                 {
+        ///                     Key = "available",
+        ///                     Values = 
+        ///                     {
+        ///                         "true",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var available = Output.Create(DigitalOcean.GetRegions.InvokeAsync(new DigitalOcean.GetRegionsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
+        ///                 {
+        ///                     Key = "available",
+        ///                     Values = 
+        ///                     {
+        ///                         "true",
+        ///                     },
+        ///                 },
+        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
+        ///                 {
+        ///                     Key = "features",
+        ///                     Values = 
+        ///                     {
+        ///                         "private_networking",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetRegionsSortArgs
+        ///                 {
+        ///                     Direction = "desc",
+        ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)

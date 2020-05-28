@@ -13,6 +13,30 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Droplet resource. This can be used to create,
     /// modify, and delete Droplets. Droplets also support
     /// [provisioning](https://www.terraform.io/docs/provisioners/index.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Web Droplet in the nyc2 region
+    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "nyc2",
+    ///             Size = "s-1vcpu-1gb",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Droplet : Pulumi.CustomResource
     {

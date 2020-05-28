@@ -24,7 +24,7 @@ import {Region} from "./index";
  *     image: "centos-7-x64",
  *     region: "nyc3",
  * });
- * const web-snapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
+ * const webSnapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
  * ```
  */
 export class DropletSnapshot extends pulumi.CustomResource {

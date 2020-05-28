@@ -14,6 +14,54 @@ namespace Pulumi.DigitalOcean
     /// 
     /// VPCs are virtual networks containing resources that can communicate with each
     /// other in full isolation, using private IP addresses.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new DigitalOcean.Vpc("example", new DigitalOcean.VpcArgs
+    ///         {
+    ///             IpRange = "10.10.10.0/24",
+    ///             Region = "nyc3",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Resource Assignment
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleVpc = new DigitalOcean.Vpc("exampleVpc", new DigitalOcean.VpcArgs
+    ///         {
+    ///             Region = "nyc3",
+    ///         });
+    ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "nyc3",
+    ///             VpcUuid = exampleVpc.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Vpc : Pulumi.CustomResource
     {

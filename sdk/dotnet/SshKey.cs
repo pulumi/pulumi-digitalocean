@@ -9,12 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    /// <summary>
-    /// Provides a DigitalOcean SSH key resource to allow you to manage SSH
-    /// keys for Droplet access. Keys created with this resource
-    /// can be referenced in your Droplet configuration via their ID or
-    /// fingerprint.
-    /// </summary>
     public partial class SshKey : Pulumi.CustomResource
     {
         /// <summary>

@@ -19,6 +19,77 @@ namespace Pulumi.DigitalOcean
         /// obtain metadata about a single bucket if you already know its `name` and `region`.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter buckets.
+        /// 
+        /// Get all buckets in a region:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var nyc3 = Output.Create(DigitalOcean.GetSpacesBuckets.InvokeAsync(new DigitalOcean.GetSpacesBucketsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSpacesBucketsFilterArgs
+        ///                 {
+        ///                     Key = "region",
+        ///                     Values = 
+        ///                     {
+        ///                         "nyc3",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// You can sort the results as well:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var nyc3 = Output.Create(DigitalOcean.GetSpacesBuckets.InvokeAsync(new DigitalOcean.GetSpacesBucketsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSpacesBucketsFilterArgs
+        ///                 {
+        ///                     Key = "region",
+        ///                     Values = 
+        ///                     {
+        ///                         "nyc3",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSpacesBucketsSortArgs
+        ///                 {
+        ///                     Direction = "desc",
+        ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpacesBucketsResult> InvokeAsync(GetSpacesBucketsArgs? args = null, InvokeOptions? options = null)

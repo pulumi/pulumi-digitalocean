@@ -11,6 +11,48 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean DNS record resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new DigitalOcean.Domain("default", new DigitalOcean.DomainArgs
+    ///         {
+    ///             Name = "example.com",
+    ///         });
+    ///         // Add an A record to the domain for www.example.com.
+    ///         var www = new DigitalOcean.DnsRecord("www", new DigitalOcean.DnsRecordArgs
+    ///         {
+    ///             Domain = @default.Name,
+    ///             Type = "A",
+    ///             Value = "192.168.0.11",
+    ///         });
+    ///         // Add a MX record for the example.com domain itself.
+    ///         var mx = new DigitalOcean.DnsRecord("mx", new DigitalOcean.DnsRecordArgs
+    ///         {
+    ///             Domain = @default.Name,
+    ///             Type = "MX",
+    ///             Priority = 10,
+    ///             Value = "mail.example.com.",
+    ///         });
+    ///         this.WwwFqdn = www.Fqdn;
+    ///         this.MxFqdn = mx.Fqdn;
+    ///     }
+    /// 
+    ///     [Output("wwwFqdn")]
+    ///     public Output&lt;string&gt; WwwFqdn { get; set; }
+    ///     [Output("mxFqdn")]
+    ///     public Output&lt;string&gt; MxFqdn { get; set; }
+    /// }
+    /// ```
     /// </summary>
     public partial class DnsRecord : Pulumi.CustomResource
     {

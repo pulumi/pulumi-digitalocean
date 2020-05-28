@@ -13,6 +13,42 @@ namespace Pulumi.DigitalOcean
     /// Manages attaching a Volume to a Droplet.
     /// 
     /// &gt; **NOTE:** Volumes can be attached either directly on the `digitalocean..Droplet` resource, or using the `digitalocean..VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobarVolume = new DigitalOcean.Volume("foobarVolume", new DigitalOcean.VolumeArgs
+    ///         {
+    ///             Region = "nyc1",
+    ///             Size = 100,
+    ///             InitialFilesystemType = "ext4",
+    ///             Description = "an example volume",
+    ///         });
+    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "nyc1",
+    ///         });
+    ///         var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new DigitalOcean.VolumeAttachmentArgs
+    ///         {
+    ///             DropletId = foobarDroplet.Id,
+    ///             VolumeId = foobarVolume.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VolumeAttachment : Pulumi.CustomResource
     {

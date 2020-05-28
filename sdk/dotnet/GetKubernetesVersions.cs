@@ -15,6 +15,29 @@ namespace Pulumi.DigitalOcean
         /// Provides access to the available DigitalOcean Kubernetes Service versions.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// 
+        /// {{% example %}}
+        /// ### Output a list of all available versions
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync());
+        ///         this.K8s_versions = example.Apply(example =&gt; example.ValidVersions);
+        ///     }
+        /// 
+        ///     [Output("k8s-versions")]
+        ///     public Output&lt;string&gt; K8s_versions { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesVersionsResult> InvokeAsync(GetKubernetesVersionsArgs? args = null, InvokeOptions? options = null)

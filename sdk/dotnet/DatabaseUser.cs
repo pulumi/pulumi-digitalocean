@@ -13,6 +13,35 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
     /// 
     /// &gt; **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a new PostgreSQL database user
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
+    ///         {
+    ///             Engine = "pg",
+    ///             Version = "11",
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Region = "nyc1",
+    ///             NodeCount = 1,
+    ///         });
+    ///         var user_example = new DigitalOcean.DatabaseUser("user-example", new DigitalOcean.DatabaseUserArgs
+    ///         {
+    ///             ClusterId = postgres_example.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatabaseUser : Pulumi.CustomResource
     {

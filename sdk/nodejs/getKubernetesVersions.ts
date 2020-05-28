@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getKubernetesVersions({});
- * const example-cluster = new digitalocean.KubernetesCluster("example-cluster", {
+ * const exampleCluster = new digitalocean.KubernetesCluster("example-cluster", {
  *     region: "lon1",
  *     version: example.then(example => example.latestVersion),
  *     node_pool: {
@@ -48,7 +48,7 @@ import * as utilities from "./utilities";
  * const example = digitalocean.getKubernetesVersions({
  *     versionPrefix: "1.16.",
  * });
- * const example-cluster = new digitalocean.KubernetesCluster("example-cluster", {
+ * const exampleCluster = new digitalocean.KubernetesCluster("example-cluster", {
  *     region: "lon1",
  *     version: example.then(example => example.latestVersion),
  *     node_pool: {

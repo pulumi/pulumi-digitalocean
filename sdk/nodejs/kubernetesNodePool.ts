@@ -46,7 +46,7 @@ import {DropletSlug} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const autoscale-pool-01 = new digitalocean.KubernetesNodePool("autoscale-pool-01", {
+ * const autoscalePool01 = new digitalocean.KubernetesNodePool("autoscale-pool-01", {
  *     clusterId: digitalocean_kubernetes_cluster.foo.id,
  *     size: "s-1vcpu-2gb",
  *     autoScale: true,
