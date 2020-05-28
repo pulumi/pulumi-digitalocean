@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.4.2 (2020-05-28)
 * Upgrade to Pulumi v2.3.0
 * Add const for new SFO3 region.
 * Upgrade to pulumi-terraform-bridge v2.4.0
-
----
 
 ## 2.4.1 (2020-05-11)
 * Upgrade to pulumi-terraform-bridge v2.3.1
