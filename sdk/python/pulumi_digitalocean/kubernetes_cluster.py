@@ -121,7 +121,7 @@ class KubernetesCluster(pulumi.CustomResource):
         foo = digitalocean.KubernetesCluster("foo",
             node_pool={
                 "name": "worker-pool",
-                "nodeCount": 3,
+                "node_count": 3,
                 "size": "s-2vcpu-2gb",
             },
             region="nyc1",
@@ -136,9 +136,9 @@ class KubernetesCluster(pulumi.CustomResource):
 
         foo = digitalocean.KubernetesCluster("foo",
             node_pool={
-                "autoScale": True,
-                "maxNodes": 5,
-                "minNodes": 1,
+                "auto_scale": True,
+                "max_nodes": 5,
+                "min_nodes": 1,
                 "name": "autoscale-worker-pool",
                 "size": "s-2vcpu-2gb",
             },

@@ -19,15 +19,15 @@ import {DatabaseSlug, Region} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
+ * const postgresExample = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
  *     size: "db-s-1vcpu-1gb",
  *     region: "nyc1",
  *     nodeCount: 1,
  * });
- * const read-replica = new digitalocean.DatabaseReplica("read-replica", {
- *     clusterId: postgres-example.id,
+ * const readReplica = new digitalocean.DatabaseReplica("read-replica", {
+ *     clusterId: postgres_example.id,
  *     size: "db-s-1vcpu-1gb",
  *     region: "nyc1",
  * });

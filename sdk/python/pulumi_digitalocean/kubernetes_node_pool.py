@@ -85,7 +85,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             node_pool={
                 "name": "front-end-pool",
                 "size": "s-2vcpu-2gb",
-                "nodeCount": 3,
+                "node_count": 3,
             })
         bar = digitalocean.KubernetesNodePool("bar",
             cluster_id=foo.id,

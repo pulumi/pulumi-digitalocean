@@ -13,6 +13,40 @@ namespace Pulumi.DigitalOcean
     /// Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
     /// makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
     /// Droplet.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new DigitalOcean.FloatingIpArgs
+    ///         {
+    ///             Region = "sgp1",
+    ///         });
+    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "sgp1",
+    ///             Ipv6 = true,
+    ///             PrivateNetworking = true,
+    ///         });
+    ///         var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobarFloatingIpAssignment", new DigitalOcean.FloatingIpAssignmentArgs
+    ///         {
+    ///             IpAddress = foobarFloatingIp.IpAddress,
+    ///             DropletId = foobarDroplet.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class FloatingIpAssignment : Pulumi.CustomResource
     {

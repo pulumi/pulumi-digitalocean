@@ -20,6 +20,39 @@ namespace Pulumi.DigitalOcean
         /// downloading large amount of data which would be thrown away in favor of metadata.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example retrieves a text object (which must have a `Content-Type`
+        /// value starting with `text/`) and uses it as the `user_data` for a Droplet:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var bootstrapScript = Output.Create(DigitalOcean.GetSpacesBucketObject.InvokeAsync(new DigitalOcean.GetSpacesBucketObjectArgs
+        ///         {
+        ///             Bucket = "ourcorp-deploy-config",
+        ///             Region = "nyc3",
+        ///             Key = "droplet-bootstrap-script.sh",
+        ///         }));
+        ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
+        ///         {
+        ///             Image = "ubuntu-18-04-x64",
+        ///             Region = "nyc2",
+        ///             Size = "s-1vcpu-1gb",
+        ///             UserData = bootstrapScript.Apply(bootstrapScript =&gt; bootstrapScript.Body),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpacesBucketObjectResult> InvokeAsync(GetSpacesBucketObjectArgs args, InvokeOptions? options = null)

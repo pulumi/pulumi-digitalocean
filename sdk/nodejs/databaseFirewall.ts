@@ -19,15 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
+ * const postgresExample = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
  *     size: "db-s-1vcpu-1gb",
  *     region: "nyc1",
  *     nodeCount: 1,
  * });
- * const example-fw = new digitalocean.DatabaseFirewall("example-fw", {
- *     clusterId: postgres-example.id,
+ * const exampleFw = new digitalocean.DatabaseFirewall("example-fw", {
+ *     clusterId: postgres_example.id,
  *     rule: [
  *         {
  *             type: "ipAddr",
@@ -52,15 +52,15 @@ import * as utilities from "./utilities";
  *     image: "centos-7-x64",
  *     region: "nyc3",
  * });
- * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
+ * const postgresExample = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
  *     size: "db-s-1vcpu-1gb",
  *     region: "nyc1",
  *     nodeCount: 1,
  * });
- * const example-fw = new digitalocean.DatabaseFirewall("example-fw", {
- *     clusterId: postgres-example.id,
+ * const exampleFw = new digitalocean.DatabaseFirewall("example-fw", {
+ *     clusterId: postgres_example.id,
  *     rule: [{
  *         type: "droplet",
  *         value: web.id,

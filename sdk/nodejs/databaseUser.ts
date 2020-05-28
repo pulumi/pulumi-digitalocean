@@ -19,14 +19,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const postgres-example = new digitalocean.DatabaseCluster("postgres-example", {
+ * const postgresExample = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
  *     size: "db-s-1vcpu-1gb",
  *     region: "nyc1",
  *     nodeCount: 1,
  * });
- * const user-example = new digitalocean.DatabaseUser("user-example", {clusterId: postgres-example.id});
+ * const userExample = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
  * ```
  */
 export class DatabaseUser extends pulumi.CustomResource {

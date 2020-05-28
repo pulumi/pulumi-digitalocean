@@ -15,6 +15,30 @@ namespace Pulumi.DigitalOcean
         /// Provides information on a DigitalOcean database cluster resource.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs
+        ///         {
+        ///             Name = "example-cluster",
+        ///         }));
+        ///         this.DatabaseOutput = example.Apply(example =&gt; example.Uri);
+        ///     }
+        /// 
+        ///     [Output("databaseOutput")]
+        ///     public Output&lt;string&gt; DatabaseOutput { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseClusterResult> InvokeAsync(GetDatabaseClusterArgs args, InvokeOptions? options = null)

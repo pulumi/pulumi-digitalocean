@@ -11,6 +11,62 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Example
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new DigitalOcean.KubernetesCluster("foo", new DigitalOcean.KubernetesClusterArgs
+    ///         {
+    ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+    ///             {
+    ///                 Name = "worker-pool",
+    ///                 NodeCount = 3,
+    ///                 Size = "s-2vcpu-2gb",
+    ///             },
+    ///             Region = "nyc1",
+    ///             Version = "1.15.5-do.1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Autoscaling Example
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new DigitalOcean.KubernetesCluster("foo", new DigitalOcean.KubernetesClusterArgs
+    ///         {
+    ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+    ///             {
+    ///                 AutoScale = true,
+    ///                 MaxNodes = 5,
+    ///                 MinNodes = 1,
+    ///                 Name = "autoscale-worker-pool",
+    ///                 Size = "s-2vcpu-2gb",
+    ///             },
+    ///             Region = "nyc1",
+    ///             Version = "1.15.5-do.1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class KubernetesCluster : Pulumi.CustomResource
     {

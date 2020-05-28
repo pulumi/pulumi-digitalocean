@@ -13,6 +13,36 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
     /// 
     /// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean..FloatingIp` resource by setting a `droplet_id` or using the `digitalocean..FloatingIpAssignment` resource, but the two cannot be used together.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "sgp1",
+    ///             Ipv6 = true,
+    ///             PrivateNetworking = true,
+    ///         });
+    ///         var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new DigitalOcean.FloatingIpArgs
+    ///         {
+    ///             DropletId = foobarDroplet.Id,
+    ///             Region = foobarDroplet.Region,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource
     {

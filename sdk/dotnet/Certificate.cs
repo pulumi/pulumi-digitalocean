@@ -9,14 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    /// <summary>
-    /// Provides a DigitalOcean Certificate resource that allows you to manage
-    /// certificates for configuring TLS termination in Load Balancers.
-    /// Certificates created with this resource can be referenced in your
-    /// Load Balancer configuration via their ID. The certificate can either
-    /// be a custom one provided by you or automatically generated one with
-    /// Let's Encrypt.
-    /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>

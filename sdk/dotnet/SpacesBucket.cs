@@ -24,8 +24,101 @@ namespace Pulumi.DigitalOcean
     /// access ID and secret you generate via the DigitalOcean control panel. For
     /// example:
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var static_assets = new DigitalOcean.SpacesBucket("static-assets", new DigitalOcean.SpacesBucketArgs
+    ///         {
+    ///         });
+    ///         // ...
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a New Bucket
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobar = new DigitalOcean.SpacesBucket("foobar", new DigitalOcean.SpacesBucketArgs
+    ///         {
+    ///             Region = "nyc3",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Create a New Bucket With CORS Rules
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobar = new DigitalOcean.SpacesBucket("foobar", new DigitalOcean.SpacesBucketArgs
+    ///         {
+    ///             CorsRules = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
+    ///                 {
+    ///                     AllowedHeaders = 
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     AllowedMethods = 
+    ///                     {
+    ///                         "GET",
+    ///                     },
+    ///                     AllowedOrigins = 
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     MaxAgeSeconds = 3000,
+    ///                 },
+    ///                 new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
+    ///                 {
+    ///                     AllowedHeaders = 
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     AllowedMethods = 
+    ///                     {
+    ///                         "PUT",
+    ///                         "POST",
+    ///                         "DELETE",
+    ///                     },
+    ///                     AllowedOrigins = 
+    ///                     {
+    ///                         "https://www.example.com",
+    ///                     },
+    ///                     MaxAgeSeconds = 3000,
+    ///                 },
+    ///             },
+    ///             Region = "nyc3",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SpacesBucket : Pulumi.CustomResource
     {

@@ -11,6 +11,74 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Example
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Spaces Bucket
+    ///         var mybucket = new DigitalOcean.SpacesBucket("mybucket", new DigitalOcean.SpacesBucketArgs
+    ///         {
+    ///             Region = "sfo2",
+    ///             Acl = "public-read",
+    ///         });
+    ///         // Add a CDN endpoint to the Spaces Bucket
+    ///         var mycdn = new DigitalOcean.Cdn("mycdn", new DigitalOcean.CdnArgs
+    ///         {
+    ///             Origin = mybucket.BucketDomainName,
+    ///         });
+    ///         this.Fqdn = mycdn.Endpoint;
+    ///     }
+    /// 
+    ///     [Output("fqdn")]
+    ///     public Output&lt;string&gt; Fqdn { get; set; }
+    /// }
+    /// ```
+    /// 
+    /// ### Custom Sub-Domain Example
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Spaces Bucket
+    ///         var mybucket = new DigitalOcean.SpacesBucket("mybucket", new DigitalOcean.SpacesBucketArgs
+    ///         {
+    ///             Region = "sfo2",
+    ///             Acl = "public-read",
+    ///         });
+    ///         // Create a DigitalOcean managed Let's Encrypt Certificate
+    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
+    ///         {
+    ///             Type = "lets_encrypt",
+    ///             Domains = 
+    ///             {
+    ///                 "static.example.com",
+    ///             },
+    ///         });
+    ///         // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
+    ///         var mycdn = new DigitalOcean.Cdn("mycdn", new DigitalOcean.CdnArgs
+    ///         {
+    ///             Origin = mybucket.BucketDomainName,
+    ///             CustomDomain = "static.example.com",
+    ///             CertificateId = cert.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Cdn : Pulumi.CustomResource
     {

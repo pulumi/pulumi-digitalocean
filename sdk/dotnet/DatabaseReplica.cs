@@ -11,6 +11,37 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean database replica resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a new PostgreSQL database replica
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
+    ///         {
+    ///             Engine = "pg",
+    ///             Version = "11",
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Region = "nyc1",
+    ///             NodeCount = 1,
+    ///         });
+    ///         var read_replica = new DigitalOcean.DatabaseReplica("read-replica", new DigitalOcean.DatabaseReplicaArgs
+    ///         {
+    ///             ClusterId = postgres_example.Id,
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Region = "nyc1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatabaseReplica : Pulumi.CustomResource
     {

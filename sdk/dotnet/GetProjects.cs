@@ -21,6 +21,86 @@ namespace Pulumi.DigitalOcean
         /// `name` of the project.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter projects.
+        /// 
+        /// For example to find all staging environment projects:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var staging = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "environment",
+        ///                     Values = 
+        ///                     {
+        ///                         "Staging",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var non_default_production = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "environment",
+        ///                     Values = 
+        ///                     {
+        ///                         "Production",
+        ///                     },
+        ///                 },
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "is_default",
+        ///                     Values = 
+        ///                     {
+        ///                         "false",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsSortArgs
+        ///                 {
+        ///                     Direction = "asc",
+        ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)

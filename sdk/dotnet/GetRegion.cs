@@ -16,6 +16,30 @@ namespace Pulumi.DigitalOcean
         /// what Droplet sizes and features are supported within a region.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sfo2 = Output.Create(DigitalOcean.GetRegion.InvokeAsync(new DigitalOcean.GetRegionArgs
+        ///         {
+        ///             Slug = "sfo2",
+        ///         }));
+        ///         this.RegionName = sfo2.Apply(sfo2 =&gt; sfo2.Name);
+        ///     }
+        /// 
+        ///     [Output("regionName")]
+        ///     public Output&lt;string&gt; RegionName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)

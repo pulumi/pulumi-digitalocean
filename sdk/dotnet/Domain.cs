@@ -11,6 +11,29 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean domain resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new domain
+    ///         var @default = new DigitalOcean.Domain("default", new DigitalOcean.DomainArgs
+    ///         {
+    ///             Name = "example.com",
+    ///             IpAddress = digitalocean_droplet.Foo.Ipv4_address,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

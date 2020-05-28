@@ -17,6 +17,58 @@ namespace Pulumi.DigitalOcean
         /// resources.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the volume snapshot:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var snapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
+        ///         {
+        ///             MostRecent = true,
+        ///             NameRegex = "^web",
+        ///             Region = "nyc3",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// Reuse the data about a volume snapshot to create a new volume based on it:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var snapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
+        ///         {
+        ///             NameRegex = "^web",
+        ///             Region = "nyc3",
+        ///             MostRecent = true,
+        ///         }));
+        ///         var foobar = new DigitalOcean.Volume("foobar", new DigitalOcean.VolumeArgs
+        ///         {
+        ///             Region = "nyc3",
+        ///             Size = 100,
+        ///             SnapshotId = snapshot.Apply(snapshot =&gt; snapshot.Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeSnapshotResult> InvokeAsync(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)

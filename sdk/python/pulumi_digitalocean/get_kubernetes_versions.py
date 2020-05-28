@@ -75,7 +75,7 @@ def get_kubernetes_versions(version_prefix=None,opts=None):
         node_pool={
             "name": "default",
             "size": "s-1vcpu-2gb",
-            "nodeCount": 3,
+            "node_count": 3,
         })
     ```
 
@@ -92,7 +92,7 @@ def get_kubernetes_versions(version_prefix=None,opts=None):
         node_pool={
             "name": "default",
             "size": "s-1vcpu-2gb",
-            "nodeCount": 3,
+            "node_count": 3,
         })
     ```
     """

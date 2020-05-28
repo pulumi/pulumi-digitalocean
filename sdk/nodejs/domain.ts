@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * // Create a new domain
- * const default = new digitalocean.Domain("default", {
+ * const _default = new digitalocean.Domain("default", {
  *     name: "example.com",
  *     ipAddress: digitalocean_droplet.foo.ipv4_address,
  * });

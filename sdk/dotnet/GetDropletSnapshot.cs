@@ -17,6 +17,31 @@ namespace Pulumi.DigitalOcean
         /// resources.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the Droplet snapshot:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var web_snapshot = Output.Create(DigitalOcean.GetDropletSnapshot.InvokeAsync(new DigitalOcean.GetDropletSnapshotArgs
+        ///         {
+        ///             MostRecent = true,
+        ///             NameRegex = "^web",
+        ///             Region = "nyc3",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDropletSnapshotResult> InvokeAsync(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
