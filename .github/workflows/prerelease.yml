@@ -83,7 +83,7 @@ jobs:
         pythonversion:
         - "3.7"
   lint:
-    container: golangci/golangci-lint:v1.25.1
+    container: golangci/golangci-lint:latest
     name: lint
     runs-on: ubuntu-latest
     steps:
@@ -109,7 +109,7 @@ jobs:
     - name: Run golangci
       run: make -f Makefile.github lint_provider
   lint_sdk:
-    container: golangci/golangci-lint:v1.25.1
+    container: golangci/golangci-lint:latest
     name: lint-sdk
     needs: build_sdk
     runs-on: ubuntu-latest
