@@ -11,6 +11,48 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetRecord
     {
+        /// <summary>
+        /// Get information on a DNS record. This data source provides the name, TTL, and zone
+        /// file as configured on your DigitalOcean account. This is useful if the record
+        /// in question is not managed by this provider.
+        /// 
+        /// An error is triggered if the provided domain name or record are not managed with
+        /// your DigitalOcean account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get data from a DNS record:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetRecord.InvokeAsync(new DigitalOcean.GetRecordArgs
+        ///         {
+        ///             Domain = "example.com",
+        ///             Name = "test",
+        ///         }));
+        ///         this.RecordType = example.Apply(example =&gt; example.Type);
+        ///         this.RecordTtl = example.Apply(example =&gt; example.Ttl);
+        ///     }
+        /// 
+        ///     [Output("recordType")]
+        ///     public Output&lt;string&gt; RecordType { get; set; }
+        ///     [Output("recordTtl")]
+        ///     public Output&lt;string&gt; RecordTtl { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithVersion());
     }

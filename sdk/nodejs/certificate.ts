@@ -6,6 +6,67 @@ import * as utilities from "./utilities";
 
 import {CertificateType} from "./index";
 
+/**
+ * Provides a DigitalOcean Certificate resource that allows you to manage
+ * certificates for configuring TLS termination in Load Balancers.
+ * Certificates created with this resource can be referenced in your
+ * Load Balancer configuration via their ID. The certificate can either
+ * be a custom one provided by you or automatically generated one with
+ * Let's Encrypt.
+ *
+ * ## Example Usage
+ *
+ * ### Custom Certificate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * import * from "fs";
+ *
+ * const cert = new digitalocean.Certificate("cert", {
+ *     type: "custom",
+ *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem"),
+ *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem"),
+ *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem"),
+ * });
+ * ```
+ *
+ * ### Let's Encrypt Certificate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const cert = new digitalocean.Certificate("cert", {
+ *     domains: ["example.com"],
+ *     type: "letsEncrypt",
+ * });
+ * ```
+ *
+ * ### Use with Other Resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const cert = new digitalocean.Certificate("cert", {
+ *     type: "letsEncrypt",
+ *     domains: ["example.com"],
+ * });
+ * // Create a new Load Balancer with TLS termination
+ * const _public = new digitalocean.LoadBalancer("public", {
+ *     region: "nyc3",
+ *     dropletTag: "backend",
+ *     forwarding_rule: [{
+ *         entryPort: 443,
+ *         entryProtocol: "https",
+ *         targetPort: 80,
+ *         targetProtocol: "http",
+ *         certificateId: cert.id,
+ *     }],
+ * });
+ * ```
+ */
 export class Certificate extends pulumi.CustomResource {
     /**
      * Get an existing Certificate resource's state with the given name, ID, and optional extra

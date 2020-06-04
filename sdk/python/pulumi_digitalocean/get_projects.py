@@ -60,7 +60,7 @@ def get_projects(filters=None,sorts=None,opts=None):
     the ability to filter and sort the results. If no filters are specified, all projects
     will be returned.
 
-    Note: You can use the [`.Project`](https://www.terraform.io/docs/providers/do/d/project.html) data source to
+    Note: You can use the `.Project` data source to
     obtain metadata about a single project if you already know the `id` to retrieve or the unique
     `name` of the project.
 

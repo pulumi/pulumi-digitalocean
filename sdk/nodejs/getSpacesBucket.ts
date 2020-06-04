@@ -6,6 +6,25 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+ * is not managed by this provider or you need to utilize any of the bucket's data.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getSpacesBucket({
+ *     name: "my-spaces-bucket",
+ *     region: "nyc3",
+ * });
+ * export const bucketDomainName = example.then(example => example.bucketDomainName);
+ * ```
+ */
 export function getSpacesBucket(args: GetSpacesBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketResult> {
     if (!opts) {
         opts = {}

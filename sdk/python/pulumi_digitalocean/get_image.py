@@ -101,7 +101,25 @@ class AwaitableGetImageResult(GetImageResult):
 
 def get_image(id=None,name=None,slug=None,source=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get information on an image for use in other resources (e.g. creating a Droplet
+    based on snapshot). This data source provides all of the image properties as
+    configured on your DigitalOcean account. This is useful if the image in question
+    is not managed by this provider or you need to utilize any of the image's data.
+
+    An error is triggered if zero or more than one result is returned by the query.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example1 = digitalocean.get_image(name="example-1.0.0")
+    ```
+
+
 
     :param float id: The id of the image
     :param str name: The name of the image.

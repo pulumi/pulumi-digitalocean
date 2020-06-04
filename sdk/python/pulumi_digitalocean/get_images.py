@@ -61,7 +61,31 @@ class AwaitableGetImagesResult(GetImagesResult):
 
 def get_images(filters=None,sorts=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get information on images for use in other resources (e.g. creating a Droplet
+    based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+    all images will be returned.
+
+    This data source is useful if the image in question is not managed by this provider or you need to utilize any
+    of the image's data.
+
+    Note: You can use the `.getImage` data source to obtain metadata
+    about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    ubuntu = digitalocean.get_images(filters=[{
+        "key": "distribution",
+        "values": ["Ubuntu"],
+    }])
+    ```
+
+
 
     :param list filters: Filter the results.
            The `filter` block is documented below.

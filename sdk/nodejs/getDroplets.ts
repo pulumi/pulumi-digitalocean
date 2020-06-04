@@ -6,6 +6,32 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+ * If no filters are specified, all Droplets will be returned.
+ *
+ * This data source is useful if the Droplets in question are not managed by this provider or you need to
+ * utilize any of the Droplets' data.
+ *
+ * Note: You can use the `digitalocean..Droplet` data source to obtain metadata
+ * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const small = pulumi.output(digitalocean.getDroplets({
+ *     filters: [{
+ *         key: "size",
+ *         values: ["s-1vcpu-1gb"],
+ *     }],
+ * }, { async: true }));
+ * ```
+ */
 export function getDroplets(args?: GetDropletsArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletsResult> {
     args = args || {};
     if (!opts) {

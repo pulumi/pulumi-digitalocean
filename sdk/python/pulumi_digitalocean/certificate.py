@@ -52,7 +52,62 @@ class Certificate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, certificate_chain=None, domains=None, leaf_certificate=None, name=None, private_key=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Certificate resource with the given unique name, props, and options.
+        Provides a DigitalOcean Certificate resource that allows you to manage
+        certificates for configuring TLS termination in Load Balancers.
+        Certificates created with this resource can be referenced in your
+        Load Balancer configuration via their ID. The certificate can either
+        be a custom one provided by you or automatically generated one with
+        Let's Encrypt.
+
+        ## Example Usage
+
+        ### Custom Certificate
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            type="custom",
+            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
+            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
+            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
+        ```
+
+        ### Let's Encrypt Certificate
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            domains=["example.com"],
+            type="lets_encrypt")
+        ```
+
+        ### Use with Other Resources
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            type="lets_encrypt",
+            domains=["example.com"])
+        # Create a new Load Balancer with TLS termination
+        public = digitalocean.LoadBalancer("public",
+            region="nyc3",
+            droplet_tag="backend",
+            forwarding_rule=[{
+                "entryPort": 443,
+                "entryProtocol": "https",
+                "targetPort": 80,
+                "targetProtocol": "http",
+                "certificate_id": cert.id,
+            }])
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain

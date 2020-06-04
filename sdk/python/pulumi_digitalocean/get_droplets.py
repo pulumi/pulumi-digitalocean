@@ -45,7 +45,30 @@ class AwaitableGetDropletsResult(GetDropletsResult):
 
 def get_droplets(filters=None,sorts=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+    If no filters are specified, all Droplets will be returned.
+
+    This data source is useful if the Droplets in question are not managed by this provider or you need to
+    utilize any of the Droplets' data.
+
+    Note: You can use the `.Droplet` data source to obtain metadata
+    about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    small = digitalocean.get_droplets(filters=[{
+        "key": "size",
+        "values": ["s-1vcpu-1gb"],
+    }])
+    ```
+
+
 
     :param list filters: Filter the results.
            The `filter` block is documented below.

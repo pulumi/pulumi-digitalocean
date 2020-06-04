@@ -6,6 +6,27 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on an image for use in other resources (e.g. creating a Droplet
+ * based on snapshot). This data source provides all of the image properties as
+ * configured on your DigitalOcean account. This is useful if the image in question
+ * is not managed by this provider or you need to utilize any of the image's data.
+ *
+ * An error is triggered if zero or more than one result is returned by the query.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example1 = pulumi.output(digitalocean.getImage({
+ *     name: "example-1.0.0",
+ * }, { async: true }));
+ * ```
+ */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
     if (!opts) {

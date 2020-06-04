@@ -9,6 +9,71 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    /// <summary>
+    /// Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
+    /// The `digitalocean..SpacesBucketObject` resource allows this provider to upload content
+    /// to Spaces.
+    /// 
+    /// The [Spaces API](https://developers.digitalocean.com/documentation/spaces/) was
+    /// designed to be interoperable with Amazon's AWS S3 API. This allows users to
+    /// interact with the service while using the tools they already know. Spaces
+    /// mirrors S3's authentication framework and requests to Spaces require a key pair
+    /// similar to Amazon's Access ID and Secret Key.
+    /// 
+    /// The authentication requirement can be met by either setting the
+    /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+    /// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+    /// access ID and secret you generate via the DigitalOcean control panel. For
+    /// example:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var static_assets = new DigitalOcean.SpacesBucket("static-assets", new DigitalOcean.SpacesBucketArgs
+    ///         {
+    ///         });
+    ///         // ...
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a Key in a Spaces Bucket
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobar = new DigitalOcean.SpacesBucket("foobar", new DigitalOcean.SpacesBucketArgs
+    ///         {
+    ///             Region = "nyc3",
+    ///         });
+    ///         var index = new DigitalOcean.SpacesBucketObject("index", new DigitalOcean.SpacesBucketObjectArgs
+    ///         {
+    ///             Region = foobar.Region,
+    ///             Bucket = foobar.Name,
+    ///             Key = "index.html",
+    ///             Content = "&lt;html&gt;&lt;body&gt;&lt;p&gt;This page is empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///             ContentType = "text/html",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class SpacesBucketObject : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,9 +131,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> ContentType { get; private set; } = null!;
 
         /// <summary>
-        /// the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-        /// object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-        /// digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+        /// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -217,9 +280,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-        /// object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-        /// digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+        /// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -329,9 +390,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-        /// object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-        /// digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+        /// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

@@ -6,6 +6,29 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a Droplet for use in other resources. This data source provides
+ * all of the Droplet's properties as configured on your DigitalOcean account. This
+ * is useful if the Droplet in question is not managed by this provider or you need to
+ * utilize any of the Droplet's data.
+ *
+ * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+ * error is triggered if more than one Droplet is found.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDroplet({
+ *     name: "web",
+ * });
+ * export const dropletOutput = example.then(example => example.ipv4Address);
+ * ```
+ */
 export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
     args = args || {};
     if (!opts) {

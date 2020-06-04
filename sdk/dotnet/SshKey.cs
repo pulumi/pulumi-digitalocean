@@ -9,6 +9,46 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    /// <summary>
+    /// Provides a DigitalOcean SSH key resource to allow you to manage SSH
+    /// keys for Droplet access. Keys created with this resource
+    /// can be referenced in your Droplet configuration via their ID or
+    /// fingerprint.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new SSH key
+    ///         var @default = new DigitalOcean.SshKey("default", new DigitalOcean.SshKeyArgs
+    ///         {
+    ///             PublicKey = File.ReadAllText("/Users/myuser/.ssh/id_rsa.pub"),
+    ///         });
+    ///         // Create a new Droplet using the SSH key
+    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "nyc3",
+    ///             Size = "s-1vcpu-1gb",
+    ///             SshKeys = 
+    ///             {
+    ///                 @default.Fingerprint,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class SshKey : Pulumi.CustomResource
     {
         /// <summary>
