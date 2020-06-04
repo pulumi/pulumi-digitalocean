@@ -1,0 +1,40 @@
+archives:
+- format_overrides:
+  - format: zip
+    goos: windows
+  id: archive
+  name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+  replacements:
+    "386": x86
+    amd64: x64
+before:
+  hooks:
+  - cd provider && go mod download
+blobs:
+- bucket: goreleaser
+  folder: releases/plugins/
+  ids:
+  - archive
+  provider: s3
+  region: us-west-2
+builds:
+- binary: pulumi-resource-digitalocean
+  dir: provider
+  env:
+  - CGO_ENABLED=0
+  - GO111MODULE=on
+  goarch:
+  - amd64
+  goos:
+  - darwin
+  - windows
+  - linux
+  ldflags:
+  - -X github.com/pulumi/pulumi-digitalocean/provider/v2/pkg/version.Version={{.Tag}}
+  main: ./cmd/pulumi-resource-digitalocean/
+changelog:
+  skip: true
+release:
+  disable: true
+snapshot:
+  name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
