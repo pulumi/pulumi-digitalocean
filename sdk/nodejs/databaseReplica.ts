@@ -88,6 +88,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
     public /*out*/ readonly privateHost!: pulumi.Output<string>;
+    public readonly privateNetworkUuid!: pulumi.Output<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
@@ -129,6 +130,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
             inputs["password"] = state ? state.password : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["privateHost"] = state ? state.privateHost : undefined;
+            inputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
             inputs["privateUri"] = state ? state.privateUri : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
@@ -142,6 +144,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -197,6 +200,7 @@ export interface DatabaseReplicaState {
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
     readonly privateHost?: pulumi.Input<string>;
+    readonly privateNetworkUuid?: pulumi.Input<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
@@ -232,6 +236,7 @@ export interface DatabaseReplicaArgs {
      * The name for the database replica.
      */
     readonly name?: pulumi.Input<string>;
+    readonly privateNetworkUuid?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the replica will reside.
      */

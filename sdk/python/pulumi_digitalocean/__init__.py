@@ -12,6 +12,8 @@ for pkg in __all__:
 # Export this package's modules as members:
 from .cdn import *
 from .certificate import *
+from .container_registry import *
+from .container_registry_docker_credentials import *
 from .database_cluster import *
 from .database_connection_pool import *
 from .database_db import *
@@ -27,6 +29,7 @@ from .floating_ip import *
 from .floating_ip_assignment import *
 from .get_account import *
 from .get_certificate import *
+from .get_container_registry import *
 from .get_database_cluster import *
 from .get_domain import *
 from .get_droplet import *
@@ -57,6 +60,7 @@ from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
 from .project import *
+from .project_resources import *
 from .provider import *
 from .spaces_bucket import *
 from .spaces_bucket_object import *

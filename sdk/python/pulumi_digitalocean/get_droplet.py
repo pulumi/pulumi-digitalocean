@@ -193,7 +193,27 @@ class AwaitableGetDropletResult(GetDropletResult):
 
 def get_droplet(id=None,name=None,tag=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get information on a Droplet for use in other resources. This data source provides
+    all of the Droplet's properties as configured on your DigitalOcean account. This
+    is useful if the Droplet in question is not managed by this provider or you need to
+    utilize any of the Droplet's data.
+
+    **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+    error is triggered if more than one Droplet is found.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(name="web")
+    pulumi.export("dropletOutput", example.ipv4_address)
+    ```
+
+
 
     :param float id: The ID of the Droplet
     :param str name: The name of the Droplet.

@@ -6,6 +6,40 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a DigitalOcean Project resource.
+ *
+ * Projects allow you to organize your resources into groups that fit the way you work.
+ * You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
+ * in ways that align with the applications you host on DigitalOcean.
+ *
+ * The following resource types can be associated with a project:
+ *
+ * * Database Clusters
+ * * Domains
+ * * Droplets
+ * * Floating IP
+ * * Load Balancers
+ * * Spaces Bucket
+ * * Volume
+ *
+ * **Note:** A managed project cannot be set as a default project.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const playground = new digitalocean.Project("playground", {
+ *     description: "A project to represent development resources.",
+ *     environment: "Development",
+ *     purpose: "Web Application",
+ * });
+ * ```
+ */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra

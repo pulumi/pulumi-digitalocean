@@ -9,6 +9,62 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    /// <summary>
+    /// Provides a DigitalOcean Certificate resource that allows you to manage
+    /// certificates for configuring TLS termination in Load Balancers.
+    /// Certificates created with this resource can be referenced in your
+    /// Load Balancer configuration via their ID. The certificate can either
+    /// be a custom one provided by you or automatically generated one with
+    /// Let's Encrypt.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Custom Certificate
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
+    ///         {
+    ///             Type = "custom",
+    ///             PrivateKey = File.ReadAllText("/Users/myuser/certs/privkey.pem"),
+    ///             LeafCertificate = File.ReadAllText("/Users/myuser/certs/cert.pem"),
+    ///             CertificateChain = File.ReadAllText("/Users/myuser/certs/fullchain.pem"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Let's Encrypt Certificate
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
+    ///         {
+    ///             Domains = 
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///             Type = "lets_encrypt",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>

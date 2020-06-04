@@ -7,6 +7,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+// is not managed by this provider or you need to utilize any of the bucket's data.
 func LookupSpacesBucket(ctx *pulumi.Context, args *LookupSpacesBucketArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketResult, error) {
 	var rv LookupSpacesBucketResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", args, &rv, opts...)

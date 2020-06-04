@@ -6,6 +6,27 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a certificate. This data source provides the name, type, state,
+ * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
+ * This is useful if the certificate in question is not managed by this provider or you need to utilize
+ * any of the certificates data.
+ *
+ * An error is triggered if the provided certificate name does not exist.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = pulumi.output(digitalocean.getCertificate({
+ *     name: "example",
+ * }, { async: true }));
+ * ```
+ */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     if (!opts) {
         opts = {}

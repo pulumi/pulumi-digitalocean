@@ -53,7 +53,7 @@ def get_regions(filters=None,sorts=None,opts=None):
     Retrieve information about all supported DigitalOcean regions, with the ability to
     filter and sort the results. If no filters are specified, all regions will be returned.
 
-    Note: You can use the [`.getRegion`](https://www.terraform.io/docs/providers/do/d/region.html) data source
+    Note: You can use the `.getRegion` data source
     to obtain metadata about a single region if you already know the `slug` to retrieve.
 
     ## Example Usage

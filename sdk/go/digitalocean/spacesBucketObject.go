@@ -10,6 +10,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
+// The `.SpacesBucketObject` resource allows this provider to upload content
+// to Spaces.
+//
+// The [Spaces API](https://developers.digitalocean.com/documentation/spaces/) was
+// designed to be interoperable with Amazon's AWS S3 API. This allows users to
+// interact with the service while using the tools they already know. Spaces
+// mirrors S3's authentication framework and requests to Spaces require a key pair
+// similar to Amazon's Access ID and Secret Key.
+//
+// The authentication requirement can be met by either setting the
+// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
+// access ID and secret you generate via the DigitalOcean control panel. For
+// example:
+//
+//
+// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 type SpacesBucketObject struct {
 	pulumi.CustomResourceState
 
@@ -31,9 +49,7 @@ type SpacesBucketObject struct {
 	ContentLanguage pulumi.StringPtrOutput `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
-	// the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-	// object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-	// digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
@@ -107,9 +123,7 @@ type spacesBucketObjectState struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType *string `pulumi:"contentType"`
-	// the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-	// object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-	// digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
 	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
@@ -147,9 +161,7 @@ type SpacesBucketObjectState struct {
 	ContentLanguage pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringPtrInput
-	// the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-	// object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-	// digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
 	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
@@ -191,9 +203,7 @@ type spacesBucketObjectArgs struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType *string `pulumi:"contentType"`
-	// the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-	// object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-	// digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
 	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
@@ -230,9 +240,7 @@ type SpacesBucketObjectArgs struct {
 	ContentLanguage pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringPtrInput
-	// the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-	// object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-	// digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
 	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.

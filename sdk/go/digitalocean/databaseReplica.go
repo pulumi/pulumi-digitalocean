@@ -27,7 +27,8 @@ type DatabaseReplica struct {
 	// Network port that the database replica is listening on.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Same as `host`, but only accessible from resources within the account and in the same region.
-	PrivateHost pulumi.StringOutput `pulumi:"privateHost"`
+	PrivateHost        pulumi.StringOutput `pulumi:"privateHost"`
+	PrivateNetworkUuid pulumi.StringOutput `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringOutput `pulumi:"privateUri"`
 	// DigitalOcean region where the replica will reside.
@@ -85,7 +86,8 @@ type databaseReplicaState struct {
 	// Network port that the database replica is listening on.
 	Port *int `pulumi:"port"`
 	// Same as `host`, but only accessible from resources within the account and in the same region.
-	PrivateHost *string `pulumi:"privateHost"`
+	PrivateHost        *string `pulumi:"privateHost"`
+	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri *string `pulumi:"privateUri"`
 	// DigitalOcean region where the replica will reside.
@@ -113,7 +115,8 @@ type DatabaseReplicaState struct {
 	// Network port that the database replica is listening on.
 	Port pulumi.IntPtrInput
 	// Same as `host`, but only accessible from resources within the account and in the same region.
-	PrivateHost pulumi.StringPtrInput
+	PrivateHost        pulumi.StringPtrInput
+	PrivateNetworkUuid pulumi.StringPtrInput
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringPtrInput
 	// DigitalOcean region where the replica will reside.
@@ -135,7 +138,8 @@ type databaseReplicaArgs struct {
 	// The ID of the original source database cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The name for the database replica.
-	Name *string `pulumi:"name"`
+	Name               *string `pulumi:"name"`
+	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
@@ -148,7 +152,8 @@ type DatabaseReplicaArgs struct {
 	// The ID of the original source database cluster.
 	ClusterId pulumi.StringInput
 	// The name for the database replica.
-	Name pulumi.StringPtrInput
+	Name               pulumi.StringPtrInput
+	PrivateNetworkUuid pulumi.StringPtrInput
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrInput
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).

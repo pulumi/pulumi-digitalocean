@@ -11,6 +11,45 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetDomain
     {
+        /// <summary>
+        /// Get information on a domain. This data source provides the name, TTL, and zone
+        /// file as configured on your DigitalOcean account. This is useful if the domain
+        /// name in question is not managed by this provider or you need to utilize TTL or zone
+        /// file data.
+        /// 
+        /// An error is triggered if the provided domain name is not managed with your
+        /// DigitalOcean account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the zone file for a domain:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetDomain.InvokeAsync(new DigitalOcean.GetDomainArgs
+        ///         {
+        ///             Name = "example.com",
+        ///         }));
+        ///         this.DomainOutput = example.Apply(example =&gt; example.ZoneFile);
+        ///     }
+        /// 
+        ///     [Output("domainOutput")]
+        ///     public Output&lt;string&gt; DomainOutput { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithVersion());
     }

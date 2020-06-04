@@ -38,6 +38,7 @@ class DatabaseReplica(pulumi.CustomResource):
     """
     Same as `host`, but only accessible from resources within the account and in the same region.
     """
+    private_network_uuid: pulumi.Output[str]
     private_uri: pulumi.Output[str]
     """
     Same as `uri`, but only accessible from resources within the account and in the same region.
@@ -59,7 +60,7 @@ class DatabaseReplica(pulumi.CustomResource):
     """
     Username for the replica's default user.
     """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, name=None, region=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cluster_id=None, name=None, private_network_uuid=None, region=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DigitalOcean database replica resource.
 
@@ -112,6 +113,7 @@ class DatabaseReplica(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['name'] = name
+            __props__['private_network_uuid'] = private_network_uuid
             __props__['region'] = region
             __props__['size'] = size
             __props__['tags'] = tags
@@ -130,7 +132,7 @@ class DatabaseReplica(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, database=None, host=None, name=None, password=None, port=None, private_host=None, private_uri=None, region=None, size=None, tags=None, uri=None, user=None):
+    def get(resource_name, id, opts=None, cluster_id=None, database=None, host=None, name=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, tags=None, uri=None, user=None):
         """
         Get an existing DatabaseReplica resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -162,6 +164,7 @@ class DatabaseReplica(pulumi.CustomResource):
         __props__["password"] = password
         __props__["port"] = port
         __props__["private_host"] = private_host
+        __props__["private_network_uuid"] = private_network_uuid
         __props__["private_uri"] = private_uri
         __props__["region"] = region
         __props__["size"] = size

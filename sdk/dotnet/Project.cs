@@ -9,6 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    /// <summary>
+    /// Provides a DigitalOcean Project resource.
+    /// 
+    /// Projects allow you to organize your resources into groups that fit the way you work.
+    /// You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
+    /// in ways that align with the applications you host on DigitalOcean.
+    /// 
+    /// The following resource types can be associated with a project:
+    /// 
+    /// * Database Clusters
+    /// * Domains
+    /// * Droplets
+    /// * Floating IP
+    /// * Load Balancers
+    /// * Spaces Bucket
+    /// * Volume
+    /// 
+    /// **Note:** A managed project cannot be set as a default project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var playground = new DigitalOcean.Project("playground", new DigitalOcean.ProjectArgs
+    ///         {
+    ///             Description = "A project to represent development resources.",
+    ///             Environment = "Development",
+    ///             Purpose = "Web Application",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

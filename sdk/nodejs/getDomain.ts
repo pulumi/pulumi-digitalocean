@@ -6,6 +6,29 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a domain. This data source provides the name, TTL, and zone
+ * file as configured on your DigitalOcean account. This is useful if the domain
+ * name in question is not managed by this provider or you need to utilize TTL or zone
+ * file data.
+ *
+ * An error is triggered if the provided domain name is not managed with your
+ * DigitalOcean account.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDomain({
+ *     name: "example.com",
+ * });
+ * export const domainOutput = example.then(example => example.zoneFile);
+ * ```
+ */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     if (!opts) {
         opts = {}
