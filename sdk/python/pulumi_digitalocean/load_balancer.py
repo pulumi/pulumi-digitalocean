@@ -60,6 +60,10 @@ class LoadBalancer(pulumi.CustomResource):
       * `unhealthyThreshold` (`float`) - The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
     """
     ip: pulumi.Output[str]
+    load_balancer_urn: pulumi.Output[str]
+    """
+    The uniform resource name for the Load Balancer
+    """
     name: pulumi.Output[str]
     """
     The Load Balancer name
@@ -83,10 +87,6 @@ class LoadBalancer(pulumi.CustomResource):
       * `cookieName` (`str`) - The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
       * `cookieTtlSeconds` (`float`) - The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
       * `type` (`str`) - An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-    """
-    urn: pulumi.Output[str]
-    """
-    The uniform resource name for the Load Balancer
     """
     vpc_uuid: pulumi.Output[str]
     """
@@ -182,8 +182,8 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['sticky_sessions'] = sticky_sessions
             __props__['vpc_uuid'] = vpc_uuid
             __props__['ip'] = None
+            __props__['load_balancer_urn'] = None
             __props__['status'] = None
-            __props__['urn'] = None
         super(LoadBalancer, __self__).__init__(
             'digitalocean:index/loadBalancer:LoadBalancer',
             resource_name,
@@ -191,7 +191,7 @@ class LoadBalancer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, vpc_uuid=None):
+    def get(resource_name, id, opts=None, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, vpc_uuid=None):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -212,6 +212,7 @@ class LoadBalancer(pulumi.CustomResource):
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[dict] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -219,7 +220,6 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region to start in
         :param pulumi.Input[dict] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
-        :param pulumi.Input[str] urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
 
         The **forwarding_rules** object supports the following:
@@ -259,12 +259,12 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["forwarding_rules"] = forwarding_rules
         __props__["healthcheck"] = healthcheck
         __props__["ip"] = ip
+        __props__["load_balancer_urn"] = load_balancer_urn
         __props__["name"] = name
         __props__["redirect_http_to_https"] = redirect_http_to_https
         __props__["region"] = region
         __props__["status"] = status
         __props__["sticky_sessions"] = sticky_sessions
-        __props__["urn"] = urn
         __props__["vpc_uuid"] = vpc_uuid
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

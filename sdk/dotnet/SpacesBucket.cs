@@ -135,6 +135,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> BucketDomainName { get; private set; } = null!;
 
         /// <summary>
+        /// The uniform resource name for the bucket
+        /// </summary>
+        [Output("bucketUrn")]
+        public Output<string> BucketUrn { get; private set; } = null!;
+
+        /// <summary>
         /// A rule of Cross-Origin Resource Sharing (documented below).
         /// </summary>
         [Output("corsRules")]
@@ -163,12 +169,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
-
-        /// <summary>
-        /// The uniform resource name for the bucket
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
         /// <summary>
         /// A state of versioning (documented below)
@@ -295,6 +295,12 @@ namespace Pulumi.DigitalOcean
         [Input("bucketDomainName")]
         public Input<string>? BucketDomainName { get; set; }
 
+        /// <summary>
+        /// The uniform resource name for the bucket
+        /// </summary>
+        [Input("bucketUrn")]
+        public Input<string>? BucketUrn { get; set; }
+
         [Input("corsRules")]
         private InputList<Inputs.SpacesBucketCorsRuleGetArgs>? _corsRules;
 
@@ -336,12 +342,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
-
-        /// <summary>
-        /// The uniform resource name for the bucket
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         /// <summary>
         /// A state of versioning (documented below)

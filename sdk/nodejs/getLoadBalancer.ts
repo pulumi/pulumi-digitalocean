@@ -68,7 +68,7 @@ export interface GetLoadBalancerResult {
     readonly region: string;
     readonly status: string;
     readonly stickySessions: outputs.GetLoadBalancerStickySessions;
-    readonly urn: string;
+    readonly loadBalancerUrn: string;
     readonly vpcUuid: string;
     /**
      * The provider-assigned unique ID for this managed resource.

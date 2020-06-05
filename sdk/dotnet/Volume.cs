@@ -118,8 +118,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The uniform resource name for the volume.
         /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
+        [Output("volumeUrn")]
+        public Output<string> VolumeUrn { get; private set; } = null!;
 
 
         /// <summary>
@@ -315,8 +315,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The uniform resource name for the volume.
         /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
+        [Input("volumeUrn")]
+        public Input<string>? VolumeUrn { get; set; }
 
         public VolumeState()
         {

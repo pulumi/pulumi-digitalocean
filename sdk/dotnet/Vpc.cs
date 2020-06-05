@@ -104,8 +104,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The uniform resource name (URN) for the VPC.
         /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
+        [Output("vpcUrn")]
+        public Output<string> VpcUrn { get; private set; } = null!;
 
 
         /// <summary>
@@ -223,8 +223,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The uniform resource name (URN) for the VPC.
         /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
+        [Input("vpcUrn")]
+        public Input<string>? VpcUrn { get; set; }
 
         public VpcState()
         {

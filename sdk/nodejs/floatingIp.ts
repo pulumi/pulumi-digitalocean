@@ -74,7 +74,7 @@ export class FloatingIp extends pulumi.CustomResource {
     /**
      * The uniform resource name of the floating ip
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly floatingIpUrn!: pulumi.Output<string>;
 
     /**
      * Create a FloatingIp resource with the given unique name, arguments, and options.
@@ -91,7 +91,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["dropletId"] = state ? state.dropletId : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["region"] = state ? state.region : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["floatingIpUrn"] = state ? state.floatingIpUrn : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
             if (!args || args.region === undefined) {
@@ -100,7 +100,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["dropletId"] = args ? args.dropletId : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["urn"] = undefined /*out*/;
+            inputs["floatingIpUrn"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -132,7 +132,7 @@ export interface FloatingIpState {
     /**
      * The uniform resource name of the floating ip
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly floatingIpUrn?: pulumi.Input<string>;
 }
 
 /**

@@ -156,7 +156,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
     /**
      * The uniform resource name of the database cluster.
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly clusterUrn!: pulumi.Output<string>;
     /**
      * Username for the cluster's default user.
      */
@@ -195,7 +195,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["sqlMode"] = state ? state.sqlMode : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["uri"] = state ? state.uri : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             inputs["user"] = state ? state.user : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
@@ -230,7 +230,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["privateHost"] = undefined /*out*/;
             inputs["privateUri"] = undefined /*out*/;
             inputs["uri"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
+            inputs["clusterUrn"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
         if (!opts) {
@@ -319,7 +319,7 @@ export interface DatabaseClusterState {
     /**
      * The uniform resource name of the database cluster.
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly clusterUrn?: pulumi.Input<string>;
     /**
      * Username for the cluster's default user.
      */

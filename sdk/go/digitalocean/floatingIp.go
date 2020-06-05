@@ -18,12 +18,12 @@ type FloatingIp struct {
 
 	// The ID of Droplet that the Floating IP will be assigned to.
 	DropletId pulumi.IntPtrOutput `pulumi:"dropletId"`
+	// The uniform resource name of the floating ip
+	FloatingIpUrn pulumi.StringOutput `pulumi:"floatingIpUrn"`
 	// The IP Address of the resource
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The region that the Floating IP is reserved to.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The uniform resource name of the floating ip
-	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
 // NewFloatingIp registers a new resource with the given unique name, arguments, and options.
@@ -59,23 +59,23 @@ func GetFloatingIp(ctx *pulumi.Context,
 type floatingIpState struct {
 	// The ID of Droplet that the Floating IP will be assigned to.
 	DropletId *int `pulumi:"dropletId"`
+	// The uniform resource name of the floating ip
+	FloatingIpUrn *string `pulumi:"floatingIpUrn"`
 	// The IP Address of the resource
 	IpAddress *string `pulumi:"ipAddress"`
 	// The region that the Floating IP is reserved to.
 	Region *string `pulumi:"region"`
-	// The uniform resource name of the floating ip
-	Urn *string `pulumi:"urn"`
 }
 
 type FloatingIpState struct {
 	// The ID of Droplet that the Floating IP will be assigned to.
 	DropletId pulumi.IntPtrInput
+	// The uniform resource name of the floating ip
+	FloatingIpUrn pulumi.StringPtrInput
 	// The IP Address of the resource
 	IpAddress pulumi.StringPtrInput
 	// The region that the Floating IP is reserved to.
 	Region pulumi.StringPtrInput
-	// The uniform resource name of the floating ip
-	Urn pulumi.StringPtrInput
 }
 
 func (FloatingIpState) ElementType() reflect.Type {

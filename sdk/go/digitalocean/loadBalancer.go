@@ -36,6 +36,8 @@ type LoadBalancer struct {
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckOutput `pulumi:"healthcheck"`
 	Ip          pulumi.StringOutput           `pulumi:"ip"`
+	// The uniform resource name for the Load Balancer
+	LoadBalancerUrn pulumi.StringOutput `pulumi:"loadBalancerUrn"`
 	// The Load Balancer name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A boolean value indicating whether
@@ -48,8 +50,6 @@ type LoadBalancer struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
-	// The uniform resource name for the Load Balancer
-	Urn pulumi.StringOutput `pulumi:"urn"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
 }
@@ -109,6 +109,8 @@ type loadBalancerState struct {
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck *LoadBalancerHealthcheck `pulumi:"healthcheck"`
 	Ip          *string                  `pulumi:"ip"`
+	// The uniform resource name for the Load Balancer
+	LoadBalancerUrn *string `pulumi:"loadBalancerUrn"`
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
 	// A boolean value indicating whether
@@ -121,8 +123,6 @@ type loadBalancerState struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
-	// The uniform resource name for the Load Balancer
-	Urn *string `pulumi:"urn"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
 }
@@ -149,6 +149,8 @@ type LoadBalancerState struct {
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckPtrInput
 	Ip          pulumi.StringPtrInput
+	// The uniform resource name for the Load Balancer
+	LoadBalancerUrn pulumi.StringPtrInput
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
 	// A boolean value indicating whether
@@ -161,8 +163,6 @@ type LoadBalancerState struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
-	// The uniform resource name for the Load Balancer
-	Urn pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
 }

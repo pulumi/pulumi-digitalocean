@@ -2675,7 +2675,7 @@
             }
         },
         "digitalocean:index/containerRegistry:ContainerRegistry": {
-            "description": "Provides a DigitalOcean Container Registry resource. A Container Registry is\na secure, private location to store your containers for rapid deployment. \n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a DigitalOcean Container Registry resource. A Container Registry is\na secure, private location to store your containers for rapid deployment. \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new container registry\nconst foobar = new digitalocean.ContainerRegistry(\"foobar\", {});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new container registry\nfoobar = digitalocean.ContainerRegistry(\"foobar\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new container registry\n        var foobar = new DigitalOcean.ContainerRegistry(\"foobar\", new DigitalOcean.ContainerRegistryArgs\n        {\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "endpoint": {
                     "type": "string"
@@ -2717,7 +2717,7 @@
             }
         },
         "digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials": {
-            "description": "Get Docker credentials for your DigitalOcean container registry.\n\nAn error is triggered if the provided container registry name does not exist.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Get Docker credentials for your DigitalOcean container registry.\n\nAn error is triggered if the provided container registry name does not exist.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n### Basic Example\n\nGet the container registry:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.ContainerRegistryDockerCredentials(\"example\", {\n    registryName: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.ContainerRegistryDockerCredentials(\"example\", registry_name=\"example\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new DigitalOcean.ContainerRegistryDockerCredentials(\"example\", new DigitalOcean.ContainerRegistryDockerCredentialsArgs\n        {\n            RegistryName = \"example\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### Docker Provider Example\n\nUse the `endpoint` and `docker_credentials` with the Docker provider:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleContainerRegistry = digitalocean.getContainerRegistry({\n    name: \"example\",\n});\nconst exampleContainerRegistryDockerCredentials = new digitalocean.ContainerRegistryDockerCredentials(\"exampleContainerRegistryDockerCredentials\", {registryName: \"example\"});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_container_registry = digitalocean.get_container_registry(name=\"example\")\nexample_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials(\"exampleContainerRegistryDockerCredentials\", registry_name=\"example\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleContainerRegistry = Output.Create(DigitalOcean.GetContainerRegistry.InvokeAsync(new DigitalOcean.GetContainerRegistryArgs\n        {\n            Name = \"example\",\n        }));\n        var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials(\"exampleContainerRegistryDockerCredentials\", new DigitalOcean.ContainerRegistryDockerCredentialsArgs\n        {\n            RegistryName = \"example\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "credentialExpirationTime": {
                     "type": "string"
@@ -2788,6 +2788,10 @@
         "digitalocean:index/databaseCluster:DatabaseCluster": {
             "description": "Provides a DigitalOcean database cluster resource.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n### Create a new PostgreSQL database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"11\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"11\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"11\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### Create a new MySQL database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mysql_example = new digitalocean.DatabaseCluster(\"mysql-example\", {\n    engine: \"mysql\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"8\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmysql_example = digitalocean.DatabaseCluster(\"mysql-example\",\n    engine=\"mysql\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"8\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mysql_example = new DigitalOcean.DatabaseCluster(\"mysql-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"mysql\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"8\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### Create a new Redis database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst redis_example = new digitalocean.DatabaseCluster(\"redis-example\", {\n    engine: \"redis\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"5\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nredis_example = digitalocean.DatabaseCluster(\"redis-example\",\n    engine=\"redis\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"5\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var redis_example = new DigitalOcean.DatabaseCluster(\"redis-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"redis\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"5\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
+                "clusterUrn": {
+                    "type": "string",
+                    "description": "The uniform resource name of the database cluster.\n"
+                },
                 "database": {
                     "type": "string",
                     "description": "Name of the cluster's default database.\n"
@@ -2864,10 +2868,6 @@
                     "type": "string",
                     "description": "The full URI for connecting to the database cluster.\n"
                 },
-                "urn": {
-                    "type": "string",
-                    "description": "The uniform resource name of the database cluster.\n"
-                },
                 "user": {
                     "type": "string",
                     "description": "Username for the cluster's default user.\n"
@@ -2891,7 +2891,7 @@
                 "region",
                 "size",
                 "uri",
-                "urn",
+                "clusterUrn",
                 "user"
             ],
             "inputProperties": {
@@ -2957,6 +2957,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering DatabaseCluster resources.\n",
                 "properties": {
+                    "clusterUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name of the database cluster.\n"
+                    },
                     "database": {
                         "type": "string",
                         "description": "Name of the cluster's default database.\n"
@@ -3032,10 +3036,6 @@
                     "uri": {
                         "type": "string",
                         "description": "The full URI for connecting to the database cluster.\n"
-                    },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource name of the database cluster.\n"
                     },
                     "user": {
                         "type": "string",
@@ -3537,6 +3537,10 @@
         "digitalocean:index/domain:Domain": {
             "description": "Provides a DigitalOcean domain resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new domain\nconst _default = new digitalocean.Domain(\"default\", {\n    name: \"example.com\",\n    ipAddress: digitalocean_droplet.foo.ipv4_address,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new domain\ndefault = digitalocean.Domain(\"default\",\n    name=\"example.com\",\n    ip_address=digitalocean_droplet[\"foo\"][\"ipv4_address\"])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new domain\n        var @default = new DigitalOcean.Domain(\"default\", new DigitalOcean.DomainArgs\n        {\n            Name = \"example.com\",\n            IpAddress = digitalocean_droplet.Foo.Ipv4_address,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
+                "domainUrn": {
+                    "type": "string",
+                    "description": "The uniform resource name of the domain\n"
+                },
                 "ipAddress": {
                     "type": "string",
                     "description": "The IP address of the domain. If specified, this IP\nis used to created an initial A record for the domain.\n"
@@ -3544,15 +3548,11 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the domain\n"
-                },
-                "urn": {
-                    "type": "string",
-                    "description": "The uniform resource name of the domain\n"
                 }
             },
             "required": [
                 "name",
-                "urn"
+                "domainUrn"
             ],
             "inputProperties": {
                 "ipAddress": {
@@ -3570,6 +3570,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Domain resources.\n",
                 "properties": {
+                    "domainUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name of the domain\n"
+                    },
                     "ipAddress": {
                         "type": "string",
                         "description": "The IP address of the domain. If specified, this IP\nis used to created an initial A record for the domain.\n"
@@ -3577,10 +3581,6 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the domain\n"
-                    },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource name of the domain\n"
                     }
                 },
                 "type": "object"
@@ -3599,6 +3599,10 @@
                 "disk": {
                     "type": "integer",
                     "description": "The size of the instance's disk in GB\n"
+                },
+                "dropletUrn": {
+                    "type": "string",
+                    "description": "The uniform resource name of the Droplet\n* `name`- The name of the Droplet\n"
                 },
                 "image": {
                     "type": "string",
@@ -3679,10 +3683,6 @@
                     },
                     "description": "A list of the tags to be applied to this Droplet.\n"
                 },
-                "urn": {
-                    "type": "string",
-                    "description": "The uniform resource name of the Droplet\n* `name`- The name of the Droplet\n"
-                },
                 "userData": {
                     "type": "string",
                     "description": "A string of the desired User Data for the Droplet.\n"
@@ -3719,7 +3719,7 @@
                 "region",
                 "size",
                 "status",
-                "urn",
+                "dropletUrn",
                 "vcpus",
                 "volumeIds",
                 "vpcUuid"
@@ -3812,6 +3812,10 @@
                         "type": "integer",
                         "description": "The size of the instance's disk in GB\n"
                     },
+                    "dropletUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name of the Droplet\n* `name`- The name of the Droplet\n"
+                    },
                     "image": {
                         "type": "string",
                         "description": "The Droplet image ID or slug.\n"
@@ -3890,10 +3894,6 @@
                             "type": "string"
                         },
                         "description": "A list of the tags to be applied to this Droplet.\n"
-                    },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource name of the Droplet\n* `name`- The name of the Droplet\n"
                     },
                     "userData": {
                         "type": "string",
@@ -4158,6 +4158,10 @@
                     "type": "integer",
                     "description": "The ID of Droplet that the Floating IP will be assigned to.\n"
                 },
+                "floatingIpUrn": {
+                    "type": "string",
+                    "description": "The uniform resource name of the floating ip\n"
+                },
                 "ipAddress": {
                     "type": "string",
                     "description": "The IP Address of the resource\n"
@@ -4165,16 +4169,12 @@
                 "region": {
                     "type": "string",
                     "description": "The region that the Floating IP is reserved to.\n"
-                },
-                "urn": {
-                    "type": "string",
-                    "description": "The uniform resource name of the floating ip\n"
                 }
             },
             "required": [
                 "ipAddress",
                 "region",
-                "urn"
+                "floatingIpUrn"
             ],
             "inputProperties": {
                 "dropletId": {
@@ -4200,6 +4200,10 @@
                         "type": "integer",
                         "description": "The ID of Droplet that the Floating IP will be assigned to.\n"
                     },
+                    "floatingIpUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name of the floating ip\n"
+                    },
                     "ipAddress": {
                         "type": "string",
                         "description": "The IP Address of the resource\n"
@@ -4207,10 +4211,6 @@
                     "region": {
                         "type": "string",
                         "description": "The region that the Floating IP is reserved to.\n"
-                    },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource name of the floating ip\n"
                     }
                 },
                 "type": "object"
@@ -4662,6 +4662,10 @@
                 "ip": {
                     "type": "string"
                 },
+                "loadBalancerUrn": {
+                    "type": "string",
+                    "description": "The uniform resource name for the Load Balancer\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The Load Balancer name\n"
@@ -4682,10 +4686,6 @@
                     "$ref": "#/types/digitalocean:/LoadBalancerStickySessions:LoadBalancerStickySessions",
                     "description": "A `sticky_sessions` block to be assigned to the\nLoad Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.\n"
                 },
-                "urn": {
-                    "type": "string",
-                    "description": "The uniform resource name for the Load Balancer\n"
-                },
                 "vpcUuid": {
                     "type": "string",
                     "description": "The ID of the VPC where the load balancer will be located.\n"
@@ -4700,7 +4700,7 @@
                 "region",
                 "status",
                 "stickySessions",
-                "urn",
+                "loadBalancerUrn",
                 "vpcUuid"
             ],
             "inputProperties": {
@@ -4806,6 +4806,10 @@
                     "ip": {
                         "type": "string"
                     },
+                    "loadBalancerUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name for the Load Balancer\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The Load Balancer name\n"
@@ -4825,10 +4829,6 @@
                     "stickySessions": {
                         "$ref": "#/types/digitalocean:/LoadBalancerStickySessions:LoadBalancerStickySessions",
                         "description": "A `sticky_sessions` block to be assigned to the\nLoad Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.\n"
-                    },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource name for the Load Balancer\n"
                     },
                     "vpcUuid": {
                         "type": "string",
@@ -4968,7 +4968,7 @@
             }
         },
         "digitalocean:index/projectResources:ProjectResources": {
-            "description": "Assign resources to a DigitalOcean Project. This is useful if you need to assign resources\nmanaged this provider to a DigitalOcean Project that is unmanaged by the provider.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Assign resources to a DigitalOcean Project. This is useful if you need to assign resources\nmanaged this provider to a DigitalOcean Project that is unmanaged by the provider.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example assigns a droplet to a Project managed outside of this provider:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = digitalocean.getProject({\n    name: \"playground\",\n});\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst barfoo = new digitalocean.ProjectResources(\"barfoo\", {\n    project: data.digitalocean_project.foo.id,\n    resources: [foobar.urn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.get_project(name=\"playground\")\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nbarfoo = digitalocean.ProjectResources(\"barfoo\",\n    project=data[\"digitalocean..Project\"][\"foo\"][\"id\"],\n    resources=[foobar.urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs\n        {\n            Name = \"playground\",\n        }));\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var barfoo = new DigitalOcean.ProjectResources(\"barfoo\", new DigitalOcean.ProjectResourcesArgs\n        {\n            Project = data.Digitalocean_project.Foo.Id,\n            Resources = \n            {\n                foobar.Urn,\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "project": {
                     "type": "string",
@@ -5032,6 +5032,10 @@
                     "type": "string",
                     "description": "The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)\n"
                 },
+                "bucketUrn": {
+                    "type": "string",
+                    "description": "The uniform resource name for the bucket\n"
+                },
                 "corsRules": {
                     "type": "array",
                     "items": {
@@ -5059,10 +5063,6 @@
                     "$ref": "#/types/digitalocean:index:Region",
                     "description": "The region where the bucket resides (Defaults to `nyc3`)\n"
                 },
-                "urn": {
-                    "type": "string",
-                    "description": "The uniform resource name for the bucket\n"
-                },
                 "versioning": {
                     "$ref": "#/types/digitalocean:/SpacesBucketVersioning:SpacesBucketVersioning",
                     "description": "A state of versioning (documented below)\n"
@@ -5071,7 +5071,7 @@
             "required": [
                 "bucketDomainName",
                 "name",
-                "urn"
+                "bucketUrn"
             ],
             "inputProperties": {
                 "acl": {
@@ -5121,6 +5121,10 @@
                         "type": "string",
                         "description": "The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)\n"
                     },
+                    "bucketUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name for the bucket\n"
+                    },
                     "corsRules": {
                         "type": "array",
                         "items": {
@@ -5147,10 +5151,6 @@
                         "type": "string",
                         "$ref": "#/types/digitalocean:index:Region",
                         "description": "The region where the bucket resides (Defaults to `nyc3`)\n"
-                    },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource name for the bucket\n"
                     },
                     "versioning": {
                         "$ref": "#/types/digitalocean:/SpacesBucketVersioning:SpacesBucketVersioning",
@@ -5532,7 +5532,7 @@
                     },
                     "description": "A list of the tags to be applied to this Volume.\n"
                 },
-                "urn": {
+                "volumeUrn": {
                     "type": "string",
                     "description": "The uniform resource name for the volume.\n"
                 }
@@ -5544,7 +5544,7 @@
                 "name",
                 "region",
                 "size",
-                "urn"
+                "volumeUrn"
             ],
             "inputProperties": {
                 "description": {
@@ -5650,7 +5650,7 @@
                         },
                         "description": "A list of the tags to be applied to this Volume.\n"
                     },
-                    "urn": {
+                    "volumeUrn": {
                         "type": "string",
                         "description": "The uniform resource name for the volume.\n"
                     }
@@ -5839,7 +5839,7 @@
                     "type": "string",
                     "description": "The DigitalOcean region slug for the VPC's location.\n"
                 },
-                "urn": {
+                "vpcUrn": {
                     "type": "string",
                     "description": "The uniform resource name (URN) for the VPC.\n"
                 }
@@ -5850,7 +5850,7 @@
                 "ipRange",
                 "name",
                 "region",
-                "urn"
+                "vpcUrn"
             ],
             "inputProperties": {
                 "description": {
@@ -5900,7 +5900,7 @@
                         "type": "string",
                         "description": "The DigitalOcean region slug for the VPC's location.\n"
                     },
-                    "urn": {
+                    "vpcUrn": {
                         "type": "string",
                         "description": "The uniform resource name (URN) for the VPC.\n"
                     }
@@ -6183,7 +6183,7 @@
             }
         },
         "digitalocean:index/getContainerRegistry:getContainerRegistry": {
-            "description": "Get information on a container registry. This data source provides the name as \nconfigured on your DigitalOcean account. This is useful if the container \nregistry name in question is not managed by this provider or you need validate if \nthe container registry exists in the account.\n\nAn error is triggered if the provided container registry name does not exist.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Get information on a container registry. This data source provides the name as \nconfigured on your DigitalOcean account. This is useful if the container \nregistry name in question is not managed by this provider or you need validate if \nthe container registry exists in the account.\n\nAn error is triggered if the provided container registry name does not exist.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n### Basic Example\n\nGet the container registry:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = pulumi.output(digitalocean.getContainerRegistry({\n    name: \"example\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_container_registry(name=\"example\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetContainerRegistry.InvokeAsync(new DigitalOcean.GetContainerRegistryArgs\n        {\n            Name = \"example\",\n        }));\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getContainerRegistry.\n",
                 "properties": {
@@ -6370,6 +6370,10 @@
             "outputs": {
                 "description": "A collection of values returned by getDomain.\n",
                 "properties": {
+                    "domainUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name of the domain\n* `zone_file`: The zone file of the domain.\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -6380,10 +6384,6 @@
                     "ttl": {
                         "type": "integer"
                     },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource name of the domain\n* `zone_file`: The zone file of the domain.\n"
-                    },
                     "zoneFile": {
                         "type": "string"
                     }
@@ -6392,7 +6392,7 @@
                 "required": [
                     "name",
                     "ttl",
-                    "urn",
+                    "domainUrn",
                     "zoneFile",
                     "id"
                 ]
@@ -6713,6 +6713,9 @@
                     "dropletId": {
                         "type": "integer"
                     },
+                    "floatingIpUrn": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -6722,9 +6725,6 @@
                     },
                     "region": {
                         "type": "string"
-                    },
-                    "urn": {
-                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -6732,7 +6732,7 @@
                     "dropletId",
                     "ipAddress",
                     "region",
-                    "urn",
+                    "floatingIpUrn",
                     "id"
                 ]
             }
@@ -7100,6 +7100,9 @@
                     "ip": {
                         "type": "string"
                     },
+                    "loadBalancerUrn": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -7114,9 +7117,6 @@
                     },
                     "stickySessions": {
                         "$ref": "#/types/digitalocean:/getLoadBalancerStickySessions:getLoadBalancerStickySessions"
-                    },
-                    "urn": {
-                        "type": "string"
                     },
                     "vpcUuid": {
                         "type": "string"
@@ -7137,7 +7137,7 @@
                     "region",
                     "status",
                     "stickySessions",
-                    "urn",
+                    "loadBalancerUrn",
                     "vpcUuid",
                     "id"
                 ]

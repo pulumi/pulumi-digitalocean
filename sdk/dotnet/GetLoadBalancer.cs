@@ -82,12 +82,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Id;
         public readonly string Ip;
+        public readonly string LoadBalancerUrn;
         public readonly string Name;
         public readonly bool RedirectHttpToHttps;
         public readonly string Region;
         public readonly string Status;
         public readonly Outputs.GetLoadBalancerStickySessionsResult StickySessions;
-        public readonly string Urn;
         public readonly string VpcUuid;
 
         [OutputConstructor]
@@ -110,6 +110,8 @@ namespace Pulumi.DigitalOcean
 
             string ip,
 
+            string loadBalancerUrn,
+
             string name,
 
             bool redirectHttpToHttps,
@@ -119,8 +121,6 @@ namespace Pulumi.DigitalOcean
             string status,
 
             Outputs.GetLoadBalancerStickySessionsResult stickySessions,
-
-            string urn,
 
             string vpcUuid)
         {
@@ -133,12 +133,12 @@ namespace Pulumi.DigitalOcean
             Healthcheck = healthcheck;
             Id = id;
             Ip = ip;
+            LoadBalancerUrn = loadBalancerUrn;
             Name = name;
             RedirectHttpToHttps = redirectHttpToHttps;
             Region = region;
             Status = status;
             StickySessions = stickySessions;
-            Urn = urn;
             VpcUuid = vpcUuid;
         }
     }

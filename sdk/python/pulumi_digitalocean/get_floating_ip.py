@@ -13,10 +13,13 @@ class GetFloatingIpResult:
     """
     A collection of values returned by getFloatingIp.
     """
-    def __init__(__self__, droplet_id=None, id=None, ip_address=None, region=None, urn=None):
+    def __init__(__self__, droplet_id=None, floating_ip_urn=None, id=None, ip_address=None, region=None):
         if droplet_id and not isinstance(droplet_id, float):
             raise TypeError("Expected argument 'droplet_id' to be a float")
         __self__.droplet_id = droplet_id
+        if floating_ip_urn and not isinstance(floating_ip_urn, str):
+            raise TypeError("Expected argument 'floating_ip_urn' to be a str")
+        __self__.floating_ip_urn = floating_ip_urn
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -29,9 +32,6 @@ class GetFloatingIpResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        __self__.urn = urn
 class AwaitableGetFloatingIpResult(GetFloatingIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,10 +39,10 @@ class AwaitableGetFloatingIpResult(GetFloatingIpResult):
             yield self
         return GetFloatingIpResult(
             droplet_id=self.droplet_id,
+            floating_ip_urn=self.floating_ip_urn,
             id=self.id,
             ip_address=self.ip_address,
-            region=self.region,
-            urn=self.urn)
+            region=self.region)
 
 def get_floating_ip(ip_address=None,opts=None):
     """
@@ -83,7 +83,7 @@ def get_floating_ip(ip_address=None,opts=None):
 
     return AwaitableGetFloatingIpResult(
         droplet_id=__ret__.get('dropletId'),
+        floating_ip_urn=__ret__.get('floatingIpUrn'),
         id=__ret__.get('id'),
         ip_address=__ret__.get('ipAddress'),
-        region=__ret__.get('region'),
-        urn=__ret__.get('urn'))
+        region=__ret__.get('region'))

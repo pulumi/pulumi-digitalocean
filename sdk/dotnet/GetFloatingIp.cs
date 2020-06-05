@@ -73,31 +73,31 @@ namespace Pulumi.DigitalOcean
     public sealed class GetFloatingIpResult
     {
         public readonly int DropletId;
+        public readonly string FloatingIpUrn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string IpAddress;
         public readonly string Region;
-        public readonly string Urn;
 
         [OutputConstructor]
         private GetFloatingIpResult(
             int dropletId,
 
+            string floatingIpUrn,
+
             string id,
 
             string ipAddress,
 
-            string region,
-
-            string urn)
+            string region)
         {
             DropletId = dropletId;
+            FloatingIpUrn = floatingIpUrn;
             Id = id;
             IpAddress = ipAddress;
             Region = region;
-            Urn = urn;
         }
     }
 }

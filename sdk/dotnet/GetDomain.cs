@@ -73,34 +73,34 @@ namespace Pulumi.DigitalOcean
     public sealed class GetDomainResult
     {
         /// <summary>
+        /// The uniform resource name of the domain
+        /// * `zone_file`: The zone file of the domain.
+        /// </summary>
+        public readonly string DomainUrn;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
         public readonly int Ttl;
-        /// <summary>
-        /// The uniform resource name of the domain
-        /// * `zone_file`: The zone file of the domain.
-        /// </summary>
-        public readonly string Urn;
         public readonly string ZoneFile;
 
         [OutputConstructor]
         private GetDomainResult(
+            string domainUrn,
+
             string id,
 
             string name,
 
             int ttl,
 
-            string urn,
-
             string zoneFile)
         {
+            DomainUrn = domainUrn;
             Id = id;
             Name = name;
             Ttl = ttl;
-            Urn = urn;
             ZoneFile = zoneFile;
         }
     }

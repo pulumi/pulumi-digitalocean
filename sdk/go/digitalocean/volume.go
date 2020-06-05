@@ -39,7 +39,7 @@ type Volume struct {
 	// A list of the tags to be applied to this Volume.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The uniform resource name for the volume.
-	Urn pulumi.StringOutput `pulumi:"urn"`
+	VolumeUrn pulumi.StringOutput `pulumi:"volumeUrn"`
 }
 
 // NewVolume registers a new resource with the given unique name, arguments, and options.
@@ -101,7 +101,7 @@ type volumeState struct {
 	// A list of the tags to be applied to this Volume.
 	Tags []string `pulumi:"tags"`
 	// The uniform resource name for the volume.
-	Urn *string `pulumi:"urn"`
+	VolumeUrn *string `pulumi:"volumeUrn"`
 }
 
 type VolumeState struct {
@@ -130,7 +130,7 @@ type VolumeState struct {
 	// A list of the tags to be applied to this Volume.
 	Tags pulumi.StringArrayInput
 	// The uniform resource name for the volume.
-	Urn pulumi.StringPtrInput
+	VolumeUrn pulumi.StringPtrInput
 }
 
 func (VolumeState) ElementType() reflect.Type {

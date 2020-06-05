@@ -10,6 +10,10 @@ from typing import Union
 from . import utilities, tables
 
 class Domain(pulumi.CustomResource):
+    domain_urn: pulumi.Output[str]
+    """
+    The uniform resource name of the domain
+    """
     ip_address: pulumi.Output[str]
     """
     The IP address of the domain. If specified, this IP
@@ -18,10 +22,6 @@ class Domain(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
     The name of the domain
-    """
-    urn: pulumi.Output[str]
-    """
-    The uniform resource name of the domain
     """
     def __init__(__self__, resource_name, opts=None, ip_address=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -69,7 +69,7 @@ class Domain(pulumi.CustomResource):
             if name is None:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
-            __props__['urn'] = None
+            __props__['domain_urn'] = None
         super(Domain, __self__).__init__(
             'digitalocean:index/domain:Domain',
             resource_name,
@@ -77,7 +77,7 @@ class Domain(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, ip_address=None, name=None, urn=None):
+    def get(resource_name, id, opts=None, domain_urn=None, ip_address=None, name=None):
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -85,18 +85,18 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] domain_urn: The uniform resource name of the domain
         :param pulumi.Input[str] ip_address: The IP address of the domain. If specified, this IP
                is used to created an initial A record for the domain.
         :param pulumi.Input[str] name: The name of the domain
-        :param pulumi.Input[str] urn: The uniform resource name of the domain
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["domain_urn"] = domain_urn
         __props__["ip_address"] = ip_address
         __props__["name"] = name
-        __props__["urn"] = urn
         return Domain(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

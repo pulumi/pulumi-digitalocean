@@ -62,7 +62,7 @@ export interface GetDomainResult {
      * The uniform resource name of the domain
      * * `zoneFile`: The zone file of the domain.
      */
-    readonly urn: string;
+    readonly domainUrn: string;
     readonly zoneFile: string;
     /**
      * The provider-assigned unique ID for this managed resource.

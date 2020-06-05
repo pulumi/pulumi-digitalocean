@@ -133,7 +133,7 @@ export class SpacesBucket extends pulumi.CustomResource {
     /**
      * The uniform resource name for the bucket
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly bucketUrn!: pulumi.Output<string>;
     /**
      * A state of versioning (documented below)
      */
@@ -158,7 +158,7 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["bucketUrn"] = state ? state.bucketUrn : undefined;
             inputs["versioning"] = state ? state.versioning : undefined;
         } else {
             const args = argsOrState as SpacesBucketArgs | undefined;
@@ -170,7 +170,7 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
             inputs["bucketDomainName"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
+            inputs["bucketUrn"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -218,7 +218,7 @@ export interface SpacesBucketState {
     /**
      * The uniform resource name for the bucket
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly bucketUrn?: pulumi.Input<string>;
     /**
      * A state of versioning (documented below)
      */
