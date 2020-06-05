@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  * });
  * const barfoo = new digitalocean.ProjectResources("barfoo", {
  *     project: data.digitalocean_project.foo.id,
- *     resources: [foobar.urn],
+ *     resources: [foobar.dropletUrn],
  * });
  * ```
  */

@@ -14,6 +14,8 @@ import (
 type DatabaseCluster struct {
 	pulumi.CustomResourceState
 
+	// The uniform resource name of the database cluster.
+	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database pulumi.StringOutput `pulumi:"database"`
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
@@ -48,8 +50,6 @@ type DatabaseCluster struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
 	Uri pulumi.StringOutput `pulumi:"uri"`
-	// The uniform resource name of the database cluster.
-	Urn pulumi.StringOutput `pulumi:"urn"`
 	// Username for the cluster's default user.
 	User pulumi.StringOutput `pulumi:"user"`
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
@@ -96,6 +96,8 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseCluster resources.
 type databaseClusterState struct {
+	// The uniform resource name of the database cluster.
+	ClusterUrn *string `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database *string `pulumi:"database"`
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
@@ -130,8 +132,6 @@ type databaseClusterState struct {
 	Tags []string `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
 	Uri *string `pulumi:"uri"`
-	// The uniform resource name of the database cluster.
-	Urn *string `pulumi:"urn"`
 	// Username for the cluster's default user.
 	User *string `pulumi:"user"`
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
@@ -139,6 +139,8 @@ type databaseClusterState struct {
 }
 
 type DatabaseClusterState struct {
+	// The uniform resource name of the database cluster.
+	ClusterUrn pulumi.StringPtrInput
 	// Name of the cluster's default database.
 	Database pulumi.StringPtrInput
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
@@ -173,8 +175,6 @@ type DatabaseClusterState struct {
 	Tags pulumi.StringArrayInput
 	// The full URI for connecting to the database cluster.
 	Uri pulumi.StringPtrInput
-	// The uniform resource name of the database cluster.
-	Urn pulumi.StringPtrInput
 	// Username for the cluster's default user.
 	User pulumi.StringPtrInput
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).

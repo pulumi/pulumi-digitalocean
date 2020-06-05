@@ -57,6 +57,13 @@ namespace Pulumi.DigitalOcean
         public Output<int> Disk { get; private set; } = null!;
 
         /// <summary>
+        /// The uniform resource name of the Droplet
+        /// * `name`- The name of the Droplet
+        /// </summary>
+        [Output("dropletUrn")]
+        public Output<string> DropletUrn { get; private set; } = null!;
+
+        /// <summary>
         /// The Droplet image ID or slug.
         /// </summary>
         [Output("image")]
@@ -170,13 +177,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
-
-        /// <summary>
-        /// The uniform resource name of the Droplet
-        /// * `name`- The name of the Droplet
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
         /// <summary>
         /// A string of the desired User Data for the Droplet.
@@ -385,6 +385,13 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Disk { get; set; }
 
         /// <summary>
+        /// The uniform resource name of the Droplet
+        /// * `name`- The name of the Droplet
+        /// </summary>
+        [Input("dropletUrn")]
+        public Input<string>? DropletUrn { get; set; }
+
+        /// <summary>
         /// The Droplet image ID or slug.
         /// </summary>
         [Input("image")]
@@ -510,13 +517,6 @@ namespace Pulumi.DigitalOcean
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
-
-        /// <summary>
-        /// The uniform resource name of the Droplet
-        /// * `name`- The name of the Droplet
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         /// <summary>
         /// A string of the desired User Data for the Droplet.

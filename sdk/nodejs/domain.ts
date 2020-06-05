@@ -63,7 +63,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The uniform resource name of the domain
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly domainUrn!: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -79,7 +79,7 @@ export class Domain extends pulumi.CustomResource {
             const state = argsOrState as DomainState | undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["domainUrn"] = state ? state.domainUrn : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if (!args || args.name === undefined) {
@@ -87,7 +87,7 @@ export class Domain extends pulumi.CustomResource {
             }
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["urn"] = undefined /*out*/;
+            inputs["domainUrn"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -116,7 +116,7 @@ export interface DomainState {
     /**
      * The uniform resource name of the domain
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly domainUrn?: pulumi.Input<string>;
 }
 
 /**

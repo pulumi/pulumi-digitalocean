@@ -95,7 +95,7 @@ export class Vpc extends pulumi.CustomResource {
     /**
      * The uniform resource name (URN) for the VPC.
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly vpcUrn!: pulumi.Output<string>;
 
     /**
      * Create a Vpc resource with the given unique name, arguments, and options.
@@ -115,7 +115,7 @@ export class Vpc extends pulumi.CustomResource {
             inputs["ipRange"] = state ? state.ipRange : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["vpcUrn"] = state ? state.vpcUrn : undefined;
         } else {
             const args = argsOrState as VpcArgs | undefined;
             if (!args || args.region === undefined) {
@@ -127,7 +127,7 @@ export class Vpc extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["default"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
+            inputs["vpcUrn"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -171,7 +171,7 @@ export interface VpcState {
     /**
      * The uniform resource name (URN) for the VPC.
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly vpcUrn?: pulumi.Input<string>;
 }
 
 /**

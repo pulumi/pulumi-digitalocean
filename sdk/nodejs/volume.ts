@@ -110,7 +110,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * The uniform resource name for the volume.
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly volumeUrn!: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -135,7 +135,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["volumeUrn"] = state ? state.volumeUrn : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if (!args || args.region === undefined) {
@@ -155,7 +155,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["dropletIds"] = undefined /*out*/;
             inputs["filesystemLabel"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
+            inputs["volumeUrn"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -220,7 +220,7 @@ export interface VolumeState {
     /**
      * The uniform resource name for the volume.
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly volumeUrn?: pulumi.Input<string>;
 }
 
 /**

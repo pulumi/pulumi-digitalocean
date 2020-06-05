@@ -14,6 +14,10 @@ class FloatingIp(pulumi.CustomResource):
     """
     The ID of Droplet that the Floating IP will be assigned to.
     """
+    floating_ip_urn: pulumi.Output[str]
+    """
+    The uniform resource name of the floating ip
+    """
     ip_address: pulumi.Output[str]
     """
     The IP Address of the resource
@@ -21,10 +25,6 @@ class FloatingIp(pulumi.CustomResource):
     region: pulumi.Output[str]
     """
     The region that the Floating IP is reserved to.
-    """
-    urn: pulumi.Output[str]
-    """
-    The uniform resource name of the floating ip
     """
     def __init__(__self__, resource_name, opts=None, droplet_id=None, ip_address=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -80,7 +80,7 @@ class FloatingIp(pulumi.CustomResource):
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['urn'] = None
+            __props__['floating_ip_urn'] = None
         super(FloatingIp, __self__).__init__(
             'digitalocean:index/floatingIp:FloatingIp',
             resource_name,
@@ -88,7 +88,7 @@ class FloatingIp(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, droplet_id=None, ip_address=None, region=None, urn=None):
+    def get(resource_name, id, opts=None, droplet_id=None, floating_ip_urn=None, ip_address=None, region=None):
         """
         Get an existing FloatingIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -97,18 +97,18 @@ class FloatingIp(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
+        :param pulumi.Input[str] floating_ip_urn: The uniform resource name of the floating ip
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
-        :param pulumi.Input[str] urn: The uniform resource name of the floating ip
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
         __props__["droplet_id"] = droplet_id
+        __props__["floating_ip_urn"] = floating_ip_urn
         __props__["ip_address"] = ip_address
         __props__["region"] = region
-        __props__["urn"] = urn
         return FloatingIp(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -13,7 +13,14 @@ class GetDomainResult:
     """
     A collection of values returned by getDomain.
     """
-    def __init__(__self__, id=None, name=None, ttl=None, urn=None, zone_file=None):
+    def __init__(__self__, domain_urn=None, id=None, name=None, ttl=None, zone_file=None):
+        if domain_urn and not isinstance(domain_urn, str):
+            raise TypeError("Expected argument 'domain_urn' to be a str")
+        __self__.domain_urn = domain_urn
+        """
+        The uniform resource name of the domain
+        * `zone_file`: The zone file of the domain.
+        """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -26,13 +33,6 @@ class GetDomainResult:
         if ttl and not isinstance(ttl, float):
             raise TypeError("Expected argument 'ttl' to be a float")
         __self__.ttl = ttl
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        __self__.urn = urn
-        """
-        The uniform resource name of the domain
-        * `zone_file`: The zone file of the domain.
-        """
         if zone_file and not isinstance(zone_file, str):
             raise TypeError("Expected argument 'zone_file' to be a str")
         __self__.zone_file = zone_file
@@ -42,10 +42,10 @@ class AwaitableGetDomainResult(GetDomainResult):
         if False:
             yield self
         return GetDomainResult(
+            domain_urn=self.domain_urn,
             id=self.id,
             name=self.name,
             ttl=self.ttl,
-            urn=self.urn,
             zone_file=self.zone_file)
 
 def get_domain(name=None,opts=None):
@@ -85,8 +85,8 @@ def get_domain(name=None,opts=None):
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDomain:getDomain', __args__, opts=opts).value
 
     return AwaitableGetDomainResult(
+        domain_urn=__ret__.get('domainUrn'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
         ttl=__ret__.get('ttl'),
-        urn=__ret__.get('urn'),
         zone_file=__ret__.get('zoneFile'))

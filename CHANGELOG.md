@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Fix an issue were Pulumi was stopping the DigitalOcean URN from being set.
+  The URN is now called a specific name to the resource e.g. `DropletUrn`
 
 ---
 

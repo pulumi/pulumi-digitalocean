@@ -53,6 +53,12 @@ namespace Pulumi.DigitalOcean
         public Output<int?> DropletId { get; private set; } = null!;
 
         /// <summary>
+        /// The uniform resource name of the floating ip
+        /// </summary>
+        [Output("floatingIpUrn")]
+        public Output<string> FloatingIpUrn { get; private set; } = null!;
+
+        /// <summary>
         /// The IP Address of the resource
         /// </summary>
         [Output("ipAddress")]
@@ -63,12 +69,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
-
-        /// <summary>
-        /// The uniform resource name of the floating ip
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,6 +148,12 @@ namespace Pulumi.DigitalOcean
         public Input<int>? DropletId { get; set; }
 
         /// <summary>
+        /// The uniform resource name of the floating ip
+        /// </summary>
+        [Input("floatingIpUrn")]
+        public Input<string>? FloatingIpUrn { get; set; }
+
+        /// <summary>
         /// The IP Address of the resource
         /// </summary>
         [Input("ipAddress")]
@@ -158,12 +164,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
-
-        /// <summary>
-        /// The uniform resource name of the floating ip
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         public FloatingIpState()
         {

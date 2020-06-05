@@ -86,6 +86,12 @@ namespace Pulumi.DigitalOcean
     public partial class DatabaseCluster : Pulumi.CustomResource
     {
         /// <summary>
+        /// The uniform resource name of the database cluster.
+        /// </summary>
+        [Output("clusterUrn")]
+        public Output<string> ClusterUrn { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the cluster's default database.
         /// </summary>
         [Output("database")]
@@ -186,12 +192,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("uri")]
         public Output<string> Uri { get; private set; } = null!;
-
-        /// <summary>
-        /// The uniform resource name of the database cluster.
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
         /// <summary>
         /// Username for the cluster's default user.
@@ -337,6 +337,12 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseClusterState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The uniform resource name of the database cluster.
+        /// </summary>
+        [Input("clusterUrn")]
+        public Input<string>? ClusterUrn { get; set; }
+
+        /// <summary>
         /// Name of the cluster's default database.
         /// </summary>
         [Input("database")]
@@ -449,12 +455,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
-
-        /// <summary>
-        /// The uniform resource name of the database cluster.
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         /// <summary>
         /// Username for the cluster's default user.

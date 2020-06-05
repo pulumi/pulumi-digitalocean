@@ -13,7 +13,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, urn=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         __self__.algorithm = algorithm
@@ -44,6 +44,9 @@ class GetLoadBalancerResult:
         if ip and not isinstance(ip, str):
             raise TypeError("Expected argument 'ip' to be a str")
         __self__.ip = ip
+        if load_balancer_urn and not isinstance(load_balancer_urn, str):
+            raise TypeError("Expected argument 'load_balancer_urn' to be a str")
+        __self__.load_balancer_urn = load_balancer_urn
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -59,9 +62,6 @@ class GetLoadBalancerResult:
         if sticky_sessions and not isinstance(sticky_sessions, dict):
             raise TypeError("Expected argument 'sticky_sessions' to be a dict")
         __self__.sticky_sessions = sticky_sessions
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        __self__.urn = urn
         if vpc_uuid and not isinstance(vpc_uuid, str):
             raise TypeError("Expected argument 'vpc_uuid' to be a str")
         __self__.vpc_uuid = vpc_uuid
@@ -80,12 +80,12 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             healthcheck=self.healthcheck,
             id=self.id,
             ip=self.ip,
+            load_balancer_urn=self.load_balancer_urn,
             name=self.name,
             redirect_http_to_https=self.redirect_http_to_https,
             region=self.region,
             status=self.status,
             sticky_sessions=self.sticky_sessions,
-            urn=self.urn,
             vpc_uuid=self.vpc_uuid)
 
 def get_load_balancer(name=None,opts=None):
@@ -133,10 +133,10 @@ def get_load_balancer(name=None,opts=None):
         healthcheck=__ret__.get('healthcheck'),
         id=__ret__.get('id'),
         ip=__ret__.get('ip'),
+        load_balancer_urn=__ret__.get('loadBalancerUrn'),
         name=__ret__.get('name'),
         redirect_http_to_https=__ret__.get('redirectHttpToHttps'),
         region=__ret__.get('region'),
         status=__ret__.get('status'),
         sticky_sessions=__ret__.get('stickySessions'),
-        urn=__ret__.get('urn'),
         vpc_uuid=__ret__.get('vpcUuid'))

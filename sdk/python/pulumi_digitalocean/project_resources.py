@@ -48,7 +48,7 @@ class ProjectResources(pulumi.CustomResource):
             region="nyc3")
         barfoo = digitalocean.ProjectResources("barfoo",
             project=data[".Project"]["foo"]["id"],
-            resources=[foobar.urn])
+            resources=[foobar.droplet_urn])
         ```
 
 

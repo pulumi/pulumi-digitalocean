@@ -34,7 +34,7 @@ class Vpc(pulumi.CustomResource):
     """
     The DigitalOcean region slug for the VPC's location.
     """
-    urn: pulumi.Output[str]
+    vpc_urn: pulumi.Output[str]
     """
     The uniform resource name (URN) for the VPC.
     """
@@ -105,7 +105,7 @@ class Vpc(pulumi.CustomResource):
             __props__['region'] = region
             __props__['created_at'] = None
             __props__['default'] = None
-            __props__['urn'] = None
+            __props__['vpc_urn'] = None
         super(Vpc, __self__).__init__(
             'digitalocean:index/vpc:Vpc',
             resource_name,
@@ -113,7 +113,7 @@ class Vpc(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_at=None, default=None, description=None, ip_range=None, name=None, region=None, urn=None):
+    def get(resource_name, id, opts=None, created_at=None, default=None, description=None, ip_range=None, name=None, region=None, vpc_urn=None):
         """
         Get an existing Vpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -127,7 +127,7 @@ class Vpc(pulumi.CustomResource):
         :param pulumi.Input[str] ip_range: The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
         :param pulumi.Input[str] name: A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
         :param pulumi.Input[str] region: The DigitalOcean region slug for the VPC's location.
-        :param pulumi.Input[str] urn: The uniform resource name (URN) for the VPC.
+        :param pulumi.Input[str] vpc_urn: The uniform resource name (URN) for the VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -139,7 +139,7 @@ class Vpc(pulumi.CustomResource):
         __props__["ip_range"] = ip_range
         __props__["name"] = name
         __props__["region"] = region
-        __props__["urn"] = urn
+        __props__["vpc_urn"] = vpc_urn
         return Vpc(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

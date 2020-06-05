@@ -149,7 +149,7 @@ export class Droplet extends pulumi.CustomResource {
      * The uniform resource name of the Droplet
      * * `name`- The name of the Droplet
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly dropletUrn!: pulumi.Output<string>;
     /**
      * A string of the desired User Data for the Droplet.
      */
@@ -200,7 +200,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["sshKeys"] = state ? state.sshKeys : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["dropletUrn"] = state ? state.dropletUrn : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["vcpus"] = state ? state.vcpus : undefined;
             inputs["volumeIds"] = state ? state.volumeIds : undefined;
@@ -240,7 +240,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["priceHourly"] = undefined /*out*/;
             inputs["priceMonthly"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
+            inputs["dropletUrn"] = undefined /*out*/;
             inputs["vcpus"] = undefined /*out*/;
         }
         if (!opts) {
@@ -351,7 +351,7 @@ export interface DropletState {
      * The uniform resource name of the Droplet
      * * `name`- The name of the Droplet
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly dropletUrn?: pulumi.Input<string>;
     /**
      * A string of the desired User Data for the Droplet.
      */

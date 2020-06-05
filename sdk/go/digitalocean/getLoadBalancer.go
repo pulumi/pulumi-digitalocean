@@ -40,11 +40,11 @@ type LookupLoadBalancerResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string                        `pulumi:"id"`
 	Ip                  string                        `pulumi:"ip"`
+	LoadBalancerUrn     string                        `pulumi:"loadBalancerUrn"`
 	Name                string                        `pulumi:"name"`
 	RedirectHttpToHttps bool                          `pulumi:"redirectHttpToHttps"`
 	Region              string                        `pulumi:"region"`
 	Status              string                        `pulumi:"status"`
 	StickySessions      GetLoadBalancerStickySessions `pulumi:"stickySessions"`
-	Urn                 string                        `pulumi:"urn"`
 	VpcUuid             string                        `pulumi:"vpcUuid"`
 }

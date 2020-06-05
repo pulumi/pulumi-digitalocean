@@ -98,7 +98,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The uniform resource name for the Load Balancer
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly loadBalancerUrn!: pulumi.Output<string>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
@@ -129,7 +129,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["stickySessions"] = state ? state.stickySessions : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
@@ -153,7 +153,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             inputs["ip"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
+            inputs["loadBalancerUrn"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -228,7 +228,7 @@ export interface LoadBalancerState {
     /**
      * The uniform resource name for the Load Balancer
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly loadBalancerUrn?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */

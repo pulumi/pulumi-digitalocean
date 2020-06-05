@@ -20,6 +20,11 @@ class Droplet(pulumi.CustomResource):
     """
     The size of the instance's disk in GB
     """
+    droplet_urn: pulumi.Output[str]
+    """
+    The uniform resource name of the Droplet
+    * `name`- The name of the Droplet
+    """
     image: pulumi.Output[str]
     """
     The Droplet image ID or slug.
@@ -98,11 +103,6 @@ class Droplet(pulumi.CustomResource):
     tags: pulumi.Output[list]
     """
     A list of the tags to be applied to this Droplet.
-    """
-    urn: pulumi.Output[str]
-    """
-    The uniform resource name of the Droplet
-    * `name`- The name of the Droplet
     """
     user_data: pulumi.Output[str]
     """
@@ -209,6 +209,7 @@ class Droplet(pulumi.CustomResource):
             __props__['vpc_uuid'] = vpc_uuid
             __props__['created_at'] = None
             __props__['disk'] = None
+            __props__['droplet_urn'] = None
             __props__['ipv4_address'] = None
             __props__['ipv4_address_private'] = None
             __props__['ipv6_address'] = None
@@ -217,7 +218,6 @@ class Droplet(pulumi.CustomResource):
             __props__['price_hourly'] = None
             __props__['price_monthly'] = None
             __props__['status'] = None
-            __props__['urn'] = None
             __props__['vcpus'] = None
         super(Droplet, __self__).__init__(
             'digitalocean:index/droplet:Droplet',
@@ -226,7 +226,7 @@ class Droplet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backups=None, created_at=None, disk=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, resize_disk=None, size=None, ssh_keys=None, status=None, tags=None, urn=None, user_data=None, vcpus=None, volume_ids=None, vpc_uuid=None):
+    def get(resource_name, id, opts=None, backups=None, created_at=None, disk=None, droplet_urn=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, resize_disk=None, size=None, ssh_keys=None, status=None, tags=None, user_data=None, vcpus=None, volume_ids=None, vpc_uuid=None):
         """
         Get an existing Droplet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -237,6 +237,8 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[float] disk: The size of the instance's disk in GB
+        :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
+               * `name`- The name of the Droplet
         :param pulumi.Input[str] image: The Droplet image ID or slug.
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
@@ -264,8 +266,6 @@ class Droplet(pulumi.CustomResource):
                to retrieve them.
         :param pulumi.Input[str] status: The status of the Droplet
         :param pulumi.Input[list] tags: A list of the tags to be applied to this Droplet.
-        :param pulumi.Input[str] urn: The uniform resource name of the Droplet
-               * `name`- The name of the Droplet
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[float] vcpus: The number of the instance's virtual CPUs
         :param pulumi.Input[list] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
@@ -278,6 +278,7 @@ class Droplet(pulumi.CustomResource):
         __props__["backups"] = backups
         __props__["created_at"] = created_at
         __props__["disk"] = disk
+        __props__["droplet_urn"] = droplet_urn
         __props__["image"] = image
         __props__["ipv4_address"] = ipv4_address
         __props__["ipv4_address_private"] = ipv4_address_private
@@ -296,7 +297,6 @@ class Droplet(pulumi.CustomResource):
         __props__["ssh_keys"] = ssh_keys
         __props__["status"] = status
         __props__["tags"] = tags
-        __props__["urn"] = urn
         __props__["user_data"] = user_data
         __props__["vcpus"] = vcpus
         __props__["volume_ids"] = volume_ids
