@@ -7,6 +7,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get information on a tag. This data source provides the name as configured on
+// your DigitalOcean account. This is useful if the tag name in question is not
+// managed by this provider or you need validate if the tag exists in the account.
+//
+// An error is triggered if the provided tag name does not exist.
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
 	var rv LookupTagResult
 	err := ctx.Invoke("digitalocean:index/getTag:getTag", args, &rv, opts...)

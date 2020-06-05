@@ -90,7 +90,26 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
 
 def get_load_balancer(name=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get information on a load balancer for use in other resources. This data source
+    provides all of the load balancers properties as configured on your DigitalOcean
+    account. This is useful if the load balancer in question is not managed by
+    this provider or you need to utilize any of the load balancers data.
+
+    An error is triggered if the provided load balancer name does not exist.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_load_balancer(name="app")
+    pulumi.export("lbOutput", example.ip)
+    ```
+
+
 
     :param str name: The name of load balancer.
     """

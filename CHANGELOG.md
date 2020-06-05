@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.5.0 (2020-06-04)
+* Upgrade to v1.19.0 of the DigitalOcean Terraform Provider
+
 ## 2.4.2 (2020-05-28)
 * Upgrade to Pulumi v2.3.0
 * Add const for new SFO3 region.

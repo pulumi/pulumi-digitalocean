@@ -47,6 +47,9 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetKubernetesVersionsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// If provided, this provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
+        /// </summary>
         [Input("versionPrefix")]
         public string? VersionPrefix { get; set; }
 

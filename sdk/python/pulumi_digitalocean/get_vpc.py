@@ -79,7 +79,27 @@ class AwaitableGetVpcResult(GetVpcResult):
 
 def get_vpc(id=None,name=None,region=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Retrieve information about a VPC for use in other resources.
+
+    This data source provides all of the VPC's properties as configured on your
+    DigitalOcean account. This is useful if the VPC in question is not managed by
+    this provider or you need to utilize any of the VPC's data.
+
+    VPCs may be looked up by `id` or `name`. Specifying a `region` will
+    return that that region's default VPC.
+
+    ## Example Usage
+
+    ### VPC By Name
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_vpc(name="example-network")
+    ```
+
+
 
     :param str id: The unique identifier of an existing VPC.
     :param str name: The name of an existing VPC.

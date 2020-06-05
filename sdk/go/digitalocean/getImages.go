@@ -7,6 +7,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get information on images for use in other resources (e.g. creating a Droplet
+// based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+// all images will be returned.
+//
+// This data source is useful if the image in question is not managed by this provider or you need to utilize any
+// of the image's data.
+//
+// Note: You can use the `.getImage` data source to obtain metadata
+// about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	var rv GetImagesResult
 	err := ctx.Invoke("digitalocean:index/getImages:getImages", args, &rv, opts...)

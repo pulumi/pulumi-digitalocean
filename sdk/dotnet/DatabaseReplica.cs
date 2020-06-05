@@ -87,6 +87,9 @@ namespace Pulumi.DigitalOcean
         [Output("privateHost")]
         public Output<string> PrivateHost { get; private set; } = null!;
 
+        [Output("privateNetworkUuid")]
+        public Output<string> PrivateNetworkUuid { get; private set; } = null!;
+
         /// <summary>
         /// Same as `uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
@@ -178,6 +181,9 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("privateNetworkUuid")]
+        public Input<string>? PrivateNetworkUuid { get; set; }
+
         /// <summary>
         /// DigitalOcean region where the replica will reside.
         /// </summary>
@@ -246,6 +252,9 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("privateHost")]
         public Input<string>? PrivateHost { get; set; }
+
+        [Input("privateNetworkUuid")]
+        public Input<string>? PrivateNetworkUuid { get; set; }
 
         /// <summary>
         /// Same as `uri`, but only accessible from resources within the account and in the same region.
