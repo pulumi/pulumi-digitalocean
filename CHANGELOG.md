@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Fix an issue were Pulumi was stopping the DigitalOcean URN from being set.
-  The URN is now called a specific name to the resource e.g. `DropletUrn`
+_(none)_
 
 ---
+
+## 2.5.1 (2020-06-06)
+* Fix an issue were Pulumi was stopping the DigitalOcean URN from being set.
+  The URN is now called a specific name to the resource e.g. `DropletUrn`
 
 ## 2.5.0 (2020-06-04)
 * Upgrade to v1.19.0 of the DigitalOcean Terraform Provider

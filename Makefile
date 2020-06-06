@@ -59,7 +59,7 @@ tfgen::
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
+	pulumi plugin install resource $(PACK) 2.5.0
 
 lint::
 	#golangci-lint run
