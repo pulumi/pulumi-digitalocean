@@ -134,7 +134,17 @@
             "required": [
                 "type",
                 "value"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "type",
+                        "uuid",
+                        "value"
+                    ]
+                }
+            }
         },
         "digitalocean:/FirewallInboundRule:FirewallInboundRule": {
             "properties": {
@@ -373,7 +383,20 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clientCertificate",
+                        "clientKey",
+                        "clusterCaCertificate",
+                        "expiresAt",
+                        "host",
+                        "rawConfig",
+                        "token"
+                    ]
+                }
+            }
         },
         "digitalocean:/KubernetesClusterNodePool:KubernetesClusterNodePool": {
             "properties": {
@@ -482,7 +505,18 @@
             "required": [
                 "name",
                 "size"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "actualNodeCount",
+                        "id",
+                        "name",
+                        "nodes",
+                        "size"
+                    ]
+                }
+            }
         },
         "digitalocean:/KubernetesClusterNodePoolNode:KubernetesClusterNodePoolNode": {
             "properties": {
@@ -540,7 +574,19 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "dropletId",
+                        "id",
+                        "name",
+                        "status",
+                        "updatedAt"
+                    ]
+                }
+            }
         },
         "digitalocean:/KubernetesNodePoolNode:KubernetesNodePoolNode": {
             "properties": {
@@ -595,7 +641,19 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "dropletId",
+                        "id",
+                        "name",
+                        "status",
+                        "updatedAt"
+                    ]
+                }
+            }
         },
         "digitalocean:/LoadBalancerForwardingRule:LoadBalancerForwardingRule": {
             "properties": {
@@ -880,7 +938,15 @@
             "type": "object",
             "required": [
                 "enabled"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "id"
+                    ]
+                }
+            }
         },
         "digitalocean:/SpacesBucketLifecycleRuleExpiration:SpacesBucketLifecycleRuleExpiration": {
             "properties": {
@@ -967,7 +1033,12 @@
             "required": [
                 "day",
                 "hour"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getDropletsDroplet:getDropletsDroplet": {
             "properties": {
@@ -1205,7 +1276,12 @@
                 "vcpus",
                 "volumeIds",
                 "vpcUuid"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getDropletsFilter:getDropletsFilter": {
             "properties": {
@@ -1430,7 +1506,12 @@
                 "status",
                 "tags",
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getImagesSort:getImagesSort": {
             "properties": {
@@ -1526,7 +1607,12 @@
                 "host",
                 "rawConfig",
                 "token"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getKubernetesClusterNodePool:getKubernetesClusterNodePool": {
             "properties": {
@@ -1643,7 +1729,12 @@
                 "nodeCount",
                 "nodes",
                 "size"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getKubernetesClusterNodePoolNode:getKubernetesClusterNodePoolNode": {
             "properties": {
@@ -1709,7 +1800,12 @@
                 "name",
                 "status",
                 "updatedAt"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getLoadBalancerForwardingRule:getLoadBalancerForwardingRule": {
             "properties": {
@@ -1770,7 +1866,12 @@
                 "targetPort",
                 "targetProtocol",
                 "tlsPassthrough"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getLoadBalancerHealthcheck:getLoadBalancerHealthcheck": {
             "properties": {
@@ -1840,7 +1941,12 @@
                 "protocol",
                 "responseTimeoutSeconds",
                 "unhealthyThreshold"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getLoadBalancerStickySessions:getLoadBalancerStickySessions": {
             "properties": {
@@ -1874,7 +1980,12 @@
                 "cookieName",
                 "cookieTtlSeconds",
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getProjectsFilter:getProjectsFilter": {
             "properties": {
@@ -2013,7 +2124,12 @@
                 "purpose",
                 "resources",
                 "updatedAt"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getProjectsSort:getProjectsSort": {
             "properties": {
@@ -2127,7 +2243,12 @@
                 "name",
                 "sizes",
                 "slug"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getRegionsSort:getRegionsSort": {
             "properties": {
@@ -2283,7 +2404,12 @@
                 "slug",
                 "transfer",
                 "vcpus"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getSizesSort:getSizesSort": {
             "properties": {
@@ -2352,7 +2478,12 @@
                 "name",
                 "region",
                 "urn"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:/getSpacesBucketsFilter:getSpacesBucketsFilter": {
             "properties": {
@@ -4839,7 +4970,7 @@
             }
         },
         "digitalocean:index/project:Project": {
-            "description": "Provides a DigitalOcean Project resource.\n\nProjects allow you to organize your resources into groups that fit the way you work.\nYou can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)\nin ways that align with the applications you host on DigitalOcean.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n**Note:** A managed project cannot be set as a default project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example demonstrates the creation of an empty project:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    environment: \"Development\",\n    purpose: \"Web Application\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    environment=\"Development\",\n    purpose=\"Web Application\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Environment = \"Development\",\n            Purpose = \"Web Application\",\n        });\n    }\n\n}\n```\n\nThe following example demonstrates the creation of a project with a Droplet resource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    purpose: \"Web Application\",\n    environment: \"Development\",\n    resources: [foobar.urn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    purpose=\"Web Application\",\n    environment=\"Development\",\n    resources=[foobar.urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Purpose = \"Web Application\",\n            Environment = \"Development\",\n            Resources = \n            {\n                foobar.Urn,\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a DigitalOcean Project resource.\n\nProjects allow you to organize your resources into groups that fit the way you work.\nYou can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)\nin ways that align with the applications you host on DigitalOcean.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n**Note:** A managed project cannot be set as a default project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example demonstrates the creation of an empty project:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    environment: \"Development\",\n    purpose: \"Web Application\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    environment=\"Development\",\n    purpose=\"Web Application\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Environment = \"Development\",\n            Purpose = \"Web Application\",\n        });\n    }\n\n}\n```\n\nThe following example demonstrates the creation of a project with a Droplet resource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    purpose: \"Web Application\",\n    environment: \"Development\",\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    purpose=\"Web Application\",\n    environment=\"Development\",\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Purpose = \"Web Application\",\n            Environment = \"Development\",\n            Resources = \n            {\n                foobar.DropletUrn,\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -4968,7 +5099,7 @@
             }
         },
         "digitalocean:index/projectResources:ProjectResources": {
-            "description": "Assign resources to a DigitalOcean Project. This is useful if you need to assign resources\nmanaged this provider to a DigitalOcean Project that is unmanaged by the provider.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example assigns a droplet to a Project managed outside of this provider:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = digitalocean.getProject({\n    name: \"playground\",\n});\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst barfoo = new digitalocean.ProjectResources(\"barfoo\", {\n    project: data.digitalocean_project.foo.id,\n    resources: [foobar.urn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.get_project(name=\"playground\")\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nbarfoo = digitalocean.ProjectResources(\"barfoo\",\n    project=data[\"digitalocean..Project\"][\"foo\"][\"id\"],\n    resources=[foobar.urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs\n        {\n            Name = \"playground\",\n        }));\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var barfoo = new DigitalOcean.ProjectResources(\"barfoo\", new DigitalOcean.ProjectResourcesArgs\n        {\n            Project = data.Digitalocean_project.Foo.Id,\n            Resources = \n            {\n                foobar.Urn,\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Assign resources to a DigitalOcean Project. This is useful if you need to assign resources\nmanaged this provider to a DigitalOcean Project that is unmanaged by the provider.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example assigns a droplet to a Project managed outside of this provider:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = digitalocean.getProject({\n    name: \"playground\",\n});\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst barfoo = new digitalocean.ProjectResources(\"barfoo\", {\n    project: data.digitalocean_project.foo.id,\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.get_project(name=\"playground\")\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nbarfoo = digitalocean.ProjectResources(\"barfoo\",\n    project=data[\"digitalocean..Project\"][\"foo\"][\"id\"],\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs\n        {\n            Name = \"playground\",\n        }));\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var barfoo = new DigitalOcean.ProjectResources(\"barfoo\", new DigitalOcean.ProjectResourcesArgs\n        {\n            Project = data.Digitalocean_project.Foo.Id,\n            Resources = \n            {\n                foobar.DropletUrn,\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "project": {
                     "type": "string",
@@ -8195,8 +8326,10 @@
             "devDependencies": {
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing Digital Ocean cloud resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-digitalocean)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-digitalocean` repo](https://github.com/pulumi/pulumi-digitalocean/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-digitalocean` repo](https://github.com/terraform-providers/terraform-provider-digitalocean/issues).",
             "typescriptVersion": ""
         },
         "python": {

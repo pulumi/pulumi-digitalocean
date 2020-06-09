@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {DropletSlug, Region} from "./index";
@@ -37,6 +35,7 @@ export class Droplet extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DropletState, opts?: pulumi.CustomResourceOptions): Droplet {
         return new Droplet(name, <any>state, { ...opts, id: id });
@@ -66,6 +65,11 @@ export class Droplet extends pulumi.CustomResource {
      * The size of the instance's disk in GB
      */
     public /*out*/ readonly disk!: pulumi.Output<number>;
+    /**
+     * The uniform resource name of the Droplet
+     * * `name`- The name of the Droplet
+     */
+    public /*out*/ readonly dropletUrn!: pulumi.Output<string>;
     /**
      * The Droplet image ID or slug.
      */
@@ -146,11 +150,6 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
-     */
-    public /*out*/ readonly dropletUrn!: pulumi.Output<string>;
-    /**
      * A string of the desired User Data for the Droplet.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
@@ -182,6 +181,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["backups"] = state ? state.backups : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["disk"] = state ? state.disk : undefined;
+            inputs["dropletUrn"] = state ? state.dropletUrn : undefined;
             inputs["image"] = state ? state.image : undefined;
             inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
             inputs["ipv4AddressPrivate"] = state ? state.ipv4AddressPrivate : undefined;
@@ -200,7 +200,6 @@ export class Droplet extends pulumi.CustomResource {
             inputs["sshKeys"] = state ? state.sshKeys : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
-            inputs["dropletUrn"] = state ? state.dropletUrn : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["vcpus"] = state ? state.vcpus : undefined;
             inputs["volumeIds"] = state ? state.volumeIds : undefined;
@@ -232,6 +231,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["disk"] = undefined /*out*/;
+            inputs["dropletUrn"] = undefined /*out*/;
             inputs["ipv4Address"] = undefined /*out*/;
             inputs["ipv4AddressPrivate"] = undefined /*out*/;
             inputs["ipv6Address"] = undefined /*out*/;
@@ -240,7 +240,6 @@ export class Droplet extends pulumi.CustomResource {
             inputs["priceHourly"] = undefined /*out*/;
             inputs["priceMonthly"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["dropletUrn"] = undefined /*out*/;
             inputs["vcpus"] = undefined /*out*/;
         }
         if (!opts) {
@@ -268,6 +267,11 @@ export interface DropletState {
      * The size of the instance's disk in GB
      */
     readonly disk?: pulumi.Input<number>;
+    /**
+     * The uniform resource name of the Droplet
+     * * `name`- The name of the Droplet
+     */
+    readonly dropletUrn?: pulumi.Input<string>;
     /**
      * The Droplet image ID or slug.
      */
@@ -347,11 +351,6 @@ export interface DropletState {
      * A list of the tags to be applied to this Droplet.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
-     */
-    readonly dropletUrn?: pulumi.Input<string>;
     /**
      * A string of the desired User Data for the Droplet.
      */

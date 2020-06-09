@@ -59,9 +59,9 @@ export interface GetTagArgs {
  * A collection of values returned by getTag.
  */
 export interface GetTagResult {
-    readonly name: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
 }

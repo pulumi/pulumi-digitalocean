@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -40,6 +38,7 @@ export class FloatingIp extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FloatingIpState, opts?: pulumi.CustomResourceOptions): FloatingIp {
         return new FloatingIp(name, <any>state, { ...opts, id: id });
@@ -64,6 +63,10 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     public readonly dropletId!: pulumi.Output<number | undefined>;
     /**
+     * The uniform resource name of the floating ip
+     */
+    public /*out*/ readonly floatingIpUrn!: pulumi.Output<string>;
+    /**
      * The IP Address of the resource
      */
     public readonly ipAddress!: pulumi.Output<string>;
@@ -71,10 +74,6 @@ export class FloatingIp extends pulumi.CustomResource {
      * The region that the Floating IP is reserved to.
      */
     public readonly region!: pulumi.Output<string>;
-    /**
-     * The uniform resource name of the floating ip
-     */
-    public /*out*/ readonly floatingIpUrn!: pulumi.Output<string>;
 
     /**
      * Create a FloatingIp resource with the given unique name, arguments, and options.
@@ -89,9 +88,9 @@ export class FloatingIp extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as FloatingIpState | undefined;
             inputs["dropletId"] = state ? state.dropletId : undefined;
+            inputs["floatingIpUrn"] = state ? state.floatingIpUrn : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["region"] = state ? state.region : undefined;
-            inputs["floatingIpUrn"] = state ? state.floatingIpUrn : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
             if (!args || args.region === undefined) {
@@ -122,6 +121,10 @@ export interface FloatingIpState {
      */
     readonly dropletId?: pulumi.Input<number>;
     /**
+     * The uniform resource name of the floating ip
+     */
+    readonly floatingIpUrn?: pulumi.Input<string>;
+    /**
      * The IP Address of the resource
      */
     readonly ipAddress?: pulumi.Input<string>;
@@ -129,10 +132,6 @@ export interface FloatingIpState {
      * The region that the Floating IP is reserved to.
      */
     readonly region?: pulumi.Input<string>;
-    /**
-     * The uniform resource name of the floating ip
-     */
-    readonly floatingIpUrn?: pulumi.Input<string>;
 }
 
 /**

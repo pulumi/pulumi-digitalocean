@@ -83,6 +83,7 @@ export class SpacesBucket extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SpacesBucketState, opts?: pulumi.CustomResourceOptions): SpacesBucket {
         return new SpacesBucket(name, <any>state, { ...opts, id: id });
@@ -111,6 +112,10 @@ export class SpacesBucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     /**
+     * The uniform resource name for the bucket
+     */
+    public /*out*/ readonly bucketUrn!: pulumi.Output<string>;
+    /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      */
     public readonly corsRules!: pulumi.Output<outputs.SpacesBucketCorsRule[] | undefined>;
@@ -131,10 +136,6 @@ export class SpacesBucket extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<Region | undefined>;
     /**
-     * The uniform resource name for the bucket
-     */
-    public /*out*/ readonly bucketUrn!: pulumi.Output<string>;
-    /**
      * A state of versioning (documented below)
      */
     public readonly versioning!: pulumi.Output<outputs.SpacesBucketVersioning | undefined>;
@@ -153,12 +154,12 @@ export class SpacesBucket extends pulumi.CustomResource {
             const state = argsOrState as SpacesBucketState | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
+            inputs["bucketUrn"] = state ? state.bucketUrn : undefined;
             inputs["corsRules"] = state ? state.corsRules : undefined;
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
-            inputs["bucketUrn"] = state ? state.bucketUrn : undefined;
             inputs["versioning"] = state ? state.versioning : undefined;
         } else {
             const args = argsOrState as SpacesBucketArgs | undefined;
@@ -196,6 +197,10 @@ export interface SpacesBucketState {
      */
     readonly bucketDomainName?: pulumi.Input<string>;
     /**
+     * The uniform resource name for the bucket
+     */
+    readonly bucketUrn?: pulumi.Input<string>;
+    /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      */
     readonly corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
@@ -215,10 +220,6 @@ export interface SpacesBucketState {
      * The region where the bucket resides (Defaults to `nyc3`)
      */
     readonly region?: pulumi.Input<Region>;
-    /**
-     * The uniform resource name for the bucket
-     */
-    readonly bucketUrn?: pulumi.Input<string>;
     /**
      * A state of versioning (documented below)
      */

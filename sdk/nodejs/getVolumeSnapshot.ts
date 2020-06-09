@@ -74,6 +74,10 @@ export interface GetVolumeSnapshotResult {
      */
     readonly createdAt: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
      */
     readonly minDiskSize: number;
@@ -97,8 +101,4 @@ export interface GetVolumeSnapshotResult {
      * The ID of the volume from which the volume snapshot originated.
      */
     readonly volumeId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

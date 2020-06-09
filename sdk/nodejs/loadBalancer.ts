@@ -11,7 +11,6 @@ import {Algorithm, Region} from "./index";
 /**
  * Provides a DigitalOcean Load Balancer resource. This can be used to create,
  * modify, and delete Load Balancers.
- *
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -21,6 +20,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoadBalancerState, opts?: pulumi.CustomResourceOptions): LoadBalancer {
         return new LoadBalancer(name, <any>state, { ...opts, id: id });
@@ -76,6 +76,10 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly healthcheck!: pulumi.Output<outputs.LoadBalancerHealthcheck>;
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
+     * The uniform resource name for the Load Balancer
+     */
+    public /*out*/ readonly loadBalancerUrn!: pulumi.Output<string>;
+    /**
      * The Load Balancer name
      */
     public readonly name!: pulumi.Output<string>;
@@ -95,10 +99,6 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
-    /**
-     * The uniform resource name for the Load Balancer
-     */
-    public /*out*/ readonly loadBalancerUrn!: pulumi.Output<string>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
@@ -124,12 +124,12 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["forwardingRules"] = state ? state.forwardingRules : undefined;
             inputs["healthcheck"] = state ? state.healthcheck : undefined;
             inputs["ip"] = state ? state.ip : undefined;
+            inputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["stickySessions"] = state ? state.stickySessions : undefined;
-            inputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
@@ -152,8 +152,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["stickySessions"] = args ? args.stickySessions : undefined;
             inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             inputs["ip"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
             inputs["loadBalancerUrn"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -206,6 +206,10 @@ export interface LoadBalancerState {
     readonly healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
     readonly ip?: pulumi.Input<string>;
     /**
+     * The uniform resource name for the Load Balancer
+     */
+    readonly loadBalancerUrn?: pulumi.Input<string>;
+    /**
      * The Load Balancer name
      */
     readonly name?: pulumi.Input<string>;
@@ -225,10 +229,6 @@ export interface LoadBalancerState {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     readonly stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
-    /**
-     * The uniform resource name for the Load Balancer
-     */
-    readonly loadBalancerUrn?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */

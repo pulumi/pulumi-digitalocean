@@ -55,13 +55,13 @@ export interface GetCertificateArgs {
  */
 export interface GetCertificateResult {
     readonly domains: string[];
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly notAfter: string;
     readonly sha1Fingerprint: string;
     readonly state: string;
     readonly type: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

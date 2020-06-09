@@ -69,9 +69,9 @@ export interface GetSpacesBucketsResult {
      */
     readonly buckets: outputs.GetSpacesBucketsBucket[];
     readonly filters?: outputs.GetSpacesBucketsFilter[];
-    readonly sorts?: outputs.GetSpacesBucketsSort[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly sorts?: outputs.GetSpacesBucketsSort[];
 }
