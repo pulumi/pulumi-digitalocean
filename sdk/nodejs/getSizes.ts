@@ -68,10 +68,10 @@ export interface GetSizesArgs {
  */
 export interface GetSizesResult {
     readonly filters?: outputs.GetSizesFilter[];
-    readonly sizes: outputs.GetSizesSize[];
-    readonly sorts?: outputs.GetSizesSort[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly sizes: outputs.GetSizesSize[];
+    readonly sorts?: outputs.GetSizesSort[];
 }

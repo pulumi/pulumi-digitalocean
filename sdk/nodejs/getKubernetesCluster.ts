@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by this provider.
- *
  */
 export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
     if (!opts) {
@@ -54,6 +53,10 @@ export interface GetKubernetesClusterResult {
      * The base URL of the API server on the Kubernetes master node.
      */
     readonly endpoint: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     /**
      * The public IPv4 address of the Kubernetes master node.
      */
@@ -116,8 +119,4 @@ export interface GetKubernetesClusterResult {
      * The ID of the VPC where the Kubernetes cluster is located.
      */
     readonly vpcUuid: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

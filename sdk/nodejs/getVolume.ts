@@ -81,6 +81,10 @@ export interface GetVolumeResult {
      * Filesystem type currently in-use on the block storage volume.
      */
     readonly filesystemType: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly region?: string;
     /**
@@ -92,8 +96,4 @@ export interface GetVolumeResult {
      */
     readonly tags: string[];
     readonly urn: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

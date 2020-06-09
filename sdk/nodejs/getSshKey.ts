@@ -61,10 +61,10 @@ export interface GetSshKeyArgs {
  */
 export interface GetSshKeyResult {
     readonly fingerprint: string;
-    readonly name: string;
-    readonly publicKey: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
+    readonly publicKey: string;
 }

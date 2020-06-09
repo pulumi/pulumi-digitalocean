@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -32,6 +30,7 @@ export class Domain extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DomainState, opts?: pulumi.CustomResourceOptions): Domain {
         return new Domain(name, <any>state, { ...opts, id: id });
@@ -52,6 +51,10 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
+     * The uniform resource name of the domain
+     */
+    public /*out*/ readonly domainUrn!: pulumi.Output<string>;
+    /**
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
      */
@@ -60,10 +63,6 @@ export class Domain extends pulumi.CustomResource {
      * The name of the domain
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The uniform resource name of the domain
-     */
-    public /*out*/ readonly domainUrn!: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -77,9 +76,9 @@ export class Domain extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DomainState | undefined;
+            inputs["domainUrn"] = state ? state.domainUrn : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["domainUrn"] = state ? state.domainUrn : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if (!args || args.name === undefined) {
@@ -105,6 +104,10 @@ export class Domain extends pulumi.CustomResource {
  */
 export interface DomainState {
     /**
+     * The uniform resource name of the domain
+     */
+    readonly domainUrn?: pulumi.Input<string>;
+    /**
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
      */
@@ -113,10 +116,6 @@ export interface DomainState {
      * The name of the domain
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The uniform resource name of the domain
-     */
-    readonly domainUrn?: pulumi.Input<string>;
 }
 
 /**

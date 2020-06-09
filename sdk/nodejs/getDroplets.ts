@@ -72,9 +72,9 @@ export interface GetDropletsResult {
      */
     readonly droplets: outputs.GetDropletsDroplet[];
     readonly filters?: outputs.GetDropletsFilter[];
-    readonly sorts?: outputs.GetDropletsSort[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly sorts?: outputs.GetDropletsSort[];
 }

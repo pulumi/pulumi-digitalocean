@@ -120,6 +120,10 @@ export interface GetSpacesBucketObjectResult {
      * The date and time at which the object is no longer cacheable.
      */
     readonly expires: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly key: string;
     /**
      * Last modified date of the object in RFC1123 format (e.g. `Mon, 02 Jan 2006 15:04:05 MST`)
@@ -139,8 +143,4 @@ export interface GetSpacesBucketObjectResult {
      * If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
      */
     readonly websiteRedirectLocation: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -40,11 +40,11 @@ export interface GetAccountResult {
     readonly email: string;
     readonly emailVerified: boolean;
     readonly floatingIpLimit: number;
-    readonly status: string;
-    readonly statusMessage: string;
-    readonly uuid: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly status: string;
+    readonly statusMessage: string;
+    readonly uuid: string;
 }

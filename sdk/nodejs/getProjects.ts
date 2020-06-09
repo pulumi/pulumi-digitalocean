@@ -68,6 +68,10 @@ export interface GetProjectsArgs {
 export interface GetProjectsResult {
     readonly filters?: outputs.GetProjectsFilter[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A set of projects satisfying any `filter` and `sort` criteria. Each project has
      * the following attributes:
      * - `id` - The ID of the project
@@ -83,8 +87,4 @@ export interface GetProjectsResult {
      */
     readonly projects: outputs.GetProjectsProject[];
     readonly sorts?: outputs.GetProjectsSort[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

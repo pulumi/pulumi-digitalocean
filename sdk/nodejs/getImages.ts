@@ -70,6 +70,10 @@ export interface GetImagesArgs {
 export interface GetImagesResult {
     readonly filters?: outputs.GetImagesFilter[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:  
      * - `slug`: Unique text identifier of the image.
      * - `id`: The ID of the image.
@@ -90,8 +94,4 @@ export interface GetImagesResult {
      */
     readonly images: outputs.GetImagesImage[];
     readonly sorts?: outputs.GetImagesSort[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
