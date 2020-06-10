@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.5.2 (2020-06-10)
+* Switch to GitHub actions for build
+
 ## 2.5.1 (2020-06-06)
 * Fix an issue were Pulumi was stopping the DigitalOcean URN from being set.
   The URN is now called a specific name to the resource e.g. `DropletUrn`
