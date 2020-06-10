@@ -19,7 +19,6 @@ import (
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
 
-
 func checkDigitalOceanTokenSet(t *testing.T) {
 	token := os.Getenv("DIGITALOCEAN_TOKEN")
 	if token == "" {

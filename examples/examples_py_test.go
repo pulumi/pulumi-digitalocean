@@ -14,17 +14,10 @@
 package examples
 
 import (
-	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 	"path/filepath"
-)
+	"testing"
 
-package examples
-
-import (
-"path/filepath"
-"testing"
-
-"github.com/pulumi/pulumi/pkg/v2/testing/integration"
+	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
 
 func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {

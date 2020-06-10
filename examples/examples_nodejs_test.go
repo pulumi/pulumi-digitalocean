@@ -14,9 +14,10 @@
 package examples
 
 import (
-	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 	"path"
 	"testing"
+
+	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
 
 func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
