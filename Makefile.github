@@ -60,12 +60,9 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 		echo "${DOTNET_VERSION}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
-<<<<<<< HEAD
-=======
 build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
->>>>>>> 4722edbbbe9c376c1f9e2a27d548da0217d74456
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
@@ -97,8 +94,3 @@ install_nodejs_sdk::
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 4722edbbbe9c376c1f9e2a27d548da0217d74456
