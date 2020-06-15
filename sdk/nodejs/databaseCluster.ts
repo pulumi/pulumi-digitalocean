@@ -66,6 +66,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseClusterState, opts?: pulumi.CustomResourceOptions): DatabaseCluster {
         return new DatabaseCluster(name, <any>state, { ...opts, id: id });
@@ -85,6 +86,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseCluster.__pulumiType;
     }
 
+    /**
+     * The uniform resource name of the database cluster.
+     */
+    public /*out*/ readonly clusterUrn!: pulumi.Output<string>;
     /**
      * Name of the cluster's default database.
      */
@@ -154,10 +159,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
     /**
-     * The uniform resource name of the database cluster.
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
-    /**
      * Username for the cluster's default user.
      */
     public /*out*/ readonly user!: pulumi.Output<string>;
@@ -178,6 +179,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DatabaseClusterState | undefined;
+            inputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["engine"] = state ? state.engine : undefined;
             inputs["evictionPolicy"] = state ? state.evictionPolicy : undefined;
@@ -195,7 +197,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["sqlMode"] = state ? state.sqlMode : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["uri"] = state ? state.uri : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
             inputs["user"] = state ? state.user : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
@@ -223,6 +224,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["sqlMode"] = args ? args.sqlMode : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["version"] = args ? args.version : undefined;
+            inputs["clusterUrn"] = undefined /*out*/;
             inputs["database"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
             inputs["password"] = undefined /*out*/;
@@ -230,7 +232,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["privateHost"] = undefined /*out*/;
             inputs["privateUri"] = undefined /*out*/;
             inputs["uri"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
         if (!opts) {
@@ -248,6 +249,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseCluster resources.
  */
 export interface DatabaseClusterState {
+    /**
+     * The uniform resource name of the database cluster.
+     */
+    readonly clusterUrn?: pulumi.Input<string>;
     /**
      * Name of the cluster's default database.
      */
@@ -316,10 +321,6 @@ export interface DatabaseClusterState {
      * The full URI for connecting to the database cluster.
      */
     readonly uri?: pulumi.Input<string>;
-    /**
-     * The uniform resource name of the database cluster.
-     */
-    readonly urn?: pulumi.Input<string>;
     /**
      * Username for the cluster's default user.
      */

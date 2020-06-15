@@ -14,13 +14,13 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
+	// The uniform resource name of the domain
+	DomainUrn pulumi.StringOutput `pulumi:"domainUrn"`
 	// The IP address of the domain. If specified, this IP
 	// is used to created an initial A record for the domain.
 	IpAddress pulumi.StringPtrOutput `pulumi:"ipAddress"`
 	// The name of the domain
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The uniform resource name of the domain
-	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
 // NewDomain registers a new resource with the given unique name, arguments, and options.
@@ -54,23 +54,23 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
+	// The uniform resource name of the domain
+	DomainUrn *string `pulumi:"domainUrn"`
 	// The IP address of the domain. If specified, this IP
 	// is used to created an initial A record for the domain.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The name of the domain
 	Name *string `pulumi:"name"`
-	// The uniform resource name of the domain
-	Urn *string `pulumi:"urn"`
 }
 
 type DomainState struct {
+	// The uniform resource name of the domain
+	DomainUrn pulumi.StringPtrInput
 	// The IP address of the domain. If specified, this IP
 	// is used to created an initial A record for the domain.
 	IpAddress pulumi.StringPtrInput
 	// The name of the domain
 	Name pulumi.StringPtrInput
-	// The uniform resource name of the domain
-	Urn pulumi.StringPtrInput
 }
 
 func (DomainState) ElementType() reflect.Type {

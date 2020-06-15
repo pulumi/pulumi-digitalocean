@@ -32,6 +32,8 @@ type SpacesBucket struct {
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName pulumi.StringOutput `pulumi:"bucketDomainName"`
+	// The uniform resource name for the bucket
+	BucketUrn pulumi.StringOutput `pulumi:"bucketUrn"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules SpacesBucketCorsRuleArrayOutput `pulumi:"corsRules"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
@@ -42,8 +44,6 @@ type SpacesBucket struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// The uniform resource name for the bucket
-	Urn pulumi.StringOutput `pulumi:"urn"`
 	// A state of versioning (documented below)
 	Versioning SpacesBucketVersioningPtrOutput `pulumi:"versioning"`
 }
@@ -80,6 +80,8 @@ type spacesBucketState struct {
 	Acl *string `pulumi:"acl"`
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName *string `pulumi:"bucketDomainName"`
+	// The uniform resource name for the bucket
+	BucketUrn *string `pulumi:"bucketUrn"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules []SpacesBucketCorsRule `pulumi:"corsRules"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
@@ -90,8 +92,6 @@ type spacesBucketState struct {
 	Name *string `pulumi:"name"`
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region *string `pulumi:"region"`
-	// The uniform resource name for the bucket
-	Urn *string `pulumi:"urn"`
 	// A state of versioning (documented below)
 	Versioning *SpacesBucketVersioning `pulumi:"versioning"`
 }
@@ -101,6 +101,8 @@ type SpacesBucketState struct {
 	Acl pulumi.StringPtrInput
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName pulumi.StringPtrInput
+	// The uniform resource name for the bucket
+	BucketUrn pulumi.StringPtrInput
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules SpacesBucketCorsRuleArrayInput
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
@@ -111,8 +113,6 @@ type SpacesBucketState struct {
 	Name pulumi.StringPtrInput
 	// The region where the bucket resides (Defaults to `nyc3`)
 	Region pulumi.StringPtrInput
-	// The uniform resource name for the bucket
-	Urn pulumi.StringPtrInput
 	// A state of versioning (documented below)
 	Versioning SpacesBucketVersioningPtrInput
 }

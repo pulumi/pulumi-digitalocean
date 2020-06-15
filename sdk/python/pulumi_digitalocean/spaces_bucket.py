@@ -18,6 +18,10 @@ class SpacesBucket(pulumi.CustomResource):
     """
     The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
     """
+    bucket_urn: pulumi.Output[str]
+    """
+    The uniform resource name for the bucket
+    """
     cors_rules: pulumi.Output[list]
     """
     A rule of Cross-Origin Resource Sharing (documented below).
@@ -58,10 +62,6 @@ class SpacesBucket(pulumi.CustomResource):
     region: pulumi.Output[str]
     """
     The region where the bucket resides (Defaults to `nyc3`)
-    """
-    urn: pulumi.Output[str]
-    """
-    The uniform resource name for the bucket
     """
     versioning: pulumi.Output[dict]
     """
@@ -200,7 +200,7 @@ class SpacesBucket(pulumi.CustomResource):
             __props__['region'] = region
             __props__['versioning'] = versioning
             __props__['bucket_domain_name'] = None
-            __props__['urn'] = None
+            __props__['bucket_urn'] = None
         super(SpacesBucket, __self__).__init__(
             'digitalocean:index/spacesBucket:SpacesBucket',
             resource_name,
@@ -208,7 +208,7 @@ class SpacesBucket(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl=None, bucket_domain_name=None, cors_rules=None, force_destroy=None, lifecycle_rules=None, name=None, region=None, urn=None, versioning=None):
+    def get(resource_name, id, opts=None, acl=None, bucket_domain_name=None, bucket_urn=None, cors_rules=None, force_destroy=None, lifecycle_rules=None, name=None, region=None, versioning=None):
         """
         Get an existing SpacesBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -218,12 +218,12 @@ class SpacesBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
         :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+        :param pulumi.Input[str] bucket_urn: The uniform resource name for the bucket
         :param pulumi.Input[list] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[list] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
-        :param pulumi.Input[str] urn: The uniform resource name for the bucket
         :param pulumi.Input[dict] versioning: A state of versioning (documented below)
 
         The **cors_rules** object supports the following:
@@ -262,12 +262,12 @@ class SpacesBucket(pulumi.CustomResource):
 
         __props__["acl"] = acl
         __props__["bucket_domain_name"] = bucket_domain_name
+        __props__["bucket_urn"] = bucket_urn
         __props__["cors_rules"] = cors_rules
         __props__["force_destroy"] = force_destroy
         __props__["lifecycle_rules"] = lifecycle_rules
         __props__["name"] = name
         __props__["region"] = region
-        __props__["urn"] = urn
         __props__["versioning"] = versioning
         return SpacesBucket(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

@@ -58,11 +58,11 @@ export interface GetFloatingIpArgs {
  */
 export interface GetFloatingIpResult {
     readonly dropletId: number;
-    readonly ipAddress: string;
-    readonly region: string;
-    readonly urn: string;
+    readonly floatingIpUrn: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ipAddress: string;
+    readonly region: string;
 }

@@ -88,6 +88,10 @@ export interface GetKubernetesVersionsArgs {
  */
 export interface GetKubernetesVersionsResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The most recent version available.
      */
     readonly latestVersion: string;
@@ -96,8 +100,4 @@ export interface GetKubernetesVersionsResult {
      */
     readonly validVersions: string[];
     readonly versionPrefix?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -1,17 +1,11 @@
 archives:
-- format_overrides:
-  - format: zip
-    goos: windows
-  id: archive
+- id: archive
   name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
-  replacements:
-    "386": x86
-    amd64: x64
 before:
   hooks:
-  - cd provider && go mod download
+  - make -f Makefile.github tfgen
 blobs:
-- bucket: goreleaser
+- bucket: get.pulumi.com
   folder: releases/plugins/
   ids:
   - archive
@@ -37,4 +31,4 @@ changelog:
 release:
   disable: true
 snapshot:
-  name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+  name_template: '{{ .Tag }}-SNAPSHOT'

@@ -60,6 +60,10 @@ export interface GetRegionResult {
      */
     readonly features: string[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The display name of the region.
      */
     readonly name: string;
@@ -71,8 +75,4 @@ export interface GetRegionResult {
      * A human-readable string that is used as a unique identifier for each region.
      */
     readonly slug: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

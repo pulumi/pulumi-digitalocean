@@ -62,16 +62,16 @@ export interface GetLoadBalancerResult {
     readonly enableProxyProtocol: boolean;
     readonly forwardingRules: outputs.GetLoadBalancerForwardingRule[];
     readonly healthcheck: outputs.GetLoadBalancerHealthcheck;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly ip: string;
+    readonly loadBalancerUrn: string;
     readonly name: string;
     readonly redirectHttpToHttps: boolean;
     readonly region: string;
     readonly status: string;
     readonly stickySessions: outputs.GetLoadBalancerStickySessions;
-    readonly urn: string;
     readonly vpcUuid: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -115,6 +115,9 @@ func Provider() tfbridge.ProviderInfo {
 					"size": {
 						Type: makeType(digitalOceanMod, "DatabaseSlug"),
 					},
+					"urn": {
+						Name: "clusterUrn",
+					},
 				},
 			},
 			"digitalocean_database_connection_pool": {
@@ -137,7 +140,12 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_domain": {
 				Tok: makeResource(digitalOceanMod, "Domain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": {Name: "name"},
+					"name": {
+						Name: "name",
+					},
+					"urn": {
+						Name: "domainUrn",
+					},
 				},
 			},
 			"digitalocean_droplet": {
@@ -149,6 +157,9 @@ func Provider() tfbridge.ProviderInfo {
 					"size": {
 						Type: makeType(digitalOceanMod, "DropletSlug"),
 					},
+					"urn": {
+						Name: "dropletUrn",
+					},
 				},
 			},
 			"digitalocean_droplet_snapshot": {
@@ -159,8 +170,15 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_firewall":               {Tok: makeResource(digitalOceanMod, "Firewall")},
-			"digitalocean_floating_ip":            {Tok: makeResource(digitalOceanMod, "FloatingIp")},
+			"digitalocean_firewall": {Tok: makeResource(digitalOceanMod, "Firewall")},
+			"digitalocean_floating_ip": {
+				Tok: makeResource(digitalOceanMod, "FloatingIp"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "floatingIpUrn",
+					},
+				},
+			},
 			"digitalocean_floating_ip_assignment": {Tok: makeResource(digitalOceanMod, "FloatingIpAssignment")},
 			"digitalocean_kubernetes_cluster": {
 				Tok: makeResource(digitalOceanMod, "KubernetesCluster"),
@@ -187,6 +205,9 @@ func Provider() tfbridge.ProviderInfo {
 					"algorithm": {
 						Type: makeType(digitalOceanMod, "Algorithm"),
 					},
+					"urn": {
+						Name: "loadBalancerUrn",
+					},
 				},
 			},
 			"digitalocean_project": {Tok: makeResource(digitalOceanMod, "Project")},
@@ -205,6 +226,9 @@ func Provider() tfbridge.ProviderInfo {
 					"region": {
 						Type: makeType(digitalOceanMod, "Region"),
 					},
+					"urn": {
+						Name: "bucketUrn",
+					},
 				},
 			},
 			"digitalocean_spaces_bucket_object": {Tok: makeResource(digitalOceanMod, "SpacesBucketObject")},
@@ -218,6 +242,9 @@ func Provider() tfbridge.ProviderInfo {
 					"initial_filesystem_type": {
 						Type: makeType(digitalOceanMod, "FilesystemType"),
 					},
+					"urn": {
+						Name: "volumeUrn",
+					},
 				},
 			},
 			"digitalocean_volume_attachment": {Tok: makeResource(digitalOceanMod, "VolumeAttachment")},
@@ -229,7 +256,14 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_vpc":                {Tok: makeResource(digitalOceanMod, "Vpc")},
+			"digitalocean_vpc": {
+				Tok: makeResource(digitalOceanMod, "Vpc"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "vpcUrn",
+					},
+				},
+			},
 			"digitalocean_container_registry": {Tok: makeResource(digitalOceanMod, "ContainerRegistry")},
 			"digitalocean_container_registry_docker_credentials": {
 				Tok: makeResource(digitalOceanMod, "ContainerRegistryDockerCredentials"),
@@ -237,16 +271,37 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_project_resources": {Tok: makeResource(digitalOceanMod, "ProjectResources")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"digitalocean_certificate":           {Tok: makeDataSource(digitalOceanMod, "getCertificate")},
-			"digitalocean_database_cluster":      {Tok: makeDataSource(digitalOceanMod, "getDatabaseCluster")},
-			"digitalocean_domain":                {Tok: makeDataSource(digitalOceanMod, "getDomain")},
-			"digitalocean_droplet":               {Tok: makeDataSource(digitalOceanMod, "getDroplet")},
-			"digitalocean_droplet_snapshot":      {Tok: makeDataSource(digitalOceanMod, "getDropletSnapshot")},
-			"digitalocean_floating_ip":           {Tok: makeDataSource(digitalOceanMod, "getFloatingIp")},
-			"digitalocean_image":                 {Tok: makeDataSource(digitalOceanMod, "getImage")},
-			"digitalocean_kubernetes_cluster":    {Tok: makeDataSource(digitalOceanMod, "getKubernetesCluster")},
-			"digitalocean_kubernetes_versions":   {Tok: makeDataSource(digitalOceanMod, "getKubernetesVersions")},
-			"digitalocean_loadbalancer":          {Tok: makeDataSource(digitalOceanMod, "getLoadBalancer")},
+			"digitalocean_certificate":      {Tok: makeDataSource(digitalOceanMod, "getCertificate")},
+			"digitalocean_database_cluster": {Tok: makeDataSource(digitalOceanMod, "getDatabaseCluster")},
+			"digitalocean_domain": {
+				Tok: makeDataSource(digitalOceanMod, "getDomain"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "domainUrn",
+					},
+				},
+			},
+			"digitalocean_droplet":          {Tok: makeDataSource(digitalOceanMod, "getDroplet")},
+			"digitalocean_droplet_snapshot": {Tok: makeDataSource(digitalOceanMod, "getDropletSnapshot")},
+			"digitalocean_floating_ip": {
+				Tok: makeDataSource(digitalOceanMod, "getFloatingIp"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "floatingIpUrn",
+					},
+				},
+			},
+			"digitalocean_image":               {Tok: makeDataSource(digitalOceanMod, "getImage")},
+			"digitalocean_kubernetes_cluster":  {Tok: makeDataSource(digitalOceanMod, "getKubernetesCluster")},
+			"digitalocean_kubernetes_versions": {Tok: makeDataSource(digitalOceanMod, "getKubernetesVersions")},
+			"digitalocean_loadbalancer": {
+				Tok: makeDataSource(digitalOceanMod, "getLoadBalancer"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "loadBalancerUrn",
+					},
+				},
+			},
 			"digitalocean_record":                {Tok: makeDataSource(digitalOceanMod, "getRecord")},
 			"digitalocean_ssh_key":               {Tok: makeDataSource(digitalOceanMod, "getSshKey")},
 			"digitalocean_tag":                   {Tok: makeDataSource(digitalOceanMod, "getTag")},

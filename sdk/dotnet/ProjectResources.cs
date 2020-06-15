@@ -50,7 +50,7 @@ namespace Pulumi.DigitalOcean
     ///             Project = data.Digitalocean_project.Foo.Id,
     ///             Resources = 
     ///             {
-    ///                 foobar.Urn,
+    ///                 foobar.DropletUrn,
     ///             },
     ///         });
     ///     }

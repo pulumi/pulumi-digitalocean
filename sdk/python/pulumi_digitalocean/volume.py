@@ -54,7 +54,7 @@ class Volume(pulumi.CustomResource):
     """
     A list of the tags to be applied to this Volume.
     """
-    urn: pulumi.Output[str]
+    volume_urn: pulumi.Output[str]
     """
     The uniform resource name for the volume.
     """
@@ -115,6 +115,9 @@ class Volume(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
+            if filesystem_type is not None:
+                warnings.warn("This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.", DeprecationWarning)
+                pulumi.log.warn("filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.")
             __props__['filesystem_type'] = filesystem_type
             __props__['initial_filesystem_label'] = initial_filesystem_label
             __props__['initial_filesystem_type'] = initial_filesystem_type
@@ -129,7 +132,7 @@ class Volume(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['droplet_ids'] = None
             __props__['filesystem_label'] = None
-            __props__['urn'] = None
+            __props__['volume_urn'] = None
         super(Volume, __self__).__init__(
             'digitalocean:index/volume:Volume',
             resource_name,
@@ -137,7 +140,7 @@ class Volume(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, tags=None, urn=None):
+    def get(resource_name, id, opts=None, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, tags=None, volume_urn=None):
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -156,7 +159,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[float] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
         :param pulumi.Input[list] tags: A list of the tags to be applied to this Volume.
-        :param pulumi.Input[str] urn: The uniform resource name for the volume.
+        :param pulumi.Input[str] volume_urn: The uniform resource name for the volume.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -173,7 +176,7 @@ class Volume(pulumi.CustomResource):
         __props__["size"] = size
         __props__["snapshot_id"] = snapshot_id
         __props__["tags"] = tags
-        __props__["urn"] = urn
+        __props__["volume_urn"] = volume_urn
         return Volume(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

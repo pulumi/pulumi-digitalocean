@@ -56,14 +56,14 @@ export interface GetContainerRegistryArgs {
 export interface GetContainerRegistryResult {
     readonly endpoint: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The name of the container registry
      * * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
      * * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
      */
     readonly name: string;
     readonly serverUrl: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

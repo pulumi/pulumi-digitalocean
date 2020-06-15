@@ -78,6 +78,10 @@ export interface GetDropletSnapshotResult {
      */
     readonly dropletId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The minimum size in gigabytes required for a Droplet to be created based on this Droplet snapshot.
      */
     readonly minDiskSize: number;
@@ -93,8 +97,4 @@ export interface GetDropletSnapshotResult {
      * The billable size of the Droplet snapshot in gigabytes.
      */
     readonly size: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -49,6 +47,7 @@ export class Vpc extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VpcState, opts?: pulumi.CustomResourceOptions): Vpc {
         return new Vpc(name, <any>state, { ...opts, id: id });
@@ -95,7 +94,7 @@ export class Vpc extends pulumi.CustomResource {
     /**
      * The uniform resource name (URN) for the VPC.
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly vpcUrn!: pulumi.Output<string>;
 
     /**
      * Create a Vpc resource with the given unique name, arguments, and options.
@@ -115,7 +114,7 @@ export class Vpc extends pulumi.CustomResource {
             inputs["ipRange"] = state ? state.ipRange : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["vpcUrn"] = state ? state.vpcUrn : undefined;
         } else {
             const args = argsOrState as VpcArgs | undefined;
             if (!args || args.region === undefined) {
@@ -127,7 +126,7 @@ export class Vpc extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["default"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
+            inputs["vpcUrn"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -171,7 +170,7 @@ export interface VpcState {
     /**
      * The uniform resource name (URN) for the VPC.
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly vpcUrn?: pulumi.Input<string>;
 }
 
 /**

@@ -22,6 +22,9 @@ type Droplet struct {
 	CreatedAt pulumi.StringOutput  `pulumi:"createdAt"`
 	// The size of the instance's disk in GB
 	Disk pulumi.IntOutput `pulumi:"disk"`
+	// The uniform resource name of the Droplet
+	// * `name`- The name of the Droplet
+	DropletUrn pulumi.StringOutput `pulumi:"dropletUrn"`
 	// The Droplet image ID or slug.
 	Image pulumi.StringOutput `pulumi:"image"`
 	// The IPv4 address
@@ -67,9 +70,6 @@ type Droplet struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of the tags to be applied to this Droplet.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The uniform resource name of the Droplet
-	// * `name`- The name of the Droplet
-	Urn pulumi.StringOutput `pulumi:"urn"`
 	// A string of the desired User Data for the Droplet.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The number of the instance's virtual CPUs
@@ -123,6 +123,9 @@ type dropletState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The size of the instance's disk in GB
 	Disk *int `pulumi:"disk"`
+	// The uniform resource name of the Droplet
+	// * `name`- The name of the Droplet
+	DropletUrn *string `pulumi:"dropletUrn"`
 	// The Droplet image ID or slug.
 	Image *string `pulumi:"image"`
 	// The IPv4 address
@@ -168,9 +171,6 @@ type dropletState struct {
 	Status *string `pulumi:"status"`
 	// A list of the tags to be applied to this Droplet.
 	Tags []string `pulumi:"tags"`
-	// The uniform resource name of the Droplet
-	// * `name`- The name of the Droplet
-	Urn *string `pulumi:"urn"`
 	// A string of the desired User Data for the Droplet.
 	UserData *string `pulumi:"userData"`
 	// The number of the instance's virtual CPUs
@@ -188,6 +188,9 @@ type DropletState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The size of the instance's disk in GB
 	Disk pulumi.IntPtrInput
+	// The uniform resource name of the Droplet
+	// * `name`- The name of the Droplet
+	DropletUrn pulumi.StringPtrInput
 	// The Droplet image ID or slug.
 	Image pulumi.StringPtrInput
 	// The IPv4 address
@@ -233,9 +236,6 @@ type DropletState struct {
 	Status pulumi.StringPtrInput
 	// A list of the tags to be applied to this Droplet.
 	Tags pulumi.StringArrayInput
-	// The uniform resource name of the Droplet
-	// * `name`- The name of the Droplet
-	Urn pulumi.StringPtrInput
 	// A string of the desired User Data for the Droplet.
 	UserData pulumi.StringPtrInput
 	// The number of the instance's virtual CPUs

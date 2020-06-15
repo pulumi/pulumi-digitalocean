@@ -10,6 +10,10 @@ from typing import Union
 from . import utilities, tables
 
 class DatabaseCluster(pulumi.CustomResource):
+    cluster_urn: pulumi.Output[str]
+    """
+    The uniform resource name of the database cluster.
+    """
     database: pulumi.Output[str]
     """
     Name of the cluster's default database.
@@ -80,10 +84,6 @@ class DatabaseCluster(pulumi.CustomResource):
     uri: pulumi.Output[str]
     """
     The full URI for connecting to the database cluster.
-    """
-    urn: pulumi.Output[str]
-    """
-    The uniform resource name of the database cluster.
     """
     user: pulumi.Output[str]
     """
@@ -197,6 +197,7 @@ class DatabaseCluster(pulumi.CustomResource):
             __props__['sql_mode'] = sql_mode
             __props__['tags'] = tags
             __props__['version'] = version
+            __props__['cluster_urn'] = None
             __props__['database'] = None
             __props__['host'] = None
             __props__['password'] = None
@@ -204,7 +205,6 @@ class DatabaseCluster(pulumi.CustomResource):
             __props__['private_host'] = None
             __props__['private_uri'] = None
             __props__['uri'] = None
-            __props__['urn'] = None
             __props__['user'] = None
         super(DatabaseCluster, __self__).__init__(
             'digitalocean:index/databaseCluster:DatabaseCluster',
@@ -213,7 +213,7 @@ class DatabaseCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database=None, engine=None, eviction_policy=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, sql_mode=None, tags=None, uri=None, urn=None, user=None, version=None):
+    def get(resource_name, id, opts=None, cluster_urn=None, database=None, engine=None, eviction_policy=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, sql_mode=None, tags=None, uri=None, user=None, version=None):
         """
         Get an existing DatabaseCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -221,6 +221,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] database: Name of the cluster's default database.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
@@ -238,7 +239,6 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[list] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
-        :param pulumi.Input[str] urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
 
@@ -251,6 +251,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["cluster_urn"] = cluster_urn
         __props__["database"] = database
         __props__["engine"] = engine
         __props__["eviction_policy"] = eviction_policy
@@ -268,7 +269,6 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__["sql_mode"] = sql_mode
         __props__["tags"] = tags
         __props__["uri"] = uri
-        __props__["urn"] = urn
         __props__["user"] = user
         __props__["version"] = version
         return DatabaseCluster(resource_name, opts=opts, __props__=__props__)

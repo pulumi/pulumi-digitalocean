@@ -65,6 +65,10 @@ export interface GetDatabaseClusterResult {
      */
     readonly host: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
     readonly maintenanceWindows: outputs.GetDatabaseClusterMaintenanceWindow[];
@@ -118,8 +122,4 @@ export interface GetDatabaseClusterResult {
      * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
      */
     readonly version: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -66,6 +66,10 @@ export interface GetRegionsArgs {
 export interface GetRegionsResult {
     readonly filters?: outputs.GetRegionsFilter[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:  
      * - `slug` - A human-readable string that is used as a unique identifier for each region.
      * - `name` - The display name of the region.
@@ -75,8 +79,4 @@ export interface GetRegionsResult {
      */
     readonly regions: outputs.GetRegionsRegion[];
     readonly sorts?: outputs.GetRegionsSort[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

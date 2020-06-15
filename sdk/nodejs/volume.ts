@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 import {FilesystemType, Region} from "./index";
@@ -44,6 +42,7 @@ export class Volume extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VolumeState, opts?: pulumi.CustomResourceOptions): Volume {
         return new Volume(name, <any>state, { ...opts, id: id });
@@ -77,6 +76,8 @@ export class Volume extends pulumi.CustomResource {
     public /*out*/ readonly filesystemLabel!: pulumi.Output<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
+     *
+     * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     public readonly filesystemType!: pulumi.Output<string>;
     /**
@@ -110,7 +111,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * The uniform resource name for the volume.
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly volumeUrn!: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -135,7 +136,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
-            inputs["urn"] = state ? state.urn : undefined;
+            inputs["volumeUrn"] = state ? state.volumeUrn : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if (!args || args.region === undefined) {
@@ -155,7 +156,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["dropletIds"] = undefined /*out*/;
             inputs["filesystemLabel"] = undefined /*out*/;
-            inputs["urn"] = undefined /*out*/;
+            inputs["volumeUrn"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -186,6 +187,7 @@ export interface VolumeState {
     readonly filesystemLabel?: pulumi.Input<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
+     *
      * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     readonly filesystemType?: pulumi.Input<string>;
@@ -220,7 +222,7 @@ export interface VolumeState {
     /**
      * The uniform resource name for the volume.
      */
-    readonly urn?: pulumi.Input<string>;
+    readonly volumeUrn?: pulumi.Input<string>;
 }
 
 /**
@@ -233,6 +235,7 @@ export interface VolumeArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
+     *
      * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     readonly filesystemType?: pulumi.Input<string>;

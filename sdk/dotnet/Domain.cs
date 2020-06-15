@@ -38,6 +38,12 @@ namespace Pulumi.DigitalOcean
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>
+        /// The uniform resource name of the domain
+        /// </summary>
+        [Output("domainUrn")]
+        public Output<string> DomainUrn { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address of the domain. If specified, this IP
         /// is used to created an initial A record for the domain.
         /// </summary>
@@ -49,12 +55,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// The uniform resource name of the domain
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -123,6 +123,12 @@ namespace Pulumi.DigitalOcean
     public sealed class DomainState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The uniform resource name of the domain
+        /// </summary>
+        [Input("domainUrn")]
+        public Input<string>? DomainUrn { get; set; }
+
+        /// <summary>
         /// The IP address of the domain. If specified, this IP
         /// is used to created an initial A record for the domain.
         /// </summary>
@@ -134,12 +140,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The uniform resource name of the domain
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         public DomainState()
         {

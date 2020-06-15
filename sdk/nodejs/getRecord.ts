@@ -65,6 +65,10 @@ export interface GetRecordResult {
     readonly data: string;
     readonly domain: string;
     readonly flags: number;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly port: number;
     readonly priority: number;
@@ -72,8 +76,4 @@ export interface GetRecordResult {
     readonly ttl: number;
     readonly type: string;
     readonly weight: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

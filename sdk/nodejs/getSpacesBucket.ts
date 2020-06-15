@@ -62,6 +62,10 @@ export interface GetSpacesBucketResult {
      */
     readonly bucketDomainName: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The name of the Spaces bucket
      */
     readonly name: string;
@@ -73,8 +77,4 @@ export interface GetSpacesBucketResult {
      * The uniform resource name of the bucket
      */
     readonly urn: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

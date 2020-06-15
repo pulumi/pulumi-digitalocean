@@ -30,7 +30,7 @@ type Vpc struct {
 	// The DigitalOcean region slug for the VPC's location.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The uniform resource name (URN) for the VPC.
-	Urn pulumi.StringOutput `pulumi:"urn"`
+	VpcUrn pulumi.StringOutput `pulumi:"vpcUrn"`
 }
 
 // NewVpc registers a new resource with the given unique name, arguments, and options.
@@ -77,7 +77,7 @@ type vpcState struct {
 	// The DigitalOcean region slug for the VPC's location.
 	Region *string `pulumi:"region"`
 	// The uniform resource name (URN) for the VPC.
-	Urn *string `pulumi:"urn"`
+	VpcUrn *string `pulumi:"vpcUrn"`
 }
 
 type VpcState struct {
@@ -94,7 +94,7 @@ type VpcState struct {
 	// The DigitalOcean region slug for the VPC's location.
 	Region pulumi.StringPtrInput
 	// The uniform resource name (URN) for the VPC.
-	Urn pulumi.StringPtrInput
+	VpcUrn pulumi.StringPtrInput
 }
 
 func (VpcState) ElementType() reflect.Type {
