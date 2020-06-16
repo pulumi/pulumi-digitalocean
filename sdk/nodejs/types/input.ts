@@ -268,6 +268,29 @@ export interface GetSpacesBucketsSort {
     key: string;
 }
 
+export interface GetTagsFilter {
+    /**
+     * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     */
+    key: string;
+    /**
+     * Only retrieves tags which keys has value that matches
+     * one of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetTagsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     */
+    key: string;
+}
+
 export interface KubernetesClusterKubeConfig {
     clientCertificate?: pulumi.Input<string>;
     clientKey?: pulumi.Input<string>;

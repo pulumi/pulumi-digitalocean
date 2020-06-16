@@ -20,7 +20,7 @@ namespace Pulumi.DigitalOcean
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Most common usage will probably be to supply a size to droplet:
+        /// Most common usage will probably be to supply a size to Droplet:
         /// 
         /// ```csharp
         /// using Pulumi;

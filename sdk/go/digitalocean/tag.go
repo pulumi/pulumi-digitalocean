@@ -16,8 +16,20 @@ import (
 type Tag struct {
 	pulumi.CustomResourceState
 
+	// A count of the database clusters that the tag is applied to.
+	DatabasesCount pulumi.IntOutput `pulumi:"databasesCount"`
+	// A count of the Droplets the tag is applied to.
+	DropletsCount pulumi.IntOutput `pulumi:"dropletsCount"`
+	// A count of the images that the tag is applied to.
+	ImagesCount pulumi.IntOutput `pulumi:"imagesCount"`
 	// The name of the tag
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A count of the total number of resources that the tag is applied to.
+	TotalResourceCount pulumi.IntOutput `pulumi:"totalResourceCount"`
+	// A count of the volume snapshots that the tag is applied to.
+	VolumeSnapshotsCount pulumi.IntOutput `pulumi:"volumeSnapshotsCount"`
+	// A count of the volumes that the tag is applied to.
+	VolumesCount pulumi.IntOutput `pulumi:"volumesCount"`
 }
 
 // NewTag registers a new resource with the given unique name, arguments, and options.
@@ -48,13 +60,37 @@ func GetTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Tag resources.
 type tagState struct {
+	// A count of the database clusters that the tag is applied to.
+	DatabasesCount *int `pulumi:"databasesCount"`
+	// A count of the Droplets the tag is applied to.
+	DropletsCount *int `pulumi:"dropletsCount"`
+	// A count of the images that the tag is applied to.
+	ImagesCount *int `pulumi:"imagesCount"`
 	// The name of the tag
 	Name *string `pulumi:"name"`
+	// A count of the total number of resources that the tag is applied to.
+	TotalResourceCount *int `pulumi:"totalResourceCount"`
+	// A count of the volume snapshots that the tag is applied to.
+	VolumeSnapshotsCount *int `pulumi:"volumeSnapshotsCount"`
+	// A count of the volumes that the tag is applied to.
+	VolumesCount *int `pulumi:"volumesCount"`
 }
 
 type TagState struct {
+	// A count of the database clusters that the tag is applied to.
+	DatabasesCount pulumi.IntPtrInput
+	// A count of the Droplets the tag is applied to.
+	DropletsCount pulumi.IntPtrInput
+	// A count of the images that the tag is applied to.
+	ImagesCount pulumi.IntPtrInput
 	// The name of the tag
 	Name pulumi.StringPtrInput
+	// A count of the total number of resources that the tag is applied to.
+	TotalResourceCount pulumi.IntPtrInput
+	// A count of the volume snapshots that the tag is applied to.
+	VolumeSnapshotsCount pulumi.IntPtrInput
+	// A count of the volumes that the tag is applied to.
+	VolumesCount pulumi.IntPtrInput
 }
 
 func (TagState) ElementType() reflect.Type {

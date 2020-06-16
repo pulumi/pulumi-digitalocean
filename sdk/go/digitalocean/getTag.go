@@ -29,7 +29,19 @@ type LookupTagArgs struct {
 
 // A collection of values returned by getTag.
 type LookupTagResult struct {
+	// A count of the database clusters that the tag is applied to.
+	DatabasesCount int `pulumi:"databasesCount"`
+	// A count of the Droplets the tag is applied to.
+	DropletsCount int `pulumi:"dropletsCount"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// A count of the images that the tag is applied to.
+	ImagesCount int    `pulumi:"imagesCount"`
+	Name        string `pulumi:"name"`
+	// A count of the total number of resources that the tag is applied to.
+	TotalResourceCount int `pulumi:"totalResourceCount"`
+	// A count of the volume snapshots that the tag is applied to.
+	VolumeSnapshotsCount int `pulumi:"volumeSnapshotsCount"`
+	// A count of the volumes that the tag is applied to.
+	VolumesCount int `pulumi:"volumesCount"`
 }

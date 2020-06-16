@@ -50,10 +50,46 @@ namespace Pulumi.DigitalOcean
     public partial class Tag : Pulumi.CustomResource
     {
         /// <summary>
+        /// A count of the database clusters that the tag is applied to.
+        /// </summary>
+        [Output("databasesCount")]
+        public Output<int> DatabasesCount { get; private set; } = null!;
+
+        /// <summary>
+        /// A count of the Droplets the tag is applied to.
+        /// </summary>
+        [Output("dropletsCount")]
+        public Output<int> DropletsCount { get; private set; } = null!;
+
+        /// <summary>
+        /// A count of the images that the tag is applied to.
+        /// </summary>
+        [Output("imagesCount")]
+        public Output<int> ImagesCount { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the tag
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A count of the total number of resources that the tag is applied to.
+        /// </summary>
+        [Output("totalResourceCount")]
+        public Output<int> TotalResourceCount { get; private set; } = null!;
+
+        /// <summary>
+        /// A count of the volume snapshots that the tag is applied to.
+        /// </summary>
+        [Output("volumeSnapshotsCount")]
+        public Output<int> VolumeSnapshotsCount { get; private set; } = null!;
+
+        /// <summary>
+        /// A count of the volumes that the tag is applied to.
+        /// </summary>
+        [Output("volumesCount")]
+        public Output<int> VolumesCount { get; private set; } = null!;
 
 
         /// <summary>
@@ -115,10 +151,46 @@ namespace Pulumi.DigitalOcean
     public sealed class TagState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A count of the database clusters that the tag is applied to.
+        /// </summary>
+        [Input("databasesCount")]
+        public Input<int>? DatabasesCount { get; set; }
+
+        /// <summary>
+        /// A count of the Droplets the tag is applied to.
+        /// </summary>
+        [Input("dropletsCount")]
+        public Input<int>? DropletsCount { get; set; }
+
+        /// <summary>
+        /// A count of the images that the tag is applied to.
+        /// </summary>
+        [Input("imagesCount")]
+        public Input<int>? ImagesCount { get; set; }
+
+        /// <summary>
         /// The name of the tag
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A count of the total number of resources that the tag is applied to.
+        /// </summary>
+        [Input("totalResourceCount")]
+        public Input<int>? TotalResourceCount { get; set; }
+
+        /// <summary>
+        /// A count of the volume snapshots that the tag is applied to.
+        /// </summary>
+        [Input("volumeSnapshotsCount")]
+        public Input<int>? VolumeSnapshotsCount { get; set; }
+
+        /// <summary>
+        /// A count of the volumes that the tag is applied to.
+        /// </summary>
+        [Input("volumesCount")]
+        public Input<int>? VolumesCount { get; set; }
 
         public TagState()
         {

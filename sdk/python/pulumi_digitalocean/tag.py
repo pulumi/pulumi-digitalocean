@@ -10,9 +10,33 @@ from typing import Union
 from . import utilities, tables
 
 class Tag(pulumi.CustomResource):
+    databases_count: pulumi.Output[float]
+    """
+    A count of the database clusters that the tag is applied to.
+    """
+    droplets_count: pulumi.Output[float]
+    """
+    A count of the Droplets the tag is applied to.
+    """
+    images_count: pulumi.Output[float]
+    """
+    A count of the images that the tag is applied to.
+    """
     name: pulumi.Output[str]
     """
     The name of the tag
+    """
+    total_resource_count: pulumi.Output[float]
+    """
+    A count of the total number of resources that the tag is applied to.
+    """
+    volume_snapshots_count: pulumi.Output[float]
+    """
+    A count of the volume snapshots that the tag is applied to.
+    """
+    volumes_count: pulumi.Output[float]
+    """
+    A count of the volumes that the tag is applied to.
     """
     def __init__(__self__, resource_name, opts=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -62,6 +86,12 @@ class Tag(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
+            __props__['databases_count'] = None
+            __props__['droplets_count'] = None
+            __props__['images_count'] = None
+            __props__['total_resource_count'] = None
+            __props__['volume_snapshots_count'] = None
+            __props__['volumes_count'] = None
         super(Tag, __self__).__init__(
             'digitalocean:index/tag:Tag',
             resource_name,
@@ -69,7 +99,7 @@ class Tag(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None):
+    def get(resource_name, id, opts=None, databases_count=None, droplets_count=None, images_count=None, name=None, total_resource_count=None, volume_snapshots_count=None, volumes_count=None):
         """
         Get an existing Tag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -77,13 +107,25 @@ class Tag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] databases_count: A count of the database clusters that the tag is applied to.
+        :param pulumi.Input[float] droplets_count: A count of the Droplets the tag is applied to.
+        :param pulumi.Input[float] images_count: A count of the images that the tag is applied to.
         :param pulumi.Input[str] name: The name of the tag
+        :param pulumi.Input[float] total_resource_count: A count of the total number of resources that the tag is applied to.
+        :param pulumi.Input[float] volume_snapshots_count: A count of the volume snapshots that the tag is applied to.
+        :param pulumi.Input[float] volumes_count: A count of the volumes that the tag is applied to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["databases_count"] = databases_count
+        __props__["droplets_count"] = droplets_count
+        __props__["images_count"] = images_count
         __props__["name"] = name
+        __props__["total_resource_count"] = total_resource_count
+        __props__["volume_snapshots_count"] = volume_snapshots_count
+        __props__["volumes_count"] = volumes_count
         return Tag(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

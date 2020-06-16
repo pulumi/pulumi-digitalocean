@@ -77,19 +77,61 @@ namespace Pulumi.DigitalOcean
     public sealed class GetTagResult
     {
         /// <summary>
+        /// A count of the database clusters that the tag is applied to.
+        /// </summary>
+        public readonly int DatabasesCount;
+        /// <summary>
+        /// A count of the Droplets the tag is applied to.
+        /// </summary>
+        public readonly int DropletsCount;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A count of the images that the tag is applied to.
+        /// </summary>
+        public readonly int ImagesCount;
         public readonly string Name;
+        /// <summary>
+        /// A count of the total number of resources that the tag is applied to.
+        /// </summary>
+        public readonly int TotalResourceCount;
+        /// <summary>
+        /// A count of the volume snapshots that the tag is applied to.
+        /// </summary>
+        public readonly int VolumeSnapshotsCount;
+        /// <summary>
+        /// A count of the volumes that the tag is applied to.
+        /// </summary>
+        public readonly int VolumesCount;
 
         [OutputConstructor]
         private GetTagResult(
+            int databasesCount,
+
+            int dropletsCount,
+
             string id,
 
-            string name)
+            int imagesCount,
+
+            string name,
+
+            int totalResourceCount,
+
+            int volumeSnapshotsCount,
+
+            int volumesCount)
         {
+            DatabasesCount = databasesCount;
+            DropletsCount = dropletsCount;
             Id = id;
+            ImagesCount = imagesCount;
             Name = name;
+            TotalResourceCount = totalResourceCount;
+            VolumeSnapshotsCount = volumeSnapshotsCount;
+            VolumesCount = volumesCount;
         }
     }
 }

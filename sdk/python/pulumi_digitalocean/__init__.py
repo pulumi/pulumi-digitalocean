@@ -53,6 +53,7 @@ from .get_spaces_bucket_objects import *
 from .get_spaces_buckets import *
 from .get_ssh_key import *
 from .get_tag import *
+from .get_tags import *
 from .get_volume import *
 from .get_volume_snapshot import *
 from .get_vpc import *

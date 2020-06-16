@@ -58,9 +58,33 @@ export class Tag extends pulumi.CustomResource {
     }
 
     /**
+     * A count of the database clusters that the tag is applied to.
+     */
+    public /*out*/ readonly databasesCount!: pulumi.Output<number>;
+    /**
+     * A count of the Droplets the tag is applied to.
+     */
+    public /*out*/ readonly dropletsCount!: pulumi.Output<number>;
+    /**
+     * A count of the images that the tag is applied to.
+     */
+    public /*out*/ readonly imagesCount!: pulumi.Output<number>;
+    /**
      * The name of the tag
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * A count of the total number of resources that the tag is applied to.
+     */
+    public /*out*/ readonly totalResourceCount!: pulumi.Output<number>;
+    /**
+     * A count of the volume snapshots that the tag is applied to.
+     */
+    public /*out*/ readonly volumeSnapshotsCount!: pulumi.Output<number>;
+    /**
+     * A count of the volumes that the tag is applied to.
+     */
+    public /*out*/ readonly volumesCount!: pulumi.Output<number>;
 
     /**
      * Create a Tag resource with the given unique name, arguments, and options.
@@ -74,10 +98,22 @@ export class Tag extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as TagState | undefined;
+            inputs["databasesCount"] = state ? state.databasesCount : undefined;
+            inputs["dropletsCount"] = state ? state.dropletsCount : undefined;
+            inputs["imagesCount"] = state ? state.imagesCount : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["totalResourceCount"] = state ? state.totalResourceCount : undefined;
+            inputs["volumeSnapshotsCount"] = state ? state.volumeSnapshotsCount : undefined;
+            inputs["volumesCount"] = state ? state.volumesCount : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["databasesCount"] = undefined /*out*/;
+            inputs["dropletsCount"] = undefined /*out*/;
+            inputs["imagesCount"] = undefined /*out*/;
+            inputs["totalResourceCount"] = undefined /*out*/;
+            inputs["volumeSnapshotsCount"] = undefined /*out*/;
+            inputs["volumesCount"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -95,9 +131,33 @@ export class Tag extends pulumi.CustomResource {
  */
 export interface TagState {
     /**
+     * A count of the database clusters that the tag is applied to.
+     */
+    readonly databasesCount?: pulumi.Input<number>;
+    /**
+     * A count of the Droplets the tag is applied to.
+     */
+    readonly dropletsCount?: pulumi.Input<number>;
+    /**
+     * A count of the images that the tag is applied to.
+     */
+    readonly imagesCount?: pulumi.Input<number>;
+    /**
      * The name of the tag
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A count of the total number of resources that the tag is applied to.
+     */
+    readonly totalResourceCount?: pulumi.Input<number>;
+    /**
+     * A count of the volume snapshots that the tag is applied to.
+     */
+    readonly volumeSnapshotsCount?: pulumi.Input<number>;
+    /**
+     * A count of the volumes that the tag is applied to.
+     */
+    readonly volumesCount?: pulumi.Input<number>;
 }
 
 /**
