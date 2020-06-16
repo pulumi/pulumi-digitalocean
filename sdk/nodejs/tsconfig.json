@@ -62,6 +62,7 @@
         "getSpacesBuckets.ts",
         "getSshKey.ts",
         "getTag.ts",
+        "getTags.ts",
         "getVolume.ts",
         "getVolumeSnapshot.ts",
         "getVpc.ts",

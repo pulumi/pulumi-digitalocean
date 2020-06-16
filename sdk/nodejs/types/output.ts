@@ -482,6 +482,60 @@ export interface GetSpacesBucketsSort {
     key: string;
 }
 
+export interface GetTagsFilter {
+    /**
+     * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     */
+    key: string;
+    /**
+     * Only retrieves tags which keys has value that matches
+     * one of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetTagsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     */
+    key: string;
+}
+
+export interface GetTagsTag {
+    /**
+     * A count of the database clusters that the tag is applied to.
+     */
+    databasesCount: number;
+    /**
+     * A count of the Droplets the tag is applied to.
+     */
+    dropletsCount: number;
+    /**
+     * A count of the images that the tag is applied to.
+     */
+    imagesCount: number;
+    /**
+     * The name of the tag.
+     */
+    name: string;
+    /**
+     * A count of the total number of resources that the tag is applied to.
+     */
+    totalResourceCount: number;
+    /**
+     * A count of the volume snapshots that the tag is applied to.
+     */
+    volumeSnapshotsCount: number;
+    /**
+     * A count of the volumes that the tag is applied to.
+     */
+    volumesCount: number;
+}
+
 export interface KubernetesClusterKubeConfig {
     clientCertificate: string;
     clientKey: string;

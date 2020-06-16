@@ -321,6 +321,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_spaces_bucket_objects": {Tok: makeDataSource(digitalOceanMod, "getSpacesBucketObjects")},
 			"digitalocean_droplets":              {Tok: makeDataSource(digitalOceanMod, "getDroplets")},
 			"digitalocean_container_registry":    {Tok: makeDataSource(digitalOceanMod, "getContainerRegistry")},
+			"digitalocean_tags":                  {Tok: makeDataSource(digitalOceanMod, "getTags")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

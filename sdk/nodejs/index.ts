@@ -49,6 +49,7 @@ export * from "./getSpacesBucketObjects";
 export * from "./getSpacesBuckets";
 export * from "./getSshKey";
 export * from "./getTag";
+export * from "./getTags";
 export * from "./getVolume";
 export * from "./getVolumeSnapshot";
 export * from "./getVpc";

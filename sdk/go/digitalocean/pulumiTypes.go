@@ -5891,6 +5891,378 @@ func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucke
 	}).(GetSpacesBucketsSortOutput)
 }
 
+type GetTagsFilter struct {
+	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key string `pulumi:"key"`
+	// Only retrieves tags which keys has value that matches
+	// one of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetTagsFilterInput is an input type that accepts GetTagsFilterArgs and GetTagsFilterOutput values.
+// You can construct a concrete instance of `GetTagsFilterInput` via:
+//
+// 		 GetTagsFilterArgs{...}
+//
+type GetTagsFilterInput interface {
+	pulumi.Input
+
+	ToGetTagsFilterOutput() GetTagsFilterOutput
+	ToGetTagsFilterOutputWithContext(context.Context) GetTagsFilterOutput
+}
+
+type GetTagsFilterArgs struct {
+	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Only retrieves tags which keys has value that matches
+	// one of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetTagsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsFilter)(nil)).Elem()
+}
+
+func (i GetTagsFilterArgs) ToGetTagsFilterOutput() GetTagsFilterOutput {
+	return i.ToGetTagsFilterOutputWithContext(context.Background())
+}
+
+func (i GetTagsFilterArgs) ToGetTagsFilterOutputWithContext(ctx context.Context) GetTagsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsFilterOutput)
+}
+
+// GetTagsFilterArrayInput is an input type that accepts GetTagsFilterArray and GetTagsFilterArrayOutput values.
+// You can construct a concrete instance of `GetTagsFilterArrayInput` via:
+//
+// 		 GetTagsFilterArray{ GetTagsFilterArgs{...} }
+//
+type GetTagsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput
+	ToGetTagsFilterArrayOutputWithContext(context.Context) GetTagsFilterArrayOutput
+}
+
+type GetTagsFilterArray []GetTagsFilterInput
+
+func (GetTagsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsFilter)(nil)).Elem()
+}
+
+func (i GetTagsFilterArray) ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput {
+	return i.ToGetTagsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsFilterArray) ToGetTagsFilterArrayOutputWithContext(ctx context.Context) GetTagsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsFilterArrayOutput)
+}
+
+type GetTagsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetTagsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsFilter)(nil)).Elem()
+}
+
+func (o GetTagsFilterOutput) ToGetTagsFilterOutput() GetTagsFilterOutput {
+	return o
+}
+
+func (o GetTagsFilterOutput) ToGetTagsFilterOutputWithContext(ctx context.Context) GetTagsFilterOutput {
+	return o
+}
+
+// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+func (o GetTagsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Only retrieves tags which keys has value that matches
+// one of the values provided here.
+func (o GetTagsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTagsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetTagsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsFilter)(nil)).Elem()
+}
+
+func (o GetTagsFilterArrayOutput) ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput {
+	return o
+}
+
+func (o GetTagsFilterArrayOutput) ToGetTagsFilterArrayOutputWithContext(ctx context.Context) GetTagsFilterArrayOutput {
+	return o
+}
+
+func (o GetTagsFilterArrayOutput) Index(i pulumi.IntInput) GetTagsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsFilter {
+		return vs[0].([]GetTagsFilter)[vs[1].(int)]
+	}).(GetTagsFilterOutput)
+}
+
+type GetTagsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key string `pulumi:"key"`
+}
+
+// GetTagsSortInput is an input type that accepts GetTagsSortArgs and GetTagsSortOutput values.
+// You can construct a concrete instance of `GetTagsSortInput` via:
+//
+// 		 GetTagsSortArgs{...}
+//
+type GetTagsSortInput interface {
+	pulumi.Input
+
+	ToGetTagsSortOutput() GetTagsSortOutput
+	ToGetTagsSortOutputWithContext(context.Context) GetTagsSortOutput
+}
+
+type GetTagsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetTagsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsSort)(nil)).Elem()
+}
+
+func (i GetTagsSortArgs) ToGetTagsSortOutput() GetTagsSortOutput {
+	return i.ToGetTagsSortOutputWithContext(context.Background())
+}
+
+func (i GetTagsSortArgs) ToGetTagsSortOutputWithContext(ctx context.Context) GetTagsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsSortOutput)
+}
+
+// GetTagsSortArrayInput is an input type that accepts GetTagsSortArray and GetTagsSortArrayOutput values.
+// You can construct a concrete instance of `GetTagsSortArrayInput` via:
+//
+// 		 GetTagsSortArray{ GetTagsSortArgs{...} }
+//
+type GetTagsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsSortArrayOutput() GetTagsSortArrayOutput
+	ToGetTagsSortArrayOutputWithContext(context.Context) GetTagsSortArrayOutput
+}
+
+type GetTagsSortArray []GetTagsSortInput
+
+func (GetTagsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsSort)(nil)).Elem()
+}
+
+func (i GetTagsSortArray) ToGetTagsSortArrayOutput() GetTagsSortArrayOutput {
+	return i.ToGetTagsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsSortArray) ToGetTagsSortArrayOutputWithContext(ctx context.Context) GetTagsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsSortArrayOutput)
+}
+
+type GetTagsSortOutput struct{ *pulumi.OutputState }
+
+func (GetTagsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsSort)(nil)).Elem()
+}
+
+func (o GetTagsSortOutput) ToGetTagsSortOutput() GetTagsSortOutput {
+	return o
+}
+
+func (o GetTagsSortOutput) ToGetTagsSortOutputWithContext(ctx context.Context) GetTagsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetTagsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTagsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+func (o GetTagsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetTagsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsSort)(nil)).Elem()
+}
+
+func (o GetTagsSortArrayOutput) ToGetTagsSortArrayOutput() GetTagsSortArrayOutput {
+	return o
+}
+
+func (o GetTagsSortArrayOutput) ToGetTagsSortArrayOutputWithContext(ctx context.Context) GetTagsSortArrayOutput {
+	return o
+}
+
+func (o GetTagsSortArrayOutput) Index(i pulumi.IntInput) GetTagsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsSort {
+		return vs[0].([]GetTagsSort)[vs[1].(int)]
+	}).(GetTagsSortOutput)
+}
+
+type GetTagsTag struct {
+	// A count of the database clusters that the tag is applied to.
+	DatabasesCount int `pulumi:"databasesCount"`
+	// A count of the Droplets the tag is applied to.
+	DropletsCount int `pulumi:"dropletsCount"`
+	// A count of the images that the tag is applied to.
+	ImagesCount int `pulumi:"imagesCount"`
+	// The name of the tag.
+	Name string `pulumi:"name"`
+	// A count of the total number of resources that the tag is applied to.
+	TotalResourceCount int `pulumi:"totalResourceCount"`
+	// A count of the volume snapshots that the tag is applied to.
+	VolumeSnapshotsCount int `pulumi:"volumeSnapshotsCount"`
+	// A count of the volumes that the tag is applied to.
+	VolumesCount int `pulumi:"volumesCount"`
+}
+
+// GetTagsTagInput is an input type that accepts GetTagsTagArgs and GetTagsTagOutput values.
+// You can construct a concrete instance of `GetTagsTagInput` via:
+//
+// 		 GetTagsTagArgs{...}
+//
+type GetTagsTagInput interface {
+	pulumi.Input
+
+	ToGetTagsTagOutput() GetTagsTagOutput
+	ToGetTagsTagOutputWithContext(context.Context) GetTagsTagOutput
+}
+
+type GetTagsTagArgs struct {
+	// A count of the database clusters that the tag is applied to.
+	DatabasesCount pulumi.IntInput `pulumi:"databasesCount"`
+	// A count of the Droplets the tag is applied to.
+	DropletsCount pulumi.IntInput `pulumi:"dropletsCount"`
+	// A count of the images that the tag is applied to.
+	ImagesCount pulumi.IntInput `pulumi:"imagesCount"`
+	// The name of the tag.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A count of the total number of resources that the tag is applied to.
+	TotalResourceCount pulumi.IntInput `pulumi:"totalResourceCount"`
+	// A count of the volume snapshots that the tag is applied to.
+	VolumeSnapshotsCount pulumi.IntInput `pulumi:"volumeSnapshotsCount"`
+	// A count of the volumes that the tag is applied to.
+	VolumesCount pulumi.IntInput `pulumi:"volumesCount"`
+}
+
+func (GetTagsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsTag)(nil)).Elem()
+}
+
+func (i GetTagsTagArgs) ToGetTagsTagOutput() GetTagsTagOutput {
+	return i.ToGetTagsTagOutputWithContext(context.Background())
+}
+
+func (i GetTagsTagArgs) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagOutput)
+}
+
+// GetTagsTagArrayInput is an input type that accepts GetTagsTagArray and GetTagsTagArrayOutput values.
+// You can construct a concrete instance of `GetTagsTagArrayInput` via:
+//
+// 		 GetTagsTagArray{ GetTagsTagArgs{...} }
+//
+type GetTagsTagArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsTagArrayOutput() GetTagsTagArrayOutput
+	ToGetTagsTagArrayOutputWithContext(context.Context) GetTagsTagArrayOutput
+}
+
+type GetTagsTagArray []GetTagsTagInput
+
+func (GetTagsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsTag)(nil)).Elem()
+}
+
+func (i GetTagsTagArray) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
+	return i.ToGetTagsTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsTagArray) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagArrayOutput)
+}
+
+type GetTagsTagOutput struct{ *pulumi.OutputState }
+
+func (GetTagsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsTag)(nil)).Elem()
+}
+
+func (o GetTagsTagOutput) ToGetTagsTagOutput() GetTagsTagOutput {
+	return o
+}
+
+func (o GetTagsTagOutput) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
+	return o
+}
+
+// A count of the database clusters that the tag is applied to.
+func (o GetTagsTagOutput) DatabasesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTagsTag) int { return v.DatabasesCount }).(pulumi.IntOutput)
+}
+
+// A count of the Droplets the tag is applied to.
+func (o GetTagsTagOutput) DropletsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTagsTag) int { return v.DropletsCount }).(pulumi.IntOutput)
+}
+
+// A count of the images that the tag is applied to.
+func (o GetTagsTagOutput) ImagesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTagsTag) int { return v.ImagesCount }).(pulumi.IntOutput)
+}
+
+// The name of the tag.
+func (o GetTagsTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A count of the total number of resources that the tag is applied to.
+func (o GetTagsTagOutput) TotalResourceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTagsTag) int { return v.TotalResourceCount }).(pulumi.IntOutput)
+}
+
+// A count of the volume snapshots that the tag is applied to.
+func (o GetTagsTagOutput) VolumeSnapshotsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTagsTag) int { return v.VolumeSnapshotsCount }).(pulumi.IntOutput)
+}
+
+// A count of the volumes that the tag is applied to.
+func (o GetTagsTagOutput) VolumesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTagsTag) int { return v.VolumesCount }).(pulumi.IntOutput)
+}
+
+type GetTagsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsTag)(nil)).Elem()
+}
+
+func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
+	return o
+}
+
+func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
+	return o
+}
+
+func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsTag {
+		return vs[0].([]GetTagsTag)[vs[1].(int)]
+	}).(GetTagsTagOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowArrayOutput{})
@@ -5974,4 +6346,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSpacesBucketsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsSortOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsFilterOutput{})
+	pulumi.RegisterOutputType(GetTagsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsSortOutput{})
+	pulumi.RegisterOutputType(GetTagsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsTagOutput{})
+	pulumi.RegisterOutputType(GetTagsTagArrayOutput{})
 }

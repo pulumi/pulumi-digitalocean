@@ -2540,6 +2540,144 @@
             "required": [
                 "key"
             ]
+        },
+        "digitalocean:/getTagsFilter:getTagsFilter": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only retrieves tags which keys has value that matches\none of the values provided here.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:/getTagsSort:getTagsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sort direction. This may be either `asc` or `desc`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
+        "digitalocean:/getTagsTag:getTagsTag": {
+            "properties": {
+                "databasesCount": {
+                    "type": "integer",
+                    "description": "A count of the database clusters that the tag is applied to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dropletsCount": {
+                    "type": "integer",
+                    "description": "A count of the Droplets the tag is applied to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imagesCount": {
+                    "type": "integer",
+                    "description": "A count of the images that the tag is applied to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the tag.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "totalResourceCount": {
+                    "type": "integer",
+                    "description": "A count of the total number of resources that the tag is applied to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeSnapshotsCount": {
+                    "type": "integer",
+                    "description": "A count of the volume snapshots that the tag is applied to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumesCount": {
+                    "type": "integer",
+                    "description": "A count of the volumes that the tag is applied to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "databasesCount",
+                "dropletsCount",
+                "imagesCount",
+                "name",
+                "totalResourceCount",
+                "volumeSnapshotsCount",
+                "volumesCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -5582,13 +5720,43 @@
         "digitalocean:index/tag:Tag": {
             "description": "Provides a DigitalOcean Tag resource. A Tag is a label that can be applied to a\nDroplet resource in order to better organize or facilitate the lookups and\nactions on it. Tags created with this resource can be referenced in your Droplet\nconfiguration via their ID or name.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new tag\nconst foobar = new digitalocean.Tag(\"foobar\", {});\n// Create a new Droplet in nyc3 with the foobar tag\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc3\",\n    size: \"s-1vcpu-1gb\",\n    tags: [foobar.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new tag\nfoobar = digitalocean.Tag(\"foobar\")\n# Create a new Droplet in nyc3 with the foobar tag\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc3\",\n    size=\"s-1vcpu-1gb\",\n    tags=[foobar.id])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new tag\n        var foobar = new DigitalOcean.Tag(\"foobar\", new DigitalOcean.TagArgs\n        {\n        });\n        // Create a new Droplet in nyc3 with the foobar tag\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc3\",\n            Size = \"s-1vcpu-1gb\",\n            Tags = \n            {\n                foobar.Id,\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
+                "databasesCount": {
+                    "type": "integer",
+                    "description": "A count of the database clusters that the tag is applied to.\n"
+                },
+                "dropletsCount": {
+                    "type": "integer",
+                    "description": "A count of the Droplets the tag is applied to.\n"
+                },
+                "imagesCount": {
+                    "type": "integer",
+                    "description": "A count of the images that the tag is applied to.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the tag\n"
+                },
+                "totalResourceCount": {
+                    "type": "integer",
+                    "description": "A count of the total number of resources that the tag is applied to.\n"
+                },
+                "volumeSnapshotsCount": {
+                    "type": "integer",
+                    "description": "A count of the volume snapshots that the tag is applied to.\n"
+                },
+                "volumesCount": {
+                    "type": "integer",
+                    "description": "A count of the volumes that the tag is applied to.\n"
                 }
             },
             "required": [
-                "name"
+                "databasesCount",
+                "dropletsCount",
+                "imagesCount",
+                "name",
+                "totalResourceCount",
+                "volumeSnapshotsCount",
+                "volumesCount"
             ],
             "inputProperties": {
                 "name": {
@@ -5599,9 +5767,33 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Tag resources.\n",
                 "properties": {
+                    "databasesCount": {
+                        "type": "integer",
+                        "description": "A count of the database clusters that the tag is applied to.\n"
+                    },
+                    "dropletsCount": {
+                        "type": "integer",
+                        "description": "A count of the Droplets the tag is applied to.\n"
+                    },
+                    "imagesCount": {
+                        "type": "integer",
+                        "description": "A count of the images that the tag is applied to.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the tag\n"
+                    },
+                    "totalResourceCount": {
+                        "type": "integer",
+                        "description": "A count of the total number of resources that the tag is applied to.\n"
+                    },
+                    "volumeSnapshotsCount": {
+                        "type": "integer",
+                        "description": "A count of the volume snapshots that the tag is applied to.\n"
+                    },
+                    "volumesCount": {
+                        "type": "integer",
+                        "description": "A count of the volumes that the tag is applied to.\n"
                     }
                 },
                 "type": "object"
@@ -7601,7 +7793,7 @@
             }
         },
         "digitalocean:index/getSizes:getSizes": {
-            "description": "Retrieves information about the Droplet sizes that DigitalOcean supports, with\nthe ability to filter and sort the results. If no filters are specified, all sizes\nwill be returned.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nMost common usage will probably be to supply a size to droplet:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst main = digitalocean.getSizes({\n    filter: [{\n        key: \"slug\",\n        values: [\"s-1vcpu-1gb\"],\n    }],\n});\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"sgp1\",\n    size: main.then(main =\u003e main.sizes)[0].then(sizes =\u003e sizes.slug),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmain = digitalocean.get_sizes(filter=[{\n    \"key\": \"slug\",\n    \"values\": [\"s-1vcpu-1gb\"],\n}])\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"sgp1\",\n    size=main.sizes[0][\"slug\"])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = Output.Create(DigitalOcean.GetSizes.InvokeAsync(new DigitalOcean.GetSizesArgs\n        {\n            Filter = \n            {\n                \n                {\n                    { \"key\", \"slug\" },\n                    { \"values\", \n                    {\n                        \"s-1vcpu-1gb\",\n                    } },\n                },\n            },\n        }));\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"sgp1\",\n            Size = main.Apply(main =\u003e main.Sizes)[0].Apply(sizes =\u003e sizes.Slug),\n        });\n    }\n\n}\n```\n\nThe data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available \"sgp1\" region, then pick the cheapest one:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst main = digitalocean.getSizes({\n    filter: [\n        {\n            key: \"vcpus\",\n            values: [\n                1,\n                2,\n            ],\n        },\n        {\n            key: \"regions\",\n            values: [\"sgp1\"],\n        },\n    ],\n    sort: [{\n        key: \"price_monthly\",\n        direction: \"asc\",\n    }],\n});\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"sgp1\",\n    size: main.then(main =\u003e main.sizes)[0].then(sizes =\u003e sizes.slug),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmain = digitalocean.get_sizes(filter=[\n        {\n            \"key\": \"vcpus\",\n            \"values\": [\n                1,\n                2,\n            ],\n        },\n        {\n            \"key\": \"regions\",\n            \"values\": [\"sgp1\"],\n        },\n    ],\n    sort=[{\n        \"key\": \"price_monthly\",\n        \"direction\": \"asc\",\n    }])\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"sgp1\",\n    size=main.sizes[0][\"slug\"])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = Output.Create(DigitalOcean.GetSizes.InvokeAsync(new DigitalOcean.GetSizesArgs\n        {\n            Filter = \n            {\n                \n                {\n                    { \"key\", \"vcpus\" },\n                    { \"values\", \n                    {\n                        1,\n                        2,\n                    } },\n                },\n                \n                {\n                    { \"key\", \"regions\" },\n                    { \"values\", \n                    {\n                        \"sgp1\",\n                    } },\n                },\n            },\n            Sort = \n            {\n                \n                {\n                    { \"key\", \"price_monthly\" },\n                    { \"direction\", \"asc\" },\n                },\n            },\n        }));\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"sgp1\",\n            Size = main.Apply(main =\u003e main.Sizes)[0].Apply(sizes =\u003e sizes.Slug),\n        });\n    }\n\n}\n```\n\nThe data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst main = pulumi.output(digitalocean.getSizes({\n    sorts: [\n        {\n            direction: \"asc\",\n            // Sort by memory ascendingly\n            key: \"memory\",\n        },\n        {\n            direction: \"desc\",\n            // Then sort by disk descendingly for sizes with same memory\n            key: \"disk\",\n        },\n    ],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmain = digitalocean.get_sizes(sorts=[\n    {\n        \"direction\": \"asc\",\n        \"key\": \"memory\",\n    },\n    {\n        \"direction\": \"desc\",\n        \"key\": \"disk\",\n    },\n])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = Output.Create(DigitalOcean.GetSizes.InvokeAsync(new DigitalOcean.GetSizesArgs\n        {\n            Sorts = \n            {\n                new DigitalOcean.Inputs.GetSizesSortArgs\n                {\n                    Direction = \"asc\",\n                    Key = \"memory\",\n                },\n                new DigitalOcean.Inputs.GetSizesSortArgs\n                {\n                    Direction = \"desc\",\n                    Key = \"disk\",\n                },\n            },\n        }));\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Retrieves information about the Droplet sizes that DigitalOcean supports, with\nthe ability to filter and sort the results. If no filters are specified, all sizes\nwill be returned.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nMost common usage will probably be to supply a size to Droplet:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst main = digitalocean.getSizes({\n    filter: [{\n        key: \"slug\",\n        values: [\"s-1vcpu-1gb\"],\n    }],\n});\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"sgp1\",\n    size: main.then(main =\u003e main.sizes)[0].then(sizes =\u003e sizes.slug),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmain = digitalocean.get_sizes(filter=[{\n    \"key\": \"slug\",\n    \"values\": [\"s-1vcpu-1gb\"],\n}])\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"sgp1\",\n    size=main.sizes[0][\"slug\"])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = Output.Create(DigitalOcean.GetSizes.InvokeAsync(new DigitalOcean.GetSizesArgs\n        {\n            Filter = \n            {\n                \n                {\n                    { \"key\", \"slug\" },\n                    { \"values\", \n                    {\n                        \"s-1vcpu-1gb\",\n                    } },\n                },\n            },\n        }));\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"sgp1\",\n            Size = main.Apply(main =\u003e main.Sizes)[0].Apply(sizes =\u003e sizes.Slug),\n        });\n    }\n\n}\n```\n\nThe data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available \"sgp1\" region, then pick the cheapest one:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst main = digitalocean.getSizes({\n    filter: [\n        {\n            key: \"vcpus\",\n            values: [\n                1,\n                2,\n            ],\n        },\n        {\n            key: \"regions\",\n            values: [\"sgp1\"],\n        },\n    ],\n    sort: [{\n        key: \"price_monthly\",\n        direction: \"asc\",\n    }],\n});\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"sgp1\",\n    size: main.then(main =\u003e main.sizes)[0].then(sizes =\u003e sizes.slug),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmain = digitalocean.get_sizes(filter=[\n        {\n            \"key\": \"vcpus\",\n            \"values\": [\n                1,\n                2,\n            ],\n        },\n        {\n            \"key\": \"regions\",\n            \"values\": [\"sgp1\"],\n        },\n    ],\n    sort=[{\n        \"key\": \"price_monthly\",\n        \"direction\": \"asc\",\n    }])\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"sgp1\",\n    size=main.sizes[0][\"slug\"])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = Output.Create(DigitalOcean.GetSizes.InvokeAsync(new DigitalOcean.GetSizesArgs\n        {\n            Filter = \n            {\n                \n                {\n                    { \"key\", \"vcpus\" },\n                    { \"values\", \n                    {\n                        1,\n                        2,\n                    } },\n                },\n                \n                {\n                    { \"key\", \"regions\" },\n                    { \"values\", \n                    {\n                        \"sgp1\",\n                    } },\n                },\n            },\n            Sort = \n            {\n                \n                {\n                    { \"key\", \"price_monthly\" },\n                    { \"direction\", \"asc\" },\n                },\n            },\n        }));\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"sgp1\",\n            Size = main.Apply(main =\u003e main.Sizes)[0].Apply(sizes =\u003e sizes.Slug),\n        });\n    }\n\n}\n```\n\nThe data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst main = pulumi.output(digitalocean.getSizes({\n    sorts: [\n        {\n            direction: \"asc\",\n            // Sort by memory ascendingly\n            key: \"memory\",\n        },\n        {\n            direction: \"desc\",\n            // Then sort by disk descendingly for sizes with same memory\n            key: \"disk\",\n        },\n    ],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmain = digitalocean.get_sizes(sorts=[\n    {\n        \"direction\": \"asc\",\n        \"key\": \"memory\",\n    },\n    {\n        \"direction\": \"desc\",\n        \"key\": \"disk\",\n    },\n])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = Output.Create(DigitalOcean.GetSizes.InvokeAsync(new DigitalOcean.GetSizesArgs\n        {\n            Sorts = \n            {\n                new DigitalOcean.Inputs.GetSizesSortArgs\n                {\n                    Direction = \"asc\",\n                    Key = \"memory\",\n                },\n                new DigitalOcean.Inputs.GetSizesSortArgs\n                {\n                    Direction = \"desc\",\n                    Key = \"disk\",\n                },\n            },\n        }));\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSizes.\n",
                 "properties": {
@@ -8052,17 +8244,102 @@
             "outputs": {
                 "description": "A collection of values returned by getTag.\n",
                 "properties": {
+                    "databasesCount": {
+                        "type": "integer",
+                        "description": "A count of the database clusters that the tag is applied to.\n"
+                    },
+                    "dropletsCount": {
+                        "type": "integer",
+                        "description": "A count of the Droplets the tag is applied to.\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
+                    "imagesCount": {
+                        "type": "integer",
+                        "description": "A count of the images that the tag is applied to.\n"
+                    },
                     "name": {
                         "type": "string"
+                    },
+                    "totalResourceCount": {
+                        "type": "integer",
+                        "description": "A count of the total number of resources that the tag is applied to.\n"
+                    },
+                    "volumeSnapshotsCount": {
+                        "type": "integer",
+                        "description": "A count of the volume snapshots that the tag is applied to.\n"
+                    },
+                    "volumesCount": {
+                        "type": "integer",
+                        "description": "A count of the volumes that the tag is applied to.\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "databasesCount",
+                    "dropletsCount",
+                    "imagesCount",
                     "name",
+                    "totalResourceCount",
+                    "volumeSnapshotsCount",
+                    "volumesCount",
+                    "id"
+                ]
+            }
+        },
+        "digitalocean:index/getTags:getTags": {
+            "description": "Returns a list of tags in your DigitalOcean account, with the ability to\nfilter and sort the results. If no filters are specified, all tags will be\nreturned.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTags.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getTagsFilter:getTagsFilter"
+                        },
+                        "description": "Filter the results.\nThe `filter` block is documented below.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getTagsSort:getTagsSort"
+                        },
+                        "description": "Sort the results.\nThe `sort` block is documented below.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTags.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getTagsFilter:getTagsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getTagsSort:getTagsSort"
+                        }
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getTagsTag:getTagsTag"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "tags",
                     "id"
                 ]
             }

@@ -60,8 +60,32 @@ export interface GetTagArgs {
  */
 export interface GetTagResult {
     /**
+     * A count of the database clusters that the tag is applied to.
+     */
+    readonly databasesCount: number;
+    /**
+     * A count of the Droplets the tag is applied to.
+     */
+    readonly dropletsCount: number;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A count of the images that the tag is applied to.
+     */
+    readonly imagesCount: number;
     readonly name: string;
+    /**
+     * A count of the total number of resources that the tag is applied to.
+     */
+    readonly totalResourceCount: number;
+    /**
+     * A count of the volume snapshots that the tag is applied to.
+     */
+    readonly volumeSnapshotsCount: number;
+    /**
+     * A count of the volumes that the tag is applied to.
+     */
+    readonly volumesCount: number;
 }
