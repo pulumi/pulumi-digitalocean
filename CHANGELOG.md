@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.20.0 of the DigitalOcean Terraform Provider
+_(none)_
 
 ---
+
+## 2.6.0 (2020-06-16)
+* Upgrade to v1.20.0 of the DigitalOcean Terraform Provider
 
 ## 2.5.2 (2020-06-10)
 * Switch to GitHub actions for build
