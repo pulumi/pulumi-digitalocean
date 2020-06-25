@@ -46,6 +46,20 @@ def get_tags(filters=None,sorts=None,opts=None):
     filter and sort the results. If no filters are specified, all tags will be
     returned.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    list = digitalocean.get_tags(sort=[{
+        "key": "total_resource_count",
+        "direction": "asc",
+    }])
+    pulumi.export("sortedTags", list.tags)
+    ```
 
 
 
