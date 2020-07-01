@@ -10,11 +10,53 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
+    /// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
     /// 
     /// ## Example Usage
+    /// ### Basic Example
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new DigitalOcean.KubernetesCluster("foo", new DigitalOcean.KubernetesClusterArgs
+    ///         {
+    ///             Region = "nyc1",
+    ///             Version = "1.15.5-do.1",
+    ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+    ///             {
+    ///                 Name = "front-end-pool",
+    ///                 Size = "s-2vcpu-2gb",
+    ///                 NodeCount = 3,
+    ///             },
+    ///         });
+    ///         var bar = new DigitalOcean.KubernetesNodePool("bar", new DigitalOcean.KubernetesNodePoolArgs
+    ///         {
+    ///             ClusterId = foo.Id,
+    ///             Size = "c-2",
+    ///             NodeCount = 2,
+    ///             Tags = 
+    ///             {
+    ///                 "backend",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "service", "backend" },
+    ///                 { "priority", "high" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Autoscaling Example
+    /// 
+    /// Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+    /// For example:
     /// 
     /// ```csharp
     /// using Pulumi;

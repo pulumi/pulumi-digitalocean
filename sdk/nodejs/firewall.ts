@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -25,7 +23,7 @@ import * as utilities from "./utilities";
  * });
  * const webFirewall = new digitalocean.Firewall("webFirewall", {
  *     dropletIds: [webDroplet.id],
- *     inbound_rule: [
+ *     inboundRules: [
  *         {
  *             protocol: "tcp",
  *             portRange: "22",
@@ -58,7 +56,7 @@ import * as utilities from "./utilities";
  *             ],
  *         },
  *     ],
- *     outbound_rule: [
+ *     outboundRules: [
  *         {
  *             protocol: "tcp",
  *             portRange: "53",

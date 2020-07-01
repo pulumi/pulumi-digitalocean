@@ -12,7 +12,48 @@ import (
 
 // Manages attaching a Volume to a Droplet.
 //
-// > **NOTE:** Volumes can be attached either directly on the `.Droplet` resource, or using the `.VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
+// > **NOTE:** Volumes can be attached either directly on the `Droplet` resource, or using the `VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+// 			Region:                pulumi.String("nyc1"),
+// 			Size:                  pulumi.Int(100),
+// 			InitialFilesystemType: pulumi.String("ext4"),
+// 			Description:           pulumi.String("an example volume"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+// 			Region: pulumi.String("nyc1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewVolumeAttachment(ctx, "foobarVolumeAttachment", &digitalocean.VolumeAttachmentArgs{
+// 			DropletId: foobarDroplet.ID(),
+// 			VolumeId:  foobarVolume.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type VolumeAttachment struct {
 	pulumi.CustomResourceState
 

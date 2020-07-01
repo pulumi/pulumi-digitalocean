@@ -14,8 +14,84 @@ import (
 // This data source is useful if the image in question is not managed by this provider or you need to utilize any
 // of the image's data.
 //
-// Note: You can use the `.getImage` data source to obtain metadata
+// Note: You can use the `getImage` data source to obtain metadata
 // about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+//
+// ## Example Usage
+//
+// Use the `filter` block with a `key` string and `values` list to filter images.
+//
+// For example to find all Ubuntu images:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetImages(ctx, &digitalocean.GetImagesArgs{
+// 			Filters: []digitalocean.GetImagesFilter{
+// 				digitalocean.GetImagesFilter{
+// 					Key: "distribution",
+// 					Values: []string{
+// 						"Ubuntu",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// You can filter on multiple fields and sort the results as well:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetImages(ctx, &digitalocean.GetImagesArgs{
+// 			Filters: []digitalocean.GetImagesFilter{
+// 				digitalocean.GetImagesFilter{
+// 					Key: "distribution",
+// 					Values: []string{
+// 						"Ubuntu",
+// 					},
+// 				},
+// 				digitalocean.GetImagesFilter{
+// 					Key: "regions",
+// 					Values: []string{
+// 						"nyc3",
+// 					},
+// 				},
+// 			},
+// 			Sorts: []digitalocean.GetImagesSort{
+// 				digitalocean.GetImagesSort{
+// 					Direction: "desc",
+// 					Key:       "created",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	var rv GetImagesResult
 	err := ctx.Invoke("digitalocean:index/getImages:getImages", args, &rv, opts...)
@@ -49,8 +125,8 @@ type GetImagesResult struct {
 	// - `minDiskSize`: The minimum 'disk' required for the image.
 	// - `sizeGigabytes`: The size of the image in GB.
 	// - `private` - Is image a public image or not. Public images represent
-	// Linux distributions or One-Click Applications, while non-public images represent
-	// snapshots and backups and are only available within your account.
+	//   Linux distributions or One-Click Applications, while non-public images represent
+	//   snapshots and backups and are only available within your account.
 	// - `regions`: A set of the regions that the image is available in.
 	// - `tags`: A set of tags applied to the image
 	// - `created`: When the image was created

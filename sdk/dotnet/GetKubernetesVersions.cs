@@ -16,7 +16,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// 
         /// {{% example %}}
         /// ### Output a list of all available versions
         /// 
@@ -36,7 +35,65 @@ namespace Pulumi.DigitalOcean
         ///     public Output&lt;string&gt; K8s_versions { get; set; }
         /// }
         /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Create a Kubernetes cluster using the most recent version available
         /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync());
+        ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
+        ///         {
+        ///             Region = "lon1",
+        ///             Version = example.Apply(example =&gt; example.LatestVersion),
+        ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+        ///             {
+        ///                 Name = "default",
+        ///                 Size = "s-1vcpu-2gb",
+        ///                 NodeCount = 3,
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Pin a Kubernetes cluster to a specific minor version
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync(new DigitalOcean.GetKubernetesVersionsArgs
+        ///         {
+        ///             VersionPrefix = "1.16.",
+        ///         }));
+        ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
+        ///         {
+        ///             Region = "lon1",
+        ///             Version = example.Apply(example =&gt; example.LatestVersion),
+        ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+        ///             {
+        ///                 Name = "default",
+        ///                 Size = "s-1vcpu-2gb",
+        ///                 NodeCount = 3,
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

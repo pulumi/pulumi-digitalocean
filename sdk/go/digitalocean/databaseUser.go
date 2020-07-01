@@ -13,6 +13,39 @@ import (
 // Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
 //
 // > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
+//
+// ## Example Usage
+// ### Create a new PostgreSQL database user
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("pg"),
+// 			Version:   pulumi.String("11"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Region:    pulumi.String("nyc1"),
+// 			NodeCount: pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDatabaseUser(ctx, "user_example", &digitalocean.DatabaseUserArgs{
+// 			ClusterId: postgres_example.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DatabaseUser struct {
 	pulumi.CustomResourceState
 

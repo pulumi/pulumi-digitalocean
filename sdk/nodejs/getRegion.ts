@@ -7,12 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a single DigitalOcean region. This is useful to find out 
+ * Get information on a single DigitalOcean region. This is useful to find out
  * what Droplet sizes and features are supported within a region.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -13,6 +13,32 @@ import (
 // attached to.
 //
 // An error is triggered if the provided floating IP does not exist.
+//
+// ## Example Usage
+//
+// Get the floating IP:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := digitalocean.LookupFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
+// 			IpAddress: publicIp,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("fipOutput", example.DropletId)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupFloatingIp(ctx *pulumi.Context, args *LookupFloatingIpArgs, opts ...pulumi.InvokeOption) (*LookupFloatingIpResult, error) {
 	var rv LookupFloatingIpResult
 	err := ctx.Invoke("digitalocean:index/getFloatingIp:getFloatingIp", args, &rv, opts...)

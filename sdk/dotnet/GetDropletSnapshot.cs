@@ -40,7 +40,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

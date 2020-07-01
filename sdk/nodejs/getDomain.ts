@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the zone file for a domain:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

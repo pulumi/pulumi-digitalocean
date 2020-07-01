@@ -14,8 +14,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
@@ -41,6 +39,31 @@ namespace Pulumi.DigitalOcean
     ///         {
     ///             DropletId = foobarDroplet.Id,
     ///             VolumeId = foobarVolume.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// You can also create a volume from an existing snapshot.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobarVolumeSnapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
+    ///         {
+    ///             Name = "baz",
+    ///         }));
+    ///         var foobarVolume = new DigitalOcean.Volume("foobarVolume", new DigitalOcean.VolumeArgs
+    ///         {
+    ///             Region = "lon1",
+    ///             Size = foobarVolumeSnapshot.Apply(foobarVolumeSnapshot =&gt; foobarVolumeSnapshot.MinDiskSize),
+    ///             SnapshotId = foobarVolumeSnapshot.Apply(foobarVolumeSnapshot =&gt; foobarVolumeSnapshot.Id),
     ///         });
     ///     }
     /// 

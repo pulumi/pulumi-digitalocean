@@ -13,9 +13,7 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database replica resource.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a new PostgreSQL database replica
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;

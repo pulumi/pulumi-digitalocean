@@ -23,7 +23,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// 
         /// {{% example %}}
         /// ### VPC By Name
         /// 
@@ -69,7 +68,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

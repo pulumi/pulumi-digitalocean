@@ -15,9 +15,7 @@ namespace Pulumi.DigitalOcean
     /// &gt; **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a new PostgreSQL database user
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;

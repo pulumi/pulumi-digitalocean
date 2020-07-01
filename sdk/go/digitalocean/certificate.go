@@ -15,6 +15,77 @@ import (
 // Load Balancer configuration via their ID. The certificate can either
 // be a custom one provided by you or automatically generated one with
 // Let's Encrypt.
+//
+// ## Example Usage
+// ### Let's Encrypt Certificate
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+// 			Domains: pulumi.StringArray{
+// 				pulumi.String("example.com"),
+// 			},
+// 			Type: pulumi.String("lets_encrypt"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Use with Other Resources
+//
+// Both custom and Let's Encrypt certificates can be used with other resources
+// including the `LoadBalancer` and `Cdn` resources.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+// 			Type: pulumi.String("lets_encrypt"),
+// 			Domains: pulumi.StringArray{
+// 				pulumi.String("example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+// 			Region:     pulumi.String("nyc3"),
+// 			DropletTag: pulumi.String("backend"),
+// 			ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
+// 				&digitalocean.LoadBalancerForwardingRuleArgs{
+// 					EntryPort:      pulumi.Int(443),
+// 					EntryProtocol:  pulumi.String("https"),
+// 					TargetPort:     pulumi.Int(80),
+// 					TargetProtocol: pulumi.String("http"),
+// 					CertificateId:  cert.ID(),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Certificate struct {
 	pulumi.CustomResourceState
 

@@ -10,6 +10,72 @@ import (
 // Volume snapshots are saved instances of a block storage volume. Use this data
 // source to retrieve the ID of a DigitalOcean volume snapshot for use in other
 // resources.
+//
+// ## Example Usage
+//
+// Get the volume snapshot:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
+// 		opt1 := "^web"
+// 		opt2 := "nyc3"
+// 		_, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
+// 			MostRecent: &opt0,
+// 			NameRegex:  &opt1,
+// 			Region:     &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Reuse the data about a volume snapshot to create a new volume based on it:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "^web"
+// 		opt1 := "nyc3"
+// 		opt2 := true
+// 		snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
+// 			NameRegex:  &opt0,
+// 			Region:     &opt1,
+// 			MostRecent: &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
+// 			Region:     pulumi.String("nyc3"),
+// 			Size:       pulumi.Int(100),
+// 			SnapshotId: pulumi.String(snapshot.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupVolumeSnapshotResult, error) {
 	var rv LookupVolumeSnapshotResult
 	err := ctx.Invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args, &rv, opts...)

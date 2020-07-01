@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the volume:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,27 @@ import * as utilities from "./utilities";
  *     name: "app-data",
  *     region: "nyc3",
  * }, { async: true }));
+ * ```
+ *
+ * Reuse the data about a volume to attach it to a Droplet:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleVolume = digitalocean.getVolume({
+ *     name: "app-data",
+ *     region: "nyc3",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ * });
+ * const foobar = new digitalocean.VolumeAttachment("foobar", {
+ *     dropletId: exampleDroplet.id,
+ *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
+ * });
  * ```
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {

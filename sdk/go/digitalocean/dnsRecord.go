@@ -11,6 +11,48 @@ import (
 )
 
 // Provides a DigitalOcean DNS record resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDomain(ctx, "_default", &digitalocean.DomainArgs{
+// 			Name: pulumi.String("example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		www, err := digitalocean.NewDnsRecord(ctx, "www", &digitalocean.DnsRecordArgs{
+// 			Domain: _default.Name,
+// 			Type:   pulumi.String("A"),
+// 			Value:  pulumi.String("192.168.0.11"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		mx, err := digitalocean.NewDnsRecord(ctx, "mx", &digitalocean.DnsRecordArgs{
+// 			Domain:   _default.Name,
+// 			Type:     pulumi.String("MX"),
+// 			Priority: pulumi.Int(10),
+// 			Value:    pulumi.String("mail.example.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("wwwFqdn", www.Fqdn)
+// 		ctx.Export("mxFqdn", mx.Fqdn)
+// 		return nil
+// 	})
+// }
+// ```
 type DnsRecord struct {
 	pulumi.CustomResourceState
 

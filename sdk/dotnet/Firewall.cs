@@ -12,6 +12,108 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
     /// modify, and delete Firewalls.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var webDroplet = new DigitalOcean.Droplet("webDroplet", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "nyc3",
+    ///         });
+    ///         var webFirewall = new DigitalOcean.Firewall("webFirewall", new DigitalOcean.FirewallArgs
+    ///         {
+    ///             DropletIds = 
+    ///             {
+    ///                 webDroplet.Id,
+    ///             },
+    ///             InboundRules = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     PortRange = "22",
+    ///                     SourceAddresses = 
+    ///                     {
+    ///                         "192.168.1.0/24",
+    ///                         "2002:1:2::/48",
+    ///                     },
+    ///                 },
+    ///                 new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     PortRange = "80",
+    ///                     SourceAddresses = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                         "::/0",
+    ///                     },
+    ///                 },
+    ///                 new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     PortRange = "443",
+    ///                     SourceAddresses = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                         "::/0",
+    ///                     },
+    ///                 },
+    ///                 new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///                 {
+    ///                     Protocol = "icmp",
+    ///                     SourceAddresses = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                         "::/0",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             OutboundRules = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     PortRange = "53",
+    ///                     DestinationAddresses = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                         "::/0",
+    ///                     },
+    ///                 },
+    ///                 new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///                 {
+    ///                     Protocol = "udp",
+    ///                     PortRange = "53",
+    ///                     DestinationAddresses = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                         "::/0",
+    ///                     },
+    ///                 },
+    ///                 new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///                 {
+    ///                     Protocol = "icmp",
+    ///                     DestinationAddresses = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                         "::/0",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Firewall : Pulumi.CustomResource
     {

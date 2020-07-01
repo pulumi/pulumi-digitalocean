@@ -10,8 +10,77 @@ import (
 // Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
 // If no filters are specified, all Spaces buckets will be returned.
 //
-// Note: You can use the `.SpacesBucket` data source to
+// Note: You can use the `SpacesBucket` data source to
 // obtain metadata about a single bucket if you already know its `name` and `region`.
+//
+// ## Example Usage
+//
+// Use the `filter` block with a `key` string and `values` list to filter buckets.
+//
+// Get all buckets in a region:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetSpacesBuckets(ctx, &digitalocean.GetSpacesBucketsArgs{
+// 			Filters: []digitalocean.GetSpacesBucketsFilter{
+// 				digitalocean.GetSpacesBucketsFilter{
+// 					Key: "region",
+// 					Values: []string{
+// 						"nyc3",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// You can sort the results as well:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetSpacesBuckets(ctx, &digitalocean.GetSpacesBucketsArgs{
+// 			Filters: []digitalocean.GetSpacesBucketsFilter{
+// 				digitalocean.GetSpacesBucketsFilter{
+// 					Key: "region",
+// 					Values: []string{
+// 						"nyc3",
+// 					},
+// 				},
+// 			},
+// 			Sorts: []digitalocean.GetSpacesBucketsSort{
+// 				digitalocean.GetSpacesBucketsSort{
+// 					Direction: "desc",
+// 					Key:       "name",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSpacesBuckets(ctx *pulumi.Context, args *GetSpacesBucketsArgs, opts ...pulumi.InvokeOption) (*GetSpacesBucketsResult, error) {
 	var rv GetSpacesBucketsResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args, &rv, opts...)

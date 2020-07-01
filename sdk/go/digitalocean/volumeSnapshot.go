@@ -11,6 +11,37 @@ import (
 )
 
 // Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+// 			Region:      pulumi.String("nyc1"),
+// 			Size:        pulumi.Int(100),
+// 			Description: pulumi.String("an example volume"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewVolumeSnapshot(ctx, "foobarVolumeSnapshot", &digitalocean.VolumeSnapshotArgs{
+// 			VolumeId: foobarVolume.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type VolumeSnapshot struct {
 	pulumi.CustomResourceState
 

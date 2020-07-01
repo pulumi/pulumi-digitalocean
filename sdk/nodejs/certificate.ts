@@ -15,7 +15,6 @@ import {CertificateType} from "./index";
  * Let's Encrypt.
  *
  * ## Example Usage
- *
  * ### Custom Certificate
  *
  * ```typescript
@@ -30,7 +29,6 @@ import {CertificateType} from "./index";
  *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem"),
  * });
  * ```
- *
  * ### Let's Encrypt Certificate
  *
  * ```typescript
@@ -39,25 +37,27 @@ import {CertificateType} from "./index";
  *
  * const cert = new digitalocean.Certificate("cert", {
  *     domains: ["example.com"],
- *     type: "letsEncrypt",
+ *     type: "lets_encrypt",
  * });
  * ```
- *
  * ### Use with Other Resources
+ *
+ * Both custom and Let's Encrypt certificates can be used with other resources
+ * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const cert = new digitalocean.Certificate("cert", {
- *     type: "letsEncrypt",
+ *     type: "lets_encrypt",
  *     domains: ["example.com"],
  * });
  * // Create a new Load Balancer with TLS termination
  * const _public = new digitalocean.LoadBalancer("public", {
  *     region: "nyc3",
  *     dropletTag: "backend",
- *     forwarding_rule: [{
+ *     forwardingRules: [{
  *         entryPort: 443,
  *         entryProtocol: "https",
  *         targetPort: 80,

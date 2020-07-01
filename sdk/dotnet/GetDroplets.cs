@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean
         /// This data source is useful if the Droplets in question are not managed by this provider or you need to
         /// utilize any of the Droplets' data.
         /// 
-        /// Note: You can use the `digitalocean..Droplet` data source to obtain metadata
+        /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
         /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
         /// 
         /// {{% examples %}}
@@ -100,7 +100,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -147,7 +146,7 @@ namespace Pulumi.DigitalOcean
     public sealed class GetDropletsResult
     {
         /// <summary>
-        /// A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:  
+        /// A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDropletsDropletResult> Droplets;
         public readonly ImmutableArray<Outputs.GetDropletsFilterResult> Filters;

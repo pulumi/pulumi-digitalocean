@@ -11,9 +11,85 @@ import (
 // the ability to filter and sort the results. If no filters are specified, all projects
 // will be returned.
 //
-// Note: You can use the `.Project` data source to
+// Note: You can use the `Project` data source to
 // obtain metadata about a single project if you already know the `id` to retrieve or the unique
 // `name` of the project.
+//
+// ## Example Usage
+//
+// Use the `filter` block with a `key` string and `values` list to filter projects.
+//
+// For example to find all staging environment projects:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetProjects(ctx, &digitalocean.GetProjectsArgs{
+// 			Filters: []digitalocean.GetProjectsFilter{
+// 				digitalocean.GetProjectsFilter{
+// 					Key: "environment",
+// 					Values: []string{
+// 						"Staging",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// You can filter on multiple fields and sort the results as well:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetProjects(ctx, &digitalocean.GetProjectsArgs{
+// 			Filters: []digitalocean.GetProjectsFilter{
+// 				digitalocean.GetProjectsFilter{
+// 					Key: "environment",
+// 					Values: []string{
+// 						"Production",
+// 					},
+// 				},
+// 				digitalocean.GetProjectsFilter{
+// 					Key: "is_default",
+// 					Values: []string{
+// 						"false",
+// 					},
+// 				},
+// 			},
+// 			Sorts: []digitalocean.GetProjectsSort{
+// 				digitalocean.GetProjectsSort{
+// 					Direction: "asc",
+// 					Key:       "name",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	var rv GetProjectsResult
 	err := ctx.Invoke("digitalocean:index/getProjects:getProjects", args, &rv, opts...)

@@ -10,12 +10,14 @@ import * as utilities from "./utilities";
  * Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
  * If no filters are specified, all Spaces buckets will be returned.
  *
- * Note: You can use the `digitalocean..SpacesBucket` data source to
+ * Note: You can use the `digitalocean.SpacesBucket` data source to
  * obtain metadata about a single bucket if you already know its `name` and `region`.
  *
  * ## Example Usage
  *
+ * Use the `filter` block with a `key` string and `values` list to filter buckets.
  *
+ * Get all buckets in a region:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +27,23 @@ import * as utilities from "./utilities";
  *     filters: [{
  *         key: "region",
  *         values: ["nyc3"],
+ *     }],
+ * }, { async: true }));
+ * ```
+ * You can sort the results as well:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const nyc3 = pulumi.output(digitalocean.getSpacesBuckets({
+ *     filters: [{
+ *         key: "region",
+ *         values: ["nyc3"],
+ *     }],
+ *     sorts: [{
+ *         direction: "desc",
+ *         key: "name",
  *     }],
  * }, { async: true }));
  * ```
@@ -65,7 +84,7 @@ export interface GetSpacesBucketsArgs {
  */
 export interface GetSpacesBucketsResult {
     /**
-     * A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:  
+     * A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:
      */
     readonly buckets: outputs.GetSpacesBucketsBucket[];
     readonly filters?: outputs.GetSpacesBucketsFilter[];

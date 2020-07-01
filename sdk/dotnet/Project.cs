@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example demonstrates the creation of an empty project:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +45,37 @@ namespace Pulumi.DigitalOcean
     ///             Description = "A project to represent development resources.",
     ///             Environment = "Development",
     ///             Purpose = "Web Application",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// The following example demonstrates the creation of a project with a Droplet resource:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobar = new DigitalOcean.Droplet("foobar", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "512mb",
+    ///             Image = "centos-7-x64",
+    ///             Region = "nyc3",
+    ///         });
+    ///         var playground = new DigitalOcean.Project("playground", new DigitalOcean.ProjectArgs
+    ///         {
+    ///             Description = "A project to represent development resources.",
+    ///             Purpose = "Web Application",
+    ///             Environment = "Development",
+    ///             Resources = 
+    ///             {
+    ///                 foobar.DropletUrn,
+    ///             },
     ///         });
     ///     }
     /// 

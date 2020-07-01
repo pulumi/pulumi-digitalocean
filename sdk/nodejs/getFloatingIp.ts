@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the floating IP:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

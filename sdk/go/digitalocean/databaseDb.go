@@ -11,6 +11,39 @@ import (
 )
 
 // Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
+//
+// ## Example Usage
+// ### Create a new PostgreSQL database
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("pg"),
+// 			Version:   pulumi.String("11"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Region:    pulumi.String("nyc1"),
+// 			NodeCount: pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDatabaseDb(ctx, "database_example", &digitalocean.DatabaseDbArgs{
+// 			ClusterId: postgres_example.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DatabaseDb struct {
 	pulumi.CustomResourceState
 

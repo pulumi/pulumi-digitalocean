@@ -13,6 +13,31 @@ import (
 // any of the certificates data.
 //
 // An error is triggered if the provided certificate name does not exist.
+//
+// ## Example Usage
+//
+// Get the certificate:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.LookupCertificate(ctx, &digitalocean.LookupCertificateArgs{
+// 			Name: "example",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("digitalocean:index/getCertificate:getCertificate", args, &rv, opts...)

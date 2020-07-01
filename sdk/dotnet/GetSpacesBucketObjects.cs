@@ -15,42 +15,6 @@ namespace Pulumi.DigitalOcean
         /// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
         /// 
         /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example retrieves a list of all object keys in a Spaces bucket and creates corresponding object
-        /// data sources:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myObjects = Output.Create(DigitalOcean.GetSpacesBucketObjects.InvokeAsync(new DigitalOcean.GetSpacesBucketObjectsArgs
-        ///         {
-        ///             Bucket = "ourcorp",
-        ///             Region = "nyc3",
-        ///         }));
-        ///         var objectInfo = Output.Tuple(myObjects.Apply(myObjects =&gt; myObjects.Keys).Length, myObjects.Apply(myObjects =&gt; myObjects.Keys)[__index], myObjects, myObjects).Apply(values =&gt;
-        ///         {
-        ///             var length = values.Item1;
-        ///             var keys = values.Item2;
-        ///             var myObjects = values.Item3;
-        ///             var myObjects1 = values.Item4;
-        ///             return "TODO: ForExpression";
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpacesBucketObjectsResult> InvokeAsync(GetSpacesBucketObjectsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsArgs(), options.WithVersion());

@@ -9,6 +9,34 @@ import (
 
 // Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
 // then this data source returns the default project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "My Staging Project"
+// 		_, err = digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("digitalocean:index/getProject:getProject", args, &rv, opts...)

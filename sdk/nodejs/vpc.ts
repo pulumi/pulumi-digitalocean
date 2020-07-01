@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -23,8 +21,11 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * ```
- *
  * ### Resource Assignment
+ *
+ * `digitalocean.Droplet`, `digitalocean.KubernetesCluster`,
+ * `digitaloceanLoadBalancer`, and `digitalocean.DatabaseCluster` resources
+ * may be assigned to a VPC by referencing its `id`. For example:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

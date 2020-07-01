@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example assigns a droplet to a Project managed outside of this provider:
     /// 
     /// ```csharp
     /// using Pulumi;

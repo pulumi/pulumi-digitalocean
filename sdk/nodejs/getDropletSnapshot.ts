@@ -13,13 +13,13 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the Droplet snapshot:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const webSnapshot = pulumi.output(digitalocean.getDropletSnapshot({
+ * const web_snapshot = pulumi.output(digitalocean.getDropletSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",

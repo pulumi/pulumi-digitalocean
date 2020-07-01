@@ -10,21 +10,19 @@ import * as utilities from "./utilities";
  * > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
  *
  * ## Example Usage
- *
  * ### Create a new PostgreSQL database user
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const postgresExample = new digitalocean.DatabaseCluster("postgres-example", {
+ * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
  *     size: "db-s-1vcpu-1gb",
  *     region: "nyc1",
  *     nodeCount: 1,
  * });
- * const userExample = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
+ * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
  * ```
  */
 export class DatabaseUser extends pulumi.CustomResource {

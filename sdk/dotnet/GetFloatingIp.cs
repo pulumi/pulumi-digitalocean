@@ -46,7 +46,6 @@ namespace Pulumi.DigitalOcean
         ///     public Output&lt;string&gt; FipOutput { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

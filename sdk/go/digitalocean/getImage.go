@@ -13,6 +13,88 @@ import (
 // is not managed by this provider or you need to utilize any of the image's data.
 //
 // An error is triggered if zero or more than one result is returned by the query.
+//
+// ## Example Usage
+//
+// Get the data about a snapshot:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "example-1.0.0"
+// 		_, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Reuse the data about a snapshot to create a Droplet:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "example-1.0.0"
+// 		exampleImage, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+// 			Image:  pulumi.Int(exampleImage.Id),
+// 			Region: pulumi.String("nyc2"),
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Get the data about an official image:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "ubuntu-18-04-x64"
+// 		_, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
+// 			Slug: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetImage(ctx *pulumi.Context, args *GetImageArgs, opts ...pulumi.InvokeOption) (*GetImageResult, error) {
 	var rv GetImageResult
 	err := ctx.Invoke("digitalocean:index/getImage:getImage", args, &rv, opts...)

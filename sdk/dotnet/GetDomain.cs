@@ -45,8 +45,6 @@ namespace Pulumi.DigitalOcean
         ///     public Output&lt;string&gt; DomainOutput { get; set; }
         /// }
         /// ```
-        /// 
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

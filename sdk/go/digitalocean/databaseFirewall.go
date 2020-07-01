@@ -13,6 +13,96 @@ import (
 // Provides a DigitalOcean database firewall resource allowing you to restrict
 // connections to your database to trusted sources. You may limit connections to
 // specific Droplets, Kubernetes clusters, or IP addresses.
+//
+// ## Example Usage
+// ### Create a new database firewall allowing multiple IP addresses
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("pg"),
+// 			Version:   pulumi.String("11"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Region:    pulumi.String("nyc1"),
+// 			NodeCount: pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example_fw", &digitalocean.DatabaseFirewallArgs{
+// 			ClusterId: postgres_example.ID(),
+// 			Rules: digitalocean.DatabaseFirewallRuleArray{
+// 				&digitalocean.DatabaseFirewallRuleArgs{
+// 					Type:  pulumi.String("ip_addr"),
+// 					Value: pulumi.String("192.168.1.1"),
+// 				},
+// 				&digitalocean.DatabaseFirewallRuleArgs{
+// 					Type:  pulumi.String("ip_addr"),
+// 					Value: pulumi.String("192.0.2.0"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Create a new database firewall allowing a Droplet
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			Image:  pulumi.String("centos-7-x64"),
+// 			Region: pulumi.String("nyc3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("pg"),
+// 			Version:   pulumi.String("11"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Region:    pulumi.String("nyc1"),
+// 			NodeCount: pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example_fw", &digitalocean.DatabaseFirewallArgs{
+// 			ClusterId: postgres_example.ID(),
+// 			Rules: digitalocean.DatabaseFirewallRuleArray{
+// 				&digitalocean.DatabaseFirewallRuleArgs{
+// 					Type:  pulumi.String("droplet"),
+// 					Value: web.ID(),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DatabaseFirewall struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,9 @@ import * as utilities from "./utilities";
 /**
  * Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
  *
- * > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean..FloatingIp` resource by setting a `dropletId` or using the `digitalocean..FloatingIpAssignment` resource, but the two cannot be used together.
+ * > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean.FloatingIp` resource by setting a `dropletId` or using the `digitalocean.FloatingIpAssignment` resource, but the two cannot be used together.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -32,15 +32,15 @@ namespace Pulumi.DigitalOcean
         ///     {
         ///         var main = Output.Create(DigitalOcean.GetSizes.InvokeAsync(new DigitalOcean.GetSizesArgs
         ///         {
-        ///             Filter = 
+        ///             Filters = 
         ///             {
-        ///                 
+        ///                 new DigitalOcean.Inputs.GetSizesFilterArgs
         ///                 {
-        ///                     { "key", "slug" },
-        ///                     { "values", 
+        ///                     Key = "slug",
+        ///                     Values = 
         ///                     {
         ///                         "s-1vcpu-1gb",
-        ///                     } },
+        ///                     },
         ///                 },
         ///             },
         ///         }));
@@ -67,32 +67,32 @@ namespace Pulumi.DigitalOcean
         ///     {
         ///         var main = Output.Create(DigitalOcean.GetSizes.InvokeAsync(new DigitalOcean.GetSizesArgs
         ///         {
-        ///             Filter = 
+        ///             Filters = 
         ///             {
-        ///                 
+        ///                 new DigitalOcean.Inputs.GetSizesFilterArgs
         ///                 {
-        ///                     { "key", "vcpus" },
-        ///                     { "values", 
+        ///                     Key = "vcpus",
+        ///                     Values = 
         ///                     {
-        ///                         1,
-        ///                         2,
-        ///                     } },
+        ///                         "1",
+        ///                         "2",
+        ///                     },
         ///                 },
-        ///                 
+        ///                 new DigitalOcean.Inputs.GetSizesFilterArgs
         ///                 {
-        ///                     { "key", "regions" },
-        ///                     { "values", 
+        ///                     Key = "regions",
+        ///                     Values = 
         ///                     {
         ///                         "sgp1",
-        ///                     } },
+        ///                     },
         ///                 },
         ///             },
-        ///             Sort = 
+        ///             Sorts = 
         ///             {
-        ///                 
+        ///                 new DigitalOcean.Inputs.GetSizesSortArgs
         ///                 {
-        ///                     { "key", "price_monthly" },
-        ///                     { "direction", "asc" },
+        ///                     Key = "price_monthly",
+        ///                     Direction = "asc",
         ///                 },
         ///             },
         ///         }));
@@ -137,7 +137,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

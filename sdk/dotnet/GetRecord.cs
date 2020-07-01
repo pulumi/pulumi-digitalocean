@@ -48,8 +48,6 @@ namespace Pulumi.DigitalOcean
         ///     public Output&lt;string&gt; RecordTtl { get; set; }
         /// }
         /// ```
-        /// 
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

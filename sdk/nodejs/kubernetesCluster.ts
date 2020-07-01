@@ -12,7 +12,6 @@ import {Region} from "./index";
  * Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
  *
  * ## Example Usage
- *
  * ### Basic Example
  *
  * ```typescript
@@ -30,8 +29,10 @@ import {Region} from "./index";
  *     version: "1.15.5-do.1",
  * });
  * ```
- *
  * ### Autoscaling Example
+ *
+ * Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+ * For example:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,6 +50,8 @@ import {Region} from "./index";
  *     version: "1.15.5-do.1",
  * });
  * ```
+ *
+ * Note that, while individual node pools may scale to 0, a cluster must always include at least one node.
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**
@@ -100,7 +103,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
+     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
      * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
@@ -237,7 +240,7 @@ export interface KubernetesClusterState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
+     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
      * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
@@ -295,7 +298,7 @@ export interface KubernetesClusterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean..KubernetesNodePool` resource. The following arguments may be specified:
+     * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      * - `name` - (Required) A name for the node pool.
      * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
      * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.

@@ -13,6 +13,32 @@ import (
 // the container registry exists in the account.
 //
 // An error is triggered if the provided container registry name does not exist.
+//
+// ## Example Usage
+// ### Basic Example
+//
+// Get the container registry:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.LookupContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
+// 			Name: "example",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupContainerRegistry(ctx *pulumi.Context, args *LookupContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryResult, error) {
 	var rv LookupContainerRegistryResult
 	err := ctx.Invoke("digitalocean:index/getContainerRegistry:getContainerRegistry", args, &rv, opts...)

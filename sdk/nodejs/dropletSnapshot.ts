@@ -11,8 +11,6 @@ import {Region} from "./index";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -22,7 +20,7 @@ import {Region} from "./index";
  *     image: "centos-7-x64",
  *     region: "nyc3",
  * });
- * const webSnapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
+ * const web_snapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
  * ```
  */
 export class DropletSnapshot extends pulumi.CustomResource {

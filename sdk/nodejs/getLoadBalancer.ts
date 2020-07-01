@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the load balancer:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

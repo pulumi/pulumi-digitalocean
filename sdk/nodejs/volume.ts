@@ -11,8 +11,6 @@ import {FilesystemType, Region} from "./index";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -31,6 +29,22 @@ import {FilesystemType, Region} from "./index";
  * const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobarVolumeAttachment", {
  *     dropletId: foobarDroplet.id,
  *     volumeId: foobarVolume.id,
+ * });
+ * ```
+ *
+ * You can also create a volume from an existing snapshot.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foobarVolumeSnapshot = digitalocean.getVolumeSnapshot({
+ *     name: "baz",
+ * });
+ * const foobarVolume = new digitalocean.Volume("foobarVolume", {
+ *     region: "lon1",
+ *     size: foobarVolumeSnapshot.then(foobarVolumeSnapshot => foobarVolumeSnapshot.minDiskSize),
+ *     snapshotId: foobarVolumeSnapshot.then(foobarVolumeSnapshot => foobarVolumeSnapshot.id),
  * });
  * ```
  */

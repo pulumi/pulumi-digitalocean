@@ -15,7 +15,7 @@ namespace Pulumi.DigitalOcean
         /// Retrieve information about all supported DigitalOcean regions, with the ability to
         /// filter and sort the results. If no filters are specified, all regions will be returned.
         /// 
-        /// Note: You can use the `digitalocean..getRegion` data source
+        /// Note: You can use the `digitalocean.getRegion` data source
         /// to obtain metadata about a single region if you already know the `slug` to retrieve.
         /// 
         /// {{% examples %}}
@@ -97,7 +97,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

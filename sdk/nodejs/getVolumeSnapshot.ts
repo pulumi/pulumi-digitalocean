@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the volume snapshot:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,24 @@ import * as utilities from "./utilities";
  *     nameRegex: "^web",
  *     region: "nyc3",
  * }, { async: true }));
+ * ```
+ *
+ * Reuse the data about a volume snapshot to create a new volume based on it:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const snapshot = digitalocean.getVolumeSnapshot({
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ *     mostRecent: true,
+ * });
+ * const foobar = new digitalocean.Volume("foobar", {
+ *     region: "nyc3",
+ *     size: 100,
+ *     snapshotId: snapshot.then(snapshot => snapshot.id),
+ * });
  * ```
  */
 export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> {

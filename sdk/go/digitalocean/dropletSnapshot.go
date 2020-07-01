@@ -11,6 +11,37 @@ import (
 )
 
 // Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			Image:  pulumi.String("centos-7-x64"),
+// 			Region: pulumi.String("nyc3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDropletSnapshot(ctx, "web_snapshot", &digitalocean.DropletSnapshotArgs{
+// 			DropletId: web.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DropletSnapshot struct {
 	pulumi.CustomResourceState
 

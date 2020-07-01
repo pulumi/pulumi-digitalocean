@@ -13,7 +13,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example retrieves a list of all object keys in a Spaces bucket and creates corresponding object
+ * data sources:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

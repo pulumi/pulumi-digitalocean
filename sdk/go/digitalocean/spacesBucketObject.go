@@ -11,7 +11,7 @@ import (
 )
 
 // Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
-// The `.SpacesBucketObject` resource allows this provider to upload content
+// The `SpacesBucketObject` resource allows this provider to upload content
 // to Spaces.
 //
 // The [Spaces API](https://developers.digitalocean.com/documentation/spaces/) was
@@ -26,8 +26,60 @@ import (
 // access ID and secret you generate via the DigitalOcean control panel. For
 // example:
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewSpacesBucket(ctx, "static_assets", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+//
+// ## Example Usage
+// ### Create a Key in a Spaces Bucket
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobar, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+// 			Region: pulumi.String("nyc3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewSpacesBucketObject(ctx, "index", &digitalocean.SpacesBucketObjectArgs{
+// 			Region:      foobar.Region,
+// 			Bucket:      foobar.Name,
+// 			Key:         pulumi.String("index.html"),
+// 			Content:     pulumi.String("<html><body><p>This page is empty.</p></body></html>"),
+// 			ContentType: pulumi.String("text/html"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SpacesBucketObject struct {
 	pulumi.CustomResourceState
 

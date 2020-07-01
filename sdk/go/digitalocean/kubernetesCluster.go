@@ -11,6 +11,71 @@ import (
 )
 
 // Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+//
+// ## Example Usage
+// ### Basic Example
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+// 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+// 				Name:      pulumi.String("worker-pool"),
+// 				NodeCount: pulumi.Int(3),
+// 				Size:      pulumi.String("s-2vcpu-2gb"),
+// 			},
+// 			Region:  pulumi.String("nyc1"),
+// 			Version: pulumi.String("1.15.5-do.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Autoscaling Example
+//
+// Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+// For example:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+// 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+// 				AutoScale: pulumi.Bool(true),
+// 				MaxNodes:  pulumi.Int(5),
+// 				MinNodes:  pulumi.Int(1),
+// 				Name:      pulumi.String("autoscale-worker-pool"),
+// 				Size:      pulumi.String("s-2vcpu-2gb"),
+// 			},
+// 			Region:  pulumi.String("nyc1"),
+// 			Version: pulumi.String("1.15.5-do.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Note that, while individual node pools may scale to 0, a cluster must always include at least one node.
 type KubernetesCluster struct {
 	pulumi.CustomResourceState
 
@@ -25,7 +90,7 @@ type KubernetesCluster struct {
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
 	// A name for the Kubernetes cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
+	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	// - `name` - (Required) A name for the node pool.
 	// - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
 	// - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
@@ -107,7 +172,7 @@ type kubernetesClusterState struct {
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
-	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
+	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	// - `name` - (Required) A name for the node pool.
 	// - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
 	// - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
@@ -153,7 +218,7 @@ type KubernetesClusterState struct {
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
 	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput
-	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
+	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	// - `name` - (Required) A name for the node pool.
 	// - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
 	// - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
@@ -194,7 +259,7 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 type kubernetesClusterArgs struct {
 	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
-	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
+	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	// - `name` - (Required) A name for the node pool.
 	// - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
 	// - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
@@ -218,7 +283,7 @@ type kubernetesClusterArgs struct {
 type KubernetesClusterArgs struct {
 	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput
-	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `.KubernetesNodePool` resource. The following arguments may be specified:
+	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	// - `name` - (Required) A name for the node pool.
 	// - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
 	// - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
