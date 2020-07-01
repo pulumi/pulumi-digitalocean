@@ -11,6 +11,27 @@ import (
 
 // Provides a DigitalOcean Container Registry resource. A Container Registry is
 // a secure, private location to store your containers for rapid deployment.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewContainerRegistry(ctx, "foobar", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ContainerRegistry struct {
 	pulumi.CustomResourceState
 

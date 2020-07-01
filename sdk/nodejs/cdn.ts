@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
  *
  * ## Example Usage
- *
  * ### Basic Example
  *
  * ```typescript
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  * const mycdn = new digitalocean.Cdn("mycdn", {origin: mybucket.bucketDomainName});
  * export const fqdn = mycdn.endpoint;
  * ```
- *
  * ### Custom Sub-Domain Example
  *
  * ```typescript
@@ -38,7 +36,7 @@ import * as utilities from "./utilities";
  * });
  * // Create a DigitalOcean managed Let's Encrypt Certificate
  * const cert = new digitalocean.Certificate("cert", {
- *     type: "letsEncrypt",
+ *     type: "lets_encrypt",
  *     domains: ["static.example.com"],
  * });
  * // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket

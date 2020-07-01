@@ -13,6 +13,62 @@ import (
 // Get Docker credentials for your DigitalOcean container registry.
 //
 // An error is triggered if the provided container registry name does not exist.
+//
+// ## Example Usage
+// ### Basic Example
+//
+// Get the container registry:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewContainerRegistryDockerCredentials(ctx, "example", &digitalocean.ContainerRegistryDockerCredentialsArgs{
+// 			RegistryName: pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Docker Provider Example
+//
+// Use the `endpoint` and `dockerCredentials` with the Docker provider:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.LookupContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
+// 			Name: "example",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewContainerRegistryDockerCredentials(ctx, "exampleContainerRegistryDockerCredentials", &digitalocean.ContainerRegistryDockerCredentialsArgs{
+// 			RegistryName: pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ContainerRegistryDockerCredentials struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,87 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database firewall resource allowing you to restrict
     /// connections to your database to trusted sources. You may limit connections to
     /// specific Droplets, Kubernetes clusters, or IP addresses.
+    /// 
+    /// ## Example Usage
+    /// ### Create a new database firewall allowing multiple IP addresses
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
+    ///         {
+    ///             Engine = "pg",
+    ///             Version = "11",
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Region = "nyc1",
+    ///             NodeCount = 1,
+    ///         });
+    ///         var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new DigitalOcean.DatabaseFirewallArgs
+    ///         {
+    ///             ClusterId = postgres_example.Id,
+    ///             Rules = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///                 {
+    ///                     Type = "ip_addr",
+    ///                     Value = "192.168.1.1",
+    ///                 },
+    ///                 new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///                 {
+    ///                     Type = "ip_addr",
+    ///                     Value = "192.0.2.0",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Create a new database firewall allowing a Droplet
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "centos-7-x64",
+    ///             Region = "nyc3",
+    ///         });
+    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
+    ///         {
+    ///             Engine = "pg",
+    ///             Version = "11",
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Region = "nyc1",
+    ///             NodeCount = 1,
+    ///         });
+    ///         var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new DigitalOcean.DatabaseFirewallArgs
+    ///         {
+    ///             ClusterId = postgres_example.Id,
+    ///             Rules = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///                 {
+    ///                     Type = "droplet",
+    ///                     Value = web.Id,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatabaseFirewall : Pulumi.CustomResource
     {

@@ -10,8 +10,9 @@ import * as utilities from "./utilities";
  * An error is triggered if the provided container registry name does not exist.
  *
  * ## Example Usage
- *
  * ### Basic Example
+ *
+ * Get the container registry:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,8 +22,9 @@ import * as utilities from "./utilities";
  *     registryName: "example",
  * });
  * ```
- *
  * ### Docker Provider Example
+ *
+ * Use the `endpoint` and `dockerCredentials` with the Docker provider:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

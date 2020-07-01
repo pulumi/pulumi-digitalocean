@@ -44,7 +44,6 @@ namespace Pulumi.DigitalOcean
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a New Bucket
     /// 
     /// ```csharp
@@ -63,7 +62,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create a New Bucket With CORS Rules
     /// 
     /// ```csharp

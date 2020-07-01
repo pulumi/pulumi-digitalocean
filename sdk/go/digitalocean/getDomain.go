@@ -14,6 +14,32 @@ import (
 //
 // An error is triggered if the provided domain name is not managed with your
 // DigitalOcean account.
+//
+// ## Example Usage
+//
+// Get the zone file for a domain:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := digitalocean.LookupDomain(ctx, &digitalocean.LookupDomainArgs{
+// 			Name: "example.com",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("domainOutput", example.ZoneFile)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	var rv LookupDomainResult
 	err := ctx.Invoke("digitalocean:index/getDomain:getDomain", args, &rv, opts...)

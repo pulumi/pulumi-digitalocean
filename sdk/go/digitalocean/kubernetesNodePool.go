@@ -10,7 +10,81 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
+// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
+//
+// ## Example Usage
+// ### Basic Example
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+// 			Region:  pulumi.String("nyc1"),
+// 			Version: pulumi.String("1.15.5-do.1"),
+// 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+// 				Name:      pulumi.String("front-end-pool"),
+// 				Size:      pulumi.String("s-2vcpu-2gb"),
+// 				NodeCount: pulumi.Int(3),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewKubernetesNodePool(ctx, "bar", &digitalocean.KubernetesNodePoolArgs{
+// 			ClusterId: foo.ID(),
+// 			Size:      pulumi.String("c-2"),
+// 			NodeCount: pulumi.Int(2),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("backend"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"service":  pulumi.String("backend"),
+// 				"priority": pulumi.String("high"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Autoscaling Example
+//
+// Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+// For example:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewKubernetesNodePool(ctx, "autoscale_pool_01", &digitalocean.KubernetesNodePoolArgs{
+// 			ClusterId: pulumi.String(digitalocean_kubernetes_cluster.Foo.Id),
+// 			Size:      pulumi.String("s-1vcpu-2gb"),
+// 			AutoScale: pulumi.Bool(true),
+// 			MinNodes:  pulumi.Int(0),
+// 			MaxNodes:  pulumi.Int(5),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KubernetesNodePool struct {
 	pulumi.CustomResourceState
 

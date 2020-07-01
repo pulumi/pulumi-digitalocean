@@ -10,6 +10,36 @@ import (
 // Droplet snapshots are saved instances of a Droplet. Use this data
 // source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
 // resources.
+//
+// ## Example Usage
+//
+// Get the Droplet snapshot:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
+// 		opt1 := "^web"
+// 		opt2 := "nyc3"
+// 		_, err := digitalocean.LookupDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
+// 			MostRecent: &opt0,
+// 			NameRegex:  &opt1,
+// 			Region:     &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupDropletSnapshot(ctx *pulumi.Context, args *LookupDropletSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupDropletSnapshotResult, error) {
 	var rv LookupDropletSnapshotResult
 	err := ctx.Invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args, &rv, opts...)

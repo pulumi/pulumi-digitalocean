@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the Droplet by name:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,28 @@ import * as utilities from "./utilities";
  *     name: "web",
  * });
  * export const dropletOutput = example.then(example => example.ipv4Address);
+ * ```
+ *
+ * Get the Droplet by tag:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = pulumi.output(digitalocean.getDroplet({
+ *     tag: "web",
+ * }, { async: true }));
+ * ```
+ *
+ * Get the Droplet by ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDroplet({
+ *     id: digitalocean_kubernetes_cluster.example.node_pool[0].nodes[0].droplet_id,
+ * });
  * ```
  */
 export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {

@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the bucket by name:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

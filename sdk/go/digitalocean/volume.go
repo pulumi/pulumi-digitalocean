@@ -11,6 +11,79 @@ import (
 )
 
 // Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+// 			Region:                pulumi.String("nyc1"),
+// 			Size:                  pulumi.Int(100),
+// 			InitialFilesystemType: pulumi.String("ext4"),
+// 			Description:           pulumi.String("an example volume"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+// 			Region: pulumi.String("nyc1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewVolumeAttachment(ctx, "foobarVolumeAttachment", &digitalocean.VolumeAttachmentArgs{
+// 			DropletId: foobarDroplet.ID(),
+// 			VolumeId:  foobarVolume.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// You can also create a volume from an existing snapshot.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "baz"
+// 		foobarVolumeSnapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+// 			Region:     pulumi.String("lon1"),
+// 			Size:       pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
+// 			SnapshotId: pulumi.String(foobarVolumeSnapshot.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Volume struct {
 	pulumi.CustomResourceState
 

@@ -16,7 +16,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example retrieves a text object (which must have a `Content-Type`
+ * value starting with `text/`) and uses it as the `userData` for a Droplet:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

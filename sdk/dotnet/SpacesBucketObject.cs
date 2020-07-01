@@ -11,7 +11,7 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
-    /// The `digitalocean..SpacesBucketObject` resource allows this provider to upload content
+    /// The `digitalocean.SpacesBucketObject` resource allows this provider to upload content
     /// to Spaces.
     /// 
     /// The [Spaces API](https://developers.digitalocean.com/documentation/spaces/) was
@@ -46,7 +46,6 @@ namespace Pulumi.DigitalOcean
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a Key in a Spaces Bucket
     /// 
     /// ```csharp

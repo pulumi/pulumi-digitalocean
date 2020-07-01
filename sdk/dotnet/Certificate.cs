@@ -18,7 +18,6 @@ namespace Pulumi.DigitalOcean
     /// Let's Encrypt.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Custom Certificate
     /// 
     /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
-    /// 
     /// ### Let's Encrypt Certificate
     /// 
     /// ```csharp
@@ -59,6 +57,48 @@ namespace Pulumi.DigitalOcean
     ///                 "example.com",
     ///             },
     ///             Type = "lets_encrypt",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Use with Other Resources
+    /// 
+    /// Both custom and Let's Encrypt certificates can be used with other resources
+    /// including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
+    ///         {
+    ///             Type = "lets_encrypt",
+    ///             Domains = 
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///         });
+    ///         // Create a new Load Balancer with TLS termination
+    ///         var @public = new DigitalOcean.LoadBalancer("public", new DigitalOcean.LoadBalancerArgs
+    ///         {
+    ///             Region = "nyc3",
+    ///             DropletTag = "backend",
+    ///             ForwardingRules = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
+    ///                 {
+    ///                     EntryPort = 443,
+    ///                     EntryProtocol = "https",
+    ///                     TargetPort = 80,
+    ///                     TargetProtocol = "http",
+    ///                     CertificateId = cert.Id,
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 

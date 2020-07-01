@@ -17,8 +17,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
@@ -36,8 +34,11 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
-    /// 
     /// ### Resource Assignment
+    /// 
+    /// `digitalocean.Droplet`, `digitalocean.KubernetesCluster`,
+    /// `digitalocean_load_balancer`, and `digitalocean.DatabaseCluster` resources
+    /// may be assigned to a VPC by referencing its `id`. For example:
     /// 
     /// ```csharp
     /// using Pulumi;

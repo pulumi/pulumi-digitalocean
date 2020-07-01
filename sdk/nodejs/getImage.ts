@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get the data about a snapshot:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,33 @@ import * as utilities from "./utilities";
  *
  * const example1 = pulumi.output(digitalocean.getImage({
  *     name: "example-1.0.0",
+ * }, { async: true }));
+ * ```
+ *
+ * Reuse the data about a snapshot to create a Droplet:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleImage = digitalocean.getImage({
+ *     name: "example-1.0.0",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     image: exampleImage.then(exampleImage => exampleImage.id),
+ *     region: "nyc2",
+ *     size: "s-1vcpu-1gb",
+ * });
+ * ```
+ *
+ * Get the data about an official image:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example2 = pulumi.output(digitalocean.getImage({
+ *     slug: "ubuntu-18-04-x64",
  * }, { async: true }));
  * ```
  */

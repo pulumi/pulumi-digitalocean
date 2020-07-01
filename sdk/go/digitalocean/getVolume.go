@@ -13,6 +13,73 @@ import (
 // any of the volumes data.
 //
 // An error is triggered if the provided volume name does not exist.
+//
+// ## Example Usage
+//
+// Get the volume:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "nyc3"
+// 		_, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+// 			Name:   "app-data",
+// 			Region: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Reuse the data about a volume to attach it to a Droplet:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "nyc3"
+// 		exampleVolume, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+// 			Name:   "app-data",
+// 			Region: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+// 			Region: pulumi.String("nyc3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
+// 			DropletId: exampleDroplet.ID(),
+// 			VolumeId:  pulumi.String(exampleVolume.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("digitalocean:index/getVolume:getVolume", args, &rv, opts...)

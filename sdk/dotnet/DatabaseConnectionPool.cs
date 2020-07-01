@@ -13,9 +13,7 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database connection pool resource.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a new PostgreSQL database connection pool
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;

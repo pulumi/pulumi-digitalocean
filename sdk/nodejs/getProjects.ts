@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * the ability to filter and sort the results. If no filters are specified, all projects
  * will be returned.
  *
- * Note: You can use the `digitalocean..Project` data source to
+ * Note: You can use the `digitalocean.Project` data source to
  * obtain metadata about a single project if you already know the `id` to retrieve or the unique
  * `name` of the project.
  *
  * ## Example Usage
  *
+ * Use the `filter` block with a `key` string and `values` list to filter projects.
  *
+ * For example to find all staging environment projects:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +29,30 @@ import * as utilities from "./utilities";
  *     filters: [{
  *         key: "environment",
  *         values: ["Staging"],
+ *     }],
+ * }, { async: true }));
+ * ```
+ *
+ * You can filter on multiple fields and sort the results as well:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const non_default_production = pulumi.output(digitalocean.getProjects({
+ *     filters: [
+ *         {
+ *             key: "environment",
+ *             values: ["Production"],
+ *         },
+ *         {
+ *             key: "is_default",
+ *             values: ["false"],
+ *         },
+ *     ],
+ *     sorts: [{
+ *         direction: "asc",
+ *         key: "name",
  *     }],
  * }, { async: true }));
  * ```

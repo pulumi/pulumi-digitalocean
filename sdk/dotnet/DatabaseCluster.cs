@@ -13,9 +13,7 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database cluster resource.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a new PostgreSQL database cluster
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
@@ -36,9 +34,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create a new MySQL database cluster
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
@@ -59,9 +55,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create a new Redis database cluster
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;

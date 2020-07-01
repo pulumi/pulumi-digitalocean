@@ -11,6 +11,83 @@ import (
 )
 
 // Provides a DigitalOcean database cluster resource.
+//
+// ## Example Usage
+// ### Create a new PostgreSQL database cluster
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("pg"),
+// 			NodeCount: pulumi.Int(1),
+// 			Region:    pulumi.String("nyc1"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Version:   pulumi.String("11"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Create a new MySQL database cluster
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "mysql_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("mysql"),
+// 			NodeCount: pulumi.Int(1),
+// 			Region:    pulumi.String("nyc1"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Version:   pulumi.String("8"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Create a new Redis database cluster
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "redis_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("redis"),
+// 			NodeCount: pulumi.Int(1),
+// 			Region:    pulumi.String("nyc1"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Version:   pulumi.String("5"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DatabaseCluster struct {
 	pulumi.CustomResourceState
 

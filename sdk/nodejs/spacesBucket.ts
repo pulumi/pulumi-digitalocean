@@ -27,14 +27,13 @@ import {Region} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const staticAssets = new digitalocean.SpacesBucket("static-assets", {});
+ * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
  * // ...
  * ```
  *
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  *
  * ## Example Usage
- *
  * ### Create a New Bucket
  *
  * ```typescript
@@ -45,7 +44,6 @@ import {Region} from "./index";
  *     region: "nyc3",
  * });
  * ```
- *
  * ### Create a New Bucket With CORS Rules
  *
  * ```typescript

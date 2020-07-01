@@ -15,7 +15,7 @@ namespace Pulumi.DigitalOcean
         /// Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
         /// If no filters are specified, all Spaces buckets will be returned.
         /// 
-        /// Note: You can use the `digitalocean..SpacesBucket` data source to
+        /// Note: You can use the `digitalocean.SpacesBucket` data source to
         /// obtain metadata about a single bucket if you already know its `name` and `region`.
         /// 
         /// {{% examples %}}
@@ -88,7 +88,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -135,7 +134,7 @@ namespace Pulumi.DigitalOcean
     public sealed class GetSpacesBucketsResult
     {
         /// <summary>
-        /// A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:  
+        /// A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSpacesBucketsBucketResult> Buckets;
         public readonly ImmutableArray<Outputs.GetSpacesBucketsFilterResult> Filters;

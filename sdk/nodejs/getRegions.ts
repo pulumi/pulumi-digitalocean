@@ -10,12 +10,14 @@ import * as utilities from "./utilities";
  * Retrieve information about all supported DigitalOcean regions, with the ability to
  * filter and sort the results. If no filters are specified, all regions will be returned.
  *
- * Note: You can use the `digitalocean..getRegion` data source
+ * Note: You can use the `digitalocean.getRegion` data source
  * to obtain metadata about a single region if you already know the `slug` to retrieve.
  *
  * ## Example Usage
  *
+ * Use the `filter` block with a `key` string and `values` list to filter regions.
  *
+ * For example to find all available regions:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +27,30 @@ import * as utilities from "./utilities";
  *     filters: [{
  *         key: "available",
  *         values: ["true"],
+ *     }],
+ * }, { async: true }));
+ * ```
+ *
+ * You can filter on multiple fields and sort the results as well:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const available = pulumi.output(digitalocean.getRegions({
+ *     filters: [
+ *         {
+ *             key: "available",
+ *             values: ["true"],
+ *         },
+ *         {
+ *             key: "features",
+ *             values: ["private_networking"],
+ *         },
+ *     ],
+ *     sorts: [{
+ *         direction: "desc",
+ *         key: "name",
  *     }],
  * }, { async: true }));
  * ```

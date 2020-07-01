@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example assigns a droplet to a Project managed outside of this provider:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -17,6 +17,36 @@ namespace Pulumi.DigitalOcean
         /// returned.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var list = Output.Create(DigitalOcean.GetTags.InvokeAsync(new DigitalOcean.GetTagsArgs
+        ///         {
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetTagsSortArgs
+        ///                 {
+        ///                     Key = "total_resource_count",
+        ///                     Direction = "asc",
+        ///                 },
+        ///             },
+        ///         }));
+        ///         this.SortedTags = list.Apply(list =&gt; list.Tags);
+        ///     }
+        /// 
+        ///     [Output("sortedTags")]
+        ///     public Output&lt;string&gt; SortedTags { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagsResult> InvokeAsync(GetTagsArgs? args = null, InvokeOptions? options = null)

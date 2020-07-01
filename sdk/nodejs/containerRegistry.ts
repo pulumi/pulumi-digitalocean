@@ -6,11 +6,9 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DigitalOcean Container Registry resource. A Container Registry is
- * a secure, private location to store your containers for rapid deployment. 
+ * a secure, private location to store your containers for rapid deployment.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

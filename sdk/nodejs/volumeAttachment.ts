@@ -7,12 +7,9 @@ import * as utilities from "./utilities";
 /**
  * Manages attaching a Volume to a Droplet.
  *
- * > **NOTE:** Volumes can be attached either directly on the `digitalocean..Droplet` resource, or using the `digitalocean..VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
- *
+ * > **NOTE:** Volumes can be attached either directly on the `digitalocean.Droplet` resource, or using the `digitalocean.VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

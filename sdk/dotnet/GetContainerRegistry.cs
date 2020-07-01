@@ -21,7 +21,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// 
         /// {{% example %}}
         /// ### Basic Example
         /// 
@@ -43,7 +42,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

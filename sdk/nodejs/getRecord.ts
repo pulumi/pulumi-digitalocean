@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * Get data from a DNS record:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

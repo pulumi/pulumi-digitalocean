@@ -10,8 +10,84 @@ import (
 // Retrieve information about all supported DigitalOcean regions, with the ability to
 // filter and sort the results. If no filters are specified, all regions will be returned.
 //
-// Note: You can use the `.getRegion` data source
+// Note: You can use the `getRegion` data source
 // to obtain metadata about a single region if you already know the `slug` to retrieve.
+//
+// ## Example Usage
+//
+// Use the `filter` block with a `key` string and `values` list to filter regions.
+//
+// For example to find all available regions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetRegions(ctx, &digitalocean.GetRegionsArgs{
+// 			Filters: []digitalocean.GetRegionsFilter{
+// 				digitalocean.GetRegionsFilter{
+// 					Key: "available",
+// 					Values: []string{
+// 						"true",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// You can filter on multiple fields and sort the results as well:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetRegions(ctx, &digitalocean.GetRegionsArgs{
+// 			Filters: []digitalocean.GetRegionsFilter{
+// 				digitalocean.GetRegionsFilter{
+// 					Key: "available",
+// 					Values: []string{
+// 						"true",
+// 					},
+// 				},
+// 				digitalocean.GetRegionsFilter{
+// 					Key: "features",
+// 					Values: []string{
+// 						"private_networking",
+// 					},
+// 				},
+// 			},
+// 			Sorts: []digitalocean.GetRegionsSort{
+// 				digitalocean.GetRegionsSort{
+// 					Direction: "desc",
+// 					Key:       "name",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	var rv GetRegionsResult
 	err := ctx.Invoke("digitalocean:index/getRegions:getRegions", args, &rv, opts...)

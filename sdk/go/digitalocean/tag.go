@@ -13,6 +13,38 @@ import (
 // Droplet resource in order to better organize or facilitate the lookups and
 // actions on it. Tags created with this resource can be referenced in your Droplet
 // configuration via their ID or name.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobar, err := digitalocean.NewTag(ctx, "foobar", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+// 			Region: pulumi.String("nyc3"),
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			Tags: pulumi.StringArray{
+// 				foobar.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Tag struct {
 	pulumi.CustomResourceState
 

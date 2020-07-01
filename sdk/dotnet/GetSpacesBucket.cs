@@ -41,7 +41,6 @@ namespace Pulumi.DigitalOcean
         ///     public Output&lt;string&gt; BucketDomainName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -9,6 +9,33 @@ import (
 
 // Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
 // is not managed by this provider or you need to utilize any of the bucket's data.
+//
+// ## Example Usage
+//
+// Get the bucket by name:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := digitalocean.LookupSpacesBucket(ctx, &digitalocean.LookupSpacesBucketArgs{
+// 			Name:   "my-spaces-bucket",
+// 			Region: "nyc3",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("bucketDomainName", example.BucketDomainName)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupSpacesBucket(ctx *pulumi.Context, args *LookupSpacesBucketArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketResult, error) {
 	var rv LookupSpacesBucketResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", args, &rv, opts...)

@@ -13,9 +13,7 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a new PostgreSQL database
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;

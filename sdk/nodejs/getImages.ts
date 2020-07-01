@@ -14,12 +14,14 @@ import * as utilities from "./utilities";
  * This data source is useful if the image in question is not managed by this provider or you need to utilize any
  * of the image's data.
  *
- * Note: You can use the `digitalocean..getImage` data source to obtain metadata
+ * Note: You can use the `digitalocean.getImage` data source to obtain metadata
  * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
  *
  * ## Example Usage
  *
+ * Use the `filter` block with a `key` string and `values` list to filter images.
  *
+ * For example to find all Ubuntu images:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +31,30 @@ import * as utilities from "./utilities";
  *     filters: [{
  *         key: "distribution",
  *         values: ["Ubuntu"],
+ *     }],
+ * }, { async: true }));
+ * ```
+ *
+ * You can filter on multiple fields and sort the results as well:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const available = pulumi.output(digitalocean.getImages({
+ *     filters: [
+ *         {
+ *             key: "distribution",
+ *             values: ["Ubuntu"],
+ *         },
+ *         {
+ *             key: "regions",
+ *             values: ["nyc3"],
+ *         },
+ *     ],
+ *     sorts: [{
+ *         direction: "desc",
+ *         key: "created",
  *     }],
  * }, { async: true }));
  * ```

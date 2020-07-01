@@ -11,6 +11,41 @@ import (
 )
 
 // Provides a DigitalOcean database replica resource.
+//
+// ## Example Usage
+// ### Create a new PostgreSQL database replica
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("pg"),
+// 			Version:   pulumi.String("11"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Region:    pulumi.String("nyc1"),
+// 			NodeCount: pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDatabaseReplica(ctx, "read_replica", &digitalocean.DatabaseReplicaArgs{
+// 			ClusterId: postgres_example.ID(),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Region:    pulumi.String("nyc1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DatabaseReplica struct {
 	pulumi.CustomResourceState
 

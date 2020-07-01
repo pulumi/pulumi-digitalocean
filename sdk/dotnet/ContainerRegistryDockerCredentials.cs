@@ -15,8 +15,9 @@ namespace Pulumi.DigitalOcean
     /// An error is triggered if the provided container registry name does not exist.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Basic Example
+    /// 
+    /// Get the container registry:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,8 +35,9 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
-    /// 
     /// ### Docker Provider Example
+    /// 
+    /// Use the `endpoint` and `docker_credentials` with the Docker provider:
     /// 
     /// ```csharp
     /// using Pulumi;

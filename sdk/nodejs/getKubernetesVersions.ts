@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Provides access to the available DigitalOcean Kubernetes Service versions.
  *
  * ## Example Usage
- *
  * ### Output a list of all available versions
  *
  * ```typescript
@@ -18,9 +17,8 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getKubernetesVersions({});
- * export const k8sVersions = example.then(example => example.validVersions);
+ * export const k8s_versions = example.then(example => example.validVersions);
  * ```
- *
  * ### Create a Kubernetes cluster using the most recent version available
  *
  * ```typescript
@@ -28,17 +26,16 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getKubernetesVersions({});
- * const exampleCluster = new digitalocean.KubernetesCluster("example-cluster", {
+ * const example_cluster = new digitalocean.KubernetesCluster("example-cluster", {
  *     region: "lon1",
  *     version: example.then(example => example.latestVersion),
- *     node_pool: {
+ *     nodePool: {
  *         name: "default",
  *         size: "s-1vcpu-2gb",
  *         nodeCount: 3,
  *     },
  * });
  * ```
- *
  * ### Pin a Kubernetes cluster to a specific minor version
  *
  * ```typescript
@@ -48,10 +45,10 @@ import * as utilities from "./utilities";
  * const example = digitalocean.getKubernetesVersions({
  *     versionPrefix: "1.16.",
  * });
- * const exampleCluster = new digitalocean.KubernetesCluster("example-cluster", {
+ * const example_cluster = new digitalocean.KubernetesCluster("example-cluster", {
  *     region: "lon1",
  *     version: example.then(example => example.latestVersion),
- *     node_pool: {
+ *     nodePool: {
  *         name: "default",
  *         size: "s-1vcpu-2gb",
  *         nodeCount: 3,

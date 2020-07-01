@@ -12,12 +12,9 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Manages attaching a Volume to a Droplet.
     /// 
-    /// &gt; **NOTE:** Volumes can be attached either directly on the `digitalocean..Droplet` resource, or using the `digitalocean..VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
-    /// 
+    /// &gt; **NOTE:** Volumes can be attached either directly on the `digitalocean.Droplet` resource, or using the `digitalocean.VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

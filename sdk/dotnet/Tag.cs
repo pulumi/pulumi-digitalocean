@@ -17,8 +17,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;

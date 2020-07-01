@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
- * The `digitalocean..SpacesBucketObject` resource allows this provider to upload content
+ * The `digitalocean.SpacesBucketObject` resource allows this provider to upload content
  * to Spaces.
  *
  * The [Spaces API](https://developers.digitalocean.com/documentation/spaces/) was
@@ -25,14 +25,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const staticAssets = new digitalocean.SpacesBucket("static-assets", {});
+ * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
  * // ...
  * ```
  *
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  *
  * ## Example Usage
- *
  * ### Create a Key in a Spaces Bucket
  *
  * ```typescript

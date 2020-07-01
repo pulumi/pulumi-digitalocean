@@ -38,7 +38,6 @@ namespace Pulumi.DigitalOcean
         ///     public Output&lt;string&gt; RegionName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

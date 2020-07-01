@@ -9,10 +9,9 @@ import * as utilities from "./utilities";
 import {DropletSlug} from "./index";
 
 /**
- * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean..KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
+ * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
  *
  * ## Example Usage
- *
  * ### Basic Example
  *
  * ```typescript
@@ -22,7 +21,7 @@ import {DropletSlug} from "./index";
  * const foo = new digitalocean.KubernetesCluster("foo", {
  *     region: "nyc1",
  *     version: "1.15.5-do.1",
- *     node_pool: {
+ *     nodePool: {
  *         name: "front-end-pool",
  *         size: "s-2vcpu-2gb",
  *         nodeCount: 3,
@@ -39,14 +38,16 @@ import {DropletSlug} from "./index";
  *     },
  * });
  * ```
- *
  * ### Autoscaling Example
+ *
+ * Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+ * For example:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const autoscalePool01 = new digitalocean.KubernetesNodePool("autoscale-pool-01", {
+ * const autoscale_pool_01 = new digitalocean.KubernetesNodePool("autoscale-pool-01", {
  *     clusterId: digitalocean_kubernetes_cluster.foo.id,
  *     size: "s-1vcpu-2gb",
  *     autoScale: true,

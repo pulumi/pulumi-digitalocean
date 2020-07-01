@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean
         /// This data source is useful if the image in question is not managed by this provider or you need to utilize any
         /// of the image's data.
         /// 
-        /// Note: You can use the `digitalocean..getImage` data source to obtain metadata
+        /// Note: You can use the `digitalocean.getImage` data source to obtain metadata
         /// about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
         /// 
         /// {{% examples %}}
@@ -101,7 +101,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -13,6 +13,42 @@ import (
 // of the keys data.
 //
 // An error is triggered if the provided ssh key name does not exist.
+//
+// ## Example Usage
+//
+// Get the ssh key:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleSshKey, err := digitalocean.LookupSshKey(ctx, &digitalocean.LookupSshKeyArgs{
+// 			Name: "example",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+// 			Region: pulumi.String("nyc2"),
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			SshKeys: pulumi.StringArray{
+// 				pulumi.String(exampleSshKey.Id),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshKeyResult, error) {
 	var rv LookupSshKeyResult
 	err := ctx.Invoke("digitalocean:index/getSshKey:getSshKey", args, &rv, opts...)
