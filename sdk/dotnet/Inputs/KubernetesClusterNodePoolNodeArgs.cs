@@ -13,42 +13,37 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class KubernetesClusterNodePoolNodeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The date and time when the Kubernetes cluster was created.
+        /// The date and time when the node was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// The id of the node's droplet
+        /// </summary>
         [Input("dropletId")]
         public Input<string>? DropletId { get; set; }
 
         /// <summary>
-        /// A unique ID that can be used to identify and reference a Kubernetes cluster.
+        /// A unique ID that can be used to identify and reference the node.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// A name for the Kubernetes cluster.
+        /// A name for the node pool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+        /// A string indicating the current status of the individual node.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The date and time when the Kubernetes cluster was last updated.
-        /// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-        /// - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
-        /// - `host` - The URL of the API server on the Kubernetes master node.
-        /// - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
-        /// - `token` - The DigitalOcean API access token used by clients to access the cluster.
-        /// - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-        /// - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-        /// - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
+        /// The date and time when the node was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

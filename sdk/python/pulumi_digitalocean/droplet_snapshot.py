@@ -5,36 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['DropletSnapshot']
 
 
 class DropletSnapshot(pulumi.CustomResource):
-    created_at: pulumi.Output[str]
-    """
-    The date and time the Droplet snapshot was created.
-    """
-    droplet_id: pulumi.Output[str]
-    """
-    The ID of the Droplet from which the snapshot will be taken.
-    """
-    min_disk_size: pulumi.Output[float]
-    """
-    The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
-    """
-    name: pulumi.Output[str]
-    """
-    A name for the Droplet snapshot.
-    """
-    regions: pulumi.Output[list]
-    """
-    A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
-    """
-    size: pulumi.Output[float]
-    """
-    The billable size of the Droplet snapshot in gigabytes.
-    """
-    def __init__(__self__, resource_name, opts=None, droplet_id=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 droplet_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
 
@@ -67,7 +52,7 @@ class DropletSnapshot(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -88,19 +73,27 @@ class DropletSnapshot(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_at=None, droplet_id=None, min_disk_size=None, name=None, regions=None, size=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            droplet_id: Optional[pulumi.Input[str]] = None,
+            min_disk_size: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            size: Optional[pulumi.Input[float]] = None) -> 'DropletSnapshot':
         """
         Get an existing DropletSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The date and time the Droplet snapshot was created.
         :param pulumi.Input[str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
         :param pulumi.Input[float] min_disk_size: The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
         :param pulumi.Input[str] name: A name for the Droplet snapshot.
-        :param pulumi.Input[list] regions: A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
+        :param pulumi.Input[List[pulumi.Input[str]]] regions: A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
         :param pulumi.Input[float] size: The billable size of the Droplet snapshot in gigabytes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -115,8 +108,57 @@ class DropletSnapshot(pulumi.CustomResource):
         __props__["size"] = size
         return DropletSnapshot(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time the Droplet snapshot was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> str:
+        """
+        The ID of the Droplet from which the snapshot will be taken.
+        """
+        return pulumi.get(self, "droplet_id")
+
+    @property
+    @pulumi.getter(name="minDiskSize")
+    def min_disk_size(self) -> float:
+        """
+        The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
+        """
+        return pulumi.get(self, "min_disk_size")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for the Droplet snapshot.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def regions(self) -> List[str]:
+        """
+        A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
+        """
+        return pulumi.get(self, "regions")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        The billable size of the Droplet snapshot in gigabytes.
+        """
+        return pulumi.get(self, "size")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

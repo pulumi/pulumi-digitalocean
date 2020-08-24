@@ -89,10 +89,6 @@ export interface GetImageArgs {
     readonly slug?: string;
     /**
      * Restrict the search to one of the following categories of images:
-     * - `all` - All images (whether public or private)
-     * - `applications` - One-click applications
-     * - `distributions` - Distributions
-     * - `user` - (Default) User (private) images
      */
     readonly source?: string;
 }

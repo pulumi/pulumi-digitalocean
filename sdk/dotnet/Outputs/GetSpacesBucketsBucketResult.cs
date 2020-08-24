@@ -13,9 +13,21 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetSpacesBucketsBucketResult
     {
+        /// <summary>
+        /// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+        /// </summary>
         public readonly string BucketDomainName;
+        /// <summary>
+        /// The name of the Spaces bucket
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The slug of the region where the bucket is stored.
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The uniform resource name of the bucket
+        /// </summary>
         public readonly string Urn;
 
         [OutputConstructor]

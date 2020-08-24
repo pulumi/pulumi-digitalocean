@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetDatabaseClusterResult',
+    'AwaitableGetDatabaseClusterResult',
+    'get_database_cluster',
+]
+
+@pulumi.output_type
 class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
@@ -15,112 +23,209 @@ class GetDatabaseClusterResult:
     def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
-        __self__.database = database
+        pulumi.set(__self__, "database", database)
+        if engine and not isinstance(engine, str):
+            raise TypeError("Expected argument 'engine' to be a str")
+        pulumi.set(__self__, "engine", engine)
+        if host and not isinstance(host, str):
+            raise TypeError("Expected argument 'host' to be a str")
+        pulumi.set(__self__, "host", host)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if maintenance_windows and not isinstance(maintenance_windows, list):
+            raise TypeError("Expected argument 'maintenance_windows' to be a list")
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if node_count and not isinstance(node_count, float):
+            raise TypeError("Expected argument 'node_count' to be a float")
+        pulumi.set(__self__, "node_count", node_count)
+        if password and not isinstance(password, str):
+            raise TypeError("Expected argument 'password' to be a str")
+        pulumi.set(__self__, "password", password)
+        if port and not isinstance(port, float):
+            raise TypeError("Expected argument 'port' to be a float")
+        pulumi.set(__self__, "port", port)
+        if private_host and not isinstance(private_host, str):
+            raise TypeError("Expected argument 'private_host' to be a str")
+        pulumi.set(__self__, "private_host", private_host)
+        if private_network_uuid and not isinstance(private_network_uuid, str):
+            raise TypeError("Expected argument 'private_network_uuid' to be a str")
+        pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+        if private_uri and not isinstance(private_uri, str):
+            raise TypeError("Expected argument 'private_uri' to be a str")
+        pulumi.set(__self__, "private_uri", private_uri)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if size and not isinstance(size, str):
+            raise TypeError("Expected argument 'size' to be a str")
+        pulumi.set(__self__, "size", size)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if uri and not isinstance(uri, str):
+            raise TypeError("Expected argument 'uri' to be a str")
+        pulumi.set(__self__, "uri", uri)
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        pulumi.set(__self__, "urn", urn)
+        if user and not isinstance(user, str):
+            raise TypeError("Expected argument 'user' to be a str")
+        pulumi.set(__self__, "user", user)
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
         """
         Name of the cluster's default database.
         """
-        if engine and not isinstance(engine, str):
-            raise TypeError("Expected argument 'engine' to be a str")
-        __self__.engine = engine
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
         """
         Database engine used by the cluster (ex. `pg` for PostreSQL).
         """
-        if host and not isinstance(host, str):
-            raise TypeError("Expected argument 'host' to be a str")
-        __self__.host = host
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
         """
         Database cluster's hostname.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if maintenance_windows and not isinstance(maintenance_windows, list):
-            raise TypeError("Expected argument 'maintenance_windows' to be a list")
-        __self__.maintenance_windows = maintenance_windows
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> List['outputs.GetDatabaseClusterMaintenanceWindowResult']:
         """
         Defines when the automatic maintenance should be performed for the database cluster.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if node_count and not isinstance(node_count, float):
-            raise TypeError("Expected argument 'node_count' to be a float")
-        __self__.node_count = node_count
+        return pulumi.get(self, "maintenance_windows")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> float:
         """
         Number of nodes that will be included in the cluster.
         """
-        if password and not isinstance(password, str):
-            raise TypeError("Expected argument 'password' to be a str")
-        __self__.password = password
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
         """
         Password for the cluster's default user.
         """
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
-        __self__.port = port
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
         """
         Network port that the database cluster is listening on.
         """
-        if private_host and not isinstance(private_host, str):
-            raise TypeError("Expected argument 'private_host' to be a str")
-        __self__.private_host = private_host
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateHost")
+    def private_host(self) -> str:
         """
         Same as `host`, but only accessible from resources within the account and in the same region.
         """
-        if private_network_uuid and not isinstance(private_network_uuid, str):
-            raise TypeError("Expected argument 'private_network_uuid' to be a str")
-        __self__.private_network_uuid = private_network_uuid
+        return pulumi.get(self, "private_host")
+
+    @property
+    @pulumi.getter(name="privateNetworkUuid")
+    def private_network_uuid(self) -> str:
         """
         The ID of the VPC where the database cluster is located.
         """
-        if private_uri and not isinstance(private_uri, str):
-            raise TypeError("Expected argument 'private_uri' to be a str")
-        __self__.private_uri = private_uri
+        return pulumi.get(self, "private_network_uuid")
+
+    @property
+    @pulumi.getter(name="privateUri")
+    def private_uri(self) -> str:
         """
         Same as `uri`, but only accessible from resources within the account and in the same region.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "private_uri")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         DigitalOcean region where the cluster will reside.
         """
-        if size and not isinstance(size, str):
-            raise TypeError("Expected argument 'size' to be a str")
-        __self__.size = size
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> str:
         """
         Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         """
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
-        if uri and not isinstance(uri, str):
-            raise TypeError("Expected argument 'uri' to be a str")
-        __self__.uri = uri
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
         """
         The full URI for connecting to the database cluster.
         """
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        __self__.urn = urn
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> str:
         """
         The uniform resource name of the database cluster.
         """
-        if user and not isinstance(user, str):
-            raise TypeError("Expected argument 'user' to be a str")
-        __self__.user = user
+        return pulumi.get(self, "urn")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
         """
         Username for the cluster's default user.
         """
-        if version and not isinstance(version, str):
-            raise TypeError("Expected argument 'version' to be a str")
-        __self__.version = version
+        return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
         """
         Engine version used by the cluster (ex. `11` for PostgreSQL 11).
         """
+        return pulumi.get(self, "version")
+
+
 class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -147,7 +252,10 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             user=self.user,
             version=self.version)
 
-def get_database_cluster(name=None,tags=None,opts=None):
+
+def get_database_cluster(name: Optional[str] = None,
+                         tags: Optional[List[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseClusterResult:
     """
     Provides information on a DigitalOcean database cluster resource.
 
@@ -165,33 +273,31 @@ def get_database_cluster(name=None,tags=None,opts=None):
     :param str name: The name of the database cluster.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts, typ=GetDatabaseClusterResult).value
 
     return AwaitableGetDatabaseClusterResult(
-        database=__ret__.get('database'),
-        engine=__ret__.get('engine'),
-        host=__ret__.get('host'),
-        id=__ret__.get('id'),
-        maintenance_windows=__ret__.get('maintenanceWindows'),
-        name=__ret__.get('name'),
-        node_count=__ret__.get('nodeCount'),
-        password=__ret__.get('password'),
-        port=__ret__.get('port'),
-        private_host=__ret__.get('privateHost'),
-        private_network_uuid=__ret__.get('privateNetworkUuid'),
-        private_uri=__ret__.get('privateUri'),
-        region=__ret__.get('region'),
-        size=__ret__.get('size'),
-        tags=__ret__.get('tags'),
-        uri=__ret__.get('uri'),
-        urn=__ret__.get('urn'),
-        user=__ret__.get('user'),
-        version=__ret__.get('version'))
+        database=__ret__.database,
+        engine=__ret__.engine,
+        host=__ret__.host,
+        id=__ret__.id,
+        maintenance_windows=__ret__.maintenance_windows,
+        name=__ret__.name,
+        node_count=__ret__.node_count,
+        password=__ret__.password,
+        port=__ret__.port,
+        private_host=__ret__.private_host,
+        private_network_uuid=__ret__.private_network_uuid,
+        private_uri=__ret__.private_uri,
+        region=__ret__.region,
+        size=__ret__.size,
+        tags=__ret__.tags,
+        uri=__ret__.uri,
+        urn=__ret__.urn,
+        user=__ret__.user,
+        version=__ret__.version)

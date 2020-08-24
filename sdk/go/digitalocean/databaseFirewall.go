@@ -109,8 +109,6 @@ type DatabaseFirewall struct {
 	// The ID of the target database cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-	// - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
-	// - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
 	Rules DatabaseFirewallRuleArrayOutput `pulumi:"rules"`
 }
 
@@ -151,8 +149,6 @@ type databaseFirewallState struct {
 	// The ID of the target database cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-	// - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
-	// - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
 	Rules []DatabaseFirewallRule `pulumi:"rules"`
 }
 
@@ -160,8 +156,6 @@ type DatabaseFirewallState struct {
 	// The ID of the target database cluster.
 	ClusterId pulumi.StringPtrInput
 	// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-	// - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
-	// - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
 	Rules DatabaseFirewallRuleArrayInput
 }
 
@@ -173,8 +167,6 @@ type databaseFirewallArgs struct {
 	// The ID of the target database cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-	// - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
-	// - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
 	Rules []DatabaseFirewallRule `pulumi:"rules"`
 }
 
@@ -183,8 +175,6 @@ type DatabaseFirewallArgs struct {
 	// The ID of the target database cluster.
 	ClusterId pulumi.StringInput
 	// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-	// - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
-	// - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
 	Rules DatabaseFirewallRuleArrayInput
 }
 

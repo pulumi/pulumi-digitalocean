@@ -13,17 +13,29 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class KubernetesNodePoolNode
     {
+        /// <summary>
+        /// The date and time when the node was created.
+        /// </summary>
         public readonly string? CreatedAt;
+        /// <summary>
+        /// The id of the node's droplet
+        /// </summary>
         public readonly string? DropletId;
         /// <summary>
-        /// A unique ID that can be used to identify and reference the node pool.
+        /// A unique ID that can be used to identify and reference the node.
         /// </summary>
         public readonly string? Id;
         /// <summary>
         /// A name for the node pool.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// A string indicating the current status of the individual node.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The date and time when the node was last updated.
+        /// </summary>
         public readonly string? UpdatedAt;
 
         [OutputConstructor]

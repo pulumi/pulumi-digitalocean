@@ -12,14 +12,20 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class KubernetesNodePoolNodeGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The date and time when the node was created.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// The id of the node's droplet
+        /// </summary>
         [Input("dropletId")]
         public Input<string>? DropletId { get; set; }
 
         /// <summary>
-        /// A unique ID that can be used to identify and reference the node pool.
+        /// A unique ID that can be used to identify and reference the node.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -30,9 +36,15 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A string indicating the current status of the individual node.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The date and time when the node was last updated.
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 

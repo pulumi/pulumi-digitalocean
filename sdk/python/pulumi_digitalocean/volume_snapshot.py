@@ -5,40 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['VolumeSnapshot']
 
 
 class VolumeSnapshot(pulumi.CustomResource):
-    created_at: pulumi.Output[str]
-    """
-    The date and time the volume snapshot was created.
-    """
-    min_disk_size: pulumi.Output[float]
-    """
-    The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
-    """
-    name: pulumi.Output[str]
-    """
-    A name for the volume snapshot.
-    """
-    regions: pulumi.Output[list]
-    """
-    A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
-    """
-    size: pulumi.Output[float]
-    """
-    The billable size of the volume snapshot in gigabytes.
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of the tags to be applied to this volume snapshot.
-    """
-    volume_id: pulumi.Output[str]
-    """
-    The ID of the volume from which the volume snapshot originated.
-    """
-    def __init__(__self__, resource_name, opts=None, name=None, tags=None, volume_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
 
@@ -58,7 +40,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A name for the volume snapshot.
-        :param pulumi.Input[list] tags: A list of the tags to be applied to this volume snapshot.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of the tags to be applied to this volume snapshot.
         :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
         """
         if __name__ is not None:
@@ -72,7 +54,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -94,20 +76,29 @@ class VolumeSnapshot(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_at=None, min_disk_size=None, name=None, regions=None, size=None, tags=None, volume_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            min_disk_size: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            size: Optional[pulumi.Input[float]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            volume_id: Optional[pulumi.Input[str]] = None) -> 'VolumeSnapshot':
         """
         Get an existing VolumeSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The date and time the volume snapshot was created.
         :param pulumi.Input[float] min_disk_size: The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
         :param pulumi.Input[str] name: A name for the volume snapshot.
-        :param pulumi.Input[list] regions: A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
+        :param pulumi.Input[List[pulumi.Input[str]]] regions: A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
         :param pulumi.Input[float] size: The billable size of the volume snapshot in gigabytes.
-        :param pulumi.Input[list] tags: A list of the tags to be applied to this volume snapshot.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of the tags to be applied to this volume snapshot.
         :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -123,8 +114,65 @@ class VolumeSnapshot(pulumi.CustomResource):
         __props__["volume_id"] = volume_id
         return VolumeSnapshot(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time the volume snapshot was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="minDiskSize")
+    def min_disk_size(self) -> float:
+        """
+        The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
+        """
+        return pulumi.get(self, "min_disk_size")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for the volume snapshot.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def regions(self) -> List[str]:
+        """
+        A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
+        """
+        return pulumi.get(self, "regions")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        The billable size of the volume snapshot in gigabytes.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A list of the tags to be applied to this volume snapshot.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> str:
+        """
+        The ID of the volume from which the volume snapshot originated.
+        """
+        return pulumi.get(self, "volume_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

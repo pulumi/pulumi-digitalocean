@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['VolumeAttachment']
 
 
 class VolumeAttachment(pulumi.CustomResource):
-    droplet_id: pulumi.Output[float]
-    """
-    ID of the Droplet to attach the volume to.
-    """
-    volume_id: pulumi.Output[str]
-    """
-    ID of the Volume to be attached to the Droplet.
-    """
-    def __init__(__self__, resource_name, opts=None, droplet_id=None, volume_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 droplet_id: Optional[pulumi.Input[float]] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages attaching a Volume to a Droplet.
 
@@ -60,7 +61,7 @@ class VolumeAttachment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -79,13 +80,17 @@ class VolumeAttachment(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, droplet_id=None, volume_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            droplet_id: Optional[pulumi.Input[float]] = None,
+            volume_id: Optional[pulumi.Input[str]] = None) -> 'VolumeAttachment':
         """
         Get an existing VolumeAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] droplet_id: ID of the Droplet to attach the volume to.
         :param pulumi.Input[str] volume_id: ID of the Volume to be attached to the Droplet.
@@ -98,8 +103,25 @@ class VolumeAttachment(pulumi.CustomResource):
         __props__["volume_id"] = volume_id
         return VolumeAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> float:
+        """
+        ID of the Droplet to attach the volume to.
+        """
+        return pulumi.get(self, "droplet_id")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> str:
+        """
+        ID of the Volume to be attached to the Droplet.
+        """
+        return pulumi.get(self, "volume_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

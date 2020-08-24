@@ -32,7 +32,7 @@ export interface GetKubernetesClusterArgs {
      */
     readonly name: string;
     /**
-     * A list of tag names to be applied to the Kubernetes cluster.
+     * A list of tag names applied to the node pool.
      */
     readonly tags?: string[];
 }
@@ -46,7 +46,7 @@ export interface GetKubernetesClusterResult {
      */
     readonly clusterSubnet: string;
     /**
-     * The date and time when the Kubernetes cluster was created.
+     * The date and time when the node was created.
      */
     readonly createdAt: string;
     /**
@@ -62,25 +62,12 @@ export interface GetKubernetesClusterResult {
      */
     readonly ipv4Address: string;
     readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];
+    /**
+     * The auto-generated name for the node.
+     */
     readonly name: string;
     /**
      * A list of node pools associated with the cluster. Each node pool exports the following attributes:
-     * - `id` -  The unique ID that can be used to identify and reference the node pool.
-     * - `name` - The name of the node pool.
-     * - `size` - The slug identifier for the type of Droplet used as workers in the node pool.
-     * - `nodeCount` - The number of Droplet instances in the node pool.
-     * - `actualNodeCount` - The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
-     * - `autoScale` - A boolean indicating whether auto-scaling is enabled on the node pool.
-     * - `minNodes` - If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-     * - `maxNodes` - If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-     * - `tags` - A list of tag names applied to the node pool.
-     * - `labels` - A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-     * - `nodes` - A list of nodes in the pool. Each node exports the following attributes:
-     * + `id` -  A unique ID that can be used to identify and reference the node.
-     * + `name` - The auto-generated name for the node.
-     * + `status` -  A string indicating the current status of the individual node.
-     * + `createdAt` - The date and time when the node was created.
-     * + `updatedAt` - The date and time when the node was last updated.
      */
     readonly nodePools: outputs.GetKubernetesClusterNodePool[];
     /**
@@ -92,23 +79,15 @@ export interface GetKubernetesClusterResult {
      */
     readonly serviceSubnet: string;
     /**
-     * A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+     * A string indicating the current status of the individual node.
      */
     readonly status: string;
     /**
-     * A list of tag names to be applied to the Kubernetes cluster.
+     * A list of tag names applied to the node pool.
      */
     readonly tags?: string[];
     /**
-     * The date and time when the Kubernetes cluster was last updated.
-     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-     * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-     * - `token` - The DigitalOcean API access token used by clients to access the cluster.
-     * - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+     * The date and time when the node was last updated.
      */
     readonly updatedAt: string;
     /**

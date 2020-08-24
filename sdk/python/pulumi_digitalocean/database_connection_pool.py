@@ -5,60 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['DatabaseConnectionPool']
 
 
 class DatabaseConnectionPool(pulumi.CustomResource):
-    cluster_id: pulumi.Output[str]
-    """
-    The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
-    """
-    db_name: pulumi.Output[str]
-    """
-    The database for use with the connection pool.
-    """
-    host: pulumi.Output[str]
-    """
-    The hostname used to connect to the database connection pool.
-    """
-    mode: pulumi.Output[str]
-    """
-    The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
-    """
-    name: pulumi.Output[str]
-    """
-    The name for the database connection pool.
-    """
-    password: pulumi.Output[str]
-    """
-    Password for the connection pool's user.
-    """
-    port: pulumi.Output[float]
-    """
-    Network port that the database connection pool is listening on.
-    """
-    private_host: pulumi.Output[str]
-    """
-    Same as `host`, but only accessible from resources within the account and in the same region.
-    """
-    private_uri: pulumi.Output[str]
-    """
-    Same as `uri`, but only accessible from resources within the account and in the same region.
-    """
-    size: pulumi.Output[float]
-    """
-    The desired size of the PGBouncer connection pool.
-    """
-    uri: pulumi.Output[str]
-    """
-    The full URI for connecting to the database connection pool.
-    """
-    user: pulumi.Output[str]
-    """
-    The name of the database user for use with the connection pool.
-    """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, db_name=None, mode=None, name=None, size=None, user=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_name: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[float]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean database connection pool resource.
 
@@ -102,7 +67,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -137,13 +102,27 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, db_name=None, host=None, mode=None, name=None, password=None, port=None, private_host=None, private_uri=None, size=None, uri=None, user=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            db_name: Optional[pulumi.Input[str]] = None,
+            host: Optional[pulumi.Input[str]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            private_host: Optional[pulumi.Input[str]] = None,
+            private_uri: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[float]] = None,
+            uri: Optional[pulumi.Input[str]] = None,
+            user: Optional[pulumi.Input[str]] = None) -> 'DatabaseConnectionPool':
         """
         Get an existing DatabaseConnectionPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
         :param pulumi.Input[str] db_name: The database for use with the connection pool.
@@ -176,8 +155,105 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         __props__["user"] = user
         return DatabaseConnectionPool(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="dbName")
+    def db_name(self) -> str:
+        """
+        The database for use with the connection pool.
+        """
+        return pulumi.get(self, "db_name")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The hostname used to connect to the database connection pool.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for the database connection pool.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password for the connection pool's user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
+        """
+        Network port that the database connection pool is listening on.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateHost")
+    def private_host(self) -> str:
+        """
+        Same as `host`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_host")
+
+    @property
+    @pulumi.getter(name="privateUri")
+    def private_uri(self) -> str:
+        """
+        Same as `uri`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_uri")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        The desired size of the PGBouncer connection pool.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The full URI for connecting to the database connection pool.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        The name of the database user for use with the connection pool.
+        """
+        return pulumi.get(self, "user")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -21,11 +21,17 @@ export interface DatabaseFirewallRule {
      * The date and time when the firewall rule was created.
      */
     createdAt: string;
+    /**
+     * The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
+     */
     type: string;
     /**
      * A unique identifier for the firewall rule.
      */
     uuid: string;
+    /**
+     * The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
+     */
     value: string;
 }
 
@@ -126,30 +132,99 @@ export interface GetDatabaseClusterMaintenanceWindow {
 }
 
 export interface GetDropletsDroplet {
+    /**
+     * Whether backups are enabled.
+     */
     backups: boolean;
     createdAt: string;
+    /**
+     * The size of the Droplet's disk in GB.
+     */
     disk: number;
+    /**
+     * The ID of the Droplet.
+     */
     id: number;
+    /**
+     * The Droplet image ID or slug.
+     */
     image: string;
+    /**
+     * The Droplet's public IPv4 address
+     */
     ipv4Address: string;
+    /**
+     * The Droplet's private IPv4 address
+     */
     ipv4AddressPrivate: string;
+    /**
+     * Whether IPv6 is enabled.
+     */
     ipv6: boolean;
+    /**
+     * The Droplet's public IPv6 address
+     */
     ipv6Address: string;
+    /**
+     * The Droplet's private IPv6 address
+     */
     ipv6AddressPrivate: string;
+    /**
+     * Whether the Droplet is locked.
+     */
     locked: boolean;
+    /**
+     * The amount of the Droplet's memory in MB.
+     */
     memory: number;
+    /**
+     * Whether monitoring agent is installed.
+     */
     monitoring: boolean;
     name: string;
+    /**
+     * Droplet hourly price.
+     */
     priceHourly: number;
+    /**
+     * Droplet monthly price.
+     */
     priceMonthly: number;
+    /**
+     * Whether private networks are enabled.
+     */
     privateNetworking: boolean;
+    /**
+     * The region the Droplet is running in.
+     */
     region: string;
+    /**
+     * The unique slug that identifies the type of Droplet.
+     */
     size: string;
+    /**
+     * The status of the Droplet.
+     */
     status: string;
+    /**
+     * A list of the tags associated to the Droplet.
+     */
     tags: string[];
+    /**
+     * The uniform resource name of the Droplet
+     */
     urn: string;
+    /**
+     * The number of the Droplet's virtual CPUs.
+     */
     vcpus: number;
+    /**
+     * List of the IDs of each volumes attached to the Droplet.
+     */
     volumeIds: string[];
+    /**
+     * The ID of the VPC where the Droplet is located.
+     */
     vpcUuid: string;
 }
 
@@ -198,12 +273,30 @@ export interface GetImagesFilter {
 
 export interface GetImagesImage {
     created: string;
+    /**
+     * The name of the distribution of the OS of the image.
+     * - `minDiskSize`: The minimum 'disk' required for the image.
+     * - `sizeGigabytes`: The size of the image in GB.
+     */
     distribution: string;
     errorMessage: string;
     id: number;
+    /**
+     * The id of the image (legacy parameter).
+     */
     image: string;
     minDiskSize: number;
     name: string;
+    /**
+     * Is image a public image or not. Public images represent
+     * Linux distributions or One-Click Applications, while non-public images represent
+     * snapshots and backups and are only available within your account.
+     * - `regions`: A set of the regions that the image is available in.
+     * - `tags`: A set of tags applied to the image
+     * - `created`: When the image was created
+     * - `status`: Current status of the image
+     * - `errorMessage`: Any applicable error message pertaining to the image
+     */
     private: boolean;
     regions: string[];
     sizeGigabytes: number;
@@ -226,46 +319,91 @@ export interface GetImagesSort {
 }
 
 export interface GetKubernetesClusterKubeConfig {
+    /**
+     * The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+     */
     clientCertificate: string;
+    /**
+     * The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+     */
     clientKey: string;
+    /**
+     * The base64 encoded public certificate for the cluster's certificate authority.
+     */
     clusterCaCertificate: string;
+    /**
+     * The date and time when the credentials will expire and need to be regenerated.
+     */
     expiresAt: string;
+    /**
+     * The URL of the API server on the Kubernetes master node.
+     */
     host: string;
+    /**
+     * The full contents of the Kubernetes cluster's kubeconfig file.
+     */
     rawConfig: string;
+    /**
+     * The DigitalOcean API access token used by clients to access the cluster.
+     */
     token: string;
 }
 
 export interface GetKubernetesClusterNodePool {
+    /**
+     * The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+     */
     actualNodeCount: number;
+    /**
+     * A boolean indicating whether auto-scaling is enabled on the node pool.
+     */
     autoScale: boolean;
     /**
-     * The unique ID that can be used to identify and reference a Kubernetes cluster.
+     * A unique ID that can be used to identify and reference the node.
      */
     id: string;
+    /**
+     * A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+     */
     labels: {[key: string]: string};
+    /**
+     * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+     */
     maxNodes: number;
+    /**
+     * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     */
     minNodes: number;
     /**
      * The name of Kubernetes cluster.
      */
     name: string;
+    /**
+     * The number of Droplet instances in the node pool.
+     */
     nodeCount: number;
+    /**
+     * A list of nodes in the pool. Each node exports the following attributes:
+     */
     nodes: outputs.GetKubernetesClusterNodePoolNode[];
+    /**
+     * The slug identifier for the type of Droplet used as workers in the node pool.
+     */
     size: string;
     /**
-     * A list of tag names to be applied to the Kubernetes cluster.
+     * A list of tag names applied to the node pool.
      */
     tags?: string[];
 }
 
 export interface GetKubernetesClusterNodePoolNode {
     /**
-     * The date and time when the Kubernetes cluster was created.
+     * The date and time when the node was created.
      */
     createdAt: string;
     dropletId: string;
     /**
-     * The unique ID that can be used to identify and reference a Kubernetes cluster.
+     * A unique ID that can be used to identify and reference the node.
      */
     id: string;
     /**
@@ -273,19 +411,11 @@ export interface GetKubernetesClusterNodePoolNode {
      */
     name: string;
     /**
-     * A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+     * A string indicating the current status of the individual node.
      */
     status: string;
     /**
-     * The date and time when the Kubernetes cluster was last updated.
-     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-     * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-     * - `token` - The DigitalOcean API access token used by clients to access the cluster.
-     * - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+     * The date and time when the node was last updated.
      */
     updatedAt: string;
 }
@@ -329,16 +459,46 @@ export interface GetProjectsFilter {
 }
 
 export interface GetProjectsProject {
+    /**
+     * The date and time when the project was created, (ISO8601)
+     */
     createdAt: string;
+    /**
+     * The description of the project
+     */
     description: string;
+    /**
+     * The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
+     */
     environment: string;
+    /**
+     * The ID of the project
+     */
     id: string;
     isDefault: boolean;
+    /**
+     * The name of the project
+     */
     name: string;
+    /**
+     * The ID of the project owner
+     */
     ownerId: number;
+    /**
+     * The unique universal identifier of the project owner
+     */
     ownerUuid: string;
+    /**
+     * The purpose of the project (Default: "Web Application")
+     */
     purpose: string;
+    /**
+     * A set of uniform resource names (URNs) for the resources associated with the project
+     */
     resources: string[];
+    /**
+     * The date and time when the project was last updated, (ISO8601)
+     */
     updatedAt: string;
 }
 
@@ -368,10 +528,25 @@ export interface GetRegionsFilter {
 }
 
 export interface GetRegionsRegion {
+    /**
+     * A boolean value that represents whether new Droplets can be created in this region.
+     */
     available: boolean;
+    /**
+     * A set of features available in this region.
+     */
     features: string[];
+    /**
+     * The display name of the region.
+     */
     name: string;
+    /**
+     * A set of identifying slugs for the Droplet sizes available in this region.
+     */
     sizes: string[];
+    /**
+     * A human-readable string that is used as a unique identifier for each region.
+     */
     slug: string;
 }
 
@@ -453,9 +628,21 @@ export interface GetSizesSort {
 }
 
 export interface GetSpacesBucketsBucket {
+    /**
+     * The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+     */
     bucketDomainName: string;
+    /**
+     * The name of the Spaces bucket
+     */
     name: string;
+    /**
+     * The slug of the region where the bucket is stored.
+     */
     region: string;
+    /**
+     * The uniform resource name of the bucket
+     */
     urn: string;
 }
 
@@ -537,31 +724,76 @@ export interface GetTagsTag {
 }
 
 export interface KubernetesClusterKubeConfig {
+    /**
+     * The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+     */
     clientCertificate: string;
+    /**
+     * The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+     */
     clientKey: string;
+    /**
+     * The base64 encoded public certificate for the cluster's certificate authority.
+     */
     clusterCaCertificate: string;
+    /**
+     * The date and time when the credentials will expire and need to be regenerated.
+     */
     expiresAt: string;
+    /**
+     * The URL of the API server on the Kubernetes master node.
+     */
     host: string;
+    /**
+     * The full contents of the Kubernetes cluster's kubeconfig file.
+     */
     rawConfig: string;
+    /**
+     * The DigitalOcean API access token used by clients to access the cluster.
+     */
     token: string;
 }
 
 export interface KubernetesClusterNodePool {
+    /**
+     * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+     */
     actualNodeCount: number;
+    /**
+     * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+     */
     autoScale?: boolean;
     /**
-     * A unique ID that can be used to identify and reference a Kubernetes cluster.
+     * A unique ID that can be used to identify and reference the node.
      */
     id: string;
+    /**
+     * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+     */
     labels?: {[key: string]: string};
+    /**
+     * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+     */
     maxNodes?: number;
+    /**
+     * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     */
     minNodes?: number;
     /**
-     * A name for the Kubernetes cluster.
+     * A name for the node pool.
      */
     name: string;
+    /**
+     * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+     */
     nodeCount?: number;
+    /**
+     * A list of nodes in the pool. Each node exports the following attributes:
+     */
     nodes: outputs.KubernetesClusterNodePoolNode[];
+    /**
+     * The slug identifier for the type of Droplet to be used as workers in the node pool.
+     */
     size: string;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
@@ -571,48 +803,55 @@ export interface KubernetesClusterNodePool {
 
 export interface KubernetesClusterNodePoolNode {
     /**
-     * The date and time when the Kubernetes cluster was created.
+     * The date and time when the node was created.
      */
     createdAt: string;
+    /**
+     * The id of the node's droplet
+     */
     dropletId: string;
     /**
-     * A unique ID that can be used to identify and reference a Kubernetes cluster.
-     */
-    id: string;
-    /**
-     * A name for the Kubernetes cluster.
-     */
-    name: string;
-    /**
-     * A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
-     */
-    status: string;
-    /**
-     * The date and time when the Kubernetes cluster was last updated.
-     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-     * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-     * - `token` - The DigitalOcean API access token used by clients to access the cluster.
-     * - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
-     */
-    updatedAt: string;
-}
-
-export interface KubernetesNodePoolNode {
-    createdAt: string;
-    dropletId: string;
-    /**
-     * A unique ID that can be used to identify and reference the node pool.
+     * A unique ID that can be used to identify and reference the node.
      */
     id: string;
     /**
      * A name for the node pool.
      */
     name: string;
+    /**
+     * A string indicating the current status of the individual node.
+     */
     status: string;
+    /**
+     * The date and time when the node was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface KubernetesNodePoolNode {
+    /**
+     * The date and time when the node was created.
+     */
+    createdAt: string;
+    /**
+     * The id of the node's droplet
+     */
+    dropletId: string;
+    /**
+     * A unique ID that can be used to identify and reference the node.
+     */
+    id: string;
+    /**
+     * A name for the node pool.
+     */
+    name: string;
+    /**
+     * A string indicating the current status of the individual node.
+     */
+    status: string;
+    /**
+     * The date and time when the node was last updated.
+     */
     updatedAt: string;
 }
 

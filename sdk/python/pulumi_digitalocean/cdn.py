@@ -5,36 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Cdn']
 
 
 class Cdn(pulumi.CustomResource):
-    certificate_id: pulumi.Output[str]
-    """
-    The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-    """
-    created_at: pulumi.Output[str]
-    """
-    The date and time when the CDN Endpoint was created.
-    """
-    custom_domain: pulumi.Output[str]
-    """
-    The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
-    """
-    endpoint: pulumi.Output[str]
-    """
-    The fully qualified domain name (FQDN) from which the CDN-backed content is served.
-    """
-    origin: pulumi.Output[str]
-    """
-    The fully qualified domain name, (FQDN) for a Space.
-    """
-    ttl: pulumi.Output[float]
-    """
-    The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-    """
-    def __init__(__self__, resource_name, opts=None, certificate_id=None, custom_domain=None, origin=None, ttl=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_id: Optional[pulumi.Input[str]] = None,
+                 custom_domain: Optional[pulumi.Input[str]] = None,
+                 origin: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 
@@ -92,7 +79,7 @@ class Cdn(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -113,13 +100,21 @@ class Cdn(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, certificate_id=None, created_at=None, custom_domain=None, endpoint=None, origin=None, ttl=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_id: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            custom_domain: Optional[pulumi.Input[str]] = None,
+            endpoint: Optional[pulumi.Input[str]] = None,
+            origin: Optional[pulumi.Input[str]] = None,
+            ttl: Optional[pulumi.Input[float]] = None) -> 'Cdn':
         """
         Get an existing Cdn resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_id: The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         :param pulumi.Input[str] created_at: The date and time when the CDN Endpoint was created.
@@ -140,8 +135,57 @@ class Cdn(pulumi.CustomResource):
         __props__["ttl"] = ttl
         return Cdn(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[str]:
+        """
+        The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time when the CDN Endpoint was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="customDomain")
+    def custom_domain(self) -> Optional[str]:
+        """
+        The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
+        """
+        return pulumi.get(self, "custom_domain")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The fully qualified domain name (FQDN) from which the CDN-backed content is served.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def origin(self) -> str:
+        """
+        The fully qualified domain name, (FQDN) for a Space.
+        """
+        return pulumi.get(self, "origin")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        """
+        The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
+        """
+        return pulumi.get(self, "ttl")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

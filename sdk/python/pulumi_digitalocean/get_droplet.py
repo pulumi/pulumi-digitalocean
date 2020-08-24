@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetDropletResult',
+    'AwaitableGetDropletResult',
+    'get_droplet',
+]
+
+@pulumi.output_type
 class GetDropletResult:
     """
     A collection of values returned by getDroplet.
@@ -15,148 +22,280 @@ class GetDropletResult:
     def __init__(__self__, backups=None, created_at=None, disk=None, id=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None, vpc_uuid=None):
         if backups and not isinstance(backups, bool):
             raise TypeError("Expected argument 'backups' to be a bool")
-        __self__.backups = backups
+        pulumi.set(__self__, "backups", backups)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if disk and not isinstance(disk, float):
+            raise TypeError("Expected argument 'disk' to be a float")
+        pulumi.set(__self__, "disk", disk)
+        if id and not isinstance(id, float):
+            raise TypeError("Expected argument 'id' to be a float")
+        pulumi.set(__self__, "id", id)
+        if image and not isinstance(image, str):
+            raise TypeError("Expected argument 'image' to be a str")
+        pulumi.set(__self__, "image", image)
+        if ipv4_address and not isinstance(ipv4_address, str):
+            raise TypeError("Expected argument 'ipv4_address' to be a str")
+        pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if ipv4_address_private and not isinstance(ipv4_address_private, str):
+            raise TypeError("Expected argument 'ipv4_address_private' to be a str")
+        pulumi.set(__self__, "ipv4_address_private", ipv4_address_private)
+        if ipv6 and not isinstance(ipv6, bool):
+            raise TypeError("Expected argument 'ipv6' to be a bool")
+        pulumi.set(__self__, "ipv6", ipv6)
+        if ipv6_address and not isinstance(ipv6_address, str):
+            raise TypeError("Expected argument 'ipv6_address' to be a str")
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
+        if ipv6_address_private and not isinstance(ipv6_address_private, str):
+            raise TypeError("Expected argument 'ipv6_address_private' to be a str")
+        pulumi.set(__self__, "ipv6_address_private", ipv6_address_private)
+        if locked and not isinstance(locked, bool):
+            raise TypeError("Expected argument 'locked' to be a bool")
+        pulumi.set(__self__, "locked", locked)
+        if memory and not isinstance(memory, float):
+            raise TypeError("Expected argument 'memory' to be a float")
+        pulumi.set(__self__, "memory", memory)
+        if monitoring and not isinstance(monitoring, bool):
+            raise TypeError("Expected argument 'monitoring' to be a bool")
+        pulumi.set(__self__, "monitoring", monitoring)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if price_hourly and not isinstance(price_hourly, float):
+            raise TypeError("Expected argument 'price_hourly' to be a float")
+        pulumi.set(__self__, "price_hourly", price_hourly)
+        if price_monthly and not isinstance(price_monthly, float):
+            raise TypeError("Expected argument 'price_monthly' to be a float")
+        pulumi.set(__self__, "price_monthly", price_monthly)
+        if private_networking and not isinstance(private_networking, bool):
+            raise TypeError("Expected argument 'private_networking' to be a bool")
+        pulumi.set(__self__, "private_networking", private_networking)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if size and not isinstance(size, str):
+            raise TypeError("Expected argument 'size' to be a str")
+        pulumi.set(__self__, "size", size)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if tag and not isinstance(tag, str):
+            raise TypeError("Expected argument 'tag' to be a str")
+        pulumi.set(__self__, "tag", tag)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        pulumi.set(__self__, "urn", urn)
+        if vcpus and not isinstance(vcpus, float):
+            raise TypeError("Expected argument 'vcpus' to be a float")
+        pulumi.set(__self__, "vcpus", vcpus)
+        if volume_ids and not isinstance(volume_ids, list):
+            raise TypeError("Expected argument 'volume_ids' to be a list")
+        pulumi.set(__self__, "volume_ids", volume_ids)
+        if vpc_uuid and not isinstance(vpc_uuid, str):
+            raise TypeError("Expected argument 'vpc_uuid' to be a str")
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @property
+    @pulumi.getter
+    def backups(self) -> bool:
         """
         Whether backups are enabled.
         """
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        __self__.created_at = created_at
-        if disk and not isinstance(disk, float):
-            raise TypeError("Expected argument 'disk' to be a float")
-        __self__.disk = disk
+        return pulumi.get(self, "backups")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def disk(self) -> float:
         """
         The size of the Droplets disk in GB.
         """
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
-        __self__.id = id
-        if image and not isinstance(image, str):
-            raise TypeError("Expected argument 'image' to be a str")
-        __self__.image = image
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def id(self) -> float:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
         """
         The Droplet image ID or slug.
         """
-        if ipv4_address and not isinstance(ipv4_address, str):
-            raise TypeError("Expected argument 'ipv4_address' to be a str")
-        __self__.ipv4_address = ipv4_address
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="ipv4Address")
+    def ipv4_address(self) -> str:
         """
         The Droplets public IPv4 address
         """
-        if ipv4_address_private and not isinstance(ipv4_address_private, str):
-            raise TypeError("Expected argument 'ipv4_address_private' to be a str")
-        __self__.ipv4_address_private = ipv4_address_private
+        return pulumi.get(self, "ipv4_address")
+
+    @property
+    @pulumi.getter(name="ipv4AddressPrivate")
+    def ipv4_address_private(self) -> str:
         """
         The Droplets private IPv4 address
         """
-        if ipv6 and not isinstance(ipv6, bool):
-            raise TypeError("Expected argument 'ipv6' to be a bool")
-        __self__.ipv6 = ipv6
+        return pulumi.get(self, "ipv4_address_private")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> bool:
         """
         Whether IPv6 is enabled.
         """
-        if ipv6_address and not isinstance(ipv6_address, str):
-            raise TypeError("Expected argument 'ipv6_address' to be a str")
-        __self__.ipv6_address = ipv6_address
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
         """
         The Droplets public IPv6 address
         """
-        if ipv6_address_private and not isinstance(ipv6_address_private, str):
-            raise TypeError("Expected argument 'ipv6_address_private' to be a str")
-        __self__.ipv6_address_private = ipv6_address_private
+        return pulumi.get(self, "ipv6_address")
+
+    @property
+    @pulumi.getter(name="ipv6AddressPrivate")
+    def ipv6_address_private(self) -> str:
         """
         The Droplets private IPv6 address
         """
-        if locked and not isinstance(locked, bool):
-            raise TypeError("Expected argument 'locked' to be a bool")
-        __self__.locked = locked
+        return pulumi.get(self, "ipv6_address_private")
+
+    @property
+    @pulumi.getter
+    def locked(self) -> bool:
         """
         Whether the Droplet is locked.
         """
-        if memory and not isinstance(memory, float):
-            raise TypeError("Expected argument 'memory' to be a float")
-        __self__.memory = memory
+        return pulumi.get(self, "locked")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> float:
         """
         The amount of the Droplets memory in MB.
         """
-        if monitoring and not isinstance(monitoring, bool):
-            raise TypeError("Expected argument 'monitoring' to be a bool")
-        __self__.monitoring = monitoring
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> bool:
         """
         Whether monitoring agent is installed.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if price_hourly and not isinstance(price_hourly, float):
-            raise TypeError("Expected argument 'price_hourly' to be a float")
-        __self__.price_hourly = price_hourly
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="priceHourly")
+    def price_hourly(self) -> float:
         """
         Droplet hourly price.
         """
-        if price_monthly and not isinstance(price_monthly, float):
-            raise TypeError("Expected argument 'price_monthly' to be a float")
-        __self__.price_monthly = price_monthly
+        return pulumi.get(self, "price_hourly")
+
+    @property
+    @pulumi.getter(name="priceMonthly")
+    def price_monthly(self) -> float:
         """
         Droplet monthly price.
         """
-        if private_networking and not isinstance(private_networking, bool):
-            raise TypeError("Expected argument 'private_networking' to be a bool")
-        __self__.private_networking = private_networking
+        return pulumi.get(self, "price_monthly")
+
+    @property
+    @pulumi.getter(name="privateNetworking")
+    def private_networking(self) -> bool:
         """
         Whether private networks are enabled.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "private_networking")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         The region the Droplet is running in.
         """
-        if size and not isinstance(size, str):
-            raise TypeError("Expected argument 'size' to be a str")
-        __self__.size = size
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> str:
         """
         The unique slug that indentifies the type of Droplet.
         """
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
         """
         The status of the Droplet.
         """
-        if tag and not isinstance(tag, str):
-            raise TypeError("Expected argument 'tag' to be a str")
-        __self__.tag = tag
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List[str]:
         """
         A list of the tags associated to the Droplet.
         """
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        __self__.urn = urn
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> str:
         """
         The uniform resource name of the Droplet
         """
-        if vcpus and not isinstance(vcpus, float):
-            raise TypeError("Expected argument 'vcpus' to be a float")
-        __self__.vcpus = vcpus
+        return pulumi.get(self, "urn")
+
+    @property
+    @pulumi.getter
+    def vcpus(self) -> float:
         """
         The number of the Droplets virtual CPUs.
         """
-        if volume_ids and not isinstance(volume_ids, list):
-            raise TypeError("Expected argument 'volume_ids' to be a list")
-        __self__.volume_ids = volume_ids
+        return pulumi.get(self, "vcpus")
+
+    @property
+    @pulumi.getter(name="volumeIds")
+    def volume_ids(self) -> List[str]:
         """
         List of the IDs of each volumes attached to the Droplet.
         """
-        if vpc_uuid and not isinstance(vpc_uuid, str):
-            raise TypeError("Expected argument 'vpc_uuid' to be a str")
-        __self__.vpc_uuid = vpc_uuid
+        return pulumi.get(self, "volume_ids")
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> str:
         """
         The ID of the VPC where the Droplet is located.
         """
+        return pulumi.get(self, "vpc_uuid")
+
+
 class AwaitableGetDropletResult(GetDropletResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -190,7 +329,11 @@ class AwaitableGetDropletResult(GetDropletResult):
             volume_ids=self.volume_ids,
             vpc_uuid=self.vpc_uuid)
 
-def get_droplet(id=None,name=None,tag=None,opts=None):
+
+def get_droplet(id: Optional[float] = None,
+                name: Optional[str] = None,
+                tag: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletResult:
     """
     Get information on a Droplet for use in other resources. This data source provides
     all of the Droplet's properties as configured on your DigitalOcean account. This
@@ -236,41 +379,39 @@ def get_droplet(id=None,name=None,tag=None,opts=None):
     :param str tag: A tag applied to the Droplet.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['name'] = name
     __args__['tag'] = tag
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts, typ=GetDropletResult).value
 
     return AwaitableGetDropletResult(
-        backups=__ret__.get('backups'),
-        created_at=__ret__.get('createdAt'),
-        disk=__ret__.get('disk'),
-        id=__ret__.get('id'),
-        image=__ret__.get('image'),
-        ipv4_address=__ret__.get('ipv4Address'),
-        ipv4_address_private=__ret__.get('ipv4AddressPrivate'),
-        ipv6=__ret__.get('ipv6'),
-        ipv6_address=__ret__.get('ipv6Address'),
-        ipv6_address_private=__ret__.get('ipv6AddressPrivate'),
-        locked=__ret__.get('locked'),
-        memory=__ret__.get('memory'),
-        monitoring=__ret__.get('monitoring'),
-        name=__ret__.get('name'),
-        price_hourly=__ret__.get('priceHourly'),
-        price_monthly=__ret__.get('priceMonthly'),
-        private_networking=__ret__.get('privateNetworking'),
-        region=__ret__.get('region'),
-        size=__ret__.get('size'),
-        status=__ret__.get('status'),
-        tag=__ret__.get('tag'),
-        tags=__ret__.get('tags'),
-        urn=__ret__.get('urn'),
-        vcpus=__ret__.get('vcpus'),
-        volume_ids=__ret__.get('volumeIds'),
-        vpc_uuid=__ret__.get('vpcUuid'))
+        backups=__ret__.backups,
+        created_at=__ret__.created_at,
+        disk=__ret__.disk,
+        id=__ret__.id,
+        image=__ret__.image,
+        ipv4_address=__ret__.ipv4_address,
+        ipv4_address_private=__ret__.ipv4_address_private,
+        ipv6=__ret__.ipv6,
+        ipv6_address=__ret__.ipv6_address,
+        ipv6_address_private=__ret__.ipv6_address_private,
+        locked=__ret__.locked,
+        memory=__ret__.memory,
+        monitoring=__ret__.monitoring,
+        name=__ret__.name,
+        price_hourly=__ret__.price_hourly,
+        price_monthly=__ret__.price_monthly,
+        private_networking=__ret__.private_networking,
+        region=__ret__.region,
+        size=__ret__.size,
+        status=__ret__.status,
+        tag=__ret__.tag,
+        tags=__ret__.tags,
+        urn=__ret__.urn,
+        vcpus=__ret__.vcpus,
+        volume_ids=__ret__.volume_ids,
+        vpc_uuid=__ret__.vpc_uuid)

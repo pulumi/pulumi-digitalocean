@@ -5,60 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Volume']
 
 
 class Volume(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
-    """
-    droplet_ids: pulumi.Output[list]
-    """
-    A list of associated droplet ids.
-    """
-    filesystem_label: pulumi.Output[str]
-    """
-    Filesystem label for the block storage volume.
-    """
-    filesystem_type: pulumi.Output[str]
-    """
-    Filesystem type (`xfs` or `ext4`) for the block storage volume.
-    """
-    initial_filesystem_label: pulumi.Output[str]
-    """
-    Initial filesystem label for the block storage volume.
-    """
-    initial_filesystem_type: pulumi.Output[str]
-    """
-    Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-    """
-    name: pulumi.Output[str]
-    """
-    A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
-    """
-    region: pulumi.Output[str]
-    """
-    The region that the block storage volume will be created in.
-    """
-    size: pulumi.Output[float]
-    """
-    The size of the block storage volume in GiB. If updated, can only be expanded.
-    """
-    snapshot_id: pulumi.Output[str]
-    """
-    The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of the tags to be applied to this Volume.
-    """
-    volume_urn: pulumi.Output[str]
-    """
-    The uniform resource name for the volume.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 filesystem_type: Optional[pulumi.Input[str]] = None,
+                 initial_filesystem_label: Optional[pulumi.Input[str]] = None,
+                 initial_filesystem_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[float]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
 
@@ -105,7 +73,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region that the block storage volume will be created in.
         :param pulumi.Input[float] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
-        :param pulumi.Input[list] tags: A list of the tags to be applied to this Volume.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of the tags to be applied to this Volume.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,7 +86,7 @@ class Volume(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -150,16 +118,30 @@ class Volume(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, initial_filesystem_label=None, initial_filesystem_type=None, name=None, region=None, size=None, snapshot_id=None, tags=None, volume_urn=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            droplet_ids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+            filesystem_label: Optional[pulumi.Input[str]] = None,
+            filesystem_type: Optional[pulumi.Input[str]] = None,
+            initial_filesystem_label: Optional[pulumi.Input[str]] = None,
+            initial_filesystem_type: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[float]] = None,
+            snapshot_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            volume_urn: Optional[pulumi.Input[str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
-        :param pulumi.Input[list] droplet_ids: A list of associated droplet ids.
+        :param pulumi.Input[List[pulumi.Input[float]]] droplet_ids: A list of associated droplet ids.
         :param pulumi.Input[str] filesystem_label: Filesystem label for the block storage volume.
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
@@ -168,7 +150,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region that the block storage volume will be created in.
         :param pulumi.Input[float] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
-        :param pulumi.Input[list] tags: A list of the tags to be applied to this Volume.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of the tags to be applied to this Volume.
         :param pulumi.Input[str] volume_urn: The uniform resource name for the volume.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -189,8 +171,105 @@ class Volume(pulumi.CustomResource):
         __props__["volume_urn"] = volume_urn
         return Volume(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dropletIds")
+    def droplet_ids(self) -> List[float]:
+        """
+        A list of associated droplet ids.
+        """
+        return pulumi.get(self, "droplet_ids")
+
+    @property
+    @pulumi.getter(name="filesystemLabel")
+    def filesystem_label(self) -> str:
+        """
+        Filesystem label for the block storage volume.
+        """
+        return pulumi.get(self, "filesystem_label")
+
+    @property
+    @pulumi.getter(name="filesystemType")
+    def filesystem_type(self) -> str:
+        """
+        Filesystem type (`xfs` or `ext4`) for the block storage volume.
+        """
+        return pulumi.get(self, "filesystem_type")
+
+    @property
+    @pulumi.getter(name="initialFilesystemLabel")
+    def initial_filesystem_label(self) -> Optional[str]:
+        """
+        Initial filesystem label for the block storage volume.
+        """
+        return pulumi.get(self, "initial_filesystem_label")
+
+    @property
+    @pulumi.getter(name="initialFilesystemType")
+    def initial_filesystem_type(self) -> Optional[str]:
+        """
+        Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
+        """
+        return pulumi.get(self, "initial_filesystem_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region that the block storage volume will be created in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        The size of the block storage volume in GiB. If updated, can only be expanded.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[str]:
+        """
+        The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A list of the tags to be applied to this Volume.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="volumeUrn")
+    def volume_urn(self) -> str:
+        """
+        The uniform resource name for the volume.
+        """
+        return pulumi.get(self, "volume_urn")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

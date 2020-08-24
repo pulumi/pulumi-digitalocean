@@ -5,40 +5,20 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Tag']
 
 
 class Tag(pulumi.CustomResource):
-    databases_count: pulumi.Output[float]
-    """
-    A count of the database clusters that the tag is applied to.
-    """
-    droplets_count: pulumi.Output[float]
-    """
-    A count of the Droplets the tag is applied to.
-    """
-    images_count: pulumi.Output[float]
-    """
-    A count of the images that the tag is applied to.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the tag
-    """
-    total_resource_count: pulumi.Output[float]
-    """
-    A count of the total number of resources that the tag is applied to.
-    """
-    volume_snapshots_count: pulumi.Output[float]
-    """
-    A count of the volume snapshots that the tag is applied to.
-    """
-    volumes_count: pulumi.Output[float]
-    """
-    A count of the volumes that the tag is applied to.
-    """
-    def __init__(__self__, resource_name, opts=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean Tag resource. A Tag is a label that can be applied to a
         Droplet resource in order to better organize or facilitate the lookups and
@@ -76,7 +56,7 @@ class Tag(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -96,13 +76,22 @@ class Tag(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, databases_count=None, droplets_count=None, images_count=None, name=None, total_resource_count=None, volume_snapshots_count=None, volumes_count=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            databases_count: Optional[pulumi.Input[float]] = None,
+            droplets_count: Optional[pulumi.Input[float]] = None,
+            images_count: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            total_resource_count: Optional[pulumi.Input[float]] = None,
+            volume_snapshots_count: Optional[pulumi.Input[float]] = None,
+            volumes_count: Optional[pulumi.Input[float]] = None) -> 'Tag':
         """
         Get an existing Tag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] databases_count: A count of the database clusters that the tag is applied to.
         :param pulumi.Input[float] droplets_count: A count of the Droplets the tag is applied to.
@@ -125,8 +114,65 @@ class Tag(pulumi.CustomResource):
         __props__["volumes_count"] = volumes_count
         return Tag(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="databasesCount")
+    def databases_count(self) -> float:
+        """
+        A count of the database clusters that the tag is applied to.
+        """
+        return pulumi.get(self, "databases_count")
+
+    @property
+    @pulumi.getter(name="dropletsCount")
+    def droplets_count(self) -> float:
+        """
+        A count of the Droplets the tag is applied to.
+        """
+        return pulumi.get(self, "droplets_count")
+
+    @property
+    @pulumi.getter(name="imagesCount")
+    def images_count(self) -> float:
+        """
+        A count of the images that the tag is applied to.
+        """
+        return pulumi.get(self, "images_count")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the tag
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="totalResourceCount")
+    def total_resource_count(self) -> float:
+        """
+        A count of the total number of resources that the tag is applied to.
+        """
+        return pulumi.get(self, "total_resource_count")
+
+    @property
+    @pulumi.getter(name="volumeSnapshotsCount")
+    def volume_snapshots_count(self) -> float:
+        """
+        A count of the volume snapshots that the tag is applied to.
+        """
+        return pulumi.get(self, "volume_snapshots_count")
+
+    @property
+    @pulumi.getter(name="volumesCount")
+    def volumes_count(self) -> float:
+        """
+        A count of the volumes that the tag is applied to.
+        """
+        return pulumi.get(self, "volumes_count")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

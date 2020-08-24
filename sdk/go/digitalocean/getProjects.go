@@ -116,16 +116,6 @@ type GetProjectsResult struct {
 	Id string `pulumi:"id"`
 	// A set of projects satisfying any `filter` and `sort` criteria. Each project has
 	// the following attributes:
-	// - `id` - The ID of the project
-	// - `name` - The name of the project
-	// - `description` - The description of the project
-	// - `purpose` -  The purpose of the project (Default: "Web Application")
-	// - `environment` - The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
-	// - `resources` - A set of uniform resource names (URNs) for the resources associated with the project
-	// - `ownerUuid` - The unique universal identifier of the project owner
-	// - `ownerId` - The ID of the project owner
-	// - `createdAt` - The date and time when the project was created, (ISO8601)
-	// - `updatedAt` - The date and time when the project was last updated, (ISO8601)
 	Projects []GetProjectsProject `pulumi:"projects"`
 	Sorts    []GetProjectsSort    `pulumi:"sorts"`
 }

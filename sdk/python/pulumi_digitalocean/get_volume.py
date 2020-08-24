@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetVolumeResult',
+    'AwaitableGetVolumeResult',
+    'get_volume',
+]
+
+@pulumi.output_type
 class GetVolumeResult:
     """
     A collection of values returned by getVolume.
@@ -15,55 +22,107 @@ class GetVolumeResult:
     def __init__(__self__, description=None, droplet_ids=None, filesystem_label=None, filesystem_type=None, id=None, name=None, region=None, size=None, tags=None, urn=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
+        if droplet_ids and not isinstance(droplet_ids, list):
+            raise TypeError("Expected argument 'droplet_ids' to be a list")
+        pulumi.set(__self__, "droplet_ids", droplet_ids)
+        if filesystem_label and not isinstance(filesystem_label, str):
+            raise TypeError("Expected argument 'filesystem_label' to be a str")
+        pulumi.set(__self__, "filesystem_label", filesystem_label)
+        if filesystem_type and not isinstance(filesystem_type, str):
+            raise TypeError("Expected argument 'filesystem_type' to be a str")
+        pulumi.set(__self__, "filesystem_type", filesystem_type)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if size and not isinstance(size, float):
+            raise TypeError("Expected argument 'size' to be a float")
+        pulumi.set(__self__, "size", size)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
         """
         Text describing a block storage volume.
         """
-        if droplet_ids and not isinstance(droplet_ids, list):
-            raise TypeError("Expected argument 'droplet_ids' to be a list")
-        __self__.droplet_ids = droplet_ids
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dropletIds")
+    def droplet_ids(self) -> List[float]:
         """
         A list of associated Droplet ids.
         """
-        if filesystem_label and not isinstance(filesystem_label, str):
-            raise TypeError("Expected argument 'filesystem_label' to be a str")
-        __self__.filesystem_label = filesystem_label
+        return pulumi.get(self, "droplet_ids")
+
+    @property
+    @pulumi.getter(name="filesystemLabel")
+    def filesystem_label(self) -> str:
         """
         Filesystem label currently in-use on the block storage volume.
         """
-        if filesystem_type and not isinstance(filesystem_type, str):
-            raise TypeError("Expected argument 'filesystem_type' to be a str")
-        __self__.filesystem_type = filesystem_type
+        return pulumi.get(self, "filesystem_label")
+
+    @property
+    @pulumi.getter(name="filesystemType")
+    def filesystem_type(self) -> str:
         """
         Filesystem type currently in-use on the block storage volume.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "filesystem_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
-        __self__.size = size
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
         """
         The size of the block storage volume in GiB.
         """
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List[str]:
         """
         A list of the tags associated to the Volume.
         """
-        if urn and not isinstance(urn, str):
-            raise TypeError("Expected argument 'urn' to be a str")
-        __self__.urn = urn
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> str:
+        return pulumi.get(self, "urn")
+
+
 class AwaitableGetVolumeResult(GetVolumeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +140,11 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             tags=self.tags,
             urn=self.urn)
 
-def get_volume(description=None,name=None,region=None,opts=None):
+
+def get_volume(description: Optional[str] = None,
+               name: Optional[str] = None,
+               region: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
     Get information on a volume for use in other resources. This data source provides
     all of the volumes properties as configured on your DigitalOcean account. This is
@@ -125,25 +188,23 @@ def get_volume(description=None,name=None,region=None,opts=None):
     :param str region: The region the block storage volume is provisioned in.
     """
     __args__ = dict()
-
-
     __args__['description'] = description
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult).value
 
     return AwaitableGetVolumeResult(
-        description=__ret__.get('description'),
-        droplet_ids=__ret__.get('dropletIds'),
-        filesystem_label=__ret__.get('filesystemLabel'),
-        filesystem_type=__ret__.get('filesystemType'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        region=__ret__.get('region'),
-        size=__ret__.get('size'),
-        tags=__ret__.get('tags'),
-        urn=__ret__.get('urn'))
+        description=__ret__.description,
+        droplet_ids=__ret__.droplet_ids,
+        filesystem_label=__ret__.filesystem_label,
+        filesystem_type=__ret__.filesystem_type,
+        id=__ret__.id,
+        name=__ret__.name,
+        region=__ret__.region,
+        size=__ret__.size,
+        tags=__ret__.tags,
+        urn=__ret__.urn)

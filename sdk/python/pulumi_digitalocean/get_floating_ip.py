@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetFloatingIpResult',
+    'AwaitableGetFloatingIpResult',
+    'get_floating_ip',
+]
+
+@pulumi.output_type
 class GetFloatingIpResult:
     """
     A collection of values returned by getFloatingIp.
@@ -15,22 +22,49 @@ class GetFloatingIpResult:
     def __init__(__self__, droplet_id=None, floating_ip_urn=None, id=None, ip_address=None, region=None):
         if droplet_id and not isinstance(droplet_id, float):
             raise TypeError("Expected argument 'droplet_id' to be a float")
-        __self__.droplet_id = droplet_id
+        pulumi.set(__self__, "droplet_id", droplet_id)
         if floating_ip_urn and not isinstance(floating_ip_urn, str):
             raise TypeError("Expected argument 'floating_ip_urn' to be a str")
-        __self__.floating_ip_urn = floating_ip_urn
+        pulumi.set(__self__, "floating_ip_urn", floating_ip_urn)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if ip_address and not isinstance(ip_address, str):
+            raise TypeError("Expected argument 'ip_address' to be a str")
+        pulumi.set(__self__, "ip_address", ip_address)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> float:
+        return pulumi.get(self, "droplet_id")
+
+    @property
+    @pulumi.getter(name="floatingIpUrn")
+    def floating_ip_urn(self) -> str:
+        return pulumi.get(self, "floating_ip_urn")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if ip_address and not isinstance(ip_address, str):
-            raise TypeError("Expected argument 'ip_address' to be a str")
-        __self__.ip_address = ip_address
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+
 class AwaitableGetFloatingIpResult(GetFloatingIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +77,9 @@ class AwaitableGetFloatingIpResult(GetFloatingIpResult):
             ip_address=self.ip_address,
             region=self.region)
 
-def get_floating_ip(ip_address=None,opts=None):
+
+def get_floating_ip(ip_address: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFloatingIpResult:
     """
     Get information on a floating ip. This data source provides the region and Droplet id
     as configured on your DigitalOcean account. This is useful if the floating IP
@@ -70,18 +106,16 @@ def get_floating_ip(ip_address=None,opts=None):
     :param str ip_address: The allocated IP address of the specific floating IP to retrieve.
     """
     __args__ = dict()
-
-
     __args__['ipAddress'] = ip_address
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts, typ=GetFloatingIpResult).value
 
     return AwaitableGetFloatingIpResult(
-        droplet_id=__ret__.get('dropletId'),
-        floating_ip_urn=__ret__.get('floatingIpUrn'),
-        id=__ret__.get('id'),
-        ip_address=__ret__.get('ipAddress'),
-        region=__ret__.get('region'))
+        droplet_id=__ret__.droplet_id,
+        floating_ip_urn=__ret__.floating_ip_urn,
+        id=__ret__.id,
+        ip_address=__ret__.ip_address,
+        region=__ret__.region)

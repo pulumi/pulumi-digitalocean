@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetTagResult',
+    'AwaitableGetTagResult',
+    'get_tag',
+]
+
+@pulumi.output_type
 class GetTagResult:
     """
     A collection of values returned by getTag.
@@ -15,49 +22,91 @@ class GetTagResult:
     def __init__(__self__, databases_count=None, droplets_count=None, id=None, images_count=None, name=None, total_resource_count=None, volume_snapshots_count=None, volumes_count=None):
         if databases_count and not isinstance(databases_count, float):
             raise TypeError("Expected argument 'databases_count' to be a float")
-        __self__.databases_count = databases_count
+        pulumi.set(__self__, "databases_count", databases_count)
+        if droplets_count and not isinstance(droplets_count, float):
+            raise TypeError("Expected argument 'droplets_count' to be a float")
+        pulumi.set(__self__, "droplets_count", droplets_count)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if images_count and not isinstance(images_count, float):
+            raise TypeError("Expected argument 'images_count' to be a float")
+        pulumi.set(__self__, "images_count", images_count)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if total_resource_count and not isinstance(total_resource_count, float):
+            raise TypeError("Expected argument 'total_resource_count' to be a float")
+        pulumi.set(__self__, "total_resource_count", total_resource_count)
+        if volume_snapshots_count and not isinstance(volume_snapshots_count, float):
+            raise TypeError("Expected argument 'volume_snapshots_count' to be a float")
+        pulumi.set(__self__, "volume_snapshots_count", volume_snapshots_count)
+        if volumes_count and not isinstance(volumes_count, float):
+            raise TypeError("Expected argument 'volumes_count' to be a float")
+        pulumi.set(__self__, "volumes_count", volumes_count)
+
+    @property
+    @pulumi.getter(name="databasesCount")
+    def databases_count(self) -> float:
         """
         A count of the database clusters that the tag is applied to.
         """
-        if droplets_count and not isinstance(droplets_count, float):
-            raise TypeError("Expected argument 'droplets_count' to be a float")
-        __self__.droplets_count = droplets_count
+        return pulumi.get(self, "databases_count")
+
+    @property
+    @pulumi.getter(name="dropletsCount")
+    def droplets_count(self) -> float:
         """
         A count of the Droplets the tag is applied to.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "droplets_count")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if images_count and not isinstance(images_count, float):
-            raise TypeError("Expected argument 'images_count' to be a float")
-        __self__.images_count = images_count
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imagesCount")
+    def images_count(self) -> float:
         """
         A count of the images that the tag is applied to.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if total_resource_count and not isinstance(total_resource_count, float):
-            raise TypeError("Expected argument 'total_resource_count' to be a float")
-        __self__.total_resource_count = total_resource_count
+        return pulumi.get(self, "images_count")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="totalResourceCount")
+    def total_resource_count(self) -> float:
         """
         A count of the total number of resources that the tag is applied to.
         """
-        if volume_snapshots_count and not isinstance(volume_snapshots_count, float):
-            raise TypeError("Expected argument 'volume_snapshots_count' to be a float")
-        __self__.volume_snapshots_count = volume_snapshots_count
+        return pulumi.get(self, "total_resource_count")
+
+    @property
+    @pulumi.getter(name="volumeSnapshotsCount")
+    def volume_snapshots_count(self) -> float:
         """
         A count of the volume snapshots that the tag is applied to.
         """
-        if volumes_count and not isinstance(volumes_count, float):
-            raise TypeError("Expected argument 'volumes_count' to be a float")
-        __self__.volumes_count = volumes_count
+        return pulumi.get(self, "volume_snapshots_count")
+
+    @property
+    @pulumi.getter(name="volumesCount")
+    def volumes_count(self) -> float:
         """
         A count of the volumes that the tag is applied to.
         """
+        return pulumi.get(self, "volumes_count")
+
+
 class AwaitableGetTagResult(GetTagResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +122,9 @@ class AwaitableGetTagResult(GetTagResult):
             volume_snapshots_count=self.volume_snapshots_count,
             volumes_count=self.volumes_count)
 
-def get_tag(name=None,opts=None):
+
+def get_tag(name: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagResult:
     """
     Get information on a tag. This data source provides the name as configured on
     your DigitalOcean account. This is useful if the tag name in question is not
@@ -101,21 +152,19 @@ def get_tag(name=None,opts=None):
     :param str name: The name of the tag.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getTag:getTag', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getTag:getTag', __args__, opts=opts, typ=GetTagResult).value
 
     return AwaitableGetTagResult(
-        databases_count=__ret__.get('databasesCount'),
-        droplets_count=__ret__.get('dropletsCount'),
-        id=__ret__.get('id'),
-        images_count=__ret__.get('imagesCount'),
-        name=__ret__.get('name'),
-        total_resource_count=__ret__.get('totalResourceCount'),
-        volume_snapshots_count=__ret__.get('volumeSnapshotsCount'),
-        volumes_count=__ret__.get('volumesCount'))
+        databases_count=__ret__.databases_count,
+        droplets_count=__ret__.droplets_count,
+        id=__ret__.id,
+        images_count=__ret__.images_count,
+        name=__ret__.name,
+        total_resource_count=__ret__.total_resource_count,
+        volume_snapshots_count=__ret__.volume_snapshots_count,
+        volumes_count=__ret__.volumes_count)

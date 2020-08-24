@@ -14,12 +14,30 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetImagesImageResult
     {
         public readonly string Created;
+        /// <summary>
+        /// The name of the distribution of the OS of the image.
+        /// - `min_disk_size`: The minimum 'disk' required for the image.
+        /// - `size_gigabytes`: The size of the image in GB.
+        /// </summary>
         public readonly string Distribution;
         public readonly string ErrorMessage;
         public readonly int Id;
+        /// <summary>
+        /// The id of the image (legacy parameter).
+        /// </summary>
         public readonly string Image;
         public readonly int MinDiskSize;
         public readonly string Name;
+        /// <summary>
+        /// Is image a public image or not. Public images represent
+        /// Linux distributions or One-Click Applications, while non-public images represent
+        /// snapshots and backups and are only available within your account.
+        /// - `regions`: A set of the regions that the image is available in.
+        /// - `tags`: A set of tags applied to the image
+        /// - `created`: When the image was created
+        /// - `status`: Current status of the image
+        /// - `error_message`: Any applicable error message pertaining to the image
+        /// </summary>
         public readonly bool Private;
         public readonly ImmutableArray<string> Regions;
         public readonly double SizeGigabytes;

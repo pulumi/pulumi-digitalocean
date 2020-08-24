@@ -24,11 +24,11 @@ import * as utilities from "./utilities";
  *     bucket: "ourcorp",
  *     region: "nyc3",
  * });
- * const objectInfo = Promise.all([myObjects.then(myObjects => myObjects.keys).length, myObjects.then(myObjects => myObjects.keys)[__index], myObjects, myObjects]).then(([length, keys, myObjects, myObjects1]) => .map(__index => digitalocean.getSpacesBucketObject({
- *     key: keys,
- *     bucket: myObjects.bucket,
- *     region: myObjects1.region,
- * })));
+ * const objectInfo = .map(__index => digitalocean.getSpacesBucketObject({
+ *     key: _arg0_,
+ *     bucket: _arg1_.bucket,
+ *     region: _arg2_.region,
+ * }));
  * ```
  */
 export function getSpacesBucketObjects(args: GetSpacesBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectsResult> {

@@ -12,24 +12,45 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class KubernetesClusterKubeConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+        /// </summary>
         [Input("clientCertificate")]
         public Input<string>? ClientCertificate { get; set; }
 
+        /// <summary>
+        /// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+        /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
+        /// <summary>
+        /// The base64 encoded public certificate for the cluster's certificate authority.
+        /// </summary>
         [Input("clusterCaCertificate")]
         public Input<string>? ClusterCaCertificate { get; set; }
 
+        /// <summary>
+        /// The date and time when the credentials will expire and need to be regenerated.
+        /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
 
+        /// <summary>
+        /// The URL of the API server on the Kubernetes master node.
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// The full contents of the Kubernetes cluster's kubeconfig file.
+        /// </summary>
         [Input("rawConfig")]
         public Input<string>? RawConfig { get; set; }
 
+        /// <summary>
+        /// The DigitalOcean API access token used by clients to access the cluster.
+        /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
 

@@ -119,10 +119,12 @@ func (o DatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) Da
 type DatabaseFirewallRule struct {
 	// The date and time when the firewall rule was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	Type      string  `pulumi:"type"`
+	// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
+	Type string `pulumi:"type"`
 	// A unique identifier for the firewall rule.
-	Uuid  *string `pulumi:"uuid"`
-	Value string  `pulumi:"value"`
+	Uuid *string `pulumi:"uuid"`
+	// The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
+	Value string `pulumi:"value"`
 }
 
 // DatabaseFirewallRuleInput is an input type that accepts DatabaseFirewallRuleArgs and DatabaseFirewallRuleOutput values.
@@ -139,10 +141,12 @@ type DatabaseFirewallRuleInput interface {
 type DatabaseFirewallRuleArgs struct {
 	// The date and time when the firewall rule was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
+	Type pulumi.StringInput `pulumi:"type"`
 	// A unique identifier for the firewall rule.
-	Uuid  pulumi.StringPtrInput `pulumi:"uuid"`
-	Value pulumi.StringInput    `pulumi:"value"`
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (DatabaseFirewallRuleArgs) ElementType() reflect.Type {
@@ -201,6 +205,7 @@ func (o DatabaseFirewallRuleOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseFirewallRule) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
 func (o DatabaseFirewallRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseFirewallRule) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -210,6 +215,7 @@ func (o DatabaseFirewallRuleOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseFirewallRule) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
 func (o DatabaseFirewallRuleOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseFirewallRule) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -694,13 +700,20 @@ func (o FirewallPendingChangeArrayOutput) Index(i pulumi.IntInput) FirewallPendi
 }
 
 type KubernetesClusterKubeConfig struct {
-	ClientCertificate    *string `pulumi:"clientCertificate"`
-	ClientKey            *string `pulumi:"clientKey"`
+	// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+	ClientCertificate *string `pulumi:"clientCertificate"`
+	// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+	ClientKey *string `pulumi:"clientKey"`
+	// The base64 encoded public certificate for the cluster's certificate authority.
 	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
-	ExpiresAt            *string `pulumi:"expiresAt"`
-	Host                 *string `pulumi:"host"`
-	RawConfig            *string `pulumi:"rawConfig"`
-	Token                *string `pulumi:"token"`
+	// The date and time when the credentials will expire and need to be regenerated.
+	ExpiresAt *string `pulumi:"expiresAt"`
+	// The URL of the API server on the Kubernetes master node.
+	Host *string `pulumi:"host"`
+	// The full contents of the Kubernetes cluster's kubeconfig file.
+	RawConfig *string `pulumi:"rawConfig"`
+	// The DigitalOcean API access token used by clients to access the cluster.
+	Token *string `pulumi:"token"`
 }
 
 // KubernetesClusterKubeConfigInput is an input type that accepts KubernetesClusterKubeConfigArgs and KubernetesClusterKubeConfigOutput values.
@@ -715,13 +728,20 @@ type KubernetesClusterKubeConfigInput interface {
 }
 
 type KubernetesClusterKubeConfigArgs struct {
-	ClientCertificate    pulumi.StringPtrInput `pulumi:"clientCertificate"`
-	ClientKey            pulumi.StringPtrInput `pulumi:"clientKey"`
+	// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// The base64 encoded public certificate for the cluster's certificate authority.
 	ClusterCaCertificate pulumi.StringPtrInput `pulumi:"clusterCaCertificate"`
-	ExpiresAt            pulumi.StringPtrInput `pulumi:"expiresAt"`
-	Host                 pulumi.StringPtrInput `pulumi:"host"`
-	RawConfig            pulumi.StringPtrInput `pulumi:"rawConfig"`
-	Token                pulumi.StringPtrInput `pulumi:"token"`
+	// The date and time when the credentials will expire and need to be regenerated.
+	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
+	// The URL of the API server on the Kubernetes master node.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The full contents of the Kubernetes cluster's kubeconfig file.
+	RawConfig pulumi.StringPtrInput `pulumi:"rawConfig"`
+	// The DigitalOcean API access token used by clients to access the cluster.
+	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
 func (KubernetesClusterKubeConfigArgs) ElementType() reflect.Type {
@@ -775,30 +795,37 @@ func (o KubernetesClusterKubeConfigOutput) ToKubernetesClusterKubeConfigOutputWi
 	return o
 }
 
+// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 func (o KubernetesClusterKubeConfigOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
+// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 func (o KubernetesClusterKubeConfigOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
+// The base64 encoded public certificate for the cluster's certificate authority.
 func (o KubernetesClusterKubeConfigOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
+// The date and time when the credentials will expire and need to be regenerated.
 func (o KubernetesClusterKubeConfigOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
+// The URL of the API server on the Kubernetes master node.
 func (o KubernetesClusterKubeConfigOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// The full contents of the Kubernetes cluster's kubeconfig file.
 func (o KubernetesClusterKubeConfigOutput) RawConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.RawConfig }).(pulumi.StringPtrOutput)
 }
 
+// The DigitalOcean API access token used by clients to access the cluster.
 func (o KubernetesClusterKubeConfigOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterKubeConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
@@ -824,18 +851,26 @@ func (o KubernetesClusterKubeConfigArrayOutput) Index(i pulumi.IntInput) Kuberne
 }
 
 type KubernetesClusterNodePool struct {
-	ActualNodeCount *int  `pulumi:"actualNodeCount"`
-	AutoScale       *bool `pulumi:"autoScale"`
-	// A unique ID that can be used to identify and reference a Kubernetes cluster.
-	Id       *string           `pulumi:"id"`
-	Labels   map[string]string `pulumi:"labels"`
-	MaxNodes *int              `pulumi:"maxNodes"`
-	MinNodes *int              `pulumi:"minNodes"`
-	// A name for the Kubernetes cluster.
-	Name      string                          `pulumi:"name"`
-	NodeCount *int                            `pulumi:"nodeCount"`
-	Nodes     []KubernetesClusterNodePoolNode `pulumi:"nodes"`
-	Size      string                          `pulumi:"size"`
+	// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+	ActualNodeCount *int `pulumi:"actualNodeCount"`
+	// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+	AutoScale *bool `pulumi:"autoScale"`
+	// A unique ID that can be used to identify and reference the node.
+	Id *string `pulumi:"id"`
+	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels map[string]string `pulumi:"labels"`
+	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+	MaxNodes *int `pulumi:"maxNodes"`
+	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+	MinNodes *int `pulumi:"minNodes"`
+	// A name for the node pool.
+	Name string `pulumi:"name"`
+	// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+	NodeCount *int `pulumi:"nodeCount"`
+	// A list of nodes in the pool. Each node exports the following attributes:
+	Nodes []KubernetesClusterNodePoolNode `pulumi:"nodes"`
+	// The slug identifier for the type of Droplet to be used as workers in the node pool.
+	Size string `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 }
@@ -852,18 +887,26 @@ type KubernetesClusterNodePoolInput interface {
 }
 
 type KubernetesClusterNodePoolArgs struct {
-	ActualNodeCount pulumi.IntPtrInput  `pulumi:"actualNodeCount"`
-	AutoScale       pulumi.BoolPtrInput `pulumi:"autoScale"`
-	// A unique ID that can be used to identify and reference a Kubernetes cluster.
-	Id       pulumi.StringPtrInput `pulumi:"id"`
-	Labels   pulumi.StringMapInput `pulumi:"labels"`
-	MaxNodes pulumi.IntPtrInput    `pulumi:"maxNodes"`
-	MinNodes pulumi.IntPtrInput    `pulumi:"minNodes"`
-	// A name for the Kubernetes cluster.
-	Name      pulumi.StringInput                      `pulumi:"name"`
-	NodeCount pulumi.IntPtrInput                      `pulumi:"nodeCount"`
-	Nodes     KubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
-	Size      pulumi.StringInput                      `pulumi:"size"`
+	// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+	ActualNodeCount pulumi.IntPtrInput `pulumi:"actualNodeCount"`
+	// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+	AutoScale pulumi.BoolPtrInput `pulumi:"autoScale"`
+	// A unique ID that can be used to identify and reference the node.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
+	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
+	// A name for the node pool.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// A list of nodes in the pool. Each node exports the following attributes:
+	Nodes KubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
+	// The slug identifier for the type of Droplet to be used as workers in the node pool.
+	Size pulumi.StringInput `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
@@ -944,44 +987,53 @@ func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolPtrOutputWit
 		return &v
 	}).(KubernetesClusterNodePoolPtrOutput)
 }
+
+// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
 func (o KubernetesClusterNodePoolOutput) ActualNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.ActualNodeCount }).(pulumi.IntPtrOutput)
 }
 
+// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
 func (o KubernetesClusterNodePoolOutput) AutoScale() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) *bool { return v.AutoScale }).(pulumi.BoolPtrOutput)
 }
 
-// A unique ID that can be used to identify and reference a Kubernetes cluster.
+// A unique ID that can be used to identify and reference the node.
 func (o KubernetesClusterNodePoolOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 func (o KubernetesClusterNodePoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 func (o KubernetesClusterNodePoolOutput) MaxNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
 }
 
+// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 func (o KubernetesClusterNodePoolOutput) MinNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
 }
 
-// A name for the Kubernetes cluster.
+// A name for the node pool.
 func (o KubernetesClusterNodePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
 func (o KubernetesClusterNodePoolOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
+// A list of nodes in the pool. Each node exports the following attributes:
 func (o KubernetesClusterNodePoolOutput) Nodes() KubernetesClusterNodePoolNodeArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) []KubernetesClusterNodePoolNode { return v.Nodes }).(KubernetesClusterNodePoolNodeArrayOutput)
 }
 
+// The slug identifier for the type of Droplet to be used as workers in the node pool.
 func (o KubernetesClusterNodePoolOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
 }
@@ -1009,6 +1061,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Elem() KubernetesClusterNodePoolOutp
 	return o.ApplyT(func(v *KubernetesClusterNodePool) KubernetesClusterNodePool { return *v }).(KubernetesClusterNodePoolOutput)
 }
 
+// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
 func (o KubernetesClusterNodePoolPtrOutput) ActualNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) *int {
 		if v == nil {
@@ -1018,6 +1071,7 @@ func (o KubernetesClusterNodePoolPtrOutput) ActualNodeCount() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
 func (o KubernetesClusterNodePoolPtrOutput) AutoScale() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) *bool {
 		if v == nil {
@@ -1027,7 +1081,7 @@ func (o KubernetesClusterNodePoolPtrOutput) AutoScale() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A unique ID that can be used to identify and reference a Kubernetes cluster.
+// A unique ID that can be used to identify and reference the node.
 func (o KubernetesClusterNodePoolPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) *string {
 		if v == nil {
@@ -1037,6 +1091,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 func (o KubernetesClusterNodePoolPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) map[string]string {
 		if v == nil {
@@ -1046,6 +1101,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 func (o KubernetesClusterNodePoolPtrOutput) MaxNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) *int {
 		if v == nil {
@@ -1055,6 +1111,7 @@ func (o KubernetesClusterNodePoolPtrOutput) MaxNodes() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 func (o KubernetesClusterNodePoolPtrOutput) MinNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) *int {
 		if v == nil {
@@ -1064,7 +1121,7 @@ func (o KubernetesClusterNodePoolPtrOutput) MinNodes() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// A name for the Kubernetes cluster.
+// A name for the node pool.
 func (o KubernetesClusterNodePoolPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) *string {
 		if v == nil {
@@ -1074,6 +1131,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
 func (o KubernetesClusterNodePoolPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) *int {
 		if v == nil {
@@ -1083,6 +1141,7 @@ func (o KubernetesClusterNodePoolPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// A list of nodes in the pool. Each node exports the following attributes:
 func (o KubernetesClusterNodePoolPtrOutput) Nodes() KubernetesClusterNodePoolNodeArrayOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) []KubernetesClusterNodePoolNode {
 		if v == nil {
@@ -1092,6 +1151,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Nodes() KubernetesClusterNodePoolNod
 	}).(KubernetesClusterNodePoolNodeArrayOutput)
 }
 
+// The slug identifier for the type of Droplet to be used as workers in the node pool.
 func (o KubernetesClusterNodePoolPtrOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) *string {
 		if v == nil {
@@ -1112,24 +1172,17 @@ func (o KubernetesClusterNodePoolPtrOutput) Tags() pulumi.StringArrayOutput {
 }
 
 type KubernetesClusterNodePoolNode struct {
-	// The date and time when the Kubernetes cluster was created.
+	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The id of the node's droplet
 	DropletId *string `pulumi:"dropletId"`
-	// A unique ID that can be used to identify and reference a Kubernetes cluster.
+	// A unique ID that can be used to identify and reference the node.
 	Id *string `pulumi:"id"`
-	// A name for the Kubernetes cluster.
+	// A name for the node pool.
 	Name *string `pulumi:"name"`
-	// A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+	// A string indicating the current status of the individual node.
 	Status *string `pulumi:"status"`
-	// The date and time when the Kubernetes cluster was last updated.
-	// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-	// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-	// - `host` - The URL of the API server on the Kubernetes master node.
-	// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-	// - `token` - The DigitalOcean API access token used by clients to access the cluster.
-	// - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-	// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-	// - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+	// The date and time when the node was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -1145,24 +1198,17 @@ type KubernetesClusterNodePoolNodeInput interface {
 }
 
 type KubernetesClusterNodePoolNodeArgs struct {
-	// The date and time when the Kubernetes cluster was created.
+	// The date and time when the node was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The id of the node's droplet
 	DropletId pulumi.StringPtrInput `pulumi:"dropletId"`
-	// A unique ID that can be used to identify and reference a Kubernetes cluster.
+	// A unique ID that can be used to identify and reference the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A name for the Kubernetes cluster.
+	// A name for the node pool.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+	// A string indicating the current status of the individual node.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The date and time when the Kubernetes cluster was last updated.
-	// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-	// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-	// - `host` - The URL of the API server on the Kubernetes master node.
-	// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-	// - `token` - The DigitalOcean API access token used by clients to access the cluster.
-	// - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-	// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-	// - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+	// The date and time when the node was last updated.
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
@@ -1217,39 +1263,32 @@ func (o KubernetesClusterNodePoolNodeOutput) ToKubernetesClusterNodePoolNodeOutp
 	return o
 }
 
-// The date and time when the Kubernetes cluster was created.
+// The date and time when the node was created.
 func (o KubernetesClusterNodePoolNodeOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The id of the node's droplet
 func (o KubernetesClusterNodePoolNodeOutput) DropletId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.DropletId }).(pulumi.StringPtrOutput)
 }
 
-// A unique ID that can be used to identify and reference a Kubernetes cluster.
+// A unique ID that can be used to identify and reference the node.
 func (o KubernetesClusterNodePoolNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// A name for the Kubernetes cluster.
+// A name for the node pool.
 func (o KubernetesClusterNodePoolNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+// A string indicating the current status of the individual node.
 func (o KubernetesClusterNodePoolNodeOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The date and time when the Kubernetes cluster was last updated.
-// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-// - `host` - The URL of the API server on the Kubernetes master node.
-// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-// - `token` - The DigitalOcean API access token used by clients to access the cluster.
-// - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-// - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+// The date and time when the node was last updated.
 func (o KubernetesClusterNodePoolNodeOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -1275,13 +1314,17 @@ func (o KubernetesClusterNodePoolNodeArrayOutput) Index(i pulumi.IntInput) Kuber
 }
 
 type KubernetesNodePoolNode struct {
+	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The id of the node's droplet
 	DropletId *string `pulumi:"dropletId"`
-	// A unique ID that can be used to identify and reference the node pool.
+	// A unique ID that can be used to identify and reference the node.
 	Id *string `pulumi:"id"`
 	// A name for the node pool.
-	Name      *string `pulumi:"name"`
-	Status    *string `pulumi:"status"`
+	Name *string `pulumi:"name"`
+	// A string indicating the current status of the individual node.
+	Status *string `pulumi:"status"`
+	// The date and time when the node was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -1297,13 +1340,17 @@ type KubernetesNodePoolNodeInput interface {
 }
 
 type KubernetesNodePoolNodeArgs struct {
+	// The date and time when the node was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The id of the node's droplet
 	DropletId pulumi.StringPtrInput `pulumi:"dropletId"`
-	// A unique ID that can be used to identify and reference the node pool.
+	// A unique ID that can be used to identify and reference the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A name for the node pool.
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	Status    pulumi.StringPtrInput `pulumi:"status"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A string indicating the current status of the individual node.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The date and time when the node was last updated.
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
@@ -1358,15 +1405,17 @@ func (o KubernetesNodePoolNodeOutput) ToKubernetesNodePoolNodeOutputWithContext(
 	return o
 }
 
+// The date and time when the node was created.
 func (o KubernetesNodePoolNodeOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The id of the node's droplet
 func (o KubernetesNodePoolNodeOutput) DropletId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.DropletId }).(pulumi.StringPtrOutput)
 }
 
-// A unique ID that can be used to identify and reference the node pool.
+// A unique ID that can be used to identify and reference the node.
 func (o KubernetesNodePoolNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -1376,10 +1425,12 @@ func (o KubernetesNodePoolNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// A string indicating the current status of the individual node.
 func (o KubernetesNodePoolNodeOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The date and time when the node was last updated.
 func (o KubernetesNodePoolNodeOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesNodePoolNode) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -2783,31 +2834,54 @@ func (o GetDatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetDropletsDroplet struct {
-	Backups            bool     `pulumi:"backups"`
-	CreatedAt          string   `pulumi:"createdAt"`
-	Disk               int      `pulumi:"disk"`
-	Id                 int      `pulumi:"id"`
-	Image              string   `pulumi:"image"`
-	Ipv4Address        string   `pulumi:"ipv4Address"`
-	Ipv4AddressPrivate string   `pulumi:"ipv4AddressPrivate"`
-	Ipv6               bool     `pulumi:"ipv6"`
-	Ipv6Address        string   `pulumi:"ipv6Address"`
-	Ipv6AddressPrivate string   `pulumi:"ipv6AddressPrivate"`
-	Locked             bool     `pulumi:"locked"`
-	Memory             int      `pulumi:"memory"`
-	Monitoring         bool     `pulumi:"monitoring"`
-	Name               string   `pulumi:"name"`
-	PriceHourly        float64  `pulumi:"priceHourly"`
-	PriceMonthly       float64  `pulumi:"priceMonthly"`
-	PrivateNetworking  bool     `pulumi:"privateNetworking"`
-	Region             string   `pulumi:"region"`
-	Size               string   `pulumi:"size"`
-	Status             string   `pulumi:"status"`
-	Tags               []string `pulumi:"tags"`
-	Urn                string   `pulumi:"urn"`
-	Vcpus              int      `pulumi:"vcpus"`
-	VolumeIds          []string `pulumi:"volumeIds"`
-	VpcUuid            string   `pulumi:"vpcUuid"`
+	// Whether backups are enabled.
+	Backups   bool   `pulumi:"backups"`
+	CreatedAt string `pulumi:"createdAt"`
+	// The size of the Droplet's disk in GB.
+	Disk int `pulumi:"disk"`
+	// The ID of the Droplet.
+	Id int `pulumi:"id"`
+	// The Droplet image ID or slug.
+	Image string `pulumi:"image"`
+	// The Droplet's public IPv4 address
+	Ipv4Address string `pulumi:"ipv4Address"`
+	// The Droplet's private IPv4 address
+	Ipv4AddressPrivate string `pulumi:"ipv4AddressPrivate"`
+	// Whether IPv6 is enabled.
+	Ipv6 bool `pulumi:"ipv6"`
+	// The Droplet's public IPv6 address
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// The Droplet's private IPv6 address
+	Ipv6AddressPrivate string `pulumi:"ipv6AddressPrivate"`
+	// Whether the Droplet is locked.
+	Locked bool `pulumi:"locked"`
+	// The amount of the Droplet's memory in MB.
+	Memory int `pulumi:"memory"`
+	// Whether monitoring agent is installed.
+	Monitoring bool   `pulumi:"monitoring"`
+	Name       string `pulumi:"name"`
+	// Droplet hourly price.
+	PriceHourly float64 `pulumi:"priceHourly"`
+	// Droplet monthly price.
+	PriceMonthly float64 `pulumi:"priceMonthly"`
+	// Whether private networks are enabled.
+	PrivateNetworking bool `pulumi:"privateNetworking"`
+	// The region the Droplet is running in.
+	Region string `pulumi:"region"`
+	// The unique slug that identifies the type of Droplet.
+	Size string `pulumi:"size"`
+	// The status of the Droplet.
+	Status string `pulumi:"status"`
+	// A list of the tags associated to the Droplet.
+	Tags []string `pulumi:"tags"`
+	// The uniform resource name of the Droplet
+	Urn string `pulumi:"urn"`
+	// The number of the Droplet's virtual CPUs.
+	Vcpus int `pulumi:"vcpus"`
+	// List of the IDs of each volumes attached to the Droplet.
+	VolumeIds []string `pulumi:"volumeIds"`
+	// The ID of the VPC where the Droplet is located.
+	VpcUuid string `pulumi:"vpcUuid"`
 }
 
 // GetDropletsDropletInput is an input type that accepts GetDropletsDropletArgs and GetDropletsDropletOutput values.
@@ -2822,31 +2896,54 @@ type GetDropletsDropletInput interface {
 }
 
 type GetDropletsDropletArgs struct {
-	Backups            pulumi.BoolInput        `pulumi:"backups"`
-	CreatedAt          pulumi.StringInput      `pulumi:"createdAt"`
-	Disk               pulumi.IntInput         `pulumi:"disk"`
-	Id                 pulumi.IntInput         `pulumi:"id"`
-	Image              pulumi.StringInput      `pulumi:"image"`
-	Ipv4Address        pulumi.StringInput      `pulumi:"ipv4Address"`
-	Ipv4AddressPrivate pulumi.StringInput      `pulumi:"ipv4AddressPrivate"`
-	Ipv6               pulumi.BoolInput        `pulumi:"ipv6"`
-	Ipv6Address        pulumi.StringInput      `pulumi:"ipv6Address"`
-	Ipv6AddressPrivate pulumi.StringInput      `pulumi:"ipv6AddressPrivate"`
-	Locked             pulumi.BoolInput        `pulumi:"locked"`
-	Memory             pulumi.IntInput         `pulumi:"memory"`
-	Monitoring         pulumi.BoolInput        `pulumi:"monitoring"`
-	Name               pulumi.StringInput      `pulumi:"name"`
-	PriceHourly        pulumi.Float64Input     `pulumi:"priceHourly"`
-	PriceMonthly       pulumi.Float64Input     `pulumi:"priceMonthly"`
-	PrivateNetworking  pulumi.BoolInput        `pulumi:"privateNetworking"`
-	Region             pulumi.StringInput      `pulumi:"region"`
-	Size               pulumi.StringInput      `pulumi:"size"`
-	Status             pulumi.StringInput      `pulumi:"status"`
-	Tags               pulumi.StringArrayInput `pulumi:"tags"`
-	Urn                pulumi.StringInput      `pulumi:"urn"`
-	Vcpus              pulumi.IntInput         `pulumi:"vcpus"`
-	VolumeIds          pulumi.StringArrayInput `pulumi:"volumeIds"`
-	VpcUuid            pulumi.StringInput      `pulumi:"vpcUuid"`
+	// Whether backups are enabled.
+	Backups   pulumi.BoolInput   `pulumi:"backups"`
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The size of the Droplet's disk in GB.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// The ID of the Droplet.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The Droplet image ID or slug.
+	Image pulumi.StringInput `pulumi:"image"`
+	// The Droplet's public IPv4 address
+	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
+	// The Droplet's private IPv4 address
+	Ipv4AddressPrivate pulumi.StringInput `pulumi:"ipv4AddressPrivate"`
+	// Whether IPv6 is enabled.
+	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
+	// The Droplet's public IPv6 address
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// The Droplet's private IPv6 address
+	Ipv6AddressPrivate pulumi.StringInput `pulumi:"ipv6AddressPrivate"`
+	// Whether the Droplet is locked.
+	Locked pulumi.BoolInput `pulumi:"locked"`
+	// The amount of the Droplet's memory in MB.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// Whether monitoring agent is installed.
+	Monitoring pulumi.BoolInput   `pulumi:"monitoring"`
+	Name       pulumi.StringInput `pulumi:"name"`
+	// Droplet hourly price.
+	PriceHourly pulumi.Float64Input `pulumi:"priceHourly"`
+	// Droplet monthly price.
+	PriceMonthly pulumi.Float64Input `pulumi:"priceMonthly"`
+	// Whether private networks are enabled.
+	PrivateNetworking pulumi.BoolInput `pulumi:"privateNetworking"`
+	// The region the Droplet is running in.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The unique slug that identifies the type of Droplet.
+	Size pulumi.StringInput `pulumi:"size"`
+	// The status of the Droplet.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A list of the tags associated to the Droplet.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The uniform resource name of the Droplet
+	Urn pulumi.StringInput `pulumi:"urn"`
+	// The number of the Droplet's virtual CPUs.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
+	// List of the IDs of each volumes attached to the Droplet.
+	VolumeIds pulumi.StringArrayInput `pulumi:"volumeIds"`
+	// The ID of the VPC where the Droplet is located.
+	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
 }
 
 func (GetDropletsDropletArgs) ElementType() reflect.Type {
@@ -2900,6 +2997,7 @@ func (o GetDropletsDropletOutput) ToGetDropletsDropletOutputWithContext(ctx cont
 	return o
 }
 
+// Whether backups are enabled.
 func (o GetDropletsDropletOutput) Backups() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Backups }).(pulumi.BoolOutput)
 }
@@ -2908,46 +3006,57 @@ func (o GetDropletsDropletOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The size of the Droplet's disk in GB.
 func (o GetDropletsDropletOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Disk }).(pulumi.IntOutput)
 }
 
+// The ID of the Droplet.
 func (o GetDropletsDropletOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The Droplet image ID or slug.
 func (o GetDropletsDropletOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// The Droplet's public IPv4 address
 func (o GetDropletsDropletOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Ipv4Address }).(pulumi.StringOutput)
 }
 
+// The Droplet's private IPv4 address
 func (o GetDropletsDropletOutput) Ipv4AddressPrivate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Ipv4AddressPrivate }).(pulumi.StringOutput)
 }
 
+// Whether IPv6 is enabled.
 func (o GetDropletsDropletOutput) Ipv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Ipv6 }).(pulumi.BoolOutput)
 }
 
+// The Droplet's public IPv6 address
 func (o GetDropletsDropletOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
+// The Droplet's private IPv6 address
 func (o GetDropletsDropletOutput) Ipv6AddressPrivate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Ipv6AddressPrivate }).(pulumi.StringOutput)
 }
 
+// Whether the Droplet is locked.
 func (o GetDropletsDropletOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Locked }).(pulumi.BoolOutput)
 }
 
+// The amount of the Droplet's memory in MB.
 func (o GetDropletsDropletOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Memory }).(pulumi.IntOutput)
 }
 
+// Whether monitoring agent is installed.
 func (o GetDropletsDropletOutput) Monitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Monitoring }).(pulumi.BoolOutput)
 }
@@ -2956,46 +3065,57 @@ func (o GetDropletsDropletOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Droplet hourly price.
 func (o GetDropletsDropletOutput) PriceHourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDropletsDroplet) float64 { return v.PriceHourly }).(pulumi.Float64Output)
 }
 
+// Droplet monthly price.
 func (o GetDropletsDropletOutput) PriceMonthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDropletsDroplet) float64 { return v.PriceMonthly }).(pulumi.Float64Output)
 }
 
+// Whether private networks are enabled.
 func (o GetDropletsDropletOutput) PrivateNetworking() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.PrivateNetworking }).(pulumi.BoolOutput)
 }
 
+// The region the Droplet is running in.
 func (o GetDropletsDropletOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The unique slug that identifies the type of Droplet.
 func (o GetDropletsDropletOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Size }).(pulumi.StringOutput)
 }
 
+// The status of the Droplet.
 func (o GetDropletsDropletOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// A list of the tags associated to the Droplet.
 func (o GetDropletsDropletOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The uniform resource name of the Droplet
 func (o GetDropletsDropletOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Urn }).(pulumi.StringOutput)
 }
 
+// The number of the Droplet's virtual CPUs.
 func (o GetDropletsDropletOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Vcpus }).(pulumi.IntOutput)
 }
 
+// List of the IDs of each volumes attached to the Droplet.
 func (o GetDropletsDropletOutput) VolumeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) []string { return v.VolumeIds }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the VPC where the Droplet is located.
 func (o GetDropletsDropletOutput) VpcUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.VpcUuid }).(pulumi.StringOutput)
 }
@@ -3369,13 +3489,25 @@ func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutp
 }
 
 type GetImagesImage struct {
-	Created       string   `pulumi:"created"`
-	Distribution  string   `pulumi:"distribution"`
-	ErrorMessage  string   `pulumi:"errorMessage"`
-	Id            int      `pulumi:"id"`
-	Image         string   `pulumi:"image"`
-	MinDiskSize   int      `pulumi:"minDiskSize"`
-	Name          string   `pulumi:"name"`
+	Created string `pulumi:"created"`
+	// The name of the distribution of the OS of the image.
+	// - `minDiskSize`: The minimum 'disk' required for the image.
+	// - `sizeGigabytes`: The size of the image in GB.
+	Distribution string `pulumi:"distribution"`
+	ErrorMessage string `pulumi:"errorMessage"`
+	Id           int    `pulumi:"id"`
+	// The id of the image (legacy parameter).
+	Image       string `pulumi:"image"`
+	MinDiskSize int    `pulumi:"minDiskSize"`
+	Name        string `pulumi:"name"`
+	// Is image a public image or not. Public images represent
+	// Linux distributions or One-Click Applications, while non-public images represent
+	// snapshots and backups and are only available within your account.
+	// - `regions`: A set of the regions that the image is available in.
+	// - `tags`: A set of tags applied to the image
+	// - `created`: When the image was created
+	// - `status`: Current status of the image
+	// - `errorMessage`: Any applicable error message pertaining to the image
 	Private       bool     `pulumi:"private"`
 	Regions       []string `pulumi:"regions"`
 	SizeGigabytes float64  `pulumi:"sizeGigabytes"`
@@ -3397,13 +3529,25 @@ type GetImagesImageInput interface {
 }
 
 type GetImagesImageArgs struct {
-	Created       pulumi.StringInput      `pulumi:"created"`
-	Distribution  pulumi.StringInput      `pulumi:"distribution"`
-	ErrorMessage  pulumi.StringInput      `pulumi:"errorMessage"`
-	Id            pulumi.IntInput         `pulumi:"id"`
-	Image         pulumi.StringInput      `pulumi:"image"`
-	MinDiskSize   pulumi.IntInput         `pulumi:"minDiskSize"`
-	Name          pulumi.StringInput      `pulumi:"name"`
+	Created pulumi.StringInput `pulumi:"created"`
+	// The name of the distribution of the OS of the image.
+	// - `minDiskSize`: The minimum 'disk' required for the image.
+	// - `sizeGigabytes`: The size of the image in GB.
+	Distribution pulumi.StringInput `pulumi:"distribution"`
+	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
+	Id           pulumi.IntInput    `pulumi:"id"`
+	// The id of the image (legacy parameter).
+	Image       pulumi.StringInput `pulumi:"image"`
+	MinDiskSize pulumi.IntInput    `pulumi:"minDiskSize"`
+	Name        pulumi.StringInput `pulumi:"name"`
+	// Is image a public image or not. Public images represent
+	// Linux distributions or One-Click Applications, while non-public images represent
+	// snapshots and backups and are only available within your account.
+	// - `regions`: A set of the regions that the image is available in.
+	// - `tags`: A set of tags applied to the image
+	// - `created`: When the image was created
+	// - `status`: Current status of the image
+	// - `errorMessage`: Any applicable error message pertaining to the image
 	Private       pulumi.BoolInput        `pulumi:"private"`
 	Regions       pulumi.StringArrayInput `pulumi:"regions"`
 	SizeGigabytes pulumi.Float64Input     `pulumi:"sizeGigabytes"`
@@ -3468,6 +3612,9 @@ func (o GetImagesImageOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The name of the distribution of the OS of the image.
+// - `minDiskSize`: The minimum 'disk' required for the image.
+// - `sizeGigabytes`: The size of the image in GB.
 func (o GetImagesImageOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Distribution }).(pulumi.StringOutput)
 }
@@ -3480,6 +3627,7 @@ func (o GetImagesImageOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImagesImage) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The id of the image (legacy parameter).
 func (o GetImagesImageOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -3492,6 +3640,14 @@ func (o GetImagesImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Is image a public image or not. Public images represent
+// Linux distributions or One-Click Applications, while non-public images represent
+// snapshots and backups and are only available within your account.
+// - `regions`: A set of the regions that the image is available in.
+// - `tags`: A set of tags applied to the image
+// - `created`: When the image was created
+// - `status`: Current status of the image
+// - `errorMessage`: Any applicable error message pertaining to the image
 func (o GetImagesImageOutput) Private() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImagesImage) bool { return v.Private }).(pulumi.BoolOutput)
 }
@@ -3650,13 +3806,20 @@ func (o GetImagesSortArrayOutput) Index(i pulumi.IntInput) GetImagesSortOutput {
 }
 
 type GetKubernetesClusterKubeConfig struct {
-	ClientCertificate    string `pulumi:"clientCertificate"`
-	ClientKey            string `pulumi:"clientKey"`
+	// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+	ClientCertificate string `pulumi:"clientCertificate"`
+	// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+	ClientKey string `pulumi:"clientKey"`
+	// The base64 encoded public certificate for the cluster's certificate authority.
 	ClusterCaCertificate string `pulumi:"clusterCaCertificate"`
-	ExpiresAt            string `pulumi:"expiresAt"`
-	Host                 string `pulumi:"host"`
-	RawConfig            string `pulumi:"rawConfig"`
-	Token                string `pulumi:"token"`
+	// The date and time when the credentials will expire and need to be regenerated.
+	ExpiresAt string `pulumi:"expiresAt"`
+	// The URL of the API server on the Kubernetes master node.
+	Host string `pulumi:"host"`
+	// The full contents of the Kubernetes cluster's kubeconfig file.
+	RawConfig string `pulumi:"rawConfig"`
+	// The DigitalOcean API access token used by clients to access the cluster.
+	Token string `pulumi:"token"`
 }
 
 // GetKubernetesClusterKubeConfigInput is an input type that accepts GetKubernetesClusterKubeConfigArgs and GetKubernetesClusterKubeConfigOutput values.
@@ -3671,13 +3834,20 @@ type GetKubernetesClusterKubeConfigInput interface {
 }
 
 type GetKubernetesClusterKubeConfigArgs struct {
-	ClientCertificate    pulumi.StringInput `pulumi:"clientCertificate"`
-	ClientKey            pulumi.StringInput `pulumi:"clientKey"`
+	// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
+	// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+	// The base64 encoded public certificate for the cluster's certificate authority.
 	ClusterCaCertificate pulumi.StringInput `pulumi:"clusterCaCertificate"`
-	ExpiresAt            pulumi.StringInput `pulumi:"expiresAt"`
-	Host                 pulumi.StringInput `pulumi:"host"`
-	RawConfig            pulumi.StringInput `pulumi:"rawConfig"`
-	Token                pulumi.StringInput `pulumi:"token"`
+	// The date and time when the credentials will expire and need to be regenerated.
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// The URL of the API server on the Kubernetes master node.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The full contents of the Kubernetes cluster's kubeconfig file.
+	RawConfig pulumi.StringInput `pulumi:"rawConfig"`
+	// The DigitalOcean API access token used by clients to access the cluster.
+	Token pulumi.StringInput `pulumi:"token"`
 }
 
 func (GetKubernetesClusterKubeConfigArgs) ElementType() reflect.Type {
@@ -3731,30 +3901,37 @@ func (o GetKubernetesClusterKubeConfigOutput) ToGetKubernetesClusterKubeConfigOu
 	return o
 }
 
+// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 func (o GetKubernetesClusterKubeConfigOutput) ClientCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.ClientCertificate }).(pulumi.StringOutput)
 }
 
+// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 func (o GetKubernetesClusterKubeConfigOutput) ClientKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.ClientKey }).(pulumi.StringOutput)
 }
 
+// The base64 encoded public certificate for the cluster's certificate authority.
 func (o GetKubernetesClusterKubeConfigOutput) ClusterCaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.ClusterCaCertificate }).(pulumi.StringOutput)
 }
 
+// The date and time when the credentials will expire and need to be regenerated.
 func (o GetKubernetesClusterKubeConfigOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
+// The URL of the API server on the Kubernetes master node.
 func (o GetKubernetesClusterKubeConfigOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// The full contents of the Kubernetes cluster's kubeconfig file.
 func (o GetKubernetesClusterKubeConfigOutput) RawConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.RawConfig }).(pulumi.StringOutput)
 }
 
+// The DigitalOcean API access token used by clients to access the cluster.
 func (o GetKubernetesClusterKubeConfigOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterKubeConfig) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -3780,19 +3957,27 @@ func (o GetKubernetesClusterKubeConfigArrayOutput) Index(i pulumi.IntInput) GetK
 }
 
 type GetKubernetesClusterNodePool struct {
-	ActualNodeCount int  `pulumi:"actualNodeCount"`
-	AutoScale       bool `pulumi:"autoScale"`
-	// The unique ID that can be used to identify and reference a Kubernetes cluster.
-	Id       string            `pulumi:"id"`
-	Labels   map[string]string `pulumi:"labels"`
-	MaxNodes int               `pulumi:"maxNodes"`
-	MinNodes int               `pulumi:"minNodes"`
+	// The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+	ActualNodeCount int `pulumi:"actualNodeCount"`
+	// A boolean indicating whether auto-scaling is enabled on the node pool.
+	AutoScale bool `pulumi:"autoScale"`
+	// A unique ID that can be used to identify and reference the node.
+	Id string `pulumi:"id"`
+	// A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels map[string]string `pulumi:"labels"`
+	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+	MaxNodes int `pulumi:"maxNodes"`
+	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+	MinNodes int `pulumi:"minNodes"`
 	// The name of Kubernetes cluster.
-	Name      string                             `pulumi:"name"`
-	NodeCount int                                `pulumi:"nodeCount"`
-	Nodes     []GetKubernetesClusterNodePoolNode `pulumi:"nodes"`
-	Size      string                             `pulumi:"size"`
-	// A list of tag names to be applied to the Kubernetes cluster.
+	Name string `pulumi:"name"`
+	// The number of Droplet instances in the node pool.
+	NodeCount int `pulumi:"nodeCount"`
+	// A list of nodes in the pool. Each node exports the following attributes:
+	Nodes []GetKubernetesClusterNodePoolNode `pulumi:"nodes"`
+	// The slug identifier for the type of Droplet used as workers in the node pool.
+	Size string `pulumi:"size"`
+	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -3808,19 +3993,27 @@ type GetKubernetesClusterNodePoolInput interface {
 }
 
 type GetKubernetesClusterNodePoolArgs struct {
-	ActualNodeCount pulumi.IntInput  `pulumi:"actualNodeCount"`
-	AutoScale       pulumi.BoolInput `pulumi:"autoScale"`
-	// The unique ID that can be used to identify and reference a Kubernetes cluster.
-	Id       pulumi.StringInput    `pulumi:"id"`
-	Labels   pulumi.StringMapInput `pulumi:"labels"`
-	MaxNodes pulumi.IntInput       `pulumi:"maxNodes"`
-	MinNodes pulumi.IntInput       `pulumi:"minNodes"`
+	// The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+	ActualNodeCount pulumi.IntInput `pulumi:"actualNodeCount"`
+	// A boolean indicating whether auto-scaling is enabled on the node pool.
+	AutoScale pulumi.BoolInput `pulumi:"autoScale"`
+	// A unique ID that can be used to identify and reference the node.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
+	// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+	MinNodes pulumi.IntInput `pulumi:"minNodes"`
 	// The name of Kubernetes cluster.
-	Name      pulumi.StringInput                         `pulumi:"name"`
-	NodeCount pulumi.IntInput                            `pulumi:"nodeCount"`
-	Nodes     GetKubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
-	Size      pulumi.StringInput                         `pulumi:"size"`
-	// A list of tag names to be applied to the Kubernetes cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number of Droplet instances in the node pool.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// A list of nodes in the pool. Each node exports the following attributes:
+	Nodes GetKubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
+	// The slug identifier for the type of Droplet used as workers in the node pool.
+	Size pulumi.StringInput `pulumi:"size"`
+	// A list of tag names applied to the node pool.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -3875,27 +4068,32 @@ func (o GetKubernetesClusterNodePoolOutput) ToGetKubernetesClusterNodePoolOutput
 	return o
 }
 
+// The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
 func (o GetKubernetesClusterNodePoolOutput) ActualNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) int { return v.ActualNodeCount }).(pulumi.IntOutput)
 }
 
+// A boolean indicating whether auto-scaling is enabled on the node pool.
 func (o GetKubernetesClusterNodePoolOutput) AutoScale() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) bool { return v.AutoScale }).(pulumi.BoolOutput)
 }
 
-// The unique ID that can be used to identify and reference a Kubernetes cluster.
+// A unique ID that can be used to identify and reference the node.
 func (o GetKubernetesClusterNodePoolOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
 func (o GetKubernetesClusterNodePoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
 func (o GetKubernetesClusterNodePoolOutput) MaxNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) int { return v.MaxNodes }).(pulumi.IntOutput)
 }
 
+// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
 func (o GetKubernetesClusterNodePoolOutput) MinNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) int { return v.MinNodes }).(pulumi.IntOutput)
 }
@@ -3905,19 +4103,22 @@ func (o GetKubernetesClusterNodePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The number of Droplet instances in the node pool.
 func (o GetKubernetesClusterNodePoolOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
+// A list of nodes in the pool. Each node exports the following attributes:
 func (o GetKubernetesClusterNodePoolOutput) Nodes() GetKubernetesClusterNodePoolNodeArrayOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) []GetKubernetesClusterNodePoolNode { return v.Nodes }).(GetKubernetesClusterNodePoolNodeArrayOutput)
 }
 
+// The slug identifier for the type of Droplet used as workers in the node pool.
 func (o GetKubernetesClusterNodePoolOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
 }
 
-// A list of tag names to be applied to the Kubernetes cluster.
+// A list of tag names applied to the node pool.
 func (o GetKubernetesClusterNodePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -3943,24 +4144,16 @@ func (o GetKubernetesClusterNodePoolArrayOutput) Index(i pulumi.IntInput) GetKub
 }
 
 type GetKubernetesClusterNodePoolNode struct {
-	// The date and time when the Kubernetes cluster was created.
+	// The date and time when the node was created.
 	CreatedAt string `pulumi:"createdAt"`
 	DropletId string `pulumi:"dropletId"`
-	// The unique ID that can be used to identify and reference a Kubernetes cluster.
+	// A unique ID that can be used to identify and reference the node.
 	Id string `pulumi:"id"`
 	// The name of Kubernetes cluster.
 	Name string `pulumi:"name"`
-	// A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+	// A string indicating the current status of the individual node.
 	Status string `pulumi:"status"`
-	// The date and time when the Kubernetes cluster was last updated.
-	// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-	// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-	// - `host` - The URL of the API server on the Kubernetes master node.
-	// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-	// - `token` - The DigitalOcean API access token used by clients to access the cluster.
-	// - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-	// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-	// - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+	// The date and time when the node was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
 
@@ -3976,24 +4169,16 @@ type GetKubernetesClusterNodePoolNodeInput interface {
 }
 
 type GetKubernetesClusterNodePoolNodeArgs struct {
-	// The date and time when the Kubernetes cluster was created.
+	// The date and time when the node was created.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	DropletId pulumi.StringInput `pulumi:"dropletId"`
-	// The unique ID that can be used to identify and reference a Kubernetes cluster.
+	// A unique ID that can be used to identify and reference the node.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of Kubernetes cluster.
 	Name pulumi.StringInput `pulumi:"name"`
-	// A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+	// A string indicating the current status of the individual node.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The date and time when the Kubernetes cluster was last updated.
-	// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-	// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-	// - `host` - The URL of the API server on the Kubernetes master node.
-	// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-	// - `token` - The DigitalOcean API access token used by clients to access the cluster.
-	// - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-	// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-	// - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+	// The date and time when the node was last updated.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 }
 
@@ -4048,7 +4233,7 @@ func (o GetKubernetesClusterNodePoolNodeOutput) ToGetKubernetesClusterNodePoolNo
 	return o
 }
 
-// The date and time when the Kubernetes cluster was created.
+// The date and time when the node was created.
 func (o GetKubernetesClusterNodePoolNodeOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -4057,7 +4242,7 @@ func (o GetKubernetesClusterNodePoolNodeOutput) DropletId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.DropletId }).(pulumi.StringOutput)
 }
 
-// The unique ID that can be used to identify and reference a Kubernetes cluster.
+// A unique ID that can be used to identify and reference the node.
 func (o GetKubernetesClusterNodePoolNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4067,20 +4252,12 @@ func (o GetKubernetesClusterNodePoolNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+// A string indicating the current status of the individual node.
 func (o GetKubernetesClusterNodePoolNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The date and time when the Kubernetes cluster was last updated.
-// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-// - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-// - `host` - The URL of the API server on the Kubernetes master node.
-// - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-// - `token` - The DigitalOcean API access token used by clients to access the cluster.
-// - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-// - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-// - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+// The date and time when the node was last updated.
 func (o GetKubernetesClusterNodePoolNodeOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePoolNode) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -4488,17 +4665,27 @@ func (o GetProjectsFilterArrayOutput) Index(i pulumi.IntInput) GetProjectsFilter
 }
 
 type GetProjectsProject struct {
-	CreatedAt   string   `pulumi:"createdAt"`
-	Description string   `pulumi:"description"`
-	Environment string   `pulumi:"environment"`
-	Id          string   `pulumi:"id"`
-	IsDefault   bool     `pulumi:"isDefault"`
-	Name        string   `pulumi:"name"`
-	OwnerId     int      `pulumi:"ownerId"`
-	OwnerUuid   string   `pulumi:"ownerUuid"`
-	Purpose     string   `pulumi:"purpose"`
-	Resources   []string `pulumi:"resources"`
-	UpdatedAt   string   `pulumi:"updatedAt"`
+	// The date and time when the project was created, (ISO8601)
+	CreatedAt string `pulumi:"createdAt"`
+	// The description of the project
+	Description string `pulumi:"description"`
+	// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
+	Environment string `pulumi:"environment"`
+	// The ID of the project
+	Id        string `pulumi:"id"`
+	IsDefault bool   `pulumi:"isDefault"`
+	// The name of the project
+	Name string `pulumi:"name"`
+	// The ID of the project owner
+	OwnerId int `pulumi:"ownerId"`
+	// The unique universal identifier of the project owner
+	OwnerUuid string `pulumi:"ownerUuid"`
+	// The purpose of the project (Default: "Web Application")
+	Purpose string `pulumi:"purpose"`
+	// A set of uniform resource names (URNs) for the resources associated with the project
+	Resources []string `pulumi:"resources"`
+	// The date and time when the project was last updated, (ISO8601)
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 // GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
@@ -4513,17 +4700,27 @@ type GetProjectsProjectInput interface {
 }
 
 type GetProjectsProjectArgs struct {
-	CreatedAt   pulumi.StringInput      `pulumi:"createdAt"`
-	Description pulumi.StringInput      `pulumi:"description"`
-	Environment pulumi.StringInput      `pulumi:"environment"`
-	Id          pulumi.StringInput      `pulumi:"id"`
-	IsDefault   pulumi.BoolInput        `pulumi:"isDefault"`
-	Name        pulumi.StringInput      `pulumi:"name"`
-	OwnerId     pulumi.IntInput         `pulumi:"ownerId"`
-	OwnerUuid   pulumi.StringInput      `pulumi:"ownerUuid"`
-	Purpose     pulumi.StringInput      `pulumi:"purpose"`
-	Resources   pulumi.StringArrayInput `pulumi:"resources"`
-	UpdatedAt   pulumi.StringInput      `pulumi:"updatedAt"`
+	// The date and time when the project was created, (ISO8601)
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The description of the project
+	Description pulumi.StringInput `pulumi:"description"`
+	// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
+	Environment pulumi.StringInput `pulumi:"environment"`
+	// The ID of the project
+	Id        pulumi.StringInput `pulumi:"id"`
+	IsDefault pulumi.BoolInput   `pulumi:"isDefault"`
+	// The name of the project
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project owner
+	OwnerId pulumi.IntInput `pulumi:"ownerId"`
+	// The unique universal identifier of the project owner
+	OwnerUuid pulumi.StringInput `pulumi:"ownerUuid"`
+	// The purpose of the project (Default: "Web Application")
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	// A set of uniform resource names (URNs) for the resources associated with the project
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// The date and time when the project was last updated, (ISO8601)
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 }
 
 func (GetProjectsProjectArgs) ElementType() reflect.Type {
@@ -4577,18 +4774,22 @@ func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx cont
 	return o
 }
 
+// The date and time when the project was created, (ISO8601)
 func (o GetProjectsProjectOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The description of the project
 func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
 func (o GetProjectsProjectOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Environment }).(pulumi.StringOutput)
 }
 
+// The ID of the project
 func (o GetProjectsProjectOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4597,26 +4798,32 @@ func (o GetProjectsProjectOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
+// The name of the project
 func (o GetProjectsProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project owner
 func (o GetProjectsProjectOutput) OwnerId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.OwnerId }).(pulumi.IntOutput)
 }
 
+// The unique universal identifier of the project owner
 func (o GetProjectsProjectOutput) OwnerUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.OwnerUuid }).(pulumi.StringOutput)
 }
 
+// The purpose of the project (Default: "Web Application")
 func (o GetProjectsProjectOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Purpose }).(pulumi.StringOutput)
 }
 
+// A set of uniform resource names (URNs) for the resources associated with the project
 func (o GetProjectsProjectOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetProjectsProject) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// The date and time when the project was last updated, (ISO8601)
 func (o GetProjectsProjectOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -4863,11 +5070,16 @@ func (o GetRegionsFilterArrayOutput) Index(i pulumi.IntInput) GetRegionsFilterOu
 }
 
 type GetRegionsRegion struct {
-	Available bool     `pulumi:"available"`
-	Features  []string `pulumi:"features"`
-	Name      string   `pulumi:"name"`
-	Sizes     []string `pulumi:"sizes"`
-	Slug      string   `pulumi:"slug"`
+	// A boolean value that represents whether new Droplets can be created in this region.
+	Available bool `pulumi:"available"`
+	// A set of features available in this region.
+	Features []string `pulumi:"features"`
+	// The display name of the region.
+	Name string `pulumi:"name"`
+	// A set of identifying slugs for the Droplet sizes available in this region.
+	Sizes []string `pulumi:"sizes"`
+	// A human-readable string that is used as a unique identifier for each region.
+	Slug string `pulumi:"slug"`
 }
 
 // GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
@@ -4882,11 +5094,16 @@ type GetRegionsRegionInput interface {
 }
 
 type GetRegionsRegionArgs struct {
-	Available pulumi.BoolInput        `pulumi:"available"`
-	Features  pulumi.StringArrayInput `pulumi:"features"`
-	Name      pulumi.StringInput      `pulumi:"name"`
-	Sizes     pulumi.StringArrayInput `pulumi:"sizes"`
-	Slug      pulumi.StringInput      `pulumi:"slug"`
+	// A boolean value that represents whether new Droplets can be created in this region.
+	Available pulumi.BoolInput `pulumi:"available"`
+	// A set of features available in this region.
+	Features pulumi.StringArrayInput `pulumi:"features"`
+	// The display name of the region.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A set of identifying slugs for the Droplet sizes available in this region.
+	Sizes pulumi.StringArrayInput `pulumi:"sizes"`
+	// A human-readable string that is used as a unique identifier for each region.
+	Slug pulumi.StringInput `pulumi:"slug"`
 }
 
 func (GetRegionsRegionArgs) ElementType() reflect.Type {
@@ -4940,22 +5157,27 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.
 	return o
 }
 
+// A boolean value that represents whether new Droplets can be created in this region.
 func (o GetRegionsRegionOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegionsRegion) bool { return v.Available }).(pulumi.BoolOutput)
 }
 
+// A set of features available in this region.
 func (o GetRegionsRegionOutput) Features() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Features }).(pulumi.StringArrayOutput)
 }
 
+// The display name of the region.
 func (o GetRegionsRegionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegion) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A set of identifying slugs for the Droplet sizes available in this region.
 func (o GetRegionsRegionOutput) Sizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Sizes }).(pulumi.StringArrayOutput)
 }
 
+// A human-readable string that is used as a unique identifier for each region.
 func (o GetRegionsRegionOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegion) string { return v.Slug }).(pulumi.StringOutput)
 }
@@ -5483,10 +5705,14 @@ func (o GetSizesSortArrayOutput) Index(i pulumi.IntInput) GetSizesSortOutput {
 }
 
 type GetSpacesBucketsBucket struct {
+	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName string `pulumi:"bucketDomainName"`
-	Name             string `pulumi:"name"`
-	Region           string `pulumi:"region"`
-	Urn              string `pulumi:"urn"`
+	// The name of the Spaces bucket
+	Name string `pulumi:"name"`
+	// The slug of the region where the bucket is stored.
+	Region string `pulumi:"region"`
+	// The uniform resource name of the bucket
+	Urn string `pulumi:"urn"`
 }
 
 // GetSpacesBucketsBucketInput is an input type that accepts GetSpacesBucketsBucketArgs and GetSpacesBucketsBucketOutput values.
@@ -5501,10 +5727,14 @@ type GetSpacesBucketsBucketInput interface {
 }
 
 type GetSpacesBucketsBucketArgs struct {
+	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName pulumi.StringInput `pulumi:"bucketDomainName"`
-	Name             pulumi.StringInput `pulumi:"name"`
-	Region           pulumi.StringInput `pulumi:"region"`
-	Urn              pulumi.StringInput `pulumi:"urn"`
+	// The name of the Spaces bucket
+	Name pulumi.StringInput `pulumi:"name"`
+	// The slug of the region where the bucket is stored.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The uniform resource name of the bucket
+	Urn pulumi.StringInput `pulumi:"urn"`
 }
 
 func (GetSpacesBucketsBucketArgs) ElementType() reflect.Type {
@@ -5558,18 +5788,22 @@ func (o GetSpacesBucketsBucketOutput) ToGetSpacesBucketsBucketOutputWithContext(
 	return o
 }
 
+// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 func (o GetSpacesBucketsBucketOutput) BucketDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.BucketDomainName }).(pulumi.StringOutput)
 }
 
+// The name of the Spaces bucket
 func (o GetSpacesBucketsBucketOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The slug of the region where the bucket is stored.
 func (o GetSpacesBucketsBucketOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The uniform resource name of the bucket
 func (o GetSpacesBucketsBucketOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Urn }).(pulumi.StringOutput)
 }

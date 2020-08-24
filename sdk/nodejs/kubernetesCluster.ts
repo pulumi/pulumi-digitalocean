@@ -86,7 +86,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly clusterSubnet!: pulumi.Output<string>;
     /**
-     * The date and time when the Kubernetes cluster was created.
+     * The date and time when the node was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -99,19 +99,11 @@ export class KubernetesCluster extends pulumi.CustomResource {
     public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
     public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
     /**
-     * A name for the Kubernetes cluster.
+     * A name for the node pool.
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
-     * - `name` - (Required) A name for the node pool.
-     * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-     * - `autoScale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-     * - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-     * - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-     * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
-     * - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
     public readonly nodePool!: pulumi.Output<outputs.KubernetesClusterNodePool>;
     /**
@@ -123,7 +115,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceSubnet!: pulumi.Output<string>;
     /**
-     * A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+     * A string indicating the current status of the individual node.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -131,15 +123,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * The date and time when the Kubernetes cluster was last updated.
-     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-     * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-     * - `token` - The DigitalOcean API access token used by clients to access the cluster.
-     * - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+     * The date and time when the node was last updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
@@ -223,7 +207,7 @@ export interface KubernetesClusterState {
      */
     readonly clusterSubnet?: pulumi.Input<string>;
     /**
-     * The date and time when the Kubernetes cluster was created.
+     * The date and time when the node was created.
      */
     readonly createdAt?: pulumi.Input<string>;
     /**
@@ -236,19 +220,11 @@ export interface KubernetesClusterState {
     readonly ipv4Address?: pulumi.Input<string>;
     readonly kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;
     /**
-     * A name for the Kubernetes cluster.
+     * A name for the node pool.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
-     * - `name` - (Required) A name for the node pool.
-     * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-     * - `autoScale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-     * - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-     * - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-     * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
-     * - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
     readonly nodePool?: pulumi.Input<inputs.KubernetesClusterNodePool>;
     /**
@@ -260,7 +236,7 @@ export interface KubernetesClusterState {
      */
     readonly serviceSubnet?: pulumi.Input<string>;
     /**
-     * A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+     * A string indicating the current status of the individual node.
      */
     readonly status?: pulumi.Input<string>;
     /**
@@ -268,15 +244,7 @@ export interface KubernetesClusterState {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The date and time when the Kubernetes cluster was last updated.
-     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-     * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-     * - `token` - The DigitalOcean API access token used by clients to access the cluster.
-     * - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
+     * The date and time when the node was last updated.
      */
     readonly updatedAt?: pulumi.Input<string>;
     /**
@@ -294,19 +262,11 @@ export interface KubernetesClusterState {
  */
 export interface KubernetesClusterArgs {
     /**
-     * A name for the Kubernetes cluster.
+     * A name for the node pool.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
-     * - `name` - (Required) A name for the node pool.
-     * - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-     * - `nodeCount` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-     * - `autoScale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-     * - `minNodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-     * - `maxNodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-     * - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
-     * - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
     readonly nodePool: pulumi.Input<inputs.KubernetesClusterNodePool>;
     /**

@@ -118,12 +118,6 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     public readonly nodeCount!: pulumi.Output<number | undefined>;
     /**
      * A list of nodes in the pool. Each node exports the following attributes:
-     * - `id` -  A unique ID that can be used to identify and reference the node.
-     * - `name` - The auto-generated name for the node.
-     * - `status` -  A string indicating the current status of the individual node.
-     * - `dropletId` - The id of the node's droplet
-     * - `createdAt` - The date and time when the node was created.
-     * - `updatedAt` - The date and time when the node was last updated.
      */
     public /*out*/ readonly nodes!: pulumi.Output<outputs.KubernetesNodePoolNode[]>;
     /**
@@ -227,12 +221,6 @@ export interface KubernetesNodePoolState {
     readonly nodeCount?: pulumi.Input<number>;
     /**
      * A list of nodes in the pool. Each node exports the following attributes:
-     * - `id` -  A unique ID that can be used to identify and reference the node.
-     * - `name` - The auto-generated name for the node.
-     * - `status` -  A string indicating the current status of the individual node.
-     * - `dropletId` - The id of the node's droplet
-     * - `createdAt` - The date and time when the node was created.
-     * - `updatedAt` - The date and time when the node was last updated.
      */
     readonly nodes?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolNode>[]>;
     /**

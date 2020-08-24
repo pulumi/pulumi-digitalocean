@@ -13,10 +13,25 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetRegionsRegionResult
     {
+        /// <summary>
+        /// A boolean value that represents whether new Droplets can be created in this region.
+        /// </summary>
         public readonly bool Available;
+        /// <summary>
+        /// A set of features available in this region.
+        /// </summary>
         public readonly ImmutableArray<string> Features;
+        /// <summary>
+        /// The display name of the region.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// A set of identifying slugs for the Droplet sizes available in this region.
+        /// </summary>
         public readonly ImmutableArray<string> Sizes;
+        /// <summary>
+        /// A human-readable string that is used as a unique identifier for each region.
+        /// </summary>
         public readonly string Slug;
 
         [OutputConstructor]

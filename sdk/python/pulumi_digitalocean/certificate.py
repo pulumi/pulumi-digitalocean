@@ -5,52 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Certificate']
 
 
 class Certificate(pulumi.CustomResource):
-    certificate_chain: pulumi.Output[str]
-    """
-    The full PEM-formatted trust chain
-    between the certificate authority's certificate and your domain's TLS
-    certificate. Only valid when type is `custom`.
-    """
-    domains: pulumi.Output[list]
-    """
-    List of fully qualified domain names (FQDNs) for
-    which the certificate will be issued. The domains must be managed using
-    DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
-    """
-    leaf_certificate: pulumi.Output[str]
-    """
-    The contents of a PEM-formatted public
-    TLS certificate. Only valid when type is `custom`.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the certificate for identification.
-    """
-    not_after: pulumi.Output[str]
-    """
-    The expiration date of the certificate
-    """
-    private_key: pulumi.Output[str]
-    """
-    The contents of a PEM-formatted private-key
-    corresponding to the SSL certificate. Only valid when type is `custom`.
-    """
-    sha1_fingerprint: pulumi.Output[str]
-    """
-    The SHA-1 fingerprint of the certificate
-    """
-    state: pulumi.Output[str]
-    type: pulumi.Output[str]
-    """
-    The type of certificate to provision. Can be either
-    `custom` or `lets_encrypt`. Defaults to `custom`.
-    """
-    def __init__(__self__, resource_name, opts=None, certificate_chain=None, domains=None, leaf_certificate=None, name=None, private_key=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_chain: Optional[pulumi.Input[str]] = None,
+                 domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 leaf_certificate: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean Certificate resource that allows you to manage
         certificates for configuring TLS termination in Load Balancers.
@@ -98,13 +71,13 @@ class Certificate(pulumi.CustomResource):
         public = digitalocean.LoadBalancer("public",
             region="nyc3",
             droplet_tag="backend",
-            forwarding_rules=[{
-                "entryPort": 443,
-                "entryProtocol": "https",
-                "targetPort": 80,
-                "targetProtocol": "http",
-                "certificate_id": cert.id,
-            }])
+            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
+                entry_port=443,
+                entry_protocol="https",
+                target_port=80,
+                target_protocol="http",
+                certificate_id=cert.id,
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -112,7 +85,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain
                between the certificate authority's certificate and your domain's TLS
                certificate. Only valid when type is `custom`.
-        :param pulumi.Input[list] domains: List of fully qualified domain names (FQDNs) for
+        :param pulumi.Input[List[pulumi.Input[str]]] domains: List of fully qualified domain names (FQDNs) for
                which the certificate will be issued. The domains must be managed using
                DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
         :param pulumi.Input[str] leaf_certificate: The contents of a PEM-formatted public
@@ -134,7 +107,7 @@ class Certificate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -156,18 +129,29 @@ class Certificate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, certificate_chain=None, domains=None, leaf_certificate=None, name=None, not_after=None, private_key=None, sha1_fingerprint=None, state=None, type=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_chain: Optional[pulumi.Input[str]] = None,
+            domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            leaf_certificate: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            not_after: Optional[pulumi.Input[str]] = None,
+            private_key: Optional[pulumi.Input[str]] = None,
+            sha1_fingerprint: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain
                between the certificate authority's certificate and your domain's TLS
                certificate. Only valid when type is `custom`.
-        :param pulumi.Input[list] domains: List of fully qualified domain names (FQDNs) for
+        :param pulumi.Input[List[pulumi.Input[str]]] domains: List of fully qualified domain names (FQDNs) for
                which the certificate will be issued. The domains must be managed using
                DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
         :param pulumi.Input[str] leaf_certificate: The contents of a PEM-formatted public
@@ -195,8 +179,85 @@ class Certificate(pulumi.CustomResource):
         __props__["type"] = type
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="certificateChain")
+    def certificate_chain(self) -> Optional[str]:
+        """
+        The full PEM-formatted trust chain
+        between the certificate authority's certificate and your domain's TLS
+        certificate. Only valid when type is `custom`.
+        """
+        return pulumi.get(self, "certificate_chain")
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[List[str]]:
+        """
+        List of fully qualified domain names (FQDNs) for
+        which the certificate will be issued. The domains must be managed using
+        DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="leafCertificate")
+    def leaf_certificate(self) -> Optional[str]:
+        """
+        The contents of a PEM-formatted public
+        TLS certificate. Only valid when type is `custom`.
+        """
+        return pulumi.get(self, "leaf_certificate")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the certificate for identification.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notAfter")
+    def not_after(self) -> str:
+        """
+        The expiration date of the certificate
+        """
+        return pulumi.get(self, "not_after")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        """
+        The contents of a PEM-formatted private-key
+        corresponding to the SSL certificate. Only valid when type is `custom`.
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="sha1Fingerprint")
+    def sha1_fingerprint(self) -> str:
+        """
+        The SHA-1 fingerprint of the certificate
+        """
+        return pulumi.get(self, "sha1_fingerprint")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of certificate to provision. Can be either
+        `custom` or `lets_encrypt`. Defaults to `custom`.
+        """
+        return pulumi.get(self, "type")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

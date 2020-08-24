@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetTagsResult',
+    'AwaitableGetTagsResult',
+    'get_tags',
+]
+
+@pulumi.output_type
 class GetTagsResult:
     """
     A collection of values returned by getTags.
@@ -15,19 +24,41 @@ class GetTagsResult:
     def __init__(__self__, filters=None, id=None, sorts=None, tags=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
-        __self__.filters = filters
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if sorts and not isinstance(sorts, list):
+            raise TypeError("Expected argument 'sorts' to be a list")
+        pulumi.set(__self__, "sorts", sorts)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[List['outputs.GetTagsFilterResult']]:
+        return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if sorts and not isinstance(sorts, list):
-            raise TypeError("Expected argument 'sorts' to be a list")
-        __self__.sorts = sorts
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def sorts(self) -> Optional[List['outputs.GetTagsSortResult']]:
+        return pulumi.get(self, "sorts")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List['outputs.GetTagsTagResult']:
+        return pulumi.get(self, "tags")
+
+
 class AwaitableGetTagsResult(GetTagsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +70,10 @@ class AwaitableGetTagsResult(GetTagsResult):
             sorts=self.sorts,
             tags=self.tags)
 
-def get_tags(filters=None,sorts=None,opts=None):
+
+def get_tags(filters: Optional[List[pulumi.InputType['GetTagsFilterArgs']]] = None,
+             sorts: Optional[List[pulumi.InputType['GetTagsSortArgs']]] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagsResult:
     """
     Returns a list of tags in your DigitalOcean account, with the ability to
     filter and sort the results. If no filters are specified, all tags will be
@@ -51,43 +85,30 @@ def get_tags(filters=None,sorts=None,opts=None):
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    list = digitalocean.get_tags(sorts=[{
-        "key": "total_resource_count",
-        "direction": "asc",
-    }])
+    list = digitalocean.get_tags(sorts=[digitalocean.GetTagsSortArgs(
+        key="total_resource_count",
+        direction="asc",
+    )])
     pulumi.export("sortedTags", list.tags)
     ```
 
 
-    :param list filters: Filter the results.
+    :param List[pulumi.InputType['GetTagsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param list sorts: Sort the results.
+    :param List[pulumi.InputType['GetTagsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
-
-    The **filters** object supports the following:
-
-      * `key` (`str`) - Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
-      * `values` (`list`) - Only retrieves tags which keys has value that matches
-        one of the values provided here.
-
-    The **sorts** object supports the following:
-
-      * `direction` (`str`) - The sort direction. This may be either `asc` or `desc`.
-      * `key` (`str`) - Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['sorts'] = sorts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getTags:getTags', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getTags:getTags', __args__, opts=opts, typ=GetTagsResult).value
 
     return AwaitableGetTagsResult(
-        filters=__ret__.get('filters'),
-        id=__ret__.get('id'),
-        sorts=__ret__.get('sorts'),
-        tags=__ret__.get('tags'))
+        filters=__ret__.filters,
+        id=__ret__.id,
+        sorts=__ret__.sorts,
+        tags=__ret__.tags)
