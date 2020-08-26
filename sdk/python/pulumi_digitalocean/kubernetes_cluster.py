@@ -5,108 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['KubernetesCluster']
 
 
 class KubernetesCluster(pulumi.CustomResource):
-    cluster_subnet: pulumi.Output[str]
-    """
-    The range of IP addresses in the overlay network of the Kubernetes cluster.
-    """
-    created_at: pulumi.Output[str]
-    """
-    The date and time when the Kubernetes cluster was created.
-    """
-    endpoint: pulumi.Output[str]
-    """
-    The base URL of the API server on the Kubernetes master node.
-    """
-    ipv4_address: pulumi.Output[str]
-    """
-    The public IPv4 address of the Kubernetes master node.
-    """
-    kube_configs: pulumi.Output[list]
-    name: pulumi.Output[str]
-    """
-    A name for the Kubernetes cluster.
-    """
-    node_pool: pulumi.Output[dict]
-    """
-    A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-    - `name` - (Required) A name for the node pool.
-    - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-    - `node_count` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-    - `auto_scale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-    - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-    - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-    - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
-    - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-
-      * `actual_node_count` (`float`)
-      * `auto_scale` (`bool`)
-      * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
-      * `labels` (`dict`)
-      * `max_nodes` (`float`)
-      * `min_nodes` (`float`)
-      * `name` (`str`) - A name for the Kubernetes cluster.
-      * `node_count` (`float`)
-      * `nodes` (`list`)
-        * `created_at` (`str`) - The date and time when the Kubernetes cluster was created.
-        * `droplet_id` (`str`)
-        * `id` (`str`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
-        * `name` (`str`) - A name for the Kubernetes cluster.
-        * `status` (`str`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
-        * `updated_at` (`str`) - The date and time when the Kubernetes cluster was last updated.
-          * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-          - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
-          - `host` - The URL of the API server on the Kubernetes master node.
-          - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
-          - `token` - The DigitalOcean API access token used by clients to access the cluster.
-          - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-          - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-          - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
-
-      * `size` (`str`)
-      * `tags` (`list`) - A list of tag names to be applied to the Kubernetes cluster.
-    """
-    region: pulumi.Output[str]
-    """
-    The slug identifier for the region where the Kubernetes cluster will be created.
-    """
-    service_subnet: pulumi.Output[str]
-    """
-    The range of assignable IP addresses for services running in the Kubernetes cluster.
-    """
-    status: pulumi.Output[str]
-    """
-    A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of tag names to be applied to the Kubernetes cluster.
-    """
-    updated_at: pulumi.Output[str]
-    """
-    The date and time when the Kubernetes cluster was last updated.
-    * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-    - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
-    - `host` - The URL of the API server on the Kubernetes master node.
-    - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
-    - `token` - The DigitalOcean API access token used by clients to access the cluster.
-    - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-    - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-    - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
-    """
-    version: pulumi.Output[str]
-    """
-    The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
-    """
-    vpc_uuid: pulumi.Output[str]
-    """
-    The ID of the VPC where the Kubernetes cluster will be located.
-    """
-    def __init__(__self__, resource_name, opts=None, name=None, node_pool=None, region=None, tags=None, version=None, vpc_uuid=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 vpc_uuid: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
 
@@ -118,11 +37,11 @@ class KubernetesCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foo = digitalocean.KubernetesCluster("foo",
-            node_pool={
-                "name": "worker-pool",
-                "node_count": 3,
-                "size": "s-2vcpu-2gb",
-            },
+            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
+                name="worker-pool",
+                node_count=3,
+                size="s-2vcpu-2gb",
+            ),
             region="nyc1",
             version="1.15.5-do.1")
         ```
@@ -136,13 +55,13 @@ class KubernetesCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foo = digitalocean.KubernetesCluster("foo",
-            node_pool={
-                "auto_scale": True,
-                "max_nodes": 5,
-                "min_nodes": 1,
-                "name": "autoscale-worker-pool",
-                "size": "s-2vcpu-2gb",
-            },
+            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
+                auto_scale=True,
+                max_nodes=5,
+                min_nodes=1,
+                name="autoscale-worker-pool",
+                size="s-2vcpu-2gb",
+            ),
             region="nyc1",
             version="1.15.5-do.1")
         ```
@@ -151,49 +70,12 @@ class KubernetesCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A name for the Kubernetes cluster.
-        :param pulumi.Input[dict] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-               - `name` - (Required) A name for the node pool.
-               - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-               - `node_count` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-               - `auto_scale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-               - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-               - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-               - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
-               - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
-        :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
-
-        The **node_pool** object supports the following:
-
-          * `actual_node_count` (`pulumi.Input[float]`)
-          * `auto_scale` (`pulumi.Input[bool]`)
-          * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
-          * `labels` (`pulumi.Input[dict]`)
-          * `max_nodes` (`pulumi.Input[float]`)
-          * `min_nodes` (`pulumi.Input[float]`)
-          * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
-          * `node_count` (`pulumi.Input[float]`)
-          * `nodes` (`pulumi.Input[list]`)
-            * `created_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was created.
-            * `droplet_id` (`pulumi.Input[str]`)
-            * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
-            * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
-            * `status` (`pulumi.Input[str]`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
-            * `updated_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was last updated.
-              * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-              - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
-              - `host` - The URL of the API server on the Kubernetes master node.
-              - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
-              - `token` - The DigitalOcean API access token used by clients to access the cluster.
-              - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-              - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-              - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
-
-          * `size` (`pulumi.Input[str]`)
-          * `tags` (`pulumi.Input[list]`) - A list of tag names to be applied to the Kubernetes cluster.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -206,7 +88,7 @@ class KubernetesCluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -239,82 +121,43 @@ class KubernetesCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_subnet=None, created_at=None, endpoint=None, ipv4_address=None, kube_configs=None, name=None, node_pool=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None, vpc_uuid=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_subnet: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            endpoint: Optional[pulumi.Input[str]] = None,
+            ipv4_address: Optional[pulumi.Input[str]] = None,
+            kube_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KubernetesClusterKubeConfigArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            service_subnet: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None,
+            version: Optional[pulumi.Input[str]] = None,
+            vpc_uuid: Optional[pulumi.Input[str]] = None) -> 'KubernetesCluster':
         """
         Get an existing KubernetesCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster.
-        :param pulumi.Input[str] created_at: The date and time when the Kubernetes cluster was created.
+        :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node.
-        :param pulumi.Input[str] name: A name for the Kubernetes cluster.
-        :param pulumi.Input[dict] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-               - `name` - (Required) A name for the node pool.
-               - `size` - (Required) The slug identifier for the type of Droplet to be used as workers in the node pool.
-               - `node_count` - (Optional) The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-               - `auto_scale` - (Optional) Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-               - `min_nodes` - (Optional) If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-               - `max_nodes` - (Optional) If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-               - `tags` - (Optional) A list of tag names to be applied to the Kubernetes cluster.
-               - `labels` - (Optional) A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
-        :param pulumi.Input[str] status: A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
-        :param pulumi.Input[list] tags: A list of tag names to be applied to the Kubernetes cluster.
-        :param pulumi.Input[str] updated_at: The date and time when the Kubernetes cluster was last updated.
-               * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-               - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
-               - `host` - The URL of the API server on the Kubernetes master node.
-               - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
-               - `token` - The DigitalOcean API access token used by clients to access the cluster.
-               - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-               - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-               - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
+        :param pulumi.Input[str] status: A string indicating the current status of the individual node.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
-
-        The **kube_configs** object supports the following:
-
-          * `clientCertificate` (`pulumi.Input[str]`)
-          * `clientKey` (`pulumi.Input[str]`)
-          * `clusterCaCertificate` (`pulumi.Input[str]`)
-          * `expiresAt` (`pulumi.Input[str]`)
-          * `host` (`pulumi.Input[str]`)
-          * `rawConfig` (`pulumi.Input[str]`)
-          * `token` (`pulumi.Input[str]`)
-
-        The **node_pool** object supports the following:
-
-          * `actual_node_count` (`pulumi.Input[float]`)
-          * `auto_scale` (`pulumi.Input[bool]`)
-          * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
-          * `labels` (`pulumi.Input[dict]`)
-          * `max_nodes` (`pulumi.Input[float]`)
-          * `min_nodes` (`pulumi.Input[float]`)
-          * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
-          * `node_count` (`pulumi.Input[float]`)
-          * `nodes` (`pulumi.Input[list]`)
-            * `created_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was created.
-            * `droplet_id` (`pulumi.Input[str]`)
-            * `id` (`pulumi.Input[str]`) - A unique ID that can be used to identify and reference a Kubernetes cluster.
-            * `name` (`pulumi.Input[str]`) - A name for the Kubernetes cluster.
-            * `status` (`pulumi.Input[str]`) - A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
-            * `updated_at` (`pulumi.Input[str]`) - The date and time when the Kubernetes cluster was last updated.
-              * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-              - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
-              - `host` - The URL of the API server on the Kubernetes master node.
-              - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
-              - `token` - The DigitalOcean API access token used by clients to access the cluster.
-              - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-              - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-              - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
-
-          * `size` (`pulumi.Input[str]`)
-          * `tags` (`pulumi.Input[list]`) - A list of tag names to be applied to the Kubernetes cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -336,8 +179,118 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__["vpc_uuid"] = vpc_uuid
         return KubernetesCluster(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterSubnet")
+    def cluster_subnet(self) -> str:
+        """
+        The range of IP addresses in the overlay network of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "cluster_subnet")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time when the node was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The base URL of the API server on the Kubernetes master node.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="ipv4Address")
+    def ipv4_address(self) -> str:
+        """
+        The public IPv4 address of the Kubernetes master node.
+        """
+        return pulumi.get(self, "ipv4_address")
+
+    @property
+    @pulumi.getter(name="kubeConfigs")
+    def kube_configs(self) -> List['outputs.KubernetesClusterKubeConfig']:
+        return pulumi.get(self, "kube_configs")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for the node pool.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodePool")
+    def node_pool(self) -> 'outputs.KubernetesClusterNodePool':
+        """
+        A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+        """
+        return pulumi.get(self, "node_pool")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The slug identifier for the region where the Kubernetes cluster will be created.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="serviceSubnet")
+    def service_subnet(self) -> str:
+        """
+        The range of assignable IP addresses for services running in the Kubernetes cluster.
+        """
+        return pulumi.get(self, "service_subnet")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        A string indicating the current status of the individual node.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A list of tag names to be applied to the Kubernetes cluster.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        The date and time when the node was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> str:
+        """
+        The ID of the VPC where the Kubernetes cluster will be located.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

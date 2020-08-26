@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetRecordResult',
+    'AwaitableGetRecordResult',
+    'get_record',
+]
+
+@pulumi.output_type
 class GetRecordResult:
     """
     A collection of values returned by getRecord.
@@ -15,40 +22,97 @@ class GetRecordResult:
     def __init__(__self__, data=None, domain=None, flags=None, id=None, name=None, port=None, priority=None, tag=None, ttl=None, type=None, weight=None):
         if data and not isinstance(data, str):
             raise TypeError("Expected argument 'data' to be a str")
-        __self__.data = data
+        pulumi.set(__self__, "data", data)
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
-        __self__.domain = domain
+        pulumi.set(__self__, "domain", domain)
         if flags and not isinstance(flags, float):
             raise TypeError("Expected argument 'flags' to be a float")
-        __self__.flags = flags
+        pulumi.set(__self__, "flags", flags)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if port and not isinstance(port, float):
+            raise TypeError("Expected argument 'port' to be a float")
+        pulumi.set(__self__, "port", port)
+        if priority and not isinstance(priority, float):
+            raise TypeError("Expected argument 'priority' to be a float")
+        pulumi.set(__self__, "priority", priority)
+        if tag and not isinstance(tag, str):
+            raise TypeError("Expected argument 'tag' to be a str")
+        pulumi.set(__self__, "tag", tag)
+        if ttl and not isinstance(ttl, float):
+            raise TypeError("Expected argument 'ttl' to be a float")
+        pulumi.set(__self__, "ttl", ttl)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+        if weight and not isinstance(weight, float):
+            raise TypeError("Expected argument 'weight' to be a float")
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def data(self) -> str:
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> float:
+        return pulumi.get(self, "flags")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
-        __self__.port = port
-        if priority and not isinstance(priority, float):
-            raise TypeError("Expected argument 'priority' to be a float")
-        __self__.priority = priority
-        if tag and not isinstance(tag, str):
-            raise TypeError("Expected argument 'tag' to be a str")
-        __self__.tag = tag
-        if ttl and not isinstance(ttl, float):
-            raise TypeError("Expected argument 'ttl' to be a float")
-        __self__.ttl = ttl
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
-        if weight and not isinstance(weight, float):
-            raise TypeError("Expected argument 'weight' to be a float")
-        __self__.weight = weight
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> float:
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> float:
+        return pulumi.get(self, "weight")
+
+
 class AwaitableGetRecordResult(GetRecordResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +131,10 @@ class AwaitableGetRecordResult(GetRecordResult):
             type=self.type,
             weight=self.weight)
 
-def get_record(domain=None,name=None,opts=None):
+
+def get_record(domain: Optional[str] = None,
+               name: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecordResult:
     """
     Get information on a DNS record. This data source provides the name, TTL, and zone
     file as configured on your DigitalOcean account. This is useful if the record
@@ -95,25 +162,23 @@ def get_record(domain=None,name=None,opts=None):
     :param str name: The name of the record.
     """
     __args__ = dict()
-
-
     __args__['domain'] = domain
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult).value
 
     return AwaitableGetRecordResult(
-        data=__ret__.get('data'),
-        domain=__ret__.get('domain'),
-        flags=__ret__.get('flags'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        port=__ret__.get('port'),
-        priority=__ret__.get('priority'),
-        tag=__ret__.get('tag'),
-        ttl=__ret__.get('ttl'),
-        type=__ret__.get('type'),
-        weight=__ret__.get('weight'))
+        data=__ret__.data,
+        domain=__ret__.domain,
+        flags=__ret__.flags,
+        id=__ret__.id,
+        name=__ret__.name,
+        port=__ret__.port,
+        priority=__ret__.priority,
+        tag=__ret__.tag,
+        ttl=__ret__.ttl,
+        type=__ret__.type,
+        weight=__ret__.weight)

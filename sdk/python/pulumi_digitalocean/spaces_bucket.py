@@ -5,72 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['SpacesBucket']
 
 
 class SpacesBucket(pulumi.CustomResource):
-    acl: pulumi.Output[str]
-    """
-    Canned ACL applied on bucket creation (`private` or `public-read`)
-    """
-    bucket_domain_name: pulumi.Output[str]
-    """
-    The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
-    """
-    bucket_urn: pulumi.Output[str]
-    """
-    The uniform resource name for the bucket
-    """
-    cors_rules: pulumi.Output[list]
-    """
-    A rule of Cross-Origin Resource Sharing (documented below).
-
-      * `allowedHeaders` (`list`) - A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-      * `allowedMethods` (`list`) - A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-      * `allowedOrigins` (`list`) - A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-      * `maxAgeSeconds` (`float`) - The time in seconds that browser can cache the response for a preflight request.
-    """
-    force_destroy: pulumi.Output[bool]
-    """
-    Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-    """
-    lifecycle_rules: pulumi.Output[list]
-    """
-    A configuration of object lifecycle management (documented below).
-
-      * `abortIncompleteMultipartUploadDays` (`float`) - Specifies the number of days after initiating a multipart
-        upload when the multipart upload must be completed or else Spaces will abort the upload.
-      * `enabled` (`bool`) - Specifies lifecycle rule status.
-      * `expiration` (`dict`) - Specifies a time period after which applicable objects expire (documented below).
-        * `date` (`str`) - Specifies the date/time after which you want applicable objects to expire. The argument uses
-          RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
-        * `days` (`float`) - Specifies the number of days after object creation when the applicable objects will expire.
-        * `expiredObjectDeleteMarker` (`bool`) - On a versioned bucket (versioning-enabled or versioning-suspended
-          bucket), setting this to true directs Spaces to delete expired object delete markers.
-
-      * `id` (`str`) - Unique identifier for the rule.
-      * `noncurrentVersionExpiration` (`dict`) - Specifies when non-current object versions expire (documented below).
-        * `days` (`float`) - Specifies the number of days after which an object's non-current versions expire.
-
-      * `prefix` (`str`) - Object key prefix identifying one or more objects to which the rule applies.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the bucket
-    """
-    region: pulumi.Output[str]
-    """
-    The region where the bucket resides (Defaults to `nyc3`)
-    """
-    versioning: pulumi.Output[dict]
-    """
-    A state of versioning (documented below)
-
-      * `enabled` (`bool`) - Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
-        state. You can, however, suspend versioning on that bucket.
-    """
-    def __init__(__self__, resource_name, opts=None, acl=None, cors_rules=None, force_destroy=None, lifecycle_rules=None, name=None, region=None, versioning=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 cors_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a bucket resource for Spaces, DigitalOcean's object storage product.
 
@@ -113,22 +69,22 @@ class SpacesBucket(pulumi.CustomResource):
 
         foobar = digitalocean.SpacesBucket("foobar",
             cors_rules=[
-                {
-                    "allowedHeaders": ["*"],
-                    "allowedMethods": ["GET"],
-                    "allowedOrigins": ["*"],
-                    "maxAgeSeconds": 3000,
-                },
-                {
-                    "allowedHeaders": ["*"],
-                    "allowedMethods": [
+                digitalocean.SpacesBucketCorsRuleArgs(
+                    allowed_headers=["*"],
+                    allowed_methods=["GET"],
+                    allowed_origins=["*"],
+                    max_age_seconds=3000,
+                ),
+                digitalocean.SpacesBucketCorsRuleArgs(
+                    allowed_headers=["*"],
+                    allowed_methods=[
                         "PUT",
                         "POST",
                         "DELETE",
                     ],
-                    "allowedOrigins": ["https://www.example.com"],
-                    "maxAgeSeconds": 3000,
-                },
+                    allowed_origins=["https://www.example.com"],
+                    max_age_seconds=3000,
+                ),
             ],
             region="nyc3")
         ```
@@ -136,42 +92,12 @@ class SpacesBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
-        :param pulumi.Input[list] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-        :param pulumi.Input[list] lifecycle_rules: A configuration of object lifecycle management (documented below).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
-        :param pulumi.Input[dict] versioning: A state of versioning (documented below)
-
-        The **cors_rules** object supports the following:
-
-          * `allowedHeaders` (`pulumi.Input[list]`) - A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-          * `allowedMethods` (`pulumi.Input[list]`) - A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-          * `allowedOrigins` (`pulumi.Input[list]`) - A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-          * `maxAgeSeconds` (`pulumi.Input[float]`) - The time in seconds that browser can cache the response for a preflight request.
-
-        The **lifecycle_rules** object supports the following:
-
-          * `abortIncompleteMultipartUploadDays` (`pulumi.Input[float]`) - Specifies the number of days after initiating a multipart
-            upload when the multipart upload must be completed or else Spaces will abort the upload.
-          * `enabled` (`pulumi.Input[bool]`) - Specifies lifecycle rule status.
-          * `expiration` (`pulumi.Input[dict]`) - Specifies a time period after which applicable objects expire (documented below).
-            * `date` (`pulumi.Input[str]`) - Specifies the date/time after which you want applicable objects to expire. The argument uses
-              RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days after object creation when the applicable objects will expire.
-            * `expiredObjectDeleteMarker` (`pulumi.Input[bool]`) - On a versioned bucket (versioning-enabled or versioning-suspended
-              bucket), setting this to true directs Spaces to delete expired object delete markers.
-
-          * `id` (`pulumi.Input[str]`) - Unique identifier for the rule.
-          * `noncurrentVersionExpiration` (`pulumi.Input[dict]`) - Specifies when non-current object versions expire (documented below).
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days after which an object's non-current versions expire.
-
-          * `prefix` (`pulumi.Input[str]`) - Object key prefix identifying one or more objects to which the rule applies.
-
-        The **versioning** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
-            state. You can, however, suspend versioning on that bucket.
+        :param pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']] versioning: A state of versioning (documented below)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -184,7 +110,7 @@ class SpacesBucket(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -206,53 +132,34 @@ class SpacesBucket(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl=None, bucket_domain_name=None, bucket_urn=None, cors_rules=None, force_destroy=None, lifecycle_rules=None, name=None, region=None, versioning=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: Optional[pulumi.Input[str]] = None,
+            bucket_domain_name: Optional[pulumi.Input[str]] = None,
+            bucket_urn: Optional[pulumi.Input[str]] = None,
+            cors_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
+            lifecycle_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None) -> 'SpacesBucket':
         """
         Get an existing SpacesBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
         :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         :param pulumi.Input[str] bucket_urn: The uniform resource name for the bucket
-        :param pulumi.Input[list] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-        :param pulumi.Input[list] lifecycle_rules: A configuration of object lifecycle management (documented below).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
-        :param pulumi.Input[dict] versioning: A state of versioning (documented below)
-
-        The **cors_rules** object supports the following:
-
-          * `allowedHeaders` (`pulumi.Input[list]`) - A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-          * `allowedMethods` (`pulumi.Input[list]`) - A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-          * `allowedOrigins` (`pulumi.Input[list]`) - A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-          * `maxAgeSeconds` (`pulumi.Input[float]`) - The time in seconds that browser can cache the response for a preflight request.
-
-        The **lifecycle_rules** object supports the following:
-
-          * `abortIncompleteMultipartUploadDays` (`pulumi.Input[float]`) - Specifies the number of days after initiating a multipart
-            upload when the multipart upload must be completed or else Spaces will abort the upload.
-          * `enabled` (`pulumi.Input[bool]`) - Specifies lifecycle rule status.
-          * `expiration` (`pulumi.Input[dict]`) - Specifies a time period after which applicable objects expire (documented below).
-            * `date` (`pulumi.Input[str]`) - Specifies the date/time after which you want applicable objects to expire. The argument uses
-              RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days after object creation when the applicable objects will expire.
-            * `expiredObjectDeleteMarker` (`pulumi.Input[bool]`) - On a versioned bucket (versioning-enabled or versioning-suspended
-              bucket), setting this to true directs Spaces to delete expired object delete markers.
-
-          * `id` (`pulumi.Input[str]`) - Unique identifier for the rule.
-          * `noncurrentVersionExpiration` (`pulumi.Input[dict]`) - Specifies when non-current object versions expire (documented below).
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days after which an object's non-current versions expire.
-
-          * `prefix` (`pulumi.Input[str]`) - Object key prefix identifying one or more objects to which the rule applies.
-
-        The **versioning** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
-            state. You can, however, suspend versioning on that bucket.
+        :param pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']] versioning: A state of versioning (documented below)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -269,8 +176,81 @@ class SpacesBucket(pulumi.CustomResource):
         __props__["versioning"] = versioning
         return SpacesBucket(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[str]:
+        """
+        Canned ACL applied on bucket creation (`private` or `public-read`)
+        """
+        return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter(name="bucketDomainName")
+    def bucket_domain_name(self) -> str:
+        """
+        The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+        """
+        return pulumi.get(self, "bucket_domain_name")
+
+    @property
+    @pulumi.getter(name="bucketUrn")
+    def bucket_urn(self) -> str:
+        """
+        The uniform resource name for the bucket
+        """
+        return pulumi.get(self, "bucket_urn")
+
+    @property
+    @pulumi.getter(name="corsRules")
+    def cors_rules(self) -> Optional[List['outputs.SpacesBucketCorsRule']]:
+        """
+        A rule of Cross-Origin Resource Sharing (documented below).
+        """
+        return pulumi.get(self, "cors_rules")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[bool]:
+        """
+        Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @property
+    @pulumi.getter(name="lifecycleRules")
+    def lifecycle_rules(self) -> Optional[List['outputs.SpacesBucketLifecycleRule']]:
+        """
+        A configuration of object lifecycle management (documented below).
+        """
+        return pulumi.get(self, "lifecycle_rules")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the bucket
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The region where the bucket resides (Defaults to `nyc3`)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def versioning(self) -> Optional['outputs.SpacesBucketVersioning']:
+        """
+        A state of versioning (documented below)
+        """
+        return pulumi.get(self, "versioning")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

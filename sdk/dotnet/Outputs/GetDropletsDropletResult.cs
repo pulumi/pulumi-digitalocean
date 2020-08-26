@@ -13,30 +13,99 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetDropletsDropletResult
     {
+        /// <summary>
+        /// Whether backups are enabled.
+        /// </summary>
         public readonly bool Backups;
         public readonly string CreatedAt;
+        /// <summary>
+        /// The size of the Droplet's disk in GB.
+        /// </summary>
         public readonly int Disk;
+        /// <summary>
+        /// The ID of the Droplet.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The Droplet image ID or slug.
+        /// </summary>
         public readonly string Image;
+        /// <summary>
+        /// The Droplet's public IPv4 address
+        /// </summary>
         public readonly string Ipv4Address;
+        /// <summary>
+        /// The Droplet's private IPv4 address
+        /// </summary>
         public readonly string Ipv4AddressPrivate;
+        /// <summary>
+        /// Whether IPv6 is enabled.
+        /// </summary>
         public readonly bool Ipv6;
+        /// <summary>
+        /// The Droplet's public IPv6 address
+        /// </summary>
         public readonly string Ipv6Address;
+        /// <summary>
+        /// The Droplet's private IPv6 address
+        /// </summary>
         public readonly string Ipv6AddressPrivate;
+        /// <summary>
+        /// Whether the Droplet is locked.
+        /// </summary>
         public readonly bool Locked;
+        /// <summary>
+        /// The amount of the Droplet's memory in MB.
+        /// </summary>
         public readonly int Memory;
+        /// <summary>
+        /// Whether monitoring agent is installed.
+        /// </summary>
         public readonly bool Monitoring;
         public readonly string Name;
+        /// <summary>
+        /// Droplet hourly price.
+        /// </summary>
         public readonly double PriceHourly;
+        /// <summary>
+        /// Droplet monthly price.
+        /// </summary>
         public readonly double PriceMonthly;
+        /// <summary>
+        /// Whether private networks are enabled.
+        /// </summary>
         public readonly bool PrivateNetworking;
+        /// <summary>
+        /// The region the Droplet is running in.
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The unique slug that identifies the type of Droplet.
+        /// </summary>
         public readonly string Size;
+        /// <summary>
+        /// The status of the Droplet.
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// A list of the tags associated to the Droplet.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// The uniform resource name of the Droplet
+        /// </summary>
         public readonly string Urn;
+        /// <summary>
+        /// The number of the Droplet's virtual CPUs.
+        /// </summary>
         public readonly int Vcpus;
+        /// <summary>
+        /// List of the IDs of each volumes attached to the Droplet.
+        /// </summary>
         public readonly ImmutableArray<string> VolumeIds;
+        /// <summary>
+        /// The ID of the VPC where the Droplet is located.
+        /// </summary>
         public readonly string VpcUuid;
 
         [OutputConstructor]

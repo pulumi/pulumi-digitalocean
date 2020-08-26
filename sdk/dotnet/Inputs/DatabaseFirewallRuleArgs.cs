@@ -18,6 +18,9 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -27,6 +30,9 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
+        /// <summary>
+        /// The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

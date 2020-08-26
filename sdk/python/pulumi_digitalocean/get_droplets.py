@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetDropletsResult',
+    'AwaitableGetDropletsResult',
+    'get_droplets',
+]
+
+@pulumi.output_type
 class GetDropletsResult:
     """
     A collection of values returned by getDroplets.
@@ -15,22 +24,44 @@ class GetDropletsResult:
     def __init__(__self__, droplets=None, filters=None, id=None, sorts=None):
         if droplets and not isinstance(droplets, list):
             raise TypeError("Expected argument 'droplets' to be a list")
-        __self__.droplets = droplets
+        pulumi.set(__self__, "droplets", droplets)
+        if filters and not isinstance(filters, list):
+            raise TypeError("Expected argument 'filters' to be a list")
+        pulumi.set(__self__, "filters", filters)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if sorts and not isinstance(sorts, list):
+            raise TypeError("Expected argument 'sorts' to be a list")
+        pulumi.set(__self__, "sorts", sorts)
+
+    @property
+    @pulumi.getter
+    def droplets(self) -> List['outputs.GetDropletsDropletResult']:
         """
         A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:
         """
-        if filters and not isinstance(filters, list):
-            raise TypeError("Expected argument 'filters' to be a list")
-        __self__.filters = filters
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "droplets")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[List['outputs.GetDropletsFilterResult']]:
+        return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if sorts and not isinstance(sorts, list):
-            raise TypeError("Expected argument 'sorts' to be a list")
-        __self__.sorts = sorts
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def sorts(self) -> Optional[List['outputs.GetDropletsSortResult']]:
+        return pulumi.get(self, "sorts")
+
+
 class AwaitableGetDropletsResult(GetDropletsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +73,10 @@ class AwaitableGetDropletsResult(GetDropletsResult):
             id=self.id,
             sorts=self.sorts)
 
-def get_droplets(filters=None,sorts=None,opts=None):
+
+def get_droplets(filters: Optional[List[pulumi.InputType['GetDropletsFilterArgs']]] = None,
+                 sorts: Optional[List[pulumi.InputType['GetDropletsSortArgs']]] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletsResult:
     """
     Get information on Droplets for use in other resources, with the ability to filter and sort the results.
     If no filters are specified, all Droplets will be returned.
@@ -63,10 +97,10 @@ def get_droplets(filters=None,sorts=None,opts=None):
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    small = digitalocean.get_droplets(filters=[{
-        "key": "size",
-        "values": ["s-1vcpu-1gb"],
-    }])
+    small = digitalocean.get_droplets(filters=[digitalocean.GetDropletsFilterArgs(
+        key="size",
+        values=["s-1vcpu-1gb"],
+    )])
     ```
 
     You can filter on multiple fields and sort the results as well:
@@ -76,57 +110,38 @@ def get_droplets(filters=None,sorts=None,opts=None):
     import pulumi_digitalocean as digitalocean
 
     small_with_backups = digitalocean.get_droplets(filters=[
-            {
-                "key": "size",
-                "values": ["s-1vcpu-1gb"],
-            },
-            {
-                "key": "backups",
-                "values": ["true"],
-            },
+            digitalocean.GetDropletsFilterArgs(
+                key="size",
+                values=["s-1vcpu-1gb"],
+            ),
+            digitalocean.GetDropletsFilterArgs(
+                key="backups",
+                values=["true"],
+            ),
         ],
-        sorts=[{
-            "direction": "desc",
-            "key": "created_at",
-        }])
+        sorts=[digitalocean.GetDropletsSortArgs(
+            direction="desc",
+            key="created_at",
+        )])
     ```
 
 
-    :param list filters: Filter the results.
+    :param List[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param list sorts: Sort the results.
+    :param List[pulumi.InputType['GetDropletsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
-
-    The **filters** object supports the following:
-
-      * `key` (`str`) - Filter the Droplets by this key. This may be one of '`backups`, `created_at`, `disk`, `id`,
-        `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-        `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-        `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`'.
-      * `values` (`list`) - A list of values to match against the `key` field. Only retrieves Droplets
-        where the `key` field takes on one or more of the values provided here.
-
-    The **sorts** object supports the following:
-
-      * `direction` (`str`) - The sort direction. This may be either `asc` or `desc`.
-      * `key` (`str`) - Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-        `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-        `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-        `status`, `urn`, `vcpus`, or `vpc_uuid`.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['sorts'] = sorts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplets:getDroplets', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplets:getDroplets', __args__, opts=opts, typ=GetDropletsResult).value
 
     return AwaitableGetDropletsResult(
-        droplets=__ret__.get('droplets'),
-        filters=__ret__.get('filters'),
-        id=__ret__.get('id'),
-        sorts=__ret__.get('sorts'))
+        droplets=__ret__.droplets,
+        filters=__ret__.filters,
+        id=__ret__.id,
+        sorts=__ret__.sorts)

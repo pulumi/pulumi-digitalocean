@@ -5,32 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['DatabaseUser']
 
 
 class DatabaseUser(pulumi.CustomResource):
-    cluster_id: pulumi.Output[str]
-    """
-    The ID of the original source database cluster.
-    """
-    mysql_auth_plugin: pulumi.Output[str]
-    """
-    The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
-    """
-    name: pulumi.Output[str]
-    """
-    The name for the database user.
-    """
-    password: pulumi.Output[str]
-    """
-    Password for the database user.
-    """
-    role: pulumi.Output[str]
-    """
-    Role for the database user. The value will be either "primary" or "normal".
-    """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, mysql_auth_plugin=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
 
@@ -68,7 +58,7 @@ class DatabaseUser(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -88,13 +78,20 @@ class DatabaseUser(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, mysql_auth_plugin=None, name=None, password=None, role=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            role: Optional[pulumi.Input[str]] = None) -> 'DatabaseUser':
         """
         Get an existing DatabaseUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] mysql_auth_plugin: The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
@@ -113,8 +110,49 @@ class DatabaseUser(pulumi.CustomResource):
         __props__["role"] = role
         return DatabaseUser(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the original source database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="mysqlAuthPlugin")
+    def mysql_auth_plugin(self) -> Optional[str]:
+        """
+        The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        """
+        return pulumi.get(self, "mysql_auth_plugin")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for the database user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password for the database user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        Role for the database user. The value will be either "primary" or "normal".
+        """
+        return pulumi.get(self, "role")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

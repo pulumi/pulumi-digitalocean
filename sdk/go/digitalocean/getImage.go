@@ -113,10 +113,6 @@ type GetImageArgs struct {
 	// The slug of the official image.
 	Slug *string `pulumi:"slug"`
 	// Restrict the search to one of the following categories of images:
-	// - `all` - All images (whether public or private)
-	// - `applications` - One-click applications
-	// - `distributions` - Distributions
-	// - `user` - (Default) User (private) images
 	Source *string `pulumi:"source"`
 }
 

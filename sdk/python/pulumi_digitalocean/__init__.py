@@ -64,3 +64,10 @@ from .volume import *
 from .volume_attachment import *
 from .volume_snapshot import *
 from .vpc import *
+from ._inputs import *
+from . import outputs
+
+# Make subpackages available:
+from . import (
+    config,
+)

@@ -72,7 +72,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := digitalocean.NewKubernetesNodePool(ctx, "autoscale_pool_01", &digitalocean.KubernetesNodePoolArgs{
-// 			ClusterId: pulumi.String(digitalocean_kubernetes_cluster.Foo.Id),
+// 			ClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),
 // 			Size:      pulumi.String("s-1vcpu-2gb"),
 // 			AutoScale: pulumi.Bool(true),
 // 			MinNodes:  pulumi.Int(0),
@@ -105,12 +105,6 @@ type KubernetesNodePool struct {
 	// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
 	NodeCount pulumi.IntPtrOutput `pulumi:"nodeCount"`
 	// A list of nodes in the pool. Each node exports the following attributes:
-	// - `id` -  A unique ID that can be used to identify and reference the node.
-	// - `name` - The auto-generated name for the node.
-	// - `status` -  A string indicating the current status of the individual node.
-	// - `dropletId` - The id of the node's droplet
-	// - `createdAt` - The date and time when the node was created.
-	// - `updatedAt` - The date and time when the node was last updated.
 	Nodes KubernetesNodePoolNodeArrayOutput `pulumi:"nodes"`
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size pulumi.StringOutput `pulumi:"size"`
@@ -169,12 +163,6 @@ type kubernetesNodePoolState struct {
 	// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
 	NodeCount *int `pulumi:"nodeCount"`
 	// A list of nodes in the pool. Each node exports the following attributes:
-	// - `id` -  A unique ID that can be used to identify and reference the node.
-	// - `name` - The auto-generated name for the node.
-	// - `status` -  A string indicating the current status of the individual node.
-	// - `dropletId` - The id of the node's droplet
-	// - `createdAt` - The date and time when the node was created.
-	// - `updatedAt` - The date and time when the node was last updated.
 	Nodes []KubernetesNodePoolNode `pulumi:"nodes"`
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size *string `pulumi:"size"`
@@ -200,12 +188,6 @@ type KubernetesNodePoolState struct {
 	// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
 	NodeCount pulumi.IntPtrInput
 	// A list of nodes in the pool. Each node exports the following attributes:
-	// - `id` -  A unique ID that can be used to identify and reference the node.
-	// - `name` - The auto-generated name for the node.
-	// - `status` -  A string indicating the current status of the individual node.
-	// - `dropletId` - The id of the node's droplet
-	// - `createdAt` - The date and time when the node was created.
-	// - `updatedAt` - The date and time when the node was last updated.
 	Nodes KubernetesNodePoolNodeArrayInput
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size pulumi.StringPtrInput

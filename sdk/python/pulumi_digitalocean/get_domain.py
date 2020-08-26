@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetDomainResult',
+    'AwaitableGetDomainResult',
+    'get_domain',
+]
+
+@pulumi.output_type
 class GetDomainResult:
     """
     A collection of values returned by getDomain.
@@ -15,26 +22,53 @@ class GetDomainResult:
     def __init__(__self__, domain_urn=None, id=None, name=None, ttl=None, zone_file=None):
         if domain_urn and not isinstance(domain_urn, str):
             raise TypeError("Expected argument 'domain_urn' to be a str")
-        __self__.domain_urn = domain_urn
+        pulumi.set(__self__, "domain_urn", domain_urn)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if ttl and not isinstance(ttl, float):
+            raise TypeError("Expected argument 'ttl' to be a float")
+        pulumi.set(__self__, "ttl", ttl)
+        if zone_file and not isinstance(zone_file, str):
+            raise TypeError("Expected argument 'zone_file' to be a str")
+        pulumi.set(__self__, "zone_file", zone_file)
+
+    @property
+    @pulumi.getter(name="domainUrn")
+    def domain_urn(self) -> str:
         """
         The uniform resource name of the domain
         * `zone_file`: The zone file of the domain.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "domain_urn")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if ttl and not isinstance(ttl, float):
-            raise TypeError("Expected argument 'ttl' to be a float")
-        __self__.ttl = ttl
-        if zone_file and not isinstance(zone_file, str):
-            raise TypeError("Expected argument 'zone_file' to be a str")
-        __self__.zone_file = zone_file
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter(name="zoneFile")
+    def zone_file(self) -> str:
+        return pulumi.get(self, "zone_file")
+
+
 class AwaitableGetDomainResult(GetDomainResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,7 +81,9 @@ class AwaitableGetDomainResult(GetDomainResult):
             ttl=self.ttl,
             zone_file=self.zone_file)
 
-def get_domain(name=None,opts=None):
+
+def get_domain(name: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
     Get information on a domain. This data source provides the name, TTL, and zone
     file as configured on your DigitalOcean account. This is useful if the domain
@@ -73,18 +109,16 @@ def get_domain(name=None,opts=None):
     :param str name: The name of the domain.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDomain:getDomain', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        domain_urn=__ret__.get('domainUrn'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        ttl=__ret__.get('ttl'),
-        zone_file=__ret__.get('zoneFile'))
+        domain_urn=__ret__.domain_urn,
+        id=__ret__.id,
+        name=__ret__.name,
+        ttl=__ret__.ttl,
+        zone_file=__ret__.zone_file)

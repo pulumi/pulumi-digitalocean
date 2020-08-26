@@ -5,56 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['DnsRecord']
 
 
 class DnsRecord(pulumi.CustomResource):
-    domain: pulumi.Output[str]
-    """
-    The domain to add the record to.
-    """
-    flags: pulumi.Output[float]
-    """
-    The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
-    """
-    fqdn: pulumi.Output[str]
-    """
-    The FQDN of the record
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the record. Use `@` for records on domain's name itself.
-    """
-    port: pulumi.Output[float]
-    """
-    The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
-    """
-    priority: pulumi.Output[float]
-    """
-    The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
-    """
-    tag: pulumi.Output[str]
-    """
-    The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
-    """
-    ttl: pulumi.Output[float]
-    """
-    The time to live for the record, in seconds. Must be at least 0.
-    """
-    type: pulumi.Output[str]
-    """
-    The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
-    """
-    value: pulumi.Output[str]
-    """
-    The value of the record.
-    """
-    weight: pulumi.Output[float]
-    """
-    The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
-    """
-    def __init__(__self__, resource_name, opts=None, domain=None, flags=None, name=None, port=None, priority=None, tag=None, ttl=None, type=None, value=None, weight=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 flags: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 tag: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean DNS record resource.
 
@@ -104,7 +77,7 @@ class DnsRecord(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -134,13 +107,26 @@ class DnsRecord(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, domain=None, flags=None, fqdn=None, name=None, port=None, priority=None, tag=None, ttl=None, type=None, value=None, weight=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain: Optional[pulumi.Input[str]] = None,
+            flags: Optional[pulumi.Input[float]] = None,
+            fqdn: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[float]] = None,
+            tag: Optional[pulumi.Input[str]] = None,
+            ttl: Optional[pulumi.Input[float]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None,
+            weight: Optional[pulumi.Input[float]] = None) -> 'DnsRecord':
         """
         Get an existing DnsRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to.
         :param pulumi.Input[float] flags: The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
@@ -171,8 +157,97 @@ class DnsRecord(pulumi.CustomResource):
         __props__["weight"] = weight
         return DnsRecord(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain to add the record to.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[float]:
+        """
+        The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
+        """
+        return pulumi.get(self, "flags")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        """
+        The FQDN of the record
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the record. Use `@` for records on domain's name itself.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[float]:
+        """
+        The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[float]:
+        """
+        The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        """
+        The time to live for the record, in seconds. Must be at least 0.
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the record.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[float]:
+        """
+        The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
+        """
+        return pulumi.get(self, "weight")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

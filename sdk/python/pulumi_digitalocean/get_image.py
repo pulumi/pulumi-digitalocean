@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetImageResult',
+    'AwaitableGetImageResult',
+    'get_image',
+]
+
+@pulumi.output_type
 class GetImageResult:
     """
     A collection of values returned by getImage.
@@ -15,36 +22,96 @@ class GetImageResult:
     def __init__(__self__, created=None, distribution=None, error_message=None, id=None, image=None, min_disk_size=None, name=None, private=None, regions=None, size_gigabytes=None, slug=None, source=None, status=None, tags=None, type=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
-        __self__.created = created
+        pulumi.set(__self__, "created", created)
         if distribution and not isinstance(distribution, str):
             raise TypeError("Expected argument 'distribution' to be a str")
-        __self__.distribution = distribution
+        pulumi.set(__self__, "distribution", distribution)
+        if error_message and not isinstance(error_message, str):
+            raise TypeError("Expected argument 'error_message' to be a str")
+        pulumi.set(__self__, "error_message", error_message)
+        if id and not isinstance(id, float):
+            raise TypeError("Expected argument 'id' to be a float")
+        pulumi.set(__self__, "id", id)
+        if image and not isinstance(image, str):
+            raise TypeError("Expected argument 'image' to be a str")
+        pulumi.set(__self__, "image", image)
+        if min_disk_size and not isinstance(min_disk_size, float):
+            raise TypeError("Expected argument 'min_disk_size' to be a float")
+        pulumi.set(__self__, "min_disk_size", min_disk_size)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if private and not isinstance(private, bool):
+            raise TypeError("Expected argument 'private' to be a bool")
+        pulumi.set(__self__, "private", private)
+        if regions and not isinstance(regions, list):
+            raise TypeError("Expected argument 'regions' to be a list")
+        pulumi.set(__self__, "regions", regions)
+        if size_gigabytes and not isinstance(size_gigabytes, float):
+            raise TypeError("Expected argument 'size_gigabytes' to be a float")
+        pulumi.set(__self__, "size_gigabytes", size_gigabytes)
+        if slug and not isinstance(slug, str):
+            raise TypeError("Expected argument 'slug' to be a str")
+        pulumi.set(__self__, "slug", slug)
+        if source and not isinstance(source, str):
+            raise TypeError("Expected argument 'source' to be a str")
+        pulumi.set(__self__, "source", source)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def distribution(self) -> str:
         """
         The name of the distribution of the OS of the image.
         * `min_disk_size`: The minimum 'disk' required for the image.
         * `size_gigabytes`: The size of the image in GB.
         """
-        if error_message and not isinstance(error_message, str):
-            raise TypeError("Expected argument 'error_message' to be a str")
-        __self__.error_message = error_message
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
-        __self__.id = id
-        if image and not isinstance(image, str):
-            raise TypeError("Expected argument 'image' to be a str")
-        __self__.image = image
+        return pulumi.get(self, "distribution")
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> str:
+        return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter
+    def id(self) -> float:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
         """
         The id of the image (legacy parameter).
         """
-        if min_disk_size and not isinstance(min_disk_size, float):
-            raise TypeError("Expected argument 'min_disk_size' to be a float")
-        __self__.min_disk_size = min_disk_size
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if private and not isinstance(private, bool):
-            raise TypeError("Expected argument 'private' to be a bool")
-        __self__.private = private
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="minDiskSize")
+    def min_disk_size(self) -> float:
+        return pulumi.get(self, "min_disk_size")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def private(self) -> bool:
         """
         Is image a public image or not. Public images represent
         Linux distributions or One-Click Applications, while non-public images represent
@@ -55,27 +122,44 @@ class GetImageResult:
         * `status`: Current status of the image
         * `error_message`: Any applicable error message pertaining to the image
         """
-        if regions and not isinstance(regions, list):
-            raise TypeError("Expected argument 'regions' to be a list")
-        __self__.regions = regions
-        if size_gigabytes and not isinstance(size_gigabytes, float):
-            raise TypeError("Expected argument 'size_gigabytes' to be a float")
-        __self__.size_gigabytes = size_gigabytes
-        if slug and not isinstance(slug, str):
-            raise TypeError("Expected argument 'slug' to be a str")
-        __self__.slug = slug
-        if source and not isinstance(source, str):
-            raise TypeError("Expected argument 'source' to be a str")
-        __self__.source = source
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        return pulumi.get(self, "private")
+
+    @property
+    @pulumi.getter
+    def regions(self) -> List[str]:
+        return pulumi.get(self, "regions")
+
+    @property
+    @pulumi.getter(name="sizeGigabytes")
+    def size_gigabytes(self) -> float:
+        return pulumi.get(self, "size_gigabytes")
+
+    @property
+    @pulumi.getter
+    def slug(self) -> str:
+        return pulumi.get(self, "slug")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List[str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,7 +182,12 @@ class AwaitableGetImageResult(GetImageResult):
             tags=self.tags,
             type=self.type)
 
-def get_image(id=None,name=None,slug=None,source=None,opts=None):
+
+def get_image(id: Optional[float] = None,
+              name: Optional[str] = None,
+              slug: Optional[str] = None,
+              source: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Get information on an image for use in other resources (e.g. creating a Droplet
     based on snapshot). This data source provides all of the image properties as
@@ -145,14 +234,8 @@ def get_image(id=None,name=None,slug=None,source=None,opts=None):
     :param str name: The name of the image.
     :param str slug: The slug of the official image.
     :param str source: Restrict the search to one of the following categories of images:
-           - `all` - All images (whether public or private)
-           - `applications` - One-click applications
-           - `distributions` - Distributions
-           - `user` - (Default) User (private) images
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['name'] = name
     __args__['slug'] = slug
@@ -160,22 +243,22 @@ def get_image(id=None,name=None,slug=None,source=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
-        created=__ret__.get('created'),
-        distribution=__ret__.get('distribution'),
-        error_message=__ret__.get('errorMessage'),
-        id=__ret__.get('id'),
-        image=__ret__.get('image'),
-        min_disk_size=__ret__.get('minDiskSize'),
-        name=__ret__.get('name'),
-        private=__ret__.get('private'),
-        regions=__ret__.get('regions'),
-        size_gigabytes=__ret__.get('sizeGigabytes'),
-        slug=__ret__.get('slug'),
-        source=__ret__.get('source'),
-        status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        type=__ret__.get('type'))
+        created=__ret__.created,
+        distribution=__ret__.distribution,
+        error_message=__ret__.error_message,
+        id=__ret__.id,
+        image=__ret__.image,
+        min_disk_size=__ret__.min_disk_size,
+        name=__ret__.name,
+        private=__ret__.private,
+        regions=__ret__.regions,
+        size_gigabytes=__ret__.size_gigabytes,
+        slug=__ret__.slug,
+        source=__ret__.source,
+        status=__ret__.status,
+        tags=__ret__.tags,
+        type=__ret__.type)

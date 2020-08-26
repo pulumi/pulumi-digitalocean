@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetSpacesBucketObjectResult',
+    'AwaitableGetSpacesBucketObjectResult',
+    'get_spaces_bucket_object',
+]
+
+@pulumi.output_type
 class GetSpacesBucketObjectResult:
     """
     A collection of values returned by getSpacesBucketObject.
@@ -15,106 +22,203 @@ class GetSpacesBucketObjectResult:
     def __init__(__self__, body=None, bucket=None, cache_control=None, content_disposition=None, content_encoding=None, content_language=None, content_length=None, content_type=None, etag=None, expiration=None, expires=None, id=None, key=None, last_modified=None, metadata=None, range=None, region=None, version_id=None, website_redirect_location=None):
         if body and not isinstance(body, str):
             raise TypeError("Expected argument 'body' to be a str")
-        __self__.body = body
+        pulumi.set(__self__, "body", body)
+        if bucket and not isinstance(bucket, str):
+            raise TypeError("Expected argument 'bucket' to be a str")
+        pulumi.set(__self__, "bucket", bucket)
+        if cache_control and not isinstance(cache_control, str):
+            raise TypeError("Expected argument 'cache_control' to be a str")
+        pulumi.set(__self__, "cache_control", cache_control)
+        if content_disposition and not isinstance(content_disposition, str):
+            raise TypeError("Expected argument 'content_disposition' to be a str")
+        pulumi.set(__self__, "content_disposition", content_disposition)
+        if content_encoding and not isinstance(content_encoding, str):
+            raise TypeError("Expected argument 'content_encoding' to be a str")
+        pulumi.set(__self__, "content_encoding", content_encoding)
+        if content_language and not isinstance(content_language, str):
+            raise TypeError("Expected argument 'content_language' to be a str")
+        pulumi.set(__self__, "content_language", content_language)
+        if content_length and not isinstance(content_length, float):
+            raise TypeError("Expected argument 'content_length' to be a float")
+        pulumi.set(__self__, "content_length", content_length)
+        if content_type and not isinstance(content_type, str):
+            raise TypeError("Expected argument 'content_type' to be a str")
+        pulumi.set(__self__, "content_type", content_type)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
+        if expiration and not isinstance(expiration, str):
+            raise TypeError("Expected argument 'expiration' to be a str")
+        pulumi.set(__self__, "expiration", expiration)
+        if expires and not isinstance(expires, str):
+            raise TypeError("Expected argument 'expires' to be a str")
+        pulumi.set(__self__, "expires", expires)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if key and not isinstance(key, str):
+            raise TypeError("Expected argument 'key' to be a str")
+        pulumi.set(__self__, "key", key)
+        if last_modified and not isinstance(last_modified, str):
+            raise TypeError("Expected argument 'last_modified' to be a str")
+        pulumi.set(__self__, "last_modified", last_modified)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
+        if range and not isinstance(range, str):
+            raise TypeError("Expected argument 'range' to be a str")
+        pulumi.set(__self__, "range", range)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if version_id and not isinstance(version_id, str):
+            raise TypeError("Expected argument 'version_id' to be a str")
+        pulumi.set(__self__, "version_id", version_id)
+        if website_redirect_location and not isinstance(website_redirect_location, str):
+            raise TypeError("Expected argument 'website_redirect_location' to be a str")
+        pulumi.set(__self__, "website_redirect_location", website_redirect_location)
+
+    @property
+    @pulumi.getter
+    def body(self) -> str:
         """
         Object data (see **limitations above** to understand cases in which this field is actually available)
         """
-        if bucket and not isinstance(bucket, str):
-            raise TypeError("Expected argument 'bucket' to be a str")
-        __self__.bucket = bucket
-        if cache_control and not isinstance(cache_control, str):
-            raise TypeError("Expected argument 'cache_control' to be a str")
-        __self__.cache_control = cache_control
+        return pulumi.get(self, "body")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="cacheControl")
+    def cache_control(self) -> str:
         """
         Specifies caching behavior along the request/reply chain.
         """
-        if content_disposition and not isinstance(content_disposition, str):
-            raise TypeError("Expected argument 'content_disposition' to be a str")
-        __self__.content_disposition = content_disposition
+        return pulumi.get(self, "cache_control")
+
+    @property
+    @pulumi.getter(name="contentDisposition")
+    def content_disposition(self) -> str:
         """
         Specifies presentational information for the object.
         """
-        if content_encoding and not isinstance(content_encoding, str):
-            raise TypeError("Expected argument 'content_encoding' to be a str")
-        __self__.content_encoding = content_encoding
+        return pulumi.get(self, "content_disposition")
+
+    @property
+    @pulumi.getter(name="contentEncoding")
+    def content_encoding(self) -> str:
         """
         Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
         """
-        if content_language and not isinstance(content_language, str):
-            raise TypeError("Expected argument 'content_language' to be a str")
-        __self__.content_language = content_language
+        return pulumi.get(self, "content_encoding")
+
+    @property
+    @pulumi.getter(name="contentLanguage")
+    def content_language(self) -> str:
         """
         The language the content is in.
         """
-        if content_length and not isinstance(content_length, float):
-            raise TypeError("Expected argument 'content_length' to be a float")
-        __self__.content_length = content_length
+        return pulumi.get(self, "content_language")
+
+    @property
+    @pulumi.getter(name="contentLength")
+    def content_length(self) -> float:
         """
         Size of the body in bytes.
         """
-        if content_type and not isinstance(content_type, str):
-            raise TypeError("Expected argument 'content_type' to be a str")
-        __self__.content_type = content_type
+        return pulumi.get(self, "content_length")
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> str:
         """
         A standard MIME type describing the format of the object data.
         """
-        if etag and not isinstance(etag, str):
-            raise TypeError("Expected argument 'etag' to be a str")
-        __self__.etag = etag
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
         """
         [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) generated for the object (an MD5 sum of the object content in case it's not encrypted)
         """
-        if expiration and not isinstance(expiration, str):
-            raise TypeError("Expected argument 'expiration' to be a str")
-        __self__.expiration = expiration
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> str:
         """
         If the object expiration is configured (see [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)), the field includes this header. It includes the expiry-date and rule-id key value pairs providing object expiration information. The value of the rule-id is URL encoded.
         """
-        if expires and not isinstance(expires, str):
-            raise TypeError("Expected argument 'expires' to be a str")
-        __self__.expires = expires
+        return pulumi.get(self, "expiration")
+
+    @property
+    @pulumi.getter
+    def expires(self) -> str:
         """
         The date and time at which the object is no longer cacheable.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "expires")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if key and not isinstance(key, str):
-            raise TypeError("Expected argument 'key' to be a str")
-        __self__.key = key
-        if last_modified and not isinstance(last_modified, str):
-            raise TypeError("Expected argument 'last_modified' to be a str")
-        __self__.last_modified = last_modified
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> str:
         """
         Last modified date of the object in RFC1123 format (e.g. `Mon, 02 Jan 2006 15:04:05 MST`)
         """
-        if metadata and not isinstance(metadata, dict):
-            raise TypeError("Expected argument 'metadata' to be a dict")
-        __self__.metadata = metadata
+        return pulumi.get(self, "last_modified")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, Any]:
         """
         A map of metadata stored with the object in Spaces
         """
-        if range and not isinstance(range, str):
-            raise TypeError("Expected argument 'range' to be a str")
-        __self__.range = range
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if version_id and not isinstance(version_id, str):
-            raise TypeError("Expected argument 'version_id' to be a str")
-        __self__.version_id = version_id
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def range(self) -> Optional[str]:
+        return pulumi.get(self, "range")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
         """
         The latest version ID of the object returned.
         """
-        if website_redirect_location and not isinstance(website_redirect_location, str):
-            raise TypeError("Expected argument 'website_redirect_location' to be a str")
-        __self__.website_redirect_location = website_redirect_location
+        return pulumi.get(self, "version_id")
+
+    @property
+    @pulumi.getter(name="websiteRedirectLocation")
+    def website_redirect_location(self) -> str:
         """
         If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
         """
+        return pulumi.get(self, "website_redirect_location")
+
+
 class AwaitableGetSpacesBucketObjectResult(GetSpacesBucketObjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -141,7 +245,13 @@ class AwaitableGetSpacesBucketObjectResult(GetSpacesBucketObjectResult):
             version_id=self.version_id,
             website_redirect_location=self.website_redirect_location)
 
-def get_spaces_bucket_object(bucket=None,key=None,range=None,region=None,version_id=None,opts=None):
+
+def get_spaces_bucket_object(bucket: Optional[str] = None,
+                             key: Optional[str] = None,
+                             range: Optional[str] = None,
+                             region: Optional[str] = None,
+                             version_id: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpacesBucketObjectResult:
     """
     The Spaces object data source allows access to the metadata and
     _optionally_ (see below) content of an object stored inside a Spaces bucket.
@@ -176,8 +286,6 @@ def get_spaces_bucket_object(bucket=None,key=None,range=None,region=None,version
     :param str version_id: Specific version ID of the object returned (defaults to latest version)
     """
     __args__ = dict()
-
-
     __args__['bucket'] = bucket
     __args__['key'] = key
     __args__['range'] = range
@@ -186,26 +294,26 @@ def get_spaces_bucket_object(bucket=None,key=None,range=None,region=None,version
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getSpacesBucketObject:getSpacesBucketObject', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getSpacesBucketObject:getSpacesBucketObject', __args__, opts=opts, typ=GetSpacesBucketObjectResult).value
 
     return AwaitableGetSpacesBucketObjectResult(
-        body=__ret__.get('body'),
-        bucket=__ret__.get('bucket'),
-        cache_control=__ret__.get('cacheControl'),
-        content_disposition=__ret__.get('contentDisposition'),
-        content_encoding=__ret__.get('contentEncoding'),
-        content_language=__ret__.get('contentLanguage'),
-        content_length=__ret__.get('contentLength'),
-        content_type=__ret__.get('contentType'),
-        etag=__ret__.get('etag'),
-        expiration=__ret__.get('expiration'),
-        expires=__ret__.get('expires'),
-        id=__ret__.get('id'),
-        key=__ret__.get('key'),
-        last_modified=__ret__.get('lastModified'),
-        metadata=__ret__.get('metadata'),
-        range=__ret__.get('range'),
-        region=__ret__.get('region'),
-        version_id=__ret__.get('versionId'),
-        website_redirect_location=__ret__.get('websiteRedirectLocation'))
+        body=__ret__.body,
+        bucket=__ret__.bucket,
+        cache_control=__ret__.cache_control,
+        content_disposition=__ret__.content_disposition,
+        content_encoding=__ret__.content_encoding,
+        content_language=__ret__.content_language,
+        content_length=__ret__.content_length,
+        content_type=__ret__.content_type,
+        etag=__ret__.etag,
+        expiration=__ret__.expiration,
+        expires=__ret__.expires,
+        id=__ret__.id,
+        key=__ret__.key,
+        last_modified=__ret__.last_modified,
+        metadata=__ret__.metadata,
+        range=__ret__.range,
+        region=__ret__.region,
+        version_id=__ret__.version_id,
+        website_redirect_location=__ret__.website_redirect_location)

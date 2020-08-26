@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetKubernetesClusterResult',
+    'AwaitableGetKubernetesClusterResult',
+    'get_kubernetes_cluster',
+]
+
+@pulumi.output_type
 class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
@@ -15,112 +23,168 @@ class GetKubernetesClusterResult:
     def __init__(__self__, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None, vpc_uuid=None):
         if cluster_subnet and not isinstance(cluster_subnet, str):
             raise TypeError("Expected argument 'cluster_subnet' to be a str")
-        __self__.cluster_subnet = cluster_subnet
+        pulumi.set(__self__, "cluster_subnet", cluster_subnet)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if endpoint and not isinstance(endpoint, str):
+            raise TypeError("Expected argument 'endpoint' to be a str")
+        pulumi.set(__self__, "endpoint", endpoint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if ipv4_address and not isinstance(ipv4_address, str):
+            raise TypeError("Expected argument 'ipv4_address' to be a str")
+        pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if kube_configs and not isinstance(kube_configs, list):
+            raise TypeError("Expected argument 'kube_configs' to be a list")
+        pulumi.set(__self__, "kube_configs", kube_configs)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if node_pools and not isinstance(node_pools, list):
+            raise TypeError("Expected argument 'node_pools' to be a list")
+        pulumi.set(__self__, "node_pools", node_pools)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if service_subnet and not isinstance(service_subnet, str):
+            raise TypeError("Expected argument 'service_subnet' to be a str")
+        pulumi.set(__self__, "service_subnet", service_subnet)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError("Expected argument 'updated_at' to be a str")
+        pulumi.set(__self__, "updated_at", updated_at)
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        pulumi.set(__self__, "version", version)
+        if vpc_uuid and not isinstance(vpc_uuid, str):
+            raise TypeError("Expected argument 'vpc_uuid' to be a str")
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @property
+    @pulumi.getter(name="clusterSubnet")
+    def cluster_subnet(self) -> str:
         """
         The range of IP addresses in the overlay network of the Kubernetes cluster.
         """
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        __self__.created_at = created_at
+        return pulumi.get(self, "cluster_subnet")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
         """
-        The date and time when the Kubernetes cluster was created.
+        The date and time when the node was created.
         """
-        if endpoint and not isinstance(endpoint, str):
-            raise TypeError("Expected argument 'endpoint' to be a str")
-        __self__.endpoint = endpoint
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
         """
         The base URL of the API server on the Kubernetes master node.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if ipv4_address and not isinstance(ipv4_address, str):
-            raise TypeError("Expected argument 'ipv4_address' to be a str")
-        __self__.ipv4_address = ipv4_address
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipv4Address")
+    def ipv4_address(self) -> str:
         """
         The public IPv4 address of the Kubernetes master node.
         """
-        if kube_configs and not isinstance(kube_configs, list):
-            raise TypeError("Expected argument 'kube_configs' to be a list")
-        __self__.kube_configs = kube_configs
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if node_pools and not isinstance(node_pools, list):
-            raise TypeError("Expected argument 'node_pools' to be a list")
-        __self__.node_pools = node_pools
+        return pulumi.get(self, "ipv4_address")
+
+    @property
+    @pulumi.getter(name="kubeConfigs")
+    def kube_configs(self) -> List['outputs.GetKubernetesClusterKubeConfigResult']:
+        return pulumi.get(self, "kube_configs")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The auto-generated name for the node.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodePools")
+    def node_pools(self) -> List['outputs.GetKubernetesClusterNodePoolResult']:
         """
         A list of node pools associated with the cluster. Each node pool exports the following attributes:
-        - `id` -  The unique ID that can be used to identify and reference the node pool.
-        - `name` - The name of the node pool.
-        - `size` - The slug identifier for the type of Droplet used as workers in the node pool.
-        - `node_count` - The number of Droplet instances in the node pool.
-        - `actual_node_count` - The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
-        - `auto_scale` - A boolean indicating whether auto-scaling is enabled on the node pool.
-        - `min_nodes` - If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-        - `max_nodes` - If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-        - `tags` - A list of tag names applied to the node pool.
-        - `labels` - A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-        - `nodes` - A list of nodes in the pool. Each node exports the following attributes:
-        + `id` -  A unique ID that can be used to identify and reference the node.
-        + `name` - The auto-generated name for the node.
-        + `status` -  A string indicating the current status of the individual node.
-        + `created_at` - The date and time when the node was created.
-        + `updated_at` - The date and time when the node was last updated.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "node_pools")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         The slug identifier for the region where the Kubernetes cluster is located.
         """
-        if service_subnet and not isinstance(service_subnet, str):
-            raise TypeError("Expected argument 'service_subnet' to be a str")
-        __self__.service_subnet = service_subnet
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="serviceSubnet")
+    def service_subnet(self) -> str:
         """
         The range of assignable IP addresses for services running in the Kubernetes cluster.
         """
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        return pulumi.get(self, "service_subnet")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
         """
-        A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+        A string indicating the current status of the individual node.
         """
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
         """
-        A list of tag names to be applied to the Kubernetes cluster.
+        A list of tag names applied to the node pool.
         """
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        __self__.updated_at = updated_at
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
         """
-        The date and time when the Kubernetes cluster was last updated.
-        * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-        - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
-        - `host` - The URL of the API server on the Kubernetes master node.
-        - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
-        - `token` - The DigitalOcean API access token used by clients to access the cluster.
-        - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-        - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-        - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
+        The date and time when the node was last updated.
         """
-        if version and not isinstance(version, str):
-            raise TypeError("Expected argument 'version' to be a str")
-        __self__.version = version
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
         """
         The slug identifier for the version of Kubernetes used for the cluster.
         """
-        if vpc_uuid and not isinstance(vpc_uuid, str):
-            raise TypeError("Expected argument 'vpc_uuid' to be a str")
-        __self__.vpc_uuid = vpc_uuid
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> str:
         """
         The ID of the VPC where the Kubernetes cluster is located.
         """
+        return pulumi.get(self, "vpc_uuid")
+
+
 class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -143,38 +207,39 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             version=self.version,
             vpc_uuid=self.vpc_uuid)
 
-def get_kubernetes_cluster(name=None,tags=None,opts=None):
+
+def get_kubernetes_cluster(name: Optional[str] = None,
+                           tags: Optional[List[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClusterResult:
     """
     Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by this provider.
 
 
     :param str name: The name of Kubernetes cluster.
-    :param list tags: A list of tag names to be applied to the Kubernetes cluster.
+    :param List[str] tags: A list of tag names applied to the node pool.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult).value
 
     return AwaitableGetKubernetesClusterResult(
-        cluster_subnet=__ret__.get('clusterSubnet'),
-        created_at=__ret__.get('createdAt'),
-        endpoint=__ret__.get('endpoint'),
-        id=__ret__.get('id'),
-        ipv4_address=__ret__.get('ipv4Address'),
-        kube_configs=__ret__.get('kubeConfigs'),
-        name=__ret__.get('name'),
-        node_pools=__ret__.get('nodePools'),
-        region=__ret__.get('region'),
-        service_subnet=__ret__.get('serviceSubnet'),
-        status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        updated_at=__ret__.get('updatedAt'),
-        version=__ret__.get('version'),
-        vpc_uuid=__ret__.get('vpcUuid'))
+        cluster_subnet=__ret__.cluster_subnet,
+        created_at=__ret__.created_at,
+        endpoint=__ret__.endpoint,
+        id=__ret__.id,
+        ipv4_address=__ret__.ipv4_address,
+        kube_configs=__ret__.kube_configs,
+        name=__ret__.name,
+        node_pools=__ret__.node_pools,
+        region=__ret__.region,
+        service_subnet=__ret__.service_subnet,
+        status=__ret__.status,
+        tags=__ret__.tags,
+        updated_at=__ret__.updated_at,
+        version=__ret__.version,
+        vpc_uuid=__ret__.vpc_uuid)

@@ -5,62 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['DatabaseReplica']
 
 
 class DatabaseReplica(pulumi.CustomResource):
-    cluster_id: pulumi.Output[str]
-    """
-    The ID of the original source database cluster.
-    """
-    database: pulumi.Output[str]
-    """
-    Name of the replica's default database.
-    """
-    host: pulumi.Output[str]
-    """
-    Database replica's hostname.
-    """
-    name: pulumi.Output[str]
-    """
-    The name for the database replica.
-    """
-    password: pulumi.Output[str]
-    """
-    Password for the replica's default user.
-    """
-    port: pulumi.Output[float]
-    """
-    Network port that the database replica is listening on.
-    """
-    private_host: pulumi.Output[str]
-    """
-    Same as `host`, but only accessible from resources within the account and in the same region.
-    """
-    private_network_uuid: pulumi.Output[str]
-    private_uri: pulumi.Output[str]
-    """
-    Same as `uri`, but only accessible from resources within the account and in the same region.
-    """
-    region: pulumi.Output[str]
-    """
-    DigitalOcean region where the replica will reside.
-    """
-    size: pulumi.Output[str]
-    """
-    Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
-    """
-    tags: pulumi.Output[list]
-    uri: pulumi.Output[str]
-    """
-    The full URI for connecting to the database replica.
-    """
-    user: pulumi.Output[str]
-    """
-    Username for the replica's default user.
-    """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, name=None, private_network_uuid=None, region=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean database replica resource.
 
@@ -100,7 +63,7 @@ class DatabaseReplica(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -129,13 +92,29 @@ class DatabaseReplica(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, database=None, host=None, name=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, tags=None, uri=None, user=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            database: Optional[pulumi.Input[str]] = None,
+            host: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            private_host: Optional[pulumi.Input[str]] = None,
+            private_network_uuid: Optional[pulumi.Input[str]] = None,
+            private_uri: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            uri: Optional[pulumi.Input[str]] = None,
+            user: Optional[pulumi.Input[str]] = None) -> 'DatabaseReplica':
         """
         Get an existing DatabaseReplica resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] database: Name of the replica's default database.
@@ -170,8 +149,115 @@ class DatabaseReplica(pulumi.CustomResource):
         __props__["user"] = user
         return DatabaseReplica(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the original source database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Name of the replica's default database.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Database replica's hostname.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for the database replica.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password for the replica's default user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
+        """
+        Network port that the database replica is listening on.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateHost")
+    def private_host(self) -> str:
+        """
+        Same as `host`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_host")
+
+    @property
+    @pulumi.getter(name="privateNetworkUuid")
+    def private_network_uuid(self) -> str:
+        return pulumi.get(self, "private_network_uuid")
+
+    @property
+    @pulumi.getter(name="privateUri")
+    def private_uri(self) -> str:
+        """
+        Same as `uri`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_uri")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        DigitalOcean region where the replica will reside.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[str]:
+        """
+        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The full URI for connecting to the database replica.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        Username for the replica's default user.
+        """
+        return pulumi.get(self, "user")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

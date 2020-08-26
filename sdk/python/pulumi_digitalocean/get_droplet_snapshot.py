@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetDropletSnapshotResult',
+    'AwaitableGetDropletSnapshotResult',
+    'get_droplet_snapshot',
+]
+
+@pulumi.output_type
 class GetDropletSnapshotResult:
     """
     A collection of values returned by getDropletSnapshot.
@@ -15,52 +22,104 @@ class GetDropletSnapshotResult:
     def __init__(__self__, created_at=None, droplet_id=None, id=None, min_disk_size=None, most_recent=None, name=None, name_regex=None, region=None, regions=None, size=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
-        __self__.created_at = created_at
+        pulumi.set(__self__, "created_at", created_at)
+        if droplet_id and not isinstance(droplet_id, str):
+            raise TypeError("Expected argument 'droplet_id' to be a str")
+        pulumi.set(__self__, "droplet_id", droplet_id)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if min_disk_size and not isinstance(min_disk_size, float):
+            raise TypeError("Expected argument 'min_disk_size' to be a float")
+        pulumi.set(__self__, "min_disk_size", min_disk_size)
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError("Expected argument 'most_recent' to be a bool")
+        pulumi.set(__self__, "most_recent", most_recent)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if regions and not isinstance(regions, list):
+            raise TypeError("Expected argument 'regions' to be a list")
+        pulumi.set(__self__, "regions", regions)
+        if size and not isinstance(size, float):
+            raise TypeError("Expected argument 'size' to be a float")
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
         """
         The date and time the Droplet snapshot was created.
         """
-        if droplet_id and not isinstance(droplet_id, str):
-            raise TypeError("Expected argument 'droplet_id' to be a str")
-        __self__.droplet_id = droplet_id
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> str:
         """
         The ID of the Droplet from which the Droplet snapshot originated.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "droplet_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if min_disk_size and not isinstance(min_disk_size, float):
-            raise TypeError("Expected argument 'min_disk_size' to be a float")
-        __self__.min_disk_size = min_disk_size
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="minDiskSize")
+    def min_disk_size(self) -> float:
         """
         The minimum size in gigabytes required for a Droplet to be created based on this Droplet snapshot.
         """
-        if most_recent and not isinstance(most_recent, bool):
-            raise TypeError("Expected argument 'most_recent' to be a bool")
-        __self__.most_recent = most_recent
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if name_regex and not isinstance(name_regex, str):
-            raise TypeError("Expected argument 'name_regex' to be a str")
-        __self__.name_regex = name_regex
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if regions and not isinstance(regions, list):
-            raise TypeError("Expected argument 'regions' to be a list")
-        __self__.regions = regions
+        return pulumi.get(self, "min_disk_size")
+
+    @property
+    @pulumi.getter(name="mostRecent")
+    def most_recent(self) -> Optional[bool]:
+        return pulumi.get(self, "most_recent")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def regions(self) -> List[str]:
         """
         A list of DigitalOcean region "slugs" indicating where the Droplet snapshot is available.
         """
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
-        __self__.size = size
+        return pulumi.get(self, "regions")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
         """
         The billable size of the Droplet snapshot in gigabytes.
         """
+        return pulumi.get(self, "size")
+
+
 class AwaitableGetDropletSnapshotResult(GetDropletSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,7 +137,12 @@ class AwaitableGetDropletSnapshotResult(GetDropletSnapshotResult):
             regions=self.regions,
             size=self.size)
 
-def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,opts=None):
+
+def get_droplet_snapshot(most_recent: Optional[bool] = None,
+                         name: Optional[str] = None,
+                         name_regex: Optional[str] = None,
+                         region: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletSnapshotResult:
     """
     Droplet snapshots are saved instances of a Droplet. Use this data
     source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
@@ -104,8 +168,6 @@ def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,
     :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
     """
     __args__ = dict()
-
-
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
@@ -113,17 +175,17 @@ def get_droplet_snapshot(most_recent=None,name=None,name_regex=None,region=None,
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts, typ=GetDropletSnapshotResult).value
 
     return AwaitableGetDropletSnapshotResult(
-        created_at=__ret__.get('createdAt'),
-        droplet_id=__ret__.get('dropletId'),
-        id=__ret__.get('id'),
-        min_disk_size=__ret__.get('minDiskSize'),
-        most_recent=__ret__.get('mostRecent'),
-        name=__ret__.get('name'),
-        name_regex=__ret__.get('nameRegex'),
-        region=__ret__.get('region'),
-        regions=__ret__.get('regions'),
-        size=__ret__.get('size'))
+        created_at=__ret__.created_at,
+        droplet_id=__ret__.droplet_id,
+        id=__ret__.id,
+        min_disk_size=__ret__.min_disk_size,
+        most_recent=__ret__.most_recent,
+        name=__ret__.name,
+        name_regex=__ret__.name_regex,
+        region=__ret__.region,
+        regions=__ret__.regions,
+        size=__ret__.size)

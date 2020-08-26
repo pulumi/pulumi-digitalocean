@@ -100,8 +100,6 @@ export class DatabaseFirewall extends pulumi.CustomResource {
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-     * - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
-     * - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
      */
     public readonly rules!: pulumi.Output<outputs.DatabaseFirewallRule[]>;
 
@@ -151,8 +149,6 @@ export interface DatabaseFirewallState {
     readonly clusterId?: pulumi.Input<string>;
     /**
      * A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-     * - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
-     * - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
      */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.DatabaseFirewallRule>[]>;
 }
@@ -167,8 +163,6 @@ export interface DatabaseFirewallArgs {
     readonly clusterId: pulumi.Input<string>;
     /**
      * A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-     * - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
-     * - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
      */
     readonly rules: pulumi.Input<pulumi.Input<inputs.DatabaseFirewallRule>[]>;
 }

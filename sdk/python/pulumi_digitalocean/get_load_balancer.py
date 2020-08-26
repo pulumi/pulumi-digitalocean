@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetLoadBalancerResult',
+    'AwaitableGetLoadBalancerResult',
+    'get_load_balancer',
+]
+
+@pulumi.output_type
 class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
@@ -15,55 +23,137 @@ class GetLoadBalancerResult:
     def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
-        __self__.algorithm = algorithm
+        pulumi.set(__self__, "algorithm", algorithm)
         if droplet_ids and not isinstance(droplet_ids, list):
             raise TypeError("Expected argument 'droplet_ids' to be a list")
-        __self__.droplet_ids = droplet_ids
+        pulumi.set(__self__, "droplet_ids", droplet_ids)
         if droplet_tag and not isinstance(droplet_tag, str):
             raise TypeError("Expected argument 'droplet_tag' to be a str")
-        __self__.droplet_tag = droplet_tag
+        pulumi.set(__self__, "droplet_tag", droplet_tag)
         if enable_backend_keepalive and not isinstance(enable_backend_keepalive, bool):
             raise TypeError("Expected argument 'enable_backend_keepalive' to be a bool")
-        __self__.enable_backend_keepalive = enable_backend_keepalive
+        pulumi.set(__self__, "enable_backend_keepalive", enable_backend_keepalive)
         if enable_proxy_protocol and not isinstance(enable_proxy_protocol, bool):
             raise TypeError("Expected argument 'enable_proxy_protocol' to be a bool")
-        __self__.enable_proxy_protocol = enable_proxy_protocol
+        pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
         if forwarding_rules and not isinstance(forwarding_rules, list):
             raise TypeError("Expected argument 'forwarding_rules' to be a list")
-        __self__.forwarding_rules = forwarding_rules
+        pulumi.set(__self__, "forwarding_rules", forwarding_rules)
         if healthcheck and not isinstance(healthcheck, dict):
             raise TypeError("Expected argument 'healthcheck' to be a dict")
-        __self__.healthcheck = healthcheck
+        pulumi.set(__self__, "healthcheck", healthcheck)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if ip and not isinstance(ip, str):
+            raise TypeError("Expected argument 'ip' to be a str")
+        pulumi.set(__self__, "ip", ip)
+        if load_balancer_urn and not isinstance(load_balancer_urn, str):
+            raise TypeError("Expected argument 'load_balancer_urn' to be a str")
+        pulumi.set(__self__, "load_balancer_urn", load_balancer_urn)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if redirect_http_to_https and not isinstance(redirect_http_to_https, bool):
+            raise TypeError("Expected argument 'redirect_http_to_https' to be a bool")
+        pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if sticky_sessions and not isinstance(sticky_sessions, dict):
+            raise TypeError("Expected argument 'sticky_sessions' to be a dict")
+        pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+        if vpc_uuid and not isinstance(vpc_uuid, str):
+            raise TypeError("Expected argument 'vpc_uuid' to be a str")
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="dropletIds")
+    def droplet_ids(self) -> List[float]:
+        return pulumi.get(self, "droplet_ids")
+
+    @property
+    @pulumi.getter(name="dropletTag")
+    def droplet_tag(self) -> str:
+        return pulumi.get(self, "droplet_tag")
+
+    @property
+    @pulumi.getter(name="enableBackendKeepalive")
+    def enable_backend_keepalive(self) -> bool:
+        return pulumi.get(self, "enable_backend_keepalive")
+
+    @property
+    @pulumi.getter(name="enableProxyProtocol")
+    def enable_proxy_protocol(self) -> bool:
+        return pulumi.get(self, "enable_proxy_protocol")
+
+    @property
+    @pulumi.getter(name="forwardingRules")
+    def forwarding_rules(self) -> List['outputs.GetLoadBalancerForwardingRuleResult']:
+        return pulumi.get(self, "forwarding_rules")
+
+    @property
+    @pulumi.getter
+    def healthcheck(self) -> 'outputs.GetLoadBalancerHealthcheckResult':
+        return pulumi.get(self, "healthcheck")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if ip and not isinstance(ip, str):
-            raise TypeError("Expected argument 'ip' to be a str")
-        __self__.ip = ip
-        if load_balancer_urn and not isinstance(load_balancer_urn, str):
-            raise TypeError("Expected argument 'load_balancer_urn' to be a str")
-        __self__.load_balancer_urn = load_balancer_urn
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if redirect_http_to_https and not isinstance(redirect_http_to_https, bool):
-            raise TypeError("Expected argument 'redirect_http_to_https' to be a bool")
-        __self__.redirect_http_to_https = redirect_http_to_https
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
-        if sticky_sessions and not isinstance(sticky_sessions, dict):
-            raise TypeError("Expected argument 'sticky_sessions' to be a dict")
-        __self__.sticky_sessions = sticky_sessions
-        if vpc_uuid and not isinstance(vpc_uuid, str):
-            raise TypeError("Expected argument 'vpc_uuid' to be a str")
-        __self__.vpc_uuid = vpc_uuid
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="loadBalancerUrn")
+    def load_balancer_urn(self) -> str:
+        return pulumi.get(self, "load_balancer_urn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="redirectHttpToHttps")
+    def redirect_http_to_https(self) -> bool:
+        return pulumi.get(self, "redirect_http_to_https")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="stickySessions")
+    def sticky_sessions(self) -> 'outputs.GetLoadBalancerStickySessionsResult':
+        return pulumi.get(self, "sticky_sessions")
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> str:
+        return pulumi.get(self, "vpc_uuid")
+
+
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -87,7 +177,9 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             sticky_sessions=self.sticky_sessions,
             vpc_uuid=self.vpc_uuid)
 
-def get_load_balancer(name=None,opts=None):
+
+def get_load_balancer(name: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
     Get information on a load balancer for use in other resources. This data source
     provides all of the load balancers properties as configured on your DigitalOcean
@@ -112,29 +204,27 @@ def get_load_balancer(name=None,opts=None):
     :param str name: The name of load balancer.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult).value
 
     return AwaitableGetLoadBalancerResult(
-        algorithm=__ret__.get('algorithm'),
-        droplet_ids=__ret__.get('dropletIds'),
-        droplet_tag=__ret__.get('dropletTag'),
-        enable_backend_keepalive=__ret__.get('enableBackendKeepalive'),
-        enable_proxy_protocol=__ret__.get('enableProxyProtocol'),
-        forwarding_rules=__ret__.get('forwardingRules'),
-        healthcheck=__ret__.get('healthcheck'),
-        id=__ret__.get('id'),
-        ip=__ret__.get('ip'),
-        load_balancer_urn=__ret__.get('loadBalancerUrn'),
-        name=__ret__.get('name'),
-        redirect_http_to_https=__ret__.get('redirectHttpToHttps'),
-        region=__ret__.get('region'),
-        status=__ret__.get('status'),
-        sticky_sessions=__ret__.get('stickySessions'),
-        vpc_uuid=__ret__.get('vpcUuid'))
+        algorithm=__ret__.algorithm,
+        droplet_ids=__ret__.droplet_ids,
+        droplet_tag=__ret__.droplet_tag,
+        enable_backend_keepalive=__ret__.enable_backend_keepalive,
+        enable_proxy_protocol=__ret__.enable_proxy_protocol,
+        forwarding_rules=__ret__.forwarding_rules,
+        healthcheck=__ret__.healthcheck,
+        id=__ret__.id,
+        ip=__ret__.ip,
+        load_balancer_urn=__ret__.load_balancer_urn,
+        name=__ret__.name,
+        redirect_http_to_https=__ret__.redirect_http_to_https,
+        region=__ret__.region,
+        status=__ret__.status,
+        sticky_sessions=__ret__.sticky_sessions,
+        vpc_uuid=__ret__.vpc_uuid)

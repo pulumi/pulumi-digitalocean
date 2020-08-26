@@ -5,95 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['DatabaseCluster']
 
 
 class DatabaseCluster(pulumi.CustomResource):
-    cluster_urn: pulumi.Output[str]
-    """
-    The uniform resource name of the database cluster.
-    """
-    database: pulumi.Output[str]
-    """
-    Name of the cluster's default database.
-    """
-    engine: pulumi.Output[str]
-    """
-    Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
-    """
-    eviction_policy: pulumi.Output[str]
-    """
-    A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
-    """
-    host: pulumi.Output[str]
-    """
-    Database cluster's hostname.
-    """
-    maintenance_windows: pulumi.Output[list]
-    """
-    Defines when the automatic maintenance should be performed for the database cluster.
-
-      * `day` (`str`) - The day of the week on which to apply maintenance updates.
-      * `hour` (`str`) - The hour in UTC at which maintenance updates will be applied in 24 hour format.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the database cluster.
-    """
-    node_count: pulumi.Output[float]
-    """
-    Number of nodes that will be included in the cluster.
-    """
-    password: pulumi.Output[str]
-    """
-    Password for the cluster's default user.
-    """
-    port: pulumi.Output[float]
-    """
-    Network port that the database cluster is listening on.
-    """
-    private_host: pulumi.Output[str]
-    """
-    Same as `host`, but only accessible from resources within the account and in the same region.
-    """
-    private_network_uuid: pulumi.Output[str]
-    """
-    The ID of the VPC where the database cluster will be located.
-    """
-    private_uri: pulumi.Output[str]
-    """
-    Same as `uri`, but only accessible from resources within the account and in the same region.
-    """
-    region: pulumi.Output[str]
-    """
-    DigitalOcean region where the cluster will reside.
-    """
-    size: pulumi.Output[str]
-    """
-    Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
-    """
-    sql_mode: pulumi.Output[str]
-    """
-    A comma separated string specifying the  SQL modes for a MySQL cluster.
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of tag names to be applied to the database cluster.
-    """
-    uri: pulumi.Output[str]
-    """
-    The full URI for connecting to the database cluster.
-    """
-    user: pulumi.Output[str]
-    """
-    Username for the cluster's default user.
-    """
-    version: pulumi.Output[str]
-    """
-    Engine version used by the cluster (ex. `11` for PostgreSQL 11).
-    """
-    def __init__(__self__, resource_name, opts=None, engine=None, eviction_policy=None, maintenance_windows=None, name=None, node_count=None, private_network_uuid=None, region=None, size=None, sql_mode=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 engine: Optional[pulumi.Input[str]] = None,
+                 eviction_policy: Optional[pulumi.Input[str]] = None,
+                 maintenance_windows: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_count: Optional[pulumi.Input[float]] = None,
+                 private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 sql_mode: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean database cluster resource.
 
@@ -139,20 +76,15 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
-        :param pulumi.Input[list] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
         :param pulumi.Input[float] node_count: Number of nodes that will be included in the cluster.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
-        :param pulumi.Input[list] tags: A list of tag names to be applied to the database cluster.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
-
-        The **maintenance_windows** object supports the following:
-
-          * `day` (`pulumi.Input[str]`) - The day of the week on which to apply maintenance updates.
-          * `hour` (`pulumi.Input[str]`) - The hour in UTC at which maintenance updates will be applied in 24 hour format.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -165,7 +97,7 @@ class DatabaseCluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -206,20 +138,42 @@ class DatabaseCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_urn=None, database=None, engine=None, eviction_policy=None, host=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, sql_mode=None, tags=None, uri=None, user=None, version=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_urn: Optional[pulumi.Input[str]] = None,
+            database: Optional[pulumi.Input[str]] = None,
+            engine: Optional[pulumi.Input[str]] = None,
+            eviction_policy: Optional[pulumi.Input[str]] = None,
+            host: Optional[pulumi.Input[str]] = None,
+            maintenance_windows: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            node_count: Optional[pulumi.Input[float]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            private_host: Optional[pulumi.Input[str]] = None,
+            private_network_uuid: Optional[pulumi.Input[str]] = None,
+            private_uri: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[str]] = None,
+            sql_mode: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            uri: Optional[pulumi.Input[str]] = None,
+            user: Optional[pulumi.Input[str]] = None,
+            version: Optional[pulumi.Input[str]] = None) -> 'DatabaseCluster':
         """
         Get an existing DatabaseCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] database: Name of the cluster's default database.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[str] host: Database cluster's hostname.
-        :param pulumi.Input[list] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
         :param pulumi.Input[float] node_count: Number of nodes that will be included in the cluster.
         :param pulumi.Input[str] password: Password for the cluster's default user.
@@ -230,15 +184,10 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
-        :param pulumi.Input[list] tags: A list of tag names to be applied to the database cluster.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
-
-        The **maintenance_windows** object supports the following:
-
-          * `day` (`pulumi.Input[str]`) - The day of the week on which to apply maintenance updates.
-          * `hour` (`pulumi.Input[str]`) - The hour in UTC at which maintenance updates will be applied in 24 hour format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -266,8 +215,169 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__["version"] = version
         return DatabaseCluster(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterUrn")
+    def cluster_urn(self) -> str:
+        """
+        The uniform resource name of the database cluster.
+        """
+        return pulumi.get(self, "cluster_urn")
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Name of the cluster's default database.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        """
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="evictionPolicy")
+    def eviction_policy(self) -> Optional[str]:
+        """
+        A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        """
+        return pulumi.get(self, "eviction_policy")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Database cluster's hostname.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[List['outputs.DatabaseClusterMaintenanceWindow']]:
+        """
+        Defines when the automatic maintenance should be performed for the database cluster.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the database cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> float:
+        """
+        Number of nodes that will be included in the cluster.
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password for the cluster's default user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
+        """
+        Network port that the database cluster is listening on.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateHost")
+    def private_host(self) -> str:
+        """
+        Same as `host`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_host")
+
+    @property
+    @pulumi.getter(name="privateNetworkUuid")
+    def private_network_uuid(self) -> str:
+        """
+        The ID of the VPC where the database cluster will be located.
+        """
+        return pulumi.get(self, "private_network_uuid")
+
+    @property
+    @pulumi.getter(name="privateUri")
+    def private_uri(self) -> str:
+        """
+        Same as `uri`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_uri")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        DigitalOcean region where the cluster will reside.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> str:
+        """
+        Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="sqlMode")
+    def sql_mode(self) -> Optional[str]:
+        """
+        A comma separated string specifying the  SQL modes for a MySQL cluster.
+        """
+        return pulumi.get(self, "sql_mode")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A list of tag names to be applied to the database cluster.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The full URI for connecting to the database cluster.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        Username for the cluster's default user.
+        """
+        return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        """
+        return pulumi.get(self, "version")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetImagesResult',
+    'AwaitableGetImagesResult',
+    'get_images',
+]
+
+@pulumi.output_type
 class GetImagesResult:
     """
     A collection of values returned by getImages.
@@ -15,38 +24,48 @@ class GetImagesResult:
     def __init__(__self__, filters=None, id=None, images=None, sorts=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
-        __self__.filters = filters
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if images and not isinstance(images, list):
+            raise TypeError("Expected argument 'images' to be a list")
+        pulumi.set(__self__, "images", images)
+        if sorts and not isinstance(sorts, list):
+            raise TypeError("Expected argument 'sorts' to be a list")
+        pulumi.set(__self__, "sorts", sorts)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[List['outputs.GetImagesFilterResult']]:
+        return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if images and not isinstance(images, list):
-            raise TypeError("Expected argument 'images' to be a list")
-        __self__.images = images
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def images(self) -> List['outputs.GetImagesImageResult']:
         """
         A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:  
         - `slug`: Unique text identifier of the image.
         - `id`: The ID of the image.
         - `name`: The name of the image.
         - `type`: Type of the image.
-        - `distribution` - The name of the distribution of the OS of the image.
-        - `min_disk_size`: The minimum 'disk' required for the image.
-        - `size_gigabytes`: The size of the image in GB.
-        - `private` - Is image a public image or not. Public images represent
-        Linux distributions or One-Click Applications, while non-public images represent
-        snapshots and backups and are only available within your account.
-        - `regions`: A set of the regions that the image is available in.
-        - `tags`: A set of tags applied to the image
-        - `created`: When the image was created
-        - `status`: Current status of the image
-        - `error_message`: Any applicable error message pertaining to the image
-        - `image` - The id of the image (legacy parameter).
         """
-        if sorts and not isinstance(sorts, list):
-            raise TypeError("Expected argument 'sorts' to be a list")
-        __self__.sorts = sorts
+        return pulumi.get(self, "images")
+
+    @property
+    @pulumi.getter
+    def sorts(self) -> Optional[List['outputs.GetImagesSortResult']]:
+        return pulumi.get(self, "sorts")
+
+
 class AwaitableGetImagesResult(GetImagesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,7 +77,10 @@ class AwaitableGetImagesResult(GetImagesResult):
             images=self.images,
             sorts=self.sorts)
 
-def get_images(filters=None,sorts=None,opts=None):
+
+def get_images(filters: Optional[List[pulumi.InputType['GetImagesFilterArgs']]] = None,
+               sorts: Optional[List[pulumi.InputType['GetImagesSortArgs']]] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
     Get information on images for use in other resources (e.g. creating a Droplet
     based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
@@ -80,10 +102,10 @@ def get_images(filters=None,sorts=None,opts=None):
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    ubuntu = digitalocean.get_images(filters=[{
-        "key": "distribution",
-        "values": ["Ubuntu"],
-    }])
+    ubuntu = digitalocean.get_images(filters=[digitalocean.GetImagesFilterArgs(
+        key="distribution",
+        values=["Ubuntu"],
+    )])
     ```
 
     You can filter on multiple fields and sort the results as well:
@@ -93,54 +115,38 @@ def get_images(filters=None,sorts=None,opts=None):
     import pulumi_digitalocean as digitalocean
 
     available = digitalocean.get_images(filters=[
-            {
-                "key": "distribution",
-                "values": ["Ubuntu"],
-            },
-            {
-                "key": "regions",
-                "values": ["nyc3"],
-            },
+            digitalocean.GetImagesFilterArgs(
+                key="distribution",
+                values=["Ubuntu"],
+            ),
+            digitalocean.GetImagesFilterArgs(
+                key="regions",
+                values=["nyc3"],
+            ),
         ],
-        sorts=[{
-            "direction": "desc",
-            "key": "created",
-        }])
+        sorts=[digitalocean.GetImagesSortArgs(
+            direction="desc",
+            key="created",
+        )])
     ```
 
 
-    :param list filters: Filter the results.
+    :param List[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param list sorts: Sort the results.
+    :param List[pulumi.InputType['GetImagesSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
-
-    The **filters** object supports the following:
-
-      * `key` (`str`) - Filter the images by this key. This may be one of `distribution`, `error_message`,
-        `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
-        `tags`, or `type`.
-      * `values` (`list`) - A list of values to match against the `key` field. Only retrieves images
-        where the `key` field takes on one or more of the values provided here.
-
-    The **sorts** object supports the following:
-
-      * `direction` (`str`) - The sort direction. This may be either `asc` or `desc`.
-      * `key` (`str`) - Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-        `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['sorts'] = sorts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getImages:getImages', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getImages:getImages', __args__, opts=opts, typ=GetImagesResult).value
 
     return AwaitableGetImagesResult(
-        filters=__ret__.get('filters'),
-        id=__ret__.get('id'),
-        images=__ret__.get('images'),
-        sorts=__ret__.get('sorts'))
+        filters=__ret__.filters,
+        id=__ret__.id,
+        images=__ret__.images,
+        sorts=__ret__.sorts)

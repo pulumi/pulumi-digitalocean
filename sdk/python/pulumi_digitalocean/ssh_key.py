@@ -5,25 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['SshKey']
 
 
 class SshKey(pulumi.CustomResource):
-    fingerprint: pulumi.Output[str]
-    """
-    The fingerprint of the SSH key
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the SSH key for identification
-    """
-    public_key: pulumi.Output[str]
-    """
-    The public key. If this is a file, it
-    can be read using the file interpolation function
-    """
-    def __init__(__self__, resource_name, opts=None, name=None, public_key=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean SSH key resource to allow you to manage SSH
         keys for Droplet access. Keys created with this resource
@@ -63,7 +59,7 @@ class SshKey(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -81,13 +77,18 @@ class SshKey(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, fingerprint=None, name=None, public_key=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            fingerprint: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            public_key: Optional[pulumi.Input[str]] = None) -> 'SshKey':
         """
         Get an existing SshKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fingerprint: The fingerprint of the SSH key
         :param pulumi.Input[str] name: The name of the SSH key for identification
@@ -103,8 +104,34 @@ class SshKey(pulumi.CustomResource):
         __props__["public_key"] = public_key
         return SshKey(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        """
+        The fingerprint of the SSH key
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the SSH key for identification
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        The public key. If this is a file, it
+        can be read using the file interpolation function
+        """
+        return pulumi.get(self, "public_key")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

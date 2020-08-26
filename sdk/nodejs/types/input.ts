@@ -21,11 +21,17 @@ export interface DatabaseFirewallRule {
      * The date and time when the firewall rule was created.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
+     */
     type: pulumi.Input<string>;
     /**
      * A unique identifier for the firewall rule.
      */
     uuid?: pulumi.Input<string>;
+    /**
+     * The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
+     */
     value: pulumi.Input<string>;
 }
 
@@ -292,31 +298,76 @@ export interface GetTagsSort {
 }
 
 export interface KubernetesClusterKubeConfig {
+    /**
+     * The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+     */
     clientCertificate?: pulumi.Input<string>;
+    /**
+     * The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+     */
     clientKey?: pulumi.Input<string>;
+    /**
+     * The base64 encoded public certificate for the cluster's certificate authority.
+     */
     clusterCaCertificate?: pulumi.Input<string>;
+    /**
+     * The date and time when the credentials will expire and need to be regenerated.
+     */
     expiresAt?: pulumi.Input<string>;
+    /**
+     * The URL of the API server on the Kubernetes master node.
+     */
     host?: pulumi.Input<string>;
+    /**
+     * The full contents of the Kubernetes cluster's kubeconfig file.
+     */
     rawConfig?: pulumi.Input<string>;
+    /**
+     * The DigitalOcean API access token used by clients to access the cluster.
+     */
     token?: pulumi.Input<string>;
 }
 
 export interface KubernetesClusterNodePool {
+    /**
+     * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+     */
     actualNodeCount?: pulumi.Input<number>;
+    /**
+     * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+     */
     autoScale?: pulumi.Input<boolean>;
     /**
-     * A unique ID that can be used to identify and reference a Kubernetes cluster.
+     * A unique ID that can be used to identify and reference the node.
      */
     id?: pulumi.Input<string>;
+    /**
+     * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+     */
     maxNodes?: pulumi.Input<number>;
+    /**
+     * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+     */
     minNodes?: pulumi.Input<number>;
     /**
-     * A name for the Kubernetes cluster.
+     * A name for the node pool.
      */
     name: pulumi.Input<string>;
+    /**
+     * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+     */
     nodeCount?: pulumi.Input<number>;
+    /**
+     * A list of nodes in the pool. Each node exports the following attributes:
+     */
     nodes?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterNodePoolNode>[]>;
+    /**
+     * The slug identifier for the type of Droplet to be used as workers in the node pool.
+     */
     size: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
@@ -326,48 +377,55 @@ export interface KubernetesClusterNodePool {
 
 export interface KubernetesClusterNodePoolNode {
     /**
-     * The date and time when the Kubernetes cluster was created.
+     * The date and time when the node was created.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The id of the node's droplet
+     */
     dropletId?: pulumi.Input<string>;
     /**
-     * A unique ID that can be used to identify and reference a Kubernetes cluster.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * A name for the Kubernetes cluster.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * The date and time when the Kubernetes cluster was last updated.
-     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-     * - `rawConfig` - The full contents of the Kubernetes cluster's kubeconfig file.
-     * - `host` - The URL of the API server on the Kubernetes master node.
-     * - `clusterCaCertificate` - The base64 encoded public certificate for the cluster's certificate authority.
-     * - `token` - The DigitalOcean API access token used by clients to access the cluster.
-     * - `clientKey` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `clientCertificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-     * - `expiresAt` - The date and time when the credentials will expire and need to be regenerated.
-     */
-    updatedAt?: pulumi.Input<string>;
-}
-
-export interface KubernetesNodePoolNode {
-    createdAt?: pulumi.Input<string>;
-    dropletId?: pulumi.Input<string>;
-    /**
-     * A unique ID that can be used to identify and reference the node pool.
+     * A unique ID that can be used to identify and reference the node.
      */
     id?: pulumi.Input<string>;
     /**
      * A name for the node pool.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A string indicating the current status of the individual node.
+     */
     status?: pulumi.Input<string>;
+    /**
+     * The date and time when the node was last updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface KubernetesNodePoolNode {
+    /**
+     * The date and time when the node was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The id of the node's droplet
+     */
+    dropletId?: pulumi.Input<string>;
+    /**
+     * A unique ID that can be used to identify and reference the node.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * A name for the node pool.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A string indicating the current status of the individual node.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The date and time when the node was last updated.
+     */
     updatedAt?: pulumi.Input<string>;
 }
 

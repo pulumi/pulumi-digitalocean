@@ -96,12 +96,7 @@ export interface GetRegionsResult {
      */
     readonly id: string;
     /**
-     * A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:  
-     * - `slug` - A human-readable string that is used as a unique identifier for each region.
-     * - `name` - The display name of the region.
-     * - `available` - A boolean value that represents whether new Droplets can be created in this region.
-     * - `sizes` - A set of identifying slugs for the Droplet sizes available in this region.
-     * - `features` - A set of features available in this region.
+     * A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
      */
     readonly regions: outputs.GetRegionsRegion[];
     readonly sorts?: outputs.GetRegionsSort[];

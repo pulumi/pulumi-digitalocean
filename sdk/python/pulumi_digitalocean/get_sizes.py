@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetSizesResult',
+    'AwaitableGetSizesResult',
+    'get_sizes',
+]
+
+@pulumi.output_type
 class GetSizesResult:
     """
     A collection of values returned by getSizes.
@@ -15,19 +24,41 @@ class GetSizesResult:
     def __init__(__self__, filters=None, id=None, sizes=None, sorts=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
-        __self__.filters = filters
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if sizes and not isinstance(sizes, list):
+            raise TypeError("Expected argument 'sizes' to be a list")
+        pulumi.set(__self__, "sizes", sizes)
+        if sorts and not isinstance(sorts, list):
+            raise TypeError("Expected argument 'sorts' to be a list")
+        pulumi.set(__self__, "sorts", sorts)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[List['outputs.GetSizesFilterResult']]:
+        return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if sizes and not isinstance(sizes, list):
-            raise TypeError("Expected argument 'sizes' to be a list")
-        __self__.sizes = sizes
-        if sorts and not isinstance(sorts, list):
-            raise TypeError("Expected argument 'sorts' to be a list")
-        __self__.sorts = sorts
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def sizes(self) -> List['outputs.GetSizesSizeResult']:
+        return pulumi.get(self, "sizes")
+
+    @property
+    @pulumi.getter
+    def sorts(self) -> Optional[List['outputs.GetSizesSortResult']]:
+        return pulumi.get(self, "sorts")
+
+
 class AwaitableGetSizesResult(GetSizesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +70,10 @@ class AwaitableGetSizesResult(GetSizesResult):
             sizes=self.sizes,
             sorts=self.sorts)
 
-def get_sizes(filters=None,sorts=None,opts=None):
+
+def get_sizes(filters: Optional[List[pulumi.InputType['GetSizesFilterArgs']]] = None,
+              sorts: Optional[List[pulumi.InputType['GetSizesSortArgs']]] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSizesResult:
     """
     Retrieves information about the Droplet sizes that DigitalOcean supports, with
     the ability to filter and sort the results. If no filters are specified, all sizes
@@ -53,14 +87,14 @@ def get_sizes(filters=None,sorts=None,opts=None):
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    main = digitalocean.get_sizes(filters=[{
-        "key": "slug",
-        "values": ["s-1vcpu-1gb"],
-    }])
+    main = digitalocean.get_sizes(filters=[digitalocean.GetSizesFilterArgs(
+        key="slug",
+        values=["s-1vcpu-1gb"],
+    )])
     web = digitalocean.Droplet("web",
         image="ubuntu-18-04-x64",
         region="sgp1",
-        size=main.sizes[0]["slug"])
+        size=main.sizes[0].slug)
     ```
 
     The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available "sgp1" region, then pick the cheapest one:
@@ -70,26 +104,26 @@ def get_sizes(filters=None,sorts=None,opts=None):
     import pulumi_digitalocean as digitalocean
 
     main = digitalocean.get_sizes(filters=[
-            {
-                "key": "vcpus",
-                "values": [
-                    1,
-                    2,
+            digitalocean.GetSizesFilterArgs(
+                key="vcpus",
+                values=[
+                    "1",
+                    "2",
                 ],
-            },
-            {
-                "key": "regions",
-                "values": ["sgp1"],
-            },
+            ),
+            digitalocean.GetSizesFilterArgs(
+                key="regions",
+                values=["sgp1"],
+            ),
         ],
-        sorts=[{
-            "key": "price_monthly",
-            "direction": "asc",
-        }])
+        sorts=[digitalocean.GetSizesSortArgs(
+            key="price_monthly",
+            direction="asc",
+        )])
     web = digitalocean.Droplet("web",
         image="ubuntu-18-04-x64",
         region="sgp1",
-        size=main.sizes[0]["slug"])
+        size=main.sizes[0].slug)
     ```
 
     The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
@@ -99,50 +133,34 @@ def get_sizes(filters=None,sorts=None,opts=None):
     import pulumi_digitalocean as digitalocean
 
     main = digitalocean.get_sizes(sorts=[
-        {
-            "direction": "asc",
-            "key": "memory",
-        },
-        {
-            "direction": "desc",
-            "key": "disk",
-        },
+        digitalocean.GetSizesSortArgs(
+            direction="asc",
+            key="memory",
+        ),
+        digitalocean.GetSizesSortArgs(
+            direction="desc",
+            key="disk",
+        ),
     ])
     ```
 
 
-    :param list filters: Filter the results.
+    :param List[pulumi.InputType['GetSizesFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param list sorts: Sort the results.
+    :param List[pulumi.InputType['GetSizesSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
-
-    The **filters** object supports the following:
-
-      * `key` (`str`) - Filter the sizes by this key. This may be one of `slug`,
-        `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-        `price_hourly`, or `available`.
-      * `values` (`list`) - Only retrieves images which keys has value that matches
-        one of the values provided here.
-
-    The **sorts** object supports the following:
-
-      * `direction` (`str`) - The sort direction. This may be either `asc` or `desc`.
-      * `key` (`str`) - Sort the sizes by this key. This may be one of `slug`,
-        `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['sorts'] = sorts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getSizes:getSizes', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getSizes:getSizes', __args__, opts=opts, typ=GetSizesResult).value
 
     return AwaitableGetSizesResult(
-        filters=__ret__.get('filters'),
-        id=__ret__.get('id'),
-        sizes=__ret__.get('sizes'),
-        sorts=__ret__.get('sorts'))
+        filters=__ret__.filters,
+        id=__ret__.id,
+        sizes=__ret__.sizes,
+        sorts=__ret__.sorts)

@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
         private List<string>? _tags;
 
         /// <summary>
-        /// A list of tag names to be applied to the Kubernetes cluster.
+        /// A list of tag names applied to the node pool.
         /// </summary>
         public List<string> Tags
         {
@@ -53,7 +53,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string ClusterSubnet;
         /// <summary>
-        /// The date and time when the Kubernetes cluster was created.
+        /// The date and time when the node was created.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
@@ -69,25 +69,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Ipv4Address;
         public readonly ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> KubeConfigs;
+        /// <summary>
+        /// The auto-generated name for the node.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// A list of node pools associated with the cluster. Each node pool exports the following attributes:
-        /// - `id` -  The unique ID that can be used to identify and reference the node pool.
-        /// - `name` - The name of the node pool.
-        /// - `size` - The slug identifier for the type of Droplet used as workers in the node pool.
-        /// - `node_count` - The number of Droplet instances in the node pool.
-        /// - `actual_node_count` - The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
-        /// - `auto_scale` - A boolean indicating whether auto-scaling is enabled on the node pool.
-        /// - `min_nodes` - If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-        /// - `max_nodes` - If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-        /// - `tags` - A list of tag names applied to the node pool.
-        /// - `labels` - A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-        /// - `nodes` - A list of nodes in the pool. Each node exports the following attributes:
-        /// + `id` -  A unique ID that can be used to identify and reference the node.
-        /// + `name` - The auto-generated name for the node.
-        /// + `status` -  A string indicating the current status of the individual node.
-        /// + `created_at` - The date and time when the node was created.
-        /// + `updated_at` - The date and time when the node was last updated.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterNodePoolResult> NodePools;
         /// <summary>
@@ -99,23 +86,15 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string ServiceSubnet;
         /// <summary>
-        /// A string indicating the current status of the cluster. Potential values include running, provisioning, and errored.
+        /// A string indicating the current status of the individual node.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A list of tag names to be applied to the Kubernetes cluster.
+        /// A list of tag names applied to the node pool.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// The date and time when the Kubernetes cluster was last updated.
-        /// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-        /// - `raw_config` - The full contents of the Kubernetes cluster's kubeconfig file.
-        /// - `host` - The URL of the API server on the Kubernetes master node.
-        /// - `cluster_ca_certificate` - The base64 encoded public certificate for the cluster's certificate authority.
-        /// - `token` - The DigitalOcean API access token used by clients to access the cluster.
-        /// - `client_key` - The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-        /// - `client_certificate` - The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-        /// - `expires_at` - The date and time when the credentials will expire and need to be regenerated.
+        /// The date and time when the node was last updated.
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>

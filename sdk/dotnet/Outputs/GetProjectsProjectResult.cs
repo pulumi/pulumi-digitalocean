@@ -13,16 +13,46 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetProjectsProjectResult
     {
+        /// <summary>
+        /// The date and time when the project was created, (ISO8601)
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// The description of the project
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
+        /// </summary>
         public readonly string Environment;
+        /// <summary>
+        /// The ID of the project
+        /// </summary>
         public readonly string Id;
         public readonly bool IsDefault;
+        /// <summary>
+        /// The name of the project
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The ID of the project owner
+        /// </summary>
         public readonly int OwnerId;
+        /// <summary>
+        /// The unique universal identifier of the project owner
+        /// </summary>
         public readonly string OwnerUuid;
+        /// <summary>
+        /// The purpose of the project (Default: "Web Application")
+        /// </summary>
         public readonly string Purpose;
+        /// <summary>
+        /// A set of uniform resource names (URNs) for the resources associated with the project
+        /// </summary>
         public readonly ImmutableArray<string> Resources;
+        /// <summary>
+        /// The date and time when the project was last updated, (ISO8601)
+        /// </summary>
         public readonly string UpdatedAt;
 
         [OutputConstructor]

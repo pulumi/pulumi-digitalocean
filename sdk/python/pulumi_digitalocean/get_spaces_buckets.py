@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetSpacesBucketsResult',
+    'AwaitableGetSpacesBucketsResult',
+    'get_spaces_buckets',
+]
+
+@pulumi.output_type
 class GetSpacesBucketsResult:
     """
     A collection of values returned by getSpacesBuckets.
@@ -15,22 +24,44 @@ class GetSpacesBucketsResult:
     def __init__(__self__, buckets=None, filters=None, id=None, sorts=None):
         if buckets and not isinstance(buckets, list):
             raise TypeError("Expected argument 'buckets' to be a list")
-        __self__.buckets = buckets
+        pulumi.set(__self__, "buckets", buckets)
+        if filters and not isinstance(filters, list):
+            raise TypeError("Expected argument 'filters' to be a list")
+        pulumi.set(__self__, "filters", filters)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if sorts and not isinstance(sorts, list):
+            raise TypeError("Expected argument 'sorts' to be a list")
+        pulumi.set(__self__, "sorts", sorts)
+
+    @property
+    @pulumi.getter
+    def buckets(self) -> List['outputs.GetSpacesBucketsBucketResult']:
         """
         A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:
         """
-        if filters and not isinstance(filters, list):
-            raise TypeError("Expected argument 'filters' to be a list")
-        __self__.filters = filters
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "buckets")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[List['outputs.GetSpacesBucketsFilterResult']]:
+        return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if sorts and not isinstance(sorts, list):
-            raise TypeError("Expected argument 'sorts' to be a list")
-        __self__.sorts = sorts
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def sorts(self) -> Optional[List['outputs.GetSpacesBucketsSortResult']]:
+        return pulumi.get(self, "sorts")
+
+
 class AwaitableGetSpacesBucketsResult(GetSpacesBucketsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +73,10 @@ class AwaitableGetSpacesBucketsResult(GetSpacesBucketsResult):
             id=self.id,
             sorts=self.sorts)
 
-def get_spaces_buckets(filters=None,sorts=None,opts=None):
+
+def get_spaces_buckets(filters: Optional[List[pulumi.InputType['GetSpacesBucketsFilterArgs']]] = None,
+                       sorts: Optional[List[pulumi.InputType['GetSpacesBucketsSortArgs']]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpacesBucketsResult:
     """
     Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
     If no filters are specified, all Spaces buckets will be returned.
@@ -60,10 +94,10 @@ def get_spaces_buckets(filters=None,sorts=None,opts=None):
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    nyc3 = digitalocean.get_spaces_buckets(filters=[{
-        "key": "region",
-        "values": ["nyc3"],
-    }])
+    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
+        key="region",
+        values=["nyc3"],
+    )])
     ```
     You can sort the results as well:
 
@@ -71,46 +105,33 @@ def get_spaces_buckets(filters=None,sorts=None,opts=None):
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    nyc3 = digitalocean.get_spaces_buckets(filters=[{
-            "key": "region",
-            "values": ["nyc3"],
-        }],
-        sorts=[{
-            "direction": "desc",
-            "key": "name",
-        }])
+    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
+            key="region",
+            values=["nyc3"],
+        )],
+        sorts=[digitalocean.GetSpacesBucketsSortArgs(
+            direction="desc",
+            key="name",
+        )])
     ```
 
 
-    :param list filters: Filter the results.
+    :param List[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param list sorts: Sort the results.
+    :param List[pulumi.InputType['GetSpacesBucketsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
-
-    The **filters** object supports the following:
-
-      * `key` (`str`) - Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
-      * `values` (`list`) - A list of values to match against the `key` field. Only retrieves images
-        where the `key` field takes on one or more of the values provided here.
-
-    The **sorts** object supports the following:
-
-      * `direction` (`str`) - The sort direction. This may be either `asc` or `desc`.
-      * `key` (`str`) - Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['sorts'] = sorts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('digitalocean:index/getSpacesBuckets:getSpacesBuckets', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('digitalocean:index/getSpacesBuckets:getSpacesBuckets', __args__, opts=opts, typ=GetSpacesBucketsResult).value
 
     return AwaitableGetSpacesBucketsResult(
-        buckets=__ret__.get('buckets'),
-        filters=__ret__.get('filters'),
-        id=__ret__.get('id'),
-        sorts=__ret__.get('sorts'))
+        buckets=__ret__.buckets,
+        filters=__ret__.filters,
+        id=__ret__.id,
+        sorts=__ret__.sorts)

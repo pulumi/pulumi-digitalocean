@@ -5,40 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Vpc']
 
 
 class Vpc(pulumi.CustomResource):
-    created_at: pulumi.Output[str]
-    """
-    The date and time of when the VPC was created.
-    """
-    default: pulumi.Output[bool]
-    """
-    A boolean indicating whether or not the VPC is the default one for the region.
-    """
-    description: pulumi.Output[str]
-    """
-    A free-form text field up to a limit of 255 characters to describe the VPC.
-    """
-    ip_range: pulumi.Output[str]
-    """
-    The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
-    """
-    name: pulumi.Output[str]
-    """
-    A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
-    """
-    region: pulumi.Output[str]
-    """
-    The DigitalOcean region slug for the VPC's location.
-    """
-    vpc_urn: pulumi.Output[str]
-    """
-    The uniform resource name (URN) for the VPC.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, ip_range=None, name=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ip_range: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a [DigitalOcean VPC](https://developers.digitalocean.com/documentation/v2/#vpcs) resource.
 
@@ -91,7 +74,7 @@ class Vpc(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -113,13 +96,22 @@ class Vpc(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_at=None, default=None, description=None, ip_range=None, name=None, region=None, vpc_urn=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            default: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            ip_range: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            vpc_urn: Optional[pulumi.Input[str]] = None) -> 'Vpc':
         """
         Get an existing Vpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The date and time of when the VPC was created.
         :param pulumi.Input[bool] default: A boolean indicating whether or not the VPC is the default one for the region.
@@ -142,8 +134,65 @@ class Vpc(pulumi.CustomResource):
         __props__["vpc_urn"] = vpc_urn
         return Vpc(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time of when the VPC was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def default(self) -> bool:
+        """
+        A boolean indicating whether or not the VPC is the default one for the region.
+        """
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A free-form text field up to a limit of 255 characters to describe the VPC.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ipRange")
+    def ip_range(self) -> str:
+        """
+        The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
+        """
+        return pulumi.get(self, "ip_range")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The DigitalOcean region slug for the VPC's location.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="vpcUrn")
+    def vpc_urn(self) -> str:
+        """
+        The uniform resource name (URN) for the VPC.
+        """
+        return pulumi.get(self, "vpc_urn")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

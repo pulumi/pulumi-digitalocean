@@ -5,27 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['DatabaseFirewall']
 
 
 class DatabaseFirewall(pulumi.CustomResource):
-    cluster_id: pulumi.Output[str]
-    """
-    The ID of the target database cluster.
-    """
-    rules: pulumi.Output[list]
-    """
-    A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-    - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
-    - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-
-      * `created_at` (`str`) - The date and time when the firewall rule was created.
-      * `type` (`str`)
-      * `uuid` (`str`) - A unique identifier for the firewall rule.
-      * `value` (`str`)
-    """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, rules=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DigitalOcean database firewall resource allowing you to restrict
         connections to your database to trusted sources. You may limit connections to
@@ -47,14 +43,14 @@ class DatabaseFirewall(pulumi.CustomResource):
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
             rules=[
-                {
-                    "type": "ip_addr",
-                    "value": "192.168.1.1",
-                },
-                {
-                    "type": "ip_addr",
-                    "value": "192.0.2.0",
-                },
+                digitalocean.DatabaseFirewallRuleArgs(
+                    type="ip_addr",
+                    value="192.168.1.1",
+                ),
+                digitalocean.DatabaseFirewallRuleArgs(
+                    type="ip_addr",
+                    value="192.0.2.0",
+                ),
             ])
         ```
         ### Create a new database firewall allowing a Droplet
@@ -75,25 +71,16 @@ class DatabaseFirewall(pulumi.CustomResource):
             node_count=1)
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
-            rules=[{
-                "type": "droplet",
-                "value": web.id,
-            }])
+            rules=[digitalocean.DatabaseFirewallRuleArgs(
+                type="droplet",
+                value=web.id,
+            )])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the target database cluster.
-        :param pulumi.Input[list] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-               - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
-               - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-
-        The **rules** object supports the following:
-
-          * `created_at` (`pulumi.Input[str]`) - The date and time when the firewall rule was created.
-          * `type` (`pulumi.Input[str]`)
-          * `uuid` (`pulumi.Input[str]`) - A unique identifier for the firewall rule.
-          * `value` (`pulumi.Input[str]`)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,7 +93,7 @@ class DatabaseFirewall(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -125,25 +112,20 @@ class DatabaseFirewall(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, rules=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]]] = None) -> 'DatabaseFirewall':
         """
         Get an existing DatabaseFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the target database cluster.
-        :param pulumi.Input[list] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-               - `type` - (Required) The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
-               - `value` - (Required) The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-
-        The **rules** object supports the following:
-
-          * `created_at` (`pulumi.Input[str]`) - The date and time when the firewall rule was created.
-          * `type` (`pulumi.Input[str]`)
-          * `uuid` (`pulumi.Input[str]`) - A unique identifier for the firewall rule.
-          * `value` (`pulumi.Input[str]`)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -153,8 +135,25 @@ class DatabaseFirewall(pulumi.CustomResource):
         __props__["rules"] = rules
         return DatabaseFirewall(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the target database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> List['outputs.DatabaseFirewallRule']:
+        """
+        A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        """
+        return pulumi.get(self, "rules")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
