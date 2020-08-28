@@ -13,7 +13,7 @@ __all__ = ['DatabaseUser']
 
 class DatabaseUser(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class DatabaseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The ID of the original source database cluster.
         """
@@ -120,7 +120,7 @@ class DatabaseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mysqlAuthPlugin")
-    def mysql_auth_plugin(self) -> Optional[str]:
+    def mysql_auth_plugin(self) -> pulumi.Output[Optional[str]]:
         """
         The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
         """
@@ -128,7 +128,7 @@ class DatabaseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name for the database user.
         """
@@ -136,7 +136,7 @@ class DatabaseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         Password for the database user.
         """
@@ -144,7 +144,7 @@ class DatabaseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         Role for the database user. The value will be either "primary" or "normal".
         """

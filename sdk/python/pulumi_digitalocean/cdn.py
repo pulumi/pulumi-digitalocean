@@ -13,7 +13,7 @@ __all__ = ['Cdn']
 
 class Cdn(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[str]:
+    def certificate_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
@@ -145,7 +145,7 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date and time when the CDN Endpoint was created.
         """
@@ -153,7 +153,7 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[str]:
+    def custom_domain(self) -> pulumi.Output[Optional[str]]:
         """
         The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         """
@@ -161,7 +161,7 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> str:
+    def endpoint(self) -> pulumi.Output[str]:
         """
         The fully qualified domain name (FQDN) from which the CDN-backed content is served.
         """
@@ -169,7 +169,7 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def origin(self) -> str:
+    def origin(self) -> pulumi.Output[str]:
         """
         The fully qualified domain name, (FQDN) for a Space.
         """
@@ -177,7 +177,7 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> pulumi.Output[float]:
         """
         The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
         """

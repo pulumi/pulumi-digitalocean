@@ -15,7 +15,7 @@ __all__ = ['KubernetesCluster']
 
 class KubernetesCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
@@ -181,7 +181,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterSubnet")
-    def cluster_subnet(self) -> str:
+    def cluster_subnet(self) -> pulumi.Output[str]:
         """
         The range of IP addresses in the overlay network of the Kubernetes cluster.
         """
@@ -189,7 +189,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date and time when the node was created.
         """
@@ -197,7 +197,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> str:
+    def endpoint(self) -> pulumi.Output[str]:
         """
         The base URL of the API server on the Kubernetes master node.
         """
@@ -205,7 +205,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv4Address")
-    def ipv4_address(self) -> str:
+    def ipv4_address(self) -> pulumi.Output[str]:
         """
         The public IPv4 address of the Kubernetes master node.
         """
@@ -213,12 +213,12 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfigs")
-    def kube_configs(self) -> List['outputs.KubernetesClusterKubeConfig']:
+    def kube_configs(self) -> pulumi.Output[List['outputs.KubernetesClusterKubeConfig']]:
         return pulumi.get(self, "kube_configs")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the node pool.
         """
@@ -226,7 +226,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodePool")
-    def node_pool(self) -> 'outputs.KubernetesClusterNodePool':
+    def node_pool(self) -> pulumi.Output['outputs.KubernetesClusterNodePool']:
         """
         A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         """
@@ -234,7 +234,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The slug identifier for the region where the Kubernetes cluster will be created.
         """
@@ -242,7 +242,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceSubnet")
-    def service_subnet(self) -> str:
+    def service_subnet(self) -> pulumi.Output[str]:
         """
         The range of assignable IP addresses for services running in the Kubernetes cluster.
         """
@@ -250,7 +250,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         A string indicating the current status of the individual node.
         """
@@ -258,7 +258,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tag names to be applied to the Kubernetes cluster.
         """
@@ -266,7 +266,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         """
         The date and time when the node was last updated.
         """
@@ -274,7 +274,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         """
@@ -282,7 +282,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> str:
+    def vpc_uuid(self) -> pulumi.Output[str]:
         """
         The ID of the VPC where the Kubernetes cluster will be located.
         """

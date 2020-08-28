@@ -13,7 +13,7 @@ __all__ = ['Droplet']
 
 class Droplet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -241,7 +241,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def backups(self) -> Optional[bool]:
+    def backups(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean controlling if backups are made. Defaults to
         false.
@@ -250,12 +250,12 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
-    def disk(self) -> float:
+    def disk(self) -> pulumi.Output[float]:
         """
         The size of the instance's disk in GB
         """
@@ -263,7 +263,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletUrn")
-    def droplet_urn(self) -> str:
+    def droplet_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name of the Droplet
         * `name`- The name of the Droplet
@@ -272,7 +272,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def image(self) -> str:
+    def image(self) -> pulumi.Output[str]:
         """
         The Droplet image ID or slug.
         """
@@ -280,7 +280,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv4Address")
-    def ipv4_address(self) -> str:
+    def ipv4_address(self) -> pulumi.Output[str]:
         """
         The IPv4 address
         """
@@ -288,7 +288,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv4AddressPrivate")
-    def ipv4_address_private(self) -> str:
+    def ipv4_address_private(self) -> pulumi.Output[str]:
         """
         The private networking IPv4 address
         """
@@ -296,7 +296,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ipv6(self) -> Optional[bool]:
+    def ipv6(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean controlling if IPv6 is enabled. Defaults to false.
         """
@@ -304,7 +304,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> str:
+    def ipv6_address(self) -> pulumi.Output[str]:
         """
         The IPv6 address
         """
@@ -312,7 +312,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def locked(self) -> bool:
+    def locked(self) -> pulumi.Output[bool]:
         """
         Is the Droplet locked
         """
@@ -320,12 +320,12 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def memory(self) -> float:
+    def memory(self) -> pulumi.Output[float]:
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter
-    def monitoring(self) -> Optional[bool]:
+    def monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean controlling whether monitoring agent is installed.
         Defaults to false.
@@ -334,7 +334,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Droplet name.
         """
@@ -342,7 +342,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="priceHourly")
-    def price_hourly(self) -> float:
+    def price_hourly(self) -> pulumi.Output[float]:
         """
         Droplet hourly price
         """
@@ -350,7 +350,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="priceMonthly")
-    def price_monthly(self) -> float:
+    def price_monthly(self) -> pulumi.Output[float]:
         """
         Droplet monthly price
         """
@@ -358,7 +358,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateNetworking")
-    def private_networking(self) -> bool:
+    def private_networking(self) -> pulumi.Output[bool]:
         """
         Boolean controlling if private networking
         is enabled. When VPC is enabled on an account, this will provision the
@@ -369,7 +369,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region to start in.
         """
@@ -377,7 +377,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resizeDisk")
-    def resize_disk(self) -> Optional[bool]:
+    def resize_disk(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean controlling whether to increase the disk
         size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -388,7 +388,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> str:
+    def size(self) -> pulumi.Output[str]:
         """
         The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         """
@@ -396,7 +396,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sshKeys")
-    def ssh_keys(self) -> Optional[List[str]]:
+    def ssh_keys(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of SSH IDs or fingerprints to enable in
         the format `[12345, 123456]`. To retrieve this info, use a tool such
@@ -407,7 +407,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the Droplet
         """
@@ -415,7 +415,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of the tags to be applied to this Droplet.
         """
@@ -423,7 +423,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         A string of the desired User Data for the Droplet.
         """
@@ -431,7 +431,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vcpus(self) -> float:
+    def vcpus(self) -> pulumi.Output[float]:
         """
         The number of the instance's virtual CPUs
         """
@@ -439,7 +439,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeIds")
-    def volume_ids(self) -> List[str]:
+    def volume_ids(self) -> pulumi.Output[List[str]]:
         """
         A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
         """
@@ -447,7 +447,7 @@ class Droplet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> str:
+    def vpc_uuid(self) -> pulumi.Output[str]:
         """
         The ID of the VPC where the Droplet will be located.
         """

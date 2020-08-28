@@ -13,7 +13,7 @@ __all__ = ['DropletSnapshot']
 
 class DropletSnapshot(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  droplet_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -110,7 +110,7 @@ class DropletSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date and time the Droplet snapshot was created.
         """
@@ -118,7 +118,7 @@ class DropletSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> str:
+    def droplet_id(self) -> pulumi.Output[str]:
         """
         The ID of the Droplet from which the snapshot will be taken.
         """
@@ -126,7 +126,7 @@ class DropletSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> float:
+    def min_disk_size(self) -> pulumi.Output[float]:
         """
         The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
         """
@@ -134,7 +134,7 @@ class DropletSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the Droplet snapshot.
         """
@@ -142,7 +142,7 @@ class DropletSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regions(self) -> List[str]:
+    def regions(self) -> pulumi.Output[List[str]]:
         """
         A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
         """
@@ -150,7 +150,7 @@ class DropletSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The billable size of the Droplet snapshot in gigabytes.
         """

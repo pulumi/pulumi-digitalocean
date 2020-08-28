@@ -13,7 +13,7 @@ __all__ = ['VolumeSnapshot']
 
 class VolumeSnapshot(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -116,7 +116,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date and time the volume snapshot was created.
         """
@@ -124,7 +124,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> float:
+    def min_disk_size(self) -> pulumi.Output[float]:
         """
         The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
         """
@@ -132,7 +132,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the volume snapshot.
         """
@@ -140,7 +140,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regions(self) -> List[str]:
+    def regions(self) -> pulumi.Output[List[str]]:
         """
         A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
         """
@@ -148,7 +148,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The billable size of the volume snapshot in gigabytes.
         """
@@ -156,7 +156,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of the tags to be applied to this volume snapshot.
         """
@@ -164,7 +164,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> str:
+    def volume_id(self) -> pulumi.Output[str]:
         """
         The ID of the volume from which the volume snapshot originated.
         """

@@ -15,7 +15,7 @@ __all__ = ['DatabaseCluster']
 
 class DatabaseCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  eviction_policy: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterUrn")
-    def cluster_urn(self) -> str:
+    def cluster_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name of the database cluster.
         """
@@ -225,7 +225,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
+    def database(self) -> pulumi.Output[str]:
         """
         Name of the cluster's default database.
         """
@@ -233,7 +233,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def engine(self) -> str:
+    def engine(self) -> pulumi.Output[str]:
         """
         Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
         """
@@ -241,7 +241,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="evictionPolicy")
-    def eviction_policy(self) -> Optional[str]:
+    def eviction_policy(self) -> pulumi.Output[Optional[str]]:
         """
         A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         """
@@ -249,7 +249,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         Database cluster's hostname.
         """
@@ -257,7 +257,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceWindows")
-    def maintenance_windows(self) -> Optional[List['outputs.DatabaseClusterMaintenanceWindow']]:
+    def maintenance_windows(self) -> pulumi.Output[Optional[List['outputs.DatabaseClusterMaintenanceWindow']]]:
         """
         Defines when the automatic maintenance should be performed for the database cluster.
         """
@@ -265,7 +265,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the database cluster.
         """
@@ -273,7 +273,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> pulumi.Output[float]:
         """
         Number of nodes that will be included in the cluster.
         """
@@ -281,7 +281,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         Password for the cluster's default user.
         """
@@ -289,7 +289,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Network port that the database cluster is listening on.
         """
@@ -297,7 +297,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateHost")
-    def private_host(self) -> str:
+    def private_host(self) -> pulumi.Output[str]:
         """
         Same as `host`, but only accessible from resources within the account and in the same region.
         """
@@ -305,7 +305,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateNetworkUuid")
-    def private_network_uuid(self) -> str:
+    def private_network_uuid(self) -> pulumi.Output[str]:
         """
         The ID of the VPC where the database cluster will be located.
         """
@@ -313,7 +313,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateUri")
-    def private_uri(self) -> str:
+    def private_uri(self) -> pulumi.Output[str]:
         """
         Same as `uri`, but only accessible from resources within the account and in the same region.
         """
@@ -321,7 +321,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         DigitalOcean region where the cluster will reside.
         """
@@ -329,7 +329,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> str:
+    def size(self) -> pulumi.Output[str]:
         """
         Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         """
@@ -337,7 +337,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sqlMode")
-    def sql_mode(self) -> Optional[str]:
+    def sql_mode(self) -> pulumi.Output[Optional[str]]:
         """
         A comma separated string specifying the  SQL modes for a MySQL cluster.
         """
@@ -345,7 +345,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tag names to be applied to the database cluster.
         """
@@ -353,7 +353,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def uri(self) -> str:
+    def uri(self) -> pulumi.Output[str]:
         """
         The full URI for connecting to the database cluster.
         """
@@ -361,7 +361,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> str:
+    def user(self) -> pulumi.Output[str]:
         """
         Username for the cluster's default user.
         """
@@ -369,7 +369,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[str]:
+    def version(self) -> pulumi.Output[Optional[str]]:
         """
         Engine version used by the cluster (ex. `11` for PostgreSQL 11).
         """

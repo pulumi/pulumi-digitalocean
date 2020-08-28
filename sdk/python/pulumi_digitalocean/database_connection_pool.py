@@ -13,7 +13,7 @@ __all__ = ['DatabaseConnectionPool']
 
 class DatabaseConnectionPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  db_name: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
         """
@@ -165,7 +165,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbName")
-    def db_name(self) -> str:
+    def db_name(self) -> pulumi.Output[str]:
         """
         The database for use with the connection pool.
         """
@@ -173,7 +173,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         The hostname used to connect to the database connection pool.
         """
@@ -181,7 +181,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> str:
+    def mode(self) -> pulumi.Output[str]:
         """
         The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
         """
@@ -189,7 +189,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name for the database connection pool.
         """
@@ -197,7 +197,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         Password for the connection pool's user.
         """
@@ -205,7 +205,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Network port that the database connection pool is listening on.
         """
@@ -213,7 +213,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateHost")
-    def private_host(self) -> str:
+    def private_host(self) -> pulumi.Output[str]:
         """
         Same as `host`, but only accessible from resources within the account and in the same region.
         """
@@ -221,7 +221,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateUri")
-    def private_uri(self) -> str:
+    def private_uri(self) -> pulumi.Output[str]:
         """
         Same as `uri`, but only accessible from resources within the account and in the same region.
         """
@@ -229,7 +229,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The desired size of the PGBouncer connection pool.
         """
@@ -237,7 +237,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def uri(self) -> str:
+    def uri(self) -> pulumi.Output[str]:
         """
         The full URI for connecting to the database connection pool.
         """
@@ -245,7 +245,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> str:
+    def user(self) -> pulumi.Output[str]:
         """
         The name of the database user for use with the connection pool.
         """

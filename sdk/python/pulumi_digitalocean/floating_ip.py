@@ -13,7 +13,7 @@ __all__ = ['FloatingIp']
 
 class FloatingIp(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  droplet_id: Optional[pulumi.Input[float]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -110,7 +110,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> Optional[float]:
+    def droplet_id(self) -> pulumi.Output[Optional[float]]:
         """
         The ID of Droplet that the Floating IP will be assigned to.
         """
@@ -118,7 +118,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="floatingIpUrn")
-    def floating_ip_urn(self) -> str:
+    def floating_ip_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name of the floating ip
         """
@@ -126,7 +126,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         The IP Address of the resource
         """
@@ -134,7 +134,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region that the Floating IP is reserved to.
         """

@@ -13,7 +13,7 @@ __all__ = ['Volume']
 
 class Volume(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  filesystem_type: Optional[pulumi.Input[str]] = None,
@@ -173,7 +173,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
         """
@@ -181,7 +181,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> List[float]:
+    def droplet_ids(self) -> pulumi.Output[List[float]]:
         """
         A list of associated droplet ids.
         """
@@ -189,7 +189,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="filesystemLabel")
-    def filesystem_label(self) -> str:
+    def filesystem_label(self) -> pulumi.Output[str]:
         """
         Filesystem label for the block storage volume.
         """
@@ -197,7 +197,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="filesystemType")
-    def filesystem_type(self) -> str:
+    def filesystem_type(self) -> pulumi.Output[str]:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
@@ -205,7 +205,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initialFilesystemLabel")
-    def initial_filesystem_label(self) -> Optional[str]:
+    def initial_filesystem_label(self) -> pulumi.Output[Optional[str]]:
         """
         Initial filesystem label for the block storage volume.
         """
@@ -213,7 +213,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initialFilesystemType")
-    def initial_filesystem_type(self) -> Optional[str]:
+    def initial_filesystem_type(self) -> pulumi.Output[Optional[str]]:
         """
         Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
@@ -221,7 +221,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
         """
@@ -229,7 +229,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region that the block storage volume will be created in.
         """
@@ -237,7 +237,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The size of the block storage volume in GiB. If updated, can only be expanded.
         """
@@ -245,7 +245,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
+    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
         """
@@ -253,7 +253,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of the tags to be applied to this Volume.
         """
@@ -261,7 +261,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeUrn")
-    def volume_urn(self) -> str:
+    def volume_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name for the volume.
         """

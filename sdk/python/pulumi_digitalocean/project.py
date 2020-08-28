@@ -13,7 +13,7 @@ __all__ = ['Project']
 
 class Project(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
@@ -163,7 +163,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         the date and time when the project was created, (ISO8601)
         """
@@ -171,7 +171,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         the description of the project
         """
@@ -179,7 +179,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[str]:
+    def environment(self) -> pulumi.Output[Optional[str]]:
         """
         the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
         """
@@ -187,12 +187,12 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> bool:
+    def is_default(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Project
         """
@@ -200,7 +200,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> float:
+    def owner_id(self) -> pulumi.Output[float]:
         """
         the id of the project owner.
         """
@@ -208,7 +208,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownerUuid")
-    def owner_uuid(self) -> str:
+    def owner_uuid(self) -> pulumi.Output[str]:
         """
         the unique universal identifier of the project owner.
         """
@@ -216,7 +216,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def purpose(self) -> Optional[str]:
+    def purpose(self) -> pulumi.Output[Optional[str]]:
         """
         the purpose of the project, (Default: "Web Application")
         """
@@ -224,7 +224,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resources(self) -> List[str]:
+    def resources(self) -> pulumi.Output[List[str]]:
         """
         a list of uniform resource names (URNs) for the resources associated with the project
         """
@@ -232,7 +232,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         """
         the date and time when the project was last updated, (ISO8601)
         """
