@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.7.3
-* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
+_(none)_
 
 ---
+
+## 2.7.0 (2020-08-31)
+* Upgrade to pulumi-terraform-bridge v2.7.3
+* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
 
 ## 2.6.0 (2020-06-16)
 * Upgrade to v1.20.0 of the DigitalOcean Terraform Provider
