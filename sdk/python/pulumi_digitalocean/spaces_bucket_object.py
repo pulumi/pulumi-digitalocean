@@ -13,7 +13,7 @@ __all__ = ['SpacesBucketObject']
 
 class SpacesBucketObject(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
@@ -215,7 +215,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> Optional[str]:
+    def acl(self) -> pulumi.Output[Optional[str]]:
         """
         The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
         """
@@ -223,7 +223,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket to put the file in.
         """
@@ -231,7 +231,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cacheControl")
-    def cache_control(self) -> Optional[str]:
+    def cache_control(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         """
@@ -239,7 +239,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def content(self) -> Optional[str]:
+    def content(self) -> pulumi.Output[Optional[str]]:
         """
         Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         """
@@ -247,7 +247,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentBase64")
-    def content_base64(self) -> Optional[str]:
+    def content_base64(self) -> pulumi.Output[Optional[str]]:
         """
         Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
         """
@@ -255,7 +255,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[str]:
+    def content_disposition(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
         """
@@ -263,7 +263,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[str]:
+    def content_encoding(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         """
@@ -271,7 +271,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentLanguage")
-    def content_language(self) -> Optional[str]:
+    def content_language(self) -> pulumi.Output[Optional[str]]:
         """
         The language the content is in e.g. en-US or en-GB.
         """
@@ -279,7 +279,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> str:
+    def content_type(self) -> pulumi.Output[str]:
         """
         A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         """
@@ -287,7 +287,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
         """
@@ -295,7 +295,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[bool]:
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the object to be deleted by removing any legal hold on any object version.
         Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
@@ -304,7 +304,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         The name of the object once it is in the bucket.
         """
@@ -312,7 +312,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, str]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         """
@@ -320,7 +320,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region where the bucket resides (Defaults to `nyc3`)
         """
@@ -328,7 +328,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def source(self) -> Optional[str]:
+    def source(self) -> pulumi.Output[Optional[str]]:
         """
         The path to a file that will be read and uploaded as raw bytes for the object content.
         """
@@ -336,7 +336,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> str:
+    def version_id(self) -> pulumi.Output[str]:
         """
         A unique version ID value for the object, if bucket versioning is enabled.
         """
@@ -344,7 +344,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="websiteRedirect")
-    def website_redirect(self) -> Optional[str]:
+    def website_redirect(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
         """

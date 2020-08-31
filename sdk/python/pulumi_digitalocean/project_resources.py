@@ -13,7 +13,7 @@ __all__ = ['ProjectResources']
 
 class ProjectResources(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -112,7 +112,7 @@ class ProjectResources(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         the ID of the project
         """
@@ -120,7 +120,7 @@ class ProjectResources(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resources(self) -> List[str]:
+    def resources(self) -> pulumi.Output[List[str]]:
         """
         a list of uniform resource names (URNs) for the resources associated with the project
         """

@@ -13,7 +13,7 @@ __all__ = ['ContainerRegistry']
 
 class ContainerRegistry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -90,12 +90,12 @@ class ContainerRegistry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> str:
+    def endpoint(self) -> pulumi.Output[str]:
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the container_registry
         """
@@ -103,7 +103,7 @@ class ContainerRegistry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverUrl")
-    def server_url(self) -> str:
+    def server_url(self) -> pulumi.Output[str]:
         return pulumi.get(self, "server_url")
 
     def translate_output_property(self, prop):

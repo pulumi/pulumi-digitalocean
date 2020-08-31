@@ -15,7 +15,7 @@ __all__ = ['LoadBalancer']
 
 class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  droplet_ids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
@@ -174,7 +174,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[str]:
+    def algorithm(self) -> pulumi.Output[Optional[str]]:
         """
         The load balancing algorithm used to determine
         which backend Droplet will be selected by a client. It must be either `round_robin`
@@ -184,7 +184,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> List[float]:
+    def droplet_ids(self) -> pulumi.Output[List[float]]:
         """
         A list of the IDs of each droplet to be attached to the Load Balancer.
         """
@@ -192,7 +192,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletTag")
-    def droplet_tag(self) -> Optional[str]:
+    def droplet_tag(self) -> pulumi.Output[Optional[str]]:
         """
         The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         """
@@ -200,7 +200,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableBackendKeepalive")
-    def enable_backend_keepalive(self) -> Optional[bool]:
+    def enable_backend_keepalive(self) -> pulumi.Output[Optional[bool]]:
         """
         A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
         """
@@ -208,7 +208,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableProxyProtocol")
-    def enable_proxy_protocol(self) -> Optional[bool]:
+    def enable_proxy_protocol(self) -> pulumi.Output[Optional[bool]]:
         """
         A boolean value indicating whether PROXY
         Protocol should be used to pass information from connecting client requests to
@@ -218,7 +218,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forwardingRules")
-    def forwarding_rules(self) -> List['outputs.LoadBalancerForwardingRule']:
+    def forwarding_rules(self) -> pulumi.Output[List['outputs.LoadBalancerForwardingRule']]:
         """
         A list of `forwarding_rule` to be assigned to the
         Load Balancer. The `forwarding_rule` block is documented below.
@@ -227,7 +227,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def healthcheck(self) -> 'outputs.LoadBalancerHealthcheck':
+    def healthcheck(self) -> pulumi.Output['outputs.LoadBalancerHealthcheck']:
         """
         A `healthcheck` block to be assigned to the
         Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -236,12 +236,12 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ip(self) -> str:
+    def ip(self) -> pulumi.Output[str]:
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="loadBalancerUrn")
-    def load_balancer_urn(self) -> str:
+    def load_balancer_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name for the Load Balancer
         """
@@ -249,7 +249,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Load Balancer name
         """
@@ -257,7 +257,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redirectHttpToHttps")
-    def redirect_http_to_https(self) -> Optional[bool]:
+    def redirect_http_to_https(self) -> pulumi.Output[Optional[bool]]:
         """
         A boolean value indicating whether
         HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -267,7 +267,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region to start in
         """
@@ -275,12 +275,12 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="stickySessions")
-    def sticky_sessions(self) -> 'outputs.LoadBalancerStickySessions':
+    def sticky_sessions(self) -> pulumi.Output['outputs.LoadBalancerStickySessions']:
         """
         A `sticky_sessions` block to be assigned to the
         Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
@@ -289,7 +289,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> str:
+    def vpc_uuid(self) -> pulumi.Output[str]:
         """
         The ID of the VPC where the load balancer will be located.
         """

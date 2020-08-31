@@ -13,7 +13,7 @@ __all__ = ['Domain']
 
 class Domain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -99,7 +99,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainUrn")
-    def domain_urn(self) -> str:
+    def domain_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name of the domain
         """
@@ -107,7 +107,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[str]:
+    def ip_address(self) -> pulumi.Output[Optional[str]]:
         """
         The IP address of the domain. If specified, this IP
         is used to created an initial A record for the domain.
@@ -116,7 +116,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the domain
         """

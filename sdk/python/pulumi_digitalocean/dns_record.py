@@ -13,7 +13,7 @@ __all__ = ['DnsRecord']
 
 class DnsRecord(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  flags: Optional[pulumi.Input[float]] = None,
@@ -159,7 +159,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The domain to add the record to.
         """
@@ -167,7 +167,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[float]:
+    def flags(self) -> pulumi.Output[Optional[float]]:
         """
         The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
         """
@@ -175,7 +175,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fqdn(self) -> str:
+    def fqdn(self) -> pulumi.Output[str]:
         """
         The FQDN of the record
         """
@@ -183,7 +183,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the record. Use `@` for records on domain's name itself.
         """
@@ -191,7 +191,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
         """
@@ -199,7 +199,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         """
@@ -207,7 +207,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tag(self) -> Optional[str]:
+    def tag(self) -> pulumi.Output[Optional[str]]:
         """
         The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
         """
@@ -215,7 +215,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> pulumi.Output[float]:
         """
         The time to live for the record, in seconds. Must be at least 0.
         """
@@ -223,7 +223,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         """
@@ -231,7 +231,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The value of the record.
         """
@@ -239,7 +239,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> pulumi.Output[Optional[float]]:
         """
         The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
         """

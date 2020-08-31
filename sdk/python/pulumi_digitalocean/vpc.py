@@ -13,7 +13,7 @@ __all__ = ['Vpc']
 
 class Vpc(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,7 @@ class Vpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date and time of when the VPC was created.
         """
@@ -144,7 +144,7 @@ class Vpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def default(self) -> bool:
+    def default(self) -> pulumi.Output[bool]:
         """
         A boolean indicating whether or not the VPC is the default one for the region.
         """
@@ -152,7 +152,7 @@ class Vpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A free-form text field up to a limit of 255 characters to describe the VPC.
         """
@@ -160,7 +160,7 @@ class Vpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> str:
+    def ip_range(self) -> pulumi.Output[str]:
         """
         The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
         """
@@ -168,7 +168,7 @@ class Vpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
         """
@@ -176,7 +176,7 @@ class Vpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The DigitalOcean region slug for the VPC's location.
         """
@@ -184,7 +184,7 @@ class Vpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcUrn")
-    def vpc_urn(self) -> str:
+    def vpc_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name (URN) for the VPC.
         """

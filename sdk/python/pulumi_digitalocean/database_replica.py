@@ -13,7 +13,7 @@ __all__ = ['DatabaseReplica']
 
 class DatabaseReplica(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The ID of the original source database cluster.
         """
@@ -159,7 +159,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
+    def database(self) -> pulumi.Output[str]:
         """
         Name of the replica's default database.
         """
@@ -167,7 +167,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         Database replica's hostname.
         """
@@ -175,7 +175,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name for the database replica.
         """
@@ -183,7 +183,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         Password for the replica's default user.
         """
@@ -191,7 +191,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Network port that the database replica is listening on.
         """
@@ -199,7 +199,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateHost")
-    def private_host(self) -> str:
+    def private_host(self) -> pulumi.Output[str]:
         """
         Same as `host`, but only accessible from resources within the account and in the same region.
         """
@@ -207,12 +207,12 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateNetworkUuid")
-    def private_network_uuid(self) -> str:
+    def private_network_uuid(self) -> pulumi.Output[str]:
         return pulumi.get(self, "private_network_uuid")
 
     @property
     @pulumi.getter(name="privateUri")
-    def private_uri(self) -> str:
+    def private_uri(self) -> pulumi.Output[str]:
         """
         Same as `uri`, but only accessible from resources within the account and in the same region.
         """
@@ -220,7 +220,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         DigitalOcean region where the replica will reside.
         """
@@ -228,7 +228,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[str]:
+    def size(self) -> pulumi.Output[Optional[str]]:
         """
         Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         """
@@ -236,12 +236,12 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
-    def uri(self) -> str:
+    def uri(self) -> pulumi.Output[str]:
         """
         The full URI for connecting to the database replica.
         """
@@ -249,7 +249,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> str:
+    def user(self) -> pulumi.Output[str]:
         """
         Username for the replica's default user.
         """

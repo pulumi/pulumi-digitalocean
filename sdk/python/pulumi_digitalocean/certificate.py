@@ -13,7 +13,7 @@ __all__ = ['Certificate']
 
 class Certificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_chain: Optional[pulumi.Input[str]] = None,
                  domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -181,7 +181,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateChain")
-    def certificate_chain(self) -> Optional[str]:
+    def certificate_chain(self) -> pulumi.Output[Optional[str]]:
         """
         The full PEM-formatted trust chain
         between the certificate authority's certificate and your domain's TLS
@@ -191,7 +191,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domains(self) -> Optional[List[str]]:
+    def domains(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of fully qualified domain names (FQDNs) for
         which the certificate will be issued. The domains must be managed using
@@ -201,7 +201,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="leafCertificate")
-    def leaf_certificate(self) -> Optional[str]:
+    def leaf_certificate(self) -> pulumi.Output[Optional[str]]:
         """
         The contents of a PEM-formatted public
         TLS certificate. Only valid when type is `custom`.
@@ -210,7 +210,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the certificate for identification.
         """
@@ -218,7 +218,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notAfter")
-    def not_after(self) -> str:
+    def not_after(self) -> pulumi.Output[str]:
         """
         The expiration date of the certificate
         """
@@ -226,7 +226,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[str]:
+    def private_key(self) -> pulumi.Output[Optional[str]]:
         """
         The contents of a PEM-formatted private-key
         corresponding to the SSL certificate. Only valid when type is `custom`.
@@ -235,7 +235,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sha1Fingerprint")
-    def sha1_fingerprint(self) -> str:
+    def sha1_fingerprint(self) -> pulumi.Output[str]:
         """
         The SHA-1 fingerprint of the certificate
         """
@@ -243,12 +243,12 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of certificate to provision. Can be either
         `custom` or `lets_encrypt`. Defaults to `custom`.

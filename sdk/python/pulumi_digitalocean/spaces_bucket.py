@@ -15,7 +15,7 @@ __all__ = ['SpacesBucket']
 
 class SpacesBucket(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
                  cors_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
@@ -178,7 +178,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> Optional[str]:
+    def acl(self) -> pulumi.Output[Optional[str]]:
         """
         Canned ACL applied on bucket creation (`private` or `public-read`)
         """
@@ -186,7 +186,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bucketDomainName")
-    def bucket_domain_name(self) -> str:
+    def bucket_domain_name(self) -> pulumi.Output[str]:
         """
         The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         """
@@ -194,7 +194,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bucketUrn")
-    def bucket_urn(self) -> str:
+    def bucket_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name for the bucket
         """
@@ -202,7 +202,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> Optional[List['outputs.SpacesBucketCorsRule']]:
+    def cors_rules(self) -> pulumi.Output[Optional[List['outputs.SpacesBucketCorsRule']]]:
         """
         A rule of Cross-Origin Resource Sharing (documented below).
         """
@@ -210,7 +210,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[bool]:
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         """
@@ -218,7 +218,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[List['outputs.SpacesBucketLifecycleRule']]:
+    def lifecycle_rules(self) -> pulumi.Output[Optional[List['outputs.SpacesBucketLifecycleRule']]]:
         """
         A configuration of object lifecycle management (documented below).
         """
@@ -226,7 +226,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the bucket
         """
@@ -234,7 +234,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The region where the bucket resides (Defaults to `nyc3`)
         """
@@ -242,7 +242,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versioning(self) -> Optional['outputs.SpacesBucketVersioning']:
+    def versioning(self) -> pulumi.Output[Optional['outputs.SpacesBucketVersioning']]:
         """
         A state of versioning (documented below)
         """

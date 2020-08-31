@@ -15,7 +15,7 @@ __all__ = ['KubernetesNodePool']
 
 class KubernetesNodePool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_scale: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -177,7 +177,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="actualNodeCount")
-    def actual_node_count(self) -> float:
+    def actual_node_count(self) -> pulumi.Output[float]:
         """
         A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         """
@@ -185,7 +185,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoScale")
-    def auto_scale(self) -> Optional[bool]:
+    def auto_scale(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         """
@@ -193,7 +193,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The ID of the Kubernetes cluster to which the node pool is associated.
         """
@@ -201,7 +201,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         """
@@ -209,7 +209,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxNodes")
-    def max_nodes(self) -> Optional[float]:
+    def max_nodes(self) -> pulumi.Output[Optional[float]]:
         """
         If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         """
@@ -217,7 +217,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minNodes")
-    def min_nodes(self) -> Optional[float]:
+    def min_nodes(self) -> pulumi.Output[Optional[float]]:
         """
         If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         """
@@ -225,7 +225,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the node pool.
         """
@@ -233,7 +233,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[float]:
+    def node_count(self) -> pulumi.Output[Optional[float]]:
         """
         The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         """
@@ -241,7 +241,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def nodes(self) -> List['outputs.KubernetesNodePoolNode']:
+    def nodes(self) -> pulumi.Output[List['outputs.KubernetesNodePoolNode']]:
         """
         A list of nodes in the pool. Each node exports the following attributes:
         """
@@ -249,7 +249,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> str:
+    def size(self) -> pulumi.Output[str]:
         """
         The slug identifier for the type of Droplet to be used as workers in the node pool.
         """
@@ -257,7 +257,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tag names to be applied to the Kubernetes cluster.
         """

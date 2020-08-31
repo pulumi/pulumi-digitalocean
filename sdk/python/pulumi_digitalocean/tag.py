@@ -13,7 +13,7 @@ __all__ = ['Tag']
 
 class Tag(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -116,7 +116,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databasesCount")
-    def databases_count(self) -> float:
+    def databases_count(self) -> pulumi.Output[float]:
         """
         A count of the database clusters that the tag is applied to.
         """
@@ -124,7 +124,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletsCount")
-    def droplets_count(self) -> float:
+    def droplets_count(self) -> pulumi.Output[float]:
         """
         A count of the Droplets the tag is applied to.
         """
@@ -132,7 +132,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imagesCount")
-    def images_count(self) -> float:
+    def images_count(self) -> pulumi.Output[float]:
         """
         A count of the images that the tag is applied to.
         """
@@ -140,7 +140,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the tag
         """
@@ -148,7 +148,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="totalResourceCount")
-    def total_resource_count(self) -> float:
+    def total_resource_count(self) -> pulumi.Output[float]:
         """
         A count of the total number of resources that the tag is applied to.
         """
@@ -156,7 +156,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeSnapshotsCount")
-    def volume_snapshots_count(self) -> float:
+    def volume_snapshots_count(self) -> pulumi.Output[float]:
         """
         A count of the volume snapshots that the tag is applied to.
         """
@@ -164,7 +164,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumesCount")
-    def volumes_count(self) -> float:
+    def volumes_count(self) -> pulumi.Output[float]:
         """
         A count of the volumes that the tag is applied to.
         """

@@ -13,7 +13,7 @@ __all__ = ['VolumeAttachment']
 
 class VolumeAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  droplet_id: Optional[pulumi.Input[float]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,7 @@ class VolumeAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> float:
+    def droplet_id(self) -> pulumi.Output[float]:
         """
         ID of the Droplet to attach the volume to.
         """
@@ -113,7 +113,7 @@ class VolumeAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> str:
+    def volume_id(self) -> pulumi.Output[str]:
         """
         ID of the Volume to be attached to the Droplet.
         """
