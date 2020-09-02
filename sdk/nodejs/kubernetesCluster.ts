@@ -52,6 +52,31 @@ import {Region} from "./index";
  * ```
  *
  * Note that, while individual node pools may scale to 0, a cluster must always include at least one node.
+ * ### Auto Upgrade Example
+ *
+ * DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions.
+ * For example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getKubernetesVersions({
+ *     versionPrefix: "1.18.",
+ * });
+ * const foo = new digitalocean.KubernetesCluster("foo", {
+ *     region: "nyc1",
+ *     autoUpgrade: true,
+ *     version: example.then(example => example.latestVersion),
+ *     nodePool: {
+ *         name: "default",
+ *         size: "s-1vcpu-2gb",
+ *         nodeCount: 3,
+ *     },
+ * });
+ * ```
+ *
+ * Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**
@@ -81,6 +106,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesCluster.__pulumiType;
     }
 
+    /**
+     * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+     */
+    public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster.
      */
@@ -119,6 +148,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * Enable/disable surge upgrades for a cluster. Default: false
+     */
+    public readonly surgeUpgrade!: pulumi.Output<boolean | undefined>;
+    /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
@@ -147,6 +180,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as KubernetesClusterState | undefined;
+            inputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
             inputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
@@ -157,6 +191,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["serviceSubnet"] = state ? state.serviceSubnet : undefined;
             inputs["status"] = state ? state.status : undefined;
+            inputs["surgeUpgrade"] = state ? state.surgeUpgrade : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
             inputs["version"] = state ? state.version : undefined;
@@ -172,9 +207,11 @@ export class KubernetesCluster extends pulumi.CustomResource {
             if (!args || args.version === undefined) {
                 throw new Error("Missing required property 'version'");
             }
+            inputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodePool"] = args ? args.nodePool : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["surgeUpgrade"] = args ? args.surgeUpgrade : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
@@ -202,6 +239,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesCluster resources.
  */
 export interface KubernetesClusterState {
+    /**
+     * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+     */
+    readonly autoUpgrade?: pulumi.Input<boolean>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster.
      */
@@ -240,6 +281,10 @@ export interface KubernetesClusterState {
      */
     readonly status?: pulumi.Input<string>;
     /**
+     * Enable/disable surge upgrades for a cluster. Default: false
+     */
+    readonly surgeUpgrade?: pulumi.Input<boolean>;
+    /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -262,6 +307,10 @@ export interface KubernetesClusterState {
  */
 export interface KubernetesClusterArgs {
     /**
+     * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+     */
+    readonly autoUpgrade?: pulumi.Input<boolean>;
+    /**
      * A name for the node pool.
      */
     readonly name?: pulumi.Input<string>;
@@ -273,6 +322,10 @@ export interface KubernetesClusterArgs {
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
     readonly region: pulumi.Input<Region>;
+    /**
+     * Enable/disable surge upgrades for a cluster. Default: false
+     */
+    readonly surgeUpgrade?: pulumi.Input<boolean>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */

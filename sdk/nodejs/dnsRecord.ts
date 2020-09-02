@@ -74,7 +74,7 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     public /*out*/ readonly fqdn!: pulumi.Output<string>;
     /**
-     * The name of the record. Use `@` for records on domain's name itself.
+     * The hostname of the record. Use `@` for records on domain's name itself.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -180,7 +180,7 @@ export interface DnsRecordState {
      */
     readonly fqdn?: pulumi.Input<string>;
     /**
-     * The name of the record. Use `@` for records on domain's name itself.
+     * The hostname of the record. Use `@` for records on domain's name itself.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -226,7 +226,7 @@ export interface DnsRecordArgs {
      */
     readonly flags?: pulumi.Input<number>;
     /**
-     * The name of the record. Use `@` for records on domain's name itself.
+     * The hostname of the record. Use `@` for records on domain's name itself.
      */
     readonly name?: pulumi.Input<string>;
     /**

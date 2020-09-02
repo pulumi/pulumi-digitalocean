@@ -17,10 +17,10 @@ package digitalocean
 import (
 	"unicode"
 
+	"github.com/digitalocean/terraform-provider-digitalocean/digitalocean"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-digitalocean/digitalocean"
 )
 
 // all of the DigitalOcean token components used below.
@@ -68,6 +68,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-digitalocean",
+		GitHubOrg:   "digitalocean",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"token": {
 				Default: &tfbridge.DefaultInfo{

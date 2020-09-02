@@ -57,7 +57,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to.
         :param pulumi.Input[float] flags: The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
-        :param pulumi.Input[str] name: The name of the record. Use `@` for records on domain's name itself.
+        :param pulumi.Input[str] name: The hostname of the record. Use `@` for records on domain's name itself.
         :param pulumi.Input[float] port: The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
         :param pulumi.Input[float] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
@@ -131,7 +131,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The domain to add the record to.
         :param pulumi.Input[float] flags: The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
         :param pulumi.Input[str] fqdn: The FQDN of the record
-        :param pulumi.Input[str] name: The name of the record. Use `@` for records on domain's name itself.
+        :param pulumi.Input[str] name: The hostname of the record. Use `@` for records on domain's name itself.
         :param pulumi.Input[float] port: The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
         :param pulumi.Input[float] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
@@ -185,7 +185,7 @@ class DnsRecord(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the record. Use `@` for records on domain's name itself.
+        The hostname of the record. Use `@` for records on domain's name itself.
         """
         return pulumi.get(self, "name")
 

@@ -20,7 +20,10 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, tags=None, updated_at=None, version=None, vpc_uuid=None):
+    def __init__(__self__, auto_upgrade=None, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, version=None, vpc_uuid=None):
+        if auto_upgrade and not isinstance(auto_upgrade, bool):
+            raise TypeError("Expected argument 'auto_upgrade' to be a bool")
+        pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cluster_subnet and not isinstance(cluster_subnet, str):
             raise TypeError("Expected argument 'cluster_subnet' to be a str")
         pulumi.set(__self__, "cluster_subnet", cluster_subnet)
@@ -54,6 +57,9 @@ class GetKubernetesClusterResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if surge_upgrade and not isinstance(surge_upgrade, bool):
+            raise TypeError("Expected argument 'surge_upgrade' to be a bool")
+        pulumi.set(__self__, "surge_upgrade", surge_upgrade)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -66,6 +72,15 @@ class GetKubernetesClusterResult:
         if vpc_uuid and not isinstance(vpc_uuid, str):
             raise TypeError("Expected argument 'vpc_uuid' to be a str")
         pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> bool:
+        """
+        A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        """
+        return pulumi.get(self, "auto_upgrade")
 
     @property
     @pulumi.getter(name="clusterSubnet")
@@ -153,6 +168,11 @@ class GetKubernetesClusterResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="surgeUpgrade")
+    def surge_upgrade(self) -> bool:
+        return pulumi.get(self, "surge_upgrade")
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[List[str]]:
         """
@@ -191,6 +211,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
         if False:
             yield self
         return GetKubernetesClusterResult(
+            auto_upgrade=self.auto_upgrade,
             cluster_subnet=self.cluster_subnet,
             created_at=self.created_at,
             endpoint=self.endpoint,
@@ -202,6 +223,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             region=self.region,
             service_subnet=self.service_subnet,
             status=self.status,
+            surge_upgrade=self.surge_upgrade,
             tags=self.tags,
             updated_at=self.updated_at,
             version=self.version,
@@ -228,6 +250,7 @@ def get_kubernetes_cluster(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult).value
 
     return AwaitableGetKubernetesClusterResult(
+        auto_upgrade=__ret__.auto_upgrade,
         cluster_subnet=__ret__.cluster_subnet,
         created_at=__ret__.created_at,
         endpoint=__ret__.endpoint,
@@ -239,6 +262,7 @@ def get_kubernetes_cluster(name: Optional[str] = None,
         region=__ret__.region,
         service_subnet=__ret__.service_subnet,
         status=__ret__.status,
+        surge_upgrade=__ret__.surge_upgrade,
         tags=__ret__.tags,
         updated_at=__ret__.updated_at,
         version=__ret__.version,

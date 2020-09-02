@@ -1060,7 +1060,7 @@ class LoadBalancerHealthcheckArgs:
                  unhealthy_threshold: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[float] port: An integer representing the port on the backend Droplets on which the health check will attempt a connection.
-        :param pulumi.Input[str] protocol: The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+        :param pulumi.Input[str] protocol: The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
         :param pulumi.Input[float] check_interval_seconds: The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
         :param pulumi.Input[float] healthy_threshold: The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
         :param pulumi.Input[str] path: The path on the backend Droplets to which the Load Balancer instance will send a request.
@@ -1096,7 +1096,7 @@ class LoadBalancerHealthcheckArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
         """
-        The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+        The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
         """
         return pulumi.get(self, "protocol")
 

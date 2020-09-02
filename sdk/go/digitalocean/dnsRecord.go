@@ -62,7 +62,7 @@ type DnsRecord struct {
 	Flags pulumi.IntPtrOutput `pulumi:"flags"`
 	// The FQDN of the record
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
-	// The name of the record. Use `@` for records on domain's name itself.
+	// The hostname of the record. Use `@` for records on domain's name itself.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
@@ -123,7 +123,7 @@ type dnsRecordState struct {
 	Flags *int `pulumi:"flags"`
 	// The FQDN of the record
 	Fqdn *string `pulumi:"fqdn"`
-	// The name of the record. Use `@` for records on domain's name itself.
+	// The hostname of the record. Use `@` for records on domain's name itself.
 	Name *string `pulumi:"name"`
 	// The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
 	Port *int `pulumi:"port"`
@@ -148,7 +148,7 @@ type DnsRecordState struct {
 	Flags pulumi.IntPtrInput
 	// The FQDN of the record
 	Fqdn pulumi.StringPtrInput
-	// The name of the record. Use `@` for records on domain's name itself.
+	// The hostname of the record. Use `@` for records on domain's name itself.
 	Name pulumi.StringPtrInput
 	// The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
 	Port pulumi.IntPtrInput
@@ -175,7 +175,7 @@ type dnsRecordArgs struct {
 	Domain string `pulumi:"domain"`
 	// The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
 	Flags *int `pulumi:"flags"`
-	// The name of the record. Use `@` for records on domain's name itself.
+	// The hostname of the record. Use `@` for records on domain's name itself.
 	Name *string `pulumi:"name"`
 	// The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
 	Port *int `pulumi:"port"`
@@ -199,7 +199,7 @@ type DnsRecordArgs struct {
 	Domain pulumi.StringInput
 	// The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
 	Flags pulumi.IntPtrInput
-	// The name of the record. Use `@` for records on domain's name itself.
+	// The hostname of the record. Use `@` for records on domain's name itself.
 	Name pulumi.StringPtrInput
 	// The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
 	Port pulumi.IntPtrInput

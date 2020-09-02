@@ -900,7 +900,7 @@ export interface LoadBalancerHealthcheck {
      */
     port: number;
     /**
-     * The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+     * The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
      */
     protocol: string;
     /**
