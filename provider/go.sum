@@ -237,6 +237,11 @@ github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZm
 github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8PWV+bWy6jNmig1y/TA+kYO4g3RSRF0IAv0no=
 github.com/digitalocean/godo v1.36.0 h1:eRF8wNzHZyU7/wI3De/MQgiVSWdseDaf27bXj2gnOO0=
 github.com/digitalocean/godo v1.36.0/go.mod h1:p7dOjjtSBqCTUksqtA5Fd3uaKs9kyTq2xcz76ulEJRU=
+github.com/digitalocean/godo v1.41.0 h1:WYy7MIVVhTMZUNB+UA3irl2V9FyDJeDttsifYyn7jYA=
+github.com/digitalocean/godo v1.41.0/go.mod h1:p7dOjjtSBqCTUksqtA5Fd3uaKs9kyTq2xcz76ulEJRU=
+github.com/digitalocean/godo v1.42.1 h1:SJ/XMVsp5CZmyQal8gLlOl9jSl1i3FaN20LlgtK5ZMs=
+github.com/digitalocean/godo v1.42.1/go.mod h1:p7dOjjtSBqCTUksqtA5Fd3uaKs9kyTq2xcz76ulEJRU=
+github.com/digitalocean/terraform-provider-digitalocean v1.22.0/go.mod h1:cVE94NTuInNscDdrSlmvoGXPocD7ZPTU3DDY7ydf6e4=
 github.com/dimchansky/utfbom v1.1.0/go.mod h1:rO41eb7gLfo8SF1jd9F8HplJm1Fewwi4mQvIirEdv+8=
 github.com/djherbis/times v1.2.0 h1:xANXjsC/iBqbO00vkWlYwPWgBgEVU6m6AFYg0Pic+Mc=
 github.com/djherbis/times v1.2.0/go.mod h1:CGMZlo255K5r4Yw0b9RRfFQpM2y7uOmxg4jm9HsaVf8=
@@ -859,6 +864,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200825190708-910aa96016cd h1:m5jEWpbr
 github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200825190708-910aa96016cd/go.mod h1:x84WPiFiuE+G4kJ5jUYkOxmnQJlWoJaHNeEYdqnCKA4=
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20200616132413-016bf6859393 h1:dOaePp2GQPxMhe+1nokbs5VDgrYPP5S2jACrD6ecXYM=
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20200616132413-016bf6859393/go.mod h1:fmkoHCZCH38dQOOHhKGDgYZBvq1NfFWKV98XAmakYIM=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20200902103559-4fea41c96405 h1:Uwzd/EJl3IxYrapEDpF2WdPSlnelz3G/cFYkrc3h/1U=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20200902103559-4fea41c96405/go.mod h1:6FJ2Yove5P+R7CzjPnxFbFxEljWNmpEOVYNBRMS3UWg=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=
@@ -957,6 +964,8 @@ github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-aws v1.60.1-0.20191010190908-1261a98537f2 h1:FcaZW1YFs3K5PKvPY8EJvqYDHx6JojcjnEDQ+h/VK48=
 github.com/terraform-providers/terraform-provider-aws v1.60.1-0.20191010190908-1261a98537f2/go.mod h1:zIXqcyUvJSpWRGXf+x6knh3NIZLjVqjH954yShO3YPE=
+github.com/terraform-providers/terraform-provider-digitalocean v1.20.0 h1:4RnA+73OX9xzoCKuEcahm70azbv57rvSRco6n9lAfls=
+github.com/terraform-providers/terraform-provider-digitalocean v1.20.0/go.mod h1:fmkoHCZCH38dQOOHhKGDgYZBvq1NfFWKV98XAmakYIM=
 github.com/terraform-providers/terraform-provider-google v1.20.1-0.20191008212436-363f2d283518 h1:IGwWsLdt9TtiafPwVMv9ePxbZYdVHTBfdVtXUr8+PEU=
 github.com/terraform-providers/terraform-provider-google v1.20.1-0.20191008212436-363f2d283518/go.mod h1:cdfYuxcAyBAISVCiSYei5GIjhXbB3wth/feTmx8iD8A=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
@@ -964,6 +973,7 @@ github.com/terraform-providers/terraform-provider-http v1.2.0/go.mod h1:2Iot921O
 github.com/terraform-providers/terraform-provider-kubernetes v1.9.1-0.20191018170806-2c80accb5635 h1:NY8xVhh8DXoU3kfgo4J9UwzRULgKP+gByCZW/T2qK+g=
 github.com/terraform-providers/terraform-provider-kubernetes v1.9.1-0.20191018170806-2c80accb5635/go.mod h1:lFCVWzD5Og9uVHwGwB35fHBsje+y2OJxt0G2v1Gz1Zs=
 github.com/terraform-providers/terraform-provider-random v0.0.0-20190925200408-30dac3233094/go.mod h1:F4KE9YftuJyMiBth4W1kCrsyOHndtTjAmZ+ZzjqWY+4=
+github.com/terraform-providers/terraform-provider-random v0.0.0-20190925210718-83518d96ae4f/go.mod h1:F4KE9YftuJyMiBth4W1kCrsyOHndtTjAmZ+ZzjqWY+4=
 github.com/terraform-providers/terraform-provider-random v1.3.2-0.20190925210718-83518d96ae4f h1:oqZwtMD9/XcOcCzm/9cz8+pQWRTGF60N1RNcYLg+BCw=
 github.com/terraform-providers/terraform-provider-random v1.3.2-0.20190925210718-83518d96ae4f/go.mod h1:F4KE9YftuJyMiBth4W1kCrsyOHndtTjAmZ+ZzjqWY+4=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=

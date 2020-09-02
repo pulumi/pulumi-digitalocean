@@ -70,9 +70,50 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// 
     /// Note that, while individual node pools may scale to 0, a cluster must always include at least one node.
+    /// ### Auto Upgrade Example
+    /// 
+    /// DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions.
+    /// For example:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync(new DigitalOcean.GetKubernetesVersionsArgs
+    ///         {
+    ///             VersionPrefix = "1.18.",
+    ///         }));
+    ///         var foo = new DigitalOcean.KubernetesCluster("foo", new DigitalOcean.KubernetesClusterArgs
+    ///         {
+    ///             Region = "nyc1",
+    ///             AutoUpgrade = true,
+    ///             Version = example.Apply(example =&gt; example.LatestVersion),
+    ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+    ///             {
+    ///                 Name = "default",
+    ///                 Size = "s-1vcpu-2gb",
+    ///                 NodeCount = 3,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
     /// </summary>
     public partial class KubernetesCluster : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        /// </summary>
+        [Output("autoUpgrade")]
+        public Output<bool?> AutoUpgrade { get; private set; } = null!;
+
         /// <summary>
         /// The range of IP addresses in the overlay network of the Kubernetes cluster.
         /// </summary>
@@ -129,6 +170,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable/disable surge upgrades for a cluster. Default: false
+        /// </summary>
+        [Output("surgeUpgrade")]
+        public Output<bool?> SurgeUpgrade { get; private set; } = null!;
 
         /// <summary>
         /// A list of tag names to be applied to the Kubernetes cluster.
@@ -201,6 +248,12 @@ namespace Pulumi.DigitalOcean
     public sealed class KubernetesClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        /// </summary>
+        [Input("autoUpgrade")]
+        public Input<bool>? AutoUpgrade { get; set; }
+
+        /// <summary>
         /// A name for the node pool.
         /// </summary>
         [Input("name")]
@@ -217,6 +270,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// Enable/disable surge upgrades for a cluster. Default: false
+        /// </summary>
+        [Input("surgeUpgrade")]
+        public Input<bool>? SurgeUpgrade { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -249,6 +308,12 @@ namespace Pulumi.DigitalOcean
 
     public sealed class KubernetesClusterState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        /// </summary>
+        [Input("autoUpgrade")]
+        public Input<bool>? AutoUpgrade { get; set; }
+
         /// <summary>
         /// The range of IP addresses in the overlay network of the Kubernetes cluster.
         /// </summary>
@@ -310,6 +375,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Enable/disable surge upgrades for a cluster. Default: false
+        /// </summary>
+        [Input("surgeUpgrade")]
+        public Input<bool>? SurgeUpgrade { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

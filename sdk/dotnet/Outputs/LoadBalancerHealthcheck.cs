@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+        /// The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
         /// </summary>
         public readonly string Protocol;
         /// <summary>

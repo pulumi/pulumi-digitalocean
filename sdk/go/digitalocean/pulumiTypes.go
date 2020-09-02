@@ -1606,7 +1606,7 @@ type LoadBalancerHealthcheck struct {
 	Path *string `pulumi:"path"`
 	// An integer representing the port on the backend Droplets on which the health check will attempt a connection.
 	Port int `pulumi:"port"`
-	// The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+	// The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
 	Protocol string `pulumi:"protocol"`
 	// The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
 	ResponseTimeoutSeconds *int `pulumi:"responseTimeoutSeconds"`
@@ -1634,7 +1634,7 @@ type LoadBalancerHealthcheckArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// An integer representing the port on the backend Droplets on which the health check will attempt a connection.
 	Port pulumi.IntInput `pulumi:"port"`
-	// The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+	// The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
 	ResponseTimeoutSeconds pulumi.IntPtrInput `pulumi:"responseTimeoutSeconds"`
@@ -1739,7 +1739,7 @@ func (o LoadBalancerHealthcheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+// The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
 func (o LoadBalancerHealthcheckOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -1812,7 +1812,7 @@ func (o LoadBalancerHealthcheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.
+// The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
 func (o LoadBalancerHealthcheckPtrOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerHealthcheck) *string {
 		if v == nil {

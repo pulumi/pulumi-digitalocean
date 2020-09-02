@@ -27,6 +27,9 @@ type LookupKubernetesClusterArgs struct {
 
 // A collection of values returned by getKubernetesCluster.
 type LookupKubernetesClusterResult struct {
+	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+	// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+	AutoUpgrade bool `pulumi:"autoUpgrade"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet string `pulumi:"clusterSubnet"`
 	// The date and time when the node was created.
@@ -47,7 +50,8 @@ type LookupKubernetesClusterResult struct {
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
 	ServiceSubnet string `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
-	Status string `pulumi:"status"`
+	Status       string `pulumi:"status"`
+	SurgeUpgrade bool   `pulumi:"surgeUpgrade"`
 	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
 	// The date and time when the node was last updated.

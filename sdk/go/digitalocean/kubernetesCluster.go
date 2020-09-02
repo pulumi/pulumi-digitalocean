@@ -76,9 +76,52 @@ import (
 // ```
 //
 // Note that, while individual node pools may scale to 0, a cluster must always include at least one node.
+// ### Auto Upgrade Example
+//
+// DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions.
+// For example:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "1.18."
+// 		example, err := digitalocean.GetKubernetesVersions(ctx, &digitalocean.GetKubernetesVersionsArgs{
+// 			VersionPrefix: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+// 			Region:      pulumi.String("nyc1"),
+// 			AutoUpgrade: pulumi.Bool(true),
+// 			Version:     pulumi.String(example.LatestVersion),
+// 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+// 				Name:      pulumi.String("default"),
+// 				Size:      pulumi.String("s-1vcpu-2gb"),
+// 				NodeCount: pulumi.Int(3),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
 type KubernetesCluster struct {
 	pulumi.CustomResourceState
 
+	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet pulumi.StringOutput `pulumi:"clusterSubnet"`
 	// The date and time when the node was created.
@@ -98,6 +141,8 @@ type KubernetesCluster struct {
 	ServiceSubnet pulumi.StringOutput `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Enable/disable surge upgrades for a cluster. Default: false
+	SurgeUpgrade pulumi.BoolPtrOutput `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The date and time when the node was last updated.
@@ -145,6 +190,8 @@ func GetKubernetesCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KubernetesCluster resources.
 type kubernetesClusterState struct {
+	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet *string `pulumi:"clusterSubnet"`
 	// The date and time when the node was created.
@@ -164,6 +211,8 @@ type kubernetesClusterState struct {
 	ServiceSubnet *string `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
 	Status *string `pulumi:"status"`
+	// Enable/disable surge upgrades for a cluster. Default: false
+	SurgeUpgrade *bool `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 	// The date and time when the node was last updated.
@@ -175,6 +224,8 @@ type kubernetesClusterState struct {
 }
 
 type KubernetesClusterState struct {
+	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+	AutoUpgrade pulumi.BoolPtrInput
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet pulumi.StringPtrInput
 	// The date and time when the node was created.
@@ -194,6 +245,8 @@ type KubernetesClusterState struct {
 	ServiceSubnet pulumi.StringPtrInput
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringPtrInput
+	// Enable/disable surge upgrades for a cluster. Default: false
+	SurgeUpgrade pulumi.BoolPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
 	// The date and time when the node was last updated.
@@ -209,12 +262,16 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 }
 
 type kubernetesClusterArgs struct {
+	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// A name for the node pool.
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region string `pulumi:"region"`
+	// Enable/disable surge upgrades for a cluster. Default: false
+	SurgeUpgrade *bool `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -225,12 +282,16 @@ type kubernetesClusterArgs struct {
 
 // The set of arguments for constructing a KubernetesCluster resource.
 type KubernetesClusterArgs struct {
+	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+	AutoUpgrade pulumi.BoolPtrInput
 	// A name for the node pool.
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringInput
+	// Enable/disable surge upgrades for a cluster. Default: false
+	SurgeUpgrade pulumi.BoolPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)

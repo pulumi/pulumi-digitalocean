@@ -49,6 +49,11 @@ namespace Pulumi.DigitalOcean
     public sealed class GetKubernetesClusterResult
     {
         /// <summary>
+        /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        /// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        /// </summary>
+        public readonly bool AutoUpgrade;
+        /// <summary>
         /// The range of IP addresses in the overlay network of the Kubernetes cluster.
         /// </summary>
         public readonly string ClusterSubnet;
@@ -89,6 +94,7 @@ namespace Pulumi.DigitalOcean
         /// A string indicating the current status of the individual node.
         /// </summary>
         public readonly string Status;
+        public readonly bool SurgeUpgrade;
         /// <summary>
         /// A list of tag names applied to the node pool.
         /// </summary>
@@ -108,6 +114,8 @@ namespace Pulumi.DigitalOcean
 
         [OutputConstructor]
         private GetKubernetesClusterResult(
+            bool autoUpgrade,
+
             string clusterSubnet,
 
             string createdAt,
@@ -130,6 +138,8 @@ namespace Pulumi.DigitalOcean
 
             string status,
 
+            bool surgeUpgrade,
+
             ImmutableArray<string> tags,
 
             string updatedAt,
@@ -138,6 +148,7 @@ namespace Pulumi.DigitalOcean
 
             string vpcUuid)
         {
+            AutoUpgrade = autoUpgrade;
             ClusterSubnet = clusterSubnet;
             CreatedAt = createdAt;
             Endpoint = endpoint;
@@ -149,6 +160,7 @@ namespace Pulumi.DigitalOcean
             Region = region;
             ServiceSubnet = serviceSubnet;
             Status = status;
+            SurgeUpgrade = surgeUpgrade;
             Tags = tags;
             UpdatedAt = updatedAt;
             Version = version;

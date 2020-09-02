@@ -42,6 +42,11 @@ export interface GetKubernetesClusterArgs {
  */
 export interface GetKubernetesClusterResult {
     /**
+     * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+     */
+    readonly autoUpgrade: boolean;
+    /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster.
      */
     readonly clusterSubnet: string;
@@ -82,6 +87,7 @@ export interface GetKubernetesClusterResult {
      * A string indicating the current status of the individual node.
      */
     readonly status: string;
+    readonly surgeUpgrade: boolean;
     /**
      * A list of tag names applied to the node pool.
      */

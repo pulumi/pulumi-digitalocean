@@ -17,9 +17,11 @@ class KubernetesCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
@@ -67,12 +69,36 @@ class KubernetesCluster(pulumi.CustomResource):
         ```
 
         Note that, while individual node pools may scale to 0, a cluster must always include at least one node.
+        ### Auto Upgrade Example
+
+        DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions.
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example = digitalocean.get_kubernetes_versions(version_prefix="1.18.")
+        foo = digitalocean.KubernetesCluster("foo",
+            region="nyc1",
+            auto_upgrade=True,
+            version=example.latest_version,
+            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
+                name="default",
+                size="s-1vcpu-2gb",
+                node_count=3,
+            ))
+        ```
+
+        Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
@@ -94,6 +120,7 @@ class KubernetesCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['auto_upgrade'] = auto_upgrade
             __props__['name'] = name
             if node_pool is None:
                 raise TypeError("Missing required property 'node_pool'")
@@ -101,6 +128,7 @@ class KubernetesCluster(pulumi.CustomResource):
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
+            __props__['surge_upgrade'] = surge_upgrade
             __props__['tags'] = tags
             if version is None:
                 raise TypeError("Missing required property 'version'")
@@ -124,6 +152,7 @@ class KubernetesCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade: Optional[pulumi.Input[bool]] = None,
             cluster_subnet: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
@@ -134,6 +163,7 @@ class KubernetesCluster(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             service_subnet: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            surge_upgrade: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
@@ -145,6 +175,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
@@ -154,6 +185,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
+        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -163,6 +195,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["auto_upgrade"] = auto_upgrade
         __props__["cluster_subnet"] = cluster_subnet
         __props__["created_at"] = created_at
         __props__["endpoint"] = endpoint
@@ -173,11 +206,20 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__["region"] = region
         __props__["service_subnet"] = service_subnet
         __props__["status"] = status
+        __props__["surge_upgrade"] = surge_upgrade
         __props__["tags"] = tags
         __props__["updated_at"] = updated_at
         __props__["version"] = version
         __props__["vpc_uuid"] = vpc_uuid
         return KubernetesCluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> pulumi.Output[Optional[bool]]:
+        """
+        A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        """
+        return pulumi.get(self, "auto_upgrade")
 
     @property
     @pulumi.getter(name="clusterSubnet")
@@ -255,6 +297,14 @@ class KubernetesCluster(pulumi.CustomResource):
         A string indicating the current status of the individual node.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="surgeUpgrade")
+    def surge_upgrade(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable/disable surge upgrades for a cluster. Default: false
+        """
+        return pulumi.get(self, "surge_upgrade")
 
     @property
     @pulumi.getter
