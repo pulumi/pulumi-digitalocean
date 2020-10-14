@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 SNAKE_TO_CAMEL_CASE_TABLE = {
+    "active_deployment_id": "activeDeploymentId",
     "actual_node_count": "actualNodeCount",
     "api_endpoint": "apiEndpoint",
     "auto_scale": "autoScale",
@@ -26,6 +27,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "custom_domain": "customDomain",
     "databases_count": "databasesCount",
     "db_name": "dbName",
+    "default_ingress": "defaultIngress",
     "docker_credentials": "dockerCredentials",
     "domain_urn": "domainUrn",
     "droplet_id": "dropletId",
@@ -55,6 +57,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "kube_configs": "kubeConfigs",
     "leaf_certificate": "leafCertificate",
     "lifecycle_rules": "lifecycleRules",
+    "live_url": "liveUrl",
     "load_balancer_urn": "loadBalancerUrn",
     "maintenance_windows": "maintenanceWindows",
     "max_nodes": "maxNodes",
@@ -105,6 +108,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
 }
 
 CAMEL_TO_SNAKE_CASE_TABLE = {
+    "activeDeploymentId": "active_deployment_id",
     "actualNodeCount": "actual_node_count",
     "apiEndpoint": "api_endpoint",
     "autoScale": "auto_scale",
@@ -128,6 +132,7 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "customDomain": "custom_domain",
     "databasesCount": "databases_count",
     "dbName": "db_name",
+    "defaultIngress": "default_ingress",
     "dockerCredentials": "docker_credentials",
     "domainUrn": "domain_urn",
     "dropletId": "droplet_id",
@@ -157,6 +162,7 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "kubeConfigs": "kube_configs",
     "leafCertificate": "leaf_certificate",
     "lifecycleRules": "lifecycle_rules",
+    "liveUrl": "live_url",
     "loadBalancerUrn": "load_balancer_urn",
     "maintenanceWindows": "maintenance_windows",
     "maxNodes": "max_nodes",

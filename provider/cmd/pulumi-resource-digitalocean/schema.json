@@ -66,6 +66,958 @@
         ]
     },
     "types": {
+        "digitalocean:/AppSpec:AppSpec": {
+            "properties": {
+                "databases": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/AppSpecDatabase:AppSpecDatabase"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of hostnames where the application will be available.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The slug for the DigitalOcean data center region hosting the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/AppSpecService:AppSpecService"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "staticSites": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/AppSpecStaticSite:AppSpecStaticSite"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "workers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/AppSpecWorker:AppSpecWorker"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "digitalocean:/AppSpecDatabase:AppSpecDatabase": {
+            "properties": {
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dbName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dbUser": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "engine": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "production": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecService:AppSpecService": {
+            "properties": {
+                "buildCommand": {
+                    "type": "string",
+                    "description": "An optional build command to run while building this component from source.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerfilePath": {
+                    "type": "string",
+                    "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "environmentSlug": {
+                    "type": "string",
+                    "description": "An environment slug describing the type of this app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/AppSpecServiceEnv:AppSpecServiceEnv"
+                    },
+                    "description": "Describes an environment variable made available to an app competent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "git": {
+                    "$ref": "#/types/digitalocean:/AppSpecServiceGit:AppSpecServiceGit",
+                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "github": {
+                    "$ref": "#/types/digitalocean:/AppSpecServiceGithub:AppSpecServiceGithub",
+                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthCheck": {
+                    "$ref": "#/types/digitalocean:/AppSpecServiceHealthCheck:AppSpecServiceHealthCheck",
+                    "description": "A health check to determine the availability of this component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpPort": {
+                    "type": "integer",
+                    "description": "The internal port on which this service's run command will listen.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceCount": {
+                    "type": "integer",
+                    "description": "The amount of instances that this component should be scaled to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceSizeSlug": {
+                    "type": "string",
+                    "description": "The instance size to use for this component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "routes": {
+                    "$ref": "#/types/digitalocean:/AppSpecServiceRoutes:AppSpecServiceRoutes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "runCommand": {
+                    "type": "string",
+                    "description": "An optional run command to override the component's default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceDir": {
+                    "type": "string",
+                    "description": "An optional path to the working directory to use for the build.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "httpPort",
+                        "name",
+                        "routes",
+                        "runCommand"
+                    ]
+                }
+            }
+        },
+        "digitalocean:/AppSpecServiceEnv:AppSpecServiceEnv": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type"
+                    ]
+                }
+            }
+        },
+        "digitalocean:/AppSpecServiceGit:AppSpecServiceGit": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoCloneUrl": {
+                    "type": "string",
+                    "description": "The clone URL of the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecServiceGithub:AppSpecServiceGithub": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecServiceHealthCheck:AppSpecServiceHealthCheck": {
+            "properties": {
+                "failureThreshold": {
+                    "type": "integer",
+                    "description": "The number of failed health checks before considered unhealthy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpPath": {
+                    "type": "string",
+                    "description": "The route path used for the HTTP health check ping.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait before beginning health checks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between health checks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "description": "The number of successful health checks before considered healthy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds after which the check times out.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecServiceRoutes:AppSpecServiceRoutes": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Paths must start with `/` and must be unique within the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecStaticSite:AppSpecStaticSite": {
+            "properties": {
+                "buildCommand": {
+                    "type": "string",
+                    "description": "An optional build command to run while building this component from source.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerfilePath": {
+                    "type": "string",
+                    "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "environmentSlug": {
+                    "type": "string",
+                    "description": "An environment slug describing the type of this app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/AppSpecStaticSiteEnv:AppSpecStaticSiteEnv"
+                    },
+                    "description": "Describes an environment variable made available to an app competent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "errorDocument": {
+                    "type": "string",
+                    "description": "The name of the error document to use when serving this static site*\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "git": {
+                    "$ref": "#/types/digitalocean:/AppSpecStaticSiteGit:AppSpecStaticSiteGit",
+                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "github": {
+                    "$ref": "#/types/digitalocean:/AppSpecStaticSiteGithub:AppSpecStaticSiteGithub",
+                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "indexDocument": {
+                    "type": "string",
+                    "description": "The name of the index document to use when serving this static site.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "outputDir": {
+                    "type": "string",
+                    "description": "An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "routes": {
+                    "$ref": "#/types/digitalocean:/AppSpecStaticSiteRoutes:AppSpecStaticSiteRoutes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceDir": {
+                    "type": "string",
+                    "description": "An optional path to the working directory to use for the build.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "routes"
+                    ]
+                }
+            }
+        },
+        "digitalocean:/AppSpecStaticSiteEnv:AppSpecStaticSiteEnv": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type"
+                    ]
+                }
+            }
+        },
+        "digitalocean:/AppSpecStaticSiteGit:AppSpecStaticSiteGit": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoCloneUrl": {
+                    "type": "string",
+                    "description": "The clone URL of the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecStaticSiteGithub:AppSpecStaticSiteGithub": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecStaticSiteRoutes:AppSpecStaticSiteRoutes": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Paths must start with `/` and must be unique within the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecWorker:AppSpecWorker": {
+            "properties": {
+                "buildCommand": {
+                    "type": "string",
+                    "description": "An optional build command to run while building this component from source.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerfilePath": {
+                    "type": "string",
+                    "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "environmentSlug": {
+                    "type": "string",
+                    "description": "An environment slug describing the type of this app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/AppSpecWorkerEnv:AppSpecWorkerEnv"
+                    },
+                    "description": "Describes an environment variable made available to an app competent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "git": {
+                    "$ref": "#/types/digitalocean:/AppSpecWorkerGit:AppSpecWorkerGit",
+                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "github": {
+                    "$ref": "#/types/digitalocean:/AppSpecWorkerGithub:AppSpecWorkerGithub",
+                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceCount": {
+                    "type": "integer",
+                    "description": "The amount of instances that this component should be scaled to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceSizeSlug": {
+                    "type": "string",
+                    "description": "The instance size to use for this component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "routes": {
+                    "$ref": "#/types/digitalocean:/AppSpecWorkerRoutes:AppSpecWorkerRoutes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "runCommand": {
+                    "type": "string",
+                    "description": "An optional run command to override the component's default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceDir": {
+                    "type": "string",
+                    "description": "An optional path to the working directory to use for the build.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "routes"
+                    ]
+                }
+            }
+        },
+        "digitalocean:/AppSpecWorkerEnv:AppSpecWorkerEnv": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type"
+                    ]
+                }
+            }
+        },
+        "digitalocean:/AppSpecWorkerGit:AppSpecWorkerGit": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoCloneUrl": {
+                    "type": "string",
+                    "description": "The clone URL of the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecWorkerGithub:AppSpecWorkerGithub": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/AppSpecWorkerRoutes:AppSpecWorkerRoutes": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Paths must start with `/` and must be unique within the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow": {
             "properties": {
                 "day": {
@@ -1030,6 +1982,958 @@
             },
             "type": "object"
         },
+        "digitalocean:/getAppSpec:getAppSpec": {
+            "properties": {
+                "databases": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/getAppSpecDatabase:getAppSpecDatabase"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/getAppSpecService:getAppSpecService"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "staticSites": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/getAppSpecStaticSite:getAppSpecStaticSite"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "workers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/getAppSpecWorker:getAppSpecWorker"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:/getAppSpecDatabase:getAppSpecDatabase": {
+            "properties": {
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dbName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dbUser": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "engine": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "production": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecService:getAppSpecService": {
+            "properties": {
+                "buildCommand": {
+                    "type": "string",
+                    "description": "An optional build command to run while building this component from source.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerfilePath": {
+                    "type": "string",
+                    "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "environmentSlug": {
+                    "type": "string",
+                    "description": "An environment slug describing the type of this app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/getAppSpecServiceEnv:getAppSpecServiceEnv"
+                    },
+                    "description": "Describes an environment variable made available to an app competent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "git": {
+                    "$ref": "#/types/digitalocean:/getAppSpecServiceGit:getAppSpecServiceGit",
+                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "github": {
+                    "$ref": "#/types/digitalocean:/getAppSpecServiceGithub:getAppSpecServiceGithub",
+                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthCheck": {
+                    "$ref": "#/types/digitalocean:/getAppSpecServiceHealthCheck:getAppSpecServiceHealthCheck",
+                    "description": "A health check to determine the availability of this component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpPort": {
+                    "type": "integer",
+                    "description": "The internal port on which this service's run command will listen.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceCount": {
+                    "type": "integer",
+                    "description": "The amount of instances that this component should be scaled to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceSizeSlug": {
+                    "type": "string",
+                    "description": "The instance size to use for this component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "routes": {
+                    "$ref": "#/types/digitalocean:/getAppSpecServiceRoutes:getAppSpecServiceRoutes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "runCommand": {
+                    "type": "string",
+                    "description": "An optional run command to override the component's default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceDir": {
+                    "type": "string",
+                    "description": "An optional path to the working directory to use for the build.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "httpPort",
+                "name",
+                "routes",
+                "runCommand"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:/getAppSpecServiceEnv:getAppSpecServiceEnv": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:/getAppSpecServiceGit:getAppSpecServiceGit": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoCloneUrl": {
+                    "type": "string",
+                    "description": "The clone URL of the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecServiceGithub:getAppSpecServiceGithub": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecServiceHealthCheck:getAppSpecServiceHealthCheck": {
+            "properties": {
+                "failureThreshold": {
+                    "type": "integer",
+                    "description": "The number of failed health checks before considered unhealthy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpPath": {
+                    "type": "string",
+                    "description": "The route path used for the HTTP health check ping.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait before beginning health checks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between health checks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "description": "The number of successful health checks before considered healthy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds after which the check times out.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecServiceRoutes:getAppSpecServiceRoutes": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Paths must start with `/` and must be unique within the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecStaticSite:getAppSpecStaticSite": {
+            "properties": {
+                "buildCommand": {
+                    "type": "string",
+                    "description": "An optional build command to run while building this component from source.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerfilePath": {
+                    "type": "string",
+                    "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "environmentSlug": {
+                    "type": "string",
+                    "description": "An environment slug describing the type of this app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/getAppSpecStaticSiteEnv:getAppSpecStaticSiteEnv"
+                    },
+                    "description": "Describes an environment variable made available to an app competent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "errorDocument": {
+                    "type": "string",
+                    "description": "The name of the error document to use when serving this static site*\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "git": {
+                    "$ref": "#/types/digitalocean:/getAppSpecStaticSiteGit:getAppSpecStaticSiteGit",
+                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "github": {
+                    "$ref": "#/types/digitalocean:/getAppSpecStaticSiteGithub:getAppSpecStaticSiteGithub",
+                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "indexDocument": {
+                    "type": "string",
+                    "description": "The name of the index document to use when serving this static site.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "outputDir": {
+                    "type": "string",
+                    "description": "An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "routes": {
+                    "$ref": "#/types/digitalocean:/getAppSpecStaticSiteRoutes:getAppSpecStaticSiteRoutes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceDir": {
+                    "type": "string",
+                    "description": "An optional path to the working directory to use for the build.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "routes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:/getAppSpecStaticSiteEnv:getAppSpecStaticSiteEnv": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:/getAppSpecStaticSiteGit:getAppSpecStaticSiteGit": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoCloneUrl": {
+                    "type": "string",
+                    "description": "The clone URL of the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecStaticSiteGithub:getAppSpecStaticSiteGithub": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecStaticSiteRoutes:getAppSpecStaticSiteRoutes": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Paths must start with `/` and must be unique within the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecWorker:getAppSpecWorker": {
+            "properties": {
+                "buildCommand": {
+                    "type": "string",
+                    "description": "An optional build command to run while building this component from source.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerfilePath": {
+                    "type": "string",
+                    "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "environmentSlug": {
+                    "type": "string",
+                    "description": "An environment slug describing the type of this app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:/getAppSpecWorkerEnv:getAppSpecWorkerEnv"
+                    },
+                    "description": "Describes an environment variable made available to an app competent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "git": {
+                    "$ref": "#/types/digitalocean:/getAppSpecWorkerGit:getAppSpecWorkerGit",
+                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "github": {
+                    "$ref": "#/types/digitalocean:/getAppSpecWorkerGithub:getAppSpecWorkerGithub",
+                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceCount": {
+                    "type": "integer",
+                    "description": "The amount of instances that this component should be scaled to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceSizeSlug": {
+                    "type": "string",
+                    "description": "The instance size to use for this component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "routes": {
+                    "$ref": "#/types/digitalocean:/getAppSpecWorkerRoutes:getAppSpecWorkerRoutes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "runCommand": {
+                    "type": "string",
+                    "description": "An optional run command to override the component's default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceDir": {
+                    "type": "string",
+                    "description": "An optional path to the working directory to use for the build.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "routes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:/getAppSpecWorkerEnv:getAppSpecWorkerEnv": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:/getAppSpecWorkerGit:getAppSpecWorkerGit": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoCloneUrl": {
+                    "type": "string",
+                    "description": "The clone URL of the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecWorkerGithub:getAppSpecWorkerGithub": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:/getAppSpecWorkerRoutes:getAppSpecWorkerRoutes": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Paths must start with `/` and must be unique within the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:/getDatabaseClusterMaintenanceWindow:getDatabaseClusterMaintenanceWindow": {
             "properties": {
                 "day": {
@@ -1061,6 +2965,121 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:/getDomainsDomain:getDomainsDomain": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "(Required) The name of the domain.\n- `ttl`-  The TTL of the domain.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "The uniform resource name of the domain\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "ttl",
+                "urn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:/getDomainsFilter:getDomainsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values to match against the `key` field. Only retrieves domains\nwhere the `key` field takes on one or more of the values provided here.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:/getDomainsSort:getDomainsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sort direction. This may be either `asc` or `desc`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
         },
         "digitalocean:/getDropletsDroplet:getDropletsDroplet": {
             "properties": {
@@ -1330,9 +3349,27 @@
         },
         "digitalocean:/getDropletsFilter:getDropletsFilter": {
             "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "key": {
                     "type": "string",
-                    "description": "Filter the Droplets by this key. This may be one of '`backups`, `created_at`, `disk`, `id`,\n`image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,\n`memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,\n`status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`'.\n",
+                    "description": "Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,\n`image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,\n`memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,\n`status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1386,9 +3423,27 @@
         },
         "digitalocean:/getImagesFilter:getImagesFilter": {
             "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "key": {
                     "type": "string",
                     "description": "Filter the images by this key. This may be one of `distribution`, `error_message`,\n`id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,\n`tags`, or `type`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2052,9 +4107,27 @@
         },
         "digitalocean:/getProjectsFilter:getProjectsFilter": {
             "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "key": {
                     "type": "string",
                     "description": "Filter the projects by this key. This may be one of `name`,\n`purpose`, `description`, `environment`, or `is_default`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2232,9 +4305,27 @@
         },
         "digitalocean:/getRegionsFilter:getRegionsFilter": {
             "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "key": {
                     "type": "string",
                     "description": "Filter the regions by this key. This may be one of `slug`,\n`name`, `available`, `features`, or `sizes`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2356,9 +4447,27 @@
         },
         "digitalocean:/getSizesFilter:getSizesFilter": {
             "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "key": {
                     "type": "string",
                     "description": "Filter the sizes by this key. This may be one of `slug`,\n`regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,\n`price_hourly`, or `available`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2370,7 +4479,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Only retrieves images which keys has value that matches\none of the values provided here.\n",
+                    "description": "Only retrieves sizes which keys has value that matches\none of the values provided here.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2569,9 +4678,27 @@
         },
         "digitalocean:/getSpacesBucketsFilter:getSpacesBucketsFilter": {
             "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "key": {
                     "type": "string",
                     "description": "Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2583,7 +4710,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of values to match against the `key` field. Only retrieves images\nwhere the `key` field takes on one or more of the values provided here.\n",
+                    "description": "A list of values to match against the `key` field. Only retrieves Spaces buckets\nwhere the `key` field takes on one or more of the values provided here.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2625,9 +4752,27 @@
         },
         "digitalocean:/getTagsFilter:getTagsFilter": {
             "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "key": {
                     "type": "string",
                     "description": "Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2814,6 +4959,78 @@
         }
     },
     "resources": {
+        "digitalocean:index/app:App": {
+            "description": "Provides a DigitalOcean App resource.\n\n{{% examples %}}\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/resources/app-specification-reference/) specifying the app's components.\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {\n    spec: {\n        name: \"golang-sample\",\n        region: \"ams\",\n        services: [{\n            environmentSlug: \"go\",\n            git: {\n                branch: \"main\",\n                repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            },\n            instanceCount: 1,\n            instanceSizeSlug: \"professional-xs\",\n            name: \"go-service\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec=digitalocean.AppSpecArgs(\n    name=\"golang-sample\",\n    region=\"ams\",\n    services=[digitalocean.AppSpecServiceArgs(\n        environment_slug=\"go\",\n        git=digitalocean.AppSpecServiceGitArgs(\n            branch=\"main\",\n            repo_clone_url=\"https://github.com/digitalocean/sample-golang.git\",\n        ),\n        instance_count=1,\n        instance_size_slug=\"professional-xs\",\n        name=\"go-service\",\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var golang_sample = new DigitalOcean.App(\"golang-sample\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Name = \"golang-sample\",\n                Region = \"ams\",\n                Services = \n                {\n                    new DigitalOcean.Inputs.AppSpecServiceArgs\n                    {\n                        EnvironmentSlug = \"go\",\n                        Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                        {\n                            Branch = \"main\",\n                            RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        },\n                        InstanceCount = 1,\n                        InstanceSizeSlug = \"professional-xs\",\n                        Name = \"go-service\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang_sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tEnvironmentSlug: pulumi.String(\"go\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"professional-xs\"),\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Static Site Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_ste_example = new digitalocean.App(\"static-ste-example\", {\n    spec: {\n        name: \"static-ste-example\",\n        region: \"ams\",\n        staticSites: [{\n            buildCommand: \"bundle exec jekyll build -d ./public\",\n            git: {\n                branch: \"main\",\n                repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            },\n            name: \"sample-jekyll\",\n            outputDir: \"/public\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_ste_example = digitalocean.App(\"static-ste-example\", spec=digitalocean.AppSpecArgs(\n    name=\"static-ste-example\",\n    region=\"ams\",\n    static_sites=[digitalocean.AppSpecStaticSiteArgs(\n        build_command=\"bundle exec jekyll build -d ./public\",\n        git=digitalocean.AppSpecStaticSiteGitArgs(\n            branch=\"main\",\n            repo_clone_url=\"https://github.com/digitalocean/sample-jekyll.git\",\n        ),\n        name=\"sample-jekyll\",\n        output_dir=\"/public\",\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var static_ste_example = new DigitalOcean.App(\"static-ste-example\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Name = \"static-ste-example\",\n                Region = \"ams\",\n                StaticSites = \n                {\n                    new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                    {\n                        BuildCommand = \"bundle exec jekyll build -d ./public\",\n                        Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                        {\n                            Branch = \"main\",\n                            RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        },\n                        Name = \"sample-jekyll\",\n                        OutputDir = \"/public\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static_ste_example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-ste-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: digitalocean.AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecStaticSiteArgs{\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tName:      pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tOutputDir: pulumi.String(\"/public\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Multiple Components Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mono_repo_example = new digitalocean.App(\"mono-repo-example\", {\n    spec: {\n        domains: [\"foo.example.com\"],\n        name: \"mono-repo-example\",\n        region: \"ams\",\n        // Build a Go project in the api/ directory that listens on port 3000\n        // and serves it at https://foo.example.com/api\n        services: [{\n            environmentSlug: \"go\",\n            github: {\n                branch: \"main\",\n                deployOnPush: true,\n                repo: \"username/repo\",\n            },\n            httpPort: 3000,\n            instanceCount: 2,\n            instanceSizeSlug: \"professional-xs\",\n            name: \"api\",\n            routes: {\n                path: \"/api\",\n            },\n            runCommand: \"bin/api\",\n            sourceDir: \"api/\",\n        }],\n        // Builds a static site in the project's root directory\n        // and serves it at https://foo.example.com/\n        staticSites: [{\n            buildCommand: \"npm run build\",\n            github: {\n                branch: \"main\",\n                deployOnPush: true,\n                repo: \"username/repo\",\n            },\n            name: \"web\",\n            routes: {\n                path: \"/\",\n            },\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmono_repo_example = digitalocean.App(\"mono-repo-example\", spec=digitalocean.AppSpecArgs(\n    domains=[\"foo.example.com\"],\n    name=\"mono-repo-example\",\n    region=\"ams\",\n    services=[digitalocean.AppSpecServiceArgs(\n        environment_slug=\"go\",\n        github=digitalocean.AppSpecServiceGithubArgs(\n            branch=\"main\",\n            deploy_on_push=True,\n            repo=\"username/repo\",\n        ),\n        http_port=3000,\n        instance_count=2,\n        instance_size_slug=\"professional-xs\",\n        name=\"api\",\n        routes=digitalocean.AppSpecServiceRoutesArgs(\n            path=\"/api\",\n        ),\n        run_command=\"bin/api\",\n        source_dir=\"api/\",\n    )],\n    static_sites=[digitalocean.AppSpecStaticSiteArgs(\n        build_command=\"npm run build\",\n        github=digitalocean.AppSpecStaticSiteGithubArgs(\n            branch=\"main\",\n            deploy_on_push=True,\n            repo=\"username/repo\",\n        ),\n        name=\"web\",\n        routes=digitalocean.AppSpecStaticSiteRoutesArgs(\n            path=\"/\",\n        ),\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mono_repo_example = new DigitalOcean.App(\"mono-repo-example\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Domains = \n                {\n                    \"foo.example.com\",\n                },\n                Name = \"mono-repo-example\",\n                Region = \"ams\",\n                Services = \n                {\n                    new DigitalOcean.Inputs.AppSpecServiceArgs\n                    {\n                        EnvironmentSlug = \"go\",\n                        Github = new DigitalOcean.Inputs.AppSpecServiceGithubArgs\n                        {\n                            Branch = \"main\",\n                            DeployOnPush = true,\n                            Repo = \"username/repo\",\n                        },\n                        HttpPort = 3000,\n                        InstanceCount = 2,\n                        InstanceSizeSlug = \"professional-xs\",\n                        Name = \"api\",\n                        Routes = new DigitalOcean.Inputs.AppSpecServiceRoutesArgs\n                        {\n                            Path = \"/api\",\n                        },\n                        RunCommand = \"bin/api\",\n                        SourceDir = \"api/\",\n                    },\n                },\n                StaticSites = \n                {\n                    new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                    {\n                        BuildCommand = \"npm run build\",\n                        Github = new DigitalOcean.Inputs.AppSpecStaticSiteGithubArgs\n                        {\n                            Branch = \"main\",\n                            DeployOnPush = true,\n                            Repo = \"username/repo\",\n                        },\n                        Name = \"web\",\n                        Routes = new DigitalOcean.Inputs.AppSpecStaticSiteRoutesArgs\n                        {\n                            Path = \"/\",\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"mono_repo_example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tDomains: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"foo.example.com\"),\n\t\t\t\t},\n\t\t\t\tName:   pulumi.String(\"mono-repo-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tEnvironmentSlug: pulumi.String(\"go\"),\n\t\t\t\t\t\tGithub: \u0026digitalocean.AppSpecServiceGithubArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tDeployOnPush: pulumi.Bool(true),\n\t\t\t\t\t\t\tRepo:         pulumi.String(\"username/repo\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tHttpPort:         pulumi.Int(3000),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(2),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"professional-xs\"),\n\t\t\t\t\t\tName:             pulumi.String(\"api\"),\n\t\t\t\t\t\tRoutes: \u0026digitalocean.AppSpecServiceRoutesArgs{\n\t\t\t\t\t\t\tPath: pulumi.String(\"/api\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tRunCommand: pulumi.String(\"bin/api\"),\n\t\t\t\t\t\tSourceDir:  pulumi.String(\"api/\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tStaticSites: digitalocean.AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecStaticSiteArgs{\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"npm run build\"),\n\t\t\t\t\t\tGithub: \u0026digitalocean.AppSpecStaticSiteGithubArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tDeployOnPush: pulumi.Bool(true),\n\t\t\t\t\t\t\tRepo:         pulumi.String(\"username/repo\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tName: pulumi.String(\"web\"),\n\t\t\t\t\t\tRoutes: \u0026digitalocean.AppSpecStaticSiteRoutesArgs{\n\t\t\t\t\t\t\tPath: pulumi.String(\"/\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "activeDeploymentId": {
+                    "type": "string",
+                    "description": "The ID the app's currently active deployment.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time of when the app was created.\n"
+                },
+                "defaultIngress": {
+                    "type": "string",
+                    "description": "The default URL to access the app.\n"
+                },
+                "liveUrl": {
+                    "type": "string",
+                    "description": "The live URL of the app.\n"
+                },
+                "spec": {
+                    "$ref": "#/types/digitalocean:/AppSpec:AppSpec",
+                    "description": "A DigitalOcean App spec describing the app.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time of when the app was last updated.\n"
+                }
+            },
+            "required": [
+                "activeDeploymentId",
+                "createdAt",
+                "defaultIngress",
+                "liveUrl",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "spec": {
+                    "$ref": "#/types/digitalocean:/AppSpec:AppSpec",
+                    "description": "A DigitalOcean App spec describing the app.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering App resources.\n",
+                "properties": {
+                    "activeDeploymentId": {
+                        "type": "string",
+                        "description": "The ID the app's currently active deployment.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time of when the app was created.\n"
+                    },
+                    "defaultIngress": {
+                        "type": "string",
+                        "description": "The default URL to access the app.\n"
+                    },
+                    "liveUrl": {
+                        "type": "string",
+                        "description": "The live URL of the app.\n"
+                    },
+                    "spec": {
+                        "$ref": "#/types/digitalocean:/AppSpec:AppSpec",
+                        "description": "A DigitalOcean App spec describing the app.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The date and time of when the app was last updated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/cdn:Cdn": {
             "description": "Provides a DigitalOcean CDN Endpoint resource for use with Spaces.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new Spaces Bucket\nconst mybucket = new digitalocean.SpacesBucket(\"mybucket\", {\n    region: \"sfo2\",\n    acl: \"public-read\",\n});\n// Add a CDN endpoint to the Spaces Bucket\nconst mycdn = new digitalocean.Cdn(\"mycdn\", {origin: mybucket.bucketDomainName});\nexport const fqdn = mycdn.endpoint;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new Spaces Bucket\nmybucket = digitalocean.SpacesBucket(\"mybucket\",\n    region=\"sfo2\",\n    acl=\"public-read\")\n# Add a CDN endpoint to the Spaces Bucket\nmycdn = digitalocean.Cdn(\"mycdn\", origin=mybucket.bucket_domain_name)\npulumi.export(\"fqdn\", mycdn.endpoint)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Spaces Bucket\n        var mybucket = new DigitalOcean.SpacesBucket(\"mybucket\", new DigitalOcean.SpacesBucketArgs\n        {\n            Region = \"sfo2\",\n            Acl = \"public-read\",\n        });\n        // Add a CDN endpoint to the Spaces Bucket\n        var mycdn = new DigitalOcean.Cdn(\"mycdn\", new DigitalOcean.CdnArgs\n        {\n            Origin = mybucket.BucketDomainName,\n        });\n        this.Fqdn = mycdn.Endpoint;\n    }\n\n    [Output(\"fqdn\")]\n    public Output\u003cstring\u003e Fqdn { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmybucket, err := digitalocean.NewSpacesBucket(ctx, \"mybucket\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tRegion: pulumi.String(\"sfo2\"),\n\t\t\tAcl:    pulumi.String(\"public-read\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmycdn, err := digitalocean.NewCdn(ctx, \"mycdn\", \u0026digitalocean.CdnArgs{\n\t\t\tOrigin: mybucket.BucketDomainName,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"fqdn\", mycdn.Endpoint)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Custom Sub-Domain Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new Spaces Bucket\nconst mybucket = new digitalocean.SpacesBucket(\"mybucket\", {\n    region: \"sfo2\",\n    acl: \"public-read\",\n});\n// Create a DigitalOcean managed Let's Encrypt Certificate\nconst cert = new digitalocean.Certificate(\"cert\", {\n    type: \"lets_encrypt\",\n    domains: [\"static.example.com\"],\n});\n// Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\nconst mycdn = new digitalocean.Cdn(\"mycdn\", {\n    origin: mybucket.bucketDomainName,\n    customDomain: \"static.example.com\",\n    certificateId: cert.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new Spaces Bucket\nmybucket = digitalocean.SpacesBucket(\"mybucket\",\n    region=\"sfo2\",\n    acl=\"public-read\")\n# Create a DigitalOcean managed Let's Encrypt Certificate\ncert = digitalocean.Certificate(\"cert\",\n    type=\"lets_encrypt\",\n    domains=[\"static.example.com\"])\n# Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\nmycdn = digitalocean.Cdn(\"mycdn\",\n    origin=mybucket.bucket_domain_name,\n    custom_domain=\"static.example.com\",\n    certificate_id=cert.id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Spaces Bucket\n        var mybucket = new DigitalOcean.SpacesBucket(\"mybucket\", new DigitalOcean.SpacesBucketArgs\n        {\n            Region = \"sfo2\",\n            Acl = \"public-read\",\n        });\n        // Create a DigitalOcean managed Let's Encrypt Certificate\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Type = \"lets_encrypt\",\n            Domains = \n            {\n                \"static.example.com\",\n            },\n        });\n        // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\n        var mycdn = new DigitalOcean.Cdn(\"mycdn\", new DigitalOcean.CdnArgs\n        {\n            Origin = mybucket.BucketDomainName,\n            CustomDomain = \"static.example.com\",\n            CertificateId = cert.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmybucket, err := digitalocean.NewSpacesBucket(ctx, \"mybucket\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tRegion: pulumi.String(\"sfo2\"),\n\t\t\tAcl:    pulumi.String(\"public-read\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcert, err := digitalocean.NewCertificate(ctx, \"cert\", \u0026digitalocean.CertificateArgs{\n\t\t\tType: pulumi.String(\"lets_encrypt\"),\n\t\t\tDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"static.example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewCdn(ctx, \"mycdn\", \u0026digitalocean.CdnArgs{\n\t\t\tOrigin:        mybucket.BucketDomainName,\n\t\t\tCustomDomain:  pulumi.String(\"static.example.com\"),\n\t\t\tCertificateId: cert.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -6555,6 +8772,69 @@
                 ]
             }
         },
+        "digitalocean:index/getApp:getApp": {
+            "description": "Get information on a DigitalOcean App.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the account:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getApp({\n    appId: \"e665d18d-7b56-44a9-92ce-31979174d544\",\n});\nexport const defaultIngress = example.then(example =\u003e example.defaultIngress);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_app(app_id=\"e665d18d-7b56-44a9-92ce-31979174d544\")\npulumi.export(\"defaultIngress\", example.default_ingress)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetApp.InvokeAsync(new DigitalOcean.GetAppArgs\n        {\n            AppId = \"e665d18d-7b56-44a9-92ce-31979174d544\",\n        }));\n        this.DefaultIngress = example.Apply(example =\u003e example.DefaultIngress);\n    }\n\n    [Output(\"defaultIngress\")]\n    public Output\u003cstring\u003e DefaultIngress { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupApp(ctx, \u0026digitalocean.LookupAppArgs{\n\t\t\tAppId: \"e665d18d-7b56-44a9-92ce-31979174d544\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"defaultIngress\", example.DefaultIngress)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getApp.\n",
+                "properties": {
+                    "appId": {
+                        "type": "string",
+                        "description": "The ID of the app to retrieve information about.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "appId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getApp.\n",
+                "properties": {
+                    "activeDeploymentId": {
+                        "type": "string",
+                        "description": "The ID the app's currently active deployment.\n"
+                    },
+                    "appId": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time of when the app was created.\n"
+                    },
+                    "defaultIngress": {
+                        "type": "string",
+                        "description": "The default URL to access the app.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "liveUrl": {
+                        "type": "string",
+                        "description": "The live URL of the app.\n"
+                    },
+                    "spec": {
+                        "$ref": "#/types/digitalocean:/getAppSpec:getAppSpec",
+                        "description": "A DigitalOcean App spec describing the app.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The date and time of when the app was last updated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "activeDeploymentId",
+                    "appId",
+                    "createdAt",
+                    "defaultIngress",
+                    "liveUrl",
+                    "spec",
+                    "updatedAt",
+                    "id"
+                ]
+            }
+        },
         "digitalocean:index/getCertificate:getCertificate": {
             "description": "Get information on a certificate. This data source provides the name, type, state,\ndomains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.\nThis is useful if the certificate in question is not managed by this provider or you need to utilize\nany of the certificates data.\n\nAn error is triggered if the provided certificate name does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the certificate:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = pulumi.output(digitalocean.getCertificate({\n    name: \"example\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_certificate(name=\"example\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetCertificate.InvokeAsync(new DigitalOcean.GetCertificateArgs\n        {\n            Name = \"example\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupCertificate(ctx, \u0026digitalocean.LookupCertificateArgs{\n\t\t\tName: \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -6823,6 +9103,61 @@
                     "ttl",
                     "domainUrn",
                     "zoneFile",
+                    "id"
+                ]
+            }
+        },
+        "digitalocean:index/getDomains:getDomains": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getDomains.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getDomainsFilter:getDomainsFilter"
+                        },
+                        "description": "Filter the results.\nThe `filter` block is documented below.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getDomainsSort:getDomainsSort"
+                        },
+                        "description": "Sort the results.\nThe `sort` block is documented below.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDomains.\n",
+                "properties": {
+                    "domains": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getDomainsDomain:getDomainsDomain"
+                        },
+                        "description": "A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:\n"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getDomainsFilter:getDomainsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:/getDomainsSort:getDomainsSort"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "domains",
                     "id"
                 ]
             }

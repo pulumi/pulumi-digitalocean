@@ -13,11 +13,27 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetProjectsFilterArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Set to `true` to require that a field match all of the `values` instead of just one or more of
+        /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        /// that all of the `values` are present in the list or set.
+        /// </summary>
+        [Input("all")]
+        public bool? All { get; set; }
+
+        /// <summary>
         /// Filter the projects by this key. This may be one of `name`,
         /// `purpose`, `description`, `environment`, or `is_default`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
+
+        /// <summary>
+        /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        /// substrings to find within the string field.
+        /// </summary>
+        [Input("matchBy")]
+        public string? MatchBy { get; set; }
 
         [Input("values", required: true)]
         private List<string>? _values;

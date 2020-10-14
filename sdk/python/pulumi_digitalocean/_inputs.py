@@ -9,6 +9,24 @@ from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
 __all__ = [
+    'AppSpecArgs',
+    'AppSpecDatabaseArgs',
+    'AppSpecServiceArgs',
+    'AppSpecServiceEnvArgs',
+    'AppSpecServiceGitArgs',
+    'AppSpecServiceGithubArgs',
+    'AppSpecServiceHealthCheckArgs',
+    'AppSpecServiceRoutesArgs',
+    'AppSpecStaticSiteArgs',
+    'AppSpecStaticSiteEnvArgs',
+    'AppSpecStaticSiteGitArgs',
+    'AppSpecStaticSiteGithubArgs',
+    'AppSpecStaticSiteRoutesArgs',
+    'AppSpecWorkerArgs',
+    'AppSpecWorkerEnvArgs',
+    'AppSpecWorkerGitArgs',
+    'AppSpecWorkerGithubArgs',
+    'AppSpecWorkerRoutesArgs',
     'DatabaseClusterMaintenanceWindowArgs',
     'DatabaseFirewallRuleArgs',
     'FirewallInboundRuleArgs',
@@ -26,6 +44,8 @@ __all__ = [
     'SpacesBucketLifecycleRuleExpirationArgs',
     'SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs',
     'SpacesBucketVersioningArgs',
+    'GetDomainsFilterArgs',
+    'GetDomainsSortArgs',
     'GetDropletsFilterArgs',
     'GetDropletsSortArgs',
     'GetImagesFilterArgs',
@@ -41,6 +61,1484 @@ __all__ = [
     'GetTagsFilterArgs',
     'GetTagsSortArgs',
 ]
+
+@pulumi.input_type
+class AppSpecArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 databases: Optional[pulumi.Input[List[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
+                 domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceArgs']]]] = None,
+                 static_sites: Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteArgs']]]] = None,
+                 workers: Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerArgs']]]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[List[pulumi.Input[str]]] domains: A list of hostnames where the application will be available.
+        :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
+        """
+        pulumi.set(__self__, "name", name)
+        if databases is not None:
+            pulumi.set(__self__, "databases", databases)
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if static_sites is not None:
+            pulumi.set(__self__, "static_sites", static_sites)
+        if workers is not None:
+            pulumi.set(__self__, "workers", workers)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def databases(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecDatabaseArgs']]]]:
+        return pulumi.get(self, "databases")
+
+    @databases.setter
+    def databases(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecDatabaseArgs']]]]):
+        pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of hostnames where the application will be available.
+        """
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The slug for the DigitalOcean data center region hosting the app.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceArgs']]]]:
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceArgs']]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter(name="staticSites")
+    def static_sites(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteArgs']]]]:
+        return pulumi.get(self, "static_sites")
+
+    @static_sites.setter
+    def static_sites(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteArgs']]]]):
+        pulumi.set(self, "static_sites", value)
+
+    @property
+    @pulumi.getter
+    def workers(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerArgs']]]]:
+        return pulumi.get(self, "workers")
+
+    @workers.setter
+    def workers(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerArgs']]]]):
+        pulumi.set(self, "workers", value)
+
+
+@pulumi.input_type
+class AppSpecDatabaseArgs:
+    def __init__(__self__, *,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 db_name: Optional[pulumi.Input[str]] = None,
+                 db_user: Optional[pulumi.Input[str]] = None,
+                 engine: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 production: Optional[pulumi.Input[bool]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component
+        """
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if db_name is not None:
+            pulumi.set(__self__, "db_name", db_name)
+        if db_user is not None:
+            pulumi.set(__self__, "db_user", db_user)
+        if engine is not None:
+            pulumi.set(__self__, "engine", engine)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if production is not None:
+            pulumi.set(__self__, "production", production)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="dbName")
+    def db_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "db_name")
+
+    @db_name.setter
+    def db_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_name", value)
+
+    @property
+    @pulumi.getter(name="dbUser")
+    def db_user(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "db_user")
+
+    @db_user.setter
+    def db_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_user", value)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the component
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def production(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "production")
+
+    @production.setter
+    def production(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "production", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class AppSpecServiceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 build_command: Optional[pulumi.Input[str]] = None,
+                 dockerfile_path: Optional[pulumi.Input[str]] = None,
+                 environment_slug: Optional[pulumi.Input[str]] = None,
+                 envs: Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceEnvArgs']]]] = None,
+                 git: Optional[pulumi.Input['AppSpecServiceGitArgs']] = None,
+                 github: Optional[pulumi.Input['AppSpecServiceGithubArgs']] = None,
+                 health_check: Optional[pulumi.Input['AppSpecServiceHealthCheckArgs']] = None,
+                 http_port: Optional[pulumi.Input[float]] = None,
+                 instance_count: Optional[pulumi.Input[float]] = None,
+                 instance_size_slug: Optional[pulumi.Input[str]] = None,
+                 routes: Optional[pulumi.Input['AppSpecServiceRoutesArgs']] = None,
+                 run_command: Optional[pulumi.Input[str]] = None,
+                 source_dir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
+        :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
+        :param pulumi.Input[List[pulumi.Input['AppSpecServiceEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input['AppSpecServiceGitArgs'] git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        :param pulumi.Input['AppSpecServiceGithubArgs'] github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        :param pulumi.Input['AppSpecServiceHealthCheckArgs'] health_check: A health check to determine the availability of this component.
+        :param pulumi.Input[float] http_port: The internal port on which this service's run command will listen.
+        :param pulumi.Input[float] instance_count: The amount of instances that this component should be scaled to.
+        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
+        :param pulumi.Input[str] run_command: An optional run command to override the component's default.
+        :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
+        """
+        pulumi.set(__self__, "name", name)
+        if build_command is not None:
+            pulumi.set(__self__, "build_command", build_command)
+        if dockerfile_path is not None:
+            pulumi.set(__self__, "dockerfile_path", dockerfile_path)
+        if environment_slug is not None:
+            pulumi.set(__self__, "environment_slug", environment_slug)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if github is not None:
+            pulumi.set(__self__, "github", github)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
+        if http_port is not None:
+            pulumi.set(__self__, "http_port", http_port)
+        if instance_count is not None:
+            pulumi.set(__self__, "instance_count", instance_count)
+        if instance_size_slug is not None:
+            pulumi.set(__self__, "instance_size_slug", instance_size_slug)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+        if run_command is not None:
+            pulumi.set(__self__, "run_command", run_command)
+        if source_dir is not None:
+            pulumi.set(__self__, "source_dir", source_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="buildCommand")
+    def build_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional build command to run while building this component from source.
+        """
+        return pulumi.get(self, "build_command")
+
+    @build_command.setter
+    def build_command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_command", value)
+
+    @property
+    @pulumi.getter(name="dockerfilePath")
+    def dockerfile_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        """
+        return pulumi.get(self, "dockerfile_path")
+
+    @dockerfile_path.setter
+    def dockerfile_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dockerfile_path", value)
+
+    @property
+    @pulumi.getter(name="environmentSlug")
+    def environment_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        An environment slug describing the type of this app.
+        """
+        return pulumi.get(self, "environment_slug")
+
+    @environment_slug.setter
+    def environment_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment_slug", value)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceEnvArgs']]]]:
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional[pulumi.Input['AppSpecServiceGitArgs']]:
+        """
+        A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        """
+        return pulumi.get(self, "git")
+
+    @git.setter
+    def git(self, value: Optional[pulumi.Input['AppSpecServiceGitArgs']]):
+        pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter
+    def github(self) -> Optional[pulumi.Input['AppSpecServiceGithubArgs']]:
+        """
+        A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        """
+        return pulumi.get(self, "github")
+
+    @github.setter
+    def github(self, value: Optional[pulumi.Input['AppSpecServiceGithubArgs']]):
+        pulumi.set(self, "github", value)
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> Optional[pulumi.Input['AppSpecServiceHealthCheckArgs']]:
+        """
+        A health check to determine the availability of this component.
+        """
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: Optional[pulumi.Input['AppSpecServiceHealthCheckArgs']]):
+        pulumi.set(self, "health_check", value)
+
+    @property
+    @pulumi.getter(name="httpPort")
+    def http_port(self) -> Optional[pulumi.Input[float]]:
+        """
+        The internal port on which this service's run command will listen.
+        """
+        return pulumi.get(self, "http_port")
+
+    @http_port.setter
+    def http_port(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "http_port", value)
+
+    @property
+    @pulumi.getter(name="instanceCount")
+    def instance_count(self) -> Optional[pulumi.Input[float]]:
+        """
+        The amount of instances that this component should be scaled to.
+        """
+        return pulumi.get(self, "instance_count")
+
+    @instance_count.setter
+    def instance_count(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "instance_count", value)
+
+    @property
+    @pulumi.getter(name="instanceSizeSlug")
+    def instance_size_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance size to use for this component.
+        """
+        return pulumi.get(self, "instance_size_slug")
+
+    @instance_size_slug.setter
+    def instance_size_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_size_slug", value)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[pulumi.Input['AppSpecServiceRoutesArgs']]:
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: Optional[pulumi.Input['AppSpecServiceRoutesArgs']]):
+        pulumi.set(self, "routes", value)
+
+    @property
+    @pulumi.getter(name="runCommand")
+    def run_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional run command to override the component's default.
+        """
+        return pulumi.get(self, "run_command")
+
+    @run_command.setter
+    def run_command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_command", value)
+
+    @property
+    @pulumi.getter(name="sourceDir")
+    def source_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional path to the working directory to use for the build.
+        """
+        return pulumi.get(self, "source_dir")
+
+    @source_dir.setter
+    def source_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_dir", value)
+
+
+@pulumi.input_type
+class AppSpecServiceEnvArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The name of the environment variable.
+        :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param pulumi.Input[str] value: The value of the environment variable.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class AppSpecServiceGitArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 repo_clone_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[str] repo_clone_url: The clone URL of the repo.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if repo_clone_url is not None:
+            pulumi.set(__self__, "repo_clone_url", repo_clone_url)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="repoCloneUrl")
+    def repo_clone_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The clone URL of the repo.
+        """
+        return pulumi.get(self, "repo_clone_url")
+
+    @repo_clone_url.setter
+    def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_clone_url", value)
+
+
+@pulumi.input_type
+class AppSpecServiceGithubArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deploy_on_push: Optional[pulumi.Input[bool]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[bool] deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[str] repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @deploy_on_push.setter
+    def deploy_on_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_on_push", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class AppSpecServiceHealthCheckArgs:
+    def __init__(__self__, *,
+                 failure_threshold: Optional[pulumi.Input[float]] = None,
+                 http_path: Optional[pulumi.Input[str]] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[float]] = None,
+                 period_seconds: Optional[pulumi.Input[float]] = None,
+                 success_threshold: Optional[pulumi.Input[float]] = None,
+                 timeout_seconds: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] failure_threshold: The number of failed health checks before considered unhealthy.
+        :param pulumi.Input[str] http_path: The route path used for the HTTP health check ping.
+        :param pulumi.Input[float] initial_delay_seconds: The number of seconds to wait before beginning health checks.
+        :param pulumi.Input[float] period_seconds: The number of seconds to wait between health checks.
+        :param pulumi.Input[float] success_threshold: The number of successful health checks before considered healthy.
+        :param pulumi.Input[float] timeout_seconds: The number of seconds after which the check times out.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_path is not None:
+            pulumi.set(__self__, "http_path", http_path)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of failed health checks before considered unhealthy.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter(name="httpPath")
+    def http_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The route path used for the HTTP health check ping.
+        """
+        return pulumi.get(self, "http_path")
+
+    @http_path.setter
+    def http_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_path", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of seconds to wait before beginning health checks.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of seconds to wait between health checks.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of successful health checks before considered healthy.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of seconds after which the check times out.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+@pulumi.input_type
+class AppSpecServiceRoutesArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] path: Paths must start with `/` and must be unique within the app.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class AppSpecStaticSiteArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 build_command: Optional[pulumi.Input[str]] = None,
+                 dockerfile_path: Optional[pulumi.Input[str]] = None,
+                 environment_slug: Optional[pulumi.Input[str]] = None,
+                 envs: Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteEnvArgs']]]] = None,
+                 error_document: Optional[pulumi.Input[str]] = None,
+                 git: Optional[pulumi.Input['AppSpecStaticSiteGitArgs']] = None,
+                 github: Optional[pulumi.Input['AppSpecStaticSiteGithubArgs']] = None,
+                 index_document: Optional[pulumi.Input[str]] = None,
+                 output_dir: Optional[pulumi.Input[str]] = None,
+                 routes: Optional[pulumi.Input['AppSpecStaticSiteRoutesArgs']] = None,
+                 source_dir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
+        :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
+        :param pulumi.Input[List[pulumi.Input['AppSpecStaticSiteEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input[str] error_document: The name of the error document to use when serving this static site*
+        :param pulumi.Input['AppSpecStaticSiteGitArgs'] git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        :param pulumi.Input['AppSpecStaticSiteGithubArgs'] github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        :param pulumi.Input[str] index_document: The name of the index document to use when serving this static site.
+        :param pulumi.Input[str] output_dir: An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+        :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
+        """
+        pulumi.set(__self__, "name", name)
+        if build_command is not None:
+            pulumi.set(__self__, "build_command", build_command)
+        if dockerfile_path is not None:
+            pulumi.set(__self__, "dockerfile_path", dockerfile_path)
+        if environment_slug is not None:
+            pulumi.set(__self__, "environment_slug", environment_slug)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if error_document is not None:
+            pulumi.set(__self__, "error_document", error_document)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if github is not None:
+            pulumi.set(__self__, "github", github)
+        if index_document is not None:
+            pulumi.set(__self__, "index_document", index_document)
+        if output_dir is not None:
+            pulumi.set(__self__, "output_dir", output_dir)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+        if source_dir is not None:
+            pulumi.set(__self__, "source_dir", source_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="buildCommand")
+    def build_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional build command to run while building this component from source.
+        """
+        return pulumi.get(self, "build_command")
+
+    @build_command.setter
+    def build_command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_command", value)
+
+    @property
+    @pulumi.getter(name="dockerfilePath")
+    def dockerfile_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        """
+        return pulumi.get(self, "dockerfile_path")
+
+    @dockerfile_path.setter
+    def dockerfile_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dockerfile_path", value)
+
+    @property
+    @pulumi.getter(name="environmentSlug")
+    def environment_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        An environment slug describing the type of this app.
+        """
+        return pulumi.get(self, "environment_slug")
+
+    @environment_slug.setter
+    def environment_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment_slug", value)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteEnvArgs']]]]:
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter(name="errorDocument")
+    def error_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the error document to use when serving this static site*
+        """
+        return pulumi.get(self, "error_document")
+
+    @error_document.setter
+    def error_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_document", value)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional[pulumi.Input['AppSpecStaticSiteGitArgs']]:
+        """
+        A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        """
+        return pulumi.get(self, "git")
+
+    @git.setter
+    def git(self, value: Optional[pulumi.Input['AppSpecStaticSiteGitArgs']]):
+        pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter
+    def github(self) -> Optional[pulumi.Input['AppSpecStaticSiteGithubArgs']]:
+        """
+        A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        """
+        return pulumi.get(self, "github")
+
+    @github.setter
+    def github(self, value: Optional[pulumi.Input['AppSpecStaticSiteGithubArgs']]):
+        pulumi.set(self, "github", value)
+
+    @property
+    @pulumi.getter(name="indexDocument")
+    def index_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the index document to use when serving this static site.
+        """
+        return pulumi.get(self, "index_document")
+
+    @index_document.setter
+    def index_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_document", value)
+
+    @property
+    @pulumi.getter(name="outputDir")
+    def output_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+        """
+        return pulumi.get(self, "output_dir")
+
+    @output_dir.setter
+    def output_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_dir", value)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[pulumi.Input['AppSpecStaticSiteRoutesArgs']]:
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: Optional[pulumi.Input['AppSpecStaticSiteRoutesArgs']]):
+        pulumi.set(self, "routes", value)
+
+    @property
+    @pulumi.getter(name="sourceDir")
+    def source_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional path to the working directory to use for the build.
+        """
+        return pulumi.get(self, "source_dir")
+
+    @source_dir.setter
+    def source_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_dir", value)
+
+
+@pulumi.input_type
+class AppSpecStaticSiteEnvArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The name of the environment variable.
+        :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param pulumi.Input[str] value: The value of the environment variable.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class AppSpecStaticSiteGitArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 repo_clone_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[str] repo_clone_url: The clone URL of the repo.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if repo_clone_url is not None:
+            pulumi.set(__self__, "repo_clone_url", repo_clone_url)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="repoCloneUrl")
+    def repo_clone_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The clone URL of the repo.
+        """
+        return pulumi.get(self, "repo_clone_url")
+
+    @repo_clone_url.setter
+    def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_clone_url", value)
+
+
+@pulumi.input_type
+class AppSpecStaticSiteGithubArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deploy_on_push: Optional[pulumi.Input[bool]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[bool] deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[str] repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @deploy_on_push.setter
+    def deploy_on_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_on_push", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class AppSpecStaticSiteRoutesArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] path: Paths must start with `/` and must be unique within the app.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 build_command: Optional[pulumi.Input[str]] = None,
+                 dockerfile_path: Optional[pulumi.Input[str]] = None,
+                 environment_slug: Optional[pulumi.Input[str]] = None,
+                 envs: Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerEnvArgs']]]] = None,
+                 git: Optional[pulumi.Input['AppSpecWorkerGitArgs']] = None,
+                 github: Optional[pulumi.Input['AppSpecWorkerGithubArgs']] = None,
+                 instance_count: Optional[pulumi.Input[float]] = None,
+                 instance_size_slug: Optional[pulumi.Input[str]] = None,
+                 routes: Optional[pulumi.Input['AppSpecWorkerRoutesArgs']] = None,
+                 run_command: Optional[pulumi.Input[str]] = None,
+                 source_dir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
+        :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
+        :param pulumi.Input[List[pulumi.Input['AppSpecWorkerEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input['AppSpecWorkerGitArgs'] git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        :param pulumi.Input['AppSpecWorkerGithubArgs'] github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        :param pulumi.Input[float] instance_count: The amount of instances that this component should be scaled to.
+        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
+        :param pulumi.Input[str] run_command: An optional run command to override the component's default.
+        :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
+        """
+        pulumi.set(__self__, "name", name)
+        if build_command is not None:
+            pulumi.set(__self__, "build_command", build_command)
+        if dockerfile_path is not None:
+            pulumi.set(__self__, "dockerfile_path", dockerfile_path)
+        if environment_slug is not None:
+            pulumi.set(__self__, "environment_slug", environment_slug)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if github is not None:
+            pulumi.set(__self__, "github", github)
+        if instance_count is not None:
+            pulumi.set(__self__, "instance_count", instance_count)
+        if instance_size_slug is not None:
+            pulumi.set(__self__, "instance_size_slug", instance_size_slug)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+        if run_command is not None:
+            pulumi.set(__self__, "run_command", run_command)
+        if source_dir is not None:
+            pulumi.set(__self__, "source_dir", source_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="buildCommand")
+    def build_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional build command to run while building this component from source.
+        """
+        return pulumi.get(self, "build_command")
+
+    @build_command.setter
+    def build_command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_command", value)
+
+    @property
+    @pulumi.getter(name="dockerfilePath")
+    def dockerfile_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        """
+        return pulumi.get(self, "dockerfile_path")
+
+    @dockerfile_path.setter
+    def dockerfile_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dockerfile_path", value)
+
+    @property
+    @pulumi.getter(name="environmentSlug")
+    def environment_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        An environment slug describing the type of this app.
+        """
+        return pulumi.get(self, "environment_slug")
+
+    @environment_slug.setter
+    def environment_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment_slug", value)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerEnvArgs']]]]:
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional[pulumi.Input['AppSpecWorkerGitArgs']]:
+        """
+        A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        """
+        return pulumi.get(self, "git")
+
+    @git.setter
+    def git(self, value: Optional[pulumi.Input['AppSpecWorkerGitArgs']]):
+        pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter
+    def github(self) -> Optional[pulumi.Input['AppSpecWorkerGithubArgs']]:
+        """
+        A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        """
+        return pulumi.get(self, "github")
+
+    @github.setter
+    def github(self, value: Optional[pulumi.Input['AppSpecWorkerGithubArgs']]):
+        pulumi.set(self, "github", value)
+
+    @property
+    @pulumi.getter(name="instanceCount")
+    def instance_count(self) -> Optional[pulumi.Input[float]]:
+        """
+        The amount of instances that this component should be scaled to.
+        """
+        return pulumi.get(self, "instance_count")
+
+    @instance_count.setter
+    def instance_count(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "instance_count", value)
+
+    @property
+    @pulumi.getter(name="instanceSizeSlug")
+    def instance_size_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance size to use for this component.
+        """
+        return pulumi.get(self, "instance_size_slug")
+
+    @instance_size_slug.setter
+    def instance_size_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_size_slug", value)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[pulumi.Input['AppSpecWorkerRoutesArgs']]:
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: Optional[pulumi.Input['AppSpecWorkerRoutesArgs']]):
+        pulumi.set(self, "routes", value)
+
+    @property
+    @pulumi.getter(name="runCommand")
+    def run_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional run command to override the component's default.
+        """
+        return pulumi.get(self, "run_command")
+
+    @run_command.setter
+    def run_command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_command", value)
+
+    @property
+    @pulumi.getter(name="sourceDir")
+    def source_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional path to the working directory to use for the build.
+        """
+        return pulumi.get(self, "source_dir")
+
+    @source_dir.setter
+    def source_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_dir", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerEnvArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The name of the environment variable.
+        :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param pulumi.Input[str] value: The value of the environment variable.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerGitArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 repo_clone_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[str] repo_clone_url: The clone URL of the repo.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if repo_clone_url is not None:
+            pulumi.set(__self__, "repo_clone_url", repo_clone_url)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="repoCloneUrl")
+    def repo_clone_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The clone URL of the repo.
+        """
+        return pulumi.get(self, "repo_clone_url")
+
+    @repo_clone_url.setter
+    def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_clone_url", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerGithubArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deploy_on_push: Optional[pulumi.Input[bool]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[bool] deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[str] repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @deploy_on_push.setter
+    def deploy_on_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_on_push", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerRoutesArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] path: Paths must start with `/` and must be unique within the app.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
 
 @pulumi.input_type
 class DatabaseClusterMaintenanceWindowArgs:
@@ -1501,29 +2999,158 @@ class SpacesBucketVersioningArgs:
 
 
 @pulumi.input_type
-class GetDropletsFilterArgs:
+class GetDomainsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str]):
+                 values: List[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
         """
-        :param str key: Filter the Droplets by this key. This may be one of '`backups`, `created_at`, `disk`, `id`,
-               `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-               `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-               `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`'.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves Droplets
+        :param str key: Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+        :param List[str] values: A list of values to match against the `key` field. Only retrieves domains
                where the `key` field takes on one or more of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
     def key(self) -> str:
         """
-        Filter the Droplets by this key. This may be one of '`backups`, `created_at`, `disk`, `id`,
+        Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> List[str]:
+        """
+        A list of values to match against the `key` field. Only retrieves domains
+        where the `key` field takes on one or more of the values provided here.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: List[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetDomainsSortArgs:
+    def __init__(__self__, *,
+                 key: str,
+                 direction: Optional[str] = None):
+        """
+        :param str key: Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+        :param str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+
+@pulumi.input_type
+class GetDropletsFilterArgs:
+    def __init__(__self__, *,
+                 key: str,
+                 values: List[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
+        """
+        :param str key: Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
+               `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
+               `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
+               `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+        :param List[str] values: A list of values to match against the `key` field. Only retrieves Droplets
+               where the `key` field takes on one or more of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
         `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
         `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-        `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`'.
+        `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
         """
         return pulumi.get(self, "key")
 
@@ -1543,6 +3170,34 @@ class GetDropletsFilterArgs:
     @values.setter
     def values(self, value: List[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type
@@ -1593,16 +3248,28 @@ class GetDropletsSortArgs:
 class GetImagesFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str]):
+                 values: List[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
         """
         :param str key: Filter the images by this key. This may be one of `distribution`, `error_message`,
                `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
                `tags`, or `type`.
         :param List[str] values: A list of values to match against the `key` field. Only retrieves images
                where the `key` field takes on one or more of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -1630,6 +3297,34 @@ class GetImagesFilterArgs:
     @values.setter
     def values(self, value: List[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type
@@ -1676,15 +3371,27 @@ class GetImagesSortArgs:
 class GetProjectsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str]):
+                 values: List[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
         """
         :param str key: Filter the projects by this key. This may be one of `name`,
                `purpose`, `description`, `environment`, or `is_default`.
         :param List[str] values: A list of values to match against the `key` field. Only retrieves projects
                where the `key` field takes on one or more of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -1711,6 +3418,34 @@ class GetProjectsFilterArgs:
     @values.setter
     def values(self, value: List[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type
@@ -1757,15 +3492,27 @@ class GetProjectsSortArgs:
 class GetRegionsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str]):
+                 values: List[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
         """
         :param str key: Filter the regions by this key. This may be one of `slug`,
                `name`, `available`, `features`, or `sizes`.
         :param List[str] values: A list of values to match against the `key` field. Only retrieves regions
                where the `key` field takes on one or more of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -1792,6 +3539,34 @@ class GetRegionsFilterArgs:
     @values.setter
     def values(self, value: List[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type
@@ -1838,16 +3613,28 @@ class GetRegionsSortArgs:
 class GetSizesFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str]):
+                 values: List[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
         """
         :param str key: Filter the sizes by this key. This may be one of `slug`,
                `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
                `price_hourly`, or `available`.
-        :param List[str] values: Only retrieves images which keys has value that matches
+        :param List[str] values: Only retrieves sizes which keys has value that matches
                one of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -1867,7 +3654,7 @@ class GetSizesFilterArgs:
     @pulumi.getter
     def values(self) -> List[str]:
         """
-        Only retrieves images which keys has value that matches
+        Only retrieves sizes which keys has value that matches
         one of the values provided here.
         """
         return pulumi.get(self, "values")
@@ -1875,6 +3662,34 @@ class GetSizesFilterArgs:
     @values.setter
     def values(self, value: List[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type
@@ -1921,14 +3736,26 @@ class GetSizesSortArgs:
 class GetSpacesBucketsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str]):
+                 values: List[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
         """
         :param str key: Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves images
+        :param List[str] values: A list of values to match against the `key` field. Only retrieves Spaces buckets
                where the `key` field takes on one or more of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -1946,7 +3773,7 @@ class GetSpacesBucketsFilterArgs:
     @pulumi.getter
     def values(self) -> List[str]:
         """
-        A list of values to match against the `key` field. Only retrieves images
+        A list of values to match against the `key` field. Only retrieves Spaces buckets
         where the `key` field takes on one or more of the values provided here.
         """
         return pulumi.get(self, "values")
@@ -1954,6 +3781,34 @@ class GetSpacesBucketsFilterArgs:
     @values.setter
     def values(self, value: List[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type
@@ -1998,14 +3853,26 @@ class GetSpacesBucketsSortArgs:
 class GetTagsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str]):
+                 values: List[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
         """
         :param str key: Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
         :param List[str] values: Only retrieves tags which keys has value that matches
                one of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -2031,6 +3898,34 @@ class GetTagsFilterArgs:
     @values.setter
     def values(self, value: List[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type

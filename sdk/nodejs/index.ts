@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./app";
 export * from "./cdn";
 export * from "./certificate";
 export * from "./certificateType";
@@ -24,10 +25,12 @@ export * from "./firewall";
 export * from "./floatingIp";
 export * from "./floatingIpAssignment";
 export * from "./getAccount";
+export * from "./getApp";
 export * from "./getCertificate";
 export * from "./getContainerRegistry";
 export * from "./getDatabaseCluster";
 export * from "./getDomain";
+export * from "./getDomains";
 export * from "./getDroplet";
 export * from "./getDropletSnapshot";
 export * from "./getDroplets";

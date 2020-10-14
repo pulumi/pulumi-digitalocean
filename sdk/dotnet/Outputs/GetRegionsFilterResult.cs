@@ -14,10 +14,22 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetRegionsFilterResult
     {
         /// <summary>
+        /// Set to `true` to require that a field match all of the `values` instead of just one or more of
+        /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        /// that all of the `values` are present in the list or set.
+        /// </summary>
+        public readonly bool? All;
+        /// <summary>
         /// Filter the regions by this key. This may be one of `slug`,
         /// `name`, `available`, `features`, or `sizes`.
         /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        /// substrings to find within the string field.
+        /// </summary>
+        public readonly string? MatchBy;
         /// <summary>
         /// A list of values to match against the `key` field. Only retrieves regions
         /// where the `key` field takes on one or more of the values provided here.
@@ -26,11 +38,17 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetRegionsFilterResult(
+            bool? all,
+
             string key,
+
+            string? matchBy,
 
             ImmutableArray<string> values)
         {
+            All = all;
             Key = key;
+            MatchBy = matchBy;
             Values = values;
         }
     }
