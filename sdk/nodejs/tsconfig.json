@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "app.ts",
         "cdn.ts",
         "certificate.ts",
         "certificateType.ts",
@@ -37,10 +38,12 @@
         "floatingIp.ts",
         "floatingIpAssignment.ts",
         "getAccount.ts",
+        "getApp.ts",
         "getCertificate.ts",
         "getContainerRegistry.ts",
         "getDatabaseCluster.ts",
         "getDomain.ts",
+        "getDomains.ts",
         "getDroplet.ts",
         "getDropletSnapshot.ts",
         "getDroplets.ts",

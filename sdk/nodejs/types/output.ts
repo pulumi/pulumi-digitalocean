@@ -5,6 +5,373 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AppSpec {
+    databases?: outputs.AppSpecDatabase[];
+    /**
+     * A list of hostnames where the application will be available.
+     */
+    domains?: string[];
+    /**
+     * The name of the component
+     */
+    name: string;
+    /**
+     * The slug for the DigitalOcean data center region hosting the app.
+     */
+    region?: string;
+    services?: outputs.AppSpecService[];
+    staticSites?: outputs.AppSpecStaticSite[];
+    workers?: outputs.AppSpecWorker[];
+}
+
+export interface AppSpecDatabase {
+    clusterName?: string;
+    dbName?: string;
+    dbUser?: string;
+    engine?: string;
+    /**
+     * The name of the component
+     */
+    name?: string;
+    production?: boolean;
+    version?: string;
+}
+
+export interface AppSpecService {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: string;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: string;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: string;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.AppSpecServiceEnv[];
+    /**
+     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    git?: outputs.AppSpecServiceGit;
+    /**
+     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    github?: outputs.AppSpecServiceGithub;
+    /**
+     * A health check to determine the availability of this component.
+     */
+    healthCheck?: outputs.AppSpecServiceHealthCheck;
+    /**
+     * The internal port on which this service's run command will listen.
+     */
+    httpPort: number;
+    /**
+     * The amount of instances that this component should be scaled to.
+     */
+    instanceCount?: number;
+    /**
+     * The instance size to use for this component.
+     */
+    instanceSizeSlug?: string;
+    /**
+     * The name of the component
+     */
+    name: string;
+    routes: outputs.AppSpecServiceRoutes;
+    /**
+     * An optional run command to override the component's default.
+     */
+    runCommand: string;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface AppSpecServiceEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+export interface AppSpecServiceGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface AppSpecServiceGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface AppSpecServiceHealthCheck {
+    /**
+     * The number of failed health checks before considered unhealthy.
+     */
+    failureThreshold?: number;
+    /**
+     * The route path used for the HTTP health check ping.
+     */
+    httpPath?: string;
+    /**
+     * The number of seconds to wait before beginning health checks.
+     */
+    initialDelaySeconds?: number;
+    /**
+     * The number of seconds to wait between health checks.
+     */
+    periodSeconds?: number;
+    /**
+     * The number of successful health checks before considered healthy.
+     */
+    successThreshold?: number;
+    /**
+     * The number of seconds after which the check times out.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface AppSpecServiceRoutes {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: string;
+}
+
+export interface AppSpecStaticSite {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: string;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: string;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: string;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.AppSpecStaticSiteEnv[];
+    /**
+     * The name of the error document to use when serving this static site*
+     */
+    errorDocument?: string;
+    /**
+     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    git?: outputs.AppSpecStaticSiteGit;
+    /**
+     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    github?: outputs.AppSpecStaticSiteGithub;
+    /**
+     * The name of the index document to use when serving this static site.
+     */
+    indexDocument?: string;
+    /**
+     * The name of the component
+     */
+    name: string;
+    /**
+     * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+     */
+    outputDir?: string;
+    routes: outputs.AppSpecStaticSiteRoutes;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface AppSpecStaticSiteEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+export interface AppSpecStaticSiteGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface AppSpecStaticSiteGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface AppSpecStaticSiteRoutes {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: string;
+}
+
+export interface AppSpecWorker {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: string;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: string;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: string;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.AppSpecWorkerEnv[];
+    /**
+     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    git?: outputs.AppSpecWorkerGit;
+    /**
+     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    github?: outputs.AppSpecWorkerGithub;
+    /**
+     * The amount of instances that this component should be scaled to.
+     */
+    instanceCount?: number;
+    /**
+     * The instance size to use for this component.
+     */
+    instanceSizeSlug?: string;
+    /**
+     * The name of the component
+     */
+    name: string;
+    routes: outputs.AppSpecWorkerRoutes;
+    /**
+     * An optional run command to override the component's default.
+     */
+    runCommand?: string;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface AppSpecWorkerEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+export interface AppSpecWorkerGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface AppSpecWorkerGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface AppSpecWorkerRoutes {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: string;
+}
+
 export interface DatabaseClusterMaintenanceWindow {
     /**
      * The day of the week on which to apply maintenance updates.
@@ -120,6 +487,367 @@ export interface FirewallPendingChange {
     status?: string;
 }
 
+export interface GetAppSpec {
+    databases?: outputs.GetAppSpecDatabase[];
+    domains?: string[];
+    /**
+     * The name of the component
+     */
+    name: string;
+    region?: string;
+    services?: outputs.GetAppSpecService[];
+    staticSites?: outputs.GetAppSpecStaticSite[];
+    workers?: outputs.GetAppSpecWorker[];
+}
+
+export interface GetAppSpecDatabase {
+    clusterName?: string;
+    dbName?: string;
+    dbUser?: string;
+    engine?: string;
+    /**
+     * The name of the component
+     */
+    name?: string;
+    production?: boolean;
+    version?: string;
+}
+
+export interface GetAppSpecService {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: string;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: string;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: string;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.GetAppSpecServiceEnv[];
+    /**
+     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    git?: outputs.GetAppSpecServiceGit;
+    /**
+     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    github?: outputs.GetAppSpecServiceGithub;
+    /**
+     * A health check to determine the availability of this component.
+     */
+    healthCheck?: outputs.GetAppSpecServiceHealthCheck;
+    /**
+     * The internal port on which this service's run command will listen.
+     */
+    httpPort: number;
+    /**
+     * The amount of instances that this component should be scaled to.
+     */
+    instanceCount?: number;
+    /**
+     * The instance size to use for this component.
+     */
+    instanceSizeSlug?: string;
+    /**
+     * The name of the component
+     */
+    name: string;
+    routes: outputs.GetAppSpecServiceRoutes;
+    /**
+     * An optional run command to override the component's default.
+     */
+    runCommand: string;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface GetAppSpecServiceEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+export interface GetAppSpecServiceGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface GetAppSpecServiceGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface GetAppSpecServiceHealthCheck {
+    /**
+     * The number of failed health checks before considered unhealthy.
+     */
+    failureThreshold?: number;
+    /**
+     * The route path used for the HTTP health check ping.
+     */
+    httpPath?: string;
+    /**
+     * The number of seconds to wait before beginning health checks.
+     */
+    initialDelaySeconds?: number;
+    /**
+     * The number of seconds to wait between health checks.
+     */
+    periodSeconds?: number;
+    /**
+     * The number of successful health checks before considered healthy.
+     */
+    successThreshold?: number;
+    /**
+     * The number of seconds after which the check times out.
+     */
+    timeoutSeconds?: number;
+}
+
+export interface GetAppSpecServiceRoutes {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: string;
+}
+
+export interface GetAppSpecStaticSite {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: string;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: string;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: string;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.GetAppSpecStaticSiteEnv[];
+    /**
+     * The name of the error document to use when serving this static site*
+     */
+    errorDocument?: string;
+    /**
+     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    git?: outputs.GetAppSpecStaticSiteGit;
+    /**
+     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    github?: outputs.GetAppSpecStaticSiteGithub;
+    /**
+     * The name of the index document to use when serving this static site.
+     */
+    indexDocument?: string;
+    /**
+     * The name of the component
+     */
+    name: string;
+    /**
+     * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+     */
+    outputDir?: string;
+    routes: outputs.GetAppSpecStaticSiteRoutes;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface GetAppSpecStaticSiteEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+export interface GetAppSpecStaticSiteGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface GetAppSpecStaticSiteGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface GetAppSpecStaticSiteRoutes {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: string;
+}
+
+export interface GetAppSpecWorker {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: string;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: string;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: string;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.GetAppSpecWorkerEnv[];
+    /**
+     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    git?: outputs.GetAppSpecWorkerGit;
+    /**
+     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     */
+    github?: outputs.GetAppSpecWorkerGithub;
+    /**
+     * The amount of instances that this component should be scaled to.
+     */
+    instanceCount?: number;
+    /**
+     * The instance size to use for this component.
+     */
+    instanceSizeSlug?: string;
+    /**
+     * The name of the component
+     */
+    name: string;
+    routes: outputs.GetAppSpecWorkerRoutes;
+    /**
+     * An optional run command to override the component's default.
+     */
+    runCommand?: string;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface GetAppSpecWorkerEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+export interface GetAppSpecWorkerGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface GetAppSpecWorkerGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface GetAppSpecWorkerRoutes {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: string;
+}
+
 export interface GetDatabaseClusterMaintenanceWindow {
     /**
      * The day of the week on which to apply maintenance updates.
@@ -129,6 +857,54 @@ export interface GetDatabaseClusterMaintenanceWindow {
      * The hour in UTC at which maintenance updates will be applied in 24 hour format.
      */
     hour: string;
+}
+
+export interface GetDomainsDomain {
+    /**
+     * (Required) The name of the domain.
+     * - `ttl`-  The TTL of the domain.
+     */
+    name: string;
+    ttl: number;
+    /**
+     * The uniform resource name of the domain
+     */
+    urn: string;
+}
+
+export interface GetDomainsFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves domains
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetDomainsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+     */
+    key: string;
 }
 
 export interface GetDropletsDroplet {
@@ -230,12 +1006,24 @@ export interface GetDropletsDroplet {
 
 export interface GetDropletsFilter {
     /**
-     * Filter the Droplets by this key. This may be one of '`backups`, `createdAt`, `disk`, `id`,
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
      * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
      * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
-     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`'.
+     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
      */
     key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
     /**
      * A list of values to match against the `key` field. Only retrieves Droplets
      * where the `key` field takes on one or more of the values provided here.
@@ -259,11 +1047,23 @@ export interface GetDropletsSort {
 
 export interface GetImagesFilter {
     /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
      * Filter the images by this key. This may be one of `distribution`, `errorMessage`,
      * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
      * `tags`, or `type`.
      */
     key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
     /**
      * A list of values to match against the `key` field. Only retrieves images
      * where the `key` field takes on one or more of the values provided here.
@@ -447,10 +1247,22 @@ export interface GetLoadBalancerStickySessions {
 
 export interface GetProjectsFilter {
     /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
      * Filter the projects by this key. This may be one of `name`,
      * `purpose`, `description`, `environment`, or `isDefault`.
      */
     key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
     /**
      * A list of values to match against the `key` field. Only retrieves projects
      * where the `key` field takes on one or more of the values provided here.
@@ -516,10 +1328,22 @@ export interface GetProjectsSort {
 
 export interface GetRegionsFilter {
     /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
      * Filter the regions by this key. This may be one of `slug`,
      * `name`, `available`, `features`, or `sizes`.
      */
     key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
     /**
      * A list of values to match against the `key` field. Only retrieves regions
      * where the `key` field takes on one or more of the values provided here.
@@ -564,13 +1388,25 @@ export interface GetRegionsSort {
 
 export interface GetSizesFilter {
     /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
      * Filter the sizes by this key. This may be one of `slug`,
      * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
      * `priceHourly`, or `available`.
      */
     key: string;
     /**
-     * Only retrieves images which keys has value that matches
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * Only retrieves sizes which keys has value that matches
      * one of the values provided here.
      */
     values: string[];
@@ -648,11 +1484,23 @@ export interface GetSpacesBucketsBucket {
 
 export interface GetSpacesBucketsFilter {
     /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
      * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
     key: string;
     /**
-     * A list of values to match against the `key` field. Only retrieves images
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves Spaces buckets
      * where the `key` field takes on one or more of the values provided here.
      */
     values: string[];
@@ -671,9 +1519,21 @@ export interface GetSpacesBucketsSort {
 
 export interface GetTagsFilter {
     /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
      * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
     key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
     /**
      * Only retrieves tags which keys has value that matches
      * one of the values provided here.

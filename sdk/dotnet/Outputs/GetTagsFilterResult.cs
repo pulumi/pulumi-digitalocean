@@ -14,9 +14,21 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetTagsFilterResult
     {
         /// <summary>
+        /// Set to `true` to require that a field match all of the `values` instead of just one or more of
+        /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        /// that all of the `values` are present in the list or set.
+        /// </summary>
+        public readonly bool? All;
+        /// <summary>
         /// Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
         /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        /// substrings to find within the string field.
+        /// </summary>
+        public readonly string? MatchBy;
         /// <summary>
         /// Only retrieves tags which keys has value that matches
         /// one of the values provided here.
@@ -25,11 +37,17 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetTagsFilterResult(
+            bool? all,
+
             string key,
+
+            string? matchBy,
 
             ImmutableArray<string> values)
         {
+            All = all;
             Key = key;
+            MatchBy = matchBy;
             Values = values;
         }
     }

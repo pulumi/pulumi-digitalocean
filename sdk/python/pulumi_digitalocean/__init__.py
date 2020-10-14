@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .app import *
 from .cdn import *
 from .certificate import *
 from .container_registry import *
@@ -21,10 +22,12 @@ from .firewall import *
 from .floating_ip import *
 from .floating_ip_assignment import *
 from .get_account import *
+from .get_app import *
 from .get_certificate import *
 from .get_container_registry import *
 from .get_database_cluster import *
 from .get_domain import *
+from .get_domains import *
 from .get_droplet import *
 from .get_droplet_snapshot import *
 from .get_droplets import *

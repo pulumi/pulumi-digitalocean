@@ -10,6 +10,2912 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type AppSpec struct {
+	Databases []AppSpecDatabase `pulumi:"databases"`
+	// A list of hostnames where the application will be available.
+	Domains []string `pulumi:"domains"`
+	// The name of the component
+	Name string `pulumi:"name"`
+	// The slug for the DigitalOcean data center region hosting the app.
+	Region      *string             `pulumi:"region"`
+	Services    []AppSpecService    `pulumi:"services"`
+	StaticSites []AppSpecStaticSite `pulumi:"staticSites"`
+	Workers     []AppSpecWorker     `pulumi:"workers"`
+}
+
+// AppSpecInput is an input type that accepts AppSpecArgs and AppSpecOutput values.
+// You can construct a concrete instance of `AppSpecInput` via:
+//
+//          AppSpecArgs{...}
+type AppSpecInput interface {
+	pulumi.Input
+
+	ToAppSpecOutput() AppSpecOutput
+	ToAppSpecOutputWithContext(context.Context) AppSpecOutput
+}
+
+type AppSpecArgs struct {
+	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
+	// A list of hostnames where the application will be available.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// The name of the component
+	Name pulumi.StringInput `pulumi:"name"`
+	// The slug for the DigitalOcean data center region hosting the app.
+	Region      pulumi.StringPtrInput       `pulumi:"region"`
+	Services    AppSpecServiceArrayInput    `pulumi:"services"`
+	StaticSites AppSpecStaticSiteArrayInput `pulumi:"staticSites"`
+	Workers     AppSpecWorkerArrayInput     `pulumi:"workers"`
+}
+
+func (AppSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpec)(nil)).Elem()
+}
+
+func (i AppSpecArgs) ToAppSpecOutput() AppSpecOutput {
+	return i.ToAppSpecOutputWithContext(context.Background())
+}
+
+func (i AppSpecArgs) ToAppSpecOutputWithContext(ctx context.Context) AppSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecOutput)
+}
+
+func (i AppSpecArgs) ToAppSpecPtrOutput() AppSpecPtrOutput {
+	return i.ToAppSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecArgs) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecOutput).ToAppSpecPtrOutputWithContext(ctx)
+}
+
+// AppSpecPtrInput is an input type that accepts AppSpecArgs, AppSpecPtr and AppSpecPtrOutput values.
+// You can construct a concrete instance of `AppSpecPtrInput` via:
+//
+//          AppSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecPtrOutput() AppSpecPtrOutput
+	ToAppSpecPtrOutputWithContext(context.Context) AppSpecPtrOutput
+}
+
+type appSpecPtrType AppSpecArgs
+
+func AppSpecPtr(v *AppSpecArgs) AppSpecPtrInput {
+	return (*appSpecPtrType)(v)
+}
+
+func (*appSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpec)(nil)).Elem()
+}
+
+func (i *appSpecPtrType) ToAppSpecPtrOutput() AppSpecPtrOutput {
+	return i.ToAppSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecPtrType) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecPtrOutput)
+}
+
+type AppSpecOutput struct{ *pulumi.OutputState }
+
+func (AppSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpec)(nil)).Elem()
+}
+
+func (o AppSpecOutput) ToAppSpecOutput() AppSpecOutput {
+	return o
+}
+
+func (o AppSpecOutput) ToAppSpecOutputWithContext(ctx context.Context) AppSpecOutput {
+	return o
+}
+
+func (o AppSpecOutput) ToAppSpecPtrOutput() AppSpecPtrOutput {
+	return o.ToAppSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecOutput) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpecPtrOutput {
+	return o.ApplyT(func(v AppSpec) *AppSpec {
+		return &v
+	}).(AppSpecPtrOutput)
+}
+func (o AppSpecOutput) Databases() AppSpecDatabaseArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecDatabase { return v.Databases }).(AppSpecDatabaseArrayOutput)
+}
+
+// A list of hostnames where the application will be available.
+func (o AppSpecOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The name of the component
+func (o AppSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpec) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The slug for the DigitalOcean data center region hosting the app.
+func (o AppSpecOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpec) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecOutput) Services() AppSpecServiceArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecService { return v.Services }).(AppSpecServiceArrayOutput)
+}
+
+func (o AppSpecOutput) StaticSites() AppSpecStaticSiteArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecStaticSite { return v.StaticSites }).(AppSpecStaticSiteArrayOutput)
+}
+
+func (o AppSpecOutput) Workers() AppSpecWorkerArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecWorker { return v.Workers }).(AppSpecWorkerArrayOutput)
+}
+
+type AppSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpec)(nil)).Elem()
+}
+
+func (o AppSpecPtrOutput) ToAppSpecPtrOutput() AppSpecPtrOutput {
+	return o
+}
+
+func (o AppSpecPtrOutput) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpecPtrOutput {
+	return o
+}
+
+func (o AppSpecPtrOutput) Elem() AppSpecOutput {
+	return o.ApplyT(func(v *AppSpec) AppSpec { return *v }).(AppSpecOutput)
+}
+
+func (o AppSpecPtrOutput) Databases() AppSpecDatabaseArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecDatabase {
+		if v == nil {
+			return nil
+		}
+		return v.Databases
+	}).(AppSpecDatabaseArrayOutput)
+}
+
+// A list of hostnames where the application will be available.
+func (o AppSpecPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the component
+func (o AppSpecPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The slug for the DigitalOcean data center region hosting the app.
+func (o AppSpecPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecPtrOutput) Services() AppSpecServiceArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecService {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(AppSpecServiceArrayOutput)
+}
+
+func (o AppSpecPtrOutput) StaticSites() AppSpecStaticSiteArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecStaticSite {
+		if v == nil {
+			return nil
+		}
+		return v.StaticSites
+	}).(AppSpecStaticSiteArrayOutput)
+}
+
+func (o AppSpecPtrOutput) Workers() AppSpecWorkerArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecWorker {
+		if v == nil {
+			return nil
+		}
+		return v.Workers
+	}).(AppSpecWorkerArrayOutput)
+}
+
+type AppSpecDatabase struct {
+	ClusterName *string `pulumi:"clusterName"`
+	DbName      *string `pulumi:"dbName"`
+	DbUser      *string `pulumi:"dbUser"`
+	Engine      *string `pulumi:"engine"`
+	// The name of the component
+	Name       *string `pulumi:"name"`
+	Production *bool   `pulumi:"production"`
+	Version    *string `pulumi:"version"`
+}
+
+// AppSpecDatabaseInput is an input type that accepts AppSpecDatabaseArgs and AppSpecDatabaseOutput values.
+// You can construct a concrete instance of `AppSpecDatabaseInput` via:
+//
+//          AppSpecDatabaseArgs{...}
+type AppSpecDatabaseInput interface {
+	pulumi.Input
+
+	ToAppSpecDatabaseOutput() AppSpecDatabaseOutput
+	ToAppSpecDatabaseOutputWithContext(context.Context) AppSpecDatabaseOutput
+}
+
+type AppSpecDatabaseArgs struct {
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	DbName      pulumi.StringPtrInput `pulumi:"dbName"`
+	DbUser      pulumi.StringPtrInput `pulumi:"dbUser"`
+	Engine      pulumi.StringPtrInput `pulumi:"engine"`
+	// The name of the component
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Production pulumi.BoolPtrInput   `pulumi:"production"`
+	Version    pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (AppSpecDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecDatabase)(nil)).Elem()
+}
+
+func (i AppSpecDatabaseArgs) ToAppSpecDatabaseOutput() AppSpecDatabaseOutput {
+	return i.ToAppSpecDatabaseOutputWithContext(context.Background())
+}
+
+func (i AppSpecDatabaseArgs) ToAppSpecDatabaseOutputWithContext(ctx context.Context) AppSpecDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecDatabaseOutput)
+}
+
+// AppSpecDatabaseArrayInput is an input type that accepts AppSpecDatabaseArray and AppSpecDatabaseArrayOutput values.
+// You can construct a concrete instance of `AppSpecDatabaseArrayInput` via:
+//
+//          AppSpecDatabaseArray{ AppSpecDatabaseArgs{...} }
+type AppSpecDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecDatabaseArrayOutput() AppSpecDatabaseArrayOutput
+	ToAppSpecDatabaseArrayOutputWithContext(context.Context) AppSpecDatabaseArrayOutput
+}
+
+type AppSpecDatabaseArray []AppSpecDatabaseInput
+
+func (AppSpecDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecDatabase)(nil)).Elem()
+}
+
+func (i AppSpecDatabaseArray) ToAppSpecDatabaseArrayOutput() AppSpecDatabaseArrayOutput {
+	return i.ToAppSpecDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecDatabaseArray) ToAppSpecDatabaseArrayOutputWithContext(ctx context.Context) AppSpecDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecDatabaseArrayOutput)
+}
+
+type AppSpecDatabaseOutput struct{ *pulumi.OutputState }
+
+func (AppSpecDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecDatabase)(nil)).Elem()
+}
+
+func (o AppSpecDatabaseOutput) ToAppSpecDatabaseOutput() AppSpecDatabaseOutput {
+	return o
+}
+
+func (o AppSpecDatabaseOutput) ToAppSpecDatabaseOutputWithContext(ctx context.Context) AppSpecDatabaseOutput {
+	return o
+}
+
+func (o AppSpecDatabaseOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecDatabase) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecDatabaseOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecDatabase) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecDatabaseOutput) DbUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecDatabase) *string { return v.DbUser }).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecDatabaseOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecDatabase) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component
+func (o AppSpecDatabaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecDatabase) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecDatabaseOutput) Production() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecDatabase) *bool { return v.Production }).(pulumi.BoolPtrOutput)
+}
+
+func (o AppSpecDatabaseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecDatabase) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecDatabase)(nil)).Elem()
+}
+
+func (o AppSpecDatabaseArrayOutput) ToAppSpecDatabaseArrayOutput() AppSpecDatabaseArrayOutput {
+	return o
+}
+
+func (o AppSpecDatabaseArrayOutput) ToAppSpecDatabaseArrayOutputWithContext(ctx context.Context) AppSpecDatabaseArrayOutput {
+	return o
+}
+
+func (o AppSpecDatabaseArrayOutput) Index(i pulumi.IntInput) AppSpecDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecDatabase {
+		return vs[0].([]AppSpecDatabase)[vs[1].(int)]
+	}).(AppSpecDatabaseOutput)
+}
+
+type AppSpecService struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath *string `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug *string `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs []AppSpecServiceEnv `pulumi:"envs"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git *AppSpecServiceGit `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github *AppSpecServiceGithub `pulumi:"github"`
+	// A health check to determine the availability of this component.
+	HealthCheck *AppSpecServiceHealthCheck `pulumi:"healthCheck"`
+	// The internal port on which this service's run command will listen.
+	HttpPort *int `pulumi:"httpPort"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	// The name of the component
+	Name   string                `pulumi:"name"`
+	Routes *AppSpecServiceRoutes `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand *string `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// AppSpecServiceInput is an input type that accepts AppSpecServiceArgs and AppSpecServiceOutput values.
+// You can construct a concrete instance of `AppSpecServiceInput` via:
+//
+//          AppSpecServiceArgs{...}
+type AppSpecServiceInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceOutput() AppSpecServiceOutput
+	ToAppSpecServiceOutputWithContext(context.Context) AppSpecServiceOutput
+}
+
+type AppSpecServiceArgs struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs AppSpecServiceEnvArrayInput `pulumi:"envs"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git AppSpecServiceGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github AppSpecServiceGithubPtrInput `pulumi:"github"`
+	// A health check to determine the availability of this component.
+	HealthCheck AppSpecServiceHealthCheckPtrInput `pulumi:"healthCheck"`
+	// The internal port on which this service's run command will listen.
+	HttpPort pulumi.IntPtrInput `pulumi:"httpPort"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	// The name of the component
+	Name   pulumi.StringInput           `pulumi:"name"`
+	Routes AppSpecServiceRoutesPtrInput `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (AppSpecServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecService)(nil)).Elem()
+}
+
+func (i AppSpecServiceArgs) ToAppSpecServiceOutput() AppSpecServiceOutput {
+	return i.ToAppSpecServiceOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceArgs) ToAppSpecServiceOutputWithContext(ctx context.Context) AppSpecServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceOutput)
+}
+
+// AppSpecServiceArrayInput is an input type that accepts AppSpecServiceArray and AppSpecServiceArrayOutput values.
+// You can construct a concrete instance of `AppSpecServiceArrayInput` via:
+//
+//          AppSpecServiceArray{ AppSpecServiceArgs{...} }
+type AppSpecServiceArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceArrayOutput() AppSpecServiceArrayOutput
+	ToAppSpecServiceArrayOutputWithContext(context.Context) AppSpecServiceArrayOutput
+}
+
+type AppSpecServiceArray []AppSpecServiceInput
+
+func (AppSpecServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecService)(nil)).Elem()
+}
+
+func (i AppSpecServiceArray) ToAppSpecServiceArrayOutput() AppSpecServiceArrayOutput {
+	return i.ToAppSpecServiceArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceArray) ToAppSpecServiceArrayOutputWithContext(ctx context.Context) AppSpecServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceArrayOutput)
+}
+
+type AppSpecServiceOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecService)(nil)).Elem()
+}
+
+func (o AppSpecServiceOutput) ToAppSpecServiceOutput() AppSpecServiceOutput {
+	return o
+}
+
+func (o AppSpecServiceOutput) ToAppSpecServiceOutputWithContext(ctx context.Context) AppSpecServiceOutput {
+	return o
+}
+
+// An optional build command to run while building this component from source.
+func (o AppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+func (o AppSpecServiceOutput) DockerfilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
+}
+
+// An environment slug describing the type of this app.
+func (o AppSpecServiceOutput) EnvironmentSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o AppSpecServiceOutput) Envs() AppSpecServiceEnvArrayOutput {
+	return o.ApplyT(func(v AppSpecService) []AppSpecServiceEnv { return v.Envs }).(AppSpecServiceEnvArrayOutput)
+}
+
+// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+func (o AppSpecServiceOutput) Git() AppSpecServiceGitPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceGit { return v.Git }).(AppSpecServiceGitPtrOutput)
+}
+
+// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+func (o AppSpecServiceOutput) Github() AppSpecServiceGithubPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceGithub { return v.Github }).(AppSpecServiceGithubPtrOutput)
+}
+
+// A health check to determine the availability of this component.
+func (o AppSpecServiceOutput) HealthCheck() AppSpecServiceHealthCheckPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceHealthCheck { return v.HealthCheck }).(AppSpecServiceHealthCheckPtrOutput)
+}
+
+// The internal port on which this service's run command will listen.
+func (o AppSpecServiceOutput) HttpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *int { return v.HttpPort }).(pulumi.IntPtrOutput)
+}
+
+// The amount of instances that this component should be scaled to.
+func (o AppSpecServiceOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// The instance size to use for this component.
+func (o AppSpecServiceOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component
+func (o AppSpecServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AppSpecServiceOutput) Routes() AppSpecServiceRoutesPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceRoutes { return v.Routes }).(AppSpecServiceRoutesPtrOutput)
+}
+
+// An optional run command to override the component's default.
+func (o AppSpecServiceOutput) RunCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *string { return v.RunCommand }).(pulumi.StringPtrOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o AppSpecServiceOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecService)(nil)).Elem()
+}
+
+func (o AppSpecServiceArrayOutput) ToAppSpecServiceArrayOutput() AppSpecServiceArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceArrayOutput) ToAppSpecServiceArrayOutputWithContext(ctx context.Context) AppSpecServiceArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceArrayOutput) Index(i pulumi.IntInput) AppSpecServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecService {
+		return vs[0].([]AppSpecService)[vs[1].(int)]
+	}).(AppSpecServiceOutput)
+}
+
+type AppSpecServiceEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type *string `pulumi:"type"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// AppSpecServiceEnvInput is an input type that accepts AppSpecServiceEnvArgs and AppSpecServiceEnvOutput values.
+// You can construct a concrete instance of `AppSpecServiceEnvInput` via:
+//
+//          AppSpecServiceEnvArgs{...}
+type AppSpecServiceEnvInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceEnvOutput() AppSpecServiceEnvOutput
+	ToAppSpecServiceEnvOutputWithContext(context.Context) AppSpecServiceEnvOutput
+}
+
+type AppSpecServiceEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AppSpecServiceEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceEnv)(nil)).Elem()
+}
+
+func (i AppSpecServiceEnvArgs) ToAppSpecServiceEnvOutput() AppSpecServiceEnvOutput {
+	return i.ToAppSpecServiceEnvOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceEnvArgs) ToAppSpecServiceEnvOutputWithContext(ctx context.Context) AppSpecServiceEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceEnvOutput)
+}
+
+// AppSpecServiceEnvArrayInput is an input type that accepts AppSpecServiceEnvArray and AppSpecServiceEnvArrayOutput values.
+// You can construct a concrete instance of `AppSpecServiceEnvArrayInput` via:
+//
+//          AppSpecServiceEnvArray{ AppSpecServiceEnvArgs{...} }
+type AppSpecServiceEnvArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceEnvArrayOutput() AppSpecServiceEnvArrayOutput
+	ToAppSpecServiceEnvArrayOutputWithContext(context.Context) AppSpecServiceEnvArrayOutput
+}
+
+type AppSpecServiceEnvArray []AppSpecServiceEnvInput
+
+func (AppSpecServiceEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceEnv)(nil)).Elem()
+}
+
+func (i AppSpecServiceEnvArray) ToAppSpecServiceEnvArrayOutput() AppSpecServiceEnvArrayOutput {
+	return i.ToAppSpecServiceEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceEnvArray) ToAppSpecServiceEnvArrayOutputWithContext(ctx context.Context) AppSpecServiceEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceEnvArrayOutput)
+}
+
+type AppSpecServiceEnvOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceEnv)(nil)).Elem()
+}
+
+func (o AppSpecServiceEnvOutput) ToAppSpecServiceEnvOutput() AppSpecServiceEnvOutput {
+	return o
+}
+
+func (o AppSpecServiceEnvOutput) ToAppSpecServiceEnvOutputWithContext(ctx context.Context) AppSpecServiceEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o AppSpecServiceEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o AppSpecServiceEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o AppSpecServiceEnvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The value of the environment variable.
+func (o AppSpecServiceEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceEnv)(nil)).Elem()
+}
+
+func (o AppSpecServiceEnvArrayOutput) ToAppSpecServiceEnvArrayOutput() AppSpecServiceEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceEnvArrayOutput) ToAppSpecServiceEnvArrayOutputWithContext(ctx context.Context) AppSpecServiceEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceEnvArrayOutput) Index(i pulumi.IntInput) AppSpecServiceEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecServiceEnv {
+		return vs[0].([]AppSpecServiceEnv)[vs[1].(int)]
+	}).(AppSpecServiceEnvOutput)
+}
+
+type AppSpecServiceGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// AppSpecServiceGitInput is an input type that accepts AppSpecServiceGitArgs and AppSpecServiceGitOutput values.
+// You can construct a concrete instance of `AppSpecServiceGitInput` via:
+//
+//          AppSpecServiceGitArgs{...}
+type AppSpecServiceGitInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceGitOutput() AppSpecServiceGitOutput
+	ToAppSpecServiceGitOutputWithContext(context.Context) AppSpecServiceGitOutput
+}
+
+type AppSpecServiceGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (AppSpecServiceGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceGit)(nil)).Elem()
+}
+
+func (i AppSpecServiceGitArgs) ToAppSpecServiceGitOutput() AppSpecServiceGitOutput {
+	return i.ToAppSpecServiceGitOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceGitArgs) ToAppSpecServiceGitOutputWithContext(ctx context.Context) AppSpecServiceGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGitOutput)
+}
+
+func (i AppSpecServiceGitArgs) ToAppSpecServiceGitPtrOutput() AppSpecServiceGitPtrOutput {
+	return i.ToAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceGitArgs) ToAppSpecServiceGitPtrOutputWithContext(ctx context.Context) AppSpecServiceGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGitOutput).ToAppSpecServiceGitPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceGitPtrInput is an input type that accepts AppSpecServiceGitArgs, AppSpecServiceGitPtr and AppSpecServiceGitPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceGitPtrInput` via:
+//
+//          AppSpecServiceGitArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceGitPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceGitPtrOutput() AppSpecServiceGitPtrOutput
+	ToAppSpecServiceGitPtrOutputWithContext(context.Context) AppSpecServiceGitPtrOutput
+}
+
+type appSpecServiceGitPtrType AppSpecServiceGitArgs
+
+func AppSpecServiceGitPtr(v *AppSpecServiceGitArgs) AppSpecServiceGitPtrInput {
+	return (*appSpecServiceGitPtrType)(v)
+}
+
+func (*appSpecServiceGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceGit)(nil)).Elem()
+}
+
+func (i *appSpecServiceGitPtrType) ToAppSpecServiceGitPtrOutput() AppSpecServiceGitPtrOutput {
+	return i.ToAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceGitPtrType) ToAppSpecServiceGitPtrOutputWithContext(ctx context.Context) AppSpecServiceGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGitPtrOutput)
+}
+
+type AppSpecServiceGitOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceGit)(nil)).Elem()
+}
+
+func (o AppSpecServiceGitOutput) ToAppSpecServiceGitOutput() AppSpecServiceGitOutput {
+	return o
+}
+
+func (o AppSpecServiceGitOutput) ToAppSpecServiceGitOutputWithContext(ctx context.Context) AppSpecServiceGitOutput {
+	return o
+}
+
+func (o AppSpecServiceGitOutput) ToAppSpecServiceGitPtrOutput() AppSpecServiceGitPtrOutput {
+	return o.ToAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceGitOutput) ToAppSpecServiceGitPtrOutputWithContext(ctx context.Context) AppSpecServiceGitPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGit) *AppSpecServiceGit {
+		return &v
+	}).(AppSpecServiceGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecServiceGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o AppSpecServiceGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceGitPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceGit)(nil)).Elem()
+}
+
+func (o AppSpecServiceGitPtrOutput) ToAppSpecServiceGitPtrOutput() AppSpecServiceGitPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceGitPtrOutput) ToAppSpecServiceGitPtrOutputWithContext(ctx context.Context) AppSpecServiceGitPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceGitPtrOutput) Elem() AppSpecServiceGitOutput {
+	return o.ApplyT(func(v *AppSpecServiceGit) AppSpecServiceGit { return *v }).(AppSpecServiceGitOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecServiceGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o AppSpecServiceGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecServiceGithubInput is an input type that accepts AppSpecServiceGithubArgs and AppSpecServiceGithubOutput values.
+// You can construct a concrete instance of `AppSpecServiceGithubInput` via:
+//
+//          AppSpecServiceGithubArgs{...}
+type AppSpecServiceGithubInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceGithubOutput() AppSpecServiceGithubOutput
+	ToAppSpecServiceGithubOutputWithContext(context.Context) AppSpecServiceGithubOutput
+}
+
+type AppSpecServiceGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecServiceGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceGithub)(nil)).Elem()
+}
+
+func (i AppSpecServiceGithubArgs) ToAppSpecServiceGithubOutput() AppSpecServiceGithubOutput {
+	return i.ToAppSpecServiceGithubOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceGithubArgs) ToAppSpecServiceGithubOutputWithContext(ctx context.Context) AppSpecServiceGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGithubOutput)
+}
+
+func (i AppSpecServiceGithubArgs) ToAppSpecServiceGithubPtrOutput() AppSpecServiceGithubPtrOutput {
+	return i.ToAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceGithubArgs) ToAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) AppSpecServiceGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGithubOutput).ToAppSpecServiceGithubPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceGithubPtrInput is an input type that accepts AppSpecServiceGithubArgs, AppSpecServiceGithubPtr and AppSpecServiceGithubPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceGithubPtrInput` via:
+//
+//          AppSpecServiceGithubArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceGithubPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceGithubPtrOutput() AppSpecServiceGithubPtrOutput
+	ToAppSpecServiceGithubPtrOutputWithContext(context.Context) AppSpecServiceGithubPtrOutput
+}
+
+type appSpecServiceGithubPtrType AppSpecServiceGithubArgs
+
+func AppSpecServiceGithubPtr(v *AppSpecServiceGithubArgs) AppSpecServiceGithubPtrInput {
+	return (*appSpecServiceGithubPtrType)(v)
+}
+
+func (*appSpecServiceGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceGithub)(nil)).Elem()
+}
+
+func (i *appSpecServiceGithubPtrType) ToAppSpecServiceGithubPtrOutput() AppSpecServiceGithubPtrOutput {
+	return i.ToAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceGithubPtrType) ToAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) AppSpecServiceGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGithubPtrOutput)
+}
+
+type AppSpecServiceGithubOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceGithub)(nil)).Elem()
+}
+
+func (o AppSpecServiceGithubOutput) ToAppSpecServiceGithubOutput() AppSpecServiceGithubOutput {
+	return o
+}
+
+func (o AppSpecServiceGithubOutput) ToAppSpecServiceGithubOutputWithContext(ctx context.Context) AppSpecServiceGithubOutput {
+	return o
+}
+
+func (o AppSpecServiceGithubOutput) ToAppSpecServiceGithubPtrOutput() AppSpecServiceGithubPtrOutput {
+	return o.ToAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceGithubOutput) ToAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) AppSpecServiceGithubPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGithub) *AppSpecServiceGithub {
+		return &v
+	}).(AppSpecServiceGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecServiceGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecServiceGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecServiceGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceGithub)(nil)).Elem()
+}
+
+func (o AppSpecServiceGithubPtrOutput) ToAppSpecServiceGithubPtrOutput() AppSpecServiceGithubPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceGithubPtrOutput) ToAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) AppSpecServiceGithubPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceGithubPtrOutput) Elem() AppSpecServiceGithubOutput {
+	return o.ApplyT(func(v *AppSpecServiceGithub) AppSpecServiceGithub { return *v }).(AppSpecServiceGithubOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecServiceGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecServiceGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecServiceGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceHealthCheck struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath *string `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// AppSpecServiceHealthCheckInput is an input type that accepts AppSpecServiceHealthCheckArgs and AppSpecServiceHealthCheckOutput values.
+// You can construct a concrete instance of `AppSpecServiceHealthCheckInput` via:
+//
+//          AppSpecServiceHealthCheckArgs{...}
+type AppSpecServiceHealthCheckInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceHealthCheckOutput() AppSpecServiceHealthCheckOutput
+	ToAppSpecServiceHealthCheckOutputWithContext(context.Context) AppSpecServiceHealthCheckOutput
+}
+
+type AppSpecServiceHealthCheckArgs struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (AppSpecServiceHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (i AppSpecServiceHealthCheckArgs) ToAppSpecServiceHealthCheckOutput() AppSpecServiceHealthCheckOutput {
+	return i.ToAppSpecServiceHealthCheckOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceHealthCheckArgs) ToAppSpecServiceHealthCheckOutputWithContext(ctx context.Context) AppSpecServiceHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceHealthCheckOutput)
+}
+
+func (i AppSpecServiceHealthCheckArgs) ToAppSpecServiceHealthCheckPtrOutput() AppSpecServiceHealthCheckPtrOutput {
+	return i.ToAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceHealthCheckArgs) ToAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceHealthCheckOutput).ToAppSpecServiceHealthCheckPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceHealthCheckPtrInput is an input type that accepts AppSpecServiceHealthCheckArgs, AppSpecServiceHealthCheckPtr and AppSpecServiceHealthCheckPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceHealthCheckPtrInput` via:
+//
+//          AppSpecServiceHealthCheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceHealthCheckPtrOutput() AppSpecServiceHealthCheckPtrOutput
+	ToAppSpecServiceHealthCheckPtrOutputWithContext(context.Context) AppSpecServiceHealthCheckPtrOutput
+}
+
+type appSpecServiceHealthCheckPtrType AppSpecServiceHealthCheckArgs
+
+func AppSpecServiceHealthCheckPtr(v *AppSpecServiceHealthCheckArgs) AppSpecServiceHealthCheckPtrInput {
+	return (*appSpecServiceHealthCheckPtrType)(v)
+}
+
+func (*appSpecServiceHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (i *appSpecServiceHealthCheckPtrType) ToAppSpecServiceHealthCheckPtrOutput() AppSpecServiceHealthCheckPtrOutput {
+	return i.ToAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceHealthCheckPtrType) ToAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceHealthCheckPtrOutput)
+}
+
+type AppSpecServiceHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (o AppSpecServiceHealthCheckOutput) ToAppSpecServiceHealthCheckOutput() AppSpecServiceHealthCheckOutput {
+	return o
+}
+
+func (o AppSpecServiceHealthCheckOutput) ToAppSpecServiceHealthCheckOutputWithContext(ctx context.Context) AppSpecServiceHealthCheckOutput {
+	return o
+}
+
+func (o AppSpecServiceHealthCheckOutput) ToAppSpecServiceHealthCheckPtrOutput() AppSpecServiceHealthCheckPtrOutput {
+	return o.ToAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceHealthCheckOutput) ToAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceHealthCheckPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceHealthCheck) *AppSpecServiceHealthCheck {
+		return &v
+	}).(AppSpecServiceHealthCheckPtrOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o AppSpecServiceHealthCheckOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceHealthCheck) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o AppSpecServiceHealthCheckOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceHealthCheck) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o AppSpecServiceHealthCheckOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceHealthCheck) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o AppSpecServiceHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o AppSpecServiceHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o AppSpecServiceHealthCheckOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceHealthCheck) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AppSpecServiceHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (o AppSpecServiceHealthCheckPtrOutput) ToAppSpecServiceHealthCheckPtrOutput() AppSpecServiceHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceHealthCheckPtrOutput) ToAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceHealthCheckPtrOutput) Elem() AppSpecServiceHealthCheckOutput {
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) AppSpecServiceHealthCheck { return *v }).(AppSpecServiceHealthCheckOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o AppSpecServiceHealthCheckPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o AppSpecServiceHealthCheckPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o AppSpecServiceHealthCheckPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o AppSpecServiceHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o AppSpecServiceHealthCheckPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o AppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AppSpecServiceRoutes struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+}
+
+// AppSpecServiceRoutesInput is an input type that accepts AppSpecServiceRoutesArgs and AppSpecServiceRoutesOutput values.
+// You can construct a concrete instance of `AppSpecServiceRoutesInput` via:
+//
+//          AppSpecServiceRoutesArgs{...}
+type AppSpecServiceRoutesInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceRoutesOutput() AppSpecServiceRoutesOutput
+	ToAppSpecServiceRoutesOutputWithContext(context.Context) AppSpecServiceRoutesOutput
+}
+
+type AppSpecServiceRoutesArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (AppSpecServiceRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceRoutes)(nil)).Elem()
+}
+
+func (i AppSpecServiceRoutesArgs) ToAppSpecServiceRoutesOutput() AppSpecServiceRoutesOutput {
+	return i.ToAppSpecServiceRoutesOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceRoutesArgs) ToAppSpecServiceRoutesOutputWithContext(ctx context.Context) AppSpecServiceRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceRoutesOutput)
+}
+
+func (i AppSpecServiceRoutesArgs) ToAppSpecServiceRoutesPtrOutput() AppSpecServiceRoutesPtrOutput {
+	return i.ToAppSpecServiceRoutesPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceRoutesArgs) ToAppSpecServiceRoutesPtrOutputWithContext(ctx context.Context) AppSpecServiceRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceRoutesOutput).ToAppSpecServiceRoutesPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceRoutesPtrInput is an input type that accepts AppSpecServiceRoutesArgs, AppSpecServiceRoutesPtr and AppSpecServiceRoutesPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceRoutesPtrInput` via:
+//
+//          AppSpecServiceRoutesArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceRoutesPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceRoutesPtrOutput() AppSpecServiceRoutesPtrOutput
+	ToAppSpecServiceRoutesPtrOutputWithContext(context.Context) AppSpecServiceRoutesPtrOutput
+}
+
+type appSpecServiceRoutesPtrType AppSpecServiceRoutesArgs
+
+func AppSpecServiceRoutesPtr(v *AppSpecServiceRoutesArgs) AppSpecServiceRoutesPtrInput {
+	return (*appSpecServiceRoutesPtrType)(v)
+}
+
+func (*appSpecServiceRoutesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceRoutes)(nil)).Elem()
+}
+
+func (i *appSpecServiceRoutesPtrType) ToAppSpecServiceRoutesPtrOutput() AppSpecServiceRoutesPtrOutput {
+	return i.ToAppSpecServiceRoutesPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceRoutesPtrType) ToAppSpecServiceRoutesPtrOutputWithContext(ctx context.Context) AppSpecServiceRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceRoutesPtrOutput)
+}
+
+type AppSpecServiceRoutesOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceRoutes)(nil)).Elem()
+}
+
+func (o AppSpecServiceRoutesOutput) ToAppSpecServiceRoutesOutput() AppSpecServiceRoutesOutput {
+	return o
+}
+
+func (o AppSpecServiceRoutesOutput) ToAppSpecServiceRoutesOutputWithContext(ctx context.Context) AppSpecServiceRoutesOutput {
+	return o
+}
+
+func (o AppSpecServiceRoutesOutput) ToAppSpecServiceRoutesPtrOutput() AppSpecServiceRoutesPtrOutput {
+	return o.ToAppSpecServiceRoutesPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceRoutesOutput) ToAppSpecServiceRoutesPtrOutputWithContext(ctx context.Context) AppSpecServiceRoutesPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceRoutes) *AppSpecServiceRoutes {
+		return &v
+	}).(AppSpecServiceRoutesPtrOutput)
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o AppSpecServiceRoutesOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceRoutes) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceRoutesPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceRoutesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceRoutes)(nil)).Elem()
+}
+
+func (o AppSpecServiceRoutesPtrOutput) ToAppSpecServiceRoutesPtrOutput() AppSpecServiceRoutesPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceRoutesPtrOutput) ToAppSpecServiceRoutesPtrOutputWithContext(ctx context.Context) AppSpecServiceRoutesPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceRoutesPtrOutput) Elem() AppSpecServiceRoutesOutput {
+	return o.ApplyT(func(v *AppSpecServiceRoutes) AppSpecServiceRoutes { return *v }).(AppSpecServiceRoutesOutput)
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o AppSpecServiceRoutesPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceRoutes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSite struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath *string `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug *string `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs []AppSpecStaticSiteEnv `pulumi:"envs"`
+	// The name of the error document to use when serving this static site*
+	ErrorDocument *string `pulumi:"errorDocument"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git *AppSpecStaticSiteGit `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github *AppSpecStaticSiteGithub `pulumi:"github"`
+	// The name of the index document to use when serving this static site.
+	IndexDocument *string `pulumi:"indexDocument"`
+	// The name of the component
+	Name string `pulumi:"name"`
+	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+	OutputDir *string                  `pulumi:"outputDir"`
+	Routes    *AppSpecStaticSiteRoutes `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// AppSpecStaticSiteInput is an input type that accepts AppSpecStaticSiteArgs and AppSpecStaticSiteOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteInput` via:
+//
+//          AppSpecStaticSiteArgs{...}
+type AppSpecStaticSiteInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteOutput() AppSpecStaticSiteOutput
+	ToAppSpecStaticSiteOutputWithContext(context.Context) AppSpecStaticSiteOutput
+}
+
+type AppSpecStaticSiteArgs struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs AppSpecStaticSiteEnvArrayInput `pulumi:"envs"`
+	// The name of the error document to use when serving this static site*
+	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git AppSpecStaticSiteGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github AppSpecStaticSiteGithubPtrInput `pulumi:"github"`
+	// The name of the index document to use when serving this static site.
+	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
+	// The name of the component
+	Name pulumi.StringInput `pulumi:"name"`
+	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+	OutputDir pulumi.StringPtrInput           `pulumi:"outputDir"`
+	Routes    AppSpecStaticSiteRoutesPtrInput `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (AppSpecStaticSiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSite)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteArgs) ToAppSpecStaticSiteOutput() AppSpecStaticSiteOutput {
+	return i.ToAppSpecStaticSiteOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteArgs) ToAppSpecStaticSiteOutputWithContext(ctx context.Context) AppSpecStaticSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteOutput)
+}
+
+// AppSpecStaticSiteArrayInput is an input type that accepts AppSpecStaticSiteArray and AppSpecStaticSiteArrayOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteArrayInput` via:
+//
+//          AppSpecStaticSiteArray{ AppSpecStaticSiteArgs{...} }
+type AppSpecStaticSiteArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteArrayOutput() AppSpecStaticSiteArrayOutput
+	ToAppSpecStaticSiteArrayOutputWithContext(context.Context) AppSpecStaticSiteArrayOutput
+}
+
+type AppSpecStaticSiteArray []AppSpecStaticSiteInput
+
+func (AppSpecStaticSiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecStaticSite)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteArray) ToAppSpecStaticSiteArrayOutput() AppSpecStaticSiteArrayOutput {
+	return i.ToAppSpecStaticSiteArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteArray) ToAppSpecStaticSiteArrayOutputWithContext(ctx context.Context) AppSpecStaticSiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteArrayOutput)
+}
+
+type AppSpecStaticSiteOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSite)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteOutput) ToAppSpecStaticSiteOutput() AppSpecStaticSiteOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteOutput) ToAppSpecStaticSiteOutputWithContext(ctx context.Context) AppSpecStaticSiteOutput {
+	return o
+}
+
+// An optional build command to run while building this component from source.
+func (o AppSpecStaticSiteOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+func (o AppSpecStaticSiteOutput) DockerfilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
+}
+
+// An environment slug describing the type of this app.
+func (o AppSpecStaticSiteOutput) EnvironmentSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o AppSpecStaticSiteOutput) Envs() AppSpecStaticSiteEnvArrayOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) []AppSpecStaticSiteEnv { return v.Envs }).(AppSpecStaticSiteEnvArrayOutput)
+}
+
+// The name of the error document to use when serving this static site*
+func (o AppSpecStaticSiteOutput) ErrorDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
+}
+
+// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+func (o AppSpecStaticSiteOutput) Git() AppSpecStaticSiteGitPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteGit { return v.Git }).(AppSpecStaticSiteGitPtrOutput)
+}
+
+// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+func (o AppSpecStaticSiteOutput) Github() AppSpecStaticSiteGithubPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteGithub { return v.Github }).(AppSpecStaticSiteGithubPtrOutput)
+}
+
+// The name of the index document to use when serving this static site.
+func (o AppSpecStaticSiteOutput) IndexDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.IndexDocument }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component
+func (o AppSpecStaticSiteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+func (o AppSpecStaticSiteOutput) OutputDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.OutputDir }).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecStaticSiteOutput) Routes() AppSpecStaticSiteRoutesPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteRoutes { return v.Routes }).(AppSpecStaticSiteRoutesPtrOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o AppSpecStaticSiteOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecStaticSite)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteArrayOutput) ToAppSpecStaticSiteArrayOutput() AppSpecStaticSiteArrayOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteArrayOutput) ToAppSpecStaticSiteArrayOutputWithContext(ctx context.Context) AppSpecStaticSiteArrayOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) AppSpecStaticSiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecStaticSite {
+		return vs[0].([]AppSpecStaticSite)[vs[1].(int)]
+	}).(AppSpecStaticSiteOutput)
+}
+
+type AppSpecStaticSiteEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type *string `pulumi:"type"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// AppSpecStaticSiteEnvInput is an input type that accepts AppSpecStaticSiteEnvArgs and AppSpecStaticSiteEnvOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteEnvInput` via:
+//
+//          AppSpecStaticSiteEnvArgs{...}
+type AppSpecStaticSiteEnvInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteEnvOutput() AppSpecStaticSiteEnvOutput
+	ToAppSpecStaticSiteEnvOutputWithContext(context.Context) AppSpecStaticSiteEnvOutput
+}
+
+type AppSpecStaticSiteEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AppSpecStaticSiteEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteEnv)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteEnvArgs) ToAppSpecStaticSiteEnvOutput() AppSpecStaticSiteEnvOutput {
+	return i.ToAppSpecStaticSiteEnvOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteEnvArgs) ToAppSpecStaticSiteEnvOutputWithContext(ctx context.Context) AppSpecStaticSiteEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteEnvOutput)
+}
+
+// AppSpecStaticSiteEnvArrayInput is an input type that accepts AppSpecStaticSiteEnvArray and AppSpecStaticSiteEnvArrayOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteEnvArrayInput` via:
+//
+//          AppSpecStaticSiteEnvArray{ AppSpecStaticSiteEnvArgs{...} }
+type AppSpecStaticSiteEnvArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteEnvArrayOutput() AppSpecStaticSiteEnvArrayOutput
+	ToAppSpecStaticSiteEnvArrayOutputWithContext(context.Context) AppSpecStaticSiteEnvArrayOutput
+}
+
+type AppSpecStaticSiteEnvArray []AppSpecStaticSiteEnvInput
+
+func (AppSpecStaticSiteEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecStaticSiteEnv)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteEnvArray) ToAppSpecStaticSiteEnvArrayOutput() AppSpecStaticSiteEnvArrayOutput {
+	return i.ToAppSpecStaticSiteEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteEnvArray) ToAppSpecStaticSiteEnvArrayOutputWithContext(ctx context.Context) AppSpecStaticSiteEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteEnvArrayOutput)
+}
+
+type AppSpecStaticSiteEnvOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteEnv)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteEnvOutput) ToAppSpecStaticSiteEnvOutput() AppSpecStaticSiteEnvOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteEnvOutput) ToAppSpecStaticSiteEnvOutputWithContext(ctx context.Context) AppSpecStaticSiteEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o AppSpecStaticSiteEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o AppSpecStaticSiteEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o AppSpecStaticSiteEnvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The value of the environment variable.
+func (o AppSpecStaticSiteEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecStaticSiteEnv)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteEnvArrayOutput) ToAppSpecStaticSiteEnvArrayOutput() AppSpecStaticSiteEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteEnvArrayOutput) ToAppSpecStaticSiteEnvArrayOutputWithContext(ctx context.Context) AppSpecStaticSiteEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteEnvArrayOutput) Index(i pulumi.IntInput) AppSpecStaticSiteEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecStaticSiteEnv {
+		return vs[0].([]AppSpecStaticSiteEnv)[vs[1].(int)]
+	}).(AppSpecStaticSiteEnvOutput)
+}
+
+type AppSpecStaticSiteGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// AppSpecStaticSiteGitInput is an input type that accepts AppSpecStaticSiteGitArgs and AppSpecStaticSiteGitOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteGitInput` via:
+//
+//          AppSpecStaticSiteGitArgs{...}
+type AppSpecStaticSiteGitInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteGitOutput() AppSpecStaticSiteGitOutput
+	ToAppSpecStaticSiteGitOutputWithContext(context.Context) AppSpecStaticSiteGitOutput
+}
+
+type AppSpecStaticSiteGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (AppSpecStaticSiteGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteGit)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteGitArgs) ToAppSpecStaticSiteGitOutput() AppSpecStaticSiteGitOutput {
+	return i.ToAppSpecStaticSiteGitOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteGitArgs) ToAppSpecStaticSiteGitOutputWithContext(ctx context.Context) AppSpecStaticSiteGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGitOutput)
+}
+
+func (i AppSpecStaticSiteGitArgs) ToAppSpecStaticSiteGitPtrOutput() AppSpecStaticSiteGitPtrOutput {
+	return i.ToAppSpecStaticSiteGitPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteGitArgs) ToAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGitOutput).ToAppSpecStaticSiteGitPtrOutputWithContext(ctx)
+}
+
+// AppSpecStaticSiteGitPtrInput is an input type that accepts AppSpecStaticSiteGitArgs, AppSpecStaticSiteGitPtr and AppSpecStaticSiteGitPtrOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteGitPtrInput` via:
+//
+//          AppSpecStaticSiteGitArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecStaticSiteGitPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteGitPtrOutput() AppSpecStaticSiteGitPtrOutput
+	ToAppSpecStaticSiteGitPtrOutputWithContext(context.Context) AppSpecStaticSiteGitPtrOutput
+}
+
+type appSpecStaticSiteGitPtrType AppSpecStaticSiteGitArgs
+
+func AppSpecStaticSiteGitPtr(v *AppSpecStaticSiteGitArgs) AppSpecStaticSiteGitPtrInput {
+	return (*appSpecStaticSiteGitPtrType)(v)
+}
+
+func (*appSpecStaticSiteGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteGit)(nil)).Elem()
+}
+
+func (i *appSpecStaticSiteGitPtrType) ToAppSpecStaticSiteGitPtrOutput() AppSpecStaticSiteGitPtrOutput {
+	return i.ToAppSpecStaticSiteGitPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecStaticSiteGitPtrType) ToAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGitPtrOutput)
+}
+
+type AppSpecStaticSiteGitOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteGit)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteGitOutput) ToAppSpecStaticSiteGitOutput() AppSpecStaticSiteGitOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGitOutput) ToAppSpecStaticSiteGitOutputWithContext(ctx context.Context) AppSpecStaticSiteGitOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGitOutput) ToAppSpecStaticSiteGitPtrOutput() AppSpecStaticSiteGitPtrOutput {
+	return o.ToAppSpecStaticSiteGitPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecStaticSiteGitOutput) ToAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGit) *AppSpecStaticSiteGit {
+		return &v
+	}).(AppSpecStaticSiteGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecStaticSiteGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o AppSpecStaticSiteGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteGitPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteGit)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteGitPtrOutput) ToAppSpecStaticSiteGitPtrOutput() AppSpecStaticSiteGitPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGitPtrOutput) ToAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGitPtrOutput) Elem() AppSpecStaticSiteGitOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGit) AppSpecStaticSiteGit { return *v }).(AppSpecStaticSiteGitOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecStaticSiteGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o AppSpecStaticSiteGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecStaticSiteGithubInput is an input type that accepts AppSpecStaticSiteGithubArgs and AppSpecStaticSiteGithubOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteGithubInput` via:
+//
+//          AppSpecStaticSiteGithubArgs{...}
+type AppSpecStaticSiteGithubInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteGithubOutput() AppSpecStaticSiteGithubOutput
+	ToAppSpecStaticSiteGithubOutputWithContext(context.Context) AppSpecStaticSiteGithubOutput
+}
+
+type AppSpecStaticSiteGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecStaticSiteGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteGithub)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteGithubArgs) ToAppSpecStaticSiteGithubOutput() AppSpecStaticSiteGithubOutput {
+	return i.ToAppSpecStaticSiteGithubOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteGithubArgs) ToAppSpecStaticSiteGithubOutputWithContext(ctx context.Context) AppSpecStaticSiteGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGithubOutput)
+}
+
+func (i AppSpecStaticSiteGithubArgs) ToAppSpecStaticSiteGithubPtrOutput() AppSpecStaticSiteGithubPtrOutput {
+	return i.ToAppSpecStaticSiteGithubPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteGithubArgs) ToAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGithubOutput).ToAppSpecStaticSiteGithubPtrOutputWithContext(ctx)
+}
+
+// AppSpecStaticSiteGithubPtrInput is an input type that accepts AppSpecStaticSiteGithubArgs, AppSpecStaticSiteGithubPtr and AppSpecStaticSiteGithubPtrOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteGithubPtrInput` via:
+//
+//          AppSpecStaticSiteGithubArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecStaticSiteGithubPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteGithubPtrOutput() AppSpecStaticSiteGithubPtrOutput
+	ToAppSpecStaticSiteGithubPtrOutputWithContext(context.Context) AppSpecStaticSiteGithubPtrOutput
+}
+
+type appSpecStaticSiteGithubPtrType AppSpecStaticSiteGithubArgs
+
+func AppSpecStaticSiteGithubPtr(v *AppSpecStaticSiteGithubArgs) AppSpecStaticSiteGithubPtrInput {
+	return (*appSpecStaticSiteGithubPtrType)(v)
+}
+
+func (*appSpecStaticSiteGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteGithub)(nil)).Elem()
+}
+
+func (i *appSpecStaticSiteGithubPtrType) ToAppSpecStaticSiteGithubPtrOutput() AppSpecStaticSiteGithubPtrOutput {
+	return i.ToAppSpecStaticSiteGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecStaticSiteGithubPtrType) ToAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGithubPtrOutput)
+}
+
+type AppSpecStaticSiteGithubOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteGithub)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteGithubOutput) ToAppSpecStaticSiteGithubOutput() AppSpecStaticSiteGithubOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGithubOutput) ToAppSpecStaticSiteGithubOutputWithContext(ctx context.Context) AppSpecStaticSiteGithubOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGithubOutput) ToAppSpecStaticSiteGithubPtrOutput() AppSpecStaticSiteGithubPtrOutput {
+	return o.ToAppSpecStaticSiteGithubPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecStaticSiteGithubOutput) ToAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGithubPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGithub) *AppSpecStaticSiteGithub {
+		return &v
+	}).(AppSpecStaticSiteGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecStaticSiteGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecStaticSiteGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecStaticSiteGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteGithub)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteGithubPtrOutput) ToAppSpecStaticSiteGithubPtrOutput() AppSpecStaticSiteGithubPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGithubPtrOutput) ToAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGithubPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGithubPtrOutput) Elem() AppSpecStaticSiteGithubOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGithub) AppSpecStaticSiteGithub { return *v }).(AppSpecStaticSiteGithubOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecStaticSiteGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecStaticSiteGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecStaticSiteGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteRoutes struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+}
+
+// AppSpecStaticSiteRoutesInput is an input type that accepts AppSpecStaticSiteRoutesArgs and AppSpecStaticSiteRoutesOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteRoutesInput` via:
+//
+//          AppSpecStaticSiteRoutesArgs{...}
+type AppSpecStaticSiteRoutesInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteRoutesOutput() AppSpecStaticSiteRoutesOutput
+	ToAppSpecStaticSiteRoutesOutputWithContext(context.Context) AppSpecStaticSiteRoutesOutput
+}
+
+type AppSpecStaticSiteRoutesArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (AppSpecStaticSiteRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteRoutes)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteRoutesArgs) ToAppSpecStaticSiteRoutesOutput() AppSpecStaticSiteRoutesOutput {
+	return i.ToAppSpecStaticSiteRoutesOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteRoutesArgs) ToAppSpecStaticSiteRoutesOutputWithContext(ctx context.Context) AppSpecStaticSiteRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteRoutesOutput)
+}
+
+func (i AppSpecStaticSiteRoutesArgs) ToAppSpecStaticSiteRoutesPtrOutput() AppSpecStaticSiteRoutesPtrOutput {
+	return i.ToAppSpecStaticSiteRoutesPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteRoutesArgs) ToAppSpecStaticSiteRoutesPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteRoutesOutput).ToAppSpecStaticSiteRoutesPtrOutputWithContext(ctx)
+}
+
+// AppSpecStaticSiteRoutesPtrInput is an input type that accepts AppSpecStaticSiteRoutesArgs, AppSpecStaticSiteRoutesPtr and AppSpecStaticSiteRoutesPtrOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteRoutesPtrInput` via:
+//
+//          AppSpecStaticSiteRoutesArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecStaticSiteRoutesPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteRoutesPtrOutput() AppSpecStaticSiteRoutesPtrOutput
+	ToAppSpecStaticSiteRoutesPtrOutputWithContext(context.Context) AppSpecStaticSiteRoutesPtrOutput
+}
+
+type appSpecStaticSiteRoutesPtrType AppSpecStaticSiteRoutesArgs
+
+func AppSpecStaticSiteRoutesPtr(v *AppSpecStaticSiteRoutesArgs) AppSpecStaticSiteRoutesPtrInput {
+	return (*appSpecStaticSiteRoutesPtrType)(v)
+}
+
+func (*appSpecStaticSiteRoutesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteRoutes)(nil)).Elem()
+}
+
+func (i *appSpecStaticSiteRoutesPtrType) ToAppSpecStaticSiteRoutesPtrOutput() AppSpecStaticSiteRoutesPtrOutput {
+	return i.ToAppSpecStaticSiteRoutesPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecStaticSiteRoutesPtrType) ToAppSpecStaticSiteRoutesPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteRoutesPtrOutput)
+}
+
+type AppSpecStaticSiteRoutesOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteRoutes)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteRoutesOutput) ToAppSpecStaticSiteRoutesOutput() AppSpecStaticSiteRoutesOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteRoutesOutput) ToAppSpecStaticSiteRoutesOutputWithContext(ctx context.Context) AppSpecStaticSiteRoutesOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteRoutesOutput) ToAppSpecStaticSiteRoutesPtrOutput() AppSpecStaticSiteRoutesPtrOutput {
+	return o.ToAppSpecStaticSiteRoutesPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecStaticSiteRoutesOutput) ToAppSpecStaticSiteRoutesPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteRoutesPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteRoutes) *AppSpecStaticSiteRoutes {
+		return &v
+	}).(AppSpecStaticSiteRoutesPtrOutput)
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o AppSpecStaticSiteRoutesOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteRoutes) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteRoutesPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteRoutesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteRoutes)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteRoutesPtrOutput) ToAppSpecStaticSiteRoutesPtrOutput() AppSpecStaticSiteRoutesPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteRoutesPtrOutput) ToAppSpecStaticSiteRoutesPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteRoutesPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteRoutesPtrOutput) Elem() AppSpecStaticSiteRoutesOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteRoutes) AppSpecStaticSiteRoutes { return *v }).(AppSpecStaticSiteRoutesOutput)
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o AppSpecStaticSiteRoutesPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteRoutes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorker struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath *string `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug *string `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs []AppSpecWorkerEnv `pulumi:"envs"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git *AppSpecWorkerGit `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github *AppSpecWorkerGithub `pulumi:"github"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	// The name of the component
+	Name   string               `pulumi:"name"`
+	Routes *AppSpecWorkerRoutes `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand *string `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// AppSpecWorkerInput is an input type that accepts AppSpecWorkerArgs and AppSpecWorkerOutput values.
+// You can construct a concrete instance of `AppSpecWorkerInput` via:
+//
+//          AppSpecWorkerArgs{...}
+type AppSpecWorkerInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerOutput() AppSpecWorkerOutput
+	ToAppSpecWorkerOutputWithContext(context.Context) AppSpecWorkerOutput
+}
+
+type AppSpecWorkerArgs struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs AppSpecWorkerEnvArrayInput `pulumi:"envs"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git AppSpecWorkerGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github AppSpecWorkerGithubPtrInput `pulumi:"github"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	// The name of the component
+	Name   pulumi.StringInput          `pulumi:"name"`
+	Routes AppSpecWorkerRoutesPtrInput `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (AppSpecWorkerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorker)(nil)).Elem()
+}
+
+func (i AppSpecWorkerArgs) ToAppSpecWorkerOutput() AppSpecWorkerOutput {
+	return i.ToAppSpecWorkerOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerArgs) ToAppSpecWorkerOutputWithContext(ctx context.Context) AppSpecWorkerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerOutput)
+}
+
+// AppSpecWorkerArrayInput is an input type that accepts AppSpecWorkerArray and AppSpecWorkerArrayOutput values.
+// You can construct a concrete instance of `AppSpecWorkerArrayInput` via:
+//
+//          AppSpecWorkerArray{ AppSpecWorkerArgs{...} }
+type AppSpecWorkerArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerArrayOutput() AppSpecWorkerArrayOutput
+	ToAppSpecWorkerArrayOutputWithContext(context.Context) AppSpecWorkerArrayOutput
+}
+
+type AppSpecWorkerArray []AppSpecWorkerInput
+
+func (AppSpecWorkerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorker)(nil)).Elem()
+}
+
+func (i AppSpecWorkerArray) ToAppSpecWorkerArrayOutput() AppSpecWorkerArrayOutput {
+	return i.ToAppSpecWorkerArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerArray) ToAppSpecWorkerArrayOutputWithContext(ctx context.Context) AppSpecWorkerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerArrayOutput)
+}
+
+type AppSpecWorkerOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorker)(nil)).Elem()
+}
+
+func (o AppSpecWorkerOutput) ToAppSpecWorkerOutput() AppSpecWorkerOutput {
+	return o
+}
+
+func (o AppSpecWorkerOutput) ToAppSpecWorkerOutputWithContext(ctx context.Context) AppSpecWorkerOutput {
+	return o
+}
+
+// An optional build command to run while building this component from source.
+func (o AppSpecWorkerOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+func (o AppSpecWorkerOutput) DockerfilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
+}
+
+// An environment slug describing the type of this app.
+func (o AppSpecWorkerOutput) EnvironmentSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o AppSpecWorkerOutput) Envs() AppSpecWorkerEnvArrayOutput {
+	return o.ApplyT(func(v AppSpecWorker) []AppSpecWorkerEnv { return v.Envs }).(AppSpecWorkerEnvArrayOutput)
+}
+
+// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+func (o AppSpecWorkerOutput) Git() AppSpecWorkerGitPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerGit { return v.Git }).(AppSpecWorkerGitPtrOutput)
+}
+
+// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+func (o AppSpecWorkerOutput) Github() AppSpecWorkerGithubPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerGithub { return v.Github }).(AppSpecWorkerGithubPtrOutput)
+}
+
+// The amount of instances that this component should be scaled to.
+func (o AppSpecWorkerOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// The instance size to use for this component.
+func (o AppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component
+func (o AppSpecWorkerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorker) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AppSpecWorkerOutput) Routes() AppSpecWorkerRoutesPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerRoutes { return v.Routes }).(AppSpecWorkerRoutesPtrOutput)
+}
+
+// An optional run command to override the component's default.
+func (o AppSpecWorkerOutput) RunCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *string { return v.RunCommand }).(pulumi.StringPtrOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o AppSpecWorkerOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorker)(nil)).Elem()
+}
+
+func (o AppSpecWorkerArrayOutput) ToAppSpecWorkerArrayOutput() AppSpecWorkerArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerArrayOutput) ToAppSpecWorkerArrayOutputWithContext(ctx context.Context) AppSpecWorkerArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorker {
+		return vs[0].([]AppSpecWorker)[vs[1].(int)]
+	}).(AppSpecWorkerOutput)
+}
+
+type AppSpecWorkerEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type *string `pulumi:"type"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// AppSpecWorkerEnvInput is an input type that accepts AppSpecWorkerEnvArgs and AppSpecWorkerEnvOutput values.
+// You can construct a concrete instance of `AppSpecWorkerEnvInput` via:
+//
+//          AppSpecWorkerEnvArgs{...}
+type AppSpecWorkerEnvInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerEnvOutput() AppSpecWorkerEnvOutput
+	ToAppSpecWorkerEnvOutputWithContext(context.Context) AppSpecWorkerEnvOutput
+}
+
+type AppSpecWorkerEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AppSpecWorkerEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerEnv)(nil)).Elem()
+}
+
+func (i AppSpecWorkerEnvArgs) ToAppSpecWorkerEnvOutput() AppSpecWorkerEnvOutput {
+	return i.ToAppSpecWorkerEnvOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerEnvArgs) ToAppSpecWorkerEnvOutputWithContext(ctx context.Context) AppSpecWorkerEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerEnvOutput)
+}
+
+// AppSpecWorkerEnvArrayInput is an input type that accepts AppSpecWorkerEnvArray and AppSpecWorkerEnvArrayOutput values.
+// You can construct a concrete instance of `AppSpecWorkerEnvArrayInput` via:
+//
+//          AppSpecWorkerEnvArray{ AppSpecWorkerEnvArgs{...} }
+type AppSpecWorkerEnvArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerEnvArrayOutput() AppSpecWorkerEnvArrayOutput
+	ToAppSpecWorkerEnvArrayOutputWithContext(context.Context) AppSpecWorkerEnvArrayOutput
+}
+
+type AppSpecWorkerEnvArray []AppSpecWorkerEnvInput
+
+func (AppSpecWorkerEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerEnv)(nil)).Elem()
+}
+
+func (i AppSpecWorkerEnvArray) ToAppSpecWorkerEnvArrayOutput() AppSpecWorkerEnvArrayOutput {
+	return i.ToAppSpecWorkerEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerEnvArray) ToAppSpecWorkerEnvArrayOutputWithContext(ctx context.Context) AppSpecWorkerEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerEnvArrayOutput)
+}
+
+type AppSpecWorkerEnvOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerEnv)(nil)).Elem()
+}
+
+func (o AppSpecWorkerEnvOutput) ToAppSpecWorkerEnvOutput() AppSpecWorkerEnvOutput {
+	return o
+}
+
+func (o AppSpecWorkerEnvOutput) ToAppSpecWorkerEnvOutputWithContext(ctx context.Context) AppSpecWorkerEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o AppSpecWorkerEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o AppSpecWorkerEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o AppSpecWorkerEnvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The value of the environment variable.
+func (o AppSpecWorkerEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerEnv)(nil)).Elem()
+}
+
+func (o AppSpecWorkerEnvArrayOutput) ToAppSpecWorkerEnvArrayOutput() AppSpecWorkerEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerEnvArrayOutput) ToAppSpecWorkerEnvArrayOutputWithContext(ctx context.Context) AppSpecWorkerEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerEnvArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorkerEnv {
+		return vs[0].([]AppSpecWorkerEnv)[vs[1].(int)]
+	}).(AppSpecWorkerEnvOutput)
+}
+
+type AppSpecWorkerGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// AppSpecWorkerGitInput is an input type that accepts AppSpecWorkerGitArgs and AppSpecWorkerGitOutput values.
+// You can construct a concrete instance of `AppSpecWorkerGitInput` via:
+//
+//          AppSpecWorkerGitArgs{...}
+type AppSpecWorkerGitInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerGitOutput() AppSpecWorkerGitOutput
+	ToAppSpecWorkerGitOutputWithContext(context.Context) AppSpecWorkerGitOutput
+}
+
+type AppSpecWorkerGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (AppSpecWorkerGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerGit)(nil)).Elem()
+}
+
+func (i AppSpecWorkerGitArgs) ToAppSpecWorkerGitOutput() AppSpecWorkerGitOutput {
+	return i.ToAppSpecWorkerGitOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerGitArgs) ToAppSpecWorkerGitOutputWithContext(ctx context.Context) AppSpecWorkerGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGitOutput)
+}
+
+func (i AppSpecWorkerGitArgs) ToAppSpecWorkerGitPtrOutput() AppSpecWorkerGitPtrOutput {
+	return i.ToAppSpecWorkerGitPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerGitArgs) ToAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGitOutput).ToAppSpecWorkerGitPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerGitPtrInput is an input type that accepts AppSpecWorkerGitArgs, AppSpecWorkerGitPtr and AppSpecWorkerGitPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerGitPtrInput` via:
+//
+//          AppSpecWorkerGitArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecWorkerGitPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerGitPtrOutput() AppSpecWorkerGitPtrOutput
+	ToAppSpecWorkerGitPtrOutputWithContext(context.Context) AppSpecWorkerGitPtrOutput
+}
+
+type appSpecWorkerGitPtrType AppSpecWorkerGitArgs
+
+func AppSpecWorkerGitPtr(v *AppSpecWorkerGitArgs) AppSpecWorkerGitPtrInput {
+	return (*appSpecWorkerGitPtrType)(v)
+}
+
+func (*appSpecWorkerGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerGit)(nil)).Elem()
+}
+
+func (i *appSpecWorkerGitPtrType) ToAppSpecWorkerGitPtrOutput() AppSpecWorkerGitPtrOutput {
+	return i.ToAppSpecWorkerGitPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerGitPtrType) ToAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGitPtrOutput)
+}
+
+type AppSpecWorkerGitOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerGit)(nil)).Elem()
+}
+
+func (o AppSpecWorkerGitOutput) ToAppSpecWorkerGitOutput() AppSpecWorkerGitOutput {
+	return o
+}
+
+func (o AppSpecWorkerGitOutput) ToAppSpecWorkerGitOutputWithContext(ctx context.Context) AppSpecWorkerGitOutput {
+	return o
+}
+
+func (o AppSpecWorkerGitOutput) ToAppSpecWorkerGitPtrOutput() AppSpecWorkerGitPtrOutput {
+	return o.ToAppSpecWorkerGitPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerGitOutput) ToAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGit) *AppSpecWorkerGit {
+		return &v
+	}).(AppSpecWorkerGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecWorkerGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o AppSpecWorkerGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerGitPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerGit)(nil)).Elem()
+}
+
+func (o AppSpecWorkerGitPtrOutput) ToAppSpecWorkerGitPtrOutput() AppSpecWorkerGitPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerGitPtrOutput) ToAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerGitPtrOutput) Elem() AppSpecWorkerGitOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGit) AppSpecWorkerGit { return *v }).(AppSpecWorkerGitOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecWorkerGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o AppSpecWorkerGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecWorkerGithubInput is an input type that accepts AppSpecWorkerGithubArgs and AppSpecWorkerGithubOutput values.
+// You can construct a concrete instance of `AppSpecWorkerGithubInput` via:
+//
+//          AppSpecWorkerGithubArgs{...}
+type AppSpecWorkerGithubInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerGithubOutput() AppSpecWorkerGithubOutput
+	ToAppSpecWorkerGithubOutputWithContext(context.Context) AppSpecWorkerGithubOutput
+}
+
+type AppSpecWorkerGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecWorkerGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerGithub)(nil)).Elem()
+}
+
+func (i AppSpecWorkerGithubArgs) ToAppSpecWorkerGithubOutput() AppSpecWorkerGithubOutput {
+	return i.ToAppSpecWorkerGithubOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerGithubArgs) ToAppSpecWorkerGithubOutputWithContext(ctx context.Context) AppSpecWorkerGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGithubOutput)
+}
+
+func (i AppSpecWorkerGithubArgs) ToAppSpecWorkerGithubPtrOutput() AppSpecWorkerGithubPtrOutput {
+	return i.ToAppSpecWorkerGithubPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerGithubArgs) ToAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) AppSpecWorkerGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGithubOutput).ToAppSpecWorkerGithubPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerGithubPtrInput is an input type that accepts AppSpecWorkerGithubArgs, AppSpecWorkerGithubPtr and AppSpecWorkerGithubPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerGithubPtrInput` via:
+//
+//          AppSpecWorkerGithubArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecWorkerGithubPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerGithubPtrOutput() AppSpecWorkerGithubPtrOutput
+	ToAppSpecWorkerGithubPtrOutputWithContext(context.Context) AppSpecWorkerGithubPtrOutput
+}
+
+type appSpecWorkerGithubPtrType AppSpecWorkerGithubArgs
+
+func AppSpecWorkerGithubPtr(v *AppSpecWorkerGithubArgs) AppSpecWorkerGithubPtrInput {
+	return (*appSpecWorkerGithubPtrType)(v)
+}
+
+func (*appSpecWorkerGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerGithub)(nil)).Elem()
+}
+
+func (i *appSpecWorkerGithubPtrType) ToAppSpecWorkerGithubPtrOutput() AppSpecWorkerGithubPtrOutput {
+	return i.ToAppSpecWorkerGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerGithubPtrType) ToAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) AppSpecWorkerGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGithubPtrOutput)
+}
+
+type AppSpecWorkerGithubOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerGithub)(nil)).Elem()
+}
+
+func (o AppSpecWorkerGithubOutput) ToAppSpecWorkerGithubOutput() AppSpecWorkerGithubOutput {
+	return o
+}
+
+func (o AppSpecWorkerGithubOutput) ToAppSpecWorkerGithubOutputWithContext(ctx context.Context) AppSpecWorkerGithubOutput {
+	return o
+}
+
+func (o AppSpecWorkerGithubOutput) ToAppSpecWorkerGithubPtrOutput() AppSpecWorkerGithubPtrOutput {
+	return o.ToAppSpecWorkerGithubPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerGithubOutput) ToAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) AppSpecWorkerGithubPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGithub) *AppSpecWorkerGithub {
+		return &v
+	}).(AppSpecWorkerGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecWorkerGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecWorkerGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecWorkerGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerGithub)(nil)).Elem()
+}
+
+func (o AppSpecWorkerGithubPtrOutput) ToAppSpecWorkerGithubPtrOutput() AppSpecWorkerGithubPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerGithubPtrOutput) ToAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) AppSpecWorkerGithubPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerGithubPtrOutput) Elem() AppSpecWorkerGithubOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGithub) AppSpecWorkerGithub { return *v }).(AppSpecWorkerGithubOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecWorkerGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecWorkerGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecWorkerGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerRoutes struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+}
+
+// AppSpecWorkerRoutesInput is an input type that accepts AppSpecWorkerRoutesArgs and AppSpecWorkerRoutesOutput values.
+// You can construct a concrete instance of `AppSpecWorkerRoutesInput` via:
+//
+//          AppSpecWorkerRoutesArgs{...}
+type AppSpecWorkerRoutesInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerRoutesOutput() AppSpecWorkerRoutesOutput
+	ToAppSpecWorkerRoutesOutputWithContext(context.Context) AppSpecWorkerRoutesOutput
+}
+
+type AppSpecWorkerRoutesArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (AppSpecWorkerRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerRoutes)(nil)).Elem()
+}
+
+func (i AppSpecWorkerRoutesArgs) ToAppSpecWorkerRoutesOutput() AppSpecWorkerRoutesOutput {
+	return i.ToAppSpecWorkerRoutesOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerRoutesArgs) ToAppSpecWorkerRoutesOutputWithContext(ctx context.Context) AppSpecWorkerRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerRoutesOutput)
+}
+
+func (i AppSpecWorkerRoutesArgs) ToAppSpecWorkerRoutesPtrOutput() AppSpecWorkerRoutesPtrOutput {
+	return i.ToAppSpecWorkerRoutesPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerRoutesArgs) ToAppSpecWorkerRoutesPtrOutputWithContext(ctx context.Context) AppSpecWorkerRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerRoutesOutput).ToAppSpecWorkerRoutesPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerRoutesPtrInput is an input type that accepts AppSpecWorkerRoutesArgs, AppSpecWorkerRoutesPtr and AppSpecWorkerRoutesPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerRoutesPtrInput` via:
+//
+//          AppSpecWorkerRoutesArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecWorkerRoutesPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerRoutesPtrOutput() AppSpecWorkerRoutesPtrOutput
+	ToAppSpecWorkerRoutesPtrOutputWithContext(context.Context) AppSpecWorkerRoutesPtrOutput
+}
+
+type appSpecWorkerRoutesPtrType AppSpecWorkerRoutesArgs
+
+func AppSpecWorkerRoutesPtr(v *AppSpecWorkerRoutesArgs) AppSpecWorkerRoutesPtrInput {
+	return (*appSpecWorkerRoutesPtrType)(v)
+}
+
+func (*appSpecWorkerRoutesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerRoutes)(nil)).Elem()
+}
+
+func (i *appSpecWorkerRoutesPtrType) ToAppSpecWorkerRoutesPtrOutput() AppSpecWorkerRoutesPtrOutput {
+	return i.ToAppSpecWorkerRoutesPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerRoutesPtrType) ToAppSpecWorkerRoutesPtrOutputWithContext(ctx context.Context) AppSpecWorkerRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerRoutesPtrOutput)
+}
+
+type AppSpecWorkerRoutesOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerRoutes)(nil)).Elem()
+}
+
+func (o AppSpecWorkerRoutesOutput) ToAppSpecWorkerRoutesOutput() AppSpecWorkerRoutesOutput {
+	return o
+}
+
+func (o AppSpecWorkerRoutesOutput) ToAppSpecWorkerRoutesOutputWithContext(ctx context.Context) AppSpecWorkerRoutesOutput {
+	return o
+}
+
+func (o AppSpecWorkerRoutesOutput) ToAppSpecWorkerRoutesPtrOutput() AppSpecWorkerRoutesPtrOutput {
+	return o.ToAppSpecWorkerRoutesPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerRoutesOutput) ToAppSpecWorkerRoutesPtrOutputWithContext(ctx context.Context) AppSpecWorkerRoutesPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerRoutes) *AppSpecWorkerRoutes {
+		return &v
+	}).(AppSpecWorkerRoutesPtrOutput)
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o AppSpecWorkerRoutesOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerRoutes) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerRoutesPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerRoutesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerRoutes)(nil)).Elem()
+}
+
+func (o AppSpecWorkerRoutesPtrOutput) ToAppSpecWorkerRoutesPtrOutput() AppSpecWorkerRoutesPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerRoutesPtrOutput) ToAppSpecWorkerRoutesPtrOutputWithContext(ctx context.Context) AppSpecWorkerRoutesPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerRoutesPtrOutput) Elem() AppSpecWorkerRoutesOutput {
+	return o.ApplyT(func(v *AppSpecWorkerRoutes) AppSpecWorkerRoutes { return *v }).(AppSpecWorkerRoutesOutput)
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o AppSpecWorkerRoutesPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerRoutes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatabaseClusterMaintenanceWindow struct {
 	// The day of the week on which to apply maintenance updates.
 	Day string `pulumi:"day"`
@@ -2727,6 +5633,2535 @@ func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetAppSpec struct {
+	Databases []GetAppSpecDatabase `pulumi:"databases"`
+	Domains   []string             `pulumi:"domains"`
+	// The name of the component
+	Name        string                 `pulumi:"name"`
+	Region      *string                `pulumi:"region"`
+	Services    []GetAppSpecService    `pulumi:"services"`
+	StaticSites []GetAppSpecStaticSite `pulumi:"staticSites"`
+	Workers     []GetAppSpecWorker     `pulumi:"workers"`
+}
+
+// GetAppSpecInput is an input type that accepts GetAppSpecArgs and GetAppSpecOutput values.
+// You can construct a concrete instance of `GetAppSpecInput` via:
+//
+//          GetAppSpecArgs{...}
+type GetAppSpecInput interface {
+	pulumi.Input
+
+	ToGetAppSpecOutput() GetAppSpecOutput
+	ToGetAppSpecOutputWithContext(context.Context) GetAppSpecOutput
+}
+
+type GetAppSpecArgs struct {
+	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
+	Domains   pulumi.StringArrayInput      `pulumi:"domains"`
+	// The name of the component
+	Name        pulumi.StringInput             `pulumi:"name"`
+	Region      pulumi.StringPtrInput          `pulumi:"region"`
+	Services    GetAppSpecServiceArrayInput    `pulumi:"services"`
+	StaticSites GetAppSpecStaticSiteArrayInput `pulumi:"staticSites"`
+	Workers     GetAppSpecWorkerArrayInput     `pulumi:"workers"`
+}
+
+func (GetAppSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpec)(nil)).Elem()
+}
+
+func (i GetAppSpecArgs) ToGetAppSpecOutput() GetAppSpecOutput {
+	return i.ToGetAppSpecOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecArgs) ToGetAppSpecOutputWithContext(ctx context.Context) GetAppSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecOutput)
+}
+
+type GetAppSpecOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpec)(nil)).Elem()
+}
+
+func (o GetAppSpecOutput) ToGetAppSpecOutput() GetAppSpecOutput {
+	return o
+}
+
+func (o GetAppSpecOutput) ToGetAppSpecOutputWithContext(ctx context.Context) GetAppSpecOutput {
+	return o
+}
+
+func (o GetAppSpecOutput) Databases() GetAppSpecDatabaseArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecDatabase { return v.Databases }).(GetAppSpecDatabaseArrayOutput)
+}
+
+func (o GetAppSpecOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The name of the component
+func (o GetAppSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpec) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpec) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecOutput) Services() GetAppSpecServiceArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecService { return v.Services }).(GetAppSpecServiceArrayOutput)
+}
+
+func (o GetAppSpecOutput) StaticSites() GetAppSpecStaticSiteArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecStaticSite { return v.StaticSites }).(GetAppSpecStaticSiteArrayOutput)
+}
+
+func (o GetAppSpecOutput) Workers() GetAppSpecWorkerArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecWorker { return v.Workers }).(GetAppSpecWorkerArrayOutput)
+}
+
+type GetAppSpecDatabase struct {
+	ClusterName *string `pulumi:"clusterName"`
+	DbName      *string `pulumi:"dbName"`
+	DbUser      *string `pulumi:"dbUser"`
+	Engine      *string `pulumi:"engine"`
+	// The name of the component
+	Name       *string `pulumi:"name"`
+	Production *bool   `pulumi:"production"`
+	Version    *string `pulumi:"version"`
+}
+
+// GetAppSpecDatabaseInput is an input type that accepts GetAppSpecDatabaseArgs and GetAppSpecDatabaseOutput values.
+// You can construct a concrete instance of `GetAppSpecDatabaseInput` via:
+//
+//          GetAppSpecDatabaseArgs{...}
+type GetAppSpecDatabaseInput interface {
+	pulumi.Input
+
+	ToGetAppSpecDatabaseOutput() GetAppSpecDatabaseOutput
+	ToGetAppSpecDatabaseOutputWithContext(context.Context) GetAppSpecDatabaseOutput
+}
+
+type GetAppSpecDatabaseArgs struct {
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	DbName      pulumi.StringPtrInput `pulumi:"dbName"`
+	DbUser      pulumi.StringPtrInput `pulumi:"dbUser"`
+	Engine      pulumi.StringPtrInput `pulumi:"engine"`
+	// The name of the component
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Production pulumi.BoolPtrInput   `pulumi:"production"`
+	Version    pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GetAppSpecDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecDatabase)(nil)).Elem()
+}
+
+func (i GetAppSpecDatabaseArgs) ToGetAppSpecDatabaseOutput() GetAppSpecDatabaseOutput {
+	return i.ToGetAppSpecDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecDatabaseArgs) ToGetAppSpecDatabaseOutputWithContext(ctx context.Context) GetAppSpecDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecDatabaseOutput)
+}
+
+// GetAppSpecDatabaseArrayInput is an input type that accepts GetAppSpecDatabaseArray and GetAppSpecDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecDatabaseArrayInput` via:
+//
+//          GetAppSpecDatabaseArray{ GetAppSpecDatabaseArgs{...} }
+type GetAppSpecDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecDatabaseArrayOutput() GetAppSpecDatabaseArrayOutput
+	ToGetAppSpecDatabaseArrayOutputWithContext(context.Context) GetAppSpecDatabaseArrayOutput
+}
+
+type GetAppSpecDatabaseArray []GetAppSpecDatabaseInput
+
+func (GetAppSpecDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecDatabase)(nil)).Elem()
+}
+
+func (i GetAppSpecDatabaseArray) ToGetAppSpecDatabaseArrayOutput() GetAppSpecDatabaseArrayOutput {
+	return i.ToGetAppSpecDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecDatabaseArray) ToGetAppSpecDatabaseArrayOutputWithContext(ctx context.Context) GetAppSpecDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecDatabaseArrayOutput)
+}
+
+type GetAppSpecDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecDatabase)(nil)).Elem()
+}
+
+func (o GetAppSpecDatabaseOutput) ToGetAppSpecDatabaseOutput() GetAppSpecDatabaseOutput {
+	return o
+}
+
+func (o GetAppSpecDatabaseOutput) ToGetAppSpecDatabaseOutputWithContext(ctx context.Context) GetAppSpecDatabaseOutput {
+	return o
+}
+
+func (o GetAppSpecDatabaseOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecDatabaseOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecDatabaseOutput) DbUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.DbUser }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecDatabaseOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component
+func (o GetAppSpecDatabaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecDatabaseOutput) Production() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecDatabase) *bool { return v.Production }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecDatabaseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecDatabase)(nil)).Elem()
+}
+
+func (o GetAppSpecDatabaseArrayOutput) ToGetAppSpecDatabaseArrayOutput() GetAppSpecDatabaseArrayOutput {
+	return o
+}
+
+func (o GetAppSpecDatabaseArrayOutput) ToGetAppSpecDatabaseArrayOutputWithContext(ctx context.Context) GetAppSpecDatabaseArrayOutput {
+	return o
+}
+
+func (o GetAppSpecDatabaseArrayOutput) Index(i pulumi.IntInput) GetAppSpecDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecDatabase {
+		return vs[0].([]GetAppSpecDatabase)[vs[1].(int)]
+	}).(GetAppSpecDatabaseOutput)
+}
+
+type GetAppSpecService struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath *string `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug *string `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs []GetAppSpecServiceEnv `pulumi:"envs"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git *GetAppSpecServiceGit `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github *GetAppSpecServiceGithub `pulumi:"github"`
+	// A health check to determine the availability of this component.
+	HealthCheck *GetAppSpecServiceHealthCheck `pulumi:"healthCheck"`
+	// The internal port on which this service's run command will listen.
+	HttpPort int `pulumi:"httpPort"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	// The name of the component
+	Name   string                  `pulumi:"name"`
+	Routes GetAppSpecServiceRoutes `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand string `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// GetAppSpecServiceInput is an input type that accepts GetAppSpecServiceArgs and GetAppSpecServiceOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceInput` via:
+//
+//          GetAppSpecServiceArgs{...}
+type GetAppSpecServiceInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceOutput() GetAppSpecServiceOutput
+	ToGetAppSpecServiceOutputWithContext(context.Context) GetAppSpecServiceOutput
+}
+
+type GetAppSpecServiceArgs struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs GetAppSpecServiceEnvArrayInput `pulumi:"envs"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git GetAppSpecServiceGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github GetAppSpecServiceGithubPtrInput `pulumi:"github"`
+	// A health check to determine the availability of this component.
+	HealthCheck GetAppSpecServiceHealthCheckPtrInput `pulumi:"healthCheck"`
+	// The internal port on which this service's run command will listen.
+	HttpPort pulumi.IntInput `pulumi:"httpPort"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	// The name of the component
+	Name   pulumi.StringInput           `pulumi:"name"`
+	Routes GetAppSpecServiceRoutesInput `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand pulumi.StringInput `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (GetAppSpecServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecService)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceArgs) ToGetAppSpecServiceOutput() GetAppSpecServiceOutput {
+	return i.ToGetAppSpecServiceOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceArgs) ToGetAppSpecServiceOutputWithContext(ctx context.Context) GetAppSpecServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceOutput)
+}
+
+// GetAppSpecServiceArrayInput is an input type that accepts GetAppSpecServiceArray and GetAppSpecServiceArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceArrayInput` via:
+//
+//          GetAppSpecServiceArray{ GetAppSpecServiceArgs{...} }
+type GetAppSpecServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput
+	ToGetAppSpecServiceArrayOutputWithContext(context.Context) GetAppSpecServiceArrayOutput
+}
+
+type GetAppSpecServiceArray []GetAppSpecServiceInput
+
+func (GetAppSpecServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecService)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceArray) ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput {
+	return i.ToGetAppSpecServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceArray) ToGetAppSpecServiceArrayOutputWithContext(ctx context.Context) GetAppSpecServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceArrayOutput)
+}
+
+type GetAppSpecServiceOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecService)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutput() GetAppSpecServiceOutput {
+	return o
+}
+
+func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutputWithContext(ctx context.Context) GetAppSpecServiceOutput {
+	return o
+}
+
+// An optional build command to run while building this component from source.
+func (o GetAppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+func (o GetAppSpecServiceOutput) DockerfilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
+}
+
+// An environment slug describing the type of this app.
+func (o GetAppSpecServiceOutput) EnvironmentSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o GetAppSpecServiceOutput) Envs() GetAppSpecServiceEnvArrayOutput {
+	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceEnv { return v.Envs }).(GetAppSpecServiceEnvArrayOutput)
+}
+
+// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+func (o GetAppSpecServiceOutput) Git() GetAppSpecServiceGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGit { return v.Git }).(GetAppSpecServiceGitPtrOutput)
+}
+
+// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+func (o GetAppSpecServiceOutput) Github() GetAppSpecServiceGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGithub { return v.Github }).(GetAppSpecServiceGithubPtrOutput)
+}
+
+// A health check to determine the availability of this component.
+func (o GetAppSpecServiceOutput) HealthCheck() GetAppSpecServiceHealthCheckPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceHealthCheck { return v.HealthCheck }).(GetAppSpecServiceHealthCheckPtrOutput)
+}
+
+// The internal port on which this service's run command will listen.
+func (o GetAppSpecServiceOutput) HttpPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecService) int { return v.HttpPort }).(pulumi.IntOutput)
+}
+
+// The amount of instances that this component should be scaled to.
+func (o GetAppSpecServiceOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// The instance size to use for this component.
+func (o GetAppSpecServiceOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component
+func (o GetAppSpecServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecServiceOutput) Routes() GetAppSpecServiceRoutesOutput {
+	return o.ApplyT(func(v GetAppSpecService) GetAppSpecServiceRoutes { return v.Routes }).(GetAppSpecServiceRoutesOutput)
+}
+
+// An optional run command to override the component's default.
+func (o GetAppSpecServiceOutput) RunCommand() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecService) string { return v.RunCommand }).(pulumi.StringOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o GetAppSpecServiceOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecService)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceArrayOutput) ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceArrayOutput) ToGetAppSpecServiceArrayOutputWithContext(ctx context.Context) GetAppSpecServiceArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecService {
+		return vs[0].([]GetAppSpecService)[vs[1].(int)]
+	}).(GetAppSpecServiceOutput)
+}
+
+type GetAppSpecServiceEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type string `pulumi:"type"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// GetAppSpecServiceEnvInput is an input type that accepts GetAppSpecServiceEnvArgs and GetAppSpecServiceEnvOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceEnvInput` via:
+//
+//          GetAppSpecServiceEnvArgs{...}
+type GetAppSpecServiceEnvInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceEnvOutput() GetAppSpecServiceEnvOutput
+	ToGetAppSpecServiceEnvOutputWithContext(context.Context) GetAppSpecServiceEnvOutput
+}
+
+type GetAppSpecServiceEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetAppSpecServiceEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceEnvArgs) ToGetAppSpecServiceEnvOutput() GetAppSpecServiceEnvOutput {
+	return i.ToGetAppSpecServiceEnvOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceEnvArgs) ToGetAppSpecServiceEnvOutputWithContext(ctx context.Context) GetAppSpecServiceEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceEnvOutput)
+}
+
+// GetAppSpecServiceEnvArrayInput is an input type that accepts GetAppSpecServiceEnvArray and GetAppSpecServiceEnvArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceEnvArrayInput` via:
+//
+//          GetAppSpecServiceEnvArray{ GetAppSpecServiceEnvArgs{...} }
+type GetAppSpecServiceEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceEnvArrayOutput() GetAppSpecServiceEnvArrayOutput
+	ToGetAppSpecServiceEnvArrayOutputWithContext(context.Context) GetAppSpecServiceEnvArrayOutput
+}
+
+type GetAppSpecServiceEnvArray []GetAppSpecServiceEnvInput
+
+func (GetAppSpecServiceEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceEnvArray) ToGetAppSpecServiceEnvArrayOutput() GetAppSpecServiceEnvArrayOutput {
+	return i.ToGetAppSpecServiceEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceEnvArray) ToGetAppSpecServiceEnvArrayOutputWithContext(ctx context.Context) GetAppSpecServiceEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceEnvArrayOutput)
+}
+
+type GetAppSpecServiceEnvOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceEnvOutput) ToGetAppSpecServiceEnvOutput() GetAppSpecServiceEnvOutput {
+	return o
+}
+
+func (o GetAppSpecServiceEnvOutput) ToGetAppSpecServiceEnvOutputWithContext(ctx context.Context) GetAppSpecServiceEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o GetAppSpecServiceEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o GetAppSpecServiceEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o GetAppSpecServiceEnvOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceEnv) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o GetAppSpecServiceEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceEnvArrayOutput) ToGetAppSpecServiceEnvArrayOutput() GetAppSpecServiceEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceEnvArrayOutput) ToGetAppSpecServiceEnvArrayOutputWithContext(ctx context.Context) GetAppSpecServiceEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceEnv {
+		return vs[0].([]GetAppSpecServiceEnv)[vs[1].(int)]
+	}).(GetAppSpecServiceEnvOutput)
+}
+
+type GetAppSpecServiceGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// GetAppSpecServiceGitInput is an input type that accepts GetAppSpecServiceGitArgs and GetAppSpecServiceGitOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGitInput` via:
+//
+//          GetAppSpecServiceGitArgs{...}
+type GetAppSpecServiceGitInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGitOutput() GetAppSpecServiceGitOutput
+	ToGetAppSpecServiceGitOutputWithContext(context.Context) GetAppSpecServiceGitOutput
+}
+
+type GetAppSpecServiceGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (GetAppSpecServiceGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGit)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitOutput() GetAppSpecServiceGitOutput {
+	return i.ToGetAppSpecServiceGitOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitOutputWithContext(ctx context.Context) GetAppSpecServiceGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitOutput)
+}
+
+func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput {
+	return i.ToGetAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitOutput).ToGetAppSpecServiceGitPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceGitPtrInput is an input type that accepts GetAppSpecServiceGitArgs, GetAppSpecServiceGitPtr and GetAppSpecServiceGitPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGitPtrInput` via:
+//
+//          GetAppSpecServiceGitArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceGitPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput
+	ToGetAppSpecServiceGitPtrOutputWithContext(context.Context) GetAppSpecServiceGitPtrOutput
+}
+
+type getAppSpecServiceGitPtrType GetAppSpecServiceGitArgs
+
+func GetAppSpecServiceGitPtr(v *GetAppSpecServiceGitArgs) GetAppSpecServiceGitPtrInput {
+	return (*getAppSpecServiceGitPtrType)(v)
+}
+
+func (*getAppSpecServiceGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGit)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceGitPtrType) ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput {
+	return i.ToGetAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceGitPtrType) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitPtrOutput)
+}
+
+type GetAppSpecServiceGitOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGit)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitOutput() GetAppSpecServiceGitOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitOutputWithContext(ctx context.Context) GetAppSpecServiceGitOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput {
+	return o.ToGetAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGit) *GetAppSpecServiceGit {
+		return &v
+	}).(GetAppSpecServiceGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecServiceGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGitPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGit)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGitPtrOutput) ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitPtrOutput) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitPtrOutput) Elem() GetAppSpecServiceGitOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGit) GetAppSpecServiceGit { return *v }).(GetAppSpecServiceGitOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecServiceGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecServiceGithubInput is an input type that accepts GetAppSpecServiceGithubArgs and GetAppSpecServiceGithubOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGithubInput` via:
+//
+//          GetAppSpecServiceGithubArgs{...}
+type GetAppSpecServiceGithubInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGithubOutput() GetAppSpecServiceGithubOutput
+	ToGetAppSpecServiceGithubOutputWithContext(context.Context) GetAppSpecServiceGithubOutput
+}
+
+type GetAppSpecServiceGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecServiceGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGithub)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubOutput() GetAppSpecServiceGithubOutput {
+	return i.ToGetAppSpecServiceGithubOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubOutputWithContext(ctx context.Context) GetAppSpecServiceGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGithubOutput)
+}
+
+func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput {
+	return i.ToGetAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGithubOutput).ToGetAppSpecServiceGithubPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceGithubPtrInput is an input type that accepts GetAppSpecServiceGithubArgs, GetAppSpecServiceGithubPtr and GetAppSpecServiceGithubPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGithubPtrInput` via:
+//
+//          GetAppSpecServiceGithubArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceGithubPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput
+	ToGetAppSpecServiceGithubPtrOutputWithContext(context.Context) GetAppSpecServiceGithubPtrOutput
+}
+
+type getAppSpecServiceGithubPtrType GetAppSpecServiceGithubArgs
+
+func GetAppSpecServiceGithubPtr(v *GetAppSpecServiceGithubArgs) GetAppSpecServiceGithubPtrInput {
+	return (*getAppSpecServiceGithubPtrType)(v)
+}
+
+func (*getAppSpecServiceGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGithub)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceGithubPtrType) ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput {
+	return i.ToGetAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceGithubPtrType) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGithubPtrOutput)
+}
+
+type GetAppSpecServiceGithubOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubOutput() GetAppSpecServiceGithubOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubOutputWithContext(ctx context.Context) GetAppSpecServiceGithubOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput {
+	return o.ToGetAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGithub) *GetAppSpecServiceGithub {
+		return &v
+	}).(GetAppSpecServiceGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGithubPtrOutput) ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGithubPtrOutput) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGithubPtrOutput) Elem() GetAppSpecServiceGithubOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) GetAppSpecServiceGithub { return *v }).(GetAppSpecServiceGithubOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceHealthCheck struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath *string `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// GetAppSpecServiceHealthCheckInput is an input type that accepts GetAppSpecServiceHealthCheckArgs and GetAppSpecServiceHealthCheckOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceHealthCheckInput` via:
+//
+//          GetAppSpecServiceHealthCheckArgs{...}
+type GetAppSpecServiceHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceHealthCheckOutput() GetAppSpecServiceHealthCheckOutput
+	ToGetAppSpecServiceHealthCheckOutputWithContext(context.Context) GetAppSpecServiceHealthCheckOutput
+}
+
+type GetAppSpecServiceHealthCheckArgs struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetAppSpecServiceHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckOutput() GetAppSpecServiceHealthCheckOutput {
+	return i.ToGetAppSpecServiceHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceHealthCheckOutput)
+}
+
+func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput {
+	return i.ToGetAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceHealthCheckOutput).ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceHealthCheckPtrInput is an input type that accepts GetAppSpecServiceHealthCheckArgs, GetAppSpecServiceHealthCheckPtr and GetAppSpecServiceHealthCheckPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceHealthCheckPtrInput` via:
+//
+//          GetAppSpecServiceHealthCheckArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput
+	ToGetAppSpecServiceHealthCheckPtrOutputWithContext(context.Context) GetAppSpecServiceHealthCheckPtrOutput
+}
+
+type getAppSpecServiceHealthCheckPtrType GetAppSpecServiceHealthCheckArgs
+
+func GetAppSpecServiceHealthCheckPtr(v *GetAppSpecServiceHealthCheckArgs) GetAppSpecServiceHealthCheckPtrInput {
+	return (*getAppSpecServiceHealthCheckPtrType)(v)
+}
+
+func (*getAppSpecServiceHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceHealthCheckPtrType) ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput {
+	return i.ToGetAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceHealthCheckPtrType) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceHealthCheckPtrOutput)
+}
+
+type GetAppSpecServiceHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckOutput() GetAppSpecServiceHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput {
+	return o.ToGetAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *GetAppSpecServiceHealthCheck {
+		return &v
+	}).(GetAppSpecServiceHealthCheckPtrOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecServiceHealthCheckOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecServiceHealthCheckOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecServiceHealthCheckOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecServiceHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecServiceHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecServiceHealthCheckOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceHealthCheckPtrOutput) ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceHealthCheckPtrOutput) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceHealthCheckPtrOutput) Elem() GetAppSpecServiceHealthCheckOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) GetAppSpecServiceHealthCheck { return *v }).(GetAppSpecServiceHealthCheckOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecServiceHealthCheckPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecServiceHealthCheckPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecServiceHealthCheckPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecServiceHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecServiceHealthCheckPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceRoutes struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+}
+
+// GetAppSpecServiceRoutesInput is an input type that accepts GetAppSpecServiceRoutesArgs and GetAppSpecServiceRoutesOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceRoutesInput` via:
+//
+//          GetAppSpecServiceRoutesArgs{...}
+type GetAppSpecServiceRoutesInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceRoutesOutput() GetAppSpecServiceRoutesOutput
+	ToGetAppSpecServiceRoutesOutputWithContext(context.Context) GetAppSpecServiceRoutesOutput
+}
+
+type GetAppSpecServiceRoutesArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (GetAppSpecServiceRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceRoutes)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceRoutesArgs) ToGetAppSpecServiceRoutesOutput() GetAppSpecServiceRoutesOutput {
+	return i.ToGetAppSpecServiceRoutesOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceRoutesArgs) ToGetAppSpecServiceRoutesOutputWithContext(ctx context.Context) GetAppSpecServiceRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceRoutesOutput)
+}
+
+type GetAppSpecServiceRoutesOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceRoutes)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceRoutesOutput) ToGetAppSpecServiceRoutesOutput() GetAppSpecServiceRoutesOutput {
+	return o
+}
+
+func (o GetAppSpecServiceRoutesOutput) ToGetAppSpecServiceRoutesOutputWithContext(ctx context.Context) GetAppSpecServiceRoutesOutput {
+	return o
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o GetAppSpecServiceRoutesOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceRoutes) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSite struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath *string `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug *string `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs []GetAppSpecStaticSiteEnv `pulumi:"envs"`
+	// The name of the error document to use when serving this static site*
+	ErrorDocument *string `pulumi:"errorDocument"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git *GetAppSpecStaticSiteGit `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github *GetAppSpecStaticSiteGithub `pulumi:"github"`
+	// The name of the index document to use when serving this static site.
+	IndexDocument *string `pulumi:"indexDocument"`
+	// The name of the component
+	Name string `pulumi:"name"`
+	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+	OutputDir *string                    `pulumi:"outputDir"`
+	Routes    GetAppSpecStaticSiteRoutes `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// GetAppSpecStaticSiteInput is an input type that accepts GetAppSpecStaticSiteArgs and GetAppSpecStaticSiteOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteInput` via:
+//
+//          GetAppSpecStaticSiteArgs{...}
+type GetAppSpecStaticSiteInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput
+	ToGetAppSpecStaticSiteOutputWithContext(context.Context) GetAppSpecStaticSiteOutput
+}
+
+type GetAppSpecStaticSiteArgs struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs GetAppSpecStaticSiteEnvArrayInput `pulumi:"envs"`
+	// The name of the error document to use when serving this static site*
+	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git GetAppSpecStaticSiteGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github GetAppSpecStaticSiteGithubPtrInput `pulumi:"github"`
+	// The name of the index document to use when serving this static site.
+	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
+	// The name of the component
+	Name pulumi.StringInput `pulumi:"name"`
+	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+	OutputDir pulumi.StringPtrInput           `pulumi:"outputDir"`
+	Routes    GetAppSpecStaticSiteRoutesInput `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (GetAppSpecStaticSiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSite)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteArgs) ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput {
+	return i.ToGetAppSpecStaticSiteOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteArgs) ToGetAppSpecStaticSiteOutputWithContext(ctx context.Context) GetAppSpecStaticSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteOutput)
+}
+
+// GetAppSpecStaticSiteArrayInput is an input type that accepts GetAppSpecStaticSiteArray and GetAppSpecStaticSiteArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteArrayInput` via:
+//
+//          GetAppSpecStaticSiteArray{ GetAppSpecStaticSiteArgs{...} }
+type GetAppSpecStaticSiteArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput
+	ToGetAppSpecStaticSiteArrayOutputWithContext(context.Context) GetAppSpecStaticSiteArrayOutput
+}
+
+type GetAppSpecStaticSiteArray []GetAppSpecStaticSiteInput
+
+func (GetAppSpecStaticSiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecStaticSite)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteArray) ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput {
+	return i.ToGetAppSpecStaticSiteArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteArray) ToGetAppSpecStaticSiteArrayOutputWithContext(ctx context.Context) GetAppSpecStaticSiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteArrayOutput)
+}
+
+type GetAppSpecStaticSiteOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSite)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteOutput) ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteOutput) ToGetAppSpecStaticSiteOutputWithContext(ctx context.Context) GetAppSpecStaticSiteOutput {
+	return o
+}
+
+// An optional build command to run while building this component from source.
+func (o GetAppSpecStaticSiteOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+func (o GetAppSpecStaticSiteOutput) DockerfilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
+}
+
+// An environment slug describing the type of this app.
+func (o GetAppSpecStaticSiteOutput) EnvironmentSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o GetAppSpecStaticSiteOutput) Envs() GetAppSpecStaticSiteEnvArrayOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) []GetAppSpecStaticSiteEnv { return v.Envs }).(GetAppSpecStaticSiteEnvArrayOutput)
+}
+
+// The name of the error document to use when serving this static site*
+func (o GetAppSpecStaticSiteOutput) ErrorDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
+}
+
+// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+func (o GetAppSpecStaticSiteOutput) Git() GetAppSpecStaticSiteGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGit { return v.Git }).(GetAppSpecStaticSiteGitPtrOutput)
+}
+
+// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+func (o GetAppSpecStaticSiteOutput) Github() GetAppSpecStaticSiteGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGithub { return v.Github }).(GetAppSpecStaticSiteGithubPtrOutput)
+}
+
+// The name of the index document to use when serving this static site.
+func (o GetAppSpecStaticSiteOutput) IndexDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.IndexDocument }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component
+func (o GetAppSpecStaticSiteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+func (o GetAppSpecStaticSiteOutput) OutputDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.OutputDir }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteOutput) Routes() GetAppSpecStaticSiteRoutesOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) GetAppSpecStaticSiteRoutes { return v.Routes }).(GetAppSpecStaticSiteRoutesOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o GetAppSpecStaticSiteOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecStaticSite)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteArrayOutput) ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteArrayOutput) ToGetAppSpecStaticSiteArrayOutputWithContext(ctx context.Context) GetAppSpecStaticSiteArrayOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) GetAppSpecStaticSiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecStaticSite {
+		return vs[0].([]GetAppSpecStaticSite)[vs[1].(int)]
+	}).(GetAppSpecStaticSiteOutput)
+}
+
+type GetAppSpecStaticSiteEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type string `pulumi:"type"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// GetAppSpecStaticSiteEnvInput is an input type that accepts GetAppSpecStaticSiteEnvArgs and GetAppSpecStaticSiteEnvOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteEnvInput` via:
+//
+//          GetAppSpecStaticSiteEnvArgs{...}
+type GetAppSpecStaticSiteEnvInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteEnvOutput() GetAppSpecStaticSiteEnvOutput
+	ToGetAppSpecStaticSiteEnvOutputWithContext(context.Context) GetAppSpecStaticSiteEnvOutput
+}
+
+type GetAppSpecStaticSiteEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetAppSpecStaticSiteEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteEnvArgs) ToGetAppSpecStaticSiteEnvOutput() GetAppSpecStaticSiteEnvOutput {
+	return i.ToGetAppSpecStaticSiteEnvOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteEnvArgs) ToGetAppSpecStaticSiteEnvOutputWithContext(ctx context.Context) GetAppSpecStaticSiteEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteEnvOutput)
+}
+
+// GetAppSpecStaticSiteEnvArrayInput is an input type that accepts GetAppSpecStaticSiteEnvArray and GetAppSpecStaticSiteEnvArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteEnvArrayInput` via:
+//
+//          GetAppSpecStaticSiteEnvArray{ GetAppSpecStaticSiteEnvArgs{...} }
+type GetAppSpecStaticSiteEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteEnvArrayOutput() GetAppSpecStaticSiteEnvArrayOutput
+	ToGetAppSpecStaticSiteEnvArrayOutputWithContext(context.Context) GetAppSpecStaticSiteEnvArrayOutput
+}
+
+type GetAppSpecStaticSiteEnvArray []GetAppSpecStaticSiteEnvInput
+
+func (GetAppSpecStaticSiteEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecStaticSiteEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteEnvArray) ToGetAppSpecStaticSiteEnvArrayOutput() GetAppSpecStaticSiteEnvArrayOutput {
+	return i.ToGetAppSpecStaticSiteEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteEnvArray) ToGetAppSpecStaticSiteEnvArrayOutputWithContext(ctx context.Context) GetAppSpecStaticSiteEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteEnvArrayOutput)
+}
+
+type GetAppSpecStaticSiteEnvOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteEnvOutput) ToGetAppSpecStaticSiteEnvOutput() GetAppSpecStaticSiteEnvOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteEnvOutput) ToGetAppSpecStaticSiteEnvOutputWithContext(ctx context.Context) GetAppSpecStaticSiteEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o GetAppSpecStaticSiteEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o GetAppSpecStaticSiteEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o GetAppSpecStaticSiteEnvOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteEnv) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o GetAppSpecStaticSiteEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecStaticSiteEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteEnvArrayOutput) ToGetAppSpecStaticSiteEnvArrayOutput() GetAppSpecStaticSiteEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteEnvArrayOutput) ToGetAppSpecStaticSiteEnvArrayOutputWithContext(ctx context.Context) GetAppSpecStaticSiteEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecStaticSiteEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecStaticSiteEnv {
+		return vs[0].([]GetAppSpecStaticSiteEnv)[vs[1].(int)]
+	}).(GetAppSpecStaticSiteEnvOutput)
+}
+
+type GetAppSpecStaticSiteGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// GetAppSpecStaticSiteGitInput is an input type that accepts GetAppSpecStaticSiteGitArgs and GetAppSpecStaticSiteGitOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteGitInput` via:
+//
+//          GetAppSpecStaticSiteGitArgs{...}
+type GetAppSpecStaticSiteGitInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteGitOutput() GetAppSpecStaticSiteGitOutput
+	ToGetAppSpecStaticSiteGitOutputWithContext(context.Context) GetAppSpecStaticSiteGitOutput
+}
+
+type GetAppSpecStaticSiteGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (GetAppSpecStaticSiteGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteGit)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteGitArgs) ToGetAppSpecStaticSiteGitOutput() GetAppSpecStaticSiteGitOutput {
+	return i.ToGetAppSpecStaticSiteGitOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteGitArgs) ToGetAppSpecStaticSiteGitOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGitOutput)
+}
+
+func (i GetAppSpecStaticSiteGitArgs) ToGetAppSpecStaticSiteGitPtrOutput() GetAppSpecStaticSiteGitPtrOutput {
+	return i.ToGetAppSpecStaticSiteGitPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteGitArgs) ToGetAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGitOutput).ToGetAppSpecStaticSiteGitPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecStaticSiteGitPtrInput is an input type that accepts GetAppSpecStaticSiteGitArgs, GetAppSpecStaticSiteGitPtr and GetAppSpecStaticSiteGitPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteGitPtrInput` via:
+//
+//          GetAppSpecStaticSiteGitArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecStaticSiteGitPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteGitPtrOutput() GetAppSpecStaticSiteGitPtrOutput
+	ToGetAppSpecStaticSiteGitPtrOutputWithContext(context.Context) GetAppSpecStaticSiteGitPtrOutput
+}
+
+type getAppSpecStaticSiteGitPtrType GetAppSpecStaticSiteGitArgs
+
+func GetAppSpecStaticSiteGitPtr(v *GetAppSpecStaticSiteGitArgs) GetAppSpecStaticSiteGitPtrInput {
+	return (*getAppSpecStaticSiteGitPtrType)(v)
+}
+
+func (*getAppSpecStaticSiteGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteGit)(nil)).Elem()
+}
+
+func (i *getAppSpecStaticSiteGitPtrType) ToGetAppSpecStaticSiteGitPtrOutput() GetAppSpecStaticSiteGitPtrOutput {
+	return i.ToGetAppSpecStaticSiteGitPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecStaticSiteGitPtrType) ToGetAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGitPtrOutput)
+}
+
+type GetAppSpecStaticSiteGitOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteGit)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteGitOutput) ToGetAppSpecStaticSiteGitOutput() GetAppSpecStaticSiteGitOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGitOutput) ToGetAppSpecStaticSiteGitOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGitOutput) ToGetAppSpecStaticSiteGitPtrOutput() GetAppSpecStaticSiteGitPtrOutput {
+	return o.ToGetAppSpecStaticSiteGitPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecStaticSiteGitOutput) ToGetAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGit) *GetAppSpecStaticSiteGit {
+		return &v
+	}).(GetAppSpecStaticSiteGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecStaticSiteGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecStaticSiteGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteGitPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteGit)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteGitPtrOutput) ToGetAppSpecStaticSiteGitPtrOutput() GetAppSpecStaticSiteGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGitPtrOutput) ToGetAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGitPtrOutput) Elem() GetAppSpecStaticSiteGitOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGit) GetAppSpecStaticSiteGit { return *v }).(GetAppSpecStaticSiteGitOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecStaticSiteGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecStaticSiteGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecStaticSiteGithubInput is an input type that accepts GetAppSpecStaticSiteGithubArgs and GetAppSpecStaticSiteGithubOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteGithubInput` via:
+//
+//          GetAppSpecStaticSiteGithubArgs{...}
+type GetAppSpecStaticSiteGithubInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteGithubOutput() GetAppSpecStaticSiteGithubOutput
+	ToGetAppSpecStaticSiteGithubOutputWithContext(context.Context) GetAppSpecStaticSiteGithubOutput
+}
+
+type GetAppSpecStaticSiteGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecStaticSiteGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteGithub)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteGithubArgs) ToGetAppSpecStaticSiteGithubOutput() GetAppSpecStaticSiteGithubOutput {
+	return i.ToGetAppSpecStaticSiteGithubOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteGithubArgs) ToGetAppSpecStaticSiteGithubOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGithubOutput)
+}
+
+func (i GetAppSpecStaticSiteGithubArgs) ToGetAppSpecStaticSiteGithubPtrOutput() GetAppSpecStaticSiteGithubPtrOutput {
+	return i.ToGetAppSpecStaticSiteGithubPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteGithubArgs) ToGetAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGithubOutput).ToGetAppSpecStaticSiteGithubPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecStaticSiteGithubPtrInput is an input type that accepts GetAppSpecStaticSiteGithubArgs, GetAppSpecStaticSiteGithubPtr and GetAppSpecStaticSiteGithubPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteGithubPtrInput` via:
+//
+//          GetAppSpecStaticSiteGithubArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecStaticSiteGithubPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteGithubPtrOutput() GetAppSpecStaticSiteGithubPtrOutput
+	ToGetAppSpecStaticSiteGithubPtrOutputWithContext(context.Context) GetAppSpecStaticSiteGithubPtrOutput
+}
+
+type getAppSpecStaticSiteGithubPtrType GetAppSpecStaticSiteGithubArgs
+
+func GetAppSpecStaticSiteGithubPtr(v *GetAppSpecStaticSiteGithubArgs) GetAppSpecStaticSiteGithubPtrInput {
+	return (*getAppSpecStaticSiteGithubPtrType)(v)
+}
+
+func (*getAppSpecStaticSiteGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteGithub)(nil)).Elem()
+}
+
+func (i *getAppSpecStaticSiteGithubPtrType) ToGetAppSpecStaticSiteGithubPtrOutput() GetAppSpecStaticSiteGithubPtrOutput {
+	return i.ToGetAppSpecStaticSiteGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecStaticSiteGithubPtrType) ToGetAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGithubPtrOutput)
+}
+
+type GetAppSpecStaticSiteGithubOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteGithubOutput) ToGetAppSpecStaticSiteGithubOutput() GetAppSpecStaticSiteGithubOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGithubOutput) ToGetAppSpecStaticSiteGithubOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGithubOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGithubOutput) ToGetAppSpecStaticSiteGithubPtrOutput() GetAppSpecStaticSiteGithubPtrOutput {
+	return o.ToGetAppSpecStaticSiteGithubPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecStaticSiteGithubOutput) ToGetAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGithub) *GetAppSpecStaticSiteGithub {
+		return &v
+	}).(GetAppSpecStaticSiteGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecStaticSiteGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecStaticSiteGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecStaticSiteGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteGithubPtrOutput) ToGetAppSpecStaticSiteGithubPtrOutput() GetAppSpecStaticSiteGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGithubPtrOutput) ToGetAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGithubPtrOutput) Elem() GetAppSpecStaticSiteGithubOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGithub) GetAppSpecStaticSiteGithub { return *v }).(GetAppSpecStaticSiteGithubOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecStaticSiteGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecStaticSiteGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecStaticSiteGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteRoutes struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+}
+
+// GetAppSpecStaticSiteRoutesInput is an input type that accepts GetAppSpecStaticSiteRoutesArgs and GetAppSpecStaticSiteRoutesOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteRoutesInput` via:
+//
+//          GetAppSpecStaticSiteRoutesArgs{...}
+type GetAppSpecStaticSiteRoutesInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteRoutesOutput() GetAppSpecStaticSiteRoutesOutput
+	ToGetAppSpecStaticSiteRoutesOutputWithContext(context.Context) GetAppSpecStaticSiteRoutesOutput
+}
+
+type GetAppSpecStaticSiteRoutesArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (GetAppSpecStaticSiteRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteRoutes)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteRoutesArgs) ToGetAppSpecStaticSiteRoutesOutput() GetAppSpecStaticSiteRoutesOutput {
+	return i.ToGetAppSpecStaticSiteRoutesOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteRoutesArgs) ToGetAppSpecStaticSiteRoutesOutputWithContext(ctx context.Context) GetAppSpecStaticSiteRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteRoutesOutput)
+}
+
+type GetAppSpecStaticSiteRoutesOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteRoutes)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteRoutesOutput) ToGetAppSpecStaticSiteRoutesOutput() GetAppSpecStaticSiteRoutesOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteRoutesOutput) ToGetAppSpecStaticSiteRoutesOutputWithContext(ctx context.Context) GetAppSpecStaticSiteRoutesOutput {
+	return o
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o GetAppSpecStaticSiteRoutesOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteRoutes) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorker struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath *string `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug *string `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs []GetAppSpecWorkerEnv `pulumi:"envs"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git *GetAppSpecWorkerGit `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github *GetAppSpecWorkerGithub `pulumi:"github"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	// The name of the component
+	Name   string                 `pulumi:"name"`
+	Routes GetAppSpecWorkerRoutes `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand *string `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// GetAppSpecWorkerInput is an input type that accepts GetAppSpecWorkerArgs and GetAppSpecWorkerOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerInput` via:
+//
+//          GetAppSpecWorkerArgs{...}
+type GetAppSpecWorkerInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerOutput() GetAppSpecWorkerOutput
+	ToGetAppSpecWorkerOutputWithContext(context.Context) GetAppSpecWorkerOutput
+}
+
+type GetAppSpecWorkerArgs struct {
+	// An optional build command to run while building this component from source.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs GetAppSpecWorkerEnvArrayInput `pulumi:"envs"`
+	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	Git GetAppSpecWorkerGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	Github GetAppSpecWorkerGithubPtrInput `pulumi:"github"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	// The name of the component
+	Name   pulumi.StringInput          `pulumi:"name"`
+	Routes GetAppSpecWorkerRoutesInput `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (GetAppSpecWorkerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorker)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerArgs) ToGetAppSpecWorkerOutput() GetAppSpecWorkerOutput {
+	return i.ToGetAppSpecWorkerOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerArgs) ToGetAppSpecWorkerOutputWithContext(ctx context.Context) GetAppSpecWorkerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerOutput)
+}
+
+// GetAppSpecWorkerArrayInput is an input type that accepts GetAppSpecWorkerArray and GetAppSpecWorkerArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerArrayInput` via:
+//
+//          GetAppSpecWorkerArray{ GetAppSpecWorkerArgs{...} }
+type GetAppSpecWorkerArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerArrayOutput() GetAppSpecWorkerArrayOutput
+	ToGetAppSpecWorkerArrayOutputWithContext(context.Context) GetAppSpecWorkerArrayOutput
+}
+
+type GetAppSpecWorkerArray []GetAppSpecWorkerInput
+
+func (GetAppSpecWorkerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorker)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerArray) ToGetAppSpecWorkerArrayOutput() GetAppSpecWorkerArrayOutput {
+	return i.ToGetAppSpecWorkerArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerArray) ToGetAppSpecWorkerArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerArrayOutput)
+}
+
+type GetAppSpecWorkerOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorker)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerOutput) ToGetAppSpecWorkerOutput() GetAppSpecWorkerOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerOutput) ToGetAppSpecWorkerOutputWithContext(ctx context.Context) GetAppSpecWorkerOutput {
+	return o
+}
+
+// An optional build command to run while building this component from source.
+func (o GetAppSpecWorkerOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+func (o GetAppSpecWorkerOutput) DockerfilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
+}
+
+// An environment slug describing the type of this app.
+func (o GetAppSpecWorkerOutput) EnvironmentSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o GetAppSpecWorkerOutput) Envs() GetAppSpecWorkerEnvArrayOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) []GetAppSpecWorkerEnv { return v.Envs }).(GetAppSpecWorkerEnvArrayOutput)
+}
+
+// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+func (o GetAppSpecWorkerOutput) Git() GetAppSpecWorkerGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerGit { return v.Git }).(GetAppSpecWorkerGitPtrOutput)
+}
+
+// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+func (o GetAppSpecWorkerOutput) Github() GetAppSpecWorkerGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerGithub { return v.Github }).(GetAppSpecWorkerGithubPtrOutput)
+}
+
+// The amount of instances that this component should be scaled to.
+func (o GetAppSpecWorkerOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// The instance size to use for this component.
+func (o GetAppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component
+func (o GetAppSpecWorkerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecWorkerOutput) Routes() GetAppSpecWorkerRoutesOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) GetAppSpecWorkerRoutes { return v.Routes }).(GetAppSpecWorkerRoutesOutput)
+}
+
+// An optional run command to override the component's default.
+func (o GetAppSpecWorkerOutput) RunCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.RunCommand }).(pulumi.StringPtrOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o GetAppSpecWorkerOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorker)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerArrayOutput) ToGetAppSpecWorkerArrayOutput() GetAppSpecWorkerArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerArrayOutput) ToGetAppSpecWorkerArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorker {
+		return vs[0].([]GetAppSpecWorker)[vs[1].(int)]
+	}).(GetAppSpecWorkerOutput)
+}
+
+type GetAppSpecWorkerEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type string `pulumi:"type"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// GetAppSpecWorkerEnvInput is an input type that accepts GetAppSpecWorkerEnvArgs and GetAppSpecWorkerEnvOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerEnvInput` via:
+//
+//          GetAppSpecWorkerEnvArgs{...}
+type GetAppSpecWorkerEnvInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerEnvOutput() GetAppSpecWorkerEnvOutput
+	ToGetAppSpecWorkerEnvOutputWithContext(context.Context) GetAppSpecWorkerEnvOutput
+}
+
+type GetAppSpecWorkerEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetAppSpecWorkerEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerEnvArgs) ToGetAppSpecWorkerEnvOutput() GetAppSpecWorkerEnvOutput {
+	return i.ToGetAppSpecWorkerEnvOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerEnvArgs) ToGetAppSpecWorkerEnvOutputWithContext(ctx context.Context) GetAppSpecWorkerEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerEnvOutput)
+}
+
+// GetAppSpecWorkerEnvArrayInput is an input type that accepts GetAppSpecWorkerEnvArray and GetAppSpecWorkerEnvArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerEnvArrayInput` via:
+//
+//          GetAppSpecWorkerEnvArray{ GetAppSpecWorkerEnvArgs{...} }
+type GetAppSpecWorkerEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerEnvArrayOutput() GetAppSpecWorkerEnvArrayOutput
+	ToGetAppSpecWorkerEnvArrayOutputWithContext(context.Context) GetAppSpecWorkerEnvArrayOutput
+}
+
+type GetAppSpecWorkerEnvArray []GetAppSpecWorkerEnvInput
+
+func (GetAppSpecWorkerEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerEnvArray) ToGetAppSpecWorkerEnvArrayOutput() GetAppSpecWorkerEnvArrayOutput {
+	return i.ToGetAppSpecWorkerEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerEnvArray) ToGetAppSpecWorkerEnvArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerEnvArrayOutput)
+}
+
+type GetAppSpecWorkerEnvOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerEnvOutput) ToGetAppSpecWorkerEnvOutput() GetAppSpecWorkerEnvOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerEnvOutput) ToGetAppSpecWorkerEnvOutputWithContext(ctx context.Context) GetAppSpecWorkerEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o GetAppSpecWorkerEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o GetAppSpecWorkerEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o GetAppSpecWorkerEnvOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerEnv) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o GetAppSpecWorkerEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerEnvArrayOutput) ToGetAppSpecWorkerEnvArrayOutput() GetAppSpecWorkerEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerEnvArrayOutput) ToGetAppSpecWorkerEnvArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorkerEnv {
+		return vs[0].([]GetAppSpecWorkerEnv)[vs[1].(int)]
+	}).(GetAppSpecWorkerEnvOutput)
+}
+
+type GetAppSpecWorkerGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// GetAppSpecWorkerGitInput is an input type that accepts GetAppSpecWorkerGitArgs and GetAppSpecWorkerGitOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerGitInput` via:
+//
+//          GetAppSpecWorkerGitArgs{...}
+type GetAppSpecWorkerGitInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerGitOutput() GetAppSpecWorkerGitOutput
+	ToGetAppSpecWorkerGitOutputWithContext(context.Context) GetAppSpecWorkerGitOutput
+}
+
+type GetAppSpecWorkerGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (GetAppSpecWorkerGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerGit)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerGitArgs) ToGetAppSpecWorkerGitOutput() GetAppSpecWorkerGitOutput {
+	return i.ToGetAppSpecWorkerGitOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerGitArgs) ToGetAppSpecWorkerGitOutputWithContext(ctx context.Context) GetAppSpecWorkerGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGitOutput)
+}
+
+func (i GetAppSpecWorkerGitArgs) ToGetAppSpecWorkerGitPtrOutput() GetAppSpecWorkerGitPtrOutput {
+	return i.ToGetAppSpecWorkerGitPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerGitArgs) ToGetAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGitOutput).ToGetAppSpecWorkerGitPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerGitPtrInput is an input type that accepts GetAppSpecWorkerGitArgs, GetAppSpecWorkerGitPtr and GetAppSpecWorkerGitPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerGitPtrInput` via:
+//
+//          GetAppSpecWorkerGitArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecWorkerGitPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerGitPtrOutput() GetAppSpecWorkerGitPtrOutput
+	ToGetAppSpecWorkerGitPtrOutputWithContext(context.Context) GetAppSpecWorkerGitPtrOutput
+}
+
+type getAppSpecWorkerGitPtrType GetAppSpecWorkerGitArgs
+
+func GetAppSpecWorkerGitPtr(v *GetAppSpecWorkerGitArgs) GetAppSpecWorkerGitPtrInput {
+	return (*getAppSpecWorkerGitPtrType)(v)
+}
+
+func (*getAppSpecWorkerGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerGit)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerGitPtrType) ToGetAppSpecWorkerGitPtrOutput() GetAppSpecWorkerGitPtrOutput {
+	return i.ToGetAppSpecWorkerGitPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerGitPtrType) ToGetAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGitPtrOutput)
+}
+
+type GetAppSpecWorkerGitOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerGit)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerGitOutput) ToGetAppSpecWorkerGitOutput() GetAppSpecWorkerGitOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGitOutput) ToGetAppSpecWorkerGitOutputWithContext(ctx context.Context) GetAppSpecWorkerGitOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGitOutput) ToGetAppSpecWorkerGitPtrOutput() GetAppSpecWorkerGitPtrOutput {
+	return o.ToGetAppSpecWorkerGitPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerGitOutput) ToGetAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGit) *GetAppSpecWorkerGit {
+		return &v
+	}).(GetAppSpecWorkerGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecWorkerGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecWorkerGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerGitPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerGit)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerGitPtrOutput) ToGetAppSpecWorkerGitPtrOutput() GetAppSpecWorkerGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGitPtrOutput) ToGetAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGitPtrOutput) Elem() GetAppSpecWorkerGitOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGit) GetAppSpecWorkerGit { return *v }).(GetAppSpecWorkerGitOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecWorkerGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecWorkerGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecWorkerGithubInput is an input type that accepts GetAppSpecWorkerGithubArgs and GetAppSpecWorkerGithubOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerGithubInput` via:
+//
+//          GetAppSpecWorkerGithubArgs{...}
+type GetAppSpecWorkerGithubInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerGithubOutput() GetAppSpecWorkerGithubOutput
+	ToGetAppSpecWorkerGithubOutputWithContext(context.Context) GetAppSpecWorkerGithubOutput
+}
+
+type GetAppSpecWorkerGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecWorkerGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerGithub)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerGithubArgs) ToGetAppSpecWorkerGithubOutput() GetAppSpecWorkerGithubOutput {
+	return i.ToGetAppSpecWorkerGithubOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerGithubArgs) ToGetAppSpecWorkerGithubOutputWithContext(ctx context.Context) GetAppSpecWorkerGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGithubOutput)
+}
+
+func (i GetAppSpecWorkerGithubArgs) ToGetAppSpecWorkerGithubPtrOutput() GetAppSpecWorkerGithubPtrOutput {
+	return i.ToGetAppSpecWorkerGithubPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerGithubArgs) ToGetAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGithubOutput).ToGetAppSpecWorkerGithubPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerGithubPtrInput is an input type that accepts GetAppSpecWorkerGithubArgs, GetAppSpecWorkerGithubPtr and GetAppSpecWorkerGithubPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerGithubPtrInput` via:
+//
+//          GetAppSpecWorkerGithubArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecWorkerGithubPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerGithubPtrOutput() GetAppSpecWorkerGithubPtrOutput
+	ToGetAppSpecWorkerGithubPtrOutputWithContext(context.Context) GetAppSpecWorkerGithubPtrOutput
+}
+
+type getAppSpecWorkerGithubPtrType GetAppSpecWorkerGithubArgs
+
+func GetAppSpecWorkerGithubPtr(v *GetAppSpecWorkerGithubArgs) GetAppSpecWorkerGithubPtrInput {
+	return (*getAppSpecWorkerGithubPtrType)(v)
+}
+
+func (*getAppSpecWorkerGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerGithub)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerGithubPtrType) ToGetAppSpecWorkerGithubPtrOutput() GetAppSpecWorkerGithubPtrOutput {
+	return i.ToGetAppSpecWorkerGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerGithubPtrType) ToGetAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGithubPtrOutput)
+}
+
+type GetAppSpecWorkerGithubOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerGithubOutput) ToGetAppSpecWorkerGithubOutput() GetAppSpecWorkerGithubOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGithubOutput) ToGetAppSpecWorkerGithubOutputWithContext(ctx context.Context) GetAppSpecWorkerGithubOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGithubOutput) ToGetAppSpecWorkerGithubPtrOutput() GetAppSpecWorkerGithubPtrOutput {
+	return o.ToGetAppSpecWorkerGithubPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerGithubOutput) ToGetAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGithub) *GetAppSpecWorkerGithub {
+		return &v
+	}).(GetAppSpecWorkerGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecWorkerGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecWorkerGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecWorkerGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerGithubPtrOutput) ToGetAppSpecWorkerGithubPtrOutput() GetAppSpecWorkerGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGithubPtrOutput) ToGetAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGithubPtrOutput) Elem() GetAppSpecWorkerGithubOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGithub) GetAppSpecWorkerGithub { return *v }).(GetAppSpecWorkerGithubOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecWorkerGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecWorkerGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecWorkerGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerRoutes struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+}
+
+// GetAppSpecWorkerRoutesInput is an input type that accepts GetAppSpecWorkerRoutesArgs and GetAppSpecWorkerRoutesOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerRoutesInput` via:
+//
+//          GetAppSpecWorkerRoutesArgs{...}
+type GetAppSpecWorkerRoutesInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerRoutesOutput() GetAppSpecWorkerRoutesOutput
+	ToGetAppSpecWorkerRoutesOutputWithContext(context.Context) GetAppSpecWorkerRoutesOutput
+}
+
+type GetAppSpecWorkerRoutesArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (GetAppSpecWorkerRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerRoutes)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerRoutesArgs) ToGetAppSpecWorkerRoutesOutput() GetAppSpecWorkerRoutesOutput {
+	return i.ToGetAppSpecWorkerRoutesOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerRoutesArgs) ToGetAppSpecWorkerRoutesOutputWithContext(ctx context.Context) GetAppSpecWorkerRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerRoutesOutput)
+}
+
+type GetAppSpecWorkerRoutesOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerRoutes)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerRoutesOutput) ToGetAppSpecWorkerRoutesOutput() GetAppSpecWorkerRoutesOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerRoutesOutput) ToGetAppSpecWorkerRoutesOutputWithContext(ctx context.Context) GetAppSpecWorkerRoutesOutput {
+	return o
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o GetAppSpecWorkerRoutesOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerRoutes) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
 type GetDatabaseClusterMaintenanceWindow struct {
 	// The day of the week on which to apply maintenance updates.
 	Day string `pulumi:"day"`
@@ -2831,6 +8266,366 @@ func (o GetDatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseClusterMaintenanceWindow {
 		return vs[0].([]GetDatabaseClusterMaintenanceWindow)[vs[1].(int)]
 	}).(GetDatabaseClusterMaintenanceWindowOutput)
+}
+
+type GetDomainsDomain struct {
+	// (Required) The name of the domain.
+	// - `ttl`-  The TTL of the domain.
+	Name string `pulumi:"name"`
+	Ttl  int    `pulumi:"ttl"`
+	// The uniform resource name of the domain
+	Urn string `pulumi:"urn"`
+}
+
+// GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
+// You can construct a concrete instance of `GetDomainsDomainInput` via:
+//
+//          GetDomainsDomainArgs{...}
+type GetDomainsDomainInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainOutput() GetDomainsDomainOutput
+	ToGetDomainsDomainOutputWithContext(context.Context) GetDomainsDomainOutput
+}
+
+type GetDomainsDomainArgs struct {
+	// (Required) The name of the domain.
+	// - `ttl`-  The TTL of the domain.
+	Name pulumi.StringInput `pulumi:"name"`
+	Ttl  pulumi.IntInput    `pulumi:"ttl"`
+	// The uniform resource name of the domain
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetDomainsDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
+}
+
+func (i GetDomainsDomainArgs) ToGetDomainsDomainOutput() GetDomainsDomainOutput {
+	return i.ToGetDomainsDomainOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
+}
+
+// GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
+// You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
+//
+//          GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+type GetDomainsDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput
+	ToGetDomainsDomainArrayOutputWithContext(context.Context) GetDomainsDomainArrayOutput
+}
+
+type GetDomainsDomainArray []GetDomainsDomainInput
+
+func (GetDomainsDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
+}
+
+func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput {
+	return i.ToGetDomainsDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
+}
+
+type GetDomainsDomainOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
+}
+
+func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutput {
+	return o
+}
+
+func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
+	return o
+}
+
+// (Required) The name of the domain.
+// - `ttl`-  The TTL of the domain.
+func (o GetDomainsDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsDomainOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The uniform resource name of the domain
+func (o GetDomainsDomainOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetDomainsDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
+}
+
+func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
+		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
+	}).(GetDomainsDomainOutput)
+}
+
+type GetDomainsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves domains
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetDomainsFilterInput is an input type that accepts GetDomainsFilterArgs and GetDomainsFilterOutput values.
+// You can construct a concrete instance of `GetDomainsFilterInput` via:
+//
+//          GetDomainsFilterArgs{...}
+type GetDomainsFilterInput interface {
+	pulumi.Input
+
+	ToGetDomainsFilterOutput() GetDomainsFilterOutput
+	ToGetDomainsFilterOutputWithContext(context.Context) GetDomainsFilterOutput
+}
+
+type GetDomainsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves domains
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDomainsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsFilter)(nil)).Elem()
+}
+
+func (i GetDomainsFilterArgs) ToGetDomainsFilterOutput() GetDomainsFilterOutput {
+	return i.ToGetDomainsFilterOutputWithContext(context.Background())
+}
+
+func (i GetDomainsFilterArgs) ToGetDomainsFilterOutputWithContext(ctx context.Context) GetDomainsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsFilterOutput)
+}
+
+// GetDomainsFilterArrayInput is an input type that accepts GetDomainsFilterArray and GetDomainsFilterArrayOutput values.
+// You can construct a concrete instance of `GetDomainsFilterArrayInput` via:
+//
+//          GetDomainsFilterArray{ GetDomainsFilterArgs{...} }
+type GetDomainsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsFilterArrayOutput() GetDomainsFilterArrayOutput
+	ToGetDomainsFilterArrayOutputWithContext(context.Context) GetDomainsFilterArrayOutput
+}
+
+type GetDomainsFilterArray []GetDomainsFilterInput
+
+func (GetDomainsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsFilter)(nil)).Elem()
+}
+
+func (i GetDomainsFilterArray) ToGetDomainsFilterArrayOutput() GetDomainsFilterArrayOutput {
+	return i.ToGetDomainsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsFilterArray) ToGetDomainsFilterArrayOutputWithContext(ctx context.Context) GetDomainsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsFilterArrayOutput)
+}
+
+type GetDomainsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsFilter)(nil)).Elem()
+}
+
+func (o GetDomainsFilterOutput) ToGetDomainsFilterOutput() GetDomainsFilterOutput {
+	return o
+}
+
+func (o GetDomainsFilterOutput) ToGetDomainsFilterOutputWithContext(ctx context.Context) GetDomainsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetDomainsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+func (o GetDomainsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetDomainsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves domains
+// where the `key` field takes on one or more of the values provided here.
+func (o GetDomainsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDomainsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsFilter)(nil)).Elem()
+}
+
+func (o GetDomainsFilterArrayOutput) ToGetDomainsFilterArrayOutput() GetDomainsFilterArrayOutput {
+	return o
+}
+
+func (o GetDomainsFilterArrayOutput) ToGetDomainsFilterArrayOutputWithContext(ctx context.Context) GetDomainsFilterArrayOutput {
+	return o
+}
+
+func (o GetDomainsFilterArrayOutput) Index(i pulumi.IntInput) GetDomainsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsFilter {
+		return vs[0].([]GetDomainsFilter)[vs[1].(int)]
+	}).(GetDomainsFilterOutput)
+}
+
+type GetDomainsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+	Key string `pulumi:"key"`
+}
+
+// GetDomainsSortInput is an input type that accepts GetDomainsSortArgs and GetDomainsSortOutput values.
+// You can construct a concrete instance of `GetDomainsSortInput` via:
+//
+//          GetDomainsSortArgs{...}
+type GetDomainsSortInput interface {
+	pulumi.Input
+
+	ToGetDomainsSortOutput() GetDomainsSortOutput
+	ToGetDomainsSortOutputWithContext(context.Context) GetDomainsSortOutput
+}
+
+type GetDomainsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetDomainsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsSort)(nil)).Elem()
+}
+
+func (i GetDomainsSortArgs) ToGetDomainsSortOutput() GetDomainsSortOutput {
+	return i.ToGetDomainsSortOutputWithContext(context.Background())
+}
+
+func (i GetDomainsSortArgs) ToGetDomainsSortOutputWithContext(ctx context.Context) GetDomainsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsSortOutput)
+}
+
+// GetDomainsSortArrayInput is an input type that accepts GetDomainsSortArray and GetDomainsSortArrayOutput values.
+// You can construct a concrete instance of `GetDomainsSortArrayInput` via:
+//
+//          GetDomainsSortArray{ GetDomainsSortArgs{...} }
+type GetDomainsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsSortArrayOutput() GetDomainsSortArrayOutput
+	ToGetDomainsSortArrayOutputWithContext(context.Context) GetDomainsSortArrayOutput
+}
+
+type GetDomainsSortArray []GetDomainsSortInput
+
+func (GetDomainsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsSort)(nil)).Elem()
+}
+
+func (i GetDomainsSortArray) ToGetDomainsSortArrayOutput() GetDomainsSortArrayOutput {
+	return i.ToGetDomainsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsSortArray) ToGetDomainsSortArrayOutputWithContext(ctx context.Context) GetDomainsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsSortArrayOutput)
+}
+
+type GetDomainsSortOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsSort)(nil)).Elem()
+}
+
+func (o GetDomainsSortOutput) ToGetDomainsSortOutput() GetDomainsSortOutput {
+	return o
+}
+
+func (o GetDomainsSortOutput) ToGetDomainsSortOutputWithContext(ctx context.Context) GetDomainsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetDomainsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+func (o GetDomainsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetDomainsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsSort)(nil)).Elem()
+}
+
+func (o GetDomainsSortArrayOutput) ToGetDomainsSortArrayOutput() GetDomainsSortArrayOutput {
+	return o
+}
+
+func (o GetDomainsSortArrayOutput) ToGetDomainsSortArrayOutputWithContext(ctx context.Context) GetDomainsSortArrayOutput {
+	return o
+}
+
+func (o GetDomainsSortArrayOutput) Index(i pulumi.IntInput) GetDomainsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsSort {
+		return vs[0].([]GetDomainsSort)[vs[1].(int)]
+	}).(GetDomainsSortOutput)
 }
 
 type GetDropletsDroplet struct {
@@ -3141,11 +8936,19 @@ func (o GetDropletsDropletArrayOutput) Index(i pulumi.IntInput) GetDropletsDropl
 }
 
 type GetDropletsFilter struct {
-	// Filter the Droplets by this key. This may be one of '`backups`, `createdAt`, `disk`, `id`,
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
 	// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
 	// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
-	// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`'.
+	// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
 	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
 	// A list of values to match against the `key` field. Only retrieves Droplets
 	// where the `key` field takes on one or more of the values provided here.
 	Values []string `pulumi:"values"`
@@ -3163,11 +8966,19 @@ type GetDropletsFilterInput interface {
 }
 
 type GetDropletsFilterArgs struct {
-	// Filter the Droplets by this key. This may be one of '`backups`, `createdAt`, `disk`, `id`,
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
 	// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
 	// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
-	// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`'.
+	// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
 	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
 	// A list of values to match against the `key` field. Only retrieves Droplets
 	// where the `key` field takes on one or more of the values provided here.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -3224,12 +9035,26 @@ func (o GetDropletsFilterOutput) ToGetDropletsFilterOutputWithContext(ctx contex
 	return o
 }
 
-// Filter the Droplets by this key. This may be one of '`backups`, `createdAt`, `disk`, `id`,
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetDropletsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDropletsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
 // `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
 // `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
-// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`'.
+// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
 func (o GetDropletsFilterOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetDropletsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDropletsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
 // A list of values to match against the `key` field. Only retrieves Droplets
@@ -3374,10 +9199,18 @@ func (o GetDropletsSortArrayOutput) Index(i pulumi.IntInput) GetDropletsSortOutp
 }
 
 type GetImagesFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
 	// Filter the images by this key. This may be one of `distribution`, `errorMessage`,
 	// `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
 	// `tags`, or `type`.
 	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
 	// A list of values to match against the `key` field. Only retrieves images
 	// where the `key` field takes on one or more of the values provided here.
 	Values []string `pulumi:"values"`
@@ -3395,10 +9228,18 @@ type GetImagesFilterInput interface {
 }
 
 type GetImagesFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
 	// Filter the images by this key. This may be one of `distribution`, `errorMessage`,
 	// `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
 	// `tags`, or `type`.
 	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
 	// A list of values to match against the `key` field. Only retrieves images
 	// where the `key` field takes on one or more of the values provided here.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -3455,11 +9296,25 @@ func (o GetImagesFilterOutput) ToGetImagesFilterOutputWithContext(ctx context.Co
 	return o
 }
 
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetImagesFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetImagesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
 // Filter the images by this key. This may be one of `distribution`, `errorMessage`,
 // `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
 // `tags`, or `type`.
 func (o GetImagesFilterOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetImagesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
 // A list of values to match against the `key` field. Only retrieves images
@@ -4553,9 +10408,17 @@ func (o GetLoadBalancerStickySessionsOutput) Type() pulumi.StringOutput {
 }
 
 type GetProjectsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
 	// Filter the projects by this key. This may be one of `name`,
 	// `purpose`, `description`, `environment`, or `isDefault`.
 	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
 	// A list of values to match against the `key` field. Only retrieves projects
 	// where the `key` field takes on one or more of the values provided here.
 	Values []string `pulumi:"values"`
@@ -4573,9 +10436,17 @@ type GetProjectsFilterInput interface {
 }
 
 type GetProjectsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
 	// Filter the projects by this key. This may be one of `name`,
 	// `purpose`, `description`, `environment`, or `isDefault`.
 	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
 	// A list of values to match against the `key` field. Only retrieves projects
 	// where the `key` field takes on one or more of the values provided here.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -4632,10 +10503,24 @@ func (o GetProjectsFilterOutput) ToGetProjectsFilterOutputWithContext(ctx contex
 	return o
 }
 
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetProjectsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
 // Filter the projects by this key. This may be one of `name`,
 // `purpose`, `description`, `environment`, or `isDefault`.
 func (o GetProjectsFilterOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetProjectsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
 // A list of values to match against the `key` field. Only retrieves projects
@@ -4958,9 +10843,17 @@ func (o GetProjectsSortArrayOutput) Index(i pulumi.IntInput) GetProjectsSortOutp
 }
 
 type GetRegionsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
 	// Filter the regions by this key. This may be one of `slug`,
 	// `name`, `available`, `features`, or `sizes`.
 	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
 	// A list of values to match against the `key` field. Only retrieves regions
 	// where the `key` field takes on one or more of the values provided here.
 	Values []string `pulumi:"values"`
@@ -4978,9 +10871,17 @@ type GetRegionsFilterInput interface {
 }
 
 type GetRegionsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
 	// Filter the regions by this key. This may be one of `slug`,
 	// `name`, `available`, `features`, or `sizes`.
 	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
 	// A list of values to match against the `key` field. Only retrieves regions
 	// where the `key` field takes on one or more of the values provided here.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -5037,10 +10938,24 @@ func (o GetRegionsFilterOutput) ToGetRegionsFilterOutputWithContext(ctx context.
 	return o
 }
 
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetRegionsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRegionsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
 // Filter the regions by this key. This may be one of `slug`,
 // `name`, `available`, `features`, or `sizes`.
 func (o GetRegionsFilterOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetRegionsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegionsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
 // A list of values to match against the `key` field. Only retrieves regions
@@ -5312,11 +11227,19 @@ func (o GetRegionsSortArrayOutput) Index(i pulumi.IntInput) GetRegionsSortOutput
 }
 
 type GetSizesFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
 	// Filter the sizes by this key. This may be one of `slug`,
 	// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
 	// `priceHourly`, or `available`.
 	Key string `pulumi:"key"`
-	// Only retrieves images which keys has value that matches
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// Only retrieves sizes which keys has value that matches
 	// one of the values provided here.
 	Values []string `pulumi:"values"`
 }
@@ -5333,11 +11256,19 @@ type GetSizesFilterInput interface {
 }
 
 type GetSizesFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
 	// Filter the sizes by this key. This may be one of `slug`,
 	// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
 	// `priceHourly`, or `available`.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Only retrieves images which keys has value that matches
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// Only retrieves sizes which keys has value that matches
 	// one of the values provided here.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -5393,6 +11324,13 @@ func (o GetSizesFilterOutput) ToGetSizesFilterOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetSizesFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSizesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
 // Filter the sizes by this key. This may be one of `slug`,
 // `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
 // `priceHourly`, or `available`.
@@ -5400,7 +11338,14 @@ func (o GetSizesFilterOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSizesFilter) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Only retrieves images which keys has value that matches
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetSizesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSizesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// Only retrieves sizes which keys has value that matches
 // one of the values provided here.
 func (o GetSizesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSizesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -5829,9 +11774,17 @@ func (o GetSpacesBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetSpacesBuc
 }
 
 type GetSpacesBucketsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
 	// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
 	Key string `pulumi:"key"`
-	// A list of values to match against the `key` field. Only retrieves images
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves Spaces buckets
 	// where the `key` field takes on one or more of the values provided here.
 	Values []string `pulumi:"values"`
 }
@@ -5848,9 +11801,17 @@ type GetSpacesBucketsFilterInput interface {
 }
 
 type GetSpacesBucketsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
 	// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
 	Key pulumi.StringInput `pulumi:"key"`
-	// A list of values to match against the `key` field. Only retrieves images
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves Spaces buckets
 	// where the `key` field takes on one or more of the values provided here.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -5906,12 +11867,26 @@ func (o GetSpacesBucketsFilterOutput) ToGetSpacesBucketsFilterOutputWithContext(
 	return o
 }
 
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetSpacesBucketsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
 // Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
 func (o GetSpacesBucketsFilterOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpacesBucketsFilter) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// A list of values to match against the `key` field. Only retrieves images
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetSpacesBucketsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves Spaces buckets
 // where the `key` field takes on one or more of the values provided here.
 func (o GetSpacesBucketsFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSpacesBucketsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -6044,8 +12019,16 @@ func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucke
 }
 
 type GetTagsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
 	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
 	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
 	// Only retrieves tags which keys has value that matches
 	// one of the values provided here.
 	Values []string `pulumi:"values"`
@@ -6063,8 +12046,16 @@ type GetTagsFilterInput interface {
 }
 
 type GetTagsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
 	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
 	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
 	// Only retrieves tags which keys has value that matches
 	// one of the values provided here.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -6121,9 +12112,23 @@ func (o GetTagsFilterOutput) ToGetTagsFilterOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetTagsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTagsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
 // Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
 func (o GetTagsFilterOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTagsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetTagsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTagsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
 // Only retrieves tags which keys has value that matches
@@ -6410,6 +12415,42 @@ func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(AppSpecOutput{})
+	pulumi.RegisterOutputType(AppSpecPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecDatabaseOutput{})
+	pulumi.RegisterOutputType(AppSpecDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceEnvOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceEnvArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceGitOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceGitPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceGithubOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceGithubPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceHealthCheckOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceRoutesOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceRoutesPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteEnvOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteEnvArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteGitOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteGitPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteGithubOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteGithubPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteRoutesOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteRoutesPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerEnvOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerEnvArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerGitOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerGitPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerGithubOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerGithubPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerRoutesOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerRoutesPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseFirewallRuleOutput{})
@@ -6444,8 +12485,46 @@ func init() {
 	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput{})
 	pulumi.RegisterOutputType(SpacesBucketVersioningOutput{})
 	pulumi.RegisterOutputType(SpacesBucketVersioningPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecOutput{})
+	pulumi.RegisterOutputType(GetAppSpecDatabaseOutput{})
+	pulumi.RegisterOutputType(GetAppSpecDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceEnvOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGitOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGitPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGithubOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGithubPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceRoutesOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteEnvOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteGitOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteGitPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteGithubOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteGithubPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteRoutesOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerEnvOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerGitOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerGitPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerGithubOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerGithubPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerRoutesOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsFilterOutput{})
+	pulumi.RegisterOutputType(GetDomainsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsSortOutput{})
+	pulumi.RegisterOutputType(GetDomainsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetDropletsDropletOutput{})
 	pulumi.RegisterOutputType(GetDropletsDropletArrayOutput{})
 	pulumi.RegisterOutputType(GetDropletsFilterOutput{})
