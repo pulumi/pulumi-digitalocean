@@ -20,6 +20,7 @@ import (
 	"github.com/digitalocean/terraform-provider-digitalocean/digitalocean"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 )
 
@@ -59,7 +60,7 @@ func makeResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the Digital Ocean package.
 func Provider() tfbridge.ProviderInfo {
-	p := digitalocean.Provider().(*schema.Provider)
+	p := shimv1.NewProvider(digitalocean.Provider().(*schema.Provider))
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "digitalocean",
@@ -368,22 +369,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
-	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
-	const nameField = "name"
-	for resname, res := range prov.Resources {
-		if schema := p.ResourcesMap[resname]; schema != nil {
-			// Only apply auto-name to input properties (Optional || Required) named `name`
-			if tfs, has := schema.Schema[nameField]; has && (tfs.Optional || tfs.Required) {
-				if _, hasfield := res.Fields[nameField]; !hasfield {
-					if res.Fields == nil {
-						res.Fields = make(map[string]*tfbridge.SchemaInfo)
-					}
-					res.Fields[nameField] = tfbridge.AutoName(nameField, 255)
-				}
-			}
-		}
-	}
+	prov.SetAutonaming(255, "-")
 
 	return prov
 }

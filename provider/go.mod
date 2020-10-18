@@ -5,7 +5,7 @@ go 1.14
 require (
 	github.com/digitalocean/terraform-provider-digitalocean v1.22.2
 	github.com/hashicorp/terraform-plugin-sdk v1.15.0
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.8.0
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.9.1
 	github.com/pulumi/pulumi/sdk/v2 v2.10.0
 )
 
@@ -20,4 +20,5 @@ replace (
 	golang.org/x/crypto => golang.org/x/crypto v0.0.0-20200323165209-0ec3e9974c59
 	k8s.io/api => k8s.io/api v0.0.0-20191121015604-11707872ac1c
 	k8s.io/client-go => k8s.io/client-go v0.0.0-20191029021442-5f2132fc4383
+	github.com/hashicorp/terraform-plugin-test => github.com/hashicorp/terraform-plugin-test v1.3.0
 )
