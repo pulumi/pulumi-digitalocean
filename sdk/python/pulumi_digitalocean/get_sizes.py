@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,7 +37,7 @@ class GetSizesResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetSizesFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetSizesFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -50,12 +50,12 @@ class GetSizesResult:
 
     @property
     @pulumi.getter
-    def sizes(self) -> List['outputs.GetSizesSizeResult']:
+    def sizes(self) -> Sequence['outputs.GetSizesSizeResult']:
         return pulumi.get(self, "sizes")
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[List['outputs.GetSizesSortResult']]:
+    def sorts(self) -> Optional[Sequence['outputs.GetSizesSortResult']]:
         return pulumi.get(self, "sorts")
 
 
@@ -71,8 +71,8 @@ class AwaitableGetSizesResult(GetSizesResult):
             sorts=self.sorts)
 
 
-def get_sizes(filters: Optional[List[pulumi.InputType['GetSizesFilterArgs']]] = None,
-              sorts: Optional[List[pulumi.InputType['GetSizesSortArgs']]] = None,
+def get_sizes(filters: Optional[Sequence[pulumi.InputType['GetSizesFilterArgs']]] = None,
+              sorts: Optional[Sequence[pulumi.InputType['GetSizesSortArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSizesResult:
     """
     Retrieves information about the Droplet sizes that DigitalOcean supports, with
@@ -145,9 +145,9 @@ def get_sizes(filters: Optional[List[pulumi.InputType['GetSizesFilterArgs']]] = 
     ```
 
 
-    :param List[pulumi.InputType['GetSizesFilterArgs']] filters: Filter the results.
+    :param Sequence[pulumi.InputType['GetSizesFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param List[pulumi.InputType['GetSizesSortArgs']] sorts: Sort the results.
+    :param Sequence[pulumi.InputType['GetSizesSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

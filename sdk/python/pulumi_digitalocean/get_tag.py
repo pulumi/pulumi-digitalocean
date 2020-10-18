@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -20,34 +20,34 @@ class GetTagResult:
     A collection of values returned by getTag.
     """
     def __init__(__self__, databases_count=None, droplets_count=None, id=None, images_count=None, name=None, total_resource_count=None, volume_snapshots_count=None, volumes_count=None):
-        if databases_count and not isinstance(databases_count, float):
-            raise TypeError("Expected argument 'databases_count' to be a float")
+        if databases_count and not isinstance(databases_count, int):
+            raise TypeError("Expected argument 'databases_count' to be a int")
         pulumi.set(__self__, "databases_count", databases_count)
-        if droplets_count and not isinstance(droplets_count, float):
-            raise TypeError("Expected argument 'droplets_count' to be a float")
+        if droplets_count and not isinstance(droplets_count, int):
+            raise TypeError("Expected argument 'droplets_count' to be a int")
         pulumi.set(__self__, "droplets_count", droplets_count)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if images_count and not isinstance(images_count, float):
-            raise TypeError("Expected argument 'images_count' to be a float")
+        if images_count and not isinstance(images_count, int):
+            raise TypeError("Expected argument 'images_count' to be a int")
         pulumi.set(__self__, "images_count", images_count)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if total_resource_count and not isinstance(total_resource_count, float):
-            raise TypeError("Expected argument 'total_resource_count' to be a float")
+        if total_resource_count and not isinstance(total_resource_count, int):
+            raise TypeError("Expected argument 'total_resource_count' to be a int")
         pulumi.set(__self__, "total_resource_count", total_resource_count)
-        if volume_snapshots_count and not isinstance(volume_snapshots_count, float):
-            raise TypeError("Expected argument 'volume_snapshots_count' to be a float")
+        if volume_snapshots_count and not isinstance(volume_snapshots_count, int):
+            raise TypeError("Expected argument 'volume_snapshots_count' to be a int")
         pulumi.set(__self__, "volume_snapshots_count", volume_snapshots_count)
-        if volumes_count and not isinstance(volumes_count, float):
-            raise TypeError("Expected argument 'volumes_count' to be a float")
+        if volumes_count and not isinstance(volumes_count, int):
+            raise TypeError("Expected argument 'volumes_count' to be a int")
         pulumi.set(__self__, "volumes_count", volumes_count)
 
     @property
     @pulumi.getter(name="databasesCount")
-    def databases_count(self) -> float:
+    def databases_count(self) -> int:
         """
         A count of the database clusters that the tag is applied to.
         """
@@ -55,7 +55,7 @@ class GetTagResult:
 
     @property
     @pulumi.getter(name="dropletsCount")
-    def droplets_count(self) -> float:
+    def droplets_count(self) -> int:
         """
         A count of the Droplets the tag is applied to.
         """
@@ -71,7 +71,7 @@ class GetTagResult:
 
     @property
     @pulumi.getter(name="imagesCount")
-    def images_count(self) -> float:
+    def images_count(self) -> int:
         """
         A count of the images that the tag is applied to.
         """
@@ -84,7 +84,7 @@ class GetTagResult:
 
     @property
     @pulumi.getter(name="totalResourceCount")
-    def total_resource_count(self) -> float:
+    def total_resource_count(self) -> int:
         """
         A count of the total number of resources that the tag is applied to.
         """
@@ -92,7 +92,7 @@ class GetTagResult:
 
     @property
     @pulumi.getter(name="volumeSnapshotsCount")
-    def volume_snapshots_count(self) -> float:
+    def volume_snapshots_count(self) -> int:
         """
         A count of the volume snapshots that the tag is applied to.
         """
@@ -100,7 +100,7 @@ class GetTagResult:
 
     @property
     @pulumi.getter(name="volumesCount")
-    def volumes_count(self) -> float:
+    def volumes_count(self) -> int:
         """
         A count of the volumes that the tag is applied to.
         """

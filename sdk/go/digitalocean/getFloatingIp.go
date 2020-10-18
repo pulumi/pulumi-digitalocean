@@ -24,10 +24,13 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		publicIp := cfg.RequireObject("publicIp")
 // 		example, err := digitalocean.LookupFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
 // 			IpAddress: publicIp,
 // 		}, nil)

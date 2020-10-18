@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,7 +37,7 @@ class GetImagesResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetImagesFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetImagesFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -50,7 +50,7 @@ class GetImagesResult:
 
     @property
     @pulumi.getter
-    def images(self) -> List['outputs.GetImagesImageResult']:
+    def images(self) -> Sequence['outputs.GetImagesImageResult']:
         """
         A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:  
         - `slug`: Unique text identifier of the image.
@@ -62,7 +62,7 @@ class GetImagesResult:
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[List['outputs.GetImagesSortResult']]:
+    def sorts(self) -> Optional[Sequence['outputs.GetImagesSortResult']]:
         return pulumi.get(self, "sorts")
 
 
@@ -78,8 +78,8 @@ class AwaitableGetImagesResult(GetImagesResult):
             sorts=self.sorts)
 
 
-def get_images(filters: Optional[List[pulumi.InputType['GetImagesFilterArgs']]] = None,
-               sorts: Optional[List[pulumi.InputType['GetImagesSortArgs']]] = None,
+def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs']]] = None,
+               sorts: Optional[Sequence[pulumi.InputType['GetImagesSortArgs']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
     Get information on images for use in other resources (e.g. creating a Droplet
@@ -131,9 +131,9 @@ def get_images(filters: Optional[List[pulumi.InputType['GetImagesFilterArgs']]] 
     ```
 
 
-    :param List[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.
+    :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param List[pulumi.InputType['GetImagesSortArgs']] sorts: Sort the results.
+    :param Sequence[pulumi.InputType['GetImagesSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

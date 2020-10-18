@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,7 +37,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def domains(self) -> List['outputs.GetDomainsDomainResult']:
+    def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
         """
         A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:
         """
@@ -45,7 +45,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetDomainsFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetDomainsFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -58,7 +58,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[List['outputs.GetDomainsSortResult']]:
+    def sorts(self) -> Optional[Sequence['outputs.GetDomainsSortResult']]:
         return pulumi.get(self, "sorts")
 
 
@@ -74,15 +74,15 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             sorts=self.sorts)
 
 
-def get_domains(filters: Optional[List[pulumi.InputType['GetDomainsFilterArgs']]] = None,
-                sorts: Optional[List[pulumi.InputType['GetDomainsSortArgs']]] = None,
+def get_domains(filters: Optional[Sequence[pulumi.InputType['GetDomainsFilterArgs']]] = None,
+                sorts: Optional[Sequence[pulumi.InputType['GetDomainsSortArgs']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
     Use this data source to access information about an existing resource.
 
-    :param List[pulumi.InputType['GetDomainsFilterArgs']] filters: Filter the results.
+    :param Sequence[pulumi.InputType['GetDomainsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param List[pulumi.InputType['GetDomainsSortArgs']] sorts: Sort the results.
+    :param Sequence[pulumi.InputType['GetDomainsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

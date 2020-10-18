@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Cdn']
@@ -18,7 +18,7 @@ class Cdn(pulumi.CustomResource):
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
                  origin: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -66,7 +66,7 @@ class Cdn(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_id: The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         :param pulumi.Input[str] custom_domain: The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         :param pulumi.Input[str] origin: The fully qualified domain name, (FQDN) for a Space.
-        :param pulumi.Input[float] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
+        :param pulumi.Input[int] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -108,7 +108,7 @@ class Cdn(pulumi.CustomResource):
             custom_domain: Optional[pulumi.Input[str]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             origin: Optional[pulumi.Input[str]] = None,
-            ttl: Optional[pulumi.Input[float]] = None) -> 'Cdn':
+            ttl: Optional[pulumi.Input[int]] = None) -> 'Cdn':
         """
         Get an existing Cdn resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -121,7 +121,7 @@ class Cdn(pulumi.CustomResource):
         :param pulumi.Input[str] custom_domain: The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         :param pulumi.Input[str] endpoint: The fully qualified domain name (FQDN) from which the CDN-backed content is served.
         :param pulumi.Input[str] origin: The fully qualified domain name, (FQDN) for a Space.
-        :param pulumi.Input[float] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
+        :param pulumi.Input[int] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -177,7 +177,7 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[float]:
+    def ttl(self) -> pulumi.Output[int]:
         """
         The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
         """

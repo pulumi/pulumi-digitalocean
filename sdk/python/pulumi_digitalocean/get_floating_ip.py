@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -20,8 +20,8 @@ class GetFloatingIpResult:
     A collection of values returned by getFloatingIp.
     """
     def __init__(__self__, droplet_id=None, floating_ip_urn=None, id=None, ip_address=None, region=None):
-        if droplet_id and not isinstance(droplet_id, float):
-            raise TypeError("Expected argument 'droplet_id' to be a float")
+        if droplet_id and not isinstance(droplet_id, int):
+            raise TypeError("Expected argument 'droplet_id' to be a int")
         pulumi.set(__self__, "droplet_id", droplet_id)
         if floating_ip_urn and not isinstance(floating_ip_urn, str):
             raise TypeError("Expected argument 'floating_ip_urn' to be a str")
@@ -38,7 +38,7 @@ class GetFloatingIpResult:
 
     @property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> float:
+    def droplet_id(self) -> int:
         return pulumi.get(self, "droplet_id")
 
     @property

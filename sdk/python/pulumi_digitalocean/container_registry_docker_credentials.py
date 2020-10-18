@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ContainerRegistryDockerCredentials']
@@ -15,7 +15,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expiry_seconds: Optional[pulumi.Input[float]] = None,
+                 expiry_seconds: Optional[pulumi.Input[int]] = None,
                  registry_name: Optional[pulumi.Input[str]] = None,
                  write: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -51,7 +51,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+        :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
         :param pulumi.Input[str] registry_name: The name of the container registry.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
         """
@@ -91,7 +91,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             credential_expiration_time: Optional[pulumi.Input[str]] = None,
             docker_credentials: Optional[pulumi.Input[str]] = None,
-            expiry_seconds: Optional[pulumi.Input[float]] = None,
+            expiry_seconds: Optional[pulumi.Input[int]] = None,
             registry_name: Optional[pulumi.Input[str]] = None,
             write: Optional[pulumi.Input[bool]] = None) -> 'ContainerRegistryDockerCredentials':
         """
@@ -101,7 +101,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+        :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
         :param pulumi.Input[str] registry_name: The name of the container registry.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
         """
@@ -128,7 +128,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expirySeconds")
-    def expiry_seconds(self) -> pulumi.Output[Optional[float]]:
+    def expiry_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Project']
@@ -19,7 +19,7 @@ class Project(pulumi.CustomResource):
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -79,7 +79,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] environment: the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
         :param pulumi.Input[str] name: The name of the Project
         :param pulumi.Input[str] purpose: the purpose of the project, (Default: "Web Application")
-        :param pulumi.Input[List[pulumi.Input[str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,10 +123,10 @@ class Project(pulumi.CustomResource):
             environment: Optional[pulumi.Input[str]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            owner_id: Optional[pulumi.Input[float]] = None,
+            owner_id: Optional[pulumi.Input[int]] = None,
             owner_uuid: Optional[pulumi.Input[str]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
-            resources: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -139,10 +139,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] description: the description of the project
         :param pulumi.Input[str] environment: the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
         :param pulumi.Input[str] name: The name of the Project
-        :param pulumi.Input[float] owner_id: the id of the project owner.
+        :param pulumi.Input[int] owner_id: the id of the project owner.
         :param pulumi.Input[str] owner_uuid: the unique universal identifier of the project owner.
         :param pulumi.Input[str] purpose: the purpose of the project, (Default: "Web Application")
-        :param pulumi.Input[List[pulumi.Input[str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
         :param pulumi.Input[str] updated_at: the date and time when the project was last updated, (ISO8601)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -200,7 +200,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> pulumi.Output[float]:
+    def owner_id(self) -> pulumi.Output[int]:
         """
         the id of the project owner.
         """
@@ -224,7 +224,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resources(self) -> pulumi.Output[List[str]]:
+    def resources(self) -> pulumi.Output[Sequence[str]]:
         """
         a list of uniform resource names (URNs) for the resources associated with the project
         """

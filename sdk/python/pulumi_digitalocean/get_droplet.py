@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -26,11 +26,11 @@ class GetDropletResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
-        if disk and not isinstance(disk, float):
-            raise TypeError("Expected argument 'disk' to be a float")
+        if disk and not isinstance(disk, int):
+            raise TypeError("Expected argument 'disk' to be a int")
         pulumi.set(__self__, "disk", disk)
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if image and not isinstance(image, str):
             raise TypeError("Expected argument 'image' to be a str")
@@ -53,8 +53,8 @@ class GetDropletResult:
         if locked and not isinstance(locked, bool):
             raise TypeError("Expected argument 'locked' to be a bool")
         pulumi.set(__self__, "locked", locked)
-        if memory and not isinstance(memory, float):
-            raise TypeError("Expected argument 'memory' to be a float")
+        if memory and not isinstance(memory, int):
+            raise TypeError("Expected argument 'memory' to be a int")
         pulumi.set(__self__, "memory", memory)
         if monitoring and not isinstance(monitoring, bool):
             raise TypeError("Expected argument 'monitoring' to be a bool")
@@ -89,8 +89,8 @@ class GetDropletResult:
         if urn and not isinstance(urn, str):
             raise TypeError("Expected argument 'urn' to be a str")
         pulumi.set(__self__, "urn", urn)
-        if vcpus and not isinstance(vcpus, float):
-            raise TypeError("Expected argument 'vcpus' to be a float")
+        if vcpus and not isinstance(vcpus, int):
+            raise TypeError("Expected argument 'vcpus' to be a int")
         pulumi.set(__self__, "vcpus", vcpus)
         if volume_ids and not isinstance(volume_ids, list):
             raise TypeError("Expected argument 'volume_ids' to be a list")
@@ -114,7 +114,7 @@ class GetDropletResult:
 
     @property
     @pulumi.getter
-    def disk(self) -> float:
+    def disk(self) -> int:
         """
         The size of the Droplets disk in GB.
         """
@@ -122,7 +122,7 @@ class GetDropletResult:
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         return pulumi.get(self, "id")
 
     @property
@@ -183,7 +183,7 @@ class GetDropletResult:
 
     @property
     @pulumi.getter
-    def memory(self) -> float:
+    def memory(self) -> int:
         """
         The amount of the Droplets memory in MB.
         """
@@ -257,7 +257,7 @@ class GetDropletResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         """
         A list of the tags associated to the Droplet.
         """
@@ -273,7 +273,7 @@ class GetDropletResult:
 
     @property
     @pulumi.getter
-    def vcpus(self) -> float:
+    def vcpus(self) -> int:
         """
         The number of the Droplets virtual CPUs.
         """
@@ -281,7 +281,7 @@ class GetDropletResult:
 
     @property
     @pulumi.getter(name="volumeIds")
-    def volume_ids(self) -> List[str]:
+    def volume_ids(self) -> Sequence[str]:
         """
         List of the IDs of each volumes attached to the Droplet.
         """
@@ -330,7 +330,7 @@ class AwaitableGetDropletResult(GetDropletResult):
             vpc_uuid=self.vpc_uuid)
 
 
-def get_droplet(id: Optional[float] = None,
+def get_droplet(id: Optional[int] = None,
                 name: Optional[str] = None,
                 tag: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletResult:
@@ -374,7 +374,7 @@ def get_droplet(id: Optional[float] = None,
     ```
 
 
-    :param float id: The ID of the Droplet
+    :param int id: The ID of the Droplet
     :param str name: The name of the Droplet.
     :param str tag: A tag applied to the Droplet.
     """

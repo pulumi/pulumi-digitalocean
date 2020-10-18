@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -124,7 +124,7 @@ class GetKubernetesClusterResult:
 
     @property
     @pulumi.getter(name="kubeConfigs")
-    def kube_configs(self) -> List['outputs.GetKubernetesClusterKubeConfigResult']:
+    def kube_configs(self) -> Sequence['outputs.GetKubernetesClusterKubeConfigResult']:
         return pulumi.get(self, "kube_configs")
 
     @property
@@ -137,7 +137,7 @@ class GetKubernetesClusterResult:
 
     @property
     @pulumi.getter(name="nodePools")
-    def node_pools(self) -> List['outputs.GetKubernetesClusterNodePoolResult']:
+    def node_pools(self) -> Sequence['outputs.GetKubernetesClusterNodePoolResult']:
         """
         A list of node pools associated with the cluster. Each node pool exports the following attributes:
         """
@@ -174,7 +174,7 @@ class GetKubernetesClusterResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         """
         A list of tag names applied to the node pool.
         """
@@ -231,14 +231,14 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
 
 
 def get_kubernetes_cluster(name: Optional[str] = None,
-                           tags: Optional[List[str]] = None,
+                           tags: Optional[Sequence[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClusterResult:
     """
     Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by this provider.
 
 
     :param str name: The name of Kubernetes cluster.
-    :param List[str] tags: A list of tag names applied to the node pool.
+    :param Sequence[str] tags: A list of tag names applied to the node pool.
     """
     __args__ = dict()
     __args__['name'] = name

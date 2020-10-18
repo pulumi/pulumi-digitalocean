@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -77,7 +77,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> List[float]:
+    def droplet_ids(self) -> Sequence[int]:
         return pulumi.get(self, "droplet_ids")
 
     @property
@@ -97,7 +97,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter(name="forwardingRules")
-    def forwarding_rules(self) -> List['outputs.GetLoadBalancerForwardingRuleResult']:
+    def forwarding_rules(self) -> Sequence['outputs.GetLoadBalancerForwardingRuleResult']:
         return pulumi.get(self, "forwarding_rules")
 
     @property

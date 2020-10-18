@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,11 +18,11 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[str]] = None,
-                 droplet_ids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
-                 forwarding_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
+                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
@@ -41,13 +41,13 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
-        :param pulumi.Input[List[pulumi.Input[float]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -107,11 +107,11 @@ class LoadBalancer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             algorithm: Optional[pulumi.Input[str]] = None,
-            droplet_ids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+            droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             droplet_tag: Optional[pulumi.Input[str]] = None,
             enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
-            forwarding_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
+            forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
             healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             load_balancer_urn: Optional[pulumi.Input[str]] = None,
@@ -131,13 +131,13 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
-        :param pulumi.Input[List[pulumi.Input[float]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -184,7 +184,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> pulumi.Output[List[float]]:
+    def droplet_ids(self) -> pulumi.Output[Sequence[int]]:
         """
         A list of the IDs of each droplet to be attached to the Load Balancer.
         """
@@ -218,7 +218,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forwardingRules")
-    def forwarding_rules(self) -> pulumi.Output[List['outputs.LoadBalancerForwardingRule']]:
+    def forwarding_rules(self) -> pulumi.Output[Sequence['outputs.LoadBalancerForwardingRule']]:
         """
         A list of `forwarding_rule` to be assigned to the
         Load Balancer. The `forwarding_rule` block is documented below.

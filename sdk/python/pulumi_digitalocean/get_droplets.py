@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,7 +37,7 @@ class GetDropletsResult:
 
     @property
     @pulumi.getter
-    def droplets(self) -> List['outputs.GetDropletsDropletResult']:
+    def droplets(self) -> Sequence['outputs.GetDropletsDropletResult']:
         """
         A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:
         """
@@ -45,7 +45,7 @@ class GetDropletsResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetDropletsFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetDropletsFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -58,7 +58,7 @@ class GetDropletsResult:
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[List['outputs.GetDropletsSortResult']]:
+    def sorts(self) -> Optional[Sequence['outputs.GetDropletsSortResult']]:
         return pulumi.get(self, "sorts")
 
 
@@ -74,8 +74,8 @@ class AwaitableGetDropletsResult(GetDropletsResult):
             sorts=self.sorts)
 
 
-def get_droplets(filters: Optional[List[pulumi.InputType['GetDropletsFilterArgs']]] = None,
-                 sorts: Optional[List[pulumi.InputType['GetDropletsSortArgs']]] = None,
+def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterArgs']]] = None,
+                 sorts: Optional[Sequence[pulumi.InputType['GetDropletsSortArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletsResult:
     """
     Get information on Droplets for use in other resources, with the ability to filter and sort the results.
@@ -126,9 +126,9 @@ def get_droplets(filters: Optional[List[pulumi.InputType['GetDropletsFilterArgs'
     ```
 
 
-    :param List[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.
+    :param Sequence[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param List[pulumi.InputType['GetDropletsSortArgs']] sorts: Sort the results.
+    :param Sequence[pulumi.InputType['GetDropletsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

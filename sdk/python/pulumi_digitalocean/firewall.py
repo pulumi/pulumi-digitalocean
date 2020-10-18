@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,11 +17,11 @@ class Firewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_ids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-                 inbound_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]]] = None,
+                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outbound_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -103,14 +103,14 @@ class Firewall(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[float]]] droplet_ids: The list of the IDs of the Droplets assigned
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
                to the Firewall.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]] inbound_rules: The inbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[str] name: The Firewall name
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]] outbound_rules: The outbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -148,13 +148,13 @@ class Firewall(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
-            droplet_ids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-            inbound_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]]] = None,
+            droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            outbound_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]]] = None,
-            pending_changes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPendingChangeArgs']]]]] = None,
+            outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]]] = None,
+            pending_changes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPendingChangeArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Firewall':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Firewall':
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -164,20 +164,20 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: A time value given in ISO8601 combined date and time format
                that represents when the Firewall was created.
-        :param pulumi.Input[List[pulumi.Input[float]]] droplet_ids: The list of the IDs of the Droplets assigned
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
                to the Firewall.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]] inbound_rules: The inbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[str] name: The Firewall name
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]] outbound_rules: The outbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPendingChangeArgs']]]] pending_changes: An list of object containing the fields, "droplet_id",
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPendingChangeArgs']]]] pending_changes: An list of object containing the fields, "droplet_id",
                "removing", and "status".  It is provided to detail exactly which Droplets
                are having their security policies updated.  When empty, all changes
                have been successfully applied.
         :param pulumi.Input[str] status: A status string indicating the current state of the Firewall.
                This can be "waiting", "succeeded", or "failed".
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -204,7 +204,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> pulumi.Output[Optional[List[float]]]:
+    def droplet_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
         """
         The list of the IDs of the Droplets assigned
         to the Firewall.
@@ -213,7 +213,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inboundRules")
-    def inbound_rules(self) -> pulumi.Output[Optional[List['outputs.FirewallInboundRule']]]:
+    def inbound_rules(self) -> pulumi.Output[Optional[Sequence['outputs.FirewallInboundRule']]]:
         """
         The inbound access rule block for the Firewall.
         The `inbound_rule` block is documented below.
@@ -230,7 +230,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outboundRules")
-    def outbound_rules(self) -> pulumi.Output[Optional[List['outputs.FirewallOutboundRule']]]:
+    def outbound_rules(self) -> pulumi.Output[Optional[Sequence['outputs.FirewallOutboundRule']]]:
         """
         The outbound access rule block for the Firewall.
         The `outbound_rule` block is documented below.
@@ -239,7 +239,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pendingChanges")
-    def pending_changes(self) -> pulumi.Output[List['outputs.FirewallPendingChange']]:
+    def pending_changes(self) -> pulumi.Output[Sequence['outputs.FirewallPendingChange']]:
         """
         An list of object containing the fields, "droplet_id",
         "removing", and "status".  It is provided to detail exactly which Droplets
@@ -259,7 +259,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The names of the Tags assigned to the Firewall.
         """

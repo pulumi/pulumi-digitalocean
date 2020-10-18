@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,7 +37,7 @@ class GetRegionsResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetRegionsFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetRegionsFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -50,7 +50,7 @@ class GetRegionsResult:
 
     @property
     @pulumi.getter
-    def regions(self) -> List['outputs.GetRegionsRegionResult']:
+    def regions(self) -> Sequence['outputs.GetRegionsRegionResult']:
         """
         A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
         """
@@ -58,7 +58,7 @@ class GetRegionsResult:
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[List['outputs.GetRegionsSortResult']]:
+    def sorts(self) -> Optional[Sequence['outputs.GetRegionsSortResult']]:
         return pulumi.get(self, "sorts")
 
 
@@ -74,8 +74,8 @@ class AwaitableGetRegionsResult(GetRegionsResult):
             sorts=self.sorts)
 
 
-def get_regions(filters: Optional[List[pulumi.InputType['GetRegionsFilterArgs']]] = None,
-                sorts: Optional[List[pulumi.InputType['GetRegionsSortArgs']]] = None,
+def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArgs']]] = None,
+                sorts: Optional[Sequence[pulumi.InputType['GetRegionsSortArgs']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
     Retrieve information about all supported DigitalOcean regions, with the ability to
@@ -123,9 +123,9 @@ def get_regions(filters: Optional[List[pulumi.InputType['GetRegionsFilterArgs']]
     ```
 
 
-    :param List[pulumi.InputType['GetRegionsFilterArgs']] filters: Filter the results.
+    :param Sequence[pulumi.InputType['GetRegionsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param List[pulumi.InputType['GetRegionsSortArgs']] sorts: Sort the results.
+    :param Sequence[pulumi.InputType['GetRegionsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

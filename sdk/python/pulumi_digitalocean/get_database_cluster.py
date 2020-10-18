@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -39,14 +39,14 @@ class GetDatabaseClusterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if node_count and not isinstance(node_count, float):
-            raise TypeError("Expected argument 'node_count' to be a float")
+        if node_count and not isinstance(node_count, int):
+            raise TypeError("Expected argument 'node_count' to be a int")
         pulumi.set(__self__, "node_count", node_count)
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
         if private_host and not isinstance(private_host, str):
             raise TypeError("Expected argument 'private_host' to be a str")
@@ -113,7 +113,7 @@ class GetDatabaseClusterResult:
 
     @property
     @pulumi.getter(name="maintenanceWindows")
-    def maintenance_windows(self) -> List['outputs.GetDatabaseClusterMaintenanceWindowResult']:
+    def maintenance_windows(self) -> Sequence['outputs.GetDatabaseClusterMaintenanceWindowResult']:
         """
         Defines when the automatic maintenance should be performed for the database cluster.
         """
@@ -126,7 +126,7 @@ class GetDatabaseClusterResult:
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> int:
         """
         Number of nodes that will be included in the cluster.
         """
@@ -142,7 +142,7 @@ class GetDatabaseClusterResult:
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         Network port that the database cluster is listening on.
         """
@@ -190,7 +190,7 @@ class GetDatabaseClusterResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -254,7 +254,7 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
 
 
 def get_database_cluster(name: Optional[str] = None,
-                         tags: Optional[List[str]] = None,
+                         tags: Optional[Sequence[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseClusterResult:
     """
     Provides information on a DigitalOcean database cluster resource.
