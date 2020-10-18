@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -49,7 +49,7 @@ class GetRegionResult:
 
     @property
     @pulumi.getter
-    def features(self) -> List[str]:
+    def features(self) -> Sequence[str]:
         """
         A set of features available in this region.
         """
@@ -73,7 +73,7 @@ class GetRegionResult:
 
     @property
     @pulumi.getter
-    def sizes(self) -> List[str]:
+    def sizes(self) -> Sequence[str]:
         """
         A set of identifying slugs for the Droplet sizes available in this region.
         """

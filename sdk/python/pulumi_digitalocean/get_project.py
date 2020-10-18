@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -38,8 +38,8 @@ class GetProjectResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if owner_id and not isinstance(owner_id, float):
-            raise TypeError("Expected argument 'owner_id' to be a float")
+        if owner_id and not isinstance(owner_id, int):
+            raise TypeError("Expected argument 'owner_id' to be a int")
         pulumi.set(__self__, "owner_id", owner_id)
         if owner_uuid and not isinstance(owner_uuid, str):
             raise TypeError("Expected argument 'owner_uuid' to be a str")
@@ -95,7 +95,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> float:
+    def owner_id(self) -> int:
         """
         The ID of the project owner.
         """
@@ -119,7 +119,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter
-    def resources(self) -> List[str]:
+    def resources(self) -> Sequence[str]:
         """
         A set of uniform resource names (URNs) for the resources associated with the project
         """

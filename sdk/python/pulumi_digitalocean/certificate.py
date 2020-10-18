@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Certificate']
@@ -16,7 +16,7 @@ class Certificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_chain: Optional[pulumi.Input[str]] = None,
-                 domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  leaf_certificate: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -85,7 +85,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain
                between the certificate authority's certificate and your domain's TLS
                certificate. Only valid when type is `custom`.
-        :param pulumi.Input[List[pulumi.Input[str]]] domains: List of fully qualified domain names (FQDNs) for
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: List of fully qualified domain names (FQDNs) for
                which the certificate will be issued. The domains must be managed using
                DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
         :param pulumi.Input[str] leaf_certificate: The contents of a PEM-formatted public
@@ -133,7 +133,7 @@ class Certificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_chain: Optional[pulumi.Input[str]] = None,
-            domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             leaf_certificate: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             not_after: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain
                between the certificate authority's certificate and your domain's TLS
                certificate. Only valid when type is `custom`.
-        :param pulumi.Input[List[pulumi.Input[str]]] domains: List of fully qualified domain names (FQDNs) for
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: List of fully qualified domain names (FQDNs) for
                which the certificate will be issued. The domains must be managed using
                DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
         :param pulumi.Input[str] leaf_certificate: The contents of a PEM-formatted public
@@ -191,7 +191,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domains(self) -> pulumi.Output[Optional[List[str]]]:
+    def domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of fully qualified domain names (FQDNs) for
         which the certificate will be issued. The domains must be managed using

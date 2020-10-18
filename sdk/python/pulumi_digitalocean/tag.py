@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Tag']
@@ -79,13 +79,13 @@ class Tag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            databases_count: Optional[pulumi.Input[float]] = None,
-            droplets_count: Optional[pulumi.Input[float]] = None,
-            images_count: Optional[pulumi.Input[float]] = None,
+            databases_count: Optional[pulumi.Input[int]] = None,
+            droplets_count: Optional[pulumi.Input[int]] = None,
+            images_count: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            total_resource_count: Optional[pulumi.Input[float]] = None,
-            volume_snapshots_count: Optional[pulumi.Input[float]] = None,
-            volumes_count: Optional[pulumi.Input[float]] = None) -> 'Tag':
+            total_resource_count: Optional[pulumi.Input[int]] = None,
+            volume_snapshots_count: Optional[pulumi.Input[int]] = None,
+            volumes_count: Optional[pulumi.Input[int]] = None) -> 'Tag':
         """
         Get an existing Tag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -93,13 +93,13 @@ class Tag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] databases_count: A count of the database clusters that the tag is applied to.
-        :param pulumi.Input[float] droplets_count: A count of the Droplets the tag is applied to.
-        :param pulumi.Input[float] images_count: A count of the images that the tag is applied to.
+        :param pulumi.Input[int] databases_count: A count of the database clusters that the tag is applied to.
+        :param pulumi.Input[int] droplets_count: A count of the Droplets the tag is applied to.
+        :param pulumi.Input[int] images_count: A count of the images that the tag is applied to.
         :param pulumi.Input[str] name: The name of the tag
-        :param pulumi.Input[float] total_resource_count: A count of the total number of resources that the tag is applied to.
-        :param pulumi.Input[float] volume_snapshots_count: A count of the volume snapshots that the tag is applied to.
-        :param pulumi.Input[float] volumes_count: A count of the volumes that the tag is applied to.
+        :param pulumi.Input[int] total_resource_count: A count of the total number of resources that the tag is applied to.
+        :param pulumi.Input[int] volume_snapshots_count: A count of the volume snapshots that the tag is applied to.
+        :param pulumi.Input[int] volumes_count: A count of the volumes that the tag is applied to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -116,7 +116,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databasesCount")
-    def databases_count(self) -> pulumi.Output[float]:
+    def databases_count(self) -> pulumi.Output[int]:
         """
         A count of the database clusters that the tag is applied to.
         """
@@ -124,7 +124,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropletsCount")
-    def droplets_count(self) -> pulumi.Output[float]:
+    def droplets_count(self) -> pulumi.Output[int]:
         """
         A count of the Droplets the tag is applied to.
         """
@@ -132,7 +132,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imagesCount")
-    def images_count(self) -> pulumi.Output[float]:
+    def images_count(self) -> pulumi.Output[int]:
         """
         A count of the images that the tag is applied to.
         """
@@ -148,7 +148,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="totalResourceCount")
-    def total_resource_count(self) -> pulumi.Output[float]:
+    def total_resource_count(self) -> pulumi.Output[int]:
         """
         A count of the total number of resources that the tag is applied to.
         """
@@ -156,7 +156,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeSnapshotsCount")
-    def volume_snapshots_count(self) -> pulumi.Output[float]:
+    def volume_snapshots_count(self) -> pulumi.Output[int]:
         """
         A count of the volume snapshots that the tag is applied to.
         """
@@ -164,7 +164,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumesCount")
-    def volumes_count(self) -> pulumi.Output[float]:
+    def volumes_count(self) -> pulumi.Output[int]:
         """
         A count of the volumes that the tag is applied to.
         """

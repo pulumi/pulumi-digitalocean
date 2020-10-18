@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -29,8 +29,8 @@ class GetDropletSnapshotResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if min_disk_size and not isinstance(min_disk_size, float):
-            raise TypeError("Expected argument 'min_disk_size' to be a float")
+        if min_disk_size and not isinstance(min_disk_size, int):
+            raise TypeError("Expected argument 'min_disk_size' to be a int")
         pulumi.set(__self__, "min_disk_size", min_disk_size)
         if most_recent and not isinstance(most_recent, bool):
             raise TypeError("Expected argument 'most_recent' to be a bool")
@@ -77,7 +77,7 @@ class GetDropletSnapshotResult:
 
     @property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> float:
+    def min_disk_size(self) -> int:
         """
         The minimum size in gigabytes required for a Droplet to be created based on this Droplet snapshot.
         """
@@ -105,7 +105,7 @@ class GetDropletSnapshotResult:
 
     @property
     @pulumi.getter
-    def regions(self) -> List[str]:
+    def regions(self) -> Sequence[str]:
         """
         A list of DigitalOcean region "slugs" indicating where the Droplet snapshot is available.
         """

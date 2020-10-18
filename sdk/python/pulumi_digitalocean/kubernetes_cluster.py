@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,7 +22,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -99,7 +99,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
         """
@@ -157,14 +157,14 @@ class KubernetesCluster(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             ipv4_address: Optional[pulumi.Input[str]] = None,
-            kube_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KubernetesClusterKubeConfigArgs']]]]] = None,
+            kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesClusterKubeConfigArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             service_subnet: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             surge_upgrade: Optional[pulumi.Input[bool]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vpc_uuid: Optional[pulumi.Input[str]] = None) -> 'KubernetesCluster':
@@ -186,7 +186,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
@@ -255,7 +255,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfigs")
-    def kube_configs(self) -> pulumi.Output[List['outputs.KubernetesClusterKubeConfig']]:
+    def kube_configs(self) -> pulumi.Output[Sequence['outputs.KubernetesClusterKubeConfig']]:
         return pulumi.get(self, "kube_configs")
 
     @property
@@ -308,7 +308,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of tag names to be applied to the Kubernetes cluster.
         """

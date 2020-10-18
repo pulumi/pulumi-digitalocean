@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,7 +37,7 @@ class GetSpacesBucketsResult:
 
     @property
     @pulumi.getter
-    def buckets(self) -> List['outputs.GetSpacesBucketsBucketResult']:
+    def buckets(self) -> Sequence['outputs.GetSpacesBucketsBucketResult']:
         """
         A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:
         """
@@ -45,7 +45,7 @@ class GetSpacesBucketsResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetSpacesBucketsFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetSpacesBucketsFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -58,7 +58,7 @@ class GetSpacesBucketsResult:
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[List['outputs.GetSpacesBucketsSortResult']]:
+    def sorts(self) -> Optional[Sequence['outputs.GetSpacesBucketsSortResult']]:
         return pulumi.get(self, "sorts")
 
 
@@ -74,8 +74,8 @@ class AwaitableGetSpacesBucketsResult(GetSpacesBucketsResult):
             sorts=self.sorts)
 
 
-def get_spaces_buckets(filters: Optional[List[pulumi.InputType['GetSpacesBucketsFilterArgs']]] = None,
-                       sorts: Optional[List[pulumi.InputType['GetSpacesBucketsSortArgs']]] = None,
+def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']]] = None,
+                       sorts: Optional[Sequence[pulumi.InputType['GetSpacesBucketsSortArgs']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpacesBucketsResult:
     """
     Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
@@ -116,9 +116,9 @@ def get_spaces_buckets(filters: Optional[List[pulumi.InputType['GetSpacesBuckets
     ```
 
 
-    :param List[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.
+    :param Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param List[pulumi.InputType['GetSpacesBucketsSortArgs']] sorts: Sort the results.
+    :param Sequence[pulumi.InputType['GetSpacesBucketsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

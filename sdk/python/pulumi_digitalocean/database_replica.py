@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['DatabaseReplica']
@@ -20,7 +20,7 @@ class DatabaseReplica(pulumi.CustomResource):
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -100,13 +100,13 @@ class DatabaseReplica(pulumi.CustomResource):
             host: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             private_host: Optional[pulumi.Input[str]] = None,
             private_network_uuid: Optional[pulumi.Input[str]] = None,
             private_uri: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             uri: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'DatabaseReplica':
         """
@@ -121,7 +121,7 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.Input[str] host: Database replica's hostname.
         :param pulumi.Input[str] name: The name for the database replica.
         :param pulumi.Input[str] password: Password for the replica's default user.
-        :param pulumi.Input[float] port: Network port that the database replica is listening on.
+        :param pulumi.Input[int] port: Network port that the database replica is listening on.
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
@@ -191,7 +191,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Network port that the database replica is listening on.
         """
@@ -236,7 +236,7 @@ class DatabaseReplica(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "tags")
 
     @property

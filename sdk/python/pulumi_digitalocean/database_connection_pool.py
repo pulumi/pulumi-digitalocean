@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['DatabaseConnectionPool']
@@ -19,7 +19,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
                  db_name: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -53,7 +53,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[str] db_name: The database for use with the connection pool.
         :param pulumi.Input[str] mode: The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
         :param pulumi.Input[str] name: The name for the database connection pool.
-        :param pulumi.Input[float] size: The desired size of the PGBouncer connection pool.
+        :param pulumi.Input[int] size: The desired size of the PGBouncer connection pool.
         :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
         """
         if __name__ is not None:
@@ -111,10 +111,10 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             private_host: Optional[pulumi.Input[str]] = None,
             private_uri: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             uri: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'DatabaseConnectionPool':
         """
@@ -130,10 +130,10 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
         :param pulumi.Input[str] name: The name for the database connection pool.
         :param pulumi.Input[str] password: Password for the connection pool's user.
-        :param pulumi.Input[float] port: Network port that the database connection pool is listening on.
+        :param pulumi.Input[int] port: Network port that the database connection pool is listening on.
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
-        :param pulumi.Input[float] size: The desired size of the PGBouncer connection pool.
+        :param pulumi.Input[int] size: The desired size of the PGBouncer connection pool.
         :param pulumi.Input[str] uri: The full URI for connecting to the database connection pool.
         :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
         """
@@ -205,7 +205,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Network port that the database connection pool is listening on.
         """
@@ -229,7 +229,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         The desired size of the PGBouncer connection pool.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -20,8 +20,8 @@ class GetAccountResult:
     A collection of values returned by getAccount.
     """
     def __init__(__self__, droplet_limit=None, email=None, email_verified=None, floating_ip_limit=None, id=None, status=None, status_message=None, uuid=None):
-        if droplet_limit and not isinstance(droplet_limit, float):
-            raise TypeError("Expected argument 'droplet_limit' to be a float")
+        if droplet_limit and not isinstance(droplet_limit, int):
+            raise TypeError("Expected argument 'droplet_limit' to be a int")
         pulumi.set(__self__, "droplet_limit", droplet_limit)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
@@ -29,8 +29,8 @@ class GetAccountResult:
         if email_verified and not isinstance(email_verified, bool):
             raise TypeError("Expected argument 'email_verified' to be a bool")
         pulumi.set(__self__, "email_verified", email_verified)
-        if floating_ip_limit and not isinstance(floating_ip_limit, float):
-            raise TypeError("Expected argument 'floating_ip_limit' to be a float")
+        if floating_ip_limit and not isinstance(floating_ip_limit, int):
+            raise TypeError("Expected argument 'floating_ip_limit' to be a int")
         pulumi.set(__self__, "floating_ip_limit", floating_ip_limit)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -47,7 +47,7 @@ class GetAccountResult:
 
     @property
     @pulumi.getter(name="dropletLimit")
-    def droplet_limit(self) -> float:
+    def droplet_limit(self) -> int:
         return pulumi.get(self, "droplet_limit")
 
     @property
@@ -62,7 +62,7 @@ class GetAccountResult:
 
     @property
     @pulumi.getter(name="floatingIpLimit")
-    def floating_ip_limit(self) -> float:
+    def floating_ip_limit(self) -> int:
         return pulumi.get(self, "floating_ip_limit")
 
     @property

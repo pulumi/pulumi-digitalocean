@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['DropletSnapshot']
@@ -78,9 +78,9 @@ class DropletSnapshot(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             droplet_id: Optional[pulumi.Input[str]] = None,
-            min_disk_size: Optional[pulumi.Input[float]] = None,
+            min_disk_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             size: Optional[pulumi.Input[float]] = None) -> 'DropletSnapshot':
         """
         Get an existing DropletSnapshot resource's state with the given name, id, and optional extra
@@ -91,9 +91,9 @@ class DropletSnapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The date and time the Droplet snapshot was created.
         :param pulumi.Input[str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
-        :param pulumi.Input[float] min_disk_size: The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
+        :param pulumi.Input[int] min_disk_size: The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
         :param pulumi.Input[str] name: A name for the Droplet snapshot.
-        :param pulumi.Input[List[pulumi.Input[str]]] regions: A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
         :param pulumi.Input[float] size: The billable size of the Droplet snapshot in gigabytes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -126,7 +126,7 @@ class DropletSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> pulumi.Output[float]:
+    def min_disk_size(self) -> pulumi.Output[int]:
         """
         The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
         """
@@ -142,7 +142,7 @@ class DropletSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regions(self) -> pulumi.Output[List[str]]:
+    def regions(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
         """

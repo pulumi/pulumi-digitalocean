@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,9 +18,9 @@ class SpacesBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
-                 cors_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
+                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None,
@@ -92,9 +92,9 @@ class SpacesBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']] versioning: A state of versioning (documented below)
@@ -138,9 +138,9 @@ class SpacesBucket(pulumi.CustomResource):
             acl: Optional[pulumi.Input[str]] = None,
             bucket_domain_name: Optional[pulumi.Input[str]] = None,
             bucket_urn: Optional[pulumi.Input[str]] = None,
-            cors_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
+            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
-            lifecycle_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
+            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None) -> 'SpacesBucket':
@@ -154,9 +154,9 @@ class SpacesBucket(pulumi.CustomResource):
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
         :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         :param pulumi.Input[str] bucket_urn: The uniform resource name for the bucket
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']] versioning: A state of versioning (documented below)
@@ -202,7 +202,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> pulumi.Output[Optional[List['outputs.SpacesBucketCorsRule']]]:
+    def cors_rules(self) -> pulumi.Output[Optional[Sequence['outputs.SpacesBucketCorsRule']]]:
         """
         A rule of Cross-Origin Resource Sharing (documented below).
         """
@@ -218,7 +218,7 @@ class SpacesBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> pulumi.Output[Optional[List['outputs.SpacesBucketLifecycleRule']]]:
+    def lifecycle_rules(self) -> pulumi.Output[Optional[Sequence['outputs.SpacesBucketLifecycleRule']]]:
         """
         A configuration of object lifecycle management (documented below).
         """

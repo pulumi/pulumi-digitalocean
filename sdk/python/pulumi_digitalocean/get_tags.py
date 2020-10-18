@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,7 +37,7 @@ class GetTagsResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetTagsFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetTagsFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -50,12 +50,12 @@ class GetTagsResult:
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[List['outputs.GetTagsSortResult']]:
+    def sorts(self) -> Optional[Sequence['outputs.GetTagsSortResult']]:
         return pulumi.get(self, "sorts")
 
     @property
     @pulumi.getter
-    def tags(self) -> List['outputs.GetTagsTagResult']:
+    def tags(self) -> Sequence['outputs.GetTagsTagResult']:
         return pulumi.get(self, "tags")
 
 
@@ -71,8 +71,8 @@ class AwaitableGetTagsResult(GetTagsResult):
             tags=self.tags)
 
 
-def get_tags(filters: Optional[List[pulumi.InputType['GetTagsFilterArgs']]] = None,
-             sorts: Optional[List[pulumi.InputType['GetTagsSortArgs']]] = None,
+def get_tags(filters: Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]] = None,
+             sorts: Optional[Sequence[pulumi.InputType['GetTagsSortArgs']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagsResult:
     """
     Returns a list of tags in your DigitalOcean account, with the ability to
@@ -93,9 +93,9 @@ def get_tags(filters: Optional[List[pulumi.InputType['GetTagsFilterArgs']]] = No
     ```
 
 
-    :param List[pulumi.InputType['GetTagsFilterArgs']] filters: Filter the results.
+    :param Sequence[pulumi.InputType['GetTagsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param List[pulumi.InputType['GetTagsSortArgs']] sorts: Sort the results.
+    :param Sequence[pulumi.InputType['GetTagsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

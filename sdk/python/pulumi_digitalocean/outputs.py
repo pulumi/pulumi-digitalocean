@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -100,15 +100,15 @@ __all__ = [
 class AppSpec(dict):
     def __init__(__self__, *,
                  name: str,
-                 databases: Optional[List['outputs.AppSpecDatabase']] = None,
-                 domains: Optional[List[str]] = None,
+                 databases: Optional[Sequence['outputs.AppSpecDatabase']] = None,
+                 domains: Optional[Sequence[str]] = None,
                  region: Optional[str] = None,
-                 services: Optional[List['outputs.AppSpecService']] = None,
-                 static_sites: Optional[List['outputs.AppSpecStaticSite']] = None,
-                 workers: Optional[List['outputs.AppSpecWorker']] = None):
+                 services: Optional[Sequence['outputs.AppSpecService']] = None,
+                 static_sites: Optional[Sequence['outputs.AppSpecStaticSite']] = None,
+                 workers: Optional[Sequence['outputs.AppSpecWorker']] = None):
         """
         :param str name: The name of the component
-        :param List[str] domains: A list of hostnames where the application will be available.
+        :param Sequence[str] domains: A list of hostnames where the application will be available.
         :param str region: The slug for the DigitalOcean data center region hosting the app.
         """
         pulumi.set(__self__, "name", name)
@@ -135,12 +135,12 @@ class AppSpec(dict):
 
     @property
     @pulumi.getter
-    def databases(self) -> Optional[List['outputs.AppSpecDatabase']]:
+    def databases(self) -> Optional[Sequence['outputs.AppSpecDatabase']]:
         return pulumi.get(self, "databases")
 
     @property
     @pulumi.getter
-    def domains(self) -> Optional[List[str]]:
+    def domains(self) -> Optional[Sequence[str]]:
         """
         A list of hostnames where the application will be available.
         """
@@ -156,17 +156,17 @@ class AppSpec(dict):
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List['outputs.AppSpecService']]:
+    def services(self) -> Optional[Sequence['outputs.AppSpecService']]:
         return pulumi.get(self, "services")
 
     @property
     @pulumi.getter(name="staticSites")
-    def static_sites(self) -> Optional[List['outputs.AppSpecStaticSite']]:
+    def static_sites(self) -> Optional[Sequence['outputs.AppSpecStaticSite']]:
         return pulumi.get(self, "static_sites")
 
     @property
     @pulumi.getter
-    def workers(self) -> Optional[List['outputs.AppSpecWorker']]:
+    def workers(self) -> Optional[Sequence['outputs.AppSpecWorker']]:
         return pulumi.get(self, "workers")
 
     def _translate_property(self, prop):
@@ -250,12 +250,12 @@ class AppSpecService(dict):
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
-                 envs: Optional[List['outputs.AppSpecServiceEnv']] = None,
+                 envs: Optional[Sequence['outputs.AppSpecServiceEnv']] = None,
                  git: Optional['outputs.AppSpecServiceGit'] = None,
                  github: Optional['outputs.AppSpecServiceGithub'] = None,
                  health_check: Optional['outputs.AppSpecServiceHealthCheck'] = None,
-                 http_port: Optional[float] = None,
-                 instance_count: Optional[float] = None,
+                 http_port: Optional[int] = None,
+                 instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
                  routes: Optional['outputs.AppSpecServiceRoutes'] = None,
                  run_command: Optional[str] = None,
@@ -265,12 +265,12 @@ class AppSpecService(dict):
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
-        :param List['AppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence['AppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'AppSpecServiceGitArgs' git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param 'AppSpecServiceGithubArgs' github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
         :param 'AppSpecServiceHealthCheckArgs' health_check: A health check to determine the availability of this component.
-        :param float http_port: The internal port on which this service's run command will listen.
-        :param float instance_count: The amount of instances that this component should be scaled to.
+        :param int http_port: The internal port on which this service's run command will listen.
+        :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -337,7 +337,7 @@ class AppSpecService(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List['outputs.AppSpecServiceEnv']]:
+    def envs(self) -> Optional[Sequence['outputs.AppSpecServiceEnv']]:
         """
         Describes an environment variable made available to an app competent.
         """
@@ -369,7 +369,7 @@ class AppSpecService(dict):
 
     @property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> Optional[float]:
+    def http_port(self) -> Optional[int]:
         """
         The internal port on which this service's run command will listen.
         """
@@ -377,7 +377,7 @@ class AppSpecService(dict):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[float]:
+    def instance_count(self) -> Optional[int]:
         """
         The amount of instances that this component should be scaled to.
         """
@@ -557,19 +557,19 @@ class AppSpecServiceGithub(dict):
 @pulumi.output_type
 class AppSpecServiceHealthCheck(dict):
     def __init__(__self__, *,
-                 failure_threshold: Optional[float] = None,
+                 failure_threshold: Optional[int] = None,
                  http_path: Optional[str] = None,
-                 initial_delay_seconds: Optional[float] = None,
-                 period_seconds: Optional[float] = None,
-                 success_threshold: Optional[float] = None,
-                 timeout_seconds: Optional[float] = None):
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 timeout_seconds: Optional[int] = None):
         """
-        :param float failure_threshold: The number of failed health checks before considered unhealthy.
+        :param int failure_threshold: The number of failed health checks before considered unhealthy.
         :param str http_path: The route path used for the HTTP health check ping.
-        :param float initial_delay_seconds: The number of seconds to wait before beginning health checks.
-        :param float period_seconds: The number of seconds to wait between health checks.
-        :param float success_threshold: The number of successful health checks before considered healthy.
-        :param float timeout_seconds: The number of seconds after which the check times out.
+        :param int initial_delay_seconds: The number of seconds to wait before beginning health checks.
+        :param int period_seconds: The number of seconds to wait between health checks.
+        :param int success_threshold: The number of successful health checks before considered healthy.
+        :param int timeout_seconds: The number of seconds after which the check times out.
         """
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
@@ -586,7 +586,7 @@ class AppSpecServiceHealthCheck(dict):
 
     @property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[float]:
+    def failure_threshold(self) -> Optional[int]:
         """
         The number of failed health checks before considered unhealthy.
         """
@@ -602,7 +602,7 @@ class AppSpecServiceHealthCheck(dict):
 
     @property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[float]:
+    def initial_delay_seconds(self) -> Optional[int]:
         """
         The number of seconds to wait before beginning health checks.
         """
@@ -610,7 +610,7 @@ class AppSpecServiceHealthCheck(dict):
 
     @property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[float]:
+    def period_seconds(self) -> Optional[int]:
         """
         The number of seconds to wait between health checks.
         """
@@ -618,7 +618,7 @@ class AppSpecServiceHealthCheck(dict):
 
     @property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[float]:
+    def success_threshold(self) -> Optional[int]:
         """
         The number of successful health checks before considered healthy.
         """
@@ -626,7 +626,7 @@ class AppSpecServiceHealthCheck(dict):
 
     @property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[float]:
+    def timeout_seconds(self) -> Optional[int]:
         """
         The number of seconds after which the check times out.
         """
@@ -665,7 +665,7 @@ class AppSpecStaticSite(dict):
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
-                 envs: Optional[List['outputs.AppSpecStaticSiteEnv']] = None,
+                 envs: Optional[Sequence['outputs.AppSpecStaticSiteEnv']] = None,
                  error_document: Optional[str] = None,
                  git: Optional['outputs.AppSpecStaticSiteGit'] = None,
                  github: Optional['outputs.AppSpecStaticSiteGithub'] = None,
@@ -678,7 +678,7 @@ class AppSpecStaticSite(dict):
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
-        :param List['AppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence['AppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param str error_document: The name of the error document to use when serving this static site*
         :param 'AppSpecStaticSiteGitArgs' git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param 'AppSpecStaticSiteGithubArgs' github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
@@ -744,7 +744,7 @@ class AppSpecStaticSite(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List['outputs.AppSpecStaticSiteEnv']]:
+    def envs(self) -> Optional[Sequence['outputs.AppSpecStaticSiteEnv']]:
         """
         Describes an environment variable made available to an app competent.
         """
@@ -974,10 +974,10 @@ class AppSpecWorker(dict):
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
-                 envs: Optional[List['outputs.AppSpecWorkerEnv']] = None,
+                 envs: Optional[Sequence['outputs.AppSpecWorkerEnv']] = None,
                  git: Optional['outputs.AppSpecWorkerGit'] = None,
                  github: Optional['outputs.AppSpecWorkerGithub'] = None,
-                 instance_count: Optional[float] = None,
+                 instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
                  routes: Optional['outputs.AppSpecWorkerRoutes'] = None,
                  run_command: Optional[str] = None,
@@ -987,10 +987,10 @@ class AppSpecWorker(dict):
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
-        :param List['AppSpecWorkerEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence['AppSpecWorkerEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'AppSpecWorkerGitArgs' git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param 'AppSpecWorkerGithubArgs' github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
-        :param float instance_count: The amount of instances that this component should be scaled to.
+        :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -1053,7 +1053,7 @@ class AppSpecWorker(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List['outputs.AppSpecWorkerEnv']]:
+    def envs(self) -> Optional[Sequence['outputs.AppSpecWorkerEnv']]:
         """
         Describes an environment variable made available to an app competent.
         """
@@ -1077,7 +1077,7 @@ class AppSpecWorker(dict):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[float]:
+    def instance_count(self) -> Optional[int]:
         """
         The amount of instances that this component should be scaled to.
         """
@@ -1369,10 +1369,10 @@ class FirewallInboundRule(dict):
     def __init__(__self__, *,
                  protocol: str,
                  port_range: Optional[str] = None,
-                 source_addresses: Optional[List[str]] = None,
-                 source_droplet_ids: Optional[List[float]] = None,
-                 source_load_balancer_uids: Optional[List[str]] = None,
-                 source_tags: Optional[List[str]] = None):
+                 source_addresses: Optional[Sequence[str]] = None,
+                 source_droplet_ids: Optional[Sequence[int]] = None,
+                 source_load_balancer_uids: Optional[Sequence[str]] = None,
+                 source_tags: Optional[Sequence[str]] = None):
         """
         :param str protocol: The type of traffic to be allowed.
                This may be one of "tcp", "udp", or "icmp".
@@ -1380,14 +1380,14 @@ class FirewallInboundRule(dict):
                specified as a string containing a single port, a range (e.g. "8000-9000"),
                or "1-65535" to open all ports for a protocol. Required for when protocol is
                `tcp` or `udp`.
-        :param List[str] source_addresses: An array of strings containing the IPv4
+        :param Sequence[str] source_addresses: An array of strings containing the IPv4
                addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
                inbound traffic will be accepted.
-        :param List[float] source_droplet_ids: An array containing the IDs of
+        :param Sequence[int] source_droplet_ids: An array containing the IDs of
                the Droplets from which the inbound traffic will be accepted.
-        :param List[str] source_load_balancer_uids: An array containing the IDs
+        :param Sequence[str] source_load_balancer_uids: An array containing the IDs
                of the Load Balancers from which the inbound traffic will be accepted.
-        :param List[str] source_tags: An array containing the names of Tags
+        :param Sequence[str] source_tags: An array containing the names of Tags
                corresponding to groups of Droplets from which the inbound traffic
                will be accepted.
         """
@@ -1425,7 +1425,7 @@ class FirewallInboundRule(dict):
 
     @property
     @pulumi.getter(name="sourceAddresses")
-    def source_addresses(self) -> Optional[List[str]]:
+    def source_addresses(self) -> Optional[Sequence[str]]:
         """
         An array of strings containing the IPv4
         addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
@@ -1435,7 +1435,7 @@ class FirewallInboundRule(dict):
 
     @property
     @pulumi.getter(name="sourceDropletIds")
-    def source_droplet_ids(self) -> Optional[List[float]]:
+    def source_droplet_ids(self) -> Optional[Sequence[int]]:
         """
         An array containing the IDs of
         the Droplets from which the inbound traffic will be accepted.
@@ -1444,7 +1444,7 @@ class FirewallInboundRule(dict):
 
     @property
     @pulumi.getter(name="sourceLoadBalancerUids")
-    def source_load_balancer_uids(self) -> Optional[List[str]]:
+    def source_load_balancer_uids(self) -> Optional[Sequence[str]]:
         """
         An array containing the IDs
         of the Load Balancers from which the inbound traffic will be accepted.
@@ -1453,7 +1453,7 @@ class FirewallInboundRule(dict):
 
     @property
     @pulumi.getter(name="sourceTags")
-    def source_tags(self) -> Optional[List[str]]:
+    def source_tags(self) -> Optional[Sequence[str]]:
         """
         An array containing the names of Tags
         corresponding to groups of Droplets from which the inbound traffic
@@ -1469,22 +1469,22 @@ class FirewallInboundRule(dict):
 class FirewallOutboundRule(dict):
     def __init__(__self__, *,
                  protocol: str,
-                 destination_addresses: Optional[List[str]] = None,
-                 destination_droplet_ids: Optional[List[float]] = None,
-                 destination_load_balancer_uids: Optional[List[str]] = None,
-                 destination_tags: Optional[List[str]] = None,
+                 destination_addresses: Optional[Sequence[str]] = None,
+                 destination_droplet_ids: Optional[Sequence[int]] = None,
+                 destination_load_balancer_uids: Optional[Sequence[str]] = None,
+                 destination_tags: Optional[Sequence[str]] = None,
                  port_range: Optional[str] = None):
         """
         :param str protocol: The type of traffic to be allowed.
                This may be one of "tcp", "udp", or "icmp".
-        :param List[str] destination_addresses: An array of strings containing the IPv4
+        :param Sequence[str] destination_addresses: An array of strings containing the IPv4
                addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
                outbound traffic will be allowed.
-        :param List[float] destination_droplet_ids: An array containing the IDs of
+        :param Sequence[int] destination_droplet_ids: An array containing the IDs of
                the Droplets to which the outbound traffic will be allowed.
-        :param List[str] destination_load_balancer_uids: An array containing the IDs
+        :param Sequence[str] destination_load_balancer_uids: An array containing the IDs
                of the Load Balancers to which the outbound traffic will be allowed.
-        :param List[str] destination_tags: An array containing the names of Tags
+        :param Sequence[str] destination_tags: An array containing the names of Tags
                corresponding to groups of Droplets to which the outbound traffic will
                be allowed.
                traffic.
@@ -1516,7 +1516,7 @@ class FirewallOutboundRule(dict):
 
     @property
     @pulumi.getter(name="destinationAddresses")
-    def destination_addresses(self) -> Optional[List[str]]:
+    def destination_addresses(self) -> Optional[Sequence[str]]:
         """
         An array of strings containing the IPv4
         addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
@@ -1526,7 +1526,7 @@ class FirewallOutboundRule(dict):
 
     @property
     @pulumi.getter(name="destinationDropletIds")
-    def destination_droplet_ids(self) -> Optional[List[float]]:
+    def destination_droplet_ids(self) -> Optional[Sequence[int]]:
         """
         An array containing the IDs of
         the Droplets to which the outbound traffic will be allowed.
@@ -1535,7 +1535,7 @@ class FirewallOutboundRule(dict):
 
     @property
     @pulumi.getter(name="destinationLoadBalancerUids")
-    def destination_load_balancer_uids(self) -> Optional[List[str]]:
+    def destination_load_balancer_uids(self) -> Optional[Sequence[str]]:
         """
         An array containing the IDs
         of the Load Balancers to which the outbound traffic will be allowed.
@@ -1544,7 +1544,7 @@ class FirewallOutboundRule(dict):
 
     @property
     @pulumi.getter(name="destinationTags")
-    def destination_tags(self) -> Optional[List[str]]:
+    def destination_tags(self) -> Optional[Sequence[str]]:
         """
         An array containing the names of Tags
         corresponding to groups of Droplets to which the outbound traffic will
@@ -1571,7 +1571,7 @@ class FirewallOutboundRule(dict):
 @pulumi.output_type
 class FirewallPendingChange(dict):
     def __init__(__self__, *,
-                 droplet_id: Optional[float] = None,
+                 droplet_id: Optional[int] = None,
                  removing: Optional[bool] = None,
                  status: Optional[str] = None):
         """
@@ -1587,7 +1587,7 @@ class FirewallPendingChange(dict):
 
     @property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> Optional[float]:
+    def droplet_id(self) -> Optional[int]:
         return pulumi.get(self, "droplet_id")
 
     @property
@@ -1707,27 +1707,27 @@ class KubernetesClusterNodePool(dict):
     def __init__(__self__, *,
                  name: str,
                  size: str,
-                 actual_node_count: Optional[float] = None,
+                 actual_node_count: Optional[int] = None,
                  auto_scale: Optional[bool] = None,
                  id: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
-                 max_nodes: Optional[float] = None,
-                 min_nodes: Optional[float] = None,
-                 node_count: Optional[float] = None,
-                 nodes: Optional[List['outputs.KubernetesClusterNodePoolNode']] = None,
-                 tags: Optional[List[str]] = None):
+                 max_nodes: Optional[int] = None,
+                 min_nodes: Optional[int] = None,
+                 node_count: Optional[int] = None,
+                 nodes: Optional[Sequence['outputs.KubernetesClusterNodePoolNode']] = None,
+                 tags: Optional[Sequence[str]] = None):
         """
         :param str name: A name for the node pool.
         :param str size: The slug identifier for the type of Droplet to be used as workers in the node pool.
-        :param float actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+        :param int actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param bool auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param str id: A unique ID that can be used to identify and reference the node.
         :param Mapping[str, str] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-        :param float max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-        :param float min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-        :param float node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-        :param List['KubernetesClusterNodePoolNodeArgs'] nodes: A list of nodes in the pool. Each node exports the following attributes:
-        :param List[str] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param int max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+        :param int min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+        :param int node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+        :param Sequence['KubernetesClusterNodePoolNodeArgs'] nodes: A list of nodes in the pool. Each node exports the following attributes:
+        :param Sequence[str] tags: A list of tag names to be applied to the Kubernetes cluster.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
@@ -1768,7 +1768,7 @@ class KubernetesClusterNodePool(dict):
 
     @property
     @pulumi.getter(name="actualNodeCount")
-    def actual_node_count(self) -> Optional[float]:
+    def actual_node_count(self) -> Optional[int]:
         """
         A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         """
@@ -1800,7 +1800,7 @@ class KubernetesClusterNodePool(dict):
 
     @property
     @pulumi.getter(name="maxNodes")
-    def max_nodes(self) -> Optional[float]:
+    def max_nodes(self) -> Optional[int]:
         """
         If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         """
@@ -1808,7 +1808,7 @@ class KubernetesClusterNodePool(dict):
 
     @property
     @pulumi.getter(name="minNodes")
-    def min_nodes(self) -> Optional[float]:
+    def min_nodes(self) -> Optional[int]:
         """
         If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         """
@@ -1816,7 +1816,7 @@ class KubernetesClusterNodePool(dict):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[float]:
+    def node_count(self) -> Optional[int]:
         """
         The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         """
@@ -1824,7 +1824,7 @@ class KubernetesClusterNodePool(dict):
 
     @property
     @pulumi.getter
-    def nodes(self) -> Optional[List['outputs.KubernetesClusterNodePoolNode']]:
+    def nodes(self) -> Optional[Sequence['outputs.KubernetesClusterNodePoolNode']]:
         """
         A list of nodes in the pool. Each node exports the following attributes:
         """
@@ -1832,7 +1832,7 @@ class KubernetesClusterNodePool(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         """
         A list of tag names to be applied to the Kubernetes cluster.
         """
@@ -2009,16 +2009,16 @@ class KubernetesNodePoolNode(dict):
 @pulumi.output_type
 class LoadBalancerForwardingRule(dict):
     def __init__(__self__, *,
-                 entry_port: float,
+                 entry_port: int,
                  entry_protocol: str,
-                 target_port: float,
+                 target_port: int,
                  target_protocol: str,
                  certificate_id: Optional[str] = None,
                  tls_passthrough: Optional[bool] = None):
         """
-        :param float entry_port: An integer representing the port on which the Load Balancer instance will listen.
+        :param int entry_port: An integer representing the port on which the Load Balancer instance will listen.
         :param str entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
-        :param float target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
+        :param int target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
         :param str target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
         :param str certificate_id: The ID of the TLS certificate to be used for SSL termination.
         :param bool tls_passthrough: A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
@@ -2034,7 +2034,7 @@ class LoadBalancerForwardingRule(dict):
 
     @property
     @pulumi.getter(name="entryPort")
-    def entry_port(self) -> float:
+    def entry_port(self) -> int:
         """
         An integer representing the port on which the Load Balancer instance will listen.
         """
@@ -2050,7 +2050,7 @@ class LoadBalancerForwardingRule(dict):
 
     @property
     @pulumi.getter(name="targetPort")
-    def target_port(self) -> float:
+    def target_port(self) -> int:
         """
         An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
         """
@@ -2087,21 +2087,21 @@ class LoadBalancerForwardingRule(dict):
 @pulumi.output_type
 class LoadBalancerHealthcheck(dict):
     def __init__(__self__, *,
-                 port: float,
+                 port: int,
                  protocol: str,
-                 check_interval_seconds: Optional[float] = None,
-                 healthy_threshold: Optional[float] = None,
+                 check_interval_seconds: Optional[int] = None,
+                 healthy_threshold: Optional[int] = None,
                  path: Optional[str] = None,
-                 response_timeout_seconds: Optional[float] = None,
-                 unhealthy_threshold: Optional[float] = None):
+                 response_timeout_seconds: Optional[int] = None,
+                 unhealthy_threshold: Optional[int] = None):
         """
-        :param float port: An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+        :param int port: An integer representing the port on the backend Droplets on which the health check will attempt a connection.
         :param str protocol: The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
-        :param float check_interval_seconds: The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
-        :param float healthy_threshold: The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+        :param int check_interval_seconds: The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+        :param int healthy_threshold: The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
         :param str path: The path on the backend Droplets to which the Load Balancer instance will send a request.
-        :param float response_timeout_seconds: The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
-        :param float unhealthy_threshold: The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
+        :param int response_timeout_seconds: The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+        :param int unhealthy_threshold: The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "protocol", protocol)
@@ -2118,7 +2118,7 @@ class LoadBalancerHealthcheck(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         An integer representing the port on the backend Droplets on which the health check will attempt a connection.
         """
@@ -2134,7 +2134,7 @@ class LoadBalancerHealthcheck(dict):
 
     @property
     @pulumi.getter(name="checkIntervalSeconds")
-    def check_interval_seconds(self) -> Optional[float]:
+    def check_interval_seconds(self) -> Optional[int]:
         """
         The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
         """
@@ -2142,7 +2142,7 @@ class LoadBalancerHealthcheck(dict):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[float]:
+    def healthy_threshold(self) -> Optional[int]:
         """
         The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
         """
@@ -2158,7 +2158,7 @@ class LoadBalancerHealthcheck(dict):
 
     @property
     @pulumi.getter(name="responseTimeoutSeconds")
-    def response_timeout_seconds(self) -> Optional[float]:
+    def response_timeout_seconds(self) -> Optional[int]:
         """
         The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
         """
@@ -2166,7 +2166,7 @@ class LoadBalancerHealthcheck(dict):
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[float]:
+    def unhealthy_threshold(self) -> Optional[int]:
         """
         The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
         """
@@ -2180,11 +2180,11 @@ class LoadBalancerHealthcheck(dict):
 class LoadBalancerStickySessions(dict):
     def __init__(__self__, *,
                  cookie_name: Optional[str] = None,
-                 cookie_ttl_seconds: Optional[float] = None,
+                 cookie_ttl_seconds: Optional[int] = None,
                  type: Optional[str] = None):
         """
         :param str cookie_name: The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
-        :param float cookie_ttl_seconds: The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
+        :param int cookie_ttl_seconds: The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
         :param str type: An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
         """
         if cookie_name is not None:
@@ -2204,7 +2204,7 @@ class LoadBalancerStickySessions(dict):
 
     @property
     @pulumi.getter(name="cookieTtlSeconds")
-    def cookie_ttl_seconds(self) -> Optional[float]:
+    def cookie_ttl_seconds(self) -> Optional[int]:
         """
         The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
         """
@@ -2225,15 +2225,15 @@ class LoadBalancerStickySessions(dict):
 @pulumi.output_type
 class SpacesBucketCorsRule(dict):
     def __init__(__self__, *,
-                 allowed_methods: List[str],
-                 allowed_origins: List[str],
-                 allowed_headers: Optional[List[str]] = None,
-                 max_age_seconds: Optional[float] = None):
+                 allowed_methods: Sequence[str],
+                 allowed_origins: Sequence[str],
+                 allowed_headers: Optional[Sequence[str]] = None,
+                 max_age_seconds: Optional[int] = None):
         """
-        :param List[str] allowed_methods: A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-        :param List[str] allowed_origins: A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-        :param List[str] allowed_headers: A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-        :param float max_age_seconds: The time in seconds that browser can cache the response for a preflight request.
+        :param Sequence[str] allowed_methods: A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
+        :param Sequence[str] allowed_origins: A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+        :param Sequence[str] allowed_headers: A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
+        :param int max_age_seconds: The time in seconds that browser can cache the response for a preflight request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -2244,7 +2244,7 @@ class SpacesBucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> List[str]:
+    def allowed_methods(self) -> Sequence[str]:
         """
         A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
         """
@@ -2252,7 +2252,7 @@ class SpacesBucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         """
         A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
         """
@@ -2260,7 +2260,7 @@ class SpacesBucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> Optional[List[str]]:
+    def allowed_headers(self) -> Optional[Sequence[str]]:
         """
         A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
         """
@@ -2268,7 +2268,7 @@ class SpacesBucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[float]:
+    def max_age_seconds(self) -> Optional[int]:
         """
         The time in seconds that browser can cache the response for a preflight request.
         """
@@ -2282,14 +2282,14 @@ class SpacesBucketCorsRule(dict):
 class SpacesBucketLifecycleRule(dict):
     def __init__(__self__, *,
                  enabled: bool,
-                 abort_incomplete_multipart_upload_days: Optional[float] = None,
+                 abort_incomplete_multipart_upload_days: Optional[int] = None,
                  expiration: Optional['outputs.SpacesBucketLifecycleRuleExpiration'] = None,
                  id: Optional[str] = None,
                  noncurrent_version_expiration: Optional['outputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration'] = None,
                  prefix: Optional[str] = None):
         """
         :param bool enabled: Specifies lifecycle rule status.
-        :param float abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart
+        :param int abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart
                upload when the multipart upload must be completed or else Spaces will abort the upload.
         :param 'SpacesBucketLifecycleRuleExpirationArgs' expiration: Specifies a time period after which applicable objects expire (documented below).
         :param str id: Unique identifier for the rule.
@@ -2318,7 +2318,7 @@ class SpacesBucketLifecycleRule(dict):
 
     @property
     @pulumi.getter(name="abortIncompleteMultipartUploadDays")
-    def abort_incomplete_multipart_upload_days(self) -> Optional[float]:
+    def abort_incomplete_multipart_upload_days(self) -> Optional[int]:
         """
         Specifies the number of days after initiating a multipart
         upload when the multipart upload must be completed or else Spaces will abort the upload.
@@ -2365,12 +2365,12 @@ class SpacesBucketLifecycleRule(dict):
 class SpacesBucketLifecycleRuleExpiration(dict):
     def __init__(__self__, *,
                  date: Optional[str] = None,
-                 days: Optional[float] = None,
+                 days: Optional[int] = None,
                  expired_object_delete_marker: Optional[bool] = None):
         """
         :param str date: Specifies the date/time after which you want applicable objects to expire. The argument uses
                RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
-        :param float days: Specifies the number of days after object creation when the applicable objects will expire.
+        :param int days: Specifies the number of days after object creation when the applicable objects will expire.
         :param bool expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended
                bucket), setting this to true directs Spaces to delete expired object delete markers.
         """
@@ -2392,7 +2392,7 @@ class SpacesBucketLifecycleRuleExpiration(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Specifies the number of days after object creation when the applicable objects will expire.
         """
@@ -2414,16 +2414,16 @@ class SpacesBucketLifecycleRuleExpiration(dict):
 @pulumi.output_type
 class SpacesBucketLifecycleRuleNoncurrentVersionExpiration(dict):
     def __init__(__self__, *,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
-        :param float days: Specifies the number of days after which an object's non-current versions expire.
+        :param int days: Specifies the number of days after which an object's non-current versions expire.
         """
         if days is not None:
             pulumi.set(__self__, "days", days)
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Specifies the number of days after which an object's non-current versions expire.
         """
@@ -2461,12 +2461,12 @@ class SpacesBucketVersioning(dict):
 class GetAppSpecResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 databases: Optional[List['outputs.GetAppSpecDatabaseResult']] = None,
-                 domains: Optional[List[str]] = None,
+                 databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
+                 domains: Optional[Sequence[str]] = None,
                  region: Optional[str] = None,
-                 services: Optional[List['outputs.GetAppSpecServiceResult']] = None,
-                 static_sites: Optional[List['outputs.GetAppSpecStaticSiteResult']] = None,
-                 workers: Optional[List['outputs.GetAppSpecWorkerResult']] = None):
+                 services: Optional[Sequence['outputs.GetAppSpecServiceResult']] = None,
+                 static_sites: Optional[Sequence['outputs.GetAppSpecStaticSiteResult']] = None,
+                 workers: Optional[Sequence['outputs.GetAppSpecWorkerResult']] = None):
         """
         :param str name: The name of the component
         """
@@ -2494,12 +2494,12 @@ class GetAppSpecResult(dict):
 
     @property
     @pulumi.getter
-    def databases(self) -> Optional[List['outputs.GetAppSpecDatabaseResult']]:
+    def databases(self) -> Optional[Sequence['outputs.GetAppSpecDatabaseResult']]:
         return pulumi.get(self, "databases")
 
     @property
     @pulumi.getter
-    def domains(self) -> Optional[List[str]]:
+    def domains(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "domains")
 
     @property
@@ -2509,17 +2509,17 @@ class GetAppSpecResult(dict):
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List['outputs.GetAppSpecServiceResult']]:
+    def services(self) -> Optional[Sequence['outputs.GetAppSpecServiceResult']]:
         return pulumi.get(self, "services")
 
     @property
     @pulumi.getter(name="staticSites")
-    def static_sites(self) -> Optional[List['outputs.GetAppSpecStaticSiteResult']]:
+    def static_sites(self) -> Optional[Sequence['outputs.GetAppSpecStaticSiteResult']]:
         return pulumi.get(self, "static_sites")
 
     @property
     @pulumi.getter
-    def workers(self) -> Optional[List['outputs.GetAppSpecWorkerResult']]:
+    def workers(self) -> Optional[Sequence['outputs.GetAppSpecWorkerResult']]:
         return pulumi.get(self, "workers")
 
 
@@ -2593,32 +2593,32 @@ class GetAppSpecDatabaseResult(dict):
 @pulumi.output_type
 class GetAppSpecServiceResult(dict):
     def __init__(__self__, *,
-                 http_port: float,
+                 http_port: int,
                  name: str,
                  routes: 'outputs.GetAppSpecServiceRoutesResult',
                  run_command: str,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
-                 envs: Optional[List['outputs.GetAppSpecServiceEnvResult']] = None,
+                 envs: Optional[Sequence['outputs.GetAppSpecServiceEnvResult']] = None,
                  git: Optional['outputs.GetAppSpecServiceGitResult'] = None,
                  github: Optional['outputs.GetAppSpecServiceGithubResult'] = None,
                  health_check: Optional['outputs.GetAppSpecServiceHealthCheckResult'] = None,
-                 instance_count: Optional[float] = None,
+                 instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
                  source_dir: Optional[str] = None):
         """
-        :param float http_port: The internal port on which this service's run command will listen.
+        :param int http_port: The internal port on which this service's run command will listen.
         :param str name: The name of the component
         :param str run_command: An optional run command to override the component's default.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
-        :param List['GetAppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence['GetAppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'GetAppSpecServiceGitArgs' git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param 'GetAppSpecServiceGithubArgs' github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
         :param 'GetAppSpecServiceHealthCheckArgs' health_check: A health check to determine the availability of this component.
-        :param float instance_count: The amount of instances that this component should be scaled to.
+        :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
@@ -2649,7 +2649,7 @@ class GetAppSpecServiceResult(dict):
 
     @property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> float:
+    def http_port(self) -> int:
         """
         The internal port on which this service's run command will listen.
         """
@@ -2702,7 +2702,7 @@ class GetAppSpecServiceResult(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List['outputs.GetAppSpecServiceEnvResult']]:
+    def envs(self) -> Optional[Sequence['outputs.GetAppSpecServiceEnvResult']]:
         """
         Describes an environment variable made available to an app competent.
         """
@@ -2734,7 +2734,7 @@ class GetAppSpecServiceResult(dict):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[float]:
+    def instance_count(self) -> Optional[int]:
         """
         The amount of instances that this component should be scaled to.
         """
@@ -2888,19 +2888,19 @@ class GetAppSpecServiceGithubResult(dict):
 @pulumi.output_type
 class GetAppSpecServiceHealthCheckResult(dict):
     def __init__(__self__, *,
-                 failure_threshold: Optional[float] = None,
+                 failure_threshold: Optional[int] = None,
                  http_path: Optional[str] = None,
-                 initial_delay_seconds: Optional[float] = None,
-                 period_seconds: Optional[float] = None,
-                 success_threshold: Optional[float] = None,
-                 timeout_seconds: Optional[float] = None):
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 timeout_seconds: Optional[int] = None):
         """
-        :param float failure_threshold: The number of failed health checks before considered unhealthy.
+        :param int failure_threshold: The number of failed health checks before considered unhealthy.
         :param str http_path: The route path used for the HTTP health check ping.
-        :param float initial_delay_seconds: The number of seconds to wait before beginning health checks.
-        :param float period_seconds: The number of seconds to wait between health checks.
-        :param float success_threshold: The number of successful health checks before considered healthy.
-        :param float timeout_seconds: The number of seconds after which the check times out.
+        :param int initial_delay_seconds: The number of seconds to wait before beginning health checks.
+        :param int period_seconds: The number of seconds to wait between health checks.
+        :param int success_threshold: The number of successful health checks before considered healthy.
+        :param int timeout_seconds: The number of seconds after which the check times out.
         """
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
@@ -2917,7 +2917,7 @@ class GetAppSpecServiceHealthCheckResult(dict):
 
     @property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[float]:
+    def failure_threshold(self) -> Optional[int]:
         """
         The number of failed health checks before considered unhealthy.
         """
@@ -2933,7 +2933,7 @@ class GetAppSpecServiceHealthCheckResult(dict):
 
     @property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[float]:
+    def initial_delay_seconds(self) -> Optional[int]:
         """
         The number of seconds to wait before beginning health checks.
         """
@@ -2941,7 +2941,7 @@ class GetAppSpecServiceHealthCheckResult(dict):
 
     @property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[float]:
+    def period_seconds(self) -> Optional[int]:
         """
         The number of seconds to wait between health checks.
         """
@@ -2949,7 +2949,7 @@ class GetAppSpecServiceHealthCheckResult(dict):
 
     @property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[float]:
+    def success_threshold(self) -> Optional[int]:
         """
         The number of successful health checks before considered healthy.
         """
@@ -2957,7 +2957,7 @@ class GetAppSpecServiceHealthCheckResult(dict):
 
     @property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[float]:
+    def timeout_seconds(self) -> Optional[int]:
         """
         The number of seconds after which the check times out.
         """
@@ -2991,7 +2991,7 @@ class GetAppSpecStaticSiteResult(dict):
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
-                 envs: Optional[List['outputs.GetAppSpecStaticSiteEnvResult']] = None,
+                 envs: Optional[Sequence['outputs.GetAppSpecStaticSiteEnvResult']] = None,
                  error_document: Optional[str] = None,
                  git: Optional['outputs.GetAppSpecStaticSiteGitResult'] = None,
                  github: Optional['outputs.GetAppSpecStaticSiteGithubResult'] = None,
@@ -3003,7 +3003,7 @@ class GetAppSpecStaticSiteResult(dict):
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
-        :param List['GetAppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence['GetAppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param str error_document: The name of the error document to use when serving this static site*
         :param 'GetAppSpecStaticSiteGitArgs' git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param 'GetAppSpecStaticSiteGithubArgs' github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
@@ -3073,7 +3073,7 @@ class GetAppSpecStaticSiteResult(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List['outputs.GetAppSpecStaticSiteEnvResult']]:
+    def envs(self) -> Optional[Sequence['outputs.GetAppSpecStaticSiteEnvResult']]:
         """
         Describes an environment variable made available to an app competent.
         """
@@ -3283,10 +3283,10 @@ class GetAppSpecWorkerResult(dict):
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
-                 envs: Optional[List['outputs.GetAppSpecWorkerEnvResult']] = None,
+                 envs: Optional[Sequence['outputs.GetAppSpecWorkerEnvResult']] = None,
                  git: Optional['outputs.GetAppSpecWorkerGitResult'] = None,
                  github: Optional['outputs.GetAppSpecWorkerGithubResult'] = None,
-                 instance_count: Optional[float] = None,
+                 instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
                  run_command: Optional[str] = None,
                  source_dir: Optional[str] = None):
@@ -3295,10 +3295,10 @@ class GetAppSpecWorkerResult(dict):
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
-        :param List['GetAppSpecWorkerEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence['GetAppSpecWorkerEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'GetAppSpecWorkerGitArgs' git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param 'GetAppSpecWorkerGithubArgs' github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
-        :param float instance_count: The amount of instances that this component should be scaled to.
+        :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -3365,7 +3365,7 @@ class GetAppSpecWorkerResult(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List['outputs.GetAppSpecWorkerEnvResult']]:
+    def envs(self) -> Optional[Sequence['outputs.GetAppSpecWorkerEnvResult']]:
         """
         Describes an environment variable made available to an app competent.
         """
@@ -3389,7 +3389,7 @@ class GetAppSpecWorkerResult(dict):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[float]:
+    def instance_count(self) -> Optional[int]:
         """
         The amount of instances that this component should be scaled to.
         """
@@ -3600,7 +3600,7 @@ class GetDatabaseClusterMaintenanceWindowResult(dict):
 class GetDomainsDomainResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 ttl: float,
+                 ttl: int,
                  urn: str):
         """
         :param str name: (Required) The name of the domain.
@@ -3622,7 +3622,7 @@ class GetDomainsDomainResult(dict):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> int:
         return pulumi.get(self, "ttl")
 
     @property
@@ -3638,12 +3638,12 @@ class GetDomainsDomainResult(dict):
 class GetDomainsFilterResult(dict):
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves domains
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves domains
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3669,7 +3669,7 @@ class GetDomainsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves domains
         where the `key` field takes on one or more of the values provided here.
@@ -3732,8 +3732,8 @@ class GetDropletsDropletResult(dict):
     def __init__(__self__, *,
                  backups: bool,
                  created_at: str,
-                 disk: float,
-                 id: float,
+                 disk: int,
+                 id: int,
                  image: str,
                  ipv4_address: str,
                  ipv4_address_private: str,
@@ -3741,7 +3741,7 @@ class GetDropletsDropletResult(dict):
                  ipv6_address: str,
                  ipv6_address_private: str,
                  locked: bool,
-                 memory: float,
+                 memory: int,
                  monitoring: bool,
                  name: str,
                  price_hourly: float,
@@ -3750,15 +3750,15 @@ class GetDropletsDropletResult(dict):
                  region: str,
                  size: str,
                  status: str,
-                 tags: List[str],
+                 tags: Sequence[str],
                  urn: str,
-                 vcpus: float,
-                 volume_ids: List[str],
+                 vcpus: int,
+                 volume_ids: Sequence[str],
                  vpc_uuid: str):
         """
         :param bool backups: Whether backups are enabled.
-        :param float disk: The size of the Droplet's disk in GB.
-        :param float id: The ID of the Droplet.
+        :param int disk: The size of the Droplet's disk in GB.
+        :param int id: The ID of the Droplet.
         :param str image: The Droplet image ID or slug.
         :param str ipv4_address: The Droplet's public IPv4 address
         :param str ipv4_address_private: The Droplet's private IPv4 address
@@ -3766,7 +3766,7 @@ class GetDropletsDropletResult(dict):
         :param str ipv6_address: The Droplet's public IPv6 address
         :param str ipv6_address_private: The Droplet's private IPv6 address
         :param bool locked: Whether the Droplet is locked.
-        :param float memory: The amount of the Droplet's memory in MB.
+        :param int memory: The amount of the Droplet's memory in MB.
         :param bool monitoring: Whether monitoring agent is installed.
         :param float price_hourly: Droplet hourly price.
         :param float price_monthly: Droplet monthly price.
@@ -3774,10 +3774,10 @@ class GetDropletsDropletResult(dict):
         :param str region: The region the Droplet is running in.
         :param str size: The unique slug that identifies the type of Droplet.
         :param str status: The status of the Droplet.
-        :param List[str] tags: A list of the tags associated to the Droplet.
+        :param Sequence[str] tags: A list of the tags associated to the Droplet.
         :param str urn: The uniform resource name of the Droplet
-        :param float vcpus: The number of the Droplet's virtual CPUs.
-        :param List[str] volume_ids: List of the IDs of each volumes attached to the Droplet.
+        :param int vcpus: The number of the Droplet's virtual CPUs.
+        :param Sequence[str] volume_ids: List of the IDs of each volumes attached to the Droplet.
         :param str vpc_uuid: The ID of the VPC where the Droplet is located.
         """
         pulumi.set(__self__, "backups", backups)
@@ -3821,7 +3821,7 @@ class GetDropletsDropletResult(dict):
 
     @property
     @pulumi.getter
-    def disk(self) -> float:
+    def disk(self) -> int:
         """
         The size of the Droplet's disk in GB.
         """
@@ -3829,7 +3829,7 @@ class GetDropletsDropletResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The ID of the Droplet.
         """
@@ -3893,7 +3893,7 @@ class GetDropletsDropletResult(dict):
 
     @property
     @pulumi.getter
-    def memory(self) -> float:
+    def memory(self) -> int:
         """
         The amount of the Droplet's memory in MB.
         """
@@ -3962,7 +3962,7 @@ class GetDropletsDropletResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         """
         A list of the tags associated to the Droplet.
         """
@@ -3978,7 +3978,7 @@ class GetDropletsDropletResult(dict):
 
     @property
     @pulumi.getter
-    def vcpus(self) -> float:
+    def vcpus(self) -> int:
         """
         The number of the Droplet's virtual CPUs.
         """
@@ -3986,7 +3986,7 @@ class GetDropletsDropletResult(dict):
 
     @property
     @pulumi.getter(name="volumeIds")
-    def volume_ids(self) -> List[str]:
+    def volume_ids(self) -> Sequence[str]:
         """
         List of the IDs of each volumes attached to the Droplet.
         """
@@ -4005,7 +4005,7 @@ class GetDropletsDropletResult(dict):
 class GetDropletsFilterResult(dict):
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
@@ -4013,7 +4013,7 @@ class GetDropletsFilterResult(dict):
                `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
                `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
                `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves Droplets
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves Droplets
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -4042,7 +4042,7 @@ class GetDropletsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves Droplets
         where the `key` field takes on one or more of the values provided here.
@@ -4110,14 +4110,14 @@ class GetDropletsSortResult(dict):
 class GetImagesFilterResult(dict):
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the images by this key. This may be one of `distribution`, `error_message`,
                `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
                `tags`, or `type`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves images
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves images
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -4145,7 +4145,7 @@ class GetImagesFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves images
         where the `key` field takes on one or more of the values provided here.
@@ -4179,16 +4179,16 @@ class GetImagesImageResult(dict):
                  created: str,
                  distribution: str,
                  error_message: str,
-                 id: float,
+                 id: int,
                  image: str,
-                 min_disk_size: float,
+                 min_disk_size: int,
                  name: str,
                  private: bool,
-                 regions: List[str],
+                 regions: Sequence[str],
                  size_gigabytes: float,
                  slug: str,
                  status: str,
-                 tags: List[str],
+                 tags: Sequence[str],
                  type: str):
         """
         :param str distribution: The name of the distribution of the OS of the image.
@@ -4241,7 +4241,7 @@ class GetImagesImageResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         return pulumi.get(self, "id")
 
     @property
@@ -4254,7 +4254,7 @@ class GetImagesImageResult(dict):
 
     @property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> float:
+    def min_disk_size(self) -> int:
         return pulumi.get(self, "min_disk_size")
 
     @property
@@ -4279,7 +4279,7 @@ class GetImagesImageResult(dict):
 
     @property
     @pulumi.getter
-    def regions(self) -> List[str]:
+    def regions(self) -> Sequence[str]:
         return pulumi.get(self, "regions")
 
     @property
@@ -4299,7 +4299,7 @@ class GetImagesImageResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         return pulumi.get(self, "tags")
 
     @property
@@ -4427,29 +4427,29 @@ class GetKubernetesClusterKubeConfigResult(dict):
 @pulumi.output_type
 class GetKubernetesClusterNodePoolResult(dict):
     def __init__(__self__, *,
-                 actual_node_count: float,
+                 actual_node_count: int,
                  auto_scale: bool,
                  id: str,
                  labels: Mapping[str, str],
-                 max_nodes: float,
-                 min_nodes: float,
+                 max_nodes: int,
+                 min_nodes: int,
                  name: str,
-                 node_count: float,
-                 nodes: List['outputs.GetKubernetesClusterNodePoolNodeResult'],
+                 node_count: int,
+                 nodes: Sequence['outputs.GetKubernetesClusterNodePoolNodeResult'],
                  size: str,
-                 tags: Optional[List[str]] = None):
+                 tags: Optional[Sequence[str]] = None):
         """
-        :param float actual_node_count: The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+        :param int actual_node_count: The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param bool auto_scale: A boolean indicating whether auto-scaling is enabled on the node pool.
         :param str id: A unique ID that can be used to identify and reference the node.
         :param Mapping[str, str] labels: A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-        :param float max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-        :param float min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+        :param int max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+        :param int min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param str name: The name of Kubernetes cluster.
-        :param float node_count: The number of Droplet instances in the node pool.
-        :param List['GetKubernetesClusterNodePoolNodeArgs'] nodes: A list of nodes in the pool. Each node exports the following attributes:
+        :param int node_count: The number of Droplet instances in the node pool.
+        :param Sequence['GetKubernetesClusterNodePoolNodeArgs'] nodes: A list of nodes in the pool. Each node exports the following attributes:
         :param str size: The slug identifier for the type of Droplet used as workers in the node pool.
-        :param List[str] tags: A list of tag names applied to the node pool.
+        :param Sequence[str] tags: A list of tag names applied to the node pool.
         """
         pulumi.set(__self__, "actual_node_count", actual_node_count)
         pulumi.set(__self__, "auto_scale", auto_scale)
@@ -4466,7 +4466,7 @@ class GetKubernetesClusterNodePoolResult(dict):
 
     @property
     @pulumi.getter(name="actualNodeCount")
-    def actual_node_count(self) -> float:
+    def actual_node_count(self) -> int:
         """
         The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         """
@@ -4498,7 +4498,7 @@ class GetKubernetesClusterNodePoolResult(dict):
 
     @property
     @pulumi.getter(name="maxNodes")
-    def max_nodes(self) -> float:
+    def max_nodes(self) -> int:
         """
         If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         """
@@ -4506,7 +4506,7 @@ class GetKubernetesClusterNodePoolResult(dict):
 
     @property
     @pulumi.getter(name="minNodes")
-    def min_nodes(self) -> float:
+    def min_nodes(self) -> int:
         """
         If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         """
@@ -4522,7 +4522,7 @@ class GetKubernetesClusterNodePoolResult(dict):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> int:
         """
         The number of Droplet instances in the node pool.
         """
@@ -4530,7 +4530,7 @@ class GetKubernetesClusterNodePoolResult(dict):
 
     @property
     @pulumi.getter
-    def nodes(self) -> List['outputs.GetKubernetesClusterNodePoolNodeResult']:
+    def nodes(self) -> Sequence['outputs.GetKubernetesClusterNodePoolNodeResult']:
         """
         A list of nodes in the pool. Each node exports the following attributes:
         """
@@ -4546,7 +4546,7 @@ class GetKubernetesClusterNodePoolResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         """
         A list of tag names applied to the node pool.
         """
@@ -4626,9 +4626,9 @@ class GetKubernetesClusterNodePoolNodeResult(dict):
 class GetLoadBalancerForwardingRuleResult(dict):
     def __init__(__self__, *,
                  certificate_id: str,
-                 entry_port: float,
+                 entry_port: int,
                  entry_protocol: str,
-                 target_port: float,
+                 target_port: int,
                  target_protocol: str,
                  tls_passthrough: bool):
         pulumi.set(__self__, "certificate_id", certificate_id)
@@ -4645,7 +4645,7 @@ class GetLoadBalancerForwardingRuleResult(dict):
 
     @property
     @pulumi.getter(name="entryPort")
-    def entry_port(self) -> float:
+    def entry_port(self) -> int:
         return pulumi.get(self, "entry_port")
 
     @property
@@ -4655,7 +4655,7 @@ class GetLoadBalancerForwardingRuleResult(dict):
 
     @property
     @pulumi.getter(name="targetPort")
-    def target_port(self) -> float:
+    def target_port(self) -> int:
         return pulumi.get(self, "target_port")
 
     @property
@@ -4672,13 +4672,13 @@ class GetLoadBalancerForwardingRuleResult(dict):
 @pulumi.output_type
 class GetLoadBalancerHealthcheckResult(dict):
     def __init__(__self__, *,
-                 check_interval_seconds: float,
-                 healthy_threshold: float,
+                 check_interval_seconds: int,
+                 healthy_threshold: int,
                  path: str,
-                 port: float,
+                 port: int,
                  protocol: str,
-                 response_timeout_seconds: float,
-                 unhealthy_threshold: float):
+                 response_timeout_seconds: int,
+                 unhealthy_threshold: int):
         pulumi.set(__self__, "check_interval_seconds", check_interval_seconds)
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         pulumi.set(__self__, "path", path)
@@ -4689,12 +4689,12 @@ class GetLoadBalancerHealthcheckResult(dict):
 
     @property
     @pulumi.getter(name="checkIntervalSeconds")
-    def check_interval_seconds(self) -> float:
+    def check_interval_seconds(self) -> int:
         return pulumi.get(self, "check_interval_seconds")
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> float:
+    def healthy_threshold(self) -> int:
         return pulumi.get(self, "healthy_threshold")
 
     @property
@@ -4704,7 +4704,7 @@ class GetLoadBalancerHealthcheckResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         return pulumi.get(self, "port")
 
     @property
@@ -4714,12 +4714,12 @@ class GetLoadBalancerHealthcheckResult(dict):
 
     @property
     @pulumi.getter(name="responseTimeoutSeconds")
-    def response_timeout_seconds(self) -> float:
+    def response_timeout_seconds(self) -> int:
         return pulumi.get(self, "response_timeout_seconds")
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> float:
+    def unhealthy_threshold(self) -> int:
         return pulumi.get(self, "unhealthy_threshold")
 
 
@@ -4727,7 +4727,7 @@ class GetLoadBalancerHealthcheckResult(dict):
 class GetLoadBalancerStickySessionsResult(dict):
     def __init__(__self__, *,
                  cookie_name: str,
-                 cookie_ttl_seconds: float,
+                 cookie_ttl_seconds: int,
                  type: str):
         pulumi.set(__self__, "cookie_name", cookie_name)
         pulumi.set(__self__, "cookie_ttl_seconds", cookie_ttl_seconds)
@@ -4740,7 +4740,7 @@ class GetLoadBalancerStickySessionsResult(dict):
 
     @property
     @pulumi.getter(name="cookieTtlSeconds")
-    def cookie_ttl_seconds(self) -> float:
+    def cookie_ttl_seconds(self) -> int:
         return pulumi.get(self, "cookie_ttl_seconds")
 
     @property
@@ -4753,13 +4753,13 @@ class GetLoadBalancerStickySessionsResult(dict):
 class GetProjectsFilterResult(dict):
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the projects by this key. This may be one of `name`,
                `purpose`, `description`, `environment`, or `is_default`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves projects
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves projects
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -4786,7 +4786,7 @@ class GetProjectsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves projects
         where the `key` field takes on one or more of the values provided here.
@@ -4823,10 +4823,10 @@ class GetProjectsProjectResult(dict):
                  id: str,
                  is_default: bool,
                  name: str,
-                 owner_id: float,
+                 owner_id: int,
                  owner_uuid: str,
                  purpose: str,
-                 resources: List[str],
+                 resources: Sequence[str],
                  updated_at: str):
         """
         :param str created_at: The date and time when the project was created, (ISO8601)
@@ -4834,10 +4834,10 @@ class GetProjectsProjectResult(dict):
         :param str environment: The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
         :param str id: The ID of the project
         :param str name: The name of the project
-        :param float owner_id: The ID of the project owner
+        :param int owner_id: The ID of the project owner
         :param str owner_uuid: The unique universal identifier of the project owner
         :param str purpose: The purpose of the project (Default: "Web Application")
-        :param List[str] resources: A set of uniform resource names (URNs) for the resources associated with the project
+        :param Sequence[str] resources: A set of uniform resource names (URNs) for the resources associated with the project
         :param str updated_at: The date and time when the project was last updated, (ISO8601)
         """
         pulumi.set(__self__, "created_at", created_at)
@@ -4899,7 +4899,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> float:
+    def owner_id(self) -> int:
         """
         The ID of the project owner
         """
@@ -4923,7 +4923,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter
-    def resources(self) -> List[str]:
+    def resources(self) -> Sequence[str]:
         """
         A set of uniform resource names (URNs) for the resources associated with the project
         """
@@ -4974,13 +4974,13 @@ class GetProjectsSortResult(dict):
 class GetRegionsFilterResult(dict):
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the regions by this key. This may be one of `slug`,
                `name`, `available`, `features`, or `sizes`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves regions
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves regions
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -5007,7 +5007,7 @@ class GetRegionsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves regions
         where the `key` field takes on one or more of the values provided here.
@@ -5039,15 +5039,15 @@ class GetRegionsFilterResult(dict):
 class GetRegionsRegionResult(dict):
     def __init__(__self__, *,
                  available: bool,
-                 features: List[str],
+                 features: Sequence[str],
                  name: str,
-                 sizes: List[str],
+                 sizes: Sequence[str],
                  slug: str):
         """
         :param bool available: A boolean value that represents whether new Droplets can be created in this region.
-        :param List[str] features: A set of features available in this region.
+        :param Sequence[str] features: A set of features available in this region.
         :param str name: The display name of the region.
-        :param List[str] sizes: A set of identifying slugs for the Droplet sizes available in this region.
+        :param Sequence[str] sizes: A set of identifying slugs for the Droplet sizes available in this region.
         :param str slug: A human-readable string that is used as a unique identifier for each region.
         """
         pulumi.set(__self__, "available", available)
@@ -5066,7 +5066,7 @@ class GetRegionsRegionResult(dict):
 
     @property
     @pulumi.getter
-    def features(self) -> List[str]:
+    def features(self) -> Sequence[str]:
         """
         A set of features available in this region.
         """
@@ -5082,7 +5082,7 @@ class GetRegionsRegionResult(dict):
 
     @property
     @pulumi.getter
-    def sizes(self) -> List[str]:
+    def sizes(self) -> Sequence[str]:
         """
         A set of identifying slugs for the Droplet sizes available in this region.
         """
@@ -5133,14 +5133,14 @@ class GetRegionsSortResult(dict):
 class GetSizesFilterResult(dict):
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the sizes by this key. This may be one of `slug`,
                `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
                `price_hourly`, or `available`.
-        :param List[str] values: Only retrieves sizes which keys has value that matches
+        :param Sequence[str] values: Only retrieves sizes which keys has value that matches
                one of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -5168,7 +5168,7 @@ class GetSizesFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Only retrieves sizes which keys has value that matches
         one of the values provided here.
@@ -5200,24 +5200,24 @@ class GetSizesFilterResult(dict):
 class GetSizesSizeResult(dict):
     def __init__(__self__, *,
                  available: bool,
-                 disk: float,
-                 memory: float,
+                 disk: int,
+                 memory: int,
                  price_hourly: float,
                  price_monthly: float,
-                 regions: List[str],
+                 regions: Sequence[str],
                  slug: str,
                  transfer: float,
-                 vcpus: float):
+                 vcpus: int):
         """
         :param bool available: This represents whether new Droplets can be created with this size.
-        :param float disk: The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
-        :param float memory: The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
+        :param int disk: The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
+        :param int memory: The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
         :param float price_hourly: The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
         :param float price_monthly: The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
-        :param List[str] regions: List of region slugs where Droplets can be created in this size.
+        :param Sequence[str] regions: List of region slugs where Droplets can be created in this size.
         :param str slug: A human-readable string that is used to uniquely identify each size.
         :param float transfer: The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
-        :param float vcpus: The number of CPUs allocated to Droplets of this size.
+        :param int vcpus: The number of CPUs allocated to Droplets of this size.
         """
         pulumi.set(__self__, "available", available)
         pulumi.set(__self__, "disk", disk)
@@ -5239,7 +5239,7 @@ class GetSizesSizeResult(dict):
 
     @property
     @pulumi.getter
-    def disk(self) -> float:
+    def disk(self) -> int:
         """
         The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
         """
@@ -5247,7 +5247,7 @@ class GetSizesSizeResult(dict):
 
     @property
     @pulumi.getter
-    def memory(self) -> float:
+    def memory(self) -> int:
         """
         The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
         """
@@ -5271,7 +5271,7 @@ class GetSizesSizeResult(dict):
 
     @property
     @pulumi.getter
-    def regions(self) -> List[str]:
+    def regions(self) -> Sequence[str]:
         """
         List of region slugs where Droplets can be created in this size.
         """
@@ -5295,7 +5295,7 @@ class GetSizesSizeResult(dict):
 
     @property
     @pulumi.getter
-    def vcpus(self) -> float:
+    def vcpus(self) -> int:
         """
         The number of CPUs allocated to Droplets of this size.
         """
@@ -5389,12 +5389,12 @@ class GetSpacesBucketsBucketResult(dict):
 class GetSpacesBucketsFilterResult(dict):
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves Spaces buckets
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves Spaces buckets
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -5420,7 +5420,7 @@ class GetSpacesBucketsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves Spaces buckets
         where the `key` field takes on one or more of the values provided here.
@@ -5482,12 +5482,12 @@ class GetSpacesBucketsSortResult(dict):
 class GetTagsFilterResult(dict):
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
-        :param List[str] values: Only retrieves tags which keys has value that matches
+        :param Sequence[str] values: Only retrieves tags which keys has value that matches
                one of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -5513,7 +5513,7 @@ class GetTagsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Only retrieves tags which keys has value that matches
         one of the values provided here.
@@ -5574,21 +5574,21 @@ class GetTagsSortResult(dict):
 @pulumi.output_type
 class GetTagsTagResult(dict):
     def __init__(__self__, *,
-                 databases_count: float,
-                 droplets_count: float,
-                 images_count: float,
+                 databases_count: int,
+                 droplets_count: int,
+                 images_count: int,
                  name: str,
-                 total_resource_count: float,
-                 volume_snapshots_count: float,
-                 volumes_count: float):
+                 total_resource_count: int,
+                 volume_snapshots_count: int,
+                 volumes_count: int):
         """
-        :param float databases_count: A count of the database clusters that the tag is applied to.
-        :param float droplets_count: A count of the Droplets the tag is applied to.
-        :param float images_count: A count of the images that the tag is applied to.
+        :param int databases_count: A count of the database clusters that the tag is applied to.
+        :param int droplets_count: A count of the Droplets the tag is applied to.
+        :param int images_count: A count of the images that the tag is applied to.
         :param str name: The name of the tag.
-        :param float total_resource_count: A count of the total number of resources that the tag is applied to.
-        :param float volume_snapshots_count: A count of the volume snapshots that the tag is applied to.
-        :param float volumes_count: A count of the volumes that the tag is applied to.
+        :param int total_resource_count: A count of the total number of resources that the tag is applied to.
+        :param int volume_snapshots_count: A count of the volume snapshots that the tag is applied to.
+        :param int volumes_count: A count of the volumes that the tag is applied to.
         """
         pulumi.set(__self__, "databases_count", databases_count)
         pulumi.set(__self__, "droplets_count", droplets_count)
@@ -5600,7 +5600,7 @@ class GetTagsTagResult(dict):
 
     @property
     @pulumi.getter(name="databasesCount")
-    def databases_count(self) -> float:
+    def databases_count(self) -> int:
         """
         A count of the database clusters that the tag is applied to.
         """
@@ -5608,7 +5608,7 @@ class GetTagsTagResult(dict):
 
     @property
     @pulumi.getter(name="dropletsCount")
-    def droplets_count(self) -> float:
+    def droplets_count(self) -> int:
         """
         A count of the Droplets the tag is applied to.
         """
@@ -5616,7 +5616,7 @@ class GetTagsTagResult(dict):
 
     @property
     @pulumi.getter(name="imagesCount")
-    def images_count(self) -> float:
+    def images_count(self) -> int:
         """
         A count of the images that the tag is applied to.
         """
@@ -5632,7 +5632,7 @@ class GetTagsTagResult(dict):
 
     @property
     @pulumi.getter(name="totalResourceCount")
-    def total_resource_count(self) -> float:
+    def total_resource_count(self) -> int:
         """
         A count of the total number of resources that the tag is applied to.
         """
@@ -5640,7 +5640,7 @@ class GetTagsTagResult(dict):
 
     @property
     @pulumi.getter(name="volumeSnapshotsCount")
-    def volume_snapshots_count(self) -> float:
+    def volume_snapshots_count(self) -> int:
         """
         A count of the volume snapshots that the tag is applied to.
         """
@@ -5648,7 +5648,7 @@ class GetTagsTagResult(dict):
 
     @property
     @pulumi.getter(name="volumesCount")
-    def volumes_count(self) -> float:
+    def volumes_count(self) -> int:
         """
         A count of the volumes that the tag is applied to.
         """

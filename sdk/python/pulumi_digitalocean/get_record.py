@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -26,8 +26,8 @@ class GetRecordResult:
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         pulumi.set(__self__, "domain", domain)
-        if flags and not isinstance(flags, float):
-            raise TypeError("Expected argument 'flags' to be a float")
+        if flags and not isinstance(flags, int):
+            raise TypeError("Expected argument 'flags' to be a int")
         pulumi.set(__self__, "flags", flags)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -35,23 +35,23 @@ class GetRecordResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
-        if priority and not isinstance(priority, float):
-            raise TypeError("Expected argument 'priority' to be a float")
+        if priority and not isinstance(priority, int):
+            raise TypeError("Expected argument 'priority' to be a int")
         pulumi.set(__self__, "priority", priority)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         pulumi.set(__self__, "tag", tag)
-        if ttl and not isinstance(ttl, float):
-            raise TypeError("Expected argument 'ttl' to be a float")
+        if ttl and not isinstance(ttl, int):
+            raise TypeError("Expected argument 'ttl' to be a int")
         pulumi.set(__self__, "ttl", ttl)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
-        if weight and not isinstance(weight, float):
-            raise TypeError("Expected argument 'weight' to be a float")
+        if weight and not isinstance(weight, int):
+            raise TypeError("Expected argument 'weight' to be a int")
         pulumi.set(__self__, "weight", weight)
 
     @property
@@ -66,7 +66,7 @@ class GetRecordResult:
 
     @property
     @pulumi.getter
-    def flags(self) -> float:
+    def flags(self) -> int:
         return pulumi.get(self, "flags")
 
     @property
@@ -84,12 +84,12 @@ class GetRecordResult:
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         return pulumi.get(self, "priority")
 
     @property
@@ -99,7 +99,7 @@ class GetRecordResult:
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> int:
         return pulumi.get(self, "ttl")
 
     @property
@@ -109,7 +109,7 @@ class GetRecordResult:
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         return pulumi.get(self, "weight")
 
 

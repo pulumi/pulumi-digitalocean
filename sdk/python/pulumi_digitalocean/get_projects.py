@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,7 +37,7 @@ class GetProjectsResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetProjectsFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetProjectsFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -50,7 +50,7 @@ class GetProjectsResult:
 
     @property
     @pulumi.getter
-    def projects(self) -> List['outputs.GetProjectsProjectResult']:
+    def projects(self) -> Sequence['outputs.GetProjectsProjectResult']:
         """
         A set of projects satisfying any `filter` and `sort` criteria. Each project has
         the following attributes:
@@ -59,7 +59,7 @@ class GetProjectsResult:
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[List['outputs.GetProjectsSortResult']]:
+    def sorts(self) -> Optional[Sequence['outputs.GetProjectsSortResult']]:
         return pulumi.get(self, "sorts")
 
 
@@ -75,8 +75,8 @@ class AwaitableGetProjectsResult(GetProjectsResult):
             sorts=self.sorts)
 
 
-def get_projects(filters: Optional[List[pulumi.InputType['GetProjectsFilterArgs']]] = None,
-                 sorts: Optional[List[pulumi.InputType['GetProjectsSortArgs']]] = None,
+def get_projects(filters: Optional[Sequence[pulumi.InputType['GetProjectsFilterArgs']]] = None,
+                 sorts: Optional[Sequence[pulumi.InputType['GetProjectsSortArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectsResult:
     """
     Retrieve information about all DigitalOcean projects associated with an account, with
@@ -126,9 +126,9 @@ def get_projects(filters: Optional[List[pulumi.InputType['GetProjectsFilterArgs'
     ```
 
 
-    :param List[pulumi.InputType['GetProjectsFilterArgs']] filters: Filter the results.
+    :param Sequence[pulumi.InputType['GetProjectsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
-    :param List[pulumi.InputType['GetProjectsSortArgs']] sorts: Sort the results.
+    :param Sequence[pulumi.InputType['GetProjectsSortArgs']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

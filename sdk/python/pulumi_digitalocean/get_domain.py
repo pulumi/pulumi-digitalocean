@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -29,8 +29,8 @@ class GetDomainResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if ttl and not isinstance(ttl, float):
-            raise TypeError("Expected argument 'ttl' to be a float")
+        if ttl and not isinstance(ttl, int):
+            raise TypeError("Expected argument 'ttl' to be a int")
         pulumi.set(__self__, "ttl", ttl)
         if zone_file and not isinstance(zone_file, str):
             raise TypeError("Expected argument 'zone_file' to be a str")
@@ -60,7 +60,7 @@ class GetDomainResult:
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> int:
         return pulumi.get(self, "ttl")
 
     @property

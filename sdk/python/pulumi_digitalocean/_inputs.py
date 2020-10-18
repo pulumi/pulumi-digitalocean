@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -66,15 +66,15 @@ __all__ = [
 class AppSpecArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 databases: Optional[pulumi.Input[List[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
-                 domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 services: Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceArgs']]]] = None,
-                 static_sites: Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteArgs']]]] = None,
-                 workers: Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerArgs']]]] = None):
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgs']]]] = None,
+                 static_sites: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]] = None,
+                 workers: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name of the component
-        :param pulumi.Input[List[pulumi.Input[str]]] domains: A list of hostnames where the application will be available.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of hostnames where the application will be available.
         :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
         """
         pulumi.set(__self__, "name", name)
@@ -105,23 +105,23 @@ class AppSpecArgs:
 
     @property
     @pulumi.getter
-    def databases(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecDatabaseArgs']]]]:
+    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]]:
         return pulumi.get(self, "databases")
 
     @databases.setter
-    def databases(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecDatabaseArgs']]]]):
+    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
 
     @property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of hostnames where the application will be available.
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "domains", value)
 
     @property
@@ -138,29 +138,29 @@ class AppSpecArgs:
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceArgs']]]]:
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgs']]]]:
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceArgs']]]]):
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgs']]]]):
         pulumi.set(self, "services", value)
 
     @property
     @pulumi.getter(name="staticSites")
-    def static_sites(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteArgs']]]]:
+    def static_sites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]]:
         return pulumi.get(self, "static_sites")
 
     @static_sites.setter
-    def static_sites(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteArgs']]]]):
+    def static_sites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]]):
         pulumi.set(self, "static_sites", value)
 
     @property
     @pulumi.getter
-    def workers(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerArgs']]]]:
+    def workers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]]:
         return pulumi.get(self, "workers")
 
     @workers.setter
-    def workers(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerArgs']]]]):
+    def workers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]]):
         pulumi.set(self, "workers", value)
 
 
@@ -266,12 +266,12 @@ class AppSpecServiceArgs:
                  build_command: Optional[pulumi.Input[str]] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
                  environment_slug: Optional[pulumi.Input[str]] = None,
-                 envs: Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceEnvArgs']]]] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]]] = None,
                  git: Optional[pulumi.Input['AppSpecServiceGitArgs']] = None,
                  github: Optional[pulumi.Input['AppSpecServiceGithubArgs']] = None,
                  health_check: Optional[pulumi.Input['AppSpecServiceHealthCheckArgs']] = None,
-                 http_port: Optional[pulumi.Input[float]] = None,
-                 instance_count: Optional[pulumi.Input[float]] = None,
+                 http_port: Optional[pulumi.Input[int]] = None,
+                 instance_count: Optional[pulumi.Input[int]] = None,
                  instance_size_slug: Optional[pulumi.Input[str]] = None,
                  routes: Optional[pulumi.Input['AppSpecServiceRoutesArgs']] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
@@ -281,12 +281,12 @@ class AppSpecServiceArgs:
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
-        :param pulumi.Input[List[pulumi.Input['AppSpecServiceEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input['AppSpecServiceGitArgs'] git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param pulumi.Input['AppSpecServiceGithubArgs'] github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
         :param pulumi.Input['AppSpecServiceHealthCheckArgs'] health_check: A health check to determine the availability of this component.
-        :param pulumi.Input[float] http_port: The internal port on which this service's run command will listen.
-        :param pulumi.Input[float] instance_count: The amount of instances that this component should be scaled to.
+        :param pulumi.Input[int] http_port: The internal port on which this service's run command will listen.
+        :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
@@ -369,14 +369,14 @@ class AppSpecServiceArgs:
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceEnvArgs']]]]:
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]]]:
         """
         Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecServiceEnvArgs']]]]):
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @property
@@ -417,26 +417,26 @@ class AppSpecServiceArgs:
 
     @property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> Optional[pulumi.Input[float]]:
+    def http_port(self) -> Optional[pulumi.Input[int]]:
         """
         The internal port on which this service's run command will listen.
         """
         return pulumi.get(self, "http_port")
 
     @http_port.setter
-    def http_port(self, value: Optional[pulumi.Input[float]]):
+    def http_port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_port", value)
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[float]]:
+    def instance_count(self) -> Optional[pulumi.Input[int]]:
         """
         The amount of instances that this component should be scaled to.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[float]]):
+    def instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "instance_count", value)
 
     @property
@@ -653,19 +653,19 @@ class AppSpecServiceGithubArgs:
 @pulumi.input_type
 class AppSpecServiceHealthCheckArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[float]] = None,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
                  http_path: Optional[pulumi.Input[str]] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[float]] = None,
-                 period_seconds: Optional[pulumi.Input[float]] = None,
-                 success_threshold: Optional[pulumi.Input[float]] = None,
-                 timeout_seconds: Optional[pulumi.Input[float]] = None):
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 success_threshold: Optional[pulumi.Input[int]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] failure_threshold: The number of failed health checks before considered unhealthy.
+        :param pulumi.Input[int] failure_threshold: The number of failed health checks before considered unhealthy.
         :param pulumi.Input[str] http_path: The route path used for the HTTP health check ping.
-        :param pulumi.Input[float] initial_delay_seconds: The number of seconds to wait before beginning health checks.
-        :param pulumi.Input[float] period_seconds: The number of seconds to wait between health checks.
-        :param pulumi.Input[float] success_threshold: The number of successful health checks before considered healthy.
-        :param pulumi.Input[float] timeout_seconds: The number of seconds after which the check times out.
+        :param pulumi.Input[int] initial_delay_seconds: The number of seconds to wait before beginning health checks.
+        :param pulumi.Input[int] period_seconds: The number of seconds to wait between health checks.
+        :param pulumi.Input[int] success_threshold: The number of successful health checks before considered healthy.
+        :param pulumi.Input[int] timeout_seconds: The number of seconds after which the check times out.
         """
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
@@ -682,14 +682,14 @@ class AppSpecServiceHealthCheckArgs:
 
     @property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[float]]:
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The number of failed health checks before considered unhealthy.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[float]]):
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @property
@@ -706,50 +706,50 @@ class AppSpecServiceHealthCheckArgs:
 
     @property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[float]]:
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of seconds to wait before beginning health checks.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[float]]):
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[float]]:
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of seconds to wait between health checks.
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[float]]):
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period_seconds", value)
 
     @property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[float]]:
+    def success_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The number of successful health checks before considered healthy.
         """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[float]]):
+    def success_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "success_threshold", value)
 
     @property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[float]]:
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of seconds after which the check times out.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[float]]):
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
@@ -783,7 +783,7 @@ class AppSpecStaticSiteArgs:
                  build_command: Optional[pulumi.Input[str]] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
                  environment_slug: Optional[pulumi.Input[str]] = None,
-                 envs: Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteEnvArgs']]]] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]]] = None,
                  error_document: Optional[pulumi.Input[str]] = None,
                  git: Optional[pulumi.Input['AppSpecStaticSiteGitArgs']] = None,
                  github: Optional[pulumi.Input['AppSpecStaticSiteGithubArgs']] = None,
@@ -796,7 +796,7 @@ class AppSpecStaticSiteArgs:
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
-        :param pulumi.Input[List[pulumi.Input['AppSpecStaticSiteEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[str] error_document: The name of the error document to use when serving this static site*
         :param pulumi.Input['AppSpecStaticSiteGitArgs'] git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param pulumi.Input['AppSpecStaticSiteGithubArgs'] github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
@@ -878,14 +878,14 @@ class AppSpecStaticSiteArgs:
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteEnvArgs']]]]:
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]]]:
         """
         Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecStaticSiteEnvArgs']]]]):
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @property
@@ -1165,10 +1165,10 @@ class AppSpecWorkerArgs:
                  build_command: Optional[pulumi.Input[str]] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
                  environment_slug: Optional[pulumi.Input[str]] = None,
-                 envs: Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerEnvArgs']]]] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgs']]]] = None,
                  git: Optional[pulumi.Input['AppSpecWorkerGitArgs']] = None,
                  github: Optional[pulumi.Input['AppSpecWorkerGithubArgs']] = None,
-                 instance_count: Optional[pulumi.Input[float]] = None,
+                 instance_count: Optional[pulumi.Input[int]] = None,
                  instance_size_slug: Optional[pulumi.Input[str]] = None,
                  routes: Optional[pulumi.Input['AppSpecWorkerRoutesArgs']] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
@@ -1178,10 +1178,10 @@ class AppSpecWorkerArgs:
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
-        :param pulumi.Input[List[pulumi.Input['AppSpecWorkerEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input['AppSpecWorkerGitArgs'] git: A Git repo to use as component's source. Only one of `git` and `github` may be set.
         :param pulumi.Input['AppSpecWorkerGithubArgs'] github: A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
-        :param pulumi.Input[float] instance_count: The amount of instances that this component should be scaled to.
+        :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
@@ -1260,14 +1260,14 @@ class AppSpecWorkerArgs:
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerEnvArgs']]]]:
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgs']]]]:
         """
         Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[List[pulumi.Input['AppSpecWorkerEnvArgs']]]]):
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @property
@@ -1296,14 +1296,14 @@ class AppSpecWorkerArgs:
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[float]]:
+    def instance_count(self) -> Optional[pulumi.Input[int]]:
         """
         The amount of instances that this component should be scaled to.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[float]]):
+    def instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "instance_count", value)
 
     @property
@@ -1651,10 +1651,10 @@ class FirewallInboundRuleArgs:
     def __init__(__self__, *,
                  protocol: pulumi.Input[str],
                  port_range: Optional[pulumi.Input[str]] = None,
-                 source_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 source_droplet_ids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-                 source_load_balancer_uids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 source_tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 source_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 source_load_balancer_uids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] protocol: The type of traffic to be allowed.
                This may be one of "tcp", "udp", or "icmp".
@@ -1662,14 +1662,14 @@ class FirewallInboundRuleArgs:
                specified as a string containing a single port, a range (e.g. "8000-9000"),
                or "1-65535" to open all ports for a protocol. Required for when protocol is
                `tcp` or `udp`.
-        :param pulumi.Input[List[pulumi.Input[str]]] source_addresses: An array of strings containing the IPv4
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_addresses: An array of strings containing the IPv4
                addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
                inbound traffic will be accepted.
-        :param pulumi.Input[List[pulumi.Input[float]]] source_droplet_ids: An array containing the IDs of
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] source_droplet_ids: An array containing the IDs of
                the Droplets from which the inbound traffic will be accepted.
-        :param pulumi.Input[List[pulumi.Input[str]]] source_load_balancer_uids: An array containing the IDs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_load_balancer_uids: An array containing the IDs
                of the Load Balancers from which the inbound traffic will be accepted.
-        :param pulumi.Input[List[pulumi.Input[str]]] source_tags: An array containing the names of Tags
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_tags: An array containing the names of Tags
                corresponding to groups of Droplets from which the inbound traffic
                will be accepted.
         """
@@ -1715,7 +1715,7 @@ class FirewallInboundRuleArgs:
 
     @property
     @pulumi.getter(name="sourceAddresses")
-    def source_addresses(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def source_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An array of strings containing the IPv4
         addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
@@ -1724,12 +1724,12 @@ class FirewallInboundRuleArgs:
         return pulumi.get(self, "source_addresses")
 
     @source_addresses.setter
-    def source_addresses(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def source_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "source_addresses", value)
 
     @property
     @pulumi.getter(name="sourceDropletIds")
-    def source_droplet_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def source_droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         An array containing the IDs of
         the Droplets from which the inbound traffic will be accepted.
@@ -1737,12 +1737,12 @@ class FirewallInboundRuleArgs:
         return pulumi.get(self, "source_droplet_ids")
 
     @source_droplet_ids.setter
-    def source_droplet_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def source_droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "source_droplet_ids", value)
 
     @property
     @pulumi.getter(name="sourceLoadBalancerUids")
-    def source_load_balancer_uids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def source_load_balancer_uids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An array containing the IDs
         of the Load Balancers from which the inbound traffic will be accepted.
@@ -1750,12 +1750,12 @@ class FirewallInboundRuleArgs:
         return pulumi.get(self, "source_load_balancer_uids")
 
     @source_load_balancer_uids.setter
-    def source_load_balancer_uids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def source_load_balancer_uids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "source_load_balancer_uids", value)
 
     @property
     @pulumi.getter(name="sourceTags")
-    def source_tags(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def source_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An array containing the names of Tags
         corresponding to groups of Droplets from which the inbound traffic
@@ -1764,7 +1764,7 @@ class FirewallInboundRuleArgs:
         return pulumi.get(self, "source_tags")
 
     @source_tags.setter
-    def source_tags(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def source_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "source_tags", value)
 
 
@@ -1772,22 +1772,22 @@ class FirewallInboundRuleArgs:
 class FirewallOutboundRuleArgs:
     def __init__(__self__, *,
                  protocol: pulumi.Input[str],
-                 destination_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 destination_droplet_ids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-                 destination_load_balancer_uids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 destination_tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 destination_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destination_droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 destination_load_balancer_uids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destination_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  port_range: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] protocol: The type of traffic to be allowed.
                This may be one of "tcp", "udp", or "icmp".
-        :param pulumi.Input[List[pulumi.Input[str]]] destination_addresses: An array of strings containing the IPv4
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_addresses: An array of strings containing the IPv4
                addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
                outbound traffic will be allowed.
-        :param pulumi.Input[List[pulumi.Input[float]]] destination_droplet_ids: An array containing the IDs of
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] destination_droplet_ids: An array containing the IDs of
                the Droplets to which the outbound traffic will be allowed.
-        :param pulumi.Input[List[pulumi.Input[str]]] destination_load_balancer_uids: An array containing the IDs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_load_balancer_uids: An array containing the IDs
                of the Load Balancers to which the outbound traffic will be allowed.
-        :param pulumi.Input[List[pulumi.Input[str]]] destination_tags: An array containing the names of Tags
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_tags: An array containing the names of Tags
                corresponding to groups of Droplets to which the outbound traffic will
                be allowed.
                traffic.
@@ -1823,7 +1823,7 @@ class FirewallOutboundRuleArgs:
 
     @property
     @pulumi.getter(name="destinationAddresses")
-    def destination_addresses(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def destination_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An array of strings containing the IPv4
         addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
@@ -1832,12 +1832,12 @@ class FirewallOutboundRuleArgs:
         return pulumi.get(self, "destination_addresses")
 
     @destination_addresses.setter
-    def destination_addresses(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def destination_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "destination_addresses", value)
 
     @property
     @pulumi.getter(name="destinationDropletIds")
-    def destination_droplet_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def destination_droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         An array containing the IDs of
         the Droplets to which the outbound traffic will be allowed.
@@ -1845,12 +1845,12 @@ class FirewallOutboundRuleArgs:
         return pulumi.get(self, "destination_droplet_ids")
 
     @destination_droplet_ids.setter
-    def destination_droplet_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def destination_droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "destination_droplet_ids", value)
 
     @property
     @pulumi.getter(name="destinationLoadBalancerUids")
-    def destination_load_balancer_uids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def destination_load_balancer_uids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An array containing the IDs
         of the Load Balancers to which the outbound traffic will be allowed.
@@ -1858,12 +1858,12 @@ class FirewallOutboundRuleArgs:
         return pulumi.get(self, "destination_load_balancer_uids")
 
     @destination_load_balancer_uids.setter
-    def destination_load_balancer_uids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def destination_load_balancer_uids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "destination_load_balancer_uids", value)
 
     @property
     @pulumi.getter(name="destinationTags")
-    def destination_tags(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def destination_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An array containing the names of Tags
         corresponding to groups of Droplets to which the outbound traffic will
@@ -1873,7 +1873,7 @@ class FirewallOutboundRuleArgs:
         return pulumi.get(self, "destination_tags")
 
     @destination_tags.setter
-    def destination_tags(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def destination_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "destination_tags", value)
 
     @property
@@ -1895,7 +1895,7 @@ class FirewallOutboundRuleArgs:
 @pulumi.input_type
 class FirewallPendingChangeArgs:
     def __init__(__self__, *,
-                 droplet_id: Optional[pulumi.Input[float]] = None,
+                 droplet_id: Optional[pulumi.Input[int]] = None,
                  removing: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
@@ -1911,11 +1911,11 @@ class FirewallPendingChangeArgs:
 
     @property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> Optional[pulumi.Input[float]]:
+    def droplet_id(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "droplet_id")
 
     @droplet_id.setter
-    def droplet_id(self, value: Optional[pulumi.Input[float]]):
+    def droplet_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "droplet_id", value)
 
     @property
@@ -2065,27 +2065,27 @@ class KubernetesClusterNodePoolArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  size: pulumi.Input[str],
-                 actual_node_count: Optional[pulumi.Input[float]] = None,
+                 actual_node_count: Optional[pulumi.Input[int]] = None,
                  auto_scale: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 max_nodes: Optional[pulumi.Input[float]] = None,
-                 min_nodes: Optional[pulumi.Input[float]] = None,
-                 node_count: Optional[pulumi.Input[float]] = None,
-                 nodes: Optional[pulumi.Input[List[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 max_nodes: Optional[pulumi.Input[int]] = None,
+                 min_nodes: Optional[pulumi.Input[int]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
-        :param pulumi.Input[float] actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+        :param pulumi.Input[int] actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param pulumi.Input[bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[str] id: A unique ID that can be used to identify and reference the node.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-        :param pulumi.Input[float] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-        :param pulumi.Input[float] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-        :param pulumi.Input[float] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-        :param pulumi.Input[List[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]] nodes: A list of nodes in the pool. Each node exports the following attributes:
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[int] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+        :param pulumi.Input[int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+        :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]] nodes: A list of nodes in the pool. Each node exports the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
@@ -2134,14 +2134,14 @@ class KubernetesClusterNodePoolArgs:
 
     @property
     @pulumi.getter(name="actualNodeCount")
-    def actual_node_count(self) -> Optional[pulumi.Input[float]]:
+    def actual_node_count(self) -> Optional[pulumi.Input[int]]:
         """
         A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         """
         return pulumi.get(self, "actual_node_count")
 
     @actual_node_count.setter
-    def actual_node_count(self, value: Optional[pulumi.Input[float]]):
+    def actual_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "actual_node_count", value)
 
     @property
@@ -2182,62 +2182,62 @@ class KubernetesClusterNodePoolArgs:
 
     @property
     @pulumi.getter(name="maxNodes")
-    def max_nodes(self) -> Optional[pulumi.Input[float]]:
+    def max_nodes(self) -> Optional[pulumi.Input[int]]:
         """
         If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         """
         return pulumi.get(self, "max_nodes")
 
     @max_nodes.setter
-    def max_nodes(self, value: Optional[pulumi.Input[float]]):
+    def max_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_nodes", value)
 
     @property
     @pulumi.getter(name="minNodes")
-    def min_nodes(self) -> Optional[pulumi.Input[float]]:
+    def min_nodes(self) -> Optional[pulumi.Input[int]]:
         """
         If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         """
         return pulumi.get(self, "min_nodes")
 
     @min_nodes.setter
-    def min_nodes(self, value: Optional[pulumi.Input[float]]):
+    def min_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_nodes", value)
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[float]]:
+    def node_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[float]]):
+    def node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "node_count", value)
 
     @property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[List[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]]]:
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]]]:
         """
         A list of nodes in the pool. Each node exports the following attributes:
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[List[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]]]):
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of tag names to be applied to the Kubernetes cluster.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -2450,16 +2450,16 @@ class KubernetesNodePoolNodeArgs:
 @pulumi.input_type
 class LoadBalancerForwardingRuleArgs:
     def __init__(__self__, *,
-                 entry_port: pulumi.Input[float],
+                 entry_port: pulumi.Input[int],
                  entry_protocol: pulumi.Input[str],
-                 target_port: pulumi.Input[float],
+                 target_port: pulumi.Input[int],
                  target_protocol: pulumi.Input[str],
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  tls_passthrough: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[float] entry_port: An integer representing the port on which the Load Balancer instance will listen.
+        :param pulumi.Input[int] entry_port: An integer representing the port on which the Load Balancer instance will listen.
         :param pulumi.Input[str] entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
-        :param pulumi.Input[float] target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
+        :param pulumi.Input[int] target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
         :param pulumi.Input[str] target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
         :param pulumi.Input[str] certificate_id: The ID of the TLS certificate to be used for SSL termination.
         :param pulumi.Input[bool] tls_passthrough: A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
@@ -2475,14 +2475,14 @@ class LoadBalancerForwardingRuleArgs:
 
     @property
     @pulumi.getter(name="entryPort")
-    def entry_port(self) -> pulumi.Input[float]:
+    def entry_port(self) -> pulumi.Input[int]:
         """
         An integer representing the port on which the Load Balancer instance will listen.
         """
         return pulumi.get(self, "entry_port")
 
     @entry_port.setter
-    def entry_port(self, value: pulumi.Input[float]):
+    def entry_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "entry_port", value)
 
     @property
@@ -2499,14 +2499,14 @@ class LoadBalancerForwardingRuleArgs:
 
     @property
     @pulumi.getter(name="targetPort")
-    def target_port(self) -> pulumi.Input[float]:
+    def target_port(self) -> pulumi.Input[int]:
         """
         An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
         """
         return pulumi.get(self, "target_port")
 
     @target_port.setter
-    def target_port(self, value: pulumi.Input[float]):
+    def target_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "target_port", value)
 
     @property
@@ -2549,21 +2549,21 @@ class LoadBalancerForwardingRuleArgs:
 @pulumi.input_type
 class LoadBalancerHealthcheckArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[float],
+                 port: pulumi.Input[int],
                  protocol: pulumi.Input[str],
-                 check_interval_seconds: Optional[pulumi.Input[float]] = None,
-                 healthy_threshold: Optional[pulumi.Input[float]] = None,
+                 check_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 healthy_threshold: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 response_timeout_seconds: Optional[pulumi.Input[float]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[float]] = None):
+                 response_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 unhealthy_threshold: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] port: An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+        :param pulumi.Input[int] port: An integer representing the port on the backend Droplets on which the health check will attempt a connection.
         :param pulumi.Input[str] protocol: The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
-        :param pulumi.Input[float] check_interval_seconds: The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
-        :param pulumi.Input[float] healthy_threshold: The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+        :param pulumi.Input[int] check_interval_seconds: The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+        :param pulumi.Input[int] healthy_threshold: The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
         :param pulumi.Input[str] path: The path on the backend Droplets to which the Load Balancer instance will send a request.
-        :param pulumi.Input[float] response_timeout_seconds: The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
-        :param pulumi.Input[float] unhealthy_threshold: The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
+        :param pulumi.Input[int] response_timeout_seconds: The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "protocol", protocol)
@@ -2580,14 +2580,14 @@ class LoadBalancerHealthcheckArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Input[float]:
+    def port(self) -> pulumi.Input[int]:
         """
         An integer representing the port on the backend Droplets on which the health check will attempt a connection.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: pulumi.Input[float]):
+    def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
     @property
@@ -2604,26 +2604,26 @@ class LoadBalancerHealthcheckArgs:
 
     @property
     @pulumi.getter(name="checkIntervalSeconds")
-    def check_interval_seconds(self) -> Optional[pulumi.Input[float]]:
+    def check_interval_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
         """
         return pulumi.get(self, "check_interval_seconds")
 
     @check_interval_seconds.setter
-    def check_interval_seconds(self, value: Optional[pulumi.Input[float]]):
+    def check_interval_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "check_interval_seconds", value)
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[pulumi.Input[float]]:
+    def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
         """
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: Optional[pulumi.Input[float]]):
+    def healthy_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "healthy_threshold", value)
 
     @property
@@ -2640,26 +2640,26 @@ class LoadBalancerHealthcheckArgs:
 
     @property
     @pulumi.getter(name="responseTimeoutSeconds")
-    def response_timeout_seconds(self) -> Optional[pulumi.Input[float]]:
+    def response_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
         """
         return pulumi.get(self, "response_timeout_seconds")
 
     @response_timeout_seconds.setter
-    def response_timeout_seconds(self, value: Optional[pulumi.Input[float]]):
+    def response_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "response_timeout_seconds", value)
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[pulumi.Input[float]]:
+    def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: Optional[pulumi.Input[float]]):
+    def unhealthy_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "unhealthy_threshold", value)
 
 
@@ -2667,11 +2667,11 @@ class LoadBalancerHealthcheckArgs:
 class LoadBalancerStickySessionsArgs:
     def __init__(__self__, *,
                  cookie_name: Optional[pulumi.Input[str]] = None,
-                 cookie_ttl_seconds: Optional[pulumi.Input[float]] = None,
+                 cookie_ttl_seconds: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cookie_name: The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
-        :param pulumi.Input[float] cookie_ttl_seconds: The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
+        :param pulumi.Input[int] cookie_ttl_seconds: The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
         :param pulumi.Input[str] type: An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
         """
         if cookie_name is not None:
@@ -2695,14 +2695,14 @@ class LoadBalancerStickySessionsArgs:
 
     @property
     @pulumi.getter(name="cookieTtlSeconds")
-    def cookie_ttl_seconds(self) -> Optional[pulumi.Input[float]]:
+    def cookie_ttl_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
         """
         return pulumi.get(self, "cookie_ttl_seconds")
 
     @cookie_ttl_seconds.setter
-    def cookie_ttl_seconds(self, value: Optional[pulumi.Input[float]]):
+    def cookie_ttl_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cookie_ttl_seconds", value)
 
     @property
@@ -2721,15 +2721,15 @@ class LoadBalancerStickySessionsArgs:
 @pulumi.input_type
 class SpacesBucketCorsRuleArgs:
     def __init__(__self__, *,
-                 allowed_methods: pulumi.Input[List[pulumi.Input[str]]],
-                 allowed_origins: pulumi.Input[List[pulumi.Input[str]]],
-                 allowed_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 max_age_seconds: Optional[pulumi.Input[float]] = None):
+                 allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allowed_origins: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age_seconds: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-        :param pulumi.Input[float] max_age_seconds: The time in seconds that browser can cache the response for a preflight request.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_methods: A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_headers: A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
+        :param pulumi.Input[int] max_age_seconds: The time in seconds that browser can cache the response for a preflight request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -2740,50 +2740,50 @@ class SpacesBucketCorsRuleArgs:
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def allowed_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
         """
         return pulumi.get(self, "allowed_methods")
 
     @allowed_methods.setter
-    def allowed_methods(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def allowed_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_methods", value)
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def allowed_origins(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
         """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
-    def allowed_origins(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def allowed_origins(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_origins", value)
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
         """
         return pulumi.get(self, "allowed_headers")
 
     @allowed_headers.setter
-    def allowed_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_headers", value)
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[pulumi.Input[float]]:
+    def max_age_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The time in seconds that browser can cache the response for a preflight request.
         """
         return pulumi.get(self, "max_age_seconds")
 
     @max_age_seconds.setter
-    def max_age_seconds(self, value: Optional[pulumi.Input[float]]):
+    def max_age_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age_seconds", value)
 
 
@@ -2791,14 +2791,14 @@ class SpacesBucketCorsRuleArgs:
 class SpacesBucketLifecycleRuleArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 abort_incomplete_multipart_upload_days: Optional[pulumi.Input[float]] = None,
+                 abort_incomplete_multipart_upload_days: Optional[pulumi.Input[int]] = None,
                  expiration: Optional[pulumi.Input['SpacesBucketLifecycleRuleExpirationArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  noncurrent_version_expiration: Optional[pulumi.Input['SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs']] = None,
                  prefix: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Specifies lifecycle rule status.
-        :param pulumi.Input[float] abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart
+        :param pulumi.Input[int] abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart
                upload when the multipart upload must be completed or else Spaces will abort the upload.
         :param pulumi.Input['SpacesBucketLifecycleRuleExpirationArgs'] expiration: Specifies a time period after which applicable objects expire (documented below).
         :param pulumi.Input[str] id: Unique identifier for the rule.
@@ -2831,7 +2831,7 @@ class SpacesBucketLifecycleRuleArgs:
 
     @property
     @pulumi.getter(name="abortIncompleteMultipartUploadDays")
-    def abort_incomplete_multipart_upload_days(self) -> Optional[pulumi.Input[float]]:
+    def abort_incomplete_multipart_upload_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after initiating a multipart
         upload when the multipart upload must be completed or else Spaces will abort the upload.
@@ -2839,7 +2839,7 @@ class SpacesBucketLifecycleRuleArgs:
         return pulumi.get(self, "abort_incomplete_multipart_upload_days")
 
     @abort_incomplete_multipart_upload_days.setter
-    def abort_incomplete_multipart_upload_days(self, value: Optional[pulumi.Input[float]]):
+    def abort_incomplete_multipart_upload_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "abort_incomplete_multipart_upload_days", value)
 
     @property
@@ -2895,12 +2895,12 @@ class SpacesBucketLifecycleRuleArgs:
 class SpacesBucketLifecycleRuleExpirationArgs:
     def __init__(__self__, *,
                  date: Optional[pulumi.Input[str]] = None,
-                 days: Optional[pulumi.Input[float]] = None,
+                 days: Optional[pulumi.Input[int]] = None,
                  expired_object_delete_marker: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] date: Specifies the date/time after which you want applicable objects to expire. The argument uses
                RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
-        :param pulumi.Input[float] days: Specifies the number of days after object creation when the applicable objects will expire.
+        :param pulumi.Input[int] days: Specifies the number of days after object creation when the applicable objects will expire.
         :param pulumi.Input[bool] expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended
                bucket), setting this to true directs Spaces to delete expired object delete markers.
         """
@@ -2926,14 +2926,14 @@ class SpacesBucketLifecycleRuleExpirationArgs:
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[float]]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after object creation when the applicable objects will expire.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[float]]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
     @property
@@ -2953,23 +2953,23 @@ class SpacesBucketLifecycleRuleExpirationArgs:
 @pulumi.input_type
 class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def __init__(__self__, *,
-                 days: Optional[pulumi.Input[float]] = None):
+                 days: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] days: Specifies the number of days after which an object's non-current versions expire.
+        :param pulumi.Input[int] days: Specifies the number of days after which an object's non-current versions expire.
         """
         if days is not None:
             pulumi.set(__self__, "days", days)
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[float]]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after which an object's non-current versions expire.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[float]]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
 
@@ -3002,12 +3002,12 @@ class SpacesBucketVersioningArgs:
 class GetDomainsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves domains
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves domains
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3037,7 +3037,7 @@ class GetDomainsFilterArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves domains
         where the `key` field takes on one or more of the values provided here.
@@ -3045,7 +3045,7 @@ class GetDomainsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: List[str]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property
@@ -3119,7 +3119,7 @@ class GetDomainsSortArgs:
 class GetDropletsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
@@ -3127,7 +3127,7 @@ class GetDropletsFilterArgs:
                `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
                `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
                `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves Droplets
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves Droplets
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3160,7 +3160,7 @@ class GetDropletsFilterArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves Droplets
         where the `key` field takes on one or more of the values provided here.
@@ -3168,7 +3168,7 @@ class GetDropletsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: List[str]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property
@@ -3248,14 +3248,14 @@ class GetDropletsSortArgs:
 class GetImagesFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the images by this key. This may be one of `distribution`, `error_message`,
                `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
                `tags`, or `type`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves images
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves images
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3287,7 +3287,7 @@ class GetImagesFilterArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves images
         where the `key` field takes on one or more of the values provided here.
@@ -3295,7 +3295,7 @@ class GetImagesFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: List[str]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property
@@ -3371,13 +3371,13 @@ class GetImagesSortArgs:
 class GetProjectsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the projects by this key. This may be one of `name`,
                `purpose`, `description`, `environment`, or `is_default`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves projects
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves projects
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3408,7 +3408,7 @@ class GetProjectsFilterArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves projects
         where the `key` field takes on one or more of the values provided here.
@@ -3416,7 +3416,7 @@ class GetProjectsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: List[str]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property
@@ -3492,13 +3492,13 @@ class GetProjectsSortArgs:
 class GetRegionsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the regions by this key. This may be one of `slug`,
                `name`, `available`, `features`, or `sizes`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves regions
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves regions
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3529,7 +3529,7 @@ class GetRegionsFilterArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves regions
         where the `key` field takes on one or more of the values provided here.
@@ -3537,7 +3537,7 @@ class GetRegionsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: List[str]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property
@@ -3613,14 +3613,14 @@ class GetRegionsSortArgs:
 class GetSizesFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the sizes by this key. This may be one of `slug`,
                `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
                `price_hourly`, or `available`.
-        :param List[str] values: Only retrieves sizes which keys has value that matches
+        :param Sequence[str] values: Only retrieves sizes which keys has value that matches
                one of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3652,7 +3652,7 @@ class GetSizesFilterArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Only retrieves sizes which keys has value that matches
         one of the values provided here.
@@ -3660,7 +3660,7 @@ class GetSizesFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: List[str]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property
@@ -3736,12 +3736,12 @@ class GetSizesSortArgs:
 class GetSpacesBucketsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
-        :param List[str] values: A list of values to match against the `key` field. Only retrieves Spaces buckets
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves Spaces buckets
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3771,7 +3771,7 @@ class GetSpacesBucketsFilterArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match against the `key` field. Only retrieves Spaces buckets
         where the `key` field takes on one or more of the values provided here.
@@ -3779,7 +3779,7 @@ class GetSpacesBucketsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: List[str]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property
@@ -3853,12 +3853,12 @@ class GetSpacesBucketsSortArgs:
 class GetTagsFilterArgs:
     def __init__(__self__, *,
                  key: str,
-                 values: List[str],
+                 values: Sequence[str],
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
-        :param List[str] values: Only retrieves tags which keys has value that matches
+        :param Sequence[str] values: Only retrieves tags which keys has value that matches
                one of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -3888,7 +3888,7 @@ class GetTagsFilterArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Only retrieves tags which keys has value that matches
         one of the values provided here.
@@ -3896,7 +3896,7 @@ class GetTagsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: List[str]):
+    def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
     @property

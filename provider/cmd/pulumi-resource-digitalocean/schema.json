@@ -66,12 +66,12 @@
         ]
     },
     "types": {
-        "digitalocean:/AppSpec:AppSpec": {
+        "digitalocean:index/AppSpec:AppSpec": {
             "properties": {
                 "databases": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/AppSpecDatabase:AppSpecDatabase"
+                        "$ref": "#/types/digitalocean:index/AppSpecDatabase:AppSpecDatabase"
                     },
                     "language": {
                         "python": {
@@ -112,7 +112,7 @@
                 "services": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/AppSpecService:AppSpecService"
+                        "$ref": "#/types/digitalocean:index/AppSpecService:AppSpecService"
                     },
                     "language": {
                         "python": {
@@ -123,7 +123,7 @@
                 "staticSites": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/AppSpecStaticSite:AppSpecStaticSite"
+                        "$ref": "#/types/digitalocean:index/AppSpecStaticSite:AppSpecStaticSite"
                     },
                     "language": {
                         "python": {
@@ -134,7 +134,7 @@
                 "workers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/AppSpecWorker:AppSpecWorker"
+                        "$ref": "#/types/digitalocean:index/AppSpecWorker:AppSpecWorker"
                     },
                     "language": {
                         "python": {
@@ -148,7 +148,7 @@
                 "name"
             ]
         },
-        "digitalocean:/AppSpecDatabase:AppSpecDatabase": {
+        "digitalocean:index/AppSpecDatabase:AppSpecDatabase": {
             "properties": {
                 "clusterName": {
                     "type": "string",
@@ -210,7 +210,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecService:AppSpecService": {
+        "digitalocean:index/AppSpecService:AppSpecService": {
             "properties": {
                 "buildCommand": {
                     "type": "string",
@@ -242,7 +242,7 @@
                 "envs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/AppSpecServiceEnv:AppSpecServiceEnv"
+                        "$ref": "#/types/digitalocean:index/AppSpecServiceEnv:AppSpecServiceEnv"
                     },
                     "description": "Describes an environment variable made available to an app competent.\n",
                     "language": {
@@ -252,7 +252,7 @@
                     }
                 },
                 "git": {
-                    "$ref": "#/types/digitalocean:/AppSpecServiceGit:AppSpecServiceGit",
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceGit:AppSpecServiceGit",
                     "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -261,7 +261,7 @@
                     }
                 },
                 "github": {
-                    "$ref": "#/types/digitalocean:/AppSpecServiceGithub:AppSpecServiceGithub",
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceGithub:AppSpecServiceGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -270,7 +270,7 @@
                     }
                 },
                 "healthCheck": {
-                    "$ref": "#/types/digitalocean:/AppSpecServiceHealthCheck:AppSpecServiceHealthCheck",
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceHealthCheck:AppSpecServiceHealthCheck",
                     "description": "A health check to determine the availability of this component.\n",
                     "language": {
                         "python": {
@@ -315,7 +315,7 @@
                     }
                 },
                 "routes": {
-                    "$ref": "#/types/digitalocean:/AppSpecServiceRoutes:AppSpecServiceRoutes",
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceRoutes:AppSpecServiceRoutes",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -356,7 +356,7 @@
                 }
             }
         },
-        "digitalocean:/AppSpecServiceEnv:AppSpecServiceEnv": {
+        "digitalocean:index/AppSpecServiceEnv:AppSpecServiceEnv": {
             "properties": {
                 "key": {
                     "type": "string",
@@ -404,7 +404,7 @@
                 }
             }
         },
-        "digitalocean:/AppSpecServiceGit:AppSpecServiceGit": {
+        "digitalocean:index/AppSpecServiceGit:AppSpecServiceGit": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -427,7 +427,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecServiceGithub:AppSpecServiceGithub": {
+        "digitalocean:index/AppSpecServiceGithub:AppSpecServiceGithub": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -459,7 +459,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecServiceHealthCheck:AppSpecServiceHealthCheck": {
+        "digitalocean:index/AppSpecServiceHealthCheck:AppSpecServiceHealthCheck": {
             "properties": {
                 "failureThreshold": {
                     "type": "integer",
@@ -518,7 +518,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecServiceRoutes:AppSpecServiceRoutes": {
+        "digitalocean:index/AppSpecServiceRoutes:AppSpecServiceRoutes": {
             "properties": {
                 "path": {
                     "type": "string",
@@ -532,7 +532,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecStaticSite:AppSpecStaticSite": {
+        "digitalocean:index/AppSpecStaticSite:AppSpecStaticSite": {
             "properties": {
                 "buildCommand": {
                     "type": "string",
@@ -564,7 +564,7 @@
                 "envs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/AppSpecStaticSiteEnv:AppSpecStaticSiteEnv"
+                        "$ref": "#/types/digitalocean:index/AppSpecStaticSiteEnv:AppSpecStaticSiteEnv"
                     },
                     "description": "Describes an environment variable made available to an app competent.\n",
                     "language": {
@@ -583,7 +583,7 @@
                     }
                 },
                 "git": {
-                    "$ref": "#/types/digitalocean:/AppSpecStaticSiteGit:AppSpecStaticSiteGit",
+                    "$ref": "#/types/digitalocean:index/AppSpecStaticSiteGit:AppSpecStaticSiteGit",
                     "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -592,7 +592,7 @@
                     }
                 },
                 "github": {
-                    "$ref": "#/types/digitalocean:/AppSpecStaticSiteGithub:AppSpecStaticSiteGithub",
+                    "$ref": "#/types/digitalocean:index/AppSpecStaticSiteGithub:AppSpecStaticSiteGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -628,7 +628,7 @@
                     }
                 },
                 "routes": {
-                    "$ref": "#/types/digitalocean:/AppSpecStaticSiteRoutes:AppSpecStaticSiteRoutes",
+                    "$ref": "#/types/digitalocean:index/AppSpecStaticSiteRoutes:AppSpecStaticSiteRoutes",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -658,7 +658,7 @@
                 }
             }
         },
-        "digitalocean:/AppSpecStaticSiteEnv:AppSpecStaticSiteEnv": {
+        "digitalocean:index/AppSpecStaticSiteEnv:AppSpecStaticSiteEnv": {
             "properties": {
                 "key": {
                     "type": "string",
@@ -706,7 +706,7 @@
                 }
             }
         },
-        "digitalocean:/AppSpecStaticSiteGit:AppSpecStaticSiteGit": {
+        "digitalocean:index/AppSpecStaticSiteGit:AppSpecStaticSiteGit": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -729,7 +729,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecStaticSiteGithub:AppSpecStaticSiteGithub": {
+        "digitalocean:index/AppSpecStaticSiteGithub:AppSpecStaticSiteGithub": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -761,7 +761,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecStaticSiteRoutes:AppSpecStaticSiteRoutes": {
+        "digitalocean:index/AppSpecStaticSiteRoutes:AppSpecStaticSiteRoutes": {
             "properties": {
                 "path": {
                     "type": "string",
@@ -775,7 +775,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecWorker:AppSpecWorker": {
+        "digitalocean:index/AppSpecWorker:AppSpecWorker": {
             "properties": {
                 "buildCommand": {
                     "type": "string",
@@ -807,7 +807,7 @@
                 "envs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/AppSpecWorkerEnv:AppSpecWorkerEnv"
+                        "$ref": "#/types/digitalocean:index/AppSpecWorkerEnv:AppSpecWorkerEnv"
                     },
                     "description": "Describes an environment variable made available to an app competent.\n",
                     "language": {
@@ -817,7 +817,7 @@
                     }
                 },
                 "git": {
-                    "$ref": "#/types/digitalocean:/AppSpecWorkerGit:AppSpecWorkerGit",
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerGit:AppSpecWorkerGit",
                     "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -826,7 +826,7 @@
                     }
                 },
                 "github": {
-                    "$ref": "#/types/digitalocean:/AppSpecWorkerGithub:AppSpecWorkerGithub",
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerGithub:AppSpecWorkerGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -862,7 +862,7 @@
                     }
                 },
                 "routes": {
-                    "$ref": "#/types/digitalocean:/AppSpecWorkerRoutes:AppSpecWorkerRoutes",
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerRoutes:AppSpecWorkerRoutes",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -901,7 +901,7 @@
                 }
             }
         },
-        "digitalocean:/AppSpecWorkerEnv:AppSpecWorkerEnv": {
+        "digitalocean:index/AppSpecWorkerEnv:AppSpecWorkerEnv": {
             "properties": {
                 "key": {
                     "type": "string",
@@ -949,7 +949,7 @@
                 }
             }
         },
-        "digitalocean:/AppSpecWorkerGit:AppSpecWorkerGit": {
+        "digitalocean:index/AppSpecWorkerGit:AppSpecWorkerGit": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -972,7 +972,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecWorkerGithub:AppSpecWorkerGithub": {
+        "digitalocean:index/AppSpecWorkerGithub:AppSpecWorkerGithub": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -1004,7 +1004,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/AppSpecWorkerRoutes:AppSpecWorkerRoutes": {
+        "digitalocean:index/AppSpecWorkerRoutes:AppSpecWorkerRoutes": {
             "properties": {
                 "path": {
                     "type": "string",
@@ -1018,7 +1018,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow": {
+        "digitalocean:index/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow": {
             "properties": {
                 "day": {
                     "type": "string",
@@ -1045,7 +1045,7 @@
                 "hour"
             ]
         },
-        "digitalocean:/DatabaseFirewallRule:DatabaseFirewallRule": {
+        "digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule": {
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -1100,7 +1100,7 @@
                 }
             }
         },
-        "digitalocean:/FirewallInboundRule:FirewallInboundRule": {
+        "digitalocean:index/FirewallInboundRule:FirewallInboundRule": {
             "properties": {
                 "portRange": {
                     "type": "string",
@@ -1174,7 +1174,7 @@
                 "protocol"
             ]
         },
-        "digitalocean:/FirewallOutboundRule:FirewallOutboundRule": {
+        "digitalocean:index/FirewallOutboundRule:FirewallOutboundRule": {
             "properties": {
                 "destinationAddresses": {
                     "type": "array",
@@ -1248,7 +1248,7 @@
                 "protocol"
             ]
         },
-        "digitalocean:/FirewallPendingChange:FirewallPendingChange": {
+        "digitalocean:index/FirewallPendingChange:FirewallPendingChange": {
             "properties": {
                 "dropletId": {
                     "type": "integer",
@@ -1278,7 +1278,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig": {
+        "digitalocean:index/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig": {
             "properties": {
                 "clientCertificate": {
                     "type": "string",
@@ -1359,7 +1359,7 @@
                 }
             }
         },
-        "digitalocean:/KubernetesClusterNodePool:KubernetesClusterNodePool": {
+        "digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool": {
             "properties": {
                 "actualNodeCount": {
                     "type": "integer",
@@ -1439,7 +1439,7 @@
                 "nodes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/KubernetesClusterNodePoolNode:KubernetesClusterNodePoolNode"
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterNodePoolNode:KubernetesClusterNodePoolNode"
                     },
                     "description": "A list of nodes in the pool. Each node exports the following attributes:\n",
                     "language": {
@@ -1487,7 +1487,7 @@
                 }
             }
         },
-        "digitalocean:/KubernetesClusterNodePoolNode:KubernetesClusterNodePoolNode": {
+        "digitalocean:index/KubernetesClusterNodePoolNode:KubernetesClusterNodePoolNode": {
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -1558,7 +1558,7 @@
                 }
             }
         },
-        "digitalocean:/KubernetesNodePoolNode:KubernetesNodePoolNode": {
+        "digitalocean:index/KubernetesNodePoolNode:KubernetesNodePoolNode": {
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -1629,7 +1629,7 @@
                 }
             }
         },
-        "digitalocean:/LoadBalancerForwardingRule:LoadBalancerForwardingRule": {
+        "digitalocean:index/LoadBalancerForwardingRule:LoadBalancerForwardingRule": {
             "properties": {
                 "certificateId": {
                     "type": "string",
@@ -1694,7 +1694,7 @@
                 "targetProtocol"
             ]
         },
-        "digitalocean:/LoadBalancerHealthcheck:LoadBalancerHealthcheck": {
+        "digitalocean:index/LoadBalancerHealthcheck:LoadBalancerHealthcheck": {
             "properties": {
                 "checkIntervalSeconds": {
                     "type": "integer",
@@ -1766,7 +1766,7 @@
                 "protocol"
             ]
         },
-        "digitalocean:/LoadBalancerStickySessions:LoadBalancerStickySessions": {
+        "digitalocean:index/LoadBalancerStickySessions:LoadBalancerStickySessions": {
             "properties": {
                 "cookieName": {
                     "type": "string",
@@ -1798,7 +1798,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/SpacesBucketCorsRule:SpacesBucketCorsRule": {
+        "digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule": {
             "properties": {
                 "allowedHeaders": {
                     "type": "array",
@@ -1852,7 +1852,7 @@
                 "allowedOrigins"
             ]
         },
-        "digitalocean:/SpacesBucketLifecycleRule:SpacesBucketLifecycleRule": {
+        "digitalocean:index/SpacesBucketLifecycleRule:SpacesBucketLifecycleRule": {
             "properties": {
                 "abortIncompleteMultipartUploadDays": {
                     "type": "integer",
@@ -1873,7 +1873,7 @@
                     }
                 },
                 "expiration": {
-                    "$ref": "#/types/digitalocean:/SpacesBucketLifecycleRuleExpiration:SpacesBucketLifecycleRuleExpiration",
+                    "$ref": "#/types/digitalocean:index/SpacesBucketLifecycleRuleExpiration:SpacesBucketLifecycleRuleExpiration",
                     "description": "Specifies a time period after which applicable objects expire (documented below).\n",
                     "language": {
                         "python": {
@@ -1891,7 +1891,7 @@
                     }
                 },
                 "noncurrentVersionExpiration": {
-                    "$ref": "#/types/digitalocean:/SpacesBucketLifecycleRuleNoncurrentVersionExpiration:SpacesBucketLifecycleRuleNoncurrentVersionExpiration",
+                    "$ref": "#/types/digitalocean:index/SpacesBucketLifecycleRuleNoncurrentVersionExpiration:SpacesBucketLifecycleRuleNoncurrentVersionExpiration",
                     "description": "Specifies when non-current object versions expire (documented below).\n",
                     "language": {
                         "python": {
@@ -1922,7 +1922,7 @@
                 }
             }
         },
-        "digitalocean:/SpacesBucketLifecycleRuleExpiration:SpacesBucketLifecycleRuleExpiration": {
+        "digitalocean:index/SpacesBucketLifecycleRuleExpiration:SpacesBucketLifecycleRuleExpiration": {
             "properties": {
                 "date": {
                     "type": "string",
@@ -1954,7 +1954,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/SpacesBucketLifecycleRuleNoncurrentVersionExpiration:SpacesBucketLifecycleRuleNoncurrentVersionExpiration": {
+        "digitalocean:index/SpacesBucketLifecycleRuleNoncurrentVersionExpiration:SpacesBucketLifecycleRuleNoncurrentVersionExpiration": {
             "properties": {
                 "days": {
                     "type": "integer",
@@ -1968,7 +1968,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/SpacesBucketVersioning:SpacesBucketVersioning": {
+        "digitalocean:index/SpacesBucketVersioning:SpacesBucketVersioning": {
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -1982,12 +1982,12 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpec:getAppSpec": {
+        "digitalocean:index/getAppSpec:getAppSpec": {
             "properties": {
                 "databases": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/getAppSpecDatabase:getAppSpecDatabase"
+                        "$ref": "#/types/digitalocean:index/getAppSpecDatabase:getAppSpecDatabase"
                     },
                     "language": {
                         "python": {
@@ -2026,7 +2026,7 @@
                 "services": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/getAppSpecService:getAppSpecService"
+                        "$ref": "#/types/digitalocean:index/getAppSpecService:getAppSpecService"
                     },
                     "language": {
                         "python": {
@@ -2037,7 +2037,7 @@
                 "staticSites": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/getAppSpecStaticSite:getAppSpecStaticSite"
+                        "$ref": "#/types/digitalocean:index/getAppSpecStaticSite:getAppSpecStaticSite"
                     },
                     "language": {
                         "python": {
@@ -2048,7 +2048,7 @@
                 "workers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/getAppSpecWorker:getAppSpecWorker"
+                        "$ref": "#/types/digitalocean:index/getAppSpecWorker:getAppSpecWorker"
                     },
                     "language": {
                         "python": {
@@ -2067,7 +2067,7 @@
                 }
             }
         },
-        "digitalocean:/getAppSpecDatabase:getAppSpecDatabase": {
+        "digitalocean:index/getAppSpecDatabase:getAppSpecDatabase": {
             "properties": {
                 "clusterName": {
                     "type": "string",
@@ -2129,7 +2129,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecService:getAppSpecService": {
+        "digitalocean:index/getAppSpecService:getAppSpecService": {
             "properties": {
                 "buildCommand": {
                     "type": "string",
@@ -2161,7 +2161,7 @@
                 "envs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/getAppSpecServiceEnv:getAppSpecServiceEnv"
+                        "$ref": "#/types/digitalocean:index/getAppSpecServiceEnv:getAppSpecServiceEnv"
                     },
                     "description": "Describes an environment variable made available to an app competent.\n",
                     "language": {
@@ -2171,7 +2171,7 @@
                     }
                 },
                 "git": {
-                    "$ref": "#/types/digitalocean:/getAppSpecServiceGit:getAppSpecServiceGit",
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceGit:getAppSpecServiceGit",
                     "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -2180,7 +2180,7 @@
                     }
                 },
                 "github": {
-                    "$ref": "#/types/digitalocean:/getAppSpecServiceGithub:getAppSpecServiceGithub",
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceGithub:getAppSpecServiceGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -2189,7 +2189,7 @@
                     }
                 },
                 "healthCheck": {
-                    "$ref": "#/types/digitalocean:/getAppSpecServiceHealthCheck:getAppSpecServiceHealthCheck",
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceHealthCheck:getAppSpecServiceHealthCheck",
                     "description": "A health check to determine the availability of this component.\n",
                     "language": {
                         "python": {
@@ -2234,7 +2234,7 @@
                     }
                 },
                 "routes": {
-                    "$ref": "#/types/digitalocean:/getAppSpecServiceRoutes:getAppSpecServiceRoutes",
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceRoutes:getAppSpecServiceRoutes",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2273,7 +2273,7 @@
                 }
             }
         },
-        "digitalocean:/getAppSpecServiceEnv:getAppSpecServiceEnv": {
+        "digitalocean:index/getAppSpecServiceEnv:getAppSpecServiceEnv": {
             "properties": {
                 "key": {
                     "type": "string",
@@ -2322,7 +2322,7 @@
                 }
             }
         },
-        "digitalocean:/getAppSpecServiceGit:getAppSpecServiceGit": {
+        "digitalocean:index/getAppSpecServiceGit:getAppSpecServiceGit": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -2345,7 +2345,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecServiceGithub:getAppSpecServiceGithub": {
+        "digitalocean:index/getAppSpecServiceGithub:getAppSpecServiceGithub": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -2377,7 +2377,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecServiceHealthCheck:getAppSpecServiceHealthCheck": {
+        "digitalocean:index/getAppSpecServiceHealthCheck:getAppSpecServiceHealthCheck": {
             "properties": {
                 "failureThreshold": {
                     "type": "integer",
@@ -2436,7 +2436,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecServiceRoutes:getAppSpecServiceRoutes": {
+        "digitalocean:index/getAppSpecServiceRoutes:getAppSpecServiceRoutes": {
             "properties": {
                 "path": {
                     "type": "string",
@@ -2450,7 +2450,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecStaticSite:getAppSpecStaticSite": {
+        "digitalocean:index/getAppSpecStaticSite:getAppSpecStaticSite": {
             "properties": {
                 "buildCommand": {
                     "type": "string",
@@ -2482,7 +2482,7 @@
                 "envs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/getAppSpecStaticSiteEnv:getAppSpecStaticSiteEnv"
+                        "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteEnv:getAppSpecStaticSiteEnv"
                     },
                     "description": "Describes an environment variable made available to an app competent.\n",
                     "language": {
@@ -2501,7 +2501,7 @@
                     }
                 },
                 "git": {
-                    "$ref": "#/types/digitalocean:/getAppSpecStaticSiteGit:getAppSpecStaticSiteGit",
+                    "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteGit:getAppSpecStaticSiteGit",
                     "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -2510,7 +2510,7 @@
                     }
                 },
                 "github": {
-                    "$ref": "#/types/digitalocean:/getAppSpecStaticSiteGithub:getAppSpecStaticSiteGithub",
+                    "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteGithub:getAppSpecStaticSiteGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -2546,7 +2546,7 @@
                     }
                 },
                 "routes": {
-                    "$ref": "#/types/digitalocean:/getAppSpecStaticSiteRoutes:getAppSpecStaticSiteRoutes",
+                    "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteRoutes:getAppSpecStaticSiteRoutes",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2574,7 +2574,7 @@
                 }
             }
         },
-        "digitalocean:/getAppSpecStaticSiteEnv:getAppSpecStaticSiteEnv": {
+        "digitalocean:index/getAppSpecStaticSiteEnv:getAppSpecStaticSiteEnv": {
             "properties": {
                 "key": {
                     "type": "string",
@@ -2623,7 +2623,7 @@
                 }
             }
         },
-        "digitalocean:/getAppSpecStaticSiteGit:getAppSpecStaticSiteGit": {
+        "digitalocean:index/getAppSpecStaticSiteGit:getAppSpecStaticSiteGit": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -2646,7 +2646,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecStaticSiteGithub:getAppSpecStaticSiteGithub": {
+        "digitalocean:index/getAppSpecStaticSiteGithub:getAppSpecStaticSiteGithub": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -2678,7 +2678,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecStaticSiteRoutes:getAppSpecStaticSiteRoutes": {
+        "digitalocean:index/getAppSpecStaticSiteRoutes:getAppSpecStaticSiteRoutes": {
             "properties": {
                 "path": {
                     "type": "string",
@@ -2692,7 +2692,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecWorker:getAppSpecWorker": {
+        "digitalocean:index/getAppSpecWorker:getAppSpecWorker": {
             "properties": {
                 "buildCommand": {
                     "type": "string",
@@ -2724,7 +2724,7 @@
                 "envs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/getAppSpecWorkerEnv:getAppSpecWorkerEnv"
+                        "$ref": "#/types/digitalocean:index/getAppSpecWorkerEnv:getAppSpecWorkerEnv"
                     },
                     "description": "Describes an environment variable made available to an app competent.\n",
                     "language": {
@@ -2734,7 +2734,7 @@
                     }
                 },
                 "git": {
-                    "$ref": "#/types/digitalocean:/getAppSpecWorkerGit:getAppSpecWorkerGit",
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerGit:getAppSpecWorkerGit",
                     "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -2743,7 +2743,7 @@
                     }
                 },
                 "github": {
-                    "$ref": "#/types/digitalocean:/getAppSpecWorkerGithub:getAppSpecWorkerGithub",
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerGithub:getAppSpecWorkerGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
@@ -2779,7 +2779,7 @@
                     }
                 },
                 "routes": {
-                    "$ref": "#/types/digitalocean:/getAppSpecWorkerRoutes:getAppSpecWorkerRoutes",
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerRoutes:getAppSpecWorkerRoutes",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2816,7 +2816,7 @@
                 }
             }
         },
-        "digitalocean:/getAppSpecWorkerEnv:getAppSpecWorkerEnv": {
+        "digitalocean:index/getAppSpecWorkerEnv:getAppSpecWorkerEnv": {
             "properties": {
                 "key": {
                     "type": "string",
@@ -2865,7 +2865,7 @@
                 }
             }
         },
-        "digitalocean:/getAppSpecWorkerGit:getAppSpecWorkerGit": {
+        "digitalocean:index/getAppSpecWorkerGit:getAppSpecWorkerGit": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -2888,7 +2888,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecWorkerGithub:getAppSpecWorkerGithub": {
+        "digitalocean:index/getAppSpecWorkerGithub:getAppSpecWorkerGithub": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -2920,7 +2920,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getAppSpecWorkerRoutes:getAppSpecWorkerRoutes": {
+        "digitalocean:index/getAppSpecWorkerRoutes:getAppSpecWorkerRoutes": {
             "properties": {
                 "path": {
                     "type": "string",
@@ -2934,7 +2934,7 @@
             },
             "type": "object"
         },
-        "digitalocean:/getDatabaseClusterMaintenanceWindow:getDatabaseClusterMaintenanceWindow": {
+        "digitalocean:index/getDatabaseClusterMaintenanceWindow:getDatabaseClusterMaintenanceWindow": {
             "properties": {
                 "day": {
                     "type": "string",
@@ -2966,7 +2966,7 @@
                 }
             }
         },
-        "digitalocean:/getDomainsDomain:getDomainsDomain": {
+        "digitalocean:index/getDomainsDomain:getDomainsDomain": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -3007,7 +3007,7 @@
                 }
             }
         },
-        "digitalocean:/getDomainsFilter:getDomainsFilter": {
+        "digitalocean:index/getDomainsFilter:getDomainsFilter": {
             "properties": {
                 "all": {
                     "type": "boolean",
@@ -3055,7 +3055,7 @@
                 "values"
             ]
         },
-        "digitalocean:/getDomainsSort:getDomainsSort": {
+        "digitalocean:index/getDomainsSort:getDomainsSort": {
             "properties": {
                 "direction": {
                     "type": "string",
@@ -3081,7 +3081,7 @@
                 "key"
             ]
         },
-        "digitalocean:/getDropletsDroplet:getDropletsDroplet": {
+        "digitalocean:index/getDropletsDroplet:getDropletsDroplet": {
             "properties": {
                 "backups": {
                     "type": "boolean",
@@ -3347,7 +3347,7 @@
                 }
             }
         },
-        "digitalocean:/getDropletsFilter:getDropletsFilter": {
+        "digitalocean:index/getDropletsFilter:getDropletsFilter": {
             "properties": {
                 "all": {
                     "type": "boolean",
@@ -3395,7 +3395,7 @@
                 "values"
             ]
         },
-        "digitalocean:/getDropletsSort:getDropletsSort": {
+        "digitalocean:index/getDropletsSort:getDropletsSort": {
             "properties": {
                 "direction": {
                     "type": "string",
@@ -3421,7 +3421,7 @@
                 "key"
             ]
         },
-        "digitalocean:/getImagesFilter:getImagesFilter": {
+        "digitalocean:index/getImagesFilter:getImagesFilter": {
             "properties": {
                 "all": {
                     "type": "boolean",
@@ -3469,7 +3469,7 @@
                 "values"
             ]
         },
-        "digitalocean:/getImagesImage:getImagesImage": {
+        "digitalocean:index/getImagesImage:getImagesImage": {
             "properties": {
                 "created": {
                     "type": "string",
@@ -3616,7 +3616,7 @@
                 }
             }
         },
-        "digitalocean:/getImagesSort:getImagesSort": {
+        "digitalocean:index/getImagesSort:getImagesSort": {
             "properties": {
                 "direction": {
                     "type": "string",
@@ -3642,7 +3642,7 @@
                 "key"
             ]
         },
-        "digitalocean:/getKubernetesClusterKubeConfig:getKubernetesClusterKubeConfig": {
+        "digitalocean:index/getKubernetesClusterKubeConfig:getKubernetesClusterKubeConfig": {
             "properties": {
                 "clientCertificate": {
                     "type": "string",
@@ -3724,7 +3724,7 @@
                 }
             }
         },
-        "digitalocean:/getKubernetesClusterNodePool:getKubernetesClusterNodePool": {
+        "digitalocean:index/getKubernetesClusterNodePool:getKubernetesClusterNodePool": {
             "properties": {
                 "actualNodeCount": {
                     "type": "integer",
@@ -3804,7 +3804,7 @@
                 "nodes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/getKubernetesClusterNodePoolNode:getKubernetesClusterNodePoolNode"
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterNodePoolNode:getKubernetesClusterNodePoolNode"
                     },
                     "description": "A list of nodes in the pool. Each node exports the following attributes:\n",
                     "language": {
@@ -3854,7 +3854,7 @@
                 }
             }
         },
-        "digitalocean:/getKubernetesClusterNodePoolNode:getKubernetesClusterNodePoolNode": {
+        "digitalocean:index/getKubernetesClusterNodePoolNode:getKubernetesClusterNodePoolNode": {
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -3925,7 +3925,7 @@
                 }
             }
         },
-        "digitalocean:/getLoadBalancerForwardingRule:getLoadBalancerForwardingRule": {
+        "digitalocean:index/getLoadBalancerForwardingRule:getLoadBalancerForwardingRule": {
             "properties": {
                 "certificateId": {
                     "type": "string",
@@ -3991,7 +3991,7 @@
                 }
             }
         },
-        "digitalocean:/getLoadBalancerHealthcheck:getLoadBalancerHealthcheck": {
+        "digitalocean:index/getLoadBalancerHealthcheck:getLoadBalancerHealthcheck": {
             "properties": {
                 "checkIntervalSeconds": {
                     "type": "integer",
@@ -4066,7 +4066,7 @@
                 }
             }
         },
-        "digitalocean:/getLoadBalancerStickySessions:getLoadBalancerStickySessions": {
+        "digitalocean:index/getLoadBalancerStickySessions:getLoadBalancerStickySessions": {
             "properties": {
                 "cookieName": {
                     "type": "string",
@@ -4105,7 +4105,7 @@
                 }
             }
         },
-        "digitalocean:/getProjectsFilter:getProjectsFilter": {
+        "digitalocean:index/getProjectsFilter:getProjectsFilter": {
             "properties": {
                 "all": {
                     "type": "boolean",
@@ -4153,7 +4153,7 @@
                 "values"
             ]
         },
-        "digitalocean:/getProjectsProject:getProjectsProject": {
+        "digitalocean:index/getProjectsProject:getProjectsProject": {
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -4277,7 +4277,7 @@
                 }
             }
         },
-        "digitalocean:/getProjectsSort:getProjectsSort": {
+        "digitalocean:index/getProjectsSort:getProjectsSort": {
             "properties": {
                 "direction": {
                     "type": "string",
@@ -4303,7 +4303,7 @@
                 "key"
             ]
         },
-        "digitalocean:/getRegionsFilter:getRegionsFilter": {
+        "digitalocean:index/getRegionsFilter:getRegionsFilter": {
             "properties": {
                 "all": {
                     "type": "boolean",
@@ -4351,7 +4351,7 @@
                 "values"
             ]
         },
-        "digitalocean:/getRegionsRegion:getRegionsRegion": {
+        "digitalocean:index/getRegionsRegion:getRegionsRegion": {
             "properties": {
                 "available": {
                     "type": "boolean",
@@ -4419,7 +4419,7 @@
                 }
             }
         },
-        "digitalocean:/getRegionsSort:getRegionsSort": {
+        "digitalocean:index/getRegionsSort:getRegionsSort": {
             "properties": {
                 "direction": {
                     "type": "string",
@@ -4445,7 +4445,7 @@
                 "key"
             ]
         },
-        "digitalocean:/getSizesFilter:getSizesFilter": {
+        "digitalocean:index/getSizesFilter:getSizesFilter": {
             "properties": {
                 "all": {
                     "type": "boolean",
@@ -4493,7 +4493,7 @@
                 "values"
             ]
         },
-        "digitalocean:/getSizesSize:getSizesSize": {
+        "digitalocean:index/getSizesSize:getSizesSize": {
             "properties": {
                 "available": {
                     "type": "boolean",
@@ -4598,7 +4598,7 @@
                 }
             }
         },
-        "digitalocean:/getSizesSort:getSizesSort": {
+        "digitalocean:index/getSizesSort:getSizesSort": {
             "properties": {
                 "direction": {
                     "type": "string",
@@ -4624,7 +4624,7 @@
                 "key"
             ]
         },
-        "digitalocean:/getSpacesBucketsBucket:getSpacesBucketsBucket": {
+        "digitalocean:index/getSpacesBucketsBucket:getSpacesBucketsBucket": {
             "properties": {
                 "bucketDomainName": {
                     "type": "string",
@@ -4676,7 +4676,7 @@
                 }
             }
         },
-        "digitalocean:/getSpacesBucketsFilter:getSpacesBucketsFilter": {
+        "digitalocean:index/getSpacesBucketsFilter:getSpacesBucketsFilter": {
             "properties": {
                 "all": {
                     "type": "boolean",
@@ -4724,7 +4724,7 @@
                 "values"
             ]
         },
-        "digitalocean:/getSpacesBucketsSort:getSpacesBucketsSort": {
+        "digitalocean:index/getSpacesBucketsSort:getSpacesBucketsSort": {
             "properties": {
                 "direction": {
                     "type": "string",
@@ -4750,7 +4750,7 @@
                 "key"
             ]
         },
-        "digitalocean:/getTagsFilter:getTagsFilter": {
+        "digitalocean:index/getTagsFilter:getTagsFilter": {
             "properties": {
                 "all": {
                     "type": "boolean",
@@ -4798,7 +4798,7 @@
                 "values"
             ]
         },
-        "digitalocean:/getTagsSort:getTagsSort": {
+        "digitalocean:index/getTagsSort:getTagsSort": {
             "properties": {
                 "direction": {
                     "type": "string",
@@ -4824,7 +4824,7 @@
                 "key"
             ]
         },
-        "digitalocean:/getTagsTag:getTagsTag": {
+        "digitalocean:index/getTagsTag:getTagsTag": {
             "properties": {
                 "databasesCount": {
                     "type": "integer",
@@ -4979,7 +4979,7 @@
                     "description": "The live URL of the app.\n"
                 },
                 "spec": {
-                    "$ref": "#/types/digitalocean:/AppSpec:AppSpec",
+                    "$ref": "#/types/digitalocean:index/AppSpec:AppSpec",
                     "description": "A DigitalOcean App spec describing the app.\n"
                 },
                 "updatedAt": {
@@ -4996,7 +4996,7 @@
             ],
             "inputProperties": {
                 "spec": {
-                    "$ref": "#/types/digitalocean:/AppSpec:AppSpec",
+                    "$ref": "#/types/digitalocean:index/AppSpec:AppSpec",
                     "description": "A DigitalOcean App spec describing the app.\n"
                 }
             },
@@ -5020,7 +5020,7 @@
                         "description": "The live URL of the app.\n"
                     },
                     "spec": {
-                        "$ref": "#/types/digitalocean:/AppSpec:AppSpec",
+                        "$ref": "#/types/digitalocean:index/AppSpec:AppSpec",
                         "description": "A DigitalOcean App spec describing the app.\n"
                     },
                     "updatedAt": {
@@ -5379,7 +5379,7 @@
                 "maintenanceWindows": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow"
+                        "$ref": "#/types/digitalocean:index/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow"
                     },
                     "description": "Defines when the automatic maintenance should be performed for the database cluster.\n"
                 },
@@ -5474,7 +5474,7 @@
                 "maintenanceWindows": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow"
+                        "$ref": "#/types/digitalocean:index/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow"
                     },
                     "description": "Defines when the automatic maintenance should be performed for the database cluster.\n"
                 },
@@ -5548,7 +5548,7 @@
                     "maintenanceWindows": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow"
+                            "$ref": "#/types/digitalocean:index/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow"
                         },
                         "description": "Defines when the automatic maintenance should be performed for the database cluster.\n"
                     },
@@ -6591,7 +6591,7 @@
                 "inboundRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/FirewallInboundRule:FirewallInboundRule"
+                        "$ref": "#/types/digitalocean:index/FirewallInboundRule:FirewallInboundRule"
                     },
                     "description": "The inbound access rule block for the Firewall.\nThe `inbound_rule` block is documented below.\n"
                 },
@@ -6602,14 +6602,14 @@
                 "outboundRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/FirewallOutboundRule:FirewallOutboundRule"
+                        "$ref": "#/types/digitalocean:index/FirewallOutboundRule:FirewallOutboundRule"
                     },
                     "description": "The outbound access rule block for the Firewall.\nThe `outbound_rule` block is documented below.\n"
                 },
                 "pendingChanges": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/FirewallPendingChange:FirewallPendingChange"
+                        "$ref": "#/types/digitalocean:index/FirewallPendingChange:FirewallPendingChange"
                     },
                     "description": "An list of object containing the fields, \"droplet_id\",\n\"removing\", and \"status\".  It is provided to detail exactly which Droplets\nare having their security policies updated.  When empty, all changes\nhave been successfully applied.\n"
                 },
@@ -6642,7 +6642,7 @@
                 "inboundRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/FirewallInboundRule:FirewallInboundRule"
+                        "$ref": "#/types/digitalocean:index/FirewallInboundRule:FirewallInboundRule"
                     },
                     "description": "The inbound access rule block for the Firewall.\nThe `inbound_rule` block is documented below.\n"
                 },
@@ -6653,7 +6653,7 @@
                 "outboundRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/FirewallOutboundRule:FirewallOutboundRule"
+                        "$ref": "#/types/digitalocean:index/FirewallOutboundRule:FirewallOutboundRule"
                     },
                     "description": "The outbound access rule block for the Firewall.\nThe `outbound_rule` block is documented below.\n"
                 },
@@ -6682,7 +6682,7 @@
                     "inboundRules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/FirewallInboundRule:FirewallInboundRule"
+                            "$ref": "#/types/digitalocean:index/FirewallInboundRule:FirewallInboundRule"
                         },
                         "description": "The inbound access rule block for the Firewall.\nThe `inbound_rule` block is documented below.\n"
                     },
@@ -6693,14 +6693,14 @@
                     "outboundRules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/FirewallOutboundRule:FirewallOutboundRule"
+                            "$ref": "#/types/digitalocean:index/FirewallOutboundRule:FirewallOutboundRule"
                         },
                         "description": "The outbound access rule block for the Firewall.\nThe `outbound_rule` block is documented below.\n"
                     },
                     "pendingChanges": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/FirewallPendingChange:FirewallPendingChange"
+                            "$ref": "#/types/digitalocean:index/FirewallPendingChange:FirewallPendingChange"
                         },
                         "description": "An list of object containing the fields, \"droplet_id\",\n\"removing\", and \"status\".  It is provided to detail exactly which Droplets\nare having their security policies updated.  When empty, all changes\nhave been successfully applied.\n"
                     },
@@ -6855,7 +6855,7 @@
                 "kubeConfigs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig"
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig"
                     }
                 },
                 "name": {
@@ -6863,7 +6863,7 @@
                     "description": "A name for the node pool.\n"
                 },
                 "nodePool": {
-                    "$ref": "#/types/digitalocean:/KubernetesClusterNodePool:KubernetesClusterNodePool",
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
                     "description": "A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:\n"
                 },
                 "region": {
@@ -6928,7 +6928,7 @@
                     "description": "A name for the node pool.\n"
                 },
                 "nodePool": {
-                    "$ref": "#/types/digitalocean:/KubernetesClusterNodePool:KubernetesClusterNodePool",
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
                     "description": "A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:\n"
                 },
                 "region": {
@@ -6987,7 +6987,7 @@
                     "kubeConfigs": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig"
+                            "$ref": "#/types/digitalocean:index/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig"
                         }
                     },
                     "name": {
@@ -6995,7 +6995,7 @@
                         "description": "A name for the node pool.\n"
                     },
                     "nodePool": {
-                        "$ref": "#/types/digitalocean:/KubernetesClusterNodePool:KubernetesClusterNodePool",
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
                         "description": "A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:\n"
                     },
                     "region": {
@@ -7079,7 +7079,7 @@
                 "nodes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/KubernetesNodePoolNode:KubernetesNodePoolNode"
+                        "$ref": "#/types/digitalocean:index/KubernetesNodePoolNode:KubernetesNodePoolNode"
                     },
                     "description": "A list of nodes in the pool. Each node exports the following attributes:\n"
                 },
@@ -7193,7 +7193,7 @@
                     "nodes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/KubernetesNodePoolNode:KubernetesNodePoolNode"
+                            "$ref": "#/types/digitalocean:index/KubernetesNodePoolNode:KubernetesNodePoolNode"
                         },
                         "description": "A list of nodes in the pool. Each node exports the following attributes:\n"
                     },
@@ -7243,12 +7243,12 @@
                 "forwardingRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/LoadBalancerForwardingRule:LoadBalancerForwardingRule"
+                        "$ref": "#/types/digitalocean:index/LoadBalancerForwardingRule:LoadBalancerForwardingRule"
                     },
                     "description": "A list of `forwarding_rule` to be assigned to the\nLoad Balancer. The `forwarding_rule` block is documented below.\n"
                 },
                 "healthcheck": {
-                    "$ref": "#/types/digitalocean:/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
+                    "$ref": "#/types/digitalocean:index/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
                     "description": "A `healthcheck` block to be assigned to the\nLoad Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.\n"
                 },
                 "ip": {
@@ -7275,7 +7275,7 @@
                     "type": "string"
                 },
                 "stickySessions": {
-                    "$ref": "#/types/digitalocean:/LoadBalancerStickySessions:LoadBalancerStickySessions",
+                    "$ref": "#/types/digitalocean:index/LoadBalancerStickySessions:LoadBalancerStickySessions",
                     "description": "A `sticky_sessions` block to be assigned to the\nLoad Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.\n"
                 },
                 "vpcUuid": {
@@ -7323,12 +7323,12 @@
                 "forwardingRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/LoadBalancerForwardingRule:LoadBalancerForwardingRule"
+                        "$ref": "#/types/digitalocean:index/LoadBalancerForwardingRule:LoadBalancerForwardingRule"
                     },
                     "description": "A list of `forwarding_rule` to be assigned to the\nLoad Balancer. The `forwarding_rule` block is documented below.\n"
                 },
                 "healthcheck": {
-                    "$ref": "#/types/digitalocean:/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
+                    "$ref": "#/types/digitalocean:index/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
                     "description": "A `healthcheck` block to be assigned to the\nLoad Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.\n"
                 },
                 "name": {
@@ -7345,7 +7345,7 @@
                     "description": "The region to start in\n"
                 },
                 "stickySessions": {
-                    "$ref": "#/types/digitalocean:/LoadBalancerStickySessions:LoadBalancerStickySessions",
+                    "$ref": "#/types/digitalocean:index/LoadBalancerStickySessions:LoadBalancerStickySessions",
                     "description": "A `sticky_sessions` block to be assigned to the\nLoad Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.\n"
                 },
                 "vpcUuid": {
@@ -7387,12 +7387,12 @@
                     "forwardingRules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/LoadBalancerForwardingRule:LoadBalancerForwardingRule"
+                            "$ref": "#/types/digitalocean:index/LoadBalancerForwardingRule:LoadBalancerForwardingRule"
                         },
                         "description": "A list of `forwarding_rule` to be assigned to the\nLoad Balancer. The `forwarding_rule` block is documented below.\n"
                     },
                     "healthcheck": {
-                        "$ref": "#/types/digitalocean:/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
+                        "$ref": "#/types/digitalocean:index/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
                         "description": "A `healthcheck` block to be assigned to the\nLoad Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.\n"
                     },
                     "ip": {
@@ -7419,7 +7419,7 @@
                         "type": "string"
                     },
                     "stickySessions": {
-                        "$ref": "#/types/digitalocean:/LoadBalancerStickySessions:LoadBalancerStickySessions",
+                        "$ref": "#/types/digitalocean:index/LoadBalancerStickySessions:LoadBalancerStickySessions",
                         "description": "A `sticky_sessions` block to be assigned to the\nLoad Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.\n"
                     },
                     "vpcUuid": {
@@ -7631,7 +7631,7 @@
                 "corsRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/SpacesBucketCorsRule:SpacesBucketCorsRule"
+                        "$ref": "#/types/digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule"
                     },
                     "description": "A rule of Cross-Origin Resource Sharing (documented below).\n"
                 },
@@ -7642,7 +7642,7 @@
                 "lifecycleRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/SpacesBucketLifecycleRule:SpacesBucketLifecycleRule"
+                        "$ref": "#/types/digitalocean:index/SpacesBucketLifecycleRule:SpacesBucketLifecycleRule"
                     },
                     "description": "A configuration of object lifecycle management (documented below).\n"
                 },
@@ -7656,7 +7656,7 @@
                     "description": "The region where the bucket resides (Defaults to `nyc3`)\n"
                 },
                 "versioning": {
-                    "$ref": "#/types/digitalocean:/SpacesBucketVersioning:SpacesBucketVersioning",
+                    "$ref": "#/types/digitalocean:index/SpacesBucketVersioning:SpacesBucketVersioning",
                     "description": "A state of versioning (documented below)\n"
                 }
             },
@@ -7673,7 +7673,7 @@
                 "corsRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/SpacesBucketCorsRule:SpacesBucketCorsRule"
+                        "$ref": "#/types/digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule"
                     },
                     "description": "A rule of Cross-Origin Resource Sharing (documented below).\n"
                 },
@@ -7684,7 +7684,7 @@
                 "lifecycleRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/SpacesBucketLifecycleRule:SpacesBucketLifecycleRule"
+                        "$ref": "#/types/digitalocean:index/SpacesBucketLifecycleRule:SpacesBucketLifecycleRule"
                     },
                     "description": "A configuration of object lifecycle management (documented below).\n"
                 },
@@ -7698,7 +7698,7 @@
                     "description": "The region where the bucket resides (Defaults to `nyc3`)\n"
                 },
                 "versioning": {
-                    "$ref": "#/types/digitalocean:/SpacesBucketVersioning:SpacesBucketVersioning",
+                    "$ref": "#/types/digitalocean:index/SpacesBucketVersioning:SpacesBucketVersioning",
                     "description": "A state of versioning (documented below)\n"
                 }
             },
@@ -7720,7 +7720,7 @@
                     "corsRules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/SpacesBucketCorsRule:SpacesBucketCorsRule"
+                            "$ref": "#/types/digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule"
                         },
                         "description": "A rule of Cross-Origin Resource Sharing (documented below).\n"
                     },
@@ -7731,7 +7731,7 @@
                     "lifecycleRules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/SpacesBucketLifecycleRule:SpacesBucketLifecycleRule"
+                            "$ref": "#/types/digitalocean:index/SpacesBucketLifecycleRule:SpacesBucketLifecycleRule"
                         },
                         "description": "A configuration of object lifecycle management (documented below).\n"
                     },
@@ -7745,7 +7745,7 @@
                         "description": "The region where the bucket resides (Defaults to `nyc3`)\n"
                     },
                     "versioning": {
-                        "$ref": "#/types/digitalocean:/SpacesBucketVersioning:SpacesBucketVersioning",
+                        "$ref": "#/types/digitalocean:index/SpacesBucketVersioning:SpacesBucketVersioning",
                         "description": "A state of versioning (documented below)\n"
                     }
                 },
@@ -8608,7 +8608,7 @@
                 "rules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/DatabaseFirewallRule:DatabaseFirewallRule"
+                        "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
                     },
                     "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
                 }
@@ -8625,7 +8625,7 @@
                 "rules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:/DatabaseFirewallRule:DatabaseFirewallRule"
+                        "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
                     },
                     "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
                 }
@@ -8644,7 +8644,7 @@
                     "rules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/DatabaseFirewallRule:DatabaseFirewallRule"
+                            "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
                         },
                         "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
                     }
@@ -8814,7 +8814,7 @@
                         "description": "The live URL of the app.\n"
                     },
                     "spec": {
-                        "$ref": "#/types/digitalocean:/getAppSpec:getAppSpec",
+                        "$ref": "#/types/digitalocean:index/getAppSpec:getAppSpec",
                         "description": "A DigitalOcean App spec describing the app.\n"
                     },
                     "updatedAt": {
@@ -8976,7 +8976,7 @@
                     "maintenanceWindows": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDatabaseClusterMaintenanceWindow:getDatabaseClusterMaintenanceWindow"
+                            "$ref": "#/types/digitalocean:index/getDatabaseClusterMaintenanceWindow:getDatabaseClusterMaintenanceWindow"
                         },
                         "description": "Defines when the automatic maintenance should be performed for the database cluster.\n"
                     },
@@ -9114,14 +9114,14 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDomainsFilter:getDomainsFilter"
+                            "$ref": "#/types/digitalocean:index/getDomainsFilter:getDomainsFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDomainsSort:getDomainsSort"
+                            "$ref": "#/types/digitalocean:index/getDomainsSort:getDomainsSort"
                         },
                         "description": "Sort the results.\nThe `sort` block is documented below.\n"
                     }
@@ -9134,14 +9134,14 @@
                     "domains": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDomainsDomain:getDomainsDomain"
+                            "$ref": "#/types/digitalocean:index/getDomainsDomain:getDomainsDomain"
                         },
                         "description": "A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:\n"
                     },
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDomainsFilter:getDomainsFilter"
+                            "$ref": "#/types/digitalocean:index/getDomainsFilter:getDomainsFilter"
                         }
                     },
                     "id": {
@@ -9151,7 +9151,7 @@
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDomainsSort:getDomainsSort"
+                            "$ref": "#/types/digitalocean:index/getDomainsSort:getDomainsSort"
                         }
                     }
                 },
@@ -9408,14 +9408,14 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDropletsFilter:getDropletsFilter"
+                            "$ref": "#/types/digitalocean:index/getDropletsFilter:getDropletsFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDropletsSort:getDropletsSort"
+                            "$ref": "#/types/digitalocean:index/getDropletsSort:getDropletsSort"
                         },
                         "description": "Sort the results.\nThe `sort` block is documented below.\n"
                     }
@@ -9428,14 +9428,14 @@
                     "droplets": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDropletsDroplet:getDropletsDroplet"
+                            "$ref": "#/types/digitalocean:index/getDropletsDroplet:getDropletsDroplet"
                         },
                         "description": "A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:\n"
                     },
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDropletsFilter:getDropletsFilter"
+                            "$ref": "#/types/digitalocean:index/getDropletsFilter:getDropletsFilter"
                         }
                     },
                     "id": {
@@ -9445,7 +9445,7 @@
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getDropletsSort:getDropletsSort"
+                            "$ref": "#/types/digitalocean:index/getDropletsSort:getDropletsSort"
                         }
                     }
                 },
@@ -9457,7 +9457,7 @@
             }
         },
         "digitalocean:index/getFloatingIp:getFloatingIp": {
-            "description": "Get information on a floating ip. This data source provides the region and Droplet id\nas configured on your DigitalOcean account. This is useful if the floating IP\nin question is not managed by this provider or you need to find the Droplet the IP is\nattached to.\n\nAn error is triggered if the provided floating IP does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the floating IP:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst config = new pulumi.Config();\nconst publicIp = config.requireObject(\"publicIp\");\nconst example = digitalocean.getFloatingIp({\n    ipAddress: publicIp,\n});\nexport const fipOutput = example.then(example =\u003e example.dropletId);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nconfig = pulumi.Config()\npublic_ip = config.require_object(\"publicIp\")\nexample = digitalocean.get_floating_ip(ip_address=public_ip)\npulumi.export(\"fipOutput\", example.droplet_id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var publicIp = config.RequireObject\u003cdynamic\u003e(\"publicIp\");\n        var example = Output.Create(DigitalOcean.GetFloatingIp.InvokeAsync(new DigitalOcean.GetFloatingIpArgs\n        {\n            IpAddress = publicIp,\n        }));\n        this.FipOutput = example.Apply(example =\u003e example.DropletId);\n    }\n\n    [Output(\"fipOutput\")]\n    public Output\u003cstring\u003e FipOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupFloatingIp(ctx, \u0026digitalocean.LookupFloatingIpArgs{\n\t\t\tIpAddress: publicIp,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"fipOutput\", example.DropletId)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Get information on a floating ip. This data source provides the region and Droplet id\nas configured on your DigitalOcean account. This is useful if the floating IP\nin question is not managed by this provider or you need to find the Droplet the IP is\nattached to.\n\nAn error is triggered if the provided floating IP does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the floating IP:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst config = new pulumi.Config();\nconst publicIp = config.requireObject(\"publicIp\");\nconst example = digitalocean.getFloatingIp({\n    ipAddress: publicIp,\n});\nexport const fipOutput = example.then(example =\u003e example.dropletId);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nconfig = pulumi.Config()\npublic_ip = config.require_object(\"publicIp\")\nexample = digitalocean.get_floating_ip(ip_address=public_ip)\npulumi.export(\"fipOutput\", example.droplet_id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var publicIp = config.RequireObject\u003cdynamic\u003e(\"publicIp\");\n        var example = Output.Create(DigitalOcean.GetFloatingIp.InvokeAsync(new DigitalOcean.GetFloatingIpArgs\n        {\n            IpAddress = publicIp,\n        }));\n        this.FipOutput = example.Apply(example =\u003e example.DropletId);\n    }\n\n    [Output(\"fipOutput\")]\n    public Output\u003cstring\u003e FipOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tpublicIp := cfg.RequireObject(\"publicIp\")\n\t\texample, err := digitalocean.LookupFloatingIp(ctx, \u0026digitalocean.LookupFloatingIpArgs{\n\t\t\tIpAddress: publicIp,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"fipOutput\", example.DropletId)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getFloatingIp.\n",
                 "properties": {
@@ -9610,14 +9610,14 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getImagesFilter:getImagesFilter"
+                            "$ref": "#/types/digitalocean:index/getImagesFilter:getImagesFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getImagesSort:getImagesSort"
+                            "$ref": "#/types/digitalocean:index/getImagesSort:getImagesSort"
                         },
                         "description": "Sort the results.\nThe `sort` block is documented below.\n"
                     }
@@ -9630,7 +9630,7 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getImagesFilter:getImagesFilter"
+                            "$ref": "#/types/digitalocean:index/getImagesFilter:getImagesFilter"
                         }
                     },
                     "id": {
@@ -9640,14 +9640,14 @@
                     "images": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getImagesImage:getImagesImage"
+                            "$ref": "#/types/digitalocean:index/getImagesImage:getImagesImage"
                         },
                         "description": "A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:  \n- `slug`: Unique text identifier of the image.\n- `id`: The ID of the image.\n- `name`: The name of the image.\n- `type`: Type of the image.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getImagesSort:getImagesSort"
+                            "$ref": "#/types/digitalocean:index/getImagesSort:getImagesSort"
                         }
                     }
                 },
@@ -9710,7 +9710,7 @@
                     "kubeConfigs": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getKubernetesClusterKubeConfig:getKubernetesClusterKubeConfig"
+                            "$ref": "#/types/digitalocean:index/getKubernetesClusterKubeConfig:getKubernetesClusterKubeConfig"
                         }
                     },
                     "name": {
@@ -9720,7 +9720,7 @@
                     "nodePools": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getKubernetesClusterNodePool:getKubernetesClusterNodePool"
+                            "$ref": "#/types/digitalocean:index/getKubernetesClusterNodePool:getKubernetesClusterNodePool"
                         },
                         "description": "A list of node pools associated with the cluster. Each node pool exports the following attributes:\n"
                     },
@@ -9861,11 +9861,11 @@
                     "forwardingRules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getLoadBalancerForwardingRule:getLoadBalancerForwardingRule"
+                            "$ref": "#/types/digitalocean:index/getLoadBalancerForwardingRule:getLoadBalancerForwardingRule"
                         }
                     },
                     "healthcheck": {
-                        "$ref": "#/types/digitalocean:/getLoadBalancerHealthcheck:getLoadBalancerHealthcheck"
+                        "$ref": "#/types/digitalocean:index/getLoadBalancerHealthcheck:getLoadBalancerHealthcheck"
                     },
                     "id": {
                         "type": "string",
@@ -9890,7 +9890,7 @@
                         "type": "string"
                     },
                     "stickySessions": {
-                        "$ref": "#/types/digitalocean:/getLoadBalancerStickySessions:getLoadBalancerStickySessions"
+                        "$ref": "#/types/digitalocean:index/getLoadBalancerStickySessions:getLoadBalancerStickySessions"
                     },
                     "vpcUuid": {
                         "type": "string"
@@ -10005,14 +10005,14 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getProjectsFilter:getProjectsFilter"
+                            "$ref": "#/types/digitalocean:index/getProjectsFilter:getProjectsFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getProjectsSort:getProjectsSort"
+                            "$ref": "#/types/digitalocean:index/getProjectsSort:getProjectsSort"
                         },
                         "description": "Sort the results.\nThe `sort` block is documented below.\n"
                     }
@@ -10025,7 +10025,7 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getProjectsFilter:getProjectsFilter"
+                            "$ref": "#/types/digitalocean:index/getProjectsFilter:getProjectsFilter"
                         }
                     },
                     "id": {
@@ -10035,14 +10035,14 @@
                     "projects": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getProjectsProject:getProjectsProject"
+                            "$ref": "#/types/digitalocean:index/getProjectsProject:getProjectsProject"
                         },
                         "description": "A set of projects satisfying any `filter` and `sort` criteria. Each project has\nthe following attributes:\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getProjectsSort:getProjectsSort"
+                            "$ref": "#/types/digitalocean:index/getProjectsSort:getProjectsSort"
                         }
                     }
                 },
@@ -10195,14 +10195,14 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getRegionsFilter:getRegionsFilter"
+                            "$ref": "#/types/digitalocean:index/getRegionsFilter:getRegionsFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getRegionsSort:getRegionsSort"
+                            "$ref": "#/types/digitalocean:index/getRegionsSort:getRegionsSort"
                         },
                         "description": "Sort the results.\nThe `sort` block is documented below.\n"
                     }
@@ -10215,7 +10215,7 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getRegionsFilter:getRegionsFilter"
+                            "$ref": "#/types/digitalocean:index/getRegionsFilter:getRegionsFilter"
                         }
                     },
                     "id": {
@@ -10225,14 +10225,14 @@
                     "regions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getRegionsRegion:getRegionsRegion"
+                            "$ref": "#/types/digitalocean:index/getRegionsRegion:getRegionsRegion"
                         },
                         "description": "A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getRegionsSort:getRegionsSort"
+                            "$ref": "#/types/digitalocean:index/getRegionsSort:getRegionsSort"
                         }
                     }
                 },
@@ -10251,14 +10251,14 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSizesFilter:getSizesFilter"
+                            "$ref": "#/types/digitalocean:index/getSizesFilter:getSizesFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSizesSort:getSizesSort"
+                            "$ref": "#/types/digitalocean:index/getSizesSort:getSizesSort"
                         },
                         "description": "Sort the results.\nThe `sort` block is documented below.\n"
                     }
@@ -10271,7 +10271,7 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSizesFilter:getSizesFilter"
+                            "$ref": "#/types/digitalocean:index/getSizesFilter:getSizesFilter"
                         }
                     },
                     "id": {
@@ -10281,13 +10281,13 @@
                     "sizes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSizesSize:getSizesSize"
+                            "$ref": "#/types/digitalocean:index/getSizesSize:getSizesSize"
                         }
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSizesSort:getSizesSort"
+                            "$ref": "#/types/digitalocean:index/getSizesSort:getSizesSort"
                         }
                     }
                 },
@@ -10588,14 +10588,14 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSpacesBucketsFilter:getSpacesBucketsFilter"
+                            "$ref": "#/types/digitalocean:index/getSpacesBucketsFilter:getSpacesBucketsFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSpacesBucketsSort:getSpacesBucketsSort"
+                            "$ref": "#/types/digitalocean:index/getSpacesBucketsSort:getSpacesBucketsSort"
                         },
                         "description": "Sort the results.\nThe `sort` block is documented below.\n"
                     }
@@ -10608,14 +10608,14 @@
                     "buckets": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSpacesBucketsBucket:getSpacesBucketsBucket"
+                            "$ref": "#/types/digitalocean:index/getSpacesBucketsBucket:getSpacesBucketsBucket"
                         },
                         "description": "A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:\n"
                     },
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSpacesBucketsFilter:getSpacesBucketsFilter"
+                            "$ref": "#/types/digitalocean:index/getSpacesBucketsFilter:getSpacesBucketsFilter"
                         }
                     },
                     "id": {
@@ -10625,7 +10625,7 @@
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getSpacesBucketsSort:getSpacesBucketsSort"
+                            "$ref": "#/types/digitalocean:index/getSpacesBucketsSort:getSpacesBucketsSort"
                         }
                     }
                 },
@@ -10748,14 +10748,14 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getTagsFilter:getTagsFilter"
+                            "$ref": "#/types/digitalocean:index/getTagsFilter:getTagsFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
                     },
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getTagsSort:getTagsSort"
+                            "$ref": "#/types/digitalocean:index/getTagsSort:getTagsSort"
                         },
                         "description": "Sort the results.\nThe `sort` block is documented below.\n"
                     }
@@ -10768,7 +10768,7 @@
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getTagsFilter:getTagsFilter"
+                            "$ref": "#/types/digitalocean:index/getTagsFilter:getTagsFilter"
                         }
                     },
                     "id": {
@@ -10778,13 +10778,13 @@
                     "sorts": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getTagsSort:getTagsSort"
+                            "$ref": "#/types/digitalocean:index/getTagsSort:getTagsSort"
                         }
                     },
                     "tags": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:/getTagsTag:getTagsTag"
+                            "$ref": "#/types/digitalocean:index/getTagsTag:getTagsTag"
                         }
                     }
                 },

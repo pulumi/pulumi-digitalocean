@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -29,14 +29,14 @@ class GetImageResult:
         if error_message and not isinstance(error_message, str):
             raise TypeError("Expected argument 'error_message' to be a str")
         pulumi.set(__self__, "error_message", error_message)
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if image and not isinstance(image, str):
             raise TypeError("Expected argument 'image' to be a str")
         pulumi.set(__self__, "image", image)
-        if min_disk_size and not isinstance(min_disk_size, float):
-            raise TypeError("Expected argument 'min_disk_size' to be a float")
+        if min_disk_size and not isinstance(min_disk_size, int):
+            raise TypeError("Expected argument 'min_disk_size' to be a int")
         pulumi.set(__self__, "min_disk_size", min_disk_size)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -88,7 +88,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         return pulumi.get(self, "id")
 
     @property
@@ -101,7 +101,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> float:
+    def min_disk_size(self) -> int:
         return pulumi.get(self, "min_disk_size")
 
     @property
@@ -126,7 +126,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter
-    def regions(self) -> List[str]:
+    def regions(self) -> Sequence[str]:
         return pulumi.get(self, "regions")
 
     @property
@@ -151,7 +151,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         return pulumi.get(self, "tags")
 
     @property
@@ -183,7 +183,7 @@ class AwaitableGetImageResult(GetImageResult):
             type=self.type)
 
 
-def get_image(id: Optional[float] = None,
+def get_image(id: Optional[int] = None,
               name: Optional[str] = None,
               slug: Optional[str] = None,
               source: Optional[str] = None,
@@ -230,7 +230,7 @@ def get_image(id: Optional[float] = None,
     ```
 
 
-    :param float id: The id of the image
+    :param int id: The id of the image
     :param str name: The name of the image.
     :param str slug: The slug of the official image.
     :param str source: Restrict the search to one of the following categories of images:
