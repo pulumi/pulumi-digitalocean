@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        /// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
         /// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
         /// </summary>
         public readonly string Key;

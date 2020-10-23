@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public string? Direction { get; set; }
 
         /// <summary>
-        /// Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        /// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
         /// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
         /// </summary>
         [Input("key", required: true)]

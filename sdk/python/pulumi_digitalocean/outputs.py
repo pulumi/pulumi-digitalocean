@@ -5000,9 +5000,9 @@ class GetRecordsFilterResult(dict):
                  all: Optional[bool] = None,
                  match_by: Optional[str] = None):
         """
-        :param str key: Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        :param str key: Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
                `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves projects
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves DNS records
                where the `key` field takes on one or more of the values provided here.
         :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
                them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -5022,7 +5022,7 @@ class GetRecordsFilterResult(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
         `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
         """
         return pulumi.get(self, "key")
@@ -5031,7 +5031,7 @@ class GetRecordsFilterResult(dict):
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        A list of values to match against the `key` field. Only retrieves projects
+        A list of values to match against the `key` field. Only retrieves DNS records
         where the `key` field takes on one or more of the values provided here.
         """
         return pulumi.get(self, "values")
@@ -5151,7 +5151,7 @@ class GetRecordsSortResult(dict):
                  key: str,
                  direction: Optional[str] = None):
         """
-        :param str key: Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        :param str key: Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
                `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
         :param str direction: The sort direction. This may be either `asc` or `desc`.
         """
@@ -5163,7 +5163,7 @@ class GetRecordsSortResult(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
         `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
         """
         return pulumi.get(self, "key")

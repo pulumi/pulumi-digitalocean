@@ -3,7 +3,7 @@
     "description": "A Pulumi package for creating and managing Digital Ocean cloud resources.",
     "keywords": [
         "pulumi",
-        "digital ocean"
+        "digitalocean"
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
@@ -4347,7 +4347,7 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,\n`priority`, `tag`, `ttl`, `type`, `value`, or `weight`.\n",
+                    "description": "Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,\n`priority`, `tag`, `ttl`, `type`, `value`, or `weight`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4368,7 +4368,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of values to match against the `key` field. Only retrieves projects\nwhere the `key` field takes on one or more of the values provided here.\n",
+                    "description": "A list of values to match against the `key` field. Only retrieves DNS records\nwhere the `key` field takes on one or more of the values provided here.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4507,7 +4507,7 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,\n`priority`, `tag`, `ttl`, `type`, `value`, or `weight`.\n",
+                    "description": "Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,\n`priority`, `tag`, `ttl`, `type`, `value`, or `weight`.\n",
                     "language": {
                         "python": {
                             "mapCase": false

@@ -1335,7 +1335,7 @@ export interface GetRecordsFilter {
      */
     all?: boolean;
     /**
-     * Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+     * Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
      * `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
      */
     key: string;
@@ -1346,7 +1346,7 @@ export interface GetRecordsFilter {
      */
     matchBy?: string;
     /**
-     * A list of values to match against the `key` field. Only retrieves projects
+     * A list of values to match against the `key` field. Only retrieves DNS records
      * where the `key` field takes on one or more of the values provided here.
      */
     values: string[];
@@ -1375,7 +1375,7 @@ export interface GetRecordsSort {
      */
     direction?: string;
     /**
-     * Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+     * Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
      * `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
      */
     key: string;

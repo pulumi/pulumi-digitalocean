@@ -11003,14 +11003,14 @@ type GetRecordsFilter struct {
 	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
 	// that all of the `values` are present in the list or set.
 	All *bool `pulumi:"all"`
-	// Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
 	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
 	Key string `pulumi:"key"`
 	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
 	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
 	// substrings to find within the string field.
 	MatchBy *string `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves projects
+	// A list of values to match against the `key` field. Only retrieves DNS records
 	// where the `key` field takes on one or more of the values provided here.
 	Values []string `pulumi:"values"`
 }
@@ -11031,14 +11031,14 @@ type GetRecordsFilterArgs struct {
 	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
 	// that all of the `values` are present in the list or set.
 	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
 	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
 	Key pulumi.StringInput `pulumi:"key"`
 	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
 	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
 	// substrings to find within the string field.
 	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves projects
+	// A list of values to match against the `key` field. Only retrieves DNS records
 	// where the `key` field takes on one or more of the values provided here.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -11101,7 +11101,7 @@ func (o GetRecordsFilterOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetRecordsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
-// Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
 // `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
 func (o GetRecordsFilterOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsFilter) string { return v.Key }).(pulumi.StringOutput)
@@ -11114,7 +11114,7 @@ func (o GetRecordsFilterOutput) MatchBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRecordsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
-// A list of values to match against the `key` field. Only retrieves projects
+// A list of values to match against the `key` field. Only retrieves DNS records
 // where the `key` field takes on one or more of the values provided here.
 func (o GetRecordsFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRecordsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -11300,7 +11300,7 @@ func (o GetRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetRecordsRecordOu
 type GetRecordsSort struct {
 	// The sort direction. This may be either `asc` or `desc`.
 	Direction *string `pulumi:"direction"`
-	// Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
 	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
 	Key string `pulumi:"key"`
 }
@@ -11319,7 +11319,7 @@ type GetRecordsSortInput interface {
 type GetRecordsSortArgs struct {
 	// The sort direction. This may be either `asc` or `desc`.
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
 	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
 	Key pulumi.StringInput `pulumi:"key"`
 }
@@ -11380,7 +11380,7 @@ func (o GetRecordsSortOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRecordsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
 // `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
 func (o GetRecordsSortOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsSort) string { return v.Key }).(pulumi.StringOutput)
