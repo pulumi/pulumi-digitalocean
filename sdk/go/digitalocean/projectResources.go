@@ -10,61 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
-// managed this provider to a DigitalOcean Project that is unmanaged by the provider.
-//
-// The following resource types can be associated with a project:
-//
-// * Database Clusters
-// * Domains
-// * Droplets
-// * Floating IP
-// * Load Balancers
-// * Spaces Bucket
-// * Volume
-//
-// ## Example Usage
-//
-// The following example assigns a droplet to a Project managed outside of this provider:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "playground"
-// 		_, err := digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
-// 			Name: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("512mb"),
-// 			Image:  pulumi.String("centos-7-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewProjectResources(ctx, "barfoo", &digitalocean.ProjectResourcesArgs{
-// 			Project: pulumi.Any(data.Digitalocean_project.Foo.Id),
-// 			Resources: pulumi.StringArray{
-// 				foobar.DropletUrn,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ProjectResources struct {
 	pulumi.CustomResourceState
 

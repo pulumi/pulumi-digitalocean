@@ -72,9 +72,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = digitalocean.NewCdn(ctx, "mycdn", &digitalocean.CdnArgs{
-// 			Origin:        mybucket.BucketDomainName,
-// 			CustomDomain:  pulumi.String("static.example.com"),
-// 			CertificateId: cert.ID(),
+// 			Origin:          mybucket.BucketDomainName,
+// 			CustomDomain:    pulumi.String("static.example.com"),
+// 			CertificateName: cert.Name,
 // 		})
 // 		if err != nil {
 // 			return err
@@ -86,8 +86,12 @@ import (
 type Cdn struct {
 	pulumi.CustomResourceState
 
-	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
+	// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	//
+	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
+	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
+	// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	CertificateName pulumi.StringOutput `pulumi:"certificateName"`
 	// The date and time when the CDN Endpoint was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
@@ -131,8 +135,12 @@ func GetCdn(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cdn resources.
 type cdnState struct {
-	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	//
+	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 	CertificateId *string `pulumi:"certificateId"`
+	// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	CertificateName *string `pulumi:"certificateName"`
 	// The date and time when the CDN Endpoint was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
@@ -146,8 +154,12 @@ type cdnState struct {
 }
 
 type CdnState struct {
-	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	//
+	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 	CertificateId pulumi.StringPtrInput
+	// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	CertificateName pulumi.StringPtrInput
 	// The date and time when the CDN Endpoint was created.
 	CreatedAt pulumi.StringPtrInput
 	// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
@@ -165,8 +177,12 @@ func (CdnState) ElementType() reflect.Type {
 }
 
 type cdnArgs struct {
-	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	//
+	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 	CertificateId *string `pulumi:"certificateId"`
+	// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	CertificateName *string `pulumi:"certificateName"`
 	// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
 	CustomDomain *string `pulumi:"customDomain"`
 	// The fully qualified domain name, (FQDN) for a Space.
@@ -177,8 +193,12 @@ type cdnArgs struct {
 
 // The set of arguments for constructing a Cdn resource.
 type CdnArgs struct {
-	// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	//
+	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 	CertificateId pulumi.StringPtrInput
+	// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+	CertificateName pulumi.StringPtrInput
 	// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
 	CustomDomain pulumi.StringPtrInput
 	// The fully qualified domain name, (FQDN) for a Space.

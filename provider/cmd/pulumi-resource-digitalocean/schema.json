@@ -1633,7 +1633,17 @@
             "properties": {
                 "certificateId": {
                     "type": "string",
-                    "description": "The ID of the TLS certificate to be used for SSL termination.\n",
+                    "description": "**Deprecated** The ID of the TLS certificate to be used for SSL termination.\n",
+                    "deprecationMessage": "Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "certificateName": {
+                    "type": "string",
+                    "description": "The unique name of the TLS certificate to be used for SSL termination.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1692,7 +1702,19 @@
                 "entryProtocol",
                 "targetPort",
                 "targetProtocol"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "certificateId",
+                        "certificateName",
+                        "entryPort",
+                        "entryProtocol",
+                        "targetPort",
+                        "targetProtocol"
+                    ]
+                }
+            }
         },
         "digitalocean:index/LoadBalancerHealthcheck:LoadBalancerHealthcheck": {
             "properties": {
@@ -3479,6 +3501,14 @@
                         }
                     }
                 },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "distribution": {
                     "type": "string",
                     "description": "The name of the distribution of the OS of the image.\n- `min_disk_size`: The minimum 'disk' required for the image.\n- `size_gigabytes`: The size of the image in GB.\n",
@@ -3596,6 +3626,7 @@
             "type": "object",
             "required": [
                 "created",
+                "description",
                 "distribution",
                 "errorMessage",
                 "id",
@@ -4066,7 +4097,7 @@
                 }
             }
         },
-        "digitalocean:index/getLoadBalancerStickySessions:getLoadBalancerStickySessions": {
+        "digitalocean:index/getLoadBalancerStickySession:getLoadBalancerStickySession": {
             "properties": {
                 "cookieName": {
                     "type": "string",
@@ -4291,6 +4322,192 @@
                 "key": {
                     "type": "string",
                     "description": "Sort the projects by this key. This may be one of `name`,\n`purpose`, `description`, or `environment`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
+        "digitalocean:index/getRecordsFilter:getRecordsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to `true` to require that a field match all of the `values` instead of just one or more of\nthem. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure\nthat all of the `values` are present in the list or set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,\n`priority`, `tag`, `ttl`, `type`, `value`, or `weight`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to\nmatch by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as\nsubstrings to find within the string field.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values to match against the `key` field. Only retrieves projects\nwhere the `key` field takes on one or more of the values provided here.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getRecordsRecord:getRecordsRecord": {
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The domain name to search for DNS records\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "flags": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "priority": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "weight": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "flags",
+                "id",
+                "name",
+                "port",
+                "priority",
+                "tag",
+                "ttl",
+                "type",
+                "value",
+                "weight"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getRecordsSort:getRecordsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sort direction. This may be either `asc` or `desc`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,\n`priority`, `tag`, `ttl`, `type`, `value`, or `weight`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5032,11 +5249,16 @@
             }
         },
         "digitalocean:index/cdn:Cdn": {
-            "description": "Provides a DigitalOcean CDN Endpoint resource for use with Spaces.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new Spaces Bucket\nconst mybucket = new digitalocean.SpacesBucket(\"mybucket\", {\n    region: \"sfo2\",\n    acl: \"public-read\",\n});\n// Add a CDN endpoint to the Spaces Bucket\nconst mycdn = new digitalocean.Cdn(\"mycdn\", {origin: mybucket.bucketDomainName});\nexport const fqdn = mycdn.endpoint;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new Spaces Bucket\nmybucket = digitalocean.SpacesBucket(\"mybucket\",\n    region=\"sfo2\",\n    acl=\"public-read\")\n# Add a CDN endpoint to the Spaces Bucket\nmycdn = digitalocean.Cdn(\"mycdn\", origin=mybucket.bucket_domain_name)\npulumi.export(\"fqdn\", mycdn.endpoint)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Spaces Bucket\n        var mybucket = new DigitalOcean.SpacesBucket(\"mybucket\", new DigitalOcean.SpacesBucketArgs\n        {\n            Region = \"sfo2\",\n            Acl = \"public-read\",\n        });\n        // Add a CDN endpoint to the Spaces Bucket\n        var mycdn = new DigitalOcean.Cdn(\"mycdn\", new DigitalOcean.CdnArgs\n        {\n            Origin = mybucket.BucketDomainName,\n        });\n        this.Fqdn = mycdn.Endpoint;\n    }\n\n    [Output(\"fqdn\")]\n    public Output\u003cstring\u003e Fqdn { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmybucket, err := digitalocean.NewSpacesBucket(ctx, \"mybucket\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tRegion: pulumi.String(\"sfo2\"),\n\t\t\tAcl:    pulumi.String(\"public-read\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmycdn, err := digitalocean.NewCdn(ctx, \"mycdn\", \u0026digitalocean.CdnArgs{\n\t\t\tOrigin: mybucket.BucketDomainName,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"fqdn\", mycdn.Endpoint)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Custom Sub-Domain Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new Spaces Bucket\nconst mybucket = new digitalocean.SpacesBucket(\"mybucket\", {\n    region: \"sfo2\",\n    acl: \"public-read\",\n});\n// Create a DigitalOcean managed Let's Encrypt Certificate\nconst cert = new digitalocean.Certificate(\"cert\", {\n    type: \"lets_encrypt\",\n    domains: [\"static.example.com\"],\n});\n// Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\nconst mycdn = new digitalocean.Cdn(\"mycdn\", {\n    origin: mybucket.bucketDomainName,\n    customDomain: \"static.example.com\",\n    certificateId: cert.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new Spaces Bucket\nmybucket = digitalocean.SpacesBucket(\"mybucket\",\n    region=\"sfo2\",\n    acl=\"public-read\")\n# Create a DigitalOcean managed Let's Encrypt Certificate\ncert = digitalocean.Certificate(\"cert\",\n    type=\"lets_encrypt\",\n    domains=[\"static.example.com\"])\n# Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\nmycdn = digitalocean.Cdn(\"mycdn\",\n    origin=mybucket.bucket_domain_name,\n    custom_domain=\"static.example.com\",\n    certificate_id=cert.id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Spaces Bucket\n        var mybucket = new DigitalOcean.SpacesBucket(\"mybucket\", new DigitalOcean.SpacesBucketArgs\n        {\n            Region = \"sfo2\",\n            Acl = \"public-read\",\n        });\n        // Create a DigitalOcean managed Let's Encrypt Certificate\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Type = \"lets_encrypt\",\n            Domains = \n            {\n                \"static.example.com\",\n            },\n        });\n        // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\n        var mycdn = new DigitalOcean.Cdn(\"mycdn\", new DigitalOcean.CdnArgs\n        {\n            Origin = mybucket.BucketDomainName,\n            CustomDomain = \"static.example.com\",\n            CertificateId = cert.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmybucket, err := digitalocean.NewSpacesBucket(ctx, \"mybucket\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tRegion: pulumi.String(\"sfo2\"),\n\t\t\tAcl:    pulumi.String(\"public-read\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcert, err := digitalocean.NewCertificate(ctx, \"cert\", \u0026digitalocean.CertificateArgs{\n\t\t\tType: pulumi.String(\"lets_encrypt\"),\n\t\t\tDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"static.example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewCdn(ctx, \"mycdn\", \u0026digitalocean.CdnArgs{\n\t\t\tOrigin:        mybucket.BucketDomainName,\n\t\t\tCustomDomain:  pulumi.String(\"static.example.com\"),\n\t\t\tCertificateId: cert.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a DigitalOcean CDN Endpoint resource for use with Spaces.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new Spaces Bucket\nconst mybucket = new digitalocean.SpacesBucket(\"mybucket\", {\n    region: \"sfo2\",\n    acl: \"public-read\",\n});\n// Add a CDN endpoint to the Spaces Bucket\nconst mycdn = new digitalocean.Cdn(\"mycdn\", {origin: mybucket.bucketDomainName});\nexport const fqdn = mycdn.endpoint;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new Spaces Bucket\nmybucket = digitalocean.SpacesBucket(\"mybucket\",\n    region=\"sfo2\",\n    acl=\"public-read\")\n# Add a CDN endpoint to the Spaces Bucket\nmycdn = digitalocean.Cdn(\"mycdn\", origin=mybucket.bucket_domain_name)\npulumi.export(\"fqdn\", mycdn.endpoint)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Spaces Bucket\n        var mybucket = new DigitalOcean.SpacesBucket(\"mybucket\", new DigitalOcean.SpacesBucketArgs\n        {\n            Region = \"sfo2\",\n            Acl = \"public-read\",\n        });\n        // Add a CDN endpoint to the Spaces Bucket\n        var mycdn = new DigitalOcean.Cdn(\"mycdn\", new DigitalOcean.CdnArgs\n        {\n            Origin = mybucket.BucketDomainName,\n        });\n        this.Fqdn = mycdn.Endpoint;\n    }\n\n    [Output(\"fqdn\")]\n    public Output\u003cstring\u003e Fqdn { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmybucket, err := digitalocean.NewSpacesBucket(ctx, \"mybucket\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tRegion: pulumi.String(\"sfo2\"),\n\t\t\tAcl:    pulumi.String(\"public-read\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmycdn, err := digitalocean.NewCdn(ctx, \"mycdn\", \u0026digitalocean.CdnArgs{\n\t\t\tOrigin: mybucket.BucketDomainName,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"fqdn\", mycdn.Endpoint)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Custom Sub-Domain Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new Spaces Bucket\nconst mybucket = new digitalocean.SpacesBucket(\"mybucket\", {\n    region: \"sfo2\",\n    acl: \"public-read\",\n});\n// Create a DigitalOcean managed Let's Encrypt Certificate\nconst cert = new digitalocean.Certificate(\"cert\", {\n    type: \"lets_encrypt\",\n    domains: [\"static.example.com\"],\n});\n// Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\nconst mycdn = new digitalocean.Cdn(\"mycdn\", {\n    origin: mybucket.bucketDomainName,\n    customDomain: \"static.example.com\",\n    certificateName: cert.name,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new Spaces Bucket\nmybucket = digitalocean.SpacesBucket(\"mybucket\",\n    region=\"sfo2\",\n    acl=\"public-read\")\n# Create a DigitalOcean managed Let's Encrypt Certificate\ncert = digitalocean.Certificate(\"cert\",\n    type=\"lets_encrypt\",\n    domains=[\"static.example.com\"])\n# Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\nmycdn = digitalocean.Cdn(\"mycdn\",\n    origin=mybucket.bucket_domain_name,\n    custom_domain=\"static.example.com\",\n    certificate_name=cert.name)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Spaces Bucket\n        var mybucket = new DigitalOcean.SpacesBucket(\"mybucket\", new DigitalOcean.SpacesBucketArgs\n        {\n            Region = \"sfo2\",\n            Acl = \"public-read\",\n        });\n        // Create a DigitalOcean managed Let's Encrypt Certificate\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Type = \"lets_encrypt\",\n            Domains = \n            {\n                \"static.example.com\",\n            },\n        });\n        // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket\n        var mycdn = new DigitalOcean.Cdn(\"mycdn\", new DigitalOcean.CdnArgs\n        {\n            Origin = mybucket.BucketDomainName,\n            CustomDomain = \"static.example.com\",\n            CertificateName = cert.Name,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmybucket, err := digitalocean.NewSpacesBucket(ctx, \"mybucket\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tRegion: pulumi.String(\"sfo2\"),\n\t\t\tAcl:    pulumi.String(\"public-read\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcert, err := digitalocean.NewCertificate(ctx, \"cert\", \u0026digitalocean.CertificateArgs{\n\t\t\tType: pulumi.String(\"lets_encrypt\"),\n\t\t\tDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"static.example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewCdn(ctx, \"mycdn\", \u0026digitalocean.CdnArgs{\n\t\t\tOrigin:          mybucket.BucketDomainName,\n\t\t\tCustomDomain:    pulumi.String(\"static.example.com\"),\n\t\t\tCertificateName: cert.Name,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "certificateId": {
                     "type": "string",
-                    "description": "The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n"
+                    "description": "**Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n",
+                    "deprecationMessage": "Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead."
+                },
+                "certificateName": {
+                    "type": "string",
+                    "description": "The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -5060,6 +5282,8 @@
                 }
             },
             "required": [
+                "certificateId",
+                "certificateName",
                 "createdAt",
                 "endpoint",
                 "origin",
@@ -5068,7 +5292,12 @@
             "inputProperties": {
                 "certificateId": {
                     "type": "string",
-                    "description": "The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n"
+                    "description": "**Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n",
+                    "deprecationMessage": "Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead."
+                },
+                "certificateName": {
+                    "type": "string",
+                    "description": "The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n"
                 },
                 "customDomain": {
                     "type": "string",
@@ -5091,7 +5320,12 @@
                 "properties": {
                     "certificateId": {
                         "type": "string",
-                        "description": "The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n"
+                        "description": "**Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n",
+                        "deprecationMessage": "Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead."
+                    },
+                    "certificateName": {
+                        "type": "string",
+                        "description": "The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -5118,7 +5352,7 @@
             }
         },
         "digitalocean:index/certificate:Certificate": {
-            "description": "Provides a DigitalOcean Certificate resource that allows you to manage\ncertificates for configuring TLS termination in Load Balancers.\nCertificates created with this resource can be referenced in your\nLoad Balancer configuration via their ID. The certificate can either\nbe a custom one provided by you or automatically generated one with\nLet's Encrypt.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Custom Certificate\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * from \"fs\";\n\nconst cert = new digitalocean.Certificate(\"cert\", {\n    type: \"custom\",\n    privateKey: fs.readFileSync(\"/Users/myuser/certs/privkey.pem\"),\n    leafCertificate: fs.readFileSync(\"/Users/myuser/certs/cert.pem\"),\n    certificateChain: fs.readFileSync(\"/Users/myuser/certs/fullchain.pem\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ncert = digitalocean.Certificate(\"cert\",\n    type=\"custom\",\n    private_key=(lambda path: open(path).read())(\"/Users/myuser/certs/privkey.pem\"),\n    leaf_certificate=(lambda path: open(path).read())(\"/Users/myuser/certs/cert.pem\"),\n    certificate_chain=(lambda path: open(path).read())(\"/Users/myuser/certs/fullchain.pem\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Type = \"custom\",\n            PrivateKey = File.ReadAllText(\"/Users/myuser/certs/privkey.pem\"),\n            LeafCertificate = File.ReadAllText(\"/Users/myuser/certs/cert.pem\"),\n            CertificateChain = File.ReadAllText(\"/Users/myuser/certs/fullchain.pem\"),\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% example %}}\n### Let's Encrypt Certificate\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst cert = new digitalocean.Certificate(\"cert\", {\n    domains: [\"example.com\"],\n    type: \"lets_encrypt\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ncert = digitalocean.Certificate(\"cert\",\n    domains=[\"example.com\"],\n    type=\"lets_encrypt\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Domains = \n            {\n                \"example.com\",\n            },\n            Type = \"lets_encrypt\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewCertificate(ctx, \"cert\", \u0026digitalocean.CertificateArgs{\n\t\t\tDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"lets_encrypt\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Use with Other Resources\n\nBoth custom and Let's Encrypt certificates can be used with other resources\nincluding the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst cert = new digitalocean.Certificate(\"cert\", {\n    type: \"lets_encrypt\",\n    domains: [\"example.com\"],\n});\n// Create a new Load Balancer with TLS termination\nconst _public = new digitalocean.LoadBalancer(\"public\", {\n    region: \"nyc3\",\n    dropletTag: \"backend\",\n    forwardingRules: [{\n        entryPort: 443,\n        entryProtocol: \"https\",\n        targetPort: 80,\n        targetProtocol: \"http\",\n        certificateId: cert.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ncert = digitalocean.Certificate(\"cert\",\n    type=\"lets_encrypt\",\n    domains=[\"example.com\"])\n# Create a new Load Balancer with TLS termination\npublic = digitalocean.LoadBalancer(\"public\",\n    region=\"nyc3\",\n    droplet_tag=\"backend\",\n    forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(\n        entry_port=443,\n        entry_protocol=\"https\",\n        target_port=80,\n        target_protocol=\"http\",\n        certificate_id=cert.id,\n    )])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Type = \"lets_encrypt\",\n            Domains = \n            {\n                \"example.com\",\n            },\n        });\n        // Create a new Load Balancer with TLS termination\n        var @public = new DigitalOcean.LoadBalancer(\"public\", new DigitalOcean.LoadBalancerArgs\n        {\n            Region = \"nyc3\",\n            DropletTag = \"backend\",\n            ForwardingRules = \n            {\n                new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs\n                {\n                    EntryPort = 443,\n                    EntryProtocol = \"https\",\n                    TargetPort = 80,\n                    TargetProtocol = \"http\",\n                    CertificateId = cert.Id,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcert, err := digitalocean.NewCertificate(ctx, \"cert\", \u0026digitalocean.CertificateArgs{\n\t\t\tType: pulumi.String(\"lets_encrypt\"),\n\t\t\tDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewLoadBalancer(ctx, \"public\", \u0026digitalocean.LoadBalancerArgs{\n\t\t\tRegion:     pulumi.String(\"nyc3\"),\n\t\t\tDropletTag: pulumi.String(\"backend\"),\n\t\t\tForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{\n\t\t\t\t\u0026digitalocean.LoadBalancerForwardingRuleArgs{\n\t\t\t\t\tEntryPort:      pulumi.Int(443),\n\t\t\t\t\tEntryProtocol:  pulumi.String(\"https\"),\n\t\t\t\t\tTargetPort:     pulumi.Int(80),\n\t\t\t\t\tTargetProtocol: pulumi.String(\"http\"),\n\t\t\t\t\tCertificateId:  cert.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a DigitalOcean Certificate resource that allows you to manage\ncertificates for configuring TLS termination in Load Balancers.\nCertificates created with this resource can be referenced in your\nLoad Balancer configuration via their ID. The certificate can either\nbe a custom one provided by you or automatically generated one with\nLet's Encrypt.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Custom Certificate\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * from \"fs\";\n\nconst cert = new digitalocean.Certificate(\"cert\", {\n    type: \"custom\",\n    privateKey: fs.readFileSync(\"/Users/terraform/certs/privkey.pem\"),\n    leafCertificate: fs.readFileSync(\"/Users/terraform/certs/cert.pem\"),\n    certificateChain: fs.readFileSync(\"/Users/terraform/certs/fullchain.pem\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ncert = digitalocean.Certificate(\"cert\",\n    type=\"custom\",\n    private_key=(lambda path: open(path).read())(\"/Users/terraform/certs/privkey.pem\"),\n    leaf_certificate=(lambda path: open(path).read())(\"/Users/terraform/certs/cert.pem\"),\n    certificate_chain=(lambda path: open(path).read())(\"/Users/terraform/certs/fullchain.pem\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Type = \"custom\",\n            PrivateKey = File.ReadAllText(\"/Users/terraform/certs/privkey.pem\"),\n            LeafCertificate = File.ReadAllText(\"/Users/terraform/certs/cert.pem\"),\n            CertificateChain = File.ReadAllText(\"/Users/terraform/certs/fullchain.pem\"),\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% example %}}\n### Let's Encrypt Certificate\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst cert = new digitalocean.Certificate(\"cert\", {\n    domains: [\"example.com\"],\n    type: \"lets_encrypt\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ncert = digitalocean.Certificate(\"cert\",\n    domains=[\"example.com\"],\n    type=\"lets_encrypt\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Domains = \n            {\n                \"example.com\",\n            },\n            Type = \"lets_encrypt\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewCertificate(ctx, \"cert\", \u0026digitalocean.CertificateArgs{\n\t\t\tDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"lets_encrypt\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Use with Other Resources\n\nBoth custom and Let's Encrypt certificates can be used with other resources\nincluding the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst cert = new digitalocean.Certificate(\"cert\", {\n    type: \"lets_encrypt\",\n    domains: [\"example.com\"],\n});\n// Create a new Load Balancer with TLS termination\nconst _public = new digitalocean.LoadBalancer(\"public\", {\n    region: \"nyc3\",\n    dropletTag: \"backend\",\n    forwardingRules: [{\n        entryPort: 443,\n        entryProtocol: \"https\",\n        targetPort: 80,\n        targetProtocol: \"http\",\n        certificateName: cert.name,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ncert = digitalocean.Certificate(\"cert\",\n    type=\"lets_encrypt\",\n    domains=[\"example.com\"])\n# Create a new Load Balancer with TLS termination\npublic = digitalocean.LoadBalancer(\"public\",\n    region=\"nyc3\",\n    droplet_tag=\"backend\",\n    forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(\n        entry_port=443,\n        entry_protocol=\"https\",\n        target_port=80,\n        target_protocol=\"http\",\n        certificate_name=cert.name,\n    )])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            Type = \"lets_encrypt\",\n            Domains = \n            {\n                \"example.com\",\n            },\n        });\n        // Create a new Load Balancer with TLS termination\n        var @public = new DigitalOcean.LoadBalancer(\"public\", new DigitalOcean.LoadBalancerArgs\n        {\n            Region = \"nyc3\",\n            DropletTag = \"backend\",\n            ForwardingRules = \n            {\n                new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs\n                {\n                    EntryPort = 443,\n                    EntryProtocol = \"https\",\n                    TargetPort = 80,\n                    TargetProtocol = \"http\",\n                    CertificateName = cert.Name,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcert, err := digitalocean.NewCertificate(ctx, \"cert\", \u0026digitalocean.CertificateArgs{\n\t\t\tType: pulumi.String(\"lets_encrypt\"),\n\t\t\tDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewLoadBalancer(ctx, \"public\", \u0026digitalocean.LoadBalancerArgs{\n\t\t\tRegion:     pulumi.String(\"nyc3\"),\n\t\t\tDropletTag: pulumi.String(\"backend\"),\n\t\t\tForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{\n\t\t\t\t\u0026digitalocean.LoadBalancerForwardingRuleArgs{\n\t\t\t\t\tEntryPort:       pulumi.Int(443),\n\t\t\t\t\tEntryProtocol:   pulumi.String(\"https\"),\n\t\t\t\t\tTargetPort:      pulumi.Int(80),\n\t\t\t\t\tTargetProtocol:  pulumi.String(\"http\"),\n\t\t\t\t\tCertificateName: cert.Name,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "certificateChain": {
                     "type": "string",
@@ -5158,13 +5392,18 @@
                     "type": "string",
                     "$ref": "#/types/digitalocean:index:CertificateType",
                     "description": "The type of certificate to provision. Can be either\n`custom` or `lets_encrypt`. Defaults to `custom`.\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "The UUID of the certificate\n"
                 }
             },
             "required": [
                 "name",
                 "notAfter",
                 "sha1Fingerprint",
-                "state"
+                "state",
+                "uuid"
             ],
             "inputProperties": {
                 "certificateChain": {
@@ -5237,6 +5476,10 @@
                         "type": "string",
                         "$ref": "#/types/digitalocean:index:CertificateType",
                         "description": "The type of certificate to provision. Can be either\n`custom` or `lets_encrypt`. Defaults to `custom`.\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "The UUID of the certificate\n"
                     }
                 },
                 "type": "object"
@@ -6830,7 +7073,6 @@
             }
         },
         "digitalocean:index/kubernetesCluster:KubernetesCluster": {
-            "description": "Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foo = new digitalocean.KubernetesCluster(\"foo\", {\n    nodePool: {\n        name: \"worker-pool\",\n        nodeCount: 3,\n        size: \"s-2vcpu-2gb\",\n    },\n    region: \"nyc1\",\n    // Grab the latest version slug from `doctl kubernetes options versions`\n    version: \"1.15.5-do.1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoo = digitalocean.KubernetesCluster(\"foo\",\n    node_pool=digitalocean.KubernetesClusterNodePoolArgs(\n        name=\"worker-pool\",\n        node_count=3,\n        size=\"s-2vcpu-2gb\",\n    ),\n    region=\"nyc1\",\n    version=\"1.15.5-do.1\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new DigitalOcean.KubernetesCluster(\"foo\", new DigitalOcean.KubernetesClusterArgs\n        {\n            NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs\n            {\n                Name = \"worker-pool\",\n                NodeCount = 3,\n                Size = \"s-2vcpu-2gb\",\n            },\n            Region = \"nyc1\",\n            Version = \"1.15.5-do.1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewKubernetesCluster(ctx, \"foo\", \u0026digitalocean.KubernetesClusterArgs{\n\t\t\tNodePool: \u0026digitalocean.KubernetesClusterNodePoolArgs{\n\t\t\t\tName:      pulumi.String(\"worker-pool\"),\n\t\t\t\tNodeCount: pulumi.Int(3),\n\t\t\t\tSize:      pulumi.String(\"s-2vcpu-2gb\"),\n\t\t\t},\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t\tVersion: pulumi.String(\"1.15.5-do.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Autoscaling Example\n\nNode pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).\nFor example:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foo = new digitalocean.KubernetesCluster(\"foo\", {\n    nodePool: {\n        autoScale: true,\n        maxNodes: 5,\n        minNodes: 1,\n        name: \"autoscale-worker-pool\",\n        size: \"s-2vcpu-2gb\",\n    },\n    region: \"nyc1\",\n    version: \"1.15.5-do.1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoo = digitalocean.KubernetesCluster(\"foo\",\n    node_pool=digitalocean.KubernetesClusterNodePoolArgs(\n        auto_scale=True,\n        max_nodes=5,\n        min_nodes=1,\n        name=\"autoscale-worker-pool\",\n        size=\"s-2vcpu-2gb\",\n    ),\n    region=\"nyc1\",\n    version=\"1.15.5-do.1\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new DigitalOcean.KubernetesCluster(\"foo\", new DigitalOcean.KubernetesClusterArgs\n        {\n            NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs\n            {\n                AutoScale = true,\n                MaxNodes = 5,\n                MinNodes = 1,\n                Name = \"autoscale-worker-pool\",\n                Size = \"s-2vcpu-2gb\",\n            },\n            Region = \"nyc1\",\n            Version = \"1.15.5-do.1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewKubernetesCluster(ctx, \"foo\", \u0026digitalocean.KubernetesClusterArgs{\n\t\t\tNodePool: \u0026digitalocean.KubernetesClusterNodePoolArgs{\n\t\t\t\tAutoScale: pulumi.Bool(true),\n\t\t\t\tMaxNodes:  pulumi.Int(5),\n\t\t\t\tMinNodes:  pulumi.Int(1),\n\t\t\t\tName:      pulumi.String(\"autoscale-worker-pool\"),\n\t\t\t\tSize:      pulumi.String(\"s-2vcpu-2gb\"),\n\t\t\t},\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t\tVersion: pulumi.String(\"1.15.5-do.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nNote that, while individual node pools may scale to 0, a cluster must always include at least one node.\n{{% /example %}}\n{{% example %}}\n### Auto Upgrade Example\n\nDigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions.\nFor example:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getKubernetesVersions({\n    versionPrefix: \"1.18.\",\n});\nconst foo = new digitalocean.KubernetesCluster(\"foo\", {\n    region: \"nyc1\",\n    autoUpgrade: true,\n    version: example.then(example =\u003e example.latestVersion),\n    nodePool: {\n        name: \"default\",\n        size: \"s-1vcpu-2gb\",\n        nodeCount: 3,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_kubernetes_versions(version_prefix=\"1.18.\")\nfoo = digitalocean.KubernetesCluster(\"foo\",\n    region=\"nyc1\",\n    auto_upgrade=True,\n    version=example.latest_version,\n    node_pool=digitalocean.KubernetesClusterNodePoolArgs(\n        name=\"default\",\n        size=\"s-1vcpu-2gb\",\n        node_count=3,\n    ))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync(new DigitalOcean.GetKubernetesVersionsArgs\n        {\n            VersionPrefix = \"1.18.\",\n        }));\n        var foo = new DigitalOcean.KubernetesCluster(\"foo\", new DigitalOcean.KubernetesClusterArgs\n        {\n            Region = \"nyc1\",\n            AutoUpgrade = true,\n            Version = example.Apply(example =\u003e example.LatestVersion),\n            NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs\n            {\n                Name = \"default\",\n                Size = \"s-1vcpu-2gb\",\n                NodeCount = 3,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"1.18.\"\n\t\texample, err := digitalocean.GetKubernetesVersions(ctx, \u0026digitalocean.GetKubernetesVersionsArgs{\n\t\t\tVersionPrefix: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewKubernetesCluster(ctx, \"foo\", \u0026digitalocean.KubernetesClusterArgs{\n\t\t\tRegion:      pulumi.String(\"nyc1\"),\n\t\t\tAutoUpgrade: pulumi.Bool(true),\n\t\t\tVersion:     pulumi.String(example.LatestVersion),\n\t\t\tNodePool: \u0026digitalocean.KubernetesClusterNodePoolArgs{\n\t\t\t\tName:      pulumi.String(\"default\"),\n\t\t\t\tSize:      pulumi.String(\"s-1vcpu-2gb\"),\n\t\t\t\tNodeCount: pulumi.Int(3),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nNote that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "autoUpgrade": {
                     "type": "boolean",
@@ -7214,7 +7456,7 @@
             }
         },
         "digitalocean:index/loadBalancer:LoadBalancer": {
-            "description": "Provides a DigitalOcean Load Balancer resource. This can be used to create,\nmodify, and delete Load Balancers.\n",
+            "description": "Provides a DigitalOcean Load Balancer resource. This can be used to create,\nmodify, and delete Load Balancers.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = new digitalocean.Droplet(\"web\", {\n    size: \"s-1vcpu-1gb\",\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc3\",\n});\nconst _public = new digitalocean.LoadBalancer(\"public\", {\n    region: \"nyc3\",\n    forwardingRules: [{\n        entryPort: 80,\n        entryProtocol: \"http\",\n        targetPort: 80,\n        targetProtocol: \"http\",\n    }],\n    healthcheck: {\n        port: 22,\n        protocol: \"tcp\",\n    },\n    dropletIds: [web.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.Droplet(\"web\",\n    size=\"s-1vcpu-1gb\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc3\")\npublic = digitalocean.LoadBalancer(\"public\",\n    region=\"nyc3\",\n    forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(\n        entry_port=80,\n        entry_protocol=\"http\",\n        target_port=80,\n        target_protocol=\"http\",\n    )],\n    healthcheck=digitalocean.LoadBalancerHealthcheckArgs(\n        port=22,\n        protocol=\"tcp\",\n    ),\n    droplet_ids=[web.id])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Size = \"s-1vcpu-1gb\",\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc3\",\n        });\n        var @public = new DigitalOcean.LoadBalancer(\"public\", new DigitalOcean.LoadBalancerArgs\n        {\n            Region = \"nyc3\",\n            ForwardingRules = \n            {\n                new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs\n                {\n                    EntryPort = 80,\n                    EntryProtocol = \"http\",\n                    TargetPort = 80,\n                    TargetProtocol = \"http\",\n                },\n            },\n            Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs\n            {\n                Port = 22,\n                Protocol = \"tcp\",\n            },\n            DropletIds = \n            {\n                web.Id,\n            },\n        });\n    }\n\n}\n```\n\nWhen managing certificates attached to the load balancer, make sure to add the `create_before_destroy`\nlifecycle property in order to ensure the certificate is correctly updated when changed. The order of\noperations will then be: `Create new certificate` \u003e `Update loadbalancer with new certificate` -\u003e\n`Delete old certificate`. When doing so, you must also change the name of the certificate,\nas there cannot be multiple certificates with the same name in an account.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst cert = new digitalocean.Certificate(\"cert\", {\n    privateKey: \"file('key.pem')\",\n    leafCertificate: \"file('cert.pem')\",\n});\nconst web = new digitalocean.Droplet(\"web\", {\n    size: \"s-1vcpu-1gb\",\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc3\",\n});\nconst _public = new digitalocean.LoadBalancer(\"public\", {\n    region: \"nyc3\",\n    forwardingRules: [{\n        entryPort: 443,\n        entryProtocol: \"https\",\n        targetPort: 80,\n        targetProtocol: \"http\",\n        certificateName: cert.name,\n    }],\n    healthcheck: {\n        port: 22,\n        protocol: \"tcp\",\n    },\n    dropletIds: [web.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ncert = digitalocean.Certificate(\"cert\",\n    private_key=\"file('key.pem')\",\n    leaf_certificate=\"file('cert.pem')\")\nweb = digitalocean.Droplet(\"web\",\n    size=\"s-1vcpu-1gb\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc3\")\npublic = digitalocean.LoadBalancer(\"public\",\n    region=\"nyc3\",\n    forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(\n        entry_port=443,\n        entry_protocol=\"https\",\n        target_port=80,\n        target_protocol=\"http\",\n        certificate_name=cert.name,\n    )],\n    healthcheck=digitalocean.LoadBalancerHealthcheckArgs(\n        port=22,\n        protocol=\"tcp\",\n    ),\n    droplet_ids=[web.id])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cert = new DigitalOcean.Certificate(\"cert\", new DigitalOcean.CertificateArgs\n        {\n            PrivateKey = \"file('key.pem')\",\n            LeafCertificate = \"file('cert.pem')\",\n        });\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Size = \"s-1vcpu-1gb\",\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc3\",\n        });\n        var @public = new DigitalOcean.LoadBalancer(\"public\", new DigitalOcean.LoadBalancerArgs\n        {\n            Region = \"nyc3\",\n            ForwardingRules = \n            {\n                new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs\n                {\n                    EntryPort = 443,\n                    EntryProtocol = \"https\",\n                    TargetPort = 80,\n                    TargetProtocol = \"http\",\n                    CertificateName = cert.Name,\n                },\n            },\n            Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs\n            {\n                Port = 22,\n                Protocol = \"tcp\",\n            },\n            DropletIds = \n            {\n                web.Id,\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "algorithm": {
                     "type": "string",
@@ -7431,7 +7673,6 @@
             }
         },
         "digitalocean:index/project:Project": {
-            "description": "Provides a DigitalOcean Project resource.\n\nProjects allow you to organize your resources into groups that fit the way you work.\nYou can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)\nin ways that align with the applications you host on DigitalOcean.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n**Note:** A managed project cannot be set as a default project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example demonstrates the creation of an empty project:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    environment: \"Development\",\n    purpose: \"Web Application\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    environment=\"Development\",\n    purpose=\"Web Application\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Environment = \"Development\",\n            Purpose = \"Web Application\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewProject(ctx, \"playground\", \u0026digitalocean.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"A project to represent development resources.\"),\n\t\t\tEnvironment: pulumi.String(\"Development\"),\n\t\t\tPurpose:     pulumi.String(\"Web Application\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nThe following example demonstrates the creation of a project with a Droplet resource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    purpose: \"Web Application\",\n    environment: \"Development\",\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    purpose=\"Web Application\",\n    environment=\"Development\",\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Purpose = \"Web Application\",\n            Environment = \"Development\",\n            Resources = \n            {\n                foobar.DropletUrn,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewDroplet(ctx, \"foobar\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"512mb\"),\n\t\t\tImage:  pulumi.String(\"centos-7-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewProject(ctx, \"playground\", \u0026digitalocean.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"A project to represent development resources.\"),\n\t\t\tPurpose:     pulumi.String(\"Web Application\"),\n\t\t\tEnvironment: pulumi.String(\"Development\"),\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tfoobar.DropletUrn,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -7560,7 +7801,6 @@
             }
         },
         "digitalocean:index/projectResources:ProjectResources": {
-            "description": "Assign resources to a DigitalOcean Project. This is useful if you need to assign resources\nmanaged this provider to a DigitalOcean Project that is unmanaged by the provider.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example assigns a droplet to a Project managed outside of this provider:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = digitalocean.getProject({\n    name: \"playground\",\n});\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst barfoo = new digitalocean.ProjectResources(\"barfoo\", {\n    project: data.digitalocean_project.foo.id,\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.get_project(name=\"playground\")\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nbarfoo = digitalocean.ProjectResources(\"barfoo\",\n    project=data[\"digitalocean_project\"][\"foo\"][\"id\"],\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs\n        {\n            Name = \"playground\",\n        }));\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var barfoo = new DigitalOcean.ProjectResources(\"barfoo\", new DigitalOcean.ProjectResourcesArgs\n        {\n            Project = data.Digitalocean_project.Foo.Id,\n            Resources = \n            {\n                foobar.DropletUrn,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"playground\"\n\t\t_, err := digitalocean.LookupProject(ctx, \u0026digitalocean.LookupProjectArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfoobar, err := digitalocean.NewDroplet(ctx, \"foobar\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"512mb\"),\n\t\t\tImage:  pulumi.String(\"centos-7-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewProjectResources(ctx, \"barfoo\", \u0026digitalocean.ProjectResourcesArgs{\n\t\t\tProject: pulumi.Any(data.Digitalocean_project.Foo.Id),\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tfoobar.DropletUrn,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "project": {
                     "type": "string",
@@ -7753,7 +7993,6 @@
             }
         },
         "digitalocean:index/spacesBucketObject:SpacesBucketObject": {
-            "description": "Provides a bucket object resource for Spaces, DigitalOcean's object storage product.\nThe `digitalocean.SpacesBucketObject` resource allows this provider to upload content\nto Spaces.\n\nThe [Spaces API](https://developers.digitalocean.com/documentation/spaces/) was\ndesigned to be interoperable with Amazon's AWS S3 API. This allows users to\ninteract with the service while using the tools they already know. Spaces\nmirrors S3's authentication framework and requests to Spaces require a key pair\nsimilar to Amazon's Access ID and Secret Key.\n\nThe authentication requirement can be met by either setting the\n`SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or\nthe provider's `spaces_access_id` and `spaces_secret_key` arguments to the\naccess ID and secret you generate via the DigitalOcean control panel. For\nexample:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_assets = new digitalocean.SpacesBucket(\"static-assets\", {});\n// ...\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_assets = digitalocean.SpacesBucket(\"static-assets\")\n# ...\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var static_assets = new DigitalOcean.SpacesBucket(\"static-assets\", new DigitalOcean.SpacesBucketArgs\n        {\n        });\n        // ...\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewSpacesBucket(ctx, \"static_assets\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nFor more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a Key in a Spaces Bucket\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.SpacesBucket(\"foobar\", {region: \"nyc3\"});\nconst index = new digitalocean.SpacesBucketObject(\"index\", {\n    region: foobar.region,\n    bucket: foobar.name,\n    key: \"index.html\",\n    content: \"\u003chtml\u003e\u003cbody\u003e\u003cp\u003eThis page is empty.\u003c/p\u003e\u003c/body\u003e\u003c/html\u003e\",\n    contentType: \"text/html\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.SpacesBucket(\"foobar\", region=\"nyc3\")\nindex = digitalocean.SpacesBucketObject(\"index\",\n    region=foobar.region,\n    bucket=foobar.name,\n    key=\"index.html\",\n    content=\"\u003chtml\u003e\u003cbody\u003e\u003cp\u003eThis page is empty.\u003c/p\u003e\u003c/body\u003e\u003c/html\u003e\",\n    content_type=\"text/html\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new DigitalOcean.SpacesBucket(\"foobar\", new DigitalOcean.SpacesBucketArgs\n        {\n            Region = \"nyc3\",\n        });\n        var index = new DigitalOcean.SpacesBucketObject(\"index\", new DigitalOcean.SpacesBucketObjectArgs\n        {\n            Region = foobar.Region,\n            Bucket = foobar.Name,\n            Key = \"index.html\",\n            Content = \"\u003chtml\u003e\u003cbody\u003e\u003cp\u003eThis page is empty.\u003c/p\u003e\u003c/body\u003e\u003c/html\u003e\",\n            ContentType = \"text/html\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewSpacesBucket(ctx, \"foobar\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewSpacesBucketObject(ctx, \"index\", \u0026digitalocean.SpacesBucketObjectArgs{\n\t\t\tRegion:      foobar.Region,\n\t\t\tBucket:      foobar.Name,\n\t\t\tKey:         pulumi.String(\"index.html\"),\n\t\t\tContent:     pulumi.String(\"\u003chtml\u003e\u003cbody\u003e\u003cp\u003eThis page is empty.\u003c/p\u003e\u003c/body\u003e\u003c/html\u003e\"),\n\t\t\tContentType: pulumi.String(\"text/html\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "acl": {
                     "type": "string",
@@ -7793,7 +8032,7 @@
                 },
                 "etag": {
                     "type": "string",
-                    "description": "Used to trigger updates. The only meaningful value is `${filemd5(\"path/to/file\")}`.\n"
+                    "description": "the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the\nobject data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5\ndigest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).\n"
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -7874,7 +8113,7 @@
                 },
                 "etag": {
                     "type": "string",
-                    "description": "Used to trigger updates. The only meaningful value is `${filemd5(\"path/to/file\")}`.\n"
+                    "description": "the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the\nobject data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5\ndigest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).\n"
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -7950,7 +8189,7 @@
                     },
                     "etag": {
                         "type": "string",
-                        "description": "Used to trigger updates. The only meaningful value is `${filemd5(\"path/to/file\")}`.\n"
+                        "description": "the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the\nobject data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5\ndigest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).\n"
                     },
                     "forceDestroy": {
                         "type": "boolean",
@@ -7988,7 +8227,7 @@
             }
         },
         "digitalocean:index/sshKey:SshKey": {
-            "description": "Provides a DigitalOcean SSH key resource to allow you to manage SSH\nkeys for Droplet access. Keys created with this resource\ncan be referenced in your Droplet configuration via their ID or\nfingerprint.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * from \"fs\";\n\n// Create a new SSH key\nconst _default = new digitalocean.SshKey(\"default\", {publicKey: fs.readFileSync(\"/Users/myuser/.ssh/id_rsa.pub\")});\n// Create a new Droplet using the SSH key\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc3\",\n    size: \"s-1vcpu-1gb\",\n    sshKeys: [_default.fingerprint],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new SSH key\ndefault = digitalocean.SshKey(\"default\", public_key=(lambda path: open(path).read())(\"/Users/myuser/.ssh/id_rsa.pub\"))\n# Create a new Droplet using the SSH key\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc3\",\n    size=\"s-1vcpu-1gb\",\n    ssh_keys=[default.fingerprint])\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new SSH key\n        var @default = new DigitalOcean.SshKey(\"default\", new DigitalOcean.SshKeyArgs\n        {\n            PublicKey = File.ReadAllText(\"/Users/myuser/.ssh/id_rsa.pub\"),\n        });\n        // Create a new Droplet using the SSH key\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc3\",\n            Size = \"s-1vcpu-1gb\",\n            SshKeys = \n            {\n                @default.Fingerprint,\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a DigitalOcean SSH key resource to allow you to manage SSH\nkeys for Droplet access. Keys created with this resource\ncan be referenced in your Droplet configuration via their ID or\nfingerprint.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * from \"fs\";\n\n// Create a new SSH key\nconst _default = new digitalocean.SshKey(\"default\", {publicKey: fs.readFileSync(\"/Users/terraform/.ssh/id_rsa.pub\")});\n// Create a new Droplet using the SSH key\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc3\",\n    size: \"s-1vcpu-1gb\",\n    sshKeys: [_default.fingerprint],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new SSH key\ndefault = digitalocean.SshKey(\"default\", public_key=(lambda path: open(path).read())(\"/Users/terraform/.ssh/id_rsa.pub\"))\n# Create a new Droplet using the SSH key\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc3\",\n    size=\"s-1vcpu-1gb\",\n    ssh_keys=[default.fingerprint])\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new SSH key\n        var @default = new DigitalOcean.SshKey(\"default\", new DigitalOcean.SshKeyArgs\n        {\n            PublicKey = File.ReadAllText(\"/Users/terraform/.ssh/id_rsa.pub\"),\n        });\n        // Create a new Droplet using the SSH key\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc3\",\n            Size = \"s-1vcpu-1gb\",\n            SshKeys = \n            {\n                @default.Fingerprint,\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "fingerprint": {
                     "type": "string",
@@ -8813,8 +9052,11 @@
                         "type": "string",
                         "description": "The live URL of the app.\n"
                     },
-                    "spec": {
-                        "$ref": "#/types/digitalocean:index/getAppSpec:getAppSpec",
+                    "specs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getAppSpec:getAppSpec"
+                        },
                         "description": "A DigitalOcean App spec describing the app.\n"
                     },
                     "updatedAt": {
@@ -8829,14 +9071,13 @@
                     "createdAt",
                     "defaultIngress",
                     "liveUrl",
-                    "spec",
+                    "specs",
                     "updatedAt",
                     "id"
                 ]
             }
         },
         "digitalocean:index/getCertificate:getCertificate": {
-            "description": "Get information on a certificate. This data source provides the name, type, state,\ndomains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.\nThis is useful if the certificate in question is not managed by this provider or you need to utilize\nany of the certificates data.\n\nAn error is triggered if the provided certificate name does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the certificate:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = pulumi.output(digitalocean.getCertificate({\n    name: \"example\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_certificate(name=\"example\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetCertificate.InvokeAsync(new DigitalOcean.GetCertificateArgs\n        {\n            Name = \"example\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupCertificate(ctx, \u0026digitalocean.LookupCertificateArgs{\n\t\t\tName: \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getCertificate.\n",
                 "properties": {
@@ -8877,6 +9118,9 @@
                     },
                     "type": {
                         "type": "string"
+                    },
+                    "uuid": {
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -8887,12 +9131,12 @@
                     "sha1Fingerprint",
                     "state",
                     "type",
+                    "uuid",
                     "id"
                 ]
             }
         },
         "digitalocean:index/getContainerRegistry:getContainerRegistry": {
-            "description": "Get information on a container registry. This data source provides the name as \nconfigured on your DigitalOcean account. This is useful if the container \nregistry name in question is not managed by this provider or you need validate if \nthe container registry exists in the account.\n\nAn error is triggered if the provided container registry name does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\nGet the container registry:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = pulumi.output(digitalocean.getContainerRegistry({\n    name: \"example\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_container_registry(name=\"example\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetContainerRegistry.InvokeAsync(new DigitalOcean.GetContainerRegistryArgs\n        {\n            Name = \"example\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupContainerRegistry(ctx, \u0026digitalocean.LookupContainerRegistryArgs{\n\t\t\tName: \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getContainerRegistry.\n",
                 "properties": {
@@ -9062,7 +9306,6 @@
             }
         },
         "digitalocean:index/getDomain:getDomain": {
-            "description": "Get information on a domain. This data source provides the name, TTL, and zone\nfile as configured on your DigitalOcean account. This is useful if the domain\nname in question is not managed by this provider or you need to utilize TTL or zone\nfile data.\n\nAn error is triggered if the provided domain name is not managed with your\nDigitalOcean account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the zone file for a domain:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getDomain({\n    name: \"example.com\",\n});\nexport const domainOutput = example.then(example =\u003e example.zoneFile);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_domain(name=\"example.com\")\npulumi.export(\"domainOutput\", example.zone_file)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetDomain.InvokeAsync(new DigitalOcean.GetDomainArgs\n        {\n            Name = \"example.com\",\n        }));\n        this.DomainOutput = example.Apply(example =\u003e example.ZoneFile);\n    }\n\n    [Output(\"domainOutput\")]\n    public Output\u003cstring\u003e DomainOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupDomain(ctx, \u0026digitalocean.LookupDomainArgs{\n\t\t\tName: \"example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"domainOutput\", example.ZoneFile)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getDomain.\n",
                 "properties": {
@@ -9163,7 +9406,6 @@
             }
         },
         "digitalocean:index/getDroplet:getDroplet": {
-            "description": "Get information on a Droplet for use in other resources. This data source provides\nall of the Droplet's properties as configured on your DigitalOcean account. This\nis useful if the Droplet in question is not managed by this provider or you need to\nutilize any of the Droplet's data.\n\n**Note:** This data source returns a single Droplet. When specifying a `tag`, an\nerror is triggered if more than one Droplet is found.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the Droplet by name:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getDroplet({\n    name: \"web\",\n});\nexport const dropletOutput = example.then(example =\u003e example.ipv4Address);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_droplet(name=\"web\")\npulumi.export(\"dropletOutput\", example.ipv4_address)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs\n        {\n            Name = \"web\",\n        }));\n        this.DropletOutput = example.Apply(example =\u003e example.Ipv4Address);\n    }\n\n    [Output(\"dropletOutput\")]\n    public Output\u003cstring\u003e DropletOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"web\"\n\t\texample, err := digitalocean.LookupDroplet(ctx, \u0026digitalocean.LookupDropletArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dropletOutput\", example.Ipv4Address)\n\t\treturn nil\n\t})\n}\n```\n\nGet the Droplet by tag:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = pulumi.output(digitalocean.getDroplet({\n    tag: \"web\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_droplet(tag=\"web\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs\n        {\n            Tag = \"web\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"web\"\n\t\t_, err := digitalocean.LookupDroplet(ctx, \u0026digitalocean.LookupDropletArgs{\n\t\t\tTag: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nGet the Droplet by ID:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getDroplet({\n    id: digitalocean_kubernetes_cluster.example.node_pool[0].nodes[0].droplet_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_droplet(id=digitalocean_kubernetes_cluster[\"example\"][\"node_pool\"][0][\"nodes\"][0][\"droplet_id\"])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs\n        {\n            Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id\n\t\t_, err := digitalocean.LookupDroplet(ctx, \u0026digitalocean.LookupDropletArgs{\n\t\t\tId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getDroplet.\n",
                 "properties": {
@@ -9401,7 +9643,6 @@
             }
         },
         "digitalocean:index/getDroplets:getDroplets": {
-            "description": "Get information on Droplets for use in other resources, with the ability to filter and sort the results.\nIf no filters are specified, all Droplets will be returned.\n\nThis data source is useful if the Droplets in question are not managed by this provider or you need to\nutilize any of the Droplets' data.\n\nNote: You can use the `digitalocean.Droplet` data source to obtain metadata\nabout a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nUse the `filter` block with a `key` string and `values` list to filter images.\n\nFor example to find all Droplets with size `s-1vcpu-1gb`:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst small = pulumi.output(digitalocean.getDroplets({\n    filters: [{\n        key: \"size\",\n        values: [\"s-1vcpu-1gb\"],\n    }],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsmall = digitalocean.get_droplets(filters=[digitalocean.GetDropletsFilterArgs(\n    key=\"size\",\n    values=[\"s-1vcpu-1gb\"],\n)])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var small = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs\n        {\n            Filters = \n            {\n                new DigitalOcean.Inputs.GetDropletsFilterArgs\n                {\n                    Key = \"size\",\n                    Values = \n                    {\n                        \"s-1vcpu-1gb\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDroplets(ctx, \u0026digitalocean.GetDropletsArgs{\n\t\t\tFilters: []digitalocean.GetDropletsFilter{\n\t\t\t\tdigitalocean.GetDropletsFilter{\n\t\t\t\t\tKey: \"size\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"s-1vcpu-1gb\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nYou can filter on multiple fields and sort the results as well:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst small_with_backups = pulumi.output(digitalocean.getDroplets({\n    filters: [\n        {\n            key: \"size\",\n            values: [\"s-1vcpu-1gb\"],\n        },\n        {\n            key: \"backups\",\n            values: [\"true\"],\n        },\n    ],\n    sorts: [{\n        direction: \"desc\",\n        key: \"created_at\",\n    }],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsmall_with_backups = digitalocean.get_droplets(filters=[\n        digitalocean.GetDropletsFilterArgs(\n            key=\"size\",\n            values=[\"s-1vcpu-1gb\"],\n        ),\n        digitalocean.GetDropletsFilterArgs(\n            key=\"backups\",\n            values=[\"true\"],\n        ),\n    ],\n    sorts=[digitalocean.GetDropletsSortArgs(\n        direction=\"desc\",\n        key=\"created_at\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var small_with_backups = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs\n        {\n            Filters = \n            {\n                new DigitalOcean.Inputs.GetDropletsFilterArgs\n                {\n                    Key = \"size\",\n                    Values = \n                    {\n                        \"s-1vcpu-1gb\",\n                    },\n                },\n                new DigitalOcean.Inputs.GetDropletsFilterArgs\n                {\n                    Key = \"backups\",\n                    Values = \n                    {\n                        \"true\",\n                    },\n                },\n            },\n            Sorts = \n            {\n                new DigitalOcean.Inputs.GetDropletsSortArgs\n                {\n                    Direction = \"desc\",\n                    Key = \"created_at\",\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDroplets(ctx, \u0026digitalocean.GetDropletsArgs{\n\t\t\tFilters: []digitalocean.GetDropletsFilter{\n\t\t\t\tdigitalocean.GetDropletsFilter{\n\t\t\t\t\tKey: \"size\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"s-1vcpu-1gb\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tdigitalocean.GetDropletsFilter{\n\t\t\t\t\tKey: \"backups\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"true\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSorts: []digitalocean.GetDropletsSort{\n\t\t\t\tdigitalocean.GetDropletsSort{\n\t\t\t\t\tDirection: \"desc\",\n\t\t\t\t\tKey:       \"created_at\",\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getDroplets.\n",
                 "properties": {
@@ -9457,7 +9698,6 @@
             }
         },
         "digitalocean:index/getFloatingIp:getFloatingIp": {
-            "description": "Get information on a floating ip. This data source provides the region and Droplet id\nas configured on your DigitalOcean account. This is useful if the floating IP\nin question is not managed by this provider or you need to find the Droplet the IP is\nattached to.\n\nAn error is triggered if the provided floating IP does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the floating IP:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst config = new pulumi.Config();\nconst publicIp = config.requireObject(\"publicIp\");\nconst example = digitalocean.getFloatingIp({\n    ipAddress: publicIp,\n});\nexport const fipOutput = example.then(example =\u003e example.dropletId);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nconfig = pulumi.Config()\npublic_ip = config.require_object(\"publicIp\")\nexample = digitalocean.get_floating_ip(ip_address=public_ip)\npulumi.export(\"fipOutput\", example.droplet_id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var publicIp = config.RequireObject\u003cdynamic\u003e(\"publicIp\");\n        var example = Output.Create(DigitalOcean.GetFloatingIp.InvokeAsync(new DigitalOcean.GetFloatingIpArgs\n        {\n            IpAddress = publicIp,\n        }));\n        this.FipOutput = example.Apply(example =\u003e example.DropletId);\n    }\n\n    [Output(\"fipOutput\")]\n    public Output\u003cstring\u003e FipOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tpublicIp := cfg.RequireObject(\"publicIp\")\n\t\texample, err := digitalocean.LookupFloatingIp(ctx, \u0026digitalocean.LookupFloatingIpArgs{\n\t\t\tIpAddress: publicIp,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"fipOutput\", example.DropletId)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getFloatingIp.\n",
                 "properties": {
@@ -9502,7 +9742,6 @@
             }
         },
         "digitalocean:index/getImage:getImage": {
-            "description": "Get information on an image for use in other resources (e.g. creating a Droplet\nbased on snapshot). This data source provides all of the image properties as\nconfigured on your DigitalOcean account. This is useful if the image in question\nis not managed by this provider or you need to utilize any of the image's data.\n\nAn error is triggered if zero or more than one result is returned by the query.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the data about a snapshot:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example1 = pulumi.output(digitalocean.getImage({\n    name: \"example-1.0.0\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample1 = digitalocean.get_image(name=\"example-1.0.0\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example1 = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs\n        {\n            Name = \"example-1.0.0\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"example-1.0.0\"\n\t\t_, err := digitalocean.GetImage(ctx, \u0026digitalocean.GetImageArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nReuse the data about a snapshot to create a Droplet:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleImage = digitalocean.getImage({\n    name: \"example-1.0.0\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"exampleDroplet\", {\n    image: exampleImage.then(exampleImage =\u003e exampleImage.id),\n    region: \"nyc2\",\n    size: \"s-1vcpu-1gb\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_image = digitalocean.get_image(name=\"example-1.0.0\")\nexample_droplet = digitalocean.Droplet(\"exampleDroplet\",\n    image=example_image.id,\n    region=\"nyc2\",\n    size=\"s-1vcpu-1gb\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleImage = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs\n        {\n            Name = \"example-1.0.0\",\n        }));\n        var exampleDroplet = new DigitalOcean.Droplet(\"exampleDroplet\", new DigitalOcean.DropletArgs\n        {\n            Image = exampleImage.Apply(exampleImage =\u003e exampleImage.Id),\n            Region = \"nyc2\",\n            Size = \"s-1vcpu-1gb\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"example-1.0.0\"\n\t\texampleImage, err := digitalocean.GetImage(ctx, \u0026digitalocean.GetImageArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"exampleDroplet\", \u0026digitalocean.DropletArgs{\n\t\t\tImage:  pulumi.Int(exampleImage.Id),\n\t\t\tRegion: pulumi.String(\"nyc2\"),\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nGet the data about an official image:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example2 = pulumi.output(digitalocean.getImage({\n    slug: \"ubuntu-18-04-x64\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample2 = digitalocean.get_image(slug=\"ubuntu-18-04-x64\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example2 = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs\n        {\n            Slug = \"ubuntu-18-04-x64\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"ubuntu-18-04-x64\"\n\t\t_, err := digitalocean.GetImage(ctx, \u0026digitalocean.GetImageArgs{\n\t\t\tSlug: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getImage.\n",
                 "properties": {
@@ -9529,6 +9768,9 @@
                 "description": "A collection of values returned by getImage.\n",
                 "properties": {
                     "created": {
+                        "type": "string"
+                    },
+                    "description": {
                         "type": "string"
                     },
                     "distribution": {
@@ -9586,6 +9828,7 @@
                 "type": "object",
                 "required": [
                     "created",
+                    "description",
                     "distribution",
                     "errorMessage",
                     "id",
@@ -9603,7 +9846,6 @@
             }
         },
         "digitalocean:index/getImages:getImages": {
-            "description": "Get information on images for use in other resources (e.g. creating a Droplet\nbased on a snapshot), with the ability to filter and sort the results. If no filters are specified,\nall images will be returned.\n\nThis data source is useful if the image in question is not managed by this provider or you need to utilize any\nof the image's data.\n\nNote: You can use the `digitalocean.getImage` data source to obtain metadata\nabout a single image if you already know the `slug`, unique `name`, or `id` to retrieve.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nUse the `filter` block with a `key` string and `values` list to filter images.\n\nFor example to find all Ubuntu images:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst ubuntu = pulumi.output(digitalocean.getImages({\n    filters: [{\n        key: \"distribution\",\n        values: [\"Ubuntu\"],\n    }],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nubuntu = digitalocean.get_images(filters=[digitalocean.GetImagesFilterArgs(\n    key=\"distribution\",\n    values=[\"Ubuntu\"],\n)])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ubuntu = Output.Create(DigitalOcean.GetImages.InvokeAsync(new DigitalOcean.GetImagesArgs\n        {\n            Filters = \n            {\n                new DigitalOcean.Inputs.GetImagesFilterArgs\n                {\n                    Key = \"distribution\",\n                    Values = \n                    {\n                        \"Ubuntu\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetImages(ctx, \u0026digitalocean.GetImagesArgs{\n\t\t\tFilters: []digitalocean.GetImagesFilter{\n\t\t\t\tdigitalocean.GetImagesFilter{\n\t\t\t\t\tKey: \"distribution\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"Ubuntu\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nYou can filter on multiple fields and sort the results as well:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst available = pulumi.output(digitalocean.getImages({\n    filters: [\n        {\n            key: \"distribution\",\n            values: [\"Ubuntu\"],\n        },\n        {\n            key: \"regions\",\n            values: [\"nyc3\"],\n        },\n    ],\n    sorts: [{\n        direction: \"desc\",\n        key: \"created\",\n    }],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\navailable = digitalocean.get_images(filters=[\n        digitalocean.GetImagesFilterArgs(\n            key=\"distribution\",\n            values=[\"Ubuntu\"],\n        ),\n        digitalocean.GetImagesFilterArgs(\n            key=\"regions\",\n            values=[\"nyc3\"],\n        ),\n    ],\n    sorts=[digitalocean.GetImagesSortArgs(\n        direction=\"desc\",\n        key=\"created\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var available = Output.Create(DigitalOcean.GetImages.InvokeAsync(new DigitalOcean.GetImagesArgs\n        {\n            Filters = \n            {\n                new DigitalOcean.Inputs.GetImagesFilterArgs\n                {\n                    Key = \"distribution\",\n                    Values = \n                    {\n                        \"Ubuntu\",\n                    },\n                },\n                new DigitalOcean.Inputs.GetImagesFilterArgs\n                {\n                    Key = \"regions\",\n                    Values = \n                    {\n                        \"nyc3\",\n                    },\n                },\n            },\n            Sorts = \n            {\n                new DigitalOcean.Inputs.GetImagesSortArgs\n                {\n                    Direction = \"desc\",\n                    Key = \"created\",\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetImages(ctx, \u0026digitalocean.GetImagesArgs{\n\t\t\tFilters: []digitalocean.GetImagesFilter{\n\t\t\t\tdigitalocean.GetImagesFilter{\n\t\t\t\t\tKey: \"distribution\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"Ubuntu\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tdigitalocean.GetImagesFilter{\n\t\t\t\t\tKey: \"regions\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"nyc3\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSorts: []digitalocean.GetImagesSort{\n\t\t\t\tdigitalocean.GetImagesSort{\n\t\t\t\t\tDirection: \"desc\",\n\t\t\t\t\tKey:       \"created\",\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getImages.\n",
                 "properties": {
@@ -9659,7 +9901,6 @@
             }
         },
         "digitalocean:index/getKubernetesCluster:getKubernetesCluster": {
-            "description": "Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by this provider.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getKubernetesCluster.\n",
                 "properties": {
@@ -9786,8 +10027,7 @@
                 "description": "A collection of arguments for invoking getKubernetesVersions.\n",
                 "properties": {
                     "versionPrefix": {
-                        "type": "string",
-                        "description": "If provided, this provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -9823,7 +10063,6 @@
             }
         },
         "digitalocean:index/getLoadBalancer:getLoadBalancer": {
-            "description": "Get information on a load balancer for use in other resources. This data source\nprovides all of the load balancers properties as configured on your DigitalOcean\naccount. This is useful if the load balancer in question is not managed by\nthis provider or you need to utilize any of the load balancers data.\n\nAn error is triggered if the provided load balancer name does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the load balancer:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getLoadBalancer({\n    name: \"app\",\n});\nexport const lbOutput = example.then(example =\u003e example.ip);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_load_balancer(name=\"app\")\npulumi.export(\"lbOutput\", example.ip)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs\n        {\n            Name = \"app\",\n        }));\n        this.LbOutput = example.Apply(example =\u003e example.Ip);\n    }\n\n    [Output(\"lbOutput\")]\n    public Output\u003cstring\u003e LbOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupLoadBalancer(ctx, \u0026digitalocean.LookupLoadBalancerArgs{\n\t\t\tName: \"app\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"lbOutput\", example.Ip)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getLoadBalancer.\n",
                 "properties": {
@@ -9864,8 +10103,11 @@
                             "$ref": "#/types/digitalocean:index/getLoadBalancerForwardingRule:getLoadBalancerForwardingRule"
                         }
                     },
-                    "healthcheck": {
-                        "$ref": "#/types/digitalocean:index/getLoadBalancerHealthcheck:getLoadBalancerHealthcheck"
+                    "healthchecks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getLoadBalancerHealthcheck:getLoadBalancerHealthcheck"
+                        }
                     },
                     "id": {
                         "type": "string",
@@ -9890,7 +10132,10 @@
                         "type": "string"
                     },
                     "stickySessions": {
-                        "$ref": "#/types/digitalocean:index/getLoadBalancerStickySessions:getLoadBalancerStickySessions"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getLoadBalancerStickySession:getLoadBalancerStickySession"
+                        }
                     },
                     "vpcUuid": {
                         "type": "string"
@@ -9904,7 +10149,7 @@
                     "enableBackendKeepalive",
                     "enableProxyProtocol",
                     "forwardingRules",
-                    "healthcheck",
+                    "healthchecks",
                     "ip",
                     "name",
                     "redirectHttpToHttps",
@@ -10054,7 +10299,6 @@
             }
         },
         "digitalocean:index/getRecord:getRecord": {
-            "description": "Get information on a DNS record. This data source provides the name, TTL, and zone\nfile as configured on your DigitalOcean account. This is useful if the record\nin question is not managed by this provider.\n\nAn error is triggered if the provided domain name or record are not managed with\nyour DigitalOcean account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet data from a DNS record:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getRecord({\n    domain: \"example.com\",\n    name: \"test\",\n});\nexport const recordType = example.then(example =\u003e example.type);\nexport const recordTtl = example.then(example =\u003e example.ttl);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_record(domain=\"example.com\",\n    name=\"test\")\npulumi.export(\"recordType\", example.type)\npulumi.export(\"recordTtl\", example.ttl)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetRecord.InvokeAsync(new DigitalOcean.GetRecordArgs\n        {\n            Domain = \"example.com\",\n            Name = \"test\",\n        }));\n        this.RecordType = example.Apply(example =\u003e example.Type);\n        this.RecordTtl = example.Apply(example =\u003e example.Ttl);\n    }\n\n    [Output(\"recordType\")]\n    public Output\u003cstring\u003e RecordType { get; set; }\n    [Output(\"recordTtl\")]\n    public Output\u003cstring\u003e RecordTtl { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.GetRecord(ctx, \u0026digitalocean.GetRecordArgs{\n\t\t\tDomain: \"example.com\",\n\t\t\tName:   \"test\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"recordType\", example.Type)\n\t\tctx.Export(\"recordTtl\", example.Ttl)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getRecord.\n",
                 "properties": {
@@ -10123,6 +10367,72 @@
                     "ttl",
                     "type",
                     "weight",
+                    "id"
+                ]
+            }
+        },
+        "digitalocean:index/getRecords:getRecords": {
+            "description": "Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.\nIf no filters are specified, all records will be returned.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRecords.\n",
+                "properties": {
+                    "domain": {
+                        "type": "string",
+                        "description": "The domain name to search for DNS records\n"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getRecordsFilter:getRecordsFilter"
+                        },
+                        "description": "Filter the results.\nThe `filter` block is documented below.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getRecordsSort:getRecordsSort"
+                        },
+                        "description": "Sort the results.\nThe `sort` block is documented below.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "domain"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRecords.\n",
+                "properties": {
+                    "domain": {
+                        "type": "string"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getRecordsFilter:getRecordsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "records": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getRecordsRecord:getRecordsRecord"
+                        }
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getRecordsSort:getRecordsSort"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "domain",
+                    "records",
                     "id"
                 ]
             }
@@ -10299,7 +10609,6 @@
             }
         },
         "digitalocean:index/getSpacesBucket:getSpacesBucket": {
-            "description": "Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question\nis not managed by this provider or you need to utilize any of the bucket's data.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the bucket by name:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getSpacesBucket({\n    name: \"my-spaces-bucket\",\n    region: \"nyc3\",\n});\nexport const bucketDomainName = example.then(example =\u003e example.bucketDomainName);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_spaces_bucket(name=\"my-spaces-bucket\",\n    region=\"nyc3\")\npulumi.export(\"bucketDomainName\", example.bucket_domain_name)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetSpacesBucket.InvokeAsync(new DigitalOcean.GetSpacesBucketArgs\n        {\n            Name = \"my-spaces-bucket\",\n            Region = \"nyc3\",\n        }));\n        this.BucketDomainName = example.Apply(example =\u003e example.BucketDomainName);\n    }\n\n    [Output(\"bucketDomainName\")]\n    public Output\u003cstring\u003e BucketDomainName { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupSpacesBucket(ctx, \u0026digitalocean.LookupSpacesBucketArgs{\n\t\t\tName:   \"my-spaces-bucket\",\n\t\t\tRegion: \"nyc3\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"bucketDomainName\", example.BucketDomainName)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getSpacesBucket.\n",
                 "properties": {
@@ -10487,7 +10796,6 @@
             }
         },
         "digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects": {
-            "description": "\u003e **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.\n\nThe bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example retrieves a list of all object keys in a Spaces bucket and creates corresponding object\ndata sources:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst myObjects = digitalocean.getSpacesBucketObjects({\n    bucket: \"ourcorp\",\n    region: \"nyc3\",\n});\nconst objectInfo = .map(__index =\u003e digitalocean.getSpacesBucketObject({\n    key: _arg0_,\n    bucket: _arg1_.bucket,\n    region: _arg2_.region,\n}));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmy_objects = digitalocean.get_spaces_bucket_objects(bucket=\"ourcorp\",\n    region=\"nyc3\")\nobject_info = [digitalocean.get_spaces_bucket_object(key=my_objects.keys[__index],\n    bucket=my_objects.bucket,\n    region=my_objects.region) for __index in range(len(my_objects.keys))]\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getSpacesBucketObjects.\n",
                 "properties": {
@@ -10637,7 +10945,6 @@
             }
         },
         "digitalocean:index/getSshKey:getSshKey": {
-            "description": "Get information on a ssh key. This data source provides the name, public key,\nand fingerprint as configured on your DigitalOcean account. This is useful if\nthe ssh key in question is not managed by this provider or you need to utilize any\nof the keys data.\n\nAn error is triggered if the provided ssh key name does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the ssh key:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleSshKey = digitalocean.getSshKey({\n    name: \"example\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"exampleDroplet\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc2\",\n    size: \"s-1vcpu-1gb\",\n    sshKeys: [exampleSshKey.then(exampleSshKey =\u003e exampleSshKey.id)],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_ssh_key = digitalocean.get_ssh_key(name=\"example\")\nexample_droplet = digitalocean.Droplet(\"exampleDroplet\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc2\",\n    size=\"s-1vcpu-1gb\",\n    ssh_keys=[example_ssh_key.id])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleSshKey = Output.Create(DigitalOcean.GetSshKey.InvokeAsync(new DigitalOcean.GetSshKeyArgs\n        {\n            Name = \"example\",\n        }));\n        var exampleDroplet = new DigitalOcean.Droplet(\"exampleDroplet\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc2\",\n            Size = \"s-1vcpu-1gb\",\n            SshKeys = \n            {\n                exampleSshKey.Apply(exampleSshKey =\u003e exampleSshKey.Id),\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleSshKey, err := digitalocean.LookupSshKey(ctx, \u0026digitalocean.LookupSshKeyArgs{\n\t\t\tName: \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"exampleDroplet\", \u0026digitalocean.DropletArgs{\n\t\t\tImage:  pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc2\"),\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tSshKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(exampleSshKey.Id),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getSshKey.\n",
                 "properties": {
@@ -10678,7 +10985,6 @@
             }
         },
         "digitalocean:index/getTag:getTag": {
-            "description": "Get information on a tag. This data source provides the name as configured on\nyour DigitalOcean account. This is useful if the tag name in question is not\nmanaged by this provider or you need validate if the tag exists in the account.\n\nAn error is triggered if the provided tag name does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the tag:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleTag = digitalocean.getTag({\n    name: \"example\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"exampleDroplet\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc2\",\n    size: \"s-1vcpu-1gb\",\n    tags: [exampleTag.then(exampleTag =\u003e exampleTag.name)],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_tag = digitalocean.get_tag(name=\"example\")\nexample_droplet = digitalocean.Droplet(\"exampleDroplet\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc2\",\n    size=\"s-1vcpu-1gb\",\n    tags=[example_tag.name])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleTag = Output.Create(DigitalOcean.GetTag.InvokeAsync(new DigitalOcean.GetTagArgs\n        {\n            Name = \"example\",\n        }));\n        var exampleDroplet = new DigitalOcean.Droplet(\"exampleDroplet\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc2\",\n            Size = \"s-1vcpu-1gb\",\n            Tags = \n            {\n                exampleTag.Apply(exampleTag =\u003e exampleTag.Name),\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleTag, err := digitalocean.LookupTag(ctx, \u0026digitalocean.LookupTagArgs{\n\t\t\tName: \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"exampleDroplet\", \u0026digitalocean.DropletArgs{\n\t\t\tImage:  pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc2\"),\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(exampleTag.Name),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getTag.\n",
                 "properties": {
@@ -10796,7 +11102,6 @@
             }
         },
         "digitalocean:index/getVolume:getVolume": {
-            "description": "Get information on a volume for use in other resources. This data source provides\nall of the volumes properties as configured on your DigitalOcean account. This is\nuseful if the volume in question is not managed by this provider or you need to utilize\nany of the volumes data.\n\nAn error is triggered if the provided volume name does not exist.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the volume:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = pulumi.output(digitalocean.getVolume({\n    name: \"app-data\",\n    region: \"nyc3\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_volume(name=\"app-data\",\n    region=\"nyc3\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetVolume.InvokeAsync(new DigitalOcean.GetVolumeArgs\n        {\n            Name = \"app-data\",\n            Region = \"nyc3\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"nyc3\"\n\t\t_, err := digitalocean.LookupVolume(ctx, \u0026digitalocean.LookupVolumeArgs{\n\t\t\tName:   \"app-data\",\n\t\t\tRegion: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nReuse the data about a volume to attach it to a Droplet:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleVolume = digitalocean.getVolume({\n    name: \"app-data\",\n    region: \"nyc3\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"exampleDroplet\", {\n    size: \"s-1vcpu-1gb\",\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc3\",\n});\nconst foobar = new digitalocean.VolumeAttachment(\"foobar\", {\n    dropletId: exampleDroplet.id,\n    volumeId: exampleVolume.then(exampleVolume =\u003e exampleVolume.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_volume = digitalocean.get_volume(name=\"app-data\",\n    region=\"nyc3\")\nexample_droplet = digitalocean.Droplet(\"exampleDroplet\",\n    size=\"s-1vcpu-1gb\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc3\")\nfoobar = digitalocean.VolumeAttachment(\"foobar\",\n    droplet_id=example_droplet.id,\n    volume_id=example_volume.id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleVolume = Output.Create(DigitalOcean.GetVolume.InvokeAsync(new DigitalOcean.GetVolumeArgs\n        {\n            Name = \"app-data\",\n            Region = \"nyc3\",\n        }));\n        var exampleDroplet = new DigitalOcean.Droplet(\"exampleDroplet\", new DigitalOcean.DropletArgs\n        {\n            Size = \"s-1vcpu-1gb\",\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc3\",\n        });\n        var foobar = new DigitalOcean.VolumeAttachment(\"foobar\", new DigitalOcean.VolumeAttachmentArgs\n        {\n            DropletId = exampleDroplet.Id,\n            VolumeId = exampleVolume.Apply(exampleVolume =\u003e exampleVolume.Id),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"nyc3\"\n\t\texampleVolume, err := digitalocean.LookupVolume(ctx, \u0026digitalocean.LookupVolumeArgs{\n\t\t\tName:   \"app-data\",\n\t\t\tRegion: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleDroplet, err := digitalocean.NewDroplet(ctx, \"exampleDroplet\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tImage:  pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewVolumeAttachment(ctx, \"foobar\", \u0026digitalocean.VolumeAttachmentArgs{\n\t\t\tDropletId: exampleDroplet.ID(),\n\t\t\tVolumeId:  pulumi.String(exampleVolume.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getVolume.\n",
                 "properties": {
@@ -10965,7 +11270,6 @@
             }
         },
         "digitalocean:index/getVpc:getVpc": {
-            "description": "Retrieve information about a VPC for use in other resources.\n\nThis data source provides all of the VPC's properties as configured on your\nDigitalOcean account. This is useful if the VPC in question is not managed by\nthis provider or you need to utilize any of the VPC's data.\n\nVPCs may be looked up by `id` or `name`. Specifying a `region` will\nreturn that that region's default VPC.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### VPC By Name\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = pulumi.output(digitalocean.getVpc({\n    name: \"example-network\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_vpc(name=\"example-network\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetVpc.InvokeAsync(new DigitalOcean.GetVpcArgs\n        {\n            Name = \"example-network\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"example-network\"\n\t\t_, err := digitalocean.LookupVpc(ctx, \u0026digitalocean.LookupVpcArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nReuse the data about a VPC to assign a Droplet to it:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleVpc = digitalocean.getVpc({\n    name: \"example-network\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"exampleDroplet\", {\n    size: \"s-1vcpu-1gb\",\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc3\",\n    vpcUuid: exampleVpc.then(exampleVpc =\u003e exampleVpc.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_vpc = digitalocean.get_vpc(name=\"example-network\")\nexample_droplet = digitalocean.Droplet(\"exampleDroplet\",\n    size=\"s-1vcpu-1gb\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc3\",\n    vpc_uuid=example_vpc.id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleVpc = Output.Create(DigitalOcean.GetVpc.InvokeAsync(new DigitalOcean.GetVpcArgs\n        {\n            Name = \"example-network\",\n        }));\n        var exampleDroplet = new DigitalOcean.Droplet(\"exampleDroplet\", new DigitalOcean.DropletArgs\n        {\n            Size = \"s-1vcpu-1gb\",\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc3\",\n            VpcUuid = exampleVpc.Apply(exampleVpc =\u003e exampleVpc.Id),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"example-network\"\n\t\texampleVpc, err := digitalocean.LookupVpc(ctx, \u0026digitalocean.LookupVpcArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"exampleDroplet\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:    pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(\"nyc3\"),\n\t\t\tVpcUuid: pulumi.String(exampleVpc.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getVpc.\n",
                 "properties": {

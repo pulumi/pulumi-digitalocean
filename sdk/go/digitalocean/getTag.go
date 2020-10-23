@@ -7,47 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Get information on a tag. This data source provides the name as configured on
-// your DigitalOcean account. This is useful if the tag name in question is not
-// managed by this provider or you need validate if the tag exists in the account.
-//
-// An error is triggered if the provided tag name does not exist.
-//
-// ## Example Usage
-//
-// Get the tag:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleTag, err := digitalocean.LookupTag(ctx, &digitalocean.LookupTagArgs{
-// 			Name: "example",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc2"),
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String(exampleTag.Name),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
 	var rv LookupTagResult
 	err := ctx.Invoke("digitalocean:index/getTag:getTag", args, &rv, opts...)

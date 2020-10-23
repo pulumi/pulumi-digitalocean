@@ -6,49 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Get information on a volume for use in other resources. This data source provides
- * all of the volumes properties as configured on your DigitalOcean account. This is
- * useful if the volume in question is not managed by this provider or you need to utilize
- * any of the volumes data.
- *
- * An error is triggered if the provided volume name does not exist.
- *
- * ## Example Usage
- *
- * Get the volume:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example = pulumi.output(digitalocean.getVolume({
- *     name: "app-data",
- *     region: "nyc3",
- * }, { async: true }));
- * ```
- *
- * Reuse the data about a volume to attach it to a Droplet:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const exampleVolume = digitalocean.getVolume({
- *     name: "app-data",
- *     region: "nyc3",
- * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     size: "s-1vcpu-1gb",
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
- * });
- * const foobar = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: exampleDroplet.id,
- *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
- * });
- * ```
- */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     if (!opts) {
         opts = {}

@@ -131,39 +131,7 @@ def get_vpc(id: Optional[str] = None,
             region: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcResult:
     """
-    Retrieve information about a VPC for use in other resources.
-
-    This data source provides all of the VPC's properties as configured on your
-    DigitalOcean account. This is useful if the VPC in question is not managed by
-    this provider or you need to utilize any of the VPC's data.
-
-    VPCs may be looked up by `id` or `name`. Specifying a `region` will
-    return that that region's default VPC.
-
-    ## Example Usage
-    ### VPC By Name
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_vpc(name="example-network")
-    ```
-
-    Reuse the data about a VPC to assign a Droplet to it:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example_vpc = digitalocean.get_vpc(name="example-network")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
-        size="s-1vcpu-1gb",
-        image="ubuntu-18-04-x64",
-        region="nyc3",
-        vpc_uuid=example_vpc.id)
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str id: The unique identifier of an existing VPC.
     :param str name: The name of an existing VPC.

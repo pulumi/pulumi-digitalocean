@@ -16,6 +16,7 @@ class Cdn(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
+                 certificate_name: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
                  origin: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -58,12 +59,13 @@ class Cdn(pulumi.CustomResource):
         mycdn = digitalocean.Cdn("mycdn",
             origin=mybucket.bucket_domain_name,
             custom_domain="static.example.com",
-            certificate_id=cert.id)
+            certificate_name=cert.name)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_id: The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        :param pulumi.Input[str] certificate_id: **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        :param pulumi.Input[str] certificate_name: The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         :param pulumi.Input[str] custom_domain: The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         :param pulumi.Input[str] origin: The fully qualified domain name, (FQDN) for a Space.
         :param pulumi.Input[int] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
@@ -85,7 +87,11 @@ class Cdn(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if certificate_id is not None:
+                warnings.warn("Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.", DeprecationWarning)
+                pulumi.log.warn("certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.")
             __props__['certificate_id'] = certificate_id
+            __props__['certificate_name'] = certificate_name
             __props__['custom_domain'] = custom_domain
             if origin is None:
                 raise TypeError("Missing required property 'origin'")
@@ -104,6 +110,7 @@ class Cdn(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_id: Optional[pulumi.Input[str]] = None,
+            certificate_name: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             custom_domain: Optional[pulumi.Input[str]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
@@ -116,7 +123,8 @@ class Cdn(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_id: The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        :param pulumi.Input[str] certificate_id: **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        :param pulumi.Input[str] certificate_name: The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         :param pulumi.Input[str] created_at: The date and time when the CDN Endpoint was created.
         :param pulumi.Input[str] custom_domain: The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         :param pulumi.Input[str] endpoint: The fully qualified domain name (FQDN) from which the CDN-backed content is served.
@@ -128,6 +136,7 @@ class Cdn(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["certificate_id"] = certificate_id
+        __props__["certificate_name"] = certificate_name
         __props__["created_at"] = created_at
         __props__["custom_domain"] = custom_domain
         __props__["endpoint"] = endpoint
@@ -137,11 +146,19 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> pulumi.Output[Optional[str]]:
+    def certificate_id(self) -> pulumi.Output[str]:
         """
-        The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
         return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> pulumi.Output[str]:
+        """
+        The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        """
+        return pulumi.get(self, "certificate_name")
 
     @property
     @pulumi.getter(name="createdAt")

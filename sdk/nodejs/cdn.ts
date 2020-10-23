@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  * const mycdn = new digitalocean.Cdn("mycdn", {
  *     origin: mybucket.bucketDomainName,
  *     customDomain: "static.example.com",
- *     certificateId: cert.id,
+ *     certificateName: cert.name,
  * });
  * ```
  */
@@ -76,9 +76,15 @@ export class Cdn extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     * **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     *
+     * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
-    public readonly certificateId!: pulumi.Output<string | undefined>;
+    public readonly certificateId!: pulumi.Output<string>;
+    /**
+     * The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     */
+    public readonly certificateName!: pulumi.Output<string>;
     /**
      * The date and time when the CDN Endpoint was created.
      */
@@ -113,6 +119,7 @@ export class Cdn extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as CdnState | undefined;
             inputs["certificateId"] = state ? state.certificateId : undefined;
+            inputs["certificateName"] = state ? state.certificateName : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["customDomain"] = state ? state.customDomain : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
@@ -124,6 +131,7 @@ export class Cdn extends pulumi.CustomResource {
                 throw new Error("Missing required property 'origin'");
             }
             inputs["certificateId"] = args ? args.certificateId : undefined;
+            inputs["certificateName"] = args ? args.certificateName : undefined;
             inputs["customDomain"] = args ? args.customDomain : undefined;
             inputs["origin"] = args ? args.origin : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
@@ -146,9 +154,15 @@ export class Cdn extends pulumi.CustomResource {
  */
 export interface CdnState {
     /**
-     * The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     * **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     *
+     * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
     readonly certificateId?: pulumi.Input<string>;
+    /**
+     * The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     */
+    readonly certificateName?: pulumi.Input<string>;
     /**
      * The date and time when the CDN Endpoint was created.
      */
@@ -176,9 +190,15 @@ export interface CdnState {
  */
 export interface CdnArgs {
     /**
-     * The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     * **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     *
+     * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
     readonly certificateId?: pulumi.Input<string>;
+    /**
+     * The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+     */
+    readonly certificateName?: pulumi.Input<string>;
     /**
      * The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
      */

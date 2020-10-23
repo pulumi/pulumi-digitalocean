@@ -32,9 +32,9 @@ namespace Pulumi.DigitalOcean
     ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
     ///         {
     ///             Type = "custom",
-    ///             PrivateKey = File.ReadAllText("/Users/myuser/certs/privkey.pem"),
-    ///             LeafCertificate = File.ReadAllText("/Users/myuser/certs/cert.pem"),
-    ///             CertificateChain = File.ReadAllText("/Users/myuser/certs/fullchain.pem"),
+    ///             PrivateKey = File.ReadAllText("/Users/terraform/certs/privkey.pem"),
+    ///             LeafCertificate = File.ReadAllText("/Users/terraform/certs/cert.pem"),
+    ///             CertificateChain = File.ReadAllText("/Users/terraform/certs/fullchain.pem"),
     ///         });
     ///     }
     /// 
@@ -96,7 +96,7 @@ namespace Pulumi.DigitalOcean
     ///                     EntryProtocol = "https",
     ///                     TargetPort = 80,
     ///                     TargetProtocol = "http",
-    ///                     CertificateId = cert.Id,
+    ///                     CertificateName = cert.Name,
     ///                 },
     ///             },
     ///         });
@@ -164,6 +164,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The UUID of the certificate
+        /// </summary>
+        [Output("uuid")]
+        public Output<string> Uuid { get; private set; } = null!;
 
 
         /// <summary>
@@ -330,6 +336,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// The UUID of the certificate
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         public CertificateState()
         {

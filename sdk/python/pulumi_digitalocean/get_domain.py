@@ -85,26 +85,7 @@ class AwaitableGetDomainResult(GetDomainResult):
 def get_domain(name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
-    Get information on a domain. This data source provides the name, TTL, and zone
-    file as configured on your DigitalOcean account. This is useful if the domain
-    name in question is not managed by this provider or you need to utilize TTL or zone
-    file data.
-
-    An error is triggered if the provided domain name is not managed with your
-    DigitalOcean account.
-
-    ## Example Usage
-
-    Get the zone file for a domain:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_domain(name="example.com")
-    pulumi.export("domainOutput", example.zone_file)
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The name of the domain.
     """

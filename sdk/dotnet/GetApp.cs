@@ -88,7 +88,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A DigitalOcean App spec describing the app.
         /// </summary>
-        public readonly Outputs.GetAppSpecResult Spec;
+        public readonly ImmutableArray<Outputs.GetAppSpecResult> Specs;
         /// <summary>
         /// The date and time of when the app was last updated.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Pulumi.DigitalOcean
 
             string liveUrl,
 
-            Outputs.GetAppSpecResult spec,
+            ImmutableArray<Outputs.GetAppSpecResult> specs,
 
             string updatedAt)
         {
@@ -118,7 +118,7 @@ namespace Pulumi.DigitalOcean
             DefaultIngress = defaultIngress;
             Id = id;
             LiveUrl = liveUrl;
-            Spec = spec;
+            Specs = specs;
             UpdatedAt = updatedAt;
         }
     }

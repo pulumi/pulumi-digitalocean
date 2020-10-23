@@ -12,6 +12,104 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean Load Balancer resource. This can be used to create,
     /// modify, and delete Load Balancers.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "nyc3",
+    ///         });
+    ///         var @public = new DigitalOcean.LoadBalancer("public", new DigitalOcean.LoadBalancerArgs
+    ///         {
+    ///             Region = "nyc3",
+    ///             ForwardingRules = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
+    ///                 {
+    ///                     EntryPort = 80,
+    ///                     EntryProtocol = "http",
+    ///                     TargetPort = 80,
+    ///                     TargetProtocol = "http",
+    ///                 },
+    ///             },
+    ///             Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs
+    ///             {
+    ///                 Port = 22,
+    ///                 Protocol = "tcp",
+    ///             },
+    ///             DropletIds = 
+    ///             {
+    ///                 web.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
+    /// lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
+    /// operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
+    /// `Delete old certificate`. When doing so, you must also change the name of the certificate,
+    /// as there cannot be multiple certificates with the same name in an account.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
+    ///         {
+    ///             PrivateKey = "file('key.pem')",
+    ///             LeafCertificate = "file('cert.pem')",
+    ///         });
+    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Size = "s-1vcpu-1gb",
+    ///             Image = "ubuntu-18-04-x64",
+    ///             Region = "nyc3",
+    ///         });
+    ///         var @public = new DigitalOcean.LoadBalancer("public", new DigitalOcean.LoadBalancerArgs
+    ///         {
+    ///             Region = "nyc3",
+    ///             ForwardingRules = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
+    ///                 {
+    ///                     EntryPort = 443,
+    ///                     EntryProtocol = "https",
+    ///                     TargetPort = 80,
+    ///                     TargetProtocol = "http",
+    ///                     CertificateName = cert.Name,
+    ///                 },
+    ///             },
+    ///             Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs
+    ///             {
+    ///                 Port = 22,
+    ///                 Protocol = "tcp",
+    ///             },
+    ///             DropletIds = 
+    ///             {
+    ///                 web.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class LoadBalancer : Pulumi.CustomResource
     {

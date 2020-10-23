@@ -13,10 +13,16 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class LoadBalancerForwardingRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the TLS certificate to be used for SSL termination.
+        /// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
+
+        /// <summary>
+        /// The unique name of the TLS certificate to be used for SSL termination.
+        /// </summary>
+        [Input("certificateName")]
+        public Input<string>? CertificateName { get; set; }
 
         /// <summary>
         /// An integer representing the port on which the Load Balancer instance will listen.

@@ -122,9 +122,6 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
             node_count=3,
         ))
     ```
-
-
-    :param str version_prefix: If provided, this provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
     """
     __args__ = dict()
     __args__['versionPrefix'] = version_prefix

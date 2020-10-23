@@ -11,14 +11,14 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class GetLoadBalancerStickySessionsResult
+    public sealed class GetLoadBalancerStickySessionResult
     {
         public readonly string CookieName;
         public readonly int CookieTtlSeconds;
         public readonly string Type;
 
         [OutputConstructor]
-        private GetLoadBalancerStickySessionsResult(
+        private GetLoadBalancerStickySessionResult(
             string cookieName,
 
             int cookieTtlSeconds,

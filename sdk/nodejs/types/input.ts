@@ -638,6 +638,43 @@ export interface GetProjectsSort {
     key: string;
 }
 
+export interface GetRecordsFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+     * `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves projects
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetRecordsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the projects by this key. This may be one of `domain`, `flags`, `name`, `port`,
+     * `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+     */
+    key: string;
+}
+
 export interface GetRegionsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -917,9 +954,15 @@ export interface KubernetesNodePoolNode {
 
 export interface LoadBalancerForwardingRule {
     /**
-     * The ID of the TLS certificate to be used for SSL termination.
+     * **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+     *
+     * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
     certificateId?: pulumi.Input<string>;
+    /**
+     * The unique name of the TLS certificate to be used for SSL termination.
+     */
+    certificateName?: pulumi.Input<string>;
     /**
      * An integer representing the port on which the Load Balancer instance will listen.
      */

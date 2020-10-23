@@ -29,69 +29,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
-
-        ## Example Usage
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foo = digitalocean.KubernetesCluster("foo",
-            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-                name="worker-pool",
-                node_count=3,
-                size="s-2vcpu-2gb",
-            ),
-            region="nyc1",
-            version="1.15.5-do.1")
-        ```
-        ### Autoscaling Example
-
-        Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
-        For example:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foo = digitalocean.KubernetesCluster("foo",
-            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-                auto_scale=True,
-                max_nodes=5,
-                min_nodes=1,
-                name="autoscale-worker-pool",
-                size="s-2vcpu-2gb",
-            ),
-            region="nyc1",
-            version="1.15.5-do.1")
-        ```
-
-        Note that, while individual node pools may scale to 0, a cluster must always include at least one node.
-        ### Auto Upgrade Example
-
-        DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions.
-        For example:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        example = digitalocean.get_kubernetes_versions(version_prefix="1.18.")
-        foo = digitalocean.KubernetesCluster("foo",
-            region="nyc1",
-            auto_upgrade=True,
-            version=example.latest_version,
-            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-                name="default",
-                size="s-1vcpu-2gb",
-                node_count=3,
-            ))
-        ```
-
-        Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
-
+        Create a KubernetesCluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.

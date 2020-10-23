@@ -19,10 +19,13 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, created=None, distribution=None, error_message=None, id=None, image=None, min_disk_size=None, name=None, private=None, regions=None, size_gigabytes=None, slug=None, source=None, status=None, tags=None, type=None):
+    def __init__(__self__, created=None, description=None, distribution=None, error_message=None, id=None, image=None, min_disk_size=None, name=None, private=None, regions=None, size_gigabytes=None, slug=None, source=None, status=None, tags=None, type=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if distribution and not isinstance(distribution, str):
             raise TypeError("Expected argument 'distribution' to be a str")
         pulumi.set(__self__, "distribution", distribution)
@@ -70,6 +73,11 @@ class GetImageResult:
     @pulumi.getter
     def created(self) -> str:
         return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -167,6 +175,7 @@ class AwaitableGetImageResult(GetImageResult):
             yield self
         return GetImageResult(
             created=self.created,
+            description=self.description,
             distribution=self.distribution,
             error_message=self.error_message,
             id=self.id,
@@ -189,46 +198,7 @@ def get_image(id: Optional[int] = None,
               source: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
-    Get information on an image for use in other resources (e.g. creating a Droplet
-    based on snapshot). This data source provides all of the image properties as
-    configured on your DigitalOcean account. This is useful if the image in question
-    is not managed by this provider or you need to utilize any of the image's data.
-
-    An error is triggered if zero or more than one result is returned by the query.
-
-    ## Example Usage
-
-    Get the data about a snapshot:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example1 = digitalocean.get_image(name="example-1.0.0")
-    ```
-
-    Reuse the data about a snapshot to create a Droplet:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example_image = digitalocean.get_image(name="example-1.0.0")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
-        image=example_image.id,
-        region="nyc2",
-        size="s-1vcpu-1gb")
-    ```
-
-    Get the data about an official image:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example2 = digitalocean.get_image(slug="ubuntu-18-04-x64")
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param int id: The id of the image
     :param str name: The name of the image.
@@ -248,6 +218,7 @@ def get_image(id: Optional[int] = None,
 
     return AwaitableGetImageResult(
         created=__ret__.created,
+        description=__ret__.description,
         distribution=__ret__.distribution,
         error_message=__ret__.error_message,
         id=__ret__.id,

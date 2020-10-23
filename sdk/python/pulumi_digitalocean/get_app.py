@@ -20,7 +20,7 @@ class GetAppResult:
     """
     A collection of values returned by getApp.
     """
-    def __init__(__self__, active_deployment_id=None, app_id=None, created_at=None, default_ingress=None, id=None, live_url=None, spec=None, updated_at=None):
+    def __init__(__self__, active_deployment_id=None, app_id=None, created_at=None, default_ingress=None, id=None, live_url=None, specs=None, updated_at=None):
         if active_deployment_id and not isinstance(active_deployment_id, str):
             raise TypeError("Expected argument 'active_deployment_id' to be a str")
         pulumi.set(__self__, "active_deployment_id", active_deployment_id)
@@ -39,9 +39,9 @@ class GetAppResult:
         if live_url and not isinstance(live_url, str):
             raise TypeError("Expected argument 'live_url' to be a str")
         pulumi.set(__self__, "live_url", live_url)
-        if spec and not isinstance(spec, dict):
-            raise TypeError("Expected argument 'spec' to be a dict")
-        pulumi.set(__self__, "spec", spec)
+        if specs and not isinstance(specs, list):
+            raise TypeError("Expected argument 'specs' to be a list")
+        pulumi.set(__self__, "specs", specs)
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
@@ -93,11 +93,11 @@ class GetAppResult:
 
     @property
     @pulumi.getter
-    def spec(self) -> 'outputs.GetAppSpecResult':
+    def specs(self) -> Sequence['outputs.GetAppSpecResult']:
         """
         A DigitalOcean App spec describing the app.
         """
-        return pulumi.get(self, "spec")
+        return pulumi.get(self, "specs")
 
     @property
     @pulumi.getter(name="updatedAt")
@@ -120,7 +120,7 @@ class AwaitableGetAppResult(GetAppResult):
             default_ingress=self.default_ingress,
             id=self.id,
             live_url=self.live_url,
-            spec=self.spec,
+            specs=self.specs,
             updated_at=self.updated_at)
 
 
@@ -159,5 +159,5 @@ def get_app(app_id: Optional[str] = None,
         default_ingress=__ret__.default_ingress,
         id=__ret__.id,
         live_url=__ret__.live_url,
-        spec=__ret__.spec,
+        specs=__ret__.specs,
         updated_at=__ret__.updated_at)

@@ -140,26 +140,7 @@ def get_spaces_bucket_objects(bucket: Optional[str] = None,
                               region: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpacesBucketObjectsResult:
     """
-    > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
-
-    The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-
-    ## Example Usage
-
-    The following example retrieves a list of all object keys in a Spaces bucket and creates corresponding object
-    data sources:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    my_objects = digitalocean.get_spaces_bucket_objects(bucket="ourcorp",
-        region="nyc3")
-    object_info = [digitalocean.get_spaces_bucket_object(key=my_objects.keys[__index],
-        bucket=my_objects.bucket,
-        region=my_objects.region) for __index in range(len(my_objects.keys))]
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str bucket: Lists object keys in this Spaces bucket
     :param str delimiter: A character used to group keys (Default: none)

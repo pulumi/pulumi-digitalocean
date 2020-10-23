@@ -20,7 +20,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthcheck=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthchecks=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -39,9 +39,9 @@ class GetLoadBalancerResult:
         if forwarding_rules and not isinstance(forwarding_rules, list):
             raise TypeError("Expected argument 'forwarding_rules' to be a list")
         pulumi.set(__self__, "forwarding_rules", forwarding_rules)
-        if healthcheck and not isinstance(healthcheck, dict):
-            raise TypeError("Expected argument 'healthcheck' to be a dict")
-        pulumi.set(__self__, "healthcheck", healthcheck)
+        if healthchecks and not isinstance(healthchecks, list):
+            raise TypeError("Expected argument 'healthchecks' to be a list")
+        pulumi.set(__self__, "healthchecks", healthchecks)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -63,8 +63,8 @@ class GetLoadBalancerResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
-        if sticky_sessions and not isinstance(sticky_sessions, dict):
-            raise TypeError("Expected argument 'sticky_sessions' to be a dict")
+        if sticky_sessions and not isinstance(sticky_sessions, list):
+            raise TypeError("Expected argument 'sticky_sessions' to be a list")
         pulumi.set(__self__, "sticky_sessions", sticky_sessions)
         if vpc_uuid and not isinstance(vpc_uuid, str):
             raise TypeError("Expected argument 'vpc_uuid' to be a str")
@@ -102,8 +102,8 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter
-    def healthcheck(self) -> 'outputs.GetLoadBalancerHealthcheckResult':
-        return pulumi.get(self, "healthcheck")
+    def healthchecks(self) -> Sequence['outputs.GetLoadBalancerHealthcheckResult']:
+        return pulumi.get(self, "healthchecks")
 
     @property
     @pulumi.getter
@@ -145,7 +145,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter(name="stickySessions")
-    def sticky_sessions(self) -> 'outputs.GetLoadBalancerStickySessionsResult':
+    def sticky_sessions(self) -> Sequence['outputs.GetLoadBalancerStickySessionResult']:
         return pulumi.get(self, "sticky_sessions")
 
     @property
@@ -166,7 +166,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             enable_backend_keepalive=self.enable_backend_keepalive,
             enable_proxy_protocol=self.enable_proxy_protocol,
             forwarding_rules=self.forwarding_rules,
-            healthcheck=self.healthcheck,
+            healthchecks=self.healthchecks,
             id=self.id,
             ip=self.ip,
             load_balancer_urn=self.load_balancer_urn,
@@ -181,25 +181,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
 def get_load_balancer(name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
-    Get information on a load balancer for use in other resources. This data source
-    provides all of the load balancers properties as configured on your DigitalOcean
-    account. This is useful if the load balancer in question is not managed by
-    this provider or you need to utilize any of the load balancers data.
-
-    An error is triggered if the provided load balancer name does not exist.
-
-    ## Example Usage
-
-    Get the load balancer:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_load_balancer(name="app")
-    pulumi.export("lbOutput", example.ip)
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The name of load balancer.
     """
@@ -218,7 +200,7 @@ def get_load_balancer(name: Optional[str] = None,
         enable_backend_keepalive=__ret__.enable_backend_keepalive,
         enable_proxy_protocol=__ret__.enable_proxy_protocol,
         forwarding_rules=__ret__.forwarding_rules,
-        healthcheck=__ret__.healthcheck,
+        healthchecks=__ret__.healthchecks,
         id=__ret__.id,
         ip=__ret__.ip,
         load_balancer_urn=__ret__.load_balancer_urn,

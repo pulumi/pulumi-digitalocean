@@ -40,6 +40,7 @@ from .get_load_balancer import *
 from .get_project import *
 from .get_projects import *
 from .get_record import *
+from .get_records import *
 from .get_region import *
 from .get_regions import *
 from .get_sizes import *
