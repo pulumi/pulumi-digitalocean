@@ -18,9 +18,8 @@ import (
 	"unicode"
 
 	"github.com/digitalocean/terraform-provider-digitalocean/digitalocean"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 )
 
@@ -60,12 +59,12 @@ func makeResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the Digital Ocean package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(digitalocean.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(digitalocean.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "digitalocean",
 		Description: "A Pulumi package for creating and managing Digital Ocean cloud resources.",
-		Keywords:    []string{"pulumi", "digital ocean"},
+		Keywords:    []string{"pulumi", "digitalocean"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-digitalocean",
@@ -327,6 +326,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_tags":                  {Tok: makeDataSource(digitalOceanMod, "getTags")},
 			"digitalocean_app":                   {Tok: makeDataSource(digitalOceanMod, "getApp")},
 			"digitalocean_domains":               {Tok: makeDataSource(digitalOceanMod, "getDomains")},
+			"digitalocean_records":               {Tok: makeDataSource(digitalOceanMod, "getRecords")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

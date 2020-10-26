@@ -39,7 +39,7 @@ setup(name='pulumi_digitalocean',
       cmdclass={
           'install': InstallPluginCommand,
       },
-      keywords='pulumi digital ocean',
+      keywords='pulumi digitalocean',
       url='https://pulumi.io',
       project_urls={
           'Repository': 'https://github.com/pulumi/pulumi-digitalocean'

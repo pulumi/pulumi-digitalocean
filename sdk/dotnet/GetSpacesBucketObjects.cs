@@ -11,11 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetSpacesBucketObjects
     {
-        /// <summary>
-        /// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
-        /// 
-        /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-        /// </summary>
         public static Task<GetSpacesBucketObjectsResult> InvokeAsync(GetSpacesBucketObjectsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsArgs(), options.WithVersion());
     }

@@ -24,55 +24,7 @@ class Project(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a DigitalOcean Project resource.
-
-        Projects allow you to organize your resources into groups that fit the way you work.
-        You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
-        in ways that align with the applications you host on DigitalOcean.
-
-        The following resource types can be associated with a project:
-
-        * Database Clusters
-        * Domains
-        * Droplets
-        * Floating IP
-        * Load Balancers
-        * Spaces Bucket
-        * Volume
-
-        **Note:** A managed project cannot be set as a default project.
-
-        ## Example Usage
-
-        The following example demonstrates the creation of an empty project:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        playground = digitalocean.Project("playground",
-            description="A project to represent development resources.",
-            environment="Development",
-            purpose="Web Application")
-        ```
-
-        The following example demonstrates the creation of a project with a Droplet resource:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.Droplet("foobar",
-            size="512mb",
-            image="centos-7-x64",
-            region="nyc3")
-        playground = digitalocean.Project("playground",
-            description="A project to represent development resources.",
-            purpose="Web Application",
-            environment="Development",
-            resources=[foobar.droplet_urn])
-        ```
-
+        Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: the description of the project

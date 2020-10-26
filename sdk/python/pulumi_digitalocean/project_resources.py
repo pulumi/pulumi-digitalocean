@@ -21,37 +21,7 @@ class ProjectResources(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
-        managed this provider to a DigitalOcean Project that is unmanaged by the provider.
-
-        The following resource types can be associated with a project:
-
-        * Database Clusters
-        * Domains
-        * Droplets
-        * Floating IP
-        * Load Balancers
-        * Spaces Bucket
-        * Volume
-
-        ## Example Usage
-
-        The following example assigns a droplet to a Project managed outside of this provider:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        playground = digitalocean.get_project(name="playground")
-        foobar = digitalocean.Droplet("foobar",
-            size="512mb",
-            image="centos-7-x64",
-            region="nyc3")
-        barfoo = digitalocean.ProjectResources("barfoo",
-            project=data["digitalocean_project"]["foo"]["id"],
-            resources=[foobar.droplet_urn])
-        ```
-
+        Create a ProjectResources resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: the ID of the project

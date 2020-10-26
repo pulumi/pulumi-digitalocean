@@ -71,7 +71,7 @@ namespace Pulumi.DigitalOcean
     ///         {
     ///             Origin = mybucket.BucketDomainName,
     ///             CustomDomain = "static.example.com",
-    ///             CertificateId = cert.Id,
+    ///             CertificateName = cert.Name,
     ///         });
     ///     }
     /// 
@@ -81,10 +81,16 @@ namespace Pulumi.DigitalOcean
     public partial class Cdn : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Output("certificateId")]
-        public Output<string?> CertificateId { get; private set; } = null!;
+        public Output<string> CertificateId { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        /// </summary>
+        [Output("certificateName")]
+        public Output<string> CertificateName { get; private set; } = null!;
 
         /// <summary>
         /// The date and time when the CDN Endpoint was created.
@@ -163,10 +169,16 @@ namespace Pulumi.DigitalOcean
     public sealed class CdnArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
+
+        /// <summary>
+        /// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        /// </summary>
+        [Input("certificateName")]
+        public Input<string>? CertificateName { get; set; }
 
         /// <summary>
         /// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
@@ -194,10 +206,16 @@ namespace Pulumi.DigitalOcean
     public sealed class CdnState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
+
+        /// <summary>
+        /// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+        /// </summary>
+        [Input("certificateName")]
+        public Input<string>? CertificateName { get; set; }
 
         /// <summary>
         /// The date and time when the CDN Endpoint was created.

@@ -6,33 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Get information on a ssh key. This data source provides the name, public key,
- * and fingerprint as configured on your DigitalOcean account. This is useful if
- * the ssh key in question is not managed by this provider or you need to utilize any
- * of the keys data.
- *
- * An error is triggered if the provided ssh key name does not exist.
- *
- * ## Example Usage
- *
- * Get the ssh key:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const exampleSshKey = digitalocean.getSshKey({
- *     name: "example",
- * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
- *     sshKeys: [exampleSshKey.then(exampleSshKey => exampleSshKey.id)],
- * });
- * ```
- */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
     if (!opts) {
         opts = {}

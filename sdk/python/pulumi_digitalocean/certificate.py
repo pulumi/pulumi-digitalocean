@@ -41,9 +41,9 @@ class Certificate(pulumi.CustomResource):
 
         cert = digitalocean.Certificate("cert",
             type="custom",
-            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
-            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
-            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
+            private_key=(lambda path: open(path).read())("/Users/terraform/certs/privkey.pem"),
+            leaf_certificate=(lambda path: open(path).read())("/Users/terraform/certs/cert.pem"),
+            certificate_chain=(lambda path: open(path).read())("/Users/terraform/certs/fullchain.pem"))
         ```
         ### Let's Encrypt Certificate
 
@@ -76,7 +76,7 @@ class Certificate(pulumi.CustomResource):
                 entry_protocol="https",
                 target_port=80,
                 target_protocol="http",
-                certificate_id=cert.id,
+                certificate_name=cert.name,
             )])
         ```
 
@@ -122,6 +122,7 @@ class Certificate(pulumi.CustomResource):
             __props__['not_after'] = None
             __props__['sha1_fingerprint'] = None
             __props__['state'] = None
+            __props__['uuid'] = None
         super(Certificate, __self__).__init__(
             'digitalocean:index/certificate:Certificate',
             resource_name,
@@ -140,7 +141,8 @@ class Certificate(pulumi.CustomResource):
             private_key: Optional[pulumi.Input[str]] = None,
             sha1_fingerprint: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'Certificate':
+            type: Optional[pulumi.Input[str]] = None,
+            uuid: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -163,6 +165,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] sha1_fingerprint: The SHA-1 fingerprint of the certificate
         :param pulumi.Input[str] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
+        :param pulumi.Input[str] uuid: The UUID of the certificate
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -177,6 +180,7 @@ class Certificate(pulumi.CustomResource):
         __props__["sha1_fingerprint"] = sha1_fingerprint
         __props__["state"] = state
         __props__["type"] = type
+        __props__["uuid"] = uuid
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -254,6 +258,14 @@ class Certificate(pulumi.CustomResource):
         `custom` or `lets_encrypt`. Defaults to `custom`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Output[str]:
+        """
+        The UUID of the certificate
+        """
+        return pulumi.get(self, "uuid")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

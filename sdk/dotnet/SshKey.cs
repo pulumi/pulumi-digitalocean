@@ -29,7 +29,7 @@ namespace Pulumi.DigitalOcean
     ///         // Create a new SSH key
     ///         var @default = new DigitalOcean.SshKey("default", new DigitalOcean.SshKeyArgs
     ///         {
-    ///             PublicKey = File.ReadAllText("/Users/myuser/.ssh/id_rsa.pub"),
+    ///             PublicKey = File.ReadAllText("/Users/terraform/.ssh/id_rsa.pub"),
     ///         });
     ///         // Create a new Droplet using the SSH key
     ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs

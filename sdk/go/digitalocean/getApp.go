@@ -63,7 +63,7 @@ type LookupAppResult struct {
 	// The live URL of the app.
 	LiveUrl string `pulumi:"liveUrl"`
 	// A DigitalOcean App spec describing the app.
-	Spec GetAppSpec `pulumi:"spec"`
+	Specs []GetAppSpec `pulumi:"specs"`
 	// The date and time of when the app was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
 }

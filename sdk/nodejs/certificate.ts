@@ -24,9 +24,9 @@ import {CertificateType} from "./index";
  *
  * const cert = new digitalocean.Certificate("cert", {
  *     type: "custom",
- *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem"),
- *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem"),
- *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem"),
+ *     privateKey: fs.readFileSync("/Users/terraform/certs/privkey.pem"),
+ *     leafCertificate: fs.readFileSync("/Users/terraform/certs/cert.pem"),
+ *     certificateChain: fs.readFileSync("/Users/terraform/certs/fullchain.pem"),
  * });
  * ```
  * ### Let's Encrypt Certificate
@@ -62,7 +62,7 @@ import {CertificateType} from "./index";
  *         entryProtocol: "https",
  *         targetPort: 80,
  *         targetProtocol: "http",
- *         certificateId: cert.id,
+ *         certificateName: cert.name,
  *     }],
  * });
  * ```
@@ -135,6 +135,10 @@ export class Certificate extends pulumi.CustomResource {
      * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
     public readonly type!: pulumi.Output<CertificateType | undefined>;
+    /**
+     * The UUID of the certificate
+     */
+    public /*out*/ readonly uuid!: pulumi.Output<string>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -157,6 +161,7 @@ export class Certificate extends pulumi.CustomResource {
             inputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
             inputs["state"] = state ? state.state : undefined;
             inputs["type"] = state ? state.type : undefined;
+            inputs["uuid"] = state ? state.uuid : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
             inputs["certificateChain"] = args ? args.certificateChain : undefined;
@@ -168,6 +173,7 @@ export class Certificate extends pulumi.CustomResource {
             inputs["notAfter"] = undefined /*out*/;
             inputs["sha1Fingerprint"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
+            inputs["uuid"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -224,6 +230,10 @@ export interface CertificateState {
      * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
     readonly type?: pulumi.Input<CertificateType>;
+    /**
+     * The UUID of the certificate
+     */
+    readonly uuid?: pulumi.Input<string>;
 }
 
 /**

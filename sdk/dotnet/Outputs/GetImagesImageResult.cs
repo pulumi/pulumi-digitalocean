@@ -14,6 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetImagesImageResult
     {
         public readonly string Created;
+        public readonly string Description;
         /// <summary>
         /// The name of the distribution of the OS of the image.
         /// - `min_disk_size`: The minimum 'disk' required for the image.
@@ -50,6 +51,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private GetImagesImageResult(
             string created,
 
+            string description,
+
             string distribution,
 
             string errorMessage,
@@ -77,6 +80,7 @@ namespace Pulumi.DigitalOcean.Outputs
             string type)
         {
             Created = created;
+            Description = description;
             Distribution = distribution;
             ErrorMessage = errorMessage;
             Id = id;

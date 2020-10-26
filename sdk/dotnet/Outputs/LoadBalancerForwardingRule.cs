@@ -14,9 +14,13 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class LoadBalancerForwardingRule
     {
         /// <summary>
-        /// The ID of the TLS certificate to be used for SSL termination.
+        /// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         /// </summary>
         public readonly string? CertificateId;
+        /// <summary>
+        /// The unique name of the TLS certificate to be used for SSL termination.
+        /// </summary>
+        public readonly string? CertificateName;
         /// <summary>
         /// An integer representing the port on which the Load Balancer instance will listen.
         /// </summary>
@@ -42,6 +46,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private LoadBalancerForwardingRule(
             string? certificateId,
 
+            string? certificateName,
+
             int entryPort,
 
             string entryProtocol,
@@ -53,6 +59,7 @@ namespace Pulumi.DigitalOcean.Outputs
             bool? tlsPassthrough)
         {
             CertificateId = certificateId;
+            CertificateName = certificateName;
             EntryPort = entryPort;
             EntryProtocol = entryProtocol;
             TargetPort = targetPort;

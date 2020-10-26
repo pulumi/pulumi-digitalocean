@@ -11,42 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetLoadBalancer
     {
-        /// <summary>
-        /// Get information on a load balancer for use in other resources. This data source
-        /// provides all of the load balancers properties as configured on your DigitalOcean
-        /// account. This is useful if the load balancer in question is not managed by
-        /// this provider or you need to utilize any of the load balancers data.
-        /// 
-        /// An error is triggered if the provided load balancer name does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the load balancer:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs
-        ///         {
-        ///             Name = "app",
-        ///         }));
-        ///         this.LbOutput = example.Apply(example =&gt; example.Ip);
-        ///     }
-        /// 
-        ///     [Output("lbOutput")]
-        ///     public Output&lt;string&gt; LbOutput { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
     }
@@ -75,7 +39,7 @@ namespace Pulumi.DigitalOcean
         public readonly bool EnableBackendKeepalive;
         public readonly bool EnableProxyProtocol;
         public readonly ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> ForwardingRules;
-        public readonly Outputs.GetLoadBalancerHealthcheckResult Healthcheck;
+        public readonly ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> Healthchecks;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -86,7 +50,7 @@ namespace Pulumi.DigitalOcean
         public readonly bool RedirectHttpToHttps;
         public readonly string Region;
         public readonly string Status;
-        public readonly Outputs.GetLoadBalancerStickySessionsResult StickySessions;
+        public readonly ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> StickySessions;
         public readonly string VpcUuid;
 
         [OutputConstructor]
@@ -103,7 +67,7 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> forwardingRules,
 
-            Outputs.GetLoadBalancerHealthcheckResult healthcheck,
+            ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> healthchecks,
 
             string id,
 
@@ -119,7 +83,7 @@ namespace Pulumi.DigitalOcean
 
             string status,
 
-            Outputs.GetLoadBalancerStickySessionsResult stickySessions,
+            ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> stickySessions,
 
             string vpcUuid)
         {
@@ -129,7 +93,7 @@ namespace Pulumi.DigitalOcean
             EnableBackendKeepalive = enableBackendKeepalive;
             EnableProxyProtocol = enableProxyProtocol;
             ForwardingRules = forwardingRules;
-            Healthcheck = healthcheck;
+            Healthchecks = healthchecks;
             Id = id;
             Ip = ip;
             LoadBalancerUrn = loadBalancerUrn;

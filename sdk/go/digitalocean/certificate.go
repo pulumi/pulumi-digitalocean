@@ -71,11 +71,11 @@ import (
 // 			DropletTag: pulumi.String("backend"),
 // 			ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
 // 				&digitalocean.LoadBalancerForwardingRuleArgs{
-// 					EntryPort:      pulumi.Int(443),
-// 					EntryProtocol:  pulumi.String("https"),
-// 					TargetPort:     pulumi.Int(80),
-// 					TargetProtocol: pulumi.String("http"),
-// 					CertificateId:  cert.ID(),
+// 					EntryPort:       pulumi.Int(443),
+// 					EntryProtocol:   pulumi.String("https"),
+// 					TargetPort:      pulumi.Int(80),
+// 					TargetProtocol:  pulumi.String("http"),
+// 					CertificateName: cert.Name,
 // 				},
 // 			},
 // 		})
@@ -113,6 +113,8 @@ type Certificate struct {
 	// The type of certificate to provision. Can be either
 	// `custom` or `letsEncrypt`. Defaults to `custom`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
+	// The UUID of the certificate
+	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
 
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
@@ -167,6 +169,8 @@ type certificateState struct {
 	// The type of certificate to provision. Can be either
 	// `custom` or `letsEncrypt`. Defaults to `custom`.
 	Type *string `pulumi:"type"`
+	// The UUID of the certificate
+	Uuid *string `pulumi:"uuid"`
 }
 
 type CertificateState struct {
@@ -194,6 +198,8 @@ type CertificateState struct {
 	// The type of certificate to provision. Can be either
 	// `custom` or `letsEncrypt`. Defaults to `custom`.
 	Type pulumi.StringPtrInput
+	// The UUID of the certificate
+	Uuid pulumi.StringPtrInput
 }
 
 func (CertificateState) ElementType() reflect.Type {

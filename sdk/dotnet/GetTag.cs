@@ -11,48 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetTag
     {
-        /// <summary>
-        /// Get information on a tag. This data source provides the name as configured on
-        /// your DigitalOcean account. This is useful if the tag name in question is not
-        /// managed by this provider or you need validate if the tag exists in the account.
-        /// 
-        /// An error is triggered if the provided tag name does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the tag:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var exampleTag = Output.Create(DigitalOcean.GetTag.InvokeAsync(new DigitalOcean.GetTagArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc2",
-        ///             Size = "s-1vcpu-1gb",
-        ///             Tags = 
-        ///             {
-        ///                 exampleTag.Apply(exampleTag =&gt; exampleTag.Name),
-        ///             },
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("digitalocean:index/getTag:getTag", args ?? new GetTagArgs(), options.WithVersion());
     }

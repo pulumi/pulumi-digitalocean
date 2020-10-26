@@ -17,8 +17,8 @@
 package main
 
 import (
-	digitalocean "github.com/pulumi/pulumi-digitalocean/provider/v2"
-	"github.com/pulumi/pulumi-digitalocean/provider/v2/pkg/version"
+	digitalocean "github.com/pulumi/pulumi-digitalocean/provider/v3"
+	"github.com/pulumi/pulumi-digitalocean/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 )
 

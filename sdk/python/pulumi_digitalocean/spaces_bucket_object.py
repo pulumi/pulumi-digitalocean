@@ -35,48 +35,7 @@ class SpacesBucketObject(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
-        The `SpacesBucketObject` resource allows this provider to upload content
-        to Spaces.
-
-        The [Spaces API](https://developers.digitalocean.com/documentation/spaces/) was
-        designed to be interoperable with Amazon's AWS S3 API. This allows users to
-        interact with the service while using the tools they already know. Spaces
-        mirrors S3's authentication framework and requests to Spaces require a key pair
-        similar to Amazon's Access ID and Secret Key.
-
-        The authentication requirement can be met by either setting the
-        `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-        the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
-        access ID and secret you generate via the DigitalOcean control panel. For
-        example:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
-        ```
-
-        For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
-
-        ## Example Usage
-        ### Create a Key in a Spaces Bucket
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
-        index = digitalocean.SpacesBucketObject("index",
-            region=foobar.region,
-            bucket=foobar.name,
-            key="index.html",
-            content="<html><body><p>This page is empty.</p></body></html>",
-            content_type="text/html")
-        ```
-
+        Create a SpacesBucketObject resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
@@ -88,7 +47,9 @@ class SpacesBucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
-        :param pulumi.Input[str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
+        :param pulumi.Input[str] etag: the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
+               object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
+               digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
                Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
@@ -180,7 +141,9 @@ class SpacesBucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
-        :param pulumi.Input[str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
+        :param pulumi.Input[str] etag: the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
+               object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
+               digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
                Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
@@ -289,7 +252,9 @@ class SpacesBucketObject(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}`.
+        the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
+        object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
+        digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
         """
         return pulumi.get(self, "etag")
 

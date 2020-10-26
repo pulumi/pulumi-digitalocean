@@ -72,29 +72,7 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
 def get_ssh_key(name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeyResult:
     """
-    Get information on a ssh key. This data source provides the name, public key,
-    and fingerprint as configured on your DigitalOcean account. This is useful if
-    the ssh key in question is not managed by this provider or you need to utilize any
-    of the keys data.
-
-    An error is triggered if the provided ssh key name does not exist.
-
-    ## Example Usage
-
-    Get the ssh key:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example_ssh_key = digitalocean.get_ssh_key(name="example")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
-        image="ubuntu-18-04-x64",
-        region="nyc2",
-        size="s-1vcpu-1gb",
-        ssh_keys=[example_ssh_key.id])
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The name of the ssh key.
     """

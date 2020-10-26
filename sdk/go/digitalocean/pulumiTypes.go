@@ -4362,8 +4362,12 @@ func (o KubernetesNodePoolNodeArrayOutput) Index(i pulumi.IntInput) KubernetesNo
 }
 
 type LoadBalancerForwardingRule struct {
-	// The ID of the TLS certificate to be used for SSL termination.
+	// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+	//
+	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 	CertificateId *string `pulumi:"certificateId"`
+	// The unique name of the TLS certificate to be used for SSL termination.
+	CertificateName *string `pulumi:"certificateName"`
 	// An integer representing the port on which the Load Balancer instance will listen.
 	EntryPort int `pulumi:"entryPort"`
 	// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
@@ -4388,8 +4392,12 @@ type LoadBalancerForwardingRuleInput interface {
 }
 
 type LoadBalancerForwardingRuleArgs struct {
-	// The ID of the TLS certificate to be used for SSL termination.
+	// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+	//
+	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+	// The unique name of the TLS certificate to be used for SSL termination.
+	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
 	// An integer representing the port on which the Load Balancer instance will listen.
 	EntryPort pulumi.IntInput `pulumi:"entryPort"`
 	// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
@@ -4453,9 +4461,16 @@ func (o LoadBalancerForwardingRuleOutput) ToLoadBalancerForwardingRuleOutputWith
 	return o
 }
 
-// The ID of the TLS certificate to be used for SSL termination.
+// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+//
+// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 func (o LoadBalancerForwardingRuleOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerForwardingRule) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+}
+
+// The unique name of the TLS certificate to be used for SSL termination.
+func (o LoadBalancerForwardingRuleOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerForwardingRule) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
 }
 
 // An integer representing the port on which the Load Balancer instance will listen.
@@ -5678,6 +5693,31 @@ func (i GetAppSpecArgs) ToGetAppSpecOutputWithContext(ctx context.Context) GetAp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecOutput)
 }
 
+// GetAppSpecArrayInput is an input type that accepts GetAppSpecArray and GetAppSpecArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecArrayInput` via:
+//
+//          GetAppSpecArray{ GetAppSpecArgs{...} }
+type GetAppSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecArrayOutput() GetAppSpecArrayOutput
+	ToGetAppSpecArrayOutputWithContext(context.Context) GetAppSpecArrayOutput
+}
+
+type GetAppSpecArray []GetAppSpecInput
+
+func (GetAppSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpec)(nil)).Elem()
+}
+
+func (i GetAppSpecArray) ToGetAppSpecArrayOutput() GetAppSpecArrayOutput {
+	return i.ToGetAppSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecArray) ToGetAppSpecArrayOutputWithContext(ctx context.Context) GetAppSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecArrayOutput)
+}
+
 type GetAppSpecOutput struct{ *pulumi.OutputState }
 
 func (GetAppSpecOutput) ElementType() reflect.Type {
@@ -5719,6 +5759,26 @@ func (o GetAppSpecOutput) StaticSites() GetAppSpecStaticSiteArrayOutput {
 
 func (o GetAppSpecOutput) Workers() GetAppSpecWorkerArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecWorker { return v.Workers }).(GetAppSpecWorkerArrayOutput)
+}
+
+type GetAppSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpec)(nil)).Elem()
+}
+
+func (o GetAppSpecArrayOutput) ToGetAppSpecArrayOutput() GetAppSpecArrayOutput {
+	return o
+}
+
+func (o GetAppSpecArrayOutput) ToGetAppSpecArrayOutputWithContext(ctx context.Context) GetAppSpecArrayOutput {
+	return o
+}
+
+func (o GetAppSpecArrayOutput) Index(i pulumi.IntInput) GetAppSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpec {
+		return vs[0].([]GetAppSpec)[vs[1].(int)]
+	}).(GetAppSpecOutput)
 }
 
 type GetAppSpecDatabase struct {
@@ -9344,7 +9404,8 @@ func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutp
 }
 
 type GetImagesImage struct {
-	Created string `pulumi:"created"`
+	Created     string `pulumi:"created"`
+	Description string `pulumi:"description"`
 	// The name of the distribution of the OS of the image.
 	// - `minDiskSize`: The minimum 'disk' required for the image.
 	// - `sizeGigabytes`: The size of the image in GB.
@@ -9384,7 +9445,8 @@ type GetImagesImageInput interface {
 }
 
 type GetImagesImageArgs struct {
-	Created pulumi.StringInput `pulumi:"created"`
+	Created     pulumi.StringInput `pulumi:"created"`
+	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the distribution of the OS of the image.
 	// - `minDiskSize`: The minimum 'disk' required for the image.
 	// - `sizeGigabytes`: The size of the image in GB.
@@ -9465,6 +9527,10 @@ func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Cont
 
 func (o GetImagesImageOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The name of the distribution of the OS of the image.
@@ -10304,6 +10370,31 @@ func (i GetLoadBalancerHealthcheckArgs) ToGetLoadBalancerHealthcheckOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerHealthcheckOutput)
 }
 
+// GetLoadBalancerHealthcheckArrayInput is an input type that accepts GetLoadBalancerHealthcheckArray and GetLoadBalancerHealthcheckArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerHealthcheckArrayInput` via:
+//
+//          GetLoadBalancerHealthcheckArray{ GetLoadBalancerHealthcheckArgs{...} }
+type GetLoadBalancerHealthcheckArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerHealthcheckArrayOutput() GetLoadBalancerHealthcheckArrayOutput
+	ToGetLoadBalancerHealthcheckArrayOutputWithContext(context.Context) GetLoadBalancerHealthcheckArrayOutput
+}
+
+type GetLoadBalancerHealthcheckArray []GetLoadBalancerHealthcheckInput
+
+func (GetLoadBalancerHealthcheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerHealthcheck)(nil)).Elem()
+}
+
+func (i GetLoadBalancerHealthcheckArray) ToGetLoadBalancerHealthcheckArrayOutput() GetLoadBalancerHealthcheckArrayOutput {
+	return i.ToGetLoadBalancerHealthcheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerHealthcheckArray) ToGetLoadBalancerHealthcheckArrayOutputWithContext(ctx context.Context) GetLoadBalancerHealthcheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerHealthcheckArrayOutput)
+}
+
 type GetLoadBalancerHealthcheckOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancerHealthcheckOutput) ElementType() reflect.Type {
@@ -10346,65 +10437,130 @@ func (o GetLoadBalancerHealthcheckOutput) UnhealthyThreshold() pulumi.IntOutput 
 	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }
 
-type GetLoadBalancerStickySessions struct {
+type GetLoadBalancerHealthcheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerHealthcheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerHealthcheck)(nil)).Elem()
+}
+
+func (o GetLoadBalancerHealthcheckArrayOutput) ToGetLoadBalancerHealthcheckArrayOutput() GetLoadBalancerHealthcheckArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerHealthcheckArrayOutput) ToGetLoadBalancerHealthcheckArrayOutputWithContext(ctx context.Context) GetLoadBalancerHealthcheckArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerHealthcheckArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerHealthcheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerHealthcheck {
+		return vs[0].([]GetLoadBalancerHealthcheck)[vs[1].(int)]
+	}).(GetLoadBalancerHealthcheckOutput)
+}
+
+type GetLoadBalancerStickySession struct {
 	CookieName       string `pulumi:"cookieName"`
 	CookieTtlSeconds int    `pulumi:"cookieTtlSeconds"`
 	Type             string `pulumi:"type"`
 }
 
-// GetLoadBalancerStickySessionsInput is an input type that accepts GetLoadBalancerStickySessionsArgs and GetLoadBalancerStickySessionsOutput values.
-// You can construct a concrete instance of `GetLoadBalancerStickySessionsInput` via:
+// GetLoadBalancerStickySessionInput is an input type that accepts GetLoadBalancerStickySessionArgs and GetLoadBalancerStickySessionOutput values.
+// You can construct a concrete instance of `GetLoadBalancerStickySessionInput` via:
 //
-//          GetLoadBalancerStickySessionsArgs{...}
-type GetLoadBalancerStickySessionsInput interface {
+//          GetLoadBalancerStickySessionArgs{...}
+type GetLoadBalancerStickySessionInput interface {
 	pulumi.Input
 
-	ToGetLoadBalancerStickySessionsOutput() GetLoadBalancerStickySessionsOutput
-	ToGetLoadBalancerStickySessionsOutputWithContext(context.Context) GetLoadBalancerStickySessionsOutput
+	ToGetLoadBalancerStickySessionOutput() GetLoadBalancerStickySessionOutput
+	ToGetLoadBalancerStickySessionOutputWithContext(context.Context) GetLoadBalancerStickySessionOutput
 }
 
-type GetLoadBalancerStickySessionsArgs struct {
+type GetLoadBalancerStickySessionArgs struct {
 	CookieName       pulumi.StringInput `pulumi:"cookieName"`
 	CookieTtlSeconds pulumi.IntInput    `pulumi:"cookieTtlSeconds"`
 	Type             pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetLoadBalancerStickySessionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetLoadBalancerStickySessions)(nil)).Elem()
+func (GetLoadBalancerStickySessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerStickySession)(nil)).Elem()
 }
 
-func (i GetLoadBalancerStickySessionsArgs) ToGetLoadBalancerStickySessionsOutput() GetLoadBalancerStickySessionsOutput {
-	return i.ToGetLoadBalancerStickySessionsOutputWithContext(context.Background())
+func (i GetLoadBalancerStickySessionArgs) ToGetLoadBalancerStickySessionOutput() GetLoadBalancerStickySessionOutput {
+	return i.ToGetLoadBalancerStickySessionOutputWithContext(context.Background())
 }
 
-func (i GetLoadBalancerStickySessionsArgs) ToGetLoadBalancerStickySessionsOutputWithContext(ctx context.Context) GetLoadBalancerStickySessionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerStickySessionsOutput)
+func (i GetLoadBalancerStickySessionArgs) ToGetLoadBalancerStickySessionOutputWithContext(ctx context.Context) GetLoadBalancerStickySessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerStickySessionOutput)
 }
 
-type GetLoadBalancerStickySessionsOutput struct{ *pulumi.OutputState }
+// GetLoadBalancerStickySessionArrayInput is an input type that accepts GetLoadBalancerStickySessionArray and GetLoadBalancerStickySessionArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerStickySessionArrayInput` via:
+//
+//          GetLoadBalancerStickySessionArray{ GetLoadBalancerStickySessionArgs{...} }
+type GetLoadBalancerStickySessionArrayInput interface {
+	pulumi.Input
 
-func (GetLoadBalancerStickySessionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetLoadBalancerStickySessions)(nil)).Elem()
+	ToGetLoadBalancerStickySessionArrayOutput() GetLoadBalancerStickySessionArrayOutput
+	ToGetLoadBalancerStickySessionArrayOutputWithContext(context.Context) GetLoadBalancerStickySessionArrayOutput
 }
 
-func (o GetLoadBalancerStickySessionsOutput) ToGetLoadBalancerStickySessionsOutput() GetLoadBalancerStickySessionsOutput {
+type GetLoadBalancerStickySessionArray []GetLoadBalancerStickySessionInput
+
+func (GetLoadBalancerStickySessionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerStickySession)(nil)).Elem()
+}
+
+func (i GetLoadBalancerStickySessionArray) ToGetLoadBalancerStickySessionArrayOutput() GetLoadBalancerStickySessionArrayOutput {
+	return i.ToGetLoadBalancerStickySessionArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerStickySessionArray) ToGetLoadBalancerStickySessionArrayOutputWithContext(ctx context.Context) GetLoadBalancerStickySessionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerStickySessionArrayOutput)
+}
+
+type GetLoadBalancerStickySessionOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerStickySessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerStickySession)(nil)).Elem()
+}
+
+func (o GetLoadBalancerStickySessionOutput) ToGetLoadBalancerStickySessionOutput() GetLoadBalancerStickySessionOutput {
 	return o
 }
 
-func (o GetLoadBalancerStickySessionsOutput) ToGetLoadBalancerStickySessionsOutputWithContext(ctx context.Context) GetLoadBalancerStickySessionsOutput {
+func (o GetLoadBalancerStickySessionOutput) ToGetLoadBalancerStickySessionOutputWithContext(ctx context.Context) GetLoadBalancerStickySessionOutput {
 	return o
 }
 
-func (o GetLoadBalancerStickySessionsOutput) CookieName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerStickySessions) string { return v.CookieName }).(pulumi.StringOutput)
+func (o GetLoadBalancerStickySessionOutput) CookieName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerStickySession) string { return v.CookieName }).(pulumi.StringOutput)
 }
 
-func (o GetLoadBalancerStickySessionsOutput) CookieTtlSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v GetLoadBalancerStickySessions) int { return v.CookieTtlSeconds }).(pulumi.IntOutput)
+func (o GetLoadBalancerStickySessionOutput) CookieTtlSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerStickySession) int { return v.CookieTtlSeconds }).(pulumi.IntOutput)
 }
 
-func (o GetLoadBalancerStickySessionsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerStickySessions) string { return v.Type }).(pulumi.StringOutput)
+func (o GetLoadBalancerStickySessionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerStickySession) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancerStickySessionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerStickySessionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerStickySession)(nil)).Elem()
+}
+
+func (o GetLoadBalancerStickySessionArrayOutput) ToGetLoadBalancerStickySessionArrayOutput() GetLoadBalancerStickySessionArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerStickySessionArrayOutput) ToGetLoadBalancerStickySessionArrayOutputWithContext(ctx context.Context) GetLoadBalancerStickySessionArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerStickySessionArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerStickySessionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerStickySession {
+		return vs[0].([]GetLoadBalancerStickySession)[vs[1].(int)]
+	}).(GetLoadBalancerStickySessionOutput)
 }
 
 type GetProjectsFilter struct {
@@ -10840,6 +10996,414 @@ func (o GetProjectsSortArrayOutput) Index(i pulumi.IntInput) GetProjectsSortOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsSort {
 		return vs[0].([]GetProjectsSort)[vs[1].(int)]
 	}).(GetProjectsSortOutput)
+}
+
+type GetRecordsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves DNS records
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetRecordsFilterInput is an input type that accepts GetRecordsFilterArgs and GetRecordsFilterOutput values.
+// You can construct a concrete instance of `GetRecordsFilterInput` via:
+//
+//          GetRecordsFilterArgs{...}
+type GetRecordsFilterInput interface {
+	pulumi.Input
+
+	ToGetRecordsFilterOutput() GetRecordsFilterOutput
+	ToGetRecordsFilterOutputWithContext(context.Context) GetRecordsFilterOutput
+}
+
+type GetRecordsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves DNS records
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRecordsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsFilter)(nil)).Elem()
+}
+
+func (i GetRecordsFilterArgs) ToGetRecordsFilterOutput() GetRecordsFilterOutput {
+	return i.ToGetRecordsFilterOutputWithContext(context.Background())
+}
+
+func (i GetRecordsFilterArgs) ToGetRecordsFilterOutputWithContext(ctx context.Context) GetRecordsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsFilterOutput)
+}
+
+// GetRecordsFilterArrayInput is an input type that accepts GetRecordsFilterArray and GetRecordsFilterArrayOutput values.
+// You can construct a concrete instance of `GetRecordsFilterArrayInput` via:
+//
+//          GetRecordsFilterArray{ GetRecordsFilterArgs{...} }
+type GetRecordsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput
+	ToGetRecordsFilterArrayOutputWithContext(context.Context) GetRecordsFilterArrayOutput
+}
+
+type GetRecordsFilterArray []GetRecordsFilterInput
+
+func (GetRecordsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsFilter)(nil)).Elem()
+}
+
+func (i GetRecordsFilterArray) ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput {
+	return i.ToGetRecordsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRecordsFilterArray) ToGetRecordsFilterArrayOutputWithContext(ctx context.Context) GetRecordsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsFilterArrayOutput)
+}
+
+type GetRecordsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsFilter)(nil)).Elem()
+}
+
+func (o GetRecordsFilterOutput) ToGetRecordsFilterOutput() GetRecordsFilterOutput {
+	return o
+}
+
+func (o GetRecordsFilterOutput) ToGetRecordsFilterOutputWithContext(ctx context.Context) GetRecordsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetRecordsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRecordsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+func (o GetRecordsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetRecordsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves DNS records
+// where the `key` field takes on one or more of the values provided here.
+func (o GetRecordsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRecordsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRecordsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsFilter)(nil)).Elem()
+}
+
+func (o GetRecordsFilterArrayOutput) ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput {
+	return o
+}
+
+func (o GetRecordsFilterArrayOutput) ToGetRecordsFilterArrayOutputWithContext(ctx context.Context) GetRecordsFilterArrayOutput {
+	return o
+}
+
+func (o GetRecordsFilterArrayOutput) Index(i pulumi.IntInput) GetRecordsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsFilter {
+		return vs[0].([]GetRecordsFilter)[vs[1].(int)]
+	}).(GetRecordsFilterOutput)
+}
+
+type GetRecordsRecord struct {
+	// The domain name to search for DNS records
+	Domain   string `pulumi:"domain"`
+	Flags    int    `pulumi:"flags"`
+	Id       int    `pulumi:"id"`
+	Name     string `pulumi:"name"`
+	Port     int    `pulumi:"port"`
+	Priority int    `pulumi:"priority"`
+	Tag      string `pulumi:"tag"`
+	Ttl      int    `pulumi:"ttl"`
+	Type     string `pulumi:"type"`
+	Value    string `pulumi:"value"`
+	Weight   int    `pulumi:"weight"`
+}
+
+// GetRecordsRecordInput is an input type that accepts GetRecordsRecordArgs and GetRecordsRecordOutput values.
+// You can construct a concrete instance of `GetRecordsRecordInput` via:
+//
+//          GetRecordsRecordArgs{...}
+type GetRecordsRecordInput interface {
+	pulumi.Input
+
+	ToGetRecordsRecordOutput() GetRecordsRecordOutput
+	ToGetRecordsRecordOutputWithContext(context.Context) GetRecordsRecordOutput
+}
+
+type GetRecordsRecordArgs struct {
+	// The domain name to search for DNS records
+	Domain   pulumi.StringInput `pulumi:"domain"`
+	Flags    pulumi.IntInput    `pulumi:"flags"`
+	Id       pulumi.IntInput    `pulumi:"id"`
+	Name     pulumi.StringInput `pulumi:"name"`
+	Port     pulumi.IntInput    `pulumi:"port"`
+	Priority pulumi.IntInput    `pulumi:"priority"`
+	Tag      pulumi.StringInput `pulumi:"tag"`
+	Ttl      pulumi.IntInput    `pulumi:"ttl"`
+	Type     pulumi.StringInput `pulumi:"type"`
+	Value    pulumi.StringInput `pulumi:"value"`
+	Weight   pulumi.IntInput    `pulumi:"weight"`
+}
+
+func (GetRecordsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsRecord)(nil)).Elem()
+}
+
+func (i GetRecordsRecordArgs) ToGetRecordsRecordOutput() GetRecordsRecordOutput {
+	return i.ToGetRecordsRecordOutputWithContext(context.Background())
+}
+
+func (i GetRecordsRecordArgs) ToGetRecordsRecordOutputWithContext(ctx context.Context) GetRecordsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsRecordOutput)
+}
+
+// GetRecordsRecordArrayInput is an input type that accepts GetRecordsRecordArray and GetRecordsRecordArrayOutput values.
+// You can construct a concrete instance of `GetRecordsRecordArrayInput` via:
+//
+//          GetRecordsRecordArray{ GetRecordsRecordArgs{...} }
+type GetRecordsRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput
+	ToGetRecordsRecordArrayOutputWithContext(context.Context) GetRecordsRecordArrayOutput
+}
+
+type GetRecordsRecordArray []GetRecordsRecordInput
+
+func (GetRecordsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsRecord)(nil)).Elem()
+}
+
+func (i GetRecordsRecordArray) ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput {
+	return i.ToGetRecordsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetRecordsRecordArray) ToGetRecordsRecordArrayOutputWithContext(ctx context.Context) GetRecordsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsRecordArrayOutput)
+}
+
+type GetRecordsRecordOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsRecord)(nil)).Elem()
+}
+
+func (o GetRecordsRecordOutput) ToGetRecordsRecordOutput() GetRecordsRecordOutput {
+	return o
+}
+
+func (o GetRecordsRecordOutput) ToGetRecordsRecordOutputWithContext(ctx context.Context) GetRecordsRecordOutput {
+	return o
+}
+
+// The domain name to search for DNS records
+func (o GetRecordsRecordOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetRecordsRecordOutput) Flags() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Flags }).(pulumi.IntOutput)
+}
+
+func (o GetRecordsRecordOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetRecordsRecordOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRecordsRecordOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetRecordsRecordOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+func (o GetRecordsRecordOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+func (o GetRecordsRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+func (o GetRecordsRecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetRecordsRecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func (o GetRecordsRecordOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetRecordsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsRecord)(nil)).Elem()
+}
+
+func (o GetRecordsRecordArrayOutput) ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput {
+	return o
+}
+
+func (o GetRecordsRecordArrayOutput) ToGetRecordsRecordArrayOutputWithContext(ctx context.Context) GetRecordsRecordArrayOutput {
+	return o
+}
+
+func (o GetRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetRecordsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsRecord {
+		return vs[0].([]GetRecordsRecord)[vs[1].(int)]
+	}).(GetRecordsRecordOutput)
+}
+
+type GetRecordsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+	Key string `pulumi:"key"`
+}
+
+// GetRecordsSortInput is an input type that accepts GetRecordsSortArgs and GetRecordsSortOutput values.
+// You can construct a concrete instance of `GetRecordsSortInput` via:
+//
+//          GetRecordsSortArgs{...}
+type GetRecordsSortInput interface {
+	pulumi.Input
+
+	ToGetRecordsSortOutput() GetRecordsSortOutput
+	ToGetRecordsSortOutputWithContext(context.Context) GetRecordsSortOutput
+}
+
+type GetRecordsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetRecordsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsSort)(nil)).Elem()
+}
+
+func (i GetRecordsSortArgs) ToGetRecordsSortOutput() GetRecordsSortOutput {
+	return i.ToGetRecordsSortOutputWithContext(context.Background())
+}
+
+func (i GetRecordsSortArgs) ToGetRecordsSortOutputWithContext(ctx context.Context) GetRecordsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsSortOutput)
+}
+
+// GetRecordsSortArrayInput is an input type that accepts GetRecordsSortArray and GetRecordsSortArrayOutput values.
+// You can construct a concrete instance of `GetRecordsSortArrayInput` via:
+//
+//          GetRecordsSortArray{ GetRecordsSortArgs{...} }
+type GetRecordsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput
+	ToGetRecordsSortArrayOutputWithContext(context.Context) GetRecordsSortArrayOutput
+}
+
+type GetRecordsSortArray []GetRecordsSortInput
+
+func (GetRecordsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsSort)(nil)).Elem()
+}
+
+func (i GetRecordsSortArray) ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput {
+	return i.ToGetRecordsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRecordsSortArray) ToGetRecordsSortArrayOutputWithContext(ctx context.Context) GetRecordsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsSortArrayOutput)
+}
+
+type GetRecordsSortOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsSort)(nil)).Elem()
+}
+
+func (o GetRecordsSortOutput) ToGetRecordsSortOutput() GetRecordsSortOutput {
+	return o
+}
+
+func (o GetRecordsSortOutput) ToGetRecordsSortOutputWithContext(ctx context.Context) GetRecordsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetRecordsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+func (o GetRecordsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetRecordsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsSort)(nil)).Elem()
+}
+
+func (o GetRecordsSortArrayOutput) ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput {
+	return o
+}
+
+func (o GetRecordsSortArrayOutput) ToGetRecordsSortArrayOutputWithContext(ctx context.Context) GetRecordsSortArrayOutput {
+	return o
+}
+
+func (o GetRecordsSortArrayOutput) Index(i pulumi.IntInput) GetRecordsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsSort {
+		return vs[0].([]GetRecordsSort)[vs[1].(int)]
+	}).(GetRecordsSortOutput)
 }
 
 type GetRegionsFilter struct {
@@ -12486,6 +13050,7 @@ func init() {
 	pulumi.RegisterOutputType(SpacesBucketVersioningOutput{})
 	pulumi.RegisterOutputType(SpacesBucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecOutput{})
+	pulumi.RegisterOutputType(GetAppSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
@@ -12546,13 +13111,21 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckOutput{})
-	pulumi.RegisterOutputType(GetLoadBalancerStickySessionsOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerStickySessionOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerStickySessionArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsFilterOutput{})
 	pulumi.RegisterOutputType(GetProjectsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsSortOutput{})
 	pulumi.RegisterOutputType(GetProjectsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetRecordsFilterOutput{})
+	pulumi.RegisterOutputType(GetRecordsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRecordsRecordOutput{})
+	pulumi.RegisterOutputType(GetRecordsRecordArrayOutput{})
+	pulumi.RegisterOutputType(GetRecordsSortOutput{})
+	pulumi.RegisterOutputType(GetRecordsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsFilterOutput{})
 	pulumi.RegisterOutputType(GetRegionsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})

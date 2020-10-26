@@ -74,7 +74,7 @@ export interface GetAppResult {
     /**
      * A DigitalOcean App spec describing the app.
      */
-    readonly spec: outputs.GetAppSpec;
+    readonly specs: outputs.GetAppSpec[];
     /**
      * The date and time of when the app was last updated.
      */

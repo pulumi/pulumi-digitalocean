@@ -11,83 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetImage
     {
-        /// <summary>
-        /// Get information on an image for use in other resources (e.g. creating a Droplet
-        /// based on snapshot). This data source provides all of the image properties as
-        /// configured on your DigitalOcean account. This is useful if the image in question
-        /// is not managed by this provider or you need to utilize any of the image's data.
-        /// 
-        /// An error is triggered if zero or more than one result is returned by the query.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the data about a snapshot:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example1 = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Name = "example-1.0.0",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// Reuse the data about a snapshot to create a Droplet:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var exampleImage = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Name = "example-1.0.0",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Image = exampleImage.Apply(exampleImage =&gt; exampleImage.Id),
-        ///             Region = "nyc2",
-        ///             Size = "s-1vcpu-1gb",
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// Get the data about an official image:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example2 = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Slug = "ubuntu-18-04-x64",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
     }
@@ -129,6 +52,7 @@ namespace Pulumi.DigitalOcean
     public sealed class GetImageResult
     {
         public readonly string Created;
+        public readonly string Description;
         /// <summary>
         /// The name of the distribution of the OS of the image.
         /// * `min_disk_size`: The minimum 'disk' required for the image.
@@ -166,6 +90,8 @@ namespace Pulumi.DigitalOcean
         private GetImageResult(
             string created,
 
+            string description,
+
             string distribution,
 
             string errorMessage,
@@ -195,6 +121,7 @@ namespace Pulumi.DigitalOcean
             string type)
         {
             Created = created;
+            Description = description;
             Distribution = distribution;
             ErrorMessage = errorMessage;
             Id = id;

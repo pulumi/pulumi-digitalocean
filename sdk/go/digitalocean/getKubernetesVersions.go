@@ -109,7 +109,6 @@ func GetKubernetesVersions(ctx *pulumi.Context, args *GetKubernetesVersionsArgs,
 
 // A collection of arguments for invoking getKubernetesVersions.
 type GetKubernetesVersionsArgs struct {
-	// If provided, this provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
 	VersionPrefix *string `pulumi:"versionPrefix"`
 }
 

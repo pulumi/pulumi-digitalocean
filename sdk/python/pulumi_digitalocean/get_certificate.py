@@ -19,7 +19,7 @@ class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
     """
-    def __init__(__self__, domains=None, id=None, name=None, not_after=None, sha1_fingerprint=None, state=None, type=None):
+    def __init__(__self__, domains=None, id=None, name=None, not_after=None, sha1_fingerprint=None, state=None, type=None, uuid=None):
         if domains and not isinstance(domains, list):
             raise TypeError("Expected argument 'domains' to be a list")
         pulumi.set(__self__, "domains", domains)
@@ -41,6 +41,9 @@ class GetCertificateResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if uuid and not isinstance(uuid, str):
+            raise TypeError("Expected argument 'uuid' to be a str")
+        pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -80,6 +83,11 @@ class GetCertificateResult:
     def type(self) -> str:
         return pulumi.get(self, "type")
 
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        return pulumi.get(self, "uuid")
+
 
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
@@ -93,30 +101,14 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             not_after=self.not_after,
             sha1_fingerprint=self.sha1_fingerprint,
             state=self.state,
-            type=self.type)
+            type=self.type,
+            uuid=self.uuid)
 
 
 def get_certificate(name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
-    Get information on a certificate. This data source provides the name, type, state,
-    domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-    This is useful if the certificate in question is not managed by this provider or you need to utilize
-    any of the certificates data.
-
-    An error is triggered if the provided certificate name does not exist.
-
-    ## Example Usage
-
-    Get the certificate:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_certificate(name="example")
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The name of certificate.
     """
@@ -135,4 +127,5 @@ def get_certificate(name: Optional[str] = None,
         not_after=__ret__.not_after,
         sha1_fingerprint=__ret__.sha1_fingerprint,
         state=__ret__.state,
-        type=__ret__.type)
+        type=__ret__.type,
+        uuid=__ret__.uuid)

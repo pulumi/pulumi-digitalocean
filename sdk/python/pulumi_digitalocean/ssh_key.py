@@ -33,7 +33,7 @@ class SshKey(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         # Create a new SSH key
-        default = digitalocean.SshKey("default", public_key=(lambda path: open(path).read())("/Users/myuser/.ssh/id_rsa.pub"))
+        default = digitalocean.SshKey("default", public_key=(lambda path: open(path).read())("/Users/terraform/.ssh/id_rsa.pub"))
         # Create a new Droplet using the SSH key
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",

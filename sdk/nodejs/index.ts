@@ -43,6 +43,7 @@ export * from "./getLoadBalancer";
 export * from "./getProject";
 export * from "./getProjects";
 export * from "./getRecord";
+export * from "./getRecords";
 export * from "./getRegion";
 export * from "./getRegions";
 export * from "./getSizes";

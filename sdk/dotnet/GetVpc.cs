@@ -11,66 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetVpc
     {
-        /// <summary>
-        /// Retrieve information about a VPC for use in other resources.
-        /// 
-        /// This data source provides all of the VPC's properties as configured on your
-        /// DigitalOcean account. This is useful if the VPC in question is not managed by
-        /// this provider or you need to utilize any of the VPC's data.
-        /// 
-        /// VPCs may be looked up by `id` or `name`. Specifying a `region` will
-        /// return that that region's default VPC.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// ### VPC By Name
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(DigitalOcean.GetVpc.InvokeAsync(new DigitalOcean.GetVpcArgs
-        ///         {
-        ///             Name = "example-network",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// Reuse the data about a VPC to assign a Droplet to it:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var exampleVpc = Output.Create(DigitalOcean.GetVpc.InvokeAsync(new DigitalOcean.GetVpcArgs
-        ///         {
-        ///             Name = "example-network",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Size = "s-1vcpu-1gb",
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc3",
-        ///             VpcUuid = exampleVpc.Apply(exampleVpc =&gt; exampleVpc.Id),
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetVpcResult> InvokeAsync(GetVpcArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcArgs(), options.WithVersion());
     }

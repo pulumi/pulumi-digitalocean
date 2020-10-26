@@ -78,10 +78,13 @@ __all__ = [
     'GetKubernetesClusterNodePoolNodeResult',
     'GetLoadBalancerForwardingRuleResult',
     'GetLoadBalancerHealthcheckResult',
-    'GetLoadBalancerStickySessionsResult',
+    'GetLoadBalancerStickySessionResult',
     'GetProjectsFilterResult',
     'GetProjectsProjectResult',
     'GetProjectsSortResult',
+    'GetRecordsFilterResult',
+    'GetRecordsRecordResult',
+    'GetRecordsSortResult',
     'GetRegionsFilterResult',
     'GetRegionsRegionResult',
     'GetRegionsSortResult',
@@ -2014,13 +2017,15 @@ class LoadBalancerForwardingRule(dict):
                  target_port: int,
                  target_protocol: str,
                  certificate_id: Optional[str] = None,
+                 certificate_name: Optional[str] = None,
                  tls_passthrough: Optional[bool] = None):
         """
         :param int entry_port: An integer representing the port on which the Load Balancer instance will listen.
         :param str entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
         :param int target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
         :param str target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
-        :param str certificate_id: The ID of the TLS certificate to be used for SSL termination.
+        :param str certificate_id: **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+        :param str certificate_name: The unique name of the TLS certificate to be used for SSL termination.
         :param bool tls_passthrough: A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
         """
         pulumi.set(__self__, "entry_port", entry_port)
@@ -2029,6 +2034,8 @@ class LoadBalancerForwardingRule(dict):
         pulumi.set(__self__, "target_protocol", target_protocol)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
         if tls_passthrough is not None:
             pulumi.set(__self__, "tls_passthrough", tls_passthrough)
 
@@ -2068,9 +2075,17 @@ class LoadBalancerForwardingRule(dict):
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[str]:
         """
-        The ID of the TLS certificate to be used for SSL termination.
+        **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         """
         return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[str]:
+        """
+        The unique name of the TLS certificate to be used for SSL termination.
+        """
+        return pulumi.get(self, "certificate_name")
 
     @property
     @pulumi.getter(name="tlsPassthrough")
@@ -4177,6 +4192,7 @@ class GetImagesFilterResult(dict):
 class GetImagesImageResult(dict):
     def __init__(__self__, *,
                  created: str,
+                 description: str,
                  distribution: str,
                  error_message: str,
                  id: int,
@@ -4205,6 +4221,7 @@ class GetImagesImageResult(dict):
                - `error_message`: Any applicable error message pertaining to the image
         """
         pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "distribution", distribution)
         pulumi.set(__self__, "error_message", error_message)
         pulumi.set(__self__, "id", id)
@@ -4223,6 +4240,11 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def created(self) -> str:
         return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -4724,7 +4746,7 @@ class GetLoadBalancerHealthcheckResult(dict):
 
 
 @pulumi.output_type
-class GetLoadBalancerStickySessionsResult(dict):
+class GetLoadBalancerStickySessionResult(dict):
     def __init__(__self__, *,
                  cookie_name: str,
                  cookie_ttl_seconds: int,
@@ -4958,6 +4980,191 @@ class GetProjectsSortResult(dict):
         """
         Sort the projects by this key. This may be one of `name`,
         `purpose`, `description`, or `environment`.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetRecordsFilterResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 values: Sequence[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
+        """
+        :param str key: Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+               `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+        :param Sequence[str] values: A list of values to match against the `key` field. Only retrieves DNS records
+               where the `key` field takes on one or more of the values provided here.
+        :param bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values to match against the `key` field. Only retrieves DNS records
+        where the `key` field takes on one or more of the values provided here.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetRecordsRecordResult(dict):
+    def __init__(__self__, *,
+                 domain: str,
+                 flags: int,
+                 id: int,
+                 name: str,
+                 port: int,
+                 priority: int,
+                 tag: str,
+                 ttl: int,
+                 type: str,
+                 value: str,
+                 weight: int):
+        """
+        :param str domain: The domain name to search for DNS records
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "flags", flags)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "ttl", ttl)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain name to search for DNS records
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> int:
+        return pulumi.get(self, "flags")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> int:
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetRecordsSortResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 direction: Optional[str] = None):
+        """
+        :param str key: Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+               `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+        :param str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
         """
         return pulumi.get(self, "key")
 

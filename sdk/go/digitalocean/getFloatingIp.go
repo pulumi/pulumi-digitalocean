@@ -7,41 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Get information on a floating ip. This data source provides the region and Droplet id
-// as configured on your DigitalOcean account. This is useful if the floating IP
-// in question is not managed by this provider or you need to find the Droplet the IP is
-// attached to.
-//
-// An error is triggered if the provided floating IP does not exist.
-//
-// ## Example Usage
-//
-// Get the floating IP:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v2/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		publicIp := cfg.RequireObject("publicIp")
-// 		example, err := digitalocean.LookupFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
-// 			IpAddress: publicIp,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("fipOutput", example.DropletId)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupFloatingIp(ctx *pulumi.Context, args *LookupFloatingIpArgs, opts ...pulumi.InvokeOption) (*LookupFloatingIpResult, error) {
 	var rv LookupFloatingIpResult
 	err := ctx.Invoke("digitalocean:index/getFloatingIp:getFloatingIp", args, &rv, opts...)
