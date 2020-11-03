@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * To create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/resources/app-specification-reference/) specifying the app's components.
+ * To create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/references/app-specification-reference/) specifying the app's components.
  * ### Basic Example
  *
  * ```typescript
