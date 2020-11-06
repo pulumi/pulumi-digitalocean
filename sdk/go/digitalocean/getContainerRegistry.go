@@ -30,6 +30,7 @@ type LookupContainerRegistryResult struct {
 	// The name of the container registry
 	// * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
 	// * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
-	Name      string `pulumi:"name"`
-	ServerUrl string `pulumi:"serverUrl"`
+	Name                 string `pulumi:"name"`
+	ServerUrl            string `pulumi:"serverUrl"`
+	SubscriptionTierSlug string `pulumi:"subscriptionTierSlug"`
 }

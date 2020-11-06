@@ -45,4 +45,5 @@ export interface GetContainerRegistryResult {
      */
     readonly name: string;
     readonly serverUrl: string;
+    readonly subscriptionTierSlug: string;
 }

@@ -16,6 +16,7 @@ class ContainerRegistry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 subscription_tier_slug: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -55,6 +56,9 @@ class ContainerRegistry(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
+            if subscription_tier_slug is None:
+                raise TypeError("Missing required property 'subscription_tier_slug'")
+            __props__['subscription_tier_slug'] = subscription_tier_slug
             __props__['endpoint'] = None
             __props__['server_url'] = None
         super(ContainerRegistry, __self__).__init__(
@@ -69,7 +73,8 @@ class ContainerRegistry(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            server_url: Optional[pulumi.Input[str]] = None) -> 'ContainerRegistry':
+            server_url: Optional[pulumi.Input[str]] = None,
+            subscription_tier_slug: Optional[pulumi.Input[str]] = None) -> 'ContainerRegistry':
         """
         Get an existing ContainerRegistry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -86,6 +91,7 @@ class ContainerRegistry(pulumi.CustomResource):
         __props__["endpoint"] = endpoint
         __props__["name"] = name
         __props__["server_url"] = server_url
+        __props__["subscription_tier_slug"] = subscription_tier_slug
         return ContainerRegistry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -105,6 +111,11 @@ class ContainerRegistry(pulumi.CustomResource):
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> pulumi.Output[str]:
         return pulumi.get(self, "server_url")
+
+    @property
+    @pulumi.getter(name="subscriptionTierSlug")
+    def subscription_tier_slug(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "subscription_tier_slug")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

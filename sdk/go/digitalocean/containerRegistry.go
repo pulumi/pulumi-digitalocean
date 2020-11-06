@@ -6,6 +6,7 @@ package digitalocean
 import (
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -37,13 +38,17 @@ type ContainerRegistry struct {
 
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The name of the container_registry
-	Name      pulumi.StringOutput `pulumi:"name"`
-	ServerUrl pulumi.StringOutput `pulumi:"serverUrl"`
+	Name                 pulumi.StringOutput `pulumi:"name"`
+	ServerUrl            pulumi.StringOutput `pulumi:"serverUrl"`
+	SubscriptionTierSlug pulumi.StringOutput `pulumi:"subscriptionTierSlug"`
 }
 
 // NewContainerRegistry registers a new resource with the given unique name, arguments, and options.
 func NewContainerRegistry(ctx *pulumi.Context,
 	name string, args *ContainerRegistryArgs, opts ...pulumi.ResourceOption) (*ContainerRegistry, error) {
+	if args == nil || args.SubscriptionTierSlug == nil {
+		return nil, errors.New("missing required argument 'SubscriptionTierSlug'")
+	}
 	if args == nil {
 		args = &ContainerRegistryArgs{}
 	}
@@ -71,15 +76,17 @@ func GetContainerRegistry(ctx *pulumi.Context,
 type containerRegistryState struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// The name of the container_registry
-	Name      *string `pulumi:"name"`
-	ServerUrl *string `pulumi:"serverUrl"`
+	Name                 *string `pulumi:"name"`
+	ServerUrl            *string `pulumi:"serverUrl"`
+	SubscriptionTierSlug *string `pulumi:"subscriptionTierSlug"`
 }
 
 type ContainerRegistryState struct {
 	Endpoint pulumi.StringPtrInput
 	// The name of the container_registry
-	Name      pulumi.StringPtrInput
-	ServerUrl pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
+	ServerUrl            pulumi.StringPtrInput
+	SubscriptionTierSlug pulumi.StringPtrInput
 }
 
 func (ContainerRegistryState) ElementType() reflect.Type {
@@ -88,13 +95,15 @@ func (ContainerRegistryState) ElementType() reflect.Type {
 
 type containerRegistryArgs struct {
 	// The name of the container_registry
-	Name *string `pulumi:"name"`
+	Name                 *string `pulumi:"name"`
+	SubscriptionTierSlug string  `pulumi:"subscriptionTierSlug"`
 }
 
 // The set of arguments for constructing a ContainerRegistry resource.
 type ContainerRegistryArgs struct {
 	// The name of the container_registry
-	Name pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
+	SubscriptionTierSlug pulumi.StringInput
 }
 
 func (ContainerRegistryArgs) ElementType() reflect.Type {

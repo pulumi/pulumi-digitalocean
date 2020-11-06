@@ -168,6 +168,8 @@ github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZm
 github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8PWV+bWy6jNmig1y/TA+kYO4g3RSRF0IAv0no=
 github.com/digitalocean/godo v1.45.0 h1:Hg4Q216Xr0AJjnAxK4bkP/qacj4svGaapWRfC8z9URc=
 github.com/digitalocean/godo v1.45.0/go.mod h1:p7dOjjtSBqCTUksqtA5Fd3uaKs9kyTq2xcz76ulEJRU=
+github.com/digitalocean/godo v1.52.0 h1:1QSUC0w5T1wS1d/1uvPtG8GLeD0p/4zhx1Q+Fxtna+k=
+github.com/digitalocean/godo v1.52.0/go.mod h1:p7dOjjtSBqCTUksqtA5Fd3uaKs9kyTq2xcz76ulEJRU=
 github.com/dimchansky/utfbom v1.1.0/go.mod h1:rO41eb7gLfo8SF1jd9F8HplJm1Fewwi4mQvIirEdv+8=
 github.com/djherbis/times v1.2.0 h1:xANXjsC/iBqbO00vkWlYwPWgBgEVU6m6AFYg0Pic+Mc=
 github.com/djherbis/times v1.2.0/go.mod h1:CGMZlo255K5r4Yw0b9RRfFQpM2y7uOmxg4jm9HsaVf8=
@@ -539,6 +541,8 @@ github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df h1:
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df/go.mod h1:pVZLnLuSe/yv0XqTHFPb8xRGWPwgANT77jHeHqjXS5o=
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20201029155546-8a64a006eb43 h1:Qj124gZ9DNjXQjkbG90z/r8409bf4gY8YXU9NfKJi28=
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20201029155546-8a64a006eb43/go.mod h1:TngTWcxsDkcO236zgW1BfPy42zuyJwMJgKcw0h55VlE=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20201106193736-4028583704c9 h1:VMlOyiNop8umaR36jBzNfy8/pUxNDzg5veUvLKBtYLc=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20201106193736-4028583704c9/go.mod h1:Isx0qSp3nbVWqkcebbZtmQKSLcTVHMd16b9XNnRHWN8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
