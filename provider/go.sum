@@ -166,8 +166,6 @@ github.com/devigned/tab v0.1.1/go.mod h1:XG9mPq0dFghrYvoBF3xdRrJzSTX1b7IQrvaL9mz
 github.com/dgrijalva/jwt-go v3.2.0+incompatible h1:7qlOGliEKZXTDg6OTjfoBKDXWrumCAMpl/TFQ4/5kLM=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8PWV+bWy6jNmig1y/TA+kYO4g3RSRF0IAv0no=
-github.com/digitalocean/godo v1.45.0 h1:Hg4Q216Xr0AJjnAxK4bkP/qacj4svGaapWRfC8z9URc=
-github.com/digitalocean/godo v1.45.0/go.mod h1:p7dOjjtSBqCTUksqtA5Fd3uaKs9kyTq2xcz76ulEJRU=
 github.com/digitalocean/godo v1.52.0 h1:1QSUC0w5T1wS1d/1uvPtG8GLeD0p/4zhx1Q+Fxtna+k=
 github.com/digitalocean/godo v1.52.0/go.mod h1:p7dOjjtSBqCTUksqtA5Fd3uaKs9kyTq2xcz76ulEJRU=
 github.com/dimchansky/utfbom v1.1.0/go.mod h1:rO41eb7gLfo8SF1jd9F8HplJm1Fewwi4mQvIirEdv+8=
@@ -529,8 +527,8 @@ github.com/prometheus/common v0.4.0/go.mod h1:TNfzLD0ON7rHzMJeJkieUDPYmFC7Snx/y8
 github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d/go.mod h1:c3At6R/oaqEKCNdg8wHV1ftS6bRYblBhIjjI8uT2IGk=
 github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084/go.mod h1:TjEm7ze935MbeOT/UhFTIMYKhuLP4wbCsTZCD3I8kEA=
 github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
-github.com/pulumi/pulumi-terraform-bridge/v2 v2.11.1-0.20201020163502-64cff1e50894 h1:yUnJDty8PgO26E8T0xX5CwslQ5CZTVqdTzfv0PnSN20=
-github.com/pulumi/pulumi-terraform-bridge/v2 v2.11.1-0.20201020163502-64cff1e50894/go.mod h1:HeGEtErxeRTElloiI8SJvnb2X/AgGvOxgTGI0irEIus=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.12.1 h1:hyswQAst9EgPM/B3D6N+35svf/GYR8HddqjFuPW7BVA=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.12.1/go.mod h1:HeGEtErxeRTElloiI8SJvnb2X/AgGvOxgTGI0irEIus=
 github.com/pulumi/pulumi/pkg/v2 v2.12.1-0.20201019222817-89c956d18942 h1:IB34mt9friGXJGaRbZNwerIK9Oz0LfBruhbVEkJKDPg=
 github.com/pulumi/pulumi/pkg/v2 v2.12.1-0.20201019222817-89c956d18942/go.mod h1:a5zxh9WrYwWR/cDOhPMNFOUpJuwtyeFS+ZYJebehQ+c=
 github.com/pulumi/pulumi/sdk/v2 v2.2.1/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
@@ -539,8 +537,6 @@ github.com/pulumi/pulumi/sdk/v2 v2.12.0 h1:d2BQnOvRWCbxDG5DO0bz5FkhFbymABmOxlsx0
 github.com/pulumi/pulumi/sdk/v2 v2.12.0/go.mod h1:WQ4WaHMA7mduVHAJi87iIqbWvqsuBUYccBiKK+FrayI=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df h1:kXSvfAz43o0D0gfxUqVCOP3NrfnGbptJBshVsqZlBqA=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df/go.mod h1:pVZLnLuSe/yv0XqTHFPb8xRGWPwgANT77jHeHqjXS5o=
-github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20201029155546-8a64a006eb43 h1:Qj124gZ9DNjXQjkbG90z/r8409bf4gY8YXU9NfKJi28=
-github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20201029155546-8a64a006eb43/go.mod h1:TngTWcxsDkcO236zgW1BfPy42zuyJwMJgKcw0h55VlE=
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20201106193736-4028583704c9 h1:VMlOyiNop8umaR36jBzNfy8/pUxNDzg5veUvLKBtYLc=
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20201106193736-4028583704c9/go.mod h1:Isx0qSp3nbVWqkcebbZtmQKSLcTVHMd16b9XNnRHWN8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
