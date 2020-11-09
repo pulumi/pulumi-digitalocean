@@ -45,6 +45,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Name;
         public readonly string ServerUrl;
+        public readonly string SubscriptionTierSlug;
 
         [OutputConstructor]
         private GetContainerRegistryResult(
@@ -54,12 +55,15 @@ namespace Pulumi.DigitalOcean
 
             string name,
 
-            string serverUrl)
+            string serverUrl,
+
+            string subscriptionTierSlug)
         {
             Endpoint = endpoint;
             Id = id;
             Name = name;
             ServerUrl = serverUrl;
+            SubscriptionTierSlug = subscriptionTierSlug;
         }
     }
 }

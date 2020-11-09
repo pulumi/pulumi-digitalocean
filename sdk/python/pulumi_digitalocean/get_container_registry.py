@@ -19,7 +19,7 @@ class GetContainerRegistryResult:
     """
     A collection of values returned by getContainerRegistry.
     """
-    def __init__(__self__, endpoint=None, id=None, name=None, server_url=None):
+    def __init__(__self__, endpoint=None, id=None, name=None, server_url=None, subscription_tier_slug=None):
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         pulumi.set(__self__, "endpoint", endpoint)
@@ -32,6 +32,9 @@ class GetContainerRegistryResult:
         if server_url and not isinstance(server_url, str):
             raise TypeError("Expected argument 'server_url' to be a str")
         pulumi.set(__self__, "server_url", server_url)
+        if subscription_tier_slug and not isinstance(subscription_tier_slug, str):
+            raise TypeError("Expected argument 'subscription_tier_slug' to be a str")
+        pulumi.set(__self__, "subscription_tier_slug", subscription_tier_slug)
 
     @property
     @pulumi.getter
@@ -61,6 +64,11 @@ class GetContainerRegistryResult:
     def server_url(self) -> str:
         return pulumi.get(self, "server_url")
 
+    @property
+    @pulumi.getter(name="subscriptionTierSlug")
+    def subscription_tier_slug(self) -> str:
+        return pulumi.get(self, "subscription_tier_slug")
+
 
 class AwaitableGetContainerRegistryResult(GetContainerRegistryResult):
     # pylint: disable=using-constant-test
@@ -71,7 +79,8 @@ class AwaitableGetContainerRegistryResult(GetContainerRegistryResult):
             endpoint=self.endpoint,
             id=self.id,
             name=self.name,
-            server_url=self.server_url)
+            server_url=self.server_url,
+            subscription_tier_slug=self.subscription_tier_slug)
 
 
 def get_container_registry(name: Optional[str] = None,
@@ -93,4 +102,5 @@ def get_container_registry(name: Optional[str] = None,
         endpoint=__ret__.endpoint,
         id=__ret__.id,
         name=__ret__.name,
-        server_url=__ret__.server_url)
+        server_url=__ret__.server_url,
+        subscription_tier_slug=__ret__.subscription_tier_slug)

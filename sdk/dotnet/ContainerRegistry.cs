@@ -46,6 +46,9 @@ namespace Pulumi.DigitalOcean
         [Output("serverUrl")]
         public Output<string> ServerUrl { get; private set; } = null!;
 
+        [Output("subscriptionTierSlug")]
+        public Output<string> SubscriptionTierSlug { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ContainerRegistry resource with the given unique name, arguments, and options.
@@ -54,7 +57,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ContainerRegistry(string name, ContainerRegistryArgs? args = null, CustomResourceOptions? options = null)
+        public ContainerRegistry(string name, ContainerRegistryArgs args, CustomResourceOptions? options = null)
             : base("digitalocean:index/containerRegistry:ContainerRegistry", name, args ?? new ContainerRegistryArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -98,6 +101,9 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("subscriptionTierSlug", required: true)]
+        public Input<string> SubscriptionTierSlug { get; set; } = null!;
+
         public ContainerRegistryArgs()
         {
         }
@@ -116,6 +122,9 @@ namespace Pulumi.DigitalOcean
 
         [Input("serverUrl")]
         public Input<string>? ServerUrl { get; set; }
+
+        [Input("subscriptionTierSlug")]
+        public Input<string>? SubscriptionTierSlug { get; set; }
 
         public ContainerRegistryState()
         {

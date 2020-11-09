@@ -52,6 +52,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly serverUrl!: pulumi.Output<string>;
+    public readonly subscriptionTierSlug!: pulumi.Output<string>;
 
     /**
      * Create a ContainerRegistry resource with the given unique name, arguments, and options.
@@ -60,7 +61,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ContainerRegistryArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ContainerRegistryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerRegistryArgs | ContainerRegistryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -68,9 +69,14 @@ export class ContainerRegistry extends pulumi.CustomResource {
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["serverUrl"] = state ? state.serverUrl : undefined;
+            inputs["subscriptionTierSlug"] = state ? state.subscriptionTierSlug : undefined;
         } else {
             const args = argsOrState as ContainerRegistryArgs | undefined;
+            if (!args || args.subscriptionTierSlug === undefined) {
+                throw new Error("Missing required property 'subscriptionTierSlug'");
+            }
             inputs["name"] = args ? args.name : undefined;
+            inputs["subscriptionTierSlug"] = args ? args.subscriptionTierSlug : undefined;
             inputs["endpoint"] = undefined /*out*/;
             inputs["serverUrl"] = undefined /*out*/;
         }
@@ -95,6 +101,7 @@ export interface ContainerRegistryState {
      */
     readonly name?: pulumi.Input<string>;
     readonly serverUrl?: pulumi.Input<string>;
+    readonly subscriptionTierSlug?: pulumi.Input<string>;
 }
 
 /**
@@ -105,4 +112,5 @@ export interface ContainerRegistryArgs {
      * The name of the container_registry
      */
     readonly name?: pulumi.Input<string>;
+    readonly subscriptionTierSlug: pulumi.Input<string>;
 }

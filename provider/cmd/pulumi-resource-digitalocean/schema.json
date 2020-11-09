@@ -5497,19 +5497,29 @@
                 },
                 "serverUrl": {
                     "type": "string"
+                },
+                "subscriptionTierSlug": {
+                    "type": "string"
                 }
             },
             "required": [
                 "endpoint",
                 "name",
-                "serverUrl"
+                "serverUrl",
+                "subscriptionTierSlug"
             ],
             "inputProperties": {
                 "name": {
                     "type": "string",
                     "description": "The name of the container_registry\n"
+                },
+                "subscriptionTierSlug": {
+                    "type": "string"
                 }
             },
+            "requiredInputs": [
+                "subscriptionTierSlug"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ContainerRegistry resources.\n",
                 "properties": {
@@ -5521,6 +5531,9 @@
                         "description": "The name of the container_registry\n"
                     },
                     "serverUrl": {
+                        "type": "string"
+                    },
+                    "subscriptionTierSlug": {
                         "type": "string"
                     }
                 },
@@ -9166,6 +9179,9 @@
                     },
                     "serverUrl": {
                         "type": "string"
+                    },
+                    "subscriptionTierSlug": {
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -9173,6 +9189,7 @@
                     "endpoint",
                     "name",
                     "serverUrl",
+                    "subscriptionTierSlug",
                     "id"
                 ]
             }
