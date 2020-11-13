@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// The name of the component
+        /// The name of the component.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

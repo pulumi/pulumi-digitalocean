@@ -75,7 +75,7 @@ import (
 // 			ClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),
 // 			Size:      pulumi.String("s-1vcpu-2gb"),
 // 			AutoScale: pulumi.Bool(true),
-// 			MinNodes:  pulumi.Int(0),
+// 			MinNodes:  pulumi.Int(1),
 // 			MaxNodes:  pulumi.Int(5),
 // 		})
 // 		if err != nil {

@@ -23,8 +23,8 @@ class GetSshKeyResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -40,10 +40,7 @@ class GetSshKeyResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
+    def id(self) -> int:
         return pulumi.get(self, "id")
 
     @property

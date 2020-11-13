@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? InstanceSizeSlug;
         /// <summary>
-        /// The name of the component
+        /// The name of the component.
         /// </summary>
         public readonly string Name;
         public readonly Outputs.GetAppSpecServiceRoutesResult Routes;

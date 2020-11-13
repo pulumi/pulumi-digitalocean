@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Domains;
         /// <summary>
-        /// The name of the component
+        /// The name of the component.
         /// </summary>
         public readonly string Name;
         /// <summary>

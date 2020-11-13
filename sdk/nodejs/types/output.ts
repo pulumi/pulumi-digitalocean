@@ -12,7 +12,7 @@ export interface AppSpec {
      */
     domains?: string[];
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: string;
     /**
@@ -25,15 +25,33 @@ export interface AppSpec {
 }
 
 export interface AppSpecDatabase {
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
     clusterName?: string;
+    /**
+     * The name of the MySQL or PostgreSQL database to configure.
+     */
     dbName?: string;
+    /**
+     * The name of the MySQL or PostgreSQL user to configure.
+     */
     dbUser?: string;
+    /**
+     * The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+     */
     engine?: string;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name?: string;
+    /**
+     * Whether this is a production or dev database.
+     */
     production?: boolean;
+    /**
+     * The version of the database engine.
+     */
     version?: string;
 }
 
@@ -79,7 +97,7 @@ export interface AppSpecService {
      */
     instanceSizeSlug?: string;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: string;
     routes: outputs.AppSpecServiceRoutes;
@@ -206,7 +224,7 @@ export interface AppSpecStaticSite {
      */
     indexDocument?: string;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: string;
     /**
@@ -306,7 +324,7 @@ export interface AppSpecWorker {
      */
     instanceSizeSlug?: string;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: string;
     routes: outputs.AppSpecWorkerRoutes;
@@ -491,7 +509,7 @@ export interface GetAppSpec {
     databases?: outputs.GetAppSpecDatabase[];
     domains?: string[];
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: string;
     region?: string;
@@ -501,15 +519,33 @@ export interface GetAppSpec {
 }
 
 export interface GetAppSpecDatabase {
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
     clusterName?: string;
+    /**
+     * The name of the MySQL or PostgreSQL database to configure.
+     */
     dbName?: string;
+    /**
+     * The name of the MySQL or PostgreSQL user to configure.
+     */
     dbUser?: string;
+    /**
+     * The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+     */
     engine?: string;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name?: string;
+    /**
+     * Whether this is a production or dev database.
+     */
     production?: boolean;
+    /**
+     * The version of the database engine.
+     */
     version?: string;
 }
 
@@ -555,7 +591,7 @@ export interface GetAppSpecService {
      */
     instanceSizeSlug?: string;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: string;
     routes: outputs.GetAppSpecServiceRoutes;
@@ -682,7 +718,7 @@ export interface GetAppSpecStaticSite {
      */
     indexDocument?: string;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: string;
     /**
@@ -782,7 +818,7 @@ export interface GetAppSpecWorker {
      */
     instanceSizeSlug?: string;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: string;
     routes: outputs.GetAppSpecWorkerRoutes;
@@ -1570,6 +1606,40 @@ export interface GetSpacesBucketsSort {
      * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
     key: string;
+}
+
+export interface GetSshKeysFilter {
+    all?: boolean;
+    /**
+     * Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+     */
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetSshKeysSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+     */
+    key: string;
+}
+
+export interface GetSshKeysSshKey {
+    fingerprint: string;
+    /**
+     * The ID of the ssh key.
+     * * `name`: The name of the ssh key.
+     * * `publicKey`: The public key of the ssh key.
+     * * `fingerprint`: The fingerprint of the public key of the ssh key.
+     */
+    id: number;
+    name: string;
+    publicKey: string;
 }
 
 export interface GetTagsFilter {

@@ -25,7 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewContainerRegistry(ctx, "foobar", nil)
+// 		_, err := digitalocean.NewContainerRegistry(ctx, "foobar", &digitalocean.ContainerRegistryArgs{
+// 			SubscriptionTierSlug: pulumi.String("starter"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -38,8 +40,9 @@ type ContainerRegistry struct {
 
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The name of the container_registry
-	Name                 pulumi.StringOutput `pulumi:"name"`
-	ServerUrl            pulumi.StringOutput `pulumi:"serverUrl"`
+	Name      pulumi.StringOutput `pulumi:"name"`
+	ServerUrl pulumi.StringOutput `pulumi:"serverUrl"`
+	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug pulumi.StringOutput `pulumi:"subscriptionTierSlug"`
 }
 
@@ -76,16 +79,18 @@ func GetContainerRegistry(ctx *pulumi.Context,
 type containerRegistryState struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// The name of the container_registry
-	Name                 *string `pulumi:"name"`
-	ServerUrl            *string `pulumi:"serverUrl"`
+	Name      *string `pulumi:"name"`
+	ServerUrl *string `pulumi:"serverUrl"`
+	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug *string `pulumi:"subscriptionTierSlug"`
 }
 
 type ContainerRegistryState struct {
 	Endpoint pulumi.StringPtrInput
 	// The name of the container_registry
-	Name                 pulumi.StringPtrInput
-	ServerUrl            pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	ServerUrl pulumi.StringPtrInput
+	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug pulumi.StringPtrInput
 }
 
@@ -95,14 +100,16 @@ func (ContainerRegistryState) ElementType() reflect.Type {
 
 type containerRegistryArgs struct {
 	// The name of the container_registry
-	Name                 *string `pulumi:"name"`
-	SubscriptionTierSlug string  `pulumi:"subscriptionTierSlug"`
+	Name *string `pulumi:"name"`
+	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+	SubscriptionTierSlug string `pulumi:"subscriptionTierSlug"`
 }
 
 // The set of arguments for constructing a ContainerRegistry resource.
 type ContainerRegistryArgs struct {
 	// The name of the container_registry
-	Name                 pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug pulumi.StringInput
 }
 

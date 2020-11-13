@@ -75,6 +75,11 @@ class App(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         mono_repo_example = digitalocean.App("mono-repo-example", spec=digitalocean.AppSpecArgs(
+            databases=[digitalocean.AppSpecDatabaseArgs(
+                engine="PG",
+                name="starter-db",
+                production=False,
+            )],
             domains=["foo.example.com"],
             name="mono-repo-example",
             region="ams",

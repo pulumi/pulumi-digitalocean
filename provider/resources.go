@@ -271,6 +271,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean_project_resources": {Tok: makeResource(digitalOceanMod, "ProjectResources")},
 			"digitalocean_app":               {Tok: makeResource(digitalOceanMod, "App")},
+			"digitalocean_custom_image":      {Tok: makeResource(digitalOceanMod, "CustomImage")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"digitalocean_certificate":      {Tok: makeDataSource(digitalOceanMod, "getCertificate")},
@@ -327,6 +328,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_app":                   {Tok: makeDataSource(digitalOceanMod, "getApp")},
 			"digitalocean_domains":               {Tok: makeDataSource(digitalOceanMod, "getDomains")},
 			"digitalocean_records":               {Tok: makeDataSource(digitalOceanMod, "getRecords")},
+			"digitalocean_ssh_keys":              {Tok: makeDataSource(digitalOceanMod, "getSshKeys")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

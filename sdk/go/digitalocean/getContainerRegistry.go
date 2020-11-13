@@ -28,9 +28,10 @@ type LookupContainerRegistryResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the container registry
+	Name      string `pulumi:"name"`
+	ServerUrl string `pulumi:"serverUrl"`
+	// The slug identifier for the subscription tier
 	// * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
 	// * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
-	Name                 string `pulumi:"name"`
-	ServerUrl            string `pulumi:"serverUrl"`
 	SubscriptionTierSlug string `pulumi:"subscriptionTierSlug"`
 }

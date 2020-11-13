@@ -51,7 +51,7 @@ import {DropletSlug} from "./index";
  *     clusterId: digitalocean_kubernetes_cluster.foo.id,
  *     size: "s-1vcpu-2gb",
  *     autoScale: true,
- *     minNodes: 0,
+ *     minNodes: 1,
  *     maxNodes: 5,
  * });
  * ```

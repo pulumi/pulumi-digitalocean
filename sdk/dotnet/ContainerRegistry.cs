@@ -26,6 +26,7 @@ namespace Pulumi.DigitalOcean
     ///         // Create a new container registry
     ///         var foobar = new DigitalOcean.ContainerRegistry("foobar", new DigitalOcean.ContainerRegistryArgs
     ///         {
+    ///             SubscriptionTierSlug = "starter",
     ///         });
     ///     }
     /// 
@@ -46,6 +47,9 @@ namespace Pulumi.DigitalOcean
         [Output("serverUrl")]
         public Output<string> ServerUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        /// </summary>
         [Output("subscriptionTierSlug")]
         public Output<string> SubscriptionTierSlug { get; private set; } = null!;
 
@@ -101,6 +105,9 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        /// </summary>
         [Input("subscriptionTierSlug", required: true)]
         public Input<string> SubscriptionTierSlug { get; set; } = null!;
 
@@ -123,6 +130,9 @@ namespace Pulumi.DigitalOcean
         [Input("serverUrl")]
         public Input<string>? ServerUrl { get; set; }
 
+        /// <summary>
+        /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        /// </summary>
         [Input("subscriptionTierSlug")]
         public Input<string>? SubscriptionTierSlug { get; set; }
 

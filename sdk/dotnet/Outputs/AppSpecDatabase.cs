@@ -13,15 +13,33 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class AppSpecDatabase
     {
+        /// <summary>
+        /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        /// </summary>
         public readonly string? ClusterName;
+        /// <summary>
+        /// The name of the MySQL or PostgreSQL database to configure.
+        /// </summary>
         public readonly string? DbName;
+        /// <summary>
+        /// The name of the MySQL or PostgreSQL user to configure.
+        /// </summary>
         public readonly string? DbUser;
+        /// <summary>
+        /// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        /// </summary>
         public readonly string? Engine;
         /// <summary>
-        /// The name of the component
+        /// The name of the component.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Whether this is a production or dev database.
+        /// </summary>
         public readonly bool? Production;
+        /// <summary>
+        /// The version of the database engine.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

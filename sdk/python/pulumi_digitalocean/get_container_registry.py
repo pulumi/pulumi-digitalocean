@@ -54,8 +54,6 @@ class GetContainerRegistryResult:
     def name(self) -> str:
         """
         The name of the container registry
-        * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
-        * `server_url`: The domain of the container registry. Ex: `registry.digitalocean.com`
         """
         return pulumi.get(self, "name")
 
@@ -67,6 +65,11 @@ class GetContainerRegistryResult:
     @property
     @pulumi.getter(name="subscriptionTierSlug")
     def subscription_tier_slug(self) -> str:
+        """
+        The slug identifier for the subscription tier
+        * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+        * `server_url`: The domain of the container registry. Ex: `registry.digitalocean.com`
+        """
         return pulumi.get(self, "subscription_tier_slug")
 
 
