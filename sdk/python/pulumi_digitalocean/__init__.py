@@ -8,6 +8,7 @@ from .cdn import *
 from .certificate import *
 from .container_registry import *
 from .container_registry_docker_credentials import *
+from .custom_image import *
 from .database_cluster import *
 from .database_connection_pool import *
 from .database_db import *
@@ -49,6 +50,7 @@ from .get_spaces_bucket_object import *
 from .get_spaces_bucket_objects import *
 from .get_spaces_buckets import *
 from .get_ssh_key import *
+from .get_ssh_keys import *
 from .get_tag import *
 from .get_tags import *
 from .get_volume import *

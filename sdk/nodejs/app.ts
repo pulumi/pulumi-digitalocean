@@ -65,6 +65,11 @@ import * as utilities from "./utilities";
  *
  * const mono_repo_example = new digitalocean.App("mono-repo-example", {
  *     spec: {
+ *         databases: [{
+ *             engine: "PG",
+ *             name: "starter-db",
+ *             production: false,
+ *         }],
  *         domains: ["foo.example.com"],
  *         name: "mono-repo-example",
  *         region: "ams",

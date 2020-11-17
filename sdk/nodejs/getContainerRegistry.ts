@@ -40,10 +40,13 @@ export interface GetContainerRegistryResult {
     readonly id: string;
     /**
      * The name of the container registry
-     * * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
-     * * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
      */
     readonly name: string;
     readonly serverUrl: string;
+    /**
+     * The slug identifier for the subscription tier
+     * * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+     * * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
+     */
     readonly subscriptionTierSlug: string;
 }

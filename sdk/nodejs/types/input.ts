@@ -12,7 +12,7 @@ export interface AppSpec {
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: pulumi.Input<string>;
     /**
@@ -25,15 +25,33 @@ export interface AppSpec {
 }
 
 export interface AppSpecDatabase {
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
     clusterName?: pulumi.Input<string>;
+    /**
+     * The name of the MySQL or PostgreSQL database to configure.
+     */
     dbName?: pulumi.Input<string>;
+    /**
+     * The name of the MySQL or PostgreSQL user to configure.
+     */
     dbUser?: pulumi.Input<string>;
+    /**
+     * The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+     */
     engine?: pulumi.Input<string>;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether this is a production or dev database.
+     */
     production?: pulumi.Input<boolean>;
+    /**
+     * The version of the database engine.
+     */
     version?: pulumi.Input<string>;
 }
 
@@ -79,7 +97,7 @@ export interface AppSpecService {
      */
     instanceSizeSlug?: pulumi.Input<string>;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: pulumi.Input<string>;
     routes?: pulumi.Input<inputs.AppSpecServiceRoutes>;
@@ -206,7 +224,7 @@ export interface AppSpecStaticSite {
      */
     indexDocument?: pulumi.Input<string>;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: pulumi.Input<string>;
     /**
@@ -306,7 +324,7 @@ export interface AppSpecWorker {
      */
     instanceSizeSlug?: pulumi.Input<string>;
     /**
-     * The name of the component
+     * The name of the component.
      */
     name: pulumi.Input<string>;
     routes?: pulumi.Input<inputs.AppSpecWorkerRoutes>;
@@ -781,6 +799,27 @@ export interface GetSpacesBucketsSort {
     direction?: string;
     /**
      * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     */
+    key: string;
+}
+
+export interface GetSshKeysFilter {
+    all?: boolean;
+    /**
+     * Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+     */
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetSshKeysSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      */
     key: string;
 }

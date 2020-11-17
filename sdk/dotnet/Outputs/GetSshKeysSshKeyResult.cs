@@ -7,39 +7,25 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.DigitalOcean
+namespace Pulumi.DigitalOcean.Outputs
 {
-    public static class GetSshKey
-    {
-        public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithVersion());
-    }
-
-
-    public sealed class GetSshKeyArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// The name of the ssh key.
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
-
-        public GetSshKeyArgs()
-        {
-        }
-    }
-
 
     [OutputType]
-    public sealed class GetSshKeyResult
+    public sealed class GetSshKeysSshKeyResult
     {
         public readonly string Fingerprint;
+        /// <summary>
+        /// The ID of the ssh key.
+        /// * `name`: The name of the ssh key.
+        /// * `public_key`: The public key of the ssh key.
+        /// * `fingerprint`: The fingerprint of the public key of the ssh key.
+        /// </summary>
         public readonly int Id;
         public readonly string Name;
         public readonly string PublicKey;
 
         [OutputConstructor]
-        private GetSshKeyResult(
+        private GetSshKeysSshKeyResult(
             string fingerprint,
 
             int id,

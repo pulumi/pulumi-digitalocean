@@ -31,12 +31,13 @@ class ContainerRegistry(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         # Create a new container registry
-        foobar = digitalocean.ContainerRegistry("foobar")
+        foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the container_registry
+        :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,6 +84,7 @@ class ContainerRegistry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the container_registry
+        :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -115,6 +117,9 @@ class ContainerRegistry(pulumi.CustomResource):
     @property
     @pulumi.getter(name="subscriptionTierSlug")
     def subscription_tier_slug(self) -> pulumi.Output[str]:
+        """
+        The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        """
         return pulumi.get(self, "subscription_tier_slug")
 
     def translate_output_property(self, prop):

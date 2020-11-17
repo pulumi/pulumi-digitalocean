@@ -101,6 +101,13 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := digitalocean.NewApp(ctx, "mono_repo_example", &digitalocean.AppArgs{
 // 			Spec: &digitalocean.AppSpecArgs{
+// 				Databases: digitalocean.AppSpecDatabaseArray{
+// 					&digitalocean.AppSpecDatabaseArgs{
+// 						Engine:     pulumi.String("PG"),
+// 						Name:       pulumi.String("starter-db"),
+// 						Production: pulumi.Bool(false),
+// 					},
+// 				},
 // 				Domains: pulumi.StringArray{
 // 					pulumi.String("foo.example.com"),
 // 				},

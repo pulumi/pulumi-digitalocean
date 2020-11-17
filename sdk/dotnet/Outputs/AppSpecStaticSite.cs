@@ -46,7 +46,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? IndexDocument;
         /// <summary>
-        /// The name of the component
+        /// The name of the component.
         /// </summary>
         public readonly string Name;
         /// <summary>

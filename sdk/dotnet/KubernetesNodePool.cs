@@ -71,7 +71,7 @@ namespace Pulumi.DigitalOcean
     ///             ClusterId = digitalocean_kubernetes_cluster.Foo.Id,
     ///             Size = "s-1vcpu-2gb",
     ///             AutoScale = true,
-    ///             MinNodes = 0,
+    ///             MinNodes = 1,
     ///             MaxNodes = 5,
     ///         });
     ///     }

@@ -34,10 +34,7 @@ export interface GetSshKeyArgs {
  */
 export interface GetSshKeyResult {
     readonly fingerprint: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
+    readonly id: number;
     readonly name: string;
     readonly publicKey: string;
 }

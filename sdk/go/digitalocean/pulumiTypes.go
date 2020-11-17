@@ -14,7 +14,7 @@ type AppSpec struct {
 	Databases []AppSpecDatabase `pulumi:"databases"`
 	// A list of hostnames where the application will be available.
 	Domains []string `pulumi:"domains"`
-	// The name of the component
+	// The name of the component.
 	Name string `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
 	Region      *string             `pulumi:"region"`
@@ -38,7 +38,7 @@ type AppSpecArgs struct {
 	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
 	// A list of hostnames where the application will be available.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
-	// The name of the component
+	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
 	Region      pulumi.StringPtrInput       `pulumi:"region"`
@@ -132,7 +132,7 @@ func (o AppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o AppSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpec) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -191,7 +191,7 @@ func (o AppSpecPtrOutput) Domains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o AppSpecPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpec) *string {
 		if v == nil {
@@ -239,14 +239,20 @@ func (o AppSpecPtrOutput) Workers() AppSpecWorkerArrayOutput {
 }
 
 type AppSpecDatabase struct {
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
 	ClusterName *string `pulumi:"clusterName"`
-	DbName      *string `pulumi:"dbName"`
-	DbUser      *string `pulumi:"dbUser"`
-	Engine      *string `pulumi:"engine"`
-	// The name of the component
-	Name       *string `pulumi:"name"`
-	Production *bool   `pulumi:"production"`
-	Version    *string `pulumi:"version"`
+	// The name of the MySQL or PostgreSQL database to configure.
+	DbName *string `pulumi:"dbName"`
+	// The name of the MySQL or PostgreSQL user to configure.
+	DbUser *string `pulumi:"dbUser"`
+	// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+	Engine *string `pulumi:"engine"`
+	// The name of the component.
+	Name *string `pulumi:"name"`
+	// Whether this is a production or dev database.
+	Production *bool `pulumi:"production"`
+	// The version of the database engine.
+	Version *string `pulumi:"version"`
 }
 
 // AppSpecDatabaseInput is an input type that accepts AppSpecDatabaseArgs and AppSpecDatabaseOutput values.
@@ -261,14 +267,20 @@ type AppSpecDatabaseInput interface {
 }
 
 type AppSpecDatabaseArgs struct {
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
-	DbName      pulumi.StringPtrInput `pulumi:"dbName"`
-	DbUser      pulumi.StringPtrInput `pulumi:"dbUser"`
-	Engine      pulumi.StringPtrInput `pulumi:"engine"`
-	// The name of the component
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Production pulumi.BoolPtrInput   `pulumi:"production"`
-	Version    pulumi.StringPtrInput `pulumi:"version"`
+	// The name of the MySQL or PostgreSQL database to configure.
+	DbName pulumi.StringPtrInput `pulumi:"dbName"`
+	// The name of the MySQL or PostgreSQL user to configure.
+	DbUser pulumi.StringPtrInput `pulumi:"dbUser"`
+	// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// The name of the component.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether this is a production or dev database.
+	Production pulumi.BoolPtrInput `pulumi:"production"`
+	// The version of the database engine.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (AppSpecDatabaseArgs) ElementType() reflect.Type {
@@ -322,31 +334,37 @@ func (o AppSpecDatabaseOutput) ToAppSpecDatabaseOutputWithContext(ctx context.Co
 	return o
 }
 
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
 func (o AppSpecDatabaseOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
+// The name of the MySQL or PostgreSQL database to configure.
 func (o AppSpecDatabaseOutput) DbName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.DbName }).(pulumi.StringPtrOutput)
 }
 
+// The name of the MySQL or PostgreSQL user to configure.
 func (o AppSpecDatabaseOutput) DbUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.DbUser }).(pulumi.StringPtrOutput)
 }
 
+// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
 func (o AppSpecDatabaseOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o AppSpecDatabaseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Whether this is a production or dev database.
 func (o AppSpecDatabaseOutput) Production() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *bool { return v.Production }).(pulumi.BoolPtrOutput)
 }
 
+// The version of the database engine.
 func (o AppSpecDatabaseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -392,7 +410,7 @@ type AppSpecService struct {
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
-	// The name of the component
+	// The name of the component.
 	Name   string                `pulumi:"name"`
 	Routes *AppSpecServiceRoutes `pulumi:"routes"`
 	// An optional run command to override the component's default.
@@ -433,7 +451,7 @@ type AppSpecServiceArgs struct {
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
-	// The name of the component
+	// The name of the component.
 	Name   pulumi.StringInput           `pulumi:"name"`
 	Routes AppSpecServiceRoutesPtrInput `pulumi:"routes"`
 	// An optional run command to override the component's default.
@@ -543,7 +561,7 @@ func (o AppSpecServiceOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o AppSpecServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecService) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1399,7 +1417,7 @@ type AppSpecStaticSite struct {
 	Github *AppSpecStaticSiteGithub `pulumi:"github"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument *string `pulumi:"indexDocument"`
-	// The name of the component
+	// The name of the component.
 	Name string `pulumi:"name"`
 	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
 	OutputDir *string                  `pulumi:"outputDir"`
@@ -1436,7 +1454,7 @@ type AppSpecStaticSiteArgs struct {
 	Github AppSpecStaticSiteGithubPtrInput `pulumi:"github"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
-	// The name of the component
+	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
 	OutputDir pulumi.StringPtrInput           `pulumi:"outputDir"`
@@ -1536,7 +1554,7 @@ func (o AppSpecStaticSiteOutput) IndexDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.IndexDocument }).(pulumi.StringPtrOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o AppSpecStaticSiteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2166,7 +2184,7 @@ type AppSpecWorker struct {
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
-	// The name of the component
+	// The name of the component.
 	Name   string               `pulumi:"name"`
 	Routes *AppSpecWorkerRoutes `pulumi:"routes"`
 	// An optional run command to override the component's default.
@@ -2203,7 +2221,7 @@ type AppSpecWorkerArgs struct {
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
-	// The name of the component
+	// The name of the component.
 	Name   pulumi.StringInput          `pulumi:"name"`
 	Routes AppSpecWorkerRoutesPtrInput `pulumi:"routes"`
 	// An optional run command to override the component's default.
@@ -2303,7 +2321,7 @@ func (o AppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o AppSpecWorkerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorker) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5651,7 +5669,7 @@ func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type GetAppSpec struct {
 	Databases []GetAppSpecDatabase `pulumi:"databases"`
 	Domains   []string             `pulumi:"domains"`
-	// The name of the component
+	// The name of the component.
 	Name        string                 `pulumi:"name"`
 	Region      *string                `pulumi:"region"`
 	Services    []GetAppSpecService    `pulumi:"services"`
@@ -5673,7 +5691,7 @@ type GetAppSpecInput interface {
 type GetAppSpecArgs struct {
 	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
 	Domains   pulumi.StringArrayInput      `pulumi:"domains"`
-	// The name of the component
+	// The name of the component.
 	Name        pulumi.StringInput             `pulumi:"name"`
 	Region      pulumi.StringPtrInput          `pulumi:"region"`
 	Services    GetAppSpecServiceArrayInput    `pulumi:"services"`
@@ -5740,7 +5758,7 @@ func (o GetAppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o GetAppSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpec) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5782,14 +5800,20 @@ func (o GetAppSpecArrayOutput) Index(i pulumi.IntInput) GetAppSpecOutput {
 }
 
 type GetAppSpecDatabase struct {
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
 	ClusterName *string `pulumi:"clusterName"`
-	DbName      *string `pulumi:"dbName"`
-	DbUser      *string `pulumi:"dbUser"`
-	Engine      *string `pulumi:"engine"`
-	// The name of the component
-	Name       *string `pulumi:"name"`
-	Production *bool   `pulumi:"production"`
-	Version    *string `pulumi:"version"`
+	// The name of the MySQL or PostgreSQL database to configure.
+	DbName *string `pulumi:"dbName"`
+	// The name of the MySQL or PostgreSQL user to configure.
+	DbUser *string `pulumi:"dbUser"`
+	// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+	Engine *string `pulumi:"engine"`
+	// The name of the component.
+	Name *string `pulumi:"name"`
+	// Whether this is a production or dev database.
+	Production *bool `pulumi:"production"`
+	// The version of the database engine.
+	Version *string `pulumi:"version"`
 }
 
 // GetAppSpecDatabaseInput is an input type that accepts GetAppSpecDatabaseArgs and GetAppSpecDatabaseOutput values.
@@ -5804,14 +5828,20 @@ type GetAppSpecDatabaseInput interface {
 }
 
 type GetAppSpecDatabaseArgs struct {
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
-	DbName      pulumi.StringPtrInput `pulumi:"dbName"`
-	DbUser      pulumi.StringPtrInput `pulumi:"dbUser"`
-	Engine      pulumi.StringPtrInput `pulumi:"engine"`
-	// The name of the component
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Production pulumi.BoolPtrInput   `pulumi:"production"`
-	Version    pulumi.StringPtrInput `pulumi:"version"`
+	// The name of the MySQL or PostgreSQL database to configure.
+	DbName pulumi.StringPtrInput `pulumi:"dbName"`
+	// The name of the MySQL or PostgreSQL user to configure.
+	DbUser pulumi.StringPtrInput `pulumi:"dbUser"`
+	// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// The name of the component.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether this is a production or dev database.
+	Production pulumi.BoolPtrInput `pulumi:"production"`
+	// The version of the database engine.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetAppSpecDatabaseArgs) ElementType() reflect.Type {
@@ -5865,31 +5895,37 @@ func (o GetAppSpecDatabaseOutput) ToGetAppSpecDatabaseOutputWithContext(ctx cont
 	return o
 }
 
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
 func (o GetAppSpecDatabaseOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
+// The name of the MySQL or PostgreSQL database to configure.
 func (o GetAppSpecDatabaseOutput) DbName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.DbName }).(pulumi.StringPtrOutput)
 }
 
+// The name of the MySQL or PostgreSQL user to configure.
 func (o GetAppSpecDatabaseOutput) DbUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.DbUser }).(pulumi.StringPtrOutput)
 }
 
+// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
 func (o GetAppSpecDatabaseOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o GetAppSpecDatabaseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Whether this is a production or dev database.
 func (o GetAppSpecDatabaseOutput) Production() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *bool { return v.Production }).(pulumi.BoolPtrOutput)
 }
 
+// The version of the database engine.
 func (o GetAppSpecDatabaseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -5935,7 +5971,7 @@ type GetAppSpecService struct {
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
-	// The name of the component
+	// The name of the component.
 	Name   string                  `pulumi:"name"`
 	Routes GetAppSpecServiceRoutes `pulumi:"routes"`
 	// An optional run command to override the component's default.
@@ -5976,7 +6012,7 @@ type GetAppSpecServiceArgs struct {
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
-	// The name of the component
+	// The name of the component.
 	Name   pulumi.StringInput           `pulumi:"name"`
 	Routes GetAppSpecServiceRoutesInput `pulumi:"routes"`
 	// An optional run command to override the component's default.
@@ -6086,7 +6122,7 @@ func (o GetAppSpecServiceOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o GetAppSpecServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecService) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6863,7 +6899,7 @@ type GetAppSpecStaticSite struct {
 	Github *GetAppSpecStaticSiteGithub `pulumi:"github"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument *string `pulumi:"indexDocument"`
-	// The name of the component
+	// The name of the component.
 	Name string `pulumi:"name"`
 	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
 	OutputDir *string                    `pulumi:"outputDir"`
@@ -6900,7 +6936,7 @@ type GetAppSpecStaticSiteArgs struct {
 	Github GetAppSpecStaticSiteGithubPtrInput `pulumi:"github"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
-	// The name of the component
+	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
 	OutputDir pulumi.StringPtrInput           `pulumi:"outputDir"`
@@ -7000,7 +7036,7 @@ func (o GetAppSpecStaticSiteOutput) IndexDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.IndexDocument }).(pulumi.StringPtrOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o GetAppSpecStaticSiteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7551,7 +7587,7 @@ type GetAppSpecWorker struct {
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
-	// The name of the component
+	// The name of the component.
 	Name   string                 `pulumi:"name"`
 	Routes GetAppSpecWorkerRoutes `pulumi:"routes"`
 	// An optional run command to override the component's default.
@@ -7588,7 +7624,7 @@ type GetAppSpecWorkerArgs struct {
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
-	// The name of the component
+	// The name of the component.
 	Name   pulumi.StringInput          `pulumi:"name"`
 	Routes GetAppSpecWorkerRoutesInput `pulumi:"routes"`
 	// An optional run command to override the component's default.
@@ -7688,7 +7724,7 @@ func (o GetAppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
 
-// The name of the component
+// The name of the component.
 func (o GetAppSpecWorkerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -12582,6 +12618,351 @@ func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucke
 	}).(GetSpacesBucketsSortOutput)
 }
 
+type GetSshKeysFilter struct {
+	All *bool `pulumi:"all"`
+	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+	Key     string   `pulumi:"key"`
+	MatchBy *string  `pulumi:"matchBy"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetSshKeysFilterInput is an input type that accepts GetSshKeysFilterArgs and GetSshKeysFilterOutput values.
+// You can construct a concrete instance of `GetSshKeysFilterInput` via:
+//
+//          GetSshKeysFilterArgs{...}
+type GetSshKeysFilterInput interface {
+	pulumi.Input
+
+	ToGetSshKeysFilterOutput() GetSshKeysFilterOutput
+	ToGetSshKeysFilterOutputWithContext(context.Context) GetSshKeysFilterOutput
+}
+
+type GetSshKeysFilterArgs struct {
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+	Key     pulumi.StringInput      `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetSshKeysFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysFilter)(nil)).Elem()
+}
+
+func (i GetSshKeysFilterArgs) ToGetSshKeysFilterOutput() GetSshKeysFilterOutput {
+	return i.ToGetSshKeysFilterOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysFilterArgs) ToGetSshKeysFilterOutputWithContext(ctx context.Context) GetSshKeysFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysFilterOutput)
+}
+
+// GetSshKeysFilterArrayInput is an input type that accepts GetSshKeysFilterArray and GetSshKeysFilterArrayOutput values.
+// You can construct a concrete instance of `GetSshKeysFilterArrayInput` via:
+//
+//          GetSshKeysFilterArray{ GetSshKeysFilterArgs{...} }
+type GetSshKeysFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput
+	ToGetSshKeysFilterArrayOutputWithContext(context.Context) GetSshKeysFilterArrayOutput
+}
+
+type GetSshKeysFilterArray []GetSshKeysFilterInput
+
+func (GetSshKeysFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysFilter)(nil)).Elem()
+}
+
+func (i GetSshKeysFilterArray) ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput {
+	return i.ToGetSshKeysFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysFilterArray) ToGetSshKeysFilterArrayOutputWithContext(ctx context.Context) GetSshKeysFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysFilterArrayOutput)
+}
+
+type GetSshKeysFilterOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysFilter)(nil)).Elem()
+}
+
+func (o GetSshKeysFilterOutput) ToGetSshKeysFilterOutput() GetSshKeysFilterOutput {
+	return o
+}
+
+func (o GetSshKeysFilterOutput) ToGetSshKeysFilterOutputWithContext(ctx context.Context) GetSshKeysFilterOutput {
+	return o
+}
+
+func (o GetSshKeysFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSshKeysFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+func (o GetSshKeysFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetSshKeysFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSshKeysFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSshKeysFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSshKeysFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetSshKeysFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysFilter)(nil)).Elem()
+}
+
+func (o GetSshKeysFilterArrayOutput) ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput {
+	return o
+}
+
+func (o GetSshKeysFilterArrayOutput) ToGetSshKeysFilterArrayOutputWithContext(ctx context.Context) GetSshKeysFilterArrayOutput {
+	return o
+}
+
+func (o GetSshKeysFilterArrayOutput) Index(i pulumi.IntInput) GetSshKeysFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysFilter {
+		return vs[0].([]GetSshKeysFilter)[vs[1].(int)]
+	}).(GetSshKeysFilterOutput)
+}
+
+type GetSshKeysSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+	Key string `pulumi:"key"`
+}
+
+// GetSshKeysSortInput is an input type that accepts GetSshKeysSortArgs and GetSshKeysSortOutput values.
+// You can construct a concrete instance of `GetSshKeysSortInput` via:
+//
+//          GetSshKeysSortArgs{...}
+type GetSshKeysSortInput interface {
+	pulumi.Input
+
+	ToGetSshKeysSortOutput() GetSshKeysSortOutput
+	ToGetSshKeysSortOutputWithContext(context.Context) GetSshKeysSortOutput
+}
+
+type GetSshKeysSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetSshKeysSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysSort)(nil)).Elem()
+}
+
+func (i GetSshKeysSortArgs) ToGetSshKeysSortOutput() GetSshKeysSortOutput {
+	return i.ToGetSshKeysSortOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysSortArgs) ToGetSshKeysSortOutputWithContext(ctx context.Context) GetSshKeysSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSortOutput)
+}
+
+// GetSshKeysSortArrayInput is an input type that accepts GetSshKeysSortArray and GetSshKeysSortArrayOutput values.
+// You can construct a concrete instance of `GetSshKeysSortArrayInput` via:
+//
+//          GetSshKeysSortArray{ GetSshKeysSortArgs{...} }
+type GetSshKeysSortArrayInput interface {
+	pulumi.Input
+
+	ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput
+	ToGetSshKeysSortArrayOutputWithContext(context.Context) GetSshKeysSortArrayOutput
+}
+
+type GetSshKeysSortArray []GetSshKeysSortInput
+
+func (GetSshKeysSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysSort)(nil)).Elem()
+}
+
+func (i GetSshKeysSortArray) ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput {
+	return i.ToGetSshKeysSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysSortArray) ToGetSshKeysSortArrayOutputWithContext(ctx context.Context) GetSshKeysSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSortArrayOutput)
+}
+
+type GetSshKeysSortOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysSort)(nil)).Elem()
+}
+
+func (o GetSshKeysSortOutput) ToGetSshKeysSortOutput() GetSshKeysSortOutput {
+	return o
+}
+
+func (o GetSshKeysSortOutput) ToGetSshKeysSortOutputWithContext(ctx context.Context) GetSshKeysSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetSshKeysSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSshKeysSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+func (o GetSshKeysSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetSshKeysSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysSort)(nil)).Elem()
+}
+
+func (o GetSshKeysSortArrayOutput) ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput {
+	return o
+}
+
+func (o GetSshKeysSortArrayOutput) ToGetSshKeysSortArrayOutputWithContext(ctx context.Context) GetSshKeysSortArrayOutput {
+	return o
+}
+
+func (o GetSshKeysSortArrayOutput) Index(i pulumi.IntInput) GetSshKeysSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysSort {
+		return vs[0].([]GetSshKeysSort)[vs[1].(int)]
+	}).(GetSshKeysSortOutput)
+}
+
+type GetSshKeysSshKey struct {
+	Fingerprint string `pulumi:"fingerprint"`
+	// The ID of the ssh key.
+	// * `name`: The name of the ssh key.
+	// * `publicKey`: The public key of the ssh key.
+	// * `fingerprint`: The fingerprint of the public key of the ssh key.
+	Id        int    `pulumi:"id"`
+	Name      string `pulumi:"name"`
+	PublicKey string `pulumi:"publicKey"`
+}
+
+// GetSshKeysSshKeyInput is an input type that accepts GetSshKeysSshKeyArgs and GetSshKeysSshKeyOutput values.
+// You can construct a concrete instance of `GetSshKeysSshKeyInput` via:
+//
+//          GetSshKeysSshKeyArgs{...}
+type GetSshKeysSshKeyInput interface {
+	pulumi.Input
+
+	ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput
+	ToGetSshKeysSshKeyOutputWithContext(context.Context) GetSshKeysSshKeyOutput
+}
+
+type GetSshKeysSshKeyArgs struct {
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// The ID of the ssh key.
+	// * `name`: The name of the ssh key.
+	// * `publicKey`: The public key of the ssh key.
+	// * `fingerprint`: The fingerprint of the public key of the ssh key.
+	Id        pulumi.IntInput    `pulumi:"id"`
+	Name      pulumi.StringInput `pulumi:"name"`
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (GetSshKeysSshKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysSshKey)(nil)).Elem()
+}
+
+func (i GetSshKeysSshKeyArgs) ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput {
+	return i.ToGetSshKeysSshKeyOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysSshKeyArgs) ToGetSshKeysSshKeyOutputWithContext(ctx context.Context) GetSshKeysSshKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSshKeyOutput)
+}
+
+// GetSshKeysSshKeyArrayInput is an input type that accepts GetSshKeysSshKeyArray and GetSshKeysSshKeyArrayOutput values.
+// You can construct a concrete instance of `GetSshKeysSshKeyArrayInput` via:
+//
+//          GetSshKeysSshKeyArray{ GetSshKeysSshKeyArgs{...} }
+type GetSshKeysSshKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput
+	ToGetSshKeysSshKeyArrayOutputWithContext(context.Context) GetSshKeysSshKeyArrayOutput
+}
+
+type GetSshKeysSshKeyArray []GetSshKeysSshKeyInput
+
+func (GetSshKeysSshKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysSshKey)(nil)).Elem()
+}
+
+func (i GetSshKeysSshKeyArray) ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput {
+	return i.ToGetSshKeysSshKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysSshKeyArray) ToGetSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetSshKeysSshKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSshKeyArrayOutput)
+}
+
+type GetSshKeysSshKeyOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysSshKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysSshKey)(nil)).Elem()
+}
+
+func (o GetSshKeysSshKeyOutput) ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput {
+	return o
+}
+
+func (o GetSshKeysSshKeyOutput) ToGetSshKeysSshKeyOutputWithContext(ctx context.Context) GetSshKeysSshKeyOutput {
+	return o
+}
+
+func (o GetSshKeysSshKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The ID of the ssh key.
+// * `name`: The name of the ssh key.
+// * `publicKey`: The public key of the ssh key.
+// * `fingerprint`: The fingerprint of the public key of the ssh key.
+func (o GetSshKeysSshKeyOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSshKeysSshKey) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetSshKeysSshKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetSshKeysSshKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type GetSshKeysSshKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysSshKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysSshKey)(nil)).Elem()
+}
+
+func (o GetSshKeysSshKeyArrayOutput) ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput {
+	return o
+}
+
+func (o GetSshKeysSshKeyArrayOutput) ToGetSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetSshKeysSshKeyArrayOutput {
+	return o
+}
+
+func (o GetSshKeysSshKeyArrayOutput) Index(i pulumi.IntInput) GetSshKeysSshKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysSshKey {
+		return vs[0].([]GetSshKeysSshKey)[vs[1].(int)]
+	}).(GetSshKeysSshKeyOutput)
+}
+
 type GetTagsFilter struct {
 	// Set to `true` to require that a field match all of the `values` instead of just one or more of
 	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -13144,6 +13525,12 @@ func init() {
 	pulumi.RegisterOutputType(GetSpacesBucketsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsSortOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetSshKeysFilterOutput{})
+	pulumi.RegisterOutputType(GetSshKeysFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSshKeysSortOutput{})
+	pulumi.RegisterOutputType(GetSshKeysSortArrayOutput{})
+	pulumi.RegisterOutputType(GetSshKeysSshKeyOutput{})
+	pulumi.RegisterOutputType(GetSshKeysSshKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetTagsFilterOutput{})
 	pulumi.RegisterOutputType(GetTagsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetTagsSortOutput{})

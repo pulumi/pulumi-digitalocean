@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly ImmutableArray<Outputs.GetAppSpecDatabaseResult> Databases;
         public readonly ImmutableArray<string> Domains;
         /// <summary>
-        /// The name of the component
+        /// The name of the component.
         /// </summary>
         public readonly string Name;
         public readonly string? Region;

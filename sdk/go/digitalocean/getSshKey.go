@@ -25,8 +25,7 @@ type LookupSshKeyArgs struct {
 // A collection of values returned by getSshKey.
 type LookupSshKeyResult struct {
 	Fingerprint string `pulumi:"fingerprint"`
-	// The provider-assigned unique ID for this managed resource.
-	Id        string `pulumi:"id"`
-	Name      string `pulumi:"name"`
-	PublicKey string `pulumi:"publicKey"`
+	Id          int    `pulumi:"id"`
+	Name        string `pulumi:"name"`
+	PublicKey   string `pulumi:"publicKey"`
 }

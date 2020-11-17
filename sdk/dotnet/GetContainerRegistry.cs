@@ -40,11 +40,14 @@ namespace Pulumi.DigitalOcean
         public readonly string Id;
         /// <summary>
         /// The name of the container registry
-        /// * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
-        /// * `server_url`: The domain of the container registry. Ex: `registry.digitalocean.com`
         /// </summary>
         public readonly string Name;
         public readonly string ServerUrl;
+        /// <summary>
+        /// The slug identifier for the subscription tier
+        /// * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+        /// * `server_url`: The domain of the container registry. Ex: `registry.digitalocean.com`
+        /// </summary>
         public readonly string SubscriptionTierSlug;
 
         [OutputConstructor]

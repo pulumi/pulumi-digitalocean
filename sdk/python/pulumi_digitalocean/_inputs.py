@@ -60,6 +60,8 @@ __all__ = [
     'GetSizesSortArgs',
     'GetSpacesBucketsFilterArgs',
     'GetSpacesBucketsSortArgs',
+    'GetSshKeysFilterArgs',
+    'GetSshKeysSortArgs',
     'GetTagsFilterArgs',
     'GetTagsSortArgs',
 ]
@@ -75,7 +77,7 @@ class AppSpecArgs:
                  static_sites: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]] = None,
                  workers: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of hostnames where the application will be available.
         :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
         """
@@ -97,7 +99,7 @@ class AppSpecArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component
+        The name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -177,7 +179,13 @@ class AppSpecDatabaseArgs:
                  production: Optional[pulumi.Input[bool]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[str] cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param pulumi.Input[str] db_name: The name of the MySQL or PostgreSQL database to configure.
+        :param pulumi.Input[str] db_user: The name of the MySQL or PostgreSQL user to configure.
+        :param pulumi.Input[str] engine: The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[bool] production: Whether this is a production or dev database.
+        :param pulumi.Input[str] version: The version of the database engine.
         """
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
@@ -197,6 +205,9 @@ class AppSpecDatabaseArgs:
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
@@ -206,6 +217,9 @@ class AppSpecDatabaseArgs:
     @property
     @pulumi.getter(name="dbName")
     def db_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the MySQL or PostgreSQL database to configure.
+        """
         return pulumi.get(self, "db_name")
 
     @db_name.setter
@@ -215,6 +229,9 @@ class AppSpecDatabaseArgs:
     @property
     @pulumi.getter(name="dbUser")
     def db_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the MySQL or PostgreSQL user to configure.
+        """
         return pulumi.get(self, "db_user")
 
     @db_user.setter
@@ -224,6 +241,9 @@ class AppSpecDatabaseArgs:
     @property
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        """
         return pulumi.get(self, "engine")
 
     @engine.setter
@@ -234,7 +254,7 @@ class AppSpecDatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the component
+        The name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -245,6 +265,9 @@ class AppSpecDatabaseArgs:
     @property
     @pulumi.getter
     def production(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this is a production or dev database.
+        """
         return pulumi.get(self, "production")
 
     @production.setter
@@ -254,6 +277,9 @@ class AppSpecDatabaseArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the database engine.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -279,7 +305,7 @@ class AppSpecServiceArgs:
                  run_command: Optional[pulumi.Input[str]] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
@@ -325,7 +351,7 @@ class AppSpecServiceArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component
+        The name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -794,7 +820,7 @@ class AppSpecStaticSiteArgs:
                  routes: Optional[pulumi.Input['AppSpecStaticSiteRoutesArgs']] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
@@ -834,7 +860,7 @@ class AppSpecStaticSiteArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component
+        The name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -1176,7 +1202,7 @@ class AppSpecWorkerArgs:
                  run_command: Optional[pulumi.Input[str]] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component
+        :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
@@ -1216,7 +1242,7 @@ class AppSpecWorkerArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component
+        The name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -3971,6 +3997,101 @@ class GetSpacesBucketsSortArgs:
     def key(self) -> str:
         """
         Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+
+@pulumi.input_type
+class GetSshKeysFilterArgs:
+    def __init__(__self__, *,
+                 key: str,
+                 values: Sequence[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
+        """
+        :param str key: Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[bool]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetSshKeysSortArgs:
+    def __init__(__self__, *,
+                 key: str,
+                 direction: Optional[str] = None):
+        """
+        :param str key: Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        :param str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
         """
         return pulumi.get(self, "key")
 

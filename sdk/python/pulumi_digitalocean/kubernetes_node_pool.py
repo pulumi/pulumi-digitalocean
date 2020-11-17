@@ -70,7 +70,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             cluster_id=digitalocean_kubernetes_cluster["foo"]["id"],
             size="s-1vcpu-2gb",
             auto_scale=True,
-            min_nodes=0,
+            min_nodes=1,
             max_nodes=5)
         ```
 

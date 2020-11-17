@@ -15,7 +15,9 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * // Create a new container registry
- * const foobar = new digitalocean.ContainerRegistry("foobar", {});
+ * const foobar = new digitalocean.ContainerRegistry("foobar", {
+ *     subscriptionTierSlug: "starter",
+ * });
  * ```
  */
 export class ContainerRegistry extends pulumi.CustomResource {
@@ -52,6 +54,9 @@ export class ContainerRegistry extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly serverUrl!: pulumi.Output<string>;
+    /**
+     * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+     */
     public readonly subscriptionTierSlug!: pulumi.Output<string>;
 
     /**
@@ -101,6 +106,9 @@ export interface ContainerRegistryState {
      */
     readonly name?: pulumi.Input<string>;
     readonly serverUrl?: pulumi.Input<string>;
+    /**
+     * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+     */
     readonly subscriptionTierSlug?: pulumi.Input<string>;
 }
 
@@ -112,5 +120,8 @@ export interface ContainerRegistryArgs {
      * The name of the container_registry
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+     */
     readonly subscriptionTierSlug: pulumi.Input<string>;
 }

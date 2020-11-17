@@ -102,6 +102,15 @@ namespace Pulumi.DigitalOcean
     ///         {
     ///             Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///             {
+    ///                 Databases = 
+    ///                 {
+    ///                     new DigitalOcean.Inputs.AppSpecDatabaseArgs
+    ///                     {
+    ///                         Engine = "PG",
+    ///                         Name = "starter-db",
+    ///                         Production = false,
+    ///                     },
+    ///                 },
     ///                 Domains = 
     ///                 {
     ///                     "foo.example.com",
