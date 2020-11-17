@@ -47,7 +47,7 @@ jobs:
       with:
         dotnet-version: ${{matrix.dotnetverson}}
     - name: Setup Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2.1.4
       with:
         python-version: ${{matrix.pythonversion}}
     - name: Download provider + tfgen binaries
@@ -278,7 +278,7 @@ jobs:
     - name: Setup DotNet
       uses: actions/setup-dotnet@v1
     - name: Setup Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2.1.4
     - name: Download Python SDK
       uses: actions/download-artifact@v2
       with:
@@ -347,7 +347,7 @@ jobs:
       with:
         dotnet-version: ${{matrix.dotnetverson}}
     - name: Setup Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2.1.4
       with:
         python-version: ${{matrix.pythonversion}}
     - name: Download provider + tfgen binaries
