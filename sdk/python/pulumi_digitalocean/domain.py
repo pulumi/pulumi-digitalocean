@@ -35,6 +35,14 @@ class Domain(pulumi.CustomResource):
             ip_address=digitalocean_droplet["foo"]["ipv4_address"])
         ```
 
+        ## Import
+
+        Domains can be imported using the `domain name`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_address: The IP address of the domain. If specified, this IP

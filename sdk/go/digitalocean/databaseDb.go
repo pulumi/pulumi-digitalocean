@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,6 +44,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Database can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example
+//
+// ```sh
+//  $ pulumi import digitalocean:index:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
 // ```
 type DatabaseDb struct {
 	pulumi.CustomResourceState
@@ -118,4 +127,43 @@ type DatabaseDbArgs struct {
 
 func (DatabaseDbArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseDbArgs)(nil)).Elem()
+}
+
+type DatabaseDbInput interface {
+	pulumi.Input
+
+	ToDatabaseDbOutput() DatabaseDbOutput
+	ToDatabaseDbOutputWithContext(ctx context.Context) DatabaseDbOutput
+}
+
+func (DatabaseDb) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseDb)(nil)).Elem()
+}
+
+func (i DatabaseDb) ToDatabaseDbOutput() DatabaseDbOutput {
+	return i.ToDatabaseDbOutputWithContext(context.Background())
+}
+
+func (i DatabaseDb) ToDatabaseDbOutputWithContext(ctx context.Context) DatabaseDbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbOutput)
+}
+
+type DatabaseDbOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseDbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseDbOutput)(nil)).Elem()
+}
+
+func (o DatabaseDbOutput) ToDatabaseDbOutput() DatabaseDbOutput {
+	return o
+}
+
+func (o DatabaseDbOutput) ToDatabaseDbOutputWithContext(ctx context.Context) DatabaseDbOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseDbOutput{})
 }

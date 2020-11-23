@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,6 +88,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Database clusters can be imported using the `id` returned from DigitalOcean, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
 // ```
 type DatabaseCluster struct {
 	pulumi.CustomResourceState
@@ -315,4 +324,43 @@ type DatabaseClusterArgs struct {
 
 func (DatabaseClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseClusterArgs)(nil)).Elem()
+}
+
+type DatabaseClusterInput interface {
+	pulumi.Input
+
+	ToDatabaseClusterOutput() DatabaseClusterOutput
+	ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput
+}
+
+func (DatabaseCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseCluster)(nil)).Elem()
+}
+
+func (i DatabaseCluster) ToDatabaseClusterOutput() DatabaseClusterOutput {
+	return i.ToDatabaseClusterOutputWithContext(context.Background())
+}
+
+func (i DatabaseCluster) ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterOutput)
+}
+
+type DatabaseClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseClusterOutput)(nil)).Elem()
+}
+
+func (o DatabaseClusterOutput) ToDatabaseClusterOutput() DatabaseClusterOutput {
+	return o
+}
+
+func (o DatabaseClusterOutput) ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseClusterOutput{})
 }

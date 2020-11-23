@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -64,6 +63,14 @@ import * as utilities from "./utilities";
  *         value: web.id,
  *     }],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Database firewalls can be imported using the `id` of the target database cluster For example
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
  * ```
  */
 export class DatabaseFirewall extends pulumi.CustomResource {

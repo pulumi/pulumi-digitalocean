@@ -89,6 +89,14 @@ class SpacesBucket(pulumi.CustomResource):
             region="nyc3")
         ```
 
+        ## Import
+
+        Buckets can be imported using the `region` and `name` attributes (delimited by a comma)
+
+        ```sh
+         $ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)

@@ -26,6 +26,14 @@ import * as utilities from "./utilities";
  *     tags: [foobar.id],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Tags can be imported using the `name`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/tag:Tag mytag tagname
+ * ```
  */
 export class Tag extends pulumi.CustomResource {
     /**

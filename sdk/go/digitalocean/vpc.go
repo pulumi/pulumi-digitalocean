@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,6 +73,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// A VPC can be imported using its `id`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
 // ```
 type Vpc struct {
 	pulumi.CustomResourceState
@@ -185,4 +194,43 @@ type VpcArgs struct {
 
 func (VpcArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcArgs)(nil)).Elem()
+}
+
+type VpcInput interface {
+	pulumi.Input
+
+	ToVpcOutput() VpcOutput
+	ToVpcOutputWithContext(ctx context.Context) VpcOutput
+}
+
+func (Vpc) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vpc)(nil)).Elem()
+}
+
+func (i Vpc) ToVpcOutput() VpcOutput {
+	return i.ToVpcOutputWithContext(context.Background())
+}
+
+func (i Vpc) ToVpcOutputWithContext(ctx context.Context) VpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcOutput)
+}
+
+type VpcOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcOutput)(nil)).Elem()
+}
+
+func (o VpcOutput) ToVpcOutput() VpcOutput {
+	return o
+}
+
+func (o VpcOutput) ToVpcOutputWithContext(ctx context.Context) VpcOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcOutput{})
 }

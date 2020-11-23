@@ -24,7 +24,14 @@ class Project(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Project resource with the given unique name, props, and options.
+        ## Import
+
+        Projects can be imported using the `id` returned from DigitalOcean, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: the description of the project

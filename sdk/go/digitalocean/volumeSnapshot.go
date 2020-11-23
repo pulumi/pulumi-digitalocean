@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -41,6 +42,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Volume Snapshots can be imported using the `snapshot id`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
 // ```
 type VolumeSnapshot struct {
 	pulumi.CustomResourceState
@@ -150,4 +159,43 @@ type VolumeSnapshotArgs struct {
 
 func (VolumeSnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeSnapshotArgs)(nil)).Elem()
+}
+
+type VolumeSnapshotInput interface {
+	pulumi.Input
+
+	ToVolumeSnapshotOutput() VolumeSnapshotOutput
+	ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput
+}
+
+func (VolumeSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSnapshot)(nil)).Elem()
+}
+
+func (i VolumeSnapshot) ToVolumeSnapshotOutput() VolumeSnapshotOutput {
+	return i.ToVolumeSnapshotOutputWithContext(context.Background())
+}
+
+func (i VolumeSnapshot) ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotOutput)
+}
+
+type VolumeSnapshotOutput struct {
+	*pulumi.OutputState
+}
+
+func (VolumeSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSnapshotOutput)(nil)).Elem()
+}
+
+func (o VolumeSnapshotOutput) ToVolumeSnapshotOutput() VolumeSnapshotOutput {
+	return o
+}
+
+func (o VolumeSnapshotOutput) ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VolumeSnapshotOutput{})
 }

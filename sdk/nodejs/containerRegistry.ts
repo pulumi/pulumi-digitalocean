@@ -19,6 +19,14 @@ import * as utilities from "./utilities";
  *     subscriptionTierSlug: "starter",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Container Registries can be imported using the `name`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
+ * ```
  */
 export class ContainerRegistry extends pulumi.CustomResource {
     /**

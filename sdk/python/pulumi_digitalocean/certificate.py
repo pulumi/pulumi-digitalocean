@@ -80,6 +80,14 @@ class Certificate(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Certificates can be imported using the certificate `name`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain

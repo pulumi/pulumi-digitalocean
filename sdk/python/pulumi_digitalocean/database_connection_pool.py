@@ -47,6 +47,14 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             user="doadmin")
         ```
 
+        ## Import
+
+        Database connection pools can be imported using the `id` of the source database cluster and the `name` of the connection pool joined with a comma. For example
+
+        ```sh
+         $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the source database cluster. Note: This must be a PostgreSQL cluster.

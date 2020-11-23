@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,6 +86,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
+// ```
+//
+//  NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource.
 type KubernetesNodePool struct {
 	pulumi.CustomResourceState
 
@@ -244,4 +255,43 @@ type KubernetesNodePoolArgs struct {
 
 func (KubernetesNodePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesNodePoolArgs)(nil)).Elem()
+}
+
+type KubernetesNodePoolInput interface {
+	pulumi.Input
+
+	ToKubernetesNodePoolOutput() KubernetesNodePoolOutput
+	ToKubernetesNodePoolOutputWithContext(ctx context.Context) KubernetesNodePoolOutput
+}
+
+func (KubernetesNodePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesNodePool)(nil)).Elem()
+}
+
+func (i KubernetesNodePool) ToKubernetesNodePoolOutput() KubernetesNodePoolOutput {
+	return i.ToKubernetesNodePoolOutputWithContext(context.Background())
+}
+
+func (i KubernetesNodePool) ToKubernetesNodePoolOutputWithContext(ctx context.Context) KubernetesNodePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolOutput)
+}
+
+type KubernetesNodePoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesNodePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesNodePoolOutput)(nil)).Elem()
+}
+
+func (o KubernetesNodePoolOutput) ToKubernetesNodePoolOutput() KubernetesNodePoolOutput {
+	return o
+}
+
+func (o KubernetesNodePoolOutput) ToKubernetesNodePoolOutputWithContext(ctx context.Context) KubernetesNodePoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KubernetesNodePoolOutput{})
 }

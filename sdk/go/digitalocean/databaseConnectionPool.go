@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,6 +48,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Database connection pools can be imported using the `id` of the source database cluster and the `name` of the connection pool joined with a comma. For example
+//
+// ```sh
+//  $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
 // ```
 type DatabaseConnectionPool struct {
 	pulumi.CustomResourceState
@@ -210,4 +219,43 @@ type DatabaseConnectionPoolArgs struct {
 
 func (DatabaseConnectionPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseConnectionPoolArgs)(nil)).Elem()
+}
+
+type DatabaseConnectionPoolInput interface {
+	pulumi.Input
+
+	ToDatabaseConnectionPoolOutput() DatabaseConnectionPoolOutput
+	ToDatabaseConnectionPoolOutputWithContext(ctx context.Context) DatabaseConnectionPoolOutput
+}
+
+func (DatabaseConnectionPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConnectionPool)(nil)).Elem()
+}
+
+func (i DatabaseConnectionPool) ToDatabaseConnectionPoolOutput() DatabaseConnectionPoolOutput {
+	return i.ToDatabaseConnectionPoolOutputWithContext(context.Background())
+}
+
+func (i DatabaseConnectionPool) ToDatabaseConnectionPoolOutputWithContext(ctx context.Context) DatabaseConnectionPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolOutput)
+}
+
+type DatabaseConnectionPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseConnectionPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConnectionPoolOutput)(nil)).Elem()
+}
+
+func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolOutput() DatabaseConnectionPoolOutput {
+	return o
+}
+
+func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolOutputWithContext(ctx context.Context) DatabaseConnectionPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseConnectionPoolOutput{})
 }

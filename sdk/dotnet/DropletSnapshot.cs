@@ -36,6 +36,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Droplet Snapshots can be imported using the `snapshot id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
+    /// ```
     /// </summary>
     public partial class DropletSnapshot : Pulumi.CustomResource
     {

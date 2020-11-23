@@ -104,6 +104,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Certificates can be imported using the certificate `name`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
+    /// ```
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {

@@ -41,6 +41,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Floating IPs can be imported using the `ip`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+    /// ```
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource
     {

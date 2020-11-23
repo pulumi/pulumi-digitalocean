@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 import {Algorithm, Region} from "./index";
@@ -73,6 +72,14 @@ import {Algorithm, Region} from "./index";
  *     },
  *     dropletIds: [web.id],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Load Balancers can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
  * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {

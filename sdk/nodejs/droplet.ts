@@ -24,6 +24,14 @@ import {DropletSlug, Region} from "./index";
  *     size: "s-1vcpu-1gb",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Droplets can be imported using the Droplet `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+ * ```
  */
 export class Droplet extends pulumi.CustomResource {
     /**

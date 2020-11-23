@@ -51,6 +51,14 @@ namespace Pulumi.DigitalOcean
     ///     public Output&lt;string&gt; MxFqdn { get; set; }
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Records can be imported using the domain name and record `id` when joined with a comma. See the following example
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
+    /// ```
     /// </summary>
     public partial class DnsRecord : Pulumi.CustomResource
     {

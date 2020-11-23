@@ -4,12 +4,20 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+// ```
 type KubernetesCluster struct {
 	pulumi.CustomResourceState
 
@@ -195,4 +203,43 @@ type KubernetesClusterArgs struct {
 
 func (KubernetesClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesClusterArgs)(nil)).Elem()
+}
+
+type KubernetesClusterInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterOutput() KubernetesClusterOutput
+	ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput
+}
+
+func (KubernetesCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesCluster)(nil)).Elem()
+}
+
+func (i KubernetesCluster) ToKubernetesClusterOutput() KubernetesClusterOutput {
+	return i.ToKubernetesClusterOutputWithContext(context.Background())
+}
+
+func (i KubernetesCluster) ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterOutput)
+}
+
+type KubernetesClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterOutput)(nil)).Elem()
+}
+
+func (o KubernetesClusterOutput) ToKubernetesClusterOutput() KubernetesClusterOutput {
+	return o
+}
+
+func (o KubernetesClusterOutput) ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KubernetesClusterOutput{})
 }

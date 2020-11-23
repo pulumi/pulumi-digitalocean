@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Droplets can be imported using the Droplet `id`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
 // ```
 type Droplet struct {
 	pulumi.CustomResourceState
@@ -362,4 +371,43 @@ type DropletArgs struct {
 
 func (DropletArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dropletArgs)(nil)).Elem()
+}
+
+type DropletInput interface {
+	pulumi.Input
+
+	ToDropletOutput() DropletOutput
+	ToDropletOutputWithContext(ctx context.Context) DropletOutput
+}
+
+func (Droplet) ElementType() reflect.Type {
+	return reflect.TypeOf((*Droplet)(nil)).Elem()
+}
+
+func (i Droplet) ToDropletOutput() DropletOutput {
+	return i.ToDropletOutputWithContext(context.Background())
+}
+
+func (i Droplet) ToDropletOutputWithContext(ctx context.Context) DropletOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletOutput)
+}
+
+type DropletOutput struct {
+	*pulumi.OutputState
+}
+
+func (DropletOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletOutput)(nil)).Elem()
+}
+
+func (o DropletOutput) ToDropletOutput() DropletOutput {
+	return o
+}
+
+func (o DropletOutput) ToDropletOutputWithContext(ctx context.Context) DropletOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DropletOutput{})
 }

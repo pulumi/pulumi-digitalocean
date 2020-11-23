@@ -22,6 +22,14 @@ import {Region} from "./index";
  * });
  * const web_snapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
  * ```
+ *
+ * ## Import
+ *
+ * Droplet Snapshots can be imported using the `snapshot id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
+ * ```
  */
 export class DropletSnapshot extends pulumi.CustomResource {
     /**

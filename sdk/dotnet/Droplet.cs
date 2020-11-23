@@ -35,6 +35,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Droplets can be imported using the Droplet `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+    /// ```
     /// </summary>
     public partial class Droplet : Pulumi.CustomResource
     {

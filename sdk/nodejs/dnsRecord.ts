@@ -32,6 +32,14 @@ import {RecordType} from "./index";
  * export const wwwFqdn = www.fqdn;
  * export const mxFqdn = mx.fqdn;
  * ```
+ *
+ * ## Import
+ *
+ * Records can be imported using the domain name and record `id` when joined with a comma. See the following example
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
+ * ```
  */
 export class DnsRecord extends pulumi.CustomResource {
     /**

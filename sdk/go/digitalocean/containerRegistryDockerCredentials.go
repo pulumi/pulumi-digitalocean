@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -159,4 +160,43 @@ type ContainerRegistryDockerCredentialsArgs struct {
 
 func (ContainerRegistryDockerCredentialsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerRegistryDockerCredentialsArgs)(nil)).Elem()
+}
+
+type ContainerRegistryDockerCredentialsInput interface {
+	pulumi.Input
+
+	ToContainerRegistryDockerCredentialsOutput() ContainerRegistryDockerCredentialsOutput
+	ToContainerRegistryDockerCredentialsOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsOutput
+}
+
+func (ContainerRegistryDockerCredentials) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistryDockerCredentials)(nil)).Elem()
+}
+
+func (i ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredentialsOutput() ContainerRegistryDockerCredentialsOutput {
+	return i.ToContainerRegistryDockerCredentialsOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredentialsOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsOutput)
+}
+
+type ContainerRegistryDockerCredentialsOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerRegistryDockerCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistryDockerCredentialsOutput)(nil)).Elem()
+}
+
+func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCredentialsOutput() ContainerRegistryDockerCredentialsOutput {
+	return o
+}
+
+func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCredentialsOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ContainerRegistryDockerCredentialsOutput{})
 }

@@ -43,6 +43,14 @@ class FloatingIp(pulumi.CustomResource):
             region=foobar_droplet.region)
         ```
 
+        ## Import
+
+        Floating IPs can be imported using the `ip`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.

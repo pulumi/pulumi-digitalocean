@@ -19,6 +19,14 @@ import * as utilities from "./utilities";
  *     ipAddress: digitalocean_droplet.foo.ipv4_address,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Domains can be imported using the `domain name`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
+ * ```
  */
 export class Domain extends pulumi.CustomResource {
     /**

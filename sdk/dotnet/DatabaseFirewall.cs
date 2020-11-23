@@ -94,6 +94,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Database firewalls can be imported using the `id` of the target database cluster For example
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+    /// ```
     /// </summary>
     public partial class DatabaseFirewall : Pulumi.CustomResource
     {

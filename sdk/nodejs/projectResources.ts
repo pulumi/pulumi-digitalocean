@@ -4,6 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * Importing this resource is not supported.
+ */
 export class ProjectResources extends pulumi.CustomResource {
     /**
      * Get an existing ProjectResources resource's state with the given name, ID, and optional extra

@@ -44,6 +44,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Tags can be imported using the `name`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/tag:Tag mytag tagname
+    /// ```
     /// </summary>
     public partial class Tag : Pulumi.CustomResource
     {

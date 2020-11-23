@@ -77,6 +77,14 @@ class DatabaseFirewall(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Database firewalls can be imported using the `id` of the target database cluster For example
+
+        ```sh
+         $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the target database cluster.

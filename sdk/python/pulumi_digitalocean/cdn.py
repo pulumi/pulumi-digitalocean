@@ -62,6 +62,14 @@ class Cdn(pulumi.CustomResource):
             certificate_name=cert.name)
         ```
 
+        ## Import
+
+        CDN Endpoints can be imported using the CDN `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_id: **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -88,7 +96,7 @@ class Cdn(pulumi.CustomResource):
             __props__ = dict()
 
             if certificate_id is not None:
-                warnings.warn("Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.", DeprecationWarning)
+                warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.")
             __props__['certificate_id'] = certificate_id
             __props__['certificate_name'] = certificate_name

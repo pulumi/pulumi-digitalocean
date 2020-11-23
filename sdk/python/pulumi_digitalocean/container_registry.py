@@ -34,6 +34,14 @@ class ContainerRegistry(pulumi.CustomResource):
         foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
         ```
 
+        ## Import
+
+        Container Registries can be imported using the `name`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the container_registry
