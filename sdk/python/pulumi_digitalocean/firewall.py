@@ -101,6 +101,14 @@ class Firewall(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        Firewalls can be imported using the firewall `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned

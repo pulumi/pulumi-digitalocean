@@ -32,6 +32,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Domains can be imported using the `domain name`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
+    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

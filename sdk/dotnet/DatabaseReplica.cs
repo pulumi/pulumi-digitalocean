@@ -40,6 +40,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Database replicas can be imported using the `id` of the source database cluster and the `name` of the replica joined with a comma. For example
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica
+    /// ```
     /// </summary>
     public partial class DatabaseReplica : Pulumi.CustomResource
     {

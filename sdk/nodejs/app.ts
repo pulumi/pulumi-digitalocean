@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -108,6 +107,14 @@ import * as utilities from "./utilities";
  *         }],
  *     },
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * An app can be imported using its `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
  * ```
  */
 export class App extends pulumi.CustomResource {

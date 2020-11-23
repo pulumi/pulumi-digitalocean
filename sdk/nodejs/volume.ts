@@ -47,6 +47,14 @@ import {FilesystemType, Region} from "./index";
  *     snapshotId: foobarVolumeSnapshot.then(foobarVolumeSnapshot => foobarVolumeSnapshot.id),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Volumes can be imported using the `volume id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/volume:Volume volume 506f78a4-e098-11e5-ad9f-000f53306ae1
+ * ```
  */
 export class Volume extends pulumi.CustomResource {
     /**

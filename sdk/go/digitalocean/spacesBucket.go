@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -116,6 +117,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Buckets can be imported using the `region` and `name` attributes (delimited by a comma)
+//
+// ```sh
+//  $ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
 // ```
 type SpacesBucket struct {
 	pulumi.CustomResourceState
@@ -250,4 +259,43 @@ type SpacesBucketArgs struct {
 
 func (SpacesBucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*spacesBucketArgs)(nil)).Elem()
+}
+
+type SpacesBucketInput interface {
+	pulumi.Input
+
+	ToSpacesBucketOutput() SpacesBucketOutput
+	ToSpacesBucketOutputWithContext(ctx context.Context) SpacesBucketOutput
+}
+
+func (SpacesBucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucket)(nil)).Elem()
+}
+
+func (i SpacesBucket) ToSpacesBucketOutput() SpacesBucketOutput {
+	return i.ToSpacesBucketOutputWithContext(context.Background())
+}
+
+func (i SpacesBucket) ToSpacesBucketOutputWithContext(ctx context.Context) SpacesBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketOutput)
+}
+
+type SpacesBucketOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpacesBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketOutput)(nil)).Elem()
+}
+
+func (o SpacesBucketOutput) ToSpacesBucketOutput() SpacesBucketOutput {
+	return o
+}
+
+func (o SpacesBucketOutput) ToSpacesBucketOutputWithContext(ctx context.Context) SpacesBucketOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpacesBucketOutput{})
 }

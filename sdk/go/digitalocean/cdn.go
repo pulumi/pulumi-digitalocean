@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,6 +83,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CDN Endpoints can be imported using the CDN `id`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
 // ```
 type Cdn struct {
 	pulumi.CustomResourceState
@@ -209,4 +218,43 @@ type CdnArgs struct {
 
 func (CdnArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cdnArgs)(nil)).Elem()
+}
+
+type CdnInput interface {
+	pulumi.Input
+
+	ToCdnOutput() CdnOutput
+	ToCdnOutputWithContext(ctx context.Context) CdnOutput
+}
+
+func (Cdn) ElementType() reflect.Type {
+	return reflect.TypeOf((*Cdn)(nil)).Elem()
+}
+
+func (i Cdn) ToCdnOutput() CdnOutput {
+	return i.ToCdnOutputWithContext(context.Background())
+}
+
+func (i Cdn) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnOutput)
+}
+
+type CdnOutput struct {
+	*pulumi.OutputState
+}
+
+func (CdnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnOutput)(nil)).Elem()
+}
+
+func (o CdnOutput) ToCdnOutput() CdnOutput {
+	return o
+}
+
+func (o CdnOutput) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CdnOutput{})
 }

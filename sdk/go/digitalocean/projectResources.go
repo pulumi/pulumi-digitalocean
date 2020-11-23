@@ -4,12 +4,16 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Importing this resource is not supported.
 type ProjectResources struct {
 	pulumi.CustomResourceState
 
@@ -87,4 +91,43 @@ type ProjectResourcesArgs struct {
 
 func (ProjectResourcesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectResourcesArgs)(nil)).Elem()
+}
+
+type ProjectResourcesInput interface {
+	pulumi.Input
+
+	ToProjectResourcesOutput() ProjectResourcesOutput
+	ToProjectResourcesOutputWithContext(ctx context.Context) ProjectResourcesOutput
+}
+
+func (ProjectResources) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectResources)(nil)).Elem()
+}
+
+func (i ProjectResources) ToProjectResourcesOutput() ProjectResourcesOutput {
+	return i.ToProjectResourcesOutputWithContext(context.Background())
+}
+
+func (i ProjectResources) ToProjectResourcesOutputWithContext(ctx context.Context) ProjectResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesOutput)
+}
+
+type ProjectResourcesOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectResourcesOutput)(nil)).Elem()
+}
+
+func (o ProjectResourcesOutput) ToProjectResourcesOutput() ProjectResourcesOutput {
+	return o
+}
+
+func (o ProjectResourcesOutput) ToProjectResourcesOutputWithContext(ctx context.Context) ProjectResourcesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectResourcesOutput{})
 }

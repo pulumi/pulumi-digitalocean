@@ -50,6 +50,14 @@ class Droplet(pulumi.CustomResource):
             size="s-1vcpu-1gb")
         ```
 
+        ## Import
+
+        Droplets can be imported using the Droplet `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to

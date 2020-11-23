@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -52,6 +53,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Records can be imported using the domain name and record `id` when joined with a comma. See the following example
+//
+// ```sh
+//  $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
 // ```
 type DnsRecord struct {
 	pulumi.CustomResourceState
@@ -219,4 +228,43 @@ type DnsRecordArgs struct {
 
 func (DnsRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsRecordArgs)(nil)).Elem()
+}
+
+type DnsRecordInput interface {
+	pulumi.Input
+
+	ToDnsRecordOutput() DnsRecordOutput
+	ToDnsRecordOutputWithContext(ctx context.Context) DnsRecordOutput
+}
+
+func (DnsRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsRecord)(nil)).Elem()
+}
+
+func (i DnsRecord) ToDnsRecordOutput() DnsRecordOutput {
+	return i.ToDnsRecordOutputWithContext(context.Background())
+}
+
+func (i DnsRecord) ToDnsRecordOutputWithContext(ctx context.Context) DnsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordOutput)
+}
+
+type DnsRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (DnsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsRecordOutput)(nil)).Elem()
+}
+
+func (o DnsRecordOutput) ToDnsRecordOutput() DnsRecordOutput {
+	return o
+}
+
+func (o DnsRecordOutput) ToDnsRecordOutputWithContext(ctx context.Context) DnsRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DnsRecordOutput{})
 }

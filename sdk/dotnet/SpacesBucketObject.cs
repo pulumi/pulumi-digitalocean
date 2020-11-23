@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Importing this resource is not supported.
+    /// </summary>
     public partial class SpacesBucketObject : Pulumi.CustomResource
     {
         /// <summary>

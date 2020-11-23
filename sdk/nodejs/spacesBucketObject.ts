@@ -4,6 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * Importing this resource is not supported.
+ */
 export class SpacesBucketObject extends pulumi.CustomResource {
     /**
      * Get an existing SpacesBucketObject resource's state with the given name, ID, and optional extra

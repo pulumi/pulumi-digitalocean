@@ -46,6 +46,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// SSH Keys can be imported using the `ssh key id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
+    /// ```
     /// </summary>
     public partial class SshKey : Pulumi.CustomResource
     {

@@ -4,12 +4,16 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Importing this resource is not supported.
 type SpacesBucketObject struct {
 	pulumi.CustomResourceState
 
@@ -251,4 +255,43 @@ type SpacesBucketObjectArgs struct {
 
 func (SpacesBucketObjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*spacesBucketObjectArgs)(nil)).Elem()
+}
+
+type SpacesBucketObjectInput interface {
+	pulumi.Input
+
+	ToSpacesBucketObjectOutput() SpacesBucketObjectOutput
+	ToSpacesBucketObjectOutputWithContext(ctx context.Context) SpacesBucketObjectOutput
+}
+
+func (SpacesBucketObject) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketObject)(nil)).Elem()
+}
+
+func (i SpacesBucketObject) ToSpacesBucketObjectOutput() SpacesBucketObjectOutput {
+	return i.ToSpacesBucketObjectOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketObject) ToSpacesBucketObjectOutputWithContext(ctx context.Context) SpacesBucketObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectOutput)
+}
+
+type SpacesBucketObjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpacesBucketObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketObjectOutput)(nil)).Elem()
+}
+
+func (o SpacesBucketObjectOutput) ToSpacesBucketObjectOutput() SpacesBucketObjectOutput {
+	return o
+}
+
+func (o SpacesBucketObjectOutput) ToSpacesBucketObjectOutputWithContext(ctx context.Context) SpacesBucketObjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpacesBucketObjectOutput{})
 }

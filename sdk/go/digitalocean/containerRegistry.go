@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -34,6 +35,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Container Registries can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
 // ```
 type ContainerRegistry struct {
 	pulumi.CustomResourceState
@@ -115,4 +124,43 @@ type ContainerRegistryArgs struct {
 
 func (ContainerRegistryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerRegistryArgs)(nil)).Elem()
+}
+
+type ContainerRegistryInput interface {
+	pulumi.Input
+
+	ToContainerRegistryOutput() ContainerRegistryOutput
+	ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput
+}
+
+func (ContainerRegistry) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistry)(nil)).Elem()
+}
+
+func (i ContainerRegistry) ToContainerRegistryOutput() ContainerRegistryOutput {
+	return i.ToContainerRegistryOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistry) ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOutput)
+}
+
+type ContainerRegistryOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistryOutput)(nil)).Elem()
+}
+
+func (o ContainerRegistryOutput) ToContainerRegistryOutput() ContainerRegistryOutput {
+	return o
+}
+
+func (o ContainerRegistryOutput) ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ContainerRegistryOutput{})
 }

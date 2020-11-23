@@ -72,6 +72,14 @@ class DatabaseCluster(pulumi.CustomResource):
             version="5")
         ```
 
+        ## Import
+
+        Database clusters can be imported using the `id` returned from DigitalOcean, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).

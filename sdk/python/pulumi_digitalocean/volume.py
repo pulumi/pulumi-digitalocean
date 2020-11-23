@@ -63,6 +63,14 @@ class Volume(pulumi.CustomResource):
             snapshot_id=foobar_volume_snapshot.id)
         ```
 
+        ## Import
+
+        Volumes can be imported using the `volume id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/volume:Volume volume 506f78a4-e098-11e5-ad9f-000f53306ae1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
@@ -94,7 +102,7 @@ class Volume(pulumi.CustomResource):
 
             __props__['description'] = description
             if filesystem_type is not None:
-                warnings.warn("This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.", DeprecationWarning)
+                warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
                 pulumi.log.warn("filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.")
             __props__['filesystem_type'] = filesystem_type
             __props__['initial_filesystem_label'] = initial_filesystem_label

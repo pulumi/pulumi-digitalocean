@@ -36,6 +36,14 @@ class DropletSnapshot(pulumi.CustomResource):
         web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
         ```
 
+        ## Import
+
+        Droplet Snapshots can be imported using the `snapshot id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] droplet_id: The ID of the Droplet from which the snapshot will be taken.

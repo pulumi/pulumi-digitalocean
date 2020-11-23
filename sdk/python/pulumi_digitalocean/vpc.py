@@ -56,6 +56,14 @@ class Vpc(pulumi.CustomResource):
             vpc_uuid=example_vpc.id)
         ```
 
+        ## Import
+
+        A VPC can be imported using its `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text field up to a limit of 255 characters to describe the VPC.

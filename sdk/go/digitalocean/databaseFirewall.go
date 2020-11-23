@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -103,6 +104,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Database firewalls can be imported using the `id` of the target database cluster For example
+//
+// ```sh
+//  $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+// ```
 type DatabaseFirewall struct {
 	pulumi.CustomResourceState
 
@@ -180,4 +189,43 @@ type DatabaseFirewallArgs struct {
 
 func (DatabaseFirewallArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseFirewallArgs)(nil)).Elem()
+}
+
+type DatabaseFirewallInput interface {
+	pulumi.Input
+
+	ToDatabaseFirewallOutput() DatabaseFirewallOutput
+	ToDatabaseFirewallOutputWithContext(ctx context.Context) DatabaseFirewallOutput
+}
+
+func (DatabaseFirewall) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseFirewall)(nil)).Elem()
+}
+
+func (i DatabaseFirewall) ToDatabaseFirewallOutput() DatabaseFirewallOutput {
+	return i.ToDatabaseFirewallOutputWithContext(context.Background())
+}
+
+func (i DatabaseFirewall) ToDatabaseFirewallOutputWithContext(ctx context.Context) DatabaseFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallOutput)
+}
+
+type DatabaseFirewallOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseFirewallOutput)(nil)).Elem()
+}
+
+func (o DatabaseFirewallOutput) ToDatabaseFirewallOutput() DatabaseFirewallOutput {
+	return o
+}
+
+func (o DatabaseFirewallOutput) ToDatabaseFirewallOutputWithContext(ctx context.Context) DatabaseFirewallOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseFirewallOutput{})
 }

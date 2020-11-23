@@ -21,7 +21,10 @@ class ProjectResources(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ProjectResources resource with the given unique name, props, and options.
+        ## Import
+
+        Importing this resource is not supported.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: the ID of the project

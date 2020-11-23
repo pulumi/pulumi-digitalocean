@@ -27,6 +27,14 @@ import * as utilities from "./utilities";
  *     region: foobarDroplet.region,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Floating IPs can be imported using the `ip`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+ * ```
  */
 export class FloatingIp extends pulumi.CustomResource {
     /**

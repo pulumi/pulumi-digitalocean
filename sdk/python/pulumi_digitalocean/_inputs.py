@@ -2499,7 +2499,7 @@ class LoadBalancerForwardingRuleArgs:
         pulumi.set(__self__, "target_port", target_port)
         pulumi.set(__self__, "target_protocol", target_protocol)
         if certificate_id is not None:
-            warnings.warn("Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.", DeprecationWarning)
+            warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
             pulumi.log.warn("certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.")
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)

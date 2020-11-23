@@ -53,6 +53,14 @@ class DnsRecord(pulumi.CustomResource):
         pulumi.export("mxFqdn", mx.fqdn)
         ```
 
+        ## Import
+
+        Records can be imported using the domain name and record `id` when joined with a comma. See the following example
+
+        ```sh
+         $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to.

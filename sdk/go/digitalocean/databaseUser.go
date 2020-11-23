@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
+//
+// ```sh
+//  $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
 // ```
 type DatabaseUser struct {
 	pulumi.CustomResourceState
@@ -142,4 +151,43 @@ type DatabaseUserArgs struct {
 
 func (DatabaseUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseUserArgs)(nil)).Elem()
+}
+
+type DatabaseUserInput interface {
+	pulumi.Input
+
+	ToDatabaseUserOutput() DatabaseUserOutput
+	ToDatabaseUserOutputWithContext(ctx context.Context) DatabaseUserOutput
+}
+
+func (DatabaseUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUser)(nil)).Elem()
+}
+
+func (i DatabaseUser) ToDatabaseUserOutput() DatabaseUserOutput {
+	return i.ToDatabaseUserOutputWithContext(context.Background())
+}
+
+func (i DatabaseUser) ToDatabaseUserOutputWithContext(ctx context.Context) DatabaseUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseUserOutput)
+}
+
+type DatabaseUserOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUserOutput)(nil)).Elem()
+}
+
+func (o DatabaseUserOutput) ToDatabaseUserOutput() DatabaseUserOutput {
+	return o
+}
+
+func (o DatabaseUserOutput) ToDatabaseUserOutputWithContext(ctx context.Context) DatabaseUserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseUserOutput{})
 }

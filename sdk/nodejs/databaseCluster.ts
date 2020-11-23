@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 import {DatabaseSlug, Region} from "./index";
@@ -50,6 +49,14 @@ import {DatabaseSlug, Region} from "./index";
  *     size: "db-s-1vcpu-1gb",
  *     version: "5",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Database clusters can be imported using the `id` returned from DigitalOcean, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
  * ```
  */
 export class DatabaseCluster extends pulumi.CustomResource {

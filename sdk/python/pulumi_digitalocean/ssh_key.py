@@ -42,6 +42,14 @@ class SshKey(pulumi.CustomResource):
             ssh_keys=[default.fingerprint])
         ```
 
+        ## Import
+
+        SSH Keys can be imported using the `ssh key id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the SSH key for identification

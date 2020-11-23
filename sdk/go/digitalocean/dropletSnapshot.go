@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -41,6 +42,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Droplet Snapshots can be imported using the `snapshot id`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
 // ```
 type DropletSnapshot struct {
 	pulumi.CustomResourceState
@@ -140,4 +149,43 @@ type DropletSnapshotArgs struct {
 
 func (DropletSnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dropletSnapshotArgs)(nil)).Elem()
+}
+
+type DropletSnapshotInput interface {
+	pulumi.Input
+
+	ToDropletSnapshotOutput() DropletSnapshotOutput
+	ToDropletSnapshotOutputWithContext(ctx context.Context) DropletSnapshotOutput
+}
+
+func (DropletSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletSnapshot)(nil)).Elem()
+}
+
+func (i DropletSnapshot) ToDropletSnapshotOutput() DropletSnapshotOutput {
+	return i.ToDropletSnapshotOutputWithContext(context.Background())
+}
+
+func (i DropletSnapshot) ToDropletSnapshotOutputWithContext(ctx context.Context) DropletSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotOutput)
+}
+
+type DropletSnapshotOutput struct {
+	*pulumi.OutputState
+}
+
+func (DropletSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletSnapshotOutput)(nil)).Elem()
+}
+
+func (o DropletSnapshotOutput) ToDropletSnapshotOutput() DropletSnapshotOutput {
+	return o
+}
+
+func (o DropletSnapshotOutput) ToDropletSnapshotOutputWithContext(ctx context.Context) DropletSnapshotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DropletSnapshotOutput{})
 }

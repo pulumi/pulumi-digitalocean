@@ -24,6 +24,14 @@ import * as utilities from "./utilities";
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
  * ```
+ *
+ * ## Import
+ *
+ * Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+ * ```
  */
 export class DatabaseUser extends pulumi.CustomResource {
     /**

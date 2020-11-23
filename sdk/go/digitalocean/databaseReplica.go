@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Database replicas can be imported using the `id` of the source database cluster and the `name` of the replica joined with a comma. For example
+//
+// ```sh
+//  $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica
 // ```
 type DatabaseReplica struct {
 	pulumi.CustomResourceState
@@ -198,4 +207,43 @@ type DatabaseReplicaArgs struct {
 
 func (DatabaseReplicaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseReplicaArgs)(nil)).Elem()
+}
+
+type DatabaseReplicaInput interface {
+	pulumi.Input
+
+	ToDatabaseReplicaOutput() DatabaseReplicaOutput
+	ToDatabaseReplicaOutputWithContext(ctx context.Context) DatabaseReplicaOutput
+}
+
+func (DatabaseReplica) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseReplica)(nil)).Elem()
+}
+
+func (i DatabaseReplica) ToDatabaseReplicaOutput() DatabaseReplicaOutput {
+	return i.ToDatabaseReplicaOutputWithContext(context.Background())
+}
+
+func (i DatabaseReplica) ToDatabaseReplicaOutputWithContext(ctx context.Context) DatabaseReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseReplicaOutput)
+}
+
+type DatabaseReplicaOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseReplicaOutput)(nil)).Elem()
+}
+
+func (o DatabaseReplicaOutput) ToDatabaseReplicaOutput() DatabaseReplicaOutput {
+	return o
+}
+
+func (o DatabaseReplicaOutput) ToDatabaseReplicaOutputWithContext(ctx context.Context) DatabaseReplicaOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseReplicaOutput{})
 }

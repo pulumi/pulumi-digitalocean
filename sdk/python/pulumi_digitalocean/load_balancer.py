@@ -94,6 +94,14 @@ class LoadBalancer(pulumi.CustomResource):
             droplet_ids=[web.id])
         ```
 
+        ## Import
+
+        Load Balancers can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine

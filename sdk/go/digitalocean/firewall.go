@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -11,6 +12,14 @@ import (
 
 // Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
 // modify, and delete Firewalls.
+//
+// ## Import
+//
+// Firewalls can be imported using the firewall `id`, e.g.
+//
+// ```sh
+//  $ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
+// ```
 type Firewall struct {
 	pulumi.CustomResourceState
 
@@ -160,4 +169,43 @@ type FirewallArgs struct {
 
 func (FirewallArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallArgs)(nil)).Elem()
+}
+
+type FirewallInput interface {
+	pulumi.Input
+
+	ToFirewallOutput() FirewallOutput
+	ToFirewallOutputWithContext(ctx context.Context) FirewallOutput
+}
+
+func (Firewall) ElementType() reflect.Type {
+	return reflect.TypeOf((*Firewall)(nil)).Elem()
+}
+
+func (i Firewall) ToFirewallOutput() FirewallOutput {
+	return i.ToFirewallOutputWithContext(context.Background())
+}
+
+func (i Firewall) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallOutput)
+}
+
+type FirewallOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallOutput)(nil)).Elem()
+}
+
+func (o FirewallOutput) ToFirewallOutput() FirewallOutput {
+	return o
+}
+
+func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallOutput{})
 }
