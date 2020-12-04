@@ -20,7 +20,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthchecks=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, status=None, sticky_sessions=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthchecks=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, size=None, status=None, sticky_sessions=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -60,6 +60,9 @@ class GetLoadBalancerResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if size and not isinstance(size, str):
+            raise TypeError("Expected argument 'size' to be a str")
+        pulumi.set(__self__, "size", size)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -140,6 +143,11 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter
+    def size(self) -> str:
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
     def status(self) -> str:
         return pulumi.get(self, "status")
 
@@ -173,6 +181,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             name=self.name,
             redirect_http_to_https=self.redirect_http_to_https,
             region=self.region,
+            size=self.size,
             status=self.status,
             sticky_sessions=self.sticky_sessions,
             vpc_uuid=self.vpc_uuid)
@@ -207,6 +216,7 @@ def get_load_balancer(name: Optional[str] = None,
         name=__ret__.name,
         redirect_http_to_https=__ret__.redirect_http_to_https,
         region=__ret__.region,
+        size=__ret__.size,
         status=__ret__.status,
         sticky_sessions=__ret__.sticky_sessions,
         vpc_uuid=__ret__.vpc_uuid)

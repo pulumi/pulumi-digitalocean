@@ -38,6 +38,7 @@ type LookupLoadBalancerResult struct {
 	Name                string                         `pulumi:"name"`
 	RedirectHttpToHttps bool                           `pulumi:"redirectHttpToHttps"`
 	Region              string                         `pulumi:"region"`
+	Size                string                         `pulumi:"size"`
 	Status              string                         `pulumi:"status"`
 	StickySessions      []GetLoadBalancerStickySession `pulumi:"stickySessions"`
 	VpcUuid             string                         `pulumi:"vpcUuid"`
