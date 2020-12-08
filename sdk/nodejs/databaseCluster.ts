@@ -47,7 +47,7 @@ import {DatabaseSlug, Region} from "./index";
  *     nodeCount: 1,
  *     region: "nyc1",
  *     size: "db-s-1vcpu-1gb",
- *     version: "5",
+ *     version: "6",
  * });
  * ```
  *
@@ -144,7 +144,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<Region>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
      */
     public readonly size!: pulumi.Output<DatabaseSlug>;
     /**
@@ -307,7 +307,7 @@ export interface DatabaseClusterState {
      */
     readonly region?: pulumi.Input<Region>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
      */
     readonly size?: pulumi.Input<DatabaseSlug>;
     /**
@@ -365,7 +365,7 @@ export interface DatabaseClusterArgs {
      */
     readonly region: pulumi.Input<Region>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
      */
     readonly size: pulumi.Input<DatabaseSlug>;
     /**

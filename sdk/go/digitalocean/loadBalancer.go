@@ -55,7 +55,9 @@ type LoadBalancer struct {
 	RedirectHttpToHttps pulumi.BoolPtrOutput `pulumi:"redirectHttpToHttps"`
 	// The region to start in
 	Region pulumi.StringOutput `pulumi:"region"`
-	Status pulumi.StringOutput `pulumi:"status"`
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+	Size   pulumi.StringPtrOutput `pulumi:"size"`
+	Status pulumi.StringOutput    `pulumi:"status"`
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
@@ -128,6 +130,8 @@ type loadBalancerState struct {
 	RedirectHttpToHttps *bool `pulumi:"redirectHttpToHttps"`
 	// The region to start in
 	Region *string `pulumi:"region"`
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+	Size   *string `pulumi:"size"`
 	Status *string `pulumi:"status"`
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
@@ -168,6 +172,8 @@ type LoadBalancerState struct {
 	RedirectHttpToHttps pulumi.BoolPtrInput
 	// The region to start in
 	Region pulumi.StringPtrInput
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+	Size   pulumi.StringPtrInput
 	Status pulumi.StringPtrInput
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
@@ -209,6 +215,8 @@ type loadBalancerArgs struct {
 	RedirectHttpToHttps *bool `pulumi:"redirectHttpToHttps"`
 	// The region to start in
 	Region string `pulumi:"region"`
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+	Size *string `pulumi:"size"`
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
@@ -246,6 +254,8 @@ type LoadBalancerArgs struct {
 	RedirectHttpToHttps pulumi.BoolPtrInput
 	// The region to start in
 	Region pulumi.StringInput
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+	Size pulumi.StringPtrInput
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput

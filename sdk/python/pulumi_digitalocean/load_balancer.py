@@ -27,6 +27,7 @@ class LoadBalancer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
                  sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -122,6 +123,7 @@ class LoadBalancer(pulumi.CustomResource):
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[str] region: The region to start in
+        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
         :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
@@ -157,6 +159,7 @@ class LoadBalancer(pulumi.CustomResource):
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
+            __props__['size'] = size
             __props__['sticky_sessions'] = sticky_sessions
             __props__['vpc_uuid'] = vpc_uuid
             __props__['ip'] = None
@@ -184,6 +187,7 @@ class LoadBalancer(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
             vpc_uuid: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
@@ -213,6 +217,7 @@ class LoadBalancer(pulumi.CustomResource):
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[str] region: The region to start in
+        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
         :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
@@ -233,6 +238,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["name"] = name
         __props__["redirect_http_to_https"] = redirect_http_to_https
         __props__["region"] = region
+        __props__["size"] = size
         __props__["status"] = status
         __props__["sticky_sessions"] = sticky_sessions
         __props__["vpc_uuid"] = vpc_uuid
@@ -338,6 +344,14 @@ class LoadBalancer(pulumi.CustomResource):
         The region to start in
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Output[Optional[str]]:
+        """
+        The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        """
+        return pulumi.get(self, "size")
 
     @property
     @pulumi.getter

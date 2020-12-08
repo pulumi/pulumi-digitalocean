@@ -48,6 +48,7 @@ export interface GetLoadBalancerResult {
     readonly name: string;
     readonly redirectHttpToHttps: boolean;
     readonly region: string;
+    readonly size: string;
     readonly status: string;
     readonly stickySessions: outputs.GetLoadBalancerStickySession[];
     readonly vpcUuid: string;

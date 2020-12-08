@@ -80,7 +80,7 @@ import (
 // 			NodeCount: pulumi.Int(1),
 // 			Region:    pulumi.String("nyc1"),
 // 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Version:   pulumi.String("5"),
+// 			Version:   pulumi.String("6"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -128,7 +128,7 @@ type DatabaseCluster struct {
 	PrivateUri pulumi.StringOutput `pulumi:"privateUri"`
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrOutput `pulumi:"sqlMode"`
@@ -210,7 +210,7 @@ type databaseClusterState struct {
 	PrivateUri *string `pulumi:"privateUri"`
 	// DigitalOcean region where the cluster will reside.
 	Region *string `pulumi:"region"`
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
 	Size *string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
@@ -253,7 +253,7 @@ type DatabaseClusterState struct {
 	PrivateUri pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringPtrInput
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
 	Size pulumi.StringPtrInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
@@ -286,7 +286,7 @@ type databaseClusterArgs struct {
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
 	Size string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
@@ -312,7 +312,7 @@ type DatabaseClusterArgs struct {
 	PrivateNetworkUuid pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringInput
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
 	Size pulumi.StringInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput

@@ -198,6 +198,12 @@ namespace Pulumi.DigitalOcean
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        /// </summary>
+        [Output("size")]
+        public Output<string?> Size { get; private set; } = null!;
+
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -341,6 +347,12 @@ namespace Pulumi.DigitalOcean
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        /// </summary>
+        [Input("size")]
+        public Input<string>? Size { get; set; }
+
+        /// <summary>
         /// A `sticky_sessions` block to be assigned to the
         /// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         /// </summary>
@@ -448,6 +460,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        /// </summary>
+        [Input("size")]
+        public Input<string>? Size { get; set; }
 
         [Input("status")]
         public Input<string>? Status { get; set; }

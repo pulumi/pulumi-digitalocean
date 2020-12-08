@@ -163,6 +163,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The region to start in
      */
     public readonly region!: pulumi.Output<Region>;
+    /**
+     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+     */
+    public readonly size!: pulumi.Output<string | undefined>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A `stickySessions` block to be assigned to the
@@ -198,6 +202,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["size"] = state ? state.size : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["stickySessions"] = state ? state.stickySessions : undefined;
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
@@ -219,6 +224,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["size"] = args ? args.size : undefined;
             inputs["stickySessions"] = args ? args.stickySessions : undefined;
             inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             inputs["ip"] = undefined /*out*/;
@@ -293,6 +299,10 @@ export interface LoadBalancerState {
      * The region to start in
      */
     readonly region?: pulumi.Input<Region>;
+    /**
+     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+     */
+    readonly size?: pulumi.Input<string>;
     readonly status?: pulumi.Input<string>;
     /**
      * A `stickySessions` block to be assigned to the
@@ -357,6 +367,10 @@ export interface LoadBalancerArgs {
      * The region to start in
      */
     readonly region: pulumi.Input<Region>;
+    /**
+     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+     */
+    readonly size?: pulumi.Input<string>;
     /**
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.

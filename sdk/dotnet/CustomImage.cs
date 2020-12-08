@@ -10,7 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// Provides a resource which can be used to create a custom Image from a URL
+    /// Provides a resource which can be used to create a [custom image](https://www.digitalocean.com/docs/images/custom-images/)
+    /// from a URL. The URL must point to an image in one of the following file formats:
+    /// 
+    /// - Raw (.img) with an MBR or GPT partition table
+    /// - qcow2
+    /// - VHDX
+    /// - VDI
+    /// - VMDK
+    /// 
+    /// The image may be compressed using gzip or bzip2. See the DigitalOcean Custom
+    /// Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
     /// 
     /// ## Example Usage
     /// 
@@ -24,11 +34,21 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         var flatcar = new DigitalOcean.CustomImage("flatcar", new DigitalOcean.CustomImageArgs
     ///         {
+    ///             Url = "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
     ///             Regions = 
     ///             {
     ///                 "nyc3",
     ///             },
-    ///             Url = "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
+    ///         });
+    ///         var example = new DigitalOcean.Droplet("example", new DigitalOcean.DropletArgs
+    ///         {
+    ///             Image = flatcar.Id,
+    ///             Region = "nyc3",
+    ///             Size = "s-1vcpu-1gb",
+    ///             SshKeys = 
+    ///             {
+    ///                 "12345",
+    ///             },
     ///         });
     ///     }
     /// 

@@ -70,7 +70,7 @@ namespace Pulumi.DigitalOcean
     ///             NodeCount = 1,
     ///             Region = "nyc1",
     ///             Size = "db-s-1vcpu-1gb",
-    ///             Version = "5",
+    ///             Version = "6",
     ///         });
     ///     }
     /// 
@@ -172,7 +172,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         /// </summary>
         [Output("size")]
         public Output<string> Size { get; private set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         /// </summary>
         [Input("size", required: true)]
         public Input<string> Size { get; set; } = null!;
@@ -429,7 +429,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }

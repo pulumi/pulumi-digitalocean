@@ -25,7 +25,17 @@ class CustomImage(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource which can be used to create a custom Image from a URL
+        Provides a resource which can be used to create a [custom image](https://www.digitalocean.com/docs/images/custom-images/)
+        from a URL. The URL must point to an image in one of the following file formats:
+
+        - Raw (.img) with an MBR or GPT partition table
+        - qcow2
+        - VHDX
+        - VDI
+        - VMDK
+
+        The image may be compressed using gzip or bzip2. See the DigitalOcean Custom
+        Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
 
         ## Example Usage
 
@@ -34,8 +44,13 @@ class CustomImage(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         flatcar = digitalocean.CustomImage("flatcar",
-            regions=["nyc3"],
-            url="https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2")
+            url="https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
+            regions=["nyc3"])
+        example = digitalocean.Droplet("example",
+            image=flatcar.id,
+            region="nyc3",
+            size="s-1vcpu-1gb",
+            ssh_keys=["12345"])
         ```
 
         :param str resource_name: The name of the resource.

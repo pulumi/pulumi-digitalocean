@@ -49,6 +49,7 @@ namespace Pulumi.DigitalOcean
         public readonly string Name;
         public readonly bool RedirectHttpToHttps;
         public readonly string Region;
+        public readonly string Size;
         public readonly string Status;
         public readonly ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> StickySessions;
         public readonly string VpcUuid;
@@ -81,6 +82,8 @@ namespace Pulumi.DigitalOcean
 
             string region,
 
+            string size,
+
             string status,
 
             ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> stickySessions,
@@ -100,6 +103,7 @@ namespace Pulumi.DigitalOcean
             Name = name;
             RedirectHttpToHttps = redirectHttpToHttps;
             Region = region;
+            Size = size;
             Status = status;
             StickySessions = stickySessions;
             VpcUuid = vpcUuid;
