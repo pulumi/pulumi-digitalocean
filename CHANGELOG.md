@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.3.0 of the DigitalOcean Terraform Provider
+_(none)_
 
 ---
+
+## 3.2.0 (2020-12-08)
+* Upgrade to v2.3.0 of the DigitalOcean Terraform Provider
 
 ## 3.1.1 (2020-11-23)
 * Upgrade to pulumi-terraform-bridge v2.13.2  
