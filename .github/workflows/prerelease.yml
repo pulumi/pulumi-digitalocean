@@ -38,7 +38,7 @@ jobs:
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
     - name: Setup Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2.1.4
       with:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
@@ -265,7 +265,7 @@ jobs:
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
     - name: Setup Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2.1.4
       with:
         always-auth: true
         registry-url: https://registry.npmjs.org
@@ -334,7 +334,7 @@ jobs:
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
     - name: Setup Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2.1.4
       with:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
