@@ -82,10 +82,10 @@ export class FloatingIpAssignment extends pulumi.CustomResource {
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
         } else {
             const args = argsOrState as FloatingIpAssignmentArgs | undefined;
-            if (!args || args.dropletId === undefined) {
+            if ((!args || args.dropletId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dropletId'");
             }
-            if (!args || args.ipAddress === undefined) {
+            if ((!args || args.ipAddress === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipAddress'");
             }
             inputs["dropletId"] = args ? args.dropletId : undefined;

@@ -55,6 +55,7 @@ func NewFirewall(ctx *pulumi.Context,
 	if args == nil {
 		args = &FirewallArgs{}
 	}
+
 	var resource Firewall
 	err := ctx.RegisterResource("digitalocean:index/firewall:Firewall", name, args, &resource, opts...)
 	if err != nil {

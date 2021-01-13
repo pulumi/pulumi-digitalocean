@@ -85,7 +85,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
             inputs["subscriptionTierSlug"] = state ? state.subscriptionTierSlug : undefined;
         } else {
             const args = argsOrState as ContainerRegistryArgs | undefined;
-            if (!args || args.subscriptionTierSlug === undefined) {
+            if ((!args || args.subscriptionTierSlug === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subscriptionTierSlug'");
             }
             inputs["name"] = args ? args.name : undefined;

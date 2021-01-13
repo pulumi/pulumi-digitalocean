@@ -145,20 +145,21 @@ type DatabaseCluster struct {
 // NewDatabaseCluster registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseCluster(ctx *pulumi.Context,
 	name string, args *DatabaseClusterArgs, opts ...pulumi.ResourceOption) (*DatabaseCluster, error) {
-	if args == nil || args.Engine == nil {
-		return nil, errors.New("missing required argument 'Engine'")
-	}
-	if args == nil || args.NodeCount == nil {
-		return nil, errors.New("missing required argument 'NodeCount'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &DatabaseClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Engine == nil {
+		return nil, errors.New("invalid value for required argument 'Engine'")
+	}
+	if args.NodeCount == nil {
+		return nil, errors.New("invalid value for required argument 'NodeCount'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource DatabaseCluster
 	err := ctx.RegisterResource("digitalocean:index/databaseCluster:DatabaseCluster", name, args, &resource, opts...)

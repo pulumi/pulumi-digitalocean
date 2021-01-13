@@ -202,16 +202,16 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as DatabaseClusterArgs | undefined;
-            if (!args || args.engine === undefined) {
+            if ((!args || args.engine === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'engine'");
             }
-            if (!args || args.nodeCount === undefined) {
+            if ((!args || args.nodeCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["engine"] = args ? args.engine : undefined;

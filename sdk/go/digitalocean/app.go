@@ -187,6 +187,7 @@ func NewApp(ctx *pulumi.Context,
 	if args == nil {
 		args = &AppArgs{}
 	}
+
 	var resource App
 	err := ctx.RegisterResource("digitalocean:index/app:App", name, args, &resource, opts...)
 	if err != nil {

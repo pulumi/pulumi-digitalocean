@@ -114,7 +114,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_scale'] = auto_scale
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['labels'] = labels
@@ -122,7 +122,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             __props__['min_nodes'] = min_nodes
             __props__['name'] = name
             __props__['node_count'] = node_count
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['tags'] = tags

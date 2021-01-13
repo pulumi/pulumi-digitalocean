@@ -126,7 +126,7 @@ export class Vpc extends pulumi.CustomResource {
             inputs["vpcUrn"] = state ? state.vpcUrn : undefined;
         } else {
             const args = argsOrState as VpcArgs | undefined;
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["description"] = args ? args.description : undefined;

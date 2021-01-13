@@ -115,10 +115,10 @@ export class CustomImage extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as CustomImageArgs | undefined;
-            if (!args || args.regions === undefined) {
+            if ((!args || args.regions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'regions'");
             }
-            if (!args || args.url === undefined) {
+            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["description"] = args ? args.description : undefined;

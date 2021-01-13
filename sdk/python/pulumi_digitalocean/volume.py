@@ -101,17 +101,17 @@ class Volume(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if filesystem_type is not None:
+            if filesystem_type is not None and not opts.urn:
                 warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
                 pulumi.log.warn("filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.")
             __props__['filesystem_type'] = filesystem_type
             __props__['initial_filesystem_label'] = initial_filesystem_label
             __props__['initial_filesystem_type'] = initial_filesystem_type
             __props__['name'] = name
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['snapshot_id'] = snapshot_id

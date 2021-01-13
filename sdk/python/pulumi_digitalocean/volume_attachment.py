@@ -67,10 +67,10 @@ class VolumeAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if droplet_id is None:
+            if droplet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'droplet_id'")
             __props__['droplet_id'] = droplet_id
-            if volume_id is None:
+            if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")
             __props__['volume_id'] = volume_id
         super(VolumeAttachment, __self__).__init__(

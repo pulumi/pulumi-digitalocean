@@ -91,7 +91,7 @@ class Vpc(pulumi.CustomResource):
             __props__['description'] = description
             __props__['ip_range'] = ip_range
             __props__['name'] = name
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['created_at'] = None

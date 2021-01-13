@@ -81,20 +81,20 @@ class DatabaseConnectionPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
-            if db_name is None:
+            if db_name is None and not opts.urn:
                 raise TypeError("Missing required property 'db_name'")
             __props__['db_name'] = db_name
-            if mode is None:
+            if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
             __props__['mode'] = mode
             __props__['name'] = name
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
-            if user is None:
+            if user is None and not opts.urn:
                 raise TypeError("Missing required property 'user'")
             __props__['user'] = user
             __props__['host'] = None

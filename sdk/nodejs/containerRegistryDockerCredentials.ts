@@ -98,7 +98,7 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
             inputs["write"] = state ? state.write : undefined;
         } else {
             const args = argsOrState as ContainerRegistryDockerCredentialsArgs | undefined;
-            if (!args || args.registryName === undefined) {
+            if ((!args || args.registryName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'registryName'");
             }
             inputs["expirySeconds"] = args ? args.expirySeconds : undefined;

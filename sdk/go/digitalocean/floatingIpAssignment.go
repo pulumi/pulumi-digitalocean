@@ -66,14 +66,15 @@ type FloatingIpAssignment struct {
 // NewFloatingIpAssignment registers a new resource with the given unique name, arguments, and options.
 func NewFloatingIpAssignment(ctx *pulumi.Context,
 	name string, args *FloatingIpAssignmentArgs, opts ...pulumi.ResourceOption) (*FloatingIpAssignment, error) {
-	if args == nil || args.DropletId == nil {
-		return nil, errors.New("missing required argument 'DropletId'")
-	}
-	if args == nil || args.IpAddress == nil {
-		return nil, errors.New("missing required argument 'IpAddress'")
-	}
 	if args == nil {
-		args = &FloatingIpAssignmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DropletId == nil {
+		return nil, errors.New("invalid value for required argument 'DropletId'")
+	}
+	if args.IpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'IpAddress'")
 	}
 	var resource FloatingIpAssignment
 	err := ctx.RegisterResource("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", name, args, &resource, opts...)

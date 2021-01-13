@@ -104,11 +104,12 @@ type Vpc struct {
 // NewVpc registers a new resource with the given unique name, arguments, and options.
 func NewVpc(ctx *pulumi.Context,
 	name string, args *VpcArgs, opts ...pulumi.ResourceOption) (*Vpc, error) {
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &VpcArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Vpc
 	err := ctx.RegisterResource("digitalocean:index/vpc:Vpc", name, args, &resource, opts...)

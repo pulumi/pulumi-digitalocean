@@ -155,6 +155,7 @@ func NewSpacesBucket(ctx *pulumi.Context,
 	if args == nil {
 		args = &SpacesBucketArgs{}
 	}
+
 	var resource SpacesBucket
 	err := ctx.RegisterResource("digitalocean:index/spacesBucket:SpacesBucket", name, args, &resource, opts...)
 	if err != nil {

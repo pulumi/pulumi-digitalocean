@@ -135,7 +135,7 @@ export class Cdn extends pulumi.CustomResource {
             inputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as CdnArgs | undefined;
-            if (!args || args.origin === undefined) {
+            if ((!args || args.origin === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'origin'");
             }
             inputs["certificateId"] = args ? args.certificateId : undefined;

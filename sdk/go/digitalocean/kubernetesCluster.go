@@ -57,17 +57,18 @@ type KubernetesCluster struct {
 // NewKubernetesCluster registers a new resource with the given unique name, arguments, and options.
 func NewKubernetesCluster(ctx *pulumi.Context,
 	name string, args *KubernetesClusterArgs, opts ...pulumi.ResourceOption) (*KubernetesCluster, error) {
-	if args == nil || args.NodePool == nil {
-		return nil, errors.New("missing required argument 'NodePool'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
-	if args == nil || args.Version == nil {
-		return nil, errors.New("missing required argument 'Version'")
-	}
 	if args == nil {
-		args = &KubernetesClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NodePool == nil {
+		return nil, errors.New("invalid value for required argument 'NodePool'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
+	if args.Version == nil {
+		return nil, errors.New("invalid value for required argument 'Version'")
 	}
 	var resource KubernetesCluster
 	err := ctx.RegisterResource("digitalocean:index/kubernetesCluster:KubernetesCluster", name, args, &resource, opts...)

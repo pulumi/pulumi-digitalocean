@@ -104,7 +104,7 @@ export class DropletSnapshot extends pulumi.CustomResource {
             inputs["size"] = state ? state.size : undefined;
         } else {
             const args = argsOrState as DropletSnapshotArgs | undefined;
-            if (!args || args.dropletId === undefined) {
+            if ((!args || args.dropletId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dropletId'");
             }
             inputs["dropletId"] = args ? args.dropletId : undefined;

@@ -150,13 +150,13 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['droplet_tag'] = droplet_tag
             __props__['enable_backend_keepalive'] = enable_backend_keepalive
             __props__['enable_proxy_protocol'] = enable_proxy_protocol
-            if forwarding_rules is None:
+            if forwarding_rules is None and not opts.urn:
                 raise TypeError("Missing required property 'forwarding_rules'")
             __props__['forwarding_rules'] = forwarding_rules
             __props__['healthcheck'] = healthcheck
             __props__['name'] = name
             __props__['redirect_http_to_https'] = redirect_http_to_https
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['size'] = size

@@ -65,7 +65,7 @@ class ContainerRegistry(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if subscription_tier_slug is None:
+            if subscription_tier_slug is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription_tier_slug'")
             __props__['subscription_tier_slug'] = subscription_tier_slug
             __props__['endpoint'] = None

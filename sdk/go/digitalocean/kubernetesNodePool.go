@@ -126,14 +126,15 @@ type KubernetesNodePool struct {
 // NewKubernetesNodePool registers a new resource with the given unique name, arguments, and options.
 func NewKubernetesNodePool(ctx *pulumi.Context,
 	name string, args *KubernetesNodePoolArgs, opts ...pulumi.ResourceOption) (*KubernetesNodePool, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &KubernetesNodePoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource KubernetesNodePool
 	err := ctx.RegisterResource("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, args, &resource, opts...)

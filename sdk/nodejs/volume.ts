@@ -161,10 +161,10 @@ export class Volume extends pulumi.CustomResource {
             inputs["volumeUrn"] = state ? state.volumeUrn : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["description"] = args ? args.description : undefined;
