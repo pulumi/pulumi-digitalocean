@@ -116,11 +116,12 @@ type Cdn struct {
 // NewCdn registers a new resource with the given unique name, arguments, and options.
 func NewCdn(ctx *pulumi.Context,
 	name string, args *CdnArgs, opts ...pulumi.ResourceOption) (*Cdn, error) {
-	if args == nil || args.Origin == nil {
-		return nil, errors.New("missing required argument 'Origin'")
-	}
 	if args == nil {
-		args = &CdnArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Origin == nil {
+		return nil, errors.New("invalid value for required argument 'Origin'")
 	}
 	var resource Cdn
 	err := ctx.RegisterResource("digitalocean:index/cdn:Cdn", name, args, &resource, opts...)

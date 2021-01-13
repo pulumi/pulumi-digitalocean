@@ -140,19 +140,19 @@ export class DatabaseConnectionPool extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as DatabaseConnectionPoolArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.dbName === undefined) {
+            if ((!args || args.dbName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbName'");
             }
-            if (!args || args.mode === undefined) {
+            if ((!args || args.mode === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'mode'");
             }
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
-            if (!args || args.user === undefined) {
+            if ((!args || args.user === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'user'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;

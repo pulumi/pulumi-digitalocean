@@ -73,11 +73,12 @@ type VolumeSnapshot struct {
 // NewVolumeSnapshot registers a new resource with the given unique name, arguments, and options.
 func NewVolumeSnapshot(ctx *pulumi.Context,
 	name string, args *VolumeSnapshotArgs, opts ...pulumi.ResourceOption) (*VolumeSnapshot, error) {
-	if args == nil || args.VolumeId == nil {
-		return nil, errors.New("missing required argument 'VolumeId'")
-	}
 	if args == nil {
-		args = &VolumeSnapshotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.VolumeId == nil {
+		return nil, errors.New("invalid value for required argument 'VolumeId'")
 	}
 	var resource VolumeSnapshot
 	err := ctx.RegisterResource("digitalocean:index/volumeSnapshot:VolumeSnapshot", name, args, &resource, opts...)

@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.ApiEndpoint == nil {
 		args.ApiEndpoint = pulumi.StringPtr(getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL").(string))
 	}

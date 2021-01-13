@@ -140,13 +140,13 @@ export class SpacesBucketObject extends pulumi.CustomResource {
             inputs["websiteRedirect"] = state ? state.websiteRedirect : undefined;
         } else {
             const args = argsOrState as SpacesBucketObjectArgs | undefined;
-            if (!args || args.bucket === undefined) {
+            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if (!args || args.key === undefined) {
+            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'key'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["acl"] = args ? args.acl : undefined;

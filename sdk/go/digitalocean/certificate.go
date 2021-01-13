@@ -132,6 +132,7 @@ func NewCertificate(ctx *pulumi.Context,
 	if args == nil {
 		args = &CertificateArgs{}
 	}
+
 	var resource Certificate
 	err := ctx.RegisterResource("digitalocean:index/certificate:Certificate", name, args, &resource, opts...)
 	if err != nil {

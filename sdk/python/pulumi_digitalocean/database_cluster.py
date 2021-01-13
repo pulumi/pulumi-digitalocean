@@ -111,20 +111,20 @@ class DatabaseCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if engine is None:
+            if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
             __props__['engine'] = engine
             __props__['eviction_policy'] = eviction_policy
             __props__['maintenance_windows'] = maintenance_windows
             __props__['name'] = name
-            if node_count is None:
+            if node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'node_count'")
             __props__['node_count'] = node_count
             __props__['private_network_uuid'] = private_network_uuid
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['sql_mode'] = sql_mode

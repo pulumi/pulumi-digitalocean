@@ -212,13 +212,13 @@ export class Droplet extends pulumi.CustomResource {
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as DropletArgs | undefined;
-            if (!args || args.image === undefined) {
+            if ((!args || args.image === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'image'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["backups"] = args ? args.backups : undefined;

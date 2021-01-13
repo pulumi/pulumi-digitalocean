@@ -101,7 +101,7 @@ export class DatabaseUser extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as DatabaseUserArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;

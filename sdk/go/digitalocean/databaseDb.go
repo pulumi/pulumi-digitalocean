@@ -65,11 +65,12 @@ type DatabaseDb struct {
 // NewDatabaseDb registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseDb(ctx *pulumi.Context,
 	name string, args *DatabaseDbArgs, opts ...pulumi.ResourceOption) (*DatabaseDb, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &DatabaseDbArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource DatabaseDb
 	err := ctx.RegisterResource("digitalocean:index:DatabaseDb", name, args, &resource, opts...)

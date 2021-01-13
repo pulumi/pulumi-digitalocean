@@ -62,10 +62,10 @@ export class ProjectResources extends pulumi.CustomResource {
             inputs["resources"] = state ? state.resources : undefined;
         } else {
             const args = argsOrState as ProjectResourcesArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.resources === undefined) {
+            if ((!args || args.resources === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resources'");
             }
             inputs["project"] = args ? args.project : undefined;

@@ -76,7 +76,7 @@ class FloatingIp(pulumi.CustomResource):
 
             __props__['droplet_id'] = droplet_id
             __props__['ip_address'] = ip_address
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['floating_ip_urn'] = None

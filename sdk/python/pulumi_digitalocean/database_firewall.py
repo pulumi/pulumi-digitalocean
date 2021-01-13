@@ -107,10 +107,10 @@ class DatabaseFirewall(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
-            if rules is None:
+            if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__['rules'] = rules
         super(DatabaseFirewall, __self__).__init__(

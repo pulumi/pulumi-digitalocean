@@ -104,18 +104,18 @@ class Droplet(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['backups'] = backups
-            if image is None:
+            if image is None and not opts.urn:
                 raise TypeError("Missing required property 'image'")
             __props__['image'] = image
             __props__['ipv6'] = ipv6
             __props__['monitoring'] = monitoring
             __props__['name'] = name
             __props__['private_networking'] = private_networking
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['resize_disk'] = resize_disk
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['ssh_keys'] = ssh_keys

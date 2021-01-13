@@ -79,11 +79,11 @@ class CustomImage(pulumi.CustomResource):
             __props__['description'] = description
             __props__['distribution'] = distribution
             __props__['name'] = name
-            if regions is None:
+            if regions is None and not opts.urn:
                 raise TypeError("Missing required property 'regions'")
             __props__['regions'] = regions
             __props__['tags'] = tags
-            if url is None:
+            if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
             __props__['created_at'] = None

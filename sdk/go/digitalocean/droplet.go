@@ -117,17 +117,18 @@ type Droplet struct {
 // NewDroplet registers a new resource with the given unique name, arguments, and options.
 func NewDroplet(ctx *pulumi.Context,
 	name string, args *DropletArgs, opts ...pulumi.ResourceOption) (*Droplet, error) {
-	if args == nil || args.Image == nil {
-		return nil, errors.New("missing required argument 'Image'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &DropletArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Image == nil {
+		return nil, errors.New("invalid value for required argument 'Image'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource Droplet
 	err := ctx.RegisterResource("digitalocean:index/droplet:Droplet", name, args, &resource, opts...)

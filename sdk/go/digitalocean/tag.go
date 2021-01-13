@@ -79,6 +79,7 @@ func NewTag(ctx *pulumi.Context,
 	if args == nil {
 		args = &TagArgs{}
 	}
+
 	var resource Tag
 	err := ctx.RegisterResource("digitalocean:index/tag:Tag", name, args, &resource, opts...)
 	if err != nil {

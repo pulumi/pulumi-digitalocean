@@ -163,10 +163,10 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as KubernetesNodePoolArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["autoScale"] = args ? args.autoScale : undefined;

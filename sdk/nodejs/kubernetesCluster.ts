@@ -136,13 +136,13 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as KubernetesClusterArgs | undefined;
-            if (!args || args.nodePool === undefined) {
+            if ((!args || args.nodePool === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodePool'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
-            if (!args || args.version === undefined) {
+            if ((!args || args.version === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'version'");
             }
             inputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;

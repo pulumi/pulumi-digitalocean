@@ -65,10 +65,10 @@ class FloatingIpAssignment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if droplet_id is None:
+            if droplet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'droplet_id'")
             __props__['droplet_id'] = droplet_id
-            if ip_address is None:
+            if ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_address'")
             __props__['ip_address'] = ip_address
         super(FloatingIpAssignment, __self__).__init__(

@@ -86,11 +86,12 @@ type ContainerRegistryDockerCredentials struct {
 // NewContainerRegistryDockerCredentials registers a new resource with the given unique name, arguments, and options.
 func NewContainerRegistryDockerCredentials(ctx *pulumi.Context,
 	name string, args *ContainerRegistryDockerCredentialsArgs, opts ...pulumi.ResourceOption) (*ContainerRegistryDockerCredentials, error) {
-	if args == nil || args.RegistryName == nil {
-		return nil, errors.New("missing required argument 'RegistryName'")
-	}
 	if args == nil {
-		args = &ContainerRegistryDockerCredentialsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RegistryName == nil {
+		return nil, errors.New("invalid value for required argument 'RegistryName'")
 	}
 	var resource ContainerRegistryDockerCredentials
 	err := ctx.RegisterResource("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials", name, args, &resource, opts...)

@@ -124,14 +124,15 @@ type DatabaseFirewall struct {
 // NewDatabaseFirewall registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseFirewall(ctx *pulumi.Context,
 	name string, args *DatabaseFirewallArgs, opts ...pulumi.ResourceOption) (*DatabaseFirewall, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
 	if args == nil {
-		args = &DatabaseFirewallArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource DatabaseFirewall
 	err := ctx.RegisterResource("digitalocean:index:DatabaseFirewall", name, args, &resource, opts...)

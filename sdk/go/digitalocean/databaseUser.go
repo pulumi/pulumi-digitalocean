@@ -73,11 +73,12 @@ type DatabaseUser struct {
 // NewDatabaseUser registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseUser(ctx *pulumi.Context,
 	name string, args *DatabaseUserArgs, opts ...pulumi.ResourceOption) (*DatabaseUser, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &DatabaseUserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource DatabaseUser
 	err := ctx.RegisterResource("digitalocean:index:DatabaseUser", name, args, &resource, opts...)

@@ -208,10 +208,10 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if (!args || args.forwardingRules === undefined) {
+            if ((!args || args.forwardingRules === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'forwardingRules'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["algorithm"] = args ? args.algorithm : undefined;

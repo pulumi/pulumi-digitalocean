@@ -85,10 +85,10 @@ export class VolumeAttachment extends pulumi.CustomResource {
             inputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeAttachmentArgs | undefined;
-            if (!args || args.dropletId === undefined) {
+            if ((!args || args.dropletId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dropletId'");
             }
-            if (!args || args.volumeId === undefined) {
+            if ((!args || args.volumeId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'volumeId'");
             }
             inputs["dropletId"] = args ? args.dropletId : undefined;

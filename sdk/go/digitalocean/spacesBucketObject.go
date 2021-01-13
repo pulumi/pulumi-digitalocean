@@ -59,17 +59,18 @@ type SpacesBucketObject struct {
 // NewSpacesBucketObject registers a new resource with the given unique name, arguments, and options.
 func NewSpacesBucketObject(ctx *pulumi.Context,
 	name string, args *SpacesBucketObjectArgs, opts ...pulumi.ResourceOption) (*SpacesBucketObject, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &SpacesBucketObjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource SpacesBucketObject
 	err := ctx.RegisterResource("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, args, &resource, opts...)

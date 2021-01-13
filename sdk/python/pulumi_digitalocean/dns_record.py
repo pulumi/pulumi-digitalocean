@@ -91,7 +91,7 @@ class DnsRecord(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if domain is None:
+            if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
             __props__['flags'] = flags
@@ -100,10 +100,10 @@ class DnsRecord(pulumi.CustomResource):
             __props__['priority'] = priority
             __props__['tag'] = tag
             __props__['ttl'] = ttl
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
             __props__['weight'] = weight

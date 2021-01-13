@@ -67,15 +67,15 @@ class KubernetesCluster(pulumi.CustomResource):
 
             __props__['auto_upgrade'] = auto_upgrade
             __props__['name'] = name
-            if node_pool is None:
+            if node_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pool'")
             __props__['node_pool'] = node_pool
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['surge_upgrade'] = surge_upgrade
             __props__['tags'] = tags
-            if version is None:
+            if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__['version'] = version
             __props__['vpc_uuid'] = vpc_uuid

@@ -26,14 +26,15 @@ type ProjectResources struct {
 // NewProjectResources registers a new resource with the given unique name, arguments, and options.
 func NewProjectResources(ctx *pulumi.Context,
 	name string, args *ProjectResourcesArgs, opts ...pulumi.ResourceOption) (*ProjectResources, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Resources == nil {
-		return nil, errors.New("missing required argument 'Resources'")
-	}
 	if args == nil {
-		args = &ProjectResourcesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Resources == nil {
+		return nil, errors.New("invalid value for required argument 'Resources'")
 	}
 	var resource ProjectResources
 	err := ctx.RegisterResource("digitalocean:index/projectResources:ProjectResources", name, args, &resource, opts...)

@@ -89,23 +89,24 @@ type DatabaseConnectionPool struct {
 // NewDatabaseConnectionPool registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseConnectionPool(ctx *pulumi.Context,
 	name string, args *DatabaseConnectionPoolArgs, opts ...pulumi.ResourceOption) (*DatabaseConnectionPool, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.DbName == nil {
-		return nil, errors.New("missing required argument 'DbName'")
-	}
-	if args == nil || args.Mode == nil {
-		return nil, errors.New("missing required argument 'Mode'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &DatabaseConnectionPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.DbName == nil {
+		return nil, errors.New("invalid value for required argument 'DbName'")
+	}
+	if args.Mode == nil {
+		return nil, errors.New("invalid value for required argument 'Mode'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource DatabaseConnectionPool
 	err := ctx.RegisterResource("digitalocean:index/databaseConnectionPool:DatabaseConnectionPool", name, args, &resource, opts...)

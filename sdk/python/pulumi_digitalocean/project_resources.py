@@ -47,10 +47,10 @@ class ProjectResources(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if resources is None:
+            if resources is None and not opts.urn:
                 raise TypeError("Missing required property 'resources'")
             __props__['resources'] = resources
         super(ProjectResources, __self__).__init__(

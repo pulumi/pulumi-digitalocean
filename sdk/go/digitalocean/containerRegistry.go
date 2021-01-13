@@ -58,11 +58,12 @@ type ContainerRegistry struct {
 // NewContainerRegistry registers a new resource with the given unique name, arguments, and options.
 func NewContainerRegistry(ctx *pulumi.Context,
 	name string, args *ContainerRegistryArgs, opts ...pulumi.ResourceOption) (*ContainerRegistry, error) {
-	if args == nil || args.SubscriptionTierSlug == nil {
-		return nil, errors.New("missing required argument 'SubscriptionTierSlug'")
-	}
 	if args == nil {
-		args = &ContainerRegistryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SubscriptionTierSlug == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionTierSlug'")
 	}
 	var resource ContainerRegistry
 	err := ctx.RegisterResource("digitalocean:index/containerRegistry:ContainerRegistry", name, args, &resource, opts...)

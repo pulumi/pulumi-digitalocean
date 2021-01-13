@@ -73,7 +73,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['expiry_seconds'] = expiry_seconds
-            if registry_name is None:
+            if registry_name is None and not opts.urn:
                 raise TypeError("Missing required property 'registry_name'")
             __props__['registry_name'] = registry_name
             __props__['write'] = write

@@ -89,11 +89,12 @@ type DatabaseReplica struct {
 // NewDatabaseReplica registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseReplica(ctx *pulumi.Context,
 	name string, args *DatabaseReplicaArgs, opts ...pulumi.ResourceOption) (*DatabaseReplica, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &DatabaseReplicaArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource DatabaseReplica
 	err := ctx.RegisterResource("digitalocean:index/databaseReplica:DatabaseReplica", name, args, &resource, opts...)

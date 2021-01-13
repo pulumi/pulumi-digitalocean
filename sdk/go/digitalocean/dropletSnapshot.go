@@ -71,11 +71,12 @@ type DropletSnapshot struct {
 // NewDropletSnapshot registers a new resource with the given unique name, arguments, and options.
 func NewDropletSnapshot(ctx *pulumi.Context,
 	name string, args *DropletSnapshotArgs, opts ...pulumi.ResourceOption) (*DropletSnapshot, error) {
-	if args == nil || args.DropletId == nil {
-		return nil, errors.New("missing required argument 'DropletId'")
-	}
 	if args == nil {
-		args = &DropletSnapshotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DropletId == nil {
+		return nil, errors.New("invalid value for required argument 'DropletId'")
 	}
 	var resource DropletSnapshot
 	err := ctx.RegisterResource("digitalocean:index/dropletSnapshot:DropletSnapshot", name, args, &resource, opts...)

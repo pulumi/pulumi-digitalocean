@@ -84,14 +84,15 @@ type CustomImage struct {
 // NewCustomImage registers a new resource with the given unique name, arguments, and options.
 func NewCustomImage(ctx *pulumi.Context,
 	name string, args *CustomImageArgs, opts ...pulumi.ResourceOption) (*CustomImage, error) {
-	if args == nil || args.Regions == nil {
-		return nil, errors.New("missing required argument 'Regions'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &CustomImageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Regions == nil {
+		return nil, errors.New("invalid value for required argument 'Regions'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource CustomImage
 	err := ctx.RegisterResource("digitalocean:index/customImage:CustomImage", name, args, &resource, opts...)
