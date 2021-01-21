@@ -62,21 +62,24 @@ import (
 type CustomImage struct {
 	pulumi.CustomResourceState
 
-	CreatedAt    pulumi.StringOutput    `pulumi:"createdAt"`
-	Description  pulumi.StringPtrOutput `pulumi:"description"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// An optional description for the image.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
 	Distribution pulumi.StringPtrOutput `pulumi:"distribution"`
 	ImageId      pulumi.IntOutput       `pulumi:"imageId"`
 	MinDiskSize  pulumi.IntOutput       `pulumi:"minDiskSize"`
 	// A name for the Custom Image.
 	Name   pulumi.StringOutput `pulumi:"name"`
 	Public pulumi.BoolOutput   `pulumi:"public"`
-	// A list of regions. (Currently only one is supported)
+	// A list of regions. (Currently only one is supported).
 	Regions       pulumi.StringArrayOutput `pulumi:"regions"`
 	SizeGigabytes pulumi.Float64Output     `pulumi:"sizeGigabytes"`
 	Slug          pulumi.StringOutput      `pulumi:"slug"`
 	Status        pulumi.StringOutput      `pulumi:"status"`
-	Tags          pulumi.StringArrayOutput `pulumi:"tags"`
-	Type          pulumi.StringOutput      `pulumi:"type"`
+	// A list of optional tags for the image.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	Type pulumi.StringOutput      `pulumi:"type"`
 	// A URL from which the custom Linux virtual machine image may be retrieved.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -116,41 +119,47 @@ func GetCustomImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomImage resources.
 type customImageState struct {
-	CreatedAt    *string `pulumi:"createdAt"`
-	Description  *string `pulumi:"description"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// An optional description for the image.
+	Description *string `pulumi:"description"`
+	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
 	Distribution *string `pulumi:"distribution"`
 	ImageId      *int    `pulumi:"imageId"`
 	MinDiskSize  *int    `pulumi:"minDiskSize"`
 	// A name for the Custom Image.
 	Name   *string `pulumi:"name"`
 	Public *bool   `pulumi:"public"`
-	// A list of regions. (Currently only one is supported)
+	// A list of regions. (Currently only one is supported).
 	Regions       []string `pulumi:"regions"`
 	SizeGigabytes *float64 `pulumi:"sizeGigabytes"`
 	Slug          *string  `pulumi:"slug"`
 	Status        *string  `pulumi:"status"`
-	Tags          []string `pulumi:"tags"`
-	Type          *string  `pulumi:"type"`
+	// A list of optional tags for the image.
+	Tags []string `pulumi:"tags"`
+	Type *string  `pulumi:"type"`
 	// A URL from which the custom Linux virtual machine image may be retrieved.
 	Url *string `pulumi:"url"`
 }
 
 type CustomImageState struct {
-	CreatedAt    pulumi.StringPtrInput
-	Description  pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// An optional description for the image.
+	Description pulumi.StringPtrInput
+	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
 	Distribution pulumi.StringPtrInput
 	ImageId      pulumi.IntPtrInput
 	MinDiskSize  pulumi.IntPtrInput
 	// A name for the Custom Image.
 	Name   pulumi.StringPtrInput
 	Public pulumi.BoolPtrInput
-	// A list of regions. (Currently only one is supported)
+	// A list of regions. (Currently only one is supported).
 	Regions       pulumi.StringArrayInput
 	SizeGigabytes pulumi.Float64PtrInput
 	Slug          pulumi.StringPtrInput
 	Status        pulumi.StringPtrInput
-	Tags          pulumi.StringArrayInput
-	Type          pulumi.StringPtrInput
+	// A list of optional tags for the image.
+	Tags pulumi.StringArrayInput
+	Type pulumi.StringPtrInput
 	// A URL from which the custom Linux virtual machine image may be retrieved.
 	Url pulumi.StringPtrInput
 }
@@ -160,26 +169,32 @@ func (CustomImageState) ElementType() reflect.Type {
 }
 
 type customImageArgs struct {
-	Description  *string `pulumi:"description"`
+	// An optional description for the image.
+	Description *string `pulumi:"description"`
+	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
 	Distribution *string `pulumi:"distribution"`
 	// A name for the Custom Image.
 	Name *string `pulumi:"name"`
-	// A list of regions. (Currently only one is supported)
+	// A list of regions. (Currently only one is supported).
 	Regions []string `pulumi:"regions"`
-	Tags    []string `pulumi:"tags"`
+	// A list of optional tags for the image.
+	Tags []string `pulumi:"tags"`
 	// A URL from which the custom Linux virtual machine image may be retrieved.
 	Url string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a CustomImage resource.
 type CustomImageArgs struct {
-	Description  pulumi.StringPtrInput
+	// An optional description for the image.
+	Description pulumi.StringPtrInput
+	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
 	Distribution pulumi.StringPtrInput
 	// A name for the Custom Image.
 	Name pulumi.StringPtrInput
-	// A list of regions. (Currently only one is supported)
+	// A list of regions. (Currently only one is supported).
 	Regions pulumi.StringArrayInput
-	Tags    pulumi.StringArrayInput
+	// A list of optional tags for the image.
+	Tags pulumi.StringArrayInput
 	// A URL from which the custom Linux virtual machine image may be retrieved.
 	Url pulumi.StringInput
 }

@@ -32,6 +32,18 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _domains = value;
         }
 
+        [Input("envs")]
+        private InputList<Inputs.AppSpecEnvGetArgs>? _envs;
+
+        /// <summary>
+        /// Describes an environment variable made available to an app competent.
+        /// </summary>
+        public InputList<Inputs.AppSpecEnvGetArgs> Envs
+        {
+            get => _envs ?? (_envs = new InputList<Inputs.AppSpecEnvGetArgs>());
+            set => _envs = value;
+        }
+
         /// <summary>
         /// The name of the component.
         /// </summary>

@@ -64,7 +64,13 @@ export class CustomImage extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * An optional description for the image.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+     */
     public readonly distribution!: pulumi.Output<string | undefined>;
     public /*out*/ readonly imageId!: pulumi.Output<number>;
     public /*out*/ readonly minDiskSize!: pulumi.Output<number>;
@@ -74,12 +80,15 @@ export class CustomImage extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly public!: pulumi.Output<boolean>;
     /**
-     * A list of regions. (Currently only one is supported)
+     * A list of regions. (Currently only one is supported).
      */
     public readonly regions!: pulumi.Output<string[]>;
     public /*out*/ readonly sizeGigabytes!: pulumi.Output<number>;
     public /*out*/ readonly slug!: pulumi.Output<string>;
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A list of optional tags for the image.
+     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -152,7 +161,13 @@ export class CustomImage extends pulumi.CustomResource {
  */
 export interface CustomImageState {
     readonly createdAt?: pulumi.Input<string>;
+    /**
+     * An optional description for the image.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+     */
     readonly distribution?: pulumi.Input<string>;
     readonly imageId?: pulumi.Input<number>;
     readonly minDiskSize?: pulumi.Input<number>;
@@ -162,12 +177,15 @@ export interface CustomImageState {
     readonly name?: pulumi.Input<string>;
     readonly public?: pulumi.Input<boolean>;
     /**
-     * A list of regions. (Currently only one is supported)
+     * A list of regions. (Currently only one is supported).
      */
     readonly regions?: pulumi.Input<pulumi.Input<string>[]>;
     readonly sizeGigabytes?: pulumi.Input<number>;
     readonly slug?: pulumi.Input<string>;
     readonly status?: pulumi.Input<string>;
+    /**
+     * A list of optional tags for the image.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     readonly type?: pulumi.Input<string>;
     /**
@@ -180,16 +198,25 @@ export interface CustomImageState {
  * The set of arguments for constructing a CustomImage resource.
  */
 export interface CustomImageArgs {
+    /**
+     * An optional description for the image.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+     */
     readonly distribution?: pulumi.Input<string>;
     /**
      * A name for the Custom Image.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A list of regions. (Currently only one is supported)
+     * A list of regions. (Currently only one is supported).
      */
     readonly regions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of optional tags for the image.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A URL from which the custom Linux virtual machine image may be retrieved.

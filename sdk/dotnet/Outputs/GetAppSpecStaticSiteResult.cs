@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? BuildCommand;
         /// <summary>
+        /// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+        /// </summary>
+        public readonly string? CatchallDocument;
+        /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         /// </summary>
         public readonly string? DockerfilePath;
@@ -30,7 +34,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecStaticSiteEnvResult> Envs;
         /// <summary>
-        /// The name of the error document to use when serving this static site*
+        /// The name of the error document to use when serving this static site.
         /// </summary>
         public readonly string? ErrorDocument;
         /// <summary>
@@ -41,6 +45,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecStaticSiteGithubResult? Github;
+        public readonly Outputs.GetAppSpecStaticSiteGitlabResult? Gitlab;
         /// <summary>
         /// The name of the index document to use when serving this static site.
         /// </summary>
@@ -63,6 +68,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private GetAppSpecStaticSiteResult(
             string? buildCommand,
 
+            string? catchallDocument,
+
             string? dockerfilePath,
 
             string? environmentSlug,
@@ -75,6 +82,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             Outputs.GetAppSpecStaticSiteGithubResult? github,
 
+            Outputs.GetAppSpecStaticSiteGitlabResult? gitlab,
+
             string? indexDocument,
 
             string name,
@@ -86,12 +95,14 @@ namespace Pulumi.DigitalOcean.Outputs
             string? sourceDir)
         {
             BuildCommand = buildCommand;
+            CatchallDocument = catchallDocument;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
             Envs = envs;
             ErrorDocument = errorDocument;
             Git = git;
             Github = github;
+            Gitlab = gitlab;
             IndexDocument = indexDocument;
             Name = name;
             OutputDir = outputDir;

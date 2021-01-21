@@ -30,13 +30,14 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecWorkerEnv> Envs;
         /// <summary>
-        /// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
         /// </summary>
         public readonly Outputs.AppSpecWorkerGit? Git;
         /// <summary>
-        /// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
         /// </summary>
         public readonly Outputs.AppSpecWorkerGithub? Github;
+        public readonly Outputs.AppSpecWorkerGitlab? Gitlab;
         /// <summary>
         /// The amount of instances that this component should be scaled to.
         /// </summary>
@@ -73,6 +74,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             Outputs.AppSpecWorkerGithub? github,
 
+            Outputs.AppSpecWorkerGitlab? gitlab,
+
             int? instanceCount,
 
             string? instanceSizeSlug,
@@ -91,6 +94,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Envs = envs;
             Git = git;
             Github = github;
+            Gitlab = gitlab;
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
             Name = name;

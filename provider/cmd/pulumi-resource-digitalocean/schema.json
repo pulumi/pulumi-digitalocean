@@ -91,6 +91,18 @@
                         }
                     }
                 },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecEnv:AppSpecEnv"
+                    },
+                    "description": "Describes an environment variable made available to an app competent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the component.\n",
@@ -216,6 +228,54 @@
             },
             "type": "object"
         },
+        "digitalocean:index/AppSpecEnv:AppSpecEnv": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type"
+                    ]
+                }
+            }
+        },
         "digitalocean:index/AppSpecService:AppSpecService": {
             "properties": {
                 "buildCommand": {
@@ -259,7 +319,7 @@
                 },
                 "git": {
                     "$ref": "#/types/digitalocean:index/AppSpecServiceGit:AppSpecServiceGit",
-                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -268,7 +328,15 @@
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/AppSpecServiceGithub:AppSpecServiceGithub",
-                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gitlab": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceGitlab:AppSpecServiceGitlab",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -465,6 +533,38 @@
             },
             "type": "object"
         },
+        "digitalocean:index/AppSpecServiceGitlab:AppSpecServiceGitlab": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/AppSpecServiceHealthCheck:AppSpecServiceHealthCheck": {
             "properties": {
                 "failureThreshold": {
@@ -549,6 +649,15 @@
                         }
                     }
                 },
+                "catchallDocument": {
+                    "type": "string",
+                    "description": "The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dockerfilePath": {
                     "type": "string",
                     "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
@@ -581,7 +690,7 @@
                 },
                 "errorDocument": {
                     "type": "string",
-                    "description": "The name of the error document to use when serving this static site*\n",
+                    "description": "The name of the error document to use when serving this static site.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -590,7 +699,7 @@
                 },
                 "git": {
                     "$ref": "#/types/digitalocean:index/AppSpecStaticSiteGit:AppSpecStaticSiteGit",
-                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -599,7 +708,15 @@
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/AppSpecStaticSiteGithub:AppSpecStaticSiteGithub",
-                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gitlab": {
+                    "$ref": "#/types/digitalocean:index/AppSpecStaticSiteGitlab:AppSpecStaticSiteGitlab",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -767,6 +884,38 @@
             },
             "type": "object"
         },
+        "digitalocean:index/AppSpecStaticSiteGitlab:AppSpecStaticSiteGitlab": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/AppSpecStaticSiteRoutes:AppSpecStaticSiteRoutes": {
             "properties": {
                 "path": {
@@ -824,7 +973,7 @@
                 },
                 "git": {
                     "$ref": "#/types/digitalocean:index/AppSpecWorkerGit:AppSpecWorkerGit",
-                    "description": "A Git repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -833,7 +982,15 @@
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/AppSpecWorkerGithub:AppSpecWorkerGithub",
-                    "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gitlab": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerGitlab:AppSpecWorkerGitlab",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -979,6 +1136,38 @@
             "type": "object"
         },
         "digitalocean:index/AppSpecWorkerGithub:AppSpecWorkerGithub": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/AppSpecWorkerGitlab:AppSpecWorkerGitlab": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -2034,6 +2223,18 @@
                         }
                     }
                 },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecEnv:getAppSpecEnv"
+                    },
+                    "description": "Describes an environment variable made available to an app competent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the component.\n",
@@ -2163,6 +2364,55 @@
             },
             "type": "object"
         },
+        "digitalocean:index/getAppSpecEnv:getAppSpecEnv": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getAppSpecService:getAppSpecService": {
             "properties": {
                 "buildCommand": {
@@ -2216,6 +2466,14 @@
                 "github": {
                     "$ref": "#/types/digitalocean:index/getAppSpecServiceGithub:getAppSpecServiceGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gitlab": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceGitlab:getAppSpecServiceGitlab",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2411,6 +2669,38 @@
             },
             "type": "object"
         },
+        "digitalocean:index/getAppSpecServiceGitlab:getAppSpecServiceGitlab": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/getAppSpecServiceHealthCheck:getAppSpecServiceHealthCheck": {
             "properties": {
                 "failureThreshold": {
@@ -2495,6 +2785,15 @@
                         }
                     }
                 },
+                "catchallDocument": {
+                    "type": "string",
+                    "description": "The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dockerfilePath": {
                     "type": "string",
                     "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
@@ -2527,7 +2826,7 @@
                 },
                 "errorDocument": {
                     "type": "string",
-                    "description": "The name of the error document to use when serving this static site*\n",
+                    "description": "The name of the error document to use when serving this static site.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2546,6 +2845,14 @@
                 "github": {
                     "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteGithub:getAppSpecStaticSiteGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gitlab": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteGitlab:getAppSpecStaticSiteGitlab",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2712,6 +3019,38 @@
             },
             "type": "object"
         },
+        "digitalocean:index/getAppSpecStaticSiteGitlab:getAppSpecStaticSiteGitlab": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/getAppSpecStaticSiteRoutes:getAppSpecStaticSiteRoutes": {
             "properties": {
                 "path": {
@@ -2779,6 +3118,14 @@
                 "github": {
                     "$ref": "#/types/digitalocean:index/getAppSpecWorkerGithub:getAppSpecWorkerGithub",
                     "description": "A GitHub repo to use as component's source. Only one of `git` and `github` may be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gitlab": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerGitlab:getAppSpecWorkerGitlab",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2923,6 +3270,38 @@
             "type": "object"
         },
         "digitalocean:index/getAppSpecWorkerGithub:getAppSpecWorkerGithub": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getAppSpecWorkerGitlab:getAppSpecWorkerGitlab": {
             "properties": {
                 "branch": {
                     "type": "string",
@@ -5751,10 +6130,12 @@
                     "type": "string"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An optional description for the image.\n"
                 },
                 "distribution": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)\n"
                 },
                 "imageId": {
                     "type": "integer"
@@ -5774,7 +6155,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of regions. (Currently only one is supported)\n"
+                    "description": "A list of regions. (Currently only one is supported).\n"
                 },
                 "sizeGigabytes": {
                     "type": "number"
@@ -5789,7 +6170,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of optional tags for the image.\n"
                 },
                 "type": {
                     "type": "string"
@@ -5814,10 +6196,12 @@
             ],
             "inputProperties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An optional description for the image.\n"
                 },
                 "distribution": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)\n"
                 },
                 "name": {
                     "type": "string",
@@ -5828,13 +6212,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of regions. (Currently only one is supported)\n"
+                    "description": "A list of regions. (Currently only one is supported).\n"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of optional tags for the image.\n"
                 },
                 "url": {
                     "type": "string",
@@ -5852,10 +6237,12 @@
                         "type": "string"
                     },
                     "description": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "An optional description for the image.\n"
                     },
                     "distribution": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)\n"
                     },
                     "imageId": {
                         "type": "integer"
@@ -5875,7 +6262,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of regions. (Currently only one is supported)\n"
+                        "description": "A list of regions. (Currently only one is supported).\n"
                     },
                     "sizeGigabytes": {
                         "type": "number"
@@ -5890,7 +6277,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "A list of optional tags for the image.\n"
                     },
                     "type": {
                         "type": "string"
@@ -7589,7 +7977,7 @@
             }
         },
         "digitalocean:index/kubernetesNodePool:KubernetesNodePool": {
-            "description": "Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foo = new digitalocean.KubernetesCluster(\"foo\", {\n    region: \"nyc1\",\n    version: \"1.15.5-do.1\",\n    nodePool: {\n        name: \"front-end-pool\",\n        size: \"s-2vcpu-2gb\",\n        nodeCount: 3,\n    },\n});\nconst bar = new digitalocean.KubernetesNodePool(\"bar\", {\n    clusterId: foo.id,\n    size: \"c-2\",\n    nodeCount: 2,\n    tags: [\"backend\"],\n    labels: {\n        service: \"backend\",\n        priority: \"high\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoo = digitalocean.KubernetesCluster(\"foo\",\n    region=\"nyc1\",\n    version=\"1.15.5-do.1\",\n    node_pool=digitalocean.KubernetesClusterNodePoolArgs(\n        name=\"front-end-pool\",\n        size=\"s-2vcpu-2gb\",\n        node_count=3,\n    ))\nbar = digitalocean.KubernetesNodePool(\"bar\",\n    cluster_id=foo.id,\n    size=\"c-2\",\n    node_count=2,\n    tags=[\"backend\"],\n    labels={\n        \"service\": \"backend\",\n        \"priority\": \"high\",\n    })\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new DigitalOcean.KubernetesCluster(\"foo\", new DigitalOcean.KubernetesClusterArgs\n        {\n            Region = \"nyc1\",\n            Version = \"1.15.5-do.1\",\n            NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs\n            {\n                Name = \"front-end-pool\",\n                Size = \"s-2vcpu-2gb\",\n                NodeCount = 3,\n            },\n        });\n        var bar = new DigitalOcean.KubernetesNodePool(\"bar\", new DigitalOcean.KubernetesNodePoolArgs\n        {\n            ClusterId = foo.Id,\n            Size = \"c-2\",\n            NodeCount = 2,\n            Tags = \n            {\n                \"backend\",\n            },\n            Labels = \n            {\n                { \"service\", \"backend\" },\n                { \"priority\", \"high\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := digitalocean.NewKubernetesCluster(ctx, \"foo\", \u0026digitalocean.KubernetesClusterArgs{\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t\tVersion: pulumi.String(\"1.15.5-do.1\"),\n\t\t\tNodePool: \u0026digitalocean.KubernetesClusterNodePoolArgs{\n\t\t\t\tName:      pulumi.String(\"front-end-pool\"),\n\t\t\t\tSize:      pulumi.String(\"s-2vcpu-2gb\"),\n\t\t\t\tNodeCount: pulumi.Int(3),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewKubernetesNodePool(ctx, \"bar\", \u0026digitalocean.KubernetesNodePoolArgs{\n\t\t\tClusterId: foo.ID(),\n\t\t\tSize:      pulumi.String(\"c-2\"),\n\t\t\tNodeCount: pulumi.Int(2),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"backend\"),\n\t\t\t},\n\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\"service\":  pulumi.String(\"backend\"),\n\t\t\t\t\"priority\": pulumi.String(\"high\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Autoscaling Example\n\nNode pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).\nFor example:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst autoscale_pool_01 = new digitalocean.KubernetesNodePool(\"autoscale-pool-01\", {\n    clusterId: digitalocean_kubernetes_cluster.foo.id,\n    size: \"s-1vcpu-2gb\",\n    autoScale: true,\n    minNodes: 1,\n    maxNodes: 5,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nautoscale_pool_01 = digitalocean.KubernetesNodePool(\"autoscale-pool-01\",\n    cluster_id=digitalocean_kubernetes_cluster[\"foo\"][\"id\"],\n    size=\"s-1vcpu-2gb\",\n    auto_scale=True,\n    min_nodes=1,\n    max_nodes=5)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool(\"autoscale-pool-01\", new DigitalOcean.KubernetesNodePoolArgs\n        {\n            ClusterId = digitalocean_kubernetes_cluster.Foo.Id,\n            Size = \"s-1vcpu-2gb\",\n            AutoScale = true,\n            MinNodes = 1,\n            MaxNodes = 5,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewKubernetesNodePool(ctx, \"autoscale_pool_01\", \u0026digitalocean.KubernetesNodePoolArgs{\n\t\t\tClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),\n\t\t\tSize:      pulumi.String(\"s-1vcpu-2gb\"),\n\t\t\tAutoScale: pulumi.Bool(true),\n\t\t\tMinNodes:  pulumi.Int(1),\n\t\t\tMaxNodes:  pulumi.Int(5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIf you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8\n```\n\n NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource. ",
+            "description": "Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foo = new digitalocean.KubernetesCluster(\"foo\", {\n    region: \"nyc1\",\n    version: \"1.19.3-do.3\",\n    nodePool: {\n        name: \"front-end-pool\",\n        size: \"s-2vcpu-2gb\",\n        nodeCount: 3,\n    },\n});\nconst bar = new digitalocean.KubernetesNodePool(\"bar\", {\n    clusterId: foo.id,\n    size: \"c-2\",\n    nodeCount: 2,\n    tags: [\"backend\"],\n    labels: {\n        service: \"backend\",\n        priority: \"high\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoo = digitalocean.KubernetesCluster(\"foo\",\n    region=\"nyc1\",\n    version=\"1.19.3-do.3\",\n    node_pool=digitalocean.KubernetesClusterNodePoolArgs(\n        name=\"front-end-pool\",\n        size=\"s-2vcpu-2gb\",\n        node_count=3,\n    ))\nbar = digitalocean.KubernetesNodePool(\"bar\",\n    cluster_id=foo.id,\n    size=\"c-2\",\n    node_count=2,\n    tags=[\"backend\"],\n    labels={\n        \"service\": \"backend\",\n        \"priority\": \"high\",\n    })\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new DigitalOcean.KubernetesCluster(\"foo\", new DigitalOcean.KubernetesClusterArgs\n        {\n            Region = \"nyc1\",\n            Version = \"1.19.3-do.3\",\n            NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs\n            {\n                Name = \"front-end-pool\",\n                Size = \"s-2vcpu-2gb\",\n                NodeCount = 3,\n            },\n        });\n        var bar = new DigitalOcean.KubernetesNodePool(\"bar\", new DigitalOcean.KubernetesNodePoolArgs\n        {\n            ClusterId = foo.Id,\n            Size = \"c-2\",\n            NodeCount = 2,\n            Tags = \n            {\n                \"backend\",\n            },\n            Labels = \n            {\n                { \"service\", \"backend\" },\n                { \"priority\", \"high\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := digitalocean.NewKubernetesCluster(ctx, \"foo\", \u0026digitalocean.KubernetesClusterArgs{\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t\tVersion: pulumi.String(\"1.19.3-do.3\"),\n\t\t\tNodePool: \u0026digitalocean.KubernetesClusterNodePoolArgs{\n\t\t\t\tName:      pulumi.String(\"front-end-pool\"),\n\t\t\t\tSize:      pulumi.String(\"s-2vcpu-2gb\"),\n\t\t\t\tNodeCount: pulumi.Int(3),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewKubernetesNodePool(ctx, \"bar\", \u0026digitalocean.KubernetesNodePoolArgs{\n\t\t\tClusterId: foo.ID(),\n\t\t\tSize:      pulumi.String(\"c-2\"),\n\t\t\tNodeCount: pulumi.Int(2),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"backend\"),\n\t\t\t},\n\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\"service\":  pulumi.String(\"backend\"),\n\t\t\t\t\"priority\": pulumi.String(\"high\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Autoscaling Example\n\nNode pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).\nFor example:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst autoscale_pool_01 = new digitalocean.KubernetesNodePool(\"autoscale-pool-01\", {\n    clusterId: digitalocean_kubernetes_cluster.foo.id,\n    size: \"s-1vcpu-2gb\",\n    autoScale: true,\n    minNodes: 1,\n    maxNodes: 5,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nautoscale_pool_01 = digitalocean.KubernetesNodePool(\"autoscale-pool-01\",\n    cluster_id=digitalocean_kubernetes_cluster[\"foo\"][\"id\"],\n    size=\"s-1vcpu-2gb\",\n    auto_scale=True,\n    min_nodes=1,\n    max_nodes=5)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool(\"autoscale-pool-01\", new DigitalOcean.KubernetesNodePoolArgs\n        {\n            ClusterId = digitalocean_kubernetes_cluster.Foo.Id,\n            Size = \"s-1vcpu-2gb\",\n            AutoScale = true,\n            MinNodes = 1,\n            MaxNodes = 5,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewKubernetesNodePool(ctx, \"autoscale_pool_01\", \u0026digitalocean.KubernetesNodePoolArgs{\n\t\t\tClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),\n\t\t\tSize:      pulumi.String(\"s-1vcpu-2gb\"),\n\t\t\tAutoScale: pulumi.Bool(true),\n\t\t\tMinNodes:  pulumi.Int(1),\n\t\t\tMaxNodes:  pulumi.Int(5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIf you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8\n```\n\n NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource. ",
             "properties": {
                 "actualNodeCount": {
                     "type": "integer",

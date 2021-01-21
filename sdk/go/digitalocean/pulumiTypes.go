@@ -14,6 +14,8 @@ type AppSpec struct {
 	Databases []AppSpecDatabase `pulumi:"databases"`
 	// A list of hostnames where the application will be available.
 	Domains []string `pulumi:"domains"`
+	// Describes an environment variable made available to an app competent.
+	Envs []AppSpecEnv `pulumi:"envs"`
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
@@ -38,6 +40,8 @@ type AppSpecArgs struct {
 	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
 	// A list of hostnames where the application will be available.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Describes an environment variable made available to an app competent.
+	Envs AppSpecEnvArrayInput `pulumi:"envs"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
@@ -132,6 +136,11 @@ func (o AppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
+// Describes an environment variable made available to an app competent.
+func (o AppSpecOutput) Envs() AppSpecEnvArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecEnv { return v.Envs }).(AppSpecEnvArrayOutput)
+}
+
 // The name of the component.
 func (o AppSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpec) string { return v.Name }).(pulumi.StringOutput)
@@ -189,6 +198,16 @@ func (o AppSpecPtrOutput) Domains() pulumi.StringArrayOutput {
 		}
 		return v.Domains
 	}).(pulumi.StringArrayOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o AppSpecPtrOutput) Envs() AppSpecEnvArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecEnv {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(AppSpecEnvArrayOutput)
 }
 
 // The name of the component.
@@ -389,6 +408,130 @@ func (o AppSpecDatabaseArrayOutput) Index(i pulumi.IntInput) AppSpecDatabaseOutp
 	}).(AppSpecDatabaseOutput)
 }
 
+type AppSpecEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type *string `pulumi:"type"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// AppSpecEnvInput is an input type that accepts AppSpecEnvArgs and AppSpecEnvOutput values.
+// You can construct a concrete instance of `AppSpecEnvInput` via:
+//
+//          AppSpecEnvArgs{...}
+type AppSpecEnvInput interface {
+	pulumi.Input
+
+	ToAppSpecEnvOutput() AppSpecEnvOutput
+	ToAppSpecEnvOutputWithContext(context.Context) AppSpecEnvOutput
+}
+
+type AppSpecEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AppSpecEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecEnv)(nil)).Elem()
+}
+
+func (i AppSpecEnvArgs) ToAppSpecEnvOutput() AppSpecEnvOutput {
+	return i.ToAppSpecEnvOutputWithContext(context.Background())
+}
+
+func (i AppSpecEnvArgs) ToAppSpecEnvOutputWithContext(ctx context.Context) AppSpecEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecEnvOutput)
+}
+
+// AppSpecEnvArrayInput is an input type that accepts AppSpecEnvArray and AppSpecEnvArrayOutput values.
+// You can construct a concrete instance of `AppSpecEnvArrayInput` via:
+//
+//          AppSpecEnvArray{ AppSpecEnvArgs{...} }
+type AppSpecEnvArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecEnvArrayOutput() AppSpecEnvArrayOutput
+	ToAppSpecEnvArrayOutputWithContext(context.Context) AppSpecEnvArrayOutput
+}
+
+type AppSpecEnvArray []AppSpecEnvInput
+
+func (AppSpecEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecEnv)(nil)).Elem()
+}
+
+func (i AppSpecEnvArray) ToAppSpecEnvArrayOutput() AppSpecEnvArrayOutput {
+	return i.ToAppSpecEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecEnvArray) ToAppSpecEnvArrayOutputWithContext(ctx context.Context) AppSpecEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecEnvArrayOutput)
+}
+
+type AppSpecEnvOutput struct{ *pulumi.OutputState }
+
+func (AppSpecEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecEnv)(nil)).Elem()
+}
+
+func (o AppSpecEnvOutput) ToAppSpecEnvOutput() AppSpecEnvOutput {
+	return o
+}
+
+func (o AppSpecEnvOutput) ToAppSpecEnvOutputWithContext(ctx context.Context) AppSpecEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o AppSpecEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o AppSpecEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o AppSpecEnvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The value of the environment variable.
+func (o AppSpecEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecEnv)(nil)).Elem()
+}
+
+func (o AppSpecEnvArrayOutput) ToAppSpecEnvArrayOutput() AppSpecEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecEnvArrayOutput) ToAppSpecEnvArrayOutputWithContext(ctx context.Context) AppSpecEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecEnvArrayOutput) Index(i pulumi.IntInput) AppSpecEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecEnv {
+		return vs[0].([]AppSpecEnv)[vs[1].(int)]
+	}).(AppSpecEnvOutput)
+}
+
 type AppSpecService struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
@@ -398,10 +541,11 @@ type AppSpecService struct {
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecServiceEnv `pulumi:"envs"`
-	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 	Git *AppSpecServiceGit `pulumi:"git"`
-	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 	Github *AppSpecServiceGithub `pulumi:"github"`
+	Gitlab *AppSpecServiceGitlab `pulumi:"gitlab"`
 	// A health check to determine the availability of this component.
 	HealthCheck *AppSpecServiceHealthCheck `pulumi:"healthCheck"`
 	// The internal port on which this service's run command will listen.
@@ -439,10 +583,11 @@ type AppSpecServiceArgs struct {
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecServiceEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 	Git AppSpecServiceGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 	Github AppSpecServiceGithubPtrInput `pulumi:"github"`
+	Gitlab AppSpecServiceGitlabPtrInput `pulumi:"gitlab"`
 	// A health check to determine the availability of this component.
 	HealthCheck AppSpecServiceHealthCheckPtrInput `pulumi:"healthCheck"`
 	// The internal port on which this service's run command will listen.
@@ -531,14 +676,18 @@ func (o AppSpecServiceOutput) Envs() AppSpecServiceEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecService) []AppSpecServiceEnv { return v.Envs }).(AppSpecServiceEnvArrayOutput)
 }
 
-// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 func (o AppSpecServiceOutput) Git() AppSpecServiceGitPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *AppSpecServiceGit { return v.Git }).(AppSpecServiceGitPtrOutput)
 }
 
-// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 func (o AppSpecServiceOutput) Github() AppSpecServiceGithubPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *AppSpecServiceGithub { return v.Github }).(AppSpecServiceGithubPtrOutput)
+}
+
+func (o AppSpecServiceOutput) Gitlab() AppSpecServiceGitlabPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceGitlab { return v.Gitlab }).(AppSpecServiceGitlabPtrOutput)
 }
 
 // A health check to determine the availability of this component.
@@ -1043,6 +1192,175 @@ func (o AppSpecServiceGithubPtrOutput) Repo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AppSpecServiceGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecServiceGitlabInput is an input type that accepts AppSpecServiceGitlabArgs and AppSpecServiceGitlabOutput values.
+// You can construct a concrete instance of `AppSpecServiceGitlabInput` via:
+//
+//          AppSpecServiceGitlabArgs{...}
+type AppSpecServiceGitlabInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceGitlabOutput() AppSpecServiceGitlabOutput
+	ToAppSpecServiceGitlabOutputWithContext(context.Context) AppSpecServiceGitlabOutput
+}
+
+type AppSpecServiceGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecServiceGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (i AppSpecServiceGitlabArgs) ToAppSpecServiceGitlabOutput() AppSpecServiceGitlabOutput {
+	return i.ToAppSpecServiceGitlabOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceGitlabArgs) ToAppSpecServiceGitlabOutputWithContext(ctx context.Context) AppSpecServiceGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGitlabOutput)
+}
+
+func (i AppSpecServiceGitlabArgs) ToAppSpecServiceGitlabPtrOutput() AppSpecServiceGitlabPtrOutput {
+	return i.ToAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceGitlabArgs) ToAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) AppSpecServiceGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGitlabOutput).ToAppSpecServiceGitlabPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceGitlabPtrInput is an input type that accepts AppSpecServiceGitlabArgs, AppSpecServiceGitlabPtr and AppSpecServiceGitlabPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceGitlabPtrInput` via:
+//
+//          AppSpecServiceGitlabArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceGitlabPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceGitlabPtrOutput() AppSpecServiceGitlabPtrOutput
+	ToAppSpecServiceGitlabPtrOutputWithContext(context.Context) AppSpecServiceGitlabPtrOutput
+}
+
+type appSpecServiceGitlabPtrType AppSpecServiceGitlabArgs
+
+func AppSpecServiceGitlabPtr(v *AppSpecServiceGitlabArgs) AppSpecServiceGitlabPtrInput {
+	return (*appSpecServiceGitlabPtrType)(v)
+}
+
+func (*appSpecServiceGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (i *appSpecServiceGitlabPtrType) ToAppSpecServiceGitlabPtrOutput() AppSpecServiceGitlabPtrOutput {
+	return i.ToAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceGitlabPtrType) ToAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) AppSpecServiceGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceGitlabPtrOutput)
+}
+
+type AppSpecServiceGitlabOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (o AppSpecServiceGitlabOutput) ToAppSpecServiceGitlabOutput() AppSpecServiceGitlabOutput {
+	return o
+}
+
+func (o AppSpecServiceGitlabOutput) ToAppSpecServiceGitlabOutputWithContext(ctx context.Context) AppSpecServiceGitlabOutput {
+	return o
+}
+
+func (o AppSpecServiceGitlabOutput) ToAppSpecServiceGitlabPtrOutput() AppSpecServiceGitlabPtrOutput {
+	return o.ToAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceGitlabOutput) ToAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) AppSpecServiceGitlabPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGitlab) *AppSpecServiceGitlab {
+		return &v
+	}).(AppSpecServiceGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecServiceGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecServiceGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecServiceGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (o AppSpecServiceGitlabPtrOutput) ToAppSpecServiceGitlabPtrOutput() AppSpecServiceGitlabPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceGitlabPtrOutput) ToAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) AppSpecServiceGitlabPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceGitlabPtrOutput) Elem() AppSpecServiceGitlabOutput {
+	return o.ApplyT(func(v *AppSpecServiceGitlab) AppSpecServiceGitlab { return *v }).(AppSpecServiceGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecServiceGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecServiceGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecServiceGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppSpecServiceHealthCheck struct {
 	// The number of failed health checks before considered unhealthy.
 	FailureThreshold *int `pulumi:"failureThreshold"`
@@ -1403,18 +1721,21 @@ func (o AppSpecServiceRoutesPtrOutput) Path() pulumi.StringPtrOutput {
 type AppSpecStaticSite struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
+	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+	CatchallDocument *string `pulumi:"catchallDocument"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath *string `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecStaticSiteEnv `pulumi:"envs"`
-	// The name of the error document to use when serving this static site*
+	// The name of the error document to use when serving this static site.
 	ErrorDocument *string `pulumi:"errorDocument"`
-	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 	Git *AppSpecStaticSiteGit `pulumi:"git"`
-	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 	Github *AppSpecStaticSiteGithub `pulumi:"github"`
+	Gitlab *AppSpecStaticSiteGitlab `pulumi:"gitlab"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument *string `pulumi:"indexDocument"`
 	// The name of the component.
@@ -1440,18 +1761,21 @@ type AppSpecStaticSiteInput interface {
 type AppSpecStaticSiteArgs struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+	CatchallDocument pulumi.StringPtrInput `pulumi:"catchallDocument"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecStaticSiteEnvArrayInput `pulumi:"envs"`
-	// The name of the error document to use when serving this static site*
+	// The name of the error document to use when serving this static site.
 	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
-	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 	Git AppSpecStaticSiteGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 	Github AppSpecStaticSiteGithubPtrInput `pulumi:"github"`
+	Gitlab AppSpecStaticSiteGitlabPtrInput `pulumi:"gitlab"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
 	// The name of the component.
@@ -1519,6 +1843,11 @@ func (o AppSpecStaticSiteOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
 }
 
+// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+func (o AppSpecStaticSiteOutput) CatchallDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.CatchallDocument }).(pulumi.StringPtrOutput)
+}
+
 // The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 func (o AppSpecStaticSiteOutput) DockerfilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
@@ -1534,19 +1863,23 @@ func (o AppSpecStaticSiteOutput) Envs() AppSpecStaticSiteEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) []AppSpecStaticSiteEnv { return v.Envs }).(AppSpecStaticSiteEnvArrayOutput)
 }
 
-// The name of the error document to use when serving this static site*
+// The name of the error document to use when serving this static site.
 func (o AppSpecStaticSiteOutput) ErrorDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
 }
 
-// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 func (o AppSpecStaticSiteOutput) Git() AppSpecStaticSiteGitPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteGit { return v.Git }).(AppSpecStaticSiteGitPtrOutput)
 }
 
-// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 func (o AppSpecStaticSiteOutput) Github() AppSpecStaticSiteGithubPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteGithub { return v.Github }).(AppSpecStaticSiteGithubPtrOutput)
+}
+
+func (o AppSpecStaticSiteOutput) Gitlab() AppSpecStaticSiteGitlabPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteGitlab { return v.Gitlab }).(AppSpecStaticSiteGitlabPtrOutput)
 }
 
 // The name of the index document to use when serving this static site.
@@ -2036,6 +2369,175 @@ func (o AppSpecStaticSiteGithubPtrOutput) Repo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AppSpecStaticSiteGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecStaticSiteGitlabInput is an input type that accepts AppSpecStaticSiteGitlabArgs and AppSpecStaticSiteGitlabOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteGitlabInput` via:
+//
+//          AppSpecStaticSiteGitlabArgs{...}
+type AppSpecStaticSiteGitlabInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteGitlabOutput() AppSpecStaticSiteGitlabOutput
+	ToAppSpecStaticSiteGitlabOutputWithContext(context.Context) AppSpecStaticSiteGitlabOutput
+}
+
+type AppSpecStaticSiteGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecStaticSiteGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteGitlab)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteGitlabArgs) ToAppSpecStaticSiteGitlabOutput() AppSpecStaticSiteGitlabOutput {
+	return i.ToAppSpecStaticSiteGitlabOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteGitlabArgs) ToAppSpecStaticSiteGitlabOutputWithContext(ctx context.Context) AppSpecStaticSiteGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGitlabOutput)
+}
+
+func (i AppSpecStaticSiteGitlabArgs) ToAppSpecStaticSiteGitlabPtrOutput() AppSpecStaticSiteGitlabPtrOutput {
+	return i.ToAppSpecStaticSiteGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteGitlabArgs) ToAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGitlabOutput).ToAppSpecStaticSiteGitlabPtrOutputWithContext(ctx)
+}
+
+// AppSpecStaticSiteGitlabPtrInput is an input type that accepts AppSpecStaticSiteGitlabArgs, AppSpecStaticSiteGitlabPtr and AppSpecStaticSiteGitlabPtrOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteGitlabPtrInput` via:
+//
+//          AppSpecStaticSiteGitlabArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecStaticSiteGitlabPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteGitlabPtrOutput() AppSpecStaticSiteGitlabPtrOutput
+	ToAppSpecStaticSiteGitlabPtrOutputWithContext(context.Context) AppSpecStaticSiteGitlabPtrOutput
+}
+
+type appSpecStaticSiteGitlabPtrType AppSpecStaticSiteGitlabArgs
+
+func AppSpecStaticSiteGitlabPtr(v *AppSpecStaticSiteGitlabArgs) AppSpecStaticSiteGitlabPtrInput {
+	return (*appSpecStaticSiteGitlabPtrType)(v)
+}
+
+func (*appSpecStaticSiteGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteGitlab)(nil)).Elem()
+}
+
+func (i *appSpecStaticSiteGitlabPtrType) ToAppSpecStaticSiteGitlabPtrOutput() AppSpecStaticSiteGitlabPtrOutput {
+	return i.ToAppSpecStaticSiteGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecStaticSiteGitlabPtrType) ToAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteGitlabPtrOutput)
+}
+
+type AppSpecStaticSiteGitlabOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteGitlab)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteGitlabOutput) ToAppSpecStaticSiteGitlabOutput() AppSpecStaticSiteGitlabOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGitlabOutput) ToAppSpecStaticSiteGitlabOutputWithContext(ctx context.Context) AppSpecStaticSiteGitlabOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGitlabOutput) ToAppSpecStaticSiteGitlabPtrOutput() AppSpecStaticSiteGitlabPtrOutput {
+	return o.ToAppSpecStaticSiteGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecStaticSiteGitlabOutput) ToAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitlabPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGitlab) *AppSpecStaticSiteGitlab {
+		return &v
+	}).(AppSpecStaticSiteGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecStaticSiteGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecStaticSiteGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecStaticSiteGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteGitlab)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteGitlabPtrOutput) ToAppSpecStaticSiteGitlabPtrOutput() AppSpecStaticSiteGitlabPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGitlabPtrOutput) ToAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitlabPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteGitlabPtrOutput) Elem() AppSpecStaticSiteGitlabOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGitlab) AppSpecStaticSiteGitlab { return *v }).(AppSpecStaticSiteGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecStaticSiteGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecStaticSiteGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecStaticSiteGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppSpecStaticSiteRoutes struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path *string `pulumi:"path"`
@@ -2176,10 +2678,11 @@ type AppSpecWorker struct {
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecWorkerEnv `pulumi:"envs"`
-	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 	Git *AppSpecWorkerGit `pulumi:"git"`
-	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 	Github *AppSpecWorkerGithub `pulumi:"github"`
+	Gitlab *AppSpecWorkerGitlab `pulumi:"gitlab"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
@@ -2213,10 +2716,11 @@ type AppSpecWorkerArgs struct {
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecWorkerEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 	Git AppSpecWorkerGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 	Github AppSpecWorkerGithubPtrInput `pulumi:"github"`
+	Gitlab AppSpecWorkerGitlabPtrInput `pulumi:"gitlab"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
@@ -2301,14 +2805,18 @@ func (o AppSpecWorkerOutput) Envs() AppSpecWorkerEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecWorker) []AppSpecWorkerEnv { return v.Envs }).(AppSpecWorkerEnvArrayOutput)
 }
 
-// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
 func (o AppSpecWorkerOutput) Git() AppSpecWorkerGitPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerGit { return v.Git }).(AppSpecWorkerGitPtrOutput)
 }
 
-// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
 func (o AppSpecWorkerOutput) Github() AppSpecWorkerGithubPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerGithub { return v.Github }).(AppSpecWorkerGithubPtrOutput)
+}
+
+func (o AppSpecWorkerOutput) Gitlab() AppSpecWorkerGitlabPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerGitlab { return v.Gitlab }).(AppSpecWorkerGitlabPtrOutput)
 }
 
 // The amount of instances that this component should be scaled to.
@@ -2796,6 +3304,175 @@ func (o AppSpecWorkerGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
 // The name of the repo in the format `owner/repo`.
 func (o AppSpecWorkerGithubPtrOutput) Repo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecWorkerGitlabInput is an input type that accepts AppSpecWorkerGitlabArgs and AppSpecWorkerGitlabOutput values.
+// You can construct a concrete instance of `AppSpecWorkerGitlabInput` via:
+//
+//          AppSpecWorkerGitlabArgs{...}
+type AppSpecWorkerGitlabInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerGitlabOutput() AppSpecWorkerGitlabOutput
+	ToAppSpecWorkerGitlabOutputWithContext(context.Context) AppSpecWorkerGitlabOutput
+}
+
+type AppSpecWorkerGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecWorkerGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerGitlab)(nil)).Elem()
+}
+
+func (i AppSpecWorkerGitlabArgs) ToAppSpecWorkerGitlabOutput() AppSpecWorkerGitlabOutput {
+	return i.ToAppSpecWorkerGitlabOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerGitlabArgs) ToAppSpecWorkerGitlabOutputWithContext(ctx context.Context) AppSpecWorkerGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGitlabOutput)
+}
+
+func (i AppSpecWorkerGitlabArgs) ToAppSpecWorkerGitlabPtrOutput() AppSpecWorkerGitlabPtrOutput {
+	return i.ToAppSpecWorkerGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerGitlabArgs) ToAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGitlabOutput).ToAppSpecWorkerGitlabPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerGitlabPtrInput is an input type that accepts AppSpecWorkerGitlabArgs, AppSpecWorkerGitlabPtr and AppSpecWorkerGitlabPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerGitlabPtrInput` via:
+//
+//          AppSpecWorkerGitlabArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecWorkerGitlabPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerGitlabPtrOutput() AppSpecWorkerGitlabPtrOutput
+	ToAppSpecWorkerGitlabPtrOutputWithContext(context.Context) AppSpecWorkerGitlabPtrOutput
+}
+
+type appSpecWorkerGitlabPtrType AppSpecWorkerGitlabArgs
+
+func AppSpecWorkerGitlabPtr(v *AppSpecWorkerGitlabArgs) AppSpecWorkerGitlabPtrInput {
+	return (*appSpecWorkerGitlabPtrType)(v)
+}
+
+func (*appSpecWorkerGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerGitlab)(nil)).Elem()
+}
+
+func (i *appSpecWorkerGitlabPtrType) ToAppSpecWorkerGitlabPtrOutput() AppSpecWorkerGitlabPtrOutput {
+	return i.ToAppSpecWorkerGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerGitlabPtrType) ToAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerGitlabPtrOutput)
+}
+
+type AppSpecWorkerGitlabOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerGitlab)(nil)).Elem()
+}
+
+func (o AppSpecWorkerGitlabOutput) ToAppSpecWorkerGitlabOutput() AppSpecWorkerGitlabOutput {
+	return o
+}
+
+func (o AppSpecWorkerGitlabOutput) ToAppSpecWorkerGitlabOutputWithContext(ctx context.Context) AppSpecWorkerGitlabOutput {
+	return o
+}
+
+func (o AppSpecWorkerGitlabOutput) ToAppSpecWorkerGitlabPtrOutput() AppSpecWorkerGitlabPtrOutput {
+	return o.ToAppSpecWorkerGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerGitlabOutput) ToAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitlabPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGitlab) *AppSpecWorkerGitlab {
+		return &v
+	}).(AppSpecWorkerGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecWorkerGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecWorkerGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecWorkerGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerGitlab)(nil)).Elem()
+}
+
+func (o AppSpecWorkerGitlabPtrOutput) ToAppSpecWorkerGitlabPtrOutput() AppSpecWorkerGitlabPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerGitlabPtrOutput) ToAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitlabPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerGitlabPtrOutput) Elem() AppSpecWorkerGitlabOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGitlab) AppSpecWorkerGitlab { return *v }).(AppSpecWorkerGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecWorkerGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecWorkerGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerGitlab) *string {
 		if v == nil {
 			return nil
 		}
@@ -5669,6 +6346,8 @@ func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type GetAppSpec struct {
 	Databases []GetAppSpecDatabase `pulumi:"databases"`
 	Domains   []string             `pulumi:"domains"`
+	// Describes an environment variable made available to an app competent.
+	Envs []GetAppSpecEnv `pulumi:"envs"`
 	// The name of the component.
 	Name        string                 `pulumi:"name"`
 	Region      *string                `pulumi:"region"`
@@ -5691,6 +6370,8 @@ type GetAppSpecInput interface {
 type GetAppSpecArgs struct {
 	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
 	Domains   pulumi.StringArrayInput      `pulumi:"domains"`
+	// Describes an environment variable made available to an app competent.
+	Envs GetAppSpecEnvArrayInput `pulumi:"envs"`
 	// The name of the component.
 	Name        pulumi.StringInput             `pulumi:"name"`
 	Region      pulumi.StringPtrInput          `pulumi:"region"`
@@ -5756,6 +6437,11 @@ func (o GetAppSpecOutput) Databases() GetAppSpecDatabaseArrayOutput {
 
 func (o GetAppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o GetAppSpecOutput) Envs() GetAppSpecEnvArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecEnv { return v.Envs }).(GetAppSpecEnvArrayOutput)
 }
 
 // The name of the component.
@@ -5950,6 +6636,130 @@ func (o GetAppSpecDatabaseArrayOutput) Index(i pulumi.IntInput) GetAppSpecDataba
 	}).(GetAppSpecDatabaseOutput)
 }
 
+type GetAppSpecEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type string `pulumi:"type"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// GetAppSpecEnvInput is an input type that accepts GetAppSpecEnvArgs and GetAppSpecEnvOutput values.
+// You can construct a concrete instance of `GetAppSpecEnvInput` via:
+//
+//          GetAppSpecEnvArgs{...}
+type GetAppSpecEnvInput interface {
+	pulumi.Input
+
+	ToGetAppSpecEnvOutput() GetAppSpecEnvOutput
+	ToGetAppSpecEnvOutputWithContext(context.Context) GetAppSpecEnvOutput
+}
+
+type GetAppSpecEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetAppSpecEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecEnvArgs) ToGetAppSpecEnvOutput() GetAppSpecEnvOutput {
+	return i.ToGetAppSpecEnvOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecEnvArgs) ToGetAppSpecEnvOutputWithContext(ctx context.Context) GetAppSpecEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecEnvOutput)
+}
+
+// GetAppSpecEnvArrayInput is an input type that accepts GetAppSpecEnvArray and GetAppSpecEnvArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecEnvArrayInput` via:
+//
+//          GetAppSpecEnvArray{ GetAppSpecEnvArgs{...} }
+type GetAppSpecEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecEnvArrayOutput() GetAppSpecEnvArrayOutput
+	ToGetAppSpecEnvArrayOutputWithContext(context.Context) GetAppSpecEnvArrayOutput
+}
+
+type GetAppSpecEnvArray []GetAppSpecEnvInput
+
+func (GetAppSpecEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecEnvArray) ToGetAppSpecEnvArrayOutput() GetAppSpecEnvArrayOutput {
+	return i.ToGetAppSpecEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecEnvArray) ToGetAppSpecEnvArrayOutputWithContext(ctx context.Context) GetAppSpecEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecEnvArrayOutput)
+}
+
+type GetAppSpecEnvOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecEnvOutput) ToGetAppSpecEnvOutput() GetAppSpecEnvOutput {
+	return o
+}
+
+func (o GetAppSpecEnvOutput) ToGetAppSpecEnvOutputWithContext(ctx context.Context) GetAppSpecEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o GetAppSpecEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o GetAppSpecEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o GetAppSpecEnvOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecEnv) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o GetAppSpecEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecEnvArrayOutput) ToGetAppSpecEnvArrayOutput() GetAppSpecEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecEnvArrayOutput) ToGetAppSpecEnvArrayOutputWithContext(ctx context.Context) GetAppSpecEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecEnv {
+		return vs[0].([]GetAppSpecEnv)[vs[1].(int)]
+	}).(GetAppSpecEnvOutput)
+}
+
 type GetAppSpecService struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
@@ -5963,6 +6773,7 @@ type GetAppSpecService struct {
 	Git *GetAppSpecServiceGit `pulumi:"git"`
 	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 	Github *GetAppSpecServiceGithub `pulumi:"github"`
+	Gitlab *GetAppSpecServiceGitlab `pulumi:"gitlab"`
 	// A health check to determine the availability of this component.
 	HealthCheck *GetAppSpecServiceHealthCheck `pulumi:"healthCheck"`
 	// The internal port on which this service's run command will listen.
@@ -6004,6 +6815,7 @@ type GetAppSpecServiceArgs struct {
 	Git GetAppSpecServiceGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 	Github GetAppSpecServiceGithubPtrInput `pulumi:"github"`
+	Gitlab GetAppSpecServiceGitlabPtrInput `pulumi:"gitlab"`
 	// A health check to determine the availability of this component.
 	HealthCheck GetAppSpecServiceHealthCheckPtrInput `pulumi:"healthCheck"`
 	// The internal port on which this service's run command will listen.
@@ -6100,6 +6912,10 @@ func (o GetAppSpecServiceOutput) Git() GetAppSpecServiceGitPtrOutput {
 // A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 func (o GetAppSpecServiceOutput) Github() GetAppSpecServiceGithubPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGithub { return v.Github }).(GetAppSpecServiceGithubPtrOutput)
+}
+
+func (o GetAppSpecServiceOutput) Gitlab() GetAppSpecServiceGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGitlab { return v.Gitlab }).(GetAppSpecServiceGitlabPtrOutput)
 }
 
 // A health check to determine the availability of this component.
@@ -6604,6 +7420,175 @@ func (o GetAppSpecServiceGithubPtrOutput) Repo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAppSpecServiceGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecServiceGitlabInput is an input type that accepts GetAppSpecServiceGitlabArgs and GetAppSpecServiceGitlabOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGitlabInput` via:
+//
+//          GetAppSpecServiceGitlabArgs{...}
+type GetAppSpecServiceGitlabInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGitlabOutput() GetAppSpecServiceGitlabOutput
+	ToGetAppSpecServiceGitlabOutputWithContext(context.Context) GetAppSpecServiceGitlabOutput
+}
+
+type GetAppSpecServiceGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecServiceGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabOutput() GetAppSpecServiceGitlabOutput {
+	return i.ToGetAppSpecServiceGitlabOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitlabOutput)
+}
+
+func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput {
+	return i.ToGetAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitlabOutput).ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceGitlabPtrInput is an input type that accepts GetAppSpecServiceGitlabArgs, GetAppSpecServiceGitlabPtr and GetAppSpecServiceGitlabPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGitlabPtrInput` via:
+//
+//          GetAppSpecServiceGitlabArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceGitlabPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput
+	ToGetAppSpecServiceGitlabPtrOutputWithContext(context.Context) GetAppSpecServiceGitlabPtrOutput
+}
+
+type getAppSpecServiceGitlabPtrType GetAppSpecServiceGitlabArgs
+
+func GetAppSpecServiceGitlabPtr(v *GetAppSpecServiceGitlabArgs) GetAppSpecServiceGitlabPtrInput {
+	return (*getAppSpecServiceGitlabPtrType)(v)
+}
+
+func (*getAppSpecServiceGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceGitlabPtrType) ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput {
+	return i.ToGetAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceGitlabPtrType) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitlabPtrOutput)
+}
+
+type GetAppSpecServiceGitlabOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabOutput() GetAppSpecServiceGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput {
+	return o.ToGetAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGitlab) *GetAppSpecServiceGitlab {
+		return &v
+	}).(GetAppSpecServiceGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGitlabPtrOutput) ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitlabPtrOutput) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitlabPtrOutput) Elem() GetAppSpecServiceGitlabOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) GetAppSpecServiceGitlab { return *v }).(GetAppSpecServiceGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecServiceHealthCheck struct {
 	// The number of failed health checks before considered unhealthy.
 	FailureThreshold *int `pulumi:"failureThreshold"`
@@ -6885,18 +7870,21 @@ func (o GetAppSpecServiceRoutesOutput) Path() pulumi.StringPtrOutput {
 type GetAppSpecStaticSite struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
+	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+	CatchallDocument *string `pulumi:"catchallDocument"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath *string `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []GetAppSpecStaticSiteEnv `pulumi:"envs"`
-	// The name of the error document to use when serving this static site*
+	// The name of the error document to use when serving this static site.
 	ErrorDocument *string `pulumi:"errorDocument"`
 	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
 	Git *GetAppSpecStaticSiteGit `pulumi:"git"`
 	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 	Github *GetAppSpecStaticSiteGithub `pulumi:"github"`
+	Gitlab *GetAppSpecStaticSiteGitlab `pulumi:"gitlab"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument *string `pulumi:"indexDocument"`
 	// The name of the component.
@@ -6922,18 +7910,21 @@ type GetAppSpecStaticSiteInput interface {
 type GetAppSpecStaticSiteArgs struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+	CatchallDocument pulumi.StringPtrInput `pulumi:"catchallDocument"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs GetAppSpecStaticSiteEnvArrayInput `pulumi:"envs"`
-	// The name of the error document to use when serving this static site*
+	// The name of the error document to use when serving this static site.
 	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
 	// A Git repo to use as component's source. Only one of `git` and `github` may be set.
 	Git GetAppSpecStaticSiteGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 	Github GetAppSpecStaticSiteGithubPtrInput `pulumi:"github"`
+	Gitlab GetAppSpecStaticSiteGitlabPtrInput `pulumi:"gitlab"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
 	// The name of the component.
@@ -7001,6 +7992,11 @@ func (o GetAppSpecStaticSiteOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
 }
 
+// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+func (o GetAppSpecStaticSiteOutput) CatchallDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.CatchallDocument }).(pulumi.StringPtrOutput)
+}
+
 // The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 func (o GetAppSpecStaticSiteOutput) DockerfilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
@@ -7016,7 +8012,7 @@ func (o GetAppSpecStaticSiteOutput) Envs() GetAppSpecStaticSiteEnvArrayOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) []GetAppSpecStaticSiteEnv { return v.Envs }).(GetAppSpecStaticSiteEnvArrayOutput)
 }
 
-// The name of the error document to use when serving this static site*
+// The name of the error document to use when serving this static site.
 func (o GetAppSpecStaticSiteOutput) ErrorDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
 }
@@ -7029,6 +8025,10 @@ func (o GetAppSpecStaticSiteOutput) Git() GetAppSpecStaticSiteGitPtrOutput {
 // A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 func (o GetAppSpecStaticSiteOutput) Github() GetAppSpecStaticSiteGithubPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGithub { return v.Github }).(GetAppSpecStaticSiteGithubPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteOutput) Gitlab() GetAppSpecStaticSiteGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGitlab { return v.Gitlab }).(GetAppSpecStaticSiteGitlabPtrOutput)
 }
 
 // The name of the index document to use when serving this static site.
@@ -7518,6 +8518,175 @@ func (o GetAppSpecStaticSiteGithubPtrOutput) Repo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAppSpecStaticSiteGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecStaticSiteGitlabInput is an input type that accepts GetAppSpecStaticSiteGitlabArgs and GetAppSpecStaticSiteGitlabOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteGitlabInput` via:
+//
+//          GetAppSpecStaticSiteGitlabArgs{...}
+type GetAppSpecStaticSiteGitlabInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteGitlabOutput() GetAppSpecStaticSiteGitlabOutput
+	ToGetAppSpecStaticSiteGitlabOutputWithContext(context.Context) GetAppSpecStaticSiteGitlabOutput
+}
+
+type GetAppSpecStaticSiteGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecStaticSiteGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteGitlab)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteGitlabArgs) ToGetAppSpecStaticSiteGitlabOutput() GetAppSpecStaticSiteGitlabOutput {
+	return i.ToGetAppSpecStaticSiteGitlabOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteGitlabArgs) ToGetAppSpecStaticSiteGitlabOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGitlabOutput)
+}
+
+func (i GetAppSpecStaticSiteGitlabArgs) ToGetAppSpecStaticSiteGitlabPtrOutput() GetAppSpecStaticSiteGitlabPtrOutput {
+	return i.ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteGitlabArgs) ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGitlabOutput).ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecStaticSiteGitlabPtrInput is an input type that accepts GetAppSpecStaticSiteGitlabArgs, GetAppSpecStaticSiteGitlabPtr and GetAppSpecStaticSiteGitlabPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteGitlabPtrInput` via:
+//
+//          GetAppSpecStaticSiteGitlabArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecStaticSiteGitlabPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteGitlabPtrOutput() GetAppSpecStaticSiteGitlabPtrOutput
+	ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(context.Context) GetAppSpecStaticSiteGitlabPtrOutput
+}
+
+type getAppSpecStaticSiteGitlabPtrType GetAppSpecStaticSiteGitlabArgs
+
+func GetAppSpecStaticSiteGitlabPtr(v *GetAppSpecStaticSiteGitlabArgs) GetAppSpecStaticSiteGitlabPtrInput {
+	return (*getAppSpecStaticSiteGitlabPtrType)(v)
+}
+
+func (*getAppSpecStaticSiteGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteGitlab)(nil)).Elem()
+}
+
+func (i *getAppSpecStaticSiteGitlabPtrType) ToGetAppSpecStaticSiteGitlabPtrOutput() GetAppSpecStaticSiteGitlabPtrOutput {
+	return i.ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecStaticSiteGitlabPtrType) ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteGitlabPtrOutput)
+}
+
+type GetAppSpecStaticSiteGitlabOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteGitlabOutput) ToGetAppSpecStaticSiteGitlabOutput() GetAppSpecStaticSiteGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGitlabOutput) ToGetAppSpecStaticSiteGitlabOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGitlabOutput) ToGetAppSpecStaticSiteGitlabPtrOutput() GetAppSpecStaticSiteGitlabPtrOutput {
+	return o.ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecStaticSiteGitlabOutput) ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGitlab) *GetAppSpecStaticSiteGitlab {
+		return &v
+	}).(GetAppSpecStaticSiteGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecStaticSiteGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecStaticSiteGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecStaticSiteGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteGitlabPtrOutput) ToGetAppSpecStaticSiteGitlabPtrOutput() GetAppSpecStaticSiteGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGitlabPtrOutput) ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteGitlabPtrOutput) Elem() GetAppSpecStaticSiteGitlabOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGitlab) GetAppSpecStaticSiteGitlab { return *v }).(GetAppSpecStaticSiteGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecStaticSiteGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecStaticSiteGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecStaticSiteGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecStaticSiteRoutes struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path *string `pulumi:"path"`
@@ -7583,6 +8752,7 @@ type GetAppSpecWorker struct {
 	Git *GetAppSpecWorkerGit `pulumi:"git"`
 	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 	Github *GetAppSpecWorkerGithub `pulumi:"github"`
+	Gitlab *GetAppSpecWorkerGitlab `pulumi:"gitlab"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
@@ -7620,6 +8790,7 @@ type GetAppSpecWorkerArgs struct {
 	Git GetAppSpecWorkerGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 	Github GetAppSpecWorkerGithubPtrInput `pulumi:"github"`
+	Gitlab GetAppSpecWorkerGitlabPtrInput `pulumi:"gitlab"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
@@ -7712,6 +8883,10 @@ func (o GetAppSpecWorkerOutput) Git() GetAppSpecWorkerGitPtrOutput {
 // A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
 func (o GetAppSpecWorkerOutput) Github() GetAppSpecWorkerGithubPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerGithub { return v.Github }).(GetAppSpecWorkerGithubPtrOutput)
+}
+
+func (o GetAppSpecWorkerOutput) Gitlab() GetAppSpecWorkerGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerGitlab { return v.Gitlab }).(GetAppSpecWorkerGitlabPtrOutput)
 }
 
 // The amount of instances that this component should be scaled to.
@@ -8199,6 +9374,175 @@ func (o GetAppSpecWorkerGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
 // The name of the repo in the format `owner/repo`.
 func (o GetAppSpecWorkerGithubPtrOutput) Repo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecWorkerGitlabInput is an input type that accepts GetAppSpecWorkerGitlabArgs and GetAppSpecWorkerGitlabOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerGitlabInput` via:
+//
+//          GetAppSpecWorkerGitlabArgs{...}
+type GetAppSpecWorkerGitlabInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerGitlabOutput() GetAppSpecWorkerGitlabOutput
+	ToGetAppSpecWorkerGitlabOutputWithContext(context.Context) GetAppSpecWorkerGitlabOutput
+}
+
+type GetAppSpecWorkerGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecWorkerGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerGitlab)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerGitlabArgs) ToGetAppSpecWorkerGitlabOutput() GetAppSpecWorkerGitlabOutput {
+	return i.ToGetAppSpecWorkerGitlabOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerGitlabArgs) ToGetAppSpecWorkerGitlabOutputWithContext(ctx context.Context) GetAppSpecWorkerGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGitlabOutput)
+}
+
+func (i GetAppSpecWorkerGitlabArgs) ToGetAppSpecWorkerGitlabPtrOutput() GetAppSpecWorkerGitlabPtrOutput {
+	return i.ToGetAppSpecWorkerGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerGitlabArgs) ToGetAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGitlabOutput).ToGetAppSpecWorkerGitlabPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerGitlabPtrInput is an input type that accepts GetAppSpecWorkerGitlabArgs, GetAppSpecWorkerGitlabPtr and GetAppSpecWorkerGitlabPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerGitlabPtrInput` via:
+//
+//          GetAppSpecWorkerGitlabArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecWorkerGitlabPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerGitlabPtrOutput() GetAppSpecWorkerGitlabPtrOutput
+	ToGetAppSpecWorkerGitlabPtrOutputWithContext(context.Context) GetAppSpecWorkerGitlabPtrOutput
+}
+
+type getAppSpecWorkerGitlabPtrType GetAppSpecWorkerGitlabArgs
+
+func GetAppSpecWorkerGitlabPtr(v *GetAppSpecWorkerGitlabArgs) GetAppSpecWorkerGitlabPtrInput {
+	return (*getAppSpecWorkerGitlabPtrType)(v)
+}
+
+func (*getAppSpecWorkerGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerGitlab)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerGitlabPtrType) ToGetAppSpecWorkerGitlabPtrOutput() GetAppSpecWorkerGitlabPtrOutput {
+	return i.ToGetAppSpecWorkerGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerGitlabPtrType) ToGetAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerGitlabPtrOutput)
+}
+
+type GetAppSpecWorkerGitlabOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerGitlabOutput) ToGetAppSpecWorkerGitlabOutput() GetAppSpecWorkerGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGitlabOutput) ToGetAppSpecWorkerGitlabOutputWithContext(ctx context.Context) GetAppSpecWorkerGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGitlabOutput) ToGetAppSpecWorkerGitlabPtrOutput() GetAppSpecWorkerGitlabPtrOutput {
+	return o.ToGetAppSpecWorkerGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerGitlabOutput) ToGetAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGitlab) *GetAppSpecWorkerGitlab {
+		return &v
+	}).(GetAppSpecWorkerGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecWorkerGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecWorkerGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecWorkerGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerGitlabPtrOutput) ToGetAppSpecWorkerGitlabPtrOutput() GetAppSpecWorkerGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGitlabPtrOutput) ToGetAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerGitlabPtrOutput) Elem() GetAppSpecWorkerGitlabOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGitlab) GetAppSpecWorkerGitlab { return *v }).(GetAppSpecWorkerGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecWorkerGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecWorkerGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerGitlab) *string {
 		if v == nil {
 			return nil
 		}
@@ -13364,6 +14708,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecEnvOutput{})
+	pulumi.RegisterOutputType(AppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceEnvOutput{})
@@ -13372,6 +14718,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceGitPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceGithubOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceGithubPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceGitlabOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceGitlabPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceHealthCheckOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceRoutesOutput{})
@@ -13384,6 +14732,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecStaticSiteGitPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteGithubOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteGithubPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteGitlabOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteGitlabPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteRoutesOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteRoutesPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerOutput{})
@@ -13394,6 +14744,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerGitPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerGithubOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerGithubPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerGitlabOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerGitlabPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerRoutesOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerRoutesPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowOutput{})
@@ -13434,6 +14786,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecEnvOutput{})
+	pulumi.RegisterOutputType(GetAppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceEnvOutput{})
@@ -13442,6 +14796,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceGitPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceGithubOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceGithubPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGitlabOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGitlabPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceHealthCheckOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceRoutesOutput{})
@@ -13453,6 +14809,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteGitPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteGithubOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteGithubPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteGitlabOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteGitlabPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteRoutesOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerArrayOutput{})
@@ -13462,6 +14820,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerGitPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerGithubOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerGithubPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerGitlabOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerGitlabPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerRoutesOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
