@@ -37,6 +37,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecServiceGithubResult? Github;
+        public readonly Outputs.GetAppSpecServiceGitlabResult? Gitlab;
         /// <summary>
         /// A health check to determine the availability of this component.
         /// </summary>
@@ -81,6 +82,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             Outputs.GetAppSpecServiceGithubResult? github,
 
+            Outputs.GetAppSpecServiceGitlabResult? gitlab,
+
             Outputs.GetAppSpecServiceHealthCheckResult? healthCheck,
 
             int httpPort,
@@ -103,6 +106,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Envs = envs;
             Git = git;
             Github = github;
+            Gitlab = gitlab;
             HealthCheck = healthCheck;
             HttpPort = httpPort;
             InstanceCount = instanceCount;

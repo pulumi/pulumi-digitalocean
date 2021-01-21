@@ -19,6 +19,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? BuildCommand { get; set; }
 
         /// <summary>
+        /// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+        /// </summary>
+        [Input("catchallDocument")]
+        public Input<string>? CatchallDocument { get; set; }
+
+        /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         /// </summary>
         [Input("dockerfilePath")]
@@ -43,22 +49,25 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// The name of the error document to use when serving this static site*
+        /// The name of the error document to use when serving this static site.
         /// </summary>
         [Input("errorDocument")]
         public Input<string>? ErrorDocument { get; set; }
 
         /// <summary>
-        /// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
         /// </summary>
         [Input("git")]
         public Input<Inputs.AppSpecStaticSiteGitArgs>? Git { get; set; }
 
         /// <summary>
-        /// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
         /// </summary>
         [Input("github")]
         public Input<Inputs.AppSpecStaticSiteGithubArgs>? Github { get; set; }
+
+        [Input("gitlab")]
+        public Input<Inputs.AppSpecStaticSiteGitlabArgs>? Gitlab { get; set; }
 
         /// <summary>
         /// The name of the index document to use when serving this static site.

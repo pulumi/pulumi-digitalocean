@@ -60,9 +60,15 @@ namespace Pulumi.DigitalOcean
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional description for the image.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        /// </summary>
         [Output("distribution")]
         public Output<string?> Distribution { get; private set; } = null!;
 
@@ -82,7 +88,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool> Public { get; private set; } = null!;
 
         /// <summary>
-        /// A list of regions. (Currently only one is supported)
+        /// A list of regions. (Currently only one is supported).
         /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
@@ -96,6 +102,9 @@ namespace Pulumi.DigitalOcean
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of optional tags for the image.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -154,9 +163,15 @@ namespace Pulumi.DigitalOcean
 
     public sealed class CustomImageArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description for the image.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        /// </summary>
         [Input("distribution")]
         public Input<string>? Distribution { get; set; }
 
@@ -170,7 +185,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _regions;
 
         /// <summary>
-        /// A list of regions. (Currently only one is supported)
+        /// A list of regions. (Currently only one is supported).
         /// </summary>
         public InputList<string> Regions
         {
@@ -180,6 +195,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of optional tags for the image.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -202,9 +221,15 @@ namespace Pulumi.DigitalOcean
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// An optional description for the image.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        /// </summary>
         [Input("distribution")]
         public Input<string>? Distribution { get; set; }
 
@@ -227,7 +252,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _regions;
 
         /// <summary>
-        /// A list of regions. (Currently only one is supported)
+        /// A list of regions. (Currently only one is supported).
         /// </summary>
         public InputList<string> Regions
         {
@@ -246,6 +271,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of optional tags for the image.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());

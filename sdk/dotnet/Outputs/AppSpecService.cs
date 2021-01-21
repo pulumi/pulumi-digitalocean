@@ -30,13 +30,14 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecServiceEnv> Envs;
         /// <summary>
-        /// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
         /// </summary>
         public readonly Outputs.AppSpecServiceGit? Git;
         /// <summary>
-        /// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
         /// </summary>
         public readonly Outputs.AppSpecServiceGithub? Github;
+        public readonly Outputs.AppSpecServiceGitlab? Gitlab;
         /// <summary>
         /// A health check to determine the availability of this component.
         /// </summary>
@@ -81,6 +82,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             Outputs.AppSpecServiceGithub? github,
 
+            Outputs.AppSpecServiceGitlab? gitlab,
+
             Outputs.AppSpecServiceHealthCheck? healthCheck,
 
             int? httpPort,
@@ -103,6 +106,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Envs = envs;
             Git = git;
             Github = github;
+            Gitlab = gitlab;
             HealthCheck = healthCheck;
             HttpPort = httpPort;
             InstanceCount = instanceCount;

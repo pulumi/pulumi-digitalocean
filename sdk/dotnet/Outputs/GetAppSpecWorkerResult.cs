@@ -37,6 +37,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecWorkerGithubResult? Github;
+        public readonly Outputs.GetAppSpecWorkerGitlabResult? Gitlab;
         /// <summary>
         /// The amount of instances that this component should be scaled to.
         /// </summary>
@@ -73,6 +74,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             Outputs.GetAppSpecWorkerGithubResult? github,
 
+            Outputs.GetAppSpecWorkerGitlabResult? gitlab,
+
             int? instanceCount,
 
             string? instanceSizeSlug,
@@ -91,6 +94,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Envs = envs;
             Git = git;
             Github = github;
+            Gitlab = gitlab;
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
             Name = name;

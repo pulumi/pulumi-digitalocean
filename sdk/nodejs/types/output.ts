@@ -11,6 +11,10 @@ export interface AppSpec {
      */
     domains?: string[];
     /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.AppSpecEnv[];
+    /**
      * The name of the component.
      */
     name: string;
@@ -54,6 +58,25 @@ export interface AppSpecDatabase {
     version?: string;
 }
 
+export interface AppSpecEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
 export interface AppSpecService {
     /**
      * An optional build command to run while building this component from source.
@@ -72,13 +95,14 @@ export interface AppSpecService {
      */
     envs?: outputs.AppSpecServiceEnv[];
     /**
-     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
      */
     git?: outputs.AppSpecServiceGit;
     /**
-     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
      */
     github?: outputs.AppSpecServiceGithub;
+    gitlab?: outputs.AppSpecServiceGitlab;
     /**
      * A health check to determine the availability of this component.
      */
@@ -155,6 +179,21 @@ export interface AppSpecServiceGithub {
     repo?: string;
 }
 
+export interface AppSpecServiceGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
 export interface AppSpecServiceHealthCheck {
     /**
      * The number of failed health checks before considered unhealthy.
@@ -195,6 +234,10 @@ export interface AppSpecStaticSite {
      */
     buildCommand?: string;
     /**
+     * The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+     */
+    catchallDocument?: string;
+    /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
     dockerfilePath?: string;
@@ -207,17 +250,18 @@ export interface AppSpecStaticSite {
      */
     envs?: outputs.AppSpecStaticSiteEnv[];
     /**
-     * The name of the error document to use when serving this static site*
+     * The name of the error document to use when serving this static site.
      */
     errorDocument?: string;
     /**
-     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
      */
     git?: outputs.AppSpecStaticSiteGit;
     /**
-     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
      */
     github?: outputs.AppSpecStaticSiteGithub;
+    gitlab?: outputs.AppSpecStaticSiteGitlab;
     /**
      * The name of the index document to use when serving this static site.
      */
@@ -282,6 +326,21 @@ export interface AppSpecStaticSiteGithub {
     repo?: string;
 }
 
+export interface AppSpecStaticSiteGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
 export interface AppSpecStaticSiteRoutes {
     /**
      * Paths must start with `/` and must be unique within the app.
@@ -307,13 +366,14 @@ export interface AppSpecWorker {
      */
     envs?: outputs.AppSpecWorkerEnv[];
     /**
-     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
      */
     git?: outputs.AppSpecWorkerGit;
     /**
-     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
      */
     github?: outputs.AppSpecWorkerGithub;
+    gitlab?: outputs.AppSpecWorkerGitlab;
     /**
      * The amount of instances that this component should be scaled to.
      */
@@ -368,6 +428,21 @@ export interface AppSpecWorkerGit {
 }
 
 export interface AppSpecWorkerGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface AppSpecWorkerGitlab {
     /**
      * The name of the branch to use.
      */
@@ -508,6 +583,10 @@ export interface GetAppSpec {
     databases?: outputs.GetAppSpecDatabase[];
     domains?: string[];
     /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.GetAppSpecEnv[];
+    /**
      * The name of the component.
      */
     name: string;
@@ -548,6 +627,25 @@ export interface GetAppSpecDatabase {
     version?: string;
 }
 
+export interface GetAppSpecEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
 export interface GetAppSpecService {
     /**
      * An optional build command to run while building this component from source.
@@ -573,6 +671,7 @@ export interface GetAppSpecService {
      * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
      */
     github?: outputs.GetAppSpecServiceGithub;
+    gitlab?: outputs.GetAppSpecServiceGitlab;
     /**
      * A health check to determine the availability of this component.
      */
@@ -649,6 +748,21 @@ export interface GetAppSpecServiceGithub {
     repo?: string;
 }
 
+export interface GetAppSpecServiceGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
 export interface GetAppSpecServiceHealthCheck {
     /**
      * The number of failed health checks before considered unhealthy.
@@ -689,6 +803,10 @@ export interface GetAppSpecStaticSite {
      */
     buildCommand?: string;
     /**
+     * The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+     */
+    catchallDocument?: string;
+    /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
     dockerfilePath?: string;
@@ -701,7 +819,7 @@ export interface GetAppSpecStaticSite {
      */
     envs?: outputs.GetAppSpecStaticSiteEnv[];
     /**
-     * The name of the error document to use when serving this static site*
+     * The name of the error document to use when serving this static site.
      */
     errorDocument?: string;
     /**
@@ -712,6 +830,7 @@ export interface GetAppSpecStaticSite {
      * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
      */
     github?: outputs.GetAppSpecStaticSiteGithub;
+    gitlab?: outputs.GetAppSpecStaticSiteGitlab;
     /**
      * The name of the index document to use when serving this static site.
      */
@@ -776,6 +895,21 @@ export interface GetAppSpecStaticSiteGithub {
     repo?: string;
 }
 
+export interface GetAppSpecStaticSiteGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
 export interface GetAppSpecStaticSiteRoutes {
     /**
      * Paths must start with `/` and must be unique within the app.
@@ -808,6 +942,7 @@ export interface GetAppSpecWorker {
      * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
      */
     github?: outputs.GetAppSpecWorkerGithub;
+    gitlab?: outputs.GetAppSpecWorkerGitlab;
     /**
      * The amount of instances that this component should be scaled to.
      */
@@ -862,6 +997,21 @@ export interface GetAppSpecWorkerGit {
 }
 
 export interface GetAppSpecWorkerGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface GetAppSpecWorkerGitlab {
     /**
      * The name of the branch to use.
      */

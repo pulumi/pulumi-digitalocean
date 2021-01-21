@@ -43,16 +43,19 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
         /// </summary>
         [Input("git")]
         public Input<Inputs.AppSpecServiceGitGetArgs>? Git { get; set; }
 
         /// <summary>
-        /// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
         /// </summary>
         [Input("github")]
         public Input<Inputs.AppSpecServiceGithubGetArgs>? Github { get; set; }
+
+        [Input("gitlab")]
+        public Input<Inputs.AppSpecServiceGitlabGetArgs>? Gitlab { get; set; }
 
         /// <summary>
         /// A health check to determine the availability of this component.
