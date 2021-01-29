@@ -113,6 +113,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/certificate:Certificate")]
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>

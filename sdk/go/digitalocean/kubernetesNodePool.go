@@ -21,6 +21,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -66,7 +67,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -265,15 +266,15 @@ type KubernetesNodePoolInput interface {
 	ToKubernetesNodePoolOutputWithContext(ctx context.Context) KubernetesNodePoolOutput
 }
 
-func (KubernetesNodePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesNodePool)(nil)).Elem()
+func (*KubernetesNodePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesNodePool)(nil))
 }
 
-func (i KubernetesNodePool) ToKubernetesNodePoolOutput() KubernetesNodePoolOutput {
+func (i *KubernetesNodePool) ToKubernetesNodePoolOutput() KubernetesNodePoolOutput {
 	return i.ToKubernetesNodePoolOutputWithContext(context.Background())
 }
 
-func (i KubernetesNodePool) ToKubernetesNodePoolOutputWithContext(ctx context.Context) KubernetesNodePoolOutput {
+func (i *KubernetesNodePool) ToKubernetesNodePoolOutputWithContext(ctx context.Context) KubernetesNodePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolOutput)
 }
 
@@ -282,7 +283,7 @@ type KubernetesNodePoolOutput struct {
 }
 
 func (KubernetesNodePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesNodePoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*KubernetesNodePool)(nil))
 }
 
 func (o KubernetesNodePoolOutput) ToKubernetesNodePoolOutput() KubernetesNodePoolOutput {

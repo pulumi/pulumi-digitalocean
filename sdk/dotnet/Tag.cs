@@ -53,6 +53,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/tag:Tag mytag tagname
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/tag:Tag")]
     public partial class Tag : Pulumi.CustomResource
     {
         /// <summary>

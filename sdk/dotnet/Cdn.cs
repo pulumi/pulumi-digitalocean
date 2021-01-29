@@ -86,6 +86,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/cdn:Cdn")]
     public partial class Cdn : Pulumi.CustomResource
     {
         /// <summary>

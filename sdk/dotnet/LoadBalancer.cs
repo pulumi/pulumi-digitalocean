@@ -119,6 +119,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : Pulumi.CustomResource
     {
         /// <summary>

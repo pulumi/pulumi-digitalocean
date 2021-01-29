@@ -49,6 +49,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index:DatabaseUser")]
     public partial class DatabaseUser : Pulumi.CustomResource
     {
         /// <summary>

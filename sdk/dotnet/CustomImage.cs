@@ -55,6 +55,7 @@ namespace Pulumi.DigitalOcean
     /// }
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/customImage:CustomImage")]
     public partial class CustomImage : Pulumi.CustomResource
     {
         [Output("createdAt")]

@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -134,15 +134,15 @@ type ContainerRegistryInput interface {
 	ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput
 }
 
-func (ContainerRegistry) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerRegistry)(nil)).Elem()
+func (*ContainerRegistry) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistry)(nil))
 }
 
-func (i ContainerRegistry) ToContainerRegistryOutput() ContainerRegistryOutput {
+func (i *ContainerRegistry) ToContainerRegistryOutput() ContainerRegistryOutput {
 	return i.ToContainerRegistryOutputWithContext(context.Background())
 }
 
-func (i ContainerRegistry) ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput {
+func (i *ContainerRegistry) ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOutput)
 }
 
@@ -151,7 +151,7 @@ type ContainerRegistryOutput struct {
 }
 
 func (ContainerRegistryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerRegistryOutput)(nil)).Elem()
+	return reflect.TypeOf((*ContainerRegistry)(nil))
 }
 
 func (o ContainerRegistryOutput) ToContainerRegistryOutput() ContainerRegistryOutput {

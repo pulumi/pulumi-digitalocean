@@ -265,15 +265,15 @@ type SpacesBucketObjectInput interface {
 	ToSpacesBucketObjectOutputWithContext(ctx context.Context) SpacesBucketObjectOutput
 }
 
-func (SpacesBucketObject) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpacesBucketObject)(nil)).Elem()
+func (*SpacesBucketObject) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketObject)(nil))
 }
 
-func (i SpacesBucketObject) ToSpacesBucketObjectOutput() SpacesBucketObjectOutput {
+func (i *SpacesBucketObject) ToSpacesBucketObjectOutput() SpacesBucketObjectOutput {
 	return i.ToSpacesBucketObjectOutputWithContext(context.Background())
 }
 
-func (i SpacesBucketObject) ToSpacesBucketObjectOutputWithContext(ctx context.Context) SpacesBucketObjectOutput {
+func (i *SpacesBucketObject) ToSpacesBucketObjectOutputWithContext(ctx context.Context) SpacesBucketObjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectOutput)
 }
 
@@ -282,7 +282,7 @@ type SpacesBucketObjectOutput struct {
 }
 
 func (SpacesBucketObjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpacesBucketObjectOutput)(nil)).Elem()
+	return reflect.TypeOf((*SpacesBucketObject)(nil))
 }
 
 func (o SpacesBucketObjectOutput) ToSpacesBucketObjectOutput() SpacesBucketObjectOutput {

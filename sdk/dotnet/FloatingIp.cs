@@ -50,6 +50,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/floatingIp:FloatingIp")]
     public partial class FloatingIp : Pulumi.CustomResource
     {
         /// <summary>

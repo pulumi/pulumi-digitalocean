@@ -55,6 +55,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/sshKey:SshKey")]
     public partial class SshKey : Pulumi.CustomResource
     {
         /// <summary>

@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -44,7 +44,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -69,7 +69,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -334,15 +334,15 @@ type DatabaseClusterInput interface {
 	ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput
 }
 
-func (DatabaseCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseCluster)(nil)).Elem()
+func (*DatabaseCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseCluster)(nil))
 }
 
-func (i DatabaseCluster) ToDatabaseClusterOutput() DatabaseClusterOutput {
+func (i *DatabaseCluster) ToDatabaseClusterOutput() DatabaseClusterOutput {
 	return i.ToDatabaseClusterOutputWithContext(context.Background())
 }
 
-func (i DatabaseCluster) ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput {
+func (i *DatabaseCluster) ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterOutput)
 }
 
@@ -351,7 +351,7 @@ type DatabaseClusterOutput struct {
 }
 
 func (DatabaseClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseCluster)(nil))
 }
 
 func (o DatabaseClusterOutput) ToDatabaseClusterOutput() DatabaseClusterOutput {

@@ -47,6 +47,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index:DatabaseDb")]
     public partial class DatabaseDb : Pulumi.CustomResource
     {
         /// <summary>

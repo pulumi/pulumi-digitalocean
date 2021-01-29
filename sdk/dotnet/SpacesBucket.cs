@@ -126,6 +126,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/spacesBucket:SpacesBucket")]
     public partial class SpacesBucket : Pulumi.CustomResource
     {
         /// <summary>

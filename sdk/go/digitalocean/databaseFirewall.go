@@ -23,6 +23,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -65,6 +66,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -199,15 +201,15 @@ type DatabaseFirewallInput interface {
 	ToDatabaseFirewallOutputWithContext(ctx context.Context) DatabaseFirewallOutput
 }
 
-func (DatabaseFirewall) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseFirewall)(nil)).Elem()
+func (*DatabaseFirewall) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseFirewall)(nil))
 }
 
-func (i DatabaseFirewall) ToDatabaseFirewallOutput() DatabaseFirewallOutput {
+func (i *DatabaseFirewall) ToDatabaseFirewallOutput() DatabaseFirewallOutput {
 	return i.ToDatabaseFirewallOutputWithContext(context.Background())
 }
 
-func (i DatabaseFirewall) ToDatabaseFirewallOutputWithContext(ctx context.Context) DatabaseFirewallOutput {
+func (i *DatabaseFirewall) ToDatabaseFirewallOutputWithContext(ctx context.Context) DatabaseFirewallOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallOutput)
 }
 
@@ -216,7 +218,7 @@ type DatabaseFirewallOutput struct {
 }
 
 func (DatabaseFirewallOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseFirewallOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseFirewall)(nil))
 }
 
 func (o DatabaseFirewallOutput) ToDatabaseFirewallOutput() DatabaseFirewallOutput {

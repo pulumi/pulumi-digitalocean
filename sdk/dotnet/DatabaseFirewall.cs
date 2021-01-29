@@ -103,6 +103,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index:DatabaseFirewall")]
     public partial class DatabaseFirewall : Pulumi.CustomResource
     {
         /// <summary>

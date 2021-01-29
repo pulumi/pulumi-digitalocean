@@ -60,6 +60,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/dnsRecord:DnsRecord")]
     public partial class DnsRecord : Pulumi.CustomResource
     {
         /// <summary>

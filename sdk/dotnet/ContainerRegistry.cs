@@ -41,6 +41,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/containerRegistry:ContainerRegistry")]
     public partial class ContainerRegistry : Pulumi.CustomResource
     {
         [Output("endpoint")]

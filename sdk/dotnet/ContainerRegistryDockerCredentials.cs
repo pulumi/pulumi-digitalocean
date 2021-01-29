@@ -60,6 +60,7 @@ namespace Pulumi.DigitalOcean
     /// }
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")]
     public partial class ContainerRegistryDockerCredentials : Pulumi.CustomResource
     {
         [Output("credentialExpirationTime")]

@@ -18,6 +18,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

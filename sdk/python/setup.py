@@ -48,7 +48,7 @@ setup(name='pulumi_digitalocean',
       packages=find_packages(),
       package_data={
           'pulumi_digitalocean': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[
