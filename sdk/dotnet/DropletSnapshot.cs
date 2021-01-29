@@ -45,6 +45,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/dropletSnapshot:DropletSnapshot")]
     public partial class DropletSnapshot : Pulumi.CustomResource
     {
         /// <summary>

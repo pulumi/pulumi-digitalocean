@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -229,15 +229,15 @@ type DatabaseConnectionPoolInput interface {
 	ToDatabaseConnectionPoolOutputWithContext(ctx context.Context) DatabaseConnectionPoolOutput
 }
 
-func (DatabaseConnectionPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseConnectionPool)(nil)).Elem()
+func (*DatabaseConnectionPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConnectionPool)(nil))
 }
 
-func (i DatabaseConnectionPool) ToDatabaseConnectionPoolOutput() DatabaseConnectionPoolOutput {
+func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolOutput() DatabaseConnectionPoolOutput {
 	return i.ToDatabaseConnectionPoolOutputWithContext(context.Background())
 }
 
-func (i DatabaseConnectionPool) ToDatabaseConnectionPoolOutputWithContext(ctx context.Context) DatabaseConnectionPoolOutput {
+func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolOutputWithContext(ctx context.Context) DatabaseConnectionPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolOutput)
 }
 
@@ -246,7 +246,7 @@ type DatabaseConnectionPoolOutput struct {
 }
 
 func (DatabaseConnectionPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseConnectionPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseConnectionPool)(nil))
 }
 
 func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolOutput() DatabaseConnectionPoolOutput {

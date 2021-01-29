@@ -45,6 +45,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/volumeSnapshot:VolumeSnapshot")]
     public partial class VolumeSnapshot : Pulumi.CustomResource
     {
         /// <summary>

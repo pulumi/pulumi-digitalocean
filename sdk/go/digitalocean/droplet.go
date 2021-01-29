@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -381,15 +381,15 @@ type DropletInput interface {
 	ToDropletOutputWithContext(ctx context.Context) DropletOutput
 }
 
-func (Droplet) ElementType() reflect.Type {
-	return reflect.TypeOf((*Droplet)(nil)).Elem()
+func (*Droplet) ElementType() reflect.Type {
+	return reflect.TypeOf((*Droplet)(nil))
 }
 
-func (i Droplet) ToDropletOutput() DropletOutput {
+func (i *Droplet) ToDropletOutput() DropletOutput {
 	return i.ToDropletOutputWithContext(context.Background())
 }
 
-func (i Droplet) ToDropletOutputWithContext(ctx context.Context) DropletOutput {
+func (i *Droplet) ToDropletOutputWithContext(ctx context.Context) DropletOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DropletOutput)
 }
 
@@ -398,7 +398,7 @@ type DropletOutput struct {
 }
 
 func (DropletOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DropletOutput)(nil)).Elem()
+	return reflect.TypeOf((*Droplet)(nil))
 }
 
 func (o DropletOutput) ToDropletOutput() DropletOutput {

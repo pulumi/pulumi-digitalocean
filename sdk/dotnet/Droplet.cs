@@ -44,6 +44,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/droplet:Droplet")]
     public partial class Droplet : Pulumi.CustomResource
     {
         /// <summary>

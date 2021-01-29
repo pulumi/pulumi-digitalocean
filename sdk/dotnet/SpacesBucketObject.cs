@@ -14,6 +14,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// Importing this resource is not supported.
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/spacesBucketObject:SpacesBucketObject")]
     public partial class SpacesBucketObject : Pulumi.CustomResource
     {
         /// <summary>

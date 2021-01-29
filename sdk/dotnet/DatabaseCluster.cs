@@ -85,6 +85,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/databaseCluster:DatabaseCluster")]
     public partial class DatabaseCluster : Pulumi.CustomResource
     {
         /// <summary>

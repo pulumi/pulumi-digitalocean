@@ -173,6 +173,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/app:App")]
     public partial class App : Pulumi.CustomResource
     {
         /// <summary>

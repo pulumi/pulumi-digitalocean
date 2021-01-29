@@ -28,7 +28,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -52,7 +52,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -75,6 +75,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -269,15 +270,15 @@ type SpacesBucketInput interface {
 	ToSpacesBucketOutputWithContext(ctx context.Context) SpacesBucketOutput
 }
 
-func (SpacesBucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpacesBucket)(nil)).Elem()
+func (*SpacesBucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucket)(nil))
 }
 
-func (i SpacesBucket) ToSpacesBucketOutput() SpacesBucketOutput {
+func (i *SpacesBucket) ToSpacesBucketOutput() SpacesBucketOutput {
 	return i.ToSpacesBucketOutputWithContext(context.Background())
 }
 
-func (i SpacesBucket) ToSpacesBucketOutputWithContext(ctx context.Context) SpacesBucketOutput {
+func (i *SpacesBucket) ToSpacesBucketOutputWithContext(ctx context.Context) SpacesBucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketOutput)
 }
 
@@ -286,7 +287,7 @@ type SpacesBucketOutput struct {
 }
 
 func (SpacesBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpacesBucketOutput)(nil)).Elem()
+	return reflect.TypeOf((*SpacesBucket)(nil))
 }
 
 func (o SpacesBucketOutput) ToSpacesBucketOutput() SpacesBucketOutput {

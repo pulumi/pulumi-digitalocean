@@ -89,6 +89,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///  NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource.
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/kubernetesNodePool:KubernetesNodePool")]
     public partial class KubernetesNodePool : Pulumi.CustomResource
     {
         /// <summary>

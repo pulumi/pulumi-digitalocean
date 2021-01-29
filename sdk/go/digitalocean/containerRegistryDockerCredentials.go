@@ -24,7 +24,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -49,6 +49,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -170,15 +171,15 @@ type ContainerRegistryDockerCredentialsInput interface {
 	ToContainerRegistryDockerCredentialsOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsOutput
 }
 
-func (ContainerRegistryDockerCredentials) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerRegistryDockerCredentials)(nil)).Elem()
+func (*ContainerRegistryDockerCredentials) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistryDockerCredentials)(nil))
 }
 
-func (i ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredentialsOutput() ContainerRegistryDockerCredentialsOutput {
+func (i *ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredentialsOutput() ContainerRegistryDockerCredentialsOutput {
 	return i.ToContainerRegistryDockerCredentialsOutputWithContext(context.Background())
 }
 
-func (i ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredentialsOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsOutput {
+func (i *ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredentialsOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsOutput)
 }
 
@@ -187,7 +188,7 @@ type ContainerRegistryDockerCredentialsOutput struct {
 }
 
 func (ContainerRegistryDockerCredentialsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerRegistryDockerCredentialsOutput)(nil)).Elem()
+	return reflect.TypeOf((*ContainerRegistryDockerCredentials)(nil))
 }
 
 func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCredentialsOutput() ContainerRegistryDockerCredentialsOutput {

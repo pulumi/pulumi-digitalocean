@@ -41,6 +41,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

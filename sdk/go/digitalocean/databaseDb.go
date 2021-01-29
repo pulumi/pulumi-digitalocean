@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -137,15 +137,15 @@ type DatabaseDbInput interface {
 	ToDatabaseDbOutputWithContext(ctx context.Context) DatabaseDbOutput
 }
 
-func (DatabaseDb) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseDb)(nil)).Elem()
+func (*DatabaseDb) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseDb)(nil))
 }
 
-func (i DatabaseDb) ToDatabaseDbOutput() DatabaseDbOutput {
+func (i *DatabaseDb) ToDatabaseDbOutput() DatabaseDbOutput {
 	return i.ToDatabaseDbOutputWithContext(context.Background())
 }
 
-func (i DatabaseDb) ToDatabaseDbOutputWithContext(ctx context.Context) DatabaseDbOutput {
+func (i *DatabaseDb) ToDatabaseDbOutputWithContext(ctx context.Context) DatabaseDbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbOutput)
 }
 
@@ -154,7 +154,7 @@ type DatabaseDbOutput struct {
 }
 
 func (DatabaseDbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseDbOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseDb)(nil))
 }
 
 func (o DatabaseDbOutput) ToDatabaseDbOutput() DatabaseDbOutput {

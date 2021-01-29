@@ -51,6 +51,7 @@ namespace Pulumi.DigitalOcean
     ///  $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/databaseConnectionPool:DatabaseConnectionPool")]
     public partial class DatabaseConnectionPool : Pulumi.CustomResource
     {
         /// <summary>

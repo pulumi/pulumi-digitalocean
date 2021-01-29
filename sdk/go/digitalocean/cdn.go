@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -50,7 +50,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -228,15 +228,15 @@ type CdnInput interface {
 	ToCdnOutputWithContext(ctx context.Context) CdnOutput
 }
 
-func (Cdn) ElementType() reflect.Type {
-	return reflect.TypeOf((*Cdn)(nil)).Elem()
+func (*Cdn) ElementType() reflect.Type {
+	return reflect.TypeOf((*Cdn)(nil))
 }
 
-func (i Cdn) ToCdnOutput() CdnOutput {
+func (i *Cdn) ToCdnOutput() CdnOutput {
 	return i.ToCdnOutputWithContext(context.Background())
 }
 
-func (i Cdn) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
+func (i *Cdn) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnOutput)
 }
 
@@ -245,7 +245,7 @@ type CdnOutput struct {
 }
 
 func (CdnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CdnOutput)(nil)).Elem()
+	return reflect.TypeOf((*Cdn)(nil))
 }
 
 func (o CdnOutput) ToCdnOutput() CdnOutput {

@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -159,15 +159,15 @@ type DropletSnapshotInput interface {
 	ToDropletSnapshotOutputWithContext(ctx context.Context) DropletSnapshotOutput
 }
 
-func (DropletSnapshot) ElementType() reflect.Type {
-	return reflect.TypeOf((*DropletSnapshot)(nil)).Elem()
+func (*DropletSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletSnapshot)(nil))
 }
 
-func (i DropletSnapshot) ToDropletSnapshotOutput() DropletSnapshotOutput {
+func (i *DropletSnapshot) ToDropletSnapshotOutput() DropletSnapshotOutput {
 	return i.ToDropletSnapshotOutputWithContext(context.Background())
 }
 
-func (i DropletSnapshot) ToDropletSnapshotOutputWithContext(ctx context.Context) DropletSnapshotOutput {
+func (i *DropletSnapshot) ToDropletSnapshotOutputWithContext(ctx context.Context) DropletSnapshotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotOutput)
 }
 
@@ -176,7 +176,7 @@ type DropletSnapshotOutput struct {
 }
 
 func (DropletSnapshotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DropletSnapshotOutput)(nil)).Elem()
+	return reflect.TypeOf((*DropletSnapshot)(nil))
 }
 
 func (o DropletSnapshotOutput) ToDropletSnapshotOutput() DropletSnapshotOutput {

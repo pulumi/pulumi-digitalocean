@@ -77,4 +77,11 @@ namespace Pulumi.DigitalOcean
             }
         }
     }
+
+    internal sealed class DigitalOceanResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public DigitalOceanResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

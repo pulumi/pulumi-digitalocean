@@ -46,6 +46,7 @@ namespace Pulumi.DigitalOcean
     /// }
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/floatingIpAssignment:FloatingIpAssignment")]
     public partial class FloatingIpAssignment : Pulumi.CustomResource
     {
         /// <summary>

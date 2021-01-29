@@ -14,6 +14,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// Importing this resource is not supported.
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/projectResources:ProjectResources")]
     public partial class ProjectResources : Pulumi.CustomResource
     {
         /// <summary>

@@ -47,6 +47,7 @@ namespace Pulumi.DigitalOcean
     /// }
     /// ```
     /// </summary>
+    [DigitalOceanResourceType("digitalocean:index/volumeAttachment:VolumeAttachment")]
     public partial class VolumeAttachment : Pulumi.CustomResource
     {
         /// <summary>

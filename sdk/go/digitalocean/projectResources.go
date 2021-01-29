@@ -101,15 +101,15 @@ type ProjectResourcesInput interface {
 	ToProjectResourcesOutputWithContext(ctx context.Context) ProjectResourcesOutput
 }
 
-func (ProjectResources) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectResources)(nil)).Elem()
+func (*ProjectResources) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectResources)(nil))
 }
 
-func (i ProjectResources) ToProjectResourcesOutput() ProjectResourcesOutput {
+func (i *ProjectResources) ToProjectResourcesOutput() ProjectResourcesOutput {
 	return i.ToProjectResourcesOutputWithContext(context.Background())
 }
 
-func (i ProjectResources) ToProjectResourcesOutputWithContext(ctx context.Context) ProjectResourcesOutput {
+func (i *ProjectResources) ToProjectResourcesOutputWithContext(ctx context.Context) ProjectResourcesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesOutput)
 }
 
@@ -118,7 +118,7 @@ type ProjectResourcesOutput struct {
 }
 
 func (ProjectResourcesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectResourcesOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectResources)(nil))
 }
 
 func (o ProjectResourcesOutput) ToProjectResourcesOutput() ProjectResourcesOutput {

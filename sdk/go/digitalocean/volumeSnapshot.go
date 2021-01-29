@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -169,15 +169,15 @@ type VolumeSnapshotInput interface {
 	ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput
 }
 
-func (VolumeSnapshot) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeSnapshot)(nil)).Elem()
+func (*VolumeSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSnapshot)(nil))
 }
 
-func (i VolumeSnapshot) ToVolumeSnapshotOutput() VolumeSnapshotOutput {
+func (i *VolumeSnapshot) ToVolumeSnapshotOutput() VolumeSnapshotOutput {
 	return i.ToVolumeSnapshotOutputWithContext(context.Background())
 }
 
-func (i VolumeSnapshot) ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput {
+func (i *VolumeSnapshot) ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotOutput)
 }
 
@@ -186,7 +186,7 @@ type VolumeSnapshotOutput struct {
 }
 
 func (VolumeSnapshotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeSnapshotOutput)(nil)).Elem()
+	return reflect.TypeOf((*VolumeSnapshot)(nil))
 }
 
 func (o VolumeSnapshotOutput) ToVolumeSnapshotOutput() VolumeSnapshotOutput {
