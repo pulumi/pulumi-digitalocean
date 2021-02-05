@@ -11,6 +11,47 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetSshKeys
     {
+        /// <summary>
+        /// Get information on SSH Keys for use in other resources.
+        /// 
+        /// This data source is useful if the SSH Keys in question are not managed by the provider or you need to
+        /// utilize any of the SSH Keys' data.
+        /// 
+        /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+        /// about a single SSH Key if you already know the unique `name` to retrieve.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// For example to find all SSH Keys:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var keys = Output.Create(DigitalOcean.GetSshKeys.InvokeAsync(new DigitalOcean.GetSshKeysArgs
+        ///         {
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSshKeysSortArgs
+        ///                 {
+        ///                     Direction = "asc",
+        ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetSshKeysResult> InvokeAsync(GetSshKeysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeysResult>("digitalocean:index/getSshKeys:getSshKeys", args ?? new GetSshKeysArgs(), options.WithVersion());
     }

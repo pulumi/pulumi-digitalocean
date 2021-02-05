@@ -8,8 +8,7 @@ import {DropletSlug, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Droplet resource. This can be used to create,
- * modify, and delete Droplets. Droplets also support
- * [provisioning](https://www.terraform.io/docs/provisioners/index.html).
+ * modify, and delete Droplets.
  *
  * ## Example Usage
  *
@@ -164,7 +163,7 @@ export class Droplet extends pulumi.CustomResource {
      */
     public /*out*/ readonly vcpus!: pulumi.Output<number>;
     /**
-     * A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+     * A list of the IDs of each block storage volume to be attached to the Droplet.
      */
     public readonly volumeIds!: pulumi.Output<string[]>;
     /**
@@ -366,7 +365,7 @@ export interface DropletState {
      */
     readonly vcpus?: pulumi.Input<number>;
     /**
-     * A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+     * A list of the IDs of each block storage volume to be attached to the Droplet.
      */
     readonly volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -439,7 +438,7 @@ export interface DropletArgs {
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+     * A list of the IDs of each block storage volume to be attached to the Droplet.
      */
     readonly volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

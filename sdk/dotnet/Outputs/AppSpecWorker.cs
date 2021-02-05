@@ -30,14 +30,21 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecWorkerEnv> Envs;
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
         /// </summary>
         public readonly Outputs.AppSpecWorkerGit? Git;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.AppSpecWorkerGithub? Github;
+        /// <summary>
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// </summary>
         public readonly Outputs.AppSpecWorkerGitlab? Gitlab;
+        /// <summary>
+        /// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.AppSpecWorkerImage? Image;
         /// <summary>
         /// The amount of instances that this component should be scaled to.
         /// </summary>
@@ -50,7 +57,6 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The name of the component.
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.AppSpecWorkerRoutes? Routes;
         /// <summary>
         /// An optional run command to override the component's default.
         /// </summary>
@@ -76,13 +82,13 @@ namespace Pulumi.DigitalOcean.Outputs
 
             Outputs.AppSpecWorkerGitlab? gitlab,
 
+            Outputs.AppSpecWorkerImage? image,
+
             int? instanceCount,
 
             string? instanceSizeSlug,
 
             string name,
-
-            Outputs.AppSpecWorkerRoutes? routes,
 
             string? runCommand,
 
@@ -95,10 +101,10 @@ namespace Pulumi.DigitalOcean.Outputs
             Git = git;
             Github = github;
             Gitlab = gitlab;
+            Image = image;
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
             Name = name;
-            Routes = routes;
             RunCommand = runCommand;
             SourceDir = sourceDir;
         }

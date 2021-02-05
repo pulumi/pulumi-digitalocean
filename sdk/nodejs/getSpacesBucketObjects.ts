@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * > **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+ *
+ * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
+ *
+ * ## Example Usage
+ *
+ * The following example retrieves a list of all object keys in a Spaces bucket and creates corresponding object
+ * data sources:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const myObjects = digitalocean.getSpacesBucketObjects({
+ *     bucket: "ourcorp",
+ *     region: "nyc3",
+ * });
+ * const objectInfo = .map(__index => digitalocean.getSpacesBucketObject({
+ *     key: _arg0_,
+ *     bucket: _arg1_.bucket,
+ *     region: _arg2_.region,
+ * }));
+ * ```
+ */
 export function getSpacesBucketObjects(args: GetSpacesBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectsResult> {
     if (!opts) {
         opts = {}

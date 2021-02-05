@@ -12,8 +12,7 @@ import (
 )
 
 // Provides a DigitalOcean Droplet resource. This can be used to create,
-// modify, and delete Droplets. Droplets also support
-// [provisioning](https://www.terraform.io/docs/provisioners/index.html).
+// modify, and delete Droplets.
 //
 // ## Example Usage
 //
@@ -108,7 +107,7 @@ type Droplet struct {
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The number of the instance's virtual CPUs
 	Vcpus pulumi.IntOutput `pulumi:"vcpus"`
-	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+	// A list of the IDs of each block storage volume to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayOutput `pulumi:"volumeIds"`
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
@@ -210,7 +209,7 @@ type dropletState struct {
 	UserData *string `pulumi:"userData"`
 	// The number of the instance's virtual CPUs
 	Vcpus *int `pulumi:"vcpus"`
-	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+	// A list of the IDs of each block storage volume to be attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -275,7 +274,7 @@ type DropletState struct {
 	UserData pulumi.StringPtrInput
 	// The number of the instance's virtual CPUs
 	Vcpus pulumi.IntPtrInput
-	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+	// A list of the IDs of each block storage volume to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayInput
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -321,7 +320,7 @@ type dropletArgs struct {
 	Tags []string `pulumi:"tags"`
 	// A string of the desired User Data for the Droplet.
 	UserData *string `pulumi:"userData"`
-	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+	// A list of the IDs of each block storage volume to be attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -364,7 +363,7 @@ type DropletArgs struct {
 	Tags pulumi.StringArrayInput
 	// A string of the desired User Data for the Droplet.
 	UserData pulumi.StringPtrInput
-	// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+	// A list of the IDs of each block storage volume to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayInput
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid pulumi.StringPtrInput

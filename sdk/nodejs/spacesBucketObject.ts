@@ -5,6 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
+ * The `digitalocean.SpacesBucketObject` resource allows the provider to upload content
+ * to Spaces.
+ *
+ * The [Spaces API](https://developers.digitalocean.com/documentation/spaces/) was
+ * designed to be interoperable with Amazon's AWS S3 API. This allows users to
+ * interact with the service while using the tools they already know. Spaces
+ * mirrors S3's authentication framework and requests to Spaces require a key pair
+ * similar to Amazon's Access ID and Secret Key.
+ *
+ * The authentication requirement can be met by either setting the
+ * `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+ * the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
+ * access ID and secret you generate via the DigitalOcean control panel. For
+ * example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
+ * // ...
+ * ```
+ *
+ * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+ *
+ * ## Example Usage
+ * ### Create a Key in a Spaces Bucket
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foobar = new digitalocean.SpacesBucket("foobar", {region: "nyc3"});
+ * const index = new digitalocean.SpacesBucketObject("index", {
+ *     region: foobar.region,
+ *     bucket: foobar.name,
+ *     key: "index.html",
+ *     content: "<html><body><p>This page is empty.</p></body></html>",
+ *     contentType: "text/html",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Importing this resource is not supported.
@@ -74,9 +117,7 @@ export class SpacesBucketObject extends pulumi.CustomResource {
      */
     public readonly contentType!: pulumi.Output<string>;
     /**
-     * the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-     * object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-     * digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+     * Used to trigger updates.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -219,9 +260,7 @@ export interface SpacesBucketObjectState {
      */
     readonly contentType?: pulumi.Input<string>;
     /**
-     * the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-     * object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-     * digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+     * Used to trigger updates.
      */
     readonly etag?: pulumi.Input<string>;
     /**
@@ -296,9 +335,7 @@ export interface SpacesBucketObjectArgs {
      */
     readonly contentType?: pulumi.Input<string>;
     /**
-     * the ETag generated for the object (an MD5 sum of the object content). The hash is an MD5 digest of the
-     * object data. For objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5
-     * digest. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
+     * Used to trigger updates.
      */
     readonly etag?: pulumi.Input<string>;
     /**

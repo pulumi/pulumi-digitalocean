@@ -7,6 +7,91 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get information on a Droplet for use in other resources. This data source provides
+// all of the Droplet's properties as configured on your DigitalOcean account. This
+// is useful if the Droplet in question is not managed by this provider or you need to
+// utilize any of the Droplet's data.
+//
+// **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+// error is triggered if more than one Droplet is found.
+//
+// ## Example Usage
+//
+// Get the Droplet by name:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "web"
+// 		example, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("dropletOutput", example.Ipv4Address)
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Get the Droplet by tag:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "web"
+// 		_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+// 			Tag: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Get the Droplet by ID:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id
+// 		_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+// 			Id: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupDroplet(ctx *pulumi.Context, args *LookupDropletArgs, opts ...pulumi.InvokeOption) (*LookupDropletResult, error) {
 	var rv LookupDropletResult
 	err := ctx.Invoke("digitalocean:index/getDroplet:getDroplet", args, &rv, opts...)

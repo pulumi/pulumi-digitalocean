@@ -10,15 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecServiceRoutesArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecJobGitGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Paths must start with `/` and must be unique within the app.
+        /// The name of the branch to use.
         /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
+        [Input("branch")]
+        public Input<string>? Branch { get; set; }
 
-        public AppSpecServiceRoutesArgs()
+        /// <summary>
+        /// The clone URL of the repo.
+        /// </summary>
+        [Input("repoCloneUrl")]
+        public Input<string>? RepoCloneUrl { get; set; }
+
+        public AppSpecJobGitGetArgs()
         {
         }
     }

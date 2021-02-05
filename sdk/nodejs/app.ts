@@ -69,7 +69,9 @@ import * as utilities from "./utilities";
  *             name: "starter-db",
  *             production: false,
  *         }],
- *         domains: ["foo.example.com"],
+ *         domains: [{
+ *             name: "foo.example.com",
+ *         }],
  *         name: "mono-repo-example",
  *         region: "ams",
  *         // Build a Go project in the api/ directory that listens on port 3000
@@ -85,9 +87,9 @@ import * as utilities from "./utilities";
  *             instanceCount: 2,
  *             instanceSizeSlug: "professional-xs",
  *             name: "api",
- *             routes: {
+ *             routes: [{
  *                 path: "/api",
- *             },
+ *             }],
  *             runCommand: "bin/api",
  *             sourceDir: "api/",
  *         }],
@@ -101,9 +103,9 @@ import * as utilities from "./utilities";
  *                 repo: "username/repo",
  *             },
  *             name: "web",
- *             routes: {
+ *             routes: [{
  *                 path: "/",
- *             },
+ *             }],
  *         }],
  *     },
  * });

@@ -5,6 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a tag. This data source provides the name as configured on
+ * your DigitalOcean account. This is useful if the tag name in question is not
+ * managed by the provider or you need validate if the tag exists in the account.
+ *
+ * An error is triggered if the provided tag name does not exist.
+ *
+ * ## Example Usage
+ *
+ * Get the tag:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleTag = digitalocean.getTag({
+ *     name: "example",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc2",
+ *     size: "s-1vcpu-1gb",
+ *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
+ * });
+ * ```
+ */
 export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
     if (!opts) {
         opts = {}

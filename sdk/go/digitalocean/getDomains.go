@@ -7,6 +7,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get information on domains for use in other resources, with the ability to filter and sort the results.
+// If no filters are specified, all domains will be returned.
+//
+// This data source is useful if the domains in question are not managed by this provider or you need to
+// utilize any of the domains' data.
+//
+// Note: You can use the `Domain` data source to obtain metadata
+// about a single domain if you already know the `name`.
+//
+// ## Example Usage
+//
+// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
+// also uses the regular expression `matchBy` mode in order to match domains by suffix.)
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetDomains(ctx, &digitalocean.GetDomainsArgs{
+// 			Filters: []digitalocean.GetDomainsFilter{
+// 				digitalocean.GetDomainsFilter{
+// 					Key:     "name",
+// 					MatchBy: "re",
+// 					Values: []string{
+// 						fmt.Sprintf("%v%v", "example\\.com", "$"),
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	var rv GetDomainsResult
 	err := ctx.Invoke("digitalocean:index/getDomains:getDomains", args, &rv, opts...)

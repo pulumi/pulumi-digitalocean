@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on SSH Keys for use in other resources.
+ *
+ * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
+ * utilize any of the SSH Keys' data.
+ *
+ * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+ * about a single SSH Key if you already know the unique `name` to retrieve.
+ *
+ * ## Example Usage
+ *
+ * For example to find all SSH Keys:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const keys = pulumi.output(digitalocean.getSshKeys({
+ *     sorts: [{
+ *         direction: "asc",
+ *         key: "name",
+ *     }],
+ * }, { async: true }));
+ * ```
+ */
 export function getSshKeys(args?: GetSshKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeysResult> {
     args = args || {};
     if (!opts) {

@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a domain. This data source provides the name, TTL, and zone
+ * file as configured on your DigitalOcean account. This is useful if the domain
+ * name in question is not managed by this provider or you need to utilize TTL or zone
+ * file data.
+ *
+ * An error is triggered if the provided domain name is not managed with your
+ * DigitalOcean account.
+ */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     if (!opts) {
         opts = {}

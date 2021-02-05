@@ -7,6 +7,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get information on a DNS record. This data source provides the name, TTL, and zone
+// file as configured on your DigitalOcean account. This is useful if the record
+// in question is not managed by the provider.
+//
+// An error is triggered if the provided domain name or record are not managed with
+// your DigitalOcean account.
 func GetRecord(ctx *pulumi.Context, args *GetRecordArgs, opts ...pulumi.InvokeOption) (*GetRecordResult, error) {
 	var rv GetRecordResult
 	err := ctx.Invoke("digitalocean:index/getRecord:getRecord", args, &rv, opts...)

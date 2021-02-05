@@ -7,6 +7,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get information on a load balancer for use in other resources. This data source
+// provides all of the load balancers properties as configured on your DigitalOcean
+// account. This is useful if the load balancer in question is not managed by
+// the provider or you need to utilize any of the load balancers data.
+//
+// An error is triggered if the provided load balancer name does not exist.
+//
+// ## Example Usage
+//
+// Get the load balancer:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := digitalocean.LookupLoadBalancer(ctx, &digitalocean.LookupLoadBalancerArgs{
+// 			Name: "app",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("lbOutput", example.Ip)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", args, &rv, opts...)

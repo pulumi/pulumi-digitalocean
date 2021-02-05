@@ -5,6 +5,45 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Retrieve information about a VPC for use in other resources.
+ *
+ * This data source provides all of the VPC's properties as configured on your
+ * DigitalOcean account. This is useful if the VPC in question is not managed by
+ * the provider or you need to utilize any of the VPC's data.
+ *
+ * VPCs may be looked up by `id` or `name`. Specifying a `region` will
+ * return that that region's default VPC.
+ *
+ * ## Example Usage
+ * ### VPC By Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = pulumi.output(digitalocean.getVpc({
+ *     name: "example-network",
+ * }, { async: true }));
+ * ```
+ *
+ * Reuse the data about a VPC to assign a Droplet to it:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleVpc = digitalocean.getVpc({
+ *     name: "example-network",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
+ * });
+ * ```
+ */
 export function getVpc(args?: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
     args = args || {};
     if (!opts) {

@@ -126,7 +126,28 @@ class AwaitableGetTagResult(GetTagResult):
 def get_tag(name: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information on a tag. This data source provides the name as configured on
+    your DigitalOcean account. This is useful if the tag name in question is not
+    managed by the provider or you need validate if the tag exists in the account.
+
+    An error is triggered if the provided tag name does not exist.
+
+    ## Example Usage
+
+    Get the tag:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example_tag = digitalocean.get_tag(name="example")
+    example_droplet = digitalocean.Droplet("exampleDroplet",
+        image="ubuntu-18-04-x64",
+        region="nyc2",
+        size="s-1vcpu-1gb",
+        tags=[example_tag.name])
+    ```
+
 
     :param str name: The name of the tag.
     """

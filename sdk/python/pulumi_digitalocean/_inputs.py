@@ -12,25 +12,32 @@ __all__ = [
     'AppSpecArgs',
     'AppSpecDatabaseArgs',
     'AppSpecEnvArgs',
+    'AppSpecJobArgs',
+    'AppSpecJobEnvArgs',
+    'AppSpecJobGitArgs',
+    'AppSpecJobGithubArgs',
+    'AppSpecJobGitlabArgs',
+    'AppSpecJobImageArgs',
     'AppSpecServiceArgs',
     'AppSpecServiceEnvArgs',
     'AppSpecServiceGitArgs',
     'AppSpecServiceGithubArgs',
     'AppSpecServiceGitlabArgs',
     'AppSpecServiceHealthCheckArgs',
-    'AppSpecServiceRoutesArgs',
+    'AppSpecServiceImageArgs',
+    'AppSpecServiceRouteArgs',
     'AppSpecStaticSiteArgs',
     'AppSpecStaticSiteEnvArgs',
     'AppSpecStaticSiteGitArgs',
     'AppSpecStaticSiteGithubArgs',
     'AppSpecStaticSiteGitlabArgs',
-    'AppSpecStaticSiteRoutesArgs',
+    'AppSpecStaticSiteRouteArgs',
     'AppSpecWorkerArgs',
     'AppSpecWorkerEnvArgs',
     'AppSpecWorkerGitArgs',
     'AppSpecWorkerGithubArgs',
     'AppSpecWorkerGitlabArgs',
-    'AppSpecWorkerRoutesArgs',
+    'AppSpecWorkerImageArgs',
     'DatabaseClusterMaintenanceWindowArgs',
     'DatabaseFirewallRuleArgs',
     'FirewallInboundRuleArgs',
@@ -77,13 +84,13 @@ class AppSpecArgs:
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]] = None,
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgs']]]] = None,
                  static_sites: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]] = None,
                  workers: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of hostnames where the application will be available.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
         """
@@ -91,9 +98,14 @@ class AppSpecArgs:
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
         if domains is not None:
+            warnings.warn("""This attribute has been replaced by `domain` which supports additional functionality.""", DeprecationWarning)
+            pulumi.log.warn("domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.")
+        if domains is not None:
             pulumi.set(__self__, "domains", domains)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if jobs is not None:
+            pulumi.set(__self__, "jobs", jobs)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if services is not None:
@@ -127,9 +139,6 @@ class AppSpecArgs:
     @property
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of hostnames where the application will be available.
-        """
         return pulumi.get(self, "domains")
 
     @domains.setter
@@ -147,6 +156,15 @@ class AppSpecArgs:
     @envs.setter
     def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]]):
         pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgs']]]]:
+        return pulumi.get(self, "jobs")
+
+    @jobs.setter
+    def jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgs']]]]):
+        pulumi.set(self, "jobs", value)
 
     @property
     @pulumi.getter
@@ -379,6 +397,533 @@ class AppSpecEnvArgs:
 
 
 @pulumi.input_type
+class AppSpecJobArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 build_command: Optional[pulumi.Input[str]] = None,
+                 dockerfile_path: Optional[pulumi.Input[str]] = None,
+                 environment_slug: Optional[pulumi.Input[str]] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgs']]]] = None,
+                 git: Optional[pulumi.Input['AppSpecJobGitArgs']] = None,
+                 github: Optional[pulumi.Input['AppSpecJobGithubArgs']] = None,
+                 gitlab: Optional[pulumi.Input['AppSpecJobGitlabArgs']] = None,
+                 image: Optional[pulumi.Input['AppSpecJobImageArgs']] = None,
+                 instance_count: Optional[pulumi.Input[int]] = None,
+                 instance_size_slug: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 run_command: Optional[pulumi.Input[str]] = None,
+                 source_dir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
+        :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input['AppSpecJobGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param pulumi.Input['AppSpecJobGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input['AppSpecJobGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input['AppSpecJobImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
+        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
+        :param pulumi.Input[str] kind: The type of job and when it will be run during the deployment process. It may be one of:
+               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+        :param pulumi.Input[str] run_command: An optional run command to override the component's default.
+        :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
+        """
+        pulumi.set(__self__, "name", name)
+        if build_command is not None:
+            pulumi.set(__self__, "build_command", build_command)
+        if dockerfile_path is not None:
+            pulumi.set(__self__, "dockerfile_path", dockerfile_path)
+        if environment_slug is not None:
+            pulumi.set(__self__, "environment_slug", environment_slug)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if github is not None:
+            pulumi.set(__self__, "github", github)
+        if gitlab is not None:
+            pulumi.set(__self__, "gitlab", gitlab)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if instance_count is not None:
+            pulumi.set(__self__, "instance_count", instance_count)
+        if instance_size_slug is not None:
+            pulumi.set(__self__, "instance_size_slug", instance_size_slug)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if run_command is not None:
+            pulumi.set(__self__, "run_command", run_command)
+        if source_dir is not None:
+            pulumi.set(__self__, "source_dir", source_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="buildCommand")
+    def build_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional build command to run while building this component from source.
+        """
+        return pulumi.get(self, "build_command")
+
+    @build_command.setter
+    def build_command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_command", value)
+
+    @property
+    @pulumi.getter(name="dockerfilePath")
+    def dockerfile_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        """
+        return pulumi.get(self, "dockerfile_path")
+
+    @dockerfile_path.setter
+    def dockerfile_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dockerfile_path", value)
+
+    @property
+    @pulumi.getter(name="environmentSlug")
+    def environment_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        An environment slug describing the type of this app.
+        """
+        return pulumi.get(self, "environment_slug")
+
+    @environment_slug.setter
+    def environment_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment_slug", value)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgs']]]]:
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional[pulumi.Input['AppSpecJobGitArgs']]:
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        """
+        return pulumi.get(self, "git")
+
+    @git.setter
+    def git(self, value: Optional[pulumi.Input['AppSpecJobGitArgs']]):
+        pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter
+    def github(self) -> Optional[pulumi.Input['AppSpecJobGithubArgs']]:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "github")
+
+    @github.setter
+    def github(self, value: Optional[pulumi.Input['AppSpecJobGithubArgs']]):
+        pulumi.set(self, "github", value)
+
+    @property
+    @pulumi.getter
+    def gitlab(self) -> Optional[pulumi.Input['AppSpecJobGitlabArgs']]:
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "gitlab")
+
+    @gitlab.setter
+    def gitlab(self, value: Optional[pulumi.Input['AppSpecJobGitlabArgs']]):
+        pulumi.set(self, "gitlab", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['AppSpecJobImageArgs']]:
+        """
+        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['AppSpecJobImageArgs']]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter(name="instanceCount")
+    def instance_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of instances that this component should be scaled to.
+        """
+        return pulumi.get(self, "instance_count")
+
+    @instance_count.setter
+    def instance_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "instance_count", value)
+
+    @property
+    @pulumi.getter(name="instanceSizeSlug")
+    def instance_size_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance size to use for this component.
+        """
+        return pulumi.get(self, "instance_size_slug")
+
+    @instance_size_slug.setter
+    def instance_size_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_size_slug", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of job and when it will be run during the deployment process. It may be one of:
+        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="runCommand")
+    def run_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional run command to override the component's default.
+        """
+        return pulumi.get(self, "run_command")
+
+    @run_command.setter
+    def run_command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_command", value)
+
+    @property
+    @pulumi.getter(name="sourceDir")
+    def source_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional path to the working directory to use for the build.
+        """
+        return pulumi.get(self, "source_dir")
+
+    @source_dir.setter
+    def source_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_dir", value)
+
+
+@pulumi.input_type
+class AppSpecJobEnvArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The name of the environment variable.
+        :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param pulumi.Input[str] value: The value of the environment variable.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class AppSpecJobGitArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 repo_clone_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[str] repo_clone_url: The clone URL of the repo.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if repo_clone_url is not None:
+            pulumi.set(__self__, "repo_clone_url", repo_clone_url)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="repoCloneUrl")
+    def repo_clone_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The clone URL of the repo.
+        """
+        return pulumi.get(self, "repo_clone_url")
+
+    @repo_clone_url.setter
+    def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_clone_url", value)
+
+
+@pulumi.input_type
+class AppSpecJobGithubArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deploy_on_push: Optional[pulumi.Input[bool]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[bool] deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[str] repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @deploy_on_push.setter
+    def deploy_on_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_on_push", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class AppSpecJobGitlabArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deploy_on_push: Optional[pulumi.Input[bool]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[bool] deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[str] repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @deploy_on_push.setter
+    def deploy_on_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_on_push", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class AppSpecJobImageArgs:
+    def __init__(__self__, *,
+                 registry_type: pulumi.Input[str],
+                 repository: pulumi.Input[str],
+                 registry: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        :param pulumi.Input[str] repository: The repository name.
+        :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
+        """
+        pulumi.set(__self__, "registry_type", registry_type)
+        pulumi.set(__self__, "repository", repository)
+        if registry is not None:
+            pulumi.set(__self__, "registry", registry)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryType")
+    def registry_type(self) -> pulumi.Input[str]:
+        """
+        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        """
+        return pulumi.get(self, "registry_type")
+
+    @registry_type.setter
+    def registry_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_type", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[str]:
+        """
+        The repository name.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        """
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The repository tag. Defaults to `latest` if not provided.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
 class AppSpecServiceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -391,9 +936,11 @@ class AppSpecServiceArgs:
                  gitlab: Optional[pulumi.Input['AppSpecServiceGitlabArgs']] = None,
                  health_check: Optional[pulumi.Input['AppSpecServiceHealthCheckArgs']] = None,
                  http_port: Optional[pulumi.Input[int]] = None,
+                 image: Optional[pulumi.Input['AppSpecServiceImageArgs']] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  instance_size_slug: Optional[pulumi.Input[str]] = None,
-                 routes: Optional[pulumi.Input['AppSpecServiceRoutesArgs']] = None,
+                 internal_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
@@ -402,12 +949,15 @@ class AppSpecServiceArgs:
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecServiceGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
-        :param pulumi.Input['AppSpecServiceGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        :param pulumi.Input['AppSpecServiceGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param pulumi.Input['AppSpecServiceGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input['AppSpecServiceGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecServiceHealthCheckArgs'] health_check: A health check to determine the availability of this component.
         :param pulumi.Input[int] http_port: The internal port on which this service's run command will listen.
+        :param pulumi.Input['AppSpecServiceImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
         """
@@ -430,10 +980,14 @@ class AppSpecServiceArgs:
             pulumi.set(__self__, "health_check", health_check)
         if http_port is not None:
             pulumi.set(__self__, "http_port", http_port)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if instance_count is not None:
             pulumi.set(__self__, "instance_count", instance_count)
         if instance_size_slug is not None:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
+        if internal_ports is not None:
+            pulumi.set(__self__, "internal_ports", internal_ports)
         if routes is not None:
             pulumi.set(__self__, "routes", routes)
         if run_command is not None:
@@ -505,7 +1059,7 @@ class AppSpecServiceArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecServiceGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
         """
         return pulumi.get(self, "git")
 
@@ -517,7 +1071,7 @@ class AppSpecServiceArgs:
     @pulumi.getter
     def github(self) -> Optional[pulumi.Input['AppSpecServiceGithubArgs']]:
         """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "github")
 
@@ -528,6 +1082,9 @@ class AppSpecServiceArgs:
     @property
     @pulumi.getter
     def gitlab(self) -> Optional[pulumi.Input['AppSpecServiceGitlabArgs']]:
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
         return pulumi.get(self, "gitlab")
 
     @gitlab.setter
@@ -559,6 +1116,18 @@ class AppSpecServiceArgs:
         pulumi.set(self, "http_port", value)
 
     @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['AppSpecServiceImageArgs']]:
+        """
+        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['AppSpecServiceImageArgs']]):
+        pulumi.set(self, "image", value)
+
+    @property
     @pulumi.getter(name="instanceCount")
     def instance_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -583,12 +1152,24 @@ class AppSpecServiceArgs:
         pulumi.set(self, "instance_size_slug", value)
 
     @property
+    @pulumi.getter(name="internalPorts")
+    def internal_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of ports on which this service will listen for internal traffic.
+        """
+        return pulumi.get(self, "internal_ports")
+
+    @internal_ports.setter
+    def internal_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "internal_ports", value)
+
+    @property
     @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input['AppSpecServiceRoutesArgs']]:
+    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]]:
         return pulumi.get(self, "routes")
 
     @routes.setter
-    def routes(self, value: Optional[pulumi.Input['AppSpecServiceRoutesArgs']]):
+    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]]):
         pulumi.set(self, "routes", value)
 
     @property
@@ -940,7 +1521,76 @@ class AppSpecServiceHealthCheckArgs:
 
 
 @pulumi.input_type
-class AppSpecServiceRoutesArgs:
+class AppSpecServiceImageArgs:
+    def __init__(__self__, *,
+                 registry_type: pulumi.Input[str],
+                 repository: pulumi.Input[str],
+                 registry: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        :param pulumi.Input[str] repository: The repository name.
+        :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
+        """
+        pulumi.set(__self__, "registry_type", registry_type)
+        pulumi.set(__self__, "repository", repository)
+        if registry is not None:
+            pulumi.set(__self__, "registry", registry)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryType")
+    def registry_type(self) -> pulumi.Input[str]:
+        """
+        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        """
+        return pulumi.get(self, "registry_type")
+
+    @registry_type.setter
+    def registry_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_type", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[str]:
+        """
+        The repository name.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        """
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The repository tag. Defaults to `latest` if not provided.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
+class AppSpecServiceRouteArgs:
     def __init__(__self__, *,
                  path: Optional[pulumi.Input[str]] = None):
         """
@@ -977,7 +1627,7 @@ class AppSpecStaticSiteArgs:
                  gitlab: Optional[pulumi.Input['AppSpecStaticSiteGitlabArgs']] = None,
                  index_document: Optional[pulumi.Input[str]] = None,
                  output_dir: Optional[pulumi.Input[str]] = None,
-                 routes: Optional[pulumi.Input['AppSpecStaticSiteRoutesArgs']] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgs']]]] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
@@ -987,8 +1637,9 @@ class AppSpecStaticSiteArgs:
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[str] error_document: The name of the error document to use when serving this static site.
-        :param pulumi.Input['AppSpecStaticSiteGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
-        :param pulumi.Input['AppSpecStaticSiteGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        :param pulumi.Input['AppSpecStaticSiteGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param pulumi.Input['AppSpecStaticSiteGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input['AppSpecStaticSiteGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[str] index_document: The name of the index document to use when serving this static site.
         :param pulumi.Input[str] output_dir: An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
@@ -1109,7 +1760,7 @@ class AppSpecStaticSiteArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecStaticSiteGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
         """
         return pulumi.get(self, "git")
 
@@ -1121,7 +1772,7 @@ class AppSpecStaticSiteArgs:
     @pulumi.getter
     def github(self) -> Optional[pulumi.Input['AppSpecStaticSiteGithubArgs']]:
         """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "github")
 
@@ -1132,6 +1783,9 @@ class AppSpecStaticSiteArgs:
     @property
     @pulumi.getter
     def gitlab(self) -> Optional[pulumi.Input['AppSpecStaticSiteGitlabArgs']]:
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
         return pulumi.get(self, "gitlab")
 
     @gitlab.setter
@@ -1164,11 +1818,11 @@ class AppSpecStaticSiteArgs:
 
     @property
     @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input['AppSpecStaticSiteRoutesArgs']]:
+    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgs']]]]:
         return pulumi.get(self, "routes")
 
     @routes.setter
-    def routes(self, value: Optional[pulumi.Input['AppSpecStaticSiteRoutesArgs']]):
+    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgs']]]]):
         pulumi.set(self, "routes", value)
 
     @property
@@ -1405,7 +2059,7 @@ class AppSpecStaticSiteGitlabArgs:
 
 
 @pulumi.input_type
-class AppSpecStaticSiteRoutesArgs:
+class AppSpecStaticSiteRouteArgs:
     def __init__(__self__, *,
                  path: Optional[pulumi.Input[str]] = None):
         """
@@ -1438,9 +2092,9 @@ class AppSpecWorkerArgs:
                  git: Optional[pulumi.Input['AppSpecWorkerGitArgs']] = None,
                  github: Optional[pulumi.Input['AppSpecWorkerGithubArgs']] = None,
                  gitlab: Optional[pulumi.Input['AppSpecWorkerGitlabArgs']] = None,
+                 image: Optional[pulumi.Input['AppSpecWorkerImageArgs']] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  instance_size_slug: Optional[pulumi.Input[str]] = None,
-                 routes: Optional[pulumi.Input['AppSpecWorkerRoutesArgs']] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
@@ -1449,8 +2103,10 @@ class AppSpecWorkerArgs:
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecWorkerGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
-        :param pulumi.Input['AppSpecWorkerGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        :param pulumi.Input['AppSpecWorkerGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param pulumi.Input['AppSpecWorkerGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input['AppSpecWorkerGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input['AppSpecWorkerImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
@@ -1471,12 +2127,12 @@ class AppSpecWorkerArgs:
             pulumi.set(__self__, "github", github)
         if gitlab is not None:
             pulumi.set(__self__, "gitlab", gitlab)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if instance_count is not None:
             pulumi.set(__self__, "instance_count", instance_count)
         if instance_size_slug is not None:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
-        if routes is not None:
-            pulumi.set(__self__, "routes", routes)
         if run_command is not None:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
@@ -1546,7 +2202,7 @@ class AppSpecWorkerArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecWorkerGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
         """
         return pulumi.get(self, "git")
 
@@ -1558,7 +2214,7 @@ class AppSpecWorkerArgs:
     @pulumi.getter
     def github(self) -> Optional[pulumi.Input['AppSpecWorkerGithubArgs']]:
         """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "github")
 
@@ -1569,11 +2225,26 @@ class AppSpecWorkerArgs:
     @property
     @pulumi.getter
     def gitlab(self) -> Optional[pulumi.Input['AppSpecWorkerGitlabArgs']]:
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
         return pulumi.get(self, "gitlab")
 
     @gitlab.setter
     def gitlab(self, value: Optional[pulumi.Input['AppSpecWorkerGitlabArgs']]):
         pulumi.set(self, "gitlab", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['AppSpecWorkerImageArgs']]:
+        """
+        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['AppSpecWorkerImageArgs']]):
+        pulumi.set(self, "image", value)
 
     @property
     @pulumi.getter(name="instanceCount")
@@ -1598,15 +2269,6 @@ class AppSpecWorkerArgs:
     @instance_size_slug.setter
     def instance_size_slug(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_size_slug", value)
-
-    @property
-    @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input['AppSpecWorkerRoutesArgs']]:
-        return pulumi.get(self, "routes")
-
-    @routes.setter
-    def routes(self, value: Optional[pulumi.Input['AppSpecWorkerRoutesArgs']]):
-        pulumi.set(self, "routes", value)
 
     @property
     @pulumi.getter(name="runCommand")
@@ -1854,26 +2516,72 @@ class AppSpecWorkerGitlabArgs:
 
 
 @pulumi.input_type
-class AppSpecWorkerRoutesArgs:
+class AppSpecWorkerImageArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[str]] = None):
+                 registry_type: pulumi.Input[str],
+                 repository: pulumi.Input[str],
+                 registry: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] path: Paths must start with `/` and must be unique within the app.
+        :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        :param pulumi.Input[str] repository: The repository name.
+        :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
-        if path is not None:
-            pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "registry_type", registry_type)
+        pulumi.set(__self__, "repository", repository)
+        if registry is not None:
+            pulumi.set(__self__, "registry", registry)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryType")
+    def registry_type(self) -> pulumi.Input[str]:
+        """
+        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        """
+        return pulumi.get(self, "registry_type")
+
+    @registry_type.setter
+    def registry_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_type", value)
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[str]]:
+    def repository(self) -> pulumi.Input[str]:
         """
-        Paths must start with `/` and must be unique within the app.
+        The repository name.
         """
-        return pulumi.get(self, "path")
+        return pulumi.get(self, "repository")
 
-    @path.setter
-    def path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "path", value)
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        """
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The repository tag. Defaults to `latest` if not provided.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
 
 @pulumi.input_type

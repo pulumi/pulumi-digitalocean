@@ -136,7 +136,13 @@ def get_record(domain: Optional[str] = None,
                name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecordResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information on a DNS record. This data source provides the name, TTL, and zone
+    file as configured on your DigitalOcean account. This is useful if the record
+    in question is not managed by the provider.
+
+    An error is triggered if the provided domain name or record are not managed with
+    your DigitalOcean account.
+
 
     :param str domain: The domain name of the record.
     :param str name: The name of the record.

@@ -7,6 +7,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get information on SSH Keys for use in other resources.
+//
+// This data source is useful if the SSH Keys in question are not managed by the provider or you need to
+// utilize any of the SSH Keys' data.
+//
+// Note: You can use the `SshKey` data source to obtain metadata
+// about a single SSH Key if you already know the unique `name` to retrieve.
+//
+// ## Example Usage
+//
+// For example to find all SSH Keys:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetSshKeys(ctx, &digitalocean.GetSshKeysArgs{
+// 			Sorts: []digitalocean.GetSshKeysSort{
+// 				digitalocean.GetSshKeysSort{
+// 					Direction: "asc",
+// 					Key:       "name",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSshKeys(ctx *pulumi.Context, args *GetSshKeysArgs, opts ...pulumi.InvokeOption) (*GetSshKeysResult, error) {
 	var rv GetSshKeysResult
 	err := ctx.Invoke("digitalocean:index/getSshKeys:getSshKeys", args, &rv, opts...)

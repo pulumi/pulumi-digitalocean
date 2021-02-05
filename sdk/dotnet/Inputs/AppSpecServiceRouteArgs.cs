@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecStaticSiteRoutesGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecServiceRouteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Paths must start with `/` and must be unique within the app.
@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        public AppSpecStaticSiteRoutesGetArgs()
+        public AppSpecServiceRouteArgs()
         {
         }
     }

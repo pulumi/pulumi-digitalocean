@@ -34,8 +34,7 @@ class Droplet(pulumi.CustomResource):
                  __opts__=None):
         """
         Provides a DigitalOcean Droplet resource. This can be used to create,
-        modify, and delete Droplets. Droplets also support
-        [provisioning](https://www.terraform.io/docs/provisioners/index.html).
+        modify, and delete Droplets.
 
         ## Example Usage
 
@@ -83,7 +82,7 @@ class Droplet(pulumi.CustomResource):
                to retrieve them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
         if __name__ is not None:
@@ -212,7 +211,7 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[int] vcpus: The number of the instance's virtual CPUs
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -449,7 +448,7 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter(name="volumeIds")
     def volume_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+        A list of the IDs of each block storage volume to be attached to the Droplet.
         """
         return pulumi.get(self, "volume_ids")
 

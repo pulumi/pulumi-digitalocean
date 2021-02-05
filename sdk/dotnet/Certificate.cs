@@ -32,9 +32,9 @@ namespace Pulumi.DigitalOcean
     ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
     ///         {
     ///             Type = "custom",
-    ///             PrivateKey = File.ReadAllText("/Users/terraform/certs/privkey.pem"),
-    ///             LeafCertificate = File.ReadAllText("/Users/terraform/certs/cert.pem"),
-    ///             CertificateChain = File.ReadAllText("/Users/terraform/certs/fullchain.pem"),
+    ///             PrivateKey = File.ReadAllText("/Users/myuser/certs/privkey.pem"),
+    ///             LeafCertificate = File.ReadAllText("/Users/myuser/certs/cert.pem"),
+    ///             CertificateChain = File.ReadAllText("/Users/myuser/certs/fullchain.pem"),
     ///         });
     ///     }
     /// 
