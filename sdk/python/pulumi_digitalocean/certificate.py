@@ -41,9 +41,9 @@ class Certificate(pulumi.CustomResource):
 
         cert = digitalocean.Certificate("cert",
             type="custom",
-            private_key=(lambda path: open(path).read())("/Users/terraform/certs/privkey.pem"),
-            leaf_certificate=(lambda path: open(path).read())("/Users/terraform/certs/cert.pem"),
-            certificate_chain=(lambda path: open(path).read())("/Users/terraform/certs/fullchain.pem"))
+            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
+            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
+            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
         ```
         ### Let's Encrypt Certificate
 

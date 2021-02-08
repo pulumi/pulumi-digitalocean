@@ -146,7 +146,42 @@ def get_volume(description: Optional[str] = None,
                region: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information on a volume for use in other resources. This data source provides
+    all of the volumes properties as configured on your DigitalOcean account. This is
+    useful if the volume in question is not managed by the provider or you need to utilize
+    any of the volumes data.
+
+    An error is triggered if the provided volume name does not exist.
+
+    ## Example Usage
+
+    Get the volume:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_volume(name="app-data",
+        region="nyc3")
+    ```
+
+    Reuse the data about a volume to attach it to a Droplet:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example_volume = digitalocean.get_volume(name="app-data",
+        region="nyc3")
+    example_droplet = digitalocean.Droplet("exampleDroplet",
+        size="s-1vcpu-1gb",
+        image="ubuntu-18-04-x64",
+        region="nyc3")
+    foobar = digitalocean.VolumeAttachment("foobar",
+        droplet_id=example_droplet.id,
+        volume_id=example_volume.id)
+    ```
+
 
     :param str description: Text describing a block storage volume.
     :param str name: The name of block storage volume.

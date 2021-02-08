@@ -11,17 +11,25 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class AppSpecServiceRoutes
+    public sealed class GetAppSpecJobGitResult
     {
         /// <summary>
-        /// Paths must start with `/` and must be unique within the app.
+        /// The name of the branch to use.
         /// </summary>
-        public readonly string? Path;
+        public readonly string? Branch;
+        /// <summary>
+        /// The clone URL of the repo.
+        /// </summary>
+        public readonly string? RepoCloneUrl;
 
         [OutputConstructor]
-        private AppSpecServiceRoutes(string? path)
+        private GetAppSpecJobGitResult(
+            string? branch,
+
+            string? repoCloneUrl)
         {
-            Path = path;
+            Branch = branch;
+            RepoCloneUrl = repoCloneUrl;
         }
     }
 }

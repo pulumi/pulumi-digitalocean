@@ -10,6 +10,87 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a DigitalOcean Project resource.
+//
+// Projects allow you to organize your resources into groups that fit the way you work.
+// You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
+// in ways that align with the applications you host on DigitalOcean.
+//
+// The following resource types can be associated with a project:
+//
+// * Database Clusters
+// * Domains
+// * Droplets
+// * Floating IP
+// * Load Balancers
+// * Spaces Bucket
+// * Volume
+//
+// **Note:** A provider managed project cannot be set as a default project.
+//
+// ## Example Usage
+//
+// The following example demonstrates the creation of an empty project:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewProject(ctx, "playground", &digitalocean.ProjectArgs{
+// 			Description: pulumi.String("A project to represent development resources."),
+// 			Environment: pulumi.String("Development"),
+// 			Purpose:     pulumi.String("Web Application"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The following example demonstrates the creation of a project with a Droplet resource:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
+// 			Size:   pulumi.String("512mb"),
+// 			Image:  pulumi.String("centos-7-x64"),
+// 			Region: pulumi.String("nyc3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewProject(ctx, "playground", &digitalocean.ProjectArgs{
+// 			Description: pulumi.String("A project to represent development resources."),
+// 			Purpose:     pulumi.String("Web Application"),
+// 			Environment: pulumi.String("Development"),
+// 			Resources: pulumi.StringArray{
+// 				foobar.DropletUrn,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Projects can be imported using the `id` returned from DigitalOcean, e.g.

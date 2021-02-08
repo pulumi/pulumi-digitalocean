@@ -22,10 +22,7 @@ namespace Pulumi.DigitalOcean.Inputs
 
         [Input("domains")]
         private InputList<string>? _domains;
-
-        /// <summary>
-        /// A list of hostnames where the application will be available.
-        /// </summary>
+        [Obsolete(@"This attribute has been replaced by `domain` which supports additional functionality.")]
         public InputList<string> Domains
         {
             get => _domains ?? (_domains = new InputList<string>());
@@ -42,6 +39,14 @@ namespace Pulumi.DigitalOcean.Inputs
         {
             get => _envs ?? (_envs = new InputList<Inputs.AppSpecEnvArgs>());
             set => _envs = value;
+        }
+
+        [Input("jobs")]
+        private InputList<Inputs.AppSpecJobArgs>? _jobs;
+        public InputList<Inputs.AppSpecJobArgs> Jobs
+        {
+            get => _jobs ?? (_jobs = new InputList<Inputs.AppSpecJobArgs>());
+            set => _jobs = value;
         }
 
         /// <summary>

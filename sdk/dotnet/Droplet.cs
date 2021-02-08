@@ -11,8 +11,7 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean Droplet resource. This can be used to create,
-    /// modify, and delete Droplets. Droplets also support
-    /// [provisioning](https://www.terraform.io/docs/provisioners/index.html).
+    /// modify, and delete Droplets.
     /// 
     /// ## Example Usage
     /// 
@@ -198,7 +197,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> Vcpus { get; private set; } = null!;
 
         /// <summary>
-        /// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+        /// A list of the IDs of each block storage volume to be attached to the Droplet.
         /// </summary>
         [Output("volumeIds")]
         public Output<ImmutableArray<string>> VolumeIds { get; private set; } = null!;
@@ -354,7 +353,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _volumeIds;
 
         /// <summary>
-        /// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+        /// A list of the IDs of each block storage volume to be attached to the Droplet.
         /// </summary>
         public InputList<string> VolumeIds
         {
@@ -541,7 +540,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _volumeIds;
 
         /// <summary>
-        /// A list of the IDs of each [block storage volume](https://www.terraform.io/docs/providers/do/r/volume.html) to be attached to the Droplet.
+        /// A list of the IDs of each block storage volume to be attached to the Droplet.
         /// </summary>
         public InputList<string> VolumeIds
         {

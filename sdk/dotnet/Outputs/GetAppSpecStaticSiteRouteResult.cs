@@ -11,7 +11,7 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class AppSpecWorkerRoutes
+    public sealed class GetAppSpecStaticSiteRouteResult
     {
         /// <summary>
         /// Paths must start with `/` and must be unique within the app.
@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly string? Path;
 
         [OutputConstructor]
-        private AppSpecWorkerRoutes(string? path)
+        private GetAppSpecStaticSiteRouteResult(string? path)
         {
             Path = path;
         }

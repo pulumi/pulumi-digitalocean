@@ -38,13 +38,16 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? ErrorDocument;
         /// <summary>
-        /// A Git repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecStaticSiteGitResult? Git;
         /// <summary>
-        /// A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecStaticSiteGithubResult? Github;
+        /// <summary>
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// </summary>
         public readonly Outputs.GetAppSpecStaticSiteGitlabResult? Gitlab;
         /// <summary>
         /// The name of the index document to use when serving this static site.
@@ -58,7 +61,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
         /// </summary>
         public readonly string? OutputDir;
-        public readonly Outputs.GetAppSpecStaticSiteRoutesResult Routes;
+        public readonly ImmutableArray<Outputs.GetAppSpecStaticSiteRouteResult> Routes;
         /// <summary>
         /// An optional path to the working directory to use for the build.
         /// </summary>
@@ -90,7 +93,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? outputDir,
 
-            Outputs.GetAppSpecStaticSiteRoutesResult routes,
+            ImmutableArray<Outputs.GetAppSpecStaticSiteRouteResult> routes,
 
             string? sourceDir)
         {

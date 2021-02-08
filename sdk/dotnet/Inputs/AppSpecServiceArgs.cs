@@ -43,17 +43,20 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
         /// </summary>
         [Input("git")]
         public Input<Inputs.AppSpecServiceGitArgs>? Git { get; set; }
 
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         /// </summary>
         [Input("github")]
         public Input<Inputs.AppSpecServiceGithubArgs>? Github { get; set; }
 
+        /// <summary>
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// </summary>
         [Input("gitlab")]
         public Input<Inputs.AppSpecServiceGitlabArgs>? Gitlab { get; set; }
 
@@ -70,6 +73,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<int>? HttpPort { get; set; }
 
         /// <summary>
+        /// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// </summary>
+        [Input("image")]
+        public Input<Inputs.AppSpecServiceImageArgs>? Image { get; set; }
+
+        /// <summary>
         /// The amount of instances that this component should be scaled to.
         /// </summary>
         [Input("instanceCount")]
@@ -81,6 +90,18 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("instanceSizeSlug")]
         public Input<string>? InstanceSizeSlug { get; set; }
 
+        [Input("internalPorts")]
+        private InputList<int>? _internalPorts;
+
+        /// <summary>
+        /// A list of ports on which this service will listen for internal traffic.
+        /// </summary>
+        public InputList<int> InternalPorts
+        {
+            get => _internalPorts ?? (_internalPorts = new InputList<int>());
+            set => _internalPorts = value;
+        }
+
         /// <summary>
         /// The name of the component.
         /// </summary>
@@ -88,7 +109,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string> Name { get; set; } = null!;
 
         [Input("routes")]
-        public Input<Inputs.AppSpecServiceRoutesArgs>? Routes { get; set; }
+        private InputList<Inputs.AppSpecServiceRouteArgs>? _routes;
+        public InputList<Inputs.AppSpecServiceRouteArgs> Routes
+        {
+            get => _routes ?? (_routes = new InputList<Inputs.AppSpecServiceRouteArgs>());
+            set => _routes = value;
+        }
 
         /// <summary>
         /// An optional run command to override the component's default.

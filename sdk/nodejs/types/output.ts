@@ -7,13 +7,14 @@ import { input as inputs, output as outputs } from "../types";
 export interface AppSpec {
     databases?: outputs.AppSpecDatabase[];
     /**
-     * A list of hostnames where the application will be available.
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
-    domains?: string[];
+    domains: string[];
     /**
      * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.AppSpecEnv[];
+    jobs?: outputs.AppSpecJob[];
     /**
      * The name of the component.
      */
@@ -77,6 +78,148 @@ export interface AppSpecEnv {
     value?: string;
 }
 
+export interface AppSpecJob {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: string;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: string;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: string;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.AppSpecJobEnv[];
+    /**
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+     */
+    git?: outputs.AppSpecJobGit;
+    /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    github?: outputs.AppSpecJobGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    gitlab?: outputs.AppSpecJobGitlab;
+    /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: outputs.AppSpecJobImage;
+    /**
+     * The amount of instances that this component should be scaled to.
+     */
+    instanceCount?: number;
+    /**
+     * The instance size to use for this component.
+     */
+    instanceSizeSlug?: string;
+    /**
+     * The type of job and when it will be run during the deployment process. It may be one of:
+     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+     */
+    kind?: string;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * An optional run command to override the component's default.
+     */
+    runCommand?: string;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface AppSpecJobEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+export interface AppSpecJobGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface AppSpecJobGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface AppSpecJobGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface AppSpecJobImage {
+    /**
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+     */
+    registry?: string;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: string;
+    /**
+     * The repository name.
+     */
+    repository: string;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: string;
+}
+
 export interface AppSpecService {
     /**
      * An optional build command to run while building this component from source.
@@ -95,13 +238,16 @@ export interface AppSpecService {
      */
     envs?: outputs.AppSpecServiceEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
      */
     git?: outputs.AppSpecServiceGit;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: outputs.AppSpecServiceGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: outputs.AppSpecServiceGitlab;
     /**
      * A health check to determine the availability of this component.
@@ -112,6 +258,10 @@ export interface AppSpecService {
      */
     httpPort: number;
     /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: outputs.AppSpecServiceImage;
+    /**
      * The amount of instances that this component should be scaled to.
      */
     instanceCount?: number;
@@ -120,10 +270,14 @@ export interface AppSpecService {
      */
     instanceSizeSlug?: string;
     /**
+     * A list of ports on which this service will listen for internal traffic.
+     */
+    internalPorts?: number[];
+    /**
      * The name of the component.
      */
     name: string;
-    routes: outputs.AppSpecServiceRoutes;
+    routes: outputs.AppSpecServiceRoute[];
     /**
      * An optional run command to override the component's default.
      */
@@ -221,7 +375,26 @@ export interface AppSpecServiceHealthCheck {
     timeoutSeconds?: number;
 }
 
-export interface AppSpecServiceRoutes {
+export interface AppSpecServiceImage {
+    /**
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+     */
+    registry?: string;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: string;
+    /**
+     * The repository name.
+     */
+    repository: string;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: string;
+}
+
+export interface AppSpecServiceRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
@@ -254,13 +427,16 @@ export interface AppSpecStaticSite {
      */
     errorDocument?: string;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
      */
     git?: outputs.AppSpecStaticSiteGit;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: outputs.AppSpecStaticSiteGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: outputs.AppSpecStaticSiteGitlab;
     /**
      * The name of the index document to use when serving this static site.
@@ -274,7 +450,7 @@ export interface AppSpecStaticSite {
      * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      */
     outputDir?: string;
-    routes: outputs.AppSpecStaticSiteRoutes;
+    routes: outputs.AppSpecStaticSiteRoute[];
     /**
      * An optional path to the working directory to use for the build.
      */
@@ -341,7 +517,7 @@ export interface AppSpecStaticSiteGitlab {
     repo?: string;
 }
 
-export interface AppSpecStaticSiteRoutes {
+export interface AppSpecStaticSiteRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
@@ -366,14 +542,21 @@ export interface AppSpecWorker {
      */
     envs?: outputs.AppSpecWorkerEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
      */
     git?: outputs.AppSpecWorkerGit;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: outputs.AppSpecWorkerGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: outputs.AppSpecWorkerGitlab;
+    /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: outputs.AppSpecWorkerImage;
     /**
      * The amount of instances that this component should be scaled to.
      */
@@ -386,7 +569,6 @@ export interface AppSpecWorker {
      * The name of the component.
      */
     name: string;
-    routes: outputs.AppSpecWorkerRoutes;
     /**
      * An optional run command to override the component's default.
      */
@@ -457,11 +639,23 @@ export interface AppSpecWorkerGitlab {
     repo?: string;
 }
 
-export interface AppSpecWorkerRoutes {
+export interface AppSpecWorkerImage {
     /**
-     * Paths must start with `/` and must be unique within the app.
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
-    path?: string;
+    registry?: string;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: string;
+    /**
+     * The repository name.
+     */
+    repository: string;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: string;
 }
 
 export interface DatabaseClusterMaintenanceWindow {
@@ -581,11 +775,15 @@ export interface FirewallPendingChange {
 
 export interface GetAppSpec {
     databases?: outputs.GetAppSpecDatabase[];
-    domains?: string[];
+    /**
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
+     */
+    domains: string[];
     /**
      * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.GetAppSpecEnv[];
+    jobs?: outputs.GetAppSpecJob[];
     /**
      * The name of the component.
      */
@@ -646,6 +844,148 @@ export interface GetAppSpecEnv {
     value?: string;
 }
 
+export interface GetAppSpecJob {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: string;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: string;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: string;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.GetAppSpecJobEnv[];
+    /**
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     */
+    git?: outputs.GetAppSpecJobGit;
+    /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    github?: outputs.GetAppSpecJobGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    gitlab?: outputs.GetAppSpecJobGitlab;
+    /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: outputs.GetAppSpecJobImage;
+    /**
+     * The amount of instances that this component should be scaled to.
+     */
+    instanceCount?: number;
+    /**
+     * The instance size to use for this component.
+     */
+    instanceSizeSlug?: string;
+    /**
+     * The type of job and when it will be run during the deployment process. It may be one of:
+     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+     */
+    kind?: string;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * An optional run command to override the component's default.
+     */
+    runCommand?: string;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface GetAppSpecJobEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+export interface GetAppSpecJobGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface GetAppSpecJobGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface GetAppSpecJobGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface GetAppSpecJobImage {
+    /**
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+     */
+    registry?: string;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: string;
+    /**
+     * The repository name.
+     */
+    repository: string;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: string;
+}
+
 export interface GetAppSpecService {
     /**
      * An optional build command to run while building this component from source.
@@ -664,13 +1004,16 @@ export interface GetAppSpecService {
      */
     envs?: outputs.GetAppSpecServiceEnv[];
     /**
-     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      */
     git?: outputs.GetAppSpecServiceGit;
     /**
-     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: outputs.GetAppSpecServiceGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: outputs.GetAppSpecServiceGitlab;
     /**
      * A health check to determine the availability of this component.
@@ -681,6 +1024,10 @@ export interface GetAppSpecService {
      */
     httpPort: number;
     /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: outputs.GetAppSpecServiceImage;
+    /**
      * The amount of instances that this component should be scaled to.
      */
     instanceCount?: number;
@@ -689,10 +1036,14 @@ export interface GetAppSpecService {
      */
     instanceSizeSlug?: string;
     /**
+     * A list of ports on which this service will listen for internal traffic.
+     */
+    internalPorts?: number[];
+    /**
      * The name of the component.
      */
     name: string;
-    routes: outputs.GetAppSpecServiceRoutes;
+    routes: outputs.GetAppSpecServiceRoute[];
     /**
      * An optional run command to override the component's default.
      */
@@ -790,7 +1141,26 @@ export interface GetAppSpecServiceHealthCheck {
     timeoutSeconds?: number;
 }
 
-export interface GetAppSpecServiceRoutes {
+export interface GetAppSpecServiceImage {
+    /**
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+     */
+    registry?: string;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: string;
+    /**
+     * The repository name.
+     */
+    repository: string;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: string;
+}
+
+export interface GetAppSpecServiceRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
@@ -823,13 +1193,16 @@ export interface GetAppSpecStaticSite {
      */
     errorDocument?: string;
     /**
-     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      */
     git?: outputs.GetAppSpecStaticSiteGit;
     /**
-     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: outputs.GetAppSpecStaticSiteGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: outputs.GetAppSpecStaticSiteGitlab;
     /**
      * The name of the index document to use when serving this static site.
@@ -843,7 +1216,7 @@ export interface GetAppSpecStaticSite {
      * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      */
     outputDir?: string;
-    routes: outputs.GetAppSpecStaticSiteRoutes;
+    routes: outputs.GetAppSpecStaticSiteRoute[];
     /**
      * An optional path to the working directory to use for the build.
      */
@@ -910,7 +1283,7 @@ export interface GetAppSpecStaticSiteGitlab {
     repo?: string;
 }
 
-export interface GetAppSpecStaticSiteRoutes {
+export interface GetAppSpecStaticSiteRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
@@ -935,14 +1308,21 @@ export interface GetAppSpecWorker {
      */
     envs?: outputs.GetAppSpecWorkerEnv[];
     /**
-     * A Git repo to use as component's source. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      */
     git?: outputs.GetAppSpecWorkerGit;
     /**
-     * A GitHub repo to use as component's source. Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: outputs.GetAppSpecWorkerGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: outputs.GetAppSpecWorkerGitlab;
+    /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: outputs.GetAppSpecWorkerImage;
     /**
      * The amount of instances that this component should be scaled to.
      */
@@ -955,7 +1335,6 @@ export interface GetAppSpecWorker {
      * The name of the component.
      */
     name: string;
-    routes: outputs.GetAppSpecWorkerRoutes;
     /**
      * An optional run command to override the component's default.
      */
@@ -1026,11 +1405,23 @@ export interface GetAppSpecWorkerGitlab {
     repo?: string;
 }
 
-export interface GetAppSpecWorkerRoutes {
+export interface GetAppSpecWorkerImage {
     /**
-     * Paths must start with `/` and must be unique within the app.
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
-    path?: string;
+    registry?: string;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: string;
+    /**
+     * The repository name.
+     */
+    repository: string;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: string;
 }
 
 export interface GetDatabaseClusterMaintenanceWindow {

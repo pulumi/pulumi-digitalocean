@@ -30,13 +30,16 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecServiceEnv> Envs;
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
         /// </summary>
         public readonly Outputs.AppSpecServiceGit? Git;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.AppSpecServiceGithub? Github;
+        /// <summary>
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// </summary>
         public readonly Outputs.AppSpecServiceGitlab? Gitlab;
         /// <summary>
         /// A health check to determine the availability of this component.
@@ -47,6 +50,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int? HttpPort;
         /// <summary>
+        /// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.AppSpecServiceImage? Image;
+        /// <summary>
         /// The amount of instances that this component should be scaled to.
         /// </summary>
         public readonly int? InstanceCount;
@@ -55,10 +62,14 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? InstanceSizeSlug;
         /// <summary>
+        /// A list of ports on which this service will listen for internal traffic.
+        /// </summary>
+        public readonly ImmutableArray<int> InternalPorts;
+        /// <summary>
         /// The name of the component.
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.AppSpecServiceRoutes? Routes;
+        public readonly ImmutableArray<Outputs.AppSpecServiceRoute> Routes;
         /// <summary>
         /// An optional run command to override the component's default.
         /// </summary>
@@ -88,13 +99,17 @@ namespace Pulumi.DigitalOcean.Outputs
 
             int? httpPort,
 
+            Outputs.AppSpecServiceImage? image,
+
             int? instanceCount,
 
             string? instanceSizeSlug,
 
+            ImmutableArray<int> internalPorts,
+
             string name,
 
-            Outputs.AppSpecServiceRoutes? routes,
+            ImmutableArray<Outputs.AppSpecServiceRoute> routes,
 
             string? runCommand,
 
@@ -109,8 +124,10 @@ namespace Pulumi.DigitalOcean.Outputs
             Gitlab = gitlab;
             HealthCheck = healthCheck;
             HttpPort = httpPort;
+            Image = image;
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
+            InternalPorts = internalPorts;
             Name = name;
             Routes = routes;
             RunCommand = runCommand;

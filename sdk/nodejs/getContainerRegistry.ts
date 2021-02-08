@@ -5,6 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a container registry. This data source provides the name as
+ * configured on your DigitalOcean account. This is useful if the container
+ * registry name in question is not managed by this provider or you need validate if
+ * the container registry exists in the account.
+ *
+ * An error is triggered if the provided container registry name does not exist.
+ *
+ * ## Example Usage
+ * ### Basic Example
+ *
+ * Get the container registry:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = pulumi.output(digitalocean.getContainerRegistry({
+ *     name: "example",
+ * }, { async: true }));
+ * ```
+ */
 export function getContainerRegistry(args: GetContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryResult> {
     if (!opts) {
         opts = {}

@@ -55,17 +55,20 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? ErrorDocument { get; set; }
 
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
         /// </summary>
         [Input("git")]
         public Input<Inputs.AppSpecStaticSiteGitGetArgs>? Git { get; set; }
 
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         /// </summary>
         [Input("github")]
         public Input<Inputs.AppSpecStaticSiteGithubGetArgs>? Github { get; set; }
 
+        /// <summary>
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// </summary>
         [Input("gitlab")]
         public Input<Inputs.AppSpecStaticSiteGitlabGetArgs>? Gitlab { get; set; }
 
@@ -88,7 +91,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? OutputDir { get; set; }
 
         [Input("routes")]
-        public Input<Inputs.AppSpecStaticSiteRoutesGetArgs>? Routes { get; set; }
+        private InputList<Inputs.AppSpecStaticSiteRouteGetArgs>? _routes;
+        public InputList<Inputs.AppSpecStaticSiteRouteGetArgs> Routes
+        {
+            get => _routes ?? (_routes = new InputList<Inputs.AppSpecStaticSiteRouteGetArgs>());
+            set => _routes = value;
+        }
 
         /// <summary>
         /// An optional path to the working directory to use for the build.

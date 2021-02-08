@@ -80,7 +80,9 @@ class App(pulumi.CustomResource):
                 name="starter-db",
                 production=False,
             )],
-            domains=["foo.example.com"],
+            domains=[{
+                "name": "foo.example.com",
+            }],
             name="mono-repo-example",
             region="ams",
             services=[digitalocean.AppSpecServiceArgs(
@@ -94,9 +96,9 @@ class App(pulumi.CustomResource):
                 instance_count=2,
                 instance_size_slug="professional-xs",
                 name="api",
-                routes=digitalocean.AppSpecServiceRoutesArgs(
+                routes=[digitalocean.AppSpecServiceRouteArgs(
                     path="/api",
-                ),
+                )],
                 run_command="bin/api",
                 source_dir="api/",
             )],
@@ -108,9 +110,9 @@ class App(pulumi.CustomResource):
                     repo="username/repo",
                 ),
                 name="web",
-                routes=digitalocean.AppSpecStaticSiteRoutesArgs(
+                routes=[digitalocean.AppSpecStaticSiteRouteArgs(
                     path="/",
-                ),
+                )],
             )],
         ))
         ```

@@ -7,13 +7,14 @@ import { input as inputs, output as outputs } from "../types";
 export interface AppSpec {
     databases?: pulumi.Input<pulumi.Input<inputs.AppSpecDatabase>[]>;
     /**
-     * A list of hostnames where the application will be available.
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Describes an environment variable made available to an app competent.
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecEnv>[]>;
+    jobs?: pulumi.Input<pulumi.Input<inputs.AppSpecJob>[]>;
     /**
      * The name of the component.
      */
@@ -77,6 +78,148 @@ export interface AppSpecEnv {
     value?: pulumi.Input<string>;
 }
 
+export interface AppSpecJob {
+    /**
+     * An optional build command to run while building this component from source.
+     */
+    buildCommand?: pulumi.Input<string>;
+    /**
+     * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+     */
+    dockerfilePath?: pulumi.Input<string>;
+    /**
+     * An environment slug describing the type of this app.
+     */
+    environmentSlug?: pulumi.Input<string>;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecJobEnv>[]>;
+    /**
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+     */
+    git?: pulumi.Input<inputs.AppSpecJobGit>;
+    /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    github?: pulumi.Input<inputs.AppSpecJobGithub>;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    gitlab?: pulumi.Input<inputs.AppSpecJobGitlab>;
+    /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: pulumi.Input<inputs.AppSpecJobImage>;
+    /**
+     * The amount of instances that this component should be scaled to.
+     */
+    instanceCount?: pulumi.Input<number>;
+    /**
+     * The instance size to use for this component.
+     */
+    instanceSizeSlug?: pulumi.Input<string>;
+    /**
+     * The type of job and when it will be run during the deployment process. It may be one of:
+     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * The name of the component.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * An optional run command to override the component's default.
+     */
+    runCommand?: pulumi.Input<string>;
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The value of the environment variable.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: pulumi.Input<boolean>;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: pulumi.Input<boolean>;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobImage {
+    /**
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+     */
+    registry?: pulumi.Input<string>;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: pulumi.Input<string>;
+    /**
+     * The repository name.
+     */
+    repository: pulumi.Input<string>;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: pulumi.Input<string>;
+}
+
 export interface AppSpecService {
     /**
      * An optional build command to run while building this component from source.
@@ -95,13 +238,16 @@ export interface AppSpecService {
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceEnv>[]>;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
      */
     git?: pulumi.Input<inputs.AppSpecServiceGit>;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: pulumi.Input<inputs.AppSpecServiceGithub>;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: pulumi.Input<inputs.AppSpecServiceGitlab>;
     /**
      * A health check to determine the availability of this component.
@@ -112,6 +258,10 @@ export interface AppSpecService {
      */
     httpPort?: pulumi.Input<number>;
     /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: pulumi.Input<inputs.AppSpecServiceImage>;
+    /**
      * The amount of instances that this component should be scaled to.
      */
     instanceCount?: pulumi.Input<number>;
@@ -120,10 +270,14 @@ export interface AppSpecService {
      */
     instanceSizeSlug?: pulumi.Input<string>;
     /**
+     * A list of ports on which this service will listen for internal traffic.
+     */
+    internalPorts?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
      * The name of the component.
      */
     name: pulumi.Input<string>;
-    routes?: pulumi.Input<inputs.AppSpecServiceRoutes>;
+    routes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceRoute>[]>;
     /**
      * An optional run command to override the component's default.
      */
@@ -221,7 +375,26 @@ export interface AppSpecServiceHealthCheck {
     timeoutSeconds?: pulumi.Input<number>;
 }
 
-export interface AppSpecServiceRoutes {
+export interface AppSpecServiceImage {
+    /**
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+     */
+    registry?: pulumi.Input<string>;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: pulumi.Input<string>;
+    /**
+     * The repository name.
+     */
+    repository: pulumi.Input<string>;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
@@ -254,13 +427,16 @@ export interface AppSpecStaticSite {
      */
     errorDocument?: pulumi.Input<string>;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
      */
     git?: pulumi.Input<inputs.AppSpecStaticSiteGit>;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: pulumi.Input<inputs.AppSpecStaticSiteGithub>;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: pulumi.Input<inputs.AppSpecStaticSiteGitlab>;
     /**
      * The name of the index document to use when serving this static site.
@@ -274,7 +450,7 @@ export interface AppSpecStaticSite {
      * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      */
     outputDir?: pulumi.Input<string>;
-    routes?: pulumi.Input<inputs.AppSpecStaticSiteRoutes>;
+    routes?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSiteRoute>[]>;
     /**
      * An optional path to the working directory to use for the build.
      */
@@ -341,7 +517,7 @@ export interface AppSpecStaticSiteGitlab {
     repo?: pulumi.Input<string>;
 }
 
-export interface AppSpecStaticSiteRoutes {
+export interface AppSpecStaticSiteRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
@@ -366,14 +542,21 @@ export interface AppSpecWorker {
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerEnv>[]>;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git` and `github` may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
      */
     git?: pulumi.Input<inputs.AppSpecWorkerGit>;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git` and `github` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
     github?: pulumi.Input<inputs.AppSpecWorkerGithub>;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
     gitlab?: pulumi.Input<inputs.AppSpecWorkerGitlab>;
+    /**
+     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    image?: pulumi.Input<inputs.AppSpecWorkerImage>;
     /**
      * The amount of instances that this component should be scaled to.
      */
@@ -386,7 +569,6 @@ export interface AppSpecWorker {
      * The name of the component.
      */
     name: pulumi.Input<string>;
-    routes?: pulumi.Input<inputs.AppSpecWorkerRoutes>;
     /**
      * An optional run command to override the component's default.
      */
@@ -457,11 +639,23 @@ export interface AppSpecWorkerGitlab {
     repo?: pulumi.Input<string>;
 }
 
-export interface AppSpecWorkerRoutes {
+export interface AppSpecWorkerImage {
     /**
-     * Paths must start with `/` and must be unique within the app.
+     * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
-    path?: pulumi.Input<string>;
+    registry?: pulumi.Input<string>;
+    /**
+     * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+     */
+    registryType: pulumi.Input<string>;
+    /**
+     * The repository name.
+     */
+    repository: pulumi.Input<string>;
+    /**
+     * The repository tag. Defaults to `latest` if not provided.
+     */
+    tag?: pulumi.Input<string>;
 }
 
 export interface DatabaseClusterMaintenanceWindow {

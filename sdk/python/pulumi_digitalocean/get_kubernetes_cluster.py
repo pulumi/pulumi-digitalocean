@@ -234,7 +234,8 @@ def get_kubernetes_cluster(name: Optional[str] = None,
                            tags: Optional[Sequence[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClusterResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+
 
     :param str name: The name of Kubernetes cluster.
     :param Sequence[str] tags: A list of tag names applied to the node pool.

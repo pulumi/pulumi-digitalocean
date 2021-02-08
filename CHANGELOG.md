@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v2.5.1 of the DigitalOcean Terraform Provider
 
 ---
 

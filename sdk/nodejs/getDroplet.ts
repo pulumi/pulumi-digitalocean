@@ -5,6 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a Droplet for use in other resources. This data source provides
+ * all of the Droplet's properties as configured on your DigitalOcean account. This
+ * is useful if the Droplet in question is not managed by this provider or you need to
+ * utilize any of the Droplet's data.
+ *
+ * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+ * error is triggered if more than one Droplet is found.
+ *
+ * ## Example Usage
+ *
+ * Get the Droplet by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDroplet({
+ *     name: "web",
+ * });
+ * export const dropletOutput = example.then(example => example.ipv4Address);
+ * ```
+ *
+ * Get the Droplet by tag:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = pulumi.output(digitalocean.getDroplet({
+ *     tag: "web",
+ * }, { async: true }));
+ * ```
+ *
+ * Get the Droplet by ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDroplet({
+ *     id: digitalocean_kubernetes_cluster.example.node_pool[0].nodes[0].droplet_id,
+ * });
+ * ```
+ */
 export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
     args = args || {};
     if (!opts) {

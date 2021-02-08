@@ -78,7 +78,28 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
                  sorts: Optional[Sequence[pulumi.InputType['GetSshKeysSortArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeysResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information on SSH Keys for use in other resources.
+
+    This data source is useful if the SSH Keys in question are not managed by the provider or you need to
+    utilize any of the SSH Keys' data.
+
+    Note: You can use the `SshKey` data source to obtain metadata
+    about a single SSH Key if you already know the unique `name` to retrieve.
+
+    ## Example Usage
+
+    For example to find all SSH Keys:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    keys = digitalocean.get_ssh_keys(sorts=[digitalocean.GetSshKeysSortArgs(
+        direction="asc",
+        key="name",
+    )])
+    ```
+
 
     :param Sequence[pulumi.InputType['GetSshKeysFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.

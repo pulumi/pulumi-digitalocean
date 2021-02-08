@@ -113,7 +113,10 @@ namespace Pulumi.DigitalOcean
     ///                 },
     ///                 Domains = 
     ///                 {
-    ///                     "foo.example.com",
+    ///                     
+    ///                     {
+    ///                         { "name", "foo.example.com" },
+    ///                     },
     ///                 },
     ///                 Name = "mono-repo-example",
     ///                 Region = "ams",
@@ -132,9 +135,12 @@ namespace Pulumi.DigitalOcean
     ///                         InstanceCount = 2,
     ///                         InstanceSizeSlug = "professional-xs",
     ///                         Name = "api",
-    ///                         Routes = new DigitalOcean.Inputs.AppSpecServiceRoutesArgs
+    ///                         Routes = 
     ///                         {
-    ///                             Path = "/api",
+    ///                             new DigitalOcean.Inputs.AppSpecServiceRouteArgs
+    ///                             {
+    ///                                 Path = "/api",
+    ///                             },
     ///                         },
     ///                         RunCommand = "bin/api",
     ///                         SourceDir = "api/",
@@ -152,9 +158,12 @@ namespace Pulumi.DigitalOcean
     ///                             Repo = "username/repo",
     ///                         },
     ///                         Name = "web",
-    ///                         Routes = new DigitalOcean.Inputs.AppSpecStaticSiteRoutesArgs
+    ///                         Routes = 
     ///                         {
-    ///                             Path = "/",
+    ///                             new DigitalOcean.Inputs.AppSpecStaticSiteRouteArgs
+    ///                             {
+    ///                                 Path = "/",
+    ///                             },
     ///                         },
     ///                     },
     ///                 },

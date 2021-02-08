@@ -11,6 +11,71 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetVolume
     {
+        /// <summary>
+        /// Get information on a volume for use in other resources. This data source provides
+        /// all of the volumes properties as configured on your DigitalOcean account. This is
+        /// useful if the volume in question is not managed by the provider or you need to utilize
+        /// any of the volumes data.
+        /// 
+        /// An error is triggered if the provided volume name does not exist.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the volume:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetVolume.InvokeAsync(new DigitalOcean.GetVolumeArgs
+        ///         {
+        ///             Name = "app-data",
+        ///             Region = "nyc3",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// Reuse the data about a volume to attach it to a Droplet:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var exampleVolume = Output.Create(DigitalOcean.GetVolume.InvokeAsync(new DigitalOcean.GetVolumeArgs
+        ///         {
+        ///             Name = "app-data",
+        ///             Region = "nyc3",
+        ///         }));
+        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
+        ///         {
+        ///             Size = "s-1vcpu-1gb",
+        ///             Image = "ubuntu-18-04-x64",
+        ///             Region = "nyc3",
+        ///         });
+        ///         var foobar = new DigitalOcean.VolumeAttachment("foobar", new DigitalOcean.VolumeAttachmentArgs
+        ///         {
+        ///             DropletId = exampleDroplet.Id,
+        ///             VolumeId = exampleVolume.Apply(exampleVolume =&gt; exampleVolume.Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithVersion());
     }

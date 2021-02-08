@@ -24,9 +24,9 @@ import {CertificateType} from "./index";
  *
  * const cert = new digitalocean.Certificate("cert", {
  *     type: "custom",
- *     privateKey: fs.readFileSync("/Users/terraform/certs/privkey.pem"),
- *     leafCertificate: fs.readFileSync("/Users/terraform/certs/cert.pem"),
- *     certificateChain: fs.readFileSync("/Users/terraform/certs/fullchain.pem"),
+ *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem"),
+ *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem"),
+ *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem"),
  * });
  * ```
  * ### Let's Encrypt Certificate

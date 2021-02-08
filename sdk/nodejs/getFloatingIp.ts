@@ -5,6 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Get information on a floating ip. This data source provides the region and Droplet id
+ * as configured on your DigitalOcean account. This is useful if the floating IP
+ * in question is not managed by the provider or you need to find the Droplet the IP is
+ * attached to.
+ *
+ * An error is triggered if the provided floating IP does not exist.
+ *
+ * ## Example Usage
+ *
+ * Get the floating IP:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const config = new pulumi.Config();
+ * const publicIp = config.requireObject("publicIp");
+ * const example = digitalocean.getFloatingIp({
+ *     ipAddress: publicIp,
+ * });
+ * export const fipOutput = example.then(example => example.dropletId);
+ * ```
+ */
 export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     if (!opts) {
         opts = {}

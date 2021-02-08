@@ -7,19 +7,21 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.DigitalOcean.Inputs
+namespace Pulumi.DigitalOcean.Outputs
 {
 
-    public sealed class AppSpecWorkerRoutesGetArgs : Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class GetAppSpecServiceRouteResult
     {
         /// <summary>
         /// Paths must start with `/` and must be unique within the app.
         /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
+        public readonly string? Path;
 
-        public AppSpecWorkerRoutesGetArgs()
+        [OutputConstructor]
+        private GetAppSpecServiceRouteResult(string? path)
         {
+            Path = path;
         }
     }
 }

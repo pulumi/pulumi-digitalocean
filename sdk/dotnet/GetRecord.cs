@@ -11,6 +11,14 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetRecord
     {
+        /// <summary>
+        /// Get information on a DNS record. This data source provides the name, TTL, and zone
+        /// file as configured on your DigitalOcean account. This is useful if the record
+        /// in question is not managed by the provider.
+        /// 
+        /// An error is triggered if the provided domain name or record are not managed with
+        /// your DigitalOcean account.
+        /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithVersion());
     }

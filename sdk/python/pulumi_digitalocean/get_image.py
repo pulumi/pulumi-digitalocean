@@ -198,7 +198,46 @@ def get_image(id: Optional[int] = None,
               source: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information on an image for use in other resources (e.g. creating a Droplet
+    based on snapshot). This data source provides all of the image properties as
+    configured on your DigitalOcean account. This is useful if the image in question
+    is not managed by the provider or you need to utilize any of the image's data.
+
+    An error is triggered if zero or more than one result is returned by the query.
+
+    ## Example Usage
+
+    Get the data about a snapshot:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example1 = digitalocean.get_image(name="example-1.0.0")
+    ```
+
+    Reuse the data about a snapshot to create a Droplet:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example_image = digitalocean.get_image(name="example-1.0.0")
+    example_droplet = digitalocean.Droplet("exampleDroplet",
+        image=example_image.id,
+        region="nyc2",
+        size="s-1vcpu-1gb")
+    ```
+
+    Get the data about an official image:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example2 = digitalocean.get_image(slug="ubuntu-18-04-x64")
+    ```
+
 
     :param int id: The id of the image
     :param str name: The name of the image.
