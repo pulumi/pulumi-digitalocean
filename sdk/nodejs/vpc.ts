@@ -115,7 +115,8 @@ export class Vpc extends pulumi.CustomResource {
     constructor(name: string, args: VpcArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcArgs | VpcState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VpcState | undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["default"] = state ? state.default : undefined;
@@ -126,7 +127,7 @@ export class Vpc extends pulumi.CustomResource {
             inputs["vpcUrn"] = state ? state.vpcUrn : undefined;
         } else {
             const args = argsOrState as VpcArgs | undefined;
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -137,12 +138,8 @@ export class Vpc extends pulumi.CustomResource {
             inputs["default"] = undefined /*out*/;
             inputs["vpcUrn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Vpc.__pulumiType, name, inputs, opts);
     }

@@ -160,7 +160,8 @@ export class SpacesBucketObject extends pulumi.CustomResource {
     constructor(name: string, args: SpacesBucketObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SpacesBucketObjectArgs | SpacesBucketObjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SpacesBucketObjectState | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
@@ -181,13 +182,13 @@ export class SpacesBucketObject extends pulumi.CustomResource {
             inputs["websiteRedirect"] = state ? state.websiteRedirect : undefined;
         } else {
             const args = argsOrState as SpacesBucketObjectArgs | undefined;
-            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["acl"] = args ? args.acl : undefined;
@@ -208,12 +209,8 @@ export class SpacesBucketObject extends pulumi.CustomResource {
             inputs["websiteRedirect"] = args ? args.websiteRedirect : undefined;
             inputs["versionId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SpacesBucketObject.__pulumiType, name, inputs, opts);
     }

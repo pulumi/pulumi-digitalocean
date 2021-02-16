@@ -78,10 +78,7 @@ namespace Pulumi.DigitalOcean
         public ProviderArgs()
         {
             ApiEndpoint = Utilities.GetEnv("DIGITALOCEAN_API_URL") ?? "https://api.digitalocean.com";
-            SpacesAccessId = Utilities.GetEnv("SPACES_ACCESS_KEY_ID");
             SpacesEndpoint = Utilities.GetEnv("SPACES_ENDPOINT_URL");
-            SpacesSecretKey = Utilities.GetEnv("SPACES_SECRET_ACCESS_KEY");
-            Token = Utilities.GetEnv("DIGITALOCEAN_TOKEN");
         }
     }
 }

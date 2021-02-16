@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -50,7 +50,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -240,6 +240,85 @@ func (i *Cdn) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnOutput)
 }
 
+func (i *Cdn) ToCdnPtrOutput() CdnPtrOutput {
+	return i.ToCdnPtrOutputWithContext(context.Background())
+}
+
+func (i *Cdn) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnPtrOutput)
+}
+
+type CdnPtrInput interface {
+	pulumi.Input
+
+	ToCdnPtrOutput() CdnPtrOutput
+	ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput
+}
+
+type cdnPtrType CdnArgs
+
+func (*cdnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cdn)(nil))
+}
+
+func (i *cdnPtrType) ToCdnPtrOutput() CdnPtrOutput {
+	return i.ToCdnPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnPtrType) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnPtrOutput)
+}
+
+// CdnArrayInput is an input type that accepts CdnArray and CdnArrayOutput values.
+// You can construct a concrete instance of `CdnArrayInput` via:
+//
+//          CdnArray{ CdnArgs{...} }
+type CdnArrayInput interface {
+	pulumi.Input
+
+	ToCdnArrayOutput() CdnArrayOutput
+	ToCdnArrayOutputWithContext(context.Context) CdnArrayOutput
+}
+
+type CdnArray []CdnInput
+
+func (CdnArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Cdn)(nil))
+}
+
+func (i CdnArray) ToCdnArrayOutput() CdnArrayOutput {
+	return i.ToCdnArrayOutputWithContext(context.Background())
+}
+
+func (i CdnArray) ToCdnArrayOutputWithContext(ctx context.Context) CdnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnArrayOutput)
+}
+
+// CdnMapInput is an input type that accepts CdnMap and CdnMapOutput values.
+// You can construct a concrete instance of `CdnMapInput` via:
+//
+//          CdnMap{ "key": CdnArgs{...} }
+type CdnMapInput interface {
+	pulumi.Input
+
+	ToCdnMapOutput() CdnMapOutput
+	ToCdnMapOutputWithContext(context.Context) CdnMapOutput
+}
+
+type CdnMap map[string]CdnInput
+
+func (CdnMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Cdn)(nil))
+}
+
+func (i CdnMap) ToCdnMapOutput() CdnMapOutput {
+	return i.ToCdnMapOutputWithContext(context.Background())
+}
+
+func (i CdnMap) ToCdnMapOutputWithContext(ctx context.Context) CdnMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnMapOutput)
+}
+
 type CdnOutput struct {
 	*pulumi.OutputState
 }
@@ -256,6 +335,75 @@ func (o CdnOutput) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 	return o
 }
 
+func (o CdnOutput) ToCdnPtrOutput() CdnPtrOutput {
+	return o.ToCdnPtrOutputWithContext(context.Background())
+}
+
+func (o CdnOutput) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
+	return o.ApplyT(func(v Cdn) *Cdn {
+		return &v
+	}).(CdnPtrOutput)
+}
+
+type CdnPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CdnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cdn)(nil))
+}
+
+func (o CdnPtrOutput) ToCdnPtrOutput() CdnPtrOutput {
+	return o
+}
+
+func (o CdnPtrOutput) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
+	return o
+}
+
+type CdnArrayOutput struct{ *pulumi.OutputState }
+
+func (CdnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Cdn)(nil))
+}
+
+func (o CdnArrayOutput) ToCdnArrayOutput() CdnArrayOutput {
+	return o
+}
+
+func (o CdnArrayOutput) ToCdnArrayOutputWithContext(ctx context.Context) CdnArrayOutput {
+	return o
+}
+
+func (o CdnArrayOutput) Index(i pulumi.IntInput) CdnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Cdn {
+		return vs[0].([]Cdn)[vs[1].(int)]
+	}).(CdnOutput)
+}
+
+type CdnMapOutput struct{ *pulumi.OutputState }
+
+func (CdnMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Cdn)(nil))
+}
+
+func (o CdnMapOutput) ToCdnMapOutput() CdnMapOutput {
+	return o
+}
+
+func (o CdnMapOutput) ToCdnMapOutputWithContext(ctx context.Context) CdnMapOutput {
+	return o
+}
+
+func (o CdnMapOutput) MapIndex(k pulumi.StringInput) CdnOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Cdn {
+		return vs[0].(map[string]Cdn)[vs[1].(string)]
+	}).(CdnOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CdnOutput{})
+	pulumi.RegisterOutputType(CdnPtrOutput{})
+	pulumi.RegisterOutputType(CdnArrayOutput{})
+	pulumi.RegisterOutputType(CdnMapOutput{})
 }

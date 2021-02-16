@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -392,6 +392,85 @@ func (i *Droplet) ToDropletOutputWithContext(ctx context.Context) DropletOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(DropletOutput)
 }
 
+func (i *Droplet) ToDropletPtrOutput() DropletPtrOutput {
+	return i.ToDropletPtrOutputWithContext(context.Background())
+}
+
+func (i *Droplet) ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletPtrOutput)
+}
+
+type DropletPtrInput interface {
+	pulumi.Input
+
+	ToDropletPtrOutput() DropletPtrOutput
+	ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput
+}
+
+type dropletPtrType DropletArgs
+
+func (*dropletPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Droplet)(nil))
+}
+
+func (i *dropletPtrType) ToDropletPtrOutput() DropletPtrOutput {
+	return i.ToDropletPtrOutputWithContext(context.Background())
+}
+
+func (i *dropletPtrType) ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletPtrOutput)
+}
+
+// DropletArrayInput is an input type that accepts DropletArray and DropletArrayOutput values.
+// You can construct a concrete instance of `DropletArrayInput` via:
+//
+//          DropletArray{ DropletArgs{...} }
+type DropletArrayInput interface {
+	pulumi.Input
+
+	ToDropletArrayOutput() DropletArrayOutput
+	ToDropletArrayOutputWithContext(context.Context) DropletArrayOutput
+}
+
+type DropletArray []DropletInput
+
+func (DropletArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Droplet)(nil))
+}
+
+func (i DropletArray) ToDropletArrayOutput() DropletArrayOutput {
+	return i.ToDropletArrayOutputWithContext(context.Background())
+}
+
+func (i DropletArray) ToDropletArrayOutputWithContext(ctx context.Context) DropletArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletArrayOutput)
+}
+
+// DropletMapInput is an input type that accepts DropletMap and DropletMapOutput values.
+// You can construct a concrete instance of `DropletMapInput` via:
+//
+//          DropletMap{ "key": DropletArgs{...} }
+type DropletMapInput interface {
+	pulumi.Input
+
+	ToDropletMapOutput() DropletMapOutput
+	ToDropletMapOutputWithContext(context.Context) DropletMapOutput
+}
+
+type DropletMap map[string]DropletInput
+
+func (DropletMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Droplet)(nil))
+}
+
+func (i DropletMap) ToDropletMapOutput() DropletMapOutput {
+	return i.ToDropletMapOutputWithContext(context.Background())
+}
+
+func (i DropletMap) ToDropletMapOutputWithContext(ctx context.Context) DropletMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletMapOutput)
+}
+
 type DropletOutput struct {
 	*pulumi.OutputState
 }
@@ -408,6 +487,75 @@ func (o DropletOutput) ToDropletOutputWithContext(ctx context.Context) DropletOu
 	return o
 }
 
+func (o DropletOutput) ToDropletPtrOutput() DropletPtrOutput {
+	return o.ToDropletPtrOutputWithContext(context.Background())
+}
+
+func (o DropletOutput) ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput {
+	return o.ApplyT(func(v Droplet) *Droplet {
+		return &v
+	}).(DropletPtrOutput)
+}
+
+type DropletPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DropletPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Droplet)(nil))
+}
+
+func (o DropletPtrOutput) ToDropletPtrOutput() DropletPtrOutput {
+	return o
+}
+
+func (o DropletPtrOutput) ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput {
+	return o
+}
+
+type DropletArrayOutput struct{ *pulumi.OutputState }
+
+func (DropletArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Droplet)(nil))
+}
+
+func (o DropletArrayOutput) ToDropletArrayOutput() DropletArrayOutput {
+	return o
+}
+
+func (o DropletArrayOutput) ToDropletArrayOutputWithContext(ctx context.Context) DropletArrayOutput {
+	return o
+}
+
+func (o DropletArrayOutput) Index(i pulumi.IntInput) DropletOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Droplet {
+		return vs[0].([]Droplet)[vs[1].(int)]
+	}).(DropletOutput)
+}
+
+type DropletMapOutput struct{ *pulumi.OutputState }
+
+func (DropletMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Droplet)(nil))
+}
+
+func (o DropletMapOutput) ToDropletMapOutput() DropletMapOutput {
+	return o
+}
+
+func (o DropletMapOutput) ToDropletMapOutputWithContext(ctx context.Context) DropletMapOutput {
+	return o
+}
+
+func (o DropletMapOutput) MapIndex(k pulumi.StringInput) DropletOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Droplet {
+		return vs[0].(map[string]Droplet)[vs[1].(string)]
+	}).(DropletOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DropletOutput{})
+	pulumi.RegisterOutputType(DropletPtrOutput{})
+	pulumi.RegisterOutputType(DropletArrayOutput{})
+	pulumi.RegisterOutputType(DropletMapOutput{})
 }

@@ -77,7 +77,8 @@ export class ContainerRegistry extends pulumi.CustomResource {
     constructor(name: string, args: ContainerRegistryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerRegistryArgs | ContainerRegistryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ContainerRegistryState | undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -85,7 +86,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
             inputs["subscriptionTierSlug"] = state ? state.subscriptionTierSlug : undefined;
         } else {
             const args = argsOrState as ContainerRegistryArgs | undefined;
-            if ((!args || args.subscriptionTierSlug === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subscriptionTierSlug === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionTierSlug'");
             }
             inputs["name"] = args ? args.name : undefined;
@@ -93,12 +94,8 @@ export class ContainerRegistry extends pulumi.CustomResource {
             inputs["endpoint"] = undefined /*out*/;
             inputs["serverUrl"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ContainerRegistry.__pulumiType, name, inputs, opts);
     }

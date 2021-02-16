@@ -24,7 +24,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -49,7 +49,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -183,6 +182,85 @@ func (i *ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredential
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsOutput)
 }
 
+func (i *ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredentialsPtrOutput() ContainerRegistryDockerCredentialsPtrOutput {
+	return i.ToContainerRegistryDockerCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredentialsPtrOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsPtrOutput)
+}
+
+type ContainerRegistryDockerCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToContainerRegistryDockerCredentialsPtrOutput() ContainerRegistryDockerCredentialsPtrOutput
+	ToContainerRegistryDockerCredentialsPtrOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsPtrOutput
+}
+
+type containerRegistryDockerCredentialsPtrType ContainerRegistryDockerCredentialsArgs
+
+func (*containerRegistryDockerCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerRegistryDockerCredentials)(nil))
+}
+
+func (i *containerRegistryDockerCredentialsPtrType) ToContainerRegistryDockerCredentialsPtrOutput() ContainerRegistryDockerCredentialsPtrOutput {
+	return i.ToContainerRegistryDockerCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *containerRegistryDockerCredentialsPtrType) ToContainerRegistryDockerCredentialsPtrOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsPtrOutput)
+}
+
+// ContainerRegistryDockerCredentialsArrayInput is an input type that accepts ContainerRegistryDockerCredentialsArray and ContainerRegistryDockerCredentialsArrayOutput values.
+// You can construct a concrete instance of `ContainerRegistryDockerCredentialsArrayInput` via:
+//
+//          ContainerRegistryDockerCredentialsArray{ ContainerRegistryDockerCredentialsArgs{...} }
+type ContainerRegistryDockerCredentialsArrayInput interface {
+	pulumi.Input
+
+	ToContainerRegistryDockerCredentialsArrayOutput() ContainerRegistryDockerCredentialsArrayOutput
+	ToContainerRegistryDockerCredentialsArrayOutputWithContext(context.Context) ContainerRegistryDockerCredentialsArrayOutput
+}
+
+type ContainerRegistryDockerCredentialsArray []ContainerRegistryDockerCredentialsInput
+
+func (ContainerRegistryDockerCredentialsArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ContainerRegistryDockerCredentials)(nil))
+}
+
+func (i ContainerRegistryDockerCredentialsArray) ToContainerRegistryDockerCredentialsArrayOutput() ContainerRegistryDockerCredentialsArrayOutput {
+	return i.ToContainerRegistryDockerCredentialsArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryDockerCredentialsArray) ToContainerRegistryDockerCredentialsArrayOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsArrayOutput)
+}
+
+// ContainerRegistryDockerCredentialsMapInput is an input type that accepts ContainerRegistryDockerCredentialsMap and ContainerRegistryDockerCredentialsMapOutput values.
+// You can construct a concrete instance of `ContainerRegistryDockerCredentialsMapInput` via:
+//
+//          ContainerRegistryDockerCredentialsMap{ "key": ContainerRegistryDockerCredentialsArgs{...} }
+type ContainerRegistryDockerCredentialsMapInput interface {
+	pulumi.Input
+
+	ToContainerRegistryDockerCredentialsMapOutput() ContainerRegistryDockerCredentialsMapOutput
+	ToContainerRegistryDockerCredentialsMapOutputWithContext(context.Context) ContainerRegistryDockerCredentialsMapOutput
+}
+
+type ContainerRegistryDockerCredentialsMap map[string]ContainerRegistryDockerCredentialsInput
+
+func (ContainerRegistryDockerCredentialsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ContainerRegistryDockerCredentials)(nil))
+}
+
+func (i ContainerRegistryDockerCredentialsMap) ToContainerRegistryDockerCredentialsMapOutput() ContainerRegistryDockerCredentialsMapOutput {
+	return i.ToContainerRegistryDockerCredentialsMapOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryDockerCredentialsMap) ToContainerRegistryDockerCredentialsMapOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsMapOutput)
+}
+
 type ContainerRegistryDockerCredentialsOutput struct {
 	*pulumi.OutputState
 }
@@ -199,6 +277,75 @@ func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCrede
 	return o
 }
 
+func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCredentialsPtrOutput() ContainerRegistryDockerCredentialsPtrOutput {
+	return o.ToContainerRegistryDockerCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCredentialsPtrOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsPtrOutput {
+	return o.ApplyT(func(v ContainerRegistryDockerCredentials) *ContainerRegistryDockerCredentials {
+		return &v
+	}).(ContainerRegistryDockerCredentialsPtrOutput)
+}
+
+type ContainerRegistryDockerCredentialsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerRegistryDockerCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerRegistryDockerCredentials)(nil))
+}
+
+func (o ContainerRegistryDockerCredentialsPtrOutput) ToContainerRegistryDockerCredentialsPtrOutput() ContainerRegistryDockerCredentialsPtrOutput {
+	return o
+}
+
+func (o ContainerRegistryDockerCredentialsPtrOutput) ToContainerRegistryDockerCredentialsPtrOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsPtrOutput {
+	return o
+}
+
+type ContainerRegistryDockerCredentialsArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryDockerCredentialsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerRegistryDockerCredentials)(nil))
+}
+
+func (o ContainerRegistryDockerCredentialsArrayOutput) ToContainerRegistryDockerCredentialsArrayOutput() ContainerRegistryDockerCredentialsArrayOutput {
+	return o
+}
+
+func (o ContainerRegistryDockerCredentialsArrayOutput) ToContainerRegistryDockerCredentialsArrayOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsArrayOutput {
+	return o
+}
+
+func (o ContainerRegistryDockerCredentialsArrayOutput) Index(i pulumi.IntInput) ContainerRegistryDockerCredentialsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerRegistryDockerCredentials {
+		return vs[0].([]ContainerRegistryDockerCredentials)[vs[1].(int)]
+	}).(ContainerRegistryDockerCredentialsOutput)
+}
+
+type ContainerRegistryDockerCredentialsMapOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryDockerCredentialsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ContainerRegistryDockerCredentials)(nil))
+}
+
+func (o ContainerRegistryDockerCredentialsMapOutput) ToContainerRegistryDockerCredentialsMapOutput() ContainerRegistryDockerCredentialsMapOutput {
+	return o
+}
+
+func (o ContainerRegistryDockerCredentialsMapOutput) ToContainerRegistryDockerCredentialsMapOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsMapOutput {
+	return o
+}
+
+func (o ContainerRegistryDockerCredentialsMapOutput) MapIndex(k pulumi.StringInput) ContainerRegistryDockerCredentialsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContainerRegistryDockerCredentials {
+		return vs[0].(map[string]ContainerRegistryDockerCredentials)[vs[1].(string)]
+	}).(ContainerRegistryDockerCredentialsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerRegistryDockerCredentialsOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryDockerCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryDockerCredentialsArrayOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryDockerCredentialsMapOutput{})
 }

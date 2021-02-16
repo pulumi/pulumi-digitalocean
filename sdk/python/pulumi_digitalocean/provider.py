@@ -57,17 +57,11 @@ class Provider(pulumi.ProviderResource):
             if api_endpoint is None:
                 api_endpoint = (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
             __props__['api_endpoint'] = api_endpoint
-            if spaces_access_id is None:
-                spaces_access_id = _utilities.get_env('SPACES_ACCESS_KEY_ID')
             __props__['spaces_access_id'] = spaces_access_id
             if spaces_endpoint is None:
                 spaces_endpoint = _utilities.get_env('SPACES_ENDPOINT_URL')
             __props__['spaces_endpoint'] = spaces_endpoint
-            if spaces_secret_key is None:
-                spaces_secret_key = _utilities.get_env('SPACES_SECRET_ACCESS_KEY')
             __props__['spaces_secret_key'] = spaces_secret_key
-            if token is None:
-                token = _utilities.get_env('DIGITALOCEAN_TOKEN')
             __props__['token'] = token
         super(Provider, __self__).__init__(
             'digitalocean',

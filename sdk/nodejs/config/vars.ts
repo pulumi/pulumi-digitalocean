@@ -13,7 +13,7 @@ export let apiEndpoint: string | undefined = __config.get("apiEndpoint") || (uti
 /**
  * The access key ID for Spaces API operations.
  */
-export let spacesAccessId: string | undefined = __config.get("spacesAccessId") || utilities.getEnv("SPACES_ACCESS_KEY_ID");
+export let spacesAccessId: string | undefined = __config.get("spacesAccessId");
 /**
  * The URL to use for the DigitalOcean Spaces API.
  */
@@ -21,8 +21,8 @@ export let spacesEndpoint: string | undefined = __config.get("spacesEndpoint") |
 /**
  * The secret access key for Spaces API operations.
  */
-export let spacesSecretKey: string | undefined = __config.get("spacesSecretKey") || utilities.getEnv("SPACES_SECRET_ACCESS_KEY");
+export let spacesSecretKey: string | undefined = __config.get("spacesSecretKey");
 /**
  * The token key for API operations.
  */
-export let token: string | undefined = __config.get("token") || utilities.getEnv("DIGITALOCEAN_TOKEN");
+export let token: string | undefined = __config.get("token");

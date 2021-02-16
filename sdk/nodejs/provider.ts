@@ -35,19 +35,16 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
             inputs["apiEndpoint"] = (args ? args.apiEndpoint : undefined) || (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
-            inputs["spacesAccessId"] = (args ? args.spacesAccessId : undefined) || utilities.getEnv("SPACES_ACCESS_KEY_ID");
+            inputs["spacesAccessId"] = args ? args.spacesAccessId : undefined;
             inputs["spacesEndpoint"] = (args ? args.spacesEndpoint : undefined) || utilities.getEnv("SPACES_ENDPOINT_URL");
-            inputs["spacesSecretKey"] = (args ? args.spacesSecretKey : undefined) || utilities.getEnv("SPACES_SECRET_ACCESS_KEY");
-            inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("DIGITALOCEAN_TOKEN");
+            inputs["spacesSecretKey"] = args ? args.spacesSecretKey : undefined;
+            inputs["token"] = args ? args.token : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

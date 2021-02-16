@@ -33,7 +33,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -170,6 +169,85 @@ func (i *ProjectResources) ToProjectResourcesOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesOutput)
 }
 
+func (i *ProjectResources) ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput {
+	return i.ToProjectResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectResources) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesPtrOutput)
+}
+
+type ProjectResourcesPtrInput interface {
+	pulumi.Input
+
+	ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput
+	ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput
+}
+
+type projectResourcesPtrType ProjectResourcesArgs
+
+func (*projectResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectResources)(nil))
+}
+
+func (i *projectResourcesPtrType) ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput {
+	return i.ToProjectResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *projectResourcesPtrType) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesPtrOutput)
+}
+
+// ProjectResourcesArrayInput is an input type that accepts ProjectResourcesArray and ProjectResourcesArrayOutput values.
+// You can construct a concrete instance of `ProjectResourcesArrayInput` via:
+//
+//          ProjectResourcesArray{ ProjectResourcesArgs{...} }
+type ProjectResourcesArrayInput interface {
+	pulumi.Input
+
+	ToProjectResourcesArrayOutput() ProjectResourcesArrayOutput
+	ToProjectResourcesArrayOutputWithContext(context.Context) ProjectResourcesArrayOutput
+}
+
+type ProjectResourcesArray []ProjectResourcesInput
+
+func (ProjectResourcesArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectResources)(nil))
+}
+
+func (i ProjectResourcesArray) ToProjectResourcesArrayOutput() ProjectResourcesArrayOutput {
+	return i.ToProjectResourcesArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectResourcesArray) ToProjectResourcesArrayOutputWithContext(ctx context.Context) ProjectResourcesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesArrayOutput)
+}
+
+// ProjectResourcesMapInput is an input type that accepts ProjectResourcesMap and ProjectResourcesMapOutput values.
+// You can construct a concrete instance of `ProjectResourcesMapInput` via:
+//
+//          ProjectResourcesMap{ "key": ProjectResourcesArgs{...} }
+type ProjectResourcesMapInput interface {
+	pulumi.Input
+
+	ToProjectResourcesMapOutput() ProjectResourcesMapOutput
+	ToProjectResourcesMapOutputWithContext(context.Context) ProjectResourcesMapOutput
+}
+
+type ProjectResourcesMap map[string]ProjectResourcesInput
+
+func (ProjectResourcesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectResources)(nil))
+}
+
+func (i ProjectResourcesMap) ToProjectResourcesMapOutput() ProjectResourcesMapOutput {
+	return i.ToProjectResourcesMapOutputWithContext(context.Background())
+}
+
+func (i ProjectResourcesMap) ToProjectResourcesMapOutputWithContext(ctx context.Context) ProjectResourcesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesMapOutput)
+}
+
 type ProjectResourcesOutput struct {
 	*pulumi.OutputState
 }
@@ -186,6 +264,75 @@ func (o ProjectResourcesOutput) ToProjectResourcesOutputWithContext(ctx context.
 	return o
 }
 
+func (o ProjectResourcesOutput) ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput {
+	return o.ToProjectResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectResourcesOutput) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
+	return o.ApplyT(func(v ProjectResources) *ProjectResources {
+		return &v
+	}).(ProjectResourcesPtrOutput)
+}
+
+type ProjectResourcesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectResources)(nil))
+}
+
+func (o ProjectResourcesPtrOutput) ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput {
+	return o
+}
+
+func (o ProjectResourcesPtrOutput) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
+	return o
+}
+
+type ProjectResourcesArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectResourcesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectResources)(nil))
+}
+
+func (o ProjectResourcesArrayOutput) ToProjectResourcesArrayOutput() ProjectResourcesArrayOutput {
+	return o
+}
+
+func (o ProjectResourcesArrayOutput) ToProjectResourcesArrayOutputWithContext(ctx context.Context) ProjectResourcesArrayOutput {
+	return o
+}
+
+func (o ProjectResourcesArrayOutput) Index(i pulumi.IntInput) ProjectResourcesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectResources {
+		return vs[0].([]ProjectResources)[vs[1].(int)]
+	}).(ProjectResourcesOutput)
+}
+
+type ProjectResourcesMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectResourcesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectResources)(nil))
+}
+
+func (o ProjectResourcesMapOutput) ToProjectResourcesMapOutput() ProjectResourcesMapOutput {
+	return o
+}
+
+func (o ProjectResourcesMapOutput) ToProjectResourcesMapOutputWithContext(ctx context.Context) ProjectResourcesMapOutput {
+	return o
+}
+
+func (o ProjectResourcesMapOutput) MapIndex(k pulumi.StringInput) ProjectResourcesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectResources {
+		return vs[0].(map[string]ProjectResources)[vs[1].(string)]
+	}).(ProjectResourcesOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectResourcesOutput{})
+	pulumi.RegisterOutputType(ProjectResourcesPtrOutput{})
+	pulumi.RegisterOutputType(ProjectResourcesArrayOutput{})
+	pulumi.RegisterOutputType(ProjectResourcesMapOutput{})
 }

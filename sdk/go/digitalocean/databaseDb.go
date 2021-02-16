@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -149,6 +149,85 @@ func (i *DatabaseDb) ToDatabaseDbOutputWithContext(ctx context.Context) Database
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbOutput)
 }
 
+func (i *DatabaseDb) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
+	return i.ToDatabaseDbPtrOutputWithContext(context.Background())
+}
+
+func (i *DatabaseDb) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbPtrOutput)
+}
+
+type DatabaseDbPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseDbPtrOutput() DatabaseDbPtrOutput
+	ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput
+}
+
+type databaseDbPtrType DatabaseDbArgs
+
+func (*databaseDbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseDb)(nil))
+}
+
+func (i *databaseDbPtrType) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
+	return i.ToDatabaseDbPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseDbPtrType) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbPtrOutput)
+}
+
+// DatabaseDbArrayInput is an input type that accepts DatabaseDbArray and DatabaseDbArrayOutput values.
+// You can construct a concrete instance of `DatabaseDbArrayInput` via:
+//
+//          DatabaseDbArray{ DatabaseDbArgs{...} }
+type DatabaseDbArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseDbArrayOutput() DatabaseDbArrayOutput
+	ToDatabaseDbArrayOutputWithContext(context.Context) DatabaseDbArrayOutput
+}
+
+type DatabaseDbArray []DatabaseDbInput
+
+func (DatabaseDbArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatabaseDb)(nil))
+}
+
+func (i DatabaseDbArray) ToDatabaseDbArrayOutput() DatabaseDbArrayOutput {
+	return i.ToDatabaseDbArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseDbArray) ToDatabaseDbArrayOutputWithContext(ctx context.Context) DatabaseDbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbArrayOutput)
+}
+
+// DatabaseDbMapInput is an input type that accepts DatabaseDbMap and DatabaseDbMapOutput values.
+// You can construct a concrete instance of `DatabaseDbMapInput` via:
+//
+//          DatabaseDbMap{ "key": DatabaseDbArgs{...} }
+type DatabaseDbMapInput interface {
+	pulumi.Input
+
+	ToDatabaseDbMapOutput() DatabaseDbMapOutput
+	ToDatabaseDbMapOutputWithContext(context.Context) DatabaseDbMapOutput
+}
+
+type DatabaseDbMap map[string]DatabaseDbInput
+
+func (DatabaseDbMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatabaseDb)(nil))
+}
+
+func (i DatabaseDbMap) ToDatabaseDbMapOutput() DatabaseDbMapOutput {
+	return i.ToDatabaseDbMapOutputWithContext(context.Background())
+}
+
+func (i DatabaseDbMap) ToDatabaseDbMapOutputWithContext(ctx context.Context) DatabaseDbMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbMapOutput)
+}
+
 type DatabaseDbOutput struct {
 	*pulumi.OutputState
 }
@@ -165,6 +244,75 @@ func (o DatabaseDbOutput) ToDatabaseDbOutputWithContext(ctx context.Context) Dat
 	return o
 }
 
+func (o DatabaseDbOutput) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
+	return o.ToDatabaseDbPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseDbOutput) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
+	return o.ApplyT(func(v DatabaseDb) *DatabaseDb {
+		return &v
+	}).(DatabaseDbPtrOutput)
+}
+
+type DatabaseDbPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseDbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseDb)(nil))
+}
+
+func (o DatabaseDbPtrOutput) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
+	return o
+}
+
+func (o DatabaseDbPtrOutput) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
+	return o
+}
+
+type DatabaseDbArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseDbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseDb)(nil))
+}
+
+func (o DatabaseDbArrayOutput) ToDatabaseDbArrayOutput() DatabaseDbArrayOutput {
+	return o
+}
+
+func (o DatabaseDbArrayOutput) ToDatabaseDbArrayOutputWithContext(ctx context.Context) DatabaseDbArrayOutput {
+	return o
+}
+
+func (o DatabaseDbArrayOutput) Index(i pulumi.IntInput) DatabaseDbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseDb {
+		return vs[0].([]DatabaseDb)[vs[1].(int)]
+	}).(DatabaseDbOutput)
+}
+
+type DatabaseDbMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseDbMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseDb)(nil))
+}
+
+func (o DatabaseDbMapOutput) ToDatabaseDbMapOutput() DatabaseDbMapOutput {
+	return o
+}
+
+func (o DatabaseDbMapOutput) ToDatabaseDbMapOutputWithContext(ctx context.Context) DatabaseDbMapOutput {
+	return o
+}
+
+func (o DatabaseDbMapOutput) MapIndex(k pulumi.StringInput) DatabaseDbOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseDb {
+		return vs[0].(map[string]DatabaseDb)[vs[1].(string)]
+	}).(DatabaseDbOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseDbOutput{})
+	pulumi.RegisterOutputType(DatabaseDbPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseDbArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseDbMapOutput{})
 }

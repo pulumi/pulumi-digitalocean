@@ -158,7 +158,8 @@ export class Certificate extends pulumi.CustomResource {
     constructor(name: string, args?: CertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
             inputs["certificateChain"] = state ? state.certificateChain : undefined;
             inputs["domains"] = state ? state.domains : undefined;
@@ -183,12 +184,8 @@ export class Certificate extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["uuid"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Certificate.__pulumiType, name, inputs, opts);
     }

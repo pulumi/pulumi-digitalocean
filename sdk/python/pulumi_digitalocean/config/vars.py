@@ -23,7 +23,7 @@ api_endpoint = __config__.get('apiEndpoint') or (_utilities.get_env('DIGITALOCEA
 The URL to use for the DigitalOcean API.
 """
 
-spaces_access_id = __config__.get('spacesAccessId') or _utilities.get_env('SPACES_ACCESS_KEY_ID')
+spaces_access_id = __config__.get('spacesAccessId')
 """
 The access key ID for Spaces API operations.
 """
@@ -33,12 +33,12 @@ spaces_endpoint = __config__.get('spacesEndpoint') or _utilities.get_env('SPACES
 The URL to use for the DigitalOcean Spaces API.
 """
 
-spaces_secret_key = __config__.get('spacesSecretKey') or _utilities.get_env('SPACES_SECRET_ACCESS_KEY')
+spaces_secret_key = __config__.get('spacesSecretKey')
 """
 The secret access key for Spaces API operations.
 """
 
-token = __config__.get('token') or _utilities.get_env('DIGITALOCEAN_TOKEN')
+token = __config__.get('token')
 """
 The token key for API operations.
 """

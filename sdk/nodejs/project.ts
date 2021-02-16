@@ -141,7 +141,8 @@ export class Project extends pulumi.CustomResource {
     constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -166,12 +167,8 @@ export class Project extends pulumi.CustomResource {
             inputs["ownerUuid"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Project.__pulumiType, name, inputs, opts);
     }

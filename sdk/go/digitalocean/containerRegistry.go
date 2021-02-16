@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -146,6 +146,85 @@ func (i *ContainerRegistry) ToContainerRegistryOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOutput)
 }
 
+func (i *ContainerRegistry) ToContainerRegistryPtrOutput() ContainerRegistryPtrOutput {
+	return i.ToContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i *ContainerRegistry) ToContainerRegistryPtrOutputWithContext(ctx context.Context) ContainerRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryPtrOutput)
+}
+
+type ContainerRegistryPtrInput interface {
+	pulumi.Input
+
+	ToContainerRegistryPtrOutput() ContainerRegistryPtrOutput
+	ToContainerRegistryPtrOutputWithContext(ctx context.Context) ContainerRegistryPtrOutput
+}
+
+type containerRegistryPtrType ContainerRegistryArgs
+
+func (*containerRegistryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerRegistry)(nil))
+}
+
+func (i *containerRegistryPtrType) ToContainerRegistryPtrOutput() ContainerRegistryPtrOutput {
+	return i.ToContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i *containerRegistryPtrType) ToContainerRegistryPtrOutputWithContext(ctx context.Context) ContainerRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryPtrOutput)
+}
+
+// ContainerRegistryArrayInput is an input type that accepts ContainerRegistryArray and ContainerRegistryArrayOutput values.
+// You can construct a concrete instance of `ContainerRegistryArrayInput` via:
+//
+//          ContainerRegistryArray{ ContainerRegistryArgs{...} }
+type ContainerRegistryArrayInput interface {
+	pulumi.Input
+
+	ToContainerRegistryArrayOutput() ContainerRegistryArrayOutput
+	ToContainerRegistryArrayOutputWithContext(context.Context) ContainerRegistryArrayOutput
+}
+
+type ContainerRegistryArray []ContainerRegistryInput
+
+func (ContainerRegistryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ContainerRegistry)(nil))
+}
+
+func (i ContainerRegistryArray) ToContainerRegistryArrayOutput() ContainerRegistryArrayOutput {
+	return i.ToContainerRegistryArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryArray) ToContainerRegistryArrayOutputWithContext(ctx context.Context) ContainerRegistryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryArrayOutput)
+}
+
+// ContainerRegistryMapInput is an input type that accepts ContainerRegistryMap and ContainerRegistryMapOutput values.
+// You can construct a concrete instance of `ContainerRegistryMapInput` via:
+//
+//          ContainerRegistryMap{ "key": ContainerRegistryArgs{...} }
+type ContainerRegistryMapInput interface {
+	pulumi.Input
+
+	ToContainerRegistryMapOutput() ContainerRegistryMapOutput
+	ToContainerRegistryMapOutputWithContext(context.Context) ContainerRegistryMapOutput
+}
+
+type ContainerRegistryMap map[string]ContainerRegistryInput
+
+func (ContainerRegistryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ContainerRegistry)(nil))
+}
+
+func (i ContainerRegistryMap) ToContainerRegistryMapOutput() ContainerRegistryMapOutput {
+	return i.ToContainerRegistryMapOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryMap) ToContainerRegistryMapOutputWithContext(ctx context.Context) ContainerRegistryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryMapOutput)
+}
+
 type ContainerRegistryOutput struct {
 	*pulumi.OutputState
 }
@@ -162,6 +241,75 @@ func (o ContainerRegistryOutput) ToContainerRegistryOutputWithContext(ctx contex
 	return o
 }
 
+func (o ContainerRegistryOutput) ToContainerRegistryPtrOutput() ContainerRegistryPtrOutput {
+	return o.ToContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerRegistryOutput) ToContainerRegistryPtrOutputWithContext(ctx context.Context) ContainerRegistryPtrOutput {
+	return o.ApplyT(func(v ContainerRegistry) *ContainerRegistry {
+		return &v
+	}).(ContainerRegistryPtrOutput)
+}
+
+type ContainerRegistryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerRegistry)(nil))
+}
+
+func (o ContainerRegistryPtrOutput) ToContainerRegistryPtrOutput() ContainerRegistryPtrOutput {
+	return o
+}
+
+func (o ContainerRegistryPtrOutput) ToContainerRegistryPtrOutputWithContext(ctx context.Context) ContainerRegistryPtrOutput {
+	return o
+}
+
+type ContainerRegistryArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerRegistry)(nil))
+}
+
+func (o ContainerRegistryArrayOutput) ToContainerRegistryArrayOutput() ContainerRegistryArrayOutput {
+	return o
+}
+
+func (o ContainerRegistryArrayOutput) ToContainerRegistryArrayOutputWithContext(ctx context.Context) ContainerRegistryArrayOutput {
+	return o
+}
+
+func (o ContainerRegistryArrayOutput) Index(i pulumi.IntInput) ContainerRegistryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerRegistry {
+		return vs[0].([]ContainerRegistry)[vs[1].(int)]
+	}).(ContainerRegistryOutput)
+}
+
+type ContainerRegistryMapOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ContainerRegistry)(nil))
+}
+
+func (o ContainerRegistryMapOutput) ToContainerRegistryMapOutput() ContainerRegistryMapOutput {
+	return o
+}
+
+func (o ContainerRegistryMapOutput) ToContainerRegistryMapOutputWithContext(ctx context.Context) ContainerRegistryMapOutput {
+	return o
+}
+
+func (o ContainerRegistryMapOutput) MapIndex(k pulumi.StringInput) ContainerRegistryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContainerRegistry {
+		return vs[0].(map[string]ContainerRegistry)[vs[1].(string)]
+	}).(ContainerRegistryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerRegistryOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryPtrOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryArrayOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryMapOutput{})
 }

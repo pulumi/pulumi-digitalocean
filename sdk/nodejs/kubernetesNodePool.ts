@@ -148,7 +148,8 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     constructor(name: string, args: KubernetesNodePoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesNodePoolArgs | KubernetesNodePoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KubernetesNodePoolState | undefined;
             inputs["actualNodeCount"] = state ? state.actualNodeCount : undefined;
             inputs["autoScale"] = state ? state.autoScale : undefined;
@@ -163,10 +164,10 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as KubernetesNodePoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["autoScale"] = args ? args.autoScale : undefined;
@@ -181,12 +182,8 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["actualNodeCount"] = undefined /*out*/;
             inputs["nodes"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(KubernetesNodePool.__pulumiType, name, inputs, opts);
     }

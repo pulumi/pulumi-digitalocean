@@ -78,24 +78,21 @@ export class DatabaseDb extends pulumi.CustomResource {
     constructor(name: string, args: DatabaseDbArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseDbArgs | DatabaseDbState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseDbState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as DatabaseDbArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatabaseDb.__pulumiType, name, inputs, opts);
     }

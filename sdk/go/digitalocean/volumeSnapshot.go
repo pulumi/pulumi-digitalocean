@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -181,6 +181,85 @@ func (i *VolumeSnapshot) ToVolumeSnapshotOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotOutput)
 }
 
+func (i *VolumeSnapshot) ToVolumeSnapshotPtrOutput() VolumeSnapshotPtrOutput {
+	return i.ToVolumeSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (i *VolumeSnapshot) ToVolumeSnapshotPtrOutputWithContext(ctx context.Context) VolumeSnapshotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotPtrOutput)
+}
+
+type VolumeSnapshotPtrInput interface {
+	pulumi.Input
+
+	ToVolumeSnapshotPtrOutput() VolumeSnapshotPtrOutput
+	ToVolumeSnapshotPtrOutputWithContext(ctx context.Context) VolumeSnapshotPtrOutput
+}
+
+type volumeSnapshotPtrType VolumeSnapshotArgs
+
+func (*volumeSnapshotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeSnapshot)(nil))
+}
+
+func (i *volumeSnapshotPtrType) ToVolumeSnapshotPtrOutput() VolumeSnapshotPtrOutput {
+	return i.ToVolumeSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeSnapshotPtrType) ToVolumeSnapshotPtrOutputWithContext(ctx context.Context) VolumeSnapshotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotPtrOutput)
+}
+
+// VolumeSnapshotArrayInput is an input type that accepts VolumeSnapshotArray and VolumeSnapshotArrayOutput values.
+// You can construct a concrete instance of `VolumeSnapshotArrayInput` via:
+//
+//          VolumeSnapshotArray{ VolumeSnapshotArgs{...} }
+type VolumeSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToVolumeSnapshotArrayOutput() VolumeSnapshotArrayOutput
+	ToVolumeSnapshotArrayOutputWithContext(context.Context) VolumeSnapshotArrayOutput
+}
+
+type VolumeSnapshotArray []VolumeSnapshotInput
+
+func (VolumeSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VolumeSnapshot)(nil))
+}
+
+func (i VolumeSnapshotArray) ToVolumeSnapshotArrayOutput() VolumeSnapshotArrayOutput {
+	return i.ToVolumeSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeSnapshotArray) ToVolumeSnapshotArrayOutputWithContext(ctx context.Context) VolumeSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotArrayOutput)
+}
+
+// VolumeSnapshotMapInput is an input type that accepts VolumeSnapshotMap and VolumeSnapshotMapOutput values.
+// You can construct a concrete instance of `VolumeSnapshotMapInput` via:
+//
+//          VolumeSnapshotMap{ "key": VolumeSnapshotArgs{...} }
+type VolumeSnapshotMapInput interface {
+	pulumi.Input
+
+	ToVolumeSnapshotMapOutput() VolumeSnapshotMapOutput
+	ToVolumeSnapshotMapOutputWithContext(context.Context) VolumeSnapshotMapOutput
+}
+
+type VolumeSnapshotMap map[string]VolumeSnapshotInput
+
+func (VolumeSnapshotMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VolumeSnapshot)(nil))
+}
+
+func (i VolumeSnapshotMap) ToVolumeSnapshotMapOutput() VolumeSnapshotMapOutput {
+	return i.ToVolumeSnapshotMapOutputWithContext(context.Background())
+}
+
+func (i VolumeSnapshotMap) ToVolumeSnapshotMapOutputWithContext(ctx context.Context) VolumeSnapshotMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotMapOutput)
+}
+
 type VolumeSnapshotOutput struct {
 	*pulumi.OutputState
 }
@@ -197,6 +276,75 @@ func (o VolumeSnapshotOutput) ToVolumeSnapshotOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o VolumeSnapshotOutput) ToVolumeSnapshotPtrOutput() VolumeSnapshotPtrOutput {
+	return o.ToVolumeSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeSnapshotOutput) ToVolumeSnapshotPtrOutputWithContext(ctx context.Context) VolumeSnapshotPtrOutput {
+	return o.ApplyT(func(v VolumeSnapshot) *VolumeSnapshot {
+		return &v
+	}).(VolumeSnapshotPtrOutput)
+}
+
+type VolumeSnapshotPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VolumeSnapshotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeSnapshot)(nil))
+}
+
+func (o VolumeSnapshotPtrOutput) ToVolumeSnapshotPtrOutput() VolumeSnapshotPtrOutput {
+	return o
+}
+
+func (o VolumeSnapshotPtrOutput) ToVolumeSnapshotPtrOutputWithContext(ctx context.Context) VolumeSnapshotPtrOutput {
+	return o
+}
+
+type VolumeSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeSnapshot)(nil))
+}
+
+func (o VolumeSnapshotArrayOutput) ToVolumeSnapshotArrayOutput() VolumeSnapshotArrayOutput {
+	return o
+}
+
+func (o VolumeSnapshotArrayOutput) ToVolumeSnapshotArrayOutputWithContext(ctx context.Context) VolumeSnapshotArrayOutput {
+	return o
+}
+
+func (o VolumeSnapshotArrayOutput) Index(i pulumi.IntInput) VolumeSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeSnapshot {
+		return vs[0].([]VolumeSnapshot)[vs[1].(int)]
+	}).(VolumeSnapshotOutput)
+}
+
+type VolumeSnapshotMapOutput struct{ *pulumi.OutputState }
+
+func (VolumeSnapshotMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VolumeSnapshot)(nil))
+}
+
+func (o VolumeSnapshotMapOutput) ToVolumeSnapshotMapOutput() VolumeSnapshotMapOutput {
+	return o
+}
+
+func (o VolumeSnapshotMapOutput) ToVolumeSnapshotMapOutputWithContext(ctx context.Context) VolumeSnapshotMapOutput {
+	return o
+}
+
+func (o VolumeSnapshotMapOutput) MapIndex(k pulumi.StringInput) VolumeSnapshotOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VolumeSnapshot {
+		return vs[0].(map[string]VolumeSnapshot)[vs[1].(string)]
+	}).(VolumeSnapshotOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VolumeSnapshotOutput{})
+	pulumi.RegisterOutputType(VolumeSnapshotPtrOutput{})
+	pulumi.RegisterOutputType(VolumeSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(VolumeSnapshotMapOutput{})
 }

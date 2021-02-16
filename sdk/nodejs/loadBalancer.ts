@@ -188,7 +188,8 @@ export class LoadBalancer extends pulumi.CustomResource {
     constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
             inputs["algorithm"] = state ? state.algorithm : undefined;
             inputs["dropletIds"] = state ? state.dropletIds : undefined;
@@ -208,10 +209,10 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.forwardingRules === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.forwardingRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'forwardingRules'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["algorithm"] = args ? args.algorithm : undefined;
@@ -231,12 +232,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["loadBalancerUrn"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LoadBalancer.__pulumiType, name, inputs, opts);
     }

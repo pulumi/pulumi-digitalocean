@@ -124,7 +124,8 @@ export class Cdn extends pulumi.CustomResource {
     constructor(name: string, args: CdnArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CdnArgs | CdnState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CdnState | undefined;
             inputs["certificateId"] = state ? state.certificateId : undefined;
             inputs["certificateName"] = state ? state.certificateName : undefined;
@@ -135,7 +136,7 @@ export class Cdn extends pulumi.CustomResource {
             inputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as CdnArgs | undefined;
-            if ((!args || args.origin === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.origin === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'origin'");
             }
             inputs["certificateId"] = args ? args.certificateId : undefined;
@@ -146,12 +147,8 @@ export class Cdn extends pulumi.CustomResource {
             inputs["createdAt"] = undefined /*out*/;
             inputs["endpoint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Cdn.__pulumiType, name, inputs, opts);
     }
