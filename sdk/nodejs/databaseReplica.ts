@@ -126,7 +126,8 @@ export class DatabaseReplica extends pulumi.CustomResource {
     constructor(name: string, args: DatabaseReplicaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseReplicaArgs | DatabaseReplicaState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseReplicaState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["database"] = state ? state.database : undefined;
@@ -144,7 +145,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as DatabaseReplicaArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
@@ -162,12 +163,8 @@ export class DatabaseReplica extends pulumi.CustomResource {
             inputs["uri"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatabaseReplica.__pulumiType, name, inputs, opts);
     }

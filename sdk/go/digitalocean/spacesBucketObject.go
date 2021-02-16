@@ -31,7 +31,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -55,7 +55,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -338,6 +338,85 @@ func (i *SpacesBucketObject) ToSpacesBucketObjectOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectOutput)
 }
 
+func (i *SpacesBucketObject) ToSpacesBucketObjectPtrOutput() SpacesBucketObjectPtrOutput {
+	return i.ToSpacesBucketObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *SpacesBucketObject) ToSpacesBucketObjectPtrOutputWithContext(ctx context.Context) SpacesBucketObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectPtrOutput)
+}
+
+type SpacesBucketObjectPtrInput interface {
+	pulumi.Input
+
+	ToSpacesBucketObjectPtrOutput() SpacesBucketObjectPtrOutput
+	ToSpacesBucketObjectPtrOutputWithContext(ctx context.Context) SpacesBucketObjectPtrOutput
+}
+
+type spacesBucketObjectPtrType SpacesBucketObjectArgs
+
+func (*spacesBucketObjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpacesBucketObject)(nil))
+}
+
+func (i *spacesBucketObjectPtrType) ToSpacesBucketObjectPtrOutput() SpacesBucketObjectPtrOutput {
+	return i.ToSpacesBucketObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *spacesBucketObjectPtrType) ToSpacesBucketObjectPtrOutputWithContext(ctx context.Context) SpacesBucketObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectPtrOutput)
+}
+
+// SpacesBucketObjectArrayInput is an input type that accepts SpacesBucketObjectArray and SpacesBucketObjectArrayOutput values.
+// You can construct a concrete instance of `SpacesBucketObjectArrayInput` via:
+//
+//          SpacesBucketObjectArray{ SpacesBucketObjectArgs{...} }
+type SpacesBucketObjectArrayInput interface {
+	pulumi.Input
+
+	ToSpacesBucketObjectArrayOutput() SpacesBucketObjectArrayOutput
+	ToSpacesBucketObjectArrayOutputWithContext(context.Context) SpacesBucketObjectArrayOutput
+}
+
+type SpacesBucketObjectArray []SpacesBucketObjectInput
+
+func (SpacesBucketObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SpacesBucketObject)(nil))
+}
+
+func (i SpacesBucketObjectArray) ToSpacesBucketObjectArrayOutput() SpacesBucketObjectArrayOutput {
+	return i.ToSpacesBucketObjectArrayOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketObjectArray) ToSpacesBucketObjectArrayOutputWithContext(ctx context.Context) SpacesBucketObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectArrayOutput)
+}
+
+// SpacesBucketObjectMapInput is an input type that accepts SpacesBucketObjectMap and SpacesBucketObjectMapOutput values.
+// You can construct a concrete instance of `SpacesBucketObjectMapInput` via:
+//
+//          SpacesBucketObjectMap{ "key": SpacesBucketObjectArgs{...} }
+type SpacesBucketObjectMapInput interface {
+	pulumi.Input
+
+	ToSpacesBucketObjectMapOutput() SpacesBucketObjectMapOutput
+	ToSpacesBucketObjectMapOutputWithContext(context.Context) SpacesBucketObjectMapOutput
+}
+
+type SpacesBucketObjectMap map[string]SpacesBucketObjectInput
+
+func (SpacesBucketObjectMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SpacesBucketObject)(nil))
+}
+
+func (i SpacesBucketObjectMap) ToSpacesBucketObjectMapOutput() SpacesBucketObjectMapOutput {
+	return i.ToSpacesBucketObjectMapOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketObjectMap) ToSpacesBucketObjectMapOutputWithContext(ctx context.Context) SpacesBucketObjectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectMapOutput)
+}
+
 type SpacesBucketObjectOutput struct {
 	*pulumi.OutputState
 }
@@ -354,6 +433,75 @@ func (o SpacesBucketObjectOutput) ToSpacesBucketObjectOutputWithContext(ctx cont
 	return o
 }
 
+func (o SpacesBucketObjectOutput) ToSpacesBucketObjectPtrOutput() SpacesBucketObjectPtrOutput {
+	return o.ToSpacesBucketObjectPtrOutputWithContext(context.Background())
+}
+
+func (o SpacesBucketObjectOutput) ToSpacesBucketObjectPtrOutputWithContext(ctx context.Context) SpacesBucketObjectPtrOutput {
+	return o.ApplyT(func(v SpacesBucketObject) *SpacesBucketObject {
+		return &v
+	}).(SpacesBucketObjectPtrOutput)
+}
+
+type SpacesBucketObjectPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpacesBucketObjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpacesBucketObject)(nil))
+}
+
+func (o SpacesBucketObjectPtrOutput) ToSpacesBucketObjectPtrOutput() SpacesBucketObjectPtrOutput {
+	return o
+}
+
+func (o SpacesBucketObjectPtrOutput) ToSpacesBucketObjectPtrOutputWithContext(ctx context.Context) SpacesBucketObjectPtrOutput {
+	return o
+}
+
+type SpacesBucketObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpacesBucketObject)(nil))
+}
+
+func (o SpacesBucketObjectArrayOutput) ToSpacesBucketObjectArrayOutput() SpacesBucketObjectArrayOutput {
+	return o
+}
+
+func (o SpacesBucketObjectArrayOutput) ToSpacesBucketObjectArrayOutputWithContext(ctx context.Context) SpacesBucketObjectArrayOutput {
+	return o
+}
+
+func (o SpacesBucketObjectArrayOutput) Index(i pulumi.IntInput) SpacesBucketObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpacesBucketObject {
+		return vs[0].([]SpacesBucketObject)[vs[1].(int)]
+	}).(SpacesBucketObjectOutput)
+}
+
+type SpacesBucketObjectMapOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketObjectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SpacesBucketObject)(nil))
+}
+
+func (o SpacesBucketObjectMapOutput) ToSpacesBucketObjectMapOutput() SpacesBucketObjectMapOutput {
+	return o
+}
+
+func (o SpacesBucketObjectMapOutput) ToSpacesBucketObjectMapOutputWithContext(ctx context.Context) SpacesBucketObjectMapOutput {
+	return o
+}
+
+func (o SpacesBucketObjectMapOutput) MapIndex(k pulumi.StringInput) SpacesBucketObjectOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SpacesBucketObject {
+		return vs[0].(map[string]SpacesBucketObject)[vs[1].(string)]
+	}).(SpacesBucketObjectOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SpacesBucketObjectOutput{})
+	pulumi.RegisterOutputType(SpacesBucketObjectPtrOutput{})
+	pulumi.RegisterOutputType(SpacesBucketObjectArrayOutput{})
+	pulumi.RegisterOutputType(SpacesBucketObjectMapOutput{})
 }

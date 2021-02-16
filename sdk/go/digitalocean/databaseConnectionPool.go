@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -241,6 +241,85 @@ func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolOutput)
 }
 
+func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput {
+	return i.ToDatabaseConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolPtrOutput)
+}
+
+type DatabaseConnectionPoolPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput
+	ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput
+}
+
+type databaseConnectionPoolPtrType DatabaseConnectionPoolArgs
+
+func (*databaseConnectionPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseConnectionPool)(nil))
+}
+
+func (i *databaseConnectionPoolPtrType) ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput {
+	return i.ToDatabaseConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseConnectionPoolPtrType) ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolPtrOutput)
+}
+
+// DatabaseConnectionPoolArrayInput is an input type that accepts DatabaseConnectionPoolArray and DatabaseConnectionPoolArrayOutput values.
+// You can construct a concrete instance of `DatabaseConnectionPoolArrayInput` via:
+//
+//          DatabaseConnectionPoolArray{ DatabaseConnectionPoolArgs{...} }
+type DatabaseConnectionPoolArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseConnectionPoolArrayOutput() DatabaseConnectionPoolArrayOutput
+	ToDatabaseConnectionPoolArrayOutputWithContext(context.Context) DatabaseConnectionPoolArrayOutput
+}
+
+type DatabaseConnectionPoolArray []DatabaseConnectionPoolInput
+
+func (DatabaseConnectionPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatabaseConnectionPool)(nil))
+}
+
+func (i DatabaseConnectionPoolArray) ToDatabaseConnectionPoolArrayOutput() DatabaseConnectionPoolArrayOutput {
+	return i.ToDatabaseConnectionPoolArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseConnectionPoolArray) ToDatabaseConnectionPoolArrayOutputWithContext(ctx context.Context) DatabaseConnectionPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolArrayOutput)
+}
+
+// DatabaseConnectionPoolMapInput is an input type that accepts DatabaseConnectionPoolMap and DatabaseConnectionPoolMapOutput values.
+// You can construct a concrete instance of `DatabaseConnectionPoolMapInput` via:
+//
+//          DatabaseConnectionPoolMap{ "key": DatabaseConnectionPoolArgs{...} }
+type DatabaseConnectionPoolMapInput interface {
+	pulumi.Input
+
+	ToDatabaseConnectionPoolMapOutput() DatabaseConnectionPoolMapOutput
+	ToDatabaseConnectionPoolMapOutputWithContext(context.Context) DatabaseConnectionPoolMapOutput
+}
+
+type DatabaseConnectionPoolMap map[string]DatabaseConnectionPoolInput
+
+func (DatabaseConnectionPoolMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatabaseConnectionPool)(nil))
+}
+
+func (i DatabaseConnectionPoolMap) ToDatabaseConnectionPoolMapOutput() DatabaseConnectionPoolMapOutput {
+	return i.ToDatabaseConnectionPoolMapOutputWithContext(context.Background())
+}
+
+func (i DatabaseConnectionPoolMap) ToDatabaseConnectionPoolMapOutputWithContext(ctx context.Context) DatabaseConnectionPoolMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolMapOutput)
+}
+
 type DatabaseConnectionPoolOutput struct {
 	*pulumi.OutputState
 }
@@ -257,6 +336,75 @@ func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolOutputWithContext(
 	return o
 }
 
+func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput {
+	return o.ToDatabaseConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput {
+	return o.ApplyT(func(v DatabaseConnectionPool) *DatabaseConnectionPool {
+		return &v
+	}).(DatabaseConnectionPoolPtrOutput)
+}
+
+type DatabaseConnectionPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseConnectionPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseConnectionPool)(nil))
+}
+
+func (o DatabaseConnectionPoolPtrOutput) ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput {
+	return o
+}
+
+func (o DatabaseConnectionPoolPtrOutput) ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput {
+	return o
+}
+
+type DatabaseConnectionPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConnectionPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseConnectionPool)(nil))
+}
+
+func (o DatabaseConnectionPoolArrayOutput) ToDatabaseConnectionPoolArrayOutput() DatabaseConnectionPoolArrayOutput {
+	return o
+}
+
+func (o DatabaseConnectionPoolArrayOutput) ToDatabaseConnectionPoolArrayOutputWithContext(ctx context.Context) DatabaseConnectionPoolArrayOutput {
+	return o
+}
+
+func (o DatabaseConnectionPoolArrayOutput) Index(i pulumi.IntInput) DatabaseConnectionPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseConnectionPool {
+		return vs[0].([]DatabaseConnectionPool)[vs[1].(int)]
+	}).(DatabaseConnectionPoolOutput)
+}
+
+type DatabaseConnectionPoolMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConnectionPoolMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseConnectionPool)(nil))
+}
+
+func (o DatabaseConnectionPoolMapOutput) ToDatabaseConnectionPoolMapOutput() DatabaseConnectionPoolMapOutput {
+	return o
+}
+
+func (o DatabaseConnectionPoolMapOutput) ToDatabaseConnectionPoolMapOutputWithContext(ctx context.Context) DatabaseConnectionPoolMapOutput {
+	return o
+}
+
+func (o DatabaseConnectionPoolMapOutput) MapIndex(k pulumi.StringInput) DatabaseConnectionPoolOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseConnectionPool {
+		return vs[0].(map[string]DatabaseConnectionPool)[vs[1].(string)]
+	}).(DatabaseConnectionPoolOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseConnectionPoolOutput{})
+	pulumi.RegisterOutputType(DatabaseConnectionPoolPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseConnectionPoolArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseConnectionPoolMapOutput{})
 }

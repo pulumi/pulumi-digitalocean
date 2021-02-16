@@ -94,7 +94,8 @@ export class DropletSnapshot extends pulumi.CustomResource {
     constructor(name: string, args: DropletSnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DropletSnapshotArgs | DropletSnapshotState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DropletSnapshotState | undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["dropletId"] = state ? state.dropletId : undefined;
@@ -104,7 +105,7 @@ export class DropletSnapshot extends pulumi.CustomResource {
             inputs["size"] = state ? state.size : undefined;
         } else {
             const args = argsOrState as DropletSnapshotArgs | undefined;
-            if ((!args || args.dropletId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dropletId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dropletId'");
             }
             inputs["dropletId"] = args ? args.dropletId : undefined;
@@ -114,12 +115,8 @@ export class DropletSnapshot extends pulumi.CustomResource {
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DropletSnapshot.__pulumiType, name, inputs, opts);
     }

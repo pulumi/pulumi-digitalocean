@@ -155,7 +155,8 @@ export class SpacesBucket extends pulumi.CustomResource {
     constructor(name: string, args?: SpacesBucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SpacesBucketArgs | SpacesBucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SpacesBucketState | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
@@ -178,12 +179,8 @@ export class SpacesBucket extends pulumi.CustomResource {
             inputs["bucketDomainName"] = undefined /*out*/;
             inputs["bucketUrn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SpacesBucket.__pulumiType, name, inputs, opts);
     }

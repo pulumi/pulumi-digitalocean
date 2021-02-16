@@ -116,7 +116,8 @@ export class KubernetesCluster extends pulumi.CustomResource {
     constructor(name: string, args: KubernetesClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesClusterArgs | KubernetesClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KubernetesClusterState | undefined;
             inputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
             inputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
@@ -136,13 +137,13 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as KubernetesClusterArgs | undefined;
-            if ((!args || args.nodePool === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodePool === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodePool'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.version === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.version === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
             inputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
@@ -162,12 +163,8 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(KubernetesCluster.__pulumiType, name, inputs, opts);
     }

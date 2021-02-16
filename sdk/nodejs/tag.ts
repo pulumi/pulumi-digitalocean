@@ -102,7 +102,8 @@ export class Tag extends pulumi.CustomResource {
     constructor(name: string, args?: TagArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagArgs | TagState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TagState | undefined;
             inputs["databasesCount"] = state ? state.databasesCount : undefined;
             inputs["dropletsCount"] = state ? state.dropletsCount : undefined;
@@ -121,12 +122,8 @@ export class Tag extends pulumi.CustomResource {
             inputs["volumeSnapshotsCount"] = undefined /*out*/;
             inputs["volumesCount"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Tag.__pulumiType, name, inputs, opts);
     }

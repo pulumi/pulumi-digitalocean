@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -171,6 +171,85 @@ func (i *DropletSnapshot) ToDropletSnapshotOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotOutput)
 }
 
+func (i *DropletSnapshot) ToDropletSnapshotPtrOutput() DropletSnapshotPtrOutput {
+	return i.ToDropletSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (i *DropletSnapshot) ToDropletSnapshotPtrOutputWithContext(ctx context.Context) DropletSnapshotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotPtrOutput)
+}
+
+type DropletSnapshotPtrInput interface {
+	pulumi.Input
+
+	ToDropletSnapshotPtrOutput() DropletSnapshotPtrOutput
+	ToDropletSnapshotPtrOutputWithContext(ctx context.Context) DropletSnapshotPtrOutput
+}
+
+type dropletSnapshotPtrType DropletSnapshotArgs
+
+func (*dropletSnapshotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DropletSnapshot)(nil))
+}
+
+func (i *dropletSnapshotPtrType) ToDropletSnapshotPtrOutput() DropletSnapshotPtrOutput {
+	return i.ToDropletSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (i *dropletSnapshotPtrType) ToDropletSnapshotPtrOutputWithContext(ctx context.Context) DropletSnapshotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotPtrOutput)
+}
+
+// DropletSnapshotArrayInput is an input type that accepts DropletSnapshotArray and DropletSnapshotArrayOutput values.
+// You can construct a concrete instance of `DropletSnapshotArrayInput` via:
+//
+//          DropletSnapshotArray{ DropletSnapshotArgs{...} }
+type DropletSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToDropletSnapshotArrayOutput() DropletSnapshotArrayOutput
+	ToDropletSnapshotArrayOutputWithContext(context.Context) DropletSnapshotArrayOutput
+}
+
+type DropletSnapshotArray []DropletSnapshotInput
+
+func (DropletSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DropletSnapshot)(nil))
+}
+
+func (i DropletSnapshotArray) ToDropletSnapshotArrayOutput() DropletSnapshotArrayOutput {
+	return i.ToDropletSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i DropletSnapshotArray) ToDropletSnapshotArrayOutputWithContext(ctx context.Context) DropletSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotArrayOutput)
+}
+
+// DropletSnapshotMapInput is an input type that accepts DropletSnapshotMap and DropletSnapshotMapOutput values.
+// You can construct a concrete instance of `DropletSnapshotMapInput` via:
+//
+//          DropletSnapshotMap{ "key": DropletSnapshotArgs{...} }
+type DropletSnapshotMapInput interface {
+	pulumi.Input
+
+	ToDropletSnapshotMapOutput() DropletSnapshotMapOutput
+	ToDropletSnapshotMapOutputWithContext(context.Context) DropletSnapshotMapOutput
+}
+
+type DropletSnapshotMap map[string]DropletSnapshotInput
+
+func (DropletSnapshotMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DropletSnapshot)(nil))
+}
+
+func (i DropletSnapshotMap) ToDropletSnapshotMapOutput() DropletSnapshotMapOutput {
+	return i.ToDropletSnapshotMapOutputWithContext(context.Background())
+}
+
+func (i DropletSnapshotMap) ToDropletSnapshotMapOutputWithContext(ctx context.Context) DropletSnapshotMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotMapOutput)
+}
+
 type DropletSnapshotOutput struct {
 	*pulumi.OutputState
 }
@@ -187,6 +266,75 @@ func (o DropletSnapshotOutput) ToDropletSnapshotOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DropletSnapshotOutput) ToDropletSnapshotPtrOutput() DropletSnapshotPtrOutput {
+	return o.ToDropletSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (o DropletSnapshotOutput) ToDropletSnapshotPtrOutputWithContext(ctx context.Context) DropletSnapshotPtrOutput {
+	return o.ApplyT(func(v DropletSnapshot) *DropletSnapshot {
+		return &v
+	}).(DropletSnapshotPtrOutput)
+}
+
+type DropletSnapshotPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DropletSnapshotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DropletSnapshot)(nil))
+}
+
+func (o DropletSnapshotPtrOutput) ToDropletSnapshotPtrOutput() DropletSnapshotPtrOutput {
+	return o
+}
+
+func (o DropletSnapshotPtrOutput) ToDropletSnapshotPtrOutputWithContext(ctx context.Context) DropletSnapshotPtrOutput {
+	return o
+}
+
+type DropletSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (DropletSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DropletSnapshot)(nil))
+}
+
+func (o DropletSnapshotArrayOutput) ToDropletSnapshotArrayOutput() DropletSnapshotArrayOutput {
+	return o
+}
+
+func (o DropletSnapshotArrayOutput) ToDropletSnapshotArrayOutputWithContext(ctx context.Context) DropletSnapshotArrayOutput {
+	return o
+}
+
+func (o DropletSnapshotArrayOutput) Index(i pulumi.IntInput) DropletSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DropletSnapshot {
+		return vs[0].([]DropletSnapshot)[vs[1].(int)]
+	}).(DropletSnapshotOutput)
+}
+
+type DropletSnapshotMapOutput struct{ *pulumi.OutputState }
+
+func (DropletSnapshotMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DropletSnapshot)(nil))
+}
+
+func (o DropletSnapshotMapOutput) ToDropletSnapshotMapOutput() DropletSnapshotMapOutput {
+	return o
+}
+
+func (o DropletSnapshotMapOutput) ToDropletSnapshotMapOutputWithContext(ctx context.Context) DropletSnapshotMapOutput {
+	return o
+}
+
+func (o DropletSnapshotMapOutput) MapIndex(k pulumi.StringInput) DropletSnapshotOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DropletSnapshot {
+		return vs[0].(map[string]DropletSnapshot)[vs[1].(string)]
+	}).(DropletSnapshotOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DropletSnapshotOutput{})
+	pulumi.RegisterOutputType(DropletSnapshotPtrOutput{})
+	pulumi.RegisterOutputType(DropletSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(DropletSnapshotMapOutput{})
 }

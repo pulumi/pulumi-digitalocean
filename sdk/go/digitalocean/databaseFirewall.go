@@ -23,7 +23,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -66,7 +65,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -213,6 +211,85 @@ func (i *DatabaseFirewall) ToDatabaseFirewallOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallOutput)
 }
 
+func (i *DatabaseFirewall) ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput {
+	return i.ToDatabaseFirewallPtrOutputWithContext(context.Background())
+}
+
+func (i *DatabaseFirewall) ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallPtrOutput)
+}
+
+type DatabaseFirewallPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput
+	ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput
+}
+
+type databaseFirewallPtrType DatabaseFirewallArgs
+
+func (*databaseFirewallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseFirewall)(nil))
+}
+
+func (i *databaseFirewallPtrType) ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput {
+	return i.ToDatabaseFirewallPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseFirewallPtrType) ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallPtrOutput)
+}
+
+// DatabaseFirewallArrayInput is an input type that accepts DatabaseFirewallArray and DatabaseFirewallArrayOutput values.
+// You can construct a concrete instance of `DatabaseFirewallArrayInput` via:
+//
+//          DatabaseFirewallArray{ DatabaseFirewallArgs{...} }
+type DatabaseFirewallArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseFirewallArrayOutput() DatabaseFirewallArrayOutput
+	ToDatabaseFirewallArrayOutputWithContext(context.Context) DatabaseFirewallArrayOutput
+}
+
+type DatabaseFirewallArray []DatabaseFirewallInput
+
+func (DatabaseFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatabaseFirewall)(nil))
+}
+
+func (i DatabaseFirewallArray) ToDatabaseFirewallArrayOutput() DatabaseFirewallArrayOutput {
+	return i.ToDatabaseFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseFirewallArray) ToDatabaseFirewallArrayOutputWithContext(ctx context.Context) DatabaseFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallArrayOutput)
+}
+
+// DatabaseFirewallMapInput is an input type that accepts DatabaseFirewallMap and DatabaseFirewallMapOutput values.
+// You can construct a concrete instance of `DatabaseFirewallMapInput` via:
+//
+//          DatabaseFirewallMap{ "key": DatabaseFirewallArgs{...} }
+type DatabaseFirewallMapInput interface {
+	pulumi.Input
+
+	ToDatabaseFirewallMapOutput() DatabaseFirewallMapOutput
+	ToDatabaseFirewallMapOutputWithContext(context.Context) DatabaseFirewallMapOutput
+}
+
+type DatabaseFirewallMap map[string]DatabaseFirewallInput
+
+func (DatabaseFirewallMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatabaseFirewall)(nil))
+}
+
+func (i DatabaseFirewallMap) ToDatabaseFirewallMapOutput() DatabaseFirewallMapOutput {
+	return i.ToDatabaseFirewallMapOutputWithContext(context.Background())
+}
+
+func (i DatabaseFirewallMap) ToDatabaseFirewallMapOutputWithContext(ctx context.Context) DatabaseFirewallMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallMapOutput)
+}
+
 type DatabaseFirewallOutput struct {
 	*pulumi.OutputState
 }
@@ -229,6 +306,75 @@ func (o DatabaseFirewallOutput) ToDatabaseFirewallOutputWithContext(ctx context.
 	return o
 }
 
+func (o DatabaseFirewallOutput) ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput {
+	return o.ToDatabaseFirewallPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseFirewallOutput) ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput {
+	return o.ApplyT(func(v DatabaseFirewall) *DatabaseFirewall {
+		return &v
+	}).(DatabaseFirewallPtrOutput)
+}
+
+type DatabaseFirewallPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseFirewallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseFirewall)(nil))
+}
+
+func (o DatabaseFirewallPtrOutput) ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput {
+	return o
+}
+
+func (o DatabaseFirewallPtrOutput) ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput {
+	return o
+}
+
+type DatabaseFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseFirewall)(nil))
+}
+
+func (o DatabaseFirewallArrayOutput) ToDatabaseFirewallArrayOutput() DatabaseFirewallArrayOutput {
+	return o
+}
+
+func (o DatabaseFirewallArrayOutput) ToDatabaseFirewallArrayOutputWithContext(ctx context.Context) DatabaseFirewallArrayOutput {
+	return o
+}
+
+func (o DatabaseFirewallArrayOutput) Index(i pulumi.IntInput) DatabaseFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseFirewall {
+		return vs[0].([]DatabaseFirewall)[vs[1].(int)]
+	}).(DatabaseFirewallOutput)
+}
+
+type DatabaseFirewallMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseFirewallMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseFirewall)(nil))
+}
+
+func (o DatabaseFirewallMapOutput) ToDatabaseFirewallMapOutput() DatabaseFirewallMapOutput {
+	return o
+}
+
+func (o DatabaseFirewallMapOutput) ToDatabaseFirewallMapOutputWithContext(ctx context.Context) DatabaseFirewallMapOutput {
+	return o
+}
+
+func (o DatabaseFirewallMapOutput) MapIndex(k pulumi.StringInput) DatabaseFirewallOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseFirewall {
+		return vs[0].(map[string]DatabaseFirewall)[vs[1].(string)]
+	}).(DatabaseFirewallOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseFirewallOutput{})
+	pulumi.RegisterOutputType(DatabaseFirewallPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseFirewallArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseFirewallMapOutput{})
 }

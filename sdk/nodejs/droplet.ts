@@ -181,7 +181,8 @@ export class Droplet extends pulumi.CustomResource {
     constructor(name: string, args: DropletArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DropletArgs | DropletState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DropletState | undefined;
             inputs["backups"] = state ? state.backups : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
@@ -211,13 +212,13 @@ export class Droplet extends pulumi.CustomResource {
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as DropletArgs | undefined;
-            if ((!args || args.image === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.image === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'image'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["backups"] = args ? args.backups : undefined;
@@ -247,12 +248,8 @@ export class Droplet extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["vcpus"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Droplet.__pulumiType, name, inputs, opts);
     }

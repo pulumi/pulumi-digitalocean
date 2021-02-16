@@ -178,7 +178,8 @@ export class DatabaseCluster extends pulumi.CustomResource {
     constructor(name: string, args: DatabaseClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseClusterArgs | DatabaseClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseClusterState | undefined;
             inputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             inputs["database"] = state ? state.database : undefined;
@@ -202,16 +203,16 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as DatabaseClusterArgs | undefined;
-            if ((!args || args.engine === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.engine === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.nodeCount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["engine"] = args ? args.engine : undefined;
@@ -235,12 +236,8 @@ export class DatabaseCluster extends pulumi.CustomResource {
             inputs["uri"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatabaseCluster.__pulumiType, name, inputs, opts);
     }

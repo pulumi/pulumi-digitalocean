@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The access key ID for Spaces API operations.
         /// </summary>
-        public static string? SpacesAccessId { get; set; } = __config.Get("spacesAccessId") ?? Utilities.GetEnv("SPACES_ACCESS_KEY_ID");
+        public static string? SpacesAccessId { get; set; } = __config.Get("spacesAccessId");
 
         /// <summary>
         /// The URL to use for the DigitalOcean Spaces API.
@@ -26,12 +26,12 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The secret access key for Spaces API operations.
         /// </summary>
-        public static string? SpacesSecretKey { get; set; } = __config.Get("spacesSecretKey") ?? Utilities.GetEnv("SPACES_SECRET_ACCESS_KEY");
+        public static string? SpacesSecretKey { get; set; } = __config.Get("spacesSecretKey");
 
         /// <summary>
         /// The token key for API operations.
         /// </summary>
-        public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("DIGITALOCEAN_TOKEN");
+        public static string? Token { get; set; } = __config.Get("token");
 
     }
 }

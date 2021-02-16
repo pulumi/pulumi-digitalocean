@@ -120,27 +120,24 @@ export class DatabaseFirewall extends pulumi.CustomResource {
     constructor(name: string, args: DatabaseFirewallArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseFirewallArgs | DatabaseFirewallState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseFirewallState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as DatabaseFirewallArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.rules === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.rules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["rules"] = args ? args.rules : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatabaseFirewall.__pulumiType, name, inputs, opts);
     }

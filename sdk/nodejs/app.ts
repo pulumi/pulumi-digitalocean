@@ -182,7 +182,8 @@ export class App extends pulumi.CustomResource {
     constructor(name: string, args?: AppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppArgs | AppState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AppState | undefined;
             inputs["activeDeploymentId"] = state ? state.activeDeploymentId : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
@@ -199,12 +200,8 @@ export class App extends pulumi.CustomResource {
             inputs["liveUrl"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(App.__pulumiType, name, inputs, opts);
     }

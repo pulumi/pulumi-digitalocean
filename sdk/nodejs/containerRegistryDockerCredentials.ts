@@ -89,7 +89,8 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
     constructor(name: string, args: ContainerRegistryDockerCredentialsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerRegistryDockerCredentialsArgs | ContainerRegistryDockerCredentialsState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ContainerRegistryDockerCredentialsState | undefined;
             inputs["credentialExpirationTime"] = state ? state.credentialExpirationTime : undefined;
             inputs["dockerCredentials"] = state ? state.dockerCredentials : undefined;
@@ -98,7 +99,7 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
             inputs["write"] = state ? state.write : undefined;
         } else {
             const args = argsOrState as ContainerRegistryDockerCredentialsArgs | undefined;
-            if ((!args || args.registryName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.registryName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registryName'");
             }
             inputs["expirySeconds"] = args ? args.expirySeconds : undefined;
@@ -107,12 +108,8 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
             inputs["credentialExpirationTime"] = undefined /*out*/;
             inputs["dockerCredentials"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ContainerRegistryDockerCredentials.__pulumiType, name, inputs, opts);
     }

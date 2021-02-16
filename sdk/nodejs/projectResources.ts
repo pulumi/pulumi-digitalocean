@@ -91,27 +91,24 @@ export class ProjectResources extends pulumi.CustomResource {
     constructor(name: string, args: ProjectResourcesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectResourcesArgs | ProjectResourcesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectResourcesState | undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["resources"] = state ? state.resources : undefined;
         } else {
             const args = argsOrState as ProjectResourcesArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.resources === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
             inputs["project"] = args ? args.project : undefined;
             inputs["resources"] = args ? args.resources : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectResources.__pulumiType, name, inputs, opts);
     }

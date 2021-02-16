@@ -73,11 +73,6 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:  "https://github.com/pulumi/pulumi-digitalocean",
 		GitHubOrg:   "digitalocean",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"DIGITALOCEAN_TOKEN"},
-				},
-			},
 			"api_endpoint": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"DIGITALOCEAN_API_URL"},
@@ -87,16 +82,6 @@ func Provider() tfbridge.ProviderInfo {
 			"spaces_endpoint": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"SPACES_ENDPOINT_URL"},
-				},
-			},
-			"spaces_access_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"SPACES_ACCESS_KEY_ID"},
-				},
-			},
-			"spaces_secret_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"SPACES_SECRET_ACCESS_KEY"},
 				},
 			},
 		},

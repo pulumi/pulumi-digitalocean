@@ -98,7 +98,8 @@ export class VolumeSnapshot extends pulumi.CustomResource {
     constructor(name: string, args: VolumeSnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeSnapshotArgs | VolumeSnapshotState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VolumeSnapshotState | undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["minDiskSize"] = state ? state.minDiskSize : undefined;
@@ -109,7 +110,7 @@ export class VolumeSnapshot extends pulumi.CustomResource {
             inputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeSnapshotArgs | undefined;
-            if ((!args || args.volumeId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
             inputs["name"] = args ? args.name : undefined;
@@ -120,12 +121,8 @@ export class VolumeSnapshot extends pulumi.CustomResource {
             inputs["regions"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VolumeSnapshot.__pulumiType, name, inputs, opts);
     }
