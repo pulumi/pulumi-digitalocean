@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.5.1 (2021-02-16)
 * Upgrade to pulumi-terraform-bridge v2.19.0  
   **Please Note:** This includes a bug fix that stops mutating resources options in the nodejs provider
 * Avoid storing config from the environment into the state
-
----
 
 ## 3.5.0 (2021-02-08)
 * Upgrade to v2.5.1 of the DigitalOcean Terraform Provider
