@@ -20,6 +20,18 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _databases = value;
         }
 
+        [Input("domainNames")]
+        private InputList<Inputs.AppSpecDomainNameGetArgs>? _domainNames;
+
+        /// <summary>
+        /// Describes a domain where the application will be made available.
+        /// </summary>
+        public InputList<Inputs.AppSpecDomainNameGetArgs> DomainNames
+        {
+            get => _domainNames ?? (_domainNames = new InputList<Inputs.AppSpecDomainNameGetArgs>());
+            set => _domainNames = value;
+        }
+
         [Input("domains")]
         private InputList<string>? _domains;
         [Obsolete(@"This attribute has been replaced by `domain` which supports additional functionality.")]

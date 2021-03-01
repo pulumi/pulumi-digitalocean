@@ -12,6 +12,8 @@ import (
 
 type AppSpec struct {
 	Databases []AppSpecDatabase `pulumi:"databases"`
+	// Describes a domain where the application will be made available.
+	DomainNames []AppSpecDomainName `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
@@ -39,6 +41,8 @@ type AppSpecInput interface {
 
 type AppSpecArgs struct {
 	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
+	// Describes a domain where the application will be made available.
+	DomainNames AppSpecDomainNameArrayInput `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
@@ -133,6 +137,11 @@ func (o AppSpecOutput) Databases() AppSpecDatabaseArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecDatabase { return v.Databases }).(AppSpecDatabaseArrayOutput)
 }
 
+// Describes a domain where the application will be made available.
+func (o AppSpecOutput) DomainNames() AppSpecDomainNameArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecDomainName { return v.DomainNames }).(AppSpecDomainNameArrayOutput)
+}
+
 // Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 func (o AppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
@@ -194,6 +203,16 @@ func (o AppSpecPtrOutput) Databases() AppSpecDatabaseArrayOutput {
 		}
 		return v.Databases
 	}).(AppSpecDatabaseArrayOutput)
+}
+
+// Describes a domain where the application will be made available.
+func (o AppSpecPtrOutput) DomainNames() AppSpecDomainNameArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecDomainName {
+		if v == nil {
+			return nil
+		}
+		return v.DomainNames
+	}).(AppSpecDomainNameArrayOutput)
 }
 
 // Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
@@ -423,7 +442,7 @@ func (o AppSpecDatabaseArrayOutput) Index(i pulumi.IntInput) AppSpecDatabaseOutp
 	}).(AppSpecDatabaseOutput)
 }
 
-type AppSpecDomain struct {
+type AppSpecDomainName struct {
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
@@ -434,18 +453,18 @@ type AppSpecDomain struct {
 	Zone *string `pulumi:"zone"`
 }
 
-// AppSpecDomainInput is an input type that accepts AppSpecDomainArgs and AppSpecDomainOutput values.
-// You can construct a concrete instance of `AppSpecDomainInput` via:
+// AppSpecDomainNameInput is an input type that accepts AppSpecDomainNameArgs and AppSpecDomainNameOutput values.
+// You can construct a concrete instance of `AppSpecDomainNameInput` via:
 //
-//          AppSpecDomainArgs{...}
-type AppSpecDomainInput interface {
+//          AppSpecDomainNameArgs{...}
+type AppSpecDomainNameInput interface {
 	pulumi.Input
 
-	ToAppSpecDomainOutput() AppSpecDomainOutput
-	ToAppSpecDomainOutputWithContext(context.Context) AppSpecDomainOutput
+	ToAppSpecDomainNameOutput() AppSpecDomainNameOutput
+	ToAppSpecDomainNameOutputWithContext(context.Context) AppSpecDomainNameOutput
 }
 
-type AppSpecDomainArgs struct {
+type AppSpecDomainNameArgs struct {
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
@@ -456,50 +475,95 @@ type AppSpecDomainArgs struct {
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
-func (AppSpecDomainArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppSpecDomain)(nil)).Elem()
+func (AppSpecDomainNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecDomainName)(nil)).Elem()
 }
 
-func (i AppSpecDomainArgs) ToAppSpecDomainOutput() AppSpecDomainOutput {
-	return i.ToAppSpecDomainOutputWithContext(context.Background())
+func (i AppSpecDomainNameArgs) ToAppSpecDomainNameOutput() AppSpecDomainNameOutput {
+	return i.ToAppSpecDomainNameOutputWithContext(context.Background())
 }
 
-func (i AppSpecDomainArgs) ToAppSpecDomainOutputWithContext(ctx context.Context) AppSpecDomainOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppSpecDomainOutput)
+func (i AppSpecDomainNameArgs) ToAppSpecDomainNameOutputWithContext(ctx context.Context) AppSpecDomainNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecDomainNameOutput)
 }
 
-type AppSpecDomainOutput struct{ *pulumi.OutputState }
+// AppSpecDomainNameArrayInput is an input type that accepts AppSpecDomainNameArray and AppSpecDomainNameArrayOutput values.
+// You can construct a concrete instance of `AppSpecDomainNameArrayInput` via:
+//
+//          AppSpecDomainNameArray{ AppSpecDomainNameArgs{...} }
+type AppSpecDomainNameArrayInput interface {
+	pulumi.Input
 
-func (AppSpecDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppSpecDomain)(nil)).Elem()
+	ToAppSpecDomainNameArrayOutput() AppSpecDomainNameArrayOutput
+	ToAppSpecDomainNameArrayOutputWithContext(context.Context) AppSpecDomainNameArrayOutput
 }
 
-func (o AppSpecDomainOutput) ToAppSpecDomainOutput() AppSpecDomainOutput {
+type AppSpecDomainNameArray []AppSpecDomainNameInput
+
+func (AppSpecDomainNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecDomainName)(nil)).Elem()
+}
+
+func (i AppSpecDomainNameArray) ToAppSpecDomainNameArrayOutput() AppSpecDomainNameArrayOutput {
+	return i.ToAppSpecDomainNameArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecDomainNameArray) ToAppSpecDomainNameArrayOutputWithContext(ctx context.Context) AppSpecDomainNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecDomainNameArrayOutput)
+}
+
+type AppSpecDomainNameOutput struct{ *pulumi.OutputState }
+
+func (AppSpecDomainNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecDomainName)(nil)).Elem()
+}
+
+func (o AppSpecDomainNameOutput) ToAppSpecDomainNameOutput() AppSpecDomainNameOutput {
 	return o
 }
 
-func (o AppSpecDomainOutput) ToAppSpecDomainOutputWithContext(ctx context.Context) AppSpecDomainOutput {
+func (o AppSpecDomainNameOutput) ToAppSpecDomainNameOutputWithContext(ctx context.Context) AppSpecDomainNameOutput {
 	return o
 }
 
 // The name of the component.
-func (o AppSpecDomainOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v AppSpecDomain) string { return v.Name }).(pulumi.StringOutput)
+func (o AppSpecDomainNameOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecDomainName) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The type of the environment variable, `GENERAL` or `SECRET`.
-func (o AppSpecDomainOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSpecDomain) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o AppSpecDomainNameOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecDomainName) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
-func (o AppSpecDomainOutput) Wildcard() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppSpecDomain) *bool { return v.Wildcard }).(pulumi.BoolPtrOutput)
+func (o AppSpecDomainNameOutput) Wildcard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecDomainName) *bool { return v.Wildcard }).(pulumi.BoolPtrOutput)
 }
 
 // If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
-func (o AppSpecDomainOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSpecDomain) *string { return v.Zone }).(pulumi.StringPtrOutput)
+func (o AppSpecDomainNameOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecDomainName) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecDomainNameArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecDomainNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecDomainName)(nil)).Elem()
+}
+
+func (o AppSpecDomainNameArrayOutput) ToAppSpecDomainNameArrayOutput() AppSpecDomainNameArrayOutput {
+	return o
+}
+
+func (o AppSpecDomainNameArrayOutput) ToAppSpecDomainNameArrayOutputWithContext(ctx context.Context) AppSpecDomainNameArrayOutput {
+	return o
+}
+
+func (o AppSpecDomainNameArrayOutput) Index(i pulumi.IntInput) AppSpecDomainNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecDomainName {
+		return vs[0].([]AppSpecDomainName)[vs[1].(int)]
+	}).(AppSpecDomainNameOutput)
 }
 
 type AppSpecEnv struct {
@@ -17587,7 +17651,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseArrayOutput{})
-	pulumi.RegisterOutputType(AppSpecDomainOutput{})
+	pulumi.RegisterOutputType(AppSpecDomainNameOutput{})
+	pulumi.RegisterOutputType(AppSpecDomainNameArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobOutput{})

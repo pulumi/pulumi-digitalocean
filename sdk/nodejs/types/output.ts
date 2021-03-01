@@ -7,6 +7,10 @@ import { input as inputs, output as outputs } from "../types";
 export interface AppSpec {
     databases?: outputs.AppSpecDatabase[];
     /**
+     * Describes a domain where the application will be made available.
+     */
+    domainNames: outputs.AppSpecDomainName[];
+    /**
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
     domains: string[];
@@ -57,6 +61,25 @@ export interface AppSpecDatabase {
      * The version of the database engine.
      */
     version?: string;
+}
+
+export interface AppSpecDomainName {
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
+     */
+    wildcard: boolean;
+    /**
+     * If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+     */
+    zone?: string;
 }
 
 export interface AppSpecEnv {

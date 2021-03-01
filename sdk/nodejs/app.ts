@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  *             name: "starter-db",
  *             production: false,
  *         }],
- *         domains: [{
+ *         domainNames: [{
  *             name: "foo.example.com",
  *         }],
  *         name: "mono-repo-example",

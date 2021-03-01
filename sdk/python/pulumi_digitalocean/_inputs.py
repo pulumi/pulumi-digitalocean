@@ -11,6 +11,7 @@ from . import _utilities, _tables
 __all__ = [
     'AppSpecArgs',
     'AppSpecDatabaseArgs',
+    'AppSpecDomainNameArgs',
     'AppSpecEnvArgs',
     'AppSpecJobArgs',
     'AppSpecJobEnvArgs',
@@ -82,6 +83,7 @@ class AppSpecArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgs']]]] = None,
@@ -91,12 +93,15 @@ class AppSpecArgs:
                  workers: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]] domain_names: Describes a domain where the application will be made available.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
         """
         pulumi.set(__self__, "name", name)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
         if domains is not None:
             warnings.warn("""This attribute has been replaced by `domain` which supports additional functionality.""", DeprecationWarning)
             pulumi.log.warn("domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.")
@@ -135,6 +140,18 @@ class AppSpecArgs:
     @databases.setter
     def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]]:
+        """
+        Describes a domain where the application will be made available.
+        """
+        return pulumi.get(self, "domain_names")
+
+    @domain_names.setter
+    def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]]):
+        pulumi.set(self, "domain_names", value)
 
     @property
     @pulumi.getter
@@ -323,6 +340,76 @@ class AppSpecDatabaseArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class AppSpecDomainNameArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: Optional[pulumi.Input[str]] = None,
+                 wildcard: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param pulumi.Input[bool] wildcard: A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
+        :param pulumi.Input[str] zone: If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+        """
+        pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if wildcard is not None:
+            pulumi.set(__self__, "wildcard", wildcard)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def wildcard(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
+        """
+        return pulumi.get(self, "wildcard")
+
+    @wildcard.setter
+    def wildcard(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wildcard", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
