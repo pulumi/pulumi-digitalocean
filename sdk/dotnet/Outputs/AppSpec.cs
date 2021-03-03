@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpec
     {
         public readonly ImmutableArray<Outputs.AppSpecDatabase> Databases;
+        /// <summary>
+        /// Describes a domain where the application will be made available.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppSpecDomainName> DomainNames;
         public readonly ImmutableArray<string> Domains;
         /// <summary>
         /// Describes an environment variable made available to an app competent.
@@ -36,6 +40,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private AppSpec(
             ImmutableArray<Outputs.AppSpecDatabase> databases,
 
+            ImmutableArray<Outputs.AppSpecDomainName> domainNames,
+
             ImmutableArray<string> domains,
 
             ImmutableArray<Outputs.AppSpecEnv> envs,
@@ -53,6 +59,7 @@ namespace Pulumi.DigitalOcean.Outputs
             ImmutableArray<Outputs.AppSpecWorker> workers)
         {
             Databases = databases;
+            DomainNames = domainNames;
             Domains = domains;
             Envs = envs;
             Jobs = jobs;

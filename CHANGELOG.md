@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Ensure `digitalOcean.App.Spec` exposes the `domainNames` option. This is mapped to `domains` in the upstream TF provider.
 
 ---
 

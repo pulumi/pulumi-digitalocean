@@ -258,8 +258,21 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "ContainerRegistryDockerCredentials"),
 			},
 			"digitalocean_project_resources": {Tok: makeResource(digitalOceanMod, "ProjectResources")},
-			"digitalocean_app":               {Tok: makeResource(digitalOceanMod, "App")},
-			"digitalocean_custom_image":      {Tok: makeResource(digitalOceanMod, "CustomImage")},
+			"digitalocean_app": {
+				Tok: makeResource(digitalOceanMod, "App"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"spec": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"domain": {
+									Name: "domainNames",
+								},
+							},
+						},
+					},
+				},
+			},
+			"digitalocean_custom_image": {Tok: makeResource(digitalOceanMod, "CustomImage")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"digitalocean_certificate":      {Tok: makeDataSource(digitalOceanMod, "getCertificate")},
