@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Ensure `digitalOcean.App.Spec` exposes the `domainNames` option. This is mapped to `domains` in the upstream TF provider.
+_(none)_
 
 ---
+
+## 3.5.2 (2021-03-03)
+* Ensure `digitalOcean.App.Spec` exposes the `domainNames` option. This is mapped to `domains` in the upstream TF provider.
 
 ## 3.5.1 (2021-02-16)
 * Upgrade to pulumi-terraform-bridge v2.19.0  
