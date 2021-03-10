@@ -32,13 +32,13 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.2.0
+      uses: jaxxstorm/action-install-gh-release@v1.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
     - name: Setup Node
-      uses: actions/setup-node@v2.1.5
+      uses: actions/setup-node@v1
       with:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
@@ -115,7 +115,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.2.0
+      uses: jaxxstorm/action-install-gh-release@v1.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -151,7 +151,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.2.0
+      uses: jaxxstorm/action-install-gh-release@v1.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -185,7 +185,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.2.0
+      uses: jaxxstorm/action-install-gh-release@v1.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -238,7 +238,7 @@ jobs:
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v2
       with:
-        args: -p 4 release --rm-dist --config=.goreleaser.prerelease.yaml  --timeout
+        args: -p 3 release --rm-dist --config=.goreleaser.prerelease.yaml  --timeout
           60m0s
         version: latest
   publish_sdk:
@@ -260,13 +260,13 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.2.0
+      uses: jaxxstorm/action-install-gh-release@v1.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
     - name: Setup Node
-      uses: actions/setup-node@v2.1.5
+      uses: actions/setup-node@v1
       with:
         always-auth: true
         registry-url: https://registry.npmjs.org
@@ -329,13 +329,13 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.2.0
+      uses: jaxxstorm/action-install-gh-release@v1.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
     - name: Setup Node
-      uses: actions/setup-node@v2.1.5
+      uses: actions/setup-node@v1
       with:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
