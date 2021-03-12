@@ -75,7 +75,7 @@ type ContainerRegistryDockerCredentials struct {
 
 	CredentialExpirationTime pulumi.StringOutput `pulumi:"credentialExpirationTime"`
 	DockerCredentials        pulumi.StringOutput `pulumi:"dockerCredentials"`
-	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds pulumi.IntPtrOutput `pulumi:"expirySeconds"`
 	// The name of the container registry.
 	RegistryName pulumi.StringOutput `pulumi:"registryName"`
@@ -117,7 +117,7 @@ func GetContainerRegistryDockerCredentials(ctx *pulumi.Context,
 type containerRegistryDockerCredentialsState struct {
 	CredentialExpirationTime *string `pulumi:"credentialExpirationTime"`
 	DockerCredentials        *string `pulumi:"dockerCredentials"`
-	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds *int `pulumi:"expirySeconds"`
 	// The name of the container registry.
 	RegistryName *string `pulumi:"registryName"`
@@ -128,7 +128,7 @@ type containerRegistryDockerCredentialsState struct {
 type ContainerRegistryDockerCredentialsState struct {
 	CredentialExpirationTime pulumi.StringPtrInput
 	DockerCredentials        pulumi.StringPtrInput
-	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds pulumi.IntPtrInput
 	// The name of the container registry.
 	RegistryName pulumi.StringPtrInput
@@ -141,7 +141,7 @@ func (ContainerRegistryDockerCredentialsState) ElementType() reflect.Type {
 }
 
 type containerRegistryDockerCredentialsArgs struct {
-	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds *int `pulumi:"expirySeconds"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
@@ -151,7 +151,7 @@ type containerRegistryDockerCredentialsArgs struct {
 
 // The set of arguments for constructing a ContainerRegistryDockerCredentials resource.
 type ContainerRegistryDockerCredentialsArgs struct {
-	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds pulumi.IntPtrInput
 	// The name of the container registry.
 	RegistryName pulumi.StringInput

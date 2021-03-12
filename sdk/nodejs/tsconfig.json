@@ -48,6 +48,7 @@
         "getDroplet.ts",
         "getDropletSnapshot.ts",
         "getDroplets.ts",
+        "getFirewall.ts",
         "getFloatingIp.ts",
         "getImage.ts",
         "getImages.ts",

@@ -28,7 +28,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
 // 			Region:  pulumi.String("nyc1"),
-// 			Version: pulumi.String("1.19.3-do.3"),
+// 			Version: pulumi.String("1.20.2-do.0"),
 // 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
 // 				Name:      pulumi.String("front-end-pool"),
 // 				Size:      pulumi.String("s-2vcpu-2gb"),

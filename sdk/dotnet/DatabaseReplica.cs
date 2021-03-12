@@ -94,6 +94,9 @@ namespace Pulumi.DigitalOcean
         [Output("privateHost")]
         public Output<string> PrivateHost { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the VPC where the database replica will be located.
+        /// </summary>
         [Output("privateNetworkUuid")]
         public Output<string> PrivateNetworkUuid { get; private set; } = null!;
 
@@ -115,6 +118,9 @@ namespace Pulumi.DigitalOcean
         [Output("size")]
         public Output<string?> Size { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of tag names to be applied to the database replica.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -188,6 +194,9 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the VPC where the database replica will be located.
+        /// </summary>
         [Input("privateNetworkUuid")]
         public Input<string>? PrivateNetworkUuid { get; set; }
 
@@ -205,6 +214,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tag names to be applied to the database replica.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -260,6 +273,9 @@ namespace Pulumi.DigitalOcean
         [Input("privateHost")]
         public Input<string>? PrivateHost { get; set; }
 
+        /// <summary>
+        /// The ID of the VPC where the database replica will be located.
+        /// </summary>
         [Input("privateNetworkUuid")]
         public Input<string>? PrivateNetworkUuid { get; set; }
 
@@ -283,6 +299,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tag names to be applied to the database replica.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());

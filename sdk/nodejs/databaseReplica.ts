@@ -93,6 +93,9 @@ export class DatabaseReplica extends pulumi.CustomResource {
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
     public /*out*/ readonly privateHost!: pulumi.Output<string>;
+    /**
+     * The ID of the VPC where the database replica will be located.
+     */
     public readonly privateNetworkUuid!: pulumi.Output<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
@@ -106,6 +109,9 @@ export class DatabaseReplica extends pulumi.CustomResource {
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
      */
     public readonly size!: pulumi.Output<DatabaseSlug | undefined>;
+    /**
+     * A list of tag names to be applied to the database replica.
+     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The full URI for connecting to the database replica.
@@ -202,6 +208,9 @@ export interface DatabaseReplicaState {
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
     readonly privateHost?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC where the database replica will be located.
+     */
     readonly privateNetworkUuid?: pulumi.Input<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
@@ -215,6 +224,9 @@ export interface DatabaseReplicaState {
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
      */
     readonly size?: pulumi.Input<DatabaseSlug>;
+    /**
+     * A list of tag names to be applied to the database replica.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The full URI for connecting to the database replica.
@@ -238,6 +250,9 @@ export interface DatabaseReplicaArgs {
      * The name for the database replica.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC where the database replica will be located.
+     */
     readonly privateNetworkUuid?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the replica will reside.
@@ -247,5 +262,8 @@ export interface DatabaseReplicaArgs {
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
      */
     readonly size?: pulumi.Input<DatabaseSlug>;
+    /**
+     * A list of tag names to be applied to the database replica.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

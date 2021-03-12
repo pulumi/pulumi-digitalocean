@@ -67,7 +67,7 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
     public /*out*/ readonly credentialExpirationTime!: pulumi.Output<string>;
     public /*out*/ readonly dockerCredentials!: pulumi.Output<string>;
     /**
-     * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+     * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
      */
     public readonly expirySeconds!: pulumi.Output<number | undefined>;
     /**
@@ -122,7 +122,7 @@ export interface ContainerRegistryDockerCredentialsState {
     readonly credentialExpirationTime?: pulumi.Input<string>;
     readonly dockerCredentials?: pulumi.Input<string>;
     /**
-     * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+     * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
      */
     readonly expirySeconds?: pulumi.Input<number>;
     /**
@@ -140,7 +140,7 @@ export interface ContainerRegistryDockerCredentialsState {
  */
 export interface ContainerRegistryDockerCredentialsArgs {
     /**
-     * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+     * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
      */
     readonly expirySeconds?: pulumi.Input<number>;
     /**

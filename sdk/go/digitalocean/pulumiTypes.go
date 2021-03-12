@@ -13581,6 +13581,462 @@ func (o GetDropletsSortArrayOutput) Index(i pulumi.IntInput) GetDropletsSortOutp
 	}).(GetDropletsSortOutput)
 }
 
+type GetFirewallInboundRule struct {
+	// The ports on which traffic will be allowed
+	// specified as a string containing a single port, a range (e.g. "8000-9000"),
+	// or "1-65535" to open all ports for a protocol. Required for when protocol is
+	// `tcp` or `udp`.
+	PortRange *string `pulumi:"portRange"`
+	// The type of traffic to be allowed.
+	// This may be one of "tcp", "udp", or "icmp".
+	Protocol string `pulumi:"protocol"`
+	// An array of strings containing the IPv4
+	// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+	// inbound traffic will be accepted.
+	SourceAddresses []string `pulumi:"sourceAddresses"`
+	// An array containing the IDs of
+	// the Droplets from which the inbound traffic will be accepted.
+	SourceDropletIds []int `pulumi:"sourceDropletIds"`
+	// An array containing the IDs
+	// of the Load Balancers from which the inbound traffic will be accepted.
+	SourceLoadBalancerUids []string `pulumi:"sourceLoadBalancerUids"`
+	// A set of names of Tags corresponding to group of
+	// Droplets from which the inbound traffic will be accepted.
+	SourceTags []string `pulumi:"sourceTags"`
+}
+
+// GetFirewallInboundRuleInput is an input type that accepts GetFirewallInboundRuleArgs and GetFirewallInboundRuleOutput values.
+// You can construct a concrete instance of `GetFirewallInboundRuleInput` via:
+//
+//          GetFirewallInboundRuleArgs{...}
+type GetFirewallInboundRuleInput interface {
+	pulumi.Input
+
+	ToGetFirewallInboundRuleOutput() GetFirewallInboundRuleOutput
+	ToGetFirewallInboundRuleOutputWithContext(context.Context) GetFirewallInboundRuleOutput
+}
+
+type GetFirewallInboundRuleArgs struct {
+	// The ports on which traffic will be allowed
+	// specified as a string containing a single port, a range (e.g. "8000-9000"),
+	// or "1-65535" to open all ports for a protocol. Required for when protocol is
+	// `tcp` or `udp`.
+	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
+	// The type of traffic to be allowed.
+	// This may be one of "tcp", "udp", or "icmp".
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// An array of strings containing the IPv4
+	// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+	// inbound traffic will be accepted.
+	SourceAddresses pulumi.StringArrayInput `pulumi:"sourceAddresses"`
+	// An array containing the IDs of
+	// the Droplets from which the inbound traffic will be accepted.
+	SourceDropletIds pulumi.IntArrayInput `pulumi:"sourceDropletIds"`
+	// An array containing the IDs
+	// of the Load Balancers from which the inbound traffic will be accepted.
+	SourceLoadBalancerUids pulumi.StringArrayInput `pulumi:"sourceLoadBalancerUids"`
+	// A set of names of Tags corresponding to group of
+	// Droplets from which the inbound traffic will be accepted.
+	SourceTags pulumi.StringArrayInput `pulumi:"sourceTags"`
+}
+
+func (GetFirewallInboundRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallInboundRule)(nil)).Elem()
+}
+
+func (i GetFirewallInboundRuleArgs) ToGetFirewallInboundRuleOutput() GetFirewallInboundRuleOutput {
+	return i.ToGetFirewallInboundRuleOutputWithContext(context.Background())
+}
+
+func (i GetFirewallInboundRuleArgs) ToGetFirewallInboundRuleOutputWithContext(ctx context.Context) GetFirewallInboundRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallInboundRuleOutput)
+}
+
+// GetFirewallInboundRuleArrayInput is an input type that accepts GetFirewallInboundRuleArray and GetFirewallInboundRuleArrayOutput values.
+// You can construct a concrete instance of `GetFirewallInboundRuleArrayInput` via:
+//
+//          GetFirewallInboundRuleArray{ GetFirewallInboundRuleArgs{...} }
+type GetFirewallInboundRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallInboundRuleArrayOutput() GetFirewallInboundRuleArrayOutput
+	ToGetFirewallInboundRuleArrayOutputWithContext(context.Context) GetFirewallInboundRuleArrayOutput
+}
+
+type GetFirewallInboundRuleArray []GetFirewallInboundRuleInput
+
+func (GetFirewallInboundRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallInboundRule)(nil)).Elem()
+}
+
+func (i GetFirewallInboundRuleArray) ToGetFirewallInboundRuleArrayOutput() GetFirewallInboundRuleArrayOutput {
+	return i.ToGetFirewallInboundRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallInboundRuleArray) ToGetFirewallInboundRuleArrayOutputWithContext(ctx context.Context) GetFirewallInboundRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallInboundRuleArrayOutput)
+}
+
+type GetFirewallInboundRuleOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallInboundRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallInboundRule)(nil)).Elem()
+}
+
+func (o GetFirewallInboundRuleOutput) ToGetFirewallInboundRuleOutput() GetFirewallInboundRuleOutput {
+	return o
+}
+
+func (o GetFirewallInboundRuleOutput) ToGetFirewallInboundRuleOutputWithContext(ctx context.Context) GetFirewallInboundRuleOutput {
+	return o
+}
+
+// The ports on which traffic will be allowed
+// specified as a string containing a single port, a range (e.g. "8000-9000"),
+// or "1-65535" to open all ports for a protocol. Required for when protocol is
+// `tcp` or `udp`.
+func (o GetFirewallInboundRuleOutput) PortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallInboundRule) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+}
+
+// The type of traffic to be allowed.
+// This may be one of "tcp", "udp", or "icmp".
+func (o GetFirewallInboundRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallInboundRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// An array of strings containing the IPv4
+// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+// inbound traffic will be accepted.
+func (o GetFirewallInboundRuleOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallInboundRule) []string { return v.SourceAddresses }).(pulumi.StringArrayOutput)
+}
+
+// An array containing the IDs of
+// the Droplets from which the inbound traffic will be accepted.
+func (o GetFirewallInboundRuleOutput) SourceDropletIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetFirewallInboundRule) []int { return v.SourceDropletIds }).(pulumi.IntArrayOutput)
+}
+
+// An array containing the IDs
+// of the Load Balancers from which the inbound traffic will be accepted.
+func (o GetFirewallInboundRuleOutput) SourceLoadBalancerUids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallInboundRule) []string { return v.SourceLoadBalancerUids }).(pulumi.StringArrayOutput)
+}
+
+// A set of names of Tags corresponding to group of
+// Droplets from which the inbound traffic will be accepted.
+func (o GetFirewallInboundRuleOutput) SourceTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallInboundRule) []string { return v.SourceTags }).(pulumi.StringArrayOutput)
+}
+
+type GetFirewallInboundRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallInboundRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallInboundRule)(nil)).Elem()
+}
+
+func (o GetFirewallInboundRuleArrayOutput) ToGetFirewallInboundRuleArrayOutput() GetFirewallInboundRuleArrayOutput {
+	return o
+}
+
+func (o GetFirewallInboundRuleArrayOutput) ToGetFirewallInboundRuleArrayOutputWithContext(ctx context.Context) GetFirewallInboundRuleArrayOutput {
+	return o
+}
+
+func (o GetFirewallInboundRuleArrayOutput) Index(i pulumi.IntInput) GetFirewallInboundRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallInboundRule {
+		return vs[0].([]GetFirewallInboundRule)[vs[1].(int)]
+	}).(GetFirewallInboundRuleOutput)
+}
+
+type GetFirewallOutboundRule struct {
+	// An array of strings containing the IPv4
+	// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+	// outbound traffic will be allowed.
+	DestinationAddresses []string `pulumi:"destinationAddresses"`
+	// An array containing the IDs of
+	// the Droplets to which the outbound traffic will be allowed.
+	DestinationDropletIds []int `pulumi:"destinationDropletIds"`
+	// An array containing the IDs
+	// of the Load Balancers to which the outbound traffic will be allowed.
+	DestinationLoadBalancerUids []string `pulumi:"destinationLoadBalancerUids"`
+	// An array containing the names of Tags
+	// corresponding to groups of Droplets to which the outbound traffic will
+	// be allowed.
+	// traffic.
+	DestinationTags []string `pulumi:"destinationTags"`
+	// The ports on which traffic will be allowed
+	// specified as a string containing a single port, a range (e.g. "8000-9000"),
+	// or "1-65535" to open all ports for a protocol. Required for when protocol is
+	// `tcp` or `udp`.
+	PortRange *string `pulumi:"portRange"`
+	// The type of traffic to be allowed.
+	// This may be one of "tcp", "udp", or "icmp".
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetFirewallOutboundRuleInput is an input type that accepts GetFirewallOutboundRuleArgs and GetFirewallOutboundRuleOutput values.
+// You can construct a concrete instance of `GetFirewallOutboundRuleInput` via:
+//
+//          GetFirewallOutboundRuleArgs{...}
+type GetFirewallOutboundRuleInput interface {
+	pulumi.Input
+
+	ToGetFirewallOutboundRuleOutput() GetFirewallOutboundRuleOutput
+	ToGetFirewallOutboundRuleOutputWithContext(context.Context) GetFirewallOutboundRuleOutput
+}
+
+type GetFirewallOutboundRuleArgs struct {
+	// An array of strings containing the IPv4
+	// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+	// outbound traffic will be allowed.
+	DestinationAddresses pulumi.StringArrayInput `pulumi:"destinationAddresses"`
+	// An array containing the IDs of
+	// the Droplets to which the outbound traffic will be allowed.
+	DestinationDropletIds pulumi.IntArrayInput `pulumi:"destinationDropletIds"`
+	// An array containing the IDs
+	// of the Load Balancers to which the outbound traffic will be allowed.
+	DestinationLoadBalancerUids pulumi.StringArrayInput `pulumi:"destinationLoadBalancerUids"`
+	// An array containing the names of Tags
+	// corresponding to groups of Droplets to which the outbound traffic will
+	// be allowed.
+	// traffic.
+	DestinationTags pulumi.StringArrayInput `pulumi:"destinationTags"`
+	// The ports on which traffic will be allowed
+	// specified as a string containing a single port, a range (e.g. "8000-9000"),
+	// or "1-65535" to open all ports for a protocol. Required for when protocol is
+	// `tcp` or `udp`.
+	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
+	// The type of traffic to be allowed.
+	// This may be one of "tcp", "udp", or "icmp".
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetFirewallOutboundRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallOutboundRule)(nil)).Elem()
+}
+
+func (i GetFirewallOutboundRuleArgs) ToGetFirewallOutboundRuleOutput() GetFirewallOutboundRuleOutput {
+	return i.ToGetFirewallOutboundRuleOutputWithContext(context.Background())
+}
+
+func (i GetFirewallOutboundRuleArgs) ToGetFirewallOutboundRuleOutputWithContext(ctx context.Context) GetFirewallOutboundRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallOutboundRuleOutput)
+}
+
+// GetFirewallOutboundRuleArrayInput is an input type that accepts GetFirewallOutboundRuleArray and GetFirewallOutboundRuleArrayOutput values.
+// You can construct a concrete instance of `GetFirewallOutboundRuleArrayInput` via:
+//
+//          GetFirewallOutboundRuleArray{ GetFirewallOutboundRuleArgs{...} }
+type GetFirewallOutboundRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallOutboundRuleArrayOutput() GetFirewallOutboundRuleArrayOutput
+	ToGetFirewallOutboundRuleArrayOutputWithContext(context.Context) GetFirewallOutboundRuleArrayOutput
+}
+
+type GetFirewallOutboundRuleArray []GetFirewallOutboundRuleInput
+
+func (GetFirewallOutboundRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallOutboundRule)(nil)).Elem()
+}
+
+func (i GetFirewallOutboundRuleArray) ToGetFirewallOutboundRuleArrayOutput() GetFirewallOutboundRuleArrayOutput {
+	return i.ToGetFirewallOutboundRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallOutboundRuleArray) ToGetFirewallOutboundRuleArrayOutputWithContext(ctx context.Context) GetFirewallOutboundRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallOutboundRuleArrayOutput)
+}
+
+type GetFirewallOutboundRuleOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallOutboundRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallOutboundRule)(nil)).Elem()
+}
+
+func (o GetFirewallOutboundRuleOutput) ToGetFirewallOutboundRuleOutput() GetFirewallOutboundRuleOutput {
+	return o
+}
+
+func (o GetFirewallOutboundRuleOutput) ToGetFirewallOutboundRuleOutputWithContext(ctx context.Context) GetFirewallOutboundRuleOutput {
+	return o
+}
+
+// An array of strings containing the IPv4
+// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+// outbound traffic will be allowed.
+func (o GetFirewallOutboundRuleOutput) DestinationAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallOutboundRule) []string { return v.DestinationAddresses }).(pulumi.StringArrayOutput)
+}
+
+// An array containing the IDs of
+// the Droplets to which the outbound traffic will be allowed.
+func (o GetFirewallOutboundRuleOutput) DestinationDropletIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetFirewallOutboundRule) []int { return v.DestinationDropletIds }).(pulumi.IntArrayOutput)
+}
+
+// An array containing the IDs
+// of the Load Balancers to which the outbound traffic will be allowed.
+func (o GetFirewallOutboundRuleOutput) DestinationLoadBalancerUids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallOutboundRule) []string { return v.DestinationLoadBalancerUids }).(pulumi.StringArrayOutput)
+}
+
+// An array containing the names of Tags
+// corresponding to groups of Droplets to which the outbound traffic will
+// be allowed.
+// traffic.
+func (o GetFirewallOutboundRuleOutput) DestinationTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallOutboundRule) []string { return v.DestinationTags }).(pulumi.StringArrayOutput)
+}
+
+// The ports on which traffic will be allowed
+// specified as a string containing a single port, a range (e.g. "8000-9000"),
+// or "1-65535" to open all ports for a protocol. Required for when protocol is
+// `tcp` or `udp`.
+func (o GetFirewallOutboundRuleOutput) PortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallOutboundRule) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+}
+
+// The type of traffic to be allowed.
+// This may be one of "tcp", "udp", or "icmp".
+func (o GetFirewallOutboundRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallOutboundRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetFirewallOutboundRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallOutboundRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallOutboundRule)(nil)).Elem()
+}
+
+func (o GetFirewallOutboundRuleArrayOutput) ToGetFirewallOutboundRuleArrayOutput() GetFirewallOutboundRuleArrayOutput {
+	return o
+}
+
+func (o GetFirewallOutboundRuleArrayOutput) ToGetFirewallOutboundRuleArrayOutputWithContext(ctx context.Context) GetFirewallOutboundRuleArrayOutput {
+	return o
+}
+
+func (o GetFirewallOutboundRuleArrayOutput) Index(i pulumi.IntInput) GetFirewallOutboundRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallOutboundRule {
+		return vs[0].([]GetFirewallOutboundRule)[vs[1].(int)]
+	}).(GetFirewallOutboundRuleOutput)
+}
+
+type GetFirewallPendingChange struct {
+	DropletId *int  `pulumi:"dropletId"`
+	Removing  *bool `pulumi:"removing"`
+	// A status string indicating the current state of the Firewall.
+	// This can be "waiting", "succeeded", or "failed".
+	Status *string `pulumi:"status"`
+}
+
+// GetFirewallPendingChangeInput is an input type that accepts GetFirewallPendingChangeArgs and GetFirewallPendingChangeOutput values.
+// You can construct a concrete instance of `GetFirewallPendingChangeInput` via:
+//
+//          GetFirewallPendingChangeArgs{...}
+type GetFirewallPendingChangeInput interface {
+	pulumi.Input
+
+	ToGetFirewallPendingChangeOutput() GetFirewallPendingChangeOutput
+	ToGetFirewallPendingChangeOutputWithContext(context.Context) GetFirewallPendingChangeOutput
+}
+
+type GetFirewallPendingChangeArgs struct {
+	DropletId pulumi.IntPtrInput  `pulumi:"dropletId"`
+	Removing  pulumi.BoolPtrInput `pulumi:"removing"`
+	// A status string indicating the current state of the Firewall.
+	// This can be "waiting", "succeeded", or "failed".
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetFirewallPendingChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallPendingChange)(nil)).Elem()
+}
+
+func (i GetFirewallPendingChangeArgs) ToGetFirewallPendingChangeOutput() GetFirewallPendingChangeOutput {
+	return i.ToGetFirewallPendingChangeOutputWithContext(context.Background())
+}
+
+func (i GetFirewallPendingChangeArgs) ToGetFirewallPendingChangeOutputWithContext(ctx context.Context) GetFirewallPendingChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallPendingChangeOutput)
+}
+
+// GetFirewallPendingChangeArrayInput is an input type that accepts GetFirewallPendingChangeArray and GetFirewallPendingChangeArrayOutput values.
+// You can construct a concrete instance of `GetFirewallPendingChangeArrayInput` via:
+//
+//          GetFirewallPendingChangeArray{ GetFirewallPendingChangeArgs{...} }
+type GetFirewallPendingChangeArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallPendingChangeArrayOutput() GetFirewallPendingChangeArrayOutput
+	ToGetFirewallPendingChangeArrayOutputWithContext(context.Context) GetFirewallPendingChangeArrayOutput
+}
+
+type GetFirewallPendingChangeArray []GetFirewallPendingChangeInput
+
+func (GetFirewallPendingChangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallPendingChange)(nil)).Elem()
+}
+
+func (i GetFirewallPendingChangeArray) ToGetFirewallPendingChangeArrayOutput() GetFirewallPendingChangeArrayOutput {
+	return i.ToGetFirewallPendingChangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallPendingChangeArray) ToGetFirewallPendingChangeArrayOutputWithContext(ctx context.Context) GetFirewallPendingChangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallPendingChangeArrayOutput)
+}
+
+type GetFirewallPendingChangeOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallPendingChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallPendingChange)(nil)).Elem()
+}
+
+func (o GetFirewallPendingChangeOutput) ToGetFirewallPendingChangeOutput() GetFirewallPendingChangeOutput {
+	return o
+}
+
+func (o GetFirewallPendingChangeOutput) ToGetFirewallPendingChangeOutputWithContext(ctx context.Context) GetFirewallPendingChangeOutput {
+	return o
+}
+
+func (o GetFirewallPendingChangeOutput) DropletId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFirewallPendingChange) *int { return v.DropletId }).(pulumi.IntPtrOutput)
+}
+
+func (o GetFirewallPendingChangeOutput) Removing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetFirewallPendingChange) *bool { return v.Removing }).(pulumi.BoolPtrOutput)
+}
+
+// A status string indicating the current state of the Firewall.
+// This can be "waiting", "succeeded", or "failed".
+func (o GetFirewallPendingChangeOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallPendingChange) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type GetFirewallPendingChangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallPendingChangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallPendingChange)(nil)).Elem()
+}
+
+func (o GetFirewallPendingChangeArrayOutput) ToGetFirewallPendingChangeArrayOutput() GetFirewallPendingChangeArrayOutput {
+	return o
+}
+
+func (o GetFirewallPendingChangeArrayOutput) ToGetFirewallPendingChangeArrayOutputWithContext(ctx context.Context) GetFirewallPendingChangeArrayOutput {
+	return o
+}
+
+func (o GetFirewallPendingChangeArrayOutput) Index(i pulumi.IntInput) GetFirewallPendingChangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallPendingChange {
+		return vs[0].([]GetFirewallPendingChange)[vs[1].(int)]
+	}).(GetFirewallPendingChangeOutput)
+}
+
 type GetImagesFilter struct {
 	// Set to `true` to require that a field match all of the `values` instead of just one or more of
 	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -17814,6 +18270,12 @@ func init() {
 	pulumi.RegisterOutputType(GetDropletsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDropletsSortOutput{})
 	pulumi.RegisterOutputType(GetDropletsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallInboundRuleOutput{})
+	pulumi.RegisterOutputType(GetFirewallInboundRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallOutboundRuleOutput{})
+	pulumi.RegisterOutputType(GetFirewallOutboundRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallPendingChangeOutput{})
+	pulumi.RegisterOutputType(GetFirewallPendingChangeArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})

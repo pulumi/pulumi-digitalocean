@@ -57,8 +57,10 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] name: The name for the database replica.
+        :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
         :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
         :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -131,9 +133,11 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.Input[str] password: Password for the replica's default user.
         :param pulumi.Input[int] port: Network port that the database replica is listening on.
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
         :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         :param pulumi.Input[str] uri: The full URI for connecting to the database replica.
         :param pulumi.Input[str] user: Username for the replica's default user.
         """
@@ -216,6 +220,9 @@ class DatabaseReplica(pulumi.CustomResource):
     @property
     @pulumi.getter(name="privateNetworkUuid")
     def private_network_uuid(self) -> pulumi.Output[str]:
+        """
+        The ID of the VPC where the database replica will be located.
+        """
         return pulumi.get(self, "private_network_uuid")
 
     @property
@@ -245,6 +252,9 @@ class DatabaseReplica(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of tag names to be applied to the database replica.
+        """
         return pulumi.get(self, "tags")
 
     @property

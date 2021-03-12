@@ -872,6 +872,80 @@ export interface GetDropletsSort {
     key: string;
 }
 
+export interface GetFirewallInboundRule {
+    /**
+     * The ports on which traffic will be allowed
+     * specified as a string containing a single port, a range (e.g. "8000-9000"),
+     * or "1-65535" to open all ports for a protocol. Required for when protocol is
+     * `tcp` or `udp`.
+     */
+    portRange?: string;
+    /**
+     * The type of traffic to be allowed.
+     * This may be one of "tcp", "udp", or "icmp".
+     */
+    protocol: string;
+    /**
+     * An array of strings containing the IPv4
+     * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+     * inbound traffic will be accepted.
+     */
+    sourceAddresses?: string[];
+    /**
+     * An array containing the IDs of
+     * the Droplets from which the inbound traffic will be accepted.
+     */
+    sourceDropletIds?: number[];
+    /**
+     * An array containing the IDs
+     * of the Load Balancers from which the inbound traffic will be accepted.
+     */
+    sourceLoadBalancerUids?: string[];
+    /**
+     * A set of names of Tags corresponding to group of
+     * Droplets from which the inbound traffic will be accepted.
+     */
+    sourceTags?: string[];
+}
+
+export interface GetFirewallOutboundRule {
+    /**
+     * An array of strings containing the IPv4
+     * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+     * outbound traffic will be allowed.
+     */
+    destinationAddresses?: string[];
+    /**
+     * An array containing the IDs of
+     * the Droplets to which the outbound traffic will be allowed.
+     */
+    destinationDropletIds?: number[];
+    /**
+     * An array containing the IDs
+     * of the Load Balancers to which the outbound traffic will be allowed.
+     */
+    destinationLoadBalancerUids?: string[];
+    /**
+     * An array containing the names of Tags
+     * corresponding to groups of Droplets to which the outbound traffic will
+     * be allowed.
+     * traffic.
+     */
+    destinationTags?: string[];
+    /**
+     * The ports on which traffic will be allowed
+     * specified as a string containing a single port, a range (e.g. "8000-9000"),
+     * or "1-65535" to open all ports for a protocol. Required for when protocol is
+     * `tcp` or `udp`.
+     */
+    portRange?: string;
+    /**
+     * The type of traffic to be allowed.
+     * This may be one of "tcp", "udp", or "icmp".
+     */
+    protocol: string;
+}
+
 export interface GetImagesFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of

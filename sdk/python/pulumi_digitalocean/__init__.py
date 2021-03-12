@@ -32,6 +32,7 @@ from .get_domains import *
 from .get_droplet import *
 from .get_droplet_snapshot import *
 from .get_droplets import *
+from .get_firewall import *
 from .get_floating_ip import *
 from .get_image import *
 from .get_images import *

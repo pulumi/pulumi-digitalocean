@@ -38,6 +38,7 @@ export * from "./getDomains";
 export * from "./getDroplet";
 export * from "./getDropletSnapshot";
 export * from "./getDroplets";
+export * from "./getFirewall";
 export * from "./getFloatingIp";
 export * from "./getImage";
 export * from "./getImages";

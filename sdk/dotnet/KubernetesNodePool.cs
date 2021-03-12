@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
     ///         var foo = new DigitalOcean.KubernetesCluster("foo", new DigitalOcean.KubernetesClusterArgs
     ///         {
     ///             Region = "nyc1",
-    ///             Version = "1.19.3-do.3",
+    ///             Version = "1.20.2-do.0",
     ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
     ///             {
     ///                 Name = "front-end-pool",
