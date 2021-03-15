@@ -19,7 +19,7 @@ import {DropletSlug} from "./index";
  *
  * const foo = new digitalocean.KubernetesCluster("foo", {
  *     region: "nyc1",
- *     version: "1.19.3-do.3",
+ *     version: "1.20.2-do.0",
  *     nodePool: {
  *         name: "front-end-pool",
  *         size: "s-2vcpu-2gb",

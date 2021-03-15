@@ -70,7 +70,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> DockerCredentials { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+        /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         /// </summary>
         [Output("expirySeconds")]
         public Output<int?> ExpirySeconds { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.DigitalOcean
     public sealed class ContainerRegistryDockerCredentialsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+        /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         /// </summary>
         [Input("expirySeconds")]
         public Input<int>? ExpirySeconds { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DockerCredentials { get; set; }
 
         /// <summary>
-        /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+        /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         /// </summary>
         [Input("expirySeconds")]
         public Input<int>? ExpirySeconds { get; set; }

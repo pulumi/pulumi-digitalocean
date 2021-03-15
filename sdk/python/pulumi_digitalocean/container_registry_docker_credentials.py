@@ -51,7 +51,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+        :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         :param pulumi.Input[str] registry_name: The name of the container registry.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
         """
@@ -101,7 +101,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+        :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         :param pulumi.Input[str] registry_name: The name of the container registry.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
         """
@@ -130,7 +130,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
     @pulumi.getter(name="expirySeconds")
     def expiry_seconds(self) -> pulumi.Output[Optional[int]]:
         """
-        The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.
+        The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         """
         return pulumi.get(self, "expiry_seconds")
 

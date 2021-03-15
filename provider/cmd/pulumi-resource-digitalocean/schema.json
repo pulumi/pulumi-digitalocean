@@ -4827,6 +4827,184 @@
                 "key"
             ]
         },
+        "digitalocean:index/getFirewallInboundRule:getFirewallInboundRule": {
+            "properties": {
+                "portRange": {
+                    "type": "string",
+                    "description": "The ports on which traffic will be allowed\nspecified as a string containing a single port, a range (e.g. \"8000-9000\"),\nor \"1-65535\" to open all ports for a protocol. Required for when protocol is\n`tcp` or `udp`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The type of traffic to be allowed.\nThis may be one of \"tcp\", \"udp\", or \"icmp\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of strings containing the IPv4\naddresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the\ninbound traffic will be accepted.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceDropletIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "An array containing the IDs of\nthe Droplets from which the inbound traffic will be accepted.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceLoadBalancerUids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array containing the IDs\nof the Load Balancers from which the inbound traffic will be accepted.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceTags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of names of Tags corresponding to group of\nDroplets from which the inbound traffic will be accepted.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "protocol"
+            ]
+        },
+        "digitalocean:index/getFirewallOutboundRule:getFirewallOutboundRule": {
+            "properties": {
+                "destinationAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of strings containing the IPv4\naddresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the\noutbound traffic will be allowed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationDropletIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "An array containing the IDs of\nthe Droplets to which the outbound traffic will be allowed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationLoadBalancerUids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array containing the IDs\nof the Load Balancers to which the outbound traffic will be allowed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationTags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array containing the names of Tags\ncorresponding to groups of Droplets to which the outbound traffic will\nbe allowed.\ntraffic.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portRange": {
+                    "type": "string",
+                    "description": "The ports on which traffic will be allowed\nspecified as a string containing a single port, a range (e.g. \"8000-9000\"),\nor \"1-65535\" to open all ports for a protocol. Required for when protocol is\n`tcp` or `udp`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The type of traffic to be allowed.\nThis may be one of \"tcp\", \"udp\", or \"icmp\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "protocol"
+            ]
+        },
+        "digitalocean:index/getFirewallPendingChange:getFirewallPendingChange": {
+            "properties": {
+                "dropletId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "removing": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "A status string indicating the current state of the Firewall.\nThis can be \"waiting\", \"succeeded\", or \"failed\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/getImagesFilter:getImagesFilter": {
             "properties": {
                 "all": {
@@ -7043,7 +7221,7 @@
                 },
                 "expirySeconds": {
                     "type": "integer",
-                    "description": "The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.\n"
+                    "description": "The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.\n"
                 },
                 "registryName": {
                     "type": "string",
@@ -7062,7 +7240,7 @@
             "inputProperties": {
                 "expirySeconds": {
                     "type": "integer",
-                    "description": "The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.\n"
+                    "description": "The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.\n"
                 },
                 "registryName": {
                     "type": "string",
@@ -7087,7 +7265,7 @@
                     },
                     "expirySeconds": {
                         "type": "integer",
-                        "description": "The amount of time to pass before the Docker credentials expire in seconds. Defaults to 2147483647, or roughly 68 years. Must be greater than 0 and less than 2147483647.\n"
+                        "description": "The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.\n"
                     },
                     "registryName": {
                         "type": "string",
@@ -7719,7 +7897,8 @@
                     "description": "Same as `host`, but only accessible from resources within the account and in the same region.\n"
                 },
                 "privateNetworkUuid": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the VPC where the database replica will be located.\n"
                 },
                 "privateUri": {
                     "type": "string",
@@ -7739,7 +7918,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of tag names to be applied to the database replica.\n"
                 },
                 "uri": {
                     "type": "string",
@@ -7773,7 +7953,8 @@
                     "description": "The name for the database replica.\n"
                 },
                 "privateNetworkUuid": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the VPC where the database replica will be located.\n"
                 },
                 "region": {
                     "type": "string",
@@ -7789,7 +7970,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of tag names to be applied to the database replica.\n"
                 }
             },
             "requiredInputs": [
@@ -7827,7 +8009,8 @@
                         "description": "Same as `host`, but only accessible from resources within the account and in the same region.\n"
                     },
                     "privateNetworkUuid": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID of the VPC where the database replica will be located.\n"
                     },
                     "privateUri": {
                         "type": "string",
@@ -7847,7 +8030,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "A list of tag names to be applied to the database replica.\n"
                     },
                     "uri": {
                         "type": "string",
@@ -8955,7 +9139,7 @@
             }
         },
         "digitalocean:index/kubernetesNodePool:KubernetesNodePool": {
-            "description": "Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foo = new digitalocean.KubernetesCluster(\"foo\", {\n    region: \"nyc1\",\n    version: \"1.19.3-do.3\",\n    nodePool: {\n        name: \"front-end-pool\",\n        size: \"s-2vcpu-2gb\",\n        nodeCount: 3,\n    },\n});\nconst bar = new digitalocean.KubernetesNodePool(\"bar\", {\n    clusterId: foo.id,\n    size: \"c-2\",\n    nodeCount: 2,\n    tags: [\"backend\"],\n    labels: {\n        service: \"backend\",\n        priority: \"high\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoo = digitalocean.KubernetesCluster(\"foo\",\n    region=\"nyc1\",\n    version=\"1.19.3-do.3\",\n    node_pool=digitalocean.KubernetesClusterNodePoolArgs(\n        name=\"front-end-pool\",\n        size=\"s-2vcpu-2gb\",\n        node_count=3,\n    ))\nbar = digitalocean.KubernetesNodePool(\"bar\",\n    cluster_id=foo.id,\n    size=\"c-2\",\n    node_count=2,\n    tags=[\"backend\"],\n    labels={\n        \"service\": \"backend\",\n        \"priority\": \"high\",\n    })\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new DigitalOcean.KubernetesCluster(\"foo\", new DigitalOcean.KubernetesClusterArgs\n        {\n            Region = \"nyc1\",\n            Version = \"1.19.3-do.3\",\n            NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs\n            {\n                Name = \"front-end-pool\",\n                Size = \"s-2vcpu-2gb\",\n                NodeCount = 3,\n            },\n        });\n        var bar = new DigitalOcean.KubernetesNodePool(\"bar\", new DigitalOcean.KubernetesNodePoolArgs\n        {\n            ClusterId = foo.Id,\n            Size = \"c-2\",\n            NodeCount = 2,\n            Tags = \n            {\n                \"backend\",\n            },\n            Labels = \n            {\n                { \"service\", \"backend\" },\n                { \"priority\", \"high\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := digitalocean.NewKubernetesCluster(ctx, \"foo\", \u0026digitalocean.KubernetesClusterArgs{\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t\tVersion: pulumi.String(\"1.19.3-do.3\"),\n\t\t\tNodePool: \u0026digitalocean.KubernetesClusterNodePoolArgs{\n\t\t\t\tName:      pulumi.String(\"front-end-pool\"),\n\t\t\t\tSize:      pulumi.String(\"s-2vcpu-2gb\"),\n\t\t\t\tNodeCount: pulumi.Int(3),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewKubernetesNodePool(ctx, \"bar\", \u0026digitalocean.KubernetesNodePoolArgs{\n\t\t\tClusterId: foo.ID(),\n\t\t\tSize:      pulumi.String(\"c-2\"),\n\t\t\tNodeCount: pulumi.Int(2),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"backend\"),\n\t\t\t},\n\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\"service\":  pulumi.String(\"backend\"),\n\t\t\t\t\"priority\": pulumi.String(\"high\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Autoscaling Example\n\nNode pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).\nFor example:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst autoscale_pool_01 = new digitalocean.KubernetesNodePool(\"autoscale-pool-01\", {\n    clusterId: digitalocean_kubernetes_cluster.foo.id,\n    size: \"s-1vcpu-2gb\",\n    autoScale: true,\n    minNodes: 1,\n    maxNodes: 5,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nautoscale_pool_01 = digitalocean.KubernetesNodePool(\"autoscale-pool-01\",\n    cluster_id=digitalocean_kubernetes_cluster[\"foo\"][\"id\"],\n    size=\"s-1vcpu-2gb\",\n    auto_scale=True,\n    min_nodes=1,\n    max_nodes=5)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool(\"autoscale-pool-01\", new DigitalOcean.KubernetesNodePoolArgs\n        {\n            ClusterId = digitalocean_kubernetes_cluster.Foo.Id,\n            Size = \"s-1vcpu-2gb\",\n            AutoScale = true,\n            MinNodes = 1,\n            MaxNodes = 5,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewKubernetesNodePool(ctx, \"autoscale_pool_01\", \u0026digitalocean.KubernetesNodePoolArgs{\n\t\t\tClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),\n\t\t\tSize:      pulumi.String(\"s-1vcpu-2gb\"),\n\t\t\tAutoScale: pulumi.Bool(true),\n\t\t\tMinNodes:  pulumi.Int(1),\n\t\t\tMaxNodes:  pulumi.Int(5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIf you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8\n```\n\n NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource. ",
+            "description": "Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foo = new digitalocean.KubernetesCluster(\"foo\", {\n    region: \"nyc1\",\n    version: \"1.20.2-do.0\",\n    nodePool: {\n        name: \"front-end-pool\",\n        size: \"s-2vcpu-2gb\",\n        nodeCount: 3,\n    },\n});\nconst bar = new digitalocean.KubernetesNodePool(\"bar\", {\n    clusterId: foo.id,\n    size: \"c-2\",\n    nodeCount: 2,\n    tags: [\"backend\"],\n    labels: {\n        service: \"backend\",\n        priority: \"high\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoo = digitalocean.KubernetesCluster(\"foo\",\n    region=\"nyc1\",\n    version=\"1.20.2-do.0\",\n    node_pool=digitalocean.KubernetesClusterNodePoolArgs(\n        name=\"front-end-pool\",\n        size=\"s-2vcpu-2gb\",\n        node_count=3,\n    ))\nbar = digitalocean.KubernetesNodePool(\"bar\",\n    cluster_id=foo.id,\n    size=\"c-2\",\n    node_count=2,\n    tags=[\"backend\"],\n    labels={\n        \"service\": \"backend\",\n        \"priority\": \"high\",\n    })\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new DigitalOcean.KubernetesCluster(\"foo\", new DigitalOcean.KubernetesClusterArgs\n        {\n            Region = \"nyc1\",\n            Version = \"1.20.2-do.0\",\n            NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs\n            {\n                Name = \"front-end-pool\",\n                Size = \"s-2vcpu-2gb\",\n                NodeCount = 3,\n            },\n        });\n        var bar = new DigitalOcean.KubernetesNodePool(\"bar\", new DigitalOcean.KubernetesNodePoolArgs\n        {\n            ClusterId = foo.Id,\n            Size = \"c-2\",\n            NodeCount = 2,\n            Tags = \n            {\n                \"backend\",\n            },\n            Labels = \n            {\n                { \"service\", \"backend\" },\n                { \"priority\", \"high\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := digitalocean.NewKubernetesCluster(ctx, \"foo\", \u0026digitalocean.KubernetesClusterArgs{\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t\tVersion: pulumi.String(\"1.20.2-do.0\"),\n\t\t\tNodePool: \u0026digitalocean.KubernetesClusterNodePoolArgs{\n\t\t\t\tName:      pulumi.String(\"front-end-pool\"),\n\t\t\t\tSize:      pulumi.String(\"s-2vcpu-2gb\"),\n\t\t\t\tNodeCount: pulumi.Int(3),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewKubernetesNodePool(ctx, \"bar\", \u0026digitalocean.KubernetesNodePoolArgs{\n\t\t\tClusterId: foo.ID(),\n\t\t\tSize:      pulumi.String(\"c-2\"),\n\t\t\tNodeCount: pulumi.Int(2),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"backend\"),\n\t\t\t},\n\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\"service\":  pulumi.String(\"backend\"),\n\t\t\t\t\"priority\": pulumi.String(\"high\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Autoscaling Example\n\nNode pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).\nFor example:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst autoscale_pool_01 = new digitalocean.KubernetesNodePool(\"autoscale-pool-01\", {\n    clusterId: digitalocean_kubernetes_cluster.foo.id,\n    size: \"s-1vcpu-2gb\",\n    autoScale: true,\n    minNodes: 1,\n    maxNodes: 5,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nautoscale_pool_01 = digitalocean.KubernetesNodePool(\"autoscale-pool-01\",\n    cluster_id=digitalocean_kubernetes_cluster[\"foo\"][\"id\"],\n    size=\"s-1vcpu-2gb\",\n    auto_scale=True,\n    min_nodes=1,\n    max_nodes=5)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool(\"autoscale-pool-01\", new DigitalOcean.KubernetesNodePoolArgs\n        {\n            ClusterId = digitalocean_kubernetes_cluster.Foo.Id,\n            Size = \"s-1vcpu-2gb\",\n            AutoScale = true,\n            MinNodes = 1,\n            MaxNodes = 5,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewKubernetesNodePool(ctx, \"autoscale_pool_01\", \u0026digitalocean.KubernetesNodePoolArgs{\n\t\t\tClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),\n\t\t\tSize:      pulumi.String(\"s-1vcpu-2gb\"),\n\t\t\tAutoScale: pulumi.Bool(true),\n\t\t\tMinNodes:  pulumi.Int(1),\n\t\t\tMaxNodes:  pulumi.Int(5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIf you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8\n```\n\n NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource. ",
             "properties": {
                 "actualNodeCount": {
                     "type": "integer",
@@ -11393,6 +11577,118 @@
                 "type": "object",
                 "required": [
                     "droplets",
+                    "id"
+                ]
+            }
+        },
+        "digitalocean:index/getFirewall:getFirewall": {
+            "description": "Get information on a DigitalOcean Firewall.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet the firewall:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getFirewall({\n    firewallId: \"1df48973-6eef-4214-854f-fa7726e7e583\",\n});\nexport const exampleFirewallName = example.then(example =\u003e example.name);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_firewall(firewall_id=\"1df48973-6eef-4214-854f-fa7726e7e583\")\npulumi.export(\"exampleFirewallName\", example.name)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetFirewall.InvokeAsync(new DigitalOcean.GetFirewallArgs\n        {\n            FirewallId = \"1df48973-6eef-4214-854f-fa7726e7e583\",\n        }));\n        this.ExampleFirewallName = example.Apply(example =\u003e example.Name);\n    }\n\n    [Output(\"exampleFirewallName\")]\n    public Output\u003cstring\u003e ExampleFirewallName { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v3/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupFirewall(ctx, \u0026digitalocean.LookupFirewallArgs{\n\t\t\tFirewallId: \"1df48973-6eef-4214-854f-fa7726e7e583\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"exampleFirewallName\", example.Name)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFirewall.\n",
+                "properties": {
+                    "dropletIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "The list of the IDs of the Droplets assigned to\nthe Firewall.\n"
+                    },
+                    "firewallId": {
+                        "type": "string",
+                        "description": "The ID of the firewall to retrieve information\nabout.\n"
+                    },
+                    "inboundRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getFirewallInboundRule:getFirewallInboundRule"
+                        }
+                    },
+                    "outboundRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getFirewallOutboundRule:getFirewallOutboundRule"
+                        }
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The names of the Tags assigned to the Firewall.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "firewallId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFirewall.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "A time value given in ISO8601 combined date and time format\nthat represents when the Firewall was created.\n"
+                    },
+                    "dropletIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "The list of the IDs of the Droplets assigned to\nthe Firewall.\n"
+                    },
+                    "firewallId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "inboundRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getFirewallInboundRule:getFirewallInboundRule"
+                        }
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Firewall.\n"
+                    },
+                    "outboundRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getFirewallOutboundRule:getFirewallOutboundRule"
+                        }
+                    },
+                    "pendingChanges": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getFirewallPendingChange:getFirewallPendingChange"
+                        },
+                        "description": "A set of object containing the fields, `droplet_id`,\n`removing`, and `status`.  It is provided to detail exactly which Droplets\nare having their security policies updated.  When empty, all changes\nhave been successfully applied.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "A status string indicating the current state of the Firewall.\nThis can be \"waiting\", \"succeeded\", or \"failed\".\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The names of the Tags assigned to the Firewall.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createdAt",
+                    "dropletIds",
+                    "firewallId",
+                    "inboundRules",
+                    "name",
+                    "outboundRules",
+                    "pendingChanges",
+                    "status",
+                    "tags",
                     "id"
                 ]
             }

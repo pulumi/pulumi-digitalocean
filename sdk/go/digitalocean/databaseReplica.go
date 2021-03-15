@@ -71,14 +71,16 @@ type DatabaseReplica struct {
 	// Network port that the database replica is listening on.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Same as `host`, but only accessible from resources within the account and in the same region.
-	PrivateHost        pulumi.StringOutput `pulumi:"privateHost"`
+	PrivateHost pulumi.StringOutput `pulumi:"privateHost"`
+	// The ID of the VPC where the database replica will be located.
 	PrivateNetworkUuid pulumi.StringOutput `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringOutput `pulumi:"privateUri"`
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
-	Size pulumi.StringPtrOutput   `pulumi:"size"`
+	Size pulumi.StringPtrOutput `pulumi:"size"`
+	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The full URI for connecting to the database replica.
 	Uri pulumi.StringOutput `pulumi:"uri"`
@@ -131,14 +133,16 @@ type databaseReplicaState struct {
 	// Network port that the database replica is listening on.
 	Port *int `pulumi:"port"`
 	// Same as `host`, but only accessible from resources within the account and in the same region.
-	PrivateHost        *string `pulumi:"privateHost"`
+	PrivateHost *string `pulumi:"privateHost"`
+	// The ID of the VPC where the database replica will be located.
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri *string `pulumi:"privateUri"`
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
-	Size *string  `pulumi:"size"`
+	Size *string `pulumi:"size"`
+	// A list of tag names to be applied to the database replica.
 	Tags []string `pulumi:"tags"`
 	// The full URI for connecting to the database replica.
 	Uri *string `pulumi:"uri"`
@@ -160,7 +164,8 @@ type DatabaseReplicaState struct {
 	// Network port that the database replica is listening on.
 	Port pulumi.IntPtrInput
 	// Same as `host`, but only accessible from resources within the account and in the same region.
-	PrivateHost        pulumi.StringPtrInput
+	PrivateHost pulumi.StringPtrInput
+	// The ID of the VPC where the database replica will be located.
 	PrivateNetworkUuid pulumi.StringPtrInput
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringPtrInput
@@ -168,6 +173,7 @@ type DatabaseReplicaState struct {
 	Region pulumi.StringPtrInput
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
 	Size pulumi.StringPtrInput
+	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayInput
 	// The full URI for connecting to the database replica.
 	Uri pulumi.StringPtrInput
@@ -183,12 +189,14 @@ type databaseReplicaArgs struct {
 	// The ID of the original source database cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The name for the database replica.
-	Name               *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the VPC where the database replica will be located.
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
-	Size *string  `pulumi:"size"`
+	Size *string `pulumi:"size"`
+	// A list of tag names to be applied to the database replica.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -197,12 +205,14 @@ type DatabaseReplicaArgs struct {
 	// The ID of the original source database cluster.
 	ClusterId pulumi.StringInput
 	// The name for the database replica.
-	Name               pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the VPC where the database replica will be located.
 	PrivateNetworkUuid pulumi.StringPtrInput
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrInput
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
 	Size pulumi.StringPtrInput
+	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayInput
 }
 

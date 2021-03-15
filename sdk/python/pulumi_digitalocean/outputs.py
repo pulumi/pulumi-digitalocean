@@ -93,6 +93,9 @@ __all__ = [
     'GetDropletsDropletResult',
     'GetDropletsFilterResult',
     'GetDropletsSortResult',
+    'GetFirewallInboundRuleResult',
+    'GetFirewallOutboundRuleResult',
+    'GetFirewallPendingChangeResult',
     'GetImagesFilterResult',
     'GetImagesImageResult',
     'GetImagesSortResult',
@@ -5837,6 +5840,239 @@ class GetDropletsSortResult(dict):
         The sort direction. This may be either `asc` or `desc`.
         """
         return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetFirewallInboundRuleResult(dict):
+    def __init__(__self__, *,
+                 protocol: str,
+                 port_range: Optional[str] = None,
+                 source_addresses: Optional[Sequence[str]] = None,
+                 source_droplet_ids: Optional[Sequence[int]] = None,
+                 source_load_balancer_uids: Optional[Sequence[str]] = None,
+                 source_tags: Optional[Sequence[str]] = None):
+        """
+        :param str protocol: The type of traffic to be allowed.
+               This may be one of "tcp", "udp", or "icmp".
+        :param str port_range: The ports on which traffic will be allowed
+               specified as a string containing a single port, a range (e.g. "8000-9000"),
+               or "1-65535" to open all ports for a protocol. Required for when protocol is
+               `tcp` or `udp`.
+        :param Sequence[str] source_addresses: An array of strings containing the IPv4
+               addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+               inbound traffic will be accepted.
+        :param Sequence[int] source_droplet_ids: An array containing the IDs of
+               the Droplets from which the inbound traffic will be accepted.
+        :param Sequence[str] source_load_balancer_uids: An array containing the IDs
+               of the Load Balancers from which the inbound traffic will be accepted.
+        :param Sequence[str] source_tags: A set of names of Tags corresponding to group of
+               Droplets from which the inbound traffic will be accepted.
+        """
+        pulumi.set(__self__, "protocol", protocol)
+        if port_range is not None:
+            pulumi.set(__self__, "port_range", port_range)
+        if source_addresses is not None:
+            pulumi.set(__self__, "source_addresses", source_addresses)
+        if source_droplet_ids is not None:
+            pulumi.set(__self__, "source_droplet_ids", source_droplet_ids)
+        if source_load_balancer_uids is not None:
+            pulumi.set(__self__, "source_load_balancer_uids", source_load_balancer_uids)
+        if source_tags is not None:
+            pulumi.set(__self__, "source_tags", source_tags)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The type of traffic to be allowed.
+        This may be one of "tcp", "udp", or "icmp".
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> Optional[str]:
+        """
+        The ports on which traffic will be allowed
+        specified as a string containing a single port, a range (e.g. "8000-9000"),
+        or "1-65535" to open all ports for a protocol. Required for when protocol is
+        `tcp` or `udp`.
+        """
+        return pulumi.get(self, "port_range")
+
+    @property
+    @pulumi.getter(name="sourceAddresses")
+    def source_addresses(self) -> Optional[Sequence[str]]:
+        """
+        An array of strings containing the IPv4
+        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+        inbound traffic will be accepted.
+        """
+        return pulumi.get(self, "source_addresses")
+
+    @property
+    @pulumi.getter(name="sourceDropletIds")
+    def source_droplet_ids(self) -> Optional[Sequence[int]]:
+        """
+        An array containing the IDs of
+        the Droplets from which the inbound traffic will be accepted.
+        """
+        return pulumi.get(self, "source_droplet_ids")
+
+    @property
+    @pulumi.getter(name="sourceLoadBalancerUids")
+    def source_load_balancer_uids(self) -> Optional[Sequence[str]]:
+        """
+        An array containing the IDs
+        of the Load Balancers from which the inbound traffic will be accepted.
+        """
+        return pulumi.get(self, "source_load_balancer_uids")
+
+    @property
+    @pulumi.getter(name="sourceTags")
+    def source_tags(self) -> Optional[Sequence[str]]:
+        """
+        A set of names of Tags corresponding to group of
+        Droplets from which the inbound traffic will be accepted.
+        """
+        return pulumi.get(self, "source_tags")
+
+
+@pulumi.output_type
+class GetFirewallOutboundRuleResult(dict):
+    def __init__(__self__, *,
+                 protocol: str,
+                 destination_addresses: Optional[Sequence[str]] = None,
+                 destination_droplet_ids: Optional[Sequence[int]] = None,
+                 destination_load_balancer_uids: Optional[Sequence[str]] = None,
+                 destination_tags: Optional[Sequence[str]] = None,
+                 port_range: Optional[str] = None):
+        """
+        :param str protocol: The type of traffic to be allowed.
+               This may be one of "tcp", "udp", or "icmp".
+        :param Sequence[str] destination_addresses: An array of strings containing the IPv4
+               addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+               outbound traffic will be allowed.
+        :param Sequence[int] destination_droplet_ids: An array containing the IDs of
+               the Droplets to which the outbound traffic will be allowed.
+        :param Sequence[str] destination_load_balancer_uids: An array containing the IDs
+               of the Load Balancers to which the outbound traffic will be allowed.
+        :param Sequence[str] destination_tags: An array containing the names of Tags
+               corresponding to groups of Droplets to which the outbound traffic will
+               be allowed.
+               traffic.
+        :param str port_range: The ports on which traffic will be allowed
+               specified as a string containing a single port, a range (e.g. "8000-9000"),
+               or "1-65535" to open all ports for a protocol. Required for when protocol is
+               `tcp` or `udp`.
+        """
+        pulumi.set(__self__, "protocol", protocol)
+        if destination_addresses is not None:
+            pulumi.set(__self__, "destination_addresses", destination_addresses)
+        if destination_droplet_ids is not None:
+            pulumi.set(__self__, "destination_droplet_ids", destination_droplet_ids)
+        if destination_load_balancer_uids is not None:
+            pulumi.set(__self__, "destination_load_balancer_uids", destination_load_balancer_uids)
+        if destination_tags is not None:
+            pulumi.set(__self__, "destination_tags", destination_tags)
+        if port_range is not None:
+            pulumi.set(__self__, "port_range", port_range)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The type of traffic to be allowed.
+        This may be one of "tcp", "udp", or "icmp".
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="destinationAddresses")
+    def destination_addresses(self) -> Optional[Sequence[str]]:
+        """
+        An array of strings containing the IPv4
+        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+        outbound traffic will be allowed.
+        """
+        return pulumi.get(self, "destination_addresses")
+
+    @property
+    @pulumi.getter(name="destinationDropletIds")
+    def destination_droplet_ids(self) -> Optional[Sequence[int]]:
+        """
+        An array containing the IDs of
+        the Droplets to which the outbound traffic will be allowed.
+        """
+        return pulumi.get(self, "destination_droplet_ids")
+
+    @property
+    @pulumi.getter(name="destinationLoadBalancerUids")
+    def destination_load_balancer_uids(self) -> Optional[Sequence[str]]:
+        """
+        An array containing the IDs
+        of the Load Balancers to which the outbound traffic will be allowed.
+        """
+        return pulumi.get(self, "destination_load_balancer_uids")
+
+    @property
+    @pulumi.getter(name="destinationTags")
+    def destination_tags(self) -> Optional[Sequence[str]]:
+        """
+        An array containing the names of Tags
+        corresponding to groups of Droplets to which the outbound traffic will
+        be allowed.
+        traffic.
+        """
+        return pulumi.get(self, "destination_tags")
+
+    @property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> Optional[str]:
+        """
+        The ports on which traffic will be allowed
+        specified as a string containing a single port, a range (e.g. "8000-9000"),
+        or "1-65535" to open all ports for a protocol. Required for when protocol is
+        `tcp` or `udp`.
+        """
+        return pulumi.get(self, "port_range")
+
+
+@pulumi.output_type
+class GetFirewallPendingChangeResult(dict):
+    def __init__(__self__, *,
+                 droplet_id: Optional[int] = None,
+                 removing: Optional[bool] = None,
+                 status: Optional[str] = None):
+        """
+        :param str status: A status string indicating the current state of the Firewall.
+               This can be "waiting", "succeeded", or "failed".
+        """
+        if droplet_id is not None:
+            pulumi.set(__self__, "droplet_id", droplet_id)
+        if removing is not None:
+            pulumi.set(__self__, "removing", removing)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> Optional[int]:
+        return pulumi.get(self, "droplet_id")
+
+    @property
+    @pulumi.getter
+    def removing(self) -> Optional[bool]:
+        return pulumi.get(self, "removing")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        A status string indicating the current state of the Firewall.
+        This can be "waiting", "succeeded", or "failed".
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

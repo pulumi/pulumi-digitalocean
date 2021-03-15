@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-digitalocean/examples/v3
 
-go 1.14
+go 1.16
 
 require (
 	github.com/onsi/ginkgo v1.12.0 // indirect
