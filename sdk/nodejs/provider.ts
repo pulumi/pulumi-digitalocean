@@ -37,9 +37,9 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            inputs["apiEndpoint"] = (args ? args.apiEndpoint : undefined) || (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
+            inputs["apiEndpoint"] = (args ? args.apiEndpoint : undefined) ?? (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
             inputs["spacesAccessId"] = args ? args.spacesAccessId : undefined;
-            inputs["spacesEndpoint"] = (args ? args.spacesEndpoint : undefined) || utilities.getEnv("SPACES_ENDPOINT_URL");
+            inputs["spacesEndpoint"] = (args ? args.spacesEndpoint : undefined) ?? utilities.getEnv("SPACES_ENDPOINT_URL");
             inputs["spacesSecretKey"] = args ? args.spacesSecretKey : undefined;
             inputs["token"] = args ? args.token : undefined;
         }
