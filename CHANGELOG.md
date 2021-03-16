@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.6.0 (2021-03-16)
 * Upgrade to v2.6.0 of the DigitalOcean Terraform Provider  
   *Please Note:* `digitalocean.KubernetesCluster` and `digitalocean.getKubernetesCluster` now return `rawKubeConfig` and
   `token`  as secret values to ensure they are not leaked into state
 * Upgrade to pulumi-terraform-bridge v2.21.0
 * Release macOS arm64 binary
-
----
 
 ## 3.5.2 (2021-03-03)
 * Ensure `digitalOcean.App.Spec` exposes the `domainNames` option. This is mapped to `domains` in the upstream TF provider.
