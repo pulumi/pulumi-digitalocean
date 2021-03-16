@@ -106,7 +106,7 @@ class AppSpecArgs:
             pulumi.set(__self__, "domain_names", domain_names)
         if domains is not None:
             warnings.warn("""This attribute has been replaced by `domain` which supports additional functionality.""", DeprecationWarning)
-            pulumi.log.warn("domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.")
+            pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
         if envs is not None:
@@ -3605,7 +3605,7 @@ class LoadBalancerForwardingRuleArgs:
         pulumi.set(__self__, "target_protocol", target_protocol)
         if certificate_id is not None:
             warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.")
+            pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
         if certificate_name is not None:

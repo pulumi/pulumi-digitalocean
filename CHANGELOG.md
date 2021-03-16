@@ -5,6 +5,8 @@ CHANGELOG
 * Upgrade to v2.6.0 of the DigitalOcean Terraform Provider  
   *Please Note:* `digitalocean.KubernetesCluster` and `digitalocean.getKubernetesCluster` now return `rawKubeConfig` and
   `token`  as secret values to ensure they are not leaked into state
+* Upgrade to pulumi-terraform-bridge v2.21.0
+* Release macOS arm64 binary
 
 ---
 

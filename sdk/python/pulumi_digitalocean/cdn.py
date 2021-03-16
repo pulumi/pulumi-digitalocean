@@ -97,7 +97,7 @@ class Cdn(pulumi.CustomResource):
 
             if certificate_id is not None and not opts.urn:
                 warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.")
+                pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
             __props__['certificate_id'] = certificate_id
             __props__['certificate_name'] = certificate_name
             __props__['custom_domain'] = custom_domain
