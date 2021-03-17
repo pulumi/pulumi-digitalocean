@@ -32,7 +32,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.1.0
+      uses: jaxxstorm/action-install-gh-release@v1.2.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -115,7 +115,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.1.0
+      uses: jaxxstorm/action-install-gh-release@v1.2.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -151,7 +151,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.1.0
+      uses: jaxxstorm/action-install-gh-release@v1.2.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -185,7 +185,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.1.0
+      uses: jaxxstorm/action-install-gh-release@v1.2.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -229,7 +229,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.1.0
+      uses: jaxxstorm/action-install-gh-release@v1.2.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
