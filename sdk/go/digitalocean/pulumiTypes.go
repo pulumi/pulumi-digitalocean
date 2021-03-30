@@ -5865,6 +5865,8 @@ type KubernetesClusterNodePool struct {
 	Size string `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
+	// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+	Taints []KubernetesClusterNodePoolTaint `pulumi:"taints"`
 }
 
 // KubernetesClusterNodePoolInput is an input type that accepts KubernetesClusterNodePoolArgs and KubernetesClusterNodePoolOutput values.
@@ -5901,6 +5903,8 @@ type KubernetesClusterNodePoolArgs struct {
 	Size pulumi.StringInput `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+	Taints KubernetesClusterNodePoolTaintArrayInput `pulumi:"taints"`
 }
 
 func (KubernetesClusterNodePoolArgs) ElementType() reflect.Type {
@@ -6035,6 +6039,11 @@ func (o KubernetesClusterNodePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+func (o KubernetesClusterNodePoolOutput) Taints() KubernetesClusterNodePoolTaintArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterNodePool) []KubernetesClusterNodePoolTaint { return v.Taints }).(KubernetesClusterNodePoolTaintArrayOutput)
+}
+
 type KubernetesClusterNodePoolPtrOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterNodePoolPtrOutput) ElementType() reflect.Type {
@@ -6161,6 +6170,16 @@ func (o KubernetesClusterNodePoolPtrOutput) Tags() pulumi.StringArrayOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringArrayOutput)
+}
+
+// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+func (o KubernetesClusterNodePoolPtrOutput) Taints() KubernetesClusterNodePoolTaintArrayOutput {
+	return o.ApplyT(func(v *KubernetesClusterNodePool) []KubernetesClusterNodePoolTaint {
+		if v == nil {
+			return nil
+		}
+		return v.Taints
+	}).(KubernetesClusterNodePoolTaintArrayOutput)
 }
 
 type KubernetesClusterNodePoolNode struct {
@@ -6305,6 +6324,121 @@ func (o KubernetesClusterNodePoolNodeArrayOutput) Index(i pulumi.IntInput) Kuber
 	}).(KubernetesClusterNodePoolNodeOutput)
 }
 
+type KubernetesClusterNodePoolTaint struct {
+	// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+	Effect string `pulumi:"effect"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Key string `pulumi:"key"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Value string `pulumi:"value"`
+}
+
+// KubernetesClusterNodePoolTaintInput is an input type that accepts KubernetesClusterNodePoolTaintArgs and KubernetesClusterNodePoolTaintOutput values.
+// You can construct a concrete instance of `KubernetesClusterNodePoolTaintInput` via:
+//
+//          KubernetesClusterNodePoolTaintArgs{...}
+type KubernetesClusterNodePoolTaintInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNodePoolTaintOutput() KubernetesClusterNodePoolTaintOutput
+	ToKubernetesClusterNodePoolTaintOutputWithContext(context.Context) KubernetesClusterNodePoolTaintOutput
+}
+
+type KubernetesClusterNodePoolTaintArgs struct {
+	// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Key pulumi.StringInput `pulumi:"key"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (KubernetesClusterNodePoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNodePoolTaint)(nil)).Elem()
+}
+
+func (i KubernetesClusterNodePoolTaintArgs) ToKubernetesClusterNodePoolTaintOutput() KubernetesClusterNodePoolTaintOutput {
+	return i.ToKubernetesClusterNodePoolTaintOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNodePoolTaintArgs) ToKubernetesClusterNodePoolTaintOutputWithContext(ctx context.Context) KubernetesClusterNodePoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNodePoolTaintOutput)
+}
+
+// KubernetesClusterNodePoolTaintArrayInput is an input type that accepts KubernetesClusterNodePoolTaintArray and KubernetesClusterNodePoolTaintArrayOutput values.
+// You can construct a concrete instance of `KubernetesClusterNodePoolTaintArrayInput` via:
+//
+//          KubernetesClusterNodePoolTaintArray{ KubernetesClusterNodePoolTaintArgs{...} }
+type KubernetesClusterNodePoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNodePoolTaintArrayOutput() KubernetesClusterNodePoolTaintArrayOutput
+	ToKubernetesClusterNodePoolTaintArrayOutputWithContext(context.Context) KubernetesClusterNodePoolTaintArrayOutput
+}
+
+type KubernetesClusterNodePoolTaintArray []KubernetesClusterNodePoolTaintInput
+
+func (KubernetesClusterNodePoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesClusterNodePoolTaint)(nil)).Elem()
+}
+
+func (i KubernetesClusterNodePoolTaintArray) ToKubernetesClusterNodePoolTaintArrayOutput() KubernetesClusterNodePoolTaintArrayOutput {
+	return i.ToKubernetesClusterNodePoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNodePoolTaintArray) ToKubernetesClusterNodePoolTaintArrayOutputWithContext(ctx context.Context) KubernetesClusterNodePoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNodePoolTaintArrayOutput)
+}
+
+type KubernetesClusterNodePoolTaintOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNodePoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNodePoolTaint)(nil)).Elem()
+}
+
+func (o KubernetesClusterNodePoolTaintOutput) ToKubernetesClusterNodePoolTaintOutput() KubernetesClusterNodePoolTaintOutput {
+	return o
+}
+
+func (o KubernetesClusterNodePoolTaintOutput) ToKubernetesClusterNodePoolTaintOutputWithContext(ctx context.Context) KubernetesClusterNodePoolTaintOutput {
+	return o
+}
+
+// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+func (o KubernetesClusterNodePoolTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodePoolTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+func (o KubernetesClusterNodePoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+func (o KubernetesClusterNodePoolTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodePoolTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type KubernetesClusterNodePoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNodePoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesClusterNodePoolTaint)(nil)).Elem()
+}
+
+func (o KubernetesClusterNodePoolTaintArrayOutput) ToKubernetesClusterNodePoolTaintArrayOutput() KubernetesClusterNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o KubernetesClusterNodePoolTaintArrayOutput) ToKubernetesClusterNodePoolTaintArrayOutputWithContext(ctx context.Context) KubernetesClusterNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o KubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) KubernetesClusterNodePoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesClusterNodePoolTaint {
+		return vs[0].([]KubernetesClusterNodePoolTaint)[vs[1].(int)]
+	}).(KubernetesClusterNodePoolTaintOutput)
+}
+
 type KubernetesNodePoolNode struct {
 	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -6445,6 +6579,121 @@ func (o KubernetesNodePoolNodeArrayOutput) Index(i pulumi.IntInput) KubernetesNo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesNodePoolNode {
 		return vs[0].([]KubernetesNodePoolNode)[vs[1].(int)]
 	}).(KubernetesNodePoolNodeOutput)
+}
+
+type KubernetesNodePoolTaint struct {
+	// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+	Effect string `pulumi:"effect"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Key string `pulumi:"key"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Value string `pulumi:"value"`
+}
+
+// KubernetesNodePoolTaintInput is an input type that accepts KubernetesNodePoolTaintArgs and KubernetesNodePoolTaintOutput values.
+// You can construct a concrete instance of `KubernetesNodePoolTaintInput` via:
+//
+//          KubernetesNodePoolTaintArgs{...}
+type KubernetesNodePoolTaintInput interface {
+	pulumi.Input
+
+	ToKubernetesNodePoolTaintOutput() KubernetesNodePoolTaintOutput
+	ToKubernetesNodePoolTaintOutputWithContext(context.Context) KubernetesNodePoolTaintOutput
+}
+
+type KubernetesNodePoolTaintArgs struct {
+	// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Key pulumi.StringInput `pulumi:"key"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (KubernetesNodePoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesNodePoolTaint)(nil)).Elem()
+}
+
+func (i KubernetesNodePoolTaintArgs) ToKubernetesNodePoolTaintOutput() KubernetesNodePoolTaintOutput {
+	return i.ToKubernetesNodePoolTaintOutputWithContext(context.Background())
+}
+
+func (i KubernetesNodePoolTaintArgs) ToKubernetesNodePoolTaintOutputWithContext(ctx context.Context) KubernetesNodePoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolTaintOutput)
+}
+
+// KubernetesNodePoolTaintArrayInput is an input type that accepts KubernetesNodePoolTaintArray and KubernetesNodePoolTaintArrayOutput values.
+// You can construct a concrete instance of `KubernetesNodePoolTaintArrayInput` via:
+//
+//          KubernetesNodePoolTaintArray{ KubernetesNodePoolTaintArgs{...} }
+type KubernetesNodePoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesNodePoolTaintArrayOutput() KubernetesNodePoolTaintArrayOutput
+	ToKubernetesNodePoolTaintArrayOutputWithContext(context.Context) KubernetesNodePoolTaintArrayOutput
+}
+
+type KubernetesNodePoolTaintArray []KubernetesNodePoolTaintInput
+
+func (KubernetesNodePoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesNodePoolTaint)(nil)).Elem()
+}
+
+func (i KubernetesNodePoolTaintArray) ToKubernetesNodePoolTaintArrayOutput() KubernetesNodePoolTaintArrayOutput {
+	return i.ToKubernetesNodePoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesNodePoolTaintArray) ToKubernetesNodePoolTaintArrayOutputWithContext(ctx context.Context) KubernetesNodePoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolTaintArrayOutput)
+}
+
+type KubernetesNodePoolTaintOutput struct{ *pulumi.OutputState }
+
+func (KubernetesNodePoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesNodePoolTaint)(nil)).Elem()
+}
+
+func (o KubernetesNodePoolTaintOutput) ToKubernetesNodePoolTaintOutput() KubernetesNodePoolTaintOutput {
+	return o
+}
+
+func (o KubernetesNodePoolTaintOutput) ToKubernetesNodePoolTaintOutputWithContext(ctx context.Context) KubernetesNodePoolTaintOutput {
+	return o
+}
+
+// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+func (o KubernetesNodePoolTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesNodePoolTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+func (o KubernetesNodePoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesNodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+func (o KubernetesNodePoolTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesNodePoolTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type KubernetesNodePoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesNodePoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesNodePoolTaint)(nil)).Elem()
+}
+
+func (o KubernetesNodePoolTaintArrayOutput) ToKubernetesNodePoolTaintArrayOutput() KubernetesNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o KubernetesNodePoolTaintArrayOutput) ToKubernetesNodePoolTaintArrayOutputWithContext(ctx context.Context) KubernetesNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o KubernetesNodePoolTaintArrayOutput) Index(i pulumi.IntInput) KubernetesNodePoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesNodePoolTaint {
+		return vs[0].([]KubernetesNodePoolTaint)[vs[1].(int)]
+	}).(KubernetesNodePoolTaintOutput)
 }
 
 type LoadBalancerForwardingRule struct {
@@ -14679,6 +14928,8 @@ type GetKubernetesClusterNodePool struct {
 	Size string `pulumi:"size"`
 	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
+	// A list of taints applied to all nodes in the pool. Each taint exports the following attributes:
+	Taints []GetKubernetesClusterNodePoolTaint `pulumi:"taints"`
 }
 
 // GetKubernetesClusterNodePoolInput is an input type that accepts GetKubernetesClusterNodePoolArgs and GetKubernetesClusterNodePoolOutput values.
@@ -14715,6 +14966,8 @@ type GetKubernetesClusterNodePoolArgs struct {
 	Size pulumi.StringInput `pulumi:"size"`
 	// A list of tag names applied to the node pool.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// A list of taints applied to all nodes in the pool. Each taint exports the following attributes:
+	Taints GetKubernetesClusterNodePoolTaintArrayInput `pulumi:"taints"`
 }
 
 func (GetKubernetesClusterNodePoolArgs) ElementType() reflect.Type {
@@ -14821,6 +15074,11 @@ func (o GetKubernetesClusterNodePoolOutput) Size() pulumi.StringOutput {
 // A list of tag names applied to the node pool.
 func (o GetKubernetesClusterNodePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// A list of taints applied to all nodes in the pool. Each taint exports the following attributes:
+func (o GetKubernetesClusterNodePoolOutput) Taints() GetKubernetesClusterNodePoolTaintArrayOutput {
+	return o.ApplyT(func(v GetKubernetesClusterNodePool) []GetKubernetesClusterNodePoolTaint { return v.Taints }).(GetKubernetesClusterNodePoolTaintArrayOutput)
 }
 
 type GetKubernetesClusterNodePoolArrayOutput struct{ *pulumi.OutputState }
@@ -14980,6 +15238,121 @@ func (o GetKubernetesClusterNodePoolNodeArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterNodePoolNode {
 		return vs[0].([]GetKubernetesClusterNodePoolNode)[vs[1].(int)]
 	}).(GetKubernetesClusterNodePoolNodeOutput)
+}
+
+type GetKubernetesClusterNodePoolTaint struct {
+	// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+	Effect string `pulumi:"effect"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Key string `pulumi:"key"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Value string `pulumi:"value"`
+}
+
+// GetKubernetesClusterNodePoolTaintInput is an input type that accepts GetKubernetesClusterNodePoolTaintArgs and GetKubernetesClusterNodePoolTaintOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterNodePoolTaintInput` via:
+//
+//          GetKubernetesClusterNodePoolTaintArgs{...}
+type GetKubernetesClusterNodePoolTaintInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterNodePoolTaintOutput() GetKubernetesClusterNodePoolTaintOutput
+	ToGetKubernetesClusterNodePoolTaintOutputWithContext(context.Context) GetKubernetesClusterNodePoolTaintOutput
+}
+
+type GetKubernetesClusterNodePoolTaintArgs struct {
+	// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Key pulumi.StringInput `pulumi:"key"`
+	// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetKubernetesClusterNodePoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterNodePoolTaint)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterNodePoolTaintArgs) ToGetKubernetesClusterNodePoolTaintOutput() GetKubernetesClusterNodePoolTaintOutput {
+	return i.ToGetKubernetesClusterNodePoolTaintOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterNodePoolTaintArgs) ToGetKubernetesClusterNodePoolTaintOutputWithContext(ctx context.Context) GetKubernetesClusterNodePoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNodePoolTaintOutput)
+}
+
+// GetKubernetesClusterNodePoolTaintArrayInput is an input type that accepts GetKubernetesClusterNodePoolTaintArray and GetKubernetesClusterNodePoolTaintArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterNodePoolTaintArrayInput` via:
+//
+//          GetKubernetesClusterNodePoolTaintArray{ GetKubernetesClusterNodePoolTaintArgs{...} }
+type GetKubernetesClusterNodePoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterNodePoolTaintArrayOutput() GetKubernetesClusterNodePoolTaintArrayOutput
+	ToGetKubernetesClusterNodePoolTaintArrayOutputWithContext(context.Context) GetKubernetesClusterNodePoolTaintArrayOutput
+}
+
+type GetKubernetesClusterNodePoolTaintArray []GetKubernetesClusterNodePoolTaintInput
+
+func (GetKubernetesClusterNodePoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterNodePoolTaint)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterNodePoolTaintArray) ToGetKubernetesClusterNodePoolTaintArrayOutput() GetKubernetesClusterNodePoolTaintArrayOutput {
+	return i.ToGetKubernetesClusterNodePoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterNodePoolTaintArray) ToGetKubernetesClusterNodePoolTaintArrayOutputWithContext(ctx context.Context) GetKubernetesClusterNodePoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNodePoolTaintArrayOutput)
+}
+
+type GetKubernetesClusterNodePoolTaintOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterNodePoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterNodePoolTaint)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterNodePoolTaintOutput) ToGetKubernetesClusterNodePoolTaintOutput() GetKubernetesClusterNodePoolTaintOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNodePoolTaintOutput) ToGetKubernetesClusterNodePoolTaintOutputWithContext(ctx context.Context) GetKubernetesClusterNodePoolTaintOutput {
+	return o
+}
+
+// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+func (o GetKubernetesClusterNodePoolTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+func (o GetKubernetesClusterNodePoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+func (o GetKubernetesClusterNodePoolTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterNodePoolTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetKubernetesClusterNodePoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterNodePoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterNodePoolTaint)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterNodePoolTaintArrayOutput) ToGetKubernetesClusterNodePoolTaintArrayOutput() GetKubernetesClusterNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNodePoolTaintArrayOutput) ToGetKubernetesClusterNodePoolTaintArrayOutputWithContext(ctx context.Context) GetKubernetesClusterNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) GetKubernetesClusterNodePoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterNodePoolTaint {
+		return vs[0].([]GetKubernetesClusterNodePoolTaint)[vs[1].(int)]
+	}).(GetKubernetesClusterNodePoolTaintOutput)
 }
 
 type GetLoadBalancerForwardingRule struct {
@@ -18179,8 +18552,12 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNodePoolTaintOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesNodePoolTaintOutput{})
+	pulumi.RegisterOutputType(KubernetesNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(LoadBalancerForwardingRuleArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckOutput{})
@@ -18288,6 +18665,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolNodeOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckOutput{})

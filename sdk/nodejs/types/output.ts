@@ -1877,7 +1877,11 @@ export interface GetKubernetesClusterNodePool {
     /**
      * A list of tag names applied to the node pool.
      */
-    tags?: string[];
+    tags: string[];
+    /**
+     * A list of taints applied to all nodes in the pool. Each taint exports the following attributes:
+     */
+    taints: outputs.GetKubernetesClusterNodePoolTaint[];
 }
 
 export interface GetKubernetesClusterNodePoolNode {
@@ -1902,6 +1906,21 @@ export interface GetKubernetesClusterNodePoolNode {
      * The date and time when the node was last updated.
      */
     updatedAt: string;
+}
+
+export interface GetKubernetesClusterNodePoolTaint {
+    /**
+     * How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+     */
+    effect: string;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    key: string;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    value: string;
 }
 
 export interface GetLoadBalancerForwardingRule {
@@ -2431,6 +2450,10 @@ export interface KubernetesClusterNodePool {
      * A list of tag names to be applied to the Kubernetes cluster.
      */
     tags?: string[];
+    /**
+     * A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+     */
+    taints?: outputs.KubernetesClusterNodePoolTaint[];
 }
 
 export interface KubernetesClusterNodePoolNode {
@@ -2460,6 +2483,21 @@ export interface KubernetesClusterNodePoolNode {
     updatedAt: string;
 }
 
+export interface KubernetesClusterNodePoolTaint {
+    /**
+     * How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+     */
+    effect: string;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    key: string;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    value: string;
+}
+
 export interface KubernetesNodePoolNode {
     /**
      * The date and time when the node was created.
@@ -2485,6 +2523,21 @@ export interface KubernetesNodePoolNode {
      * The date and time when the node was last updated.
      */
     updatedAt: string;
+}
+
+export interface KubernetesNodePoolTaint {
+    /**
+     * How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+     */
+    effect: string;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    key: string;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    value: string;
 }
 
 export interface LoadBalancerForwardingRule {

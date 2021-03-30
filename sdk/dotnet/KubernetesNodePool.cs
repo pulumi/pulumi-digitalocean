@@ -48,6 +48,15 @@ namespace Pulumi.DigitalOcean
     ///                 { "service", "backend" },
     ///                 { "priority", "high" },
     ///             },
+    ///             Taints = 
+    ///             {
+    ///                 new DigitalOcean.Inputs.KubernetesNodePoolTaintArgs
+    ///                 {
+    ///                     Key = "workloadKind",
+    ///                     Value = "database",
+    ///                     Effect = "NoSchedule",
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -157,6 +166,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of taints applied to all nodes in the pool.
+        /// </summary>
+        [Output("taints")]
+        public Output<ImmutableArray<Outputs.KubernetesNodePoolTaint>> Taints { get; private set; } = null!;
 
 
         /// <summary>
@@ -270,6 +285,18 @@ namespace Pulumi.DigitalOcean
             set => _tags = value;
         }
 
+        [Input("taints")]
+        private InputList<Inputs.KubernetesNodePoolTaintArgs>? _taints;
+
+        /// <summary>
+        /// A list of taints applied to all nodes in the pool.
+        /// </summary>
+        public InputList<Inputs.KubernetesNodePoolTaintArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.KubernetesNodePoolTaintArgs>());
+            set => _taints = value;
+        }
+
         public KubernetesNodePoolArgs()
         {
         }
@@ -359,6 +386,18 @@ namespace Pulumi.DigitalOcean
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
+        }
+
+        [Input("taints")]
+        private InputList<Inputs.KubernetesNodePoolTaintGetArgs>? _taints;
+
+        /// <summary>
+        /// A list of taints applied to all nodes in the pool.
+        /// </summary>
+        public InputList<Inputs.KubernetesNodePoolTaintGetArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.KubernetesNodePoolTaintGetArgs>());
+            set => _taints = value;
         }
 
         public KubernetesNodePoolState()

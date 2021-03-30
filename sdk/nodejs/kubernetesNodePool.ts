@@ -35,6 +35,11 @@ import {DropletSlug} from "./index";
  *         service: "backend",
  *         priority: "high",
  *     },
+ *     taints: [{
+ *         key: "workloadKind",
+ *         value: "database",
+ *         effect: "NoSchedule",
+ *     }],
  * });
  * ```
  * ### Autoscaling Example
@@ -137,6 +142,10 @@ export class KubernetesNodePool extends pulumi.CustomResource {
      * A list of tag names to be applied to the Kubernetes cluster.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of taints applied to all nodes in the pool.
+     */
+    public readonly taints!: pulumi.Output<outputs.KubernetesNodePoolTaint[] | undefined>;
 
     /**
      * Create a KubernetesNodePool resource with the given unique name, arguments, and options.
@@ -162,6 +171,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["nodes"] = state ? state.nodes : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as KubernetesNodePoolArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -179,6 +189,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["taints"] = args ? args.taints : undefined;
             inputs["actualNodeCount"] = undefined /*out*/;
             inputs["nodes"] = undefined /*out*/;
         }
@@ -237,6 +248,10 @@ export interface KubernetesNodePoolState {
      * A list of tag names to be applied to the Kubernetes cluster.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of taints applied to all nodes in the pool.
+     */
+    readonly taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[]>;
 }
 
 /**
@@ -279,4 +294,8 @@ export interface KubernetesNodePoolArgs {
      * A list of tag names to be applied to the Kubernetes cluster.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of taints applied to all nodes in the pool.
+     */
+    readonly taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[]>;
 }

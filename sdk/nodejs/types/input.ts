@@ -1300,6 +1300,10 @@ export interface KubernetesClusterNodePool {
      * A list of tag names to be applied to the Kubernetes cluster.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+     */
+    taints?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterNodePoolTaint>[]>;
 }
 
 export interface KubernetesClusterNodePoolNode {
@@ -1329,6 +1333,21 @@ export interface KubernetesClusterNodePoolNode {
     updatedAt?: pulumi.Input<string>;
 }
 
+export interface KubernetesClusterNodePoolTaint {
+    /**
+     * How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+     */
+    effect: pulumi.Input<string>;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface KubernetesNodePoolNode {
     /**
      * The date and time when the node was created.
@@ -1354,6 +1373,21 @@ export interface KubernetesNodePoolNode {
      * The date and time when the node was last updated.
      */
     updatedAt?: pulumi.Input<string>;
+}
+
+export interface KubernetesNodePoolTaint {
+    /**
+     * How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+     */
+    effect: pulumi.Input<string>;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface LoadBalancerForwardingRule {
