@@ -47,7 +47,9 @@ __all__ = [
     'KubernetesClusterKubeConfigArgs',
     'KubernetesClusterNodePoolArgs',
     'KubernetesClusterNodePoolNodeArgs',
+    'KubernetesClusterNodePoolTaintArgs',
     'KubernetesNodePoolNodeArgs',
+    'KubernetesNodePoolTaintArgs',
     'LoadBalancerForwardingRuleArgs',
     'LoadBalancerHealthcheckArgs',
     'LoadBalancerStickySessionsArgs',
@@ -3206,7 +3208,8 @@ class KubernetesClusterNodePoolArgs:
                  min_nodes: Optional[pulumi.Input[int]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgs']]]] = None):
         """
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
@@ -3219,6 +3222,7 @@ class KubernetesClusterNodePoolArgs:
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]] nodes: A list of nodes in the pool. Each node exports the following attributes:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgs']]] taints: A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
@@ -3240,6 +3244,8 @@ class KubernetesClusterNodePoolArgs:
             pulumi.set(__self__, "nodes", nodes)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
 
     @property
     @pulumi.getter
@@ -3373,6 +3379,18 @@ class KubernetesClusterNodePoolArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgs']]]]:
+        """
+        A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+        """
+        return pulumi.get(self, "taints")
+
+    @taints.setter
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgs']]]]):
+        pulumi.set(self, "taints", value)
+
 
 @pulumi.input_type
 class KubernetesClusterNodePoolNodeArgs:
@@ -3478,6 +3496,58 @@ class KubernetesClusterNodePoolNodeArgs:
 
 
 @pulumi.input_type
+class KubernetesClusterNodePoolTaintArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] effect: How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+        :param pulumi.Input[str] key: An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        :param pulumi.Input[str] value: An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        """
+        How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class KubernetesNodePoolNodeArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
@@ -3578,6 +3648,58 @@ class KubernetesNodePoolNodeArgs:
     @updated_at.setter
     def updated_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "updated_at", value)
+
+
+@pulumi.input_type
+class KubernetesNodePoolTaintArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] effect: How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+        :param pulumi.Input[str] key: An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        :param pulumi.Input[str] value: An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        """
+        How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

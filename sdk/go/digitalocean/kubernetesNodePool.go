@@ -49,6 +49,13 @@ import (
 // 				"service":  pulumi.String("backend"),
 // 				"priority": pulumi.String("high"),
 // 			},
+// 			Taints: digitalocean.KubernetesNodePoolTaintArray{
+// 				&digitalocean.KubernetesNodePoolTaintArgs{
+// 					Key:    pulumi.String("workloadKind"),
+// 					Value:  pulumi.String("database"),
+// 					Effect: pulumi.String("NoSchedule"),
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -121,6 +128,8 @@ type KubernetesNodePool struct {
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// A list of taints applied to all nodes in the pool.
+	Taints KubernetesNodePoolTaintArrayOutput `pulumi:"taints"`
 }
 
 // NewKubernetesNodePool registers a new resource with the given unique name, arguments, and options.
@@ -180,6 +189,8 @@ type kubernetesNodePoolState struct {
 	Size *string `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
+	// A list of taints applied to all nodes in the pool.
+	Taints []KubernetesNodePoolTaint `pulumi:"taints"`
 }
 
 type KubernetesNodePoolState struct {
@@ -205,6 +216,8 @@ type KubernetesNodePoolState struct {
 	Size pulumi.StringPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
+	// A list of taints applied to all nodes in the pool.
+	Taints KubernetesNodePoolTaintArrayInput
 }
 
 func (KubernetesNodePoolState) ElementType() reflect.Type {
@@ -230,6 +243,8 @@ type kubernetesNodePoolArgs struct {
 	Size string `pulumi:"size"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
+	// A list of taints applied to all nodes in the pool.
+	Taints []KubernetesNodePoolTaint `pulumi:"taints"`
 }
 
 // The set of arguments for constructing a KubernetesNodePool resource.
@@ -252,6 +267,8 @@ type KubernetesNodePoolArgs struct {
 	Size pulumi.StringInput
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
+	// A list of taints applied to all nodes in the pool.
+	Taints KubernetesNodePoolTaintArrayInput
 }
 
 func (KubernetesNodePoolArgs) ElementType() reflect.Type {

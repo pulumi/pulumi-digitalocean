@@ -57,6 +57,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// A list of tag names applied to the node pool.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// A list of taints applied to all nodes in the pool. Each taint exports the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterNodePoolTaintResult> Taints;
 
         [OutputConstructor]
         private GetKubernetesClusterNodePoolResult(
@@ -80,7 +84,9 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string size,
 
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+
+            ImmutableArray<Outputs.GetKubernetesClusterNodePoolTaintResult> taints)
         {
             ActualNodeCount = actualNodeCount;
             AutoScale = autoScale;
@@ -93,6 +99,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Nodes = nodes;
             Size = size;
             Tags = tags;
+            Taints = taints;
         }
     }
 }

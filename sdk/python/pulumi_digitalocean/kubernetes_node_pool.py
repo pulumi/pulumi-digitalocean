@@ -26,6 +26,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  node_count: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -55,7 +56,12 @@ class KubernetesNodePool(pulumi.CustomResource):
             labels={
                 "service": "backend",
                 "priority": "high",
-            })
+            },
+            taints=[digitalocean.KubernetesNodePoolTaintArgs(
+                key="workloadKind",
+                value="database",
+                effect="NoSchedule",
+            )])
         ```
         ### Autoscaling Example
 
@@ -95,6 +101,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]] taints: A list of taints applied to all nodes in the pool.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,6 +133,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['tags'] = tags
+            __props__['taints'] = taints
             __props__['actual_node_count'] = None
             __props__['nodes'] = None
         super(KubernetesNodePool, __self__).__init__(
@@ -148,7 +156,8 @@ class KubernetesNodePool(pulumi.CustomResource):
             node_count: Optional[pulumi.Input[int]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolNodeArgs']]]]] = None,
             size: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'KubernetesNodePool':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]]] = None) -> 'KubernetesNodePool':
         """
         Get an existing KubernetesNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -167,6 +176,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolNodeArgs']]]] nodes: A list of nodes in the pool. Each node exports the following attributes:
         :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]] taints: A list of taints applied to all nodes in the pool.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -183,6 +193,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         __props__["nodes"] = nodes
         __props__["size"] = size
         __props__["tags"] = tags
+        __props__["taints"] = taints
         return KubernetesNodePool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -272,6 +283,14 @@ class KubernetesNodePool(pulumi.CustomResource):
         A list of tag names to be applied to the Kubernetes cluster.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesNodePoolTaint']]]:
+        """
+        A list of taints applied to all nodes in the pool.
+        """
+        return pulumi.get(self, "taints")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

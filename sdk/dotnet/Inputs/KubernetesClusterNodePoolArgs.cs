@@ -96,6 +96,18 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _tags = value;
         }
 
+        [Input("taints")]
+        private InputList<Inputs.KubernetesClusterNodePoolTaintArgs>? _taints;
+
+        /// <summary>
+        /// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+        /// </summary>
+        public InputList<Inputs.KubernetesClusterNodePoolTaintArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.KubernetesClusterNodePoolTaintArgs>());
+            set => _taints = value;
+        }
+
         public KubernetesClusterNodePoolArgs()
         {
         }
