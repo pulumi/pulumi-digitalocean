@@ -5,13 +5,84 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Vpc']
+__all__ = ['VpcArgs', 'Vpc']
+
+@pulumi.input_type
+class VpcArgs:
+    def __init__(__self__, *,
+                 region: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 ip_range: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Vpc resource.
+        :param pulumi.Input[str] region: The DigitalOcean region slug for the VPC's location.
+        :param pulumi.Input[str] description: A free-form text field up to a limit of 255 characters to describe the VPC.
+        :param pulumi.Input[str] ip_range: The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
+        :param pulumi.Input[str] name: A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
+        """
+        pulumi.set(__self__, "region", region)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip_range is not None:
+            pulumi.set(__self__, "ip_range", ip_range)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        The DigitalOcean region slug for the VPC's location.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A free-form text field up to a limit of 255 characters to describe the VPC.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipRange")
+    def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
+        """
+        return pulumi.get(self, "ip_range")
+
+    @ip_range.setter
+    def ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_range", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Vpc(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -71,6 +142,76 @@ class Vpc(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
         :param pulumi.Input[str] region: The DigitalOcean region slug for the VPC's location.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VpcArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a [DigitalOcean VPC](https://developers.digitalocean.com/documentation/v2/#vpcs) resource.
+
+        VPCs are virtual networks containing resources that can communicate with each
+        other in full isolation, using private IP addresses.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example = digitalocean.Vpc("example",
+            ip_range="10.10.10.0/24",
+            region="nyc3")
+        ```
+        ### Resource Assignment
+
+        `Droplet`, `KubernetesCluster`,
+        `digitalocean_load_balancer`, and `DatabaseCluster` resources
+        may be assigned to a VPC by referencing its `id`. For example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
+        example_droplet = digitalocean.Droplet("exampleDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3",
+            vpc_uuid=example_vpc.id)
+        ```
+
+        ## Import
+
+        A VPC can be imported using its `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VpcArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VpcArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ip_range: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

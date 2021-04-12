@@ -5,13 +5,105 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Provider']
+__all__ = ['ProviderArgs', 'Provider']
+
+@pulumi.input_type
+class ProviderArgs:
+    def __init__(__self__, *,
+                 api_endpoint: Optional[pulumi.Input[str]] = None,
+                 spaces_access_id: Optional[pulumi.Input[str]] = None,
+                 spaces_endpoint: Optional[pulumi.Input[str]] = None,
+                 spaces_secret_key: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[str] api_endpoint: The URL to use for the DigitalOcean API.
+        :param pulumi.Input[str] spaces_access_id: The access key ID for Spaces API operations.
+        :param pulumi.Input[str] spaces_endpoint: The URL to use for the DigitalOcean Spaces API.
+        :param pulumi.Input[str] spaces_secret_key: The secret access key for Spaces API operations.
+        :param pulumi.Input[str] token: The token key for API operations.
+        """
+        if api_endpoint is None:
+            api_endpoint = (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
+        if api_endpoint is not None:
+            pulumi.set(__self__, "api_endpoint", api_endpoint)
+        if spaces_access_id is not None:
+            pulumi.set(__self__, "spaces_access_id", spaces_access_id)
+        if spaces_endpoint is None:
+            spaces_endpoint = _utilities.get_env('SPACES_ENDPOINT_URL')
+        if spaces_endpoint is not None:
+            pulumi.set(__self__, "spaces_endpoint", spaces_endpoint)
+        if spaces_secret_key is not None:
+            pulumi.set(__self__, "spaces_secret_key", spaces_secret_key)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter(name="apiEndpoint")
+    def api_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to use for the DigitalOcean API.
+        """
+        return pulumi.get(self, "api_endpoint")
+
+    @api_endpoint.setter
+    def api_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_endpoint", value)
+
+    @property
+    @pulumi.getter(name="spacesAccessId")
+    def spaces_access_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access key ID for Spaces API operations.
+        """
+        return pulumi.get(self, "spaces_access_id")
+
+    @spaces_access_id.setter
+    def spaces_access_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spaces_access_id", value)
+
+    @property
+    @pulumi.getter(name="spacesEndpoint")
+    def spaces_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to use for the DigitalOcean Spaces API.
+        """
+        return pulumi.get(self, "spaces_endpoint")
+
+    @spaces_endpoint.setter
+    def spaces_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spaces_endpoint", value)
+
+    @property
+    @pulumi.getter(name="spacesSecretKey")
+    def spaces_secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secret access key for Spaces API operations.
+        """
+        return pulumi.get(self, "spaces_secret_key")
+
+    @spaces_secret_key.setter
+    def spaces_secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spaces_secret_key", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The token key for API operations.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
 
 
 class Provider(pulumi.ProviderResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +129,41 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] spaces_secret_key: The secret access key for Spaces API operations.
         :param pulumi.Input[str] token: The token key for API operations.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ProviderArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The provider type for the digitalocean package. By default, resources use package-wide configuration
+        settings, however an explicit `Provider` instance may be created and passed during resource
+        construction to achieve fine-grained programmatic control over provider settings. See the
+        [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
+        :param str resource_name: The name of the resource.
+        :param ProviderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProviderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 api_endpoint: Optional[pulumi.Input[str]] = None,
+                 spaces_access_id: Optional[pulumi.Input[str]] = None,
+                 spaces_endpoint: Optional[pulumi.Input[str]] = None,
+                 spaces_secret_key: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

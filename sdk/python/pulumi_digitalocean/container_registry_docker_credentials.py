@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ContainerRegistryDockerCredentials']
+__all__ = ['ContainerRegistryDockerCredentialsArgs', 'ContainerRegistryDockerCredentials']
+
+@pulumi.input_type
+class ContainerRegistryDockerCredentialsArgs:
+    def __init__(__self__, *,
+                 registry_name: pulumi.Input[str],
+                 expiry_seconds: Optional[pulumi.Input[int]] = None,
+                 write: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a ContainerRegistryDockerCredentials resource.
+        :param pulumi.Input[str] registry_name: The name of the container registry.
+        :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
+        :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
+        """
+        pulumi.set(__self__, "registry_name", registry_name)
+        if expiry_seconds is not None:
+            pulumi.set(__self__, "expiry_seconds", expiry_seconds)
+        if write is not None:
+            pulumi.set(__self__, "write", write)
+
+    @property
+    @pulumi.getter(name="registryName")
+    def registry_name(self) -> pulumi.Input[str]:
+        """
+        The name of the container registry.
+        """
+        return pulumi.get(self, "registry_name")
+
+    @registry_name.setter
+    def registry_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_name", value)
+
+    @property
+    @pulumi.getter(name="expirySeconds")
+    def expiry_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
+        """
+        return pulumi.get(self, "expiry_seconds")
+
+    @expiry_seconds.setter
+    def expiry_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiry_seconds", value)
+
+    @property
+    @pulumi.getter
+    def write(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow for write access to the container registry. Defaults to false.
+        """
+        return pulumi.get(self, "write")
+
+    @write.setter
+    def write(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "write", value)
 
 
 class ContainerRegistryDockerCredentials(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +110,61 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         :param pulumi.Input[str] registry_name: The name of the container registry.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ContainerRegistryDockerCredentialsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Get Docker credentials for your DigitalOcean container registry.
+
+        An error is triggered if the provided container registry name does not exist.
+
+        ## Example Usage
+        ### Basic Example
+
+        Get the container registry:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
+        ```
+        ### Docker Provider Example
+
+        Use the `endpoint` and `docker_credentials` with the Docker provider:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example_container_registry = digitalocean.get_container_registry(name="example")
+        example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", registry_name="example")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ContainerRegistryDockerCredentialsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ContainerRegistryDockerCredentialsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 expiry_seconds: Optional[pulumi.Input[int]] = None,
+                 registry_name: Optional[pulumi.Input[str]] = None,
+                 write: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

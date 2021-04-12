@@ -5,13 +5,264 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Droplet']
+__all__ = ['DropletArgs', 'Droplet']
+
+@pulumi.input_type
+class DropletArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[str],
+                 region: pulumi.Input[str],
+                 size: pulumi.Input[str],
+                 backups: Optional[pulumi.Input[bool]] = None,
+                 ipv6: Optional[pulumi.Input[bool]] = None,
+                 monitoring: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_networking: Optional[pulumi.Input[bool]] = None,
+                 resize_disk: Optional[pulumi.Input[bool]] = None,
+                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_uuid: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Droplet resource.
+        :param pulumi.Input[str] image: The Droplet image ID or slug.
+        :param pulumi.Input[str] region: The region to start in.
+        :param pulumi.Input[str] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
+               false.
+        :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
+        :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
+               Defaults to false.
+        :param pulumi.Input[str] name: The Droplet name.
+        :param pulumi.Input[bool] private_networking: Boolean controlling if private networking
+               is enabled. When VPC is enabled on an account, this will provision the
+               Droplet inside of your account's default VPC for the region. Use the
+               `vpc_uuid` attribute to specify a different VPC.
+        :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
+               size when resizing a Droplet. It defaults to `true`. When set to `false`,
+               only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
+               size is a permanent change**. Increasing only RAM and CPU is reversible.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH IDs or fingerprints to enable in
+               the format `[12345, 123456]`. To retrieve this info, use a tool such
+               as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
+               to retrieve them.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
+        :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "size", size)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if private_networking is not None:
+            pulumi.set(__self__, "private_networking", private_networking)
+        if resize_disk is not None:
+            pulumi.set(__self__, "resize_disk", resize_disk)
+        if ssh_keys is not None:
+            pulumi.set(__self__, "ssh_keys", ssh_keys)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if volume_ids is not None:
+            pulumi.set(__self__, "volume_ids", volume_ids)
+        if vpc_uuid is not None:
+            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[str]:
+        """
+        The Droplet image ID or slug.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        The region to start in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[str]:
+        """
+        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[str]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def backups(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean controlling if backups are made. Defaults to
+        false.
+        """
+        return pulumi.get(self, "backups")
+
+    @backups.setter
+    def backups(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backups", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean controlling if IPv6 is enabled. Defaults to false.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv6", value)
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean controlling whether monitoring agent is installed.
+        Defaults to false.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @monitoring.setter
+    def monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Droplet name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="privateNetworking")
+    def private_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean controlling if private networking
+        is enabled. When VPC is enabled on an account, this will provision the
+        Droplet inside of your account's default VPC for the region. Use the
+        `vpc_uuid` attribute to specify a different VPC.
+        """
+        return pulumi.get(self, "private_networking")
+
+    @private_networking.setter
+    def private_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private_networking", value)
+
+    @property
+    @pulumi.getter(name="resizeDisk")
+    def resize_disk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean controlling whether to increase the disk
+        size when resizing a Droplet. It defaults to `true`. When set to `false`,
+        only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
+        size is a permanent change**. Increasing only RAM and CPU is reversible.
+        """
+        return pulumi.get(self, "resize_disk")
+
+    @resize_disk.setter
+    def resize_disk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "resize_disk", value)
+
+    @property
+    @pulumi.getter(name="sshKeys")
+    def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of SSH IDs or fingerprints to enable in
+        the format `[12345, 123456]`. To retrieve this info, use a tool such
+        as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
+        to retrieve them.
+        """
+        return pulumi.get(self, "ssh_keys")
+
+    @ssh_keys.setter
+    def ssh_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ssh_keys", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of the tags to be applied to this Droplet.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string of the desired User Data for the Droplet.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="volumeIds")
+    def volume_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of the IDs of each block storage volume to be attached to the Droplet.
+        """
+        return pulumi.get(self, "volume_ids")
+
+    @volume_ids.setter
+    def volume_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "volume_ids", value)
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC where the Droplet will be located.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+    @vpc_uuid.setter
+    def vpc_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_uuid", value)
 
 
 class Droplet(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -85,6 +336,69 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DropletArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean Droplet resource. This can be used to create,
+        modify, and delete Droplets.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new Web Droplet in the nyc2 region
+        web = digitalocean.Droplet("web",
+            image="ubuntu-18-04-x64",
+            region="nyc2",
+            size="s-1vcpu-1gb")
+        ```
+
+        ## Import
+
+        Droplets can be imported using the Droplet `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DropletArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DropletArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 backups: Optional[pulumi.Input[bool]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 ipv6: Optional[pulumi.Input[bool]] = None,
+                 monitoring: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_networking: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 resize_disk: Optional[pulumi.Input[bool]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_uuid: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,112 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['DatabaseConnectionPool']
+__all__ = ['DatabaseConnectionPoolArgs', 'DatabaseConnectionPool']
+
+@pulumi.input_type
+class DatabaseConnectionPoolArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 db_name: pulumi.Input[str],
+                 mode: pulumi.Input[str],
+                 size: pulumi.Input[int],
+                 user: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DatabaseConnectionPool resource.
+        :param pulumi.Input[str] cluster_id: The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
+        :param pulumi.Input[str] db_name: The database for use with the connection pool.
+        :param pulumi.Input[str] mode: The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
+        :param pulumi.Input[int] size: The desired size of the PGBouncer connection pool.
+        :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
+        :param pulumi.Input[str] name: The name for the database connection pool.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "db_name", db_name)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "user", user)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="dbName")
+    def db_name(self) -> pulumi.Input[str]:
+        """
+        The database for use with the connection pool.
+        """
+        return pulumi.get(self, "db_name")
+
+    @db_name.setter
+    def db_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "db_name", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[int]:
+        """
+        The desired size of the PGBouncer connection pool.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> pulumi.Input[str]:
+        """
+        The name of the database user for use with the connection pool.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for the database connection pool.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class DatabaseConnectionPool(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +163,67 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[int] size: The desired size of the PGBouncer connection pool.
         :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatabaseConnectionPoolArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean database connection pool resource.
+
+        ## Example Usage
+        ### Create a new PostgreSQL database connection pool
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        pool_01 = digitalocean.DatabaseConnectionPool("pool-01",
+            cluster_id=postgres_example.id,
+            mode="transaction",
+            size=20,
+            db_name="defaultdb",
+            user="doadmin")
+        ```
+
+        ## Import
+
+        Database connection pools can be imported using the `id` of the source database cluster and the `name` of the connection pool joined with a comma. For example
+
+        ```sh
+         $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseConnectionPoolArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseConnectionPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_name: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

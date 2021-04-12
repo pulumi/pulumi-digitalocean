@@ -5,15 +5,148 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KubernetesCluster']
+__all__ = ['KubernetesClusterArgs', 'KubernetesCluster']
+
+@pulumi.input_type
+class KubernetesClusterArgs:
+    def __init__(__self__, *,
+                 node_pool: pulumi.Input['KubernetesClusterNodePoolArgs'],
+                 region: pulumi.Input[str],
+                 version: pulumi.Input[str],
+                 auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 surge_upgrade: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_uuid: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a KubernetesCluster resource.
+        :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+        :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
+        :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
+        """
+        pulumi.set(__self__, "node_pool", node_pool)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "version", version)
+        if auto_upgrade is not None:
+            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if surge_upgrade is not None:
+            pulumi.set(__self__, "surge_upgrade", surge_upgrade)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vpc_uuid is not None:
+            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @property
+    @pulumi.getter(name="nodePool")
+    def node_pool(self) -> pulumi.Input['KubernetesClusterNodePoolArgs']:
+        """
+        A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+        """
+        return pulumi.get(self, "node_pool")
+
+    @node_pool.setter
+    def node_pool(self, value: pulumi.Input['KubernetesClusterNodePoolArgs']):
+        pulumi.set(self, "node_pool", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        The slug identifier for the region where the Kubernetes cluster will be created.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+    @auto_upgrade.setter
+    def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_upgrade", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the node pool.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="surgeUpgrade")
+    def surge_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable/disable surge upgrades for a cluster. Default: false
+        """
+        return pulumi.get(self, "surge_upgrade")
+
+    @surge_upgrade.setter
+    def surge_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "surge_upgrade", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tag names to be applied to the Kubernetes cluster.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC where the Kubernetes cluster will be located.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+    @vpc_uuid.setter
+    def vpc_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_uuid", value)
 
 
 class KubernetesCluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +181,47 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KubernetesClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KubernetesClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KubernetesClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 surge_upgrade: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 vpc_uuid: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

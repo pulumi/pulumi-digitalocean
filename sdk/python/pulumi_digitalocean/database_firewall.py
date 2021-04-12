@@ -5,15 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatabaseFirewall']
+__all__ = ['DatabaseFirewallArgs', 'DatabaseFirewall']
+
+@pulumi.input_type
+class DatabaseFirewallArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]):
+        """
+        The set of arguments for constructing a DatabaseFirewall resource.
+        :param pulumi.Input[str] cluster_id: The ID of the target database cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the target database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]:
+        """
+        A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]):
+        pulumi.set(self, "rules", value)
 
 
 class DatabaseFirewall(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -90,6 +128,95 @@ class DatabaseFirewall(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The ID of the target database cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatabaseFirewallArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean database firewall resource allowing you to restrict
+        connections to your database to trusted sources. You may limit connections to
+        specific Droplets, Kubernetes clusters, or IP addresses.
+
+        ## Example Usage
+        ### Create a new database firewall allowing multiple IP addresses
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        example_fw = digitalocean.DatabaseFirewall("example-fw",
+            cluster_id=postgres_example.id,
+            rules=[
+                digitalocean.DatabaseFirewallRuleArgs(
+                    type="ip_addr",
+                    value="192.168.1.1",
+                ),
+                digitalocean.DatabaseFirewallRuleArgs(
+                    type="ip_addr",
+                    value="192.0.2.0",
+                ),
+            ])
+        ```
+        ### Create a new database firewall allowing a Droplet
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="centos-7-x64",
+            region="nyc3")
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        example_fw = digitalocean.DatabaseFirewall("example-fw",
+            cluster_id=postgres_example.id,
+            rules=[digitalocean.DatabaseFirewallRuleArgs(
+                type="droplet",
+                value=web.id,
+            )])
+        ```
+
+        ## Import
+
+        Database firewalls can be imported using the `id` of the target database cluster For example
+
+        ```sh
+         $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseFirewallArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseFirewallArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

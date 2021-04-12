@@ -5,13 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Project']
+__all__ = ['ProjectArgs', 'Project']
+
+@pulumi.input_type
+class ProjectArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Project resource.
+        :param pulumi.Input[str] description: the description of the project
+        :param pulumi.Input[str] environment: the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
+        :param pulumi.Input[str] name: The name of the Project
+        :param pulumi.Input[str] purpose: the purpose of the project, (Default: "Web Application")
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        the description of the project
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Project
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[pulumi.Input[str]]:
+        """
+        the purpose of the project, (Default: "Web Application")
+        """
+        return pulumi.get(self, "purpose")
+
+    @purpose.setter
+    def purpose(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        a list of uniform resource names (URNs) for the resources associated with the project
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resources", value)
 
 
 class Project(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -89,6 +177,93 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] purpose: the purpose of the project, (Default: "Web Application")
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ProjectArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean Project resource.
+
+        Projects allow you to organize your resources into groups that fit the way you work.
+        You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
+        in ways that align with the applications you host on DigitalOcean.
+
+        The following resource types can be associated with a project:
+
+        * Database Clusters
+        * Domains
+        * Droplets
+        * Floating IP
+        * Load Balancers
+        * Spaces Bucket
+        * Volume
+
+        **Note:** A provider managed project cannot be set as a default project.
+
+        ## Example Usage
+
+        The following example demonstrates the creation of an empty project:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        playground = digitalocean.Project("playground",
+            description="A project to represent development resources.",
+            environment="Development",
+            purpose="Web Application")
+        ```
+
+        The following example demonstrates the creation of a project with a Droplet resource:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.Droplet("foobar",
+            size="512mb",
+            image="centos-7-x64",
+            region="nyc3")
+        playground = digitalocean.Project("playground",
+            description="A project to represent development resources.",
+            purpose="Web Application",
+            environment="Development",
+            resources=[foobar.droplet_urn])
+        ```
+
+        ## Import
+
+        Projects can be imported using the `id` returned from DigitalOcean, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

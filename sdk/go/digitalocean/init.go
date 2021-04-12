@@ -21,73 +21,74 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "digitalocean:index/app:App":
-		r, err = NewApp(ctx, name, nil, pulumi.URN_(urn))
+		r = &App{}
 	case "digitalocean:index/cdn:Cdn":
-		r, err = NewCdn(ctx, name, nil, pulumi.URN_(urn))
+		r = &Cdn{}
 	case "digitalocean:index/certificate:Certificate":
-		r, err = NewCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &Certificate{}
 	case "digitalocean:index/containerRegistry:ContainerRegistry":
-		r, err = NewContainerRegistry(ctx, name, nil, pulumi.URN_(urn))
+		r = &ContainerRegistry{}
 	case "digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials":
-		r, err = NewContainerRegistryDockerCredentials(ctx, name, nil, pulumi.URN_(urn))
+		r = &ContainerRegistryDockerCredentials{}
 	case "digitalocean:index/customImage:CustomImage":
-		r, err = NewCustomImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomImage{}
 	case "digitalocean:index/databaseCluster:DatabaseCluster":
-		r, err = NewDatabaseCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseCluster{}
 	case "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool":
-		r, err = NewDatabaseConnectionPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseConnectionPool{}
 	case "digitalocean:index/databaseReplica:DatabaseReplica":
-		r, err = NewDatabaseReplica(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseReplica{}
 	case "digitalocean:index/dnsRecord:DnsRecord":
-		r, err = NewDnsRecord(ctx, name, nil, pulumi.URN_(urn))
+		r = &DnsRecord{}
 	case "digitalocean:index/domain:Domain":
-		r, err = NewDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &Domain{}
 	case "digitalocean:index/droplet:Droplet":
-		r, err = NewDroplet(ctx, name, nil, pulumi.URN_(urn))
+		r = &Droplet{}
 	case "digitalocean:index/dropletSnapshot:DropletSnapshot":
-		r, err = NewDropletSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &DropletSnapshot{}
 	case "digitalocean:index/firewall:Firewall":
-		r, err = NewFirewall(ctx, name, nil, pulumi.URN_(urn))
+		r = &Firewall{}
 	case "digitalocean:index/floatingIp:FloatingIp":
-		r, err = NewFloatingIp(ctx, name, nil, pulumi.URN_(urn))
+		r = &FloatingIp{}
 	case "digitalocean:index/floatingIpAssignment:FloatingIpAssignment":
-		r, err = NewFloatingIpAssignment(ctx, name, nil, pulumi.URN_(urn))
+		r = &FloatingIpAssignment{}
 	case "digitalocean:index/kubernetesCluster:KubernetesCluster":
-		r, err = NewKubernetesCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &KubernetesCluster{}
 	case "digitalocean:index/kubernetesNodePool:KubernetesNodePool":
-		r, err = NewKubernetesNodePool(ctx, name, nil, pulumi.URN_(urn))
+		r = &KubernetesNodePool{}
 	case "digitalocean:index/loadBalancer:LoadBalancer":
-		r, err = NewLoadBalancer(ctx, name, nil, pulumi.URN_(urn))
+		r = &LoadBalancer{}
 	case "digitalocean:index/project:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	case "digitalocean:index/projectResources:ProjectResources":
-		r, err = NewProjectResources(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectResources{}
 	case "digitalocean:index/spacesBucket:SpacesBucket":
-		r, err = NewSpacesBucket(ctx, name, nil, pulumi.URN_(urn))
+		r = &SpacesBucket{}
 	case "digitalocean:index/spacesBucketObject:SpacesBucketObject":
-		r, err = NewSpacesBucketObject(ctx, name, nil, pulumi.URN_(urn))
+		r = &SpacesBucketObject{}
 	case "digitalocean:index/sshKey:SshKey":
-		r, err = NewSshKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &SshKey{}
 	case "digitalocean:index/tag:Tag":
-		r, err = NewTag(ctx, name, nil, pulumi.URN_(urn))
+		r = &Tag{}
 	case "digitalocean:index/volume:Volume":
-		r, err = NewVolume(ctx, name, nil, pulumi.URN_(urn))
+		r = &Volume{}
 	case "digitalocean:index/volumeAttachment:VolumeAttachment":
-		r, err = NewVolumeAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &VolumeAttachment{}
 	case "digitalocean:index/volumeSnapshot:VolumeSnapshot":
-		r, err = NewVolumeSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &VolumeSnapshot{}
 	case "digitalocean:index/vpc:Vpc":
-		r, err = NewVpc(ctx, name, nil, pulumi.URN_(urn))
+		r = &Vpc{}
 	case "digitalocean:index:DatabaseDb":
-		r, err = NewDatabaseDb(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseDb{}
 	case "digitalocean:index:DatabaseFirewall":
-		r, err = NewDatabaseFirewall(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseFirewall{}
 	case "digitalocean:index:DatabaseUser":
-		r, err = NewDatabaseUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseUser{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -104,7 +105,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {
