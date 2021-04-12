@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['VolumeSnapshot']
+__all__ = ['VolumeSnapshotArgs', 'VolumeSnapshot']
+
+@pulumi.input_type
+class VolumeSnapshotArgs:
+    def __init__(__self__, *,
+                 volume_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a VolumeSnapshot resource.
+        :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
+        :param pulumi.Input[str] name: A name for the volume snapshot.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this volume snapshot.
+        """
+        pulumi.set(__self__, "volume_id", volume_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the volume from which the volume snapshot originated.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the volume snapshot.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of the tags to be applied to this volume snapshot.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class VolumeSnapshot(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -51,6 +106,57 @@ class VolumeSnapshot(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this volume snapshot.
         :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VolumeSnapshotArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="nyc1",
+            size=100,
+            description="an example volume")
+        foobar_volume_snapshot = digitalocean.VolumeSnapshot("foobarVolumeSnapshot", volume_id=foobar_volume.id)
+        ```
+
+        ## Import
+
+        Volume Snapshots can be imported using the `snapshot id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VolumeSnapshotArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VolumeSnapshotArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

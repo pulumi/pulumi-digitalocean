@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['FloatingIpAssignment']
+__all__ = ['FloatingIpAssignmentArgs', 'FloatingIpAssignment']
+
+@pulumi.input_type
+class FloatingIpAssignmentArgs:
+    def __init__(__self__, *,
+                 droplet_id: pulumi.Input[int],
+                 ip_address: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a FloatingIpAssignment resource.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
+        :param pulumi.Input[str] ip_address: The Floating IP to assign to the Droplet.
+        """
+        pulumi.set(__self__, "droplet_id", droplet_id)
+        pulumi.set(__self__, "ip_address", ip_address)
+
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> pulumi.Input[int]:
+        """
+        The ID of Droplet that the Floating IP will be assigned to.
+        """
+        return pulumi.get(self, "droplet_id")
+
+    @droplet_id.setter
+    def droplet_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "droplet_id", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[str]:
+        """
+        The Floating IP to assign to the Droplet.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
 
 
 class FloatingIpAssignment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +86,55 @@ class FloatingIpAssignment(pulumi.CustomResource):
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[str] ip_address: The Floating IP to assign to the Droplet.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FloatingIpAssignmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
+        makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
+        Droplet.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp", region="sgp1")
+        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="sgp1",
+            ipv6=True,
+            private_networking=True)
+        foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment",
+            ip_address=foobar_floating_ip.ip_address,
+            droplet_id=foobar_droplet.id)
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FloatingIpAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FloatingIpAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 droplet_id: Optional[pulumi.Input[int]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

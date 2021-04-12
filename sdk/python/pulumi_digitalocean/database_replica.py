@@ -5,13 +5,116 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['DatabaseReplica']
+__all__ = ['DatabaseReplicaArgs', 'DatabaseReplica']
+
+@pulumi.input_type
+class DatabaseReplicaArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a DatabaseReplica resource.
+        :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
+        :param pulumi.Input[str] name: The name for the database replica.
+        :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
+        :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
+        :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if private_network_uuid is not None:
+            pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the original source database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for the database replica.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="privateNetworkUuid")
+    def private_network_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC where the database replica will be located.
+        """
+        return pulumi.get(self, "private_network_uuid")
+
+    @private_network_uuid.setter
+    def private_network_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_network_uuid", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        DigitalOcean region where the replica will reside.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tag names to be applied to the database replica.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class DatabaseReplica(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +165,65 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatabaseReplicaArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean database replica resource.
+
+        ## Example Usage
+        ### Create a new PostgreSQL database replica
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        read_replica = digitalocean.DatabaseReplica("read-replica",
+            cluster_id=postgres_example.id,
+            size="db-s-1vcpu-1gb",
+            region="nyc1")
+        ```
+
+        ## Import
+
+        Database replicas can be imported using the `id` of the source database cluster and the `name` of the replica joined with a comma. For example
+
+        ```sh
+         $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseReplicaArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseReplicaArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

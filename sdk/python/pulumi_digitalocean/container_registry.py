@@ -5,13 +5,52 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ContainerRegistry']
+__all__ = ['ContainerRegistryArgs', 'ContainerRegistry']
+
+@pulumi.input_type
+class ContainerRegistryArgs:
+    def __init__(__self__, *,
+                 subscription_tier_slug: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ContainerRegistry resource.
+        :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        :param pulumi.Input[str] name: The name of the container_registry
+        """
+        pulumi.set(__self__, "subscription_tier_slug", subscription_tier_slug)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="subscriptionTierSlug")
+    def subscription_tier_slug(self) -> pulumi.Input[str]:
+        """
+        The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        """
+        return pulumi.get(self, "subscription_tier_slug")
+
+    @subscription_tier_slug.setter
+    def subscription_tier_slug(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subscription_tier_slug", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the container_registry
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class ContainerRegistry(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -47,6 +86,54 @@ class ContainerRegistry(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the container_registry
         :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ContainerRegistryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean Container Registry resource. A Container Registry is
+        a secure, private location to store your containers for rapid deployment.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new container registry
+        foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
+        ```
+
+        ## Import
+
+        Container Registries can be imported using the `name`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ContainerRegistryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ContainerRegistryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 subscription_tier_slug: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

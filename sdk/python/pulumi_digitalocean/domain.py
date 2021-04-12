@@ -5,13 +5,54 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Domain']
+__all__ = ['DomainArgs', 'Domain']
+
+@pulumi.input_type
+class DomainArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 ip_address: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[str] name: The name of the domain
+        :param pulumi.Input[str] ip_address: The IP address of the domain. If specified, this IP
+               is used to created an initial A record for the domain.
+        """
+        pulumi.set(__self__, "name", name)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the domain
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the domain. If specified, this IP
+        is used to created an initial A record for the domain.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
 
 
 class Domain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +90,55 @@ class Domain(pulumi.CustomResource):
                is used to created an initial A record for the domain.
         :param pulumi.Input[str] name: The name of the domain
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean domain resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new domain
+        default = digitalocean.Domain("default",
+            name="example.com",
+            ip_address=digitalocean_droplet["foo"]["ipv4_address"])
+        ```
+
+        ## Import
+
+        Domains can be imported using the `domain name`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

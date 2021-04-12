@@ -5,13 +5,52 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['DropletSnapshot']
+__all__ = ['DropletSnapshotArgs', 'DropletSnapshot']
+
+@pulumi.input_type
+class DropletSnapshotArgs:
+    def __init__(__self__, *,
+                 droplet_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DropletSnapshot resource.
+        :param pulumi.Input[str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
+        :param pulumi.Input[str] name: A name for the Droplet snapshot.
+        """
+        pulumi.set(__self__, "droplet_id", droplet_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Droplet from which the snapshot will be taken.
+        """
+        return pulumi.get(self, "droplet_id")
+
+    @droplet_id.setter
+    def droplet_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "droplet_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the Droplet snapshot.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class DropletSnapshot(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +88,56 @@ class DropletSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
         :param pulumi.Input[str] name: A name for the Droplet snapshot.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DropletSnapshotArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="centos-7-x64",
+            region="nyc3")
+        web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
+        ```
+
+        ## Import
+
+        Droplet Snapshots can be imported using the `snapshot id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DropletSnapshotArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DropletSnapshotArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 droplet_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

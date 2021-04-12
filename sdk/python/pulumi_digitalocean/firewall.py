@@ -5,15 +5,109 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Firewall']
+__all__ = ['FirewallArgs', 'Firewall']
+
+@pulumi.input_type
+class FirewallArgs:
+    def __init__(__self__, *,
+                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Firewall resource.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
+               to the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]] inbound_rules: The inbound access rule block for the Firewall.
+               The `inbound_rule` block is documented below.
+        :param pulumi.Input[str] name: The Firewall name
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]] outbound_rules: The outbound access rule block for the Firewall.
+               The `outbound_rule` block is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
+        """
+        if droplet_ids is not None:
+            pulumi.set(__self__, "droplet_ids", droplet_ids)
+        if inbound_rules is not None:
+            pulumi.set(__self__, "inbound_rules", inbound_rules)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if outbound_rules is not None:
+            pulumi.set(__self__, "outbound_rules", outbound_rules)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="dropletIds")
+    def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        The list of the IDs of the Droplets assigned
+        to the Firewall.
+        """
+        return pulumi.get(self, "droplet_ids")
+
+    @droplet_ids.setter
+    def droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "droplet_ids", value)
+
+    @property
+    @pulumi.getter(name="inboundRules")
+    def inbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]:
+        """
+        The inbound access rule block for the Firewall.
+        The `inbound_rule` block is documented below.
+        """
+        return pulumi.get(self, "inbound_rules")
+
+    @inbound_rules.setter
+    def inbound_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]):
+        pulumi.set(self, "inbound_rules", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Firewall name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="outboundRules")
+    def outbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]:
+        """
+        The outbound access rule block for the Firewall.
+        The `outbound_rule` block is documented below.
+        """
+        return pulumi.get(self, "outbound_rules")
+
+    @outbound_rules.setter
+    def outbound_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]):
+        pulumi.set(self, "outbound_rules", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The names of the Tags assigned to the Firewall.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Firewall(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -120,6 +214,119 @@ class Firewall(pulumi.CustomResource):
                The `outbound_rule` block is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[FirewallArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
+        modify, and delete Firewalls.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web_droplet = digitalocean.Droplet("webDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3")
+        web_firewall = digitalocean.Firewall("webFirewall",
+            droplet_ids=[web_droplet.id],
+            inbound_rules=[
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="22",
+                    source_addresses=[
+                        "192.168.1.0/24",
+                        "2002:1:2::/48",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="80",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="443",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="icmp",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+            ],
+            outbound_rules=[
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="tcp",
+                    port_range="53",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="udp",
+                    port_range="53",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="icmp",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+            ])
+        ```
+
+        ## Import
+
+        Firewalls can be imported using the firewall `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FirewallArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FirewallArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

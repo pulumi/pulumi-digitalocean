@@ -5,15 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['App']
+__all__ = ['AppArgs', 'App']
+
+@pulumi.input_type
+class AppArgs:
+    def __init__(__self__, *,
+                 spec: Optional[pulumi.Input['AppSpecArgs']] = None):
+        """
+        The set of arguments for constructing a App resource.
+        :param pulumi.Input['AppSpecArgs'] spec: A DigitalOcean App spec describing the app.
+        """
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input['AppSpecArgs']]:
+        """
+        A DigitalOcean App spec describing the app.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input['AppSpecArgs']]):
+        pulumi.set(self, "spec", value)
 
 
 class App(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -129,6 +153,135 @@ class App(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppSpecArgs']] spec: A DigitalOcean App spec describing the app.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[AppArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DigitalOcean App resource.
+
+        ## Example Usage
+
+        To create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/references/app-specification-reference/) specifying the app's components.
+        ### Basic Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        golang_sample = digitalocean.App("golang-sample", spec=digitalocean.AppSpecArgs(
+            name="golang-sample",
+            region="ams",
+            services=[digitalocean.AppSpecServiceArgs(
+                environment_slug="go",
+                git=digitalocean.AppSpecServiceGitArgs(
+                    branch="main",
+                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
+                ),
+                instance_count=1,
+                instance_size_slug="professional-xs",
+                name="go-service",
+            )],
+        ))
+        ```
+        ### Static Site Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_ste_example = digitalocean.App("static-ste-example", spec=digitalocean.AppSpecArgs(
+            name="static-ste-example",
+            region="ams",
+            static_sites=[digitalocean.AppSpecStaticSiteArgs(
+                build_command="bundle exec jekyll build -d ./public",
+                git=digitalocean.AppSpecStaticSiteGitArgs(
+                    branch="main",
+                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
+                ),
+                name="sample-jekyll",
+                output_dir="/public",
+            )],
+        ))
+        ```
+        ### Multiple Components Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        mono_repo_example = digitalocean.App("mono-repo-example", spec=digitalocean.AppSpecArgs(
+            databases=[digitalocean.AppSpecDatabaseArgs(
+                engine="PG",
+                name="starter-db",
+                production=False,
+            )],
+            domains=[{
+                "name": "foo.example.com",
+            }],
+            name="mono-repo-example",
+            region="ams",
+            services=[digitalocean.AppSpecServiceArgs(
+                environment_slug="go",
+                github=digitalocean.AppSpecServiceGithubArgs(
+                    branch="main",
+                    deploy_on_push=True,
+                    repo="username/repo",
+                ),
+                http_port=3000,
+                instance_count=2,
+                instance_size_slug="professional-xs",
+                name="api",
+                routes=[digitalocean.AppSpecServiceRouteArgs(
+                    path="/api",
+                )],
+                run_command="bin/api",
+                source_dir="api/",
+            )],
+            static_sites=[digitalocean.AppSpecStaticSiteArgs(
+                build_command="npm run build",
+                github=digitalocean.AppSpecStaticSiteGithubArgs(
+                    branch="main",
+                    deploy_on_push=True,
+                    repo="username/repo",
+                ),
+                name="web",
+                routes=[digitalocean.AppSpecStaticSiteRouteArgs(
+                    path="/",
+                )],
+            )],
+        ))
+        ```
+
+        ## Import
+
+        An app can be imported using its `id`, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AppArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AppArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['AppSpecArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
