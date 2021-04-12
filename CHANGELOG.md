@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.23.0
+_(none)_
 
 ---
+
+## 3.8.0 (2021-04-12)
+* Upgrade to pulumi-terraform-bridge v2.23.0
 
 ## 3.7.0 (2021-04-05)
 * Upgrade to v2.7.0 of the DigitalOcean Terraform Provider
