@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -179,26 +179,20 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
             if api_endpoint is None:
                 api_endpoint = (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
-            __props__['api_endpoint'] = api_endpoint
-            __props__['spaces_access_id'] = spaces_access_id
+            __props__.__dict__["api_endpoint"] = api_endpoint
+            __props__.__dict__["spaces_access_id"] = spaces_access_id
             if spaces_endpoint is None:
                 spaces_endpoint = _utilities.get_env('SPACES_ENDPOINT_URL')
-            __props__['spaces_endpoint'] = spaces_endpoint
-            __props__['spaces_secret_key'] = spaces_secret_key
-            __props__['token'] = token
+            __props__.__dict__["spaces_endpoint"] = spaces_endpoint
+            __props__.__dict__["spaces_secret_key"] = spaces_secret_key
+            __props__.__dict__["token"] = token
         super(Provider, __self__).__init__(
             'digitalocean',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

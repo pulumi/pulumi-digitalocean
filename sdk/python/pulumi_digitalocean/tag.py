@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['TagArgs', 'Tag']
 
@@ -32,6 +32,126 @@ class TagArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _TagState:
+    def __init__(__self__, *,
+                 databases_count: Optional[pulumi.Input[int]] = None,
+                 droplets_count: Optional[pulumi.Input[int]] = None,
+                 images_count: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 total_resource_count: Optional[pulumi.Input[int]] = None,
+                 volume_snapshots_count: Optional[pulumi.Input[int]] = None,
+                 volumes_count: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering Tag resources.
+        :param pulumi.Input[int] databases_count: A count of the database clusters that the tag is applied to.
+        :param pulumi.Input[int] droplets_count: A count of the Droplets the tag is applied to.
+        :param pulumi.Input[int] images_count: A count of the images that the tag is applied to.
+        :param pulumi.Input[str] name: The name of the tag
+        :param pulumi.Input[int] total_resource_count: A count of the total number of resources that the tag is applied to.
+        :param pulumi.Input[int] volume_snapshots_count: A count of the volume snapshots that the tag is applied to.
+        :param pulumi.Input[int] volumes_count: A count of the volumes that the tag is applied to.
+        """
+        if databases_count is not None:
+            pulumi.set(__self__, "databases_count", databases_count)
+        if droplets_count is not None:
+            pulumi.set(__self__, "droplets_count", droplets_count)
+        if images_count is not None:
+            pulumi.set(__self__, "images_count", images_count)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if total_resource_count is not None:
+            pulumi.set(__self__, "total_resource_count", total_resource_count)
+        if volume_snapshots_count is not None:
+            pulumi.set(__self__, "volume_snapshots_count", volume_snapshots_count)
+        if volumes_count is not None:
+            pulumi.set(__self__, "volumes_count", volumes_count)
+
+    @property
+    @pulumi.getter(name="databasesCount")
+    def databases_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        A count of the database clusters that the tag is applied to.
+        """
+        return pulumi.get(self, "databases_count")
+
+    @databases_count.setter
+    def databases_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "databases_count", value)
+
+    @property
+    @pulumi.getter(name="dropletsCount")
+    def droplets_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        A count of the Droplets the tag is applied to.
+        """
+        return pulumi.get(self, "droplets_count")
+
+    @droplets_count.setter
+    def droplets_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "droplets_count", value)
+
+    @property
+    @pulumi.getter(name="imagesCount")
+    def images_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        A count of the images that the tag is applied to.
+        """
+        return pulumi.get(self, "images_count")
+
+    @images_count.setter
+    def images_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "images_count", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the tag
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="totalResourceCount")
+    def total_resource_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        A count of the total number of resources that the tag is applied to.
+        """
+        return pulumi.get(self, "total_resource_count")
+
+    @total_resource_count.setter
+    def total_resource_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total_resource_count", value)
+
+    @property
+    @pulumi.getter(name="volumeSnapshotsCount")
+    def volume_snapshots_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        A count of the volume snapshots that the tag is applied to.
+        """
+        return pulumi.get(self, "volume_snapshots_count")
+
+    @volume_snapshots_count.setter
+    def volume_snapshots_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "volume_snapshots_count", value)
+
+    @property
+    @pulumi.getter(name="volumesCount")
+    def volumes_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        A count of the volumes that the tag is applied to.
+        """
+        return pulumi.get(self, "volumes_count")
+
+    @volumes_count.setter
+    def volumes_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "volumes_count", value)
 
 
 class Tag(pulumi.CustomResource):
@@ -147,15 +267,15 @@ class Tag(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TagArgs.__new__(TagArgs)
 
-            __props__['name'] = name
-            __props__['databases_count'] = None
-            __props__['droplets_count'] = None
-            __props__['images_count'] = None
-            __props__['total_resource_count'] = None
-            __props__['volume_snapshots_count'] = None
-            __props__['volumes_count'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["databases_count"] = None
+            __props__.__dict__["droplets_count"] = None
+            __props__.__dict__["images_count"] = None
+            __props__.__dict__["total_resource_count"] = None
+            __props__.__dict__["volume_snapshots_count"] = None
+            __props__.__dict__["volumes_count"] = None
         super(Tag, __self__).__init__(
             'digitalocean:index/tag:Tag',
             resource_name,
@@ -190,15 +310,15 @@ class Tag(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TagState.__new__(_TagState)
 
-        __props__["databases_count"] = databases_count
-        __props__["droplets_count"] = droplets_count
-        __props__["images_count"] = images_count
-        __props__["name"] = name
-        __props__["total_resource_count"] = total_resource_count
-        __props__["volume_snapshots_count"] = volume_snapshots_count
-        __props__["volumes_count"] = volumes_count
+        __props__.__dict__["databases_count"] = databases_count
+        __props__.__dict__["droplets_count"] = droplets_count
+        __props__.__dict__["images_count"] = images_count
+        __props__.__dict__["name"] = name
+        __props__.__dict__["total_resource_count"] = total_resource_count
+        __props__.__dict__["volume_snapshots_count"] = volume_snapshots_count
+        __props__.__dict__["volumes_count"] = volumes_count
         return Tag(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -256,10 +376,4 @@ class Tag(pulumi.CustomResource):
         A count of the volumes that the tag is applied to.
         """
         return pulumi.get(self, "volumes_count")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

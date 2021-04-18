@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['SpacesBucketObjectArgs', 'SpacesBucketObject']
 
@@ -273,6 +273,288 @@ class SpacesBucketObjectArgs:
         pulumi.set(self, "website_redirect", value)
 
 
+@pulumi.input_type
+class _SpacesBucketObjectState:
+    def __init__(__self__, *,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 cache_control: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 content_base64: Optional[pulumi.Input[str]] = None,
+                 content_disposition: Optional[pulumi.Input[str]] = None,
+                 content_encoding: Optional[pulumi.Input[str]] = None,
+                 content_language: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
+                 website_redirect: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SpacesBucketObject resources.
+        :param pulumi.Input[str] acl: The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
+        :param pulumi.Input[str] bucket: The name of the bucket to put the file in.
+        :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
+        :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        :param pulumi.Input[str] content_disposition: Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+        :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
+        :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
+        :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] etag: Used to trigger updates.
+        :param pulumi.Input[bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
+               Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+        :param pulumi.Input[str] key: The name of the object once it is in the bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
+        :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
+        :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content.
+        :param pulumi.Input[str] version_id: A unique version ID value for the object, if bucket versioning is enabled.
+        :param pulumi.Input[str] website_redirect: Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
+        """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if cache_control is not None:
+            pulumi.set(__self__, "cache_control", cache_control)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if content_base64 is not None:
+            pulumi.set(__self__, "content_base64", content_base64)
+        if content_disposition is not None:
+            pulumi.set(__self__, "content_disposition", content_disposition)
+        if content_encoding is not None:
+            pulumi.set(__self__, "content_encoding", content_encoding)
+        if content_language is not None:
+            pulumi.set(__self__, "content_language", content_language)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
+        if website_redirect is not None:
+            pulumi.set(__self__, "website_redirect", website_redirect)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the bucket to put the file in.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="cacheControl")
+    def cache_control(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        """
+        return pulumi.get(self, "cache_control")
+
+    @cache_control.setter
+    def cache_control(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_control", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="contentBase64")
+    def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        """
+        return pulumi.get(self, "content_base64")
+
+    @content_base64.setter
+    def content_base64(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_base64", value)
+
+    @property
+    @pulumi.getter(name="contentDisposition")
+    def content_disposition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+        """
+        return pulumi.get(self, "content_disposition")
+
+    @content_disposition.setter
+    def content_disposition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_disposition", value)
+
+    @property
+    @pulumi.getter(name="contentEncoding")
+    def content_encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
+        """
+        return pulumi.get(self, "content_encoding")
+
+    @content_encoding.setter
+    def content_encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_encoding", value)
+
+    @property
+    @pulumi.getter(name="contentLanguage")
+    def content_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language the content is in e.g. en-US or en-GB.
+        """
+        return pulumi.get(self, "content_language")
+
+    @content_language.setter
+    def content_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_language", value)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to trigger updates.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow the object to be deleted by removing any legal hold on any object version.
+        Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the object once it is in the bucket.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where the bucket resides (Defaults to `nyc3`)
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a file that will be read and uploaded as raw bytes for the object content.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique version ID value for the object, if bucket versioning is enabled.
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
+
+    @property
+    @pulumi.getter(name="websiteRedirect")
+    def website_redirect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
+        """
+        return pulumi.get(self, "website_redirect")
+
+    @website_redirect.setter
+    def website_redirect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "website_redirect", value)
+
+
 class SpacesBucketObject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -466,31 +748,31 @@ class SpacesBucketObject(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SpacesBucketObjectArgs.__new__(SpacesBucketObjectArgs)
 
-            __props__['acl'] = acl
+            __props__.__dict__["acl"] = acl
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
-            __props__['bucket'] = bucket
-            __props__['cache_control'] = cache_control
-            __props__['content'] = content
-            __props__['content_base64'] = content_base64
-            __props__['content_disposition'] = content_disposition
-            __props__['content_encoding'] = content_encoding
-            __props__['content_language'] = content_language
-            __props__['content_type'] = content_type
-            __props__['etag'] = etag
-            __props__['force_destroy'] = force_destroy
+            __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["cache_control"] = cache_control
+            __props__.__dict__["content"] = content
+            __props__.__dict__["content_base64"] = content_base64
+            __props__.__dict__["content_disposition"] = content_disposition
+            __props__.__dict__["content_encoding"] = content_encoding
+            __props__.__dict__["content_language"] = content_language
+            __props__.__dict__["content_type"] = content_type
+            __props__.__dict__["etag"] = etag
+            __props__.__dict__["force_destroy"] = force_destroy
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
-            __props__['metadata'] = metadata
+            __props__.__dict__["key"] = key
+            __props__.__dict__["metadata"] = metadata
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
-            __props__['source'] = source
-            __props__['website_redirect'] = website_redirect
-            __props__['version_id'] = None
+            __props__.__dict__["region"] = region
+            __props__.__dict__["source"] = source
+            __props__.__dict__["website_redirect"] = website_redirect
+            __props__.__dict__["version_id"] = None
         super(SpacesBucketObject, __self__).__init__(
             'digitalocean:index/spacesBucketObject:SpacesBucketObject',
             resource_name,
@@ -546,25 +828,25 @@ class SpacesBucketObject(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SpacesBucketObjectState.__new__(_SpacesBucketObjectState)
 
-        __props__["acl"] = acl
-        __props__["bucket"] = bucket
-        __props__["cache_control"] = cache_control
-        __props__["content"] = content
-        __props__["content_base64"] = content_base64
-        __props__["content_disposition"] = content_disposition
-        __props__["content_encoding"] = content_encoding
-        __props__["content_language"] = content_language
-        __props__["content_type"] = content_type
-        __props__["etag"] = etag
-        __props__["force_destroy"] = force_destroy
-        __props__["key"] = key
-        __props__["metadata"] = metadata
-        __props__["region"] = region
-        __props__["source"] = source
-        __props__["version_id"] = version_id
-        __props__["website_redirect"] = website_redirect
+        __props__.__dict__["acl"] = acl
+        __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["cache_control"] = cache_control
+        __props__.__dict__["content"] = content
+        __props__.__dict__["content_base64"] = content_base64
+        __props__.__dict__["content_disposition"] = content_disposition
+        __props__.__dict__["content_encoding"] = content_encoding
+        __props__.__dict__["content_language"] = content_language
+        __props__.__dict__["content_type"] = content_type
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["key"] = key
+        __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["region"] = region
+        __props__.__dict__["source"] = source
+        __props__.__dict__["version_id"] = version_id
+        __props__.__dict__["website_redirect"] = website_redirect
         return SpacesBucketObject(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -703,10 +985,4 @@ class SpacesBucketObject(pulumi.CustomResource):
         Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
         """
         return pulumi.get(self, "website_redirect")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

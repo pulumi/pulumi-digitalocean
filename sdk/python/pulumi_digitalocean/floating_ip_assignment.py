@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['FloatingIpAssignmentArgs', 'FloatingIpAssignment']
 
@@ -45,6 +45,46 @@ class FloatingIpAssignmentArgs:
 
     @ip_address.setter
     def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
+
+
+@pulumi.input_type
+class _FloatingIpAssignmentState:
+    def __init__(__self__, *,
+                 droplet_id: Optional[pulumi.Input[int]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering FloatingIpAssignment resources.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
+        :param pulumi.Input[str] ip_address: The Floating IP to assign to the Droplet.
+        """
+        if droplet_id is not None:
+            pulumi.set(__self__, "droplet_id", droplet_id)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of Droplet that the Floating IP will be assigned to.
+        """
+        return pulumi.get(self, "droplet_id")
+
+    @droplet_id.setter
+    def droplet_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "droplet_id", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Floating IP to assign to the Droplet.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
 
 
@@ -150,14 +190,14 @@ class FloatingIpAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FloatingIpAssignmentArgs.__new__(FloatingIpAssignmentArgs)
 
             if droplet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'droplet_id'")
-            __props__['droplet_id'] = droplet_id
+            __props__.__dict__["droplet_id"] = droplet_id
             if ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_address'")
-            __props__['ip_address'] = ip_address
+            __props__.__dict__["ip_address"] = ip_address
         super(FloatingIpAssignment, __self__).__init__(
             'digitalocean:index/floatingIpAssignment:FloatingIpAssignment',
             resource_name,
@@ -182,10 +222,10 @@ class FloatingIpAssignment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FloatingIpAssignmentState.__new__(_FloatingIpAssignmentState)
 
-        __props__["droplet_id"] = droplet_id
-        __props__["ip_address"] = ip_address
+        __props__.__dict__["droplet_id"] = droplet_id
+        __props__.__dict__["ip_address"] = ip_address
         return FloatingIpAssignment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -203,10 +243,4 @@ class FloatingIpAssignment(pulumi.CustomResource):
         The Floating IP to assign to the Droplet.
         """
         return pulumi.get(self, "ip_address")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

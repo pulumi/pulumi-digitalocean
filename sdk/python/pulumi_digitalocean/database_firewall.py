@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -47,6 +47,46 @@ class DatabaseFirewallArgs:
 
     @rules.setter
     def rules(self, value: pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class _DatabaseFirewallState:
+    def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering DatabaseFirewall resources.
+        :param pulumi.Input[str] cluster_id: The ID of the target database cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the target database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]]:
+        """
+        A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -232,14 +272,14 @@ class DatabaseFirewall(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseFirewallArgs.__new__(DatabaseFirewallArgs)
 
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
+            __props__.__dict__["cluster_id"] = cluster_id
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
-            __props__['rules'] = rules
+            __props__.__dict__["rules"] = rules
         super(DatabaseFirewall, __self__).__init__(
             'digitalocean:index:DatabaseFirewall',
             resource_name,
@@ -264,10 +304,10 @@ class DatabaseFirewall(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseFirewallState.__new__(_DatabaseFirewallState)
 
-        __props__["cluster_id"] = cluster_id
-        __props__["rules"] = rules
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["rules"] = rules
         return DatabaseFirewall(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -285,10 +325,4 @@ class DatabaseFirewall(pulumi.CustomResource):
         A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
         return pulumi.get(self, "rules")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

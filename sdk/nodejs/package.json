@@ -13,13 +13,13 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^2.15.0",
+        "@pulumi/pulumi": "^3.0.0-alpha.0",
         "builtin-modules": "3.0.0",
         "read-package-tree": "^5.2.1",
         "resolve": "^1.7.1"
     },
     "devDependencies": {
-        "@types/node": "^8.0.25"
+        "@types/node": "^10.0.0"
     },
     "pulumi": {
         "resource": true

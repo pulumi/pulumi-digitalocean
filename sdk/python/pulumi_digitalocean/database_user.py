@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DatabaseUserArgs', 'DatabaseUser']
 
@@ -63,6 +63,94 @@ class DatabaseUserArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _DatabaseUserState:
+    def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DatabaseUser resources.
+        :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
+        :param pulumi.Input[str] mysql_auth_plugin: The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        :param pulumi.Input[str] name: The name for the database user.
+        :param pulumi.Input[str] password: Password for the database user.
+        :param pulumi.Input[str] role: Role for the database user. The value will be either "primary" or "normal".
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if mysql_auth_plugin is not None:
+            pulumi.set(__self__, "mysql_auth_plugin", mysql_auth_plugin)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the original source database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="mysqlAuthPlugin")
+    def mysql_auth_plugin(self) -> Optional[pulumi.Input[str]]:
+        """
+        The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        """
+        return pulumi.get(self, "mysql_auth_plugin")
+
+    @mysql_auth_plugin.setter
+    def mysql_auth_plugin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mysql_auth_plugin", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for the database user.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the database user.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role for the database user. The value will be either "primary" or "normal".
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
 
 
 class DatabaseUser(pulumi.CustomResource):
@@ -180,15 +268,15 @@ class DatabaseUser(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseUserArgs.__new__(DatabaseUserArgs)
 
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['mysql_auth_plugin'] = mysql_auth_plugin
-            __props__['name'] = name
-            __props__['password'] = None
-            __props__['role'] = None
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["mysql_auth_plugin"] = mysql_auth_plugin
+            __props__.__dict__["name"] = name
+            __props__.__dict__["password"] = None
+            __props__.__dict__["role"] = None
         super(DatabaseUser, __self__).__init__(
             'digitalocean:index:DatabaseUser',
             resource_name,
@@ -219,13 +307,13 @@ class DatabaseUser(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseUserState.__new__(_DatabaseUserState)
 
-        __props__["cluster_id"] = cluster_id
-        __props__["mysql_auth_plugin"] = mysql_auth_plugin
-        __props__["name"] = name
-        __props__["password"] = password
-        __props__["role"] = role
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["mysql_auth_plugin"] = mysql_auth_plugin
+        __props__.__dict__["name"] = name
+        __props__.__dict__["password"] = password
+        __props__.__dict__["role"] = role
         return DatabaseUser(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -267,10 +355,4 @@ class DatabaseUser(pulumi.CustomResource):
         Role for the database user. The value will be either "primary" or "normal".
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
