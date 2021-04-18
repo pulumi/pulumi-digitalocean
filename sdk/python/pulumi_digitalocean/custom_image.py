@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['CustomImageArgs', 'CustomImage']
 
@@ -110,6 +110,206 @@ class CustomImageArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _CustomImageState:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 distribution: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[int]] = None,
+                 min_disk_size: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 size_gigabytes: Optional[pulumi.Input[float]] = None,
+                 slug: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering CustomImage resources.
+        :param pulumi.Input[str] description: An optional description for the image.
+        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        :param pulumi.Input[str] name: A name for the Custom Image.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of regions. (Currently only one is supported).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of optional tags for the image.
+        :param pulumi.Input[str] url: A URL from which the custom Linux virtual machine image may be retrieved.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if distribution is not None:
+            pulumi.set(__self__, "distribution", distribution)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if min_disk_size is not None:
+            pulumi.set(__self__, "min_disk_size", min_disk_size)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if public is not None:
+            pulumi.set(__self__, "public", public)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+        if size_gigabytes is not None:
+            pulumi.set(__self__, "size_gigabytes", size_gigabytes)
+        if slug is not None:
+            pulumi.set(__self__, "slug", slug)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description for the image.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def distribution(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        """
+        return pulumi.get(self, "distribution")
+
+    @distribution.setter
+    def distribution(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "distribution", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="minDiskSize")
+    def min_disk_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_disk_size")
+
+    @min_disk_size.setter
+    def min_disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_disk_size", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the Custom Image.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "public")
+
+    @public.setter
+    def public(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of regions. (Currently only one is supported).
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "regions", value)
+
+    @property
+    @pulumi.getter(name="sizeGigabytes")
+    def size_gigabytes(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "size_gigabytes")
+
+    @size_gigabytes.setter
+    def size_gigabytes(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "size_gigabytes", value)
+
+    @property
+    @pulumi.getter
+    def slug(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "slug")
+
+    @slug.setter
+    def slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slug", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of optional tags for the image.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        A URL from which the custom Linux virtual machine image may be retrieved.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 
 class CustomImage(pulumi.CustomResource):
@@ -238,26 +438,26 @@ class CustomImage(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CustomImageArgs.__new__(CustomImageArgs)
 
-            __props__['description'] = description
-            __props__['distribution'] = distribution
-            __props__['name'] = name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["distribution"] = distribution
+            __props__.__dict__["name"] = name
             if regions is None and not opts.urn:
                 raise TypeError("Missing required property 'regions'")
-            __props__['regions'] = regions
-            __props__['tags'] = tags
+            __props__.__dict__["regions"] = regions
+            __props__.__dict__["tags"] = tags
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
-            __props__['url'] = url
-            __props__['created_at'] = None
-            __props__['image_id'] = None
-            __props__['min_disk_size'] = None
-            __props__['public'] = None
-            __props__['size_gigabytes'] = None
-            __props__['slug'] = None
-            __props__['status'] = None
-            __props__['type'] = None
+            __props__.__dict__["url"] = url
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["image_id"] = None
+            __props__.__dict__["min_disk_size"] = None
+            __props__.__dict__["public"] = None
+            __props__.__dict__["size_gigabytes"] = None
+            __props__.__dict__["slug"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["type"] = None
         super(CustomImage, __self__).__init__(
             'digitalocean:index/customImage:CustomImage',
             resource_name,
@@ -298,22 +498,22 @@ class CustomImage(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CustomImageState.__new__(_CustomImageState)
 
-        __props__["created_at"] = created_at
-        __props__["description"] = description
-        __props__["distribution"] = distribution
-        __props__["image_id"] = image_id
-        __props__["min_disk_size"] = min_disk_size
-        __props__["name"] = name
-        __props__["public"] = public
-        __props__["regions"] = regions
-        __props__["size_gigabytes"] = size_gigabytes
-        __props__["slug"] = slug
-        __props__["status"] = status
-        __props__["tags"] = tags
-        __props__["type"] = type
-        __props__["url"] = url
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["description"] = description
+        __props__.__dict__["distribution"] = distribution
+        __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["min_disk_size"] = min_disk_size
+        __props__.__dict__["name"] = name
+        __props__.__dict__["public"] = public
+        __props__.__dict__["regions"] = regions
+        __props__.__dict__["size_gigabytes"] = size_gigabytes
+        __props__.__dict__["slug"] = slug
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["type"] = type
+        __props__.__dict__["url"] = url
         return CustomImage(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -403,10 +603,4 @@ class CustomImage(pulumi.CustomResource):
         A URL from which the custom Linux virtual machine image may be retrieved.
         """
         return pulumi.get(self, "url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

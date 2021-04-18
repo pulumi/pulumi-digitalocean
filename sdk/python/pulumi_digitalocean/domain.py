@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DomainArgs', 'Domain']
 
@@ -49,6 +49,64 @@ class DomainArgs:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+
+@pulumi.input_type
+class _DomainState:
+    def __init__(__self__, *,
+                 domain_urn: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Domain resources.
+        :param pulumi.Input[str] domain_urn: The uniform resource name of the domain
+        :param pulumi.Input[str] ip_address: The IP address of the domain. If specified, this IP
+               is used to created an initial A record for the domain.
+        :param pulumi.Input[str] name: The name of the domain
+        """
+        if domain_urn is not None:
+            pulumi.set(__self__, "domain_urn", domain_urn)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="domainUrn")
+    def domain_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uniform resource name of the domain
+        """
+        return pulumi.get(self, "domain_urn")
+
+    @domain_urn.setter
+    def domain_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_urn", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the domain. If specified, this IP
+        is used to created an initial A record for the domain.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the domain
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Domain(pulumi.CustomResource):
@@ -154,13 +212,13 @@ class Domain(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DomainArgs.__new__(DomainArgs)
 
-            __props__['ip_address'] = ip_address
+            __props__.__dict__["ip_address"] = ip_address
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
-            __props__['domain_urn'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["domain_urn"] = None
         super(Domain, __self__).__init__(
             'digitalocean:index/domain:Domain',
             resource_name,
@@ -188,11 +246,11 @@ class Domain(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DomainState.__new__(_DomainState)
 
-        __props__["domain_urn"] = domain_urn
-        __props__["ip_address"] = ip_address
-        __props__["name"] = name
+        __props__.__dict__["domain_urn"] = domain_urn
+        __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["name"] = name
         return Domain(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -219,10 +277,4 @@ class Domain(pulumi.CustomResource):
         The name of the domain
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

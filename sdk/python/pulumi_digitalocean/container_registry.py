@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ContainerRegistryArgs', 'ContainerRegistry']
 
@@ -47,6 +47,70 @@ class ContainerRegistryArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _ContainerRegistryState:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 server_url: Optional[pulumi.Input[str]] = None,
+                 subscription_tier_slug: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ContainerRegistry resources.
+        :param pulumi.Input[str] name: The name of the container_registry
+        :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if server_url is not None:
+            pulumi.set(__self__, "server_url", server_url)
+        if subscription_tier_slug is not None:
+            pulumi.set(__self__, "subscription_tier_slug", subscription_tier_slug)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the container_registry
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serverUrl")
+    def server_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "server_url")
+
+    @server_url.setter
+    def server_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_url", value)
+
+    @property
+    @pulumi.getter(name="subscriptionTierSlug")
+    def subscription_tier_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        """
+        return pulumi.get(self, "subscription_tier_slug")
+
+    @subscription_tier_slug.setter
+    def subscription_tier_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_tier_slug", value)
 
 
 class ContainerRegistry(pulumi.CustomResource):
@@ -149,14 +213,14 @@ class ContainerRegistry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ContainerRegistryArgs.__new__(ContainerRegistryArgs)
 
-            __props__['name'] = name
+            __props__.__dict__["name"] = name
             if subscription_tier_slug is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription_tier_slug'")
-            __props__['subscription_tier_slug'] = subscription_tier_slug
-            __props__['endpoint'] = None
-            __props__['server_url'] = None
+            __props__.__dict__["subscription_tier_slug"] = subscription_tier_slug
+            __props__.__dict__["endpoint"] = None
+            __props__.__dict__["server_url"] = None
         super(ContainerRegistry, __self__).__init__(
             'digitalocean:index/containerRegistry:ContainerRegistry',
             resource_name,
@@ -183,12 +247,12 @@ class ContainerRegistry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ContainerRegistryState.__new__(_ContainerRegistryState)
 
-        __props__["endpoint"] = endpoint
-        __props__["name"] = name
-        __props__["server_url"] = server_url
-        __props__["subscription_tier_slug"] = subscription_tier_slug
+        __props__.__dict__["endpoint"] = endpoint
+        __props__.__dict__["name"] = name
+        __props__.__dict__["server_url"] = server_url
+        __props__.__dict__["subscription_tier_slug"] = subscription_tier_slug
         return ContainerRegistry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -216,10 +280,4 @@ class ContainerRegistry(pulumi.CustomResource):
         The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
         return pulumi.get(self, "subscription_tier_slug")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

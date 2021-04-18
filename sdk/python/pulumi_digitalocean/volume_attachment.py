@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['VolumeAttachmentArgs', 'VolumeAttachment']
 
@@ -45,6 +45,46 @@ class VolumeAttachmentArgs:
 
     @volume_id.setter
     def volume_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume_id", value)
+
+
+@pulumi.input_type
+class _VolumeAttachmentState:
+    def __init__(__self__, *,
+                 droplet_id: Optional[pulumi.Input[int]] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VolumeAttachment resources.
+        :param pulumi.Input[int] droplet_id: ID of the Droplet to attach the volume to.
+        :param pulumi.Input[str] volume_id: ID of the Volume to be attached to the Droplet.
+        """
+        if droplet_id is not None:
+            pulumi.set(__self__, "droplet_id", droplet_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="dropletId")
+    def droplet_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        ID of the Droplet to attach the volume to.
+        """
+        return pulumi.get(self, "droplet_id")
+
+    @droplet_id.setter
+    def droplet_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "droplet_id", value)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the Volume to be attached to the Droplet.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "volume_id", value)
 
 
@@ -154,14 +194,14 @@ class VolumeAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VolumeAttachmentArgs.__new__(VolumeAttachmentArgs)
 
             if droplet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'droplet_id'")
-            __props__['droplet_id'] = droplet_id
+            __props__.__dict__["droplet_id"] = droplet_id
             if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")
-            __props__['volume_id'] = volume_id
+            __props__.__dict__["volume_id"] = volume_id
         super(VolumeAttachment, __self__).__init__(
             'digitalocean:index/volumeAttachment:VolumeAttachment',
             resource_name,
@@ -186,10 +226,10 @@ class VolumeAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VolumeAttachmentState.__new__(_VolumeAttachmentState)
 
-        __props__["droplet_id"] = droplet_id
-        __props__["volume_id"] = volume_id
+        __props__.__dict__["droplet_id"] = droplet_id
+        __props__.__dict__["volume_id"] = volume_id
         return VolumeAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -207,10 +247,4 @@ class VolumeAttachment(pulumi.CustomResource):
         ID of the Volume to be attached to the Droplet.
         """
         return pulumi.get(self, "volume_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

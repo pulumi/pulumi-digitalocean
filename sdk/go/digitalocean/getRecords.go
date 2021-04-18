@@ -4,7 +4,7 @@
 package digitalocean
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.

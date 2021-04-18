@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -178,6 +178,334 @@ class DatabaseClusterArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class _DatabaseClusterState:
+    def __init__(__self__, *,
+                 cluster_urn: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
+                 engine: Optional[pulumi.Input[str]] = None,
+                 eviction_policy: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 private_host: Optional[pulumi.Input[str]] = None,
+                 private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 private_uri: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 sql_mode: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 uri: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DatabaseCluster resources.
+        :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
+        :param pulumi.Input[str] database: Name of the cluster's default database.
+        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        :param pulumi.Input[str] host: Database cluster's hostname.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[str] name: The name of the database cluster.
+        :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster.
+        :param pulumi.Input[str] password: Password for the cluster's default user.
+        :param pulumi.Input[int] port: Network port that the database cluster is listening on.
+        :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
+        :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
+        :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
+        :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
+        :param pulumi.Input[str] user: Username for the cluster's default user.
+        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        """
+        if cluster_urn is not None:
+            pulumi.set(__self__, "cluster_urn", cluster_urn)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if engine is not None:
+            pulumi.set(__self__, "engine", engine)
+        if eviction_policy is not None:
+            pulumi.set(__self__, "eviction_policy", eviction_policy)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if maintenance_windows is not None:
+            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if private_host is not None:
+            pulumi.set(__self__, "private_host", private_host)
+        if private_network_uuid is not None:
+            pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+        if private_uri is not None:
+            pulumi.set(__self__, "private_uri", private_uri)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if sql_mode is not None:
+            pulumi.set(__self__, "sql_mode", sql_mode)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="clusterUrn")
+    def cluster_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uniform resource name of the database cluster.
+        """
+        return pulumi.get(self, "cluster_urn")
+
+    @cluster_urn.setter
+    def cluster_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_urn", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the cluster's default database.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="evictionPolicy")
+    def eviction_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        """
+        return pulumi.get(self, "eviction_policy")
+
+    @eviction_policy.setter
+    def eviction_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eviction_policy", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database cluster's hostname.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]:
+        """
+        Defines when the automatic maintenance should be performed for the database cluster.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @maintenance_windows.setter
+    def maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]):
+        pulumi.set(self, "maintenance_windows", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the database cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of nodes that will be included in the cluster.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the cluster's default user.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Network port that the database cluster is listening on.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="privateHost")
+    def private_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as `host`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_host")
+
+    @private_host.setter
+    def private_host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_host", value)
+
+    @property
+    @pulumi.getter(name="privateNetworkUuid")
+    def private_network_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC where the database cluster will be located.
+        """
+        return pulumi.get(self, "private_network_uuid")
+
+    @private_network_uuid.setter
+    def private_network_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_network_uuid", value)
+
+    @property
+    @pulumi.getter(name="privateUri")
+    def private_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as `uri`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_uri")
+
+    @private_uri.setter
+    def private_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_uri", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        DigitalOcean region where the cluster will reside.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="sqlMode")
+    def sql_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        A comma separated string specifying the  SQL modes for a MySQL cluster.
+        """
+        return pulumi.get(self, "sql_mode")
+
+    @sql_mode.setter
+    def sql_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_mode", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tag names to be applied to the database cluster.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full URI for connecting to the database cluster.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for the cluster's default user.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
     @property
     @pulumi.getter
@@ -373,36 +701,36 @@ class DatabaseCluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseClusterArgs.__new__(DatabaseClusterArgs)
 
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
-            __props__['engine'] = engine
-            __props__['eviction_policy'] = eviction_policy
-            __props__['maintenance_windows'] = maintenance_windows
-            __props__['name'] = name
+            __props__.__dict__["engine"] = engine
+            __props__.__dict__["eviction_policy"] = eviction_policy
+            __props__.__dict__["maintenance_windows"] = maintenance_windows
+            __props__.__dict__["name"] = name
             if node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'node_count'")
-            __props__['node_count'] = node_count
-            __props__['private_network_uuid'] = private_network_uuid
+            __props__.__dict__["node_count"] = node_count
+            __props__.__dict__["private_network_uuid"] = private_network_uuid
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
+            __props__.__dict__["region"] = region
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
-            __props__['size'] = size
-            __props__['sql_mode'] = sql_mode
-            __props__['tags'] = tags
-            __props__['version'] = version
-            __props__['cluster_urn'] = None
-            __props__['database'] = None
-            __props__['host'] = None
-            __props__['password'] = None
-            __props__['port'] = None
-            __props__['private_host'] = None
-            __props__['private_uri'] = None
-            __props__['uri'] = None
-            __props__['user'] = None
+            __props__.__dict__["size"] = size
+            __props__.__dict__["sql_mode"] = sql_mode
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["version"] = version
+            __props__.__dict__["cluster_urn"] = None
+            __props__.__dict__["database"] = None
+            __props__.__dict__["host"] = None
+            __props__.__dict__["password"] = None
+            __props__.__dict__["port"] = None
+            __props__.__dict__["private_host"] = None
+            __props__.__dict__["private_uri"] = None
+            __props__.__dict__["uri"] = None
+            __props__.__dict__["user"] = None
         super(DatabaseCluster, __self__).__init__(
             'digitalocean:index/databaseCluster:DatabaseCluster',
             resource_name,
@@ -463,28 +791,28 @@ class DatabaseCluster(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseClusterState.__new__(_DatabaseClusterState)
 
-        __props__["cluster_urn"] = cluster_urn
-        __props__["database"] = database
-        __props__["engine"] = engine
-        __props__["eviction_policy"] = eviction_policy
-        __props__["host"] = host
-        __props__["maintenance_windows"] = maintenance_windows
-        __props__["name"] = name
-        __props__["node_count"] = node_count
-        __props__["password"] = password
-        __props__["port"] = port
-        __props__["private_host"] = private_host
-        __props__["private_network_uuid"] = private_network_uuid
-        __props__["private_uri"] = private_uri
-        __props__["region"] = region
-        __props__["size"] = size
-        __props__["sql_mode"] = sql_mode
-        __props__["tags"] = tags
-        __props__["uri"] = uri
-        __props__["user"] = user
-        __props__["version"] = version
+        __props__.__dict__["cluster_urn"] = cluster_urn
+        __props__.__dict__["database"] = database
+        __props__.__dict__["engine"] = engine
+        __props__.__dict__["eviction_policy"] = eviction_policy
+        __props__.__dict__["host"] = host
+        __props__.__dict__["maintenance_windows"] = maintenance_windows
+        __props__.__dict__["name"] = name
+        __props__.__dict__["node_count"] = node_count
+        __props__.__dict__["password"] = password
+        __props__.__dict__["port"] = port
+        __props__.__dict__["private_host"] = private_host
+        __props__.__dict__["private_network_uuid"] = private_network_uuid
+        __props__.__dict__["private_uri"] = private_uri
+        __props__.__dict__["region"] = region
+        __props__.__dict__["size"] = size
+        __props__.__dict__["sql_mode"] = sql_mode
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["uri"] = uri
+        __props__.__dict__["user"] = user
+        __props__.__dict__["version"] = version
         return DatabaseCluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -646,10 +974,4 @@ class DatabaseCluster(pulumi.CustomResource):
         Engine version used by the cluster (ex. `11` for PostgreSQL 11).
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

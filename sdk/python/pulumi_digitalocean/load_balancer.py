@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -217,6 +217,280 @@ class LoadBalancerArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="stickySessions")
+    def sticky_sessions(self) -> Optional[pulumi.Input['LoadBalancerStickySessionsArgs']]:
+        """
+        A `sticky_sessions` block to be assigned to the
+        Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        """
+        return pulumi.get(self, "sticky_sessions")
+
+    @sticky_sessions.setter
+    def sticky_sessions(self, value: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']]):
+        pulumi.set(self, "sticky_sessions", value)
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC where the load balancer will be located.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+    @vpc_uuid.setter
+    def vpc_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_uuid", value)
+
+
+@pulumi.input_type
+class _LoadBalancerState:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 droplet_tag: Optional[pulumi.Input[str]] = None,
+                 enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
+                 enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
+                 healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
+                 ip: Optional[pulumi.Input[str]] = None,
+                 load_balancer_urn: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
+                 vpc_uuid: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LoadBalancer resources.
+        :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine
+               which backend Droplet will be selected by a client. It must be either `round_robin`
+               or `least_connections`. The default value is `round_robin`.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
+        :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
+        :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+        :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
+               Protocol should be used to pass information from connecting client requests to
+               the backend service. Default value is `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
+               Load Balancer. The `forwarding_rule` block is documented below.
+        :param pulumi.Input['LoadBalancerHealthcheckArgs'] healthcheck: A `healthcheck` block to be assigned to the
+               Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
+        :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
+               HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
+               Default value is `false`.
+        :param pulumi.Input[str] region: The region to start in
+        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
+               Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if droplet_ids is not None:
+            pulumi.set(__self__, "droplet_ids", droplet_ids)
+        if droplet_tag is not None:
+            pulumi.set(__self__, "droplet_tag", droplet_tag)
+        if enable_backend_keepalive is not None:
+            pulumi.set(__self__, "enable_backend_keepalive", enable_backend_keepalive)
+        if enable_proxy_protocol is not None:
+            pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        if forwarding_rules is not None:
+            pulumi.set(__self__, "forwarding_rules", forwarding_rules)
+        if healthcheck is not None:
+            pulumi.set(__self__, "healthcheck", healthcheck)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if load_balancer_urn is not None:
+            pulumi.set(__self__, "load_balancer_urn", load_balancer_urn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if redirect_http_to_https is not None:
+            pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if sticky_sessions is not None:
+            pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+        if vpc_uuid is not None:
+            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The load balancing algorithm used to determine
+        which backend Droplet will be selected by a client. It must be either `round_robin`
+        or `least_connections`. The default value is `round_robin`.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="dropletIds")
+    def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of the IDs of each droplet to be attached to the Load Balancer.
+        """
+        return pulumi.get(self, "droplet_ids")
+
+    @droplet_ids.setter
+    def droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "droplet_ids", value)
+
+    @property
+    @pulumi.getter(name="dropletTag")
+    def droplet_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
+        """
+        return pulumi.get(self, "droplet_tag")
+
+    @droplet_tag.setter
+    def droplet_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "droplet_tag", value)
+
+    @property
+    @pulumi.getter(name="enableBackendKeepalive")
+    def enable_backend_keepalive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+        """
+        return pulumi.get(self, "enable_backend_keepalive")
+
+    @enable_backend_keepalive.setter
+    def enable_backend_keepalive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_backend_keepalive", value)
+
+    @property
+    @pulumi.getter(name="enableProxyProtocol")
+    def enable_proxy_protocol(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean value indicating whether PROXY
+        Protocol should be used to pass information from connecting client requests to
+        the backend service. Default value is `false`.
+        """
+        return pulumi.get(self, "enable_proxy_protocol")
+
+    @enable_proxy_protocol.setter
+    def enable_proxy_protocol(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_proxy_protocol", value)
+
+    @property
+    @pulumi.getter(name="forwardingRules")
+    def forwarding_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]:
+        """
+        A list of `forwarding_rule` to be assigned to the
+        Load Balancer. The `forwarding_rule` block is documented below.
+        """
+        return pulumi.get(self, "forwarding_rules")
+
+    @forwarding_rules.setter
+    def forwarding_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]):
+        pulumi.set(self, "forwarding_rules", value)
+
+    @property
+    @pulumi.getter
+    def healthcheck(self) -> Optional[pulumi.Input['LoadBalancerHealthcheckArgs']]:
+        """
+        A `healthcheck` block to be assigned to the
+        Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        """
+        return pulumi.get(self, "healthcheck")
+
+    @healthcheck.setter
+    def healthcheck(self, value: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']]):
+        pulumi.set(self, "healthcheck", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerUrn")
+    def load_balancer_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uniform resource name for the Load Balancer
+        """
+        return pulumi.get(self, "load_balancer_urn")
+
+    @load_balancer_urn.setter
+    def load_balancer_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_urn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Load Balancer name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="redirectHttpToHttps")
+    def redirect_http_to_https(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean value indicating whether
+        HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
+        Default value is `false`.
+        """
+        return pulumi.get(self, "redirect_http_to_https")
+
+    @redirect_http_to_https.setter
+    def redirect_http_to_https(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "redirect_http_to_https", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region to start in
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="stickySessions")
@@ -482,28 +756,28 @@ class LoadBalancer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
-            __props__['algorithm'] = algorithm
-            __props__['droplet_ids'] = droplet_ids
-            __props__['droplet_tag'] = droplet_tag
-            __props__['enable_backend_keepalive'] = enable_backend_keepalive
-            __props__['enable_proxy_protocol'] = enable_proxy_protocol
+            __props__.__dict__["algorithm"] = algorithm
+            __props__.__dict__["droplet_ids"] = droplet_ids
+            __props__.__dict__["droplet_tag"] = droplet_tag
+            __props__.__dict__["enable_backend_keepalive"] = enable_backend_keepalive
+            __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
             if forwarding_rules is None and not opts.urn:
                 raise TypeError("Missing required property 'forwarding_rules'")
-            __props__['forwarding_rules'] = forwarding_rules
-            __props__['healthcheck'] = healthcheck
-            __props__['name'] = name
-            __props__['redirect_http_to_https'] = redirect_http_to_https
+            __props__.__dict__["forwarding_rules"] = forwarding_rules
+            __props__.__dict__["healthcheck"] = healthcheck
+            __props__.__dict__["name"] = name
+            __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
-            __props__['size'] = size
-            __props__['sticky_sessions'] = sticky_sessions
-            __props__['vpc_uuid'] = vpc_uuid
-            __props__['ip'] = None
-            __props__['load_balancer_urn'] = None
-            __props__['status'] = None
+            __props__.__dict__["region"] = region
+            __props__.__dict__["size"] = size
+            __props__.__dict__["sticky_sessions"] = sticky_sessions
+            __props__.__dict__["vpc_uuid"] = vpc_uuid
+            __props__.__dict__["ip"] = None
+            __props__.__dict__["load_balancer_urn"] = None
+            __props__.__dict__["status"] = None
         super(LoadBalancer, __self__).__init__(
             'digitalocean:index/loadBalancer:LoadBalancer',
             resource_name,
@@ -563,24 +837,24 @@ class LoadBalancer(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LoadBalancerState.__new__(_LoadBalancerState)
 
-        __props__["algorithm"] = algorithm
-        __props__["droplet_ids"] = droplet_ids
-        __props__["droplet_tag"] = droplet_tag
-        __props__["enable_backend_keepalive"] = enable_backend_keepalive
-        __props__["enable_proxy_protocol"] = enable_proxy_protocol
-        __props__["forwarding_rules"] = forwarding_rules
-        __props__["healthcheck"] = healthcheck
-        __props__["ip"] = ip
-        __props__["load_balancer_urn"] = load_balancer_urn
-        __props__["name"] = name
-        __props__["redirect_http_to_https"] = redirect_http_to_https
-        __props__["region"] = region
-        __props__["size"] = size
-        __props__["status"] = status
-        __props__["sticky_sessions"] = sticky_sessions
-        __props__["vpc_uuid"] = vpc_uuid
+        __props__.__dict__["algorithm"] = algorithm
+        __props__.__dict__["droplet_ids"] = droplet_ids
+        __props__.__dict__["droplet_tag"] = droplet_tag
+        __props__.__dict__["enable_backend_keepalive"] = enable_backend_keepalive
+        __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
+        __props__.__dict__["forwarding_rules"] = forwarding_rules
+        __props__.__dict__["healthcheck"] = healthcheck
+        __props__.__dict__["ip"] = ip
+        __props__.__dict__["load_balancer_urn"] = load_balancer_urn
+        __props__.__dict__["name"] = name
+        __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
+        __props__.__dict__["region"] = region
+        __props__.__dict__["size"] = size
+        __props__.__dict__["status"] = status
+        __props__.__dict__["sticky_sessions"] = sticky_sessions
+        __props__.__dict__["vpc_uuid"] = vpc_uuid
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -713,10 +987,4 @@ class LoadBalancer(pulumi.CustomResource):
         The ID of the VPC where the load balancer will be located.
         """
         return pulumi.get(self, "vpc_uuid")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

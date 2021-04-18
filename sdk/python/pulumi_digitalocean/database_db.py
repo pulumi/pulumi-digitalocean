@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DatabaseDbArgs', 'DatabaseDb']
 
@@ -34,6 +34,46 @@ class DatabaseDbArgs:
 
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for the database.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _DatabaseDbState:
+    def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DatabaseDb resources.
+        :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
+        :param pulumi.Input[str] name: The name for the database.
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the original source database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_id", value)
 
     @property
@@ -157,12 +197,12 @@ class DatabaseDb(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseDbArgs.__new__(DatabaseDbArgs)
 
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['name'] = name
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["name"] = name
         super(DatabaseDb, __self__).__init__(
             'digitalocean:index:DatabaseDb',
             resource_name,
@@ -187,10 +227,10 @@ class DatabaseDb(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseDbState.__new__(_DatabaseDbState)
 
-        __props__["cluster_id"] = cluster_id
-        __props__["name"] = name
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["name"] = name
         return DatabaseDb(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -208,10 +248,4 @@ class DatabaseDb(pulumi.CustomResource):
         The name for the database.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

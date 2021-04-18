@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -133,6 +133,25 @@ __all__ = [
 
 @pulumi.output_type
 class AppSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainNames":
+            suggest = "domain_names"
+        elif key == "staticSites":
+            suggest = "static_sites"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  databases: Optional[Sequence['outputs.AppSpecDatabase']] = None,
@@ -232,12 +251,30 @@ class AppSpec(dict):
     def workers(self) -> Optional[Sequence['outputs.AppSpecWorker']]:
         return pulumi.get(self, "workers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "dbName":
+            suggest = "db_name"
+        elif key == "dbUser":
+            suggest = "db_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecDatabase.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_name: Optional[str] = None,
                  db_name: Optional[str] = None,
@@ -326,9 +363,6 @@ class AppSpecDatabase(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecDomainName(dict):
@@ -382,9 +416,6 @@ class AppSpecDomainName(dict):
         If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
         """
         return pulumi.get(self, "zone")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -441,12 +472,38 @@ class AppSpecEnv(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecJob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildCommand":
+            suggest = "build_command"
+        elif key == "dockerfilePath":
+            suggest = "dockerfile_path"
+        elif key == "environmentSlug":
+            suggest = "environment_slug"
+        elif key == "instanceCount":
+            suggest = "instance_count"
+        elif key == "instanceSizeSlug":
+            suggest = "instance_size_slug"
+        elif key == "runCommand":
+            suggest = "run_command"
+        elif key == "sourceDir":
+            suggest = "source_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJob.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  build_command: Optional[str] = None,
@@ -626,9 +683,6 @@ class AppSpecJob(dict):
         """
         return pulumi.get(self, "source_dir")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecJobEnv(dict):
@@ -684,12 +738,26 @@ class AppSpecJobEnv(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecJobGit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoCloneUrl":
+            suggest = "repo_clone_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJobGit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJobGit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJobGit.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  repo_clone_url: Optional[str] = None):
@@ -718,12 +786,26 @@ class AppSpecJobGit(dict):
         """
         return pulumi.get(self, "repo_clone_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecJobGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJobGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJobGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJobGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  deploy_on_push: Optional[bool] = None,
@@ -763,13 +845,27 @@ class AppSpecJobGithub(dict):
         The name of the repo in the format `owner/repo`.
         """
         return pulumi.get(self, "repo")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class AppSpecJobGitlab(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJobGitlab. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJobGitlab.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJobGitlab.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  deploy_on_push: Optional[bool] = None,
@@ -810,12 +906,26 @@ class AppSpecJobGitlab(dict):
         """
         return pulumi.get(self, "repo")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecJobImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "registryType":
+            suggest = "registry_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJobImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJobImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJobImage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  registry_type: str,
                  repository: str,
@@ -866,12 +976,44 @@ class AppSpecJobImage(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildCommand":
+            suggest = "build_command"
+        elif key == "dockerfilePath":
+            suggest = "dockerfile_path"
+        elif key == "environmentSlug":
+            suggest = "environment_slug"
+        elif key == "healthCheck":
+            suggest = "health_check"
+        elif key == "httpPort":
+            suggest = "http_port"
+        elif key == "instanceCount":
+            suggest = "instance_count"
+        elif key == "instanceSizeSlug":
+            suggest = "instance_size_slug"
+        elif key == "internalPorts":
+            suggest = "internal_ports"
+        elif key == "runCommand":
+            suggest = "run_command"
+        elif key == "sourceDir":
+            suggest = "source_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecService.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  build_command: Optional[str] = None,
@@ -1075,9 +1217,6 @@ class AppSpecService(dict):
         """
         return pulumi.get(self, "source_dir")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecServiceEnv(dict):
@@ -1133,12 +1272,26 @@ class AppSpecServiceEnv(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecServiceGit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoCloneUrl":
+            suggest = "repo_clone_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceGit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceGit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceGit.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  repo_clone_url: Optional[str] = None):
@@ -1167,12 +1320,26 @@ class AppSpecServiceGit(dict):
         """
         return pulumi.get(self, "repo_clone_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecServiceGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  deploy_on_push: Optional[bool] = None,
@@ -1212,13 +1379,27 @@ class AppSpecServiceGithub(dict):
         The name of the repo in the format `owner/repo`.
         """
         return pulumi.get(self, "repo")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class AppSpecServiceGitlab(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceGitlab. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceGitlab.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceGitlab.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  deploy_on_push: Optional[bool] = None,
@@ -1259,12 +1440,36 @@ class AppSpecServiceGitlab(dict):
         """
         return pulumi.get(self, "repo")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecServiceHealthCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpPath":
+            suggest = "http_path"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceHealthCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceHealthCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceHealthCheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  failure_threshold: Optional[int] = None,
                  http_path: Optional[str] = None,
@@ -1341,12 +1546,26 @@ class AppSpecServiceHealthCheck(dict):
         """
         return pulumi.get(self, "timeout_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecServiceImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "registryType":
+            suggest = "registry_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceImage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  registry_type: str,
                  repository: str,
@@ -1397,9 +1616,6 @@ class AppSpecServiceImage(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecServiceRoute(dict):
@@ -1419,12 +1635,40 @@ class AppSpecServiceRoute(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecStaticSite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildCommand":
+            suggest = "build_command"
+        elif key == "catchallDocument":
+            suggest = "catchall_document"
+        elif key == "dockerfilePath":
+            suggest = "dockerfile_path"
+        elif key == "environmentSlug":
+            suggest = "environment_slug"
+        elif key == "errorDocument":
+            suggest = "error_document"
+        elif key == "indexDocument":
+            suggest = "index_document"
+        elif key == "outputDir":
+            suggest = "output_dir"
+        elif key == "sourceDir":
+            suggest = "source_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecStaticSite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecStaticSite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecStaticSite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  build_command: Optional[str] = None,
@@ -1592,9 +1836,6 @@ class AppSpecStaticSite(dict):
         """
         return pulumi.get(self, "source_dir")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecStaticSiteEnv(dict):
@@ -1650,12 +1891,26 @@ class AppSpecStaticSiteEnv(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecStaticSiteGit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoCloneUrl":
+            suggest = "repo_clone_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecStaticSiteGit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecStaticSiteGit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecStaticSiteGit.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  repo_clone_url: Optional[str] = None):
@@ -1684,12 +1939,26 @@ class AppSpecStaticSiteGit(dict):
         """
         return pulumi.get(self, "repo_clone_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecStaticSiteGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecStaticSiteGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecStaticSiteGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecStaticSiteGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  deploy_on_push: Optional[bool] = None,
@@ -1729,13 +1998,27 @@ class AppSpecStaticSiteGithub(dict):
         The name of the repo in the format `owner/repo`.
         """
         return pulumi.get(self, "repo")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class AppSpecStaticSiteGitlab(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecStaticSiteGitlab. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecStaticSiteGitlab.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecStaticSiteGitlab.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  deploy_on_push: Optional[bool] = None,
@@ -1775,9 +2058,6 @@ class AppSpecStaticSiteGitlab(dict):
         The name of the repo in the format `owner/repo`.
         """
         return pulumi.get(self, "repo")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1798,12 +2078,38 @@ class AppSpecStaticSiteRoute(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecWorker(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildCommand":
+            suggest = "build_command"
+        elif key == "dockerfilePath":
+            suggest = "dockerfile_path"
+        elif key == "environmentSlug":
+            suggest = "environment_slug"
+        elif key == "instanceCount":
+            suggest = "instance_count"
+        elif key == "instanceSizeSlug":
+            suggest = "instance_size_slug"
+        elif key == "runCommand":
+            suggest = "run_command"
+        elif key == "sourceDir":
+            suggest = "source_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorker. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorker.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorker.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  build_command: Optional[str] = None,
@@ -1963,9 +2269,6 @@ class AppSpecWorker(dict):
         """
         return pulumi.get(self, "source_dir")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecWorkerEnv(dict):
@@ -2021,12 +2324,26 @@ class AppSpecWorkerEnv(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecWorkerGit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoCloneUrl":
+            suggest = "repo_clone_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerGit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorkerGit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorkerGit.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  repo_clone_url: Optional[str] = None):
@@ -2055,12 +2372,26 @@ class AppSpecWorkerGit(dict):
         """
         return pulumi.get(self, "repo_clone_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecWorkerGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorkerGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorkerGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  deploy_on_push: Optional[bool] = None,
@@ -2100,13 +2431,27 @@ class AppSpecWorkerGithub(dict):
         The name of the repo in the format `owner/repo`.
         """
         return pulumi.get(self, "repo")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class AppSpecWorkerGitlab(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerGitlab. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorkerGitlab.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorkerGitlab.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  deploy_on_push: Optional[bool] = None,
@@ -2147,12 +2492,26 @@ class AppSpecWorkerGitlab(dict):
         """
         return pulumi.get(self, "repo")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppSpecWorkerImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "registryType":
+            suggest = "registry_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorkerImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorkerImage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  registry_type: str,
                  repository: str,
@@ -2203,9 +2562,6 @@ class AppSpecWorkerImage(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseClusterMaintenanceWindow(dict):
@@ -2235,12 +2591,26 @@ class DatabaseClusterMaintenanceWindow(dict):
         """
         return pulumi.get(self, "hour")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseFirewallRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseFirewallRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseFirewallRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseFirewallRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  value: str,
@@ -2291,12 +2661,34 @@ class DatabaseFirewallRule(dict):
         """
         return pulumi.get(self, "uuid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FirewallInboundRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portRange":
+            suggest = "port_range"
+        elif key == "sourceAddresses":
+            suggest = "source_addresses"
+        elif key == "sourceDropletIds":
+            suggest = "source_droplet_ids"
+        elif key == "sourceLoadBalancerUids":
+            suggest = "source_load_balancer_uids"
+        elif key == "sourceTags":
+            suggest = "source_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallInboundRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallInboundRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallInboundRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  protocol: str,
                  port_range: Optional[str] = None,
@@ -2392,12 +2784,34 @@ class FirewallInboundRule(dict):
         """
         return pulumi.get(self, "source_tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FirewallOutboundRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationAddresses":
+            suggest = "destination_addresses"
+        elif key == "destinationDropletIds":
+            suggest = "destination_droplet_ids"
+        elif key == "destinationLoadBalancerUids":
+            suggest = "destination_load_balancer_uids"
+        elif key == "destinationTags":
+            suggest = "destination_tags"
+        elif key == "portRange":
+            suggest = "port_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallOutboundRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallOutboundRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallOutboundRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  protocol: str,
                  destination_addresses: Optional[Sequence[str]] = None,
@@ -2495,12 +2909,26 @@ class FirewallOutboundRule(dict):
         """
         return pulumi.get(self, "port_range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FirewallPendingChange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dropletId":
+            suggest = "droplet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPendingChange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPendingChange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPendingChange.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  droplet_id: Optional[int] = None,
                  removing: Optional[bool] = None,
@@ -2535,12 +2963,34 @@ class FirewallPendingChange(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KubernetesClusterKubeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "clusterCaCertificate":
+            suggest = "cluster_ca_certificate"
+        elif key == "expiresAt":
+            suggest = "expires_at"
+        elif key == "rawConfig":
+            suggest = "raw_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesClusterKubeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesClusterKubeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesClusterKubeConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_certificate: Optional[str] = None,
                  client_key: Optional[str] = None,
@@ -2629,12 +3079,34 @@ class KubernetesClusterKubeConfig(dict):
         """
         return pulumi.get(self, "token")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KubernetesClusterNodePool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actualNodeCount":
+            suggest = "actual_node_count"
+        elif key == "autoScale":
+            suggest = "auto_scale"
+        elif key == "maxNodes":
+            suggest = "max_nodes"
+        elif key == "minNodes":
+            suggest = "min_nodes"
+        elif key == "nodeCount":
+            suggest = "node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesClusterNodePool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesClusterNodePool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesClusterNodePool.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  size: str,
@@ -2781,12 +3253,30 @@ class KubernetesClusterNodePool(dict):
         """
         return pulumi.get(self, "taints")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KubernetesClusterNodePoolNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "dropletId":
+            suggest = "droplet_id"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesClusterNodePoolNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesClusterNodePoolNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesClusterNodePoolNode.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  droplet_id: Optional[str] = None,
@@ -2862,9 +3352,6 @@ class KubernetesClusterNodePoolNode(dict):
         The date and time when the node was last updated.
         """
         return pulumi.get(self, "updated_at")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2906,12 +3393,30 @@ class KubernetesClusterNodePoolTaint(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KubernetesNodePoolNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "dropletId":
+            suggest = "droplet_id"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesNodePoolNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesNodePoolNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesNodePoolNode.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  droplet_id: Optional[str] = None,
@@ -2988,9 +3493,6 @@ class KubernetesNodePoolNode(dict):
         """
         return pulumi.get(self, "updated_at")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KubernetesNodePoolTaint(dict):
@@ -3031,12 +3533,38 @@ class KubernetesNodePoolTaint(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerForwardingRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryPort":
+            suggest = "entry_port"
+        elif key == "entryProtocol":
+            suggest = "entry_protocol"
+        elif key == "targetPort":
+            suggest = "target_port"
+        elif key == "targetProtocol":
+            suggest = "target_protocol"
+        elif key == "certificateId":
+            suggest = "certificate_id"
+        elif key == "certificateName":
+            suggest = "certificate_name"
+        elif key == "tlsPassthrough":
+            suggest = "tls_passthrough"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerForwardingRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerForwardingRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerForwardingRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  entry_port: int,
                  entry_protocol: str,
@@ -3121,12 +3649,32 @@ class LoadBalancerForwardingRule(dict):
         """
         return pulumi.get(self, "tls_passthrough")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerHealthcheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkIntervalSeconds":
+            suggest = "check_interval_seconds"
+        elif key == "healthyThreshold":
+            suggest = "healthy_threshold"
+        elif key == "responseTimeoutSeconds":
+            suggest = "response_timeout_seconds"
+        elif key == "unhealthyThreshold":
+            suggest = "unhealthy_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerHealthcheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerHealthcheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerHealthcheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  port: int,
                  protocol: str,
@@ -3213,12 +3761,28 @@ class LoadBalancerHealthcheck(dict):
         """
         return pulumi.get(self, "unhealthy_threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerStickySessions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cookieName":
+            suggest = "cookie_name"
+        elif key == "cookieTtlSeconds":
+            suggest = "cookie_ttl_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerStickySessions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerStickySessions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerStickySessions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cookie_name: Optional[str] = None,
                  cookie_ttl_seconds: Optional[int] = None,
@@ -3259,12 +3823,32 @@ class LoadBalancerStickySessions(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpacesBucketCorsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedMethods":
+            suggest = "allowed_methods"
+        elif key == "allowedOrigins":
+            suggest = "allowed_origins"
+        elif key == "allowedHeaders":
+            suggest = "allowed_headers"
+        elif key == "maxAgeSeconds":
+            suggest = "max_age_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpacesBucketCorsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpacesBucketCorsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpacesBucketCorsRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_methods: Sequence[str],
                  allowed_origins: Sequence[str],
@@ -3315,12 +3899,28 @@ class SpacesBucketCorsRule(dict):
         """
         return pulumi.get(self, "max_age_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpacesBucketLifecycleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "abortIncompleteMultipartUploadDays":
+            suggest = "abort_incomplete_multipart_upload_days"
+        elif key == "noncurrentVersionExpiration":
+            suggest = "noncurrent_version_expiration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpacesBucketLifecycleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpacesBucketLifecycleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpacesBucketLifecycleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: bool,
                  abort_incomplete_multipart_upload_days: Optional[int] = None,
@@ -3398,12 +3998,26 @@ class SpacesBucketLifecycleRule(dict):
         """
         return pulumi.get(self, "prefix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpacesBucketLifecycleRuleExpiration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiredObjectDeleteMarker":
+            suggest = "expired_object_delete_marker"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpacesBucketLifecycleRuleExpiration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpacesBucketLifecycleRuleExpiration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpacesBucketLifecycleRuleExpiration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  date: Optional[str] = None,
                  days: Optional[int] = None,
@@ -3448,9 +4062,6 @@ class SpacesBucketLifecycleRuleExpiration(dict):
         """
         return pulumi.get(self, "expired_object_delete_marker")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpacesBucketLifecycleRuleNoncurrentVersionExpiration(dict):
@@ -3469,9 +4080,6 @@ class SpacesBucketLifecycleRuleNoncurrentVersionExpiration(dict):
         Specifies the number of days after which an object's non-current versions expire.
         """
         return pulumi.get(self, "days")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3493,9 +4101,6 @@ class SpacesBucketVersioning(dict):
         state. You can, however, suspend versioning on that bucket.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

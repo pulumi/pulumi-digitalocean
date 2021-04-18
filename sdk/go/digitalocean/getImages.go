@@ -4,7 +4,7 @@
 package digitalocean
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information on images for use in other resources (e.g. creating a Droplet

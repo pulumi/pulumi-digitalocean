@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DatabaseReplicaArgs', 'DatabaseReplica']
 
@@ -111,6 +111,238 @@ class DatabaseReplicaArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _DatabaseReplicaState:
+    def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 private_host: Optional[pulumi.Input[str]] = None,
+                 private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 private_uri: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 uri: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DatabaseReplica resources.
+        :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
+        :param pulumi.Input[str] database: Name of the replica's default database.
+        :param pulumi.Input[str] host: Database replica's hostname.
+        :param pulumi.Input[str] name: The name for the database replica.
+        :param pulumi.Input[str] password: Password for the replica's default user.
+        :param pulumi.Input[int] port: Network port that the database replica is listening on.
+        :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
+        :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
+        :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
+        :param pulumi.Input[str] uri: The full URI for connecting to the database replica.
+        :param pulumi.Input[str] user: Username for the replica's default user.
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if private_host is not None:
+            pulumi.set(__self__, "private_host", private_host)
+        if private_network_uuid is not None:
+            pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+        if private_uri is not None:
+            pulumi.set(__self__, "private_uri", private_uri)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the original source database cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the replica's default database.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database replica's hostname.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for the database replica.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the replica's default user.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Network port that the database replica is listening on.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="privateHost")
+    def private_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as `host`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_host")
+
+    @private_host.setter
+    def private_host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_host", value)
+
+    @property
+    @pulumi.getter(name="privateNetworkUuid")
+    def private_network_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC where the database replica will be located.
+        """
+        return pulumi.get(self, "private_network_uuid")
+
+    @private_network_uuid.setter
+    def private_network_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_network_uuid", value)
+
+    @property
+    @pulumi.getter(name="privateUri")
+    def private_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as `uri`, but only accessible from resources within the account and in the same region.
+        """
+        return pulumi.get(self, "private_uri")
+
+    @private_uri.setter
+    def private_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_uri", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        DigitalOcean region where the replica will reside.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tag names to be applied to the database replica.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full URI for connecting to the database replica.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for the replica's default user.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
 
 class DatabaseReplica(pulumi.CustomResource):
@@ -239,24 +471,24 @@ class DatabaseReplica(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseReplicaArgs.__new__(DatabaseReplicaArgs)
 
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['name'] = name
-            __props__['private_network_uuid'] = private_network_uuid
-            __props__['region'] = region
-            __props__['size'] = size
-            __props__['tags'] = tags
-            __props__['database'] = None
-            __props__['host'] = None
-            __props__['password'] = None
-            __props__['port'] = None
-            __props__['private_host'] = None
-            __props__['private_uri'] = None
-            __props__['uri'] = None
-            __props__['user'] = None
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["name"] = name
+            __props__.__dict__["private_network_uuid"] = private_network_uuid
+            __props__.__dict__["region"] = region
+            __props__.__dict__["size"] = size
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["database"] = None
+            __props__.__dict__["host"] = None
+            __props__.__dict__["password"] = None
+            __props__.__dict__["port"] = None
+            __props__.__dict__["private_host"] = None
+            __props__.__dict__["private_uri"] = None
+            __props__.__dict__["uri"] = None
+            __props__.__dict__["user"] = None
         super(DatabaseReplica, __self__).__init__(
             'digitalocean:index/databaseReplica:DatabaseReplica',
             resource_name,
@@ -305,22 +537,22 @@ class DatabaseReplica(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseReplicaState.__new__(_DatabaseReplicaState)
 
-        __props__["cluster_id"] = cluster_id
-        __props__["database"] = database
-        __props__["host"] = host
-        __props__["name"] = name
-        __props__["password"] = password
-        __props__["port"] = port
-        __props__["private_host"] = private_host
-        __props__["private_network_uuid"] = private_network_uuid
-        __props__["private_uri"] = private_uri
-        __props__["region"] = region
-        __props__["size"] = size
-        __props__["tags"] = tags
-        __props__["uri"] = uri
-        __props__["user"] = user
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["database"] = database
+        __props__.__dict__["host"] = host
+        __props__.__dict__["name"] = name
+        __props__.__dict__["password"] = password
+        __props__.__dict__["port"] = port
+        __props__.__dict__["private_host"] = private_host
+        __props__.__dict__["private_network_uuid"] = private_network_uuid
+        __props__.__dict__["private_uri"] = private_uri
+        __props__.__dict__["region"] = region
+        __props__.__dict__["size"] = size
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["uri"] = uri
+        __props__.__dict__["user"] = user
         return DatabaseReplica(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -434,10 +666,4 @@ class DatabaseReplica(pulumi.CustomResource):
         Username for the replica's default user.
         """
         return pulumi.get(self, "user")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

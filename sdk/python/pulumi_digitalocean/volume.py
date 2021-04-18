@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['VolumeArgs', 'Volume']
 
@@ -161,6 +161,209 @@ class VolumeArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _VolumeState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 filesystem_label: Optional[pulumi.Input[str]] = None,
+                 filesystem_type: Optional[pulumi.Input[str]] = None,
+                 initial_filesystem_label: Optional[pulumi.Input[str]] = None,
+                 initial_filesystem_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 volume_urn: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Volume resources.
+        :param pulumi.Input[str] description: A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of associated droplet ids.
+        :param pulumi.Input[str] filesystem_label: Filesystem label for the block storage volume.
+        :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
+        :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
+        :param pulumi.Input[str] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] region: The region that the block storage volume will be created in.
+        :param pulumi.Input[int] size: The size of the block storage volume in GiB. If updated, can only be expanded.
+        :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Volume.
+        :param pulumi.Input[str] volume_urn: The uniform resource name for the volume.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if droplet_ids is not None:
+            pulumi.set(__self__, "droplet_ids", droplet_ids)
+        if filesystem_label is not None:
+            pulumi.set(__self__, "filesystem_label", filesystem_label)
+        if filesystem_type is not None:
+            warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
+            pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
+        if filesystem_type is not None:
+            pulumi.set(__self__, "filesystem_type", filesystem_type)
+        if initial_filesystem_label is not None:
+            pulumi.set(__self__, "initial_filesystem_label", initial_filesystem_label)
+        if initial_filesystem_type is not None:
+            pulumi.set(__self__, "initial_filesystem_type", initial_filesystem_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if volume_urn is not None:
+            pulumi.set(__self__, "volume_urn", volume_urn)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dropletIds")
+    def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of associated droplet ids.
+        """
+        return pulumi.get(self, "droplet_ids")
+
+    @droplet_ids.setter
+    def droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "droplet_ids", value)
+
+    @property
+    @pulumi.getter(name="filesystemLabel")
+    def filesystem_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem label for the block storage volume.
+        """
+        return pulumi.get(self, "filesystem_label")
+
+    @filesystem_label.setter
+    def filesystem_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filesystem_label", value)
+
+    @property
+    @pulumi.getter(name="filesystemType")
+    def filesystem_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filesystem type (`xfs` or `ext4`) for the block storage volume.
+        """
+        return pulumi.get(self, "filesystem_type")
+
+    @filesystem_type.setter
+    def filesystem_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filesystem_type", value)
+
+    @property
+    @pulumi.getter(name="initialFilesystemLabel")
+    def initial_filesystem_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial filesystem label for the block storage volume.
+        """
+        return pulumi.get(self, "initial_filesystem_label")
+
+    @initial_filesystem_label.setter
+    def initial_filesystem_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initial_filesystem_label", value)
+
+    @property
+    @pulumi.getter(name="initialFilesystemType")
+    def initial_filesystem_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
+        """
+        return pulumi.get(self, "initial_filesystem_type")
+
+    @initial_filesystem_type.setter
+    def initial_filesystem_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initial_filesystem_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region that the block storage volume will be created in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the block storage volume in GiB. If updated, can only be expanded.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of the tags to be applied to this Volume.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="volumeUrn")
+    def volume_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uniform resource name for the volume.
+        """
+        return pulumi.get(self, "volume_urn")
+
+    @volume_urn.setter
+    def volume_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_urn", value)
 
 
 class Volume(pulumi.CustomResource):
@@ -328,27 +531,27 @@ class Volume(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VolumeArgs.__new__(VolumeArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if filesystem_type is not None and not opts.urn:
                 warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
                 pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
-            __props__['filesystem_type'] = filesystem_type
-            __props__['initial_filesystem_label'] = initial_filesystem_label
-            __props__['initial_filesystem_type'] = initial_filesystem_type
-            __props__['name'] = name
+            __props__.__dict__["filesystem_type"] = filesystem_type
+            __props__.__dict__["initial_filesystem_label"] = initial_filesystem_label
+            __props__.__dict__["initial_filesystem_type"] = initial_filesystem_type
+            __props__.__dict__["name"] = name
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
+            __props__.__dict__["region"] = region
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
-            __props__['size'] = size
-            __props__['snapshot_id'] = snapshot_id
-            __props__['tags'] = tags
-            __props__['droplet_ids'] = None
-            __props__['filesystem_label'] = None
-            __props__['volume_urn'] = None
+            __props__.__dict__["size"] = size
+            __props__.__dict__["snapshot_id"] = snapshot_id
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["droplet_ids"] = None
+            __props__.__dict__["filesystem_label"] = None
+            __props__.__dict__["volume_urn"] = None
         super(Volume, __self__).__init__(
             'digitalocean:index/volume:Volume',
             resource_name,
@@ -393,20 +596,20 @@ class Volume(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VolumeState.__new__(_VolumeState)
 
-        __props__["description"] = description
-        __props__["droplet_ids"] = droplet_ids
-        __props__["filesystem_label"] = filesystem_label
-        __props__["filesystem_type"] = filesystem_type
-        __props__["initial_filesystem_label"] = initial_filesystem_label
-        __props__["initial_filesystem_type"] = initial_filesystem_type
-        __props__["name"] = name
-        __props__["region"] = region
-        __props__["size"] = size
-        __props__["snapshot_id"] = snapshot_id
-        __props__["tags"] = tags
-        __props__["volume_urn"] = volume_urn
+        __props__.__dict__["description"] = description
+        __props__.__dict__["droplet_ids"] = droplet_ids
+        __props__.__dict__["filesystem_label"] = filesystem_label
+        __props__.__dict__["filesystem_type"] = filesystem_type
+        __props__.__dict__["initial_filesystem_label"] = initial_filesystem_label
+        __props__.__dict__["initial_filesystem_type"] = initial_filesystem_type
+        __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
+        __props__.__dict__["size"] = size
+        __props__.__dict__["snapshot_id"] = snapshot_id
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["volume_urn"] = volume_urn
         return Volume(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -504,10 +707,4 @@ class Volume(pulumi.CustomResource):
         The uniform resource name for the volume.
         """
         return pulumi.get(self, "volume_urn")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

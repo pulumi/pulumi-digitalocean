@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DnsRecordArgs', 'DnsRecord']
 
@@ -175,6 +175,190 @@ class DnsRecordArgs:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.input_type
+class _DnsRecordState:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 flags: Optional[pulumi.Input[int]] = None,
+                 fqdn: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 tag: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering DnsRecord resources.
+        :param pulumi.Input[str] domain: The domain to add the record to.
+        :param pulumi.Input[int] flags: The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
+        :param pulumi.Input[str] fqdn: The FQDN of the record
+        :param pulumi.Input[str] name: The hostname of the record. Use `@` for records on domain's name itself.
+        :param pulumi.Input[int] port: The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
+        :param pulumi.Input[int] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
+        :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0.
+        :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
+        :param pulumi.Input[str] value: The value of the record.
+        :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to add the record to.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[pulumi.Input[int]]:
+        """
+        The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
+        """
+        return pulumi.get(self, "flags")
+
+    @flags.setter
+    def flags(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "flags", value)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The FQDN of the record
+        """
+        return pulumi.get(self, "fqdn")
+
+    @fqdn.setter
+    def fqdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fqdn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hostname of the record. Use `@` for records on domain's name itself.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time to live for the record, in seconds. Must be at least 0.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the record.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
 class DnsRecord(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -321,25 +505,25 @@ class DnsRecord(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DnsRecordArgs.__new__(DnsRecordArgs)
 
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
-            __props__['domain'] = domain
-            __props__['flags'] = flags
-            __props__['name'] = name
-            __props__['port'] = port
-            __props__['priority'] = priority
-            __props__['tag'] = tag
-            __props__['ttl'] = ttl
+            __props__.__dict__["domain"] = domain
+            __props__.__dict__["flags"] = flags
+            __props__.__dict__["name"] = name
+            __props__.__dict__["port"] = port
+            __props__.__dict__["priority"] = priority
+            __props__.__dict__["tag"] = tag
+            __props__.__dict__["ttl"] = ttl
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
+            __props__.__dict__["type"] = type
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__['value'] = value
-            __props__['weight'] = weight
-            __props__['fqdn'] = None
+            __props__.__dict__["value"] = value
+            __props__.__dict__["weight"] = weight
+            __props__.__dict__["fqdn"] = None
         super(DnsRecord, __self__).__init__(
             'digitalocean:index/dnsRecord:DnsRecord',
             resource_name,
@@ -382,19 +566,19 @@ class DnsRecord(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DnsRecordState.__new__(_DnsRecordState)
 
-        __props__["domain"] = domain
-        __props__["flags"] = flags
-        __props__["fqdn"] = fqdn
-        __props__["name"] = name
-        __props__["port"] = port
-        __props__["priority"] = priority
-        __props__["tag"] = tag
-        __props__["ttl"] = ttl
-        __props__["type"] = type
-        __props__["value"] = value
-        __props__["weight"] = weight
+        __props__.__dict__["domain"] = domain
+        __props__.__dict__["flags"] = flags
+        __props__.__dict__["fqdn"] = fqdn
+        __props__.__dict__["name"] = name
+        __props__.__dict__["port"] = port
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["tag"] = tag
+        __props__.__dict__["ttl"] = ttl
+        __props__.__dict__["type"] = type
+        __props__.__dict__["value"] = value
+        __props__.__dict__["weight"] = weight
         return DnsRecord(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -484,10 +668,4 @@ class DnsRecord(pulumi.CustomResource):
         The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
         """
         return pulumi.get(self, "weight")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
