@@ -37,7 +37,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
       with:
         pulumi-version: 3.0.0-beta.2
     - name: Setup Node
@@ -122,7 +122,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
       with:
         pulumi-version: 3.0.0-beta.2
     - name: Run golangci
@@ -160,7 +160,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
       with:
         pulumi-version: 3.0.0-beta.2
     - name: Run golangci
@@ -196,7 +196,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
       with:
         pulumi-version: 3.0.0-beta.2
     - name: Build tfgen & provider binaries
@@ -252,7 +252,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
       with:
         pulumi-version: 3.0.0-beta.2
     - name: Set PreRelease Version
@@ -286,7 +286,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
       with:
         pulumi-version: 3.0.0-beta.2
     - name: Setup Node
@@ -357,7 +357,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
       with:
         pulumi-version: 3.0.0-beta.2
     - name: Setup Node

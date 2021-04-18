@@ -37,7 +37,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
     - name: Setup Node
       uses: actions/setup-node@v2.1.5
       with:
@@ -120,7 +120,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
     - name: Run golangci
       run: make lint_provider
     - if: failure() && github.event_name == 'push'
@@ -156,7 +156,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
     - name: Run golangci
       run: cd sdk/go/digitalocean && golangci-lint run -c ../../../.golangci.yml
     - if: failure() && github.event_name == 'push'
@@ -190,7 +190,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
     - name: Build tfgen & provider binaries
       run: make provider
     - name: Tar provider binaries
@@ -234,7 +234,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1.0.1
+      uses: pulumi/action-install-pulumi-cli@v1.0.2
     - name: Setup Node
       uses: actions/setup-node@v2.1.5
       with:
