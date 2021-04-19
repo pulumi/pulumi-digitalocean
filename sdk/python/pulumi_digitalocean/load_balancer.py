@@ -536,9 +536,7 @@ class LoadBalancer(pulumi.CustomResource):
                  size: Optional[pulumi.Input[str]] = None,
                  sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
         modify, and delete Load Balancers.
@@ -738,15 +736,7 @@ class LoadBalancer(pulumi.CustomResource):
                  size: Optional[pulumi.Input[str]] = None,
                  sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
