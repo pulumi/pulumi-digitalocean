@@ -11348,6 +11348,110 @@
                 ]
             }
         },
+        "digitalocean:index/getDatabaseReplica:getDatabaseReplica": {
+            "description": "Provides information on a DigitalOcean database replica.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getDatabaseCluster({\n    name: \"example-cluster\",\n});\nconst read-only = example.then(example =\u003e digitalocean.getDatabaseReplica({\n    clusterId: example.id,\n    name: \"terra-test-ro\",\n}));\nexport const replicaOutput = read_only.then(read_only =\u003e read_only.uri);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_database_cluster(name=\"example-cluster\")\nread_only = digitalocean.get_database_replica(cluster_id=example.id,\n    name=\"terra-test-ro\")\npulumi.export(\"replicaOutput\", read_only.uri)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs\n        {\n            Name = \"example-cluster\",\n        }));\n        var read_only = example.Apply(example =\u003e Output.Create(DigitalOcean.GetDatabaseReplica.InvokeAsync(new DigitalOcean.GetDatabaseReplicaArgs\n        {\n            ClusterId = example.Id,\n            Name = \"terra-test-ro\",\n        })));\n        this.ReplicaOutput = read_only.Apply(read_only =\u003e read_only.Uri);\n    }\n\n    [Output(\"replicaOutput\")]\n    public Output\u003cstring\u003e ReplicaOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupDatabaseCluster(ctx, \u0026digitalocean.LookupDatabaseClusterArgs{\n\t\t\tName: \"example-cluster\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tread_only, err := digitalocean.LookupDatabaseReplica(ctx, \u0026digitalocean.LookupDatabaseReplicaArgs{\n\t\t\tClusterId: example.Id,\n\t\t\tName:      \"terra-test-ro\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"replicaOutput\", read_only.Uri)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDatabaseReplica.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The ID of the original source database cluster.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name for the database replica.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tag names to be applied to the database replica.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDatabaseReplica.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "database": {
+                        "type": "string",
+                        "description": "Name of the replica's default database.\n"
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "Database replica's hostname.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "Password for the replica's default user.\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "Network port that the database replica is listening on.\n"
+                    },
+                    "privateHost": {
+                        "type": "string",
+                        "description": "Same as `host`, but only accessible from resources within the account and in the same region.\n"
+                    },
+                    "privateNetworkUuid": {
+                        "type": "string"
+                    },
+                    "privateUri": {
+                        "type": "string",
+                        "description": "Same as `uri`, but only accessible from resources within the account and in the same region.\n"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tag names to be applied to the database replica.\n"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "description": "The full URI for connecting to the database replica.\n"
+                    },
+                    "user": {
+                        "type": "string",
+                        "description": "Username for the replica's default user.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "database",
+                    "host",
+                    "name",
+                    "password",
+                    "port",
+                    "privateHost",
+                    "privateNetworkUuid",
+                    "privateUri",
+                    "region",
+                    "uri",
+                    "user",
+                    "id"
+                ]
+            }
+        },
         "digitalocean:index/getDomain:getDomain": {
             "description": "Get information on a domain. This data source provides the name, TTL, and zone\nfile as configured on your DigitalOcean account. This is useful if the domain\nname in question is not managed by this provider or you need to utilize TTL or zone\nfile data.\n\nAn error is triggered if the provided domain name is not managed with your\nDigitalOcean account.\n",
             "inputs": {

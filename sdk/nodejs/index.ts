@@ -33,6 +33,7 @@ export * from "./getApp";
 export * from "./getCertificate";
 export * from "./getContainerRegistry";
 export * from "./getDatabaseCluster";
+export * from "./getDatabaseReplica";
 export * from "./getDomain";
 export * from "./getDomains";
 export * from "./getDroplet";
