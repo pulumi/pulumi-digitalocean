@@ -43,6 +43,7 @@
         "getCertificate.ts",
         "getContainerRegistry.ts",
         "getDatabaseCluster.ts",
+        "getDatabaseReplica.ts",
         "getDomain.ts",
         "getDomains.ts",
         "getDroplet.ts",

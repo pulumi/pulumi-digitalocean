@@ -277,6 +277,7 @@ func Provider() tfbridge.ProviderInfo {
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"digitalocean_certificate":      {Tok: makeDataSource(digitalOceanMod, "getCertificate")},
 			"digitalocean_database_cluster": {Tok: makeDataSource(digitalOceanMod, "getDatabaseCluster")},
+			"digitalocean_database_replica": {Tok: makeDataSource(digitalOceanMod, "getDatabaseReplica")},
 			"digitalocean_domain": {
 				Tok: makeDataSource(digitalOceanMod, "getDomain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
