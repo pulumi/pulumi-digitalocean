@@ -45,7 +45,7 @@ jobs:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
     - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1.8.0
       with:
         dotnet-version: ${{matrix.dotnetverson}}
     - name: Setup Python
@@ -294,7 +294,7 @@ jobs:
         always-auth: true
         registry-url: https://registry.npmjs.org
     - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1.8.0
     - name: Setup Python
       uses: actions/setup-python@v2
     - name: Download Python SDK
@@ -365,7 +365,7 @@ jobs:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
     - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1.8.0
       with:
         dotnet-version: ${{matrix.dotnetverson}}
     - name: Setup Python
