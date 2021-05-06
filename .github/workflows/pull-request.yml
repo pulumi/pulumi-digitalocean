@@ -43,7 +43,7 @@ jobs:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
     - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1.8.0
       with:
         dotnet-version: ${{matrix.dotnetverson}}
     - name: Setup Python
@@ -240,7 +240,7 @@ jobs:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
     - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1.8.0
       with:
         dotnet-version: ${{matrix.dotnetverson}}
     - name: Setup Python
