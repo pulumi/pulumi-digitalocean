@@ -236,7 +236,7 @@ jobs:
       with:
         go-version: 1.16.x
     - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v2
+      uses: goreleaser/goreleaser-action@v2.5.0
       with:
         args: -p 3 release --rm-dist --config=.goreleaser.prerelease.yaml  --timeout
           60m0s

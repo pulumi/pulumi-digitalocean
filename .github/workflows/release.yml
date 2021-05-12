@@ -256,7 +256,7 @@ jobs:
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
     - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v2
+      uses: goreleaser/goreleaser-action@v2.5.0
       with:
         args: -p 3 release --rm-dist --timeout 60m0s
         version: latest
