@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from ._enums import *
 
 __all__ = ['DatabaseReplicaArgs', 'DatabaseReplica']
 
@@ -16,16 +17,16 @@ class DatabaseReplicaArgs:
                  cluster_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DatabaseReplica resource.
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] name: The name for the database replica.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
-        :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
-        :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the replica will reside.
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -78,26 +79,26 @@ class DatabaseReplicaArgs:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
         DigitalOcean region where the replica will reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[str]]:
+    def size(self) -> Optional[pulumi.Input[Union[str, 'DatabaseSlug']]]:
         """
         Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[str]]):
+    def size(self, value: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]]):
         pulumi.set(self, "size", value)
 
     @property
@@ -125,8 +126,8 @@ class _DatabaseReplicaState:
                  private_host: Optional[pulumi.Input[str]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
                  private_uri: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None):
@@ -141,8 +142,8 @@ class _DatabaseReplicaState:
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
-        :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
-        :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the replica will reside.
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         :param pulumi.Input[str] uri: The full URI for connecting to the database replica.
         :param pulumi.Input[str] user: Username for the replica's default user.
@@ -286,26 +287,26 @@ class _DatabaseReplicaState:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
         DigitalOcean region where the replica will reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[str]]:
+    def size(self) -> Optional[pulumi.Input[Union[str, 'DatabaseSlug']]]:
         """
         Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[str]]):
+    def size(self, value: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]]):
         pulumi.set(self, "size", value)
 
     @property
@@ -353,8 +354,8 @@ class DatabaseReplica(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -391,8 +392,8 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] name: The name for the database replica.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
-        :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
-        :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the replica will reside.
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         """
         ...
@@ -448,8 +449,8 @@ class DatabaseReplica(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
@@ -498,8 +499,8 @@ class DatabaseReplica(pulumi.CustomResource):
             private_host: Optional[pulumi.Input[str]] = None,
             private_network_uuid: Optional[pulumi.Input[str]] = None,
             private_uri: Optional[pulumi.Input[str]] = None,
-            region: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+            size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             uri: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'DatabaseReplica':
@@ -519,8 +520,8 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
-        :param pulumi.Input[str] region: DigitalOcean region where the replica will reside.
-        :param pulumi.Input[str] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the replica will reside.
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         :param pulumi.Input[str] uri: The full URI for connecting to the database replica.
         :param pulumi.Input[str] user: Username for the replica's default user.

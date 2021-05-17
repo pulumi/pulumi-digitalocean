@@ -2,10 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {Region} from "./index";
 
 /**
  * Provides a bucket resource for Spaces, DigitalOcean's object storage product.
@@ -139,7 +137,7 @@ export class SpacesBucket extends pulumi.CustomResource {
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    public readonly region!: pulumi.Output<Region | undefined>;
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * A state of versioning (documented below)
      */
@@ -221,7 +219,7 @@ export interface SpacesBucketState {
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * A state of versioning (documented below)
      */
@@ -255,7 +253,7 @@ export interface SpacesBucketArgs {
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * A state of versioning (documented below)
      */

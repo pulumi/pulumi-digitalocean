@@ -2,10 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {DatabaseSlug, Region} from "./index";
 
 /**
  * Provides a DigitalOcean database cluster resource.
@@ -142,11 +140,11 @@ export class DatabaseCluster extends pulumi.CustomResource {
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    public readonly region!: pulumi.Output<Region>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
      */
-    public readonly size!: pulumi.Output<DatabaseSlug>;
+    public readonly size!: pulumi.Output<string>;
     /**
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
@@ -302,11 +300,11 @@ export interface DatabaseClusterState {
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
      */
-    readonly size?: pulumi.Input<DatabaseSlug>;
+    readonly size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
@@ -360,11 +358,11 @@ export interface DatabaseClusterArgs {
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    readonly region: pulumi.Input<Region>;
+    readonly region: pulumi.Input<string | enums.Region>;
     /**
      * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
      */
-    readonly size: pulumi.Input<DatabaseSlug>;
+    readonly size: pulumi.Input<string | enums.DatabaseSlug>;
     /**
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */

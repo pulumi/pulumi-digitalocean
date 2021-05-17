@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from ._enums import *
 from .app import *
 from .cdn import *
 from .certificate import *
@@ -108,8 +109,14 @@ def _register_module():
                 return DatabaseCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool":
                 return DatabaseConnectionPool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "digitalocean:index/databaseDb:DatabaseDb":
+                return DatabaseDb(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "digitalocean:index/databaseFirewall:DatabaseFirewall":
+                return DatabaseFirewall(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "digitalocean:index/databaseReplica:DatabaseReplica":
                 return DatabaseReplica(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "digitalocean:index/databaseUser:DatabaseUser":
+                return DatabaseUser(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "digitalocean:index/dnsRecord:DnsRecord":
                 return DnsRecord(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "digitalocean:index/domain:Domain":
@@ -150,18 +157,11 @@ def _register_module():
                 return VolumeSnapshot(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "digitalocean:index/vpc:Vpc":
                 return Vpc(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "digitalocean:index:DatabaseDb":
-                return DatabaseDb(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "digitalocean:index:DatabaseFirewall":
-                return DatabaseFirewall(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "digitalocean:index:DatabaseUser":
-                return DatabaseUser(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
-    pulumi.runtime.register_resource_module("digitalocean", "index", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/app", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/cdn", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/certificate", _module_instance)
@@ -170,7 +170,10 @@ def _register_module():
     pulumi.runtime.register_resource_module("digitalocean", "index/customImage", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/databaseCluster", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/databaseConnectionPool", _module_instance)
+    pulumi.runtime.register_resource_module("digitalocean", "index/databaseDb", _module_instance)
+    pulumi.runtime.register_resource_module("digitalocean", "index/databaseFirewall", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/databaseReplica", _module_instance)
+    pulumi.runtime.register_resource_module("digitalocean", "index/databaseUser", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/dnsRecord", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/domain", _module_instance)
     pulumi.runtime.register_resource_module("digitalocean", "index/droplet", _module_instance)

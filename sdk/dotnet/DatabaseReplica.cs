@@ -204,13 +204,13 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean region where the replica will reside.
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         /// </summary>
         [Input("size")]
-        public Input<string>? Size { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -289,13 +289,13 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean region where the replica will reside.
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
         /// </summary>
         [Input("size")]
-        public Input<string>? Size { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

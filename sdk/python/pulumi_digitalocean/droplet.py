@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from ._enums import *
 
 __all__ = ['DropletArgs', 'Droplet']
 
@@ -14,8 +15,8 @@ __all__ = ['DropletArgs', 'Droplet']
 class DropletArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[str],
-                 region: pulumi.Input[str],
-                 size: pulumi.Input[str],
+                 region: pulumi.Input[Union[str, 'Region']],
+                 size: pulumi.Input[Union[str, 'DropletSlug']],
                  backups: Optional[pulumi.Input[bool]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -30,8 +31,8 @@ class DropletArgs:
         """
         The set of arguments for constructing a Droplet resource.
         :param pulumi.Input[str] image: The Droplet image ID or slug.
-        :param pulumi.Input[str] region: The region to start in.
-        :param pulumi.Input[str] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
@@ -95,26 +96,26 @@ class DropletArgs:
 
     @property
     @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
+    def region(self) -> pulumi.Input[Union[str, 'Region']]:
         """
         The region to start in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: pulumi.Input[str]):
+    def region(self, value: pulumi.Input[Union[str, 'Region']]):
         pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Input[str]:
+    def size(self) -> pulumi.Input[Union[str, 'DropletSlug']]:
         """
         The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: pulumi.Input[str]):
+    def size(self, value: pulumi.Input[Union[str, 'DropletSlug']]):
         pulumi.set(self, "size", value)
 
     @property
@@ -280,9 +281,9 @@ class _DropletState:
                  price_hourly: Optional[pulumi.Input[float]] = None,
                  price_monthly: Optional[pulumi.Input[float]] = None,
                  private_networking: Optional[pulumi.Input[bool]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -312,12 +313,12 @@ class _DropletState:
                is enabled. When VPC is enabled on an account, this will provision the
                Droplet inside of your account's default VPC for the region. Use the
                `vpc_uuid` attribute to specify a different VPC.
-        :param pulumi.Input[str] region: The region to start in.
+        :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[str] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use a tool such
                as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
@@ -576,14 +577,14 @@ class _DropletState:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
         The region to start in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @property
@@ -603,14 +604,14 @@ class _DropletState:
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[str]]:
+    def size(self) -> Optional[pulumi.Input[Union[str, 'DropletSlug']]]:
         """
         The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[str]]):
+    def size(self, value: Optional[pulumi.Input[Union[str, 'DropletSlug']]]):
         pulumi.set(self, "size", value)
 
     @property
@@ -712,9 +713,9 @@ class Droplet(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_networking: Optional[pulumi.Input[bool]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
@@ -759,12 +760,12 @@ class Droplet(pulumi.CustomResource):
                is enabled. When VPC is enabled on an account, this will provision the
                Droplet inside of your account's default VPC for the region. Use the
                `vpc_uuid` attribute to specify a different VPC.
-        :param pulumi.Input[str] region: The region to start in.
+        :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[str] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use a tool such
                as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
@@ -826,9 +827,9 @@ class Droplet(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_networking: Optional[pulumi.Input[bool]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
@@ -904,9 +905,9 @@ class Droplet(pulumi.CustomResource):
             price_hourly: Optional[pulumi.Input[float]] = None,
             price_monthly: Optional[pulumi.Input[float]] = None,
             private_networking: Optional[pulumi.Input[bool]] = None,
-            region: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
             resize_disk: Optional[pulumi.Input[bool]] = None,
-            size: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -941,12 +942,12 @@ class Droplet(pulumi.CustomResource):
                is enabled. When VPC is enabled on an account, this will provision the
                Droplet inside of your account's default VPC for the region. Use the
                `vpc_uuid` attribute to specify a different VPC.
-        :param pulumi.Input[str] region: The region to start in.
+        :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[str] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use a tool such
                as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),

@@ -182,7 +182,7 @@ namespace Pulumi.DigitalOcean
         /// The slug identifier for the region where the Kubernetes cluster will be created.
         /// </summary>
         [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
 
         /// <summary>
         /// Enable/disable surge upgrades for a cluster. Default: false
@@ -275,7 +275,7 @@ namespace Pulumi.DigitalOcean
         /// The slug identifier for the region where the Kubernetes cluster will be created.
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster.

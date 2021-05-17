@@ -110,7 +110,7 @@ import (
 // Database firewalls can be imported using the `id` of the target database cluster For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+//  $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
 // ```
 type DatabaseFirewall struct {
 	pulumi.CustomResourceState
@@ -135,7 +135,7 @@ func NewDatabaseFirewall(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource DatabaseFirewall
-	err := ctx.RegisterResource("digitalocean:index:DatabaseFirewall", name, args, &resource, opts...)
+	err := ctx.RegisterResource("digitalocean:index/databaseFirewall:DatabaseFirewall", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -147,7 +147,7 @@ func NewDatabaseFirewall(ctx *pulumi.Context,
 func GetDatabaseFirewall(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DatabaseFirewallState, opts ...pulumi.ResourceOption) (*DatabaseFirewall, error) {
 	var resource DatabaseFirewall
-	err := ctx.ReadResource("digitalocean:index:DatabaseFirewall", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("digitalocean:index/databaseFirewall:DatabaseFirewall", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

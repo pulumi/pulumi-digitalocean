@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
  *
  * ```sh
- *  $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+ *  $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
  * ```
  */
 export class DatabaseUser extends pulumi.CustomResource {
@@ -48,7 +48,7 @@ export class DatabaseUser extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'digitalocean:index:DatabaseUser';
+    public static readonly __pulumiType = 'digitalocean:index/databaseUser:DatabaseUser';
 
     /**
      * Returns true if the given object is an instance of DatabaseUser.  This is designed to work even

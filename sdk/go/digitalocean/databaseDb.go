@@ -51,7 +51,7 @@ import (
 // Database can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+//  $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
 // ```
 type DatabaseDb struct {
 	pulumi.CustomResourceState
@@ -73,7 +73,7 @@ func NewDatabaseDb(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource DatabaseDb
-	err := ctx.RegisterResource("digitalocean:index:DatabaseDb", name, args, &resource, opts...)
+	err := ctx.RegisterResource("digitalocean:index/databaseDb:DatabaseDb", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -85,7 +85,7 @@ func NewDatabaseDb(ctx *pulumi.Context,
 func GetDatabaseDb(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DatabaseDbState, opts ...pulumi.ResourceOption) (*DatabaseDb, error) {
 	var resource DatabaseDb
-	err := ctx.ReadResource("digitalocean:index:DatabaseDb", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("digitalocean:index/databaseDb:DatabaseDb", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

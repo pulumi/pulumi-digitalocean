@@ -25,8 +25,8 @@ const sshKey = new digitalocean.SshKey("my-ssh-key", {
 
  const web = new digitalocean.Droplet("web", {
      image: "ubuntu-18-04-x64",
-     region: digitalocean.Regions.NYC3,
-     size: digitalocean.DropletSlugs.DropletS1VCPU1GB,
+     region: digitalocean.Region.NYC3,
+     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
      sshKeys: [sshKey.id],
  });
 

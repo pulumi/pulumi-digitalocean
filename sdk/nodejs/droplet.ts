@@ -2,9 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {DropletSlug, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Droplet resource. This can be used to create,
@@ -127,7 +126,7 @@ export class Droplet extends pulumi.CustomResource {
     /**
      * The region to start in.
      */
-    public readonly region!: pulumi.Output<Region>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -138,7 +137,7 @@ export class Droplet extends pulumi.CustomResource {
     /**
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
      */
-    public readonly size!: pulumi.Output<DropletSlug>;
+    public readonly size!: pulumi.Output<string>;
     /**
      * A list of SSH IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use a tool such
@@ -326,7 +325,7 @@ export interface DropletState {
     /**
      * The region to start in.
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -337,7 +336,7 @@ export interface DropletState {
     /**
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
      */
-    readonly size?: pulumi.Input<DropletSlug>;
+    readonly size?: pulumi.Input<string | enums.DropletSlug>;
     /**
      * A list of SSH IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use a tool such
@@ -407,7 +406,7 @@ export interface DropletArgs {
     /**
      * The region to start in.
      */
-    readonly region: pulumi.Input<Region>;
+    readonly region: pulumi.Input<string | enums.Region>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -418,7 +417,7 @@ export interface DropletArgs {
     /**
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
      */
-    readonly size: pulumi.Input<DropletSlug>;
+    readonly size: pulumi.Input<string | enums.DropletSlug>;
     /**
      * A list of SSH IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use a tool such

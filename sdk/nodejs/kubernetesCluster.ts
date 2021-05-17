@@ -2,10 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {Region} from "./index";
 
 /**
  * ## Import
@@ -76,7 +74,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    public readonly region!: pulumi.Output<Region>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
@@ -206,7 +204,7 @@ export interface KubernetesClusterState {
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
@@ -256,7 +254,7 @@ export interface KubernetesClusterArgs {
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    readonly region: pulumi.Input<Region>;
+    readonly region: pulumi.Input<string | enums.Region>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: false
      */

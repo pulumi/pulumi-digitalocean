@@ -46,10 +46,10 @@ namespace Pulumi.DigitalOcean
     /// Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+    ///  $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
     /// ```
     /// </summary>
-    [DigitalOceanResourceType("digitalocean:index:DatabaseUser")]
+    [DigitalOceanResourceType("digitalocean:index/databaseUser:DatabaseUser")]
     public partial class DatabaseUser : Pulumi.CustomResource
     {
         /// <summary>
@@ -91,12 +91,12 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseUser(string name, DatabaseUserArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseUser", name, args ?? new DatabaseUserArgs(), MakeResourceOptions(options, ""))
+            : base("digitalocean:index/databaseUser:DatabaseUser", name, args ?? new DatabaseUserArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatabaseUser(string name, Input<string> id, DatabaseUserState? state = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseUser", name, state, MakeResourceOptions(options, id))
+            : base("digitalocean:index/databaseUser:DatabaseUser", name, state, MakeResourceOptions(options, id))
         {
         }
 

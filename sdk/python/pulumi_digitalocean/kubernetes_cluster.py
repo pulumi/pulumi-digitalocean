@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['KubernetesClusterArgs', 'KubernetesCluster']
@@ -16,7 +17,7 @@ __all__ = ['KubernetesClusterArgs', 'KubernetesCluster']
 class KubernetesClusterArgs:
     def __init__(__self__, *,
                  node_pool: pulumi.Input['KubernetesClusterNodePoolArgs'],
-                 region: pulumi.Input[str],
+                 region: pulumi.Input[Union[str, 'Region']],
                  version: pulumi.Input[str],
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,7 +27,7 @@ class KubernetesClusterArgs:
         """
         The set of arguments for constructing a KubernetesCluster resource.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[str] name: A name for the node pool.
@@ -62,14 +63,14 @@ class KubernetesClusterArgs:
 
     @property
     @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
+    def region(self) -> pulumi.Input[Union[str, 'Region']]:
         """
         The slug identifier for the region where the Kubernetes cluster will be created.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: pulumi.Input[str]):
+    def region(self, value: pulumi.Input[Union[str, 'Region']]):
         pulumi.set(self, "region", value)
 
     @property
@@ -156,7 +157,7 @@ class _KubernetesClusterState:
                  kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  service_subnet: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -173,7 +174,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
@@ -310,14 +311,14 @@ class _KubernetesClusterState:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
         The slug identifier for the region where the Kubernetes cluster will be created.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @property
@@ -413,7 +414,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -433,7 +434,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -472,7 +473,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -529,7 +530,7 @@ class KubernetesCluster(pulumi.CustomResource):
             kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesClusterKubeConfigArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
-            region: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
             service_subnet: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             surge_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -551,7 +552,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input[str] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false

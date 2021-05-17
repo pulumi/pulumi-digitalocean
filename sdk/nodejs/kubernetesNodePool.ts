@@ -2,10 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {DropletSlug} from "./index";
 
 /**
  * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
@@ -137,7 +135,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    public readonly size!: pulumi.Output<DropletSlug>;
+    public readonly size!: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
@@ -243,7 +241,7 @@ export interface KubernetesNodePoolState {
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    readonly size?: pulumi.Input<DropletSlug>;
+    readonly size?: pulumi.Input<string | enums.DropletSlug>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
@@ -289,7 +287,7 @@ export interface KubernetesNodePoolArgs {
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    readonly size: pulumi.Input<DropletSlug>;
+    readonly size: pulumi.Input<string | enums.DropletSlug>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */

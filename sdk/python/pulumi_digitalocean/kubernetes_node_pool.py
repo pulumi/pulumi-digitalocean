@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['KubernetesNodePoolArgs', 'KubernetesNodePool']
@@ -16,7 +17,7 @@ __all__ = ['KubernetesNodePoolArgs', 'KubernetesNodePool']
 class KubernetesNodePoolArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 size: pulumi.Input[str],
+                 size: pulumi.Input[Union[str, 'DropletSlug']],
                  auto_scale: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_nodes: Optional[pulumi.Input[int]] = None,
@@ -28,7 +29,7 @@ class KubernetesNodePoolArgs:
         """
         The set of arguments for constructing a KubernetesNodePool resource.
         :param pulumi.Input[str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
-        :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[int] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
@@ -71,14 +72,14 @@ class KubernetesNodePoolArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Input[str]:
+    def size(self) -> pulumi.Input[Union[str, 'DropletSlug']]:
         """
         The slug identifier for the type of Droplet to be used as workers in the node pool.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: pulumi.Input[str]):
+    def size(self, value: pulumi.Input[Union[str, 'DropletSlug']]):
         pulumi.set(self, "size", value)
 
     @property
@@ -190,7 +191,7 @@ class _KubernetesNodePoolState:
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolNodeArgs']]]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]] = None):
         """
@@ -204,7 +205,7 @@ class _KubernetesNodePoolState:
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolNodeArgs']]] nodes: A list of nodes in the pool. Each node exports the following attributes:
-        :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]] taints: A list of taints applied to all nodes in the pool.
         """
@@ -343,14 +344,14 @@ class _KubernetesNodePoolState:
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[str]]:
+    def size(self) -> Optional[pulumi.Input[Union[str, 'DropletSlug']]]:
         """
         The slug identifier for the type of Droplet to be used as workers in the node pool.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[str]]):
+    def size(self, value: Optional[pulumi.Input[Union[str, 'DropletSlug']]]):
         pulumi.set(self, "size", value)
 
     @property
@@ -390,7 +391,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  min_nodes: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]]] = None,
                  __props__=None):
@@ -463,7 +464,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-        :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]] taints: A list of taints applied to all nodes in the pool.
         """
@@ -555,7 +556,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  min_nodes: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]]] = None,
                  __props__=None):
@@ -605,7 +606,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolNodeArgs']]]]] = None,
-            size: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]]] = None) -> 'KubernetesNodePool':
         """
@@ -624,7 +625,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolNodeArgs']]]] nodes: A list of nodes in the pool. Each node exports the following attributes:
-        :param pulumi.Input[str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]] taints: A list of taints applied to all nodes in the pool.
         """

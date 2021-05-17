@@ -273,7 +273,7 @@ namespace Pulumi.DigitalOcean
         /// `custom` or `lets_encrypt`. Defaults to `custom`.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.CertificateType>? Type { get; set; }
 
         public CertificateArgs()
         {
@@ -344,7 +344,7 @@ namespace Pulumi.DigitalOcean
         /// `custom` or `lets_encrypt`. Defaults to `custom`.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.CertificateType>? Type { get; set; }
 
         /// <summary>
         /// The UUID of the certificate

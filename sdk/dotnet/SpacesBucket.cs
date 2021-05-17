@@ -275,7 +275,7 @@ namespace Pulumi.DigitalOcean
         /// The region where the bucket resides (Defaults to `nyc3`)
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// A state of versioning (documented below)
@@ -348,7 +348,7 @@ namespace Pulumi.DigitalOcean
         /// The region where the bucket resides (Defaults to `nyc3`)
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// A state of versioning (documented below)

@@ -273,7 +273,7 @@ namespace Pulumi.DigitalOcean
         /// or `least_connections`. The default value is `round_robin`.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Algorithm>? Algorithm { get; set; }
 
         [Input("dropletIds")]
         private InputList<int>? _dropletIds;
@@ -345,7 +345,7 @@ namespace Pulumi.DigitalOcean
         /// The region to start in
         /// </summary>
         [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
 
         /// <summary>
         /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
@@ -379,7 +379,7 @@ namespace Pulumi.DigitalOcean
         /// or `least_connections`. The default value is `round_robin`.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Algorithm>? Algorithm { get; set; }
 
         [Input("dropletIds")]
         private InputList<int>? _dropletIds;
@@ -460,7 +460,7 @@ namespace Pulumi.DigitalOcean
         /// The region to start in
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.

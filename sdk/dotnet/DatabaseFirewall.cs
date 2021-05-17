@@ -100,10 +100,10 @@ namespace Pulumi.DigitalOcean
     /// Database firewalls can be imported using the `id` of the target database cluster For example
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+    ///  $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
     /// ```
     /// </summary>
-    [DigitalOceanResourceType("digitalocean:index:DatabaseFirewall")]
+    [DigitalOceanResourceType("digitalocean:index/databaseFirewall:DatabaseFirewall")]
     public partial class DatabaseFirewall : Pulumi.CustomResource
     {
         /// <summary>
@@ -127,12 +127,12 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseFirewall(string name, DatabaseFirewallArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseFirewall", name, args ?? new DatabaseFirewallArgs(), MakeResourceOptions(options, ""))
+            : base("digitalocean:index/databaseFirewall:DatabaseFirewall", name, args ?? new DatabaseFirewallArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatabaseFirewall(string name, Input<string> id, DatabaseFirewallState? state = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseFirewall", name, state, MakeResourceOptions(options, id))
+            : base("digitalocean:index/databaseFirewall:DatabaseFirewall", name, state, MakeResourceOptions(options, id))
         {
         }
 

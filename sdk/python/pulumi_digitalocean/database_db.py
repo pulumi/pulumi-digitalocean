@@ -120,7 +120,7 @@ class DatabaseDb(pulumi.CustomResource):
         Database can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example
 
         ```sh
-         $ pulumi import digitalocean:index:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+         $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
         ```
 
         :param str resource_name: The name of the resource.
@@ -157,7 +157,7 @@ class DatabaseDb(pulumi.CustomResource):
         Database can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example
 
         ```sh
-         $ pulumi import digitalocean:index:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+         $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
         ```
 
         :param str resource_name: The name of the resource.
@@ -194,7 +194,7 @@ class DatabaseDb(pulumi.CustomResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["name"] = name
         super(DatabaseDb, __self__).__init__(
-            'digitalocean:index:DatabaseDb',
+            'digitalocean:index/databaseDb:DatabaseDb',
             resource_name,
             __props__,
             opts)

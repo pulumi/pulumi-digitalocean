@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from ._enums import *
 
 __all__ = ['DnsRecordArgs', 'DnsRecord']
 
@@ -14,7 +15,7 @@ __all__ = ['DnsRecordArgs', 'DnsRecord']
 class DnsRecordArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str],
-                 type: pulumi.Input[str],
+                 type: pulumi.Input[Union[str, 'RecordType']],
                  value: pulumi.Input[str],
                  flags: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,7 +27,7 @@ class DnsRecordArgs:
         """
         The set of arguments for constructing a DnsRecord resource.
         :param pulumi.Input[str] domain: The domain to add the record to.
-        :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
+        :param pulumi.Input[Union[str, 'RecordType']] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[int] flags: The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
         :param pulumi.Input[str] name: The hostname of the record. Use `@` for records on domain's name itself.
@@ -68,14 +69,14 @@ class DnsRecordArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
+    def type(self) -> pulumi.Input[Union[str, 'RecordType']]:
         """
         The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: pulumi.Input[str]):
+    def type(self, value: pulumi.Input[Union[str, 'RecordType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -186,7 +187,7 @@ class _DnsRecordState:
                  priority: Optional[pulumi.Input[int]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
@@ -199,7 +200,7 @@ class _DnsRecordState:
         :param pulumi.Input[int] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
         :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0.
-        :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
+        :param pulumi.Input[Union[str, 'RecordType']] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
         """
@@ -324,14 +325,14 @@ class _DnsRecordState:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input[Union[str, 'RecordType']]]:
         """
         The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input[Union[str, 'RecordType']]]):
         pulumi.set(self, "type", value)
 
     @property
@@ -371,7 +372,7 @@ class DnsRecord(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -417,7 +418,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[int] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
         :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0.
-        :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
+        :param pulumi.Input[Union[str, 'RecordType']] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
         """
@@ -482,7 +483,7 @@ class DnsRecord(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -532,7 +533,7 @@ class DnsRecord(pulumi.CustomResource):
             priority: Optional[pulumi.Input[int]] = None,
             tag: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
-            type: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
             value: Optional[pulumi.Input[str]] = None,
             weight: Optional[pulumi.Input[int]] = None) -> 'DnsRecord':
         """
@@ -550,7 +551,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[int] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
         :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0.
-        :param pulumi.Input[str] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
+        :param pulumi.Input[Union[str, 'RecordType']] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
         """

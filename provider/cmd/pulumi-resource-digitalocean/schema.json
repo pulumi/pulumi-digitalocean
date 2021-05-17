@@ -6946,6 +6946,554 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index:Algorithm": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "RoundRobin",
+                    "value": "round_robin"
+                },
+                {
+                    "name": "LeastConnections",
+                    "value": "least_connections"
+                }
+            ]
+        },
+        "digitalocean:index:CertificateType": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "LetsEncrypt",
+                    "value": "lets_encrypt"
+                },
+                {
+                    "name": "Custom",
+                    "value": "custom"
+                }
+            ]
+        },
+        "digitalocean:index:DatabaseSlug": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "DB_1VPCU1GB",
+                    "value": "db-s-1vcpu-1gb"
+                },
+                {
+                    "name": "DB_1VPCU2GB",
+                    "value": "db-s-1vcpu-2gb"
+                },
+                {
+                    "name": "DB_2VPCU4GB",
+                    "value": "db-s-2vcpu-4gb"
+                },
+                {
+                    "name": "DB_4VPCU8GB",
+                    "value": "db-s-4vcpu-8gb"
+                },
+                {
+                    "name": "DB_6VPCU16GB",
+                    "value": "db-s-6vcpu-16gb"
+                },
+                {
+                    "name": "DB_8VPCU32GB",
+                    "value": "db-s-8vcpu-32gb"
+                },
+                {
+                    "name": "DB_16VPCU64GB",
+                    "value": "db-s-16vcpu-64gb"
+                }
+            ]
+        },
+        "digitalocean:index:DropletSlug": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "DropletS1VCPU1GB",
+                    "value": "s-1vcpu-1gb"
+                },
+                {
+                    "name": "DropletS1VCPU1GB-AMD",
+                    "value": "s-1vcpu-1gb-amd"
+                },
+                {
+                    "name": "DropletS1VCPU1GB-INTEL",
+                    "value": "s-1vcpu-1gb-intel"
+                },
+                {
+                    "name": "DropletS1VCPU2GB",
+                    "value": "s-1vcpu-2gb"
+                },
+                {
+                    "name": "DropletS1VCPU2GB-AMD",
+                    "value": "s-1vcpu-2gb-amd"
+                },
+                {
+                    "name": "DropletS1VCPU2GB-INTEL",
+                    "value": "s-1vcpu-2gb-intel"
+                },
+                {
+                    "name": "DropletS2VCPU2GB",
+                    "value": "s-2vcpu-2gb"
+                },
+                {
+                    "name": "DropletS2VCPU2GB-AMD",
+                    "value": "s-2vcpu-2gb-amd"
+                },
+                {
+                    "name": "DropletS2VCPU2GB-INTEL",
+                    "value": "s-2vcpu-2gb-intel"
+                },
+                {
+                    "name": "DropletS2VCPU4GB",
+                    "value": "s-2vcpu-4gb"
+                },
+                {
+                    "name": "DropletS2VCPU4GB-AMD",
+                    "value": "s-2vcpu-4gb-amd"
+                },
+                {
+                    "name": "DropletS2VCPU4GB-INTEL",
+                    "value": "s-2vcpu-4gb-intel"
+                },
+                {
+                    "name": "DropletS4VCPU8GB",
+                    "value": "s-4vcpu-8gb"
+                },
+                {
+                    "name": "DropletS4VCPU8GB-AMD",
+                    "value": "s-4vcpu-8gb-amd"
+                },
+                {
+                    "name": "DropletS4VCPU8GB-INTEL",
+                    "value": "s-4vcpu-8gb-intel"
+                },
+                {
+                    "name": "DropletS8VCPU16GB-AMD",
+                    "value": "s-8vcpu-16gb-amd"
+                },
+                {
+                    "name": "DropletS8VCPU16GB-INTEL",
+                    "value": "s-8vcpu-16gb-intel"
+                },
+                {
+                    "name": "DropletC2",
+                    "value": "c-2"
+                },
+                {
+                    "name": "DropletC22VCPU4GB",
+                    "value": "c2-2vcpu-4gb"
+                },
+                {
+                    "name": "DropletC22VCPU8GB",
+                    "value": "c2-4vcpu-8gb"
+                },
+                {
+                    "name": "DropletC28VCPU16GB",
+                    "value": "c2-8vcpu-16gb"
+                },
+                {
+                    "name": "DropletC216VCPU32GB",
+                    "value": "c2-16vcpu-32gb"
+                },
+                {
+                    "name": "DropletC232VCPU64GB",
+                    "value": "c2-32vcpu-64gb"
+                },
+                {
+                    "name": "DropletC4",
+                    "value": "c-4"
+                },
+                {
+                    "name": "DropletC8",
+                    "value": "c-8"
+                },
+                {
+                    "name": "DropletC16",
+                    "value": "c-16"
+                },
+                {
+                    "name": "DropletC32",
+                    "value": "c-32"
+                },
+                {
+                    "name": "DropletG2VCPU8GB",
+                    "value": "g-2vcpu-8gb"
+                },
+                {
+                    "name": "DropletG4VCPU16GB",
+                    "value": "g-4vcpu-16gb"
+                },
+                {
+                    "name": "DropletG8VCPU32GB",
+                    "value": "g-8vcpu-32gb"
+                },
+                {
+                    "name": "DropletG16VCPU64GB",
+                    "value": "g-16vcpu-64gb"
+                },
+                {
+                    "name": "DropletG32VCPU128GB",
+                    "value": "g-32vcpu-128gb"
+                },
+                {
+                    "name": "DropletG40VCPU160GB",
+                    "value": "g-40vcpu-160gb"
+                },
+                {
+                    "name": "DropletGD2VCPU8GB",
+                    "value": "gd-2vcpu-8gb"
+                },
+                {
+                    "name": "DropletGD4VCPU16GB",
+                    "value": "gd-4vcpu-16gb"
+                },
+                {
+                    "name": "DropletGD8VCPU32GB",
+                    "value": "gd-8vcpu-32gb"
+                },
+                {
+                    "name": "DropletGD16VCPU64GB",
+                    "value": "gd-16vcpu-64gb"
+                },
+                {
+                    "name": "DropletGD32VCPU128GB",
+                    "value": "gd-32vcpu-128gb"
+                },
+                {
+                    "name": "DropletGD40VCPU160GB",
+                    "value": "gd-40vcpu-160gb"
+                },
+                {
+                    "name": "DropletS8VCPU16GB",
+                    "value": "s-8vcpu-16gb"
+                },
+                {
+                    "name": "DropletM2VCPU16GB",
+                    "value": "m-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletM4VCPU32GB",
+                    "value": "m-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletM8VCPU64GB",
+                    "value": "m-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletM16VCPU128GB",
+                    "value": "m-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletM24VCPU192GB",
+                    "value": "m-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletM32VCPU256GB",
+                    "value": "m-32vcpu-256gb"
+                },
+                {
+                    "name": "DropletM32VCPU16GB",
+                    "value": "m3-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletM34VCPU32GB",
+                    "value": "m3-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletM38VCPU64GB",
+                    "value": "m3-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletM316VCPU128GB",
+                    "value": "m3-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletM324VCPU192GB",
+                    "value": "m3-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletM332VCPU256GB",
+                    "value": "m3-32vcpu-256gb"
+                },
+                {
+                    "name": "DropletM62VCPU16GB",
+                    "value": "m6-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletM64VCPU32GB",
+                    "value": "m6-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletM68VCPU64GB",
+                    "value": "m6-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletM616VCPU128GB",
+                    "value": "m6-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletM624VCPU192GB",
+                    "value": "m6-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletM632VCPU256GB",
+                    "value": "m6-32vcpu-256gb"
+                },
+                {
+                    "name": "DropletSO2VCPU16GB",
+                    "value": "so-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletSO4VCPU32GB",
+                    "value": "so-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletSO8VCPU64GB",
+                    "value": "so-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletSO16VCPU128GB",
+                    "value": "so-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletSO24VCPU192GB",
+                    "value": "so-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletSO32VCPU256GB",
+                    "value": "so-32vcpu-256gb"
+                },
+                {
+                    "name": "DropletSO152VCPU16GB",
+                    "value": "so1_5-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletSO154VCPU32GB",
+                    "value": "so1_5-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletSO158VCPU64GB",
+                    "value": "so1_5-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletSO1516VCPU128GB",
+                    "value": "so1_5-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletSO1524VCPU192GB",
+                    "value": "so1_5-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletSO1532VCPU256GB",
+                    "value": "so1_5-32vcpu-256gb"
+                },
+                {
+                    "name": "Droplet512mb",
+                    "value": "512mb"
+                },
+                {
+                    "name": "Droplet1GB",
+                    "value": "1gb"
+                },
+                {
+                    "name": "Droplet2GB",
+                    "value": "2gb"
+                },
+                {
+                    "name": "Droplet4GB",
+                    "value": "4gb"
+                },
+                {
+                    "name": "Droplet8GB",
+                    "value": "8gb"
+                },
+                {
+                    "name": "Droplet16GB",
+                    "value": "16gb"
+                },
+                {
+                    "name": "Droplet32GB",
+                    "value": "32gb"
+                },
+                {
+                    "name": "Droplet48GB",
+                    "value": "48gb"
+                },
+                {
+                    "name": "Droplet64GB",
+                    "value": "64gb"
+                },
+                {
+                    "name": "DropletS1VCPU3GB",
+                    "value": "s-1vcpu-3gb"
+                },
+                {
+                    "name": "DropletS3VCPU1GB",
+                    "value": "s-3vcpu-1gb"
+                },
+                {
+                    "name": "DropletS6VCPU16GB",
+                    "value": "s-6vcpu-16gb"
+                },
+                {
+                    "name": "DropletS8VCPU32GB",
+                    "value": "s-8vcpu-32gb"
+                },
+                {
+                    "name": "DropletS12VCPU48GB",
+                    "value": "s-12vcpu-48gb"
+                },
+                {
+                    "name": "DropletS16VCPU64GB",
+                    "value": "s-16vcpu-64gb"
+                },
+                {
+                    "name": "DropletS20VCPU96GB",
+                    "value": "s-20vcpu-96gb"
+                },
+                {
+                    "name": "DropletS24VCPU128GB",
+                    "value": "s-24vcpu-128gb"
+                },
+                {
+                    "name": "DropletS32VCPU192GB",
+                    "value": "s-32vcpu-192gb"
+                }
+            ]
+        },
+        "digitalocean:index:FileSystemType": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "EXT4",
+                    "value": "ext4"
+                },
+                {
+                    "name": "XFS",
+                    "value": "xfs"
+                }
+            ]
+        },
+        "digitalocean:index:Protocol": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "TCP",
+                    "value": "tcp"
+                },
+                {
+                    "name": "UDP",
+                    "value": "udp"
+                },
+                {
+                    "name": "ICMP",
+                    "value": "icmp"
+                },
+                {
+                    "name": "HTTP",
+                    "value": "http"
+                },
+                {
+                    "name": "HTTPS",
+                    "value": "https"
+                }
+            ]
+        },
+        "digitalocean:index:RecordType": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "A",
+                    "value": "A"
+                },
+                {
+                    "name": "AAAA",
+                    "value": "AAAA"
+                },
+                {
+                    "name": "CAA",
+                    "value": "CAA"
+                },
+                {
+                    "name": "CNAME",
+                    "value": "CNAME"
+                },
+                {
+                    "name": "MX",
+                    "value": "MX"
+                },
+                {
+                    "name": "NS",
+                    "value": "NS"
+                },
+                {
+                    "name": "TXT",
+                    "value": "TXT"
+                },
+                {
+                    "name": "SRV",
+                    "value": "SRV"
+                }
+            ]
+        },
+        "digitalocean:index:Region": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "NYC1",
+                    "value": "nyc1"
+                },
+                {
+                    "name": "NYC2",
+                    "value": "nyc2"
+                },
+                {
+                    "name": "NYC3",
+                    "value": "nyc3"
+                },
+                {
+                    "name": "SGP1",
+                    "value": "sgp1"
+                },
+                {
+                    "name": "LON1",
+                    "value": "lon1"
+                },
+                {
+                    "name": "AMS2",
+                    "value": "ams2"
+                },
+                {
+                    "name": "AMS3",
+                    "value": "ams3"
+                },
+                {
+                    "name": "FRA1",
+                    "value": "fra1"
+                },
+                {
+                    "name": "TOR1",
+                    "value": "tor1"
+                },
+                {
+                    "name": "SFO1",
+                    "value": "sfo1"
+                },
+                {
+                    "name": "SFO2",
+                    "value": "sfo2"
+                },
+                {
+                    "name": "SFO3",
+                    "value": "sfo3"
+                },
+                {
+                    "name": "BLR1",
+                    "value": "blr1"
+                }
+            ]
         }
     },
     "provider": {
@@ -7199,7 +7747,6 @@
                 },
                 "type": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:CertificateType",
                     "description": "The type of certificate to provision. Can be either\n`custom` or `lets_encrypt`. Defaults to `custom`.\n"
                 },
                 "uuid": {
@@ -7240,7 +7787,15 @@
                 },
                 "type": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:CertificateType",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:CertificateType"
+                        }
+                    ],
                     "description": "The type of certificate to provision. Can be either\n`custom` or `lets_encrypt`. Defaults to `custom`.\n"
                 }
             },
@@ -7283,7 +7838,15 @@
                     },
                     "type": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:CertificateType",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:CertificateType"
+                            }
+                        ],
                         "description": "The type of certificate to provision. Can be either\n`custom` or `lets_encrypt`. Defaults to `custom`.\n"
                     },
                     "uuid": {
@@ -7649,12 +8212,10 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
                     "description": "DigitalOcean region where the cluster will reside.\n"
                 },
                 "size": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:DatabaseSlug",
                     "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).\n"
                 },
                 "sqlMode": {
@@ -7728,12 +8289,28 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:Region"
+                        }
+                    ],
                     "description": "DigitalOcean region where the cluster will reside.\n"
                 },
                 "size": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:DatabaseSlug",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:DatabaseSlug"
+                        }
+                    ],
                     "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).\n"
                 },
                 "sqlMode": {
@@ -7818,12 +8395,28 @@
                     },
                     "region": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:Region"
+                            }
+                        ],
                         "description": "DigitalOcean region where the cluster will reside.\n"
                     },
                     "size": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:DatabaseSlug",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:DatabaseSlug"
+                            }
+                        ],
                         "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).\n"
                     },
                     "sqlMode": {
@@ -8007,6 +8600,104 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/databaseDb:DatabaseDb": {
+            "description": "Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst database_example = new digitalocean.DatabaseDb(\"database-example\", {clusterId: postgres_example.id});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\ndatabase_example = digitalocean.DatabaseDb(\"database-example\", cluster_id=postgres_example.id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var database_example = new DigitalOcean.DatabaseDb(\"database-example\", new DigitalOcean.DatabaseDbArgs\n        {\n            ClusterId = postgres_example.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseDb(ctx, \"database_example\", \u0026digitalocean.DatabaseDbArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar\n```\n\n ",
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the original source database cluster.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for the database.\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "name"
+            ],
+            "inputProperties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the original source database cluster.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for the database.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DatabaseDb resources.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The ID of the original source database cluster.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name for the database.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/databaseFirewall:DatabaseFirewall": {
+            "description": "Provides a DigitalOcean database firewall resource allowing you to restrict\nconnections to your database to trusted sources. You may limit connections to\nspecific Droplets, Kubernetes clusters, or IP addresses.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new database firewall allowing multiple IP addresses\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst example_fw = new digitalocean.DatabaseFirewall(\"example-fw\", {\n    clusterId: postgres_example.id,\n    rules: [\n        {\n            type: \"ip_addr\",\n            value: \"192.168.1.1\",\n        },\n        {\n            type: \"ip_addr\",\n            value: \"192.0.2.0\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nexample_fw = digitalocean.DatabaseFirewall(\"example-fw\",\n    cluster_id=postgres_example.id,\n    rules=[\n        digitalocean.DatabaseFirewallRuleArgs(\n            type=\"ip_addr\",\n            value=\"192.168.1.1\",\n        ),\n        digitalocean.DatabaseFirewallRuleArgs(\n            type=\"ip_addr\",\n            value=\"192.0.2.0\",\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var example_fw = new DigitalOcean.DatabaseFirewall(\"example-fw\", new DigitalOcean.DatabaseFirewallArgs\n        {\n            ClusterId = postgres_example.Id,\n            Rules = \n            {\n                new DigitalOcean.Inputs.DatabaseFirewallRuleArgs\n                {\n                    Type = \"ip_addr\",\n                    Value = \"192.168.1.1\",\n                },\n                new DigitalOcean.Inputs.DatabaseFirewallRuleArgs\n                {\n                    Type = \"ip_addr\",\n                    Value = \"192.0.2.0\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseFirewall(ctx, \"example_fw\", \u0026digitalocean.DatabaseFirewallArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tRules: digitalocean.DatabaseFirewallRuleArray{\n\t\t\t\t\u0026digitalocean.DatabaseFirewallRuleArgs{\n\t\t\t\t\tType:  pulumi.String(\"ip_addr\"),\n\t\t\t\t\tValue: pulumi.String(\"192.168.1.1\"),\n\t\t\t\t},\n\t\t\t\t\u0026digitalocean.DatabaseFirewallRuleArgs{\n\t\t\t\t\tType:  pulumi.String(\"ip_addr\"),\n\t\t\t\t\tValue: pulumi.String(\"192.0.2.0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Create a new database firewall allowing a Droplet\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = new digitalocean.Droplet(\"web\", {\n    size: \"s-1vcpu-1gb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst example_fw = new digitalocean.DatabaseFirewall(\"example-fw\", {\n    clusterId: postgres_example.id,\n    rules: [{\n        type: \"droplet\",\n        value: web.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.Droplet(\"web\",\n    size=\"s-1vcpu-1gb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nexample_fw = digitalocean.DatabaseFirewall(\"example-fw\",\n    cluster_id=postgres_example.id,\n    rules=[digitalocean.DatabaseFirewallRuleArgs(\n        type=\"droplet\",\n        value=web.id,\n    )])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Size = \"s-1vcpu-1gb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var example_fw = new DigitalOcean.DatabaseFirewall(\"example-fw\", new DigitalOcean.DatabaseFirewallArgs\n        {\n            ClusterId = postgres_example.Id,\n            Rules = \n            {\n                new DigitalOcean.Inputs.DatabaseFirewallRuleArgs\n                {\n                    Type = \"droplet\",\n                    Value = web.Id,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb, err := digitalocean.NewDroplet(ctx, \"web\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tImage:  pulumi.String(\"centos-7-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseFirewall(ctx, \"example_fw\", \u0026digitalocean.DatabaseFirewallArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tRules: digitalocean.DatabaseFirewallRuleArray{\n\t\t\t\t\u0026digitalocean.DatabaseFirewallRuleArgs{\n\t\t\t\t\tType:  pulumi.String(\"droplet\"),\n\t\t\t\t\tValue: web.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase firewalls can be imported using the `id` of the target database cluster For example\n\n```sh\n $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54\n```\n\n ",
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the target database cluster.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
+                    },
+                    "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "rules"
+            ],
+            "inputProperties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the target database cluster.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
+                    },
+                    "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "rules"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DatabaseFirewall resources.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The ID of the target database cluster.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
+                        },
+                        "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/databaseReplica:DatabaseReplica": {
             "description": "Provides a DigitalOcean database replica resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database replica\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst read_replica = new digitalocean.DatabaseReplica(\"read-replica\", {\n    clusterId: postgres_example.id,\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nread_replica = digitalocean.DatabaseReplica(\"read-replica\",\n    cluster_id=postgres_example.id,\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var read_replica = new DigitalOcean.DatabaseReplica(\"read-replica\", new DigitalOcean.DatabaseReplicaArgs\n        {\n            ClusterId = postgres_example.Id,\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseReplica(ctx, \"read_replica\", \u0026digitalocean.DatabaseReplicaArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase replicas can be imported using the `id` of the source database cluster and the `name` of the replica joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica\n```\n\n ",
             "properties": {
@@ -8048,12 +8739,10 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
                     "description": "DigitalOcean region where the replica will reside.\n"
                 },
                 "size": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:DatabaseSlug",
                     "description": "Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).\n"
                 },
                 "tags": {
@@ -8100,12 +8789,28 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:Region"
+                        }
+                    ],
                     "description": "DigitalOcean region where the replica will reside.\n"
                 },
                 "size": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:DatabaseSlug",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:DatabaseSlug"
+                        }
+                    ],
                     "description": "Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).\n"
                 },
                 "tags": {
@@ -8160,12 +8865,28 @@
                     },
                     "region": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:Region"
+                            }
+                        ],
                         "description": "DigitalOcean region where the replica will reside.\n"
                     },
                     "size": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:DatabaseSlug",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:DatabaseSlug"
+                            }
+                        ],
                         "description": "Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).\n"
                     },
                     "tags": {
@@ -8182,6 +8903,80 @@
                     "user": {
                         "type": "string",
                         "description": "Username for the replica's default user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/databaseUser:DatabaseUser": {
+            "description": "Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.\n\n\u003e **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database user\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst user_example = new digitalocean.DatabaseUser(\"user-example\", {clusterId: postgres_example.id});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nuser_example = digitalocean.DatabaseUser(\"user-example\", cluster_id=postgres_example.id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var user_example = new DigitalOcean.DatabaseUser(\"user-example\", new DigitalOcean.DatabaseUserArgs\n        {\n            ClusterId = postgres_example.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseUser(ctx, \"user_example\", \u0026digitalocean.DatabaseUserArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar\n```\n\n ",
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the original source database cluster.\n"
+                },
+                "mysqlAuthPlugin": {
+                    "type": "string",
+                    "description": "The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for the database user.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password for the database user.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role for the database user. The value will be either \"primary\" or \"normal\".\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "name",
+                "password",
+                "role"
+            ],
+            "inputProperties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the original source database cluster.\n"
+                },
+                "mysqlAuthPlugin": {
+                    "type": "string",
+                    "description": "The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for the database user.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DatabaseUser resources.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The ID of the original source database cluster.\n"
+                    },
+                    "mysqlAuthPlugin": {
+                        "type": "string",
+                        "description": "The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name for the database user.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "Password for the database user.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "Role for the database user. The value will be either \"primary\" or \"normal\".\n"
                     }
                 },
                 "type": "object"
@@ -8224,7 +9019,6 @@
                 },
                 "type": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:RecordType",
                     "description": "The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.\n"
                 },
                 "value": {
@@ -8275,7 +9069,15 @@
                 },
                 "type": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:RecordType",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:RecordType"
+                        }
+                    ],
                     "description": "The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.\n"
                 },
                 "value": {
@@ -8329,7 +9131,15 @@
                     },
                     "type": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:RecordType",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:RecordType"
+                            }
+                        ],
                         "description": "The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.\n"
                     },
                     "value": {
@@ -8463,7 +9273,6 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
                     "description": "The region to start in.\n"
                 },
                 "resizeDisk": {
@@ -8472,7 +9281,6 @@
                 },
                 "size": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:DropletSlug",
                     "description": "The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).\n"
                 },
                 "sshKeys": {
@@ -8561,7 +9369,15 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:Region"
+                        }
+                    ],
                     "description": "The region to start in.\n"
                 },
                 "resizeDisk": {
@@ -8570,7 +9386,15 @@
                 },
                 "size": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:DropletSlug",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:DropletSlug"
+                        }
+                    ],
                     "description": "The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).\n"
                 },
                 "sshKeys": {
@@ -8675,7 +9499,15 @@
                     },
                     "region": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:Region"
+                            }
+                        ],
                         "description": "The region to start in.\n"
                     },
                     "resizeDisk": {
@@ -8684,7 +9516,15 @@
                     },
                     "size": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:DropletSlug",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:DropletSlug"
+                            }
+                        ],
                         "description": "The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).\n"
                     },
                     "sshKeys": {
@@ -8750,8 +9590,7 @@
                 "regions": {
                     "type": "array",
                     "items": {
-                        "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region"
+                        "type": "string"
                     },
                     "description": "A list of DigitalOcean region \"slugs\" indicating where the droplet snapshot is available.\n"
                 },
@@ -8803,8 +9642,7 @@
                     "regions": {
                         "type": "array",
                         "items": {
-                            "type": "string",
-                            "$ref": "#/types/digitalocean:index:Region"
+                            "type": "string"
                         },
                         "description": "A list of DigitalOcean region \"slugs\" indicating where the droplet snapshot is available.\n"
                     },
@@ -9110,7 +9948,6 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
                     "description": "The slug identifier for the region where the Kubernetes cluster will be created.\n"
                 },
                 "serviceSubnet": {
@@ -9175,7 +10012,15 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:Region"
+                        }
+                    ],
                     "description": "The slug identifier for the region where the Kubernetes cluster will be created.\n"
                 },
                 "surgeUpgrade": {
@@ -9242,7 +10087,15 @@
                     },
                     "region": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:Region"
+                            }
+                        ],
                         "description": "The slug identifier for the region where the Kubernetes cluster will be created.\n"
                     },
                     "serviceSubnet": {
@@ -9327,7 +10180,6 @@
                 },
                 "size": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:DropletSlug",
                     "description": "The slug identifier for the type of Droplet to be used as workers in the node pool.\n"
                 },
                 "tags": {
@@ -9386,7 +10238,15 @@
                 },
                 "size": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:DropletSlug",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:DropletSlug"
+                        }
+                    ],
                     "description": "The slug identifier for the type of Droplet to be used as workers in the node pool.\n"
                 },
                 "tags": {
@@ -9455,7 +10315,15 @@
                     },
                     "size": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:DropletSlug",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:DropletSlug"
+                            }
+                        ],
                         "description": "The slug identifier for the type of Droplet to be used as workers in the node pool.\n"
                     },
                     "tags": {
@@ -9481,7 +10349,6 @@
             "properties": {
                 "algorithm": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Algorithm",
                     "description": "The load balancing algorithm used to determine\nwhich backend Droplet will be selected by a client. It must be either `round_robin`\nor `least_connections`. The default value is `round_robin`.\n"
                 },
                 "dropletIds": {
@@ -9531,7 +10398,6 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
                     "description": "The region to start in\n"
                 },
                 "size": {
@@ -9565,7 +10431,15 @@
             "inputProperties": {
                 "algorithm": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Algorithm",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:Algorithm"
+                        }
+                    ],
                     "description": "The load balancing algorithm used to determine\nwhich backend Droplet will be selected by a client. It must be either `round_robin`\nor `least_connections`. The default value is `round_robin`.\n"
                 },
                 "dropletIds": {
@@ -9608,7 +10482,15 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:Region"
+                        }
+                    ],
                     "description": "The region to start in\n"
                 },
                 "size": {
@@ -9633,7 +10515,15 @@
                 "properties": {
                     "algorithm": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:Algorithm",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:Algorithm"
+                            }
+                        ],
                         "description": "The load balancing algorithm used to determine\nwhich backend Droplet will be selected by a client. It must be either `round_robin`\nor `least_connections`. The default value is `round_robin`.\n"
                     },
                     "dropletIds": {
@@ -9683,7 +10573,15 @@
                     },
                     "region": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:Region"
+                            }
+                        ],
                         "description": "The region to start in\n"
                     },
                     "size": {
@@ -9927,7 +10825,6 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
                     "description": "The region where the bucket resides (Defaults to `nyc3`)\n"
                 },
                 "versioning": {
@@ -9969,7 +10866,15 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:Region"
+                        }
+                    ],
                     "description": "The region where the bucket resides (Defaults to `nyc3`)\n"
                 },
                 "versioning": {
@@ -10016,7 +10921,15 @@
                     },
                     "region": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:Region"
+                            }
+                        ],
                         "description": "The region where the bucket resides (Defaults to `nyc3`)\n"
                     },
                     "versioning": {
@@ -10426,7 +11339,6 @@
                 },
                 "initialFilesystemType": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:FilesystemType",
                     "description": "Initial filesystem type (`xfs` or `ext4`) for the block storage volume.\n"
                 },
                 "name": {
@@ -10435,7 +11347,6 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
                     "description": "The region that the block storage volume will be created in.\n"
                 },
                 "size": {
@@ -10483,7 +11394,15 @@
                 },
                 "initialFilesystemType": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:FilesystemType",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:FileSystemType"
+                        }
+                    ],
                     "description": "Initial filesystem type (`xfs` or `ext4`) for the block storage volume.\n"
                 },
                 "name": {
@@ -10492,7 +11411,15 @@
                 },
                 "region": {
                     "type": "string",
-                    "$ref": "#/types/digitalocean:index:Region",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/digitalocean:index:Region"
+                        }
+                    ],
                     "description": "The region that the block storage volume will be created in.\n"
                 },
                 "size": {
@@ -10544,7 +11471,15 @@
                     },
                     "initialFilesystemType": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:FilesystemType",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:FileSystemType"
+                            }
+                        ],
                         "description": "Initial filesystem type (`xfs` or `ext4`) for the block storage volume.\n"
                     },
                     "name": {
@@ -10553,7 +11488,15 @@
                     },
                     "region": {
                         "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/digitalocean:index:Region"
+                            }
+                        ],
                         "description": "The region that the block storage volume will be created in.\n"
                     },
                     "size": {
@@ -10642,8 +11585,7 @@
                 "regions": {
                     "type": "array",
                     "items": {
-                        "type": "string",
-                        "$ref": "#/types/digitalocean:index:Region"
+                        "type": "string"
                     },
                     "description": "A list of DigitalOcean region \"slugs\" indicating where the volume snapshot is available.\n"
                 },
@@ -10709,8 +11651,7 @@
                     "regions": {
                         "type": "array",
                         "items": {
-                            "type": "string",
-                            "$ref": "#/types/digitalocean:index:Region"
+                            "type": "string"
                         },
                         "description": "A list of DigitalOcean region \"slugs\" indicating where the volume snapshot is available.\n"
                     },
@@ -10824,178 +11765,6 @@
                     "vpcUrn": {
                         "type": "string",
                         "description": "The uniform resource name (URN) for the VPC.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "digitalocean:index:DatabaseDb": {
-            "description": "Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst database_example = new digitalocean.DatabaseDb(\"database-example\", {clusterId: postgres_example.id});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\ndatabase_example = digitalocean.DatabaseDb(\"database-example\", cluster_id=postgres_example.id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var database_example = new DigitalOcean.DatabaseDb(\"database-example\", new DigitalOcean.DatabaseDbArgs\n        {\n            ClusterId = postgres_example.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseDb(ctx, \"database_example\", \u0026digitalocean.DatabaseDbArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar\n```\n\n ",
-            "properties": {
-                "clusterId": {
-                    "type": "string",
-                    "description": "The ID of the original source database cluster.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name for the database.\n"
-                }
-            },
-            "required": [
-                "clusterId",
-                "name"
-            ],
-            "inputProperties": {
-                "clusterId": {
-                    "type": "string",
-                    "description": "The ID of the original source database cluster.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name for the database.\n"
-                }
-            },
-            "requiredInputs": [
-                "clusterId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering DatabaseDb resources.\n",
-                "properties": {
-                    "clusterId": {
-                        "type": "string",
-                        "description": "The ID of the original source database cluster.\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The name for the database.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "digitalocean:index:DatabaseFirewall": {
-            "description": "Provides a DigitalOcean database firewall resource allowing you to restrict\nconnections to your database to trusted sources. You may limit connections to\nspecific Droplets, Kubernetes clusters, or IP addresses.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new database firewall allowing multiple IP addresses\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst example_fw = new digitalocean.DatabaseFirewall(\"example-fw\", {\n    clusterId: postgres_example.id,\n    rules: [\n        {\n            type: \"ip_addr\",\n            value: \"192.168.1.1\",\n        },\n        {\n            type: \"ip_addr\",\n            value: \"192.0.2.0\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nexample_fw = digitalocean.DatabaseFirewall(\"example-fw\",\n    cluster_id=postgres_example.id,\n    rules=[\n        digitalocean.DatabaseFirewallRuleArgs(\n            type=\"ip_addr\",\n            value=\"192.168.1.1\",\n        ),\n        digitalocean.DatabaseFirewallRuleArgs(\n            type=\"ip_addr\",\n            value=\"192.0.2.0\",\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var example_fw = new DigitalOcean.DatabaseFirewall(\"example-fw\", new DigitalOcean.DatabaseFirewallArgs\n        {\n            ClusterId = postgres_example.Id,\n            Rules = \n            {\n                new DigitalOcean.Inputs.DatabaseFirewallRuleArgs\n                {\n                    Type = \"ip_addr\",\n                    Value = \"192.168.1.1\",\n                },\n                new DigitalOcean.Inputs.DatabaseFirewallRuleArgs\n                {\n                    Type = \"ip_addr\",\n                    Value = \"192.0.2.0\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseFirewall(ctx, \"example_fw\", \u0026digitalocean.DatabaseFirewallArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tRules: digitalocean.DatabaseFirewallRuleArray{\n\t\t\t\t\u0026digitalocean.DatabaseFirewallRuleArgs{\n\t\t\t\t\tType:  pulumi.String(\"ip_addr\"),\n\t\t\t\t\tValue: pulumi.String(\"192.168.1.1\"),\n\t\t\t\t},\n\t\t\t\t\u0026digitalocean.DatabaseFirewallRuleArgs{\n\t\t\t\t\tType:  pulumi.String(\"ip_addr\"),\n\t\t\t\t\tValue: pulumi.String(\"192.0.2.0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Create a new database firewall allowing a Droplet\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = new digitalocean.Droplet(\"web\", {\n    size: \"s-1vcpu-1gb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst example_fw = new digitalocean.DatabaseFirewall(\"example-fw\", {\n    clusterId: postgres_example.id,\n    rules: [{\n        type: \"droplet\",\n        value: web.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.Droplet(\"web\",\n    size=\"s-1vcpu-1gb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nexample_fw = digitalocean.DatabaseFirewall(\"example-fw\",\n    cluster_id=postgres_example.id,\n    rules=[digitalocean.DatabaseFirewallRuleArgs(\n        type=\"droplet\",\n        value=web.id,\n    )])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Size = \"s-1vcpu-1gb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var example_fw = new DigitalOcean.DatabaseFirewall(\"example-fw\", new DigitalOcean.DatabaseFirewallArgs\n        {\n            ClusterId = postgres_example.Id,\n            Rules = \n            {\n                new DigitalOcean.Inputs.DatabaseFirewallRuleArgs\n                {\n                    Type = \"droplet\",\n                    Value = web.Id,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb, err := digitalocean.NewDroplet(ctx, \"web\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tImage:  pulumi.String(\"centos-7-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseFirewall(ctx, \"example_fw\", \u0026digitalocean.DatabaseFirewallArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tRules: digitalocean.DatabaseFirewallRuleArray{\n\t\t\t\t\u0026digitalocean.DatabaseFirewallRuleArgs{\n\t\t\t\t\tType:  pulumi.String(\"droplet\"),\n\t\t\t\t\tValue: web.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase firewalls can be imported using the `id` of the target database cluster For example\n\n```sh\n $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54\n```\n\n ",
-            "properties": {
-                "clusterId": {
-                    "type": "string",
-                    "description": "The ID of the target database cluster.\n"
-                },
-                "rules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
-                    },
-                    "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
-                }
-            },
-            "required": [
-                "clusterId",
-                "rules"
-            ],
-            "inputProperties": {
-                "clusterId": {
-                    "type": "string",
-                    "description": "The ID of the target database cluster.\n"
-                },
-                "rules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
-                    },
-                    "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
-                }
-            },
-            "requiredInputs": [
-                "clusterId",
-                "rules"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering DatabaseFirewall resources.\n",
-                "properties": {
-                    "clusterId": {
-                        "type": "string",
-                        "description": "The ID of the target database cluster.\n"
-                    },
-                    "rules": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule"
-                        },
-                        "description": "A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "digitalocean:index:DatabaseUser": {
-            "description": "Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.\n\n\u003e **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database user\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst user_example = new digitalocean.DatabaseUser(\"user-example\", {clusterId: postgres_example.id});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nuser_example = digitalocean.DatabaseUser(\"user-example\", cluster_id=postgres_example.id)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            Version = \"11\",\n            Size = \"db-s-1vcpu-1gb\",\n            Region = \"nyc1\",\n            NodeCount = 1,\n        });\n        var user_example = new DigitalOcean.DatabaseUser(\"user-example\", new DigitalOcean.DatabaseUserArgs\n        {\n            ClusterId = postgres_example.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseUser(ctx, \"user_example\", \u0026digitalocean.DatabaseUserArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar\n```\n\n ",
-            "properties": {
-                "clusterId": {
-                    "type": "string",
-                    "description": "The ID of the original source database cluster.\n"
-                },
-                "mysqlAuthPlugin": {
-                    "type": "string",
-                    "description": "The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name for the database user.\n"
-                },
-                "password": {
-                    "type": "string",
-                    "description": "Password for the database user.\n"
-                },
-                "role": {
-                    "type": "string",
-                    "description": "Role for the database user. The value will be either \"primary\" or \"normal\".\n"
-                }
-            },
-            "required": [
-                "clusterId",
-                "name",
-                "password",
-                "role"
-            ],
-            "inputProperties": {
-                "clusterId": {
-                    "type": "string",
-                    "description": "The ID of the original source database cluster.\n"
-                },
-                "mysqlAuthPlugin": {
-                    "type": "string",
-                    "description": "The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name for the database user.\n"
-                }
-            },
-            "requiredInputs": [
-                "clusterId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering DatabaseUser resources.\n",
-                "properties": {
-                    "clusterId": {
-                        "type": "string",
-                        "description": "The ID of the original source database cluster.\n"
-                    },
-                    "mysqlAuthPlugin": {
-                        "type": "string",
-                        "description": "The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The name for the database user.\n"
-                    },
-                    "password": {
-                        "type": "string",
-                        "description": "Password for the database user.\n"
-                    },
-                    "role": {
-                        "type": "string",
-                        "description": "Role for the database user. The value will be either \"primary\" or \"normal\".\n"
                     }
                 },
                 "type": "object"
@@ -13680,7 +14449,7 @@
                 "digitalocean": "DigitalOcean"
             },
             "packageReferences": {
-                "Pulumi": "3.*-*",
+                "Pulumi": "3.*",
                 "System.Collections.Immutable": "1.6.0"
             }
         },
@@ -13691,7 +14460,7 @@
         "nodejs": {
             "compatibility": "tfbridge20",
             "dependencies": {
-                "@pulumi/pulumi": "^3.0.0-alpha.0",
+                "@pulumi/pulumi": "^3.0.0",
                 "builtin-modules": "3.0.0",
                 "read-package-tree": "^5.2.1",
                 "resolve": "^1.7.1"
@@ -13709,7 +14478,7 @@
             "compatibility": "tfbridge20",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/digitalocean/terraform-provider-digitalocean)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-digitalocean` repo](https://github.com/pulumi/pulumi-digitalocean/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`digitalocean/terraform-provider-digitalocean` repo](https://github.com/digitalocean/terraform-provider-digitalocean/issues).",
             "requires": {
-                "pulumi": "\u003e=3.0.0a1,\u003c4.0.0"
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }

@@ -221,7 +221,7 @@ namespace Pulumi.DigitalOcean
         /// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         /// </summary>
         [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.RecordType> Type { get; set; } = null!;
 
         /// <summary>
         /// The value of the record.
@@ -294,7 +294,7 @@ namespace Pulumi.DigitalOcean
         /// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.RecordType>? Type { get; set; }
 
         /// <summary>
         /// The value of the record.
