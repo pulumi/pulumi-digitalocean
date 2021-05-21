@@ -2,6 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 4.2.0 (2021-05-21)
 * Addition of Region, DropletSlug and DatabaseSlug Enums for all supported Pulumi languages.  
   ** PLEASE NOTE: **  
   There is a small breaking change in the enums usage for TypeScript - the enum declarations need to change slightly (this will not cause any changes to your infrastructure) as follows:
@@ -12,8 +17,6 @@ CHANGELOG
   * `digitalocean.FilesystemTypes.<FilesystemType_ID>` -> `digitalocean.FileSystemType.<FilesystemType_ID>`
   * `digitalocean.CertificateTypes.<CertificateType_ID>` -> `digitalocean.CertificateType.<FilesystemType_ID>`
   * `digitalocean.DatabaseSlugs.<DatabaseSlug_ID>` -> `digitalocean.DatabaseSlug.<DatabaseSlug_ID>`
-
----
 
 ## 4.1.0 (2021-04-30)
 * Upgrade to v2.8.0 of the DigitalOcean Terraform Provider
