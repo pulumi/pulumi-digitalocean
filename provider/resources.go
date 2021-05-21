@@ -23,6 +23,7 @@ import (
 	"github.com/pulumi/pulumi-digitalocean/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -91,7 +92,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "Certificate"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
-						Type: makeType(digitalOceanMod, "CertificateType"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "CertificateType")},
 					},
 				},
 			},
@@ -99,10 +101,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "DatabaseCluster"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: makeType(digitalOceanMod, "Region"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 					"size": {
-						Type: makeType(digitalOceanMod, "DatabaseSlug"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "DatabaseSlug")},
 					},
 					"urn": {
 						Name: "clusterUrn",
@@ -116,16 +120,18 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "DatabaseReplica"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: makeType(digitalOceanMod, "Region"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 					"size": {
-						Type: makeType(digitalOceanMod, "DatabaseSlug"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "DatabaseSlug")},
 					},
 				},
 			},
-			"digitalocean_database_user":     {Tok: makeType(digitalOceanMod, "DatabaseUser")},
-			"digitalocean_database_db":       {Tok: makeType(digitalOceanMod, "DatabaseDb")},
-			"digitalocean_database_firewall": {Tok: makeType(digitalOceanMod, "DatabaseFirewall")},
+			"digitalocean_database_user":     {Tok: makeResource(digitalOceanMod, "DatabaseUser")},
+			"digitalocean_database_db":       {Tok: makeResource(digitalOceanMod, "DatabaseDb")},
+			"digitalocean_database_firewall": {Tok: makeResource(digitalOceanMod, "DatabaseFirewall")},
 			"digitalocean_domain": {
 				Tok: makeResource(digitalOceanMod, "Domain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -141,25 +147,20 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "Droplet"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: makeType(digitalOceanMod, "Region"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 					"size": {
-						Type: makeType(digitalOceanMod, "DropletSlug"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "DropletSlug")},
 					},
 					"urn": {
 						Name: "dropletUrn",
 					},
 				},
 			},
-			"digitalocean_droplet_snapshot": {
-				Tok: makeResource(digitalOceanMod, "DropletSnapshot"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"regions": {
-						Elem: &tfbridge.SchemaInfo{Type: makeType(digitalOceanMod, "Region")},
-					},
-				},
-			},
-			"digitalocean_firewall": {Tok: makeResource(digitalOceanMod, "Firewall")},
+			"digitalocean_droplet_snapshot": {Tok: makeResource(digitalOceanMod, "DropletSnapshot")},
+			"digitalocean_firewall":         {Tok: makeResource(digitalOceanMod, "Firewall")},
 			"digitalocean_floating_ip": {
 				Tok: makeResource(digitalOceanMod, "FloatingIp"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -173,7 +174,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "KubernetesCluster"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: makeType(digitalOceanMod, "Region"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 				},
 			},
@@ -181,7 +183,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "KubernetesNodePool"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"size": {
-						Type: makeType(digitalOceanMod, "DropletSlug"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "DropletSlug")},
 					},
 				},
 			},
@@ -189,10 +192,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "LoadBalancer"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: makeType(digitalOceanMod, "Region"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 					"algorithm": {
-						Type: makeType(digitalOceanMod, "Algorithm"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Algorithm")},
 					},
 					"urn": {
 						Name: "loadBalancerUrn",
@@ -204,7 +209,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "DnsRecord"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
-						Type: makeType(digitalOceanMod, "RecordType"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "RecordType")},
 					},
 				},
 			},
@@ -213,7 +219,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "SpacesBucket"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: makeType(digitalOceanMod, "Region"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 					"urn": {
 						Name: "bucketUrn",
@@ -226,10 +233,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "Volume"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"region": {
-						Type: makeType(digitalOceanMod, "Region"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 					"initial_filesystem_type": {
-						Type: makeType(digitalOceanMod, "FilesystemType"),
+						Type:     "string",
+						AltTypes: []tokens.Type{makeType(digitalOceanMod, "FileSystemType")},
 					},
 					"urn": {
 						Name: "volumeUrn",
@@ -237,14 +246,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"digitalocean_volume_attachment": {Tok: makeResource(digitalOceanMod, "VolumeAttachment")},
-			"digitalocean_volume_snapshot": {
-				Tok: makeResource(digitalOceanMod, "VolumeSnapshot"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"regions": {
-						Elem: &tfbridge.SchemaInfo{Type: makeType(digitalOceanMod, "Region")},
-					},
-				},
-			},
+			"digitalocean_volume_snapshot":   {Tok: makeResource(digitalOceanMod, "VolumeSnapshot")},
 			"digitalocean_vpc": {
 				Tok: makeResource(digitalOceanMod, "Vpc"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -273,6 +275,193 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"digitalocean_custom_image": {Tok: makeResource(digitalOceanMod, "CustomImage")},
+		},
+		ExtraTypes: map[string]schema.ComplexTypeSpec{
+			"digitalocean:index:Region": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []*schema.EnumValueSpec{
+					{Name: "NYC1", Value: "nyc1"},
+					{Name: "NYC2", Value: "nyc2"},
+					{Name: "NYC3", Value: "nyc3"},
+					{Name: "SGP1", Value: "sgp1"},
+					{Name: "LON1", Value: "lon1"},
+					{Name: "AMS2", Value: "ams2"},
+					{Name: "AMS3", Value: "ams3"},
+					{Name: "FRA1", Value: "fra1"},
+					{Name: "TOR1", Value: "tor1"},
+					{Name: "SFO1", Value: "sfo1"},
+					{Name: "SFO2", Value: "sfo2"},
+					{Name: "SFO3", Value: "sfo3"},
+					{Name: "BLR1", Value: "blr1"},
+				},
+			},
+			"digitalocean:index:RecordType": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []*schema.EnumValueSpec{
+					{Name: "A", Value: "A"},
+					{Name: "AAAA", Value: "AAAA"},
+					{Name: "CAA", Value: "CAA"},
+					{Name: "CNAME", Value: "CNAME"},
+					{Name: "MX", Value: "MX"},
+					{Name: "NS", Value: "NS"},
+					{Name: "TXT", Value: "TXT"},
+					{Name: "SRV", Value: "SRV"},
+				},
+			},
+			"digitalocean:index:Protocol": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []*schema.EnumValueSpec{
+					{Name: "TCP", Value: "tcp"},
+					{Name: "UDP", Value: "udp"},
+					{Name: "ICMP", Value: "icmp"},
+					{Name: "HTTP", Value: "http"},
+					{Name: "HTTPS", Value: "https"},
+				},
+			},
+			"digitalocean:index:Algorithm": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []*schema.EnumValueSpec{
+					{Name: "RoundRobin", Value: "round_robin"},
+					{Name: "LeastConnections", Value: "least_connections"},
+				},
+			},
+			"digitalocean:index:FileSystemType": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []*schema.EnumValueSpec{
+					{Name: "EXT4", Value: "ext4"},
+					{Name: "XFS", Value: "xfs"},
+				},
+			},
+			"digitalocean:index:CertificateType": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []*schema.EnumValueSpec{
+					{Name: "LetsEncrypt", Value: "lets_encrypt"},
+					{Name: "Custom", Value: "custom"},
+				},
+			},
+			"digitalocean:index:DatabaseSlug": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []*schema.EnumValueSpec{
+					{Name: "DB_1VPCU1GB", Value: "db-s-1vcpu-1gb"},
+					{Name: "DB_1VPCU2GB", Value: "db-s-1vcpu-2gb"},
+					{Name: "DB_2VPCU4GB", Value: "db-s-2vcpu-4gb"},
+					{Name: "DB_4VPCU8GB", Value: "db-s-4vcpu-8gb"},
+					{Name: "DB_6VPCU16GB", Value: "db-s-6vcpu-16gb"},
+					{Name: "DB_8VPCU32GB", Value: "db-s-8vcpu-32gb"},
+					{Name: "DB_16VPCU64GB", Value: "db-s-16vcpu-64gb"},
+				},
+			},
+			"digitalocean:index:DropletSlug": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []*schema.EnumValueSpec{
+					{Name: "DropletS1VCPU1GB", Value: "s-1vcpu-1gb"},
+					{Name: "DropletS1VCPU1GB-AMD", Value: "s-1vcpu-1gb-amd"},
+					{Name: "DropletS1VCPU1GB-INTEL", Value: "s-1vcpu-1gb-intel"},
+					{Name: "DropletS1VCPU2GB", Value: "s-1vcpu-2gb"},
+					{Name: "DropletS1VCPU2GB-AMD", Value: "s-1vcpu-2gb-amd"},
+					{Name: "DropletS1VCPU2GB-INTEL", Value: "s-1vcpu-2gb-intel"},
+					{Name: "DropletS2VCPU2GB", Value: "s-2vcpu-2gb"},
+					{Name: "DropletS2VCPU2GB-AMD", Value: "s-2vcpu-2gb-amd"},
+					{Name: "DropletS2VCPU2GB-INTEL", Value: "s-2vcpu-2gb-intel"},
+					{Name: "DropletS2VCPU4GB", Value: "s-2vcpu-4gb"},
+					{Name: "DropletS2VCPU4GB-AMD", Value: "s-2vcpu-4gb-amd"},
+					{Name: "DropletS2VCPU4GB-INTEL", Value: "s-2vcpu-4gb-intel"},
+					{Name: "DropletS4VCPU8GB", Value: "s-4vcpu-8gb"},
+					{Name: "DropletS4VCPU8GB-AMD", Value: "s-4vcpu-8gb-amd"},
+					{Name: "DropletS4VCPU8GB-INTEL", Value: "s-4vcpu-8gb-intel"},
+					{Name: "DropletS8VCPU16GB-AMD", Value: "s-8vcpu-16gb-amd"},
+					{Name: "DropletS8VCPU16GB-INTEL", Value: "s-8vcpu-16gb-intel"},
+					{Name: "DropletC2", Value: "c-2"},
+					{Name: "DropletC22VCPU4GB", Value: "c2-2vcpu-4gb"},
+					{Name: "DropletC22VCPU8GB", Value: "c2-4vcpu-8gb"},
+					{Name: "DropletC28VCPU16GB", Value: "c2-8vcpu-16gb"},
+					{Name: "DropletC216VCPU32GB", Value: "c2-16vcpu-32gb"},
+					{Name: "DropletC232VCPU64GB", Value: "c2-32vcpu-64gb"},
+					{Name: "DropletC4", Value: "c-4"},
+					{Name: "DropletC8", Value: "c-8"},
+					{Name: "DropletC16", Value: "c-16"},
+					{Name: "DropletC32", Value: "c-32"},
+					{Name: "DropletG2VCPU8GB", Value: "g-2vcpu-8gb"},
+					{Name: "DropletG4VCPU16GB", Value: "g-4vcpu-16gb"},
+					{Name: "DropletG8VCPU32GB", Value: "g-8vcpu-32gb"},
+					{Name: "DropletG16VCPU64GB", Value: "g-16vcpu-64gb"},
+					{Name: "DropletG32VCPU128GB", Value: "g-32vcpu-128gb"},
+					{Name: "DropletG40VCPU160GB", Value: "g-40vcpu-160gb"},
+					{Name: "DropletGD2VCPU8GB", Value: "gd-2vcpu-8gb"},
+					{Name: "DropletGD4VCPU16GB", Value: "gd-4vcpu-16gb"},
+					{Name: "DropletGD8VCPU32GB", Value: "gd-8vcpu-32gb"},
+					{Name: "DropletGD16VCPU64GB", Value: "gd-16vcpu-64gb"},
+					{Name: "DropletGD32VCPU128GB", Value: "gd-32vcpu-128gb"},
+					{Name: "DropletGD40VCPU160GB", Value: "gd-40vcpu-160gb"},
+					{Name: "DropletS8VCPU16GB", Value: "s-8vcpu-16gb"},
+					{Name: "DropletM2VCPU16GB", Value: "m-2vcpu-16gb"},
+					{Name: "DropletM4VCPU32GB", Value: "m-4vcpu-32gb"},
+					{Name: "DropletM8VCPU64GB", Value: "m-8vcpu-64gb"},
+					{Name: "DropletM16VCPU128GB", Value: "m-16vcpu-128gb"},
+					{Name: "DropletM24VCPU192GB", Value: "m-24vcpu-192gb"},
+					{Name: "DropletM32VCPU256GB", Value: "m-32vcpu-256gb"},
+					{Name: "DropletM32VCPU16GB", Value: "m3-2vcpu-16gb"},
+					{Name: "DropletM34VCPU32GB", Value: "m3-4vcpu-32gb"},
+					{Name: "DropletM38VCPU64GB", Value: "m3-8vcpu-64gb"},
+					{Name: "DropletM316VCPU128GB", Value: "m3-16vcpu-128gb"},
+					{Name: "DropletM324VCPU192GB", Value: "m3-24vcpu-192gb"},
+					{Name: "DropletM332VCPU256GB", Value: "m3-32vcpu-256gb"},
+					{Name: "DropletM62VCPU16GB", Value: "m6-2vcpu-16gb"},
+					{Name: "DropletM64VCPU32GB", Value: "m6-4vcpu-32gb"},
+					{Name: "DropletM68VCPU64GB", Value: "m6-8vcpu-64gb"},
+					{Name: "DropletM616VCPU128GB", Value: "m6-16vcpu-128gb"},
+					{Name: "DropletM624VCPU192GB", Value: "m6-24vcpu-192gb"},
+					{Name: "DropletM632VCPU256GB", Value: "m6-32vcpu-256gb"},
+					{Name: "DropletSO2VCPU16GB", Value: "so-2vcpu-16gb"},
+					{Name: "DropletSO4VCPU32GB", Value: "so-4vcpu-32gb"},
+					{Name: "DropletSO8VCPU64GB", Value: "so-8vcpu-64gb"},
+					{Name: "DropletSO16VCPU128GB", Value: "so-16vcpu-128gb"},
+					{Name: "DropletSO24VCPU192GB", Value: "so-24vcpu-192gb"},
+					{Name: "DropletSO32VCPU256GB", Value: "so-32vcpu-256gb"},
+					{Name: "DropletSO152VCPU16GB", Value: "so1_5-2vcpu-16gb"},
+					{Name: "DropletSO154VCPU32GB", Value: "so1_5-4vcpu-32gb"},
+					{Name: "DropletSO158VCPU64GB", Value: "so1_5-8vcpu-64gb"},
+					{Name: "DropletSO1516VCPU128GB", Value: "so1_5-16vcpu-128gb"},
+					{Name: "DropletSO1524VCPU192GB", Value: "so1_5-24vcpu-192gb"},
+					{Name: "DropletSO1532VCPU256GB", Value: "so1_5-32vcpu-256gb"},
+
+					// No longer supported
+					{Name: "Droplet512mb", Value: "512mb"},
+					{Name: "Droplet1GB", Value: "1gb"},
+					{Name: "Droplet2GB", Value: "2gb"},
+					{Name: "Droplet4GB", Value: "4gb"},
+					{Name: "Droplet8GB", Value: "8gb"},
+					{Name: "Droplet16GB", Value: "16gb"},
+					{Name: "Droplet32GB", Value: "32gb"},
+					{Name: "Droplet48GB", Value: "48gb"},
+					{Name: "Droplet64GB", Value: "64gb"},
+					{Name: "DropletS1VCPU3GB", Value: "s-1vcpu-3gb"},
+					{Name: "DropletS3VCPU1GB", Value: "s-3vcpu-1gb"},
+					{Name: "DropletS6VCPU16GB", Value: "s-6vcpu-16gb"},
+					{Name: "DropletS8VCPU32GB", Value: "s-8vcpu-32gb"},
+					{Name: "DropletS12VCPU48GB", Value: "s-12vcpu-48gb"},
+					{Name: "DropletS16VCPU64GB", Value: "s-16vcpu-64gb"},
+					{Name: "DropletS20VCPU96GB", Value: "s-20vcpu-96gb"},
+					{Name: "DropletS24VCPU128GB", Value: "s-24vcpu-128gb"},
+					{Name: "DropletS32VCPU192GB", Value: "s-32vcpu-192gb"},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"digitalocean_certificate":      {Tok: makeDataSource(digitalOceanMod, "getCertificate")},
@@ -335,7 +524,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^3.0.0-alpha.0",
+				"@pulumi/pulumi":    "^3.0.0",
 				"builtin-modules":   "3.0.0",
 				"read-package-tree": "^5.2.1",
 				"resolve":           "^1.7.1",
@@ -343,23 +532,10 @@ func Provider() tfbridge.ProviderInfo {
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 			},
-			Overlay: &tfbridge.OverlayInfo{
-				DestFiles: []string{
-					"certificateType.ts",
-					"databaseSlug.ts",
-					"dropletSlug.ts",
-					"filesystemType.ts",
-					"loadbalancerAlgorithm.ts",
-					"protocol.ts",
-					"recordType.ts",
-					"region.ts",
-				},
-				Modules: map[string]*tfbridge.OverlayInfo{},
-			},
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0a1,<4.0.0",
+				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -373,7 +549,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*-*",
+				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

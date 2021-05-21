@@ -44,10 +44,10 @@ namespace Pulumi.DigitalOcean
     /// Database can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+    ///  $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
     /// ```
     /// </summary>
-    [DigitalOceanResourceType("digitalocean:index:DatabaseDb")]
+    [DigitalOceanResourceType("digitalocean:index/databaseDb:DatabaseDb")]
     public partial class DatabaseDb : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.DigitalOcean
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseDb(string name, DatabaseDbArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseDb", name, args ?? new DatabaseDbArgs(), MakeResourceOptions(options, ""))
+            : base("digitalocean:index/databaseDb:DatabaseDb", name, args ?? new DatabaseDbArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatabaseDb(string name, Input<string> id, DatabaseDbState? state = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index:DatabaseDb", name, state, MakeResourceOptions(options, id))
+            : base("digitalocean:index/databaseDb:DatabaseDb", name, state, MakeResourceOptions(options, id))
         {
         }
 

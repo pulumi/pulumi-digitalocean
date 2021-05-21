@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 export * from "./app";
 export * from "./cdn";
 export * from "./certificate";
-export * from "./certificateType";
 export * from "./containerRegistry";
 export * from "./containerRegistryDockerCredentials";
 export * from "./customImage";
@@ -17,14 +16,11 @@ export * from "./databaseConnectionPool";
 export * from "./databaseDb";
 export * from "./databaseFirewall";
 export * from "./databaseReplica";
-export * from "./databaseSlug";
 export * from "./databaseUser";
 export * from "./dnsRecord";
 export * from "./domain";
 export * from "./droplet";
-export * from "./dropletSlug";
 export * from "./dropletSnapshot";
-export * from "./filesystemType";
 export * from "./firewall";
 export * from "./floatingIp";
 export * from "./floatingIpAssignment";
@@ -67,13 +63,9 @@ export * from "./getVpc";
 export * from "./kubernetesCluster";
 export * from "./kubernetesNodePool";
 export * from "./loadBalancer";
-export * from "./loadbalancerAlgorithm";
 export * from "./project";
 export * from "./projectResources";
-export * from "./protocol";
 export * from "./provider";
-export * from "./recordType";
-export * from "./region";
 export * from "./spacesBucket";
 export * from "./spacesBucketObject";
 export * from "./sshKey";
@@ -82,6 +74,9 @@ export * from "./volume";
 export * from "./volumeAttachment";
 export * from "./volumeSnapshot";
 export * from "./vpc";
+
+// Export enums:
+export * from "./types/enums";
 
 // Export sub-modules:
 import * as config from "./config";
@@ -101,7 +96,10 @@ import { ContainerRegistryDockerCredentials } from "./containerRegistryDockerCre
 import { CustomImage } from "./customImage";
 import { DatabaseCluster } from "./databaseCluster";
 import { DatabaseConnectionPool } from "./databaseConnectionPool";
+import { DatabaseDb } from "./databaseDb";
+import { DatabaseFirewall } from "./databaseFirewall";
 import { DatabaseReplica } from "./databaseReplica";
+import { DatabaseUser } from "./databaseUser";
 import { DnsRecord } from "./dnsRecord";
 import { Domain } from "./domain";
 import { Droplet } from "./droplet";
@@ -122,9 +120,6 @@ import { Volume } from "./volume";
 import { VolumeAttachment } from "./volumeAttachment";
 import { VolumeSnapshot } from "./volumeSnapshot";
 import { Vpc } from "./vpc";
-import { DatabaseDb } from "./databaseDb";
-import { DatabaseFirewall } from "./databaseFirewall";
-import { DatabaseUser } from "./databaseUser";
 
 const _module = {
     version: utilities.getVersion(),
@@ -146,8 +141,14 @@ const _module = {
                 return new DatabaseCluster(name, <any>undefined, { urn })
             case "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool":
                 return new DatabaseConnectionPool(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseDb:DatabaseDb":
+                return new DatabaseDb(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseFirewall:DatabaseFirewall":
+                return new DatabaseFirewall(name, <any>undefined, { urn })
             case "digitalocean:index/databaseReplica:DatabaseReplica":
                 return new DatabaseReplica(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseUser:DatabaseUser":
+                return new DatabaseUser(name, <any>undefined, { urn })
             case "digitalocean:index/dnsRecord:DnsRecord":
                 return new DnsRecord(name, <any>undefined, { urn })
             case "digitalocean:index/domain:Domain":
@@ -188,18 +189,11 @@ const _module = {
                 return new VolumeSnapshot(name, <any>undefined, { urn })
             case "digitalocean:index/vpc:Vpc":
                 return new Vpc(name, <any>undefined, { urn })
-            case "digitalocean:index:DatabaseDb":
-                return new DatabaseDb(name, <any>undefined, { urn })
-            case "digitalocean:index:DatabaseFirewall":
-                return new DatabaseFirewall(name, <any>undefined, { urn })
-            case "digitalocean:index:DatabaseUser":
-                return new DatabaseUser(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("digitalocean", "index", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/app", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/cdn", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/certificate", _module)
@@ -208,7 +202,10 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistryDo
 pulumi.runtime.registerResourceModule("digitalocean", "index/customImage", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseCluster", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseConnectionPool", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseDb", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseFirewall", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseReplica", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseUser", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/dnsRecord", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/domain", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/droplet", _module)

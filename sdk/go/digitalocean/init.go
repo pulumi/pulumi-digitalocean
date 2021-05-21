@@ -36,8 +36,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseCluster{}
 	case "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool":
 		r = &DatabaseConnectionPool{}
+	case "digitalocean:index/databaseDb:DatabaseDb":
+		r = &DatabaseDb{}
+	case "digitalocean:index/databaseFirewall:DatabaseFirewall":
+		r = &DatabaseFirewall{}
 	case "digitalocean:index/databaseReplica:DatabaseReplica":
 		r = &DatabaseReplica{}
+	case "digitalocean:index/databaseUser:DatabaseUser":
+		r = &DatabaseUser{}
 	case "digitalocean:index/dnsRecord:DnsRecord":
 		r = &DnsRecord{}
 	case "digitalocean:index/domain:Domain":
@@ -78,12 +84,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VolumeSnapshot{}
 	case "digitalocean:index/vpc:Vpc":
 		r = &Vpc{}
-	case "digitalocean:index:DatabaseDb":
-		r = &DatabaseDb{}
-	case "digitalocean:index:DatabaseFirewall":
-		r = &DatabaseFirewall{}
-	case "digitalocean:index:DatabaseUser":
-		r = &DatabaseUser{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -115,11 +115,6 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index",
-		&module{version},
-	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/app",
@@ -162,7 +157,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
+		"index/databaseDb",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseFirewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
 		"index/databaseReplica",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -300,13 +300,13 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean region where the cluster will reside.
         /// </summary>
         [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
 
         /// <summary>
         /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         /// </summary>
         [Input("size", required: true)]
-        public Input<string> Size { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug> Size { get; set; } = null!;
 
         /// <summary>
         /// A comma separated string specifying the  SQL modes for a MySQL cluster.
@@ -427,13 +427,13 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean region where the cluster will reside.
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         /// </summary>
         [Input("size")]
-        public Input<string>? Size { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }
 
         /// <summary>
         /// A comma separated string specifying the  SQL modes for a MySQL cluster.

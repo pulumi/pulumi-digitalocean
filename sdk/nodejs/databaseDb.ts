@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * Database can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example
  *
  * ```sh
- *  $ pulumi import digitalocean:index:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+ *  $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
  * ```
  */
 export class DatabaseDb extends pulumi.CustomResource {
@@ -46,7 +46,7 @@ export class DatabaseDb extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'digitalocean:index:DatabaseDb';
+    public static readonly __pulumiType = 'digitalocean:index/databaseDb:DatabaseDb';
 
     /**
      * Returns true if the given object is an instance of DatabaseDb.  This is designed to work even

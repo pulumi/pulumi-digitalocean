@@ -2,9 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {DatabaseSlug, Region} from "./index";
 
 /**
  * Provides a DigitalOcean database replica resource.
@@ -104,11 +103,11 @@ export class DatabaseReplica extends pulumi.CustomResource {
     /**
      * DigitalOcean region where the replica will reside.
      */
-    public readonly region!: pulumi.Output<Region | undefined>;
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
      */
-    public readonly size!: pulumi.Output<DatabaseSlug | undefined>;
+    public readonly size!: pulumi.Output<string | undefined>;
     /**
      * A list of tag names to be applied to the database replica.
      */
@@ -219,11 +218,11 @@ export interface DatabaseReplicaState {
     /**
      * DigitalOcean region where the replica will reside.
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
      */
-    readonly size?: pulumi.Input<DatabaseSlug>;
+    readonly size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
      * A list of tag names to be applied to the database replica.
      */
@@ -257,11 +256,11 @@ export interface DatabaseReplicaArgs {
     /**
      * DigitalOcean region where the replica will reside.
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
      */
-    readonly size?: pulumi.Input<DatabaseSlug>;
+    readonly size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
      * A list of tag names to be applied to the database replica.
      */

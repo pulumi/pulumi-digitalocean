@@ -299,7 +299,7 @@ namespace Pulumi.DigitalOcean
         /// The region to start in.
         /// </summary>
         [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
 
         /// <summary>
         /// Boolean controlling whether to increase the disk
@@ -314,7 +314,7 @@ namespace Pulumi.DigitalOcean
         /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         /// </summary>
         [Input("size", required: true)]
-        public Input<string> Size { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.DropletSlug> Size { get; set; } = null!;
 
         [Input("sshKeys")]
         private InputList<string>? _sshKeys;
@@ -474,7 +474,7 @@ namespace Pulumi.DigitalOcean
         /// The region to start in.
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// Boolean controlling whether to increase the disk
@@ -489,7 +489,7 @@ namespace Pulumi.DigitalOcean
         /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
         /// </summary>
         [Input("size")]
-        public Input<string>? Size { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.DropletSlug>? Size { get; set; }
 
         [Input("sshKeys")]
         private InputList<string>? _sshKeys;

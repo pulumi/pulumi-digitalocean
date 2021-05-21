@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['LoadBalancerArgs', 'LoadBalancer']
@@ -16,8 +17,8 @@ __all__ = ['LoadBalancerArgs', 'LoadBalancer']
 class LoadBalancerArgs:
     def __init__(__self__, *,
                  forwarding_rules: pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]],
-                 region: pulumi.Input[str],
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 region: pulumi.Input[Union[str, 'Region']],
+                 algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -32,8 +33,8 @@ class LoadBalancerArgs:
         The set of arguments for constructing a LoadBalancer resource.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
-        :param pulumi.Input[str] region: The region to start in
-        :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine
+        :param pulumi.Input[Union[str, 'Region']] region: The region to start in
+        :param pulumi.Input[Union[str, 'Algorithm']] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
@@ -93,19 +94,19 @@ class LoadBalancerArgs:
 
     @property
     @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
+    def region(self) -> pulumi.Input[Union[str, 'Region']]:
         """
         The region to start in
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: pulumi.Input[str]):
+    def region(self, value: pulumi.Input[Union[str, 'Region']]):
         pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[str]]:
+    def algorithm(self) -> Optional[pulumi.Input[Union[str, 'Algorithm']]]:
         """
         The load balancing algorithm used to determine
         which backend Droplet will be selected by a client. It must be either `round_robin`
@@ -114,7 +115,7 @@ class LoadBalancerArgs:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[str]]):
+    def algorithm(self, value: Optional[pulumi.Input[Union[str, 'Algorithm']]]):
         pulumi.set(self, "algorithm", value)
 
     @property
@@ -247,7 +248,7 @@ class LoadBalancerArgs:
 @pulumi.input_type
 class _LoadBalancerState:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -258,14 +259,14 @@ class _LoadBalancerState:
                  load_balancer_urn: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
-        :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine
+        :param pulumi.Input[Union[str, 'Algorithm']] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
@@ -283,7 +284,7 @@ class _LoadBalancerState:
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
-        :param pulumi.Input[str] region: The region to start in
+        :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
@@ -324,7 +325,7 @@ class _LoadBalancerState:
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[str]]:
+    def algorithm(self) -> Optional[pulumi.Input[Union[str, 'Algorithm']]]:
         """
         The load balancing algorithm used to determine
         which backend Droplet will be selected by a client. It must be either `round_robin`
@@ -333,7 +334,7 @@ class _LoadBalancerState:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[str]]):
+    def algorithm(self, value: Optional[pulumi.Input[Union[str, 'Algorithm']]]):
         pulumi.set(self, "algorithm", value)
 
     @property
@@ -461,14 +462,14 @@ class _LoadBalancerState:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
         The region to start in
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @property
@@ -523,7 +524,7 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -532,7 +533,7 @@ class LoadBalancer(pulumi.CustomResource):
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
@@ -609,7 +610,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine
+        :param pulumi.Input[Union[str, 'Algorithm']] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
@@ -626,7 +627,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
-        :param pulumi.Input[str] region: The region to start in
+        :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
         :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
@@ -723,7 +724,7 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -732,7 +733,7 @@ class LoadBalancer(pulumi.CustomResource):
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
@@ -778,7 +779,7 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            algorithm: Optional[pulumi.Input[str]] = None,
+            algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             droplet_tag: Optional[pulumi.Input[str]] = None,
             enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -789,7 +790,7 @@ class LoadBalancer(pulumi.CustomResource):
             load_balancer_urn: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
-            region: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
             size: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
@@ -801,7 +802,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] algorithm: The load balancing algorithm used to determine
+        :param pulumi.Input[Union[str, 'Algorithm']] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
@@ -819,7 +820,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
-        :param pulumi.Input[str] region: The region to start in
+        :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
         :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.

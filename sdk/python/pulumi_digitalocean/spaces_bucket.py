@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['SpacesBucketArgs', 'SpacesBucket']
@@ -20,7 +21,7 @@ class SpacesBucketArgs:
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None):
         """
         The set of arguments for constructing a SpacesBucket resource.
@@ -29,7 +30,7 @@ class SpacesBucketArgs:
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
-        :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
+        :param pulumi.Input[Union[str, 'Region']] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input['SpacesBucketVersioningArgs'] versioning: A state of versioning (documented below)
         """
         if acl is not None:
@@ -109,14 +110,14 @@ class SpacesBucketArgs:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
         The region where the bucket resides (Defaults to `nyc3`)
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @property
@@ -142,7 +143,7 @@ class _SpacesBucketState:
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None):
         """
         Input properties used for looking up and filtering SpacesBucket resources.
@@ -153,7 +154,7 @@ class _SpacesBucketState:
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
-        :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
+        :param pulumi.Input[Union[str, 'Region']] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input['SpacesBucketVersioningArgs'] versioning: A state of versioning (documented below)
         """
         if acl is not None:
@@ -261,14 +262,14 @@ class _SpacesBucketState:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
         The region where the bucket resides (Defaults to `nyc3`)
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @property
@@ -294,7 +295,7 @@ class SpacesBucket(pulumi.CustomResource):
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None,
                  __props__=None):
         """
@@ -374,7 +375,7 @@ class SpacesBucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
-        :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
+        :param pulumi.Input[Union[str, 'Region']] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']] versioning: A state of versioning (documented below)
         """
         ...
@@ -473,7 +474,7 @@ class SpacesBucket(pulumi.CustomResource):
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -513,7 +514,7 @@ class SpacesBucket(pulumi.CustomResource):
             force_destroy: Optional[pulumi.Input[bool]] = None,
             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            region: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
             versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None) -> 'SpacesBucket':
         """
         Get an existing SpacesBucket resource's state with the given name, id, and optional extra
@@ -529,7 +530,7 @@ class SpacesBucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
-        :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
+        :param pulumi.Input[Union[str, 'Region']] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']] versioning: A state of versioning (documented below)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

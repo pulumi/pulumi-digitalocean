@@ -2,10 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {Algorithm, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Load Balancer resource. This can be used to create,
@@ -115,7 +113,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * which backend Droplet will be selected by a client. It must be either `roundRobin`
      * or `leastConnections`. The default value is `roundRobin`.
      */
-    public readonly algorithm!: pulumi.Output<Algorithm | undefined>;
+    public readonly algorithm!: pulumi.Output<string | undefined>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -162,7 +160,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The region to start in
      */
-    public readonly region!: pulumi.Output<Region>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
      */
@@ -248,7 +246,7 @@ export interface LoadBalancerState {
      * which backend Droplet will be selected by a client. It must be either `roundRobin`
      * or `leastConnections`. The default value is `roundRobin`.
      */
-    readonly algorithm?: pulumi.Input<Algorithm>;
+    readonly algorithm?: pulumi.Input<string | enums.Algorithm>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -295,7 +293,7 @@ export interface LoadBalancerState {
     /**
      * The region to start in
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
      */
@@ -321,7 +319,7 @@ export interface LoadBalancerArgs {
      * which backend Droplet will be selected by a client. It must be either `roundRobin`
      * or `leastConnections`. The default value is `roundRobin`.
      */
-    readonly algorithm?: pulumi.Input<Algorithm>;
+    readonly algorithm?: pulumi.Input<string | enums.Algorithm>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -363,7 +361,7 @@ export interface LoadBalancerArgs {
     /**
      * The region to start in
      */
-    readonly region: pulumi.Input<Region>;
+    readonly region: pulumi.Input<string | enums.Region>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
      */

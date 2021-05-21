@@ -271,7 +271,7 @@ namespace Pulumi.DigitalOcean
         /// The slug identifier for the type of Droplet to be used as workers in the node pool.
         /// </summary>
         [Input("size", required: true)]
-        public Input<string> Size { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.DropletSlug> Size { get; set; } = null!;
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -374,7 +374,7 @@ namespace Pulumi.DigitalOcean
         /// The slug identifier for the type of Droplet to be used as workers in the node pool.
         /// </summary>
         [Input("size")]
-        public Input<string>? Size { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.DropletSlug>? Size { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

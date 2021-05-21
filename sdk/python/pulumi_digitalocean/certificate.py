@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from ._enums import *
 
 __all__ = ['CertificateArgs', 'Certificate']
 
@@ -18,7 +19,7 @@ class CertificateArgs:
                  leaf_certificate: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None):
         """
         The set of arguments for constructing a Certificate resource.
         :param pulumi.Input[str] certificate_chain: The full PEM-formatted trust chain
@@ -32,7 +33,7 @@ class CertificateArgs:
         :param pulumi.Input[str] name: The name of the certificate for identification.
         :param pulumi.Input[str] private_key: The contents of a PEM-formatted private-key
                corresponding to the SSL certificate. Only valid when type is `custom`.
-        :param pulumi.Input[str] type: The type of certificate to provision. Can be either
+        :param pulumi.Input[Union[str, 'CertificateType']] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
         """
         if certificate_chain is not None:
@@ -116,7 +117,7 @@ class CertificateArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input[Union[str, 'CertificateType']]]:
         """
         The type of certificate to provision. Can be either
         `custom` or `lets_encrypt`. Defaults to `custom`.
@@ -124,7 +125,7 @@ class CertificateArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input[Union[str, 'CertificateType']]]):
         pulumi.set(self, "type", value)
 
 
@@ -139,7 +140,7 @@ class _CertificateState:
                  private_key: Optional[pulumi.Input[str]] = None,
                  sha1_fingerprint: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
@@ -156,7 +157,7 @@ class _CertificateState:
         :param pulumi.Input[str] private_key: The contents of a PEM-formatted private-key
                corresponding to the SSL certificate. Only valid when type is `custom`.
         :param pulumi.Input[str] sha1_fingerprint: The SHA-1 fingerprint of the certificate
-        :param pulumi.Input[str] type: The type of certificate to provision. Can be either
+        :param pulumi.Input[Union[str, 'CertificateType']] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
         :param pulumi.Input[str] uuid: The UUID of the certificate
         """
@@ -282,7 +283,7 @@ class _CertificateState:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input[Union[str, 'CertificateType']]]:
         """
         The type of certificate to provision. Can be either
         `custom` or `lets_encrypt`. Defaults to `custom`.
@@ -290,7 +291,7 @@ class _CertificateState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input[Union[str, 'CertificateType']]]):
         pulumi.set(self, "type", value)
 
     @property
@@ -316,7 +317,7 @@ class Certificate(pulumi.CustomResource):
                  leaf_certificate: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Certificate resource that allows you to manage
@@ -395,7 +396,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the certificate for identification.
         :param pulumi.Input[str] private_key: The contents of a PEM-formatted private-key
                corresponding to the SSL certificate. Only valid when type is `custom`.
-        :param pulumi.Input[str] type: The type of certificate to provision. Can be either
+        :param pulumi.Input[Union[str, 'CertificateType']] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
         """
         ...
@@ -488,7 +489,7 @@ class Certificate(pulumi.CustomResource):
                  leaf_certificate: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -529,7 +530,7 @@ class Certificate(pulumi.CustomResource):
             private_key: Optional[pulumi.Input[str]] = None,
             sha1_fingerprint: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
             uuid: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
@@ -551,7 +552,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] private_key: The contents of a PEM-formatted private-key
                corresponding to the SSL certificate. Only valid when type is `custom`.
         :param pulumi.Input[str] sha1_fingerprint: The SHA-1 fingerprint of the certificate
-        :param pulumi.Input[str] type: The type of certificate to provision. Can be either
+        :param pulumi.Input[Union[str, 'CertificateType']] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
         :param pulumi.Input[str] uuid: The UUID of the certificate
         """

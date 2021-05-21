@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['DatabaseClusterArgs', 'DatabaseCluster']
@@ -17,8 +18,8 @@ class DatabaseClusterArgs:
     def __init__(__self__, *,
                  engine: pulumi.Input[str],
                  node_count: pulumi.Input[int],
-                 region: pulumi.Input[str],
-                 size: pulumi.Input[str],
+                 region: pulumi.Input[Union[str, 'Region']],
+                 size: pulumi.Input[Union[str, 'DatabaseSlug']],
                  eviction_policy: Optional[pulumi.Input[str]] = None,
                  maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -30,8 +31,8 @@ class DatabaseClusterArgs:
         The set of arguments for constructing a DatabaseCluster resource.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
         :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster.
-        :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
-        :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
@@ -85,26 +86,26 @@ class DatabaseClusterArgs:
 
     @property
     @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
+    def region(self) -> pulumi.Input[Union[str, 'Region']]:
         """
         DigitalOcean region where the cluster will reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: pulumi.Input[str]):
+    def region(self, value: pulumi.Input[Union[str, 'Region']]):
         pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Input[str]:
+    def size(self) -> pulumi.Input[Union[str, 'DatabaseSlug']]:
         """
         Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: pulumi.Input[str]):
+    def size(self, value: pulumi.Input[Union[str, 'DatabaseSlug']]):
         pulumi.set(self, "size", value)
 
     @property
@@ -208,8 +209,8 @@ class _DatabaseClusterState:
                  private_host: Optional[pulumi.Input[str]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
                  private_uri: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  sql_mode: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
@@ -230,8 +231,8 @@ class _DatabaseClusterState:
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
-        :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
-        :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
@@ -437,26 +438,26 @@ class _DatabaseClusterState:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
         DigitalOcean region where the cluster will reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[str]]:
+    def size(self) -> Optional[pulumi.Input[Union[str, 'DatabaseSlug']]]:
         """
         Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[str]]):
+    def size(self, value: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]]):
         pulumi.set(self, "size", value)
 
     @property
@@ -531,8 +532,8 @@ class DatabaseCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  sql_mode: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -594,8 +595,8 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the database cluster.
         :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
-        :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
-        :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
@@ -676,8 +677,8 @@ class DatabaseCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  sql_mode: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -744,8 +745,8 @@ class DatabaseCluster(pulumi.CustomResource):
             private_host: Optional[pulumi.Input[str]] = None,
             private_network_uuid: Optional[pulumi.Input[str]] = None,
             private_uri: Optional[pulumi.Input[str]] = None,
-            region: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+            size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
             sql_mode: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             uri: Optional[pulumi.Input[str]] = None,
@@ -771,8 +772,8 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
-        :param pulumi.Input[str] region: DigitalOcean region where the cluster will reside.
-        :param pulumi.Input[str] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.

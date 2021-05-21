@@ -221,7 +221,7 @@ namespace Pulumi.DigitalOcean
         /// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
         /// </summary>
         [Input("initialFilesystemType")]
-        public Input<string>? InitialFilesystemType { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.FileSystemType>? InitialFilesystemType { get; set; }
 
         /// <summary>
         /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
@@ -233,7 +233,7 @@ namespace Pulumi.DigitalOcean
         /// The region that the block storage volume will be created in.
         /// </summary>
         [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
 
         /// <summary>
         /// The size of the block storage volume in GiB. If updated, can only be expanded.
@@ -306,7 +306,7 @@ namespace Pulumi.DigitalOcean
         /// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
         /// </summary>
         [Input("initialFilesystemType")]
-        public Input<string>? InitialFilesystemType { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.FileSystemType>? InitialFilesystemType { get; set; }
 
         /// <summary>
         /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
@@ -318,7 +318,7 @@ namespace Pulumi.DigitalOcean
         /// The region that the block storage volume will be created in.
         /// </summary>
         [Input("region")]
-        public Input<string>? Region { get; set; }
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// The size of the block storage volume in GiB. If updated, can only be expanded.

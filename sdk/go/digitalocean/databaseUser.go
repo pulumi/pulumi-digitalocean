@@ -53,7 +53,7 @@ import (
 // Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+//  $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
 // ```
 type DatabaseUser struct {
 	pulumi.CustomResourceState
@@ -81,7 +81,7 @@ func NewDatabaseUser(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource DatabaseUser
-	err := ctx.RegisterResource("digitalocean:index:DatabaseUser", name, args, &resource, opts...)
+	err := ctx.RegisterResource("digitalocean:index/databaseUser:DatabaseUser", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -93,7 +93,7 @@ func NewDatabaseUser(ctx *pulumi.Context,
 func GetDatabaseUser(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DatabaseUserState, opts ...pulumi.ResourceOption) (*DatabaseUser, error) {
 	var resource DatabaseUser
-	err := ctx.ReadResource("digitalocean:index:DatabaseUser", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("digitalocean:index/databaseUser:DatabaseUser", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

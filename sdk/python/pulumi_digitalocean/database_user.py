@@ -187,7 +187,7 @@ class DatabaseUser(pulumi.CustomResource):
         Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
 
         ```sh
-         $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+         $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
         ```
 
         :param str resource_name: The name of the resource.
@@ -227,7 +227,7 @@ class DatabaseUser(pulumi.CustomResource):
         Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
 
         ```sh
-         $ pulumi import digitalocean:index:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+         $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
         ```
 
         :param str resource_name: The name of the resource.
@@ -268,7 +268,7 @@ class DatabaseUser(pulumi.CustomResource):
             __props__.__dict__["password"] = None
             __props__.__dict__["role"] = None
         super(DatabaseUser, __self__).__init__(
-            'digitalocean:index:DatabaseUser',
+            'digitalocean:index/databaseUser:DatabaseUser',
             resource_name,
             __props__,
             opts)

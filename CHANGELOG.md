@@ -2,7 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Addition of Region, DropletSlug and DatabaseSlug Enums for all supported Pulumi languages.  
+  ** PLEASE NOTE: **  
+  There is a small breaking change in the enums usage for TypeScript - the enum declarations need to change slightly (this will not cause any changes to your infrastructure) as follows:
+  * `digitalocean.Regions.<Region_ID>` -> `digitalocean.Region.<Region_ID>`
+  * `digitalocean.RecordTypes.<RecordType_ID>` -> `digitalocean.RecordType.<RecordType_ID>`
+  * `digitalocean.Protocols.<ProtocolType_ID>` -> `digitalocean.Protocol.<ProtocolType_ID>`
+  * `digitalocean.LoadBalancerAlgorithms.<AlgoType_ID>` -> `digitalocean.Algorithm.<AlgoType_ID>`
+  * `digitalocean.FilesystemTypes.<FilesystemType_ID>` -> `digitalocean.FileSystemType.<FilesystemType_ID>`
+  * `digitalocean.CertificateTypes.<CertificateType_ID>` -> `digitalocean.CertificateType.<FilesystemType_ID>`
+  * `digitalocean.DatabaseSlugs.<DatabaseSlug_ID>` -> `digitalocean.DatabaseSlug.<DatabaseSlug_ID>`
 
 ---
 

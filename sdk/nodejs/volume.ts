@@ -2,9 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {FilesystemType, Region} from "./index";
 
 /**
  * Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
@@ -109,7 +108,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    public readonly initialFilesystemType!: pulumi.Output<FilesystemType | undefined>;
+    public readonly initialFilesystemType!: pulumi.Output<string | undefined>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
@@ -117,7 +116,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * The region that the block storage volume will be created in.
      */
-    public readonly region!: pulumi.Output<Region>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */
@@ -217,7 +216,7 @@ export interface VolumeState {
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    readonly initialFilesystemType?: pulumi.Input<FilesystemType>;
+    readonly initialFilesystemType?: pulumi.Input<string | enums.FileSystemType>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
@@ -225,7 +224,7 @@ export interface VolumeState {
     /**
      * The region that the block storage volume will be created in.
      */
-    readonly region?: pulumi.Input<Region>;
+    readonly region?: pulumi.Input<string | enums.Region>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */
@@ -265,7 +264,7 @@ export interface VolumeArgs {
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    readonly initialFilesystemType?: pulumi.Input<FilesystemType>;
+    readonly initialFilesystemType?: pulumi.Input<string | enums.FileSystemType>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
@@ -273,7 +272,7 @@ export interface VolumeArgs {
     /**
      * The region that the block storage volume will be created in.
      */
-    readonly region: pulumi.Input<Region>;
+    readonly region: pulumi.Input<string | enums.Region>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */

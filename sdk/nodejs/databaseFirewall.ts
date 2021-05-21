@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -70,7 +70,7 @@ import * as utilities from "./utilities";
  * Database firewalls can be imported using the `id` of the target database cluster For example
  *
  * ```sh
- *  $ pulumi import digitalocean:index:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+ *  $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
  * ```
  */
 export class DatabaseFirewall extends pulumi.CustomResource {
@@ -88,7 +88,7 @@ export class DatabaseFirewall extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'digitalocean:index:DatabaseFirewall';
+    public static readonly __pulumiType = 'digitalocean:index/databaseFirewall:DatabaseFirewall';
 
     /**
      * Returns true if the given object is an instance of DatabaseFirewall.  This is designed to work even

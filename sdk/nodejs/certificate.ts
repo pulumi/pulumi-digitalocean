@@ -2,9 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
-
-import {CertificateType} from "./index";
 
 /**
  * Provides a DigitalOcean Certificate resource that allows you to manage
@@ -142,7 +141,7 @@ export class Certificate extends pulumi.CustomResource {
      * The type of certificate to provision. Can be either
      * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
-    public readonly type!: pulumi.Output<CertificateType | undefined>;
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * The UUID of the certificate
      */
@@ -234,7 +233,7 @@ export interface CertificateState {
      * The type of certificate to provision. Can be either
      * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
-    readonly type?: pulumi.Input<CertificateType>;
+    readonly type?: pulumi.Input<string | enums.CertificateType>;
     /**
      * The UUID of the certificate
      */
@@ -275,5 +274,5 @@ export interface CertificateArgs {
      * The type of certificate to provision. Can be either
      * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
-    readonly type?: pulumi.Input<CertificateType>;
+    readonly type?: pulumi.Input<string | enums.CertificateType>;
 }
