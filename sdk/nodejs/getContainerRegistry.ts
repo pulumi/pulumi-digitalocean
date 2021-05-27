@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(digitalocean.getContainerRegistry({
  *     name: "example",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getContainerRegistry(args: GetContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryResult> {
@@ -47,7 +47,7 @@ export interface GetContainerRegistryArgs {
     /**
      * The name of the container registry.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

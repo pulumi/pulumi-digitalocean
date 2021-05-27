@@ -19,6 +19,37 @@ namespace Pulumi.DigitalOcean
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// The URL to use for the DigitalOcean API.
+        /// </summary>
+        [Output("apiEndpoint")]
+        public Output<string?> ApiEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The access key ID for Spaces API operations.
+        /// </summary>
+        [Output("spacesAccessId")]
+        public Output<string?> SpacesAccessId { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL to use for the DigitalOcean Spaces API.
+        /// </summary>
+        [Output("spacesEndpoint")]
+        public Output<string?> SpacesEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The secret access key for Spaces API operations.
+        /// </summary>
+        [Output("spacesSecretKey")]
+        public Output<string?> SpacesSecretKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The token key for API operations.
+        /// </summary>
+        [Output("token")]
+        public Output<string?> Token { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

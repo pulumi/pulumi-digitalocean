@@ -106,11 +106,11 @@ export interface FloatingIpAssignmentState {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    readonly dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number>;
     /**
      * The Floating IP to assign to the Droplet.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
 }
 
 /**
@@ -120,9 +120,9 @@ export interface FloatingIpAssignmentArgs {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    readonly dropletId: pulumi.Input<number>;
+    dropletId: pulumi.Input<number>;
     /**
      * The Floating IP to assign to the Droplet.
      */
-    readonly ipAddress: pulumi.Input<string>;
+    ipAddress: pulumi.Input<string>;
 }

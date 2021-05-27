@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const example = pulumi.output(digitalocean.getAccount({ async: true }));
+ * const example = pulumi.output(digitalocean.getAccount());
  * ```
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {

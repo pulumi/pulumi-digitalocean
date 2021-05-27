@@ -262,112 +262,112 @@ export interface DropletState {
      * Boolean controlling if backups are made. Defaults to
      * false.
      */
-    readonly backups?: pulumi.Input<boolean>;
-    readonly createdAt?: pulumi.Input<string>;
+    backups?: pulumi.Input<boolean>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The size of the instance's disk in GB
      */
-    readonly disk?: pulumi.Input<number>;
+    disk?: pulumi.Input<number>;
     /**
      * The uniform resource name of the Droplet
      * * `name`- The name of the Droplet
      */
-    readonly dropletUrn?: pulumi.Input<string>;
+    dropletUrn?: pulumi.Input<string>;
     /**
      * The Droplet image ID or slug.
      */
-    readonly image?: pulumi.Input<string>;
+    image?: pulumi.Input<string>;
     /**
      * The IPv4 address
      */
-    readonly ipv4Address?: pulumi.Input<string>;
+    ipv4Address?: pulumi.Input<string>;
     /**
      * The private networking IPv4 address
      */
-    readonly ipv4AddressPrivate?: pulumi.Input<string>;
+    ipv4AddressPrivate?: pulumi.Input<string>;
     /**
      * Boolean controlling if IPv6 is enabled. Defaults to false.
      */
-    readonly ipv6?: pulumi.Input<boolean>;
+    ipv6?: pulumi.Input<boolean>;
     /**
      * The IPv6 address
      */
-    readonly ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string>;
     /**
      * Is the Droplet locked
      */
-    readonly locked?: pulumi.Input<boolean>;
-    readonly memory?: pulumi.Input<number>;
+    locked?: pulumi.Input<boolean>;
+    memory?: pulumi.Input<number>;
     /**
      * Boolean controlling whether monitoring agent is installed.
      * Defaults to false.
      */
-    readonly monitoring?: pulumi.Input<boolean>;
+    monitoring?: pulumi.Input<boolean>;
     /**
      * The Droplet name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Droplet hourly price
      */
-    readonly priceHourly?: pulumi.Input<number>;
+    priceHourly?: pulumi.Input<number>;
     /**
      * Droplet monthly price
      */
-    readonly priceMonthly?: pulumi.Input<number>;
+    priceMonthly?: pulumi.Input<number>;
     /**
      * Boolean controlling if private networking
      * is enabled. When VPC is enabled on an account, this will provision the
      * Droplet inside of your account's default VPC for the region. Use the
      * `vpcUuid` attribute to specify a different VPC.
      */
-    readonly privateNetworking?: pulumi.Input<boolean>;
+    privateNetworking?: pulumi.Input<boolean>;
     /**
      * The region to start in.
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
      * only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
      * size is a permanent change**. Increasing only RAM and CPU is reversible.
      */
-    readonly resizeDisk?: pulumi.Input<boolean>;
+    resizeDisk?: pulumi.Input<boolean>;
     /**
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
      */
-    readonly size?: pulumi.Input<string | enums.DropletSlug>;
+    size?: pulumi.Input<string | enums.DropletSlug>;
     /**
      * A list of SSH IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use a tool such
      * as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
      * to retrieve them.
      */
-    readonly sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The status of the Droplet
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A list of the tags to be applied to this Droplet.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A string of the desired User Data for the Droplet.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * The number of the instance's virtual CPUs
      */
-    readonly vcpus?: pulumi.Input<number>;
+    vcpus?: pulumi.Input<number>;
     /**
      * A list of the IDs of each block storage volume to be attached to the Droplet.
      */
-    readonly volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the VPC where the Droplet will be located.
      */
-    readonly vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string>;
 }
 
 /**
@@ -378,67 +378,67 @@ export interface DropletArgs {
      * Boolean controlling if backups are made. Defaults to
      * false.
      */
-    readonly backups?: pulumi.Input<boolean>;
+    backups?: pulumi.Input<boolean>;
     /**
      * The Droplet image ID or slug.
      */
-    readonly image: pulumi.Input<string>;
+    image: pulumi.Input<string>;
     /**
      * Boolean controlling if IPv6 is enabled. Defaults to false.
      */
-    readonly ipv6?: pulumi.Input<boolean>;
+    ipv6?: pulumi.Input<boolean>;
     /**
      * Boolean controlling whether monitoring agent is installed.
      * Defaults to false.
      */
-    readonly monitoring?: pulumi.Input<boolean>;
+    monitoring?: pulumi.Input<boolean>;
     /**
      * The Droplet name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Boolean controlling if private networking
      * is enabled. When VPC is enabled on an account, this will provision the
      * Droplet inside of your account's default VPC for the region. Use the
      * `vpcUuid` attribute to specify a different VPC.
      */
-    readonly privateNetworking?: pulumi.Input<boolean>;
+    privateNetworking?: pulumi.Input<boolean>;
     /**
      * The region to start in.
      */
-    readonly region: pulumi.Input<string | enums.Region>;
+    region: pulumi.Input<string | enums.Region>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
      * only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
      * size is a permanent change**. Increasing only RAM and CPU is reversible.
      */
-    readonly resizeDisk?: pulumi.Input<boolean>;
+    resizeDisk?: pulumi.Input<boolean>;
     /**
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
      */
-    readonly size: pulumi.Input<string | enums.DropletSlug>;
+    size: pulumi.Input<string | enums.DropletSlug>;
     /**
      * A list of SSH IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use a tool such
      * as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
      * to retrieve them.
      */
-    readonly sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of the tags to be applied to this Droplet.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A string of the desired User Data for the Droplet.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * A list of the IDs of each block storage volume to be attached to the Droplet.
      */
-    readonly volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the VPC where the Droplet will be located.
      */
-    readonly vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string>;
 }

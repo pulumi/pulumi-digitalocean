@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         key: "size",
  *         values: ["s-1vcpu-1gb"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  *
  * You can filter on multiple fields and sort the results as well:
@@ -54,7 +54,7 @@ import * as utilities from "./utilities";
  *         direction: "desc",
  *         key: "created_at",
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDroplets(args?: GetDropletsArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletsResult> {
@@ -80,12 +80,12 @@ export interface GetDropletsArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetDropletsFilter[];
+    filters?: inputs.GetDropletsFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetDropletsSort[];
+    sorts?: inputs.GetDropletsSort[];
 }
 
 /**

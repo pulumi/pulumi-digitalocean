@@ -59,20 +59,20 @@ export interface GetSpacesBucketObjectArgs {
     /**
      * The name of the bucket to read the object from.
      */
-    readonly bucket: string;
+    bucket: string;
     /**
      * The full path to the object inside the bucket
      */
-    readonly key: string;
-    readonly range?: string;
+    key: string;
+    range?: string;
     /**
      * The slug of the region where the bucket is stored.
      */
-    readonly region: string;
+    region: string;
     /**
      * Specific version ID of the object returned (defaults to latest version)
      */
-    readonly versionId?: string;
+    versionId?: string;
 }
 
 /**

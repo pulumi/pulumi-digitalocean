@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *         key: "distribution",
  *         values: ["Ubuntu"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  *
  * You can filter on multiple fields and sort the results as well:
@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  *         direction: "desc",
  *         key: "created",
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
@@ -81,12 +81,12 @@ export interface GetImagesArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetImagesFilter[];
+    filters?: inputs.GetImagesFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetImagesSort[];
+    sorts?: inputs.GetImagesSort[];
 }
 
 /**

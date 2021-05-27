@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const example = pulumi.output(digitalocean.getVolume({
  *     name: "app-data",
  *     region: "nyc3",
- * }, { async: true }));
+ * }));
  * ```
  *
  * Reuse the data about a volume to attach it to a Droplet:
@@ -70,15 +70,15 @@ export interface GetVolumeArgs {
     /**
      * Text describing a block storage volume.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The name of block storage volume.
      */
-    readonly name: string;
+    name: string;
     /**
      * The region the block storage volume is provisioned in.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

@@ -174,47 +174,47 @@ export interface DnsRecordState {
     /**
      * The domain to add the record to.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
      */
-    readonly flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number>;
     /**
      * The FQDN of the record
      */
-    readonly fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string>;
     /**
      * The hostname of the record. Use `@` for records on domain's name itself.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      */
-    readonly tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
     /**
      * The time to live for the record, in seconds. Must be at least 0.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
-    readonly type?: pulumi.Input<string | enums.RecordType>;
+    type?: pulumi.Input<string | enums.RecordType>;
     /**
      * The value of the record.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
      * The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }
 
 /**
@@ -224,41 +224,41 @@ export interface DnsRecordArgs {
     /**
      * The domain to add the record to.
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
      */
-    readonly flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number>;
     /**
      * The hostname of the record. Use `@` for records on domain's name itself.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      */
-    readonly tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
     /**
      * The time to live for the record, in seconds. Must be at least 0.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
-    readonly type: pulumi.Input<string | enums.RecordType>;
+    type: pulumi.Input<string | enums.RecordType>;
     /**
      * The value of the record.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
     /**
      * The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }

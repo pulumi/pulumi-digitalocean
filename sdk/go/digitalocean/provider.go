@@ -16,6 +16,17 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// The URL to use for the DigitalOcean API.
+	ApiEndpoint pulumi.StringPtrOutput `pulumi:"apiEndpoint"`
+	// The access key ID for Spaces API operations.
+	SpacesAccessId pulumi.StringPtrOutput `pulumi:"spacesAccessId"`
+	// The URL to use for the DigitalOcean Spaces API.
+	SpacesEndpoint pulumi.StringPtrOutput `pulumi:"spacesEndpoint"`
+	// The secret access key for Spaces API operations.
+	SpacesSecretKey pulumi.StringPtrOutput `pulumi:"spacesSecretKey"`
+	// The token key for API operations.
+	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

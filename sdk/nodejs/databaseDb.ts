@@ -105,11 +105,11 @@ export interface DatabaseDbState {
     /**
      * The ID of the original source database cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The name for the database.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -119,9 +119,9 @@ export interface DatabaseDbArgs {
     /**
      * The ID of the original source database cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The name for the database.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

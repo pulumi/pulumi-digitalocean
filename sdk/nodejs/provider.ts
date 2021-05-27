@@ -25,6 +25,26 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * The URL to use for the DigitalOcean API.
+     */
+    public readonly apiEndpoint!: pulumi.Output<string | undefined>;
+    /**
+     * The access key ID for Spaces API operations.
+     */
+    public readonly spacesAccessId!: pulumi.Output<string | undefined>;
+    /**
+     * The URL to use for the DigitalOcean Spaces API.
+     */
+    public readonly spacesEndpoint!: pulumi.Output<string | undefined>;
+    /**
+     * The secret access key for Spaces API operations.
+     */
+    public readonly spacesSecretKey!: pulumi.Output<string | undefined>;
+    /**
+     * The token key for API operations.
+     */
+    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -57,21 +77,21 @@ export interface ProviderArgs {
     /**
      * The URL to use for the DigitalOcean API.
      */
-    readonly apiEndpoint?: pulumi.Input<string>;
+    apiEndpoint?: pulumi.Input<string>;
     /**
      * The access key ID for Spaces API operations.
      */
-    readonly spacesAccessId?: pulumi.Input<string>;
+    spacesAccessId?: pulumi.Input<string>;
     /**
      * The URL to use for the DigitalOcean Spaces API.
      */
-    readonly spacesEndpoint?: pulumi.Input<string>;
+    spacesEndpoint?: pulumi.Input<string>;
     /**
      * The secret access key for Spaces API operations.
      */
-    readonly spacesSecretKey?: pulumi.Input<string>;
+    spacesSecretKey?: pulumi.Input<string>;
     /**
      * The token key for API operations.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }

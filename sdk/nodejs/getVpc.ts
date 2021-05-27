@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(digitalocean.getVpc({
  *     name: "example-network",
- * }, { async: true }));
+ * }));
  * ```
  *
  * Reuse the data about a VPC to assign a Droplet to it:
@@ -67,15 +67,15 @@ export interface GetVpcArgs {
     /**
      * The unique identifier of an existing VPC.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * The name of an existing VPC.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The DigitalOcean region slug for the VPC's location.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

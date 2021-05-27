@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(digitalocean.getDroplet({
  *     tag: "web",
- * }, { async: true }));
+ * }));
  * ```
  *
  * Get the Droplet by ID:
@@ -73,15 +73,15 @@ export interface GetDropletArgs {
     /**
      * The ID of the Droplet
      */
-    readonly id?: number;
+    id?: number;
     /**
      * The name of the Droplet.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A tag applied to the Droplet.
      */
-    readonly tag?: string;
+    tag?: string;
 }
 
 /**

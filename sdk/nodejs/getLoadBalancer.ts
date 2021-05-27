@@ -47,7 +47,7 @@ export interface GetLoadBalancerArgs {
     /**
      * The name of load balancer.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

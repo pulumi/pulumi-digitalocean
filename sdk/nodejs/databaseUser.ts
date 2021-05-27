@@ -125,23 +125,23 @@ export interface DatabaseUserState {
     /**
      * The ID of the original source database cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      */
-    readonly mysqlAuthPlugin?: pulumi.Input<string>;
+    mysqlAuthPlugin?: pulumi.Input<string>;
     /**
      * The name for the database user.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Password for the database user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Role for the database user. The value will be either "primary" or "normal".
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
 }
 
 /**
@@ -151,13 +151,13 @@ export interface DatabaseUserArgs {
     /**
      * The ID of the original source database cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      */
-    readonly mysqlAuthPlugin?: pulumi.Input<string>;
+    mysqlAuthPlugin?: pulumi.Input<string>;
     /**
      * The name for the database user.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

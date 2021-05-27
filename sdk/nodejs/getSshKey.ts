@@ -52,7 +52,7 @@ export interface GetSshKeyArgs {
     /**
      * The name of the ssh key.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

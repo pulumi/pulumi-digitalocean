@@ -186,3 +186,43 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="apiEndpoint")
+    def api_endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URL to use for the DigitalOcean API.
+        """
+        return pulumi.get(self, "api_endpoint")
+
+    @property
+    @pulumi.getter(name="spacesAccessId")
+    def spaces_access_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The access key ID for Spaces API operations.
+        """
+        return pulumi.get(self, "spaces_access_id")
+
+    @property
+    @pulumi.getter(name="spacesEndpoint")
+    def spaces_endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URL to use for the DigitalOcean Spaces API.
+        """
+        return pulumi.get(self, "spaces_endpoint")
+
+    @property
+    @pulumi.getter(name="spacesSecretKey")
+    def spaces_secret_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The secret access key for Spaces API operations.
+        """
+        return pulumi.get(self, "spaces_secret_key")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The token key for API operations.
+        """
+        return pulumi.get(self, "token")
+

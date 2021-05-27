@@ -182,59 +182,59 @@ export interface DatabaseReplicaState {
     /**
      * The ID of the original source database cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * Name of the replica's default database.
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * Database replica's hostname.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * The name for the database replica.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Password for the replica's default user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Network port that the database replica is listening on.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    readonly privateHost?: pulumi.Input<string>;
+    privateHost?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the database replica will be located.
      */
-    readonly privateNetworkUuid?: pulumi.Input<string>;
+    privateNetworkUuid?: pulumi.Input<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    readonly privateUri?: pulumi.Input<string>;
+    privateUri?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the replica will reside.
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
      */
-    readonly size?: pulumi.Input<string | enums.DatabaseSlug>;
+    size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
      * A list of tag names to be applied to the database replica.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The full URI for connecting to the database replica.
      */
-    readonly uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string>;
     /**
      * Username for the replica's default user.
      */
-    readonly user?: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
 }
 
 /**
@@ -244,25 +244,25 @@ export interface DatabaseReplicaArgs {
     /**
      * The ID of the original source database cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The name for the database replica.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the database replica will be located.
      */
-    readonly privateNetworkUuid?: pulumi.Input<string>;
+    privateNetworkUuid?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the replica will reside.
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
      */
-    readonly size?: pulumi.Input<string | enums.DatabaseSlug>;
+    size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
      * A list of tag names to be applied to the database replica.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

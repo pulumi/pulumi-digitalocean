@@ -33,12 +33,12 @@ export interface GetSizesArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetSizesFilter[];
+    filters?: inputs.GetSizesFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetSizesSort[];
+    sorts?: inputs.GetSizesSort[];
 }
 
 /**

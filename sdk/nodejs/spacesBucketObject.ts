@@ -223,72 +223,72 @@ export interface SpacesBucketObjectState {
     /**
      * The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The name of the bucket to put the file in.
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      */
-    readonly cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string>;
     /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      */
-    readonly content?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
      */
-    readonly contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string>;
     /**
      * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      */
-    readonly contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string>;
     /**
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
      */
-    readonly contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string>;
     /**
      * The language the content is in e.g. en-US or en-GB.
      */
-    readonly contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string>;
     /**
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * Used to trigger updates.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * The name of the object once it is in the bucket.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The path to a file that will be read and uploaded as raw bytes for the object content.
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     /**
      * A unique version ID value for the object, if bucket versioning is enabled.
      */
-    readonly versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string>;
     /**
      * Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
      */
-    readonly websiteRedirect?: pulumi.Input<string>;
+    websiteRedirect?: pulumi.Input<string>;
 }
 
 /**
@@ -298,66 +298,66 @@ export interface SpacesBucketObjectArgs {
     /**
      * The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The name of the bucket to put the file in.
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      */
-    readonly cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string>;
     /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      */
-    readonly content?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
      */
-    readonly contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string>;
     /**
      * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      */
-    readonly contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string>;
     /**
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
      */
-    readonly contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string>;
     /**
      * The language the content is in e.g. en-US or en-GB.
      */
-    readonly contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string>;
     /**
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * Used to trigger updates.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * The name of the object once it is in the bucket.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    readonly region: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * The path to a file that will be read and uploaded as raw bytes for the object content.
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     /**
      * Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
      */
-    readonly websiteRedirect?: pulumi.Input<string>;
+    websiteRedirect?: pulumi.Input<string>;
 }

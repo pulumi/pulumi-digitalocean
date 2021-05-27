@@ -214,27 +214,27 @@ export interface AppState {
     /**
      * The ID the app's currently active deployment.
      */
-    readonly activeDeploymentId?: pulumi.Input<string>;
+    activeDeploymentId?: pulumi.Input<string>;
     /**
      * The date and time of when the app was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The default URL to access the app.
      */
-    readonly defaultIngress?: pulumi.Input<string>;
+    defaultIngress?: pulumi.Input<string>;
     /**
      * The live URL of the app.
      */
-    readonly liveUrl?: pulumi.Input<string>;
+    liveUrl?: pulumi.Input<string>;
     /**
      * A DigitalOcean App spec describing the app.
      */
-    readonly spec?: pulumi.Input<inputs.AppSpec>;
+    spec?: pulumi.Input<inputs.AppSpec>;
     /**
      * The date and time of when the app was last updated.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -244,5 +244,5 @@ export interface AppArgs {
     /**
      * A DigitalOcean App spec describing the app.
      */
-    readonly spec?: pulumi.Input<inputs.AppSpec>;
+    spec?: pulumi.Input<inputs.AppSpec>;
 }

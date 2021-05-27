@@ -119,20 +119,20 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContainerRegistryDockerCredentials resources.
  */
 export interface ContainerRegistryDockerCredentialsState {
-    readonly credentialExpirationTime?: pulumi.Input<string>;
-    readonly dockerCredentials?: pulumi.Input<string>;
+    credentialExpirationTime?: pulumi.Input<string>;
+    dockerCredentials?: pulumi.Input<string>;
     /**
      * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
      */
-    readonly expirySeconds?: pulumi.Input<number>;
+    expirySeconds?: pulumi.Input<number>;
     /**
      * The name of the container registry.
      */
-    readonly registryName?: pulumi.Input<string>;
+    registryName?: pulumi.Input<string>;
     /**
      * Allow for write access to the container registry. Defaults to false.
      */
-    readonly write?: pulumi.Input<boolean>;
+    write?: pulumi.Input<boolean>;
 }
 
 /**
@@ -142,13 +142,13 @@ export interface ContainerRegistryDockerCredentialsArgs {
     /**
      * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
      */
-    readonly expirySeconds?: pulumi.Input<number>;
+    expirySeconds?: pulumi.Input<number>;
     /**
      * The name of the container registry.
      */
-    readonly registryName: pulumi.Input<string>;
+    registryName: pulumi.Input<string>;
     /**
      * Allow for write access to the container registry. Defaults to false.
      */
-    readonly write?: pulumi.Input<boolean>;
+    write?: pulumi.Input<boolean>;
 }

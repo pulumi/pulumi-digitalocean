@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * const example1 = pulumi.output(digitalocean.getImage({
  *     name: "example-1.0.0",
- * }, { async: true }));
+ * }));
  * ```
  *
  * Reuse the data about a snapshot to create a Droplet:
@@ -50,7 +50,7 @@ import * as utilities from "./utilities";
  *
  * const example2 = pulumi.output(digitalocean.getImage({
  *     slug: "ubuntu-18-04-x64",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
@@ -77,19 +77,19 @@ export interface GetImageArgs {
     /**
      * The id of the image
      */
-    readonly id?: number;
+    id?: number;
     /**
      * The name of the image.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The slug of the official image.
      */
-    readonly slug?: string;
+    slug?: string;
     /**
      * Restrict the search to one of the following categories of images:
      */
-    readonly source?: string;
+    source?: string;
 }
 
 /**

@@ -34,11 +34,11 @@ export interface GetRecordArgs {
     /**
      * The domain name of the record.
      */
-    readonly domain: string;
+    domain: string;
     /**
      * The name of the record.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

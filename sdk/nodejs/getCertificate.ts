@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(digitalocean.getCertificate({
  *     name: "example",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
@@ -46,7 +46,7 @@ export interface GetCertificateArgs {
     /**
      * The name of certificate.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

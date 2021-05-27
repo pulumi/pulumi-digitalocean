@@ -122,19 +122,19 @@ export interface FloatingIpState {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    readonly dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number>;
     /**
      * The uniform resource name of the floating ip
      */
-    readonly floatingIpUrn?: pulumi.Input<string>;
+    floatingIpUrn?: pulumi.Input<string>;
     /**
      * The IP Address of the resource
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The region that the Floating IP is reserved to.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -144,13 +144,13 @@ export interface FloatingIpArgs {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    readonly dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number>;
     /**
      * The IP Address of the resource
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The region that the Floating IP is reserved to.
      */
-    readonly region: pulumi.Input<string>;
+    region: pulumi.Input<string>;
 }

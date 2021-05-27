@@ -29,11 +29,11 @@ export interface GetKubernetesClusterArgs {
     /**
      * The name of Kubernetes cluster.
      */
-    readonly name: string;
+    name: string;
     /**
      * A list of tag names applied to the node pool.
      */
-    readonly tags?: string[];
+    tags?: string[];
 }
 
 /**

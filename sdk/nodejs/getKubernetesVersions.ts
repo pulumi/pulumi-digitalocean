@@ -76,7 +76,7 @@ export interface GetKubernetesVersionsArgs {
     /**
      * If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
      */
-    readonly versionPrefix?: string;
+    versionPrefix?: string;
 }
 
 /**
