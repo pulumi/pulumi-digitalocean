@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *         direction: "asc",
  *         key: "name",
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSshKeys(args?: GetSshKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeysResult> {
@@ -53,12 +53,12 @@ export interface GetSshKeysArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetSshKeysFilter[];
+    filters?: inputs.GetSshKeysFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetSshKeysSort[];
+    sorts?: inputs.GetSshKeysSort[];
 }
 
 /**

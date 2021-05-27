@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *         key: "available",
  *         values: ["true"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  *
  * You can filter on multiple fields and sort the results as well:
@@ -51,7 +51,7 @@ import * as utilities from "./utilities";
  *         direction: "desc",
  *         key: "name",
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
@@ -77,12 +77,12 @@ export interface GetRegionsArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetRegionsFilter[];
+    filters?: inputs.GetRegionsFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetRegionsSort[];
+    sorts?: inputs.GetRegionsSort[];
 }
 
 /**

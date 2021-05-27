@@ -41,7 +41,7 @@ export interface GetRegionArgs {
     /**
      * A human-readable string that is used as a unique identifier for each region.
      */
-    readonly slug: string;
+    slug: string;
 }
 
 /**

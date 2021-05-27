@@ -55,27 +55,27 @@ export interface GetSpacesBucketObjectsArgs {
     /**
      * Lists object keys in this Spaces bucket
      */
-    readonly bucket: string;
+    bucket: string;
     /**
      * A character used to group keys (Default: none)
      */
-    readonly delimiter?: string;
+    delimiter?: string;
     /**
      * Encodes keys using this method (Default: none; besides none, only "url" can be used)
      */
-    readonly encodingType?: string;
+    encodingType?: string;
     /**
      * Maximum object keys to return (Default: 1000)
      */
-    readonly maxKeys?: number;
+    maxKeys?: number;
     /**
      * Limits results to object keys with this prefix (Default: none)
      */
-    readonly prefix?: string;
+    prefix?: string;
     /**
      * The slug of the region where the bucket is stored.
      */
-    readonly region: string;
+    region: string;
 }
 
 /**

@@ -51,7 +51,7 @@ export interface GetTagArgs {
     /**
      * The name of the tag.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

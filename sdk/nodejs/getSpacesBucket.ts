@@ -45,11 +45,11 @@ export interface GetSpacesBucketArgs {
     /**
      * The name of the Spaces bucket.
      */
-    readonly name: string;
+    name: string;
     /**
      * The slug of the region where the bucket is stored.
      */
-    readonly region: string;
+    region: string;
 }
 
 /**

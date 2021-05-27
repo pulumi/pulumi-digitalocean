@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         matchBy: "re",
  *         values: ["example\\.com$"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -56,12 +56,12 @@ export interface GetDomainsArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetDomainsFilter[];
+    filters?: inputs.GetDomainsFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetDomainsSort[];
+    sorts?: inputs.GetDomainsSort[];
 }
 
 /**

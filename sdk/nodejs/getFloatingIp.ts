@@ -49,7 +49,7 @@ export interface GetFloatingIpArgs {
     /**
      * The allocated IP address of the specific floating IP to retrieve.
      */
-    readonly ipAddress: string;
+    ipAddress: string;
 }
 
 /**

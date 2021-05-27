@@ -183,51 +183,51 @@ export interface DatabaseConnectionPoolState {
     /**
      * The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The database for use with the connection pool.
      */
-    readonly dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string>;
     /**
      * The hostname used to connect to the database connection pool.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The name for the database connection pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Password for the connection pool's user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Network port that the database connection pool is listening on.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    readonly privateHost?: pulumi.Input<string>;
+    privateHost?: pulumi.Input<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    readonly privateUri?: pulumi.Input<string>;
+    privateUri?: pulumi.Input<string>;
     /**
      * The desired size of the PGBouncer connection pool.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The full URI for connecting to the database connection pool.
      */
-    readonly uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string>;
     /**
      * The name of the database user for use with the connection pool.
      */
-    readonly user?: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
 }
 
 /**
@@ -237,25 +237,25 @@ export interface DatabaseConnectionPoolArgs {
     /**
      * The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The database for use with the connection pool.
      */
-    readonly dbName: pulumi.Input<string>;
+    dbName: pulumi.Input<string>;
     /**
      * The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
      */
-    readonly mode: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
     /**
      * The name for the database connection pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The desired size of the PGBouncer connection pool.
      */
-    readonly size: pulumi.Input<number>;
+    size: pulumi.Input<number>;
     /**
      * The name of the database user for use with the connection pool.
      */
-    readonly user: pulumi.Input<string>;
+    user: pulumi.Input<string>;
 }

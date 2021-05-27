@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const defaultProject = pulumi.output(digitalocean.getProject({ async: true }));
+ * const defaultProject = pulumi.output(digitalocean.getProject());
  * const staging = pulumi.output(digitalocean.getProject({
  *     name: "My Staging Project",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
@@ -43,12 +43,12 @@ export interface GetProjectArgs {
     /**
      * the ID of the project to retrieve
      */
-    readonly id?: string;
+    id?: string;
     /**
      * the name of the project to retrieve. The data source will raise an error if more than
      * one project has the provided name or if no project has that name.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

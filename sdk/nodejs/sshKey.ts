@@ -117,16 +117,16 @@ export interface SshKeyState {
     /**
      * The fingerprint of the SSH key
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * The name of the SSH key for identification
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The public key. If this is a file, it
      * can be read using the file interpolation function
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
 }
 
 /**
@@ -136,10 +136,10 @@ export interface SshKeyArgs {
     /**
      * The name of the SSH key for identification
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The public key. If this is a file, it
      * can be read using the file interpolation function
      */
-    readonly publicKey: pulumi.Input<string>;
+    publicKey: pulumi.Input<string>;
 }

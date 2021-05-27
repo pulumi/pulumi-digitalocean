@@ -47,18 +47,18 @@ export interface GetFirewallArgs {
      * The list of the IDs of the Droplets assigned to
      * the Firewall.
      */
-    readonly dropletIds?: number[];
+    dropletIds?: number[];
     /**
      * The ID of the firewall to retrieve information
      * about.
      */
-    readonly firewallId: string;
-    readonly inboundRules?: inputs.GetFirewallInboundRule[];
-    readonly outboundRules?: inputs.GetFirewallOutboundRule[];
+    firewallId: string;
+    inboundRules?: inputs.GetFirewallInboundRule[];
+    outboundRules?: inputs.GetFirewallOutboundRule[];
     /**
      * The names of the Tags assigned to the Firewall.
      */
-    readonly tags?: string[];
+    tags?: string[];
 }
 
 /**

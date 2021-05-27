@@ -31,17 +31,17 @@ export interface GetRecordsArgs {
     /**
      * The domain name to search for DNS records
      */
-    readonly domain: string;
+    domain: string;
     /**
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetRecordsFilter[];
+    filters?: inputs.GetRecordsFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetRecordsSort[];
+    sorts?: inputs.GetRecordsSort[];
 }
 
 /**

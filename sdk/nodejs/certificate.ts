@@ -199,45 +199,45 @@ export interface CertificateState {
      * between the certificate authority's certificate and your domain's TLS
      * certificate. Only valid when type is `custom`.
      */
-    readonly certificateChain?: pulumi.Input<string>;
+    certificateChain?: pulumi.Input<string>;
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
      * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
      */
-    readonly domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The contents of a PEM-formatted public
      * TLS certificate. Only valid when type is `custom`.
      */
-    readonly leafCertificate?: pulumi.Input<string>;
+    leafCertificate?: pulumi.Input<string>;
     /**
      * The name of the certificate for identification.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The expiration date of the certificate
      */
-    readonly notAfter?: pulumi.Input<string>;
+    notAfter?: pulumi.Input<string>;
     /**
      * The contents of a PEM-formatted private-key
      * corresponding to the SSL certificate. Only valid when type is `custom`.
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * The SHA-1 fingerprint of the certificate
      */
-    readonly sha1Fingerprint?: pulumi.Input<string>;
-    readonly state?: pulumi.Input<string>;
+    sha1Fingerprint?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The type of certificate to provision. Can be either
      * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
-    readonly type?: pulumi.Input<string | enums.CertificateType>;
+    type?: pulumi.Input<string | enums.CertificateType>;
     /**
      * The UUID of the certificate
      */
-    readonly uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string>;
 }
 
 /**
@@ -249,30 +249,30 @@ export interface CertificateArgs {
      * between the certificate authority's certificate and your domain's TLS
      * certificate. Only valid when type is `custom`.
      */
-    readonly certificateChain?: pulumi.Input<string>;
+    certificateChain?: pulumi.Input<string>;
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
      * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
      */
-    readonly domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The contents of a PEM-formatted public
      * TLS certificate. Only valid when type is `custom`.
      */
-    readonly leafCertificate?: pulumi.Input<string>;
+    leafCertificate?: pulumi.Input<string>;
     /**
      * The name of the certificate for identification.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The contents of a PEM-formatted private-key
      * corresponding to the SSL certificate. Only valid when type is `custom`.
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * The type of certificate to provision. Can be either
      * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
-    readonly type?: pulumi.Input<string | enums.CertificateType>;
+    type?: pulumi.Input<string | enums.CertificateType>;
 }

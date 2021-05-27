@@ -42,7 +42,7 @@ export interface GetAppArgs {
     /**
      * The ID of the app to retrieve information about.
      */
-    readonly appId: string;
+    appId: string;
 }
 
 /**

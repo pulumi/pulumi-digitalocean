@@ -109,16 +109,16 @@ export interface DomainState {
     /**
      * The uniform resource name of the domain
      */
-    readonly domainUrn?: pulumi.Input<string>;
+    domainUrn?: pulumi.Input<string>;
     /**
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The name of the domain
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -129,9 +129,9 @@ export interface DomainArgs {
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The name of the domain
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

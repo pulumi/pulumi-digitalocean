@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *         key: "environment",
  *         values: ["Staging"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  *
  * You can filter on multiple fields and sort the results as well:
@@ -53,7 +53,7 @@ import * as utilities from "./utilities";
  *         direction: "asc",
  *         key: "name",
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
@@ -79,12 +79,12 @@ export interface GetProjectsArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetProjectsFilter[];
+    filters?: inputs.GetProjectsFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetProjectsSort[];
+    sorts?: inputs.GetProjectsSort[];
 }
 
 /**

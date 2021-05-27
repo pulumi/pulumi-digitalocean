@@ -136,31 +136,31 @@ export interface TagState {
     /**
      * A count of the database clusters that the tag is applied to.
      */
-    readonly databasesCount?: pulumi.Input<number>;
+    databasesCount?: pulumi.Input<number>;
     /**
      * A count of the Droplets the tag is applied to.
      */
-    readonly dropletsCount?: pulumi.Input<number>;
+    dropletsCount?: pulumi.Input<number>;
     /**
      * A count of the images that the tag is applied to.
      */
-    readonly imagesCount?: pulumi.Input<number>;
+    imagesCount?: pulumi.Input<number>;
     /**
      * The name of the tag
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A count of the total number of resources that the tag is applied to.
      */
-    readonly totalResourceCount?: pulumi.Input<number>;
+    totalResourceCount?: pulumi.Input<number>;
     /**
      * A count of the volume snapshots that the tag is applied to.
      */
-    readonly volumeSnapshotsCount?: pulumi.Input<number>;
+    volumeSnapshotsCount?: pulumi.Input<number>;
     /**
      * A count of the volumes that the tag is applied to.
      */
-    readonly volumesCount?: pulumi.Input<number>;
+    volumesCount?: pulumi.Input<number>;
 }
 
 /**
@@ -170,5 +170,5 @@ export interface TagArgs {
     /**
      * The name of the tag
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

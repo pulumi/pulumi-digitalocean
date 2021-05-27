@@ -207,42 +207,42 @@ export interface FirewallState {
      * A time value given in ISO8601 combined date and time format
      * that represents when the Firewall was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The list of the IDs of the Droplets assigned
      * to the Firewall.
      */
-    readonly dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The inbound access rule block for the Firewall.
      * The `inboundRule` block is documented below.
      */
-    readonly inboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallInboundRule>[]>;
+    inboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallInboundRule>[]>;
     /**
      * The Firewall name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The outbound access rule block for the Firewall.
      * The `outboundRule` block is documented below.
      */
-    readonly outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[]>;
+    outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[]>;
     /**
      * An list of object containing the fields, "dropletId",
      * "removing", and "status".  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.
      */
-    readonly pendingChanges?: pulumi.Input<pulumi.Input<inputs.FirewallPendingChange>[]>;
+    pendingChanges?: pulumi.Input<pulumi.Input<inputs.FirewallPendingChange>[]>;
     /**
      * A status string indicating the current state of the Firewall.
      * This can be "waiting", "succeeded", or "failed".
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The names of the Tags assigned to the Firewall.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -253,23 +253,23 @@ export interface FirewallArgs {
      * The list of the IDs of the Droplets assigned
      * to the Firewall.
      */
-    readonly dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The inbound access rule block for the Firewall.
      * The `inboundRule` block is documented below.
      */
-    readonly inboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallInboundRule>[]>;
+    inboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallInboundRule>[]>;
     /**
      * The Firewall name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The outbound access rule block for the Firewall.
      * The `outboundRule` block is documented below.
      */
-    readonly outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[]>;
+    outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[]>;
     /**
      * The names of the Tags assigned to the Firewall.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

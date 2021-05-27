@@ -34,7 +34,7 @@ export interface GetDomainArgs {
     /**
      * The name of the domain.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

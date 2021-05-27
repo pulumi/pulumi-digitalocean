@@ -105,16 +105,16 @@ export class ContainerRegistry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContainerRegistry resources.
  */
 export interface ContainerRegistryState {
-    readonly endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
     /**
      * The name of the container_registry
      */
-    readonly name?: pulumi.Input<string>;
-    readonly serverUrl?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    serverUrl?: pulumi.Input<string>;
     /**
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      */
-    readonly subscriptionTierSlug?: pulumi.Input<string>;
+    subscriptionTierSlug?: pulumi.Input<string>;
 }
 
 /**
@@ -124,9 +124,9 @@ export interface ContainerRegistryArgs {
     /**
      * The name of the container_registry
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      */
-    readonly subscriptionTierSlug: pulumi.Input<string>;
+    subscriptionTierSlug: pulumi.Input<string>;
 }

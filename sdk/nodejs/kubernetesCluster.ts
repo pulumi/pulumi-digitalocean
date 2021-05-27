@@ -175,64 +175,64 @@ export interface KubernetesClusterState {
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
-    readonly autoUpgrade?: pulumi.Input<boolean>;
+    autoUpgrade?: pulumi.Input<boolean>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster.
      */
-    readonly clusterSubnet?: pulumi.Input<string>;
+    clusterSubnet?: pulumi.Input<string>;
     /**
      * The date and time when the node was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The base URL of the API server on the Kubernetes master node.
      */
-    readonly endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
     /**
      * The public IPv4 address of the Kubernetes master node.
      */
-    readonly ipv4Address?: pulumi.Input<string>;
-    readonly kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;
+    ipv4Address?: pulumi.Input<string>;
+    kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;
     /**
      * A name for the node pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      */
-    readonly nodePool?: pulumi.Input<inputs.KubernetesClusterNodePool>;
+    nodePool?: pulumi.Input<inputs.KubernetesClusterNodePool>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
-    readonly serviceSubnet?: pulumi.Input<string>;
+    serviceSubnet?: pulumi.Input<string>;
     /**
      * A string indicating the current status of the individual node.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: false
      */
-    readonly surgeUpgrade?: pulumi.Input<boolean>;
+    surgeUpgrade?: pulumi.Input<boolean>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The date and time when the node was last updated.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     /**
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the Kubernetes cluster will be located.
      */
-    readonly vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string>;
 }
 
 /**
@@ -242,33 +242,33 @@ export interface KubernetesClusterArgs {
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
-    readonly autoUpgrade?: pulumi.Input<boolean>;
+    autoUpgrade?: pulumi.Input<boolean>;
     /**
      * A name for the node pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      */
-    readonly nodePool: pulumi.Input<inputs.KubernetesClusterNodePool>;
+    nodePool: pulumi.Input<inputs.KubernetesClusterNodePool>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    readonly region: pulumi.Input<string | enums.Region>;
+    region: pulumi.Input<string | enums.Region>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: false
      */
-    readonly surgeUpgrade?: pulumi.Input<boolean>;
+    surgeUpgrade?: pulumi.Input<boolean>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      */
-    readonly version: pulumi.Input<string>;
+    version: pulumi.Input<string>;
     /**
      * The ID of the VPC where the Kubernetes cluster will be located.
      */
-    readonly vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string>;
 }

@@ -109,11 +109,11 @@ export interface VolumeAttachmentState {
     /**
      * ID of the Droplet to attach the volume to.
      */
-    readonly dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number>;
     /**
      * ID of the Volume to be attached to the Droplet.
      */
-    readonly volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string>;
 }
 
 /**
@@ -123,9 +123,9 @@ export interface VolumeAttachmentArgs {
     /**
      * ID of the Droplet to attach the volume to.
      */
-    readonly dropletId: pulumi.Input<number>;
+    dropletId: pulumi.Input<number>;
     /**
      * ID of the Volume to be attached to the Droplet.
      */
-    readonly volumeId: pulumi.Input<string>;
+    volumeId: pulumi.Input<string>;
 }

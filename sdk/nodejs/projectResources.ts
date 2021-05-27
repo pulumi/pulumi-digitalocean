@@ -121,11 +121,11 @@ export interface ProjectResourcesState {
     /**
      * the ID of the project
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    readonly resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -135,9 +135,9 @@ export interface ProjectResourcesArgs {
     /**
      * the ID of the project
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    readonly resources: pulumi.Input<pulumi.Input<string>[]>;
+    resources: pulumi.Input<pulumi.Input<string>[]>;
 }

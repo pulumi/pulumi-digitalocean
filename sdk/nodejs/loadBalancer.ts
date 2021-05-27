@@ -246,68 +246,68 @@ export interface LoadBalancerState {
      * which backend Droplet will be selected by a client. It must be either `roundRobin`
      * or `leastConnections`. The default value is `roundRobin`.
      */
-    readonly algorithm?: pulumi.Input<string | enums.Algorithm>;
+    algorithm?: pulumi.Input<string | enums.Algorithm>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
-    readonly dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      */
-    readonly dropletTag?: pulumi.Input<string>;
+    dropletTag?: pulumi.Input<string>;
     /**
      * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
      */
-    readonly enableBackendKeepalive?: pulumi.Input<boolean>;
+    enableBackendKeepalive?: pulumi.Input<boolean>;
     /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
      * the backend service. Default value is `false`.
      */
-    readonly enableProxyProtocol?: pulumi.Input<boolean>;
+    enableProxyProtocol?: pulumi.Input<boolean>;
     /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    readonly forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
+    forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    readonly healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
-    readonly ip?: pulumi.Input<string>;
+    healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
+    ip?: pulumi.Input<string>;
     /**
      * The uniform resource name for the Load Balancer
      */
-    readonly loadBalancerUrn?: pulumi.Input<string>;
+    loadBalancerUrn?: pulumi.Input<string>;
     /**
      * The Load Balancer name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
      * Default value is `false`.
      */
-    readonly redirectHttpToHttps?: pulumi.Input<boolean>;
+    redirectHttpToHttps?: pulumi.Input<boolean>;
     /**
      * The region to start in
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
      */
-    readonly size?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    size?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    readonly stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
-    readonly vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string>;
 }
 
 /**
@@ -319,60 +319,60 @@ export interface LoadBalancerArgs {
      * which backend Droplet will be selected by a client. It must be either `roundRobin`
      * or `leastConnections`. The default value is `roundRobin`.
      */
-    readonly algorithm?: pulumi.Input<string | enums.Algorithm>;
+    algorithm?: pulumi.Input<string | enums.Algorithm>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
-    readonly dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      */
-    readonly dropletTag?: pulumi.Input<string>;
+    dropletTag?: pulumi.Input<string>;
     /**
      * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
      */
-    readonly enableBackendKeepalive?: pulumi.Input<boolean>;
+    enableBackendKeepalive?: pulumi.Input<boolean>;
     /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
      * the backend service. Default value is `false`.
      */
-    readonly enableProxyProtocol?: pulumi.Input<boolean>;
+    enableProxyProtocol?: pulumi.Input<boolean>;
     /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    readonly forwardingRules: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
+    forwardingRules: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    readonly healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
+    healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
     /**
      * The Load Balancer name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
      * Default value is `false`.
      */
-    readonly redirectHttpToHttps?: pulumi.Input<boolean>;
+    redirectHttpToHttps?: pulumi.Input<boolean>;
     /**
      * The region to start in
      */
-    readonly region: pulumi.Input<string | enums.Region>;
+    region: pulumi.Input<string | enums.Region>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
      */
-    readonly size?: pulumi.Input<string>;
+    size?: pulumi.Input<string>;
     /**
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    readonly stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
-    readonly vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string>;
 }

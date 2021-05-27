@@ -191,39 +191,39 @@ export interface SpacesBucketState {
     /**
      * Canned ACL applied on bucket creation (`private` or `public-read`)
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
      */
-    readonly bucketDomainName?: pulumi.Input<string>;
+    bucketDomainName?: pulumi.Input<string>;
     /**
      * The uniform resource name for the bucket
      */
-    readonly bucketUrn?: pulumi.Input<string>;
+    bucketUrn?: pulumi.Input<string>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      */
-    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * A configuration of object lifecycle management (documented below).
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[]>;
     /**
      * The name of the bucket
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * A state of versioning (documented below)
      */
-    readonly versioning?: pulumi.Input<inputs.SpacesBucketVersioning>;
+    versioning?: pulumi.Input<inputs.SpacesBucketVersioning>;
 }
 
 /**
@@ -233,29 +233,29 @@ export interface SpacesBucketArgs {
     /**
      * Canned ACL applied on bucket creation (`private` or `public-read`)
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      */
-    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * A configuration of object lifecycle management (documented below).
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[]>;
     /**
      * The name of the bucket
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * A state of versioning (documented below)
      */
-    readonly versioning?: pulumi.Input<inputs.SpacesBucketVersioning>;
+    versioning?: pulumi.Input<inputs.SpacesBucketVersioning>;
 }

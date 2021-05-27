@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
@@ -49,19 +49,19 @@ export interface GetDropletSnapshotArgs {
     /**
      * If more than one result is returned, use the most recent Droplet snapshot.
      */
-    readonly mostRecent?: boolean;
+    mostRecent?: boolean;
     /**
      * The name of the Droplet snapshot.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

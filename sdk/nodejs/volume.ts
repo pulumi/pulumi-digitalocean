@@ -194,53 +194,53 @@ export interface VolumeState {
     /**
      * A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A list of associated droplet ids.
      */
-    readonly dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * Filesystem label for the block storage volume.
      */
-    readonly filesystemLabel?: pulumi.Input<string>;
+    filesystemLabel?: pulumi.Input<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      *
      * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
-    readonly filesystemType?: pulumi.Input<string>;
+    filesystemType?: pulumi.Input<string>;
     /**
      * Initial filesystem label for the block storage volume.
      */
-    readonly initialFilesystemLabel?: pulumi.Input<string>;
+    initialFilesystemLabel?: pulumi.Input<string>;
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    readonly initialFilesystemType?: pulumi.Input<string | enums.FileSystemType>;
+    initialFilesystemType?: pulumi.Input<string | enums.FileSystemType>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region that the block storage volume will be created in.
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * A list of the tags to be applied to this Volume.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The uniform resource name for the volume.
      */
-    readonly volumeUrn?: pulumi.Input<string>;
+    volumeUrn?: pulumi.Input<string>;
 }
 
 /**
@@ -250,39 +250,39 @@ export interface VolumeArgs {
     /**
      * A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      *
      * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
-    readonly filesystemType?: pulumi.Input<string>;
+    filesystemType?: pulumi.Input<string>;
     /**
      * Initial filesystem label for the block storage volume.
      */
-    readonly initialFilesystemLabel?: pulumi.Input<string>;
+    initialFilesystemLabel?: pulumi.Input<string>;
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    readonly initialFilesystemType?: pulumi.Input<string | enums.FileSystemType>;
+    initialFilesystemType?: pulumi.Input<string | enums.FileSystemType>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region that the block storage volume will be created in.
      */
-    readonly region: pulumi.Input<string | enums.Region>;
+    region: pulumi.Input<string | enums.Region>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */
-    readonly size: pulumi.Input<number>;
+    size: pulumi.Input<number>;
     /**
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * A list of the tags to be applied to this Volume.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

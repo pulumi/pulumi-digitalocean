@@ -46,15 +46,15 @@ export interface GetDatabaseReplicaArgs {
     /**
      * The ID of the original source database cluster.
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The name for the database replica.
      */
-    readonly name: string;
+    name: string;
     /**
      * A list of tag names to be applied to the database replica.
      */
-    readonly tags?: string[];
+    tags?: string[];
 }
 
 /**

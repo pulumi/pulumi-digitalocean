@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
- * }, { async: true }));
+ * }));
  * ```
  *
  * Reuse the data about a volume snapshot to create a new volume based on it:
@@ -67,19 +67,19 @@ export interface GetVolumeSnapshotArgs {
     /**
      * If more than one result is returned, use the most recent volume snapshot.
      */
-    readonly mostRecent?: boolean;
+    mostRecent?: boolean;
     /**
      * The name of the volume snapshot.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

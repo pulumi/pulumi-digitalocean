@@ -181,40 +181,40 @@ export interface ProjectState {
     /**
      * the date and time when the project was created, (ISO8601)
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * the description of the project
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
-    readonly environment?: pulumi.Input<string>;
-    readonly isDefault?: pulumi.Input<boolean>;
+    environment?: pulumi.Input<string>;
+    isDefault?: pulumi.Input<boolean>;
     /**
      * The name of the Project
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * the id of the project owner.
      */
-    readonly ownerId?: pulumi.Input<number>;
+    ownerId?: pulumi.Input<number>;
     /**
      * the unique universal identifier of the project owner.
      */
-    readonly ownerUuid?: pulumi.Input<string>;
+    ownerUuid?: pulumi.Input<string>;
     /**
      * the purpose of the project, (Default: "Web Application")
      */
-    readonly purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    readonly resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * the date and time when the project was last updated, (ISO8601)
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -224,21 +224,21 @@ export interface ProjectArgs {
     /**
      * the description of the project
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The name of the Project
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * the purpose of the project, (Default: "Web Application")
      */
-    readonly purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    readonly resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
 }

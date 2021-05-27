@@ -41,8 +41,8 @@ export interface GetDatabaseClusterArgs {
     /**
      * The name of the database cluster.
      */
-    readonly name: string;
-    readonly tags?: string[];
+    name: string;
+    tags?: string[];
 }
 
 /**

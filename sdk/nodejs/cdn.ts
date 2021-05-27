@@ -163,31 +163,31 @@ export interface CdnState {
      *
      * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
-    readonly certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string>;
     /**
      * The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
-    readonly certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string>;
     /**
      * The date and time when the CDN Endpoint was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
      */
-    readonly customDomain?: pulumi.Input<string>;
+    customDomain?: pulumi.Input<string>;
     /**
      * The fully qualified domain name (FQDN) from which the CDN-backed content is served.
      */
-    readonly endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
     /**
      * The fully qualified domain name, (FQDN) for a Space.
      */
-    readonly origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
 }
 
 /**
@@ -199,21 +199,21 @@ export interface CdnArgs {
      *
      * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
-    readonly certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string>;
     /**
      * The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
-    readonly certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string>;
     /**
      * The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
      */
-    readonly customDomain?: pulumi.Input<string>;
+    customDomain?: pulumi.Input<string>;
     /**
      * The fully qualified domain name, (FQDN) for a Space.
      */
-    readonly origin: pulumi.Input<string>;
+    origin: pulumi.Input<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
 }

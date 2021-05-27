@@ -150,11 +150,11 @@ export interface DatabaseFirewallState {
     /**
      * The ID of the target database cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.DatabaseFirewallRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.DatabaseFirewallRule>[]>;
 }
 
 /**
@@ -164,9 +164,9 @@ export interface DatabaseFirewallArgs {
     /**
      * The ID of the target database cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
      */
-    readonly rules: pulumi.Input<pulumi.Input<inputs.DatabaseFirewallRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.DatabaseFirewallRule>[]>;
 }

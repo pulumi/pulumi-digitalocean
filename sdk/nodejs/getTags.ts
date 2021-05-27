@@ -48,12 +48,12 @@ export interface GetTagsArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetTagsFilter[];
+    filters?: inputs.GetTagsFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetTagsSort[];
+    sorts?: inputs.GetTagsSort[];
 }
 
 /**

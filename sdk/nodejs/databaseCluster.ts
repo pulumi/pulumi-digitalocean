@@ -248,83 +248,83 @@ export interface DatabaseClusterState {
     /**
      * The uniform resource name of the database cluster.
      */
-    readonly clusterUrn?: pulumi.Input<string>;
+    clusterUrn?: pulumi.Input<string>;
     /**
      * Name of the cluster's default database.
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
      */
-    readonly engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
     /**
      * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      */
-    readonly evictionPolicy?: pulumi.Input<string>;
+    evictionPolicy?: pulumi.Input<string>;
     /**
      * Database cluster's hostname.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    readonly maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
+    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
     /**
      * The name of the database cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Number of nodes that will be included in the cluster.
      */
-    readonly nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number>;
     /**
      * Password for the cluster's default user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Network port that the database cluster is listening on.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    readonly privateHost?: pulumi.Input<string>;
+    privateHost?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the database cluster will be located.
      */
-    readonly privateNetworkUuid?: pulumi.Input<string>;
+    privateNetworkUuid?: pulumi.Input<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    readonly privateUri?: pulumi.Input<string>;
+    privateUri?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    readonly region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
      */
-    readonly size?: pulumi.Input<string | enums.DatabaseSlug>;
+    size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
-    readonly sqlMode?: pulumi.Input<string>;
+    sqlMode?: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The full URI for connecting to the database cluster.
      */
-    readonly uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string>;
     /**
      * Username for the cluster's default user.
      */
-    readonly user?: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
     /**
      * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -334,45 +334,45 @@ export interface DatabaseClusterArgs {
     /**
      * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
      */
-    readonly engine: pulumi.Input<string>;
+    engine: pulumi.Input<string>;
     /**
      * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      */
-    readonly evictionPolicy?: pulumi.Input<string>;
+    evictionPolicy?: pulumi.Input<string>;
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    readonly maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
+    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
     /**
      * The name of the database cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Number of nodes that will be included in the cluster.
      */
-    readonly nodeCount: pulumi.Input<number>;
+    nodeCount: pulumi.Input<number>;
     /**
      * The ID of the VPC where the database cluster will be located.
      */
-    readonly privateNetworkUuid?: pulumi.Input<string>;
+    privateNetworkUuid?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    readonly region: pulumi.Input<string | enums.Region>;
+    region: pulumi.Input<string | enums.Region>;
     /**
      * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
      */
-    readonly size: pulumi.Input<string | enums.DatabaseSlug>;
+    size: pulumi.Input<string | enums.DatabaseSlug>;
     /**
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
-    readonly sqlMode?: pulumi.Input<string>;
+    sqlMode?: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

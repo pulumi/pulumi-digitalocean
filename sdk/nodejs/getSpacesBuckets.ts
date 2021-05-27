@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *         key: "region",
  *         values: ["nyc3"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  * You can sort the results as well:
  *
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *         direction: "desc",
  *         key: "name",
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSpacesBuckets(args?: GetSpacesBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketsResult> {
@@ -70,12 +70,12 @@ export interface GetSpacesBucketsArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    readonly filters?: inputs.GetSpacesBucketsFilter[];
+    filters?: inputs.GetSpacesBucketsFilter[];
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    readonly sorts?: inputs.GetSpacesBucketsSort[];
+    sorts?: inputs.GetSpacesBucketsSort[];
 }
 
 /**
