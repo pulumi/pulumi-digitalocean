@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Ensure Go SDK is advertised as v4 like it should be
 
 ---
 
