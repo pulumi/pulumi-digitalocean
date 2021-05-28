@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Ensure Go SDK is advertised as v4 like it should be
+_(none)_
 
 ---
+
+## 4.3.1 (2021-05-28)
+* Ensure Go SDK is advertised as v4 like it should be
 
 ## 4.3.0 (2021-05-27)
 * Upgrade to v3.2.1 of the pulumi-terraform-bridge
