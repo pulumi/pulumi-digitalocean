@@ -5670,6 +5670,14 @@
                         }
                     }
                 },
+                "certificateName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "entryPort": {
                     "type": "integer",
                     "language": {
@@ -5714,6 +5722,7 @@
             "type": "object",
             "required": [
                 "certificateId",
+                "certificateName",
                 "entryPort",
                 "entryProtocol",
                 "targetPort",
@@ -9310,7 +9319,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use a tool such\nas `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),\nto retrieve them.\n"
+                    "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n"
                 },
                 "status": {
                     "type": "string",
@@ -9424,7 +9433,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use a tool such\nas `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),\nto retrieve them.\n"
+                    "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -9554,7 +9563,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of SSH IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use a tool such\nas `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),\nto retrieve them.\n"
+                        "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n"
                     },
                     "status": {
                         "type": "string",
@@ -9995,6 +10004,10 @@
                     "type": "string",
                     "description": "The date and time when the node was last updated.\n"
                 },
+                "urn": {
+                    "type": "string",
+                    "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
+                },
                 "version": {
                     "type": "string",
                     "description": "The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)\n"
@@ -10016,6 +10029,7 @@
                 "serviceSubnet",
                 "status",
                 "updatedAt",
+                "urn",
                 "version",
                 "vpcUuid"
             ],
@@ -10142,6 +10156,10 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "The date and time when the node was last updated.\n"
+                    },
+                    "urn": {
+                        "type": "string",
+                        "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
                     },
                     "version": {
                         "type": "string",
@@ -13049,6 +13067,10 @@
                         "type": "string",
                         "description": "The date and time when the node was last updated.\n"
                     },
+                    "urn": {
+                        "type": "string",
+                        "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
+                    },
                     "version": {
                         "type": "string",
                         "description": "The slug identifier for the version of Kubernetes used for the cluster.\n"
@@ -13073,6 +13095,7 @@
                     "status",
                     "surgeUpgrade",
                     "updatedAt",
+                    "urn",
                     "version",
                     "vpcUuid",
                     "id"

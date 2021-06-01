@@ -15356,12 +15356,13 @@ func (o GetKubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetLoadBalancerForwardingRule struct {
-	CertificateId  string `pulumi:"certificateId"`
-	EntryPort      int    `pulumi:"entryPort"`
-	EntryProtocol  string `pulumi:"entryProtocol"`
-	TargetPort     int    `pulumi:"targetPort"`
-	TargetProtocol string `pulumi:"targetProtocol"`
-	TlsPassthrough bool   `pulumi:"tlsPassthrough"`
+	CertificateId   string `pulumi:"certificateId"`
+	CertificateName string `pulumi:"certificateName"`
+	EntryPort       int    `pulumi:"entryPort"`
+	EntryProtocol   string `pulumi:"entryProtocol"`
+	TargetPort      int    `pulumi:"targetPort"`
+	TargetProtocol  string `pulumi:"targetProtocol"`
+	TlsPassthrough  bool   `pulumi:"tlsPassthrough"`
 }
 
 // GetLoadBalancerForwardingRuleInput is an input type that accepts GetLoadBalancerForwardingRuleArgs and GetLoadBalancerForwardingRuleOutput values.
@@ -15376,12 +15377,13 @@ type GetLoadBalancerForwardingRuleInput interface {
 }
 
 type GetLoadBalancerForwardingRuleArgs struct {
-	CertificateId  pulumi.StringInput `pulumi:"certificateId"`
-	EntryPort      pulumi.IntInput    `pulumi:"entryPort"`
-	EntryProtocol  pulumi.StringInput `pulumi:"entryProtocol"`
-	TargetPort     pulumi.IntInput    `pulumi:"targetPort"`
-	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
-	TlsPassthrough pulumi.BoolInput   `pulumi:"tlsPassthrough"`
+	CertificateId   pulumi.StringInput `pulumi:"certificateId"`
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	EntryPort       pulumi.IntInput    `pulumi:"entryPort"`
+	EntryProtocol   pulumi.StringInput `pulumi:"entryProtocol"`
+	TargetPort      pulumi.IntInput    `pulumi:"targetPort"`
+	TargetProtocol  pulumi.StringInput `pulumi:"targetProtocol"`
+	TlsPassthrough  pulumi.BoolInput   `pulumi:"tlsPassthrough"`
 }
 
 func (GetLoadBalancerForwardingRuleArgs) ElementType() reflect.Type {
@@ -15437,6 +15439,10 @@ func (o GetLoadBalancerForwardingRuleOutput) ToGetLoadBalancerForwardingRuleOutp
 
 func (o GetLoadBalancerForwardingRuleOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancerForwardingRuleOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.CertificateName }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancerForwardingRuleOutput) EntryPort() pulumi.IntOutput {

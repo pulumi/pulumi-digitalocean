@@ -164,10 +164,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> Size { get; private set; } = null!;
 
         /// <summary>
-        /// A list of SSH IDs or fingerprints to enable in
-        /// the format `[12345, 123456]`. To retrieve this info, use a tool such
-        /// as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-        /// to retrieve them.
+        /// A list of SSH key IDs or fingerprints to enable in
+        /// the format `[12345, 123456]`. To retrieve this info, use the
+        /// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        /// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+        /// be added or removed via this provider. Modifying this field will prompt you
+        /// to destroy and recreate the Droplet.
         /// </summary>
         [Output("sshKeys")]
         public Output<ImmutableArray<string>> SshKeys { get; private set; } = null!;
@@ -320,10 +322,12 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _sshKeys;
 
         /// <summary>
-        /// A list of SSH IDs or fingerprints to enable in
-        /// the format `[12345, 123456]`. To retrieve this info, use a tool such
-        /// as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-        /// to retrieve them.
+        /// A list of SSH key IDs or fingerprints to enable in
+        /// the format `[12345, 123456]`. To retrieve this info, use the
+        /// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        /// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+        /// be added or removed via this provider. Modifying this field will prompt you
+        /// to destroy and recreate the Droplet.
         /// </summary>
         public InputList<string> SshKeys
         {
@@ -495,10 +499,12 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _sshKeys;
 
         /// <summary>
-        /// A list of SSH IDs or fingerprints to enable in
-        /// the format `[12345, 123456]`. To retrieve this info, use a tool such
-        /// as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-        /// to retrieve them.
+        /// A list of SSH key IDs or fingerprints to enable in
+        /// the format `[12345, 123456]`. To retrieve this info, use the
+        /// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        /// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+        /// be added or removed via this provider. Modifying this field will prompt you
+        /// to destroy and recreate the Droplet.
         /// </summary>
         public InputList<string> SshKeys
         {
