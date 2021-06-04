@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.9.0 of the DigitalOcean Terraform Provider
+_(none)_
 
 ---
+
+## 4.4.0 (2021-06-04)
+* Upgrade to v2.9.0 of the DigitalOcean Terraform Provider
 
 ## 4.3.1 (2021-05-28)
 * Ensure Go SDK is advertised as v4 like it should be
