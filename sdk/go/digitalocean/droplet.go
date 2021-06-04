@@ -94,10 +94,12 @@ type Droplet struct {
 	ResizeDisk pulumi.BoolPtrOutput `pulumi:"resizeDisk"`
 	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
 	Size pulumi.StringOutput `pulumi:"size"`
-	// A list of SSH IDs or fingerprints to enable in
-	// the format `[12345, 123456]`. To retrieve this info, use a tool such
-	// as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-	// to retrieve them.
+	// A list of SSH key IDs or fingerprints to enable in
+	// the format `[12345, 123456]`. To retrieve this info, use the
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+	// be added or removed via this provider. Modifying this field will prompt you
+	// to destroy and recreate the Droplet.
 	SshKeys pulumi.StringArrayOutput `pulumi:"sshKeys"`
 	// The status of the Droplet
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -196,10 +198,12 @@ type dropletState struct {
 	ResizeDisk *bool `pulumi:"resizeDisk"`
 	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
 	Size *string `pulumi:"size"`
-	// A list of SSH IDs or fingerprints to enable in
-	// the format `[12345, 123456]`. To retrieve this info, use a tool such
-	// as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-	// to retrieve them.
+	// A list of SSH key IDs or fingerprints to enable in
+	// the format `[12345, 123456]`. To retrieve this info, use the
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+	// be added or removed via this provider. Modifying this field will prompt you
+	// to destroy and recreate the Droplet.
 	SshKeys []string `pulumi:"sshKeys"`
 	// The status of the Droplet
 	Status *string `pulumi:"status"`
@@ -261,10 +265,12 @@ type DropletState struct {
 	ResizeDisk pulumi.BoolPtrInput
 	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
 	Size pulumi.StringPtrInput
-	// A list of SSH IDs or fingerprints to enable in
-	// the format `[12345, 123456]`. To retrieve this info, use a tool such
-	// as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-	// to retrieve them.
+	// A list of SSH key IDs or fingerprints to enable in
+	// the format `[12345, 123456]`. To retrieve this info, use the
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+	// be added or removed via this provider. Modifying this field will prompt you
+	// to destroy and recreate the Droplet.
 	SshKeys pulumi.StringArrayInput
 	// The status of the Droplet
 	Status pulumi.StringPtrInput
@@ -311,10 +317,12 @@ type dropletArgs struct {
 	ResizeDisk *bool `pulumi:"resizeDisk"`
 	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
 	Size string `pulumi:"size"`
-	// A list of SSH IDs or fingerprints to enable in
-	// the format `[12345, 123456]`. To retrieve this info, use a tool such
-	// as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-	// to retrieve them.
+	// A list of SSH key IDs or fingerprints to enable in
+	// the format `[12345, 123456]`. To retrieve this info, use the
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+	// be added or removed via this provider. Modifying this field will prompt you
+	// to destroy and recreate the Droplet.
 	SshKeys []string `pulumi:"sshKeys"`
 	// A list of the tags to be applied to this Droplet.
 	Tags []string `pulumi:"tags"`
@@ -354,10 +362,12 @@ type DropletArgs struct {
 	ResizeDisk pulumi.BoolPtrInput
 	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
 	Size pulumi.StringInput
-	// A list of SSH IDs or fingerprints to enable in
-	// the format `[12345, 123456]`. To retrieve this info, use a tool such
-	// as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-	// to retrieve them.
+	// A list of SSH key IDs or fingerprints to enable in
+	// the format `[12345, 123456]`. To retrieve this info, use the
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+	// be added or removed via this provider. Modifying this field will prompt you
+	// to destroy and recreate the Droplet.
 	SshKeys pulumi.StringArrayInput
 	// A list of the tags to be applied to this Droplet.
 	Tags pulumi.StringArrayInput

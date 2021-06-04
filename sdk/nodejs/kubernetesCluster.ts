@@ -96,6 +96,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
+     * The uniform resource name (URN) for the Kubernetes cluster.
+     */
+    public /*out*/ readonly urn!: pulumi.Output<string>;
+    /**
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      */
     public readonly version!: pulumi.Output<string>;
@@ -131,6 +135,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["surgeUpgrade"] = state ? state.surgeUpgrade : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            inputs["urn"] = state ? state.urn : undefined;
             inputs["version"] = state ? state.version : undefined;
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
@@ -160,6 +165,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["serviceSubnet"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
+            inputs["urn"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -225,6 +231,10 @@ export interface KubernetesClusterState {
      * The date and time when the node was last updated.
      */
     updatedAt?: pulumi.Input<string>;
+    /**
+     * The uniform resource name (URN) for the Kubernetes cluster.
+     */
+    urn?: pulumi.Input<string>;
     /**
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      */

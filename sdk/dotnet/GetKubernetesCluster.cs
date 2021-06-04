@@ -104,6 +104,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
+        /// The uniform resource name (URN) for the Kubernetes cluster.
+        /// </summary>
+        public readonly string Urn;
+        /// <summary>
         /// The slug identifier for the version of Kubernetes used for the cluster.
         /// </summary>
         public readonly string Version;
@@ -144,6 +148,8 @@ namespace Pulumi.DigitalOcean
 
             string updatedAt,
 
+            string urn,
+
             string version,
 
             string vpcUuid)
@@ -163,6 +169,7 @@ namespace Pulumi.DigitalOcean
             SurgeUpgrade = surgeUpgrade;
             Tags = tags;
             UpdatedAt = updatedAt;
+            Urn = urn;
             Version = version;
             VpcUuid = vpcUuid;
         }

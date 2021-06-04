@@ -96,6 +96,10 @@ export interface GetKubernetesClusterResult {
      */
     readonly updatedAt: string;
     /**
+     * The uniform resource name (URN) for the Kubernetes cluster.
+     */
+    readonly urn: string;
+    /**
      * The slug identifier for the version of Kubernetes used for the cluster.
      */
     readonly version: string;

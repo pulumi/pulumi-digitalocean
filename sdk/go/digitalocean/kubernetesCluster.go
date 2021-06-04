@@ -48,6 +48,8 @@ type KubernetesCluster struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The date and time when the node was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// The uniform resource name (URN) for the Kubernetes cluster.
+	Urn pulumi.StringOutput `pulumi:"urn"`
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of the VPC where the Kubernetes cluster will be located.
@@ -119,6 +121,8 @@ type kubernetesClusterState struct {
 	Tags []string `pulumi:"tags"`
 	// The date and time when the node was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
+	// The uniform resource name (URN) for the Kubernetes cluster.
+	Urn *string `pulumi:"urn"`
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version *string `pulumi:"version"`
 	// The ID of the VPC where the Kubernetes cluster will be located.
@@ -153,6 +157,8 @@ type KubernetesClusterState struct {
 	Tags pulumi.StringArrayInput
 	// The date and time when the node was last updated.
 	UpdatedAt pulumi.StringPtrInput
+	// The uniform resource name (URN) for the Kubernetes cluster.
+	Urn pulumi.StringPtrInput
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version pulumi.StringPtrInput
 	// The ID of the VPC where the Kubernetes cluster will be located.

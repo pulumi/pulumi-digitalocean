@@ -163,6 +163,7 @@ class _KubernetesClusterState:
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
+                 urn: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None):
         """
@@ -180,6 +181,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
+        :param pulumi.Input[str] urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
         """
@@ -211,6 +213,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "tags", tags)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if vpc_uuid is not None:
@@ -383,6 +387,18 @@ class _KubernetesClusterState:
 
     @property
     @pulumi.getter
+    def urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uniform resource name (URN) for the Kubernetes cluster.
+        """
+        return pulumi.get(self, "urn")
+
+    @urn.setter
+    def urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "urn", value)
+
+    @property
+    @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -512,6 +528,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["service_subnet"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
+            __props__.__dict__["urn"] = None
         super(KubernetesCluster, __self__).__init__(
             'digitalocean:index/kubernetesCluster:KubernetesCluster',
             resource_name,
@@ -536,6 +553,7 @@ class KubernetesCluster(pulumi.CustomResource):
             surge_upgrade: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
+            urn: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vpc_uuid: Optional[pulumi.Input[str]] = None) -> 'KubernetesCluster':
         """
@@ -558,6 +576,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
+        :param pulumi.Input[str] urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
         """
@@ -579,6 +598,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["surge_upgrade"] = surge_upgrade
         __props__.__dict__["tags"] = tags
         __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["urn"] = urn
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return KubernetesCluster(resource_name, opts=opts, __props__=__props__)
@@ -691,6 +711,14 @@ class KubernetesCluster(pulumi.CustomResource):
         The date and time when the node was last updated.
         """
         return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> pulumi.Output[str]:
+        """
+        The uniform resource name (URN) for the Kubernetes cluster.
+        """
+        return pulumi.get(self, "urn")
 
     @property
     @pulumi.getter

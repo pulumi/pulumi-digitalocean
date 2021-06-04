@@ -47,10 +47,12 @@ class DropletArgs:
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH IDs or fingerprints to enable in
-               the format `[12345, 123456]`. To retrieve this info, use a tool such
-               as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-               to retrieve them.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
+               the format `[12345, 123456]`. To retrieve this info, use the
+               [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+               or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+               be added or removed via this provider. Modifying this field will prompt you
+               to destroy and recreate the Droplet.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
@@ -202,10 +204,12 @@ class DropletArgs:
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SSH IDs or fingerprints to enable in
-        the format `[12345, 123456]`. To retrieve this info, use a tool such
-        as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-        to retrieve them.
+        A list of SSH key IDs or fingerprints to enable in
+        the format `[12345, 123456]`. To retrieve this info, use the
+        [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+        be added or removed via this provider. Modifying this field will prompt you
+        to destroy and recreate the Droplet.
         """
         return pulumi.get(self, "ssh_keys")
 
@@ -319,10 +323,12 @@ class _DropletState:
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH IDs or fingerprints to enable in
-               the format `[12345, 123456]`. To retrieve this info, use a tool such
-               as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-               to retrieve them.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
+               the format `[12345, 123456]`. To retrieve this info, use the
+               [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+               or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+               be added or removed via this provider. Modifying this field will prompt you
+               to destroy and recreate the Droplet.
         :param pulumi.Input[str] status: The status of the Droplet
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
@@ -618,10 +624,12 @@ class _DropletState:
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SSH IDs or fingerprints to enable in
-        the format `[12345, 123456]`. To retrieve this info, use a tool such
-        as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-        to retrieve them.
+        A list of SSH key IDs or fingerprints to enable in
+        the format `[12345, 123456]`. To retrieve this info, use the
+        [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+        be added or removed via this provider. Modifying this field will prompt you
+        to destroy and recreate the Droplet.
         """
         return pulumi.get(self, "ssh_keys")
 
@@ -766,10 +774,12 @@ class Droplet(pulumi.CustomResource):
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH IDs or fingerprints to enable in
-               the format `[12345, 123456]`. To retrieve this info, use a tool such
-               as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-               to retrieve them.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
+               the format `[12345, 123456]`. To retrieve this info, use the
+               [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+               or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+               be added or removed via this provider. Modifying this field will prompt you
+               to destroy and recreate the Droplet.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
@@ -948,10 +958,12 @@ class Droplet(pulumi.CustomResource):
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH IDs or fingerprints to enable in
-               the format `[12345, 123456]`. To retrieve this info, use a tool such
-               as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-               to retrieve them.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
+               the format `[12345, 123456]`. To retrieve this info, use the
+               [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+               or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+               be added or removed via this provider. Modifying this field will prompt you
+               to destroy and recreate the Droplet.
         :param pulumi.Input[str] status: The status of the Droplet
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
@@ -1150,10 +1162,12 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of SSH IDs or fingerprints to enable in
-        the format `[12345, 123456]`. To retrieve this info, use a tool such
-        as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-        to retrieve them.
+        A list of SSH key IDs or fingerprints to enable in
+        the format `[12345, 123456]`. To retrieve this info, use the
+        [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+        be added or removed via this provider. Modifying this field will prompt you
+        to destroy and recreate the Droplet.
         """
         return pulumi.get(self, "ssh_keys")
 

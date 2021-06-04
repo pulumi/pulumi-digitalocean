@@ -56,6 +56,8 @@ type LookupKubernetesClusterResult struct {
 	Tags []string `pulumi:"tags"`
 	// The date and time when the node was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
+	// The uniform resource name (URN) for the Kubernetes cluster.
+	Urn string `pulumi:"urn"`
 	// The slug identifier for the version of Kubernetes used for the cluster.
 	Version string `pulumi:"version"`
 	// The ID of the VPC where the Kubernetes cluster is located.

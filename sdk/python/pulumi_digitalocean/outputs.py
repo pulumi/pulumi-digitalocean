@@ -7359,12 +7359,14 @@ class GetKubernetesClusterNodePoolTaintResult(dict):
 class GetLoadBalancerForwardingRuleResult(dict):
     def __init__(__self__, *,
                  certificate_id: str,
+                 certificate_name: str,
                  entry_port: int,
                  entry_protocol: str,
                  target_port: int,
                  target_protocol: str,
                  tls_passthrough: bool):
         pulumi.set(__self__, "certificate_id", certificate_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
         pulumi.set(__self__, "entry_port", entry_port)
         pulumi.set(__self__, "entry_protocol", entry_protocol)
         pulumi.set(__self__, "target_port", target_port)
@@ -7375,6 +7377,11 @@ class GetLoadBalancerForwardingRuleResult(dict):
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> str:
         return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> str:
+        return pulumi.get(self, "certificate_name")
 
     @property
     @pulumi.getter(name="entryPort")

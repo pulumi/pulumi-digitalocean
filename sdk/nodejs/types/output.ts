@@ -1925,6 +1925,7 @@ export interface GetKubernetesClusterNodePoolTaint {
 
 export interface GetLoadBalancerForwardingRule {
     certificateId: string;
+    certificateName: string;
     entryPort: number;
     entryProtocol: string;
     targetPort: number;

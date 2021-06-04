@@ -14,6 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetLoadBalancerForwardingRuleResult
     {
         public readonly string CertificateId;
+        public readonly string CertificateName;
         public readonly int EntryPort;
         public readonly string EntryProtocol;
         public readonly int TargetPort;
@@ -23,6 +24,8 @@ namespace Pulumi.DigitalOcean.Outputs
         [OutputConstructor]
         private GetLoadBalancerForwardingRuleResult(
             string certificateId,
+
+            string certificateName,
 
             int entryPort,
 
@@ -35,6 +38,7 @@ namespace Pulumi.DigitalOcean.Outputs
             bool tlsPassthrough)
         {
             CertificateId = certificateId;
+            CertificateName = certificateName;
             EntryPort = entryPort;
             EntryProtocol = entryProtocol;
             TargetPort = targetPort;

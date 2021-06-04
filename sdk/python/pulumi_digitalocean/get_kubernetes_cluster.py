@@ -20,7 +20,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, auto_upgrade=None, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, version=None, vpc_uuid=None):
+    def __init__(__self__, auto_upgrade=None, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
         if auto_upgrade and not isinstance(auto_upgrade, bool):
             raise TypeError("Expected argument 'auto_upgrade' to be a bool")
         pulumi.set(__self__, "auto_upgrade", auto_upgrade)
@@ -66,6 +66,9 @@ class GetKubernetesClusterResult:
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
+        if urn and not isinstance(urn, str):
+            raise TypeError("Expected argument 'urn' to be a str")
+        pulumi.set(__self__, "urn", urn)
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
@@ -190,6 +193,14 @@ class GetKubernetesClusterResult:
 
     @property
     @pulumi.getter
+    def urn(self) -> str:
+        """
+        The uniform resource name (URN) for the Kubernetes cluster.
+        """
+        return pulumi.get(self, "urn")
+
+    @property
+    @pulumi.getter
     def version(self) -> str:
         """
         The slug identifier for the version of Kubernetes used for the cluster.
@@ -226,6 +237,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             surge_upgrade=self.surge_upgrade,
             tags=self.tags,
             updated_at=self.updated_at,
+            urn=self.urn,
             version=self.version,
             vpc_uuid=self.vpc_uuid)
 
@@ -265,5 +277,6 @@ def get_kubernetes_cluster(name: Optional[str] = None,
         surge_upgrade=__ret__.surge_upgrade,
         tags=__ret__.tags,
         updated_at=__ret__.updated_at,
+        urn=__ret__.urn,
         version=__ret__.version,
         vpc_uuid=__ret__.vpc_uuid)

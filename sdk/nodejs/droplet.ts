@@ -139,10 +139,12 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<string>;
     /**
-     * A list of SSH IDs or fingerprints to enable in
-     * the format `[12345, 123456]`. To retrieve this info, use a tool such
-     * as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-     * to retrieve them.
+     * A list of SSH key IDs or fingerprints to enable in
+     * the format `[12345, 123456]`. To retrieve this info, use the
+     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+     * or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+     * be added or removed via this provider. Modifying this field will prompt you
+     * to destroy and recreate the Droplet.
      */
     public readonly sshKeys!: pulumi.Output<string[] | undefined>;
     /**
@@ -338,10 +340,12 @@ export interface DropletState {
      */
     size?: pulumi.Input<string | enums.DropletSlug>;
     /**
-     * A list of SSH IDs or fingerprints to enable in
-     * the format `[12345, 123456]`. To retrieve this info, use a tool such
-     * as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-     * to retrieve them.
+     * A list of SSH key IDs or fingerprints to enable in
+     * the format `[12345, 123456]`. To retrieve this info, use the
+     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+     * or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+     * be added or removed via this provider. Modifying this field will prompt you
+     * to destroy and recreate the Droplet.
      */
     sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -419,10 +423,12 @@ export interface DropletArgs {
      */
     size: pulumi.Input<string | enums.DropletSlug>;
     /**
-     * A list of SSH IDs or fingerprints to enable in
-     * the format `[12345, 123456]`. To retrieve this info, use a tool such
-     * as `curl` with the [DigitalOcean API](https://developers.digitalocean.com/documentation/v2/#ssh-keys),
-     * to retrieve them.
+     * A list of SSH key IDs or fingerprints to enable in
+     * the format `[12345, 123456]`. To retrieve this info, use the
+     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+     * or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
+     * be added or removed via this provider. Modifying this field will prompt you
+     * to destroy and recreate the Droplet.
      */
     sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
