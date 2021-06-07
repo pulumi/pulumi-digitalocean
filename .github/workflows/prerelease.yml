@@ -35,7 +35,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1
+      uses: pulumi/action-install-pulumi-cli@v2
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
@@ -116,7 +116,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1
+      uses: pulumi/action-install-pulumi-cli@v2
     - run: make lint_provider
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
@@ -154,7 +154,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1
+      uses: pulumi/action-install-pulumi-cli@v2
     - run: cd sdk/go/digitalocean && golangci-lint run -c ../../../.golangci.yml
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
@@ -190,7 +190,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1
+      uses: pulumi/action-install-pulumi-cli@v2
     - if: github.event_name == 'pull_request'
       name: Install Schema Tools
       uses: jaxxstorm/action-install-gh-release@v1.2.0
@@ -258,7 +258,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1
+      uses: pulumi/action-install-pulumi-cli@v2
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -312,7 +312,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1
+      uses: pulumi/action-install-pulumi-cli@v2
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
@@ -393,7 +393,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v1
+      uses: pulumi/action-install-pulumi-cli@v2
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
