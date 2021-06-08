@@ -8,8 +8,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "^2.0.0",
-    "@pulumi/tls": "latest",
+    "@pulumi/pulumi": "^3.0.0",
+    "@pulumi/tls": "^4.0.0",
     "@pulumi/digitalocean": "latest"
   }
 }

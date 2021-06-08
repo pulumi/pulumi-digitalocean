@@ -35,7 +35,8 @@ func getCwd(t *testing.T) string {
 	return cwd
 }
 
-func getBaseOptions() integration.ProgramTestOptions {
+func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	checkDigitalOceanTokenSet(t)
 	return integration.ProgramTestOptions{
 		RunUpdateTest:        false, //temporarily skipping these since we have jsut changed the enum types
 		ExpectRefreshChanges: true,

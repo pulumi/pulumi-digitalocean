@@ -21,8 +21,7 @@ import (
 )
 
 func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	checkDigitalOceanTokenSet(t)
-	base := getBaseOptions()
+	base := getBaseOptions(t)
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			"@pulumi/digitalocean",

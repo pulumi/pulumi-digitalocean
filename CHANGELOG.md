@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Ensure `digitalocean.Volume` autonaming adheres to naming conventions of letters, numbers, hyphen, lowercase and 64 chars max
 
 ---
 
