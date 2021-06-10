@@ -9951,6 +9951,10 @@
                     "type": "string",
                     "description": "The range of IP addresses in the overlay network of the Kubernetes cluster.\n"
                 },
+                "clusterUrn": {
+                    "type": "string",
+                    "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The date and time when the node was created.\n"
@@ -10004,10 +10008,6 @@
                     "type": "string",
                     "description": "The date and time when the node was last updated.\n"
                 },
-                "urn": {
-                    "type": "string",
-                    "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
-                },
                 "version": {
                     "type": "string",
                     "description": "The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)\n"
@@ -10029,7 +10029,7 @@
                 "serviceSubnet",
                 "status",
                 "updatedAt",
-                "urn",
+                "clusterUrn",
                 "version",
                 "vpcUuid"
             ],
@@ -10095,6 +10095,10 @@
                         "type": "string",
                         "description": "The range of IP addresses in the overlay network of the Kubernetes cluster.\n"
                     },
+                    "clusterUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
+                    },
                     "createdAt": {
                         "type": "string",
                         "description": "The date and time when the node was created.\n"
@@ -10156,10 +10160,6 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "The date and time when the node was last updated.\n"
-                    },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
                     },
                     "version": {
                         "type": "string",

@@ -9,7 +9,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// +build dotnet all
+// +build go all
 
 package examples
 
@@ -20,23 +20,23 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
-func TestAccVolumeCs(t *testing.T) {
-	test := getCsharpBaseOptions(t).
+func TestAccVolumeGo(t *testing.T) {
+	test := getGoBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			RunUpdateTest: false, //this was broken due to naming restrictions before
-			Dir:           filepath.Join(getCwd(t), "volume-cs"),
+ 			Dir:           filepath.Join(getCwd(t), "volume-go"),
 		})
 
 	integration.ProgramTest(t, &test)
 }
 
-func getCsharpBaseOptions(t *testing.T) integration.ProgramTestOptions {
+func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
-	baseCsharp := base.With(integration.ProgramTestOptions{
+	baseGo := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"Pulumi.DigitalOcean",
+			"github.com/pulumi/pulumi-digitalocean/sdk/v4",
 		},
 	})
 
-	return baseCsharp
+	return baseGo
 }

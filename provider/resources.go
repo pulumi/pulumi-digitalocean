@@ -17,6 +17,7 @@ package digitalocean
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 	"unicode"
 
 	"github.com/digitalocean/terraform-provider-digitalocean/digitalocean"
@@ -177,6 +178,9 @@ func Provider() tfbridge.ProviderInfo {
 						Type:     "string",
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
+					"urn": {
+						Name: "clusterUrn",
+					},
 				},
 			},
 			"digitalocean_kubernetes_node_pool": {
@@ -232,6 +236,9 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_volume": {
 				Tok: makeResource(digitalOceanMod, "Volume"),
 				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": tfbridge.AutoNameTransform("name", 64, func(name string) string {
+						return strings.ToLower(name)
+					}),
 					"region": {
 						Type:     "string",
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},

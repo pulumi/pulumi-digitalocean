@@ -8,6 +8,6 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "^2.0.0"
+    "@pulumi/pulumi": "^3.0.0"
   }
 }

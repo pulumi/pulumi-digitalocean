@@ -25,6 +25,8 @@ type KubernetesCluster struct {
 	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet pulumi.StringOutput `pulumi:"clusterSubnet"`
+	// The uniform resource name (URN) for the Kubernetes cluster.
+	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The base URL of the API server on the Kubernetes master node.
@@ -48,8 +50,6 @@ type KubernetesCluster struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The date and time when the node was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// The uniform resource name (URN) for the Kubernetes cluster.
-	Urn pulumi.StringOutput `pulumi:"urn"`
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of the VPC where the Kubernetes cluster will be located.
@@ -98,6 +98,8 @@ type kubernetesClusterState struct {
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet *string `pulumi:"clusterSubnet"`
+	// The uniform resource name (URN) for the Kubernetes cluster.
+	ClusterUrn *string `pulumi:"clusterUrn"`
 	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The base URL of the API server on the Kubernetes master node.
@@ -121,8 +123,6 @@ type kubernetesClusterState struct {
 	Tags []string `pulumi:"tags"`
 	// The date and time when the node was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// The uniform resource name (URN) for the Kubernetes cluster.
-	Urn *string `pulumi:"urn"`
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version *string `pulumi:"version"`
 	// The ID of the VPC where the Kubernetes cluster will be located.
@@ -134,6 +134,8 @@ type KubernetesClusterState struct {
 	AutoUpgrade pulumi.BoolPtrInput
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet pulumi.StringPtrInput
+	// The uniform resource name (URN) for the Kubernetes cluster.
+	ClusterUrn pulumi.StringPtrInput
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringPtrInput
 	// The base URL of the API server on the Kubernetes master node.
@@ -157,8 +159,6 @@ type KubernetesClusterState struct {
 	Tags pulumi.StringArrayInput
 	// The date and time when the node was last updated.
 	UpdatedAt pulumi.StringPtrInput
-	// The uniform resource name (URN) for the Kubernetes cluster.
-	Urn pulumi.StringPtrInput
 	// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
 	Version pulumi.StringPtrInput
 	// The ID of the VPC where the Kubernetes cluster will be located.
