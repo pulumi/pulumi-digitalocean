@@ -178,6 +178,9 @@ func Provider() tfbridge.ProviderInfo {
 						Type:     "string",
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
+					"urn": {
+						Name: "clusterUrn",
+					},
 				},
 			},
 			"digitalocean_kubernetes_node_pool": {

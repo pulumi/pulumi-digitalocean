@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Ensure `digitalocean.Volume` autonaming adheres to naming conventions of letters, numbers, hyphen, lowercase and 64 chars max
+* Small *breaking change* where we renamed the `urn` parameter on `digitalocean.KubernetesCluster` to be `clusterUrn` as `urn` is a reserved internal property name.
 
 ---
 

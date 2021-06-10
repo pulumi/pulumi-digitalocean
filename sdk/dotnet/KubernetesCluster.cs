@@ -34,6 +34,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> ClusterSubnet { get; private set; } = null!;
 
         /// <summary>
+        /// The uniform resource name (URN) for the Kubernetes cluster.
+        /// </summary>
+        [Output("clusterUrn")]
+        public Output<string> ClusterUrn { get; private set; } = null!;
+
+        /// <summary>
         /// The date and time when the node was created.
         /// </summary>
         [Output("createdAt")]
@@ -101,12 +107,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
-
-        /// <summary>
-        /// The uniform resource name (URN) for the Kubernetes cluster.
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
         /// <summary>
         /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -240,6 +240,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ClusterSubnet { get; set; }
 
         /// <summary>
+        /// The uniform resource name (URN) for the Kubernetes cluster.
+        /// </summary>
+        [Input("clusterUrn")]
+        public Input<string>? ClusterUrn { get; set; }
+
+        /// <summary>
         /// The date and time when the node was created.
         /// </summary>
         [Input("createdAt")]
@@ -318,12 +324,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
-
-        /// <summary>
-        /// The uniform resource name (URN) for the Kubernetes cluster.
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         /// <summary>
         /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
