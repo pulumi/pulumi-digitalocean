@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Ensure `digitalocean.Volume` autonaming adheres to naming conventions of letters, numbers, hyphen, lowercase and 64 chars max
-* Small *breaking change* where we renamed the `urn` parameter on `digitalocean.KubernetesCluster` to be `clusterUrn` as `urn` is a reserved internal property name.
+_(none)_
 
 ---
+
+## 4.4.1 (2021-06-10)
+* Ensure `digitalocean.Volume` autonaming adheres to naming conventions of letters, numbers, hyphen, lowercase and 64 chars max
+* Small *breaking change* where we renamed the `urn` parameter on `digitalocean.KubernetesCluster` to be `clusterUrn` as `urn` is a reserved internal property name.
 
 ## 4.4.0 (2021-06-04)
 * Upgrade to v2.9.0 of the DigitalOcean Terraform Provider
