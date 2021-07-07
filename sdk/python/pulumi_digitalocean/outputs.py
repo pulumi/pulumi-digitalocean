@@ -47,6 +47,7 @@ __all__ = [
     'FirewallOutboundRule',
     'FirewallPendingChange',
     'KubernetesClusterKubeConfig',
+    'KubernetesClusterMaintenancePolicy',
     'KubernetesClusterNodePool',
     'KubernetesClusterNodePoolNode',
     'KubernetesClusterNodePoolTaint',
@@ -103,6 +104,7 @@ __all__ = [
     'GetImagesImageResult',
     'GetImagesSortResult',
     'GetKubernetesClusterKubeConfigResult',
+    'GetKubernetesClusterMaintenancePolicyResult',
     'GetKubernetesClusterNodePoolResult',
     'GetKubernetesClusterNodePoolNodeResult',
     'GetKubernetesClusterNodePoolTaintResult',
@@ -3079,6 +3081,62 @@ class KubernetesClusterKubeConfig(dict):
         The DigitalOcean API access token used by clients to access the cluster.
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class KubernetesClusterMaintenancePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesClusterMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesClusterMaintenancePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesClusterMaintenancePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day: Optional[str] = None,
+                 duration: Optional[str] = None,
+                 start_time: Optional[str] = None):
+        """
+        :param str day: The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+        :param str start_time: The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[str]:
+        """
+        The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[str]:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -7105,6 +7163,46 @@ class GetKubernetesClusterKubeConfigResult(dict):
         The DigitalOcean API access token used by clients to access the cluster.
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class GetKubernetesClusterMaintenancePolicyResult(dict):
+    def __init__(__self__, *,
+                 day: str,
+                 duration: str,
+                 start_time: str):
+        """
+        :param str day: The day for the service window of the Kubernetes cluster.
+        :param str duration: The duration of the operation.
+        :param str start_time: The start time of the upgrade operation.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        """
+        The day for the service window of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        The duration of the operation.
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The start time of the upgrade operation.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type

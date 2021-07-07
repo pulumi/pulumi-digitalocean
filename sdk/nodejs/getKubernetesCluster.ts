@@ -67,6 +67,10 @@ export interface GetKubernetesClusterResult {
     readonly ipv4Address: string;
     readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];
     /**
+     * The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
+     */
+    readonly maintenancePolicies: outputs.GetKubernetesClusterMaintenancePolicy[];
+    /**
      * The auto-generated name for the node.
      */
     readonly name: string;

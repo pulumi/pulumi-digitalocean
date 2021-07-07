@@ -29,7 +29,7 @@ class DatabaseClusterArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DatabaseCluster resource.
-        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
@@ -64,7 +64,7 @@ class DatabaseClusterArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         """
         return pulumi.get(self, "engine")
 
@@ -220,7 +220,7 @@ class _DatabaseClusterState:
         Input properties used for looking up and filtering DatabaseCluster resources.
         :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] database: Name of the cluster's default database.
-        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[str] host: Database cluster's hostname.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
@@ -308,7 +308,7 @@ class _DatabaseClusterState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         """
         return pulumi.get(self, "engine")
 
@@ -578,6 +578,18 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="6")
         ```
+        ### Create a new MongoDB database cluster
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
+            engine="mongodb",
+            node_count=1,
+            region="nyc3",
+            size="db-s-1vcpu-1gb",
+            version="4")
+        ```
 
         ## Import
 
@@ -589,7 +601,7 @@ class DatabaseCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
@@ -646,6 +658,18 @@ class DatabaseCluster(pulumi.CustomResource):
             region="nyc1",
             size="db-s-1vcpu-1gb",
             version="6")
+        ```
+        ### Create a new MongoDB database cluster
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
+            engine="mongodb",
+            node_count=1,
+            region="nyc3",
+            size="db-s-1vcpu-1gb",
+            version="4")
         ```
 
         ## Import
@@ -761,7 +785,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] database: Name of the cluster's default database.
-        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[str] host: Database cluster's hostname.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
@@ -826,7 +850,7 @@ class DatabaseCluster(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         """
         return pulumi.get(self, "engine")
 

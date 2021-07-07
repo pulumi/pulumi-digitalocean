@@ -34,6 +34,8 @@ type KubernetesCluster struct {
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address pulumi.StringOutput                    `pulumi:"ipv4Address"`
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
+	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+	MaintenancePolicy KubernetesClusterMaintenancePolicyOutput `pulumi:"maintenancePolicy"`
 	// A name for the node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -107,6 +109,8 @@ type kubernetesClusterState struct {
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address *string                       `pulumi:"ipv4Address"`
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
+	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// A name for the node pool.
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -143,6 +147,8 @@ type KubernetesClusterState struct {
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address pulumi.StringPtrInput
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
+	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
 	// A name for the node pool.
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -172,6 +178,8 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 type kubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// A name for the node pool.
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -192,6 +200,8 @@ type kubernetesClusterArgs struct {
 type KubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
+	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
 	// A name for the node pool.
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:

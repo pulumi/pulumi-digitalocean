@@ -48,6 +48,19 @@ import * as utilities from "./utilities";
  *     version: "6",
  * });
  * ```
+ * ### Create a new MongoDB database cluster
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const mongodb_example = new digitalocean.DatabaseCluster("mongodb-example", {
+ *     engine: "mongodb",
+ *     nodeCount: 1,
+ *     region: "nyc3",
+ *     size: "db-s-1vcpu-1gb",
+ *     version: "4",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -94,7 +107,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly database!: pulumi.Output<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -254,7 +267,7 @@ export interface DatabaseClusterState {
      */
     database?: pulumi.Input<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
      */
     engine?: pulumi.Input<string>;
     /**
@@ -332,7 +345,7 @@ export interface DatabaseClusterState {
  */
 export interface DatabaseClusterArgs {
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
      */
     engine: pulumi.Input<string>;
     /**

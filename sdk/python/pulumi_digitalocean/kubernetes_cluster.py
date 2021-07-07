@@ -20,6 +20,7 @@ class KubernetesClusterArgs:
                  region: pulumi.Input[Union[str, 'Region']],
                  version: pulumi.Input[str],
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -30,6 +31,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
@@ -40,6 +42,8 @@ class KubernetesClusterArgs:
         pulumi.set(__self__, "version", version)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if surge_upgrade is not None:
@@ -96,6 +100,18 @@ class KubernetesClusterArgs:
     @auto_upgrade.setter
     def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_upgrade", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']]:
+        """
+        A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
 
     @property
     @pulumi.getter
@@ -156,6 +172,7 @@ class _KubernetesClusterState:
                  endpoint: Optional[pulumi.Input[str]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
                  kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -174,6 +191,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node.
+        :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
@@ -199,6 +217,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "ipv4_address", ipv4_address)
         if kube_configs is not None:
             pulumi.set(__self__, "kube_configs", kube_configs)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_pool is not None:
@@ -300,6 +320,18 @@ class _KubernetesClusterState:
     @kube_configs.setter
     def kube_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]]):
         pulumi.set(self, "kube_configs", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']]:
+        """
+        A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
 
     @property
     @pulumi.getter
@@ -428,6 +460,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -448,6 +481,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
@@ -487,6 +521,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -507,6 +542,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__ = KubernetesClusterArgs.__new__(KubernetesClusterArgs)
 
             __props__.__dict__["auto_upgrade"] = auto_upgrade
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
             if node_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pool'")
@@ -546,6 +582,7 @@ class KubernetesCluster(pulumi.CustomResource):
             endpoint: Optional[pulumi.Input[str]] = None,
             ipv4_address: Optional[pulumi.Input[str]] = None,
             kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesClusterKubeConfigArgs']]]]] = None,
+            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -569,6 +606,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node.
+        :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
@@ -591,6 +629,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["ipv4_address"] = ipv4_address
         __props__.__dict__["kube_configs"] = kube_configs
+        __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["node_pool"] = node_pool
         __props__.__dict__["region"] = region
@@ -655,6 +694,14 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="kubeConfigs")
     def kube_configs(self) -> pulumi.Output[Sequence['outputs.KubernetesClusterKubeConfig']]:
         return pulumi.get(self, "kube_configs")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output['outputs.KubernetesClusterMaintenancePolicy']:
+        """
+        A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        """
+        return pulumi.get(self, "maintenance_policy")
 
     @property
     @pulumi.getter

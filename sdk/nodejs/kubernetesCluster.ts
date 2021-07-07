@@ -68,6 +68,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
     public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
     public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
     /**
+     * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<outputs.KubernetesClusterMaintenancePolicy>;
+    /**
      * A name for the node pool.
      */
     public readonly name!: pulumi.Output<string>;
@@ -128,6 +132,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
             inputs["kubeConfigs"] = state ? state.kubeConfigs : undefined;
+            inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodePool"] = state ? state.nodePool : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -150,6 +155,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             inputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
+            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodePool"] = args ? args.nodePool : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -204,6 +210,10 @@ export interface KubernetesClusterState {
     ipv4Address?: pulumi.Input<string>;
     kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;
     /**
+     * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.KubernetesClusterMaintenancePolicy>;
+    /**
      * A name for the node pool.
      */
     name?: pulumi.Input<string>;
@@ -253,6 +263,10 @@ export interface KubernetesClusterArgs {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    /**
+     * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.KubernetesClusterMaintenancePolicy>;
     /**
      * A name for the node pool.
      */

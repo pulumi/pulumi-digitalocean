@@ -89,6 +89,31 @@ import (
 // 	})
 // }
 // ```
+// ### Create a new MongoDB database cluster
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "mongodb_example", &digitalocean.DatabaseClusterArgs{
+// 			Engine:    pulumi.String("mongodb"),
+// 			NodeCount: pulumi.Int(1),
+// 			Region:    pulumi.String("nyc3"),
+// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
+// 			Version:   pulumi.String("4"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -104,7 +129,7 @@ type DatabaseCluster struct {
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database pulumi.StringOutput `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrOutput `pulumi:"evictionPolicy"`
@@ -187,7 +212,7 @@ type databaseClusterState struct {
 	ClusterUrn *string `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database *string `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
 	Engine *string `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
@@ -230,7 +255,7 @@ type DatabaseClusterState struct {
 	ClusterUrn pulumi.StringPtrInput
 	// Name of the cluster's default database.
 	Database pulumi.StringPtrInput
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
 	Engine pulumi.StringPtrInput
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrInput
@@ -273,7 +298,7 @@ func (DatabaseClusterState) ElementType() reflect.Type {
 }
 
 type databaseClusterArgs struct {
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
 	Engine string `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
@@ -299,7 +324,7 @@ type databaseClusterArgs struct {
 
 // The set of arguments for constructing a DatabaseCluster resource.
 type DatabaseClusterArgs struct {
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
 	Engine pulumi.StringInput
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrInput
