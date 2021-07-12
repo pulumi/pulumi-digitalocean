@@ -76,6 +76,27 @@ namespace Pulumi.DigitalOcean
     /// 
     /// }
     /// ```
+    /// ### Create a new MongoDB database cluster
+    /// ```csharp
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mongodb_example = new DigitalOcean.DatabaseCluster("mongodb-example", new DigitalOcean.DatabaseClusterArgs
+    ///         {
+    ///             Engine = "mongodb",
+    ///             NodeCount = 1,
+    ///             Region = "nyc3",
+    ///             Size = "db-s-1vcpu-1gb",
+    ///             Version = "4",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -101,7 +122,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -255,7 +276,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -352,7 +373,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

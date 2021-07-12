@@ -41,6 +41,8 @@ type LookupKubernetesClusterResult struct {
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address string                           `pulumi:"ipv4Address"`
 	KubeConfigs []GetKubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
+	// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
+	MaintenancePolicies []GetKubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicies"`
 	// The auto-generated name for the node.
 	Name string `pulumi:"name"`
 	// A list of node pools associated with the cluster. Each node pool exports the following attributes:

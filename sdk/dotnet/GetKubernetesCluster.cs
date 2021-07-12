@@ -75,6 +75,10 @@ namespace Pulumi.DigitalOcean
         public readonly string Ipv4Address;
         public readonly ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> KubeConfigs;
         /// <summary>
+        /// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterMaintenancePolicyResult> MaintenancePolicies;
+        /// <summary>
         /// The auto-generated name for the node.
         /// </summary>
         public readonly string Name;
@@ -132,6 +136,8 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> kubeConfigs,
 
+            ImmutableArray<Outputs.GetKubernetesClusterMaintenancePolicyResult> maintenancePolicies,
+
             string name,
 
             ImmutableArray<Outputs.GetKubernetesClusterNodePoolResult> nodePools,
@@ -161,6 +167,7 @@ namespace Pulumi.DigitalOcean
             Id = id;
             Ipv4Address = ipv4Address;
             KubeConfigs = kubeConfigs;
+            MaintenancePolicies = maintenancePolicies;
             Name = name;
             NodePools = nodePools;
             Region = region;

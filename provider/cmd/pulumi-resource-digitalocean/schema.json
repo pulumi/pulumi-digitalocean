@@ -2040,6 +2040,46 @@
                 }
             }
         },
+        "digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy": {
+            "properties": {
+                "day": {
+                    "type": "string",
+                    "description": "The day of the maintenance window policy. May be one of \"monday\" through \"sunday\", or \"any\" to indicate an arbitrary week day.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "duration": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "day",
+                        "duration",
+                        "startTime"
+                    ]
+                }
+            }
+        },
         "digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool": {
             "properties": {
                 "actualNodeCount": {
@@ -5403,6 +5443,48 @@
                 }
             }
         },
+        "digitalocean:index/getKubernetesClusterMaintenancePolicy:getKubernetesClusterMaintenancePolicy": {
+            "properties": {
+                "day": {
+                    "type": "string",
+                    "description": "The day for the service window of the Kubernetes cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "The duration of the operation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "The start time of the upgrade operation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "day",
+                "duration",
+                "startTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getKubernetesClusterNodePool:getKubernetesClusterNodePool": {
             "properties": {
                 "actualNodeCount": {
@@ -8184,7 +8266,7 @@
             }
         },
         "digitalocean:index/databaseCluster:DatabaseCluster": {
-            "description": "Provides a DigitalOcean database cluster resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"11\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"11\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"11\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Create a new MySQL database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mysql_example = new digitalocean.DatabaseCluster(\"mysql-example\", {\n    engine: \"mysql\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"8\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmysql_example = digitalocean.DatabaseCluster(\"mysql-example\",\n    engine=\"mysql\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"8\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mysql_example = new DigitalOcean.DatabaseCluster(\"mysql-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"mysql\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"8\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"mysql_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"mysql\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tVersion:   pulumi.String(\"8\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Create a new Redis database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst redis_example = new digitalocean.DatabaseCluster(\"redis-example\", {\n    engine: \"redis\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"6\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nredis_example = digitalocean.DatabaseCluster(\"redis-example\",\n    engine=\"redis\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"6\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var redis_example = new DigitalOcean.DatabaseCluster(\"redis-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"redis\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"6\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"redis_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"redis\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tVersion:   pulumi.String(\"6\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase clusters can be imported using the `id` returned from DigitalOcean, e.g.\n\n```sh\n $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n ",
+            "description": "Provides a DigitalOcean database cluster resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"11\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"11\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"pg\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"11\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Create a new MySQL database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mysql_example = new digitalocean.DatabaseCluster(\"mysql-example\", {\n    engine: \"mysql\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"8\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmysql_example = digitalocean.DatabaseCluster(\"mysql-example\",\n    engine=\"mysql\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"8\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mysql_example = new DigitalOcean.DatabaseCluster(\"mysql-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"mysql\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"8\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"mysql_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"mysql\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tVersion:   pulumi.String(\"8\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Create a new Redis database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst redis_example = new digitalocean.DatabaseCluster(\"redis-example\", {\n    engine: \"redis\",\n    nodeCount: 1,\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"6\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nredis_example = digitalocean.DatabaseCluster(\"redis-example\",\n    engine=\"redis\",\n    node_count=1,\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"6\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var redis_example = new DigitalOcean.DatabaseCluster(\"redis-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"redis\",\n            NodeCount = 1,\n            Region = \"nyc1\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"6\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"redis_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"redis\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tVersion:   pulumi.String(\"6\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Create a new MongoDB database cluster\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mongodb_example = new digitalocean.DatabaseCluster(\"mongodb-example\", {\n    engine: \"mongodb\",\n    nodeCount: 1,\n    region: \"nyc3\",\n    size: \"db-s-1vcpu-1gb\",\n    version: \"4\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmongodb_example = digitalocean.DatabaseCluster(\"mongodb-example\",\n    engine=\"mongodb\",\n    node_count=1,\n    region=\"nyc3\",\n    size=\"db-s-1vcpu-1gb\",\n    version=\"4\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mongodb_example = new DigitalOcean.DatabaseCluster(\"mongodb-example\", new DigitalOcean.DatabaseClusterArgs\n        {\n            Engine = \"mongodb\",\n            NodeCount = 1,\n            Region = \"nyc3\",\n            Size = \"db-s-1vcpu-1gb\",\n            Version = \"4\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"mongodb_example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"mongodb\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tRegion:    pulumi.String(\"nyc3\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tVersion:   pulumi.String(\"4\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase clusters can be imported using the `id` returned from DigitalOcean, e.g.\n\n```sh\n $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n ",
             "properties": {
                 "clusterUrn": {
                     "type": "string",
@@ -8196,7 +8278,7 @@
                 },
                 "engine": {
                     "type": "string",
-                    "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).\n"
+                    "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).\n"
                 },
                 "evictionPolicy": {
                     "type": "string",
@@ -8293,7 +8375,7 @@
             "inputProperties": {
                 "engine": {
                     "type": "string",
-                    "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).\n"
+                    "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).\n"
                 },
                 "evictionPolicy": {
                     "type": "string",
@@ -8379,7 +8461,7 @@
                     },
                     "engine": {
                         "type": "string",
-                        "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, or `redis` for Redis).\n"
+                        "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).\n"
                     },
                     "evictionPolicy": {
                         "type": "string",
@@ -9973,6 +10055,10 @@
                         "$ref": "#/types/digitalocean:index/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig"
                     }
                 },
+                "maintenancePolicy": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
+                    "description": "A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "A name for the node pool.\n"
@@ -10023,6 +10109,7 @@
                 "endpoint",
                 "ipv4Address",
                 "kubeConfigs",
+                "maintenancePolicy",
                 "name",
                 "nodePool",
                 "region",
@@ -10037,6 +10124,10 @@
                 "autoUpgrade": {
                     "type": "boolean",
                     "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
+                },
+                "maintenancePolicy": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
+                    "description": "A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.\n"
                 },
                 "name": {
                     "type": "string",
@@ -10116,6 +10207,10 @@
                         "items": {
                             "$ref": "#/types/digitalocean:index/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig"
                         }
+                    },
+                    "maintenancePolicy": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
+                        "description": "A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.\n"
                     },
                     "name": {
                         "type": "string",
@@ -13030,6 +13125,13 @@
                             "$ref": "#/types/digitalocean:index/getKubernetesClusterKubeConfig:getKubernetesClusterKubeConfig"
                         }
                     },
+                    "maintenancePolicies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getKubernetesClusterMaintenancePolicy:getKubernetesClusterMaintenancePolicy"
+                        },
+                        "description": "The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The auto-generated name for the node.\n"
@@ -13088,6 +13190,7 @@
                     "endpoint",
                     "ipv4Address",
                     "kubeConfigs",
+                    "maintenancePolicies",
                     "name",
                     "nodePools",
                     "region",
@@ -14494,8 +14597,7 @@
                 "digitalocean": "DigitalOcean"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {

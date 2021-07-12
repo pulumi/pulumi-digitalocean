@@ -5842,6 +5842,171 @@ func (o KubernetesClusterKubeConfigArrayOutput) Index(i pulumi.IntInput) Kuberne
 	}).(KubernetesClusterKubeConfigOutput)
 }
 
+type KubernetesClusterMaintenancePolicy struct {
+	// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+	Day      *string `pulumi:"day"`
+	Duration *string `pulumi:"duration"`
+	// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+	StartTime *string `pulumi:"startTime"`
+}
+
+// KubernetesClusterMaintenancePolicyInput is an input type that accepts KubernetesClusterMaintenancePolicyArgs and KubernetesClusterMaintenancePolicyOutput values.
+// You can construct a concrete instance of `KubernetesClusterMaintenancePolicyInput` via:
+//
+//          KubernetesClusterMaintenancePolicyArgs{...}
+type KubernetesClusterMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterMaintenancePolicyOutput() KubernetesClusterMaintenancePolicyOutput
+	ToKubernetesClusterMaintenancePolicyOutputWithContext(context.Context) KubernetesClusterMaintenancePolicyOutput
+}
+
+type KubernetesClusterMaintenancePolicyArgs struct {
+	// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+	Day      pulumi.StringPtrInput `pulumi:"day"`
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (KubernetesClusterMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (i KubernetesClusterMaintenancePolicyArgs) ToKubernetesClusterMaintenancePolicyOutput() KubernetesClusterMaintenancePolicyOutput {
+	return i.ToKubernetesClusterMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterMaintenancePolicyArgs) ToKubernetesClusterMaintenancePolicyOutputWithContext(ctx context.Context) KubernetesClusterMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterMaintenancePolicyOutput)
+}
+
+func (i KubernetesClusterMaintenancePolicyArgs) ToKubernetesClusterMaintenancePolicyPtrOutput() KubernetesClusterMaintenancePolicyPtrOutput {
+	return i.ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterMaintenancePolicyArgs) ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) KubernetesClusterMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterMaintenancePolicyOutput).ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterMaintenancePolicyPtrInput is an input type that accepts KubernetesClusterMaintenancePolicyArgs, KubernetesClusterMaintenancePolicyPtr and KubernetesClusterMaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterMaintenancePolicyPtrInput` via:
+//
+//          KubernetesClusterMaintenancePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesClusterMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterMaintenancePolicyPtrOutput() KubernetesClusterMaintenancePolicyPtrOutput
+	ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(context.Context) KubernetesClusterMaintenancePolicyPtrOutput
+}
+
+type kubernetesClusterMaintenancePolicyPtrType KubernetesClusterMaintenancePolicyArgs
+
+func KubernetesClusterMaintenancePolicyPtr(v *KubernetesClusterMaintenancePolicyArgs) KubernetesClusterMaintenancePolicyPtrInput {
+	return (*kubernetesClusterMaintenancePolicyPtrType)(v)
+}
+
+func (*kubernetesClusterMaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (i *kubernetesClusterMaintenancePolicyPtrType) ToKubernetesClusterMaintenancePolicyPtrOutput() KubernetesClusterMaintenancePolicyPtrOutput {
+	return i.ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterMaintenancePolicyPtrType) ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) KubernetesClusterMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterMaintenancePolicyPtrOutput)
+}
+
+type KubernetesClusterMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (o KubernetesClusterMaintenancePolicyOutput) ToKubernetesClusterMaintenancePolicyOutput() KubernetesClusterMaintenancePolicyOutput {
+	return o
+}
+
+func (o KubernetesClusterMaintenancePolicyOutput) ToKubernetesClusterMaintenancePolicyOutputWithContext(ctx context.Context) KubernetesClusterMaintenancePolicyOutput {
+	return o
+}
+
+func (o KubernetesClusterMaintenancePolicyOutput) ToKubernetesClusterMaintenancePolicyPtrOutput() KubernetesClusterMaintenancePolicyPtrOutput {
+	return o.ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterMaintenancePolicyOutput) ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) KubernetesClusterMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *KubernetesClusterMaintenancePolicy {
+		return &v
+	}).(KubernetesClusterMaintenancePolicyPtrOutput)
+}
+
+// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+func (o KubernetesClusterMaintenancePolicyOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *string { return v.Day }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesClusterMaintenancePolicyOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+func (o KubernetesClusterMaintenancePolicyOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesClusterMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (o KubernetesClusterMaintenancePolicyPtrOutput) ToKubernetesClusterMaintenancePolicyPtrOutput() KubernetesClusterMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterMaintenancePolicyPtrOutput) ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) KubernetesClusterMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterMaintenancePolicyPtrOutput) Elem() KubernetesClusterMaintenancePolicyOutput {
+	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) KubernetesClusterMaintenancePolicy { return *v }).(KubernetesClusterMaintenancePolicyOutput)
+}
+
+// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+func (o KubernetesClusterMaintenancePolicyPtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesClusterMaintenancePolicyPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+func (o KubernetesClusterMaintenancePolicyPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type KubernetesClusterNodePool struct {
 	// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
 	ActualNodeCount *int `pulumi:"actualNodeCount"`
@@ -14905,6 +15070,121 @@ func (o GetKubernetesClusterKubeConfigArrayOutput) Index(i pulumi.IntInput) GetK
 	}).(GetKubernetesClusterKubeConfigOutput)
 }
 
+type GetKubernetesClusterMaintenancePolicy struct {
+	// The day for the service window of the Kubernetes cluster.
+	Day string `pulumi:"day"`
+	// The duration of the operation.
+	Duration string `pulumi:"duration"`
+	// The start time of the upgrade operation.
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetKubernetesClusterMaintenancePolicyInput is an input type that accepts GetKubernetesClusterMaintenancePolicyArgs and GetKubernetesClusterMaintenancePolicyOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterMaintenancePolicyInput` via:
+//
+//          GetKubernetesClusterMaintenancePolicyArgs{...}
+type GetKubernetesClusterMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterMaintenancePolicyOutput() GetKubernetesClusterMaintenancePolicyOutput
+	ToGetKubernetesClusterMaintenancePolicyOutputWithContext(context.Context) GetKubernetesClusterMaintenancePolicyOutput
+}
+
+type GetKubernetesClusterMaintenancePolicyArgs struct {
+	// The day for the service window of the Kubernetes cluster.
+	Day pulumi.StringInput `pulumi:"day"`
+	// The duration of the operation.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// The start time of the upgrade operation.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetKubernetesClusterMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterMaintenancePolicyArgs) ToGetKubernetesClusterMaintenancePolicyOutput() GetKubernetesClusterMaintenancePolicyOutput {
+	return i.ToGetKubernetesClusterMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterMaintenancePolicyArgs) ToGetKubernetesClusterMaintenancePolicyOutputWithContext(ctx context.Context) GetKubernetesClusterMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterMaintenancePolicyOutput)
+}
+
+// GetKubernetesClusterMaintenancePolicyArrayInput is an input type that accepts GetKubernetesClusterMaintenancePolicyArray and GetKubernetesClusterMaintenancePolicyArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterMaintenancePolicyArrayInput` via:
+//
+//          GetKubernetesClusterMaintenancePolicyArray{ GetKubernetesClusterMaintenancePolicyArgs{...} }
+type GetKubernetesClusterMaintenancePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterMaintenancePolicyArrayOutput() GetKubernetesClusterMaintenancePolicyArrayOutput
+	ToGetKubernetesClusterMaintenancePolicyArrayOutputWithContext(context.Context) GetKubernetesClusterMaintenancePolicyArrayOutput
+}
+
+type GetKubernetesClusterMaintenancePolicyArray []GetKubernetesClusterMaintenancePolicyInput
+
+func (GetKubernetesClusterMaintenancePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterMaintenancePolicyArray) ToGetKubernetesClusterMaintenancePolicyArrayOutput() GetKubernetesClusterMaintenancePolicyArrayOutput {
+	return i.ToGetKubernetesClusterMaintenancePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterMaintenancePolicyArray) ToGetKubernetesClusterMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetKubernetesClusterMaintenancePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterMaintenancePolicyArrayOutput)
+}
+
+type GetKubernetesClusterMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterMaintenancePolicyOutput) ToGetKubernetesClusterMaintenancePolicyOutput() GetKubernetesClusterMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetKubernetesClusterMaintenancePolicyOutput) ToGetKubernetesClusterMaintenancePolicyOutputWithContext(ctx context.Context) GetKubernetesClusterMaintenancePolicyOutput {
+	return o
+}
+
+// The day for the service window of the Kubernetes cluster.
+func (o GetKubernetesClusterMaintenancePolicyOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterMaintenancePolicy) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// The duration of the operation.
+func (o GetKubernetesClusterMaintenancePolicyOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterMaintenancePolicy) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// The start time of the upgrade operation.
+func (o GetKubernetesClusterMaintenancePolicyOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterMaintenancePolicy) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetKubernetesClusterMaintenancePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterMaintenancePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterMaintenancePolicyArrayOutput) ToGetKubernetesClusterMaintenancePolicyArrayOutput() GetKubernetesClusterMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterMaintenancePolicyArrayOutput) ToGetKubernetesClusterMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetKubernetesClusterMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetKubernetesClusterMaintenancePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterMaintenancePolicy {
+		return vs[0].([]GetKubernetesClusterMaintenancePolicy)[vs[1].(int)]
+	}).(GetKubernetesClusterMaintenancePolicyOutput)
+}
+
 type GetKubernetesClusterNodePool struct {
 	// The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
 	ActualNodeCount int `pulumi:"actualNodeCount"`
@@ -18554,6 +18834,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallPendingChangeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterKubeConfigOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterKubeConfigArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolNodeOutput{})
@@ -18667,6 +18949,8 @@ func init() {
 	pulumi.RegisterOutputType(GetImagesSortArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolNodeOutput{})

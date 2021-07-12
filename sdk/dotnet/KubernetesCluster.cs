@@ -61,6 +61,12 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<Outputs.KubernetesClusterKubeConfig>> KubeConfigs { get; private set; } = null!;
 
         /// <summary>
+        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.KubernetesClusterMaintenancePolicy> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A name for the node pool.
         /// </summary>
         [Output("name")]
@@ -173,6 +179,12 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
+        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.KubernetesClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
         /// A name for the node pool.
         /// </summary>
         [Input("name")]
@@ -270,6 +282,12 @@ namespace Pulumi.DigitalOcean
             get => _kubeConfigs ?? (_kubeConfigs = new InputList<Inputs.KubernetesClusterKubeConfigGetArgs>());
             set => _kubeConfigs = value;
         }
+
+        /// <summary>
+        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.KubernetesClusterMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// A name for the node pool.

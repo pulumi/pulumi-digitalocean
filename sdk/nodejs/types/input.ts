@@ -1255,6 +1255,18 @@ export interface KubernetesClusterKubeConfig {
     token?: pulumi.Input<string>;
 }
 
+export interface KubernetesClusterMaintenancePolicy {
+    /**
+     * The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+     */
+    day?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
+    /**
+     * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+     */
+    startTime?: pulumi.Input<string>;
+}
+
 export interface KubernetesClusterNodePool {
     /**
      * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.

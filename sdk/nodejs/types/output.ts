@@ -1833,6 +1833,21 @@ export interface GetKubernetesClusterKubeConfig {
     token: string;
 }
 
+export interface GetKubernetesClusterMaintenancePolicy {
+    /**
+     * The day for the service window of the Kubernetes cluster.
+     */
+    day: string;
+    /**
+     * The duration of the operation.
+     */
+    duration: string;
+    /**
+     * The start time of the upgrade operation.
+     */
+    startTime: string;
+}
+
 export interface GetKubernetesClusterNodePool {
     /**
      * The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
@@ -2404,6 +2419,18 @@ export interface KubernetesClusterKubeConfig {
      * The DigitalOcean API access token used by clients to access the cluster.
      */
     token: string;
+}
+
+export interface KubernetesClusterMaintenancePolicy {
+    /**
+     * The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+     */
+    day: string;
+    duration: string;
+    /**
+     * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+     */
+    startTime: string;
 }
 
 export interface KubernetesClusterNodePool {

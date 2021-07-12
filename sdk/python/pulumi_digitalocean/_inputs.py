@@ -46,6 +46,7 @@ __all__ = [
     'FirewallOutboundRuleArgs',
     'FirewallPendingChangeArgs',
     'KubernetesClusterKubeConfigArgs',
+    'KubernetesClusterMaintenancePolicyArgs',
     'KubernetesClusterNodePoolArgs',
     'KubernetesClusterNodePoolNodeArgs',
     'KubernetesClusterNodePoolTaintArgs',
@@ -3194,6 +3195,57 @@ class KubernetesClusterKubeConfigArgs:
     @token.setter
     def token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class KubernetesClusterMaintenancePolicyArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] day: The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+        :param pulumi.Input[str] start_time: The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[str]]:
+        """
+        The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

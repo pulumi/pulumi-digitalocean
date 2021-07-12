@@ -20,7 +20,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, auto_upgrade=None, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
+    def __init__(__self__, auto_upgrade=None, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, maintenance_policies=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
         if auto_upgrade and not isinstance(auto_upgrade, bool):
             raise TypeError("Expected argument 'auto_upgrade' to be a bool")
         pulumi.set(__self__, "auto_upgrade", auto_upgrade)
@@ -42,6 +42,9 @@ class GetKubernetesClusterResult:
         if kube_configs and not isinstance(kube_configs, list):
             raise TypeError("Expected argument 'kube_configs' to be a list")
         pulumi.set(__self__, "kube_configs", kube_configs)
+        if maintenance_policies and not isinstance(maintenance_policies, list):
+            raise TypeError("Expected argument 'maintenance_policies' to be a list")
+        pulumi.set(__self__, "maintenance_policies", maintenance_policies)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -129,6 +132,14 @@ class GetKubernetesClusterResult:
     @pulumi.getter(name="kubeConfigs")
     def kube_configs(self) -> Sequence['outputs.GetKubernetesClusterKubeConfigResult']:
         return pulumi.get(self, "kube_configs")
+
+    @property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> Sequence['outputs.GetKubernetesClusterMaintenancePolicyResult']:
+        """
+        The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
+        """
+        return pulumi.get(self, "maintenance_policies")
 
     @property
     @pulumi.getter
@@ -229,6 +240,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             id=self.id,
             ipv4_address=self.ipv4_address,
             kube_configs=self.kube_configs,
+            maintenance_policies=self.maintenance_policies,
             name=self.name,
             node_pools=self.node_pools,
             region=self.region,
@@ -269,6 +281,7 @@ def get_kubernetes_cluster(name: Optional[str] = None,
         id=__ret__.id,
         ipv4_address=__ret__.ipv4_address,
         kube_configs=__ret__.kube_configs,
+        maintenance_policies=__ret__.maintenance_policies,
         name=__ret__.name,
         node_pools=__ret__.node_pools,
         region=__ret__.region,
