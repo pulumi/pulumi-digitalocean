@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.10.1 of the DigitalOcean Terraform Provider
+_(none)_
 
 ---
+
+## 4.5.0 (2021-07-12)
+* Upgrade to v2.10.1 of the DigitalOcean Terraform Provider
 
 ## 4.4.1 (2021-06-10)
 * Ensure `digitalocean.Volume` autonaming adheres to naming conventions of letters, numbers, hyphen, lowercase and 64 chars max
