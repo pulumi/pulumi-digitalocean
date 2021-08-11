@@ -194,7 +194,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
         /// </summary>
         [Output("size")]
         public Output<string> Size { get; private set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
 
         /// <summary>
-        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
         /// </summary>
         [Input("size", required: true)]
         public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug> Size { get; set; } = null!;
@@ -451,7 +451,7 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
-        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+        /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
         /// </summary>
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }

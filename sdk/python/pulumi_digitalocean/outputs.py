@@ -2620,7 +2620,7 @@ class DatabaseFirewallRule(dict):
                  created_at: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param str type: The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
+        :param str type: The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
         :param str value: The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
         :param str created_at: The date and time when the firewall rule was created.
         :param str uuid: A unique identifier for the firewall rule.
@@ -2636,7 +2636,7 @@ class DatabaseFirewallRule(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
+        The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
         """
         return pulumi.get(self, "type")
 

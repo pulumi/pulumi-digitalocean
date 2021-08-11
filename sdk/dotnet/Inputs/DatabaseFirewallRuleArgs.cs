@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, or `tag`.
+        /// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

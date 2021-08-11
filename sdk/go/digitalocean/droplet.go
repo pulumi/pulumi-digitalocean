@@ -55,6 +55,13 @@ type Droplet struct {
 	CreatedAt pulumi.StringOutput  `pulumi:"createdAt"`
 	// The size of the instance's disk in GB
 	Disk pulumi.IntOutput `pulumi:"disk"`
+	// A boolean indicating whether to install the
+	// DigitalOcean agent used for providing access to the Droplet web console in
+	// the control panel. By default, the agent is installed on new Droplets but
+	// installation errors (i.e. OS not supported) are ignored. To prevent it from
+	// being installed, set to `false`. To make installation errors fatal, explicitly
+	// set it to `true`.
+	DropletAgent pulumi.BoolPtrOutput `pulumi:"dropletAgent"`
 	// The uniform resource name of the Droplet
 	// * `name`- The name of the Droplet
 	DropletUrn pulumi.StringOutput `pulumi:"dropletUrn"`
@@ -92,7 +99,7 @@ type Droplet struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrOutput `pulumi:"resizeDisk"`
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -159,6 +166,13 @@ type dropletState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The size of the instance's disk in GB
 	Disk *int `pulumi:"disk"`
+	// A boolean indicating whether to install the
+	// DigitalOcean agent used for providing access to the Droplet web console in
+	// the control panel. By default, the agent is installed on new Droplets but
+	// installation errors (i.e. OS not supported) are ignored. To prevent it from
+	// being installed, set to `false`. To make installation errors fatal, explicitly
+	// set it to `true`.
+	DropletAgent *bool `pulumi:"dropletAgent"`
 	// The uniform resource name of the Droplet
 	// * `name`- The name of the Droplet
 	DropletUrn *string `pulumi:"dropletUrn"`
@@ -196,7 +210,7 @@ type dropletState struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size *string `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -226,6 +240,13 @@ type DropletState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The size of the instance's disk in GB
 	Disk pulumi.IntPtrInput
+	// A boolean indicating whether to install the
+	// DigitalOcean agent used for providing access to the Droplet web console in
+	// the control panel. By default, the agent is installed on new Droplets but
+	// installation errors (i.e. OS not supported) are ignored. To prevent it from
+	// being installed, set to `false`. To make installation errors fatal, explicitly
+	// set it to `true`.
+	DropletAgent pulumi.BoolPtrInput
 	// The uniform resource name of the Droplet
 	// * `name`- The name of the Droplet
 	DropletUrn pulumi.StringPtrInput
@@ -263,7 +284,7 @@ type DropletState struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrInput
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size pulumi.StringPtrInput
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -294,6 +315,13 @@ type dropletArgs struct {
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups *bool `pulumi:"backups"`
+	// A boolean indicating whether to install the
+	// DigitalOcean agent used for providing access to the Droplet web console in
+	// the control panel. By default, the agent is installed on new Droplets but
+	// installation errors (i.e. OS not supported) are ignored. To prevent it from
+	// being installed, set to `false`. To make installation errors fatal, explicitly
+	// set it to `true`.
+	DropletAgent *bool `pulumi:"dropletAgent"`
 	// The Droplet image ID or slug.
 	Image string `pulumi:"image"`
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
@@ -315,7 +343,7 @@ type dropletArgs struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size string `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -339,6 +367,13 @@ type DropletArgs struct {
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups pulumi.BoolPtrInput
+	// A boolean indicating whether to install the
+	// DigitalOcean agent used for providing access to the Droplet web console in
+	// the control panel. By default, the agent is installed on new Droplets but
+	// installation errors (i.e. OS not supported) are ignored. To prevent it from
+	// being installed, set to `false`. To make installation errors fatal, explicitly
+	// set it to `true`.
+	DropletAgent pulumi.BoolPtrInput
 	// The Droplet image ID or slug.
 	Image pulumi.StringInput
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
@@ -360,7 +395,7 @@ type DropletArgs struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrInput
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size pulumi.StringInput
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the

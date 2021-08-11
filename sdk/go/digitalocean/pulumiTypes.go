@@ -5111,7 +5111,7 @@ func (o DatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) Da
 type DatabaseFirewallRule struct {
 	// The date and time when the firewall rule was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
+	// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
 	Type string `pulumi:"type"`
 	// A unique identifier for the firewall rule.
 	Uuid *string `pulumi:"uuid"`
@@ -5133,7 +5133,7 @@ type DatabaseFirewallRuleInput interface {
 type DatabaseFirewallRuleArgs struct {
 	// The date and time when the firewall rule was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
+	// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// A unique identifier for the firewall rule.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
@@ -5197,7 +5197,7 @@ func (o DatabaseFirewallRuleOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseFirewallRule) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
+// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
 func (o DatabaseFirewallRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseFirewallRule) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -65,7 +65,7 @@ type CustomImage struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// An optional description for the image.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
 	Distribution pulumi.StringPtrOutput `pulumi:"distribution"`
 	ImageId      pulumi.IntOutput       `pulumi:"imageId"`
 	MinDiskSize  pulumi.IntOutput       `pulumi:"minDiskSize"`
@@ -122,7 +122,7 @@ type customImageState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// An optional description for the image.
 	Description *string `pulumi:"description"`
-	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
 	Distribution *string `pulumi:"distribution"`
 	ImageId      *int    `pulumi:"imageId"`
 	MinDiskSize  *int    `pulumi:"minDiskSize"`
@@ -145,7 +145,7 @@ type CustomImageState struct {
 	CreatedAt pulumi.StringPtrInput
 	// An optional description for the image.
 	Description pulumi.StringPtrInput
-	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
 	Distribution pulumi.StringPtrInput
 	ImageId      pulumi.IntPtrInput
 	MinDiskSize  pulumi.IntPtrInput
@@ -171,7 +171,7 @@ func (CustomImageState) ElementType() reflect.Type {
 type customImageArgs struct {
 	// An optional description for the image.
 	Description *string `pulumi:"description"`
-	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
 	Distribution *string `pulumi:"distribution"`
 	// A name for the Custom Image.
 	Name *string `pulumi:"name"`
@@ -187,7 +187,7 @@ type customImageArgs struct {
 type CustomImageArgs struct {
 	// An optional description for the image.
 	Description pulumi.StringPtrInput
-	// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
 	Distribution pulumi.StringPtrInput
 	// A name for the Custom Image.
 	Name pulumi.StringPtrInput

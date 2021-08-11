@@ -18,6 +18,7 @@ class DropletArgs:
                  region: pulumi.Input[Union[str, 'Region']],
                  size: pulumi.Input[Union[str, 'DropletSlug']],
                  backups: Optional[pulumi.Input[bool]] = None,
+                 droplet_agent: Optional[pulumi.Input[bool]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -32,9 +33,15 @@ class DropletArgs:
         The set of arguments for constructing a Droplet resource.
         :param pulumi.Input[str] image: The Droplet image ID or slug.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
+        :param pulumi.Input[bool] droplet_agent: A boolean indicating whether to install the
+               DigitalOcean agent used for providing access to the Droplet web console in
+               the control panel. By default, the agent is installed on new Droplets but
+               installation errors (i.e. OS not supported) are ignored. To prevent it from
+               being installed, set to `false`. To make installation errors fatal, explicitly
+               set it to `true`.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
                Defaults to false.
@@ -63,6 +70,8 @@ class DropletArgs:
         pulumi.set(__self__, "size", size)
         if backups is not None:
             pulumi.set(__self__, "backups", backups)
+        if droplet_agent is not None:
+            pulumi.set(__self__, "droplet_agent", droplet_agent)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
         if monitoring is not None:
@@ -112,7 +121,7 @@ class DropletArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[Union[str, 'DropletSlug']]:
         """
-        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 
@@ -132,6 +141,23 @@ class DropletArgs:
     @backups.setter
     def backups(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "backups", value)
+
+    @property
+    @pulumi.getter(name="dropletAgent")
+    def droplet_agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether to install the
+        DigitalOcean agent used for providing access to the Droplet web console in
+        the control panel. By default, the agent is installed on new Droplets but
+        installation errors (i.e. OS not supported) are ignored. To prevent it from
+        being installed, set to `false`. To make installation errors fatal, explicitly
+        set it to `true`.
+        """
+        return pulumi.get(self, "droplet_agent")
+
+    @droplet_agent.setter
+    def droplet_agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "droplet_agent", value)
 
     @property
     @pulumi.getter
@@ -272,6 +298,7 @@ class _DropletState:
                  backups: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
+                 droplet_agent: Optional[pulumi.Input[bool]] = None,
                  droplet_urn: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
@@ -300,6 +327,12 @@ class _DropletState:
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[int] disk: The size of the instance's disk in GB
+        :param pulumi.Input[bool] droplet_agent: A boolean indicating whether to install the
+               DigitalOcean agent used for providing access to the Droplet web console in
+               the control panel. By default, the agent is installed on new Droplets but
+               installation errors (i.e. OS not supported) are ignored. To prevent it from
+               being installed, set to `false`. To make installation errors fatal, explicitly
+               set it to `true`.
         :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
                * `name`- The name of the Droplet
         :param pulumi.Input[str] image: The Droplet image ID or slug.
@@ -322,7 +355,7 @@ class _DropletState:
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
                [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
@@ -342,6 +375,8 @@ class _DropletState:
             pulumi.set(__self__, "created_at", created_at)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
+        if droplet_agent is not None:
+            pulumi.set(__self__, "droplet_agent", droplet_agent)
         if droplet_urn is not None:
             pulumi.set(__self__, "droplet_urn", droplet_urn)
         if image is not None:
@@ -422,6 +457,23 @@ class _DropletState:
     @disk.setter
     def disk(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter(name="dropletAgent")
+    def droplet_agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether to install the
+        DigitalOcean agent used for providing access to the Droplet web console in
+        the control panel. By default, the agent is installed on new Droplets but
+        installation errors (i.e. OS not supported) are ignored. To prevent it from
+        being installed, set to `false`. To make installation errors fatal, explicitly
+        set it to `true`.
+        """
+        return pulumi.get(self, "droplet_agent")
+
+    @droplet_agent.setter
+    def droplet_agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "droplet_agent", value)
 
     @property
     @pulumi.getter(name="dropletUrn")
@@ -612,7 +664,7 @@ class _DropletState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[Union[str, 'DropletSlug']]]:
         """
-        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 
@@ -716,6 +768,7 @@ class Droplet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
+                 droplet_agent: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -759,6 +812,12 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
+        :param pulumi.Input[bool] droplet_agent: A boolean indicating whether to install the
+               DigitalOcean agent used for providing access to the Droplet web console in
+               the control panel. By default, the agent is installed on new Droplets but
+               installation errors (i.e. OS not supported) are ignored. To prevent it from
+               being installed, set to `false`. To make installation errors fatal, explicitly
+               set it to `true`.
         :param pulumi.Input[str] image: The Droplet image ID or slug.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
@@ -773,7 +832,7 @@ class Droplet(pulumi.CustomResource):
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
                [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
@@ -832,6 +891,7 @@ class Droplet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
+                 droplet_agent: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -858,6 +918,7 @@ class Droplet(pulumi.CustomResource):
             __props__ = DropletArgs.__new__(DropletArgs)
 
             __props__.__dict__["backups"] = backups
+            __props__.__dict__["droplet_agent"] = droplet_agent
             if image is None and not opts.urn:
                 raise TypeError("Missing required property 'image'")
             __props__.__dict__["image"] = image
@@ -902,6 +963,7 @@ class Droplet(pulumi.CustomResource):
             backups: Optional[pulumi.Input[bool]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             disk: Optional[pulumi.Input[int]] = None,
+            droplet_agent: Optional[pulumi.Input[bool]] = None,
             droplet_urn: Optional[pulumi.Input[str]] = None,
             image: Optional[pulumi.Input[str]] = None,
             ipv4_address: Optional[pulumi.Input[str]] = None,
@@ -935,6 +997,12 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[int] disk: The size of the instance's disk in GB
+        :param pulumi.Input[bool] droplet_agent: A boolean indicating whether to install the
+               DigitalOcean agent used for providing access to the Droplet web console in
+               the control panel. By default, the agent is installed on new Droplets but
+               installation errors (i.e. OS not supported) are ignored. To prevent it from
+               being installed, set to `false`. To make installation errors fatal, explicitly
+               set it to `true`.
         :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
                * `name`- The name of the Droplet
         :param pulumi.Input[str] image: The Droplet image ID or slug.
@@ -957,7 +1025,7 @@ class Droplet(pulumi.CustomResource):
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
                [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
@@ -978,6 +1046,7 @@ class Droplet(pulumi.CustomResource):
         __props__.__dict__["backups"] = backups
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["disk"] = disk
+        __props__.__dict__["droplet_agent"] = droplet_agent
         __props__.__dict__["droplet_urn"] = droplet_urn
         __props__.__dict__["image"] = image
         __props__.__dict__["ipv4_address"] = ipv4_address
@@ -1024,6 +1093,19 @@ class Droplet(pulumi.CustomResource):
         The size of the instance's disk in GB
         """
         return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter(name="dropletAgent")
+    def droplet_agent(self) -> pulumi.Output[Optional[bool]]:
+        """
+        A boolean indicating whether to install the
+        DigitalOcean agent used for providing access to the Droplet web console in
+        the control panel. By default, the agent is installed on new Droplets but
+        installation errors (i.e. OS not supported) are ignored. To prevent it from
+        being installed, set to `false`. To make installation errors fatal, explicitly
+        set it to `true`.
+        """
+        return pulumi.get(self, "droplet_agent")
 
     @property
     @pulumi.getter(name="dropletUrn")
@@ -1154,7 +1236,7 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[str]:
         """
-        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 

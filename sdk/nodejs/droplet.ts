@@ -70,6 +70,15 @@ export class Droplet extends pulumi.CustomResource {
      */
     public /*out*/ readonly disk!: pulumi.Output<number>;
     /**
+     * A boolean indicating whether to install the
+     * DigitalOcean agent used for providing access to the Droplet web console in
+     * the control panel. By default, the agent is installed on new Droplets but
+     * installation errors (i.e. OS not supported) are ignored. To prevent it from
+     * being installed, set to `false`. To make installation errors fatal, explicitly
+     * set it to `true`.
+     */
+    public readonly dropletAgent!: pulumi.Output<boolean | undefined>;
+    /**
      * The uniform resource name of the Droplet
      * * `name`- The name of the Droplet
      */
@@ -135,7 +144,7 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly resizeDisk!: pulumi.Output<boolean | undefined>;
     /**
-     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      */
     public readonly size!: pulumi.Output<string>;
     /**
@@ -188,6 +197,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["backups"] = state ? state.backups : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["disk"] = state ? state.disk : undefined;
+            inputs["dropletAgent"] = state ? state.dropletAgent : undefined;
             inputs["dropletUrn"] = state ? state.dropletUrn : undefined;
             inputs["image"] = state ? state.image : undefined;
             inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
@@ -223,6 +233,7 @@ export class Droplet extends pulumi.CustomResource {
                 throw new Error("Missing required property 'size'");
             }
             inputs["backups"] = args ? args.backups : undefined;
+            inputs["dropletAgent"] = args ? args.dropletAgent : undefined;
             inputs["image"] = args ? args.image : undefined;
             inputs["ipv6"] = args ? args.ipv6 : undefined;
             inputs["monitoring"] = args ? args.monitoring : undefined;
@@ -270,6 +281,15 @@ export interface DropletState {
      * The size of the instance's disk in GB
      */
     disk?: pulumi.Input<number>;
+    /**
+     * A boolean indicating whether to install the
+     * DigitalOcean agent used for providing access to the Droplet web console in
+     * the control panel. By default, the agent is installed on new Droplets but
+     * installation errors (i.e. OS not supported) are ignored. To prevent it from
+     * being installed, set to `false`. To make installation errors fatal, explicitly
+     * set it to `true`.
+     */
+    dropletAgent?: pulumi.Input<boolean>;
     /**
      * The uniform resource name of the Droplet
      * * `name`- The name of the Droplet
@@ -336,7 +356,7 @@ export interface DropletState {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      */
     size?: pulumi.Input<string | enums.DropletSlug>;
     /**
@@ -384,6 +404,15 @@ export interface DropletArgs {
      */
     backups?: pulumi.Input<boolean>;
     /**
+     * A boolean indicating whether to install the
+     * DigitalOcean agent used for providing access to the Droplet web console in
+     * the control panel. By default, the agent is installed on new Droplets but
+     * installation errors (i.e. OS not supported) are ignored. To prevent it from
+     * being installed, set to `false`. To make installation errors fatal, explicitly
+     * set it to `true`.
+     */
+    dropletAgent?: pulumi.Input<boolean>;
+    /**
      * The Droplet image ID or slug.
      */
     image: pulumi.Input<string>;
@@ -419,7 +448,7 @@ export interface DropletArgs {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      */
     size: pulumi.Input<string | enums.DropletSlug>;
     /**

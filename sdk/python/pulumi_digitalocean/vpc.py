@@ -212,7 +212,7 @@ class Vpc(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [DigitalOcean VPC](https://developers.digitalocean.com/documentation/v2/#vpcs) resource.
+        Provides a [DigitalOcean VPC](https://docs.digitalocean.com/reference/api/api-reference/#tag/VPCs) resource.
 
         VPCs are virtual networks containing resources that can communicate with each
         other in full isolation, using private IP addresses.
@@ -267,7 +267,7 @@ class Vpc(pulumi.CustomResource):
                  args: VpcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [DigitalOcean VPC](https://developers.digitalocean.com/documentation/v2/#vpcs) resource.
+        Provides a [DigitalOcean VPC](https://docs.digitalocean.com/reference/api/api-reference/#tag/VPCs) resource.
 
         VPCs are virtual networks containing resources that can communicate with each
         other in full isolation, using private IP addresses.

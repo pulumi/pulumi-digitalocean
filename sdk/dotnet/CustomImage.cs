@@ -68,7 +68,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        /// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         /// </summary>
         [Output("distribution")]
         public Output<string?> Distribution { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        /// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         /// </summary>
         [Input("distribution")]
         public Input<string>? Distribution { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        /// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         /// </summary>
         [Input("distribution")]
         public Input<string>? Distribution { get; set; }

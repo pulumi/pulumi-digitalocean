@@ -155,7 +155,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
      */
     public readonly size!: pulumi.Output<string>;
     /**
@@ -315,7 +315,7 @@ export interface DatabaseClusterState {
      */
     region?: pulumi.Input<string | enums.Region>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
      */
     size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
@@ -373,7 +373,7 @@ export interface DatabaseClusterArgs {
      */
     region: pulumi.Input<string | enums.Region>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://developers.digitalocean.com/documentation/v2/#databases).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
      */
     size: pulumi.Input<string | enums.DatabaseSlug>;
     /**

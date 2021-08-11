@@ -24,7 +24,7 @@ class CustomImageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of regions. (Currently only one is supported).
         :param pulumi.Input[str] url: A URL from which the custom Linux virtual machine image may be retrieved.
         :param pulumi.Input[str] description: An optional description for the image.
-        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         :param pulumi.Input[str] name: A name for the Custom Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of optional tags for the image.
         """
@@ -79,7 +79,7 @@ class CustomImageArgs:
     @pulumi.getter
     def distribution(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         """
         return pulumi.get(self, "distribution")
 
@@ -132,7 +132,7 @@ class _CustomImageState:
         """
         Input properties used for looking up and filtering CustomImage resources.
         :param pulumi.Input[str] description: An optional description for the image.
-        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         :param pulumi.Input[str] name: A name for the Custom Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of regions. (Currently only one is supported).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of optional tags for the image.
@@ -192,7 +192,7 @@ class _CustomImageState:
     @pulumi.getter
     def distribution(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         """
         return pulumi.get(self, "distribution")
 
@@ -356,7 +356,7 @@ class CustomImage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description for the image.
-        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         :param pulumi.Input[str] name: A name for the Custom Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of regions. (Currently only one is supported).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of optional tags for the image.
@@ -480,7 +480,7 @@ class CustomImage(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description for the image.
-        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         :param pulumi.Input[str] name: A name for the Custom Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of regions. (Currently only one is supported).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of optional tags for the image.
@@ -523,7 +523,7 @@ class CustomImage(pulumi.CustomResource):
     @pulumi.getter
     def distribution(self) -> pulumi.Output[Optional[str]]:
         """
-        An optional distribution name for the image. Valid values are documented [here](https://developers.digitalocean.com/documentation/v2/#create-a-custom-image)
+        An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
         """
         return pulumi.get(self, "distribution")
 

@@ -63,6 +63,17 @@ namespace Pulumi.DigitalOcean
         public Output<int> Disk { get; private set; } = null!;
 
         /// <summary>
+        /// A boolean indicating whether to install the
+        /// DigitalOcean agent used for providing access to the Droplet web console in
+        /// the control panel. By default, the agent is installed on new Droplets but
+        /// installation errors (i.e. OS not supported) are ignored. To prevent it from
+        /// being installed, set to `false`. To make installation errors fatal, explicitly
+        /// set it to `true`.
+        /// </summary>
+        [Output("dropletAgent")]
+        public Output<bool?> DropletAgent { get; private set; } = null!;
+
+        /// <summary>
         /// The uniform resource name of the Droplet
         /// * `name`- The name of the Droplet
         /// </summary>
@@ -158,7 +169,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> ResizeDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         /// </summary>
         [Output("size")]
         public Output<string> Size { get; private set; } = null!;
@@ -264,6 +275,17 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? Backups { get; set; }
 
         /// <summary>
+        /// A boolean indicating whether to install the
+        /// DigitalOcean agent used for providing access to the Droplet web console in
+        /// the control panel. By default, the agent is installed on new Droplets but
+        /// installation errors (i.e. OS not supported) are ignored. To prevent it from
+        /// being installed, set to `false`. To make installation errors fatal, explicitly
+        /// set it to `true`.
+        /// </summary>
+        [Input("dropletAgent")]
+        public Input<bool>? DropletAgent { get; set; }
+
+        /// <summary>
         /// The Droplet image ID or slug.
         /// </summary>
         [Input("image", required: true)]
@@ -313,7 +335,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? ResizeDisk { get; set; }
 
         /// <summary>
-        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         /// </summary>
         [Input("size", required: true)]
         public InputUnion<string, Pulumi.DigitalOcean.DropletSlug> Size { get; set; } = null!;
@@ -393,6 +415,17 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("disk")]
         public Input<int>? Disk { get; set; }
+
+        /// <summary>
+        /// A boolean indicating whether to install the
+        /// DigitalOcean agent used for providing access to the Droplet web console in
+        /// the control panel. By default, the agent is installed on new Droplets but
+        /// installation errors (i.e. OS not supported) are ignored. To prevent it from
+        /// being installed, set to `false`. To make installation errors fatal, explicitly
+        /// set it to `true`.
+        /// </summary>
+        [Input("dropletAgent")]
+        public Input<bool>? DropletAgent { get; set; }
 
         /// <summary>
         /// The uniform resource name of the Droplet
@@ -490,7 +523,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? ResizeDisk { get; set; }
 
         /// <summary>
-        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://developers.digitalocean.com/documentation/v2/#list-all-sizes).
+        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         /// </summary>
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DropletSlug>? Size { get; set; }
