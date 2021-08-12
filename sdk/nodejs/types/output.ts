@@ -698,7 +698,7 @@ export interface DatabaseFirewallRule {
      */
     createdAt: string;
     /**
-     * The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, or `tag`.
+     * The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
      */
     type: string;
     /**
