@@ -22,6 +22,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? CatchallDocument;
         /// <summary>
+        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// </summary>
+        public readonly Outputs.AppSpecStaticSiteCors? Cors;
+        /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         /// </summary>
         public readonly string? DockerfilePath;
@@ -73,6 +77,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? catchallDocument,
 
+            Outputs.AppSpecStaticSiteCors? cors,
+
             string? dockerfilePath,
 
             string? environmentSlug,
@@ -99,6 +105,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             BuildCommand = buildCommand;
             CatchallDocument = catchallDocument;
+            Cors = cors;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
             Envs = envs;

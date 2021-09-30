@@ -21,6 +21,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
         /// </summary>
         public readonly string? CatchallDocument;
+        public readonly Outputs.GetAppSpecStaticSiteCorsResult? Cors;
         /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         /// </summary>
@@ -73,6 +74,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? catchallDocument,
 
+            Outputs.GetAppSpecStaticSiteCorsResult? cors,
+
             string? dockerfilePath,
 
             string? environmentSlug,
@@ -99,6 +102,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             BuildCommand = buildCommand;
             CatchallDocument = catchallDocument;
+            Cors = cors;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
             Envs = envs;

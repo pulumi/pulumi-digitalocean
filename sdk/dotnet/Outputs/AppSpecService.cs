@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? BuildCommand;
         /// <summary>
+        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// </summary>
+        public readonly Outputs.AppSpecServiceCors? Cors;
+        /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         /// </summary>
         public readonly string? DockerfilePath;
@@ -58,7 +62,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int? InstanceCount;
         /// <summary>
-        /// The instance size to use for this component.
+        /// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         /// </summary>
         public readonly string? InstanceSizeSlug;
         /// <summary>
@@ -82,6 +86,8 @@ namespace Pulumi.DigitalOcean.Outputs
         [OutputConstructor]
         private AppSpecService(
             string? buildCommand,
+
+            Outputs.AppSpecServiceCors? cors,
 
             string? dockerfilePath,
 
@@ -116,6 +122,7 @@ namespace Pulumi.DigitalOcean.Outputs
             string? sourceDir)
         {
             BuildCommand = buildCommand;
+            Cors = cors;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
             Envs = envs;

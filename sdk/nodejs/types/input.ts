@@ -139,7 +139,7 @@ export interface AppSpecJob {
      */
     instanceCount?: pulumi.Input<number>;
     /**
-     * The instance size to use for this component.
+     * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
     instanceSizeSlug?: pulumi.Input<string>;
     /**
@@ -249,6 +249,10 @@ export interface AppSpecService {
      */
     buildCommand?: pulumi.Input<string>;
     /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors?: pulumi.Input<inputs.AppSpecServiceCors>;
+    /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
     dockerfilePath?: pulumi.Input<string>;
@@ -289,7 +293,7 @@ export interface AppSpecService {
      */
     instanceCount?: pulumi.Input<number>;
     /**
-     * The instance size to use for this component.
+     * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
     instanceSizeSlug?: pulumi.Input<string>;
     /**
@@ -309,6 +313,48 @@ export interface AppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
+    allowCredentials?: pulumi.Input<boolean>;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: pulumi.Input<inputs.AppSpecServiceCorsAllowOrigins>;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: pulumi.Input<string>;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: pulumi.Input<string>;
 }
 
 export interface AppSpecServiceEnv {
@@ -434,6 +480,10 @@ export interface AppSpecStaticSite {
      */
     catchallDocument?: pulumi.Input<string>;
     /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors?: pulumi.Input<inputs.AppSpecStaticSiteCors>;
+    /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
     dockerfilePath?: pulumi.Input<string>;
@@ -478,6 +528,48 @@ export interface AppSpecStaticSite {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+}
+
+export interface AppSpecStaticSiteCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
+    allowCredentials?: pulumi.Input<boolean>;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: pulumi.Input<inputs.AppSpecStaticSiteCorsAllowOrigins>;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: pulumi.Input<string>;
+}
+
+export interface AppSpecStaticSiteCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: pulumi.Input<string>;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: pulumi.Input<string>;
 }
 
 export interface AppSpecStaticSiteEnv {
@@ -585,7 +677,7 @@ export interface AppSpecWorker {
      */
     instanceCount?: pulumi.Input<number>;
     /**
-     * The instance size to use for this component.
+     * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
     instanceSizeSlug?: pulumi.Input<string>;
     /**
@@ -1479,6 +1571,16 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: pulumi.Input<string>;
+}
+
+export interface MonitorAlertAlerts {
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    slacks?: pulumi.Input<pulumi.Input<inputs.MonitorAlertAlertsSlack>[]>;
+}
+
+export interface MonitorAlertAlertsSlack {
+    channel: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }
 
 export interface SpacesBucketCorsRule {

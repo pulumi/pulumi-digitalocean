@@ -56,13 +56,15 @@ class _DomainState:
     def __init__(__self__, *,
                  domain_urn: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
         :param pulumi.Input[str] domain_urn: The uniform resource name of the domain
         :param pulumi.Input[str] ip_address: The IP address of the domain. If specified, this IP
                is used to created an initial A record for the domain.
         :param pulumi.Input[str] name: The name of the domain
+        :param pulumi.Input[int] ttl: The TTL value of the domain
         """
         if domain_urn is not None:
             pulumi.set(__self__, "domain_urn", domain_urn)
@@ -70,6 +72,8 @@ class _DomainState:
             pulumi.set(__self__, "ip_address", ip_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter(name="domainUrn")
@@ -107,6 +111,18 @@ class _DomainState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TTL value of the domain
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
 
 
 class Domain(pulumi.CustomResource):
@@ -209,6 +225,7 @@ class Domain(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["domain_urn"] = None
+            __props__.__dict__["ttl"] = None
         super(Domain, __self__).__init__(
             'digitalocean:index/domain:Domain',
             resource_name,
@@ -221,7 +238,8 @@ class Domain(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             domain_urn: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'Domain':
+            name: Optional[pulumi.Input[str]] = None,
+            ttl: Optional[pulumi.Input[int]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -233,6 +251,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address: The IP address of the domain. If specified, this IP
                is used to created an initial A record for the domain.
         :param pulumi.Input[str] name: The name of the domain
+        :param pulumi.Input[int] ttl: The TTL value of the domain
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -241,6 +260,7 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["domain_urn"] = domain_urn
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["name"] = name
+        __props__.__dict__["ttl"] = ttl
         return Domain(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -267,4 +287,12 @@ class Domain(pulumi.CustomResource):
         The name of the domain
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Output[int]:
+        """
+        The TTL value of the domain
+        """
+        return pulumi.get(self, "ttl")
 

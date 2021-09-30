@@ -17,6 +17,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
+        public readonly Outputs.GetAppSpecServiceCorsResult? Cors;
         /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         /// </summary>
@@ -83,6 +84,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private GetAppSpecServiceResult(
             string? buildCommand,
 
+            Outputs.GetAppSpecServiceCorsResult? cors,
+
             string? dockerfilePath,
 
             string? environmentSlug,
@@ -116,6 +119,7 @@ namespace Pulumi.DigitalOcean.Outputs
             string? sourceDir)
         {
             BuildCommand = buildCommand;
+            Cors = cors;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
             Envs = envs;

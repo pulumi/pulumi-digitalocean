@@ -709,7 +709,7 @@ type AppSpecJob struct {
 	Image *AppSpecJobImage `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
-	// The instance size to use for this component.
+	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
 	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
@@ -755,7 +755,7 @@ type AppSpecJobArgs struct {
 	Image AppSpecJobImagePtrInput `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
-	// The instance size to use for this component.
+	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
 	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
@@ -867,7 +867,7 @@ func (o AppSpecJobOutput) InstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
 }
 
-// The instance size to use for this component.
+// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 func (o AppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
@@ -1719,6 +1719,8 @@ func (o AppSpecJobImagePtrOutput) Tag() pulumi.StringPtrOutput {
 type AppSpecService struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors *AppSpecServiceCors `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath *string `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -1739,7 +1741,7 @@ type AppSpecService struct {
 	Image *AppSpecServiceImage `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
-	// The instance size to use for this component.
+	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
 	InternalPorts []int `pulumi:"internalPorts"`
@@ -1766,6 +1768,8 @@ type AppSpecServiceInput interface {
 type AppSpecServiceArgs struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors AppSpecServiceCorsPtrInput `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -1786,7 +1790,7 @@ type AppSpecServiceArgs struct {
 	Image AppSpecServiceImagePtrInput `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
-	// The instance size to use for this component.
+	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
 	InternalPorts pulumi.IntArrayInput `pulumi:"internalPorts"`
@@ -1855,6 +1859,11 @@ func (o AppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
 }
 
+// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+func (o AppSpecServiceOutput) Cors() AppSpecServiceCorsPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceCors { return v.Cors }).(AppSpecServiceCorsPtrOutput)
+}
+
 // The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 func (o AppSpecServiceOutput) DockerfilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
@@ -1905,7 +1914,7 @@ func (o AppSpecServiceOutput) InstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
 }
 
-// The instance size to use for this component.
+// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 func (o AppSpecServiceOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
@@ -1952,6 +1961,401 @@ func (o AppSpecServiceArrayOutput) Index(i pulumi.IntInput) AppSpecServiceOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecService {
 		return vs[0].([]AppSpecService)[vs[1].(int)]
 	}).(AppSpecServiceOutput)
+}
+
+type AppSpecServiceCors struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins *AppSpecServiceCorsAllowOrigins `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge *string `pulumi:"maxAge"`
+}
+
+// AppSpecServiceCorsInput is an input type that accepts AppSpecServiceCorsArgs and AppSpecServiceCorsOutput values.
+// You can construct a concrete instance of `AppSpecServiceCorsInput` via:
+//
+//          AppSpecServiceCorsArgs{...}
+type AppSpecServiceCorsInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceCorsOutput() AppSpecServiceCorsOutput
+	ToAppSpecServiceCorsOutputWithContext(context.Context) AppSpecServiceCorsOutput
+}
+
+type AppSpecServiceCorsArgs struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins AppSpecServiceCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
+}
+
+func (AppSpecServiceCorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceCors)(nil)).Elem()
+}
+
+func (i AppSpecServiceCorsArgs) ToAppSpecServiceCorsOutput() AppSpecServiceCorsOutput {
+	return i.ToAppSpecServiceCorsOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceCorsArgs) ToAppSpecServiceCorsOutputWithContext(ctx context.Context) AppSpecServiceCorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceCorsOutput)
+}
+
+func (i AppSpecServiceCorsArgs) ToAppSpecServiceCorsPtrOutput() AppSpecServiceCorsPtrOutput {
+	return i.ToAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceCorsArgs) ToAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceCorsOutput).ToAppSpecServiceCorsPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceCorsPtrInput is an input type that accepts AppSpecServiceCorsArgs, AppSpecServiceCorsPtr and AppSpecServiceCorsPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceCorsPtrInput` via:
+//
+//          AppSpecServiceCorsArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceCorsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceCorsPtrOutput() AppSpecServiceCorsPtrOutput
+	ToAppSpecServiceCorsPtrOutputWithContext(context.Context) AppSpecServiceCorsPtrOutput
+}
+
+type appSpecServiceCorsPtrType AppSpecServiceCorsArgs
+
+func AppSpecServiceCorsPtr(v *AppSpecServiceCorsArgs) AppSpecServiceCorsPtrInput {
+	return (*appSpecServiceCorsPtrType)(v)
+}
+
+func (*appSpecServiceCorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceCors)(nil)).Elem()
+}
+
+func (i *appSpecServiceCorsPtrType) ToAppSpecServiceCorsPtrOutput() AppSpecServiceCorsPtrOutput {
+	return i.ToAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceCorsPtrType) ToAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceCorsPtrOutput)
+}
+
+type AppSpecServiceCorsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceCorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceCors)(nil)).Elem()
+}
+
+func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsOutput() AppSpecServiceCorsOutput {
+	return o
+}
+
+func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsOutputWithContext(ctx context.Context) AppSpecServiceCorsOutput {
+	return o
+}
+
+func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsPtrOutput() AppSpecServiceCorsPtrOutput {
+	return o.ToAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceCors) *AppSpecServiceCors {
+		return &v
+	}).(AppSpecServiceCorsPtrOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o AppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o AppSpecServiceCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o AppSpecServiceCorsOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o AppSpecServiceCorsOutput) AllowOrigins() AppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceCors) *AppSpecServiceCorsAllowOrigins { return v.AllowOrigins }).(AppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o AppSpecServiceCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o AppSpecServiceCorsOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceCorsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceCorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceCors)(nil)).Elem()
+}
+
+func (o AppSpecServiceCorsPtrOutput) ToAppSpecServiceCorsPtrOutput() AppSpecServiceCorsPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceCorsPtrOutput) ToAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceCorsPtrOutput) Elem() AppSpecServiceCorsOutput {
+	return o.ApplyT(func(v *AppSpecServiceCors) AppSpecServiceCors { return *v }).(AppSpecServiceCorsOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o AppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceCors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o AppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o AppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o AppSpecServiceCorsPtrOutput) AllowOrigins() AppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceCors) *AppSpecServiceCorsAllowOrigins {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(AppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o AppSpecServiceCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o AppSpecServiceCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceCors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceCorsAllowOrigins struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	Prefix *string `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex *string `pulumi:"regex"`
+}
+
+// AppSpecServiceCorsAllowOriginsInput is an input type that accepts AppSpecServiceCorsAllowOriginsArgs and AppSpecServiceCorsAllowOriginsOutput values.
+// You can construct a concrete instance of `AppSpecServiceCorsAllowOriginsInput` via:
+//
+//          AppSpecServiceCorsAllowOriginsArgs{...}
+type AppSpecServiceCorsAllowOriginsInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceCorsAllowOriginsOutput() AppSpecServiceCorsAllowOriginsOutput
+	ToAppSpecServiceCorsAllowOriginsOutputWithContext(context.Context) AppSpecServiceCorsAllowOriginsOutput
+}
+
+type AppSpecServiceCorsAllowOriginsArgs struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (AppSpecServiceCorsAllowOriginsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i AppSpecServiceCorsAllowOriginsArgs) ToAppSpecServiceCorsAllowOriginsOutput() AppSpecServiceCorsAllowOriginsOutput {
+	return i.ToAppSpecServiceCorsAllowOriginsOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceCorsAllowOriginsArgs) ToAppSpecServiceCorsAllowOriginsOutputWithContext(ctx context.Context) AppSpecServiceCorsAllowOriginsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceCorsAllowOriginsOutput)
+}
+
+func (i AppSpecServiceCorsAllowOriginsArgs) ToAppSpecServiceCorsAllowOriginsPtrOutput() AppSpecServiceCorsAllowOriginsPtrOutput {
+	return i.ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceCorsAllowOriginsArgs) ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceCorsAllowOriginsOutput).ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceCorsAllowOriginsPtrInput is an input type that accepts AppSpecServiceCorsAllowOriginsArgs, AppSpecServiceCorsAllowOriginsPtr and AppSpecServiceCorsAllowOriginsPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceCorsAllowOriginsPtrInput` via:
+//
+//          AppSpecServiceCorsAllowOriginsArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceCorsAllowOriginsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceCorsAllowOriginsPtrOutput() AppSpecServiceCorsAllowOriginsPtrOutput
+	ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Context) AppSpecServiceCorsAllowOriginsPtrOutput
+}
+
+type appSpecServiceCorsAllowOriginsPtrType AppSpecServiceCorsAllowOriginsArgs
+
+func AppSpecServiceCorsAllowOriginsPtr(v *AppSpecServiceCorsAllowOriginsArgs) AppSpecServiceCorsAllowOriginsPtrInput {
+	return (*appSpecServiceCorsAllowOriginsPtrType)(v)
+}
+
+func (*appSpecServiceCorsAllowOriginsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i *appSpecServiceCorsAllowOriginsPtrType) ToAppSpecServiceCorsAllowOriginsPtrOutput() AppSpecServiceCorsAllowOriginsPtrOutput {
+	return i.ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceCorsAllowOriginsPtrType) ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+type AppSpecServiceCorsAllowOriginsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceCorsAllowOriginsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o AppSpecServiceCorsAllowOriginsOutput) ToAppSpecServiceCorsAllowOriginsOutput() AppSpecServiceCorsAllowOriginsOutput {
+	return o
+}
+
+func (o AppSpecServiceCorsAllowOriginsOutput) ToAppSpecServiceCorsAllowOriginsOutputWithContext(ctx context.Context) AppSpecServiceCorsAllowOriginsOutput {
+	return o
+}
+
+func (o AppSpecServiceCorsAllowOriginsOutput) ToAppSpecServiceCorsAllowOriginsPtrOutput() AppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceCorsAllowOriginsOutput) ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *AppSpecServiceCorsAllowOrigins {
+		return &v
+	}).(AppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o AppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o AppSpecServiceCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o AppSpecServiceCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceCorsAllowOriginsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceCorsAllowOriginsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o AppSpecServiceCorsAllowOriginsPtrOutput) ToAppSpecServiceCorsAllowOriginsPtrOutput() AppSpecServiceCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceCorsAllowOriginsPtrOutput) ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceCorsAllowOriginsPtrOutput) Elem() AppSpecServiceCorsAllowOriginsOutput {
+	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) AppSpecServiceCorsAllowOrigins { return *v }).(AppSpecServiceCorsAllowOriginsOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o AppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o AppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o AppSpecServiceCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppSpecServiceEnv struct {
@@ -3082,6 +3486,8 @@ type AppSpecStaticSite struct {
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
 	CatchallDocument *string `pulumi:"catchallDocument"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors *AppSpecStaticSiteCors `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath *string `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -3123,6 +3529,8 @@ type AppSpecStaticSiteArgs struct {
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
 	CatchallDocument pulumi.StringPtrInput `pulumi:"catchallDocument"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors AppSpecStaticSiteCorsPtrInput `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -3209,6 +3617,11 @@ func (o AppSpecStaticSiteOutput) CatchallDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.CatchallDocument }).(pulumi.StringPtrOutput)
 }
 
+// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+func (o AppSpecStaticSiteOutput) Cors() AppSpecStaticSiteCorsPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteCors { return v.Cors }).(AppSpecStaticSiteCorsPtrOutput)
+}
+
 // The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 func (o AppSpecStaticSiteOutput) DockerfilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
@@ -3286,6 +3699,401 @@ func (o AppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) AppSpecStaticSite
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecStaticSite {
 		return vs[0].([]AppSpecStaticSite)[vs[1].(int)]
 	}).(AppSpecStaticSiteOutput)
+}
+
+type AppSpecStaticSiteCors struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins *AppSpecStaticSiteCorsAllowOrigins `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge *string `pulumi:"maxAge"`
+}
+
+// AppSpecStaticSiteCorsInput is an input type that accepts AppSpecStaticSiteCorsArgs and AppSpecStaticSiteCorsOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteCorsInput` via:
+//
+//          AppSpecStaticSiteCorsArgs{...}
+type AppSpecStaticSiteCorsInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteCorsOutput() AppSpecStaticSiteCorsOutput
+	ToAppSpecStaticSiteCorsOutputWithContext(context.Context) AppSpecStaticSiteCorsOutput
+}
+
+type AppSpecStaticSiteCorsArgs struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins AppSpecStaticSiteCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
+}
+
+func (AppSpecStaticSiteCorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteCors)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteCorsArgs) ToAppSpecStaticSiteCorsOutput() AppSpecStaticSiteCorsOutput {
+	return i.ToAppSpecStaticSiteCorsOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteCorsArgs) ToAppSpecStaticSiteCorsOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteCorsOutput)
+}
+
+func (i AppSpecStaticSiteCorsArgs) ToAppSpecStaticSiteCorsPtrOutput() AppSpecStaticSiteCorsPtrOutput {
+	return i.ToAppSpecStaticSiteCorsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteCorsArgs) ToAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteCorsOutput).ToAppSpecStaticSiteCorsPtrOutputWithContext(ctx)
+}
+
+// AppSpecStaticSiteCorsPtrInput is an input type that accepts AppSpecStaticSiteCorsArgs, AppSpecStaticSiteCorsPtr and AppSpecStaticSiteCorsPtrOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteCorsPtrInput` via:
+//
+//          AppSpecStaticSiteCorsArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecStaticSiteCorsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteCorsPtrOutput() AppSpecStaticSiteCorsPtrOutput
+	ToAppSpecStaticSiteCorsPtrOutputWithContext(context.Context) AppSpecStaticSiteCorsPtrOutput
+}
+
+type appSpecStaticSiteCorsPtrType AppSpecStaticSiteCorsArgs
+
+func AppSpecStaticSiteCorsPtr(v *AppSpecStaticSiteCorsArgs) AppSpecStaticSiteCorsPtrInput {
+	return (*appSpecStaticSiteCorsPtrType)(v)
+}
+
+func (*appSpecStaticSiteCorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteCors)(nil)).Elem()
+}
+
+func (i *appSpecStaticSiteCorsPtrType) ToAppSpecStaticSiteCorsPtrOutput() AppSpecStaticSiteCorsPtrOutput {
+	return i.ToAppSpecStaticSiteCorsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecStaticSiteCorsPtrType) ToAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteCorsPtrOutput)
+}
+
+type AppSpecStaticSiteCorsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteCorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteCors)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsOutput() AppSpecStaticSiteCorsOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsPtrOutput() AppSpecStaticSiteCorsPtrOutput {
+	return o.ToAppSpecStaticSiteCorsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCors) *AppSpecStaticSiteCors {
+		return &v
+	}).(AppSpecStaticSiteCorsPtrOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o AppSpecStaticSiteCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o AppSpecStaticSiteCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o AppSpecStaticSiteCorsOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o AppSpecStaticSiteCorsOutput) AllowOrigins() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCors) *AppSpecStaticSiteCorsAllowOrigins { return v.AllowOrigins }).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o AppSpecStaticSiteCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o AppSpecStaticSiteCorsOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteCorsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteCorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteCors)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteCorsPtrOutput) ToAppSpecStaticSiteCorsPtrOutput() AppSpecStaticSiteCorsPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteCorsPtrOutput) ToAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteCorsPtrOutput) Elem() AppSpecStaticSiteCorsOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCors) AppSpecStaticSiteCors { return *v }).(AppSpecStaticSiteCorsOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o AppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o AppSpecStaticSiteCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o AppSpecStaticSiteCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o AppSpecStaticSiteCorsPtrOutput) AllowOrigins() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCors) *AppSpecStaticSiteCorsAllowOrigins {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o AppSpecStaticSiteCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o AppSpecStaticSiteCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteCorsAllowOrigins struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	Prefix *string `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex *string `pulumi:"regex"`
+}
+
+// AppSpecStaticSiteCorsAllowOriginsInput is an input type that accepts AppSpecStaticSiteCorsAllowOriginsArgs and AppSpecStaticSiteCorsAllowOriginsOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteCorsAllowOriginsInput` via:
+//
+//          AppSpecStaticSiteCorsAllowOriginsArgs{...}
+type AppSpecStaticSiteCorsAllowOriginsInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteCorsAllowOriginsOutput() AppSpecStaticSiteCorsAllowOriginsOutput
+	ToAppSpecStaticSiteCorsAllowOriginsOutputWithContext(context.Context) AppSpecStaticSiteCorsAllowOriginsOutput
+}
+
+type AppSpecStaticSiteCorsAllowOriginsArgs struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (AppSpecStaticSiteCorsAllowOriginsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteCorsAllowOriginsArgs) ToAppSpecStaticSiteCorsAllowOriginsOutput() AppSpecStaticSiteCorsAllowOriginsOutput {
+	return i.ToAppSpecStaticSiteCorsAllowOriginsOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteCorsAllowOriginsArgs) ToAppSpecStaticSiteCorsAllowOriginsOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsAllowOriginsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteCorsAllowOriginsOutput)
+}
+
+func (i AppSpecStaticSiteCorsAllowOriginsArgs) ToAppSpecStaticSiteCorsAllowOriginsPtrOutput() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return i.ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteCorsAllowOriginsArgs) ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteCorsAllowOriginsOutput).ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx)
+}
+
+// AppSpecStaticSiteCorsAllowOriginsPtrInput is an input type that accepts AppSpecStaticSiteCorsAllowOriginsArgs, AppSpecStaticSiteCorsAllowOriginsPtr and AppSpecStaticSiteCorsAllowOriginsPtrOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteCorsAllowOriginsPtrInput` via:
+//
+//          AppSpecStaticSiteCorsAllowOriginsArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecStaticSiteCorsAllowOriginsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteCorsAllowOriginsPtrOutput() AppSpecStaticSiteCorsAllowOriginsPtrOutput
+	ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(context.Context) AppSpecStaticSiteCorsAllowOriginsPtrOutput
+}
+
+type appSpecStaticSiteCorsAllowOriginsPtrType AppSpecStaticSiteCorsAllowOriginsArgs
+
+func AppSpecStaticSiteCorsAllowOriginsPtr(v *AppSpecStaticSiteCorsAllowOriginsArgs) AppSpecStaticSiteCorsAllowOriginsPtrInput {
+	return (*appSpecStaticSiteCorsAllowOriginsPtrType)(v)
+}
+
+func (*appSpecStaticSiteCorsAllowOriginsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i *appSpecStaticSiteCorsAllowOriginsPtrType) ToAppSpecStaticSiteCorsAllowOriginsPtrOutput() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return i.ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecStaticSiteCorsAllowOriginsPtrType) ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
+}
+
+type AppSpecStaticSiteCorsAllowOriginsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteCorsAllowOriginsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteCorsAllowOriginsOutput) ToAppSpecStaticSiteCorsAllowOriginsOutput() AppSpecStaticSiteCorsAllowOriginsOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteCorsAllowOriginsOutput) ToAppSpecStaticSiteCorsAllowOriginsOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsAllowOriginsOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteCorsAllowOriginsOutput) ToAppSpecStaticSiteCorsAllowOriginsPtrOutput() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o.ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecStaticSiteCorsAllowOriginsOutput) ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *AppSpecStaticSiteCorsAllowOrigins {
+		return &v
+	}).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o AppSpecStaticSiteCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o AppSpecStaticSiteCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o AppSpecStaticSiteCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteCorsAllowOriginsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteCorsAllowOriginsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) ToAppSpecStaticSiteCorsAllowOriginsPtrOutput() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Elem() AppSpecStaticSiteCorsAllowOriginsOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) AppSpecStaticSiteCorsAllowOrigins { return *v }).(AppSpecStaticSiteCorsAllowOriginsOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppSpecStaticSiteEnv struct {
@@ -4016,7 +4824,7 @@ type AppSpecWorker struct {
 	Image *AppSpecWorkerImage `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
-	// The instance size to use for this component.
+	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The name of the component.
 	Name string `pulumi:"name"`
@@ -4056,7 +4864,7 @@ type AppSpecWorkerArgs struct {
 	Image AppSpecWorkerImagePtrInput `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
-	// The instance size to use for this component.
+	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -4162,7 +4970,7 @@ func (o AppSpecWorkerOutput) InstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
 }
 
-// The instance size to use for this component.
+// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 func (o AppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
@@ -7432,6 +8240,247 @@ func (o LoadBalancerStickySessionsPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MonitorAlertAlerts struct {
+	Emails []string                  `pulumi:"emails"`
+	Slacks []MonitorAlertAlertsSlack `pulumi:"slacks"`
+}
+
+// MonitorAlertAlertsInput is an input type that accepts MonitorAlertAlertsArgs and MonitorAlertAlertsOutput values.
+// You can construct a concrete instance of `MonitorAlertAlertsInput` via:
+//
+//          MonitorAlertAlertsArgs{...}
+type MonitorAlertAlertsInput interface {
+	pulumi.Input
+
+	ToMonitorAlertAlertsOutput() MonitorAlertAlertsOutput
+	ToMonitorAlertAlertsOutputWithContext(context.Context) MonitorAlertAlertsOutput
+}
+
+type MonitorAlertAlertsArgs struct {
+	Emails pulumi.StringArrayInput           `pulumi:"emails"`
+	Slacks MonitorAlertAlertsSlackArrayInput `pulumi:"slacks"`
+}
+
+func (MonitorAlertAlertsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertAlerts)(nil)).Elem()
+}
+
+func (i MonitorAlertAlertsArgs) ToMonitorAlertAlertsOutput() MonitorAlertAlertsOutput {
+	return i.ToMonitorAlertAlertsOutputWithContext(context.Background())
+}
+
+func (i MonitorAlertAlertsArgs) ToMonitorAlertAlertsOutputWithContext(ctx context.Context) MonitorAlertAlertsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertAlertsOutput)
+}
+
+func (i MonitorAlertAlertsArgs) ToMonitorAlertAlertsPtrOutput() MonitorAlertAlertsPtrOutput {
+	return i.ToMonitorAlertAlertsPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorAlertAlertsArgs) ToMonitorAlertAlertsPtrOutputWithContext(ctx context.Context) MonitorAlertAlertsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertAlertsOutput).ToMonitorAlertAlertsPtrOutputWithContext(ctx)
+}
+
+// MonitorAlertAlertsPtrInput is an input type that accepts MonitorAlertAlertsArgs, MonitorAlertAlertsPtr and MonitorAlertAlertsPtrOutput values.
+// You can construct a concrete instance of `MonitorAlertAlertsPtrInput` via:
+//
+//          MonitorAlertAlertsArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitorAlertAlertsPtrInput interface {
+	pulumi.Input
+
+	ToMonitorAlertAlertsPtrOutput() MonitorAlertAlertsPtrOutput
+	ToMonitorAlertAlertsPtrOutputWithContext(context.Context) MonitorAlertAlertsPtrOutput
+}
+
+type monitorAlertAlertsPtrType MonitorAlertAlertsArgs
+
+func MonitorAlertAlertsPtr(v *MonitorAlertAlertsArgs) MonitorAlertAlertsPtrInput {
+	return (*monitorAlertAlertsPtrType)(v)
+}
+
+func (*monitorAlertAlertsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorAlertAlerts)(nil)).Elem()
+}
+
+func (i *monitorAlertAlertsPtrType) ToMonitorAlertAlertsPtrOutput() MonitorAlertAlertsPtrOutput {
+	return i.ToMonitorAlertAlertsPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorAlertAlertsPtrType) ToMonitorAlertAlertsPtrOutputWithContext(ctx context.Context) MonitorAlertAlertsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertAlertsPtrOutput)
+}
+
+type MonitorAlertAlertsOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertAlertsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertAlerts)(nil)).Elem()
+}
+
+func (o MonitorAlertAlertsOutput) ToMonitorAlertAlertsOutput() MonitorAlertAlertsOutput {
+	return o
+}
+
+func (o MonitorAlertAlertsOutput) ToMonitorAlertAlertsOutputWithContext(ctx context.Context) MonitorAlertAlertsOutput {
+	return o
+}
+
+func (o MonitorAlertAlertsOutput) ToMonitorAlertAlertsPtrOutput() MonitorAlertAlertsPtrOutput {
+	return o.ToMonitorAlertAlertsPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorAlertAlertsOutput) ToMonitorAlertAlertsPtrOutputWithContext(ctx context.Context) MonitorAlertAlertsPtrOutput {
+	return o.ApplyT(func(v MonitorAlertAlerts) *MonitorAlertAlerts {
+		return &v
+	}).(MonitorAlertAlertsPtrOutput)
+}
+func (o MonitorAlertAlertsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MonitorAlertAlerts) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o MonitorAlertAlertsOutput) Slacks() MonitorAlertAlertsSlackArrayOutput {
+	return o.ApplyT(func(v MonitorAlertAlerts) []MonitorAlertAlertsSlack { return v.Slacks }).(MonitorAlertAlertsSlackArrayOutput)
+}
+
+type MonitorAlertAlertsPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertAlertsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorAlertAlerts)(nil)).Elem()
+}
+
+func (o MonitorAlertAlertsPtrOutput) ToMonitorAlertAlertsPtrOutput() MonitorAlertAlertsPtrOutput {
+	return o
+}
+
+func (o MonitorAlertAlertsPtrOutput) ToMonitorAlertAlertsPtrOutputWithContext(ctx context.Context) MonitorAlertAlertsPtrOutput {
+	return o
+}
+
+func (o MonitorAlertAlertsPtrOutput) Elem() MonitorAlertAlertsOutput {
+	return o.ApplyT(func(v *MonitorAlertAlerts) MonitorAlertAlerts { return *v }).(MonitorAlertAlertsOutput)
+}
+
+func (o MonitorAlertAlertsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MonitorAlertAlerts) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o MonitorAlertAlertsPtrOutput) Slacks() MonitorAlertAlertsSlackArrayOutput {
+	return o.ApplyT(func(v *MonitorAlertAlerts) []MonitorAlertAlertsSlack {
+		if v == nil {
+			return nil
+		}
+		return v.Slacks
+	}).(MonitorAlertAlertsSlackArrayOutput)
+}
+
+type MonitorAlertAlertsSlack struct {
+	Channel string `pulumi:"channel"`
+	Url     string `pulumi:"url"`
+}
+
+// MonitorAlertAlertsSlackInput is an input type that accepts MonitorAlertAlertsSlackArgs and MonitorAlertAlertsSlackOutput values.
+// You can construct a concrete instance of `MonitorAlertAlertsSlackInput` via:
+//
+//          MonitorAlertAlertsSlackArgs{...}
+type MonitorAlertAlertsSlackInput interface {
+	pulumi.Input
+
+	ToMonitorAlertAlertsSlackOutput() MonitorAlertAlertsSlackOutput
+	ToMonitorAlertAlertsSlackOutputWithContext(context.Context) MonitorAlertAlertsSlackOutput
+}
+
+type MonitorAlertAlertsSlackArgs struct {
+	Channel pulumi.StringInput `pulumi:"channel"`
+	Url     pulumi.StringInput `pulumi:"url"`
+}
+
+func (MonitorAlertAlertsSlackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertAlertsSlack)(nil)).Elem()
+}
+
+func (i MonitorAlertAlertsSlackArgs) ToMonitorAlertAlertsSlackOutput() MonitorAlertAlertsSlackOutput {
+	return i.ToMonitorAlertAlertsSlackOutputWithContext(context.Background())
+}
+
+func (i MonitorAlertAlertsSlackArgs) ToMonitorAlertAlertsSlackOutputWithContext(ctx context.Context) MonitorAlertAlertsSlackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertAlertsSlackOutput)
+}
+
+// MonitorAlertAlertsSlackArrayInput is an input type that accepts MonitorAlertAlertsSlackArray and MonitorAlertAlertsSlackArrayOutput values.
+// You can construct a concrete instance of `MonitorAlertAlertsSlackArrayInput` via:
+//
+//          MonitorAlertAlertsSlackArray{ MonitorAlertAlertsSlackArgs{...} }
+type MonitorAlertAlertsSlackArrayInput interface {
+	pulumi.Input
+
+	ToMonitorAlertAlertsSlackArrayOutput() MonitorAlertAlertsSlackArrayOutput
+	ToMonitorAlertAlertsSlackArrayOutputWithContext(context.Context) MonitorAlertAlertsSlackArrayOutput
+}
+
+type MonitorAlertAlertsSlackArray []MonitorAlertAlertsSlackInput
+
+func (MonitorAlertAlertsSlackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorAlertAlertsSlack)(nil)).Elem()
+}
+
+func (i MonitorAlertAlertsSlackArray) ToMonitorAlertAlertsSlackArrayOutput() MonitorAlertAlertsSlackArrayOutput {
+	return i.ToMonitorAlertAlertsSlackArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorAlertAlertsSlackArray) ToMonitorAlertAlertsSlackArrayOutputWithContext(ctx context.Context) MonitorAlertAlertsSlackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertAlertsSlackArrayOutput)
+}
+
+type MonitorAlertAlertsSlackOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertAlertsSlackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertAlertsSlack)(nil)).Elem()
+}
+
+func (o MonitorAlertAlertsSlackOutput) ToMonitorAlertAlertsSlackOutput() MonitorAlertAlertsSlackOutput {
+	return o
+}
+
+func (o MonitorAlertAlertsSlackOutput) ToMonitorAlertAlertsSlackOutputWithContext(ctx context.Context) MonitorAlertAlertsSlackOutput {
+	return o
+}
+
+func (o MonitorAlertAlertsSlackOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorAlertAlertsSlack) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+func (o MonitorAlertAlertsSlackOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorAlertAlertsSlack) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type MonitorAlertAlertsSlackArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertAlertsSlackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorAlertAlertsSlack)(nil)).Elem()
+}
+
+func (o MonitorAlertAlertsSlackArrayOutput) ToMonitorAlertAlertsSlackArrayOutput() MonitorAlertAlertsSlackArrayOutput {
+	return o
+}
+
+func (o MonitorAlertAlertsSlackArrayOutput) ToMonitorAlertAlertsSlackArrayOutputWithContext(ctx context.Context) MonitorAlertAlertsSlackArrayOutput {
+	return o
+}
+
+func (o MonitorAlertAlertsSlackArrayOutput) Index(i pulumi.IntInput) MonitorAlertAlertsSlackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorAlertAlertsSlack {
+		return vs[0].([]MonitorAlertAlertsSlack)[vs[1].(int)]
+	}).(MonitorAlertAlertsSlackOutput)
+}
+
 type SpacesBucketCorsRule struct {
 	// A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
@@ -9675,7 +10724,8 @@ func (o GetAppSpecJobImagePtrOutput) Tag() pulumi.StringPtrOutput {
 
 type GetAppSpecService struct {
 	// An optional build command to run while building this component from source.
-	BuildCommand *string `pulumi:"buildCommand"`
+	BuildCommand *string                `pulumi:"buildCommand"`
+	Cors         *GetAppSpecServiceCors `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath *string `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -9722,7 +10772,8 @@ type GetAppSpecServiceInput interface {
 
 type GetAppSpecServiceArgs struct {
 	// An optional build command to run while building this component from source.
-	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	BuildCommand pulumi.StringPtrInput         `pulumi:"buildCommand"`
+	Cors         GetAppSpecServiceCorsPtrInput `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -9810,6 +10861,10 @@ func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutputWithContext(ctx contex
 // An optional build command to run while building this component from source.
 func (o GetAppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecServiceOutput) Cors() GetAppSpecServiceCorsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceCors { return v.Cors }).(GetAppSpecServiceCorsPtrOutput)
 }
 
 // The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -9909,6 +10964,363 @@ func (o GetAppSpecServiceArrayOutput) Index(i pulumi.IntInput) GetAppSpecService
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecService {
 		return vs[0].([]GetAppSpecService)[vs[1].(int)]
 	}).(GetAppSpecServiceOutput)
+}
+
+type GetAppSpecServiceCors struct {
+	AllowCredentials *bool                              `pulumi:"allowCredentials"`
+	AllowHeaders     []string                           `pulumi:"allowHeaders"`
+	AllowMethods     []string                           `pulumi:"allowMethods"`
+	AllowOrigins     *GetAppSpecServiceCorsAllowOrigins `pulumi:"allowOrigins"`
+	ExposeHeaders    []string                           `pulumi:"exposeHeaders"`
+	MaxAge           *string                            `pulumi:"maxAge"`
+}
+
+// GetAppSpecServiceCorsInput is an input type that accepts GetAppSpecServiceCorsArgs and GetAppSpecServiceCorsOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceCorsInput` via:
+//
+//          GetAppSpecServiceCorsArgs{...}
+type GetAppSpecServiceCorsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput
+	ToGetAppSpecServiceCorsOutputWithContext(context.Context) GetAppSpecServiceCorsOutput
+}
+
+type GetAppSpecServiceCorsArgs struct {
+	AllowCredentials pulumi.BoolPtrInput                       `pulumi:"allowCredentials"`
+	AllowHeaders     pulumi.StringArrayInput                   `pulumi:"allowHeaders"`
+	AllowMethods     pulumi.StringArrayInput                   `pulumi:"allowMethods"`
+	AllowOrigins     GetAppSpecServiceCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	ExposeHeaders    pulumi.StringArrayInput                   `pulumi:"exposeHeaders"`
+	MaxAge           pulumi.StringPtrInput                     `pulumi:"maxAge"`
+}
+
+func (GetAppSpecServiceCorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceCors)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput {
+	return i.ToGetAppSpecServiceCorsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsOutput)
+}
+
+func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
+	return i.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsOutput).ToGetAppSpecServiceCorsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceCorsPtrInput is an input type that accepts GetAppSpecServiceCorsArgs, GetAppSpecServiceCorsPtr and GetAppSpecServiceCorsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceCorsPtrInput` via:
+//
+//          GetAppSpecServiceCorsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceCorsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput
+	ToGetAppSpecServiceCorsPtrOutputWithContext(context.Context) GetAppSpecServiceCorsPtrOutput
+}
+
+type getAppSpecServiceCorsPtrType GetAppSpecServiceCorsArgs
+
+func GetAppSpecServiceCorsPtr(v *GetAppSpecServiceCorsArgs) GetAppSpecServiceCorsPtrInput {
+	return (*getAppSpecServiceCorsPtrType)(v)
+}
+
+func (*getAppSpecServiceCorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceCors)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceCorsPtrType) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
+	return i.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceCorsPtrType) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsPtrOutput)
+}
+
+type GetAppSpecServiceCorsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceCorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceCors)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
+	return o.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) *GetAppSpecServiceCors {
+		return &v
+	}).(GetAppSpecServiceCorsPtrOutput)
+}
+func (o GetAppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecServiceCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceCorsOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceCorsOutput) AllowOrigins() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) *GetAppSpecServiceCorsAllowOrigins { return v.AllowOrigins }).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+func (o GetAppSpecServiceCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceCorsOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceCorsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceCorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceCors)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) Elem() GetAppSpecServiceCorsOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) GetAppSpecServiceCors { return *v }).(GetAppSpecServiceCorsOutput)
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) AllowOrigins() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) *GetAppSpecServiceCorsAllowOrigins {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceCorsAllowOrigins struct {
+	Exact  *string `pulumi:"exact"`
+	Prefix *string `pulumi:"prefix"`
+	Regex  *string `pulumi:"regex"`
+}
+
+// GetAppSpecServiceCorsAllowOriginsInput is an input type that accepts GetAppSpecServiceCorsAllowOriginsArgs and GetAppSpecServiceCorsAllowOriginsOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceCorsAllowOriginsInput` via:
+//
+//          GetAppSpecServiceCorsAllowOriginsArgs{...}
+type GetAppSpecServiceCorsAllowOriginsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceCorsAllowOriginsOutput() GetAppSpecServiceCorsAllowOriginsOutput
+	ToGetAppSpecServiceCorsAllowOriginsOutputWithContext(context.Context) GetAppSpecServiceCorsAllowOriginsOutput
+}
+
+type GetAppSpecServiceCorsAllowOriginsArgs struct {
+	Exact  pulumi.StringPtrInput `pulumi:"exact"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	Regex  pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (GetAppSpecServiceCorsAllowOriginsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOriginsOutput() GetAppSpecServiceCorsAllowOriginsOutput {
+	return i.ToGetAppSpecServiceCorsAllowOriginsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOriginsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsAllowOriginsOutput)
+}
+
+func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return i.ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsAllowOriginsOutput).ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceCorsAllowOriginsPtrInput is an input type that accepts GetAppSpecServiceCorsAllowOriginsArgs, GetAppSpecServiceCorsAllowOriginsPtr and GetAppSpecServiceCorsAllowOriginsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceCorsAllowOriginsPtrInput` via:
+//
+//          GetAppSpecServiceCorsAllowOriginsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceCorsAllowOriginsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput
+	ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput
+}
+
+type getAppSpecServiceCorsAllowOriginsPtrType GetAppSpecServiceCorsAllowOriginsArgs
+
+func GetAppSpecServiceCorsAllowOriginsPtr(v *GetAppSpecServiceCorsAllowOriginsArgs) GetAppSpecServiceCorsAllowOriginsPtrInput {
+	return (*getAppSpecServiceCorsAllowOriginsPtrType)(v)
+}
+
+func (*getAppSpecServiceCorsAllowOriginsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceCorsAllowOriginsPtrType) ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return i.ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceCorsAllowOriginsPtrType) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+type GetAppSpecServiceCorsAllowOriginsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceCorsAllowOriginsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsOutput() GetAppSpecServiceCorsAllowOriginsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *GetAppSpecServiceCorsAllowOrigins {
+		return &v
+	}).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
+}
+func (o GetAppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceCorsAllowOriginsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceCorsAllowOriginsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Elem() GetAppSpecServiceCorsAllowOriginsOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) GetAppSpecServiceCorsAllowOrigins { return *v }).(GetAppSpecServiceCorsAllowOriginsOutput)
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecServiceEnv struct {
@@ -11038,7 +12450,8 @@ type GetAppSpecStaticSite struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-	CatchallDocument *string `pulumi:"catchallDocument"`
+	CatchallDocument *string                   `pulumi:"catchallDocument"`
+	Cors             *GetAppSpecStaticSiteCors `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath *string `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -11079,7 +12492,8 @@ type GetAppSpecStaticSiteArgs struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-	CatchallDocument pulumi.StringPtrInput `pulumi:"catchallDocument"`
+	CatchallDocument pulumi.StringPtrInput            `pulumi:"catchallDocument"`
+	Cors             GetAppSpecStaticSiteCorsPtrInput `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -11166,6 +12580,10 @@ func (o GetAppSpecStaticSiteOutput) CatchallDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.CatchallDocument }).(pulumi.StringPtrOutput)
 }
 
+func (o GetAppSpecStaticSiteOutput) Cors() GetAppSpecStaticSiteCorsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteCors { return v.Cors }).(GetAppSpecStaticSiteCorsPtrOutput)
+}
+
 // The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 func (o GetAppSpecStaticSiteOutput) DockerfilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
@@ -11243,6 +12661,363 @@ func (o GetAppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) GetAppSpecStat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecStaticSite {
 		return vs[0].([]GetAppSpecStaticSite)[vs[1].(int)]
 	}).(GetAppSpecStaticSiteOutput)
+}
+
+type GetAppSpecStaticSiteCors struct {
+	AllowCredentials *bool                                 `pulumi:"allowCredentials"`
+	AllowHeaders     []string                              `pulumi:"allowHeaders"`
+	AllowMethods     []string                              `pulumi:"allowMethods"`
+	AllowOrigins     *GetAppSpecStaticSiteCorsAllowOrigins `pulumi:"allowOrigins"`
+	ExposeHeaders    []string                              `pulumi:"exposeHeaders"`
+	MaxAge           *string                               `pulumi:"maxAge"`
+}
+
+// GetAppSpecStaticSiteCorsInput is an input type that accepts GetAppSpecStaticSiteCorsArgs and GetAppSpecStaticSiteCorsOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteCorsInput` via:
+//
+//          GetAppSpecStaticSiteCorsArgs{...}
+type GetAppSpecStaticSiteCorsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteCorsOutput() GetAppSpecStaticSiteCorsOutput
+	ToGetAppSpecStaticSiteCorsOutputWithContext(context.Context) GetAppSpecStaticSiteCorsOutput
+}
+
+type GetAppSpecStaticSiteCorsArgs struct {
+	AllowCredentials pulumi.BoolPtrInput                          `pulumi:"allowCredentials"`
+	AllowHeaders     pulumi.StringArrayInput                      `pulumi:"allowHeaders"`
+	AllowMethods     pulumi.StringArrayInput                      `pulumi:"allowMethods"`
+	AllowOrigins     GetAppSpecStaticSiteCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	ExposeHeaders    pulumi.StringArrayInput                      `pulumi:"exposeHeaders"`
+	MaxAge           pulumi.StringPtrInput                        `pulumi:"maxAge"`
+}
+
+func (GetAppSpecStaticSiteCorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteCors)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteCorsArgs) ToGetAppSpecStaticSiteCorsOutput() GetAppSpecStaticSiteCorsOutput {
+	return i.ToGetAppSpecStaticSiteCorsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteCorsArgs) ToGetAppSpecStaticSiteCorsOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteCorsOutput)
+}
+
+func (i GetAppSpecStaticSiteCorsArgs) ToGetAppSpecStaticSiteCorsPtrOutput() GetAppSpecStaticSiteCorsPtrOutput {
+	return i.ToGetAppSpecStaticSiteCorsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteCorsArgs) ToGetAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteCorsOutput).ToGetAppSpecStaticSiteCorsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecStaticSiteCorsPtrInput is an input type that accepts GetAppSpecStaticSiteCorsArgs, GetAppSpecStaticSiteCorsPtr and GetAppSpecStaticSiteCorsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteCorsPtrInput` via:
+//
+//          GetAppSpecStaticSiteCorsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecStaticSiteCorsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteCorsPtrOutput() GetAppSpecStaticSiteCorsPtrOutput
+	ToGetAppSpecStaticSiteCorsPtrOutputWithContext(context.Context) GetAppSpecStaticSiteCorsPtrOutput
+}
+
+type getAppSpecStaticSiteCorsPtrType GetAppSpecStaticSiteCorsArgs
+
+func GetAppSpecStaticSiteCorsPtr(v *GetAppSpecStaticSiteCorsArgs) GetAppSpecStaticSiteCorsPtrInput {
+	return (*getAppSpecStaticSiteCorsPtrType)(v)
+}
+
+func (*getAppSpecStaticSiteCorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteCors)(nil)).Elem()
+}
+
+func (i *getAppSpecStaticSiteCorsPtrType) ToGetAppSpecStaticSiteCorsPtrOutput() GetAppSpecStaticSiteCorsPtrOutput {
+	return i.ToGetAppSpecStaticSiteCorsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecStaticSiteCorsPtrType) ToGetAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteCorsPtrOutput)
+}
+
+type GetAppSpecStaticSiteCorsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteCorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteCors)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) ToGetAppSpecStaticSiteCorsOutput() GetAppSpecStaticSiteCorsOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) ToGetAppSpecStaticSiteCorsOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) ToGetAppSpecStaticSiteCorsPtrOutput() GetAppSpecStaticSiteCorsPtrOutput {
+	return o.ToGetAppSpecStaticSiteCorsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) ToGetAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *GetAppSpecStaticSiteCors {
+		return &v
+	}).(GetAppSpecStaticSiteCorsPtrOutput)
+}
+func (o GetAppSpecStaticSiteCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) AllowOrigins() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *GetAppSpecStaticSiteCorsAllowOrigins { return v.AllowOrigins }).(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteCorsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteCorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteCors)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) ToGetAppSpecStaticSiteCorsPtrOutput() GetAppSpecStaticSiteCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) ToGetAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) Elem() GetAppSpecStaticSiteCorsOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) GetAppSpecStaticSiteCors { return *v }).(GetAppSpecStaticSiteCorsOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) AllowOrigins() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) *GetAppSpecStaticSiteCorsAllowOrigins {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteCorsAllowOrigins struct {
+	Exact  *string `pulumi:"exact"`
+	Prefix *string `pulumi:"prefix"`
+	Regex  *string `pulumi:"regex"`
+}
+
+// GetAppSpecStaticSiteCorsAllowOriginsInput is an input type that accepts GetAppSpecStaticSiteCorsAllowOriginsArgs and GetAppSpecStaticSiteCorsAllowOriginsOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteCorsAllowOriginsInput` via:
+//
+//          GetAppSpecStaticSiteCorsAllowOriginsArgs{...}
+type GetAppSpecStaticSiteCorsAllowOriginsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteCorsAllowOriginsOutput() GetAppSpecStaticSiteCorsAllowOriginsOutput
+	ToGetAppSpecStaticSiteCorsAllowOriginsOutputWithContext(context.Context) GetAppSpecStaticSiteCorsAllowOriginsOutput
+}
+
+type GetAppSpecStaticSiteCorsAllowOriginsArgs struct {
+	Exact  pulumi.StringPtrInput `pulumi:"exact"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	Regex  pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (GetAppSpecStaticSiteCorsAllowOriginsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteCorsAllowOriginsArgs) ToGetAppSpecStaticSiteCorsAllowOriginsOutput() GetAppSpecStaticSiteCorsAllowOriginsOutput {
+	return i.ToGetAppSpecStaticSiteCorsAllowOriginsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteCorsAllowOriginsArgs) ToGetAppSpecStaticSiteCorsAllowOriginsOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsAllowOriginsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteCorsAllowOriginsOutput)
+}
+
+func (i GetAppSpecStaticSiteCorsAllowOriginsArgs) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutput() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return i.ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteCorsAllowOriginsArgs) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteCorsAllowOriginsOutput).ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecStaticSiteCorsAllowOriginsPtrInput is an input type that accepts GetAppSpecStaticSiteCorsAllowOriginsArgs, GetAppSpecStaticSiteCorsAllowOriginsPtr and GetAppSpecStaticSiteCorsAllowOriginsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteCorsAllowOriginsPtrInput` via:
+//
+//          GetAppSpecStaticSiteCorsAllowOriginsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecStaticSiteCorsAllowOriginsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutput() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput
+	ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(context.Context) GetAppSpecStaticSiteCorsAllowOriginsPtrOutput
+}
+
+type getAppSpecStaticSiteCorsAllowOriginsPtrType GetAppSpecStaticSiteCorsAllowOriginsArgs
+
+func GetAppSpecStaticSiteCorsAllowOriginsPtr(v *GetAppSpecStaticSiteCorsAllowOriginsArgs) GetAppSpecStaticSiteCorsAllowOriginsPtrInput {
+	return (*getAppSpecStaticSiteCorsAllowOriginsPtrType)(v)
+}
+
+func (*getAppSpecStaticSiteCorsAllowOriginsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i *getAppSpecStaticSiteCorsAllowOriginsPtrType) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutput() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return i.ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecStaticSiteCorsAllowOriginsPtrType) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput)
+}
+
+type GetAppSpecStaticSiteCorsAllowOriginsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteCorsAllowOriginsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) ToGetAppSpecStaticSiteCorsAllowOriginsOutput() GetAppSpecStaticSiteCorsAllowOriginsOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) ToGetAppSpecStaticSiteCorsAllowOriginsOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsAllowOriginsOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutput() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o.ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *GetAppSpecStaticSiteCorsAllowOrigins {
+		return &v
+	}).(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput)
+}
+func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteCorsAllowOriginsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutput() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Elem() GetAppSpecStaticSiteCorsAllowOriginsOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) GetAppSpecStaticSiteCorsAllowOrigins { return *v }).(GetAppSpecStaticSiteCorsAllowOriginsOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecStaticSiteEnv struct {
@@ -18784,6 +20559,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecJobImagePtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceCorsOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceCorsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceCorsAllowOriginsOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceCorsAllowOriginsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceGitOutput{})
@@ -18800,6 +20579,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceRouteArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteCorsOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteCorsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteCorsAllowOriginsOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteCorsAllowOriginsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteGitOutput{})
@@ -18852,6 +20635,10 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsPtrOutput{})
+	pulumi.RegisterOutputType(MonitorAlertAlertsOutput{})
+	pulumi.RegisterOutputType(MonitorAlertAlertsPtrOutput{})
+	pulumi.RegisterOutputType(MonitorAlertAlertsSlackOutput{})
+	pulumi.RegisterOutputType(MonitorAlertAlertsSlackArrayOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleOutput{})
@@ -18883,6 +20670,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobImagePtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceCorsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceCorsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceGitOutput{})
@@ -18899,6 +20690,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsAllowOriginsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteGitOutput{})

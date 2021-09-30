@@ -19,6 +19,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? BuildCommand { get; set; }
 
         /// <summary>
+        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// </summary>
+        [Input("cors")]
+        public Input<Inputs.AppSpecServiceCorsGetArgs>? Cors { get; set; }
+
+        /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         /// </summary>
         [Input("dockerfilePath")]
@@ -85,7 +91,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<int>? InstanceCount { get; set; }
 
         /// <summary>
-        /// The instance size to use for this component.
+        /// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         /// </summary>
         [Input("instanceSizeSlug")]
         public Input<string>? InstanceSizeSlug { get; set; }

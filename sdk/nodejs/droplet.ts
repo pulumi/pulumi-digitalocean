@@ -110,7 +110,8 @@ export class Droplet extends pulumi.CustomResource {
     public /*out*/ readonly memory!: pulumi.Output<number>;
     /**
      * Boolean controlling whether monitoring agent is installed.
-     * Defaults to false.
+     * Defaults to false. If set to `true`, you can configure monitor alert policies
+     * [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
      */
     public readonly monitoring!: pulumi.Output<boolean | undefined>;
     /**
@@ -126,10 +127,10 @@ export class Droplet extends pulumi.CustomResource {
      */
     public /*out*/ readonly priceMonthly!: pulumi.Output<number>;
     /**
-     * Boolean controlling if private networking
-     * is enabled. When VPC is enabled on an account, this will provision the
-     * Droplet inside of your account's default VPC for the region. Use the
-     * `vpcUuid` attribute to specify a different VPC.
+     * **Deprecated** Boolean controlling if private networking
+     * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+     *
+     * @deprecated This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     public readonly privateNetworking!: pulumi.Output<boolean>;
     /**
@@ -322,7 +323,8 @@ export interface DropletState {
     memory?: pulumi.Input<number>;
     /**
      * Boolean controlling whether monitoring agent is installed.
-     * Defaults to false.
+     * Defaults to false. If set to `true`, you can configure monitor alert policies
+     * [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
      */
     monitoring?: pulumi.Input<boolean>;
     /**
@@ -338,10 +340,10 @@ export interface DropletState {
      */
     priceMonthly?: pulumi.Input<number>;
     /**
-     * Boolean controlling if private networking
-     * is enabled. When VPC is enabled on an account, this will provision the
-     * Droplet inside of your account's default VPC for the region. Use the
-     * `vpcUuid` attribute to specify a different VPC.
+     * **Deprecated** Boolean controlling if private networking
+     * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+     *
+     * @deprecated This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     privateNetworking?: pulumi.Input<boolean>;
     /**
@@ -422,7 +424,8 @@ export interface DropletArgs {
     ipv6?: pulumi.Input<boolean>;
     /**
      * Boolean controlling whether monitoring agent is installed.
-     * Defaults to false.
+     * Defaults to false. If set to `true`, you can configure monitor alert policies
+     * [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
      */
     monitoring?: pulumi.Input<boolean>;
     /**
@@ -430,10 +433,10 @@ export interface DropletArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Boolean controlling if private networking
-     * is enabled. When VPC is enabled on an account, this will provision the
-     * Droplet inside of your account's default VPC for the region. Use the
-     * `vpcUuid` attribute to specify a different VPC.
+     * **Deprecated** Boolean controlling if private networking
+     * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+     *
+     * @deprecated This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     privateNetworking?: pulumi.Input<boolean>;
     /**

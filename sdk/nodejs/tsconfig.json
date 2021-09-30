@@ -74,6 +74,7 @@
         "kubernetesCluster.ts",
         "kubernetesNodePool.ts",
         "loadBalancer.ts",
+        "monitorAlert.ts",
         "project.ts",
         "projectResources.ts",
         "provider.ts",

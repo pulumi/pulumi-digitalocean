@@ -21,6 +21,8 @@ __all__ = [
     'AppSpecJobGitlabArgs',
     'AppSpecJobImageArgs',
     'AppSpecServiceArgs',
+    'AppSpecServiceCorsArgs',
+    'AppSpecServiceCorsAllowOriginsArgs',
     'AppSpecServiceEnvArgs',
     'AppSpecServiceGitArgs',
     'AppSpecServiceGithubArgs',
@@ -29,6 +31,8 @@ __all__ = [
     'AppSpecServiceImageArgs',
     'AppSpecServiceRouteArgs',
     'AppSpecStaticSiteArgs',
+    'AppSpecStaticSiteCorsArgs',
+    'AppSpecStaticSiteCorsAllowOriginsArgs',
     'AppSpecStaticSiteEnvArgs',
     'AppSpecStaticSiteGitArgs',
     'AppSpecStaticSiteGithubArgs',
@@ -55,6 +59,8 @@ __all__ = [
     'LoadBalancerForwardingRuleArgs',
     'LoadBalancerHealthcheckArgs',
     'LoadBalancerStickySessionsArgs',
+    'MonitorAlertAlertsArgs',
+    'MonitorAlertAlertsSlackArgs',
     'SpacesBucketCorsRuleArgs',
     'SpacesBucketLifecycleRuleArgs',
     'SpacesBucketLifecycleRuleExpirationArgs',
@@ -517,7 +523,7 @@ class AppSpecJobArgs:
         :param pulumi.Input['AppSpecJobGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecJobImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
-        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
+        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param pulumi.Input[str] kind: The type of job and when it will be run during the deployment process. It may be one of:
                - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
                - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
@@ -678,7 +684,7 @@ class AppSpecJobArgs:
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance size to use for this component.
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 
@@ -1021,6 +1027,7 @@ class AppSpecServiceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  build_command: Optional[pulumi.Input[str]] = None,
+                 cors: Optional[pulumi.Input['AppSpecServiceCorsArgs']] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
                  environment_slug: Optional[pulumi.Input[str]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]]] = None,
@@ -1039,6 +1046,7 @@ class AppSpecServiceArgs:
         """
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
+        :param pulumi.Input['AppSpecServiceCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]] envs: Describes an environment variable made available to an app competent.
@@ -1049,7 +1057,7 @@ class AppSpecServiceArgs:
         :param pulumi.Input[int] http_port: The internal port on which this service's run command will listen.
         :param pulumi.Input['AppSpecServiceImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
-        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
+        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
@@ -1057,6 +1065,8 @@ class AppSpecServiceArgs:
         pulumi.set(__self__, "name", name)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
         if dockerfile_path is not None:
             pulumi.set(__self__, "dockerfile_path", dockerfile_path)
         if environment_slug is not None:
@@ -1111,6 +1121,18 @@ class AppSpecServiceArgs:
     @build_command.setter
     def build_command(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "build_command", value)
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional[pulumi.Input['AppSpecServiceCorsArgs']]:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @cors.setter
+    def cors(self, value: Optional[pulumi.Input['AppSpecServiceCorsArgs']]):
+        pulumi.set(self, "cors", value)
 
     @property
     @pulumi.getter(name="dockerfilePath")
@@ -1236,7 +1258,7 @@ class AppSpecServiceArgs:
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance size to use for this component.
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 
@@ -1288,6 +1310,164 @@ class AppSpecServiceArgs:
     @source_dir.setter
     def source_dir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_dir", value)
+
+
+@pulumi.input_type
+class AppSpecServiceCorsArgs:
+    def __init__(__self__, *,
+                 allow_credentials: Optional[pulumi.Input[bool]] = None,
+                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_origins: Optional[pulumi.Input['AppSpecServiceCorsAllowOriginsArgs']] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param pulumi.Input['AppSpecServiceCorsAllowOriginsArgs'] allow_origins: The `Access-Control-Allow-Origin` can be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param pulumi.Input[str] max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @allow_headers.setter
+    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_headers", value)
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @allow_methods.setter
+    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_methods", value)
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[pulumi.Input['AppSpecServiceCorsAllowOriginsArgs']]:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @allow_origins.setter
+    def allow_origins(self, value: Optional[pulumi.Input['AppSpecServiceCorsAllowOriginsArgs']]):
+        pulumi.set(self, "allow_origins", value)
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @expose_headers.setter
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "expose_headers", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_age", value)
+
+
+@pulumi.input_type
+class AppSpecServiceCorsAllowOriginsArgs:
+    def __init__(__self__, *,
+                 exact: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 regex: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param pulumi.Input[str] prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param pulumi.Input[str] regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exact", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex", value)
 
 
 @pulumi.input_type
@@ -1711,6 +1891,7 @@ class AppSpecStaticSiteArgs:
                  name: pulumi.Input[str],
                  build_command: Optional[pulumi.Input[str]] = None,
                  catchall_document: Optional[pulumi.Input[str]] = None,
+                 cors: Optional[pulumi.Input['AppSpecStaticSiteCorsArgs']] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
                  environment_slug: Optional[pulumi.Input[str]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]]] = None,
@@ -1726,6 +1907,7 @@ class AppSpecStaticSiteArgs:
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] catchall_document: The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+        :param pulumi.Input['AppSpecStaticSiteCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]] envs: Describes an environment variable made available to an app competent.
@@ -1742,6 +1924,8 @@ class AppSpecStaticSiteArgs:
             pulumi.set(__self__, "build_command", build_command)
         if catchall_document is not None:
             pulumi.set(__self__, "catchall_document", catchall_document)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
         if dockerfile_path is not None:
             pulumi.set(__self__, "dockerfile_path", dockerfile_path)
         if environment_slug is not None:
@@ -1800,6 +1984,18 @@ class AppSpecStaticSiteArgs:
     @catchall_document.setter
     def catchall_document(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "catchall_document", value)
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional[pulumi.Input['AppSpecStaticSiteCorsArgs']]:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @cors.setter
+    def cors(self, value: Optional[pulumi.Input['AppSpecStaticSiteCorsArgs']]):
+        pulumi.set(self, "cors", value)
 
     @property
     @pulumi.getter(name="dockerfilePath")
@@ -1929,6 +2125,164 @@ class AppSpecStaticSiteArgs:
     @source_dir.setter
     def source_dir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_dir", value)
+
+
+@pulumi.input_type
+class AppSpecStaticSiteCorsArgs:
+    def __init__(__self__, *,
+                 allow_credentials: Optional[pulumi.Input[bool]] = None,
+                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_origins: Optional[pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgs']] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgs'] allow_origins: The `Access-Control-Allow-Origin` can be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param pulumi.Input[str] max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @allow_headers.setter
+    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_headers", value)
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @allow_methods.setter
+    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_methods", value)
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgs']]:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @allow_origins.setter
+    def allow_origins(self, value: Optional[pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgs']]):
+        pulumi.set(self, "allow_origins", value)
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @expose_headers.setter
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "expose_headers", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_age", value)
+
+
+@pulumi.input_type
+class AppSpecStaticSiteCorsAllowOriginsArgs:
+    def __init__(__self__, *,
+                 exact: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 regex: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param pulumi.Input[str] prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param pulumi.Input[str] regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exact", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex", value)
 
 
 @pulumi.input_type
@@ -2201,7 +2555,7 @@ class AppSpecWorkerArgs:
         :param pulumi.Input['AppSpecWorkerGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecWorkerImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
-        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component.
+        :param pulumi.Input[str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
         """
@@ -2355,7 +2709,7 @@ class AppSpecWorkerArgs:
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance size to use for this component.
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 
@@ -4043,6 +4397,62 @@ class LoadBalancerStickySessionsArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class MonitorAlertAlertsArgs:
+    def __init__(__self__, *,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 slacks: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgs']]]] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slacks is not None:
+            pulumi.set(__self__, "slacks", slacks)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "emails", value)
+
+    @property
+    @pulumi.getter
+    def slacks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgs']]]]:
+        return pulumi.get(self, "slacks")
+
+    @slacks.setter
+    def slacks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgs']]]]):
+        pulumi.set(self, "slacks", value)
+
+
+@pulumi.input_type
+class MonitorAlertAlertsSlackArgs:
+    def __init__(__self__, *,
+                 channel: pulumi.Input[str],
+                 url: pulumi.Input[str]):
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: pulumi.Input[str]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
 
 
 @pulumi.input_type

@@ -69,6 +69,10 @@ export class Domain extends pulumi.CustomResource {
      * The name of the domain
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The TTL value of the domain
+     */
+    public /*out*/ readonly ttl!: pulumi.Output<number>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -86,6 +90,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["domainUrn"] = state ? state.domainUrn : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
@@ -94,6 +99,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["domainUrn"] = undefined /*out*/;
+            inputs["ttl"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -119,6 +125,10 @@ export interface DomainState {
      * The name of the domain
      */
     name?: pulumi.Input<string>;
+    /**
+     * The TTL value of the domain
+     */
+    ttl?: pulumi.Input<number>;
 }
 
 /**

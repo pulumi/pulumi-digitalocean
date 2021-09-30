@@ -79,7 +79,8 @@ type Droplet struct {
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	Memory pulumi.IntOutput  `pulumi:"memory"`
 	// Boolean controlling whether monitoring agent is installed.
-	// Defaults to false.
+	// Defaults to false. If set to `true`, you can configure monitor alert policies
+	// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
 	// The Droplet name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -87,10 +88,10 @@ type Droplet struct {
 	PriceHourly pulumi.Float64Output `pulumi:"priceHourly"`
 	// Droplet monthly price
 	PriceMonthly pulumi.Float64Output `pulumi:"priceMonthly"`
-	// Boolean controlling if private networking
-	// is enabled. When VPC is enabled on an account, this will provision the
-	// Droplet inside of your account's default VPC for the region. Use the
-	// `vpcUuid` attribute to specify a different VPC.
+	// **Deprecated** Boolean controlling if private networking
+	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	//
+	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolOutput `pulumi:"privateNetworking"`
 	// The region to start in.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -190,7 +191,8 @@ type dropletState struct {
 	Locked *bool `pulumi:"locked"`
 	Memory *int  `pulumi:"memory"`
 	// Boolean controlling whether monitoring agent is installed.
-	// Defaults to false.
+	// Defaults to false. If set to `true`, you can configure monitor alert policies
+	// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
 	Monitoring *bool `pulumi:"monitoring"`
 	// The Droplet name.
 	Name *string `pulumi:"name"`
@@ -198,10 +200,10 @@ type dropletState struct {
 	PriceHourly *float64 `pulumi:"priceHourly"`
 	// Droplet monthly price
 	PriceMonthly *float64 `pulumi:"priceMonthly"`
-	// Boolean controlling if private networking
-	// is enabled. When VPC is enabled on an account, this will provision the
-	// Droplet inside of your account's default VPC for the region. Use the
-	// `vpcUuid` attribute to specify a different VPC.
+	// **Deprecated** Boolean controlling if private networking
+	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	//
+	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
 	// The region to start in.
 	Region *string `pulumi:"region"`
@@ -264,7 +266,8 @@ type DropletState struct {
 	Locked pulumi.BoolPtrInput
 	Memory pulumi.IntPtrInput
 	// Boolean controlling whether monitoring agent is installed.
-	// Defaults to false.
+	// Defaults to false. If set to `true`, you can configure monitor alert policies
+	// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
 	Monitoring pulumi.BoolPtrInput
 	// The Droplet name.
 	Name pulumi.StringPtrInput
@@ -272,10 +275,10 @@ type DropletState struct {
 	PriceHourly pulumi.Float64PtrInput
 	// Droplet monthly price
 	PriceMonthly pulumi.Float64PtrInput
-	// Boolean controlling if private networking
-	// is enabled. When VPC is enabled on an account, this will provision the
-	// Droplet inside of your account's default VPC for the region. Use the
-	// `vpcUuid` attribute to specify a different VPC.
+	// **Deprecated** Boolean controlling if private networking
+	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	//
+	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolPtrInput
 	// The region to start in.
 	Region pulumi.StringPtrInput
@@ -327,14 +330,15 @@ type dropletArgs struct {
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
 	Ipv6 *bool `pulumi:"ipv6"`
 	// Boolean controlling whether monitoring agent is installed.
-	// Defaults to false.
+	// Defaults to false. If set to `true`, you can configure monitor alert policies
+	// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
 	Monitoring *bool `pulumi:"monitoring"`
 	// The Droplet name.
 	Name *string `pulumi:"name"`
-	// Boolean controlling if private networking
-	// is enabled. When VPC is enabled on an account, this will provision the
-	// Droplet inside of your account's default VPC for the region. Use the
-	// `vpcUuid` attribute to specify a different VPC.
+	// **Deprecated** Boolean controlling if private networking
+	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	//
+	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
 	// The region to start in.
 	Region string `pulumi:"region"`
@@ -379,14 +383,15 @@ type DropletArgs struct {
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
 	Ipv6 pulumi.BoolPtrInput
 	// Boolean controlling whether monitoring agent is installed.
-	// Defaults to false.
+	// Defaults to false. If set to `true`, you can configure monitor alert policies
+	// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
 	Monitoring pulumi.BoolPtrInput
 	// The Droplet name.
 	Name pulumi.StringPtrInput
-	// Boolean controlling if private networking
-	// is enabled. When VPC is enabled on an account, this will provision the
-	// Droplet inside of your account's default VPC for the region. Use the
-	// `vpcUuid` attribute to specify a different VPC.
+	// **Deprecated** Boolean controlling if private networking
+	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	//
+	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolPtrInput
 	// The region to start in.
 	Region pulumi.StringInput

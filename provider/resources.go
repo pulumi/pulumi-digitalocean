@@ -281,7 +281,8 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_custom_image": {Tok: makeResource(digitalOceanMod, "CustomImage")},
+			"digitalocean_custom_image":  {Tok: makeResource(digitalOceanMod, "CustomImage")},
+			"digitalocean_monitor_alert": {Tok: makeResource(digitalOceanMod, "MonitorAlert")},
 		},
 		ExtraTypes: map[string]schema.ComplexTypeSpec{
 			"digitalocean:index:Region": {
