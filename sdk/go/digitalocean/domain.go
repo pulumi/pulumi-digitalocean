@@ -54,6 +54,8 @@ type Domain struct {
 	IpAddress pulumi.StringPtrOutput `pulumi:"ipAddress"`
 	// The name of the domain
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The TTL value of the domain
+	Ttl pulumi.IntOutput `pulumi:"ttl"`
 }
 
 // NewDomain registers a new resource with the given unique name, arguments, and options.
@@ -95,6 +97,8 @@ type domainState struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// The name of the domain
 	Name *string `pulumi:"name"`
+	// The TTL value of the domain
+	Ttl *int `pulumi:"ttl"`
 }
 
 type DomainState struct {
@@ -105,6 +109,8 @@ type DomainState struct {
 	IpAddress pulumi.StringPtrInput
 	// The name of the domain
 	Name pulumi.StringPtrInput
+	// The TTL value of the domain
+	Ttl pulumi.IntPtrInput
 }
 
 func (DomainState) ElementType() reflect.Type {

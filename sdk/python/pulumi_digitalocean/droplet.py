@@ -44,12 +44,11 @@ class DropletArgs:
                set it to `true`.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
-               Defaults to false.
+               Defaults to false. If set to `true`, you can configure monitor alert policies
+               [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         :param pulumi.Input[str] name: The Droplet name.
-        :param pulumi.Input[bool] private_networking: Boolean controlling if private networking
-               is enabled. When VPC is enabled on an account, this will provision the
-               Droplet inside of your account's default VPC for the region. Use the
-               `vpc_uuid` attribute to specify a different VPC.
+        :param pulumi.Input[bool] private_networking: **Deprecated** Boolean controlling if private networking
+               is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
@@ -78,6 +77,9 @@ class DropletArgs:
             pulumi.set(__self__, "monitoring", monitoring)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if private_networking is not None:
+            warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+            pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
         if private_networking is not None:
             pulumi.set(__self__, "private_networking", private_networking)
         if resize_disk is not None:
@@ -176,7 +178,8 @@ class DropletArgs:
     def monitoring(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean controlling whether monitoring agent is installed.
-        Defaults to false.
+        Defaults to false. If set to `true`, you can configure monitor alert policies
+        [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         """
         return pulumi.get(self, "monitoring")
 
@@ -200,10 +203,8 @@ class DropletArgs:
     @pulumi.getter(name="privateNetworking")
     def private_networking(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean controlling if private networking
-        is enabled. When VPC is enabled on an account, this will provision the
-        Droplet inside of your account's default VPC for the region. Use the
-        `vpc_uuid` attribute to specify a different VPC.
+        **Deprecated** Boolean controlling if private networking
+        is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
         return pulumi.get(self, "private_networking")
 
@@ -342,14 +343,13 @@ class _DropletState:
         :param pulumi.Input[str] ipv6_address: The IPv6 address
         :param pulumi.Input[bool] locked: Is the Droplet locked
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
-               Defaults to false.
+               Defaults to false. If set to `true`, you can configure monitor alert policies
+               [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         :param pulumi.Input[str] name: The Droplet name.
         :param pulumi.Input[float] price_hourly: Droplet hourly price
         :param pulumi.Input[float] price_monthly: Droplet monthly price
-        :param pulumi.Input[bool] private_networking: Boolean controlling if private networking
-               is enabled. When VPC is enabled on an account, this will provision the
-               Droplet inside of your account's default VPC for the region. Use the
-               `vpc_uuid` attribute to specify a different VPC.
+        :param pulumi.Input[bool] private_networking: **Deprecated** Boolean controlling if private networking
+               is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -401,6 +401,9 @@ class _DropletState:
             pulumi.set(__self__, "price_hourly", price_hourly)
         if price_monthly is not None:
             pulumi.set(__self__, "price_monthly", price_monthly)
+        if private_networking is not None:
+            warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+            pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
         if private_networking is not None:
             pulumi.set(__self__, "private_networking", private_networking)
         if region is not None:
@@ -574,7 +577,8 @@ class _DropletState:
     def monitoring(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean controlling whether monitoring agent is installed.
-        Defaults to false.
+        Defaults to false. If set to `true`, you can configure monitor alert policies
+        [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         """
         return pulumi.get(self, "monitoring")
 
@@ -622,10 +626,8 @@ class _DropletState:
     @pulumi.getter(name="privateNetworking")
     def private_networking(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean controlling if private networking
-        is enabled. When VPC is enabled on an account, this will provision the
-        Droplet inside of your account's default VPC for the region. Use the
-        `vpc_uuid` attribute to specify a different VPC.
+        **Deprecated** Boolean controlling if private networking
+        is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
         return pulumi.get(self, "private_networking")
 
@@ -821,12 +823,11 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[str] image: The Droplet image ID or slug.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
-               Defaults to false.
+               Defaults to false. If set to `true`, you can configure monitor alert policies
+               [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         :param pulumi.Input[str] name: The Droplet name.
-        :param pulumi.Input[bool] private_networking: Boolean controlling if private networking
-               is enabled. When VPC is enabled on an account, this will provision the
-               Droplet inside of your account's default VPC for the region. Use the
-               `vpc_uuid` attribute to specify a different VPC.
+        :param pulumi.Input[bool] private_networking: **Deprecated** Boolean controlling if private networking
+               is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -925,6 +926,9 @@ class Droplet(pulumi.CustomResource):
             __props__.__dict__["ipv6"] = ipv6
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
+            if private_networking is not None and not opts.urn:
+                warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+                pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
             __props__.__dict__["private_networking"] = private_networking
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -1012,14 +1016,13 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_address: The IPv6 address
         :param pulumi.Input[bool] locked: Is the Droplet locked
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
-               Defaults to false.
+               Defaults to false. If set to `true`, you can configure monitor alert policies
+               [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         :param pulumi.Input[str] name: The Droplet name.
         :param pulumi.Input[float] price_hourly: Droplet hourly price
         :param pulumi.Input[float] price_monthly: Droplet monthly price
-        :param pulumi.Input[bool] private_networking: Boolean controlling if private networking
-               is enabled. When VPC is enabled on an account, this will provision the
-               Droplet inside of your account's default VPC for the region. Use the
-               `vpc_uuid` attribute to specify a different VPC.
+        :param pulumi.Input[bool] private_networking: **Deprecated** Boolean controlling if private networking
+               is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -1174,7 +1177,8 @@ class Droplet(pulumi.CustomResource):
     def monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean controlling whether monitoring agent is installed.
-        Defaults to false.
+        Defaults to false. If set to `true`, you can configure monitor alert policies
+        [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         """
         return pulumi.get(self, "monitoring")
 
@@ -1206,10 +1210,8 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter(name="privateNetworking")
     def private_networking(self) -> pulumi.Output[bool]:
         """
-        Boolean controlling if private networking
-        is enabled. When VPC is enabled on an account, this will provision the
-        Droplet inside of your account's default VPC for the region. Use the
-        `vpc_uuid` attribute to specify a different VPC.
+        **Deprecated** Boolean controlling if private networking
+        is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
         return pulumi.get(self, "private_networking")
 

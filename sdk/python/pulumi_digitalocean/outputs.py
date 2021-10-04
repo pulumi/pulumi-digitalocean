@@ -22,6 +22,8 @@ __all__ = [
     'AppSpecJobGitlab',
     'AppSpecJobImage',
     'AppSpecService',
+    'AppSpecServiceCors',
+    'AppSpecServiceCorsAllowOrigins',
     'AppSpecServiceEnv',
     'AppSpecServiceGit',
     'AppSpecServiceGithub',
@@ -30,6 +32,8 @@ __all__ = [
     'AppSpecServiceImage',
     'AppSpecServiceRoute',
     'AppSpecStaticSite',
+    'AppSpecStaticSiteCors',
+    'AppSpecStaticSiteCorsAllowOrigins',
     'AppSpecStaticSiteEnv',
     'AppSpecStaticSiteGit',
     'AppSpecStaticSiteGithub',
@@ -56,6 +60,8 @@ __all__ = [
     'LoadBalancerForwardingRule',
     'LoadBalancerHealthcheck',
     'LoadBalancerStickySessions',
+    'MonitorAlertAlerts',
+    'MonitorAlertAlertsSlack',
     'SpacesBucketCorsRule',
     'SpacesBucketLifecycleRule',
     'SpacesBucketLifecycleRuleExpiration',
@@ -71,6 +77,8 @@ __all__ = [
     'GetAppSpecJobGitlabResult',
     'GetAppSpecJobImageResult',
     'GetAppSpecServiceResult',
+    'GetAppSpecServiceCorsResult',
+    'GetAppSpecServiceCorsAllowOriginsResult',
     'GetAppSpecServiceEnvResult',
     'GetAppSpecServiceGitResult',
     'GetAppSpecServiceGithubResult',
@@ -79,6 +87,8 @@ __all__ = [
     'GetAppSpecServiceImageResult',
     'GetAppSpecServiceRouteResult',
     'GetAppSpecStaticSiteResult',
+    'GetAppSpecStaticSiteCorsResult',
+    'GetAppSpecStaticSiteCorsAllowOriginsResult',
     'GetAppSpecStaticSiteEnvResult',
     'GetAppSpecStaticSiteGitResult',
     'GetAppSpecStaticSiteGithubResult',
@@ -533,7 +543,7 @@ class AppSpecJob(dict):
         :param 'AppSpecJobGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecJobImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
-        :param str instance_size_slug: The instance size to use for this component.
+        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
                - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
                - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
@@ -654,7 +664,7 @@ class AppSpecJob(dict):
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[str]:
         """
-        The instance size to use for this component.
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 
@@ -1020,6 +1030,7 @@ class AppSpecService(dict):
     def __init__(__self__, *,
                  name: str,
                  build_command: Optional[str] = None,
+                 cors: Optional['outputs.AppSpecServiceCors'] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
                  envs: Optional[Sequence['outputs.AppSpecServiceEnv']] = None,
@@ -1038,6 +1049,7 @@ class AppSpecService(dict):
         """
         :param str name: The name of the component.
         :param str build_command: An optional build command to run while building this component from source.
+        :param 'AppSpecServiceCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
@@ -1048,7 +1060,7 @@ class AppSpecService(dict):
         :param int http_port: The internal port on which this service's run command will listen.
         :param 'AppSpecServiceImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
-        :param str instance_size_slug: The instance size to use for this component.
+        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param Sequence[int] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -1056,6 +1068,8 @@ class AppSpecService(dict):
         pulumi.set(__self__, "name", name)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
         if dockerfile_path is not None:
             pulumi.set(__self__, "dockerfile_path", dockerfile_path)
         if environment_slug is not None:
@@ -1102,6 +1116,14 @@ class AppSpecService(dict):
         An optional build command to run while building this component from source.
         """
         return pulumi.get(self, "build_command")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional['outputs.AppSpecServiceCors']:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
 
     @property
     @pulumi.getter(name="dockerfilePath")
@@ -1187,7 +1209,7 @@ class AppSpecService(dict):
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[str]:
         """
-        The instance size to use for this component.
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 
@@ -1219,6 +1241,155 @@ class AppSpecService(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class AppSpecServiceCors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceCors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceCors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceCors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.AppSpecServiceCorsAllowOrigins'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'AppSpecServiceCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.AppSpecServiceCorsAllowOrigins']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class AppSpecServiceCorsAllowOrigins(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
 
 
 @pulumi.output_type
@@ -1676,6 +1847,7 @@ class AppSpecStaticSite(dict):
                  name: str,
                  build_command: Optional[str] = None,
                  catchall_document: Optional[str] = None,
+                 cors: Optional['outputs.AppSpecStaticSiteCors'] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
                  envs: Optional[Sequence['outputs.AppSpecStaticSiteEnv']] = None,
@@ -1691,6 +1863,7 @@ class AppSpecStaticSite(dict):
         :param str name: The name of the component.
         :param str build_command: An optional build command to run while building this component from source.
         :param str catchall_document: The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+        :param 'AppSpecStaticSiteCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
@@ -1707,6 +1880,8 @@ class AppSpecStaticSite(dict):
             pulumi.set(__self__, "build_command", build_command)
         if catchall_document is not None:
             pulumi.set(__self__, "catchall_document", catchall_document)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
         if dockerfile_path is not None:
             pulumi.set(__self__, "dockerfile_path", dockerfile_path)
         if environment_slug is not None:
@@ -1753,6 +1928,14 @@ class AppSpecStaticSite(dict):
         The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
         """
         return pulumi.get(self, "catchall_document")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional['outputs.AppSpecStaticSiteCors']:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
 
     @property
     @pulumi.getter(name="dockerfilePath")
@@ -1838,6 +2021,155 @@ class AppSpecStaticSite(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class AppSpecStaticSiteCors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecStaticSiteCors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecStaticSiteCors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecStaticSiteCors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.AppSpecStaticSiteCorsAllowOrigins'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'AppSpecStaticSiteCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.AppSpecStaticSiteCorsAllowOrigins']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class AppSpecStaticSiteCorsAllowOrigins(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
 
 
 @pulumi.output_type
@@ -2138,7 +2470,7 @@ class AppSpecWorker(dict):
         :param 'AppSpecWorkerGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecWorkerImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
-        :param str instance_size_slug: The instance size to use for this component.
+        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
@@ -2252,7 +2584,7 @@ class AppSpecWorker(dict):
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[str]:
         """
-        The instance size to use for this component.
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 
@@ -3884,6 +4216,46 @@ class LoadBalancerStickySessions(dict):
 
 
 @pulumi.output_type
+class MonitorAlertAlerts(dict):
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 slacks: Optional[Sequence['outputs.MonitorAlertAlertsSlack']] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slacks is not None:
+            pulumi.set(__self__, "slacks", slacks)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def slacks(self) -> Optional[Sequence['outputs.MonitorAlertAlertsSlack']]:
+        return pulumi.get(self, "slacks")
+
+
+@pulumi.output_type
+class MonitorAlertAlertsSlack(dict):
+    def __init__(__self__, *,
+                 channel: str,
+                 url: str):
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class SpacesBucketCorsRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4806,6 +5178,7 @@ class GetAppSpecServiceResult(dict):
                  routes: Sequence['outputs.GetAppSpecServiceRouteResult'],
                  run_command: str,
                  build_command: Optional[str] = None,
+                 cors: Optional['outputs.GetAppSpecServiceCorsResult'] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecServiceEnvResult']] = None,
@@ -4842,6 +5215,8 @@ class GetAppSpecServiceResult(dict):
         pulumi.set(__self__, "run_command", run_command)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
         if dockerfile_path is not None:
             pulumi.set(__self__, "dockerfile_path", dockerfile_path)
         if environment_slug is not None:
@@ -4903,6 +5278,11 @@ class GetAppSpecServiceResult(dict):
         An optional build command to run while building this component from source.
         """
         return pulumi.get(self, "build_command")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional['outputs.GetAppSpecServiceCorsResult']:
+        return pulumi.get(self, "cors")
 
     @property
     @pulumi.getter(name="dockerfilePath")
@@ -4999,6 +5379,88 @@ class GetAppSpecServiceResult(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class GetAppSpecServiceCorsResult(dict):
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.GetAppSpecServiceCorsAllowOriginsResult'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.GetAppSpecServiceCorsAllowOriginsResult']:
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class GetAppSpecServiceCorsAllowOriginsResult(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        return pulumi.get(self, "regex")
 
 
 @pulumi.output_type
@@ -5330,6 +5792,7 @@ class GetAppSpecStaticSiteResult(dict):
                  routes: Sequence['outputs.GetAppSpecStaticSiteRouteResult'],
                  build_command: Optional[str] = None,
                  catchall_document: Optional[str] = None,
+                 cors: Optional['outputs.GetAppSpecStaticSiteCorsResult'] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecStaticSiteEnvResult']] = None,
@@ -5361,6 +5824,8 @@ class GetAppSpecStaticSiteResult(dict):
             pulumi.set(__self__, "build_command", build_command)
         if catchall_document is not None:
             pulumi.set(__self__, "catchall_document", catchall_document)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
         if dockerfile_path is not None:
             pulumi.set(__self__, "dockerfile_path", dockerfile_path)
         if environment_slug is not None:
@@ -5410,6 +5875,11 @@ class GetAppSpecStaticSiteResult(dict):
         The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
         """
         return pulumi.get(self, "catchall_document")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional['outputs.GetAppSpecStaticSiteCorsResult']:
+        return pulumi.get(self, "cors")
 
     @property
     @pulumi.getter(name="dockerfilePath")
@@ -5490,6 +5960,88 @@ class GetAppSpecStaticSiteResult(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class GetAppSpecStaticSiteCorsResult(dict):
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.GetAppSpecStaticSiteCorsAllowOriginsResult'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.GetAppSpecStaticSiteCorsAllowOriginsResult']:
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class GetAppSpecStaticSiteCorsAllowOriginsResult(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        return pulumi.get(self, "regex")
 
 
 @pulumi.output_type

@@ -139,7 +139,7 @@ export interface AppSpecJob {
      */
     instanceCount?: number;
     /**
-     * The instance size to use for this component.
+     * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
     instanceSizeSlug?: string;
     /**
@@ -249,6 +249,10 @@ export interface AppSpecService {
      */
     buildCommand?: string;
     /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors?: outputs.AppSpecServiceCors;
+    /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
     dockerfilePath?: string;
@@ -289,7 +293,7 @@ export interface AppSpecService {
      */
     instanceCount?: number;
     /**
-     * The instance size to use for this component.
+     * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
     instanceSizeSlug?: string;
     /**
@@ -309,6 +313,48 @@ export interface AppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface AppSpecServiceCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
+    allowCredentials?: boolean;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: string[];
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: string[];
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: outputs.AppSpecServiceCorsAllowOrigins;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: string[];
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: string;
+}
+
+export interface AppSpecServiceCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: string;
 }
 
 export interface AppSpecServiceEnv {
@@ -434,6 +480,10 @@ export interface AppSpecStaticSite {
      */
     catchallDocument?: string;
     /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors?: outputs.AppSpecStaticSiteCors;
+    /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
     dockerfilePath?: string;
@@ -478,6 +528,48 @@ export interface AppSpecStaticSite {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface AppSpecStaticSiteCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
+    allowCredentials?: boolean;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: string[];
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: string[];
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: outputs.AppSpecStaticSiteCorsAllowOrigins;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: string[];
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: string;
+}
+
+export interface AppSpecStaticSiteCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: string;
 }
 
 export interface AppSpecStaticSiteEnv {
@@ -585,7 +677,7 @@ export interface AppSpecWorker {
      */
     instanceCount?: number;
     /**
-     * The instance size to use for this component.
+     * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
     instanceSizeSlug?: string;
     /**
@@ -1014,6 +1106,7 @@ export interface GetAppSpecService {
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
+    cors?: outputs.GetAppSpecServiceCors;
     /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
@@ -1075,6 +1168,21 @@ export interface GetAppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface GetAppSpecServiceCors {
+    allowCredentials?: boolean;
+    allowHeaders?: string[];
+    allowMethods?: string[];
+    allowOrigins?: outputs.GetAppSpecServiceCorsAllowOrigins;
+    exposeHeaders?: string[];
+    maxAge?: string;
+}
+
+export interface GetAppSpecServiceCorsAllowOrigins {
+    exact?: string;
+    prefix?: string;
+    regex?: string;
 }
 
 export interface GetAppSpecServiceEnv {
@@ -1199,6 +1307,7 @@ export interface GetAppSpecStaticSite {
      * The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
      */
     catchallDocument?: string;
+    cors?: outputs.GetAppSpecStaticSiteCors;
     /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
@@ -1244,6 +1353,21 @@ export interface GetAppSpecStaticSite {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface GetAppSpecStaticSiteCors {
+    allowCredentials?: boolean;
+    allowHeaders?: string[];
+    allowMethods?: string[];
+    allowOrigins?: outputs.GetAppSpecStaticSiteCorsAllowOrigins;
+    exposeHeaders?: string[];
+    maxAge?: string;
+}
+
+export interface GetAppSpecStaticSiteCorsAllowOrigins {
+    exact?: string;
+    prefix?: string;
+    regex?: string;
 }
 
 export interface GetAppSpecStaticSiteEnv {
@@ -2645,6 +2769,16 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: string;
+}
+
+export interface MonitorAlertAlerts {
+    emails?: string[];
+    slacks?: outputs.MonitorAlertAlertsSlack[];
+}
+
+export interface MonitorAlertAlertsSlack {
+    channel: string;
+    url: string;
 }
 
 export interface SpacesBucketCorsRule {

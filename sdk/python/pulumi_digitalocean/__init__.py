@@ -64,6 +64,7 @@ from .get_vpc import *
 from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
+from .monitor_alert import *
 from .project import *
 from .project_resources import *
 from .provider import *
@@ -261,6 +262,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/monitorAlert",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/monitorAlert:MonitorAlert": "MonitorAlert"
   }
  },
  {

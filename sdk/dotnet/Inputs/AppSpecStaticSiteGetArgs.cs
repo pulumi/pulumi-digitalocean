@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? CatchallDocument { get; set; }
 
         /// <summary>
+        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// </summary>
+        [Input("cors")]
+        public Input<Inputs.AppSpecStaticSiteCorsGetArgs>? Cors { get; set; }
+
+        /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         /// </summary>
         [Input("dockerfilePath")]

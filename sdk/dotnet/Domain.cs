@@ -63,6 +63,12 @@ namespace Pulumi.DigitalOcean
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The TTL value of the domain
+        /// </summary>
+        [Output("ttl")]
+        public Output<int> Ttl { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Domain resource with the given unique name, arguments, and options.
@@ -147,6 +153,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The TTL value of the domain
+        /// </summary>
+        [Input("ttl")]
+        public Input<int>? Ttl { get; set; }
 
         public DomainState()
         {

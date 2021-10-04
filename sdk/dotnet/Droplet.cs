@@ -121,7 +121,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether monitoring agent is installed.
-        /// Defaults to false.
+        /// Defaults to false. If set to `true`, you can configure monitor alert policies
+        /// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         /// </summary>
         [Output("monitoring")]
         public Output<bool?> Monitoring { get; private set; } = null!;
@@ -145,10 +146,8 @@ namespace Pulumi.DigitalOcean
         public Output<double> PriceMonthly { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean controlling if private networking
-        /// is enabled. When VPC is enabled on an account, this will provision the
-        /// Droplet inside of your account's default VPC for the region. Use the
-        /// `vpc_uuid` attribute to specify a different VPC.
+        /// **Deprecated** Boolean controlling if private networking
+        /// is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         /// </summary>
         [Output("privateNetworking")]
         public Output<bool> PrivateNetworking { get; private set; } = null!;
@@ -299,7 +298,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether monitoring agent is installed.
-        /// Defaults to false.
+        /// Defaults to false. If set to `true`, you can configure monitor alert policies
+        /// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -311,10 +311,8 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Boolean controlling if private networking
-        /// is enabled. When VPC is enabled on an account, this will provision the
-        /// Droplet inside of your account's default VPC for the region. Use the
-        /// `vpc_uuid` attribute to specify a different VPC.
+        /// **Deprecated** Boolean controlling if private networking
+        /// is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }
@@ -475,7 +473,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether monitoring agent is installed.
-        /// Defaults to false.
+        /// Defaults to false. If set to `true`, you can configure monitor alert policies
+        /// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -499,10 +498,8 @@ namespace Pulumi.DigitalOcean
         public Input<double>? PriceMonthly { get; set; }
 
         /// <summary>
-        /// Boolean controlling if private networking
-        /// is enabled. When VPC is enabled on an account, this will provision the
-        /// Droplet inside of your account's default VPC for the region. Use the
-        /// `vpc_uuid` attribute to specify a different VPC.
+        /// **Deprecated** Boolean controlling if private networking
+        /// is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }

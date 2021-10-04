@@ -63,6 +63,7 @@ export * from "./getVpc";
 export * from "./kubernetesCluster";
 export * from "./kubernetesNodePool";
 export * from "./loadBalancer";
+export * from "./monitorAlert";
 export * from "./project";
 export * from "./projectResources";
 export * from "./provider";
@@ -110,6 +111,7 @@ import { FloatingIpAssignment } from "./floatingIpAssignment";
 import { KubernetesCluster } from "./kubernetesCluster";
 import { KubernetesNodePool } from "./kubernetesNodePool";
 import { LoadBalancer } from "./loadBalancer";
+import { MonitorAlert } from "./monitorAlert";
 import { Project } from "./project";
 import { ProjectResources } from "./projectResources";
 import { SpacesBucket } from "./spacesBucket";
@@ -169,6 +171,8 @@ const _module = {
                 return new KubernetesNodePool(name, <any>undefined, { urn })
             case "digitalocean:index/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
+            case "digitalocean:index/monitorAlert:MonitorAlert":
+                return new MonitorAlert(name, <any>undefined, { urn })
             case "digitalocean:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "digitalocean:index/projectResources:ProjectResources":
@@ -216,6 +220,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/floatingIpAssignmen
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesCluster", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/monitorAlert", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/project", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/projectResources", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucket", _module)

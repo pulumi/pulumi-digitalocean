@@ -434,7 +434,7 @@
                 },
                 "instanceSizeSlug": {
                     "type": "string",
-                    "description": "The instance size to use for this component.\n",
+                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -674,6 +674,15 @@
                         }
                     }
                 },
+                "cors": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceCors:AppSpecServiceCors",
+                    "description": "The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dockerfilePath": {
                     "type": "string",
                     "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
@@ -769,7 +778,7 @@
                 },
                 "instanceSizeSlug": {
                     "type": "string",
-                    "description": "The instance size to use for this component.\n",
+                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -841,6 +850,106 @@
                     ]
                 }
             }
+        },
+        "digitalocean:index/AppSpecServiceCors:AppSpecServiceCors": {
+            "properties": {
+                "allowCredentials": {
+                    "type": "boolean",
+                    "description": "Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowOrigins": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceCorsAllowOrigins:AppSpecServiceCorsAllowOrigins",
+                    "description": "The `Access-Control-Allow-Origin` can be\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "exposeHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxAge": {
+                    "type": "string",
+                    "description": "An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/AppSpecServiceCorsAllowOrigins:AppSpecServiceCorsAllowOrigins": {
+            "properties": {
+                "exact": {
+                    "type": "string",
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regex": {
+                    "type": "string",
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecServiceEnv:AppSpecServiceEnv": {
             "properties": {
@@ -1115,6 +1224,15 @@
                         }
                     }
                 },
+                "cors": {
+                    "$ref": "#/types/digitalocean:index/AppSpecStaticSiteCors:AppSpecStaticSiteCors",
+                    "description": "The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dockerfilePath": {
                     "type": "string",
                     "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
@@ -1241,6 +1359,106 @@
                     ]
                 }
             }
+        },
+        "digitalocean:index/AppSpecStaticSiteCors:AppSpecStaticSiteCors": {
+            "properties": {
+                "allowCredentials": {
+                    "type": "boolean",
+                    "description": "Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowOrigins": {
+                    "$ref": "#/types/digitalocean:index/AppSpecStaticSiteCorsAllowOrigins:AppSpecStaticSiteCorsAllowOrigins",
+                    "description": "The `Access-Control-Allow-Origin` can be\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "exposeHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxAge": {
+                    "type": "string",
+                    "description": "An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/AppSpecStaticSiteCorsAllowOrigins:AppSpecStaticSiteCorsAllowOrigins": {
+            "properties": {
+                "exact": {
+                    "type": "string",
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regex": {
+                    "type": "string",
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecStaticSiteEnv:AppSpecStaticSiteEnv": {
             "properties": {
@@ -1479,7 +1697,7 @@
                 },
                 "instanceSizeSlug": {
                     "type": "string",
-                    "description": "The instance size to use for this component.\n",
+                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2627,6 +2845,58 @@
             },
             "type": "object"
         },
+        "digitalocean:index/MonitorAlertAlerts:MonitorAlertAlerts": {
+            "properties": {
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "slacks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/MonitorAlertAlertsSlack:MonitorAlertAlertsSlack"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/MonitorAlertAlertsSlack:MonitorAlertAlertsSlack": {
+            "properties": {
+                "channel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "channel",
+                "url"
+            ]
+        },
         "digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule": {
             "properties": {
                 "allowedHeaders": {
@@ -3427,6 +3697,14 @@
                         }
                     }
                 },
+                "cors": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceCors:getAppSpecServiceCors",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dockerfilePath": {
                     "type": "string",
                     "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
@@ -3592,6 +3870,97 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecServiceCors:getAppSpecServiceCors": {
+            "properties": {
+                "allowCredentials": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowOrigins": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceCorsAllowOrigins:getAppSpecServiceCorsAllowOrigins",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "exposeHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxAge": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getAppSpecServiceCorsAllowOrigins:getAppSpecServiceCorsAllowOrigins": {
+            "properties": {
+                "exact": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prefix": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regex": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecServiceEnv:getAppSpecServiceEnv": {
             "properties": {
@@ -3872,6 +4241,14 @@
                         }
                     }
                 },
+                "cors": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteCors:getAppSpecStaticSiteCors",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dockerfilePath": {
                     "type": "string",
                     "description": "The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.\n",
@@ -3996,6 +4373,97 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecStaticSiteCors:getAppSpecStaticSiteCors": {
+            "properties": {
+                "allowCredentials": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowOrigins": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteCorsAllowOrigins:getAppSpecStaticSiteCorsAllowOrigins",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "exposeHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxAge": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getAppSpecStaticSiteCorsAllowOrigins:getAppSpecStaticSiteCorsAllowOrigins": {
+            "properties": {
+                "exact": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prefix": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regex": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecStaticSiteEnv:getAppSpecStaticSiteEnv": {
             "properties": {
@@ -9281,10 +9749,15 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the domain\n"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "The TTL value of the domain\n"
                 }
             },
             "required": [
                 "name",
+                "ttl",
                 "domainUrn"
             ],
             "inputProperties": {
@@ -9314,6 +9787,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the domain\n"
+                    },
+                    "ttl": {
+                        "type": "integer",
+                        "description": "The TTL value of the domain\n"
                     }
                 },
                 "type": "object"
@@ -9370,7 +9847,7 @@
                 },
                 "monitoring": {
                     "type": "boolean",
-                    "description": "Boolean controlling whether monitoring agent is installed.\nDefaults to false.\n"
+                    "description": "Boolean controlling whether monitoring agent is installed.\nDefaults to false. If set to `true`, you can configure monitor alert policies\n[monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)\n"
                 },
                 "name": {
                     "type": "string",
@@ -9386,7 +9863,8 @@
                 },
                 "privateNetworking": {
                     "type": "boolean",
-                    "description": "Boolean controlling if private networking\nis enabled. When VPC is enabled on an account, this will provision the\nDroplet inside of your account's default VPC for the region. Use the\n`vpc_uuid` attribute to specify a different VPC.\n"
+                    "description": "**Deprecated** Boolean controlling if private networking\nis enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.\n",
+                    "deprecationMessage": "This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region."
                 },
                 "region": {
                     "type": "string",
@@ -9478,7 +9956,7 @@
                 },
                 "monitoring": {
                     "type": "boolean",
-                    "description": "Boolean controlling whether monitoring agent is installed.\nDefaults to false.\n"
+                    "description": "Boolean controlling whether monitoring agent is installed.\nDefaults to false. If set to `true`, you can configure monitor alert policies\n[monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)\n"
                 },
                 "name": {
                     "type": "string",
@@ -9486,7 +9964,8 @@
                 },
                 "privateNetworking": {
                     "type": "boolean",
-                    "description": "Boolean controlling if private networking\nis enabled. When VPC is enabled on an account, this will provision the\nDroplet inside of your account's default VPC for the region. Use the\n`vpc_uuid` attribute to specify a different VPC.\n"
+                    "description": "**Deprecated** Boolean controlling if private networking\nis enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.\n",
+                    "deprecationMessage": "This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region."
                 },
                 "region": {
                     "type": "string",
@@ -9604,7 +10083,7 @@
                     },
                     "monitoring": {
                         "type": "boolean",
-                        "description": "Boolean controlling whether monitoring agent is installed.\nDefaults to false.\n"
+                        "description": "Boolean controlling whether monitoring agent is installed.\nDefaults to false. If set to `true`, you can configure monitor alert policies\n[monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)\n"
                     },
                     "name": {
                         "type": "string",
@@ -9620,7 +10099,8 @@
                     },
                     "privateNetworking": {
                         "type": "boolean",
-                        "description": "Boolean controlling if private networking\nis enabled. When VPC is enabled on an account, this will provision the\nDroplet inside of your account's default VPC for the region. Use the\n`vpc_uuid` attribute to specify a different VPC.\n"
+                        "description": "**Deprecated** Boolean controlling if private networking\nis enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.\n",
+                        "deprecationMessage": "This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region."
                     },
                     "region": {
                         "type": "string",
@@ -10745,6 +11225,170 @@
                     "vpcUuid": {
                         "type": "string",
                         "description": "The ID of the VPC where the load balancer will be located.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/monitorAlert:MonitorAlert": {
+            "description": "Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring) resource.\nMonitor alerts can be configured to alert about, e.g., disk or memory usage exceeding certain threshold, or traffic at certain\nlimits. Notifications can be sent to either an email address or a Slack channel.\n\n\n## Import\n\nMonitor alerts can be imported using the monitor alert `uuid`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3\n```\n\n ",
+            "properties": {
+                "alerts": {
+                    "$ref": "#/types/digitalocean:index/MonitorAlertAlerts:MonitorAlertAlerts",
+                    "description": "How to send notifications about the alerts. This is a list with one element, .\nNote that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can\nread more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)\n"
+                },
+                "compare": {
+                    "type": "string",
+                    "description": "The comparison for `value`. \nThis may be either `GreaterThan` or `LessThan`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the alert.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "The status of the alert.\n"
+                },
+                "entities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The resources to which the alert policy applies.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags for the alert.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the alert.\nThis may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "The uuid of the alert.\n"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. \nDigitalOcean will show the correct unit in the web panel.\n"
+                },
+                "window": {
+                    "type": "string",
+                    "description": "The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.\n"
+                }
+            },
+            "required": [
+                "alerts",
+                "compare",
+                "description",
+                "type",
+                "uuid",
+                "value",
+                "window"
+            ],
+            "inputProperties": {
+                "alerts": {
+                    "$ref": "#/types/digitalocean:index/MonitorAlertAlerts:MonitorAlertAlerts",
+                    "description": "How to send notifications about the alerts. This is a list with one element, .\nNote that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can\nread more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)\n"
+                },
+                "compare": {
+                    "type": "string",
+                    "description": "The comparison for `value`. \nThis may be either `GreaterThan` or `LessThan`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the alert.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "The status of the alert.\n"
+                },
+                "entities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The resources to which the alert policy applies.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags for the alert.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the alert.\nThis may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.\n"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. \nDigitalOcean will show the correct unit in the web panel.\n"
+                },
+                "window": {
+                    "type": "string",
+                    "description": "The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.\n"
+                }
+            },
+            "requiredInputs": [
+                "alerts",
+                "compare",
+                "description",
+                "type",
+                "value",
+                "window"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MonitorAlert resources.\n",
+                "properties": {
+                    "alerts": {
+                        "$ref": "#/types/digitalocean:index/MonitorAlertAlerts:MonitorAlertAlerts",
+                        "description": "How to send notifications about the alerts. This is a list with one element, .\nNote that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can\nread more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)\n"
+                    },
+                    "compare": {
+                        "type": "string",
+                        "description": "The comparison for `value`. \nThis may be either `GreaterThan` or `LessThan`.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the alert.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "The status of the alert.\n"
+                    },
+                    "entities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The resources to which the alert policy applies.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags for the alert.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the alert.\nThis may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "The uuid of the alert.\n"
+                    },
+                    "value": {
+                        "type": "number",
+                        "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. \nDigitalOcean will show the correct unit in the web panel.\n"
+                    },
+                    "window": {
+                        "type": "string",
+                        "description": "The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.\n"
                     }
                 },
                 "type": "object"
