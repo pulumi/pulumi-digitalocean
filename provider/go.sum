@@ -752,6 +752,8 @@ github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20210826091140-da4bf
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20210826091140-da4bfd84908e/go.mod h1:3IlI8NxrT3OILpkVmeHGNNSSqWF91kxzGCTjRIHZXw0=
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20210930124015-f27cc498ce26 h1:SlKkKBgY8/Bv94U4x8VfTsBVNUolYv12HZlaAJRh+C4=
 github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20210930124015-f27cc498ce26/go.mod h1:i4ZrOkvsRJ0+YaKrSCNYiW33tOgl4JSYY5Vilb68teg=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20211004120335-cab9d510db20 h1:bKwTEC0EQ8FTV2OxbGBXgH0lcDY26uHHqP7gcY/YZIQ=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20211004120335-cab9d510db20/go.mod h1:i4ZrOkvsRJ0+YaKrSCNYiW33tOgl4JSYY5Vilb68teg=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
