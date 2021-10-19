@@ -9818,6 +9818,10 @@
                     "type": "string",
                     "description": "The uniform resource name of the Droplet\n* `name`- The name of the Droplet\n"
                 },
+                "gracefulShutdown": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n"
+                },
                 "image": {
                     "type": "string",
                     "description": "The Droplet image ID or slug.\n"
@@ -9946,6 +9950,10 @@
                     "type": "boolean",
                     "description": "A boolean indicating whether to install the\nDigitalOcean agent used for providing access to the Droplet web console in\nthe control panel. By default, the agent is installed on new Droplets but\ninstallation errors (i.e. OS not supported) are ignored. To prevent it from\nbeing installed, set to `false`. To make installation errors fatal, explicitly\nset it to `true`.\n"
                 },
+                "gracefulShutdown": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n"
+                },
                 "image": {
                     "type": "string",
                     "description": "The Droplet image ID or slug.\n"
@@ -10053,6 +10061,10 @@
                     "dropletUrn": {
                         "type": "string",
                         "description": "The uniform resource name of the Droplet\n* `name`- The name of the Droplet\n"
+                    },
+                    "gracefulShutdown": {
+                        "type": "boolean",
+                        "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n"
                     },
                     "image": {
                         "type": "string",
@@ -10537,6 +10549,10 @@
                     "type": "string",
                     "description": "The base URL of the API server on the Kubernetes master node.\n"
                 },
+                "ha": {
+                    "type": "boolean",
+                    "description": "Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false\n"
+                },
                 "ipv4Address": {
                     "type": "string",
                     "description": "The public IPv4 address of the Kubernetes master node.\n"
@@ -10617,6 +10633,10 @@
                     "type": "boolean",
                     "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
                 },
+                "ha": {
+                    "type": "boolean",
+                    "description": "Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false\n"
+                },
                 "maintenancePolicy": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
                     "description": "A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.\n"
@@ -10689,6 +10709,10 @@
                     "endpoint": {
                         "type": "string",
                         "description": "The base URL of the API server on the Kubernetes master node.\n"
+                    },
+                    "ha": {
+                        "type": "boolean",
+                        "description": "Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false\n"
                     },
                     "ipv4Address": {
                         "type": "string",
@@ -13767,6 +13791,9 @@
                         "type": "string",
                         "description": "The base URL of the API server on the Kubernetes master node.\n"
                     },
+                    "ha": {
+                        "type": "boolean"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -13844,6 +13871,7 @@
                     "clusterSubnet",
                     "createdAt",
                     "endpoint",
+                    "ha",
                     "ipv4Address",
                     "kubeConfigs",
                     "maintenancePolicies",

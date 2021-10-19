@@ -65,6 +65,7 @@ namespace Pulumi.DigitalOcean
         /// The base URL of the API server on the Kubernetes master node.
         /// </summary>
         public readonly string Endpoint;
+        public readonly bool Ha;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -130,6 +131,8 @@ namespace Pulumi.DigitalOcean
 
             string endpoint,
 
+            bool ha,
+
             string id,
 
             string ipv4Address,
@@ -164,6 +167,7 @@ namespace Pulumi.DigitalOcean
             ClusterSubnet = clusterSubnet;
             CreatedAt = createdAt;
             Endpoint = endpoint;
+            Ha = ha;
             Id = id;
             Ipv4Address = ipv4Address;
             KubeConfigs = kubeConfigs;

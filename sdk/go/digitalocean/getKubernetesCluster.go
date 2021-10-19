@@ -36,6 +36,7 @@ type LookupKubernetesClusterResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint string `pulumi:"endpoint"`
+	Ha       bool   `pulumi:"ha"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The public IPv4 address of the Kubernetes master node.

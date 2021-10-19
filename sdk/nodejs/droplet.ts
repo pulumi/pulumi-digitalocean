@@ -84,6 +84,11 @@ export class Droplet extends pulumi.CustomResource {
      */
     public /*out*/ readonly dropletUrn!: pulumi.Output<string>;
     /**
+     * A boolean indicating whether the droplet
+     * should be gracefully shut down before it is deleted.
+     */
+    public readonly gracefulShutdown!: pulumi.Output<boolean | undefined>;
+    /**
      * The Droplet image ID or slug.
      */
     public readonly image!: pulumi.Output<string>;
@@ -200,6 +205,7 @@ export class Droplet extends pulumi.CustomResource {
             inputs["disk"] = state ? state.disk : undefined;
             inputs["dropletAgent"] = state ? state.dropletAgent : undefined;
             inputs["dropletUrn"] = state ? state.dropletUrn : undefined;
+            inputs["gracefulShutdown"] = state ? state.gracefulShutdown : undefined;
             inputs["image"] = state ? state.image : undefined;
             inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
             inputs["ipv4AddressPrivate"] = state ? state.ipv4AddressPrivate : undefined;
@@ -235,6 +241,7 @@ export class Droplet extends pulumi.CustomResource {
             }
             inputs["backups"] = args ? args.backups : undefined;
             inputs["dropletAgent"] = args ? args.dropletAgent : undefined;
+            inputs["gracefulShutdown"] = args ? args.gracefulShutdown : undefined;
             inputs["image"] = args ? args.image : undefined;
             inputs["ipv6"] = args ? args.ipv6 : undefined;
             inputs["monitoring"] = args ? args.monitoring : undefined;
@@ -296,6 +303,11 @@ export interface DropletState {
      * * `name`- The name of the Droplet
      */
     dropletUrn?: pulumi.Input<string>;
+    /**
+     * A boolean indicating whether the droplet
+     * should be gracefully shut down before it is deleted.
+     */
+    gracefulShutdown?: pulumi.Input<boolean>;
     /**
      * The Droplet image ID or slug.
      */
@@ -414,6 +426,11 @@ export interface DropletArgs {
      * set it to `true`.
      */
     dropletAgent?: pulumi.Input<boolean>;
+    /**
+     * A boolean indicating whether the droplet
+     * should be gracefully shut down before it is deleted.
+     */
+    gracefulShutdown?: pulumi.Input<boolean>;
     /**
      * The Droplet image ID or slug.
      */

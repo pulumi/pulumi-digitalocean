@@ -20,7 +20,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, auto_upgrade=None, cluster_subnet=None, created_at=None, endpoint=None, id=None, ipv4_address=None, kube_configs=None, maintenance_policies=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
+    def __init__(__self__, auto_upgrade=None, cluster_subnet=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, maintenance_policies=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
         if auto_upgrade and not isinstance(auto_upgrade, bool):
             raise TypeError("Expected argument 'auto_upgrade' to be a bool")
         pulumi.set(__self__, "auto_upgrade", auto_upgrade)
@@ -33,6 +33,9 @@ class GetKubernetesClusterResult:
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         pulumi.set(__self__, "endpoint", endpoint)
+        if ha and not isinstance(ha, bool):
+            raise TypeError("Expected argument 'ha' to be a bool")
+        pulumi.set(__self__, "ha", ha)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -111,6 +114,11 @@ class GetKubernetesClusterResult:
         The base URL of the API server on the Kubernetes master node.
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def ha(self) -> bool:
+        return pulumi.get(self, "ha")
 
     @property
     @pulumi.getter
@@ -237,6 +245,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             cluster_subnet=self.cluster_subnet,
             created_at=self.created_at,
             endpoint=self.endpoint,
+            ha=self.ha,
             id=self.id,
             ipv4_address=self.ipv4_address,
             kube_configs=self.kube_configs,
@@ -278,6 +287,7 @@ def get_kubernetes_cluster(name: Optional[str] = None,
         cluster_subnet=__ret__.cluster_subnet,
         created_at=__ret__.created_at,
         endpoint=__ret__.endpoint,
+        ha=__ret__.ha,
         id=__ret__.id,
         ipv4_address=__ret__.ipv4_address,
         kube_configs=__ret__.kube_configs,
