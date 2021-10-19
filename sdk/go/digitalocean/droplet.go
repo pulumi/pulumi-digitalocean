@@ -65,6 +65,9 @@ type Droplet struct {
 	// The uniform resource name of the Droplet
 	// * `name`- The name of the Droplet
 	DropletUrn pulumi.StringOutput `pulumi:"dropletUrn"`
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	GracefulShutdown pulumi.BoolPtrOutput `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug.
 	Image pulumi.StringOutput `pulumi:"image"`
 	// The IPv4 address
@@ -177,6 +180,9 @@ type dropletState struct {
 	// The uniform resource name of the Droplet
 	// * `name`- The name of the Droplet
 	DropletUrn *string `pulumi:"dropletUrn"`
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug.
 	Image *string `pulumi:"image"`
 	// The IPv4 address
@@ -252,6 +258,9 @@ type DropletState struct {
 	// The uniform resource name of the Droplet
 	// * `name`- The name of the Droplet
 	DropletUrn pulumi.StringPtrInput
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug.
 	Image pulumi.StringPtrInput
 	// The IPv4 address
@@ -325,6 +334,9 @@ type dropletArgs struct {
 	// being installed, set to `false`. To make installation errors fatal, explicitly
 	// set it to `true`.
 	DropletAgent *bool `pulumi:"dropletAgent"`
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug.
 	Image string `pulumi:"image"`
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
@@ -378,6 +390,9 @@ type DropletArgs struct {
 	// being installed, set to `false`. To make installation errors fatal, explicitly
 	// set it to `true`.
 	DropletAgent pulumi.BoolPtrInput
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug.
 	Image pulumi.StringInput
 	// Boolean controlling if IPv6 is enabled. Defaults to false.

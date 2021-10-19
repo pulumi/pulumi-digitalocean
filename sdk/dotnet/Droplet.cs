@@ -81,6 +81,13 @@ namespace Pulumi.DigitalOcean
         public Output<string> DropletUrn { get; private set; } = null!;
 
         /// <summary>
+        /// A boolean indicating whether the droplet
+        /// should be gracefully shut down before it is deleted.
+        /// </summary>
+        [Output("gracefulShutdown")]
+        public Output<bool?> GracefulShutdown { get; private set; } = null!;
+
+        /// <summary>
         /// The Droplet image ID or slug.
         /// </summary>
         [Output("image")]
@@ -285,6 +292,13 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? DropletAgent { get; set; }
 
         /// <summary>
+        /// A boolean indicating whether the droplet
+        /// should be gracefully shut down before it is deleted.
+        /// </summary>
+        [Input("gracefulShutdown")]
+        public Input<bool>? GracefulShutdown { get; set; }
+
+        /// <summary>
         /// The Droplet image ID or slug.
         /// </summary>
         [Input("image", required: true)]
@@ -431,6 +445,13 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("dropletUrn")]
         public Input<string>? DropletUrn { get; set; }
+
+        /// <summary>
+        /// A boolean indicating whether the droplet
+        /// should be gracefully shut down before it is deleted.
+        /// </summary>
+        [Input("gracefulShutdown")]
+        public Input<bool>? GracefulShutdown { get; set; }
 
         /// <summary>
         /// The Droplet image ID or slug.

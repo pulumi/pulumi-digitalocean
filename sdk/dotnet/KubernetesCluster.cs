@@ -52,6 +52,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        /// </summary>
+        [Output("ha")]
+        public Output<bool?> Ha { get; private set; } = null!;
+
+        /// <summary>
         /// The public IPv4 address of the Kubernetes master node.
         /// </summary>
         [Output("ipv4Address")]
@@ -179,6 +185,12 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
+        /// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        /// </summary>
+        [Input("ha")]
+        public Input<bool>? Ha { get; set; }
+
+        /// <summary>
         /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         /// </summary>
         [Input("maintenancePolicy")]
@@ -268,6 +280,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        /// </summary>
+        [Input("ha")]
+        public Input<bool>? Ha { get; set; }
 
         /// <summary>
         /// The public IPv4 address of the Kubernetes master node.

@@ -19,6 +19,7 @@ class DropletArgs:
                  size: pulumi.Input[Union[str, 'DropletSlug']],
                  backups: Optional[pulumi.Input[bool]] = None,
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
+                 graceful_shutdown: Optional[pulumi.Input[bool]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,8 @@ class DropletArgs:
                installation errors (i.e. OS not supported) are ignored. To prevent it from
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
+        :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
+               should be gracefully shut down before it is deleted.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
                Defaults to false. If set to `true`, you can configure monitor alert policies
@@ -71,6 +74,8 @@ class DropletArgs:
             pulumi.set(__self__, "backups", backups)
         if droplet_agent is not None:
             pulumi.set(__self__, "droplet_agent", droplet_agent)
+        if graceful_shutdown is not None:
+            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
         if monitoring is not None:
@@ -160,6 +165,19 @@ class DropletArgs:
     @droplet_agent.setter
     def droplet_agent(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "droplet_agent", value)
+
+    @property
+    @pulumi.getter(name="gracefulShutdown")
+    def graceful_shutdown(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether the droplet
+        should be gracefully shut down before it is deleted.
+        """
+        return pulumi.get(self, "graceful_shutdown")
+
+    @graceful_shutdown.setter
+    def graceful_shutdown(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "graceful_shutdown", value)
 
     @property
     @pulumi.getter
@@ -301,6 +319,7 @@ class _DropletState:
                  disk: Optional[pulumi.Input[int]] = None,
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
                  droplet_urn: Optional[pulumi.Input[str]] = None,
+                 graceful_shutdown: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
                  ipv4_address_private: Optional[pulumi.Input[str]] = None,
@@ -336,6 +355,8 @@ class _DropletState:
                set it to `true`.
         :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
                * `name`- The name of the Droplet
+        :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
+               should be gracefully shut down before it is deleted.
         :param pulumi.Input[str] image: The Droplet image ID or slug.
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
@@ -379,6 +400,8 @@ class _DropletState:
             pulumi.set(__self__, "droplet_agent", droplet_agent)
         if droplet_urn is not None:
             pulumi.set(__self__, "droplet_urn", droplet_urn)
+        if graceful_shutdown is not None:
+            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if image is not None:
             pulumi.set(__self__, "image", image)
         if ipv4_address is not None:
@@ -490,6 +513,19 @@ class _DropletState:
     @droplet_urn.setter
     def droplet_urn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "droplet_urn", value)
+
+    @property
+    @pulumi.getter(name="gracefulShutdown")
+    def graceful_shutdown(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether the droplet
+        should be gracefully shut down before it is deleted.
+        """
+        return pulumi.get(self, "graceful_shutdown")
+
+    @graceful_shutdown.setter
+    def graceful_shutdown(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "graceful_shutdown", value)
 
     @property
     @pulumi.getter
@@ -771,6 +807,7 @@ class Droplet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
+                 graceful_shutdown: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -820,6 +857,8 @@ class Droplet(pulumi.CustomResource):
                installation errors (i.e. OS not supported) are ignored. To prevent it from
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
+        :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
+               should be gracefully shut down before it is deleted.
         :param pulumi.Input[str] image: The Droplet image ID or slug.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
@@ -893,6 +932,7 @@ class Droplet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
+                 graceful_shutdown: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -920,6 +960,7 @@ class Droplet(pulumi.CustomResource):
 
             __props__.__dict__["backups"] = backups
             __props__.__dict__["droplet_agent"] = droplet_agent
+            __props__.__dict__["graceful_shutdown"] = graceful_shutdown
             if image is None and not opts.urn:
                 raise TypeError("Missing required property 'image'")
             __props__.__dict__["image"] = image
@@ -969,6 +1010,7 @@ class Droplet(pulumi.CustomResource):
             disk: Optional[pulumi.Input[int]] = None,
             droplet_agent: Optional[pulumi.Input[bool]] = None,
             droplet_urn: Optional[pulumi.Input[str]] = None,
+            graceful_shutdown: Optional[pulumi.Input[bool]] = None,
             image: Optional[pulumi.Input[str]] = None,
             ipv4_address: Optional[pulumi.Input[str]] = None,
             ipv4_address_private: Optional[pulumi.Input[str]] = None,
@@ -1009,6 +1051,8 @@ class Droplet(pulumi.CustomResource):
                set it to `true`.
         :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
                * `name`- The name of the Droplet
+        :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
+               should be gracefully shut down before it is deleted.
         :param pulumi.Input[str] image: The Droplet image ID or slug.
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
@@ -1051,6 +1095,7 @@ class Droplet(pulumi.CustomResource):
         __props__.__dict__["disk"] = disk
         __props__.__dict__["droplet_agent"] = droplet_agent
         __props__.__dict__["droplet_urn"] = droplet_urn
+        __props__.__dict__["graceful_shutdown"] = graceful_shutdown
         __props__.__dict__["image"] = image
         __props__.__dict__["ipv4_address"] = ipv4_address
         __props__.__dict__["ipv4_address_private"] = ipv4_address_private
@@ -1118,6 +1163,15 @@ class Droplet(pulumi.CustomResource):
         * `name`- The name of the Droplet
         """
         return pulumi.get(self, "droplet_urn")
+
+    @property
+    @pulumi.getter(name="gracefulShutdown")
+    def graceful_shutdown(self) -> pulumi.Output[Optional[bool]]:
+        """
+        A boolean indicating whether the droplet
+        should be gracefully shut down before it is deleted.
+        """
+        return pulumi.get(self, "graceful_shutdown")
 
     @property
     @pulumi.getter

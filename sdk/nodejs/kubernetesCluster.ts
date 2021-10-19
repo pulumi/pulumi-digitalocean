@@ -63,6 +63,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
+     * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+     */
+    public readonly ha!: pulumi.Output<boolean | undefined>;
+    /**
      * The public IPv4 address of the Kubernetes master node.
      */
     public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
+            inputs["ha"] = state ? state.ha : undefined;
             inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
             inputs["kubeConfigs"] = state ? state.kubeConfigs : undefined;
             inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
@@ -155,6 +160,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             inputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
+            inputs["ha"] = args ? args.ha : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodePool"] = args ? args.nodePool : undefined;
@@ -204,6 +210,10 @@ export interface KubernetesClusterState {
      * The base URL of the API server on the Kubernetes master node.
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+     */
+    ha?: pulumi.Input<boolean>;
     /**
      * The public IPv4 address of the Kubernetes master node.
      */
@@ -263,6 +273,10 @@ export interface KubernetesClusterArgs {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    /**
+     * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+     */
+    ha?: pulumi.Input<boolean>;
     /**
      * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      */

@@ -31,6 +31,8 @@ type KubernetesCluster struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+	Ha pulumi.BoolPtrOutput `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address pulumi.StringOutput                    `pulumi:"ipv4Address"`
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
@@ -106,6 +108,8 @@ type kubernetesClusterState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint *string `pulumi:"endpoint"`
+	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+	Ha *bool `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address *string                       `pulumi:"ipv4Address"`
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
@@ -144,6 +148,8 @@ type KubernetesClusterState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringPtrInput
+	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+	Ha pulumi.BoolPtrInput
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address pulumi.StringPtrInput
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
@@ -178,6 +184,8 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 type kubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+	Ha *bool `pulumi:"ha"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// A name for the node pool.
@@ -200,6 +208,8 @@ type kubernetesClusterArgs struct {
 type KubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
+	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+	Ha pulumi.BoolPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
 	// A name for the node pool.

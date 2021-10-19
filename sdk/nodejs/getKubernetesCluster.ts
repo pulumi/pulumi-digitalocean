@@ -57,6 +57,7 @@ export interface GetKubernetesClusterResult {
      * The base URL of the API server on the Kubernetes master node.
      */
     readonly endpoint: string;
+    readonly ha: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
