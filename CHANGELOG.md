@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.14.0 of the DigitalOcean Terraform Provider
+_(none)_
 
 ---
+
+## 4.8.0 (2021-10-19)
+* Upgrade to v2.14.0 of the DigitalOcean Terraform Provider
 
 ## 4.7.0 (2021-10-06)
 * Upgrade to v2.12.1 of the DigitalOcean Terraform Provider
