@@ -108,3 +108,23 @@ export interface GetImagesResult {
     readonly images: outputs.GetImagesImage[];
     readonly sorts?: outputs.GetImagesSort[];
 }
+
+export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
+    return pulumi.output(args).apply(a => getImages(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImages.
+ */
+export interface GetImagesOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetImagesSortArgs>[]>;
+}

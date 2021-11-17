@@ -289,7 +289,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Type: "string",
 				},
-				Enum: []*schema.EnumValueSpec{
+				Enum: []schema.EnumValueSpec{
 					{Name: "NYC1", Value: "nyc1"},
 					{Name: "NYC2", Value: "nyc2"},
 					{Name: "NYC3", Value: "nyc3"},
@@ -309,7 +309,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Type: "string",
 				},
-				Enum: []*schema.EnumValueSpec{
+				Enum: []schema.EnumValueSpec{
 					{Name: "A", Value: "A"},
 					{Name: "AAAA", Value: "AAAA"},
 					{Name: "CAA", Value: "CAA"},
@@ -324,7 +324,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Type: "string",
 				},
-				Enum: []*schema.EnumValueSpec{
+				Enum: []schema.EnumValueSpec{
 					{Name: "TCP", Value: "tcp"},
 					{Name: "UDP", Value: "udp"},
 					{Name: "ICMP", Value: "icmp"},
@@ -336,7 +336,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Type: "string",
 				},
-				Enum: []*schema.EnumValueSpec{
+				Enum: []schema.EnumValueSpec{
 					{Name: "RoundRobin", Value: "round_robin"},
 					{Name: "LeastConnections", Value: "least_connections"},
 				},
@@ -345,7 +345,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Type: "string",
 				},
-				Enum: []*schema.EnumValueSpec{
+				Enum: []schema.EnumValueSpec{
 					{Name: "EXT4", Value: "ext4"},
 					{Name: "XFS", Value: "xfs"},
 				},
@@ -354,7 +354,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Type: "string",
 				},
-				Enum: []*schema.EnumValueSpec{
+				Enum: []schema.EnumValueSpec{
 					{Name: "LetsEncrypt", Value: "lets_encrypt"},
 					{Name: "Custom", Value: "custom"},
 				},
@@ -363,7 +363,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Type: "string",
 				},
-				Enum: []*schema.EnumValueSpec{
+				Enum: []schema.EnumValueSpec{
 					{Name: "DB_1VPCU1GB", Value: "db-s-1vcpu-1gb"},
 					{Name: "DB_1VPCU2GB", Value: "db-s-1vcpu-2gb"},
 					{Name: "DB_2VPCU4GB", Value: "db-s-2vcpu-4gb"},
@@ -377,7 +377,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Type: "string",
 				},
-				Enum: []*schema.EnumValueSpec{
+				Enum: []schema.EnumValueSpec{
 					{Name: "DropletS1VCPU1GB", Value: "s-1vcpu-1gb"},
 					{Name: "DropletS1VCPU1GB-AMD", Value: "s-1vcpu-1gb-amd"},
 					{Name: "DropletS1VCPU1GB-INTEL", Value: "s-1vcpu-1gb-intel"},

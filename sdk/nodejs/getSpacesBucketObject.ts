@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -143,4 +142,31 @@ export interface GetSpacesBucketObjectResult {
      * If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
      */
     readonly websiteRedirectLocation: string;
+}
+
+export function getSpacesBucketObjectOutput(args: GetSpacesBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketObjectResult> {
+    return pulumi.output(args).apply(a => getSpacesBucketObject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSpacesBucketObject.
+ */
+export interface GetSpacesBucketObjectOutputArgs {
+    /**
+     * The name of the bucket to read the object from.
+     */
+    bucket: pulumi.Input<string>;
+    /**
+     * The full path to the object inside the bucket
+     */
+    key: pulumi.Input<string>;
+    range?: pulumi.Input<string>;
+    /**
+     * The slug of the region where the bucket is stored.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * Specific version ID of the object returned (defaults to latest version)
+     */
+    versionId?: pulumi.Input<string>;
 }

@@ -14,6 +14,7 @@ __all__ = [
     'GetTagsResult',
     'AwaitableGetTagsResult',
     'get_tags',
+    'get_tags_output',
 ]
 
 @pulumi.output_type
@@ -112,3 +113,34 @@ def get_tags(filters: Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]] 
         id=__ret__.id,
         sorts=__ret__.sorts,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_tags)
+def get_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]]]] = None,
+                    sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTagsSortArgs']]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagsResult]:
+    """
+    Returns a list of tags in your DigitalOcean account, with the ability to
+    filter and sort the results. If no filters are specified, all tags will be
+    returned.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    list = digitalocean.get_tags(sorts=[digitalocean.GetTagsSortArgs(
+        key="total_resource_count",
+        direction="asc",
+    )])
+    pulumi.export("sortedTags", list.tags)
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetTagsFilterArgs']] filters: Filter the results.
+           The `filter` block is documented below.
+    :param Sequence[pulumi.InputType['GetTagsSortArgs']] sorts: Sort the results.
+           The `sort` block is documented below.
+    """
+    ...

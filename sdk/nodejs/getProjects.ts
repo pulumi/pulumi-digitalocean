@@ -103,3 +103,23 @@ export interface GetProjectsResult {
     readonly projects: outputs.GetProjectsProject[];
     readonly sorts?: outputs.GetProjectsSort[];
 }
+
+export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
+    return pulumi.output(args).apply(a => getProjects(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjects.
+ */
+export interface GetProjectsOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetProjectsFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetProjectsSortArgs>[]>;
+}

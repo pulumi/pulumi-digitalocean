@@ -12,6 +12,7 @@ __all__ = [
     'GetKubernetesVersionsResult',
     'AwaitableGetKubernetesVersionsResult',
     'get_kubernetes_versions',
+    'get_kubernetes_versions_output',
 ]
 
 @pulumi.output_type
@@ -139,3 +140,58 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
         latest_version=__ret__.latest_version,
         valid_versions=__ret__.valid_versions,
         version_prefix=__ret__.version_prefix)
+
+
+@_utilities.lift_output_func(get_kubernetes_versions)
+def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesVersionsResult]:
+    """
+    Provides access to the available DigitalOcean Kubernetes Service versions.
+
+    ## Example Usage
+    ### Output a list of all available versions
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_versions()
+    pulumi.export("k8s-versions", example.valid_versions)
+    ```
+    ### Create a Kubernetes cluster using the most recent version available
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_versions()
+    example_cluster = digitalocean.KubernetesCluster("example-cluster",
+        region="lon1",
+        version=example.latest_version,
+        node_pool=digitalocean.KubernetesClusterNodePoolArgs(
+            name="default",
+            size="s-1vcpu-2gb",
+            node_count=3,
+        ))
+    ```
+    ### Pin a Kubernetes cluster to a specific minor version
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_versions(version_prefix="1.16.")
+    example_cluster = digitalocean.KubernetesCluster("example-cluster",
+        region="lon1",
+        version=example.latest_version,
+        node_pool=digitalocean.KubernetesClusterNodePoolArgs(
+            name="default",
+            size="s-1vcpu-2gb",
+            node_count=3,
+        ))
+    ```
+
+
+    :param str version_prefix: If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
+    """
+    ...

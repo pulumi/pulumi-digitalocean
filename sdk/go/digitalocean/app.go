@@ -28,13 +28,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := digitalocean.NewApp(ctx, "golang_sample", &digitalocean.AppArgs{
-// 			Spec: &digitalocean.AppSpecArgs{
+// 			Spec: &AppSpecArgs{
 // 				Name:   pulumi.String("golang-sample"),
 // 				Region: pulumi.String("ams"),
-// 				Services: digitalocean.AppSpecServiceArray{
-// 					&digitalocean.AppSpecServiceArgs{
+// 				Services: AppSpecServiceArray{
+// 					&AppSpecServiceArgs{
 // 						EnvironmentSlug: pulumi.String("go"),
-// 						Git: &digitalocean.AppSpecServiceGitArgs{
+// 						Git: &AppSpecServiceGitArgs{
 // 							Branch:       pulumi.String("main"),
 // 							RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
 // 						},
@@ -65,18 +65,92 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := digitalocean.NewApp(ctx, "static_ste_example", &digitalocean.AppArgs{
-// 			Spec: &digitalocean.AppSpecArgs{
+// 			Spec: &AppSpecArgs{
 // 				Name:   pulumi.String("static-ste-example"),
 // 				Region: pulumi.String("ams"),
-// 				StaticSites: digitalocean.AppSpecStaticSiteArray{
-// 					&digitalocean.AppSpecStaticSiteArgs{
+// 				StaticSites: AppSpecStaticSiteArray{
+// 					&AppSpecStaticSiteArgs{
 // 						BuildCommand: pulumi.String("bundle exec jekyll build -d ./public"),
-// 						Git: &digitalocean.AppSpecStaticSiteGitArgs{
+// 						Git: &AppSpecStaticSiteGitArgs{
 // 							Branch:       pulumi.String("main"),
 // 							RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-jekyll.git"),
 // 						},
 // 						Name:      pulumi.String("sample-jekyll"),
 // 						OutputDir: pulumi.String("/public"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Multiple Components Example
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewApp(ctx, "mono_repo_example", &digitalocean.AppArgs{
+// 			Spec: &AppSpecArgs{
+// 				Databases: AppSpecDatabaseArray{
+// 					&AppSpecDatabaseArgs{
+// 						Engine:     pulumi.String("PG"),
+// 						Name:       pulumi.String("starter-db"),
+// 						Production: pulumi.Bool(false),
+// 					},
+// 				},
+// 				Domains: pulumi.StringArray{
+// 					pulumi.String{
+// 						Name: "foo.example.com",
+// 					},
+// 				},
+// 				Name:   pulumi.String("mono-repo-example"),
+// 				Region: pulumi.String("ams"),
+// 				Services: AppSpecServiceArray{
+// 					&AppSpecServiceArgs{
+// 						EnvironmentSlug: pulumi.String("go"),
+// 						Github: &AppSpecServiceGithubArgs{
+// 							Branch:       pulumi.String("main"),
+// 							DeployOnPush: pulumi.Bool(true),
+// 							Repo:         pulumi.String("username/repo"),
+// 						},
+// 						HttpPort:         pulumi.Int(3000),
+// 						InstanceCount:    pulumi.Int(2),
+// 						InstanceSizeSlug: pulumi.String("professional-xs"),
+// 						Name:             pulumi.String("api"),
+// 						Routes: AppSpecServiceRouteArray{
+// 							&AppSpecServiceRouteArgs{
+// 								Path: pulumi.String("/api"),
+// 							},
+// 						},
+// 						RunCommand: pulumi.String("bin/api"),
+// 						SourceDir:  pulumi.String("api/"),
+// 					},
+// 				},
+// 				StaticSites: AppSpecStaticSiteArray{
+// 					&AppSpecStaticSiteArgs{
+// 						BuildCommand: pulumi.String("npm run build"),
+// 						Github: &AppSpecStaticSiteGithubArgs{
+// 							Branch:       pulumi.String("main"),
+// 							DeployOnPush: pulumi.Bool(true),
+// 							Repo:         pulumi.String("username/repo"),
+// 						},
+// 						Name: pulumi.String("web"),
+// 						Routes: AppSpecStaticSiteRouteArray{
+// 							&AppSpecStaticSiteRouteArgs{
+// 								Path: pulumi.String("/"),
+// 							},
+// 						},
 // 					},
 // 				},
 // 			},
@@ -252,7 +326,7 @@ type AppArrayInput interface {
 type AppArray []AppInput
 
 func (AppArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*App)(nil))
+	return reflect.TypeOf((*[]*App)(nil)).Elem()
 }
 
 func (i AppArray) ToAppArrayOutput() AppArrayOutput {
@@ -277,7 +351,7 @@ type AppMapInput interface {
 type AppMap map[string]AppInput
 
 func (AppMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*App)(nil))
+	return reflect.TypeOf((*map[string]*App)(nil)).Elem()
 }
 
 func (i AppMap) ToAppMapOutput() AppMapOutput {
@@ -288,9 +362,7 @@ func (i AppMap) ToAppMapOutputWithContext(ctx context.Context) AppMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppMapOutput)
 }
 
-type AppOutput struct {
-	*pulumi.OutputState
-}
+type AppOutput struct{ *pulumi.OutputState }
 
 func (AppOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*App)(nil))
@@ -309,14 +381,12 @@ func (o AppOutput) ToAppPtrOutput() AppPtrOutput {
 }
 
 func (o AppOutput) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
-	return o.ApplyT(func(v App) *App {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v App) *App {
 		return &v
 	}).(AppPtrOutput)
 }
 
-type AppPtrOutput struct {
-	*pulumi.OutputState
-}
+type AppPtrOutput struct{ *pulumi.OutputState }
 
 func (AppPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**App)(nil))
@@ -328,6 +398,16 @@ func (o AppPtrOutput) ToAppPtrOutput() AppPtrOutput {
 
 func (o AppPtrOutput) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
 	return o
+}
+
+func (o AppPtrOutput) Elem() AppOutput {
+	return o.ApplyT(func(v *App) App {
+		if v != nil {
+			return *v
+		}
+		var ret App
+		return ret
+	}).(AppOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }
@@ -371,6 +451,10 @@ func (o AppMapOutput) MapIndex(k pulumi.StringInput) AppOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppInput)(nil)).Elem(), &App{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppPtrInput)(nil)).Elem(), &App{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppArrayInput)(nil)).Elem(), AppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppMapInput)(nil)).Elem(), AppMap{})
 	pulumi.RegisterOutputType(AppOutput{})
 	pulumi.RegisterOutputType(AppPtrOutput{})
 	pulumi.RegisterOutputType(AppArrayOutput{})

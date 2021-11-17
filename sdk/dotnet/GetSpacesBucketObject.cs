@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -56,6 +57,52 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetSpacesBucketObjectResult> InvokeAsync(GetSpacesBucketObjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The Spaces object data source allows access to the metadata and
+        /// _optionally_ (see below) content of an object stored inside a Spaces bucket.
+        /// 
+        /// &gt; **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
+        /// `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
+        /// downloading large amount of data which would be thrown away in favor of metadata.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example retrieves a text object (which must have a `Content-Type`
+        /// value starting with `text/`) and uses it as the `user_data` for a Droplet:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var bootstrapScript = Output.Create(DigitalOcean.GetSpacesBucketObject.InvokeAsync(new DigitalOcean.GetSpacesBucketObjectArgs
+        ///         {
+        ///             Bucket = "ourcorp-deploy-config",
+        ///             Region = "nyc3",
+        ///             Key = "droplet-bootstrap-script.sh",
+        ///         }));
+        ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
+        ///         {
+        ///             Image = "ubuntu-18-04-x64",
+        ///             Region = "nyc2",
+        ///             Size = "s-1vcpu-1gb",
+        ///             UserData = bootstrapScript.Apply(bootstrapScript =&gt; bootstrapScript.Body),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSpacesBucketObjectResult> Invoke(GetSpacesBucketObjectInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +136,40 @@ namespace Pulumi.DigitalOcean
         public string? VersionId { get; set; }
 
         public GetSpacesBucketObjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetSpacesBucketObjectInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the bucket to read the object from.
+        /// </summary>
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        /// <summary>
+        /// The full path to the object inside the bucket
+        /// </summary>
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
+
+        [Input("range")]
+        public Input<string>? Range { get; set; }
+
+        /// <summary>
+        /// The slug of the region where the bucket is stored.
+        /// </summary>
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// Specific version ID of the object returned (defaults to latest version)
+        /// </summary>
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
+
+        public GetSpacesBucketObjectInvokeArgs()
         {
         }
     }

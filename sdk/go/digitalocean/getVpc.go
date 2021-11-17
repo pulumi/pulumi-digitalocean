@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +33,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "example-network"
-// 		_, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
+// 		_, err := digitalocean.LookupVpc(ctx, &GetVpcArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -48,13 +51,14 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "example-network"
-// 		exampleVpc, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
+// 		exampleVpc, err := digitalocean.LookupVpc(ctx, &GetVpcArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -110,4 +114,86 @@ type LookupVpcResult struct {
 	Region string `pulumi:"region"`
 	// The uniform resource name (URN) for the VPC.
 	Urn string `pulumi:"urn"`
+}
+
+func LookupVpcOutput(ctx *pulumi.Context, args LookupVpcOutputArgs, opts ...pulumi.InvokeOption) LookupVpcResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVpcResult, error) {
+			args := v.(LookupVpcArgs)
+			r, err := LookupVpc(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVpcResultOutput)
+}
+
+// A collection of arguments for invoking getVpc.
+type LookupVpcOutputArgs struct {
+	// The unique identifier of an existing VPC.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of an existing VPC.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The DigitalOcean region slug for the VPC's location.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupVpcOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpc.
+type LookupVpcResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcResult)(nil)).Elem()
+}
+
+func (o LookupVpcResultOutput) ToLookupVpcResultOutput() LookupVpcResultOutput {
+	return o
+}
+
+func (o LookupVpcResultOutput) ToLookupVpcResultOutputWithContext(ctx context.Context) LookupVpcResultOutput {
+	return o
+}
+
+// The date and time of when the VPC was created.
+func (o LookupVpcResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A boolean indicating whether or not the VPC is the default one for the region.
+func (o LookupVpcResultOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVpcResult) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+// A free-form text field describing the VPC.
+func (o LookupVpcResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the VPC.
+func (o LookupVpcResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The range of IP addresses for the VPC in CIDR notation.
+func (o LookupVpcResultOutput) IpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.IpRange }).(pulumi.StringOutput)
+}
+
+// The name of the VPC.
+func (o LookupVpcResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The DigitalOcean region slug for the VPC's location.
+func (o LookupVpcResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The uniform resource name (URN) for the VPC.
+func (o LookupVpcResultOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVpcResultOutput{})
 }

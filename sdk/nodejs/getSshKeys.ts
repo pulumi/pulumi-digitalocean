@@ -76,3 +76,23 @@ export interface GetSshKeysResult {
      */
     readonly sshKeys: outputs.GetSshKeysSshKey[];
 }
+
+export function getSshKeysOutput(args?: GetSshKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeysResult> {
+    return pulumi.output(args).apply(a => getSshKeys(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSshKeys.
+ */
+export interface GetSshKeysOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSshKeysFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetSshKeysSortArgs>[]>;
+}

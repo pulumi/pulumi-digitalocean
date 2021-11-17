@@ -12,6 +12,7 @@ __all__ = [
     'GetDropletSnapshotResult',
     'AwaitableGetDropletSnapshotResult',
     'get_droplet_snapshot',
+    'get_droplet_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,36 @@ def get_droplet_snapshot(most_recent: Optional[bool] = None,
         region=__ret__.region,
         regions=__ret__.regions,
         size=__ret__.size)
+
+
+@_utilities.lift_output_func(get_droplet_snapshot)
+def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
+                                name: Optional[pulumi.Input[Optional[str]]] = None,
+                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                region: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletSnapshotResult]:
+    """
+    Droplet snapshots are saved instances of a Droplet. Use this data
+    source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
+    resources.
+
+    ## Example Usage
+
+    Get the Droplet snapshot:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    web_snapshot = digitalocean.get_droplet_snapshot(most_recent=True,
+        name_regex="^web",
+        region="nyc3")
+    ```
+
+
+    :param bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.
+    :param str name: The name of the Droplet snapshot.
+    :param str name_regex: A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+    :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
+    """
+    ...

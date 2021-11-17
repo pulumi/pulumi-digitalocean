@@ -53,3 +53,23 @@ export interface GetSizesResult {
     readonly sizes: outputs.GetSizesSize[];
     readonly sorts?: outputs.GetSizesSort[];
 }
+
+export function getSizesOutput(args?: GetSizesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSizesResult> {
+    return pulumi.output(args).apply(a => getSizes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSizes.
+ */
+export interface GetSizesOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSizesFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetSizesSortArgs>[]>;
+}

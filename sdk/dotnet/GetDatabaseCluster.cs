@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -42,6 +43,38 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetDatabaseClusterResult> InvokeAsync(GetDatabaseClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides information on a DigitalOcean database cluster resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs
+        ///         {
+        ///             Name = "example-cluster",
+        ///         }));
+        ///         this.DatabaseOutput = example.Apply(example =&gt; example.Uri);
+        ///     }
+        /// 
+        ///     [Output("databaseOutput")]
+        ///     public Output&lt;string&gt; DatabaseOutput { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDatabaseClusterResult> Invoke(GetDatabaseClusterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -62,6 +95,27 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetDatabaseClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatabaseClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the database cluster.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        public GetDatabaseClusterInvokeArgs()
         {
         }
     }

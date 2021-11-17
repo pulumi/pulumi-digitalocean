@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -47,6 +48,43 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetContainerRegistryResult> InvokeAsync(GetContainerRegistryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a container registry. This data source provides the name as
+        /// configured on your DigitalOcean account. This is useful if the container
+        /// registry name in question is not managed by this provider or you need validate if
+        /// the container registry exists in the account.
+        /// 
+        /// An error is triggered if the provided container registry name does not exist.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Basic Example
+        /// 
+        /// Get the container registry:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetContainerRegistry.InvokeAsync(new DigitalOcean.GetContainerRegistryArgs
+        ///         {
+        ///             Name = "example",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetContainerRegistryResult> Invoke(GetContainerRegistryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -59,6 +97,19 @@ namespace Pulumi.DigitalOcean
         public string Name { get; set; } = null!;
 
         public GetContainerRegistryArgs()
+        {
+        }
+    }
+
+    public sealed class GetContainerRegistryInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the container registry.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetContainerRegistryInvokeArgs()
         {
         }
     }

@@ -14,6 +14,7 @@ __all__ = [
     'GetSpacesBucketsResult',
     'AwaitableGetSpacesBucketsResult',
     'get_spaces_buckets',
+    'get_spaces_buckets_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,54 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
         filters=__ret__.filters,
         id=__ret__.id,
         sorts=__ret__.sorts)
+
+
+@_utilities.lift_output_func(get_spaces_buckets)
+def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']]]]] = None,
+                              sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSpacesBucketsSortArgs']]]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketsResult]:
+    """
+    Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
+    If no filters are specified, all Spaces buckets will be returned.
+
+    Note: You can use the `SpacesBucket` data source to
+    obtain metadata about a single bucket if you already know its `name` and `region`.
+
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter buckets.
+
+    Get all buckets in a region:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
+        key="region",
+        values=["nyc3"],
+    )])
+    ```
+    You can sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
+            key="region",
+            values=["nyc3"],
+        )],
+        sorts=[digitalocean.GetSpacesBucketsSortArgs(
+            direction="desc",
+            key="name",
+        )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.
+           The `filter` block is documented below.
+    :param Sequence[pulumi.InputType['GetSpacesBucketsSortArgs']] sorts: Sort the results.
+           The `sort` block is documented below.
+    """
+    ...

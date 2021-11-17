@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,9 +36,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetDomains(ctx, &digitalocean.GetDomainsArgs{
-// 			Filters: []digitalocean.GetDomainsFilter{
-// 				digitalocean.GetDomainsFilter{
+// 		_, err := digitalocean.GetDomains(ctx, &GetDomainsArgs{
+// 			Filters: []GetDomainsFilter{
+// 				GetDomainsFilter{
 // 					Key:     "name",
 // 					MatchBy: "re",
 // 					Values: []string{
@@ -78,4 +81,64 @@ type GetDomainsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id    string           `pulumi:"id"`
 	Sorts []GetDomainsSort `pulumi:"sorts"`
+}
+
+func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDomainsResult, error) {
+			args := v.(GetDomainsArgs)
+			r, err := GetDomains(ctx, &args, opts...)
+			return *r, err
+		}).(GetDomainsResultOutput)
+}
+
+// A collection of arguments for invoking getDomains.
+type GetDomainsOutputArgs struct {
+	// Filter the results.
+	// The `filter` block is documented below.
+	Filters GetDomainsFilterArrayInput `pulumi:"filters"`
+	// Sort the results.
+	// The `sort` block is documented below.
+	Sorts GetDomainsSortArrayInput `pulumi:"sorts"`
+}
+
+func (GetDomainsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomains.
+type GetDomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsResult)(nil)).Elem()
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutput {
+	return o
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
+	return o
+}
+
+// A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:
+func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
+}
+
+func (o GetDomainsResultOutput) Filters() GetDomainsFilterArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []GetDomainsFilter { return v.Filters }).(GetDomainsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsResultOutput) Sorts() GetDomainsSortArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []GetDomainsSort { return v.Sorts }).(GetDomainsSortArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDomainsResultOutput{})
 }

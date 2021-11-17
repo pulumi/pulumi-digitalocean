@@ -33,13 +33,14 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "playground"
-// 		_, err := digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
+// 		_, err := digitalocean.LookupProject(ctx, &GetProjectArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -212,7 +213,7 @@ type ProjectResourcesArrayInput interface {
 type ProjectResourcesArray []ProjectResourcesInput
 
 func (ProjectResourcesArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectResources)(nil))
+	return reflect.TypeOf((*[]*ProjectResources)(nil)).Elem()
 }
 
 func (i ProjectResourcesArray) ToProjectResourcesArrayOutput() ProjectResourcesArrayOutput {
@@ -237,7 +238,7 @@ type ProjectResourcesMapInput interface {
 type ProjectResourcesMap map[string]ProjectResourcesInput
 
 func (ProjectResourcesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectResources)(nil))
+	return reflect.TypeOf((*map[string]*ProjectResources)(nil)).Elem()
 }
 
 func (i ProjectResourcesMap) ToProjectResourcesMapOutput() ProjectResourcesMapOutput {
@@ -248,9 +249,7 @@ func (i ProjectResourcesMap) ToProjectResourcesMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesMapOutput)
 }
 
-type ProjectResourcesOutput struct {
-	*pulumi.OutputState
-}
+type ProjectResourcesOutput struct{ *pulumi.OutputState }
 
 func (ProjectResourcesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectResources)(nil))
@@ -269,14 +268,12 @@ func (o ProjectResourcesOutput) ToProjectResourcesPtrOutput() ProjectResourcesPt
 }
 
 func (o ProjectResourcesOutput) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
-	return o.ApplyT(func(v ProjectResources) *ProjectResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectResources) *ProjectResources {
 		return &v
 	}).(ProjectResourcesPtrOutput)
 }
 
-type ProjectResourcesPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectResourcesPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectResourcesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectResources)(nil))
@@ -288,6 +285,16 @@ func (o ProjectResourcesPtrOutput) ToProjectResourcesPtrOutput() ProjectResource
 
 func (o ProjectResourcesPtrOutput) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
 	return o
+}
+
+func (o ProjectResourcesPtrOutput) Elem() ProjectResourcesOutput {
+	return o.ApplyT(func(v *ProjectResources) ProjectResources {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectResources
+		return ret
+	}).(ProjectResourcesOutput)
 }
 
 type ProjectResourcesArrayOutput struct{ *pulumi.OutputState }
@@ -331,6 +338,10 @@ func (o ProjectResourcesMapOutput) MapIndex(k pulumi.StringInput) ProjectResourc
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectResourcesInput)(nil)).Elem(), &ProjectResources{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectResourcesPtrInput)(nil)).Elem(), &ProjectResources{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectResourcesArrayInput)(nil)).Elem(), ProjectResourcesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectResourcesMapInput)(nil)).Elem(), ProjectResourcesMap{})
 	pulumi.RegisterOutputType(ProjectResourcesOutput{})
 	pulumi.RegisterOutputType(ProjectResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ProjectResourcesArrayOutput{})

@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +34,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cfg := config.New(ctx, "")
 // 		publicIp := cfg.RequireObject("publicIp")
-// 		example, err := digitalocean.LookupFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
+// 		example, err := digitalocean.LookupFloatingIp(ctx, &GetFloatingIpArgs{
 // 			IpAddress: publicIp,
 // 		}, nil)
 // 		if err != nil {
@@ -65,4 +68,63 @@ type LookupFloatingIpResult struct {
 	Id        string `pulumi:"id"`
 	IpAddress string `pulumi:"ipAddress"`
 	Region    string `pulumi:"region"`
+}
+
+func LookupFloatingIpOutput(ctx *pulumi.Context, args LookupFloatingIpOutputArgs, opts ...pulumi.InvokeOption) LookupFloatingIpResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupFloatingIpResult, error) {
+			args := v.(LookupFloatingIpArgs)
+			r, err := LookupFloatingIp(ctx, &args, opts...)
+			return *r, err
+		}).(LookupFloatingIpResultOutput)
+}
+
+// A collection of arguments for invoking getFloatingIp.
+type LookupFloatingIpOutputArgs struct {
+	// The allocated IP address of the specific floating IP to retrieve.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+}
+
+func (LookupFloatingIpOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFloatingIpArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFloatingIp.
+type LookupFloatingIpResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFloatingIpResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFloatingIpResult)(nil)).Elem()
+}
+
+func (o LookupFloatingIpResultOutput) ToLookupFloatingIpResultOutput() LookupFloatingIpResultOutput {
+	return o
+}
+
+func (o LookupFloatingIpResultOutput) ToLookupFloatingIpResultOutputWithContext(ctx context.Context) LookupFloatingIpResultOutput {
+	return o
+}
+
+func (o LookupFloatingIpResultOutput) DropletId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFloatingIpResult) int { return v.DropletId }).(pulumi.IntOutput)
+}
+
+func (o LookupFloatingIpResultOutput) FloatingIpUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFloatingIpResult) string { return v.FloatingIpUrn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupFloatingIpResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFloatingIpResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupFloatingIpResultOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFloatingIpResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o LookupFloatingIpResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFloatingIpResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFloatingIpResultOutput{})
 }

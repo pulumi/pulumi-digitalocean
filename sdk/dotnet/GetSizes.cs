@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -18,6 +19,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetSizesResult> InvokeAsync(GetSizesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
+        /// the ability to filter and sort the results. If no filters are specified, all sizes
+        /// will be returned.
+        /// </summary>
+        public static Output<GetSizesResult> Invoke(GetSizesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -50,6 +59,39 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetSizesArgs()
+        {
+        }
+    }
+
+    public sealed class GetSizesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetSizesFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Filter the results.
+        /// The `filter` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetSizesFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSizesFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        [Input("sorts")]
+        private InputList<Inputs.GetSizesSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort the results.
+        /// The `sort` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetSizesSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetSizesSortInputArgs>());
+            set => _sorts = value;
+        }
+
+        public GetSizesInvokeArgs()
         {
         }
     }

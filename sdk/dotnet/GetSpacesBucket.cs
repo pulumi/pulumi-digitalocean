@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -46,6 +47,42 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetSpacesBucketResult> InvokeAsync(GetSpacesBucketArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+        /// is not managed by the provider or you need to utilize any of the bucket's data.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the bucket by name:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetSpacesBucket.InvokeAsync(new DigitalOcean.GetSpacesBucketArgs
+        ///         {
+        ///             Name = "my-spaces-bucket",
+        ///             Region = "nyc3",
+        ///         }));
+        ///         this.BucketDomainName = example.Apply(example =&gt; example.BucketDomainName);
+        ///     }
+        /// 
+        ///     [Output("bucketDomainName")]
+        ///     public Output&lt;string&gt; BucketDomainName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSpacesBucketResult> Invoke(GetSpacesBucketInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +101,25 @@ namespace Pulumi.DigitalOcean
         public string Region { get; set; } = null!;
 
         public GetSpacesBucketArgs()
+        {
+        }
+    }
+
+    public sealed class GetSpacesBucketInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Spaces bucket.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The slug of the region where the bucket is stored.
+        /// </summary>
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetSpacesBucketInvokeArgs()
         {
         }
     }

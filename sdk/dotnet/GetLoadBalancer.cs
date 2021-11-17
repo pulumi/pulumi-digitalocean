@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -49,6 +50,45 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a load balancer for use in other resources. This data source
+        /// provides all of the load balancers properties as configured on your DigitalOcean
+        /// account. This is useful if the load balancer in question is not managed by
+        /// the provider or you need to utilize any of the load balancers data.
+        /// 
+        /// An error is triggered if the provided load balancer name does not exist.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the load balancer:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs
+        ///         {
+        ///             Name = "app",
+        ///         }));
+        ///         this.LbOutput = example.Apply(example =&gt; example.Ip);
+        ///     }
+        /// 
+        ///     [Output("lbOutput")]
+        ///     public Output&lt;string&gt; LbOutput { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -61,6 +101,19 @@ namespace Pulumi.DigitalOcean
         public string Name { get; set; } = null!;
 
         public GetLoadBalancerArgs()
+        {
+        }
+    }
+
+    public sealed class GetLoadBalancerInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of load balancer.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetLoadBalancerInvokeArgs()
         {
         }
     }

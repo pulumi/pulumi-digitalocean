@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,6 +18,82 @@ import (
 //
 // Note: You can use the `Droplet` data source to obtain metadata
 // about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+//
+// ## Example Usage
+//
+// Use the `filter` block with a `key` string and `values` list to filter images.
+//
+// For example to find all Droplets with size `s-1vcpu-1gb`:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetDroplets(ctx, &GetDropletsArgs{
+// 			Filters: []GetDropletsFilter{
+// 				GetDropletsFilter{
+// 					Key: "size",
+// 					Values: []string{
+// 						"s-1vcpu-1gb",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// You can filter on multiple fields and sort the results as well:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetDroplets(ctx, &GetDropletsArgs{
+// 			Filters: []GetDropletsFilter{
+// 				GetDropletsFilter{
+// 					Key: "size",
+// 					Values: []string{
+// 						"s-1vcpu-1gb",
+// 					},
+// 				},
+// 				GetDropletsFilter{
+// 					Key: "backups",
+// 					Values: []string{
+// 						"true",
+// 					},
+// 				},
+// 			},
+// 			Sorts: []GetDropletsSort{
+// 				GetDropletsSort{
+// 					Direction: "desc",
+// 					Key:       "created_at",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetDroplets(ctx *pulumi.Context, args *GetDropletsArgs, opts ...pulumi.InvokeOption) (*GetDropletsResult, error) {
 	var rv GetDropletsResult
 	err := ctx.Invoke("digitalocean:index/getDroplets:getDroplets", args, &rv, opts...)
@@ -42,4 +121,64 @@ type GetDropletsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id    string            `pulumi:"id"`
 	Sorts []GetDropletsSort `pulumi:"sorts"`
+}
+
+func GetDropletsOutput(ctx *pulumi.Context, args GetDropletsOutputArgs, opts ...pulumi.InvokeOption) GetDropletsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDropletsResult, error) {
+			args := v.(GetDropletsArgs)
+			r, err := GetDroplets(ctx, &args, opts...)
+			return *r, err
+		}).(GetDropletsResultOutput)
+}
+
+// A collection of arguments for invoking getDroplets.
+type GetDropletsOutputArgs struct {
+	// Filter the results.
+	// The `filter` block is documented below.
+	Filters GetDropletsFilterArrayInput `pulumi:"filters"`
+	// Sort the results.
+	// The `sort` block is documented below.
+	Sorts GetDropletsSortArrayInput `pulumi:"sorts"`
+}
+
+func (GetDropletsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDroplets.
+type GetDropletsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDropletsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletsResult)(nil)).Elem()
+}
+
+func (o GetDropletsResultOutput) ToGetDropletsResultOutput() GetDropletsResultOutput {
+	return o
+}
+
+func (o GetDropletsResultOutput) ToGetDropletsResultOutputWithContext(ctx context.Context) GetDropletsResultOutput {
+	return o
+}
+
+// A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:
+func (o GetDropletsResultOutput) Droplets() GetDropletsDropletArrayOutput {
+	return o.ApplyT(func(v GetDropletsResult) []GetDropletsDroplet { return v.Droplets }).(GetDropletsDropletArrayOutput)
+}
+
+func (o GetDropletsResultOutput) Filters() GetDropletsFilterArrayOutput {
+	return o.ApplyT(func(v GetDropletsResult) []GetDropletsFilter { return v.Filters }).(GetDropletsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDropletsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDropletsResultOutput) Sorts() GetDropletsSortArrayOutput {
+	return o.ApplyT(func(v GetDropletsResult) []GetDropletsSort { return v.Sorts }).(GetDropletsSortArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDropletsResultOutput{})
 }

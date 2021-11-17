@@ -12,6 +12,7 @@ __all__ = [
     'GetContainerRegistryResult',
     'AwaitableGetContainerRegistryResult',
     'get_container_registry',
+    'get_container_registry_output',
 ]
 
 @pulumi.output_type
@@ -125,3 +126,32 @@ def get_container_registry(name: Optional[str] = None,
         name=__ret__.name,
         server_url=__ret__.server_url,
         subscription_tier_slug=__ret__.subscription_tier_slug)
+
+
+@_utilities.lift_output_func(get_container_registry)
+def get_container_registry_output(name: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryResult]:
+    """
+    Get information on a container registry. This data source provides the name as
+    configured on your DigitalOcean account. This is useful if the container
+    registry name in question is not managed by this provider or you need validate if
+    the container registry exists in the account.
+
+    An error is triggered if the provided container registry name does not exist.
+
+    ## Example Usage
+    ### Basic Example
+
+    Get the container registry:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_container_registry(name="example")
+    ```
+
+
+    :param str name: The name of the container registry.
+    """
+    ...

@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,13 +24,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
+// 		example, err := digitalocean.LookupDatabaseCluster(ctx, &GetDatabaseClusterArgs{
 // 			Name: "example-cluster",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		read_only, err := digitalocean.LookupDatabaseReplica(ctx, &digitalocean.LookupDatabaseReplicaArgs{
+// 		read_only, err := digitalocean.LookupDatabaseReplica(ctx, &GetDatabaseReplicaArgs{
 // 			ClusterId: example.Id,
 // 			Name:      "terra-test-ro",
 // 		}, nil)
@@ -84,4 +87,112 @@ type LookupDatabaseReplicaResult struct {
 	Uri string `pulumi:"uri"`
 	// Username for the replica's default user.
 	User string `pulumi:"user"`
+}
+
+func LookupDatabaseReplicaOutput(ctx *pulumi.Context, args LookupDatabaseReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseReplicaResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDatabaseReplicaResult, error) {
+			args := v.(LookupDatabaseReplicaArgs)
+			r, err := LookupDatabaseReplica(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDatabaseReplicaResultOutput)
+}
+
+// A collection of arguments for invoking getDatabaseReplica.
+type LookupDatabaseReplicaOutputArgs struct {
+	// The ID of the original source database cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name for the database replica.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of tag names to be applied to the database replica.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (LookupDatabaseReplicaOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseReplicaArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDatabaseReplica.
+type LookupDatabaseReplicaResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatabaseReplicaResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseReplicaResult)(nil)).Elem()
+}
+
+func (o LookupDatabaseReplicaResultOutput) ToLookupDatabaseReplicaResultOutput() LookupDatabaseReplicaResultOutput {
+	return o
+}
+
+func (o LookupDatabaseReplicaResultOutput) ToLookupDatabaseReplicaResultOutputWithContext(ctx context.Context) LookupDatabaseReplicaResultOutput {
+	return o
+}
+
+func (o LookupDatabaseReplicaResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Name of the replica's default database.
+func (o LookupDatabaseReplicaResultOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Database replica's hostname.
+func (o LookupDatabaseReplicaResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDatabaseReplicaResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseReplicaResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Password for the replica's default user.
+func (o LookupDatabaseReplicaResultOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Network port that the database replica is listening on.
+func (o LookupDatabaseReplicaResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Same as `host`, but only accessible from resources within the account and in the same region.
+func (o LookupDatabaseReplicaResultOutput) PrivateHost() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.PrivateHost }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseReplicaResultOutput) PrivateNetworkUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.PrivateNetworkUuid }).(pulumi.StringOutput)
+}
+
+// Same as `uri`, but only accessible from resources within the account and in the same region.
+func (o LookupDatabaseReplicaResultOutput) PrivateUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.PrivateUri }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseReplicaResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list of tag names to be applied to the database replica.
+func (o LookupDatabaseReplicaResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The full URI for connecting to the database replica.
+func (o LookupDatabaseReplicaResultOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Username for the replica's default user.
+func (o LookupDatabaseReplicaResultOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.User }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatabaseReplicaResultOutput{})
 }

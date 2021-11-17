@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -99,6 +100,95 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetKubernetesVersionsResult> InvokeAsync(GetKubernetesVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides access to the available DigitalOcean Kubernetes Service versions.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Output a list of all available versions
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync());
+        ///         this.K8s_versions = example.Apply(example =&gt; example.ValidVersions);
+        ///     }
+        /// 
+        ///     [Output("k8s-versions")]
+        ///     public Output&lt;string&gt; K8s_versions { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Create a Kubernetes cluster using the most recent version available
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync());
+        ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
+        ///         {
+        ///             Region = "lon1",
+        ///             Version = example.Apply(example =&gt; example.LatestVersion),
+        ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+        ///             {
+        ///                 Name = "default",
+        ///                 Size = "s-1vcpu-2gb",
+        ///                 NodeCount = 3,
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Pin a Kubernetes cluster to a specific minor version
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync(new DigitalOcean.GetKubernetesVersionsArgs
+        ///         {
+        ///             VersionPrefix = "1.16.",
+        ///         }));
+        ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
+        ///         {
+        ///             Region = "lon1",
+        ///             Version = example.Apply(example =&gt; example.LatestVersion),
+        ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+        ///             {
+        ///                 Name = "default",
+        ///                 Size = "s-1vcpu-2gb",
+        ///                 NodeCount = 3,
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKubernetesVersionsResult> Invoke(GetKubernetesVersionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -111,6 +201,19 @@ namespace Pulumi.DigitalOcean
         public string? VersionPrefix { get; set; }
 
         public GetKubernetesVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetKubernetesVersionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
+        /// </summary>
+        [Input("versionPrefix")]
+        public Input<string>? VersionPrefix { get; set; }
+
+        public GetKubernetesVersionsInvokeArgs()
         {
         }
     }

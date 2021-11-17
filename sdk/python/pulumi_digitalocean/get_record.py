@@ -12,6 +12,7 @@ __all__ = [
     'GetRecordResult',
     'AwaitableGetRecordResult',
     'get_record',
+    'get_record_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,22 @@ def get_record(domain: Optional[str] = None,
         ttl=__ret__.ttl,
         type=__ret__.type,
         weight=__ret__.weight)
+
+
+@_utilities.lift_output_func(get_record)
+def get_record_output(domain: Optional[pulumi.Input[str]] = None,
+                      name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordResult]:
+    """
+    Get information on a DNS record. This data source provides the name, TTL, and zone
+    file as configured on your DigitalOcean account. This is useful if the record
+    in question is not managed by the provider.
+
+    An error is triggered if the provided domain name or record are not managed with
+    your DigitalOcean account.
+
+
+    :param str domain: The domain name of the record.
+    :param str name: The name of the record.
+    """
+    ...

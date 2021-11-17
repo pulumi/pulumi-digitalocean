@@ -113,3 +113,21 @@ export interface GetKubernetesClusterResult {
      */
     readonly vpcUuid: string;
 }
+
+export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesClusterResult> {
+    return pulumi.output(args).apply(a => getKubernetesCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKubernetesCluster.
+ */
+export interface GetKubernetesClusterOutputArgs {
+    /**
+     * The name of Kubernetes cluster.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of tag names applied to the node pool.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+}

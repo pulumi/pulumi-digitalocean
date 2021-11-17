@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -116,4 +115,26 @@ export interface GetVolumeResult {
      */
     readonly tags: string[];
     readonly urn: string;
+}
+
+export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
+    return pulumi.output(args).apply(a => getVolume(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVolume.
+ */
+export interface GetVolumeOutputArgs {
+    /**
+     * Text describing a block storage volume.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The name of block storage volume.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The region the block storage volume is provisioned in.
+     */
+    region?: pulumi.Input<string>;
 }

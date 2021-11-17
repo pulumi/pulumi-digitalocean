@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -44,6 +45,40 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetFirewallResult> InvokeAsync(GetFirewallArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallResult>("digitalocean:index/getFirewall:getFirewall", args ?? new GetFirewallArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a DigitalOcean Firewall.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the firewall:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetFirewall.InvokeAsync(new DigitalOcean.GetFirewallArgs
+        ///         {
+        ///             FirewallId = "1df48973-6eef-4214-854f-fa7726e7e583",
+        ///         }));
+        ///         this.ExampleFirewallName = example.Apply(example =&gt; example.Name);
+        ///     }
+        /// 
+        ///     [Output("exampleFirewallName")]
+        ///     public Output&lt;string&gt; ExampleFirewallName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFirewallResult> Invoke(GetFirewallInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFirewallResult>("digitalocean:index/getFirewall:getFirewall", args ?? new GetFirewallInvokeArgs(), options.WithVersion());
     }
 
 
@@ -98,6 +133,61 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetFirewallArgs()
+        {
+        }
+    }
+
+    public sealed class GetFirewallInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("dropletIds")]
+        private InputList<int>? _dropletIds;
+
+        /// <summary>
+        /// The list of the IDs of the Droplets assigned to
+        /// the Firewall.
+        /// </summary>
+        public InputList<int> DropletIds
+        {
+            get => _dropletIds ?? (_dropletIds = new InputList<int>());
+            set => _dropletIds = value;
+        }
+
+        /// <summary>
+        /// The ID of the firewall to retrieve information
+        /// about.
+        /// </summary>
+        [Input("firewallId", required: true)]
+        public Input<string> FirewallId { get; set; } = null!;
+
+        [Input("inboundRules")]
+        private InputList<Inputs.GetFirewallInboundRuleInputArgs>? _inboundRules;
+        public InputList<Inputs.GetFirewallInboundRuleInputArgs> InboundRules
+        {
+            get => _inboundRules ?? (_inboundRules = new InputList<Inputs.GetFirewallInboundRuleInputArgs>());
+            set => _inboundRules = value;
+        }
+
+        [Input("outboundRules")]
+        private InputList<Inputs.GetFirewallOutboundRuleInputArgs>? _outboundRules;
+        public InputList<Inputs.GetFirewallOutboundRuleInputArgs> OutboundRules
+        {
+            get => _outboundRules ?? (_outboundRules = new InputList<Inputs.GetFirewallOutboundRuleInputArgs>());
+            set => _outboundRules = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The names of the Tags assigned to the Firewall.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        public GetFirewallInvokeArgs()
         {
         }
     }

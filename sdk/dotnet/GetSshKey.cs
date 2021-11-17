@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -56,6 +57,52 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a ssh key. This data source provides the name, public key,
+        /// and fingerprint as configured on your DigitalOcean account. This is useful if
+        /// the ssh key in question is not managed by the provider or you need to utilize any
+        /// of the keys data.
+        /// 
+        /// An error is triggered if the provided ssh key name does not exist.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the ssh key:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var exampleSshKey = Output.Create(DigitalOcean.GetSshKey.InvokeAsync(new DigitalOcean.GetSshKeyArgs
+        ///         {
+        ///             Name = "example",
+        ///         }));
+        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
+        ///         {
+        ///             Image = "ubuntu-18-04-x64",
+        ///             Region = "nyc2",
+        ///             Size = "s-1vcpu-1gb",
+        ///             SshKeys = 
+        ///             {
+        ///                 exampleSshKey.Apply(exampleSshKey =&gt; exampleSshKey.Id),
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -68,6 +115,19 @@ namespace Pulumi.DigitalOcean
         public string Name { get; set; } = null!;
 
         public GetSshKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetSshKeyInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the ssh key.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetSshKeyInvokeArgs()
         {
         }
     }

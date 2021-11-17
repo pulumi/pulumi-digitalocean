@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -22,6 +23,18 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a domain. This data source provides the name, TTL, and zone
+        /// file as configured on your DigitalOcean account. This is useful if the domain
+        /// name in question is not managed by this provider or you need to utilize TTL or zone
+        /// file data.
+        /// 
+        /// An error is triggered if the provided domain name is not managed with your
+        /// DigitalOcean account.
+        /// </summary>
+        public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +47,19 @@ namespace Pulumi.DigitalOcean
         public string Name { get; set; } = null!;
 
         public GetDomainArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the domain.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetDomainInvokeArgs()
         {
         }
     }

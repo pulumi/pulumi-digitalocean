@@ -9,4 +9,24 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean.Inputs
 {
+
+    public sealed class FirewallPendingChangeArgs : Pulumi.ResourceArgs
+    {
+        [Input("dropletId")]
+        public Input<int>? DropletId { get; set; }
+
+        [Input("removing")]
+        public Input<bool>? Removing { get; set; }
+
+        /// <summary>
+        /// A status string indicating the current state of the Firewall.
+        /// This can be "waiting", "succeeded", or "failed".
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public FirewallPendingChangeArgs()
+        {
+        }
+    }
 }

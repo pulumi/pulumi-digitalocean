@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupLoadBalancer(ctx, &digitalocean.LookupLoadBalancerArgs{
+// 		example, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
 // 			Name: "app",
 // 		}, nil)
 // 		if err != nil {
@@ -74,4 +77,111 @@ type LookupLoadBalancerResult struct {
 	Status              string                         `pulumi:"status"`
 	StickySessions      []GetLoadBalancerStickySession `pulumi:"stickySessions"`
 	VpcUuid             string                         `pulumi:"vpcUuid"`
+}
+
+func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupLoadBalancerResult, error) {
+			args := v.(LookupLoadBalancerArgs)
+			r, err := LookupLoadBalancer(ctx, &args, opts...)
+			return *r, err
+		}).(LookupLoadBalancerResultOutput)
+}
+
+// A collection of arguments for invoking getLoadBalancer.
+type LookupLoadBalancerOutputArgs struct {
+	// The name of load balancer.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLoadBalancerArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getLoadBalancer.
+type LookupLoadBalancerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupLoadBalancerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLoadBalancerResult)(nil)).Elem()
+}
+
+func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutput() LookupLoadBalancerResultOutput {
+	return o
+}
+
+func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutputWithContext(ctx context.Context) LookupLoadBalancerResultOutput {
+	return o
+}
+
+func (o LookupLoadBalancerResultOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) DropletIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []int { return v.DropletIds }).(pulumi.IntArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) DropletTag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.DropletTag }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) EnableBackendKeepalive() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) bool { return v.EnableBackendKeepalive }).(pulumi.BoolOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) EnableProxyProtocol() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) bool { return v.EnableProxyProtocol }).(pulumi.BoolOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) ForwardingRules() GetLoadBalancerForwardingRuleArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerForwardingRule { return v.ForwardingRules }).(GetLoadBalancerForwardingRuleArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Healthchecks() GetLoadBalancerHealthcheckArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerHealthcheck { return v.Healthchecks }).(GetLoadBalancerHealthcheckArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupLoadBalancerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) LoadBalancerUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.LoadBalancerUrn }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) RedirectHttpToHttps() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) bool { return v.RedirectHttpToHttps }).(pulumi.BoolOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Size }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) StickySessions() GetLoadBalancerStickySessionArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerStickySession { return v.StickySessions }).(GetLoadBalancerStickySessionArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupLoadBalancerResultOutput{})
 }

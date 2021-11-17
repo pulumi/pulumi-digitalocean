@@ -2859,3 +2859,4 @@ export interface SpacesBucketVersioning {
      */
     enabled?: boolean;
 }
+

@@ -12,6 +12,7 @@ __all__ = [
     'GetVolumeSnapshotResult',
     'AwaitableGetVolumeSnapshotResult',
     'get_volume_snapshot',
+    'get_volume_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -217,3 +218,51 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
         size=__ret__.size,
         tags=__ret__.tags,
         volume_id=__ret__.volume_id)
+
+
+@_utilities.lift_output_func(get_volume_snapshot)
+def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
+                               name: Optional[pulumi.Input[Optional[str]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               region: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeSnapshotResult]:
+    """
+    Volume snapshots are saved instances of a block storage volume. Use this data
+    source to retrieve the ID of a DigitalOcean volume snapshot for use in other
+    resources.
+
+    ## Example Usage
+
+    Get the volume snapshot:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    snapshot = digitalocean.get_volume_snapshot(most_recent=True,
+        name_regex="^web",
+        region="nyc3")
+    ```
+
+    Reuse the data about a volume snapshot to create a new volume based on it:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    snapshot = digitalocean.get_volume_snapshot(name_regex="^web",
+        region="nyc3",
+        most_recent=True)
+    foobar = digitalocean.Volume("foobar",
+        region="nyc3",
+        size=100,
+        snapshot_id=snapshot.id)
+    ```
+
+
+    :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.
+    :param str name: The name of the volume snapshot.
+    :param str name_regex: A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+    :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
+    """
+    ...

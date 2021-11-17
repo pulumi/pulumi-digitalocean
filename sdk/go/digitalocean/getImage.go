@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +32,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "example-1.0.0"
-// 		_, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
+// 		_, err := digitalocean.GetImage(ctx, &GetImageArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -47,13 +50,14 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "example-1.0.0"
-// 		exampleImage, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
+// 		exampleImage, err := digitalocean.GetImage(ctx, &GetImageArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -85,7 +89,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "ubuntu-18-04-x64"
-// 		_, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
+// 		_, err := digitalocean.GetImage(ctx, &GetImageArgs{
 // 			Slug: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -146,4 +150,124 @@ type GetImageResult struct {
 	Status        string   `pulumi:"status"`
 	Tags          []string `pulumi:"tags"`
 	Type          string   `pulumi:"type"`
+}
+
+func GetImageOutput(ctx *pulumi.Context, args GetImageOutputArgs, opts ...pulumi.InvokeOption) GetImageResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetImageResult, error) {
+			args := v.(GetImageArgs)
+			r, err := GetImage(ctx, &args, opts...)
+			return *r, err
+		}).(GetImageResultOutput)
+}
+
+// A collection of arguments for invoking getImage.
+type GetImageOutputArgs struct {
+	// The id of the image
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The name of the image.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The slug of the official image.
+	Slug pulumi.StringPtrInput `pulumi:"slug"`
+	// Restrict the search to one of the following categories of images:
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (GetImageOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImage.
+type GetImageResultOutput struct{ *pulumi.OutputState }
+
+func (GetImageResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageResult)(nil)).Elem()
+}
+
+func (o GetImageResultOutput) ToGetImageResultOutput() GetImageResultOutput {
+	return o
+}
+
+func (o GetImageResultOutput) ToGetImageResultOutputWithContext(ctx context.Context) GetImageResultOutput {
+	return o
+}
+
+func (o GetImageResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetImageResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the distribution of the OS of the image.
+// * `minDiskSize`: The minimum 'disk' required for the image.
+// * `sizeGigabytes`: The size of the image in GB.
+func (o GetImageResultOutput) Distribution() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Distribution }).(pulumi.StringOutput)
+}
+
+func (o GetImageResultOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+func (o GetImageResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImageResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The id of the image (legacy parameter).
+func (o GetImageResultOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Image }).(pulumi.StringOutput)
+}
+
+func (o GetImageResultOutput) MinDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImageResult) int { return v.MinDiskSize }).(pulumi.IntOutput)
+}
+
+func (o GetImageResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Is image a public image or not. Public images represent
+// Linux distributions or One-Click Applications, while non-public images represent
+// snapshots and backups and are only available within your account.
+// * `regions`: A set of the regions that the image is available in.
+// * `tags`: A set of tags applied to the image
+// * `created`: When the image was created
+// * `status`: Current status of the image
+// * `errorMessage`: Any applicable error message pertaining to the image
+func (o GetImageResultOutput) Private() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImageResult) bool { return v.Private }).(pulumi.BoolOutput)
+}
+
+func (o GetImageResultOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImageResult) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImageResultOutput) SizeGigabytes() pulumi.Float64Output {
+	return o.ApplyT(func(v GetImageResult) float64 { return v.SizeGigabytes }).(pulumi.Float64Output)
+}
+
+func (o GetImageResultOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+func (o GetImageResultOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageResult) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImageResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetImageResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImageResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImageResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImageResultOutput{})
 }

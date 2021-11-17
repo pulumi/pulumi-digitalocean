@@ -10,50 +10,50 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetFirewallOutboundRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallOutboundRuleInputArgs : Pulumi.ResourceArgs
     {
         [Input("destinationAddresses")]
-        private List<string>? _destinationAddresses;
+        private InputList<string>? _destinationAddresses;
 
         /// <summary>
         /// An array of strings containing the IPv4
         /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
         /// outbound traffic will be allowed.
         /// </summary>
-        public List<string> DestinationAddresses
+        public InputList<string> DestinationAddresses
         {
-            get => _destinationAddresses ?? (_destinationAddresses = new List<string>());
+            get => _destinationAddresses ?? (_destinationAddresses = new InputList<string>());
             set => _destinationAddresses = value;
         }
 
         [Input("destinationDropletIds")]
-        private List<int>? _destinationDropletIds;
+        private InputList<int>? _destinationDropletIds;
 
         /// <summary>
         /// An array containing the IDs of
         /// the Droplets to which the outbound traffic will be allowed.
         /// </summary>
-        public List<int> DestinationDropletIds
+        public InputList<int> DestinationDropletIds
         {
-            get => _destinationDropletIds ?? (_destinationDropletIds = new List<int>());
+            get => _destinationDropletIds ?? (_destinationDropletIds = new InputList<int>());
             set => _destinationDropletIds = value;
         }
 
         [Input("destinationLoadBalancerUids")]
-        private List<string>? _destinationLoadBalancerUids;
+        private InputList<string>? _destinationLoadBalancerUids;
 
         /// <summary>
         /// An array containing the IDs
         /// of the Load Balancers to which the outbound traffic will be allowed.
         /// </summary>
-        public List<string> DestinationLoadBalancerUids
+        public InputList<string> DestinationLoadBalancerUids
         {
-            get => _destinationLoadBalancerUids ?? (_destinationLoadBalancerUids = new List<string>());
+            get => _destinationLoadBalancerUids ?? (_destinationLoadBalancerUids = new InputList<string>());
             set => _destinationLoadBalancerUids = value;
         }
 
         [Input("destinationTags")]
-        private List<string>? _destinationTags;
+        private InputList<string>? _destinationTags;
 
         /// <summary>
         /// An array containing the names of Tags
@@ -61,9 +61,9 @@ namespace Pulumi.DigitalOcean.Inputs
         /// be allowed.
         /// traffic.
         /// </summary>
-        public List<string> DestinationTags
+        public InputList<string> DestinationTags
         {
-            get => _destinationTags ?? (_destinationTags = new List<string>());
+            get => _destinationTags ?? (_destinationTags = new InputList<string>());
             set => _destinationTags = value;
         }
 
@@ -74,16 +74,16 @@ namespace Pulumi.DigitalOcean.Inputs
         /// `tcp` or `udp`.
         /// </summary>
         [Input("portRange")]
-        public string? PortRange { get; set; }
+        public Input<string>? PortRange { get; set; }
 
         /// <summary>
         /// The type of traffic to be allowed.
         /// This may be one of "tcp", "udp", or "icmp".
         /// </summary>
         [Input("protocol", required: true)]
-        public string Protocol { get; set; } = null!;
+        public Input<string> Protocol { get; set; } = null!;
 
-        public GetFirewallOutboundRuleArgs()
+        public GetFirewallOutboundRuleInputArgs()
         {
         }
     }

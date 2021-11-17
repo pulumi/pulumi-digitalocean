@@ -12,6 +12,7 @@ __all__ = [
     'GetCertificateResult',
     'AwaitableGetCertificateResult',
     'get_certificate',
+    'get_certificate_output',
 ]
 
 @pulumi.output_type
@@ -146,3 +147,31 @@ def get_certificate(name: Optional[str] = None,
         state=__ret__.state,
         type=__ret__.type,
         uuid=__ret__.uuid)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    """
+    Get information on a certificate. This data source provides the name, type, state,
+    domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
+    This is useful if the certificate in question is not managed by this provider or you need to utilize
+    any of the certificates data.
+
+    An error is triggered if the provided certificate name does not exist.
+
+    ## Example Usage
+
+    Get the certificate:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_certificate(name="example")
+    ```
+
+
+    :param str name: The name of certificate.
+    """
+    ...

@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +32,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetSshKeys(ctx, &digitalocean.GetSshKeysArgs{
-// 			Sorts: []digitalocean.GetSshKeysSort{
-// 				digitalocean.GetSshKeysSort{
+// 		_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
+// 			Sorts: []GetSshKeysSort{
+// 				GetSshKeysSort{
 // 					Direction: "asc",
 // 					Key:       "name",
 // 				},
@@ -71,4 +74,64 @@ type GetSshKeysResult struct {
 	Sorts []GetSshKeysSort `pulumi:"sorts"`
 	// A list of SSH Keys. Each SSH Key has the following attributes:
 	SshKeys []GetSshKeysSshKey `pulumi:"sshKeys"`
+}
+
+func GetSshKeysOutput(ctx *pulumi.Context, args GetSshKeysOutputArgs, opts ...pulumi.InvokeOption) GetSshKeysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSshKeysResult, error) {
+			args := v.(GetSshKeysArgs)
+			r, err := GetSshKeys(ctx, &args, opts...)
+			return *r, err
+		}).(GetSshKeysResultOutput)
+}
+
+// A collection of arguments for invoking getSshKeys.
+type GetSshKeysOutputArgs struct {
+	// Filter the results.
+	// The `filter` block is documented below.
+	Filters GetSshKeysFilterArrayInput `pulumi:"filters"`
+	// Sort the results.
+	// The `sort` block is documented below.
+	Sorts GetSshKeysSortArrayInput `pulumi:"sorts"`
+}
+
+func (GetSshKeysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSshKeys.
+type GetSshKeysResultOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysResult)(nil)).Elem()
+}
+
+func (o GetSshKeysResultOutput) ToGetSshKeysResultOutput() GetSshKeysResultOutput {
+	return o
+}
+
+func (o GetSshKeysResultOutput) ToGetSshKeysResultOutputWithContext(ctx context.Context) GetSshKeysResultOutput {
+	return o
+}
+
+func (o GetSshKeysResultOutput) Filters() GetSshKeysFilterArrayOutput {
+	return o.ApplyT(func(v GetSshKeysResult) []GetSshKeysFilter { return v.Filters }).(GetSshKeysFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSshKeysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSshKeysResultOutput) Sorts() GetSshKeysSortArrayOutput {
+	return o.ApplyT(func(v GetSshKeysResult) []GetSshKeysSort { return v.Sorts }).(GetSshKeysSortArrayOutput)
+}
+
+// A list of SSH Keys. Each SSH Key has the following attributes:
+func (o GetSshKeysResultOutput) SshKeys() GetSshKeysSshKeyArrayOutput {
+	return o.ApplyT(func(v GetSshKeysResult) []GetSshKeysSshKey { return v.SshKeys }).(GetSshKeysSshKeyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSshKeysResultOutput{})
 }

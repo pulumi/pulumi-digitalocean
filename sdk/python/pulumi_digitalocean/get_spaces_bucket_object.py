@@ -12,6 +12,7 @@ __all__ = [
     'GetSpacesBucketObjectResult',
     'AwaitableGetSpacesBucketObjectResult',
     'get_spaces_bucket_object',
+    'get_spaces_bucket_object_output',
 ]
 
 @pulumi.output_type
@@ -317,3 +318,46 @@ def get_spaces_bucket_object(bucket: Optional[str] = None,
         region=__ret__.region,
         version_id=__ret__.version_id,
         website_redirect_location=__ret__.website_redirect_location)
+
+
+@_utilities.lift_output_func(get_spaces_bucket_object)
+def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
+                                    key: Optional[pulumi.Input[str]] = None,
+                                    range: Optional[pulumi.Input[Optional[str]]] = None,
+                                    region: Optional[pulumi.Input[str]] = None,
+                                    version_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketObjectResult]:
+    """
+    The Spaces object data source allows access to the metadata and
+    _optionally_ (see below) content of an object stored inside a Spaces bucket.
+
+    > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
+    `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
+    downloading large amount of data which would be thrown away in favor of metadata.
+
+    ## Example Usage
+
+    The following example retrieves a text object (which must have a `Content-Type`
+    value starting with `text/`) and uses it as the `user_data` for a Droplet:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    bootstrap_script = digitalocean.get_spaces_bucket_object(bucket="ourcorp-deploy-config",
+        region="nyc3",
+        key="droplet-bootstrap-script.sh")
+    web = digitalocean.Droplet("web",
+        image="ubuntu-18-04-x64",
+        region="nyc2",
+        size="s-1vcpu-1gb",
+        user_data=bootstrap_script.body)
+    ```
+
+
+    :param str bucket: The name of the bucket to read the object from.
+    :param str key: The full path to the object inside the bucket
+    :param str region: The slug of the region where the bucket is stored.
+    :param str version_id: Specific version ID of the object returned (defaults to latest version)
+    """
+    ...

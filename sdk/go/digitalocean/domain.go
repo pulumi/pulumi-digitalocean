@@ -200,7 +200,7 @@ type DomainArrayInput interface {
 type DomainArray []DomainInput
 
 func (DomainArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Domain)(nil))
+	return reflect.TypeOf((*[]*Domain)(nil)).Elem()
 }
 
 func (i DomainArray) ToDomainArrayOutput() DomainArrayOutput {
@@ -225,7 +225,7 @@ type DomainMapInput interface {
 type DomainMap map[string]DomainInput
 
 func (DomainMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Domain)(nil))
+	return reflect.TypeOf((*map[string]*Domain)(nil)).Elem()
 }
 
 func (i DomainMap) ToDomainMapOutput() DomainMapOutput {
@@ -236,9 +236,7 @@ func (i DomainMap) ToDomainMapOutputWithContext(ctx context.Context) DomainMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMapOutput)
 }
 
-type DomainOutput struct {
-	*pulumi.OutputState
-}
+type DomainOutput struct{ *pulumi.OutputState }
 
 func (DomainOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Domain)(nil))
@@ -257,14 +255,12 @@ func (o DomainOutput) ToDomainPtrOutput() DomainPtrOutput {
 }
 
 func (o DomainOutput) ToDomainPtrOutputWithContext(ctx context.Context) DomainPtrOutput {
-	return o.ApplyT(func(v Domain) *Domain {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Domain) *Domain {
 		return &v
 	}).(DomainPtrOutput)
 }
 
-type DomainPtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Domain)(nil))
@@ -276,6 +272,16 @@ func (o DomainPtrOutput) ToDomainPtrOutput() DomainPtrOutput {
 
 func (o DomainPtrOutput) ToDomainPtrOutputWithContext(ctx context.Context) DomainPtrOutput {
 	return o
+}
+
+func (o DomainPtrOutput) Elem() DomainOutput {
+	return o.ApplyT(func(v *Domain) Domain {
+		if v != nil {
+			return *v
+		}
+		var ret Domain
+		return ret
+	}).(DomainOutput)
 }
 
 type DomainArrayOutput struct{ *pulumi.OutputState }
@@ -319,6 +325,10 @@ func (o DomainMapOutput) MapIndex(k pulumi.StringInput) DomainOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainInput)(nil)).Elem(), &Domain{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainPtrInput)(nil)).Elem(), &Domain{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainArrayInput)(nil)).Elem(), DomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMapInput)(nil)).Elem(), DomainMap{})
 	pulumi.RegisterOutputType(DomainOutput{})
 	pulumi.RegisterOutputType(DomainPtrOutput{})
 	pulumi.RegisterOutputType(DomainArrayOutput{})

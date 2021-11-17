@@ -12,6 +12,7 @@ __all__ = [
     'GetSpacesBucketObjectsResult',
     'AwaitableGetSpacesBucketObjectsResult',
     'get_spaces_bucket_objects',
+    'get_spaces_bucket_objects_output',
 ]
 
 @pulumi.output_type
@@ -144,22 +145,6 @@ def get_spaces_bucket_objects(bucket: Optional[str] = None,
 
     The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
 
-    ## Example Usage
-
-    The following example retrieves a list of all object keys in a Spaces bucket and creates corresponding object
-    data sources:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    my_objects = digitalocean.get_spaces_bucket_objects(bucket="ourcorp",
-        region="nyc3")
-    object_info = [digitalocean.get_spaces_bucket_object(key=my_objects.keys[__index],
-        bucket=my_objects.bucket,
-        region=my_objects.region) for __index in range(len(my_objects.keys))]
-    ```
-
 
     :param str bucket: Lists object keys in this Spaces bucket
     :param str delimiter: A character used to group keys (Default: none)
@@ -192,3 +177,27 @@ def get_spaces_bucket_objects(bucket: Optional[str] = None,
         owners=__ret__.owners,
         prefix=__ret__.prefix,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_spaces_bucket_objects)
+def get_spaces_bucket_objects_output(bucket: Optional[pulumi.Input[str]] = None,
+                                     delimiter: Optional[pulumi.Input[Optional[str]]] = None,
+                                     encoding_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                     max_keys: Optional[pulumi.Input[Optional[int]]] = None,
+                                     prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                                     region: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketObjectsResult]:
+    """
+    > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+
+    The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
+
+
+    :param str bucket: Lists object keys in this Spaces bucket
+    :param str delimiter: A character used to group keys (Default: none)
+    :param str encoding_type: Encodes keys using this method (Default: none; besides none, only "url" can be used)
+    :param int max_keys: Maximum object keys to return (Default: 1000)
+    :param str prefix: Limits results to object keys with this prefix (Default: none)
+    :param str region: The slug of the region where the bucket is stored.
+    """
+    ...

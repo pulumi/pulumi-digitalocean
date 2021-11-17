@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -114,4 +113,26 @@ export interface GetVpcResult {
      * The uniform resource name (URN) for the VPC.
      */
     readonly urn: string;
+}
+
+export function getVpcOutput(args?: GetVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcResult> {
+    return pulumi.output(args).apply(a => getVpc(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpc.
+ */
+export interface GetVpcOutputArgs {
+    /**
+     * The unique identifier of an existing VPC.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of an existing VPC.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The DigitalOcean region slug for the VPC's location.
+     */
+    region?: pulumi.Input<string>;
 }

@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -216,7 +217,7 @@ type DatabaseUserArrayInput interface {
 type DatabaseUserArray []DatabaseUserInput
 
 func (DatabaseUserArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatabaseUser)(nil))
+	return reflect.TypeOf((*[]*DatabaseUser)(nil)).Elem()
 }
 
 func (i DatabaseUserArray) ToDatabaseUserArrayOutput() DatabaseUserArrayOutput {
@@ -241,7 +242,7 @@ type DatabaseUserMapInput interface {
 type DatabaseUserMap map[string]DatabaseUserInput
 
 func (DatabaseUserMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatabaseUser)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseUser)(nil)).Elem()
 }
 
 func (i DatabaseUserMap) ToDatabaseUserMapOutput() DatabaseUserMapOutput {
@@ -252,9 +253,7 @@ func (i DatabaseUserMap) ToDatabaseUserMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseUserMapOutput)
 }
 
-type DatabaseUserOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseUserOutput struct{ *pulumi.OutputState }
 
 func (DatabaseUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseUser)(nil))
@@ -273,14 +272,12 @@ func (o DatabaseUserOutput) ToDatabaseUserPtrOutput() DatabaseUserPtrOutput {
 }
 
 func (o DatabaseUserOutput) ToDatabaseUserPtrOutputWithContext(ctx context.Context) DatabaseUserPtrOutput {
-	return o.ApplyT(func(v DatabaseUser) *DatabaseUser {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseUser) *DatabaseUser {
 		return &v
 	}).(DatabaseUserPtrOutput)
 }
 
-type DatabaseUserPtrOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseUserPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseUserPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseUser)(nil))
@@ -292,6 +289,16 @@ func (o DatabaseUserPtrOutput) ToDatabaseUserPtrOutput() DatabaseUserPtrOutput {
 
 func (o DatabaseUserPtrOutput) ToDatabaseUserPtrOutputWithContext(ctx context.Context) DatabaseUserPtrOutput {
 	return o
+}
+
+func (o DatabaseUserPtrOutput) Elem() DatabaseUserOutput {
+	return o.ApplyT(func(v *DatabaseUser) DatabaseUser {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseUser
+		return ret
+	}).(DatabaseUserOutput)
 }
 
 type DatabaseUserArrayOutput struct{ *pulumi.OutputState }
@@ -335,6 +342,10 @@ func (o DatabaseUserMapOutput) MapIndex(k pulumi.StringInput) DatabaseUserOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserInput)(nil)).Elem(), &DatabaseUser{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserPtrInput)(nil)).Elem(), &DatabaseUser{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserArrayInput)(nil)).Elem(), DatabaseUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserMapInput)(nil)).Elem(), DatabaseUserMap{})
 	pulumi.RegisterOutputType(DatabaseUserOutput{})
 	pulumi.RegisterOutputType(DatabaseUserPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseUserArrayOutput{})

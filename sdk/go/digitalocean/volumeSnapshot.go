@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -224,7 +225,7 @@ type VolumeSnapshotArrayInput interface {
 type VolumeSnapshotArray []VolumeSnapshotInput
 
 func (VolumeSnapshotArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VolumeSnapshot)(nil))
+	return reflect.TypeOf((*[]*VolumeSnapshot)(nil)).Elem()
 }
 
 func (i VolumeSnapshotArray) ToVolumeSnapshotArrayOutput() VolumeSnapshotArrayOutput {
@@ -249,7 +250,7 @@ type VolumeSnapshotMapInput interface {
 type VolumeSnapshotMap map[string]VolumeSnapshotInput
 
 func (VolumeSnapshotMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VolumeSnapshot)(nil))
+	return reflect.TypeOf((*map[string]*VolumeSnapshot)(nil)).Elem()
 }
 
 func (i VolumeSnapshotMap) ToVolumeSnapshotMapOutput() VolumeSnapshotMapOutput {
@@ -260,9 +261,7 @@ func (i VolumeSnapshotMap) ToVolumeSnapshotMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotMapOutput)
 }
 
-type VolumeSnapshotOutput struct {
-	*pulumi.OutputState
-}
+type VolumeSnapshotOutput struct{ *pulumi.OutputState }
 
 func (VolumeSnapshotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VolumeSnapshot)(nil))
@@ -281,14 +280,12 @@ func (o VolumeSnapshotOutput) ToVolumeSnapshotPtrOutput() VolumeSnapshotPtrOutpu
 }
 
 func (o VolumeSnapshotOutput) ToVolumeSnapshotPtrOutputWithContext(ctx context.Context) VolumeSnapshotPtrOutput {
-	return o.ApplyT(func(v VolumeSnapshot) *VolumeSnapshot {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeSnapshot) *VolumeSnapshot {
 		return &v
 	}).(VolumeSnapshotPtrOutput)
 }
 
-type VolumeSnapshotPtrOutput struct {
-	*pulumi.OutputState
-}
+type VolumeSnapshotPtrOutput struct{ *pulumi.OutputState }
 
 func (VolumeSnapshotPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VolumeSnapshot)(nil))
@@ -300,6 +297,16 @@ func (o VolumeSnapshotPtrOutput) ToVolumeSnapshotPtrOutput() VolumeSnapshotPtrOu
 
 func (o VolumeSnapshotPtrOutput) ToVolumeSnapshotPtrOutputWithContext(ctx context.Context) VolumeSnapshotPtrOutput {
 	return o
+}
+
+func (o VolumeSnapshotPtrOutput) Elem() VolumeSnapshotOutput {
+	return o.ApplyT(func(v *VolumeSnapshot) VolumeSnapshot {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeSnapshot
+		return ret
+	}).(VolumeSnapshotOutput)
 }
 
 type VolumeSnapshotArrayOutput struct{ *pulumi.OutputState }
@@ -343,6 +350,10 @@ func (o VolumeSnapshotMapOutput) MapIndex(k pulumi.StringInput) VolumeSnapshotOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotInput)(nil)).Elem(), &VolumeSnapshot{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPtrInput)(nil)).Elem(), &VolumeSnapshot{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotArrayInput)(nil)).Elem(), VolumeSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotMapInput)(nil)).Elem(), VolumeSnapshotMap{})
 	pulumi.RegisterOutputType(VolumeSnapshotOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotArrayOutput{})

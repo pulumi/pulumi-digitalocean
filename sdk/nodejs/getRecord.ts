@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -59,4 +58,22 @@ export interface GetRecordResult {
     readonly ttl: number;
     readonly type: string;
     readonly weight: number;
+}
+
+export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
+    return pulumi.output(args).apply(a => getRecord(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRecord.
+ */
+export interface GetRecordOutputArgs {
+    /**
+     * The domain name of the record.
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * The name of the record.
+     */
+    name: pulumi.Input<string>;
 }

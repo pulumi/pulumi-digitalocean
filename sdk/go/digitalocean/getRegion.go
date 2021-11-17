@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sfo2, err := digitalocean.GetRegion(ctx, &digitalocean.GetRegionArgs{
+// 		sfo2, err := digitalocean.GetRegion(ctx, &GetRegionArgs{
 // 			Slug: "sfo2",
 // 		}, nil)
 // 		if err != nil {
@@ -62,4 +65,72 @@ type GetRegionResult struct {
 	Sizes []string `pulumi:"sizes"`
 	// A human-readable string that is used as a unique identifier for each region.
 	Slug string `pulumi:"slug"`
+}
+
+func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulumi.InvokeOption) GetRegionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegionResult, error) {
+			args := v.(GetRegionArgs)
+			r, err := GetRegion(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegionResultOutput)
+}
+
+// A collection of arguments for invoking getRegion.
+type GetRegionOutputArgs struct {
+	// A human-readable string that is used as a unique identifier for each region.
+	Slug pulumi.StringInput `pulumi:"slug"`
+}
+
+func (GetRegionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegion.
+type GetRegionResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionResult)(nil)).Elem()
+}
+
+func (o GetRegionResultOutput) ToGetRegionResultOutput() GetRegionResultOutput {
+	return o
+}
+
+func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Context) GetRegionResultOutput {
+	return o
+}
+
+// A boolean value that represents whether new Droplets can be created in this region.
+func (o GetRegionResultOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionResult) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+// A set of features available in this region.
+func (o GetRegionResultOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionResult) []string { return v.Features }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The display name of the region.
+func (o GetRegionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A set of identifying slugs for the Droplet sizes available in this region.
+func (o GetRegionResultOutput) Sizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionResult) []string { return v.Sizes }).(pulumi.StringArrayOutput)
+}
+
+// A human-readable string that is used as a unique identifier for each region.
+func (o GetRegionResultOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegionResultOutput{})
 }

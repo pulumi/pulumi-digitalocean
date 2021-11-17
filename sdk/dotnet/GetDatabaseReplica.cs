@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -47,6 +48,43 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetDatabaseReplicaResult> InvokeAsync(GetDatabaseReplicaArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides information on a DigitalOcean database replica.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs
+        ///         {
+        ///             Name = "example-cluster",
+        ///         }));
+        ///         var read_only = example.Apply(example =&gt; Output.Create(DigitalOcean.GetDatabaseReplica.InvokeAsync(new DigitalOcean.GetDatabaseReplicaArgs
+        ///         {
+        ///             ClusterId = example.Id,
+        ///             Name = "terra-test-ro",
+        ///         })));
+        ///         this.ReplicaOutput = read_only.Apply(read_only =&gt; read_only.Uri);
+        ///     }
+        /// 
+        ///     [Output("replicaOutput")]
+        ///     public Output&lt;string&gt; ReplicaOutput { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDatabaseReplicaResult> Invoke(GetDatabaseReplicaInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaInvokeArgs(), options.WithVersion());
     }
 
 
@@ -77,6 +115,37 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetDatabaseReplicaArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatabaseReplicaInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the original source database cluster.
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The name for the database replica.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tag names to be applied to the database replica.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        public GetDatabaseReplicaInvokeArgs()
         {
         }
     }

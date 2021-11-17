@@ -93,3 +93,23 @@ export interface GetSpacesBucketsResult {
     readonly id: string;
     readonly sorts?: outputs.GetSpacesBucketsSort[];
 }
+
+export function getSpacesBucketsOutput(args?: GetSpacesBucketsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketsResult> {
+    return pulumi.output(args).apply(a => getSpacesBuckets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSpacesBuckets.
+ */
+export interface GetSpacesBucketsOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSpacesBucketsFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetSpacesBucketsSortArgs>[]>;
+}

@@ -57,3 +57,27 @@ export interface GetRecordsResult {
     readonly records: outputs.GetRecordsRecord[];
     readonly sorts?: outputs.GetRecordsSort[];
 }
+
+export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
+    return pulumi.output(args).apply(a => getRecords(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRecords.
+ */
+export interface GetRecordsOutputArgs {
+    /**
+     * The domain name to search for DNS records
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetRecordsFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetRecordsSortArgs>[]>;
+}

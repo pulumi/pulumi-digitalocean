@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.LookupCertificate(ctx, &digitalocean.LookupCertificateArgs{
+// 		_, err := digitalocean.LookupCertificate(ctx, &GetCertificateArgs{
 // 			Name: "example",
 // 		}, nil)
 // 		if err != nil {
@@ -64,4 +67,75 @@ type LookupCertificateResult struct {
 	State           string `pulumi:"state"`
 	Type            string `pulumi:"type"`
 	Uuid            string `pulumi:"uuid"`
+}
+
+func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCertificateResult, error) {
+			args := v.(LookupCertificateArgs)
+			r, err := LookupCertificate(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCertificateResultOutput)
+}
+
+// A collection of arguments for invoking getCertificate.
+type LookupCertificateOutputArgs struct {
+	// The name of certificate.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupCertificateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCertificate.
+type LookupCertificateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCertificateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateResult)(nil)).Elem()
+}
+
+func (o LookupCertificateResultOutput) ToLookupCertificateResultOutput() LookupCertificateResultOutput {
+	return o
+}
+
+func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContext(ctx context.Context) LookupCertificateResultOutput {
+	return o
+}
+
+func (o LookupCertificateResultOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupCertificateResult) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCertificateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateResultOutput) NotAfter() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.NotAfter }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateResultOutput) Sha1Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCertificateResultOutput{})
 }

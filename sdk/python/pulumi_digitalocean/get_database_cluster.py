@@ -13,6 +13,7 @@ __all__ = [
     'GetDatabaseClusterResult',
     'AwaitableGetDatabaseClusterResult',
     'get_database_cluster',
+    'get_database_cluster_output',
 ]
 
 @pulumi.output_type
@@ -301,3 +302,26 @@ def get_database_cluster(name: Optional[str] = None,
         urn=__ret__.urn,
         user=__ret__.user,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_database_cluster)
+def get_database_cluster_output(name: Optional[pulumi.Input[str]] = None,
+                                tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseClusterResult]:
+    """
+    Provides information on a DigitalOcean database cluster resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_database_cluster(name="example-cluster")
+    pulumi.export("databaseOutput", example.uri)
+    ```
+
+
+    :param str name: The name of the database cluster.
+    """
+    ...

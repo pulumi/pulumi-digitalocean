@@ -53,6 +53,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -75,14 +76,15 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
-// 			CorsRules: digitalocean.SpacesBucketCorsRuleArray{
-// 				&digitalocean.SpacesBucketCorsRuleArgs{
+// 			CorsRules: SpacesBucketCorsRuleArray{
+// 				&SpacesBucketCorsRuleArgs{
 // 					AllowedHeaders: pulumi.StringArray{
 // 						pulumi.String("*"),
 // 					},
@@ -94,7 +96,7 @@ import (
 // 					},
 // 					MaxAgeSeconds: pulumi.Int(3000),
 // 				},
-// 				&digitalocean.SpacesBucketCorsRuleArgs{
+// 				&SpacesBucketCorsRuleArgs{
 // 					AllowedHeaders: pulumi.StringArray{
 // 						pulumi.String("*"),
 // 					},
@@ -324,7 +326,7 @@ type SpacesBucketArrayInput interface {
 type SpacesBucketArray []SpacesBucketInput
 
 func (SpacesBucketArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SpacesBucket)(nil))
+	return reflect.TypeOf((*[]*SpacesBucket)(nil)).Elem()
 }
 
 func (i SpacesBucketArray) ToSpacesBucketArrayOutput() SpacesBucketArrayOutput {
@@ -349,7 +351,7 @@ type SpacesBucketMapInput interface {
 type SpacesBucketMap map[string]SpacesBucketInput
 
 func (SpacesBucketMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SpacesBucket)(nil))
+	return reflect.TypeOf((*map[string]*SpacesBucket)(nil)).Elem()
 }
 
 func (i SpacesBucketMap) ToSpacesBucketMapOutput() SpacesBucketMapOutput {
@@ -360,9 +362,7 @@ func (i SpacesBucketMap) ToSpacesBucketMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketMapOutput)
 }
 
-type SpacesBucketOutput struct {
-	*pulumi.OutputState
-}
+type SpacesBucketOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SpacesBucket)(nil))
@@ -381,14 +381,12 @@ func (o SpacesBucketOutput) ToSpacesBucketPtrOutput() SpacesBucketPtrOutput {
 }
 
 func (o SpacesBucketOutput) ToSpacesBucketPtrOutputWithContext(ctx context.Context) SpacesBucketPtrOutput {
-	return o.ApplyT(func(v SpacesBucket) *SpacesBucket {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpacesBucket) *SpacesBucket {
 		return &v
 	}).(SpacesBucketPtrOutput)
 }
 
-type SpacesBucketPtrOutput struct {
-	*pulumi.OutputState
-}
+type SpacesBucketPtrOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SpacesBucket)(nil))
@@ -400,6 +398,16 @@ func (o SpacesBucketPtrOutput) ToSpacesBucketPtrOutput() SpacesBucketPtrOutput {
 
 func (o SpacesBucketPtrOutput) ToSpacesBucketPtrOutputWithContext(ctx context.Context) SpacesBucketPtrOutput {
 	return o
+}
+
+func (o SpacesBucketPtrOutput) Elem() SpacesBucketOutput {
+	return o.ApplyT(func(v *SpacesBucket) SpacesBucket {
+		if v != nil {
+			return *v
+		}
+		var ret SpacesBucket
+		return ret
+	}).(SpacesBucketOutput)
 }
 
 type SpacesBucketArrayOutput struct{ *pulumi.OutputState }
@@ -443,6 +451,10 @@ func (o SpacesBucketMapOutput) MapIndex(k pulumi.StringInput) SpacesBucketOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketInput)(nil)).Elem(), &SpacesBucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketPtrInput)(nil)).Elem(), &SpacesBucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketArrayInput)(nil)).Elem(), SpacesBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketMapInput)(nil)).Elem(), SpacesBucketMap{})
 	pulumi.RegisterOutputType(SpacesBucketOutput{})
 	pulumi.RegisterOutputType(SpacesBucketPtrOutput{})
 	pulumi.RegisterOutputType(SpacesBucketArrayOutput{})

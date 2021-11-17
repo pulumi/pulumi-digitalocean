@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -60,6 +61,56 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on domains for use in other resources, with the ability to filter and sort the results.
+        /// If no filters are specified, all domains will be returned.
+        /// 
+        /// This data source is useful if the domains in question are not managed by this provider or you need to
+        /// utilize any of the domains' data.
+        /// 
+        /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
+        /// about a single domain if you already know the `name`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
+        /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var examples = Output.Create(DigitalOcean.GetDomains.InvokeAsync(new DigitalOcean.GetDomainsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetDomainsFilterArgs
+        ///                 {
+        ///                     Key = "name",
+        ///                     MatchBy = "re",
+        ///                     Values = 
+        ///                     {
+        ///                         "example\\.com$",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -92,6 +143,39 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetDomainsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetDomainsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Filter the results.
+        /// The `filter` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetDomainsFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetDomainsFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        [Input("sorts")]
+        private InputList<Inputs.GetDomainsSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort the results.
+        /// The `sort` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetDomainsSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetDomainsSortInputArgs>());
+            set => _sorts = value;
+        }
+
+        public GetDomainsInvokeArgs()
         {
         }
     }

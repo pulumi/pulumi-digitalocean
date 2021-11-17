@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -90,4 +89,23 @@ export interface GetProjectResult {
      * The date and time when the project was last updated, (ISO8601)
      */
     readonly updatedAt: string;
+}
+
+export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+    return pulumi.output(args).apply(a => getProject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProject.
+ */
+export interface GetProjectOutputArgs {
+    /**
+     * the ID of the project to retrieve
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * the name of the project to retrieve. The data source will raise an error if more than
+     * one project has the provided name or if no project has that name.
+     */
+    name?: pulumi.Input<string>;
 }

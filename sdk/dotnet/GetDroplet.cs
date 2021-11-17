@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -88,6 +89,84 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetDropletResult> InvokeAsync(GetDropletArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a Droplet for use in other resources. This data source provides
+        /// all of the Droplet's properties as configured on your DigitalOcean account. This
+        /// is useful if the Droplet in question is not managed by this provider or you need to
+        /// utilize any of the Droplet's data.
+        /// 
+        /// **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+        /// error is triggered if more than one Droplet is found.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the Droplet by name:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
+        ///         {
+        ///             Name = "web",
+        ///         }));
+        ///         this.DropletOutput = example.Apply(example =&gt; example.Ipv4Address);
+        ///     }
+        /// 
+        ///     [Output("dropletOutput")]
+        ///     public Output&lt;string&gt; DropletOutput { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// Get the Droplet by tag:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
+        ///         {
+        ///             Tag = "web",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// Get the Droplet by ID:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
+        ///         {
+        ///             Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDropletResult> Invoke(GetDropletInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletInvokeArgs(), options.WithVersion());
     }
 
 
@@ -112,6 +191,31 @@ namespace Pulumi.DigitalOcean
         public string? Tag { get; set; }
 
         public GetDropletArgs()
+        {
+        }
+    }
+
+    public sealed class GetDropletInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Droplet
+        /// </summary>
+        [Input("id")]
+        public Input<int>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the Droplet.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A tag applied to the Droplet.
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
+        public GetDropletInvokeArgs()
         {
         }
     }

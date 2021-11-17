@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetSshKeysSortArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeysSortInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
         /// </summary>
         [Input("direction")]
-        public string? Direction { get; set; }
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
-        public GetSshKeysSortArgs()
+        public GetSshKeysSortInputArgs()
         {
         }
     }

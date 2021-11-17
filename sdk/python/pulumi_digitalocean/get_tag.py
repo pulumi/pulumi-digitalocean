@@ -12,6 +12,7 @@ __all__ = [
     'GetTagResult',
     'AwaitableGetTagResult',
     'get_tag',
+    'get_tag_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,35 @@ def get_tag(name: Optional[str] = None,
         total_resource_count=__ret__.total_resource_count,
         volume_snapshots_count=__ret__.volume_snapshots_count,
         volumes_count=__ret__.volumes_count)
+
+
+@_utilities.lift_output_func(get_tag)
+def get_tag_output(name: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagResult]:
+    """
+    Get information on a tag. This data source provides the name as configured on
+    your DigitalOcean account. This is useful if the tag name in question is not
+    managed by the provider or you need validate if the tag exists in the account.
+
+    An error is triggered if the provided tag name does not exist.
+
+    ## Example Usage
+
+    Get the tag:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example_tag = digitalocean.get_tag(name="example")
+    example_droplet = digitalocean.Droplet("exampleDroplet",
+        image="ubuntu-18-04-x64",
+        region="nyc2",
+        size="s-1vcpu-1gb",
+        tags=[example_tag.name])
+    ```
+
+
+    :param str name: The name of the tag.
+    """
+    ...

@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetImagesSortArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesSortInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
         /// </summary>
         [Input("direction")]
-        public string? Direction { get; set; }
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
         /// `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
-        public GetImagesSortArgs()
+        public GetImagesSortInputArgs()
         {
         }
     }

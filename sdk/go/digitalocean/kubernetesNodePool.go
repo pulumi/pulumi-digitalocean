@@ -21,6 +21,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -29,7 +30,7 @@ import (
 // 		foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
 // 			Region:  pulumi.String("nyc1"),
 // 			Version: pulumi.String("1.20.2-do.0"),
-// 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+// 			NodePool: &KubernetesClusterNodePoolArgs{
 // 				Name:      pulumi.String("front-end-pool"),
 // 				Size:      pulumi.String("s-2vcpu-2gb"),
 // 				NodeCount: pulumi.Int(3),
@@ -49,8 +50,8 @@ import (
 // 				"service":  pulumi.String("backend"),
 // 				"priority": pulumi.String("high"),
 // 			},
-// 			Taints: digitalocean.KubernetesNodePoolTaintArray{
-// 				&digitalocean.KubernetesNodePoolTaintArgs{
+// 			Taints: KubernetesNodePoolTaintArray{
+// 				&KubernetesNodePoolTaintArgs{
 // 					Key:    pulumi.String("workloadKind"),
 // 					Value:  pulumi.String("database"),
 // 					Effect: pulumi.String("NoSchedule"),
@@ -74,6 +75,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -337,7 +339,7 @@ type KubernetesNodePoolArrayInput interface {
 type KubernetesNodePoolArray []KubernetesNodePoolInput
 
 func (KubernetesNodePoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KubernetesNodePool)(nil))
+	return reflect.TypeOf((*[]*KubernetesNodePool)(nil)).Elem()
 }
 
 func (i KubernetesNodePoolArray) ToKubernetesNodePoolArrayOutput() KubernetesNodePoolArrayOutput {
@@ -362,7 +364,7 @@ type KubernetesNodePoolMapInput interface {
 type KubernetesNodePoolMap map[string]KubernetesNodePoolInput
 
 func (KubernetesNodePoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KubernetesNodePool)(nil))
+	return reflect.TypeOf((*map[string]*KubernetesNodePool)(nil)).Elem()
 }
 
 func (i KubernetesNodePoolMap) ToKubernetesNodePoolMapOutput() KubernetesNodePoolMapOutput {
@@ -373,9 +375,7 @@ func (i KubernetesNodePoolMap) ToKubernetesNodePoolMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolMapOutput)
 }
 
-type KubernetesNodePoolOutput struct {
-	*pulumi.OutputState
-}
+type KubernetesNodePoolOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodePoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesNodePool)(nil))
@@ -394,14 +394,12 @@ func (o KubernetesNodePoolOutput) ToKubernetesNodePoolPtrOutput() KubernetesNode
 }
 
 func (o KubernetesNodePoolOutput) ToKubernetesNodePoolPtrOutputWithContext(ctx context.Context) KubernetesNodePoolPtrOutput {
-	return o.ApplyT(func(v KubernetesNodePool) *KubernetesNodePool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodePool) *KubernetesNodePool {
 		return &v
 	}).(KubernetesNodePoolPtrOutput)
 }
 
-type KubernetesNodePoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type KubernetesNodePoolPtrOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodePoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KubernetesNodePool)(nil))
@@ -413,6 +411,16 @@ func (o KubernetesNodePoolPtrOutput) ToKubernetesNodePoolPtrOutput() KubernetesN
 
 func (o KubernetesNodePoolPtrOutput) ToKubernetesNodePoolPtrOutputWithContext(ctx context.Context) KubernetesNodePoolPtrOutput {
 	return o
+}
+
+func (o KubernetesNodePoolPtrOutput) Elem() KubernetesNodePoolOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) KubernetesNodePool {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodePool
+		return ret
+	}).(KubernetesNodePoolOutput)
 }
 
 type KubernetesNodePoolArrayOutput struct{ *pulumi.OutputState }
@@ -456,6 +464,10 @@ func (o KubernetesNodePoolMapOutput) MapIndex(k pulumi.StringInput) KubernetesNo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolInput)(nil)).Elem(), &KubernetesNodePool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolPtrInput)(nil)).Elem(), &KubernetesNodePool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolArrayInput)(nil)).Elem(), KubernetesNodePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolMapInput)(nil)).Elem(), KubernetesNodePoolMap{})
 	pulumi.RegisterOutputType(KubernetesNodePoolOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolArrayOutput{})

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -53,4 +52,18 @@ export interface GetDomainResult {
     readonly name: string;
     readonly ttl: number;
     readonly zoneFile: string;
+}
+
+export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
+    return pulumi.output(args).apply(a => getDomain(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomain.
+ */
+export interface GetDomainOutputArgs {
+    /**
+     * The name of the domain.
+     */
+    name: pulumi.Input<string>;
 }

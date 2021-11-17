@@ -14,6 +14,7 @@ __all__ = [
     'GetDomainsResult',
     'AwaitableGetDomainsResult',
     'get_domains',
+    'get_domains_output',
 ]
 
 @pulumi.output_type
@@ -123,3 +124,42 @@ def get_domains(filters: Optional[Sequence[pulumi.InputType['GetDomainsFilterArg
         filters=__ret__.filters,
         id=__ret__.id,
         sorts=__ret__.sorts)
+
+
+@_utilities.lift_output_func(get_domains)
+def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDomainsFilterArgs']]]]] = None,
+                       sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDomainsSortArgs']]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+    """
+    Get information on domains for use in other resources, with the ability to filter and sort the results.
+    If no filters are specified, all domains will be returned.
+
+    This data source is useful if the domains in question are not managed by this provider or you need to
+    utilize any of the domains' data.
+
+    Note: You can use the `Domain` data source to obtain metadata
+    about a single domain if you already know the `name`.
+
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter domains. (This example
+    also uses the regular expression `match_by` mode in order to match domains by suffix.)
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    examples = digitalocean.get_domains(filters=[digitalocean.GetDomainsFilterArgs(
+        key="name",
+        match_by="re",
+        values=["example\\.com$"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetDomainsFilterArgs']] filters: Filter the results.
+           The `filter` block is documented below.
+    :param Sequence[pulumi.InputType['GetDomainsSortArgs']] sorts: Sort the results.
+           The `sort` block is documented below.
+    """
+    ...

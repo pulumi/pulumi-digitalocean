@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetRegionsSortArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsSortInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
         /// </summary>
         [Input("direction")]
-        public string? Direction { get; set; }
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Sort the regions by this key. This may be one of `slug`,
         /// `name`, or `available`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
-        public GetRegionsSortArgs()
+        public GetRegionsSortInputArgs()
         {
         }
     }

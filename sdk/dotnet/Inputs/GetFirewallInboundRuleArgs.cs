@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetFirewallInboundRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallInboundRuleInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ports on which traffic will be allowed
@@ -19,69 +19,69 @@ namespace Pulumi.DigitalOcean.Inputs
         /// `tcp` or `udp`.
         /// </summary>
         [Input("portRange")]
-        public string? PortRange { get; set; }
+        public Input<string>? PortRange { get; set; }
 
         /// <summary>
         /// The type of traffic to be allowed.
         /// This may be one of "tcp", "udp", or "icmp".
         /// </summary>
         [Input("protocol", required: true)]
-        public string Protocol { get; set; } = null!;
+        public Input<string> Protocol { get; set; } = null!;
 
         [Input("sourceAddresses")]
-        private List<string>? _sourceAddresses;
+        private InputList<string>? _sourceAddresses;
 
         /// <summary>
         /// An array of strings containing the IPv4
         /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
         /// inbound traffic will be accepted.
         /// </summary>
-        public List<string> SourceAddresses
+        public InputList<string> SourceAddresses
         {
-            get => _sourceAddresses ?? (_sourceAddresses = new List<string>());
+            get => _sourceAddresses ?? (_sourceAddresses = new InputList<string>());
             set => _sourceAddresses = value;
         }
 
         [Input("sourceDropletIds")]
-        private List<int>? _sourceDropletIds;
+        private InputList<int>? _sourceDropletIds;
 
         /// <summary>
         /// An array containing the IDs of
         /// the Droplets from which the inbound traffic will be accepted.
         /// </summary>
-        public List<int> SourceDropletIds
+        public InputList<int> SourceDropletIds
         {
-            get => _sourceDropletIds ?? (_sourceDropletIds = new List<int>());
+            get => _sourceDropletIds ?? (_sourceDropletIds = new InputList<int>());
             set => _sourceDropletIds = value;
         }
 
         [Input("sourceLoadBalancerUids")]
-        private List<string>? _sourceLoadBalancerUids;
+        private InputList<string>? _sourceLoadBalancerUids;
 
         /// <summary>
         /// An array containing the IDs
         /// of the Load Balancers from which the inbound traffic will be accepted.
         /// </summary>
-        public List<string> SourceLoadBalancerUids
+        public InputList<string> SourceLoadBalancerUids
         {
-            get => _sourceLoadBalancerUids ?? (_sourceLoadBalancerUids = new List<string>());
+            get => _sourceLoadBalancerUids ?? (_sourceLoadBalancerUids = new InputList<string>());
             set => _sourceLoadBalancerUids = value;
         }
 
         [Input("sourceTags")]
-        private List<string>? _sourceTags;
+        private InputList<string>? _sourceTags;
 
         /// <summary>
         /// A set of names of Tags corresponding to group of
         /// Droplets from which the inbound traffic will be accepted.
         /// </summary>
-        public List<string> SourceTags
+        public InputList<string> SourceTags
         {
-            get => _sourceTags ?? (_sourceTags = new List<string>());
+            get => _sourceTags ?? (_sourceTags = new InputList<string>());
             set => _sourceTags = value;
         }
 
-        public GetFirewallInboundRuleArgs()
+        public GetFirewallInboundRuleInputArgs()
         {
         }
     }

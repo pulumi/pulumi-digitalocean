@@ -75,3 +75,17 @@ export interface GetLoadBalancerResult {
     readonly stickySessions: outputs.GetLoadBalancerStickySession[];
     readonly vpcUuid: string;
 }
+
+export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
+    return pulumi.output(args).apply(a => getLoadBalancer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLoadBalancer.
+ */
+export interface GetLoadBalancerOutputArgs {
+    /**
+     * The name of load balancer.
+     */
+    name: pulumi.Input<string>;
+}

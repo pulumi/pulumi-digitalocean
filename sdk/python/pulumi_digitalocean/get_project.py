@@ -12,6 +12,7 @@ __all__ = [
     'GetProjectResult',
     'AwaitableGetProjectResult',
     'get_project',
+    'get_project_output',
 ]
 
 @pulumi.output_type
@@ -196,3 +197,29 @@ def get_project(id: Optional[str] = None,
         purpose=__ret__.purpose,
         resources=__ret__.resources,
         updated_at=__ret__.updated_at)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                       name: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    """
+    Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
+    then this data source returns the default project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    default = digitalocean.get_project()
+    staging = digitalocean.get_project(name="My Staging Project")
+    ```
+
+
+    :param str id: the ID of the project to retrieve
+    :param str name: the name of the project to retrieve. The data source will raise an error if more than
+           one project has the provided name or if no project has that name.
+    """
+    ...

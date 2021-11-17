@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -21,6 +22,17 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a DNS record. This data source provides the name, TTL, and zone
+        /// file as configured on your DigitalOcean account. This is useful if the record
+        /// in question is not managed by the provider.
+        /// 
+        /// An error is triggered if the provided domain name or record are not managed with
+        /// your DigitalOcean account.
+        /// </summary>
+        public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithVersion());
     }
 
 
@@ -39,6 +51,25 @@ namespace Pulumi.DigitalOcean
         public string Name { get; set; } = null!;
 
         public GetRecordArgs()
+        {
+        }
+    }
+
+    public sealed class GetRecordInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain name of the record.
+        /// </summary>
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the record.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetRecordInvokeArgs()
         {
         }
     }

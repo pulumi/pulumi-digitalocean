@@ -12,6 +12,7 @@ __all__ = [
     'GetDropletResult',
     'AwaitableGetDropletResult',
     'get_droplet',
+    'get_droplet_output',
 ]
 
 @pulumi.output_type
@@ -415,3 +416,55 @@ def get_droplet(id: Optional[int] = None,
         vcpus=__ret__.vcpus,
         volume_ids=__ret__.volume_ids,
         vpc_uuid=__ret__.vpc_uuid)
+
+
+@_utilities.lift_output_func(get_droplet)
+def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
+                       name: Optional[pulumi.Input[Optional[str]]] = None,
+                       tag: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletResult]:
+    """
+    Get information on a Droplet for use in other resources. This data source provides
+    all of the Droplet's properties as configured on your DigitalOcean account. This
+    is useful if the Droplet in question is not managed by this provider or you need to
+    utilize any of the Droplet's data.
+
+    **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+    error is triggered if more than one Droplet is found.
+
+    ## Example Usage
+
+    Get the Droplet by name:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(name="web")
+    pulumi.export("dropletOutput", example.ipv4_address)
+    ```
+
+    Get the Droplet by tag:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(tag="web")
+    ```
+
+    Get the Droplet by ID:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(id=digitalocean_kubernetes_cluster["example"]["node_pool"][0]["nodes"][0]["droplet_id"])
+    ```
+
+
+    :param int id: The ID of the Droplet
+    :param str name: The name of the Droplet.
+    :param str tag: A tag applied to the Droplet.
+    """
+    ...

@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,4 +47,89 @@ type GetRecordResult struct {
 	Ttl      int    `pulumi:"ttl"`
 	Type     string `pulumi:"type"`
 	Weight   int    `pulumi:"weight"`
+}
+
+func GetRecordOutput(ctx *pulumi.Context, args GetRecordOutputArgs, opts ...pulumi.InvokeOption) GetRecordResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRecordResult, error) {
+			args := v.(GetRecordArgs)
+			r, err := GetRecord(ctx, &args, opts...)
+			return *r, err
+		}).(GetRecordResultOutput)
+}
+
+// A collection of arguments for invoking getRecord.
+type GetRecordOutputArgs struct {
+	// The domain name of the record.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The name of the record.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRecordOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRecord.
+type GetRecordResultOutput struct{ *pulumi.OutputState }
+
+func (GetRecordResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordResult)(nil)).Elem()
+}
+
+func (o GetRecordResultOutput) ToGetRecordResultOutput() GetRecordResultOutput {
+	return o
+}
+
+func (o GetRecordResultOutput) ToGetRecordResultOutputWithContext(ctx context.Context) GetRecordResultOutput {
+	return o
+}
+
+func (o GetRecordResultOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordResult) string { return v.Data }).(pulumi.StringOutput)
+}
+
+func (o GetRecordResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetRecordResultOutput) Flags() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordResult) int { return v.Flags }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRecordResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRecordResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRecordResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetRecordResultOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordResult) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+func (o GetRecordResultOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordResult) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+func (o GetRecordResultOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordResult) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+func (o GetRecordResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetRecordResultOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordResult) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRecordResultOutput{})
 }

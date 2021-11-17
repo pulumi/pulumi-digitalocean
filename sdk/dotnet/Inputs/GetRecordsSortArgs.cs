@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetRecordsSortArgs : Pulumi.InvokeArgs
+    public sealed class GetRecordsSortInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
         /// </summary>
         [Input("direction")]
-        public string? Direction { get; set; }
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
         /// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
-        public GetRecordsSortArgs()
+        public GetRecordsSortInputArgs()
         {
         }
     }

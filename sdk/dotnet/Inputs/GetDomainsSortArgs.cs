@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetDomainsSortArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsSortInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
         /// </summary>
         [Input("direction")]
-        public string? Direction { get; set; }
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
-        public GetDomainsSortArgs()
+        public GetDomainsSortInputArgs()
         {
         }
     }

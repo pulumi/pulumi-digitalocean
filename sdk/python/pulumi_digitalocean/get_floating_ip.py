@@ -12,6 +12,7 @@ __all__ = [
     'GetFloatingIpResult',
     'AwaitableGetFloatingIpResult',
     'get_floating_ip',
+    'get_floating_ip_output',
 ]
 
 @pulumi.output_type
@@ -119,3 +120,34 @@ def get_floating_ip(ip_address: Optional[str] = None,
         id=__ret__.id,
         ip_address=__ret__.ip_address,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_floating_ip)
+def get_floating_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFloatingIpResult]:
+    """
+    Get information on a floating ip. This data source provides the region and Droplet id
+    as configured on your DigitalOcean account. This is useful if the floating IP
+    in question is not managed by the provider or you need to find the Droplet the IP is
+    attached to.
+
+    An error is triggered if the provided floating IP does not exist.
+
+    ## Example Usage
+
+    Get the floating IP:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    config = pulumi.Config()
+    public_ip = config.require_object("publicIp")
+    example = digitalocean.get_floating_ip(ip_address=public_ip)
+    pulumi.export("fipOutput", example.droplet_id)
+    ```
+
+
+    :param str ip_address: The allocated IP address of the specific floating IP to retrieve.
+    """
+    ...

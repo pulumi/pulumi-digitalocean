@@ -103,3 +103,29 @@ export interface GetFirewallResult {
      */
     readonly tags: string[];
 }
+
+export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallResult> {
+    return pulumi.output(args).apply(a => getFirewall(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFirewall.
+ */
+export interface GetFirewallOutputArgs {
+    /**
+     * The list of the IDs of the Droplets assigned to
+     * the Firewall.
+     */
+    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The ID of the firewall to retrieve information
+     * about.
+     */
+    firewallId: pulumi.Input<string>;
+    inboundRules?: pulumi.Input<pulumi.Input<inputs.GetFirewallInboundRuleArgs>[]>;
+    outboundRules?: pulumi.Input<pulumi.Input<inputs.GetFirewallOutboundRuleArgs>[]>;
+    /**
+     * The names of the Tags assigned to the Firewall.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+}

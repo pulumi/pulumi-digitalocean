@@ -129,10 +129,11 @@ func (o AppSpecOutput) ToAppSpecPtrOutput() AppSpecPtrOutput {
 }
 
 func (o AppSpecOutput) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpecPtrOutput {
-	return o.ApplyT(func(v AppSpec) *AppSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpec) *AppSpec {
 		return &v
 	}).(AppSpecPtrOutput)
 }
+
 func (o AppSpecOutput) Databases() AppSpecDatabaseArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecDatabase { return v.Databases }).(AppSpecDatabaseArrayOutput)
 }
@@ -193,7 +194,13 @@ func (o AppSpecPtrOutput) ToAppSpecPtrOutputWithContext(ctx context.Context) App
 }
 
 func (o AppSpecPtrOutput) Elem() AppSpecOutput {
-	return o.ApplyT(func(v *AppSpec) AppSpec { return *v }).(AppSpecOutput)
+	return o.ApplyT(func(v *AppSpec) AppSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpec
+		return ret
+	}).(AppSpecOutput)
 }
 
 func (o AppSpecPtrOutput) Databases() AppSpecDatabaseArrayOutput {
@@ -1137,7 +1144,7 @@ func (o AppSpecJobGitOutput) ToAppSpecJobGitPtrOutput() AppSpecJobGitPtrOutput {
 }
 
 func (o AppSpecJobGitOutput) ToAppSpecJobGitPtrOutputWithContext(ctx context.Context) AppSpecJobGitPtrOutput {
-	return o.ApplyT(func(v AppSpecJobGit) *AppSpecJobGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobGit) *AppSpecJobGit {
 		return &v
 	}).(AppSpecJobGitPtrOutput)
 }
@@ -1167,7 +1174,13 @@ func (o AppSpecJobGitPtrOutput) ToAppSpecJobGitPtrOutputWithContext(ctx context.
 }
 
 func (o AppSpecJobGitPtrOutput) Elem() AppSpecJobGitOutput {
-	return o.ApplyT(func(v *AppSpecJobGit) AppSpecJobGit { return *v }).(AppSpecJobGitOutput)
+	return o.ApplyT(func(v *AppSpecJobGit) AppSpecJobGit {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobGit
+		return ret
+	}).(AppSpecJobGitOutput)
 }
 
 // The name of the branch to use.
@@ -1291,7 +1304,7 @@ func (o AppSpecJobGithubOutput) ToAppSpecJobGithubPtrOutput() AppSpecJobGithubPt
 }
 
 func (o AppSpecJobGithubOutput) ToAppSpecJobGithubPtrOutputWithContext(ctx context.Context) AppSpecJobGithubPtrOutput {
-	return o.ApplyT(func(v AppSpecJobGithub) *AppSpecJobGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobGithub) *AppSpecJobGithub {
 		return &v
 	}).(AppSpecJobGithubPtrOutput)
 }
@@ -1326,7 +1339,13 @@ func (o AppSpecJobGithubPtrOutput) ToAppSpecJobGithubPtrOutputWithContext(ctx co
 }
 
 func (o AppSpecJobGithubPtrOutput) Elem() AppSpecJobGithubOutput {
-	return o.ApplyT(func(v *AppSpecJobGithub) AppSpecJobGithub { return *v }).(AppSpecJobGithubOutput)
+	return o.ApplyT(func(v *AppSpecJobGithub) AppSpecJobGithub {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobGithub
+		return ret
+	}).(AppSpecJobGithubOutput)
 }
 
 // The name of the branch to use.
@@ -1460,7 +1479,7 @@ func (o AppSpecJobGitlabOutput) ToAppSpecJobGitlabPtrOutput() AppSpecJobGitlabPt
 }
 
 func (o AppSpecJobGitlabOutput) ToAppSpecJobGitlabPtrOutputWithContext(ctx context.Context) AppSpecJobGitlabPtrOutput {
-	return o.ApplyT(func(v AppSpecJobGitlab) *AppSpecJobGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobGitlab) *AppSpecJobGitlab {
 		return &v
 	}).(AppSpecJobGitlabPtrOutput)
 }
@@ -1495,7 +1514,13 @@ func (o AppSpecJobGitlabPtrOutput) ToAppSpecJobGitlabPtrOutputWithContext(ctx co
 }
 
 func (o AppSpecJobGitlabPtrOutput) Elem() AppSpecJobGitlabOutput {
-	return o.ApplyT(func(v *AppSpecJobGitlab) AppSpecJobGitlab { return *v }).(AppSpecJobGitlabOutput)
+	return o.ApplyT(func(v *AppSpecJobGitlab) AppSpecJobGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobGitlab
+		return ret
+	}).(AppSpecJobGitlabOutput)
 }
 
 // The name of the branch to use.
@@ -1633,7 +1658,7 @@ func (o AppSpecJobImageOutput) ToAppSpecJobImagePtrOutput() AppSpecJobImagePtrOu
 }
 
 func (o AppSpecJobImageOutput) ToAppSpecJobImagePtrOutputWithContext(ctx context.Context) AppSpecJobImagePtrOutput {
-	return o.ApplyT(func(v AppSpecJobImage) *AppSpecJobImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobImage) *AppSpecJobImage {
 		return &v
 	}).(AppSpecJobImagePtrOutput)
 }
@@ -1673,7 +1698,13 @@ func (o AppSpecJobImagePtrOutput) ToAppSpecJobImagePtrOutputWithContext(ctx cont
 }
 
 func (o AppSpecJobImagePtrOutput) Elem() AppSpecJobImageOutput {
-	return o.ApplyT(func(v *AppSpecJobImage) AppSpecJobImage { return *v }).(AppSpecJobImageOutput)
+	return o.ApplyT(func(v *AppSpecJobImage) AppSpecJobImage {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobImage
+		return ret
+	}).(AppSpecJobImageOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -2076,7 +2107,7 @@ func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsPtrOutput() AppSpecService
 }
 
 func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsPtrOutput {
-	return o.ApplyT(func(v AppSpecServiceCors) *AppSpecServiceCors {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceCors) *AppSpecServiceCors {
 		return &v
 	}).(AppSpecServiceCorsPtrOutput)
 }
@@ -2126,7 +2157,13 @@ func (o AppSpecServiceCorsPtrOutput) ToAppSpecServiceCorsPtrOutputWithContext(ct
 }
 
 func (o AppSpecServiceCorsPtrOutput) Elem() AppSpecServiceCorsOutput {
-	return o.ApplyT(func(v *AppSpecServiceCors) AppSpecServiceCors { return *v }).(AppSpecServiceCorsOutput)
+	return o.ApplyT(func(v *AppSpecServiceCors) AppSpecServiceCors {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceCors
+		return ret
+	}).(AppSpecServiceCorsOutput)
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
@@ -2290,7 +2327,7 @@ func (o AppSpecServiceCorsAllowOriginsOutput) ToAppSpecServiceCorsAllowOriginsPt
 }
 
 func (o AppSpecServiceCorsAllowOriginsOutput) ToAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecServiceCorsAllowOriginsPtrOutput {
-	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *AppSpecServiceCorsAllowOrigins {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceCorsAllowOrigins) *AppSpecServiceCorsAllowOrigins {
 		return &v
 	}).(AppSpecServiceCorsAllowOriginsPtrOutput)
 }
@@ -2325,7 +2362,13 @@ func (o AppSpecServiceCorsAllowOriginsPtrOutput) ToAppSpecServiceCorsAllowOrigin
 }
 
 func (o AppSpecServiceCorsAllowOriginsPtrOutput) Elem() AppSpecServiceCorsAllowOriginsOutput {
-	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) AppSpecServiceCorsAllowOrigins { return *v }).(AppSpecServiceCorsAllowOriginsOutput)
+	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) AppSpecServiceCorsAllowOrigins {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceCorsAllowOrigins
+		return ret
+	}).(AppSpecServiceCorsAllowOriginsOutput)
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
@@ -2579,7 +2622,7 @@ func (o AppSpecServiceGitOutput) ToAppSpecServiceGitPtrOutput() AppSpecServiceGi
 }
 
 func (o AppSpecServiceGitOutput) ToAppSpecServiceGitPtrOutputWithContext(ctx context.Context) AppSpecServiceGitPtrOutput {
-	return o.ApplyT(func(v AppSpecServiceGit) *AppSpecServiceGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceGit) *AppSpecServiceGit {
 		return &v
 	}).(AppSpecServiceGitPtrOutput)
 }
@@ -2609,7 +2652,13 @@ func (o AppSpecServiceGitPtrOutput) ToAppSpecServiceGitPtrOutputWithContext(ctx 
 }
 
 func (o AppSpecServiceGitPtrOutput) Elem() AppSpecServiceGitOutput {
-	return o.ApplyT(func(v *AppSpecServiceGit) AppSpecServiceGit { return *v }).(AppSpecServiceGitOutput)
+	return o.ApplyT(func(v *AppSpecServiceGit) AppSpecServiceGit {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceGit
+		return ret
+	}).(AppSpecServiceGitOutput)
 }
 
 // The name of the branch to use.
@@ -2733,7 +2782,7 @@ func (o AppSpecServiceGithubOutput) ToAppSpecServiceGithubPtrOutput() AppSpecSer
 }
 
 func (o AppSpecServiceGithubOutput) ToAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) AppSpecServiceGithubPtrOutput {
-	return o.ApplyT(func(v AppSpecServiceGithub) *AppSpecServiceGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceGithub) *AppSpecServiceGithub {
 		return &v
 	}).(AppSpecServiceGithubPtrOutput)
 }
@@ -2768,7 +2817,13 @@ func (o AppSpecServiceGithubPtrOutput) ToAppSpecServiceGithubPtrOutputWithContex
 }
 
 func (o AppSpecServiceGithubPtrOutput) Elem() AppSpecServiceGithubOutput {
-	return o.ApplyT(func(v *AppSpecServiceGithub) AppSpecServiceGithub { return *v }).(AppSpecServiceGithubOutput)
+	return o.ApplyT(func(v *AppSpecServiceGithub) AppSpecServiceGithub {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceGithub
+		return ret
+	}).(AppSpecServiceGithubOutput)
 }
 
 // The name of the branch to use.
@@ -2902,7 +2957,7 @@ func (o AppSpecServiceGitlabOutput) ToAppSpecServiceGitlabPtrOutput() AppSpecSer
 }
 
 func (o AppSpecServiceGitlabOutput) ToAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) AppSpecServiceGitlabPtrOutput {
-	return o.ApplyT(func(v AppSpecServiceGitlab) *AppSpecServiceGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceGitlab) *AppSpecServiceGitlab {
 		return &v
 	}).(AppSpecServiceGitlabPtrOutput)
 }
@@ -2937,7 +2992,13 @@ func (o AppSpecServiceGitlabPtrOutput) ToAppSpecServiceGitlabPtrOutputWithContex
 }
 
 func (o AppSpecServiceGitlabPtrOutput) Elem() AppSpecServiceGitlabOutput {
-	return o.ApplyT(func(v *AppSpecServiceGitlab) AppSpecServiceGitlab { return *v }).(AppSpecServiceGitlabOutput)
+	return o.ApplyT(func(v *AppSpecServiceGitlab) AppSpecServiceGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceGitlab
+		return ret
+	}).(AppSpecServiceGitlabOutput)
 }
 
 // The name of the branch to use.
@@ -3083,7 +3144,7 @@ func (o AppSpecServiceHealthCheckOutput) ToAppSpecServiceHealthCheckPtrOutput() 
 }
 
 func (o AppSpecServiceHealthCheckOutput) ToAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceHealthCheckPtrOutput {
-	return o.ApplyT(func(v AppSpecServiceHealthCheck) *AppSpecServiceHealthCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceHealthCheck) *AppSpecServiceHealthCheck {
 		return &v
 	}).(AppSpecServiceHealthCheckPtrOutput)
 }
@@ -3133,7 +3194,13 @@ func (o AppSpecServiceHealthCheckPtrOutput) ToAppSpecServiceHealthCheckPtrOutput
 }
 
 func (o AppSpecServiceHealthCheckPtrOutput) Elem() AppSpecServiceHealthCheckOutput {
-	return o.ApplyT(func(v *AppSpecServiceHealthCheck) AppSpecServiceHealthCheck { return *v }).(AppSpecServiceHealthCheckOutput)
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) AppSpecServiceHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceHealthCheck
+		return ret
+	}).(AppSpecServiceHealthCheckOutput)
 }
 
 // The number of failed health checks before considered unhealthy.
@@ -3301,7 +3368,7 @@ func (o AppSpecServiceImageOutput) ToAppSpecServiceImagePtrOutput() AppSpecServi
 }
 
 func (o AppSpecServiceImageOutput) ToAppSpecServiceImagePtrOutputWithContext(ctx context.Context) AppSpecServiceImagePtrOutput {
-	return o.ApplyT(func(v AppSpecServiceImage) *AppSpecServiceImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceImage) *AppSpecServiceImage {
 		return &v
 	}).(AppSpecServiceImagePtrOutput)
 }
@@ -3341,7 +3408,13 @@ func (o AppSpecServiceImagePtrOutput) ToAppSpecServiceImagePtrOutputWithContext(
 }
 
 func (o AppSpecServiceImagePtrOutput) Elem() AppSpecServiceImageOutput {
-	return o.ApplyT(func(v *AppSpecServiceImage) AppSpecServiceImage { return *v }).(AppSpecServiceImageOutput)
+	return o.ApplyT(func(v *AppSpecServiceImage) AppSpecServiceImage {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceImage
+		return ret
+	}).(AppSpecServiceImageOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -3814,7 +3887,7 @@ func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsPtrOutput() AppSpecS
 }
 
 func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsPtrOutput {
-	return o.ApplyT(func(v AppSpecStaticSiteCors) *AppSpecStaticSiteCors {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecStaticSiteCors) *AppSpecStaticSiteCors {
 		return &v
 	}).(AppSpecStaticSiteCorsPtrOutput)
 }
@@ -3864,7 +3937,13 @@ func (o AppSpecStaticSiteCorsPtrOutput) ToAppSpecStaticSiteCorsPtrOutputWithCont
 }
 
 func (o AppSpecStaticSiteCorsPtrOutput) Elem() AppSpecStaticSiteCorsOutput {
-	return o.ApplyT(func(v *AppSpecStaticSiteCors) AppSpecStaticSiteCors { return *v }).(AppSpecStaticSiteCorsOutput)
+	return o.ApplyT(func(v *AppSpecStaticSiteCors) AppSpecStaticSiteCors {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecStaticSiteCors
+		return ret
+	}).(AppSpecStaticSiteCorsOutput)
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
@@ -4028,7 +4107,7 @@ func (o AppSpecStaticSiteCorsAllowOriginsOutput) ToAppSpecStaticSiteCorsAllowOri
 }
 
 func (o AppSpecStaticSiteCorsAllowOriginsOutput) ToAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteCorsAllowOriginsPtrOutput {
-	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *AppSpecStaticSiteCorsAllowOrigins {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecStaticSiteCorsAllowOrigins) *AppSpecStaticSiteCorsAllowOrigins {
 		return &v
 	}).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
@@ -4063,7 +4142,13 @@ func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) ToAppSpecStaticSiteCorsAllow
 }
 
 func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Elem() AppSpecStaticSiteCorsAllowOriginsOutput {
-	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) AppSpecStaticSiteCorsAllowOrigins { return *v }).(AppSpecStaticSiteCorsAllowOriginsOutput)
+	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) AppSpecStaticSiteCorsAllowOrigins {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecStaticSiteCorsAllowOrigins
+		return ret
+	}).(AppSpecStaticSiteCorsAllowOriginsOutput)
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
@@ -4317,7 +4402,7 @@ func (o AppSpecStaticSiteGitOutput) ToAppSpecStaticSiteGitPtrOutput() AppSpecSta
 }
 
 func (o AppSpecStaticSiteGitOutput) ToAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitPtrOutput {
-	return o.ApplyT(func(v AppSpecStaticSiteGit) *AppSpecStaticSiteGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecStaticSiteGit) *AppSpecStaticSiteGit {
 		return &v
 	}).(AppSpecStaticSiteGitPtrOutput)
 }
@@ -4347,7 +4432,13 @@ func (o AppSpecStaticSiteGitPtrOutput) ToAppSpecStaticSiteGitPtrOutputWithContex
 }
 
 func (o AppSpecStaticSiteGitPtrOutput) Elem() AppSpecStaticSiteGitOutput {
-	return o.ApplyT(func(v *AppSpecStaticSiteGit) AppSpecStaticSiteGit { return *v }).(AppSpecStaticSiteGitOutput)
+	return o.ApplyT(func(v *AppSpecStaticSiteGit) AppSpecStaticSiteGit {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecStaticSiteGit
+		return ret
+	}).(AppSpecStaticSiteGitOutput)
 }
 
 // The name of the branch to use.
@@ -4471,7 +4562,7 @@ func (o AppSpecStaticSiteGithubOutput) ToAppSpecStaticSiteGithubPtrOutput() AppS
 }
 
 func (o AppSpecStaticSiteGithubOutput) ToAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGithubPtrOutput {
-	return o.ApplyT(func(v AppSpecStaticSiteGithub) *AppSpecStaticSiteGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecStaticSiteGithub) *AppSpecStaticSiteGithub {
 		return &v
 	}).(AppSpecStaticSiteGithubPtrOutput)
 }
@@ -4506,7 +4597,13 @@ func (o AppSpecStaticSiteGithubPtrOutput) ToAppSpecStaticSiteGithubPtrOutputWith
 }
 
 func (o AppSpecStaticSiteGithubPtrOutput) Elem() AppSpecStaticSiteGithubOutput {
-	return o.ApplyT(func(v *AppSpecStaticSiteGithub) AppSpecStaticSiteGithub { return *v }).(AppSpecStaticSiteGithubOutput)
+	return o.ApplyT(func(v *AppSpecStaticSiteGithub) AppSpecStaticSiteGithub {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecStaticSiteGithub
+		return ret
+	}).(AppSpecStaticSiteGithubOutput)
 }
 
 // The name of the branch to use.
@@ -4640,7 +4737,7 @@ func (o AppSpecStaticSiteGitlabOutput) ToAppSpecStaticSiteGitlabPtrOutput() AppS
 }
 
 func (o AppSpecStaticSiteGitlabOutput) ToAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteGitlabPtrOutput {
-	return o.ApplyT(func(v AppSpecStaticSiteGitlab) *AppSpecStaticSiteGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecStaticSiteGitlab) *AppSpecStaticSiteGitlab {
 		return &v
 	}).(AppSpecStaticSiteGitlabPtrOutput)
 }
@@ -4675,7 +4772,13 @@ func (o AppSpecStaticSiteGitlabPtrOutput) ToAppSpecStaticSiteGitlabPtrOutputWith
 }
 
 func (o AppSpecStaticSiteGitlabPtrOutput) Elem() AppSpecStaticSiteGitlabOutput {
-	return o.ApplyT(func(v *AppSpecStaticSiteGitlab) AppSpecStaticSiteGitlab { return *v }).(AppSpecStaticSiteGitlabOutput)
+	return o.ApplyT(func(v *AppSpecStaticSiteGitlab) AppSpecStaticSiteGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecStaticSiteGitlab
+		return ret
+	}).(AppSpecStaticSiteGitlabOutput)
 }
 
 // The name of the branch to use.
@@ -5231,7 +5334,7 @@ func (o AppSpecWorkerGitOutput) ToAppSpecWorkerGitPtrOutput() AppSpecWorkerGitPt
 }
 
 func (o AppSpecWorkerGitOutput) ToAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitPtrOutput {
-	return o.ApplyT(func(v AppSpecWorkerGit) *AppSpecWorkerGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerGit) *AppSpecWorkerGit {
 		return &v
 	}).(AppSpecWorkerGitPtrOutput)
 }
@@ -5261,7 +5364,13 @@ func (o AppSpecWorkerGitPtrOutput) ToAppSpecWorkerGitPtrOutputWithContext(ctx co
 }
 
 func (o AppSpecWorkerGitPtrOutput) Elem() AppSpecWorkerGitOutput {
-	return o.ApplyT(func(v *AppSpecWorkerGit) AppSpecWorkerGit { return *v }).(AppSpecWorkerGitOutput)
+	return o.ApplyT(func(v *AppSpecWorkerGit) AppSpecWorkerGit {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerGit
+		return ret
+	}).(AppSpecWorkerGitOutput)
 }
 
 // The name of the branch to use.
@@ -5385,7 +5494,7 @@ func (o AppSpecWorkerGithubOutput) ToAppSpecWorkerGithubPtrOutput() AppSpecWorke
 }
 
 func (o AppSpecWorkerGithubOutput) ToAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) AppSpecWorkerGithubPtrOutput {
-	return o.ApplyT(func(v AppSpecWorkerGithub) *AppSpecWorkerGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerGithub) *AppSpecWorkerGithub {
 		return &v
 	}).(AppSpecWorkerGithubPtrOutput)
 }
@@ -5420,7 +5529,13 @@ func (o AppSpecWorkerGithubPtrOutput) ToAppSpecWorkerGithubPtrOutputWithContext(
 }
 
 func (o AppSpecWorkerGithubPtrOutput) Elem() AppSpecWorkerGithubOutput {
-	return o.ApplyT(func(v *AppSpecWorkerGithub) AppSpecWorkerGithub { return *v }).(AppSpecWorkerGithubOutput)
+	return o.ApplyT(func(v *AppSpecWorkerGithub) AppSpecWorkerGithub {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerGithub
+		return ret
+	}).(AppSpecWorkerGithubOutput)
 }
 
 // The name of the branch to use.
@@ -5554,7 +5669,7 @@ func (o AppSpecWorkerGitlabOutput) ToAppSpecWorkerGitlabPtrOutput() AppSpecWorke
 }
 
 func (o AppSpecWorkerGitlabOutput) ToAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) AppSpecWorkerGitlabPtrOutput {
-	return o.ApplyT(func(v AppSpecWorkerGitlab) *AppSpecWorkerGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerGitlab) *AppSpecWorkerGitlab {
 		return &v
 	}).(AppSpecWorkerGitlabPtrOutput)
 }
@@ -5589,7 +5704,13 @@ func (o AppSpecWorkerGitlabPtrOutput) ToAppSpecWorkerGitlabPtrOutputWithContext(
 }
 
 func (o AppSpecWorkerGitlabPtrOutput) Elem() AppSpecWorkerGitlabOutput {
-	return o.ApplyT(func(v *AppSpecWorkerGitlab) AppSpecWorkerGitlab { return *v }).(AppSpecWorkerGitlabOutput)
+	return o.ApplyT(func(v *AppSpecWorkerGitlab) AppSpecWorkerGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerGitlab
+		return ret
+	}).(AppSpecWorkerGitlabOutput)
 }
 
 // The name of the branch to use.
@@ -5727,7 +5848,7 @@ func (o AppSpecWorkerImageOutput) ToAppSpecWorkerImagePtrOutput() AppSpecWorkerI
 }
 
 func (o AppSpecWorkerImageOutput) ToAppSpecWorkerImagePtrOutputWithContext(ctx context.Context) AppSpecWorkerImagePtrOutput {
-	return o.ApplyT(func(v AppSpecWorkerImage) *AppSpecWorkerImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerImage) *AppSpecWorkerImage {
 		return &v
 	}).(AppSpecWorkerImagePtrOutput)
 }
@@ -5767,7 +5888,13 @@ func (o AppSpecWorkerImagePtrOutput) ToAppSpecWorkerImagePtrOutputWithContext(ct
 }
 
 func (o AppSpecWorkerImagePtrOutput) Elem() AppSpecWorkerImageOutput {
-	return o.ApplyT(func(v *AppSpecWorkerImage) AppSpecWorkerImage { return *v }).(AppSpecWorkerImageOutput)
+	return o.ApplyT(func(v *AppSpecWorkerImage) AppSpecWorkerImage {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerImage
+		return ret
+	}).(AppSpecWorkerImageOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -6749,7 +6876,7 @@ func (o KubernetesClusterMaintenancePolicyOutput) ToKubernetesClusterMaintenance
 }
 
 func (o KubernetesClusterMaintenancePolicyOutput) ToKubernetesClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) KubernetesClusterMaintenancePolicyPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *KubernetesClusterMaintenancePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterMaintenancePolicy) *KubernetesClusterMaintenancePolicy {
 		return &v
 	}).(KubernetesClusterMaintenancePolicyPtrOutput)
 }
@@ -6783,7 +6910,13 @@ func (o KubernetesClusterMaintenancePolicyPtrOutput) ToKubernetesClusterMaintena
 }
 
 func (o KubernetesClusterMaintenancePolicyPtrOutput) Elem() KubernetesClusterMaintenancePolicyOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) KubernetesClusterMaintenancePolicy { return *v }).(KubernetesClusterMaintenancePolicyOutput)
+	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) KubernetesClusterMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterMaintenancePolicy
+		return ret
+	}).(KubernetesClusterMaintenancePolicyOutput)
 }
 
 // The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
@@ -6952,7 +7085,7 @@ func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolPtrOutput() 
 }
 
 func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolPtrOutputWithContext(ctx context.Context) KubernetesClusterNodePoolPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNodePool) *KubernetesClusterNodePool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterNodePool) *KubernetesClusterNodePool {
 		return &v
 	}).(KubernetesClusterNodePoolPtrOutput)
 }
@@ -7032,7 +7165,13 @@ func (o KubernetesClusterNodePoolPtrOutput) ToKubernetesClusterNodePoolPtrOutput
 }
 
 func (o KubernetesClusterNodePoolPtrOutput) Elem() KubernetesClusterNodePoolOutput {
-	return o.ApplyT(func(v *KubernetesClusterNodePool) KubernetesClusterNodePool { return *v }).(KubernetesClusterNodePoolOutput)
+	return o.ApplyT(func(v *KubernetesClusterNodePool) KubernetesClusterNodePool {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterNodePool
+		return ret
+	}).(KubernetesClusterNodePoolOutput)
 }
 
 // A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
@@ -7943,7 +8082,7 @@ func (o LoadBalancerHealthcheckOutput) ToLoadBalancerHealthcheckPtrOutput() Load
 }
 
 func (o LoadBalancerHealthcheckOutput) ToLoadBalancerHealthcheckPtrOutputWithContext(ctx context.Context) LoadBalancerHealthcheckPtrOutput {
-	return o.ApplyT(func(v LoadBalancerHealthcheck) *LoadBalancerHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerHealthcheck) *LoadBalancerHealthcheck {
 		return &v
 	}).(LoadBalancerHealthcheckPtrOutput)
 }
@@ -7998,7 +8137,13 @@ func (o LoadBalancerHealthcheckPtrOutput) ToLoadBalancerHealthcheckPtrOutputWith
 }
 
 func (o LoadBalancerHealthcheckPtrOutput) Elem() LoadBalancerHealthcheckOutput {
-	return o.ApplyT(func(v *LoadBalancerHealthcheck) LoadBalancerHealthcheck { return *v }).(LoadBalancerHealthcheckOutput)
+	return o.ApplyT(func(v *LoadBalancerHealthcheck) LoadBalancerHealthcheck {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerHealthcheck
+		return ret
+	}).(LoadBalancerHealthcheckOutput)
 }
 
 // The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
@@ -8172,7 +8317,7 @@ func (o LoadBalancerStickySessionsOutput) ToLoadBalancerStickySessionsPtrOutput(
 }
 
 func (o LoadBalancerStickySessionsOutput) ToLoadBalancerStickySessionsPtrOutputWithContext(ctx context.Context) LoadBalancerStickySessionsPtrOutput {
-	return o.ApplyT(func(v LoadBalancerStickySessions) *LoadBalancerStickySessions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerStickySessions) *LoadBalancerStickySessions {
 		return &v
 	}).(LoadBalancerStickySessionsPtrOutput)
 }
@@ -8207,7 +8352,13 @@ func (o LoadBalancerStickySessionsPtrOutput) ToLoadBalancerStickySessionsPtrOutp
 }
 
 func (o LoadBalancerStickySessionsPtrOutput) Elem() LoadBalancerStickySessionsOutput {
-	return o.ApplyT(func(v *LoadBalancerStickySessions) LoadBalancerStickySessions { return *v }).(LoadBalancerStickySessionsOutput)
+	return o.ApplyT(func(v *LoadBalancerStickySessions) LoadBalancerStickySessions {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerStickySessions
+		return ret
+	}).(LoadBalancerStickySessionsOutput)
 }
 
 // The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
@@ -8333,10 +8484,11 @@ func (o MonitorAlertAlertsOutput) ToMonitorAlertAlertsPtrOutput() MonitorAlertAl
 }
 
 func (o MonitorAlertAlertsOutput) ToMonitorAlertAlertsPtrOutputWithContext(ctx context.Context) MonitorAlertAlertsPtrOutput {
-	return o.ApplyT(func(v MonitorAlertAlerts) *MonitorAlertAlerts {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorAlertAlerts) *MonitorAlertAlerts {
 		return &v
 	}).(MonitorAlertAlertsPtrOutput)
 }
+
 func (o MonitorAlertAlertsOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MonitorAlertAlerts) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
@@ -8360,7 +8512,13 @@ func (o MonitorAlertAlertsPtrOutput) ToMonitorAlertAlertsPtrOutputWithContext(ct
 }
 
 func (o MonitorAlertAlertsPtrOutput) Elem() MonitorAlertAlertsOutput {
-	return o.ApplyT(func(v *MonitorAlertAlerts) MonitorAlertAlerts { return *v }).(MonitorAlertAlertsOutput)
+	return o.ApplyT(func(v *MonitorAlertAlerts) MonitorAlertAlerts {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorAlertAlerts
+		return ret
+	}).(MonitorAlertAlertsOutput)
 }
 
 func (o MonitorAlertAlertsPtrOutput) Emails() pulumi.StringArrayOutput {
@@ -8857,7 +9015,7 @@ func (o SpacesBucketLifecycleRuleExpirationOutput) ToSpacesBucketLifecycleRuleEx
 }
 
 func (o SpacesBucketLifecycleRuleExpirationOutput) ToSpacesBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleExpirationPtrOutput {
-	return o.ApplyT(func(v SpacesBucketLifecycleRuleExpiration) *SpacesBucketLifecycleRuleExpiration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpacesBucketLifecycleRuleExpiration) *SpacesBucketLifecycleRuleExpiration {
 		return &v
 	}).(SpacesBucketLifecycleRuleExpirationPtrOutput)
 }
@@ -8894,7 +9052,13 @@ func (o SpacesBucketLifecycleRuleExpirationPtrOutput) ToSpacesBucketLifecycleRul
 }
 
 func (o SpacesBucketLifecycleRuleExpirationPtrOutput) Elem() SpacesBucketLifecycleRuleExpirationOutput {
-	return o.ApplyT(func(v *SpacesBucketLifecycleRuleExpiration) SpacesBucketLifecycleRuleExpiration { return *v }).(SpacesBucketLifecycleRuleExpirationOutput)
+	return o.ApplyT(func(v *SpacesBucketLifecycleRuleExpiration) SpacesBucketLifecycleRuleExpiration {
+		if v != nil {
+			return *v
+		}
+		var ret SpacesBucketLifecycleRuleExpiration
+		return ret
+	}).(SpacesBucketLifecycleRuleExpirationOutput)
 }
 
 // Specifies the date/time after which you want applicable objects to expire. The argument uses
@@ -9022,7 +9186,7 @@ func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToSpacesBuck
 }
 
 func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToSpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
-	return o.ApplyT(func(v SpacesBucketLifecycleRuleNoncurrentVersionExpiration) *SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpacesBucketLifecycleRuleNoncurrentVersionExpiration) *SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
 		return &v
 	}).(SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
 }
@@ -9048,7 +9212,11 @@ func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) ToSpacesB
 
 func (o SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Elem() SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput {
 	return o.ApplyT(func(v *SpacesBucketLifecycleRuleNoncurrentVersionExpiration) SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SpacesBucketLifecycleRuleNoncurrentVersionExpiration
+		return ret
 	}).(SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput)
 }
 
@@ -9157,7 +9325,7 @@ func (o SpacesBucketVersioningOutput) ToSpacesBucketVersioningPtrOutput() Spaces
 }
 
 func (o SpacesBucketVersioningOutput) ToSpacesBucketVersioningPtrOutputWithContext(ctx context.Context) SpacesBucketVersioningPtrOutput {
-	return o.ApplyT(func(v SpacesBucketVersioning) *SpacesBucketVersioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpacesBucketVersioning) *SpacesBucketVersioning {
 		return &v
 	}).(SpacesBucketVersioningPtrOutput)
 }
@@ -9183,7 +9351,13 @@ func (o SpacesBucketVersioningPtrOutput) ToSpacesBucketVersioningPtrOutputWithCo
 }
 
 func (o SpacesBucketVersioningPtrOutput) Elem() SpacesBucketVersioningOutput {
-	return o.ApplyT(func(v *SpacesBucketVersioning) SpacesBucketVersioning { return *v }).(SpacesBucketVersioningOutput)
+	return o.ApplyT(func(v *SpacesBucketVersioning) SpacesBucketVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret SpacesBucketVersioning
+		return ret
+	}).(SpacesBucketVersioningOutput)
 }
 
 // Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
@@ -10143,7 +10317,7 @@ func (o GetAppSpecJobGitOutput) ToGetAppSpecJobGitPtrOutput() GetAppSpecJobGitPt
 }
 
 func (o GetAppSpecJobGitOutput) ToGetAppSpecJobGitPtrOutputWithContext(ctx context.Context) GetAppSpecJobGitPtrOutput {
-	return o.ApplyT(func(v GetAppSpecJobGit) *GetAppSpecJobGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobGit) *GetAppSpecJobGit {
 		return &v
 	}).(GetAppSpecJobGitPtrOutput)
 }
@@ -10173,7 +10347,13 @@ func (o GetAppSpecJobGitPtrOutput) ToGetAppSpecJobGitPtrOutputWithContext(ctx co
 }
 
 func (o GetAppSpecJobGitPtrOutput) Elem() GetAppSpecJobGitOutput {
-	return o.ApplyT(func(v *GetAppSpecJobGit) GetAppSpecJobGit { return *v }).(GetAppSpecJobGitOutput)
+	return o.ApplyT(func(v *GetAppSpecJobGit) GetAppSpecJobGit {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobGit
+		return ret
+	}).(GetAppSpecJobGitOutput)
 }
 
 // The name of the branch to use.
@@ -10297,7 +10477,7 @@ func (o GetAppSpecJobGithubOutput) ToGetAppSpecJobGithubPtrOutput() GetAppSpecJo
 }
 
 func (o GetAppSpecJobGithubOutput) ToGetAppSpecJobGithubPtrOutputWithContext(ctx context.Context) GetAppSpecJobGithubPtrOutput {
-	return o.ApplyT(func(v GetAppSpecJobGithub) *GetAppSpecJobGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobGithub) *GetAppSpecJobGithub {
 		return &v
 	}).(GetAppSpecJobGithubPtrOutput)
 }
@@ -10332,7 +10512,13 @@ func (o GetAppSpecJobGithubPtrOutput) ToGetAppSpecJobGithubPtrOutputWithContext(
 }
 
 func (o GetAppSpecJobGithubPtrOutput) Elem() GetAppSpecJobGithubOutput {
-	return o.ApplyT(func(v *GetAppSpecJobGithub) GetAppSpecJobGithub { return *v }).(GetAppSpecJobGithubOutput)
+	return o.ApplyT(func(v *GetAppSpecJobGithub) GetAppSpecJobGithub {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobGithub
+		return ret
+	}).(GetAppSpecJobGithubOutput)
 }
 
 // The name of the branch to use.
@@ -10466,7 +10652,7 @@ func (o GetAppSpecJobGitlabOutput) ToGetAppSpecJobGitlabPtrOutput() GetAppSpecJo
 }
 
 func (o GetAppSpecJobGitlabOutput) ToGetAppSpecJobGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecJobGitlabPtrOutput {
-	return o.ApplyT(func(v GetAppSpecJobGitlab) *GetAppSpecJobGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobGitlab) *GetAppSpecJobGitlab {
 		return &v
 	}).(GetAppSpecJobGitlabPtrOutput)
 }
@@ -10501,7 +10687,13 @@ func (o GetAppSpecJobGitlabPtrOutput) ToGetAppSpecJobGitlabPtrOutputWithContext(
 }
 
 func (o GetAppSpecJobGitlabPtrOutput) Elem() GetAppSpecJobGitlabOutput {
-	return o.ApplyT(func(v *GetAppSpecJobGitlab) GetAppSpecJobGitlab { return *v }).(GetAppSpecJobGitlabOutput)
+	return o.ApplyT(func(v *GetAppSpecJobGitlab) GetAppSpecJobGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobGitlab
+		return ret
+	}).(GetAppSpecJobGitlabOutput)
 }
 
 // The name of the branch to use.
@@ -10639,7 +10831,7 @@ func (o GetAppSpecJobImageOutput) ToGetAppSpecJobImagePtrOutput() GetAppSpecJobI
 }
 
 func (o GetAppSpecJobImageOutput) ToGetAppSpecJobImagePtrOutputWithContext(ctx context.Context) GetAppSpecJobImagePtrOutput {
-	return o.ApplyT(func(v GetAppSpecJobImage) *GetAppSpecJobImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobImage) *GetAppSpecJobImage {
 		return &v
 	}).(GetAppSpecJobImagePtrOutput)
 }
@@ -10679,7 +10871,13 @@ func (o GetAppSpecJobImagePtrOutput) ToGetAppSpecJobImagePtrOutputWithContext(ct
 }
 
 func (o GetAppSpecJobImagePtrOutput) Elem() GetAppSpecJobImageOutput {
-	return o.ApplyT(func(v *GetAppSpecJobImage) GetAppSpecJobImage { return *v }).(GetAppSpecJobImageOutput)
+	return o.ApplyT(func(v *GetAppSpecJobImage) GetAppSpecJobImage {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobImage
+		return ret
+	}).(GetAppSpecJobImageOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -11067,10 +11265,11 @@ func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutput() GetAppSp
 }
 
 func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceCors) *GetAppSpecServiceCors {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceCors) *GetAppSpecServiceCors {
 		return &v
 	}).(GetAppSpecServiceCorsPtrOutput)
 }
+
 func (o GetAppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -11110,7 +11309,13 @@ func (o GetAppSpecServiceCorsPtrOutput) ToGetAppSpecServiceCorsPtrOutputWithCont
 }
 
 func (o GetAppSpecServiceCorsPtrOutput) Elem() GetAppSpecServiceCorsOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCors) GetAppSpecServiceCors { return *v }).(GetAppSpecServiceCorsOutput)
+	return o.ApplyT(func(v *GetAppSpecServiceCors) GetAppSpecServiceCors {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceCors
+		return ret
+	}).(GetAppSpecServiceCorsOutput)
 }
 
 func (o GetAppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
@@ -11262,10 +11467,11 @@ func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOri
 }
 
 func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *GetAppSpecServiceCorsAllowOrigins {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceCorsAllowOrigins) *GetAppSpecServiceCorsAllowOrigins {
 		return &v
 	}).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
 }
+
 func (o GetAppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
@@ -11293,7 +11499,13 @@ func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) ToGetAppSpecServiceCorsAllow
 }
 
 func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Elem() GetAppSpecServiceCorsAllowOriginsOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) GetAppSpecServiceCorsAllowOrigins { return *v }).(GetAppSpecServiceCorsAllowOriginsOutput)
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) GetAppSpecServiceCorsAllowOrigins {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceCorsAllowOrigins
+		return ret
+	}).(GetAppSpecServiceCorsAllowOriginsOutput)
 }
 
 func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
@@ -11544,7 +11756,7 @@ func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitPtrOutput() GetAppSpec
 }
 
 func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceGit) *GetAppSpecServiceGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceGit) *GetAppSpecServiceGit {
 		return &v
 	}).(GetAppSpecServiceGitPtrOutput)
 }
@@ -11574,7 +11786,13 @@ func (o GetAppSpecServiceGitPtrOutput) ToGetAppSpecServiceGitPtrOutputWithContex
 }
 
 func (o GetAppSpecServiceGitPtrOutput) Elem() GetAppSpecServiceGitOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceGit) GetAppSpecServiceGit { return *v }).(GetAppSpecServiceGitOutput)
+	return o.ApplyT(func(v *GetAppSpecServiceGit) GetAppSpecServiceGit {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceGit
+		return ret
+	}).(GetAppSpecServiceGitOutput)
 }
 
 // The name of the branch to use.
@@ -11698,7 +11916,7 @@ func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubPtrOutput() GetA
 }
 
 func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceGithub) *GetAppSpecServiceGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceGithub) *GetAppSpecServiceGithub {
 		return &v
 	}).(GetAppSpecServiceGithubPtrOutput)
 }
@@ -11733,7 +11951,13 @@ func (o GetAppSpecServiceGithubPtrOutput) ToGetAppSpecServiceGithubPtrOutputWith
 }
 
 func (o GetAppSpecServiceGithubPtrOutput) Elem() GetAppSpecServiceGithubOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceGithub) GetAppSpecServiceGithub { return *v }).(GetAppSpecServiceGithubOutput)
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) GetAppSpecServiceGithub {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceGithub
+		return ret
+	}).(GetAppSpecServiceGithubOutput)
 }
 
 // The name of the branch to use.
@@ -11867,7 +12091,7 @@ func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabPtrOutput() GetA
 }
 
 func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceGitlab) *GetAppSpecServiceGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceGitlab) *GetAppSpecServiceGitlab {
 		return &v
 	}).(GetAppSpecServiceGitlabPtrOutput)
 }
@@ -11902,7 +12126,13 @@ func (o GetAppSpecServiceGitlabPtrOutput) ToGetAppSpecServiceGitlabPtrOutputWith
 }
 
 func (o GetAppSpecServiceGitlabPtrOutput) Elem() GetAppSpecServiceGitlabOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceGitlab) GetAppSpecServiceGitlab { return *v }).(GetAppSpecServiceGitlabOutput)
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) GetAppSpecServiceGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceGitlab
+		return ret
+	}).(GetAppSpecServiceGitlabOutput)
 }
 
 // The name of the branch to use.
@@ -12048,7 +12278,7 @@ func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckPtrOut
 }
 
 func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *GetAppSpecServiceHealthCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceHealthCheck) *GetAppSpecServiceHealthCheck {
 		return &v
 	}).(GetAppSpecServiceHealthCheckPtrOutput)
 }
@@ -12098,7 +12328,13 @@ func (o GetAppSpecServiceHealthCheckPtrOutput) ToGetAppSpecServiceHealthCheckPtr
 }
 
 func (o GetAppSpecServiceHealthCheckPtrOutput) Elem() GetAppSpecServiceHealthCheckOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) GetAppSpecServiceHealthCheck { return *v }).(GetAppSpecServiceHealthCheckOutput)
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) GetAppSpecServiceHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceHealthCheck
+		return ret
+	}).(GetAppSpecServiceHealthCheckOutput)
 }
 
 // The number of failed health checks before considered unhealthy.
@@ -12266,7 +12502,7 @@ func (o GetAppSpecServiceImageOutput) ToGetAppSpecServiceImagePtrOutput() GetApp
 }
 
 func (o GetAppSpecServiceImageOutput) ToGetAppSpecServiceImagePtrOutputWithContext(ctx context.Context) GetAppSpecServiceImagePtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceImage) *GetAppSpecServiceImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceImage) *GetAppSpecServiceImage {
 		return &v
 	}).(GetAppSpecServiceImagePtrOutput)
 }
@@ -12306,7 +12542,13 @@ func (o GetAppSpecServiceImagePtrOutput) ToGetAppSpecServiceImagePtrOutputWithCo
 }
 
 func (o GetAppSpecServiceImagePtrOutput) Elem() GetAppSpecServiceImageOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceImage) GetAppSpecServiceImage { return *v }).(GetAppSpecServiceImageOutput)
+	return o.ApplyT(func(v *GetAppSpecServiceImage) GetAppSpecServiceImage {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceImage
+		return ret
+	}).(GetAppSpecServiceImageOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -12764,10 +13006,11 @@ func (o GetAppSpecStaticSiteCorsOutput) ToGetAppSpecStaticSiteCorsPtrOutput() Ge
 }
 
 func (o GetAppSpecStaticSiteCorsOutput) ToGetAppSpecStaticSiteCorsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *GetAppSpecStaticSiteCors {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecStaticSiteCors) *GetAppSpecStaticSiteCors {
 		return &v
 	}).(GetAppSpecStaticSiteCorsPtrOutput)
 }
+
 func (o GetAppSpecStaticSiteCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -12807,7 +13050,13 @@ func (o GetAppSpecStaticSiteCorsPtrOutput) ToGetAppSpecStaticSiteCorsPtrOutputWi
 }
 
 func (o GetAppSpecStaticSiteCorsPtrOutput) Elem() GetAppSpecStaticSiteCorsOutput {
-	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) GetAppSpecStaticSiteCors { return *v }).(GetAppSpecStaticSiteCorsOutput)
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) GetAppSpecStaticSiteCors {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecStaticSiteCors
+		return ret
+	}).(GetAppSpecStaticSiteCorsOutput)
 }
 
 func (o GetAppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
@@ -12959,10 +13208,11 @@ func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) ToGetAppSpecStaticSiteCorsAl
 }
 
 func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) ToGetAppSpecStaticSiteCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *GetAppSpecStaticSiteCorsAllowOrigins {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecStaticSiteCorsAllowOrigins) *GetAppSpecStaticSiteCorsAllowOrigins {
 		return &v
 	}).(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
+
 func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
@@ -12990,7 +13240,13 @@ func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) ToGetAppSpecStaticSiteCor
 }
 
 func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Elem() GetAppSpecStaticSiteCorsAllowOriginsOutput {
-	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) GetAppSpecStaticSiteCorsAllowOrigins { return *v }).(GetAppSpecStaticSiteCorsAllowOriginsOutput)
+	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) GetAppSpecStaticSiteCorsAllowOrigins {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecStaticSiteCorsAllowOrigins
+		return ret
+	}).(GetAppSpecStaticSiteCorsAllowOriginsOutput)
 }
 
 func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
@@ -13241,7 +13497,7 @@ func (o GetAppSpecStaticSiteGitOutput) ToGetAppSpecStaticSiteGitPtrOutput() GetA
 }
 
 func (o GetAppSpecStaticSiteGitOutput) ToGetAppSpecStaticSiteGitPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSiteGit) *GetAppSpecStaticSiteGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecStaticSiteGit) *GetAppSpecStaticSiteGit {
 		return &v
 	}).(GetAppSpecStaticSiteGitPtrOutput)
 }
@@ -13271,7 +13527,13 @@ func (o GetAppSpecStaticSiteGitPtrOutput) ToGetAppSpecStaticSiteGitPtrOutputWith
 }
 
 func (o GetAppSpecStaticSiteGitPtrOutput) Elem() GetAppSpecStaticSiteGitOutput {
-	return o.ApplyT(func(v *GetAppSpecStaticSiteGit) GetAppSpecStaticSiteGit { return *v }).(GetAppSpecStaticSiteGitOutput)
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGit) GetAppSpecStaticSiteGit {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecStaticSiteGit
+		return ret
+	}).(GetAppSpecStaticSiteGitOutput)
 }
 
 // The name of the branch to use.
@@ -13395,7 +13657,7 @@ func (o GetAppSpecStaticSiteGithubOutput) ToGetAppSpecStaticSiteGithubPtrOutput(
 }
 
 func (o GetAppSpecStaticSiteGithubOutput) ToGetAppSpecStaticSiteGithubPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGithubPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSiteGithub) *GetAppSpecStaticSiteGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecStaticSiteGithub) *GetAppSpecStaticSiteGithub {
 		return &v
 	}).(GetAppSpecStaticSiteGithubPtrOutput)
 }
@@ -13430,7 +13692,13 @@ func (o GetAppSpecStaticSiteGithubPtrOutput) ToGetAppSpecStaticSiteGithubPtrOutp
 }
 
 func (o GetAppSpecStaticSiteGithubPtrOutput) Elem() GetAppSpecStaticSiteGithubOutput {
-	return o.ApplyT(func(v *GetAppSpecStaticSiteGithub) GetAppSpecStaticSiteGithub { return *v }).(GetAppSpecStaticSiteGithubOutput)
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGithub) GetAppSpecStaticSiteGithub {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecStaticSiteGithub
+		return ret
+	}).(GetAppSpecStaticSiteGithubOutput)
 }
 
 // The name of the branch to use.
@@ -13564,7 +13832,7 @@ func (o GetAppSpecStaticSiteGitlabOutput) ToGetAppSpecStaticSiteGitlabPtrOutput(
 }
 
 func (o GetAppSpecStaticSiteGitlabOutput) ToGetAppSpecStaticSiteGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteGitlabPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSiteGitlab) *GetAppSpecStaticSiteGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecStaticSiteGitlab) *GetAppSpecStaticSiteGitlab {
 		return &v
 	}).(GetAppSpecStaticSiteGitlabPtrOutput)
 }
@@ -13599,7 +13867,13 @@ func (o GetAppSpecStaticSiteGitlabPtrOutput) ToGetAppSpecStaticSiteGitlabPtrOutp
 }
 
 func (o GetAppSpecStaticSiteGitlabPtrOutput) Elem() GetAppSpecStaticSiteGitlabOutput {
-	return o.ApplyT(func(v *GetAppSpecStaticSiteGitlab) GetAppSpecStaticSiteGitlab { return *v }).(GetAppSpecStaticSiteGitlabOutput)
+	return o.ApplyT(func(v *GetAppSpecStaticSiteGitlab) GetAppSpecStaticSiteGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecStaticSiteGitlab
+		return ret
+	}).(GetAppSpecStaticSiteGitlabOutput)
 }
 
 // The name of the branch to use.
@@ -14155,7 +14429,7 @@ func (o GetAppSpecWorkerGitOutput) ToGetAppSpecWorkerGitPtrOutput() GetAppSpecWo
 }
 
 func (o GetAppSpecWorkerGitOutput) ToGetAppSpecWorkerGitPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitPtrOutput {
-	return o.ApplyT(func(v GetAppSpecWorkerGit) *GetAppSpecWorkerGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerGit) *GetAppSpecWorkerGit {
 		return &v
 	}).(GetAppSpecWorkerGitPtrOutput)
 }
@@ -14185,7 +14459,13 @@ func (o GetAppSpecWorkerGitPtrOutput) ToGetAppSpecWorkerGitPtrOutputWithContext(
 }
 
 func (o GetAppSpecWorkerGitPtrOutput) Elem() GetAppSpecWorkerGitOutput {
-	return o.ApplyT(func(v *GetAppSpecWorkerGit) GetAppSpecWorkerGit { return *v }).(GetAppSpecWorkerGitOutput)
+	return o.ApplyT(func(v *GetAppSpecWorkerGit) GetAppSpecWorkerGit {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerGit
+		return ret
+	}).(GetAppSpecWorkerGitOutput)
 }
 
 // The name of the branch to use.
@@ -14309,7 +14589,7 @@ func (o GetAppSpecWorkerGithubOutput) ToGetAppSpecWorkerGithubPtrOutput() GetApp
 }
 
 func (o GetAppSpecWorkerGithubOutput) ToGetAppSpecWorkerGithubPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGithubPtrOutput {
-	return o.ApplyT(func(v GetAppSpecWorkerGithub) *GetAppSpecWorkerGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerGithub) *GetAppSpecWorkerGithub {
 		return &v
 	}).(GetAppSpecWorkerGithubPtrOutput)
 }
@@ -14344,7 +14624,13 @@ func (o GetAppSpecWorkerGithubPtrOutput) ToGetAppSpecWorkerGithubPtrOutputWithCo
 }
 
 func (o GetAppSpecWorkerGithubPtrOutput) Elem() GetAppSpecWorkerGithubOutput {
-	return o.ApplyT(func(v *GetAppSpecWorkerGithub) GetAppSpecWorkerGithub { return *v }).(GetAppSpecWorkerGithubOutput)
+	return o.ApplyT(func(v *GetAppSpecWorkerGithub) GetAppSpecWorkerGithub {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerGithub
+		return ret
+	}).(GetAppSpecWorkerGithubOutput)
 }
 
 // The name of the branch to use.
@@ -14478,7 +14764,7 @@ func (o GetAppSpecWorkerGitlabOutput) ToGetAppSpecWorkerGitlabPtrOutput() GetApp
 }
 
 func (o GetAppSpecWorkerGitlabOutput) ToGetAppSpecWorkerGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerGitlabPtrOutput {
-	return o.ApplyT(func(v GetAppSpecWorkerGitlab) *GetAppSpecWorkerGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerGitlab) *GetAppSpecWorkerGitlab {
 		return &v
 	}).(GetAppSpecWorkerGitlabPtrOutput)
 }
@@ -14513,7 +14799,13 @@ func (o GetAppSpecWorkerGitlabPtrOutput) ToGetAppSpecWorkerGitlabPtrOutputWithCo
 }
 
 func (o GetAppSpecWorkerGitlabPtrOutput) Elem() GetAppSpecWorkerGitlabOutput {
-	return o.ApplyT(func(v *GetAppSpecWorkerGitlab) GetAppSpecWorkerGitlab { return *v }).(GetAppSpecWorkerGitlabOutput)
+	return o.ApplyT(func(v *GetAppSpecWorkerGitlab) GetAppSpecWorkerGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerGitlab
+		return ret
+	}).(GetAppSpecWorkerGitlabOutput)
 }
 
 // The name of the branch to use.
@@ -14651,7 +14943,7 @@ func (o GetAppSpecWorkerImageOutput) ToGetAppSpecWorkerImagePtrOutput() GetAppSp
 }
 
 func (o GetAppSpecWorkerImageOutput) ToGetAppSpecWorkerImagePtrOutputWithContext(ctx context.Context) GetAppSpecWorkerImagePtrOutput {
-	return o.ApplyT(func(v GetAppSpecWorkerImage) *GetAppSpecWorkerImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerImage) *GetAppSpecWorkerImage {
 		return &v
 	}).(GetAppSpecWorkerImagePtrOutput)
 }
@@ -14691,7 +14983,13 @@ func (o GetAppSpecWorkerImagePtrOutput) ToGetAppSpecWorkerImagePtrOutputWithCont
 }
 
 func (o GetAppSpecWorkerImagePtrOutput) Elem() GetAppSpecWorkerImageOutput {
-	return o.ApplyT(func(v *GetAppSpecWorkerImage) GetAppSpecWorkerImage { return *v }).(GetAppSpecWorkerImageOutput)
+	return o.ApplyT(func(v *GetAppSpecWorkerImage) GetAppSpecWorkerImage {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerImage
+		return ret
+	}).(GetAppSpecWorkerImageOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -20537,6 +20835,269 @@ func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecInput)(nil)).Elem(), AppSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecPtrInput)(nil)).Elem(), AppSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDatabaseInput)(nil)).Elem(), AppSpecDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDatabaseArrayInput)(nil)).Elem(), AppSpecDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameInput)(nil)).Elem(), AppSpecDomainNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameArrayInput)(nil)).Elem(), AppSpecDomainNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvInput)(nil)).Elem(), AppSpecEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvArrayInput)(nil)).Elem(), AppSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobInput)(nil)).Elem(), AppSpecJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobArrayInput)(nil)).Elem(), AppSpecJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobEnvInput)(nil)).Elem(), AppSpecJobEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobEnvArrayInput)(nil)).Elem(), AppSpecJobEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGitInput)(nil)).Elem(), AppSpecJobGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGitPtrInput)(nil)).Elem(), AppSpecJobGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGithubInput)(nil)).Elem(), AppSpecJobGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGithubPtrInput)(nil)).Elem(), AppSpecJobGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGitlabInput)(nil)).Elem(), AppSpecJobGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGitlabPtrInput)(nil)).Elem(), AppSpecJobGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobImageInput)(nil)).Elem(), AppSpecJobImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobImagePtrInput)(nil)).Elem(), AppSpecJobImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceInput)(nil)).Elem(), AppSpecServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceArrayInput)(nil)).Elem(), AppSpecServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsInput)(nil)).Elem(), AppSpecServiceCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsPtrInput)(nil)).Elem(), AppSpecServiceCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), AppSpecServiceCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsAllowOriginsPtrInput)(nil)).Elem(), AppSpecServiceCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceEnvInput)(nil)).Elem(), AppSpecServiceEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceEnvArrayInput)(nil)).Elem(), AppSpecServiceEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceGitInput)(nil)).Elem(), AppSpecServiceGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceGitPtrInput)(nil)).Elem(), AppSpecServiceGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceGithubInput)(nil)).Elem(), AppSpecServiceGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceGithubPtrInput)(nil)).Elem(), AppSpecServiceGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceGitlabInput)(nil)).Elem(), AppSpecServiceGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceGitlabPtrInput)(nil)).Elem(), AppSpecServiceGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceHealthCheckInput)(nil)).Elem(), AppSpecServiceHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceHealthCheckPtrInput)(nil)).Elem(), AppSpecServiceHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImageInput)(nil)).Elem(), AppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImagePtrInput)(nil)).Elem(), AppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceRouteInput)(nil)).Elem(), AppSpecServiceRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceRouteArrayInput)(nil)).Elem(), AppSpecServiceRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteInput)(nil)).Elem(), AppSpecStaticSiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteArrayInput)(nil)).Elem(), AppSpecStaticSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteCorsInput)(nil)).Elem(), AppSpecStaticSiteCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteCorsPtrInput)(nil)).Elem(), AppSpecStaticSiteCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteCorsAllowOriginsInput)(nil)).Elem(), AppSpecStaticSiteCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteCorsAllowOriginsPtrInput)(nil)).Elem(), AppSpecStaticSiteCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteEnvInput)(nil)).Elem(), AppSpecStaticSiteEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteEnvArrayInput)(nil)).Elem(), AppSpecStaticSiteEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteGitInput)(nil)).Elem(), AppSpecStaticSiteGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteGitPtrInput)(nil)).Elem(), AppSpecStaticSiteGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteGithubInput)(nil)).Elem(), AppSpecStaticSiteGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteGithubPtrInput)(nil)).Elem(), AppSpecStaticSiteGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteGitlabInput)(nil)).Elem(), AppSpecStaticSiteGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteGitlabPtrInput)(nil)).Elem(), AppSpecStaticSiteGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteRouteInput)(nil)).Elem(), AppSpecStaticSiteRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteRouteArrayInput)(nil)).Elem(), AppSpecStaticSiteRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerInput)(nil)).Elem(), AppSpecWorkerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerArrayInput)(nil)).Elem(), AppSpecWorkerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerEnvInput)(nil)).Elem(), AppSpecWorkerEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerEnvArrayInput)(nil)).Elem(), AppSpecWorkerEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitInput)(nil)).Elem(), AppSpecWorkerGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitPtrInput)(nil)).Elem(), AppSpecWorkerGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGithubInput)(nil)).Elem(), AppSpecWorkerGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGithubPtrInput)(nil)).Elem(), AppSpecWorkerGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitlabInput)(nil)).Elem(), AppSpecWorkerGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitlabPtrInput)(nil)).Elem(), AppSpecWorkerGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImageInput)(nil)).Elem(), AppSpecWorkerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImagePtrInput)(nil)).Elem(), AppSpecWorkerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterMaintenanceWindowInput)(nil)).Elem(), DatabaseClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterMaintenanceWindowArrayInput)(nil)).Elem(), DatabaseClusterMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallRuleInput)(nil)).Elem(), DatabaseFirewallRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallRuleArrayInput)(nil)).Elem(), DatabaseFirewallRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleInput)(nil)).Elem(), FirewallInboundRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleArrayInput)(nil)).Elem(), FirewallInboundRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundRuleInput)(nil)).Elem(), FirewallOutboundRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundRuleArrayInput)(nil)).Elem(), FirewallOutboundRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPendingChangeInput)(nil)).Elem(), FirewallPendingChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPendingChangeArrayInput)(nil)).Elem(), FirewallPendingChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKubeConfigInput)(nil)).Elem(), KubernetesClusterKubeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKubeConfigArrayInput)(nil)).Elem(), KubernetesClusterKubeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMaintenancePolicyInput)(nil)).Elem(), KubernetesClusterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMaintenancePolicyPtrInput)(nil)).Elem(), KubernetesClusterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolInput)(nil)).Elem(), KubernetesClusterNodePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolPtrInput)(nil)).Elem(), KubernetesClusterNodePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolNodeInput)(nil)).Elem(), KubernetesClusterNodePoolNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), KubernetesClusterNodePoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolTaintInput)(nil)).Elem(), KubernetesClusterNodePoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), KubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeInput)(nil)).Elem(), KubernetesNodePoolNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeArrayInput)(nil)).Elem(), KubernetesNodePoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintInput)(nil)).Elem(), KubernetesNodePoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintArrayInput)(nil)).Elem(), KubernetesNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerForwardingRuleInput)(nil)).Elem(), LoadBalancerForwardingRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerForwardingRuleArrayInput)(nil)).Elem(), LoadBalancerForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckPtrInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsPtrInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsPtrInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackInput)(nil)).Elem(), MonitorAlertAlertsSlackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackArrayInput)(nil)).Elem(), MonitorAlertAlertsSlackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsRuleInput)(nil)).Elem(), SpacesBucketCorsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsRuleArrayInput)(nil)).Elem(), SpacesBucketCorsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleInput)(nil)).Elem(), SpacesBucketLifecycleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleArrayInput)(nil)).Elem(), SpacesBucketLifecycleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleExpirationInput)(nil)).Elem(), SpacesBucketLifecycleRuleExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleExpirationPtrInput)(nil)).Elem(), SpacesBucketLifecycleRuleExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleNoncurrentVersionExpirationInput)(nil)).Elem(), SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput)(nil)).Elem(), SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketVersioningInput)(nil)).Elem(), SpacesBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketVersioningPtrInput)(nil)).Elem(), SpacesBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecInput)(nil)).Elem(), GetAppSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecArrayInput)(nil)).Elem(), GetAppSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseInput)(nil)).Elem(), GetAppSpecDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseArrayInput)(nil)).Elem(), GetAppSpecDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainInput)(nil)).Elem(), GetAppSpecDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvInput)(nil)).Elem(), GetAppSpecEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvArrayInput)(nil)).Elem(), GetAppSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobInput)(nil)).Elem(), GetAppSpecJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobArrayInput)(nil)).Elem(), GetAppSpecJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobEnvInput)(nil)).Elem(), GetAppSpecJobEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobEnvArrayInput)(nil)).Elem(), GetAppSpecJobEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGitInput)(nil)).Elem(), GetAppSpecJobGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGitPtrInput)(nil)).Elem(), GetAppSpecJobGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGithubInput)(nil)).Elem(), GetAppSpecJobGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGithubPtrInput)(nil)).Elem(), GetAppSpecJobGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGitlabInput)(nil)).Elem(), GetAppSpecJobGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGitlabPtrInput)(nil)).Elem(), GetAppSpecJobGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobImageInput)(nil)).Elem(), GetAppSpecJobImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobImagePtrInput)(nil)).Elem(), GetAppSpecJobImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceInput)(nil)).Elem(), GetAppSpecServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceArrayInput)(nil)).Elem(), GetAppSpecServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceEnvInput)(nil)).Elem(), GetAppSpecServiceEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceEnvArrayInput)(nil)).Elem(), GetAppSpecServiceEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGitInput)(nil)).Elem(), GetAppSpecServiceGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGitPtrInput)(nil)).Elem(), GetAppSpecServiceGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGithubInput)(nil)).Elem(), GetAppSpecServiceGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGithubPtrInput)(nil)).Elem(), GetAppSpecServiceGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGitlabInput)(nil)).Elem(), GetAppSpecServiceGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGitlabPtrInput)(nil)).Elem(), GetAppSpecServiceGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceHealthCheckInput)(nil)).Elem(), GetAppSpecServiceHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceHealthCheckPtrInput)(nil)).Elem(), GetAppSpecServiceHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImagePtrInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteInput)(nil)).Elem(), GetAppSpecServiceRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteArrayInput)(nil)).Elem(), GetAppSpecServiceRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteInput)(nil)).Elem(), GetAppSpecStaticSiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteArrayInput)(nil)).Elem(), GetAppSpecStaticSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsInput)(nil)).Elem(), GetAppSpecStaticSiteCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsPtrInput)(nil)).Elem(), GetAppSpecStaticSiteCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecStaticSiteCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsAllowOriginsPtrInput)(nil)).Elem(), GetAppSpecStaticSiteCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteEnvInput)(nil)).Elem(), GetAppSpecStaticSiteEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteEnvArrayInput)(nil)).Elem(), GetAppSpecStaticSiteEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteGitInput)(nil)).Elem(), GetAppSpecStaticSiteGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteGitPtrInput)(nil)).Elem(), GetAppSpecStaticSiteGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteGithubInput)(nil)).Elem(), GetAppSpecStaticSiteGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteGithubPtrInput)(nil)).Elem(), GetAppSpecStaticSiteGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteGitlabInput)(nil)).Elem(), GetAppSpecStaticSiteGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteGitlabPtrInput)(nil)).Elem(), GetAppSpecStaticSiteGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteRouteInput)(nil)).Elem(), GetAppSpecStaticSiteRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteRouteArrayInput)(nil)).Elem(), GetAppSpecStaticSiteRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerInput)(nil)).Elem(), GetAppSpecWorkerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerArrayInput)(nil)).Elem(), GetAppSpecWorkerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerEnvInput)(nil)).Elem(), GetAppSpecWorkerEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerEnvArrayInput)(nil)).Elem(), GetAppSpecWorkerEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitInput)(nil)).Elem(), GetAppSpecWorkerGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitPtrInput)(nil)).Elem(), GetAppSpecWorkerGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGithubInput)(nil)).Elem(), GetAppSpecWorkerGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGithubPtrInput)(nil)).Elem(), GetAppSpecWorkerGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitlabInput)(nil)).Elem(), GetAppSpecWorkerGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitlabPtrInput)(nil)).Elem(), GetAppSpecWorkerGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImageInput)(nil)).Elem(), GetAppSpecWorkerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImagePtrInput)(nil)).Elem(), GetAppSpecWorkerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsFilterInput)(nil)).Elem(), GetDomainsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsFilterArrayInput)(nil)).Elem(), GetDomainsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsSortInput)(nil)).Elem(), GetDomainsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsSortArrayInput)(nil)).Elem(), GetDomainsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsDropletInput)(nil)).Elem(), GetDropletsDropletArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsDropletArrayInput)(nil)).Elem(), GetDropletsDropletArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsFilterInput)(nil)).Elem(), GetDropletsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsFilterArrayInput)(nil)).Elem(), GetDropletsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsSortInput)(nil)).Elem(), GetDropletsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsSortArrayInput)(nil)).Elem(), GetDropletsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallInboundRuleInput)(nil)).Elem(), GetFirewallInboundRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallInboundRuleArrayInput)(nil)).Elem(), GetFirewallInboundRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallOutboundRuleInput)(nil)).Elem(), GetFirewallOutboundRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallOutboundRuleArrayInput)(nil)).Elem(), GetFirewallOutboundRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallPendingChangeInput)(nil)).Elem(), GetFirewallPendingChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallPendingChangeArrayInput)(nil)).Elem(), GetFirewallPendingChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterInput)(nil)).Elem(), GetImagesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterArrayInput)(nil)).Elem(), GetImagesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesSortInput)(nil)).Elem(), GetImagesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesSortArrayInput)(nil)).Elem(), GetImagesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterKubeConfigInput)(nil)).Elem(), GetKubernetesClusterKubeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterKubeConfigArrayInput)(nil)).Elem(), GetKubernetesClusterKubeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMaintenancePolicyInput)(nil)).Elem(), GetKubernetesClusterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMaintenancePolicyArrayInput)(nil)).Elem(), GetKubernetesClusterMaintenancePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolInput)(nil)).Elem(), GetKubernetesClusterNodePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolNodeInput)(nil)).Elem(), GetKubernetesClusterNodePoolNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerForwardingRuleInput)(nil)).Elem(), GetLoadBalancerForwardingRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerForwardingRuleArrayInput)(nil)).Elem(), GetLoadBalancerForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckInput)(nil)).Elem(), GetLoadBalancerHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckArrayInput)(nil)).Elem(), GetLoadBalancerHealthcheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionInput)(nil)).Elem(), GetLoadBalancerStickySessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionArrayInput)(nil)).Elem(), GetLoadBalancerStickySessionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsFilterInput)(nil)).Elem(), GetProjectsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsFilterArrayInput)(nil)).Elem(), GetProjectsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsSortInput)(nil)).Elem(), GetProjectsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsSortArrayInput)(nil)).Elem(), GetProjectsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsFilterInput)(nil)).Elem(), GetRecordsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsFilterArrayInput)(nil)).Elem(), GetRecordsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordInput)(nil)).Elem(), GetRecordsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordArrayInput)(nil)).Elem(), GetRecordsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsSortInput)(nil)).Elem(), GetRecordsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsSortArrayInput)(nil)).Elem(), GetRecordsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterInput)(nil)).Elem(), GetRegionsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterArrayInput)(nil)).Elem(), GetRegionsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsSortInput)(nil)).Elem(), GetRegionsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsSortArrayInput)(nil)).Elem(), GetRegionsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesFilterInput)(nil)).Elem(), GetSizesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesFilterArrayInput)(nil)).Elem(), GetSizesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeInput)(nil)).Elem(), GetSizesSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeArrayInput)(nil)).Elem(), GetSizesSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSortInput)(nil)).Elem(), GetSizesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSortArrayInput)(nil)).Elem(), GetSizesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsBucketInput)(nil)).Elem(), GetSpacesBucketsBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsBucketArrayInput)(nil)).Elem(), GetSpacesBucketsBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsFilterInput)(nil)).Elem(), GetSpacesBucketsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsFilterArrayInput)(nil)).Elem(), GetSpacesBucketsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortInput)(nil)).Elem(), GetSpacesBucketsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortArrayInput)(nil)).Elem(), GetSpacesBucketsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterInput)(nil)).Elem(), GetSshKeysFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterArrayInput)(nil)).Elem(), GetSshKeysFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSortInput)(nil)).Elem(), GetSshKeysSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSortArrayInput)(nil)).Elem(), GetSshKeysSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSshKeyInput)(nil)).Elem(), GetSshKeysSshKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSshKeyArrayInput)(nil)).Elem(), GetSshKeysSshKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsFilterInput)(nil)).Elem(), GetTagsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsFilterArrayInput)(nil)).Elem(), GetTagsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortInput)(nil)).Elem(), GetTagsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortArrayInput)(nil)).Elem(), GetTagsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
 	pulumi.RegisterOutputType(AppSpecPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseOutput{})

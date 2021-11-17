@@ -79,3 +79,23 @@ export interface GetDomainsResult {
     readonly id: string;
     readonly sorts?: outputs.GetDomainsSort[];
 }
+
+export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+    return pulumi.output(args).apply(a => getDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomains.
+ */
+export interface GetDomainsOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDomainsFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetDomainsSortArgs>[]>;
+}

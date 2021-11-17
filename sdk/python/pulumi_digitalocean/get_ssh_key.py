@@ -12,6 +12,7 @@ __all__ = [
     'GetSshKeyResult',
     'AwaitableGetSshKeyResult',
     'get_ssh_key',
+    'get_ssh_key_output',
 ]
 
 @pulumi.output_type
@@ -108,3 +109,36 @@ def get_ssh_key(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         public_key=__ret__.public_key)
+
+
+@_utilities.lift_output_func(get_ssh_key)
+def get_ssh_key_output(name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeyResult]:
+    """
+    Get information on a ssh key. This data source provides the name, public key,
+    and fingerprint as configured on your DigitalOcean account. This is useful if
+    the ssh key in question is not managed by the provider or you need to utilize any
+    of the keys data.
+
+    An error is triggered if the provided ssh key name does not exist.
+
+    ## Example Usage
+
+    Get the ssh key:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example_ssh_key = digitalocean.get_ssh_key(name="example")
+    example_droplet = digitalocean.Droplet("exampleDroplet",
+        image="ubuntu-18-04-x64",
+        region="nyc2",
+        size="s-1vcpu-1gb",
+        ssh_keys=[example_ssh_key.id])
+    ```
+
+
+    :param str name: The name of the ssh key.
+    """
+    ...

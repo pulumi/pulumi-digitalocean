@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -44,6 +45,40 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("digitalocean:index/getApp:getApp", args ?? new GetAppArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a DigitalOcean App.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the account:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetApp.InvokeAsync(new DigitalOcean.GetAppArgs
+        ///         {
+        ///             AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
+        ///         }));
+        ///         this.DefaultIngress = example.Apply(example =&gt; example.DefaultIngress);
+        ///     }
+        /// 
+        ///     [Output("defaultIngress")]
+        ///     public Output&lt;string&gt; DefaultIngress { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppResult>("digitalocean:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithVersion());
     }
 
 
@@ -56,6 +91,19 @@ namespace Pulumi.DigitalOcean
         public string AppId { get; set; } = null!;
 
         public GetAppArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the app to retrieve information about.
+        /// </summary>
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        public GetAppInvokeArgs()
         {
         }
     }

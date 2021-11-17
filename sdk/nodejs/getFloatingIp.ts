@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -64,4 +63,18 @@ export interface GetFloatingIpResult {
     readonly id: string;
     readonly ipAddress: string;
     readonly region: string;
+}
+
+export function getFloatingIpOutput(args: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFloatingIpResult> {
+    return pulumi.output(args).apply(a => getFloatingIp(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFloatingIp.
+ */
+export interface GetFloatingIpOutputArgs {
+    /**
+     * The allocated IP address of the specific floating IP to retrieve.
+     */
+    ipAddress: pulumi.Input<string>;
 }

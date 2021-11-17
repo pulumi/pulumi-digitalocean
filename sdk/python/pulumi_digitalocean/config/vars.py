@@ -8,38 +8,44 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'api_endpoint',
-    'spaces_access_id',
-    'spaces_endpoint',
-    'spaces_secret_key',
-    'token',
-]
+import types
 
 __config__ = pulumi.Config('digitalocean')
 
-api_endpoint = __config__.get('apiEndpoint') or (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
-"""
-The URL to use for the DigitalOcean API.
-"""
 
-spaces_access_id = __config__.get('spacesAccessId')
-"""
-The access key ID for Spaces API operations.
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def api_endpoint(self) -> str:
+        """
+        The URL to use for the DigitalOcean API.
+        """
+        return __config__.get('apiEndpoint') or (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
 
-spaces_endpoint = __config__.get('spacesEndpoint') or _utilities.get_env('SPACES_ENDPOINT_URL')
-"""
-The URL to use for the DigitalOcean Spaces API.
-"""
+    @property
+    def spaces_access_id(self) -> Optional[str]:
+        """
+        The access key ID for Spaces API operations.
+        """
+        return __config__.get('spacesAccessId')
 
-spaces_secret_key = __config__.get('spacesSecretKey')
-"""
-The secret access key for Spaces API operations.
-"""
+    @property
+    def spaces_endpoint(self) -> Optional[str]:
+        """
+        The URL to use for the DigitalOcean Spaces API.
+        """
+        return __config__.get('spacesEndpoint') or _utilities.get_env('SPACES_ENDPOINT_URL')
 
-token = __config__.get('token')
-"""
-The token key for API operations.
-"""
+    @property
+    def spaces_secret_key(self) -> Optional[str]:
+        """
+        The secret access key for Spaces API operations.
+        """
+        return __config__.get('spacesSecretKey')
+
+    @property
+    def token(self) -> Optional[str]:
+        """
+        The token key for API operations.
+        """
+        return __config__.get('token')
 
