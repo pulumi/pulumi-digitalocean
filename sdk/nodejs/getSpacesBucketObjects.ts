@@ -2,33 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
  * > **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
  *
  * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
- *
- * ## Example Usage
- *
- * The following example retrieves a list of all object keys in a Spaces bucket and creates corresponding object
- * data sources:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const myObjects = digitalocean.getSpacesBucketObjects({
- *     bucket: "ourcorp",
- *     region: "nyc3",
- * });
- * const objectInfo = .map(__index => digitalocean.getSpacesBucketObject({
- *     key: _arg0_,
- *     bucket: _arg1_.bucket,
- *     region: _arg2_.region,
- * }));
- * ```
  */
 export function getSpacesBucketObjects(args: GetSpacesBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectsResult> {
     if (!opts) {
@@ -104,4 +83,38 @@ export interface GetSpacesBucketObjectsResult {
     readonly owners: string[];
     readonly prefix?: string;
     readonly region: string;
+}
+
+export function getSpacesBucketObjectsOutput(args: GetSpacesBucketObjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketObjectsResult> {
+    return pulumi.output(args).apply(a => getSpacesBucketObjects(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSpacesBucketObjects.
+ */
+export interface GetSpacesBucketObjectsOutputArgs {
+    /**
+     * Lists object keys in this Spaces bucket
+     */
+    bucket: pulumi.Input<string>;
+    /**
+     * A character used to group keys (Default: none)
+     */
+    delimiter?: pulumi.Input<string>;
+    /**
+     * Encodes keys using this method (Default: none; besides none, only "url" can be used)
+     */
+    encodingType?: pulumi.Input<string>;
+    /**
+     * Maximum object keys to return (Default: 1000)
+     */
+    maxKeys?: pulumi.Input<number>;
+    /**
+     * Limits results to object keys with this prefix (Default: none)
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * The slug of the region where the bucket is stored.
+     */
+    region: pulumi.Input<string>;
 }

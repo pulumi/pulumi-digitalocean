@@ -13,6 +13,7 @@ __all__ = [
     'GetAppResult',
     'AwaitableGetAppResult',
     'get_app',
+    'get_app_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,27 @@ def get_app(app_id: Optional[str] = None,
         live_url=__ret__.live_url,
         specs=__ret__.specs,
         updated_at=__ret__.updated_at)
+
+
+@_utilities.lift_output_func(get_app)
+def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
+    """
+    Get information on a DigitalOcean App.
+
+    ## Example Usage
+
+    Get the account:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_app(app_id="e665d18d-7b56-44a9-92ce-31979174d544")
+    pulumi.export("defaultIngress", example.default_ingress)
+    ```
+
+
+    :param str app_id: The ID of the app to retrieve information about.
+    """
+    ...

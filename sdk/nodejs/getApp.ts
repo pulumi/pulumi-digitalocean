@@ -79,3 +79,17 @@ export interface GetAppResult {
      */
     readonly updatedAt: string;
 }
+
+export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
+    return pulumi.output(args).apply(a => getApp(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApp.
+ */
+export interface GetAppOutputArgs {
+    /**
+     * The ID of the app to retrieve information about.
+     */
+    appId: pulumi.Input<string>;
+}

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -180,4 +179,26 @@ export interface GetDropletResult {
      * The ID of the VPC where the Droplet is located.
      */
     readonly vpcUuid: string;
+}
+
+export function getDropletOutput(args?: GetDropletOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletResult> {
+    return pulumi.output(args).apply(a => getDroplet(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDroplet.
+ */
+export interface GetDropletOutputArgs {
+    /**
+     * The ID of the Droplet
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The name of the Droplet.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A tag applied to the Droplet.
+     */
+    tag?: pulumi.Input<string>;
 }

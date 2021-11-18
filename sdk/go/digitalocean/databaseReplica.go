@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -282,7 +283,7 @@ type DatabaseReplicaArrayInput interface {
 type DatabaseReplicaArray []DatabaseReplicaInput
 
 func (DatabaseReplicaArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatabaseReplica)(nil))
+	return reflect.TypeOf((*[]*DatabaseReplica)(nil)).Elem()
 }
 
 func (i DatabaseReplicaArray) ToDatabaseReplicaArrayOutput() DatabaseReplicaArrayOutput {
@@ -307,7 +308,7 @@ type DatabaseReplicaMapInput interface {
 type DatabaseReplicaMap map[string]DatabaseReplicaInput
 
 func (DatabaseReplicaMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatabaseReplica)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseReplica)(nil)).Elem()
 }
 
 func (i DatabaseReplicaMap) ToDatabaseReplicaMapOutput() DatabaseReplicaMapOutput {
@@ -318,9 +319,7 @@ func (i DatabaseReplicaMap) ToDatabaseReplicaMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseReplicaMapOutput)
 }
 
-type DatabaseReplicaOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseReplicaOutput struct{ *pulumi.OutputState }
 
 func (DatabaseReplicaOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseReplica)(nil))
@@ -339,14 +338,12 @@ func (o DatabaseReplicaOutput) ToDatabaseReplicaPtrOutput() DatabaseReplicaPtrOu
 }
 
 func (o DatabaseReplicaOutput) ToDatabaseReplicaPtrOutputWithContext(ctx context.Context) DatabaseReplicaPtrOutput {
-	return o.ApplyT(func(v DatabaseReplica) *DatabaseReplica {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseReplica) *DatabaseReplica {
 		return &v
 	}).(DatabaseReplicaPtrOutput)
 }
 
-type DatabaseReplicaPtrOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseReplicaPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseReplicaPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseReplica)(nil))
@@ -358,6 +355,16 @@ func (o DatabaseReplicaPtrOutput) ToDatabaseReplicaPtrOutput() DatabaseReplicaPt
 
 func (o DatabaseReplicaPtrOutput) ToDatabaseReplicaPtrOutputWithContext(ctx context.Context) DatabaseReplicaPtrOutput {
 	return o
+}
+
+func (o DatabaseReplicaPtrOutput) Elem() DatabaseReplicaOutput {
+	return o.ApplyT(func(v *DatabaseReplica) DatabaseReplica {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseReplica
+		return ret
+	}).(DatabaseReplicaOutput)
 }
 
 type DatabaseReplicaArrayOutput struct{ *pulumi.OutputState }
@@ -401,6 +408,10 @@ func (o DatabaseReplicaMapOutput) MapIndex(k pulumi.StringInput) DatabaseReplica
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseReplicaInput)(nil)).Elem(), &DatabaseReplica{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseReplicaPtrInput)(nil)).Elem(), &DatabaseReplica{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseReplicaArrayInput)(nil)).Elem(), DatabaseReplicaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseReplicaMapInput)(nil)).Elem(), DatabaseReplicaMap{})
 	pulumi.RegisterOutputType(DatabaseReplicaOutput{})
 	pulumi.RegisterOutputType(DatabaseReplicaPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseReplicaArrayOutput{})

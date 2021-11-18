@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetSizesFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetSizesFilterInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Inputs
         /// that all of the `values` are present in the list or set.
         /// </summary>
         [Input("all")]
-        public bool? All { get; set; }
+        public Input<bool>? All { get; set; }
 
         /// <summary>
         /// Filter the sizes by this key. This may be one of `slug`,
@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Inputs
         /// `price_hourly`, or `available`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
@@ -34,22 +34,22 @@ namespace Pulumi.DigitalOcean.Inputs
         /// substrings to find within the string field.
         /// </summary>
         [Input("matchBy")]
-        public string? MatchBy { get; set; }
+        public Input<string>? MatchBy { get; set; }
 
         [Input("values", required: true)]
-        private List<string>? _values;
+        private InputList<string>? _values;
 
         /// <summary>
         /// Only retrieves sizes which keys has value that matches
         /// one of the values provided here.
         /// </summary>
-        public List<string> Values
+        public InputList<string> Values
         {
-            get => _values ?? (_values = new List<string>());
+            get => _values ?? (_values = new InputList<string>());
             set => _values = value;
         }
 
-        public GetSizesFilterArgs()
+        public GetSizesFilterInputArgs()
         {
         }
     }

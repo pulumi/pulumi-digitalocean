@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -12,6 +15,82 @@ import (
 //
 // Note: You can use the `getRegion` data source
 // to obtain metadata about a single region if you already know the `slug` to retrieve.
+//
+// ## Example Usage
+//
+// Use the `filter` block with a `key` string and `values` list to filter regions.
+//
+// For example to find all available regions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetRegions(ctx, &GetRegionsArgs{
+// 			Filters: []GetRegionsFilter{
+// 				GetRegionsFilter{
+// 					Key: "available",
+// 					Values: []string{
+// 						"true",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// You can filter on multiple fields and sort the results as well:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetRegions(ctx, &GetRegionsArgs{
+// 			Filters: []GetRegionsFilter{
+// 				GetRegionsFilter{
+// 					Key: "available",
+// 					Values: []string{
+// 						"true",
+// 					},
+// 				},
+// 				GetRegionsFilter{
+// 					Key: "features",
+// 					Values: []string{
+// 						"private_networking",
+// 					},
+// 				},
+// 			},
+// 			Sorts: []GetRegionsSort{
+// 				GetRegionsSort{
+// 					Direction: "desc",
+// 					Key:       "name",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	var rv GetRegionsResult
 	err := ctx.Invoke("digitalocean:index/getRegions:getRegions", args, &rv, opts...)
@@ -39,4 +118,64 @@ type GetRegionsResult struct {
 	// A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
 	Regions []GetRegionsRegion `pulumi:"regions"`
 	Sorts   []GetRegionsSort   `pulumi:"sorts"`
+}
+
+func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pulumi.InvokeOption) GetRegionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegionsResult, error) {
+			args := v.(GetRegionsArgs)
+			r, err := GetRegions(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegionsResultOutput)
+}
+
+// A collection of arguments for invoking getRegions.
+type GetRegionsOutputArgs struct {
+	// Filter the results.
+	// The `filter` block is documented below.
+	Filters GetRegionsFilterArrayInput `pulumi:"filters"`
+	// Sort the results.
+	// The `sort` block is documented below.
+	Sorts GetRegionsSortArrayInput `pulumi:"sorts"`
+}
+
+func (GetRegionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegions.
+type GetRegionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsResult)(nil)).Elem()
+}
+
+func (o GetRegionsResultOutput) ToGetRegionsResultOutput() GetRegionsResultOutput {
+	return o
+}
+
+func (o GetRegionsResultOutput) ToGetRegionsResultOutputWithContext(ctx context.Context) GetRegionsResultOutput {
+	return o
+}
+
+func (o GetRegionsResultOutput) Filters() GetRegionsFilterArrayOutput {
+	return o.ApplyT(func(v GetRegionsResult) []GetRegionsFilter { return v.Filters }).(GetRegionsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
+func (o GetRegionsResultOutput) Regions() GetRegionsRegionArrayOutput {
+	return o.ApplyT(func(v GetRegionsResult) []GetRegionsRegion { return v.Regions }).(GetRegionsRegionArrayOutput)
+}
+
+func (o GetRegionsResultOutput) Sorts() GetRegionsSortArrayOutput {
+	return o.ApplyT(func(v GetRegionsResult) []GetRegionsSort { return v.Sorts }).(GetRegionsSortArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegionsResultOutput{})
 }

@@ -30,6 +30,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -265,7 +266,7 @@ type CustomImageArrayInput interface {
 type CustomImageArray []CustomImageInput
 
 func (CustomImageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CustomImage)(nil))
+	return reflect.TypeOf((*[]*CustomImage)(nil)).Elem()
 }
 
 func (i CustomImageArray) ToCustomImageArrayOutput() CustomImageArrayOutput {
@@ -290,7 +291,7 @@ type CustomImageMapInput interface {
 type CustomImageMap map[string]CustomImageInput
 
 func (CustomImageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CustomImage)(nil))
+	return reflect.TypeOf((*map[string]*CustomImage)(nil)).Elem()
 }
 
 func (i CustomImageMap) ToCustomImageMapOutput() CustomImageMapOutput {
@@ -301,9 +302,7 @@ func (i CustomImageMap) ToCustomImageMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CustomImageMapOutput)
 }
 
-type CustomImageOutput struct {
-	*pulumi.OutputState
-}
+type CustomImageOutput struct{ *pulumi.OutputState }
 
 func (CustomImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CustomImage)(nil))
@@ -322,14 +321,12 @@ func (o CustomImageOutput) ToCustomImagePtrOutput() CustomImagePtrOutput {
 }
 
 func (o CustomImageOutput) ToCustomImagePtrOutputWithContext(ctx context.Context) CustomImagePtrOutput {
-	return o.ApplyT(func(v CustomImage) *CustomImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomImage) *CustomImage {
 		return &v
 	}).(CustomImagePtrOutput)
 }
 
-type CustomImagePtrOutput struct {
-	*pulumi.OutputState
-}
+type CustomImagePtrOutput struct{ *pulumi.OutputState }
 
 func (CustomImagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CustomImage)(nil))
@@ -341,6 +338,16 @@ func (o CustomImagePtrOutput) ToCustomImagePtrOutput() CustomImagePtrOutput {
 
 func (o CustomImagePtrOutput) ToCustomImagePtrOutputWithContext(ctx context.Context) CustomImagePtrOutput {
 	return o
+}
+
+func (o CustomImagePtrOutput) Elem() CustomImageOutput {
+	return o.ApplyT(func(v *CustomImage) CustomImage {
+		if v != nil {
+			return *v
+		}
+		var ret CustomImage
+		return ret
+	}).(CustomImageOutput)
 }
 
 type CustomImageArrayOutput struct{ *pulumi.OutputState }
@@ -384,6 +391,10 @@ func (o CustomImageMapOutput) MapIndex(k pulumi.StringInput) CustomImageOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomImageInput)(nil)).Elem(), &CustomImage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomImagePtrInput)(nil)).Elem(), &CustomImage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomImageArrayInput)(nil)).Elem(), CustomImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomImageMapInput)(nil)).Elem(), CustomImageMap{})
 	pulumi.RegisterOutputType(CustomImageOutput{})
 	pulumi.RegisterOutputType(CustomImagePtrOutput{})
 	pulumi.RegisterOutputType(CustomImageArrayOutput{})

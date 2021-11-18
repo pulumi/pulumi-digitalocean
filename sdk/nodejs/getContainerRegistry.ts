@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -70,4 +69,18 @@ export interface GetContainerRegistryResult {
      * * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
      */
     readonly subscriptionTierSlug: string;
+}
+
+export function getContainerRegistryOutput(args: GetContainerRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryResult> {
+    return pulumi.output(args).apply(a => getContainerRegistry(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getContainerRegistry.
+ */
+export interface GetContainerRegistryOutputArgs {
+    /**
+     * The name of the container registry.
+     */
+    name: pulumi.Input<string>;
 }

@@ -12,6 +12,7 @@ __all__ = [
     'GetDatabaseReplicaResult',
     'AwaitableGetDatabaseReplicaResult',
     'get_database_replica',
+    'get_database_replica_output',
 ]
 
 @pulumi.output_type
@@ -235,3 +236,31 @@ def get_database_replica(cluster_id: Optional[str] = None,
         tags=__ret__.tags,
         uri=__ret__.uri,
         user=__ret__.user)
+
+
+@_utilities.lift_output_func(get_database_replica)
+def get_database_replica_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                                name: Optional[pulumi.Input[str]] = None,
+                                tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseReplicaResult]:
+    """
+    Provides information on a DigitalOcean database replica.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_database_cluster(name="example-cluster")
+    read_only = digitalocean.get_database_replica(cluster_id=example.id,
+        name="terra-test-ro")
+    pulumi.export("replicaOutput", read_only.uri)
+    ```
+
+
+    :param str cluster_id: The ID of the original source database cluster.
+    :param str name: The name for the database replica.
+    :param Sequence[str] tags: A list of tag names to be applied to the database replica.
+    """
+    ...

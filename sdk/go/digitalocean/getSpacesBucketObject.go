@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,12 +27,13 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bootstrapScript, err := digitalocean.LookupSpacesBucketObject(ctx, &digitalocean.LookupSpacesBucketObjectArgs{
+// 		bootstrapScript, err := digitalocean.LookupSpacesBucketObject(ctx, &GetSpacesBucketObjectArgs{
 // 			Bucket: "ourcorp-deploy-config",
 // 			Region: "nyc3",
 // 			Key:    "droplet-bootstrap-script.sh",
@@ -108,4 +112,140 @@ type LookupSpacesBucketObjectResult struct {
 	VersionId string `pulumi:"versionId"`
 	// If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
 	WebsiteRedirectLocation string `pulumi:"websiteRedirectLocation"`
+}
+
+func LookupSpacesBucketObjectOutput(ctx *pulumi.Context, args LookupSpacesBucketObjectOutputArgs, opts ...pulumi.InvokeOption) LookupSpacesBucketObjectResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSpacesBucketObjectResult, error) {
+			args := v.(LookupSpacesBucketObjectArgs)
+			r, err := LookupSpacesBucketObject(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSpacesBucketObjectResultOutput)
+}
+
+// A collection of arguments for invoking getSpacesBucketObject.
+type LookupSpacesBucketObjectOutputArgs struct {
+	// The name of the bucket to read the object from.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The full path to the object inside the bucket
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Range pulumi.StringPtrInput `pulumi:"range"`
+	// The slug of the region where the bucket is stored.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Specific version ID of the object returned (defaults to latest version)
+	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
+}
+
+func (LookupSpacesBucketObjectOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpacesBucketObjectArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSpacesBucketObject.
+type LookupSpacesBucketObjectResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSpacesBucketObjectResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpacesBucketObjectResult)(nil)).Elem()
+}
+
+func (o LookupSpacesBucketObjectResultOutput) ToLookupSpacesBucketObjectResultOutput() LookupSpacesBucketObjectResultOutput {
+	return o
+}
+
+func (o LookupSpacesBucketObjectResultOutput) ToLookupSpacesBucketObjectResultOutputWithContext(ctx context.Context) LookupSpacesBucketObjectResultOutput {
+	return o
+}
+
+// Object data (see **limitations above** to understand cases in which this field is actually available)
+func (o LookupSpacesBucketObjectResultOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.Body }).(pulumi.StringOutput)
+}
+
+func (o LookupSpacesBucketObjectResultOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Specifies caching behavior along the request/reply chain.
+func (o LookupSpacesBucketObjectResultOutput) CacheControl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.CacheControl }).(pulumi.StringOutput)
+}
+
+// Specifies presentational information for the object.
+func (o LookupSpacesBucketObjectResultOutput) ContentDisposition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.ContentDisposition }).(pulumi.StringOutput)
+}
+
+// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
+func (o LookupSpacesBucketObjectResultOutput) ContentEncoding() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.ContentEncoding }).(pulumi.StringOutput)
+}
+
+// The language the content is in.
+func (o LookupSpacesBucketObjectResultOutput) ContentLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.ContentLanguage }).(pulumi.StringOutput)
+}
+
+// Size of the body in bytes.
+func (o LookupSpacesBucketObjectResultOutput) ContentLength() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) int { return v.ContentLength }).(pulumi.IntOutput)
+}
+
+// A standard MIME type describing the format of the object data.
+func (o LookupSpacesBucketObjectResultOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) generated for the object (an MD5 sum of the object content in case it's not encrypted)
+func (o LookupSpacesBucketObjectResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// If the object expiration is configured (see [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)), the field includes this header. It includes the expiry-date and rule-id key value pairs providing object expiration information. The value of the rule-id is URL encoded.
+func (o LookupSpacesBucketObjectResultOutput) Expiration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.Expiration }).(pulumi.StringOutput)
+}
+
+// The date and time at which the object is no longer cacheable.
+func (o LookupSpacesBucketObjectResultOutput) Expires() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.Expires }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSpacesBucketObjectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSpacesBucketObjectResultOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Last modified date of the object in RFC1123 format (e.g. `Mon, 02 Jan 2006 15:04:05 MST`)
+func (o LookupSpacesBucketObjectResultOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// A map of metadata stored with the object in Spaces
+func (o LookupSpacesBucketObjectResultOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+}
+
+func (o LookupSpacesBucketObjectResultOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSpacesBucketObjectResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The latest version ID of the object returned.
+func (o LookupSpacesBucketObjectResultOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+// If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
+func (o LookupSpacesBucketObjectResultOutput) WebsiteRedirectLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) string { return v.WebsiteRedirectLocation }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSpacesBucketObjectResultOutput{})
 }

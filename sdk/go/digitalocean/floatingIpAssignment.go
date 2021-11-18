@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -196,7 +197,7 @@ type FloatingIpAssignmentArrayInput interface {
 type FloatingIpAssignmentArray []FloatingIpAssignmentInput
 
 func (FloatingIpAssignmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FloatingIpAssignment)(nil))
+	return reflect.TypeOf((*[]*FloatingIpAssignment)(nil)).Elem()
 }
 
 func (i FloatingIpAssignmentArray) ToFloatingIpAssignmentArrayOutput() FloatingIpAssignmentArrayOutput {
@@ -221,7 +222,7 @@ type FloatingIpAssignmentMapInput interface {
 type FloatingIpAssignmentMap map[string]FloatingIpAssignmentInput
 
 func (FloatingIpAssignmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FloatingIpAssignment)(nil))
+	return reflect.TypeOf((*map[string]*FloatingIpAssignment)(nil)).Elem()
 }
 
 func (i FloatingIpAssignmentMap) ToFloatingIpAssignmentMapOutput() FloatingIpAssignmentMapOutput {
@@ -232,9 +233,7 @@ func (i FloatingIpAssignmentMap) ToFloatingIpAssignmentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssignmentMapOutput)
 }
 
-type FloatingIpAssignmentOutput struct {
-	*pulumi.OutputState
-}
+type FloatingIpAssignmentOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssignmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FloatingIpAssignment)(nil))
@@ -253,14 +252,12 @@ func (o FloatingIpAssignmentOutput) ToFloatingIpAssignmentPtrOutput() FloatingIp
 }
 
 func (o FloatingIpAssignmentOutput) ToFloatingIpAssignmentPtrOutputWithContext(ctx context.Context) FloatingIpAssignmentPtrOutput {
-	return o.ApplyT(func(v FloatingIpAssignment) *FloatingIpAssignment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloatingIpAssignment) *FloatingIpAssignment {
 		return &v
 	}).(FloatingIpAssignmentPtrOutput)
 }
 
-type FloatingIpAssignmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type FloatingIpAssignmentPtrOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssignmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FloatingIpAssignment)(nil))
@@ -272,6 +269,16 @@ func (o FloatingIpAssignmentPtrOutput) ToFloatingIpAssignmentPtrOutput() Floatin
 
 func (o FloatingIpAssignmentPtrOutput) ToFloatingIpAssignmentPtrOutputWithContext(ctx context.Context) FloatingIpAssignmentPtrOutput {
 	return o
+}
+
+func (o FloatingIpAssignmentPtrOutput) Elem() FloatingIpAssignmentOutput {
+	return o.ApplyT(func(v *FloatingIpAssignment) FloatingIpAssignment {
+		if v != nil {
+			return *v
+		}
+		var ret FloatingIpAssignment
+		return ret
+	}).(FloatingIpAssignmentOutput)
 }
 
 type FloatingIpAssignmentArrayOutput struct{ *pulumi.OutputState }
@@ -315,6 +322,10 @@ func (o FloatingIpAssignmentMapOutput) MapIndex(k pulumi.StringInput) FloatingIp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpAssignmentInput)(nil)).Elem(), &FloatingIpAssignment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpAssignmentPtrInput)(nil)).Elem(), &FloatingIpAssignment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpAssignmentArrayInput)(nil)).Elem(), FloatingIpAssignmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpAssignmentMapInput)(nil)).Elem(), FloatingIpAssignmentMap{})
 	pulumi.RegisterOutputType(FloatingIpAssignmentOutput{})
 	pulumi.RegisterOutputType(FloatingIpAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(FloatingIpAssignmentArrayOutput{})

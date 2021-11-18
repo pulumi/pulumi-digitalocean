@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +30,7 @@ import (
 // 			return err
 // 		}
 // 		opt0 := "My Staging Project"
-// 		_, err = digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
+// 		_, err = digitalocean.LookupProject(ctx, &GetProjectArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -76,4 +79,97 @@ type LookupProjectResult struct {
 	Resources []string `pulumi:"resources"`
 	// The date and time when the project was last updated, (ISO8601)
 	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectResult, error) {
+			args := v.(LookupProjectArgs)
+			r, err := LookupProject(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectResultOutput)
+}
+
+// A collection of arguments for invoking getProject.
+type LookupProjectOutputArgs struct {
+	// the ID of the project to retrieve
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// the name of the project to retrieve. The data source will raise an error if more than
+	// one project has the provided name or if no project has that name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupProjectOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProject.
+type LookupProjectResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectResult)(nil)).Elem()
+}
+
+func (o LookupProjectResultOutput) ToLookupProjectResultOutput() LookupProjectResultOutput {
+	return o
+}
+
+func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx context.Context) LookupProjectResultOutput {
+	return o
+}
+
+// The date and time when the project was created, (ISO8601)
+func (o LookupProjectResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the project
+func (o LookupProjectResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
+func (o LookupProjectResultOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project owner.
+func (o LookupProjectResultOutput) OwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectResult) int { return v.OwnerId }).(pulumi.IntOutput)
+}
+
+// The unique universal identifier of the project owner.
+func (o LookupProjectResultOutput) OwnerUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.OwnerUuid }).(pulumi.StringOutput)
+}
+
+// The purpose of the project, (Default: "Web Application")
+func (o LookupProjectResultOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// A set of uniform resource names (URNs) for the resources associated with the project
+func (o LookupProjectResultOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+// The date and time when the project was last updated, (ISO8601)
+func (o LookupProjectResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectResultOutput{})
 }

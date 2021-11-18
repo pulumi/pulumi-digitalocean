@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -43,6 +44,39 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on a single DigitalOcean region. This is useful to find out 
+        /// what Droplet sizes and features are supported within a region.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sfo2 = Output.Create(DigitalOcean.GetRegion.InvokeAsync(new DigitalOcean.GetRegionArgs
+        ///         {
+        ///             Slug = "sfo2",
+        ///         }));
+        ///         this.RegionName = sfo2.Apply(sfo2 =&gt; sfo2.Name);
+        ///     }
+        /// 
+        ///     [Output("regionName")]
+        ///     public Output&lt;string&gt; RegionName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +89,19 @@ namespace Pulumi.DigitalOcean
         public string Slug { get; set; } = null!;
 
         public GetRegionArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A human-readable string that is used as a unique identifier for each region.
+        /// </summary>
+        [Input("slug", required: true)]
+        public Input<string> Slug { get; set; } = null!;
+
+        public GetRegionInvokeArgs()
         {
         }
     }

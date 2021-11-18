@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -105,4 +104,26 @@ export interface GetDatabaseReplicaResult {
      * Username for the replica's default user.
      */
     readonly user: string;
+}
+
+export function getDatabaseReplicaOutput(args: GetDatabaseReplicaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseReplicaResult> {
+    return pulumi.output(args).apply(a => getDatabaseReplica(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseReplica.
+ */
+export interface GetDatabaseReplicaOutputArgs {
+    /**
+     * The ID of the original source database cluster.
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name for the database replica.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of tag names to be applied to the database replica.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

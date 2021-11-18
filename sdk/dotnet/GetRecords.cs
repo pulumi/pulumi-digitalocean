@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -17,6 +18,13 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetRecordsResult> InvokeAsync(GetRecordsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRecordsResult>("digitalocean:index/getRecords:getRecords", args ?? new GetRecordsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
+        /// If no filters are specified, all records will be returned.
+        /// </summary>
+        public static Output<GetRecordsResult> Invoke(GetRecordsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRecordsResult>("digitalocean:index/getRecords:getRecords", args ?? new GetRecordsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +63,45 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetRecordsArgs()
+        {
+        }
+    }
+
+    public sealed class GetRecordsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain name to search for DNS records
+        /// </summary>
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
+
+        [Input("filters")]
+        private InputList<Inputs.GetRecordsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Filter the results.
+        /// The `filter` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetRecordsFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetRecordsFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        [Input("sorts")]
+        private InputList<Inputs.GetRecordsSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort the results.
+        /// The `sort` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetRecordsSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetRecordsSortInputArgs>());
+            set => _sorts = value;
+        }
+
+        public GetRecordsInvokeArgs()
         {
         }
     }

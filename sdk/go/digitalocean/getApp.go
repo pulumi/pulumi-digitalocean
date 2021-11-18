@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupApp(ctx, &digitalocean.LookupAppArgs{
+// 		example, err := digitalocean.LookupApp(ctx, &GetAppArgs{
 // 			AppId: "e665d18d-7b56-44a9-92ce-31979174d544",
 // 		}, nil)
 // 		if err != nil {
@@ -66,4 +69,81 @@ type LookupAppResult struct {
 	Specs []GetAppSpec `pulumi:"specs"`
 	// The date and time of when the app was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAppResult, error) {
+			args := v.(LookupAppArgs)
+			r, err := LookupApp(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAppResultOutput)
+}
+
+// A collection of arguments for invoking getApp.
+type LookupAppOutputArgs struct {
+	// The ID of the app to retrieve information about.
+	AppId pulumi.StringInput `pulumi:"appId"`
+}
+
+func (LookupAppOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAppArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getApp.
+type LookupAppResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAppResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAppResult)(nil)).Elem()
+}
+
+func (o LookupAppResultOutput) ToLookupAppResultOutput() LookupAppResultOutput {
+	return o
+}
+
+func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Context) LookupAppResultOutput {
+	return o
+}
+
+// The ID the app's currently active deployment.
+func (o LookupAppResultOutput) ActiveDeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.ActiveDeploymentId }).(pulumi.StringOutput)
+}
+
+func (o LookupAppResultOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The date and time of when the app was created.
+func (o LookupAppResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The default URL to access the app.
+func (o LookupAppResultOutput) DefaultIngress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.DefaultIngress }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAppResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The live URL of the app.
+func (o LookupAppResultOutput) LiveUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.LiveUrl }).(pulumi.StringOutput)
+}
+
+// A DigitalOcean App spec describing the app.
+func (o LookupAppResultOutput) Specs() GetAppSpecArrayOutput {
+	return o.ApplyT(func(v LookupAppResult) []GetAppSpec { return v.Specs }).(GetAppSpecArrayOutput)
+}
+
+// The date and time of when the app was last updated.
+func (o LookupAppResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAppResultOutput{})
 }

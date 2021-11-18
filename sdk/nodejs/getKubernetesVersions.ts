@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -96,4 +95,18 @@ export interface GetKubernetesVersionsResult {
      */
     readonly validVersions: string[];
     readonly versionPrefix?: string;
+}
+
+export function getKubernetesVersionsOutput(args?: GetKubernetesVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesVersionsResult> {
+    return pulumi.output(args).apply(a => getKubernetesVersions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKubernetesVersions.
+ */
+export interface GetKubernetesVersionsOutputArgs {
+    /**
+     * If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
+     */
+    versionPrefix?: pulumi.Input<string>;
 }

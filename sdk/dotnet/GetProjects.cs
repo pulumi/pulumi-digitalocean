@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -19,9 +20,185 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the `digitalocean.Project` data source to
         /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
         /// `name` of the project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter projects.
+        /// 
+        /// For example to find all staging environment projects:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var staging = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "environment",
+        ///                     Values = 
+        ///                     {
+        ///                         "Staging",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var non_default_production = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "environment",
+        ///                     Values = 
+        ///                     {
+        ///                         "Production",
+        ///                     },
+        ///                 },
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "is_default",
+        ///                     Values = 
+        ///                     {
+        ///                         "false",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsSortArgs
+        ///                 {
+        ///                     Direction = "asc",
+        ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieve information about all DigitalOcean projects associated with an account, with
+        /// the ability to filter and sort the results. If no filters are specified, all projects
+        /// will be returned.
+        /// 
+        /// Note: You can use the `digitalocean.Project` data source to
+        /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
+        /// `name` of the project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter projects.
+        /// 
+        /// For example to find all staging environment projects:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var staging = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "environment",
+        ///                     Values = 
+        ///                     {
+        ///                         "Staging",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var non_default_production = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "environment",
+        ///                     Values = 
+        ///                     {
+        ///                         "Production",
+        ///                     },
+        ///                 },
+        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 {
+        ///                     Key = "is_default",
+        ///                     Values = 
+        ///                     {
+        ///                         "false",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetProjectsSortArgs
+        ///                 {
+        ///                     Direction = "asc",
+        ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -54,6 +231,39 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetProjectsArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetProjectsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Filter the results.
+        /// The `filter` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetProjectsFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetProjectsFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        [Input("sorts")]
+        private InputList<Inputs.GetProjectsSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort the results.
+        /// The `sort` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetProjectsSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetProjectsSortInputArgs>());
+            set => _sorts = value;
+        }
+
+        public GetProjectsInvokeArgs()
         {
         }
     }

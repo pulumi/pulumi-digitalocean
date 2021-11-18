@@ -13,6 +13,7 @@ __all__ = [
     'GetLoadBalancerResult',
     'AwaitableGetLoadBalancerResult',
     'get_load_balancer',
+    'get_load_balancer_output',
 ]
 
 @pulumi.output_type
@@ -238,3 +239,32 @@ def get_load_balancer(name: Optional[str] = None,
         status=__ret__.status,
         sticky_sessions=__ret__.sticky_sessions,
         vpc_uuid=__ret__.vpc_uuid)
+
+
+@_utilities.lift_output_func(get_load_balancer)
+def get_load_balancer_output(name: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancerResult]:
+    """
+    Get information on a load balancer for use in other resources. This data source
+    provides all of the load balancers properties as configured on your DigitalOcean
+    account. This is useful if the load balancer in question is not managed by
+    the provider or you need to utilize any of the load balancers data.
+
+    An error is triggered if the provided load balancer name does not exist.
+
+    ## Example Usage
+
+    Get the load balancer:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_load_balancer(name="app")
+    pulumi.export("lbOutput", example.ip)
+    ```
+
+
+    :param str name: The name of load balancer.
+    """
+    ...

@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,63 @@ type GetSizesResult struct {
 	Id    string         `pulumi:"id"`
 	Sizes []GetSizesSize `pulumi:"sizes"`
 	Sorts []GetSizesSort `pulumi:"sorts"`
+}
+
+func GetSizesOutput(ctx *pulumi.Context, args GetSizesOutputArgs, opts ...pulumi.InvokeOption) GetSizesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSizesResult, error) {
+			args := v.(GetSizesArgs)
+			r, err := GetSizes(ctx, &args, opts...)
+			return *r, err
+		}).(GetSizesResultOutput)
+}
+
+// A collection of arguments for invoking getSizes.
+type GetSizesOutputArgs struct {
+	// Filter the results.
+	// The `filter` block is documented below.
+	Filters GetSizesFilterArrayInput `pulumi:"filters"`
+	// Sort the results.
+	// The `sort` block is documented below.
+	Sorts GetSizesSortArrayInput `pulumi:"sorts"`
+}
+
+func (GetSizesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSizes.
+type GetSizesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSizesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesResult)(nil)).Elem()
+}
+
+func (o GetSizesResultOutput) ToGetSizesResultOutput() GetSizesResultOutput {
+	return o
+}
+
+func (o GetSizesResultOutput) ToGetSizesResultOutputWithContext(ctx context.Context) GetSizesResultOutput {
+	return o
+}
+
+func (o GetSizesResultOutput) Filters() GetSizesFilterArrayOutput {
+	return o.ApplyT(func(v GetSizesResult) []GetSizesFilter { return v.Filters }).(GetSizesFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSizesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSizesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSizesResultOutput) Sizes() GetSizesSizeArrayOutput {
+	return o.ApplyT(func(v GetSizesResult) []GetSizesSize { return v.Sizes }).(GetSizesSizeArrayOutput)
+}
+
+func (o GetSizesResultOutput) Sorts() GetSizesSortArrayOutput {
+	return o.ApplyT(func(v GetSizesResult) []GetSizesSort { return v.Sorts }).(GetSizesSortArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSizesResultOutput{})
 }

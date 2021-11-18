@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -72,6 +73,68 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetVolumeSnapshotResult> InvokeAsync(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Volume snapshots are saved instances of a block storage volume. Use this data
+        /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
+        /// resources.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the volume snapshot:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var snapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
+        ///         {
+        ///             MostRecent = true,
+        ///             NameRegex = "^web",
+        ///             Region = "nyc3",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// Reuse the data about a volume snapshot to create a new volume based on it:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var snapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
+        ///         {
+        ///             NameRegex = "^web",
+        ///             Region = "nyc3",
+        ///             MostRecent = true,
+        ///         }));
+        ///         var foobar = new DigitalOcean.Volume("foobar", new DigitalOcean.VolumeArgs
+        ///         {
+        ///             Region = "nyc3",
+        ///             Size = 100,
+        ///             SnapshotId = snapshot.Apply(snapshot =&gt; snapshot.Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVolumeSnapshotResult> Invoke(GetVolumeSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithVersion());
     }
 
 
@@ -102,6 +165,37 @@ namespace Pulumi.DigitalOcean
         public string? Region { get; set; }
 
         public GetVolumeSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetVolumeSnapshotInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// If more than one result is returned, use the most recent volume snapshot.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        /// <summary>
+        /// The name of the volume snapshot.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetVolumeSnapshotInvokeArgs()
         {
         }
     }

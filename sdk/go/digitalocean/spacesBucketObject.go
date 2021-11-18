@@ -56,6 +56,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -381,7 +382,7 @@ type SpacesBucketObjectArrayInput interface {
 type SpacesBucketObjectArray []SpacesBucketObjectInput
 
 func (SpacesBucketObjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SpacesBucketObject)(nil))
+	return reflect.TypeOf((*[]*SpacesBucketObject)(nil)).Elem()
 }
 
 func (i SpacesBucketObjectArray) ToSpacesBucketObjectArrayOutput() SpacesBucketObjectArrayOutput {
@@ -406,7 +407,7 @@ type SpacesBucketObjectMapInput interface {
 type SpacesBucketObjectMap map[string]SpacesBucketObjectInput
 
 func (SpacesBucketObjectMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SpacesBucketObject)(nil))
+	return reflect.TypeOf((*map[string]*SpacesBucketObject)(nil)).Elem()
 }
 
 func (i SpacesBucketObjectMap) ToSpacesBucketObjectMapOutput() SpacesBucketObjectMapOutput {
@@ -417,9 +418,7 @@ func (i SpacesBucketObjectMap) ToSpacesBucketObjectMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectMapOutput)
 }
 
-type SpacesBucketObjectOutput struct {
-	*pulumi.OutputState
-}
+type SpacesBucketObjectOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketObjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SpacesBucketObject)(nil))
@@ -438,14 +437,12 @@ func (o SpacesBucketObjectOutput) ToSpacesBucketObjectPtrOutput() SpacesBucketOb
 }
 
 func (o SpacesBucketObjectOutput) ToSpacesBucketObjectPtrOutputWithContext(ctx context.Context) SpacesBucketObjectPtrOutput {
-	return o.ApplyT(func(v SpacesBucketObject) *SpacesBucketObject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpacesBucketObject) *SpacesBucketObject {
 		return &v
 	}).(SpacesBucketObjectPtrOutput)
 }
 
-type SpacesBucketObjectPtrOutput struct {
-	*pulumi.OutputState
-}
+type SpacesBucketObjectPtrOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketObjectPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SpacesBucketObject)(nil))
@@ -457,6 +454,16 @@ func (o SpacesBucketObjectPtrOutput) ToSpacesBucketObjectPtrOutput() SpacesBucke
 
 func (o SpacesBucketObjectPtrOutput) ToSpacesBucketObjectPtrOutputWithContext(ctx context.Context) SpacesBucketObjectPtrOutput {
 	return o
+}
+
+func (o SpacesBucketObjectPtrOutput) Elem() SpacesBucketObjectOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) SpacesBucketObject {
+		if v != nil {
+			return *v
+		}
+		var ret SpacesBucketObject
+		return ret
+	}).(SpacesBucketObjectOutput)
 }
 
 type SpacesBucketObjectArrayOutput struct{ *pulumi.OutputState }
@@ -500,6 +507,10 @@ func (o SpacesBucketObjectMapOutput) MapIndex(k pulumi.StringInput) SpacesBucket
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketObjectInput)(nil)).Elem(), &SpacesBucketObject{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketObjectPtrInput)(nil)).Elem(), &SpacesBucketObject{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketObjectArrayInput)(nil)).Elem(), SpacesBucketObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketObjectMapInput)(nil)).Elem(), SpacesBucketObjectMap{})
 	pulumi.RegisterOutputType(SpacesBucketObjectOutput{})
 	pulumi.RegisterOutputType(SpacesBucketObjectPtrOutput{})
 	pulumi.RegisterOutputType(SpacesBucketObjectArrayOutput{})

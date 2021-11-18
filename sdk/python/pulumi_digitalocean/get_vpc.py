@@ -12,6 +12,7 @@ __all__ = [
     'GetVpcResult',
     'AwaitableGetVpcResult',
     'get_vpc',
+    'get_vpc_output',
 ]
 
 @pulumi.output_type
@@ -188,3 +189,50 @@ def get_vpc(id: Optional[str] = None,
         name=__ret__.name,
         region=__ret__.region,
         urn=__ret__.urn)
+
+
+@_utilities.lift_output_func(get_vpc)
+def get_vpc_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                   name: Optional[pulumi.Input[Optional[str]]] = None,
+                   region: Optional[pulumi.Input[Optional[str]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcResult]:
+    """
+    Retrieve information about a VPC for use in other resources.
+
+    This data source provides all of the VPC's properties as configured on your
+    DigitalOcean account. This is useful if the VPC in question is not managed by
+    the provider or you need to utilize any of the VPC's data.
+
+    VPCs may be looked up by `id` or `name`. Specifying a `region` will
+    return that that region's default VPC.
+
+    ## Example Usage
+    ### VPC By Name
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_vpc(name="example-network")
+    ```
+
+    Reuse the data about a VPC to assign a Droplet to it:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example_vpc = digitalocean.get_vpc(name="example-network")
+    example_droplet = digitalocean.Droplet("exampleDroplet",
+        size="s-1vcpu-1gb",
+        image="ubuntu-18-04-x64",
+        region="nyc3",
+        vpc_uuid=example_vpc.id)
+    ```
+
+
+    :param str id: The unique identifier of an existing VPC.
+    :param str name: The name of an existing VPC.
+    :param str region: The DigitalOcean region slug for the VPC's location.
+    """
+    ...

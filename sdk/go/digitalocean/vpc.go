@@ -50,6 +50,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -259,7 +260,7 @@ type VpcArrayInput interface {
 type VpcArray []VpcInput
 
 func (VpcArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Vpc)(nil))
+	return reflect.TypeOf((*[]*Vpc)(nil)).Elem()
 }
 
 func (i VpcArray) ToVpcArrayOutput() VpcArrayOutput {
@@ -284,7 +285,7 @@ type VpcMapInput interface {
 type VpcMap map[string]VpcInput
 
 func (VpcMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Vpc)(nil))
+	return reflect.TypeOf((*map[string]*Vpc)(nil)).Elem()
 }
 
 func (i VpcMap) ToVpcMapOutput() VpcMapOutput {
@@ -295,9 +296,7 @@ func (i VpcMap) ToVpcMapOutputWithContext(ctx context.Context) VpcMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcMapOutput)
 }
 
-type VpcOutput struct {
-	*pulumi.OutputState
-}
+type VpcOutput struct{ *pulumi.OutputState }
 
 func (VpcOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Vpc)(nil))
@@ -316,14 +315,12 @@ func (o VpcOutput) ToVpcPtrOutput() VpcPtrOutput {
 }
 
 func (o VpcOutput) ToVpcPtrOutputWithContext(ctx context.Context) VpcPtrOutput {
-	return o.ApplyT(func(v Vpc) *Vpc {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vpc) *Vpc {
 		return &v
 	}).(VpcPtrOutput)
 }
 
-type VpcPtrOutput struct {
-	*pulumi.OutputState
-}
+type VpcPtrOutput struct{ *pulumi.OutputState }
 
 func (VpcPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Vpc)(nil))
@@ -335,6 +332,16 @@ func (o VpcPtrOutput) ToVpcPtrOutput() VpcPtrOutput {
 
 func (o VpcPtrOutput) ToVpcPtrOutputWithContext(ctx context.Context) VpcPtrOutput {
 	return o
+}
+
+func (o VpcPtrOutput) Elem() VpcOutput {
+	return o.ApplyT(func(v *Vpc) Vpc {
+		if v != nil {
+			return *v
+		}
+		var ret Vpc
+		return ret
+	}).(VpcOutput)
 }
 
 type VpcArrayOutput struct{ *pulumi.OutputState }
@@ -378,6 +385,10 @@ func (o VpcMapOutput) MapIndex(k pulumi.StringInput) VpcOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcInput)(nil)).Elem(), &Vpc{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcPtrInput)(nil)).Elem(), &Vpc{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcArrayInput)(nil)).Elem(), VpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcMapInput)(nil)).Elem(), VpcMap{})
 	pulumi.RegisterOutputType(VpcOutput{})
 	pulumi.RegisterOutputType(VpcPtrOutput{})
 	pulumi.RegisterOutputType(VpcArrayOutput{})

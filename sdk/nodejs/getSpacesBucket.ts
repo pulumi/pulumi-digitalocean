@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -76,4 +75,22 @@ export interface GetSpacesBucketResult {
      * The uniform resource name of the bucket
      */
     readonly urn: string;
+}
+
+export function getSpacesBucketOutput(args: GetSpacesBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketResult> {
+    return pulumi.output(args).apply(a => getSpacesBucket(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSpacesBucket.
+ */
+export interface GetSpacesBucketOutputArgs {
+    /**
+     * The name of the Spaces bucket.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The slug of the region where the bucket is stored.
+     */
+    region: pulumi.Input<string>;
 }

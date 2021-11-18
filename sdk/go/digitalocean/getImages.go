@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +19,82 @@ import (
 //
 // Note: You can use the `getImage` data source to obtain metadata
 // about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+//
+// ## Example Usage
+//
+// Use the `filter` block with a `key` string and `values` list to filter images.
+//
+// For example to find all Ubuntu images:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetImages(ctx, &GetImagesArgs{
+// 			Filters: []GetImagesFilter{
+// 				GetImagesFilter{
+// 					Key: "distribution",
+// 					Values: []string{
+// 						"Ubuntu",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// You can filter on multiple fields and sort the results as well:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.GetImages(ctx, &GetImagesArgs{
+// 			Filters: []GetImagesFilter{
+// 				GetImagesFilter{
+// 					Key: "distribution",
+// 					Values: []string{
+// 						"Ubuntu",
+// 					},
+// 				},
+// 				GetImagesFilter{
+// 					Key: "regions",
+// 					Values: []string{
+// 						"nyc3",
+// 					},
+// 				},
+// 			},
+// 			Sorts: []GetImagesSort{
+// 				GetImagesSort{
+// 					Direction: "desc",
+// 					Key:       "created",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	var rv GetImagesResult
 	err := ctx.Invoke("digitalocean:index/getImages:getImages", args, &rv, opts...)
@@ -47,4 +126,68 @@ type GetImagesResult struct {
 	// - `type`: Type of the image.
 	Images []GetImagesImage `pulumi:"images"`
 	Sorts  []GetImagesSort  `pulumi:"sorts"`
+}
+
+func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetImagesResult, error) {
+			args := v.(GetImagesArgs)
+			r, err := GetImages(ctx, &args, opts...)
+			return *r, err
+		}).(GetImagesResultOutput)
+}
+
+// A collection of arguments for invoking getImages.
+type GetImagesOutputArgs struct {
+	// Filter the results.
+	// The `filter` block is documented below.
+	Filters GetImagesFilterArrayInput `pulumi:"filters"`
+	// Sort the results.
+	// The `sort` block is documented below.
+	Sorts GetImagesSortArrayInput `pulumi:"sorts"`
+}
+
+func (GetImagesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImages.
+type GetImagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResult)(nil)).Elem()
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) Filters() GetImagesFilterArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []GetImagesFilter { return v.Filters }).(GetImagesFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetImagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
+// - `slug`: Unique text identifier of the image.
+// - `id`: The ID of the image.
+// - `name`: The name of the image.
+// - `type`: Type of the image.
+func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
+}
+
+func (o GetImagesResultOutput) Sorts() GetImagesSortArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []GetImagesSort { return v.Sorts }).(GetImagesSortArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImagesResultOutput{})
 }

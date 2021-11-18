@@ -21,6 +21,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -51,6 +52,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -283,7 +285,7 @@ type CdnArrayInput interface {
 type CdnArray []CdnInput
 
 func (CdnArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Cdn)(nil))
+	return reflect.TypeOf((*[]*Cdn)(nil)).Elem()
 }
 
 func (i CdnArray) ToCdnArrayOutput() CdnArrayOutput {
@@ -308,7 +310,7 @@ type CdnMapInput interface {
 type CdnMap map[string]CdnInput
 
 func (CdnMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Cdn)(nil))
+	return reflect.TypeOf((*map[string]*Cdn)(nil)).Elem()
 }
 
 func (i CdnMap) ToCdnMapOutput() CdnMapOutput {
@@ -319,9 +321,7 @@ func (i CdnMap) ToCdnMapOutputWithContext(ctx context.Context) CdnMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnMapOutput)
 }
 
-type CdnOutput struct {
-	*pulumi.OutputState
-}
+type CdnOutput struct{ *pulumi.OutputState }
 
 func (CdnOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Cdn)(nil))
@@ -340,14 +340,12 @@ func (o CdnOutput) ToCdnPtrOutput() CdnPtrOutput {
 }
 
 func (o CdnOutput) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
-	return o.ApplyT(func(v Cdn) *Cdn {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Cdn) *Cdn {
 		return &v
 	}).(CdnPtrOutput)
 }
 
-type CdnPtrOutput struct {
-	*pulumi.OutputState
-}
+type CdnPtrOutput struct{ *pulumi.OutputState }
 
 func (CdnPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Cdn)(nil))
@@ -359,6 +357,16 @@ func (o CdnPtrOutput) ToCdnPtrOutput() CdnPtrOutput {
 
 func (o CdnPtrOutput) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
 	return o
+}
+
+func (o CdnPtrOutput) Elem() CdnOutput {
+	return o.ApplyT(func(v *Cdn) Cdn {
+		if v != nil {
+			return *v
+		}
+		var ret Cdn
+		return ret
+	}).(CdnOutput)
 }
 
 type CdnArrayOutput struct{ *pulumi.OutputState }
@@ -402,6 +410,10 @@ func (o CdnMapOutput) MapIndex(k pulumi.StringInput) CdnOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnInput)(nil)).Elem(), &Cdn{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnPtrInput)(nil)).Elem(), &Cdn{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnArrayInput)(nil)).Elem(), CdnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnMapInput)(nil)).Elem(), CdnMap{})
 	pulumi.RegisterOutputType(CdnOutput{})
 	pulumi.RegisterOutputType(CdnPtrOutput{})
 	pulumi.RegisterOutputType(CdnArrayOutput{})

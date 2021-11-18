@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupFirewall(ctx, &digitalocean.LookupFirewallArgs{
+// 		example, err := digitalocean.LookupFirewall(ctx, &GetFirewallArgs{
 // 			FirewallId: "1df48973-6eef-4214-854f-fa7726e7e583",
 // 		}, nil)
 // 		if err != nil {
@@ -82,4 +85,103 @@ type LookupFirewallResult struct {
 	Status string `pulumi:"status"`
 	// The names of the Tags assigned to the Firewall.
 	Tags []string `pulumi:"tags"`
+}
+
+func LookupFirewallOutput(ctx *pulumi.Context, args LookupFirewallOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupFirewallResult, error) {
+			args := v.(LookupFirewallArgs)
+			r, err := LookupFirewall(ctx, &args, opts...)
+			return *r, err
+		}).(LookupFirewallResultOutput)
+}
+
+// A collection of arguments for invoking getFirewall.
+type LookupFirewallOutputArgs struct {
+	// The list of the IDs of the Droplets assigned to
+	// the Firewall.
+	DropletIds pulumi.IntArrayInput `pulumi:"dropletIds"`
+	// The ID of the firewall to retrieve information
+	// about.
+	FirewallId    pulumi.StringInput                `pulumi:"firewallId"`
+	InboundRules  GetFirewallInboundRuleArrayInput  `pulumi:"inboundRules"`
+	OutboundRules GetFirewallOutboundRuleArrayInput `pulumi:"outboundRules"`
+	// The names of the Tags assigned to the Firewall.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (LookupFirewallOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFirewallArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFirewall.
+type LookupFirewallResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFirewallResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFirewallResult)(nil)).Elem()
+}
+
+func (o LookupFirewallResultOutput) ToLookupFirewallResultOutput() LookupFirewallResultOutput {
+	return o
+}
+
+func (o LookupFirewallResultOutput) ToLookupFirewallResultOutputWithContext(ctx context.Context) LookupFirewallResultOutput {
+	return o
+}
+
+// A time value given in ISO8601 combined date and time format
+// that represents when the Firewall was created.
+func (o LookupFirewallResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The list of the IDs of the Droplets assigned to
+// the Firewall.
+func (o LookupFirewallResultOutput) DropletIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []int { return v.DropletIds }).(pulumi.IntArrayOutput)
+}
+
+func (o LookupFirewallResultOutput) FirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.FirewallId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupFirewallResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupFirewallResultOutput) InboundRules() GetFirewallInboundRuleArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []GetFirewallInboundRule { return v.InboundRules }).(GetFirewallInboundRuleArrayOutput)
+}
+
+// The name of the Firewall.
+func (o LookupFirewallResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupFirewallResultOutput) OutboundRules() GetFirewallOutboundRuleArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []GetFirewallOutboundRule { return v.OutboundRules }).(GetFirewallOutboundRuleArrayOutput)
+}
+
+// A set of object containing the fields, `dropletId`,
+// `removing`, and `status`.  It is provided to detail exactly which Droplets
+// are having their security policies updated.  When empty, all changes
+// have been successfully applied.
+func (o LookupFirewallResultOutput) PendingChanges() GetFirewallPendingChangeArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []GetFirewallPendingChange { return v.PendingChanges }).(GetFirewallPendingChangeArrayOutput)
+}
+
+// A status string indicating the current state of the Firewall.
+// This can be "waiting", "succeeded", or "failed".
+func (o LookupFirewallResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The names of the Tags assigned to the Firewall.
+func (o LookupFirewallResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFirewallResultOutput{})
 }

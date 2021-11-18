@@ -10,29 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetSshKeysFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeysFilterInputArgs : Pulumi.ResourceArgs
     {
         [Input("all")]
-        public bool? All { get; set; }
+        public Input<bool>? All { get; set; }
 
         /// <summary>
         /// Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
         [Input("matchBy")]
-        public string? MatchBy { get; set; }
+        public Input<string>? MatchBy { get; set; }
 
         [Input("values", required: true)]
-        private List<string>? _values;
-        public List<string> Values
+        private InputList<string>? _values;
+        public InputList<string> Values
         {
-            get => _values ?? (_values = new List<string>());
+            get => _values ?? (_values = new InputList<string>());
             set => _values = value;
         }
 
-        public GetSshKeysFilterArgs()
+        public GetSshKeysFilterInputArgs()
         {
         }
     }

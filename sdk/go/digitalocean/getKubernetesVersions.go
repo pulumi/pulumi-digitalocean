@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +41,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -50,7 +54,7 @@ import (
 // 		_, err = digitalocean.NewKubernetesCluster(ctx, "example_cluster", &digitalocean.KubernetesClusterArgs{
 // 			Region:  pulumi.String("lon1"),
 // 			Version: pulumi.String(example.LatestVersion),
-// 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+// 			NodePool: &KubernetesClusterNodePoolArgs{
 // 				Name:      pulumi.String("default"),
 // 				Size:      pulumi.String("s-1vcpu-2gb"),
 // 				NodeCount: pulumi.Int(3),
@@ -70,13 +74,14 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "1.16."
-// 		example, err := digitalocean.GetKubernetesVersions(ctx, &digitalocean.GetKubernetesVersionsArgs{
+// 		example, err := digitalocean.GetKubernetesVersions(ctx, &GetKubernetesVersionsArgs{
 // 			VersionPrefix: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -85,7 +90,7 @@ import (
 // 		_, err = digitalocean.NewKubernetesCluster(ctx, "example_cluster", &digitalocean.KubernetesClusterArgs{
 // 			Region:  pulumi.String("lon1"),
 // 			Version: pulumi.String(example.LatestVersion),
-// 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+// 			NodePool: &KubernetesClusterNodePoolArgs{
 // 				Name:      pulumi.String("default"),
 // 				Size:      pulumi.String("s-1vcpu-2gb"),
 // 				NodeCount: pulumi.Int(3),
@@ -122,4 +127,61 @@ type GetKubernetesVersionsResult struct {
 	// A list of available versions.
 	ValidVersions []string `pulumi:"validVersions"`
 	VersionPrefix *string  `pulumi:"versionPrefix"`
+}
+
+func GetKubernetesVersionsOutput(ctx *pulumi.Context, args GetKubernetesVersionsOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesVersionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetKubernetesVersionsResult, error) {
+			args := v.(GetKubernetesVersionsArgs)
+			r, err := GetKubernetesVersions(ctx, &args, opts...)
+			return *r, err
+		}).(GetKubernetesVersionsResultOutput)
+}
+
+// A collection of arguments for invoking getKubernetesVersions.
+type GetKubernetesVersionsOutputArgs struct {
+	// If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
+	VersionPrefix pulumi.StringPtrInput `pulumi:"versionPrefix"`
+}
+
+func (GetKubernetesVersionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesVersionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKubernetesVersions.
+type GetKubernetesVersionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesVersionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesVersionsResult)(nil)).Elem()
+}
+
+func (o GetKubernetesVersionsResultOutput) ToGetKubernetesVersionsResultOutput() GetKubernetesVersionsResultOutput {
+	return o
+}
+
+func (o GetKubernetesVersionsResultOutput) ToGetKubernetesVersionsResultOutputWithContext(ctx context.Context) GetKubernetesVersionsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetKubernetesVersionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesVersionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The most recent version available.
+func (o GetKubernetesVersionsResultOutput) LatestVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesVersionsResult) string { return v.LatestVersion }).(pulumi.StringOutput)
+}
+
+// A list of available versions.
+func (o GetKubernetesVersionsResultOutput) ValidVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesVersionsResult) []string { return v.ValidVersions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetKubernetesVersionsResultOutput) VersionPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKubernetesVersionsResult) *string { return v.VersionPrefix }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKubernetesVersionsResultOutput{})
 }

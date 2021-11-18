@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,4 +54,96 @@ type GetSpacesBucketObjectsResult struct {
 	Owners []string `pulumi:"owners"`
 	Prefix *string  `pulumi:"prefix"`
 	Region string   `pulumi:"region"`
+}
+
+func GetSpacesBucketObjectsOutput(ctx *pulumi.Context, args GetSpacesBucketObjectsOutputArgs, opts ...pulumi.InvokeOption) GetSpacesBucketObjectsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSpacesBucketObjectsResult, error) {
+			args := v.(GetSpacesBucketObjectsArgs)
+			r, err := GetSpacesBucketObjects(ctx, &args, opts...)
+			return *r, err
+		}).(GetSpacesBucketObjectsResultOutput)
+}
+
+// A collection of arguments for invoking getSpacesBucketObjects.
+type GetSpacesBucketObjectsOutputArgs struct {
+	// Lists object keys in this Spaces bucket
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// A character used to group keys (Default: none)
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// Encodes keys using this method (Default: none; besides none, only "url" can be used)
+	EncodingType pulumi.StringPtrInput `pulumi:"encodingType"`
+	// Maximum object keys to return (Default: 1000)
+	MaxKeys pulumi.IntPtrInput `pulumi:"maxKeys"`
+	// Limits results to object keys with this prefix (Default: none)
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The slug of the region where the bucket is stored.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetSpacesBucketObjectsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketObjectsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSpacesBucketObjects.
+type GetSpacesBucketObjectsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketObjectsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketObjectsResult)(nil)).Elem()
+}
+
+func (o GetSpacesBucketObjectsResultOutput) ToGetSpacesBucketObjectsResultOutput() GetSpacesBucketObjectsResultOutput {
+	return o
+}
+
+func (o GetSpacesBucketObjectsResultOutput) ToGetSpacesBucketObjectsResultOutputWithContext(ctx context.Context) GetSpacesBucketObjectsResultOutput {
+	return o
+}
+
+func (o GetSpacesBucketObjectsResultOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`
+func (o GetSpacesBucketObjectsResultOutput) CommonPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) []string { return v.CommonPrefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSpacesBucketObjectsResultOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSpacesBucketObjectsResultOutput) EncodingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSpacesBucketObjectsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of strings representing object keys
+func (o GetSpacesBucketObjectsResultOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) []string { return v.Keys }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSpacesBucketObjectsResultOutput) MaxKeys() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) *int { return v.MaxKeys }).(pulumi.IntPtrOutput)
+}
+
+// List of strings representing object owner IDs
+func (o GetSpacesBucketObjectsResultOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) []string { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSpacesBucketObjectsResultOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSpacesBucketObjectsResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketObjectsResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSpacesBucketObjectsResultOutput{})
 }

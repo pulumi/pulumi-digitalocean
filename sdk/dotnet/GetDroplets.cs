@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -20,9 +21,186 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
         /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// 
+        /// For example to find all Droplets with size `s-1vcpu-1gb`:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var small = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 {
+        ///                     Key = "size",
+        ///                     Values = 
+        ///                     {
+        ///                         "s-1vcpu-1gb",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var small_with_backups = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 {
+        ///                     Key = "size",
+        ///                     Values = 
+        ///                     {
+        ///                         "s-1vcpu-1gb",
+        ///                     },
+        ///                 },
+        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 {
+        ///                     Key = "backups",
+        ///                     Values = 
+        ///                     {
+        ///                         "true",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetDropletsSortArgs
+        ///                 {
+        ///                     Direction = "desc",
+        ///                     Key = "created_at",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDropletsResult> InvokeAsync(GetDropletsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDropletsResult>("digitalocean:index/getDroplets:getDroplets", args ?? new GetDropletsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+        /// If no filters are specified, all Droplets will be returned.
+        /// 
+        /// This data source is useful if the Droplets in question are not managed by the provider or you need to
+        /// utilize any of the Droplets' data.
+        /// 
+        /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
+        /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// 
+        /// For example to find all Droplets with size `s-1vcpu-1gb`:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var small = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 {
+        ///                     Key = "size",
+        ///                     Values = 
+        ///                     {
+        ///                         "s-1vcpu-1gb",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var small_with_backups = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 {
+        ///                     Key = "size",
+        ///                     Values = 
+        ///                     {
+        ///                         "s-1vcpu-1gb",
+        ///                     },
+        ///                 },
+        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 {
+        ///                     Key = "backups",
+        ///                     Values = 
+        ///                     {
+        ///                         "true",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetDropletsSortArgs
+        ///                 {
+        ///                     Direction = "desc",
+        ///                     Key = "created_at",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDropletsResult> Invoke(GetDropletsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDropletsResult>("digitalocean:index/getDroplets:getDroplets", args ?? new GetDropletsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +233,39 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetDropletsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDropletsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetDropletsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Filter the results.
+        /// The `filter` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetDropletsFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetDropletsFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        [Input("sorts")]
+        private InputList<Inputs.GetDropletsSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort the results.
+        /// The `sort` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetDropletsSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetDropletsSortInputArgs>());
+            set => _sorts = value;
+        }
+
+        public GetDropletsInvokeArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,69 @@ type GetRecordsResult struct {
 	Id      string             `pulumi:"id"`
 	Records []GetRecordsRecord `pulumi:"records"`
 	Sorts   []GetRecordsSort   `pulumi:"sorts"`
+}
+
+func GetRecordsOutput(ctx *pulumi.Context, args GetRecordsOutputArgs, opts ...pulumi.InvokeOption) GetRecordsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRecordsResult, error) {
+			args := v.(GetRecordsArgs)
+			r, err := GetRecords(ctx, &args, opts...)
+			return *r, err
+		}).(GetRecordsResultOutput)
+}
+
+// A collection of arguments for invoking getRecords.
+type GetRecordsOutputArgs struct {
+	// The domain name to search for DNS records
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Filter the results.
+	// The `filter` block is documented below.
+	Filters GetRecordsFilterArrayInput `pulumi:"filters"`
+	// Sort the results.
+	// The `sort` block is documented below.
+	Sorts GetRecordsSortArrayInput `pulumi:"sorts"`
+}
+
+func (GetRecordsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRecords.
+type GetRecordsResultOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsResult)(nil)).Elem()
+}
+
+func (o GetRecordsResultOutput) ToGetRecordsResultOutput() GetRecordsResultOutput {
+	return o
+}
+
+func (o GetRecordsResultOutput) ToGetRecordsResultOutputWithContext(ctx context.Context) GetRecordsResultOutput {
+	return o
+}
+
+func (o GetRecordsResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetRecordsResultOutput) Filters() GetRecordsFilterArrayOutput {
+	return o.ApplyT(func(v GetRecordsResult) []GetRecordsFilter { return v.Filters }).(GetRecordsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRecordsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRecordsResultOutput) Records() GetRecordsRecordArrayOutput {
+	return o.ApplyT(func(v GetRecordsResult) []GetRecordsRecord { return v.Records }).(GetRecordsRecordArrayOutput)
+}
+
+func (o GetRecordsResultOutput) Sorts() GetRecordsSortArrayOutput {
+	return o.ApplyT(func(v GetRecordsResult) []GetRecordsSort { return v.Sorts }).(GetRecordsSortArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRecordsResultOutput{})
 }

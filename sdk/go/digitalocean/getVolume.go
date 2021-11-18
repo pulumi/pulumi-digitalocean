@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +32,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "nyc3"
-// 		_, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+// 		_, err := digitalocean.LookupVolume(ctx, &GetVolumeArgs{
 // 			Name:   "app-data",
 // 			Region: &opt0,
 // 		}, nil)
@@ -48,13 +51,14 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "nyc3"
-// 		exampleVolume, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+// 		exampleVolume, err := digitalocean.LookupVolume(ctx, &GetVolumeArgs{
 // 			Name:   "app-data",
 // 			Region: &opt0,
 // 		}, nil)
@@ -118,4 +122,93 @@ type LookupVolumeResult struct {
 	// A list of the tags associated to the Volume.
 	Tags []string `pulumi:"tags"`
 	Urn  string   `pulumi:"urn"`
+}
+
+func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVolumeResult, error) {
+			args := v.(LookupVolumeArgs)
+			r, err := LookupVolume(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVolumeResultOutput)
+}
+
+// A collection of arguments for invoking getVolume.
+type LookupVolumeOutputArgs struct {
+	// Text describing a block storage volume.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name of block storage volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The region the block storage volume is provisioned in.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupVolumeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVolumeArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVolume.
+type LookupVolumeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVolumeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVolumeResult)(nil)).Elem()
+}
+
+func (o LookupVolumeResultOutput) ToLookupVolumeResultOutput() LookupVolumeResultOutput {
+	return o
+}
+
+func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx context.Context) LookupVolumeResultOutput {
+	return o
+}
+
+// Text describing a block storage volume.
+func (o LookupVolumeResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A list of associated Droplet ids.
+func (o LookupVolumeResultOutput) DropletIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v LookupVolumeResult) []int { return v.DropletIds }).(pulumi.IntArrayOutput)
+}
+
+// Filesystem label currently in-use on the block storage volume.
+func (o LookupVolumeResultOutput) FilesystemLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.FilesystemLabel }).(pulumi.StringOutput)
+}
+
+// Filesystem type currently in-use on the block storage volume.
+func (o LookupVolumeResultOutput) FilesystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.FilesystemType }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupVolumeResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The size of the block storage volume in GiB.
+func (o LookupVolumeResultOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupVolumeResult) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// A list of the tags associated to the Volume.
+func (o LookupVolumeResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVolumeResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupVolumeResultOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVolumeResultOutput{})
 }

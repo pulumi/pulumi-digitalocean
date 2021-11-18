@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -87,4 +86,18 @@ export interface GetTagResult {
      * A count of the volumes that the tag is applied to.
      */
     readonly volumesCount: number;
+}
+
+export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagResult> {
+    return pulumi.output(args).apply(a => getTag(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTag.
+ */
+export interface GetTagOutputArgs {
+    /**
+     * The name of the tag.
+     */
+    name: pulumi.Input<string>;
 }

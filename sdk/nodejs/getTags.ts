@@ -68,3 +68,23 @@ export interface GetTagsResult {
     readonly sorts?: outputs.GetTagsSort[];
     readonly tags: outputs.GetTagsTag[];
 }
+
+export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
+    return pulumi.output(args).apply(a => getTags(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTags.
+ */
+export interface GetTagsOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetTagsFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetTagsSortArgs>[]>;
+}

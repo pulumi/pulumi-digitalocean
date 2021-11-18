@@ -18,6 +18,42 @@ import (
 // Let's Encrypt.
 //
 // ## Example Usage
+// ### Custom Certificate
+//
+// ```go
+// package main
+//
+// import (
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+// 			Type:             pulumi.String("custom"),
+// 			PrivateKey:       readFileOrPanic("/Users/myuser/certs/privkey.pem"),
+// 			LeafCertificate:  readFileOrPanic("/Users/myuser/certs/cert.pem"),
+// 			CertificateChain: readFileOrPanic("/Users/myuser/certs/fullchain.pem"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Let's Encrypt Certificate
 //
 // ```go
@@ -25,6 +61,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -53,6 +90,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -70,8 +108,8 @@ import (
 // 		_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
 // 			Region:     pulumi.String("nyc3"),
 // 			DropletTag: pulumi.String("backend"),
-// 			ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
-// 				&digitalocean.LoadBalancerForwardingRuleArgs{
+// 			ForwardingRules: LoadBalancerForwardingRuleArray{
+// 				&LoadBalancerForwardingRuleArgs{
 // 					EntryPort:       pulumi.Int(443),
 // 					EntryProtocol:   pulumi.String("https"),
 // 					TargetPort:      pulumi.Int(80),
@@ -327,7 +365,7 @@ type CertificateArrayInput interface {
 type CertificateArray []CertificateInput
 
 func (CertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Certificate)(nil))
+	return reflect.TypeOf((*[]*Certificate)(nil)).Elem()
 }
 
 func (i CertificateArray) ToCertificateArrayOutput() CertificateArrayOutput {
@@ -352,7 +390,7 @@ type CertificateMapInput interface {
 type CertificateMap map[string]CertificateInput
 
 func (CertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Certificate)(nil))
+	return reflect.TypeOf((*map[string]*Certificate)(nil)).Elem()
 }
 
 func (i CertificateMap) ToCertificateMapOutput() CertificateMapOutput {
@@ -363,9 +401,7 @@ func (i CertificateMap) ToCertificateMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapOutput)
 }
 
-type CertificateOutput struct {
-	*pulumi.OutputState
-}
+type CertificateOutput struct{ *pulumi.OutputState }
 
 func (CertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Certificate)(nil))
@@ -384,14 +420,12 @@ func (o CertificateOutput) ToCertificatePtrOutput() CertificatePtrOutput {
 }
 
 func (o CertificateOutput) ToCertificatePtrOutputWithContext(ctx context.Context) CertificatePtrOutput {
-	return o.ApplyT(func(v Certificate) *Certificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Certificate) *Certificate {
 		return &v
 	}).(CertificatePtrOutput)
 }
 
-type CertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type CertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (CertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Certificate)(nil))
@@ -403,6 +437,16 @@ func (o CertificatePtrOutput) ToCertificatePtrOutput() CertificatePtrOutput {
 
 func (o CertificatePtrOutput) ToCertificatePtrOutputWithContext(ctx context.Context) CertificatePtrOutput {
 	return o
+}
+
+func (o CertificatePtrOutput) Elem() CertificateOutput {
+	return o.ApplyT(func(v *Certificate) Certificate {
+		if v != nil {
+			return *v
+		}
+		var ret Certificate
+		return ret
+	}).(CertificateOutput)
 }
 
 type CertificateArrayOutput struct{ *pulumi.OutputState }
@@ -446,6 +490,10 @@ func (o CertificateMapOutput) MapIndex(k pulumi.StringInput) CertificateOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateInput)(nil)).Elem(), &Certificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePtrInput)(nil)).Elem(), &Certificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateArrayInput)(nil)).Elem(), CertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapInput)(nil)).Elem(), CertificateMap{})
 	pulumi.RegisterOutputType(CertificateOutput{})
 	pulumi.RegisterOutputType(CertificatePtrOutput{})
 	pulumi.RegisterOutputType(CertificateArrayOutput{})

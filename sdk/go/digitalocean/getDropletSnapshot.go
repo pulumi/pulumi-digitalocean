@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +31,7 @@ import (
 // 		opt0 := true
 // 		opt1 := "^web"
 // 		opt2 := "nyc3"
-// 		_, err := digitalocean.LookupDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
+// 		_, err := digitalocean.LookupDropletSnapshot(ctx, &GetDropletSnapshotArgs{
 // 			MostRecent: &opt0,
 // 			NameRegex:  &opt1,
 // 			Region:     &opt2,
@@ -79,4 +82,94 @@ type LookupDropletSnapshotResult struct {
 	Regions []string `pulumi:"regions"`
 	// The billable size of the Droplet snapshot in gigabytes.
 	Size float64 `pulumi:"size"`
+}
+
+func LookupDropletSnapshotOutput(ctx *pulumi.Context, args LookupDropletSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupDropletSnapshotResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDropletSnapshotResult, error) {
+			args := v.(LookupDropletSnapshotArgs)
+			r, err := LookupDropletSnapshot(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDropletSnapshotResultOutput)
+}
+
+// A collection of arguments for invoking getDropletSnapshot.
+type LookupDropletSnapshotOutputArgs struct {
+	// If more than one result is returned, use the most recent Droplet snapshot.
+	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
+	// The name of the Droplet snapshot.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupDropletSnapshotOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDropletSnapshotArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDropletSnapshot.
+type LookupDropletSnapshotResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDropletSnapshotResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDropletSnapshotResult)(nil)).Elem()
+}
+
+func (o LookupDropletSnapshotResultOutput) ToLookupDropletSnapshotResultOutput() LookupDropletSnapshotResultOutput {
+	return o
+}
+
+func (o LookupDropletSnapshotResultOutput) ToLookupDropletSnapshotResultOutputWithContext(ctx context.Context) LookupDropletSnapshotResultOutput {
+	return o
+}
+
+// The date and time the Droplet snapshot was created.
+func (o LookupDropletSnapshotResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The ID of the Droplet from which the Droplet snapshot originated.
+func (o LookupDropletSnapshotResultOutput) DropletId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) string { return v.DropletId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDropletSnapshotResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The minimum size in gigabytes required for a Droplet to be created based on this Droplet snapshot.
+func (o LookupDropletSnapshotResultOutput) MinDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) int { return v.MinDiskSize }).(pulumi.IntOutput)
+}
+
+func (o LookupDropletSnapshotResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupDropletSnapshotResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDropletSnapshotResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDropletSnapshotResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A list of DigitalOcean region "slugs" indicating where the Droplet snapshot is available.
+func (o LookupDropletSnapshotResultOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// The billable size of the Droplet snapshot in gigabytes.
+func (o LookupDropletSnapshotResultOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDropletSnapshotResult) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDropletSnapshotResultOutput{})
 }

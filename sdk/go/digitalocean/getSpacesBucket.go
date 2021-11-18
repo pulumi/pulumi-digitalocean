@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupSpacesBucket(ctx, &digitalocean.LookupSpacesBucketArgs{
+// 		example, err := digitalocean.LookupSpacesBucket(ctx, &GetSpacesBucketArgs{
 // 			Name:   "my-spaces-bucket",
 // 			Region: "nyc3",
 // 		}, nil)
@@ -65,4 +68,69 @@ type LookupSpacesBucketResult struct {
 	Region string `pulumi:"region"`
 	// The uniform resource name of the bucket
 	Urn string `pulumi:"urn"`
+}
+
+func LookupSpacesBucketOutput(ctx *pulumi.Context, args LookupSpacesBucketOutputArgs, opts ...pulumi.InvokeOption) LookupSpacesBucketResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSpacesBucketResult, error) {
+			args := v.(LookupSpacesBucketArgs)
+			r, err := LookupSpacesBucket(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSpacesBucketResultOutput)
+}
+
+// A collection of arguments for invoking getSpacesBucket.
+type LookupSpacesBucketOutputArgs struct {
+	// The name of the Spaces bucket.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The slug of the region where the bucket is stored.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (LookupSpacesBucketOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpacesBucketArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSpacesBucket.
+type LookupSpacesBucketResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSpacesBucketResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpacesBucketResult)(nil)).Elem()
+}
+
+func (o LookupSpacesBucketResultOutput) ToLookupSpacesBucketResultOutput() LookupSpacesBucketResultOutput {
+	return o
+}
+
+func (o LookupSpacesBucketResultOutput) ToLookupSpacesBucketResultOutputWithContext(ctx context.Context) LookupSpacesBucketResultOutput {
+	return o
+}
+
+// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+func (o LookupSpacesBucketResultOutput) BucketDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketResult) string { return v.BucketDomainName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSpacesBucketResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the Spaces bucket
+func (o LookupSpacesBucketResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The slug of the region where the bucket is stored.
+func (o LookupSpacesBucketResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The uniform resource name of the bucket
+func (o LookupSpacesBucketResultOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketResult) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSpacesBucketResultOutput{})
 }

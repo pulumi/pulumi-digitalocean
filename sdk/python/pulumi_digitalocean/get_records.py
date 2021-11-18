@@ -14,6 +14,7 @@ __all__ = [
     'GetRecordsResult',
     'AwaitableGetRecordsResult',
     'get_records',
+    'get_records_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,22 @@ def get_records(domain: Optional[str] = None,
         id=__ret__.id,
         records=__ret__.records,
         sorts=__ret__.sorts)
+
+
+@_utilities.lift_output_func(get_records)
+def get_records_output(domain: Optional[pulumi.Input[str]] = None,
+                       filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRecordsFilterArgs']]]]] = None,
+                       sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRecordsSortArgs']]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordsResult]:
+    """
+    Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
+    If no filters are specified, all records will be returned.
+
+
+    :param str domain: The domain name to search for DNS records
+    :param Sequence[pulumi.InputType['GetRecordsFilterArgs']] filters: Filter the results.
+           The `filter` block is documented below.
+    :param Sequence[pulumi.InputType['GetRecordsSortArgs']] sorts: Sort the results.
+           The `sort` block is documented below.
+    """
+    ...

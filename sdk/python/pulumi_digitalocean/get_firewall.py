@@ -14,6 +14,7 @@ __all__ = [
     'GetFirewallResult',
     'AwaitableGetFirewallResult',
     'get_firewall',
+    'get_firewall_output',
 ]
 
 @pulumi.output_type
@@ -200,3 +201,35 @@ def get_firewall(droplet_ids: Optional[Sequence[int]] = None,
         pending_changes=__ret__.pending_changes,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_firewall)
+def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
+                        firewall_id: Optional[pulumi.Input[str]] = None,
+                        inbound_rules: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFirewallInboundRuleArgs']]]]] = None,
+                        outbound_rules: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFirewallOutboundRuleArgs']]]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
+    """
+    Get information on a DigitalOcean Firewall.
+
+    ## Example Usage
+
+    Get the firewall:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_firewall(firewall_id="1df48973-6eef-4214-854f-fa7726e7e583")
+    pulumi.export("exampleFirewallName", example.name)
+    ```
+
+
+    :param Sequence[int] droplet_ids: The list of the IDs of the Droplets assigned to
+           the Firewall.
+    :param str firewall_id: The ID of the firewall to retrieve information
+           about.
+    :param Sequence[str] tags: The names of the Tags assigned to the Firewall.
+    """
+    ...

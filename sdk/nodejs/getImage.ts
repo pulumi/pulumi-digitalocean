@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -130,4 +129,30 @@ export interface GetImageResult {
     readonly status: string;
     readonly tags: string[];
     readonly type: string;
+}
+
+export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
+    return pulumi.output(args).apply(a => getImage(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImage.
+ */
+export interface GetImageOutputArgs {
+    /**
+     * The id of the image
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The name of the image.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The slug of the official image.
+     */
+    slug?: pulumi.Input<string>;
+    /**
+     * Restrict the search to one of the following categories of images:
+     */
+    source?: pulumi.Input<string>;
 }

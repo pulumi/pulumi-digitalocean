@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -192,7 +193,7 @@ type DatabaseDbArrayInput interface {
 type DatabaseDbArray []DatabaseDbInput
 
 func (DatabaseDbArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatabaseDb)(nil))
+	return reflect.TypeOf((*[]*DatabaseDb)(nil)).Elem()
 }
 
 func (i DatabaseDbArray) ToDatabaseDbArrayOutput() DatabaseDbArrayOutput {
@@ -217,7 +218,7 @@ type DatabaseDbMapInput interface {
 type DatabaseDbMap map[string]DatabaseDbInput
 
 func (DatabaseDbMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatabaseDb)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseDb)(nil)).Elem()
 }
 
 func (i DatabaseDbMap) ToDatabaseDbMapOutput() DatabaseDbMapOutput {
@@ -228,9 +229,7 @@ func (i DatabaseDbMap) ToDatabaseDbMapOutputWithContext(ctx context.Context) Dat
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbMapOutput)
 }
 
-type DatabaseDbOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseDbOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDbOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseDb)(nil))
@@ -249,14 +248,12 @@ func (o DatabaseDbOutput) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
 }
 
 func (o DatabaseDbOutput) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
-	return o.ApplyT(func(v DatabaseDb) *DatabaseDb {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseDb) *DatabaseDb {
 		return &v
 	}).(DatabaseDbPtrOutput)
 }
 
-type DatabaseDbPtrOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseDbPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDbPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseDb)(nil))
@@ -268,6 +265,16 @@ func (o DatabaseDbPtrOutput) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
 
 func (o DatabaseDbPtrOutput) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
 	return o
+}
+
+func (o DatabaseDbPtrOutput) Elem() DatabaseDbOutput {
+	return o.ApplyT(func(v *DatabaseDb) DatabaseDb {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseDb
+		return ret
+	}).(DatabaseDbOutput)
 }
 
 type DatabaseDbArrayOutput struct{ *pulumi.OutputState }
@@ -311,6 +318,10 @@ func (o DatabaseDbMapOutput) MapIndex(k pulumi.StringInput) DatabaseDbOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDbInput)(nil)).Elem(), &DatabaseDb{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDbPtrInput)(nil)).Elem(), &DatabaseDb{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDbArrayInput)(nil)).Elem(), DatabaseDbArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDbMapInput)(nil)).Elem(), DatabaseDbMap{})
 	pulumi.RegisterOutputType(DatabaseDbOutput{})
 	pulumi.RegisterOutputType(DatabaseDbPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDbArrayOutput{})

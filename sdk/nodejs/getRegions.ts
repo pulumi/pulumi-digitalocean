@@ -100,3 +100,23 @@ export interface GetRegionsResult {
     readonly regions: outputs.GetRegionsRegion[];
     readonly sorts?: outputs.GetRegionsSort[];
 }
+
+export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
+    return pulumi.output(args).apply(a => getRegions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegions.
+ */
+export interface GetRegionsOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetRegionsFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetRegionsSortArgs>[]>;
+}

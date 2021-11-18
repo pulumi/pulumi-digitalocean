@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -72,4 +71,18 @@ export interface GetRegionResult {
      * A human-readable string that is used as a unique identifier for each region.
      */
     readonly slug: string;
+}
+
+export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
+    return pulumi.output(args).apply(a => getRegion(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegion.
+ */
+export interface GetRegionOutputArgs {
+    /**
+     * A human-readable string that is used as a unique identifier for each region.
+     */
+    slug: pulumi.Input<string>;
 }

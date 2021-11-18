@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,144 @@ type LookupKubernetesClusterResult struct {
 	Version string `pulumi:"version"`
 	// The ID of the VPC where the Kubernetes cluster is located.
 	VpcUuid string `pulumi:"vpcUuid"`
+}
+
+func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClusterOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKubernetesClusterResult, error) {
+			args := v.(LookupKubernetesClusterArgs)
+			r, err := LookupKubernetesCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKubernetesClusterResultOutput)
+}
+
+// A collection of arguments for invoking getKubernetesCluster.
+type LookupKubernetesClusterOutputArgs struct {
+	// The name of Kubernetes cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of tag names applied to the node pool.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (LookupKubernetesClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKubernetesClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKubernetesCluster.
+type LookupKubernetesClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKubernetesClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKubernetesClusterResult)(nil)).Elem()
+}
+
+func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutput() LookupKubernetesClusterResultOutput {
+	return o
+}
+
+func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutputWithContext(ctx context.Context) LookupKubernetesClusterResultOutput {
+	return o
+}
+
+// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+func (o LookupKubernetesClusterResultOutput) AutoUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) bool { return v.AutoUpgrade }).(pulumi.BoolOutput)
+}
+
+// The range of IP addresses in the overlay network of the Kubernetes cluster.
+func (o LookupKubernetesClusterResultOutput) ClusterSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ClusterSubnet }).(pulumi.StringOutput)
+}
+
+// The date and time when the node was created.
+func (o LookupKubernetesClusterResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The base URL of the API server on the Kubernetes master node.
+func (o LookupKubernetesClusterResultOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) Ha() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) bool { return v.Ha }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKubernetesClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The public IPv4 address of the Kubernetes master node.
+func (o LookupKubernetesClusterResultOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) KubeConfigs() GetKubernetesClusterKubeConfigArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterKubeConfig { return v.KubeConfigs }).(GetKubernetesClusterKubeConfigArrayOutput)
+}
+
+// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
+func (o LookupKubernetesClusterResultOutput) MaintenancePolicies() GetKubernetesClusterMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterMaintenancePolicy {
+		return v.MaintenancePolicies
+	}).(GetKubernetesClusterMaintenancePolicyArrayOutput)
+}
+
+// The auto-generated name for the node.
+func (o LookupKubernetesClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of node pools associated with the cluster. Each node pool exports the following attributes:
+func (o LookupKubernetesClusterResultOutput) NodePools() GetKubernetesClusterNodePoolArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterNodePool { return v.NodePools }).(GetKubernetesClusterNodePoolArrayOutput)
+}
+
+// The slug identifier for the region where the Kubernetes cluster is located.
+func (o LookupKubernetesClusterResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The range of assignable IP addresses for services running in the Kubernetes cluster.
+func (o LookupKubernetesClusterResultOutput) ServiceSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ServiceSubnet }).(pulumi.StringOutput)
+}
+
+// A string indicating the current status of the individual node.
+func (o LookupKubernetesClusterResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) SurgeUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) bool { return v.SurgeUpgrade }).(pulumi.BoolOutput)
+}
+
+// A list of tag names applied to the node pool.
+func (o LookupKubernetesClusterResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The date and time when the node was last updated.
+func (o LookupKubernetesClusterResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The uniform resource name (URN) for the Kubernetes cluster.
+func (o LookupKubernetesClusterResultOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+// The slug identifier for the version of Kubernetes used for the cluster.
+func (o LookupKubernetesClusterResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC where the Kubernetes cluster is located.
+func (o LookupKubernetesClusterResultOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKubernetesClusterResultOutput{})
 }

@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
+// 		example, err := digitalocean.LookupDatabaseCluster(ctx, &GetDatabaseClusterArgs{
 // 			Name: "example-cluster",
 // 		}, nil)
 // 		if err != nil {
@@ -86,4 +89,136 @@ type LookupDatabaseClusterResult struct {
 	User string `pulumi:"user"`
 	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
 	Version string `pulumi:"version"`
+}
+
+func LookupDatabaseClusterOutput(ctx *pulumi.Context, args LookupDatabaseClusterOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDatabaseClusterResult, error) {
+			args := v.(LookupDatabaseClusterArgs)
+			r, err := LookupDatabaseCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDatabaseClusterResultOutput)
+}
+
+// A collection of arguments for invoking getDatabaseCluster.
+type LookupDatabaseClusterOutputArgs struct {
+	// The name of the database cluster.
+	Name pulumi.StringInput      `pulumi:"name"`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (LookupDatabaseClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDatabaseCluster.
+type LookupDatabaseClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatabaseClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseClusterResult)(nil)).Elem()
+}
+
+func (o LookupDatabaseClusterResultOutput) ToLookupDatabaseClusterResultOutput() LookupDatabaseClusterResultOutput {
+	return o
+}
+
+func (o LookupDatabaseClusterResultOutput) ToLookupDatabaseClusterResultOutputWithContext(ctx context.Context) LookupDatabaseClusterResultOutput {
+	return o
+}
+
+// Name of the cluster's default database.
+func (o LookupDatabaseClusterResultOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Database engine used by the cluster (ex. `pg` for PostreSQL).
+func (o LookupDatabaseClusterResultOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Database cluster's hostname.
+func (o LookupDatabaseClusterResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDatabaseClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Defines when the automatic maintenance should be performed for the database cluster.
+func (o LookupDatabaseClusterResultOutput) MaintenanceWindows() GetDatabaseClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) []GetDatabaseClusterMaintenanceWindow { return v.MaintenanceWindows }).(GetDatabaseClusterMaintenanceWindowArrayOutput)
+}
+
+func (o LookupDatabaseClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Number of nodes that will be included in the cluster.
+func (o LookupDatabaseClusterResultOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Password for the cluster's default user.
+func (o LookupDatabaseClusterResultOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Network port that the database cluster is listening on.
+func (o LookupDatabaseClusterResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Same as `host`, but only accessible from resources within the account and in the same region.
+func (o LookupDatabaseClusterResultOutput) PrivateHost() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.PrivateHost }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC where the database cluster is located.
+func (o LookupDatabaseClusterResultOutput) PrivateNetworkUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.PrivateNetworkUuid }).(pulumi.StringOutput)
+}
+
+// Same as `uri`, but only accessible from resources within the account and in the same region.
+func (o LookupDatabaseClusterResultOutput) PrivateUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.PrivateUri }).(pulumi.StringOutput)
+}
+
+// DigitalOcean region where the cluster will reside.
+func (o LookupDatabaseClusterResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
+func (o LookupDatabaseClusterResultOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Size }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseClusterResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The full URI for connecting to the database cluster.
+func (o LookupDatabaseClusterResultOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// The uniform resource name of the database cluster.
+func (o LookupDatabaseClusterResultOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+// Username for the cluster's default user.
+func (o LookupDatabaseClusterResultOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.User }).(pulumi.StringOutput)
+}
+
+// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+func (o LookupDatabaseClusterResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatabaseClusterResultOutput{})
 }

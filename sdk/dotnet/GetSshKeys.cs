@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -54,6 +55,50 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetSshKeysResult> InvokeAsync(GetSshKeysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeysResult>("digitalocean:index/getSshKeys:getSshKeys", args ?? new GetSshKeysArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on SSH Keys for use in other resources.
+        /// 
+        /// This data source is useful if the SSH Keys in question are not managed by the provider or you need to
+        /// utilize any of the SSH Keys' data.
+        /// 
+        /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+        /// about a single SSH Key if you already know the unique `name` to retrieve.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// For example to find all SSH Keys:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var keys = Output.Create(DigitalOcean.GetSshKeys.InvokeAsync(new DigitalOcean.GetSshKeysArgs
+        ///         {
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSshKeysSortArgs
+        ///                 {
+        ///                     Direction = "asc",
+        ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSshKeysResult> Invoke(GetSshKeysInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSshKeysResult>("digitalocean:index/getSshKeys:getSshKeys", args ?? new GetSshKeysInvokeArgs(), options.WithVersion());
     }
 
 
@@ -86,6 +131,39 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetSshKeysArgs()
+        {
+        }
+    }
+
+    public sealed class GetSshKeysInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetSshKeysFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Filter the results.
+        /// The `filter` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetSshKeysFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSshKeysFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        [Input("sorts")]
+        private InputList<Inputs.GetSshKeysSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort the results.
+        /// The `sort` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetSshKeysSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetSshKeysSortInputArgs>());
+            set => _sorts = value;
+        }
+
+        public GetSshKeysInvokeArgs()
         {
         }
     }

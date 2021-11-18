@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -18,6 +19,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetSpacesBucketObjectsResult> InvokeAsync(GetSpacesBucketObjectsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+        /// 
+        /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
+        /// </summary>
+        public static Output<GetSpacesBucketObjectsResult> Invoke(GetSpacesBucketObjectsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +69,49 @@ namespace Pulumi.DigitalOcean
         public string Region { get; set; } = null!;
 
         public GetSpacesBucketObjectsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSpacesBucketObjectsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Lists object keys in this Spaces bucket
+        /// </summary>
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        /// <summary>
+        /// A character used to group keys (Default: none)
+        /// </summary>
+        [Input("delimiter")]
+        public Input<string>? Delimiter { get; set; }
+
+        /// <summary>
+        /// Encodes keys using this method (Default: none; besides none, only "url" can be used)
+        /// </summary>
+        [Input("encodingType")]
+        public Input<string>? EncodingType { get; set; }
+
+        /// <summary>
+        /// Maximum object keys to return (Default: 1000)
+        /// </summary>
+        [Input("maxKeys")]
+        public Input<int>? MaxKeys { get; set; }
+
+        /// <summary>
+        /// Limits results to object keys with this prefix (Default: none)
+        /// </summary>
+        [Input("prefix")]
+        public Input<string>? Prefix { get; set; }
+
+        /// <summary>
+        /// The slug of the region where the bucket is stored.
+        /// </summary>
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetSpacesBucketObjectsInvokeArgs()
         {
         }
     }

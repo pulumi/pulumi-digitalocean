@@ -120,3 +120,18 @@ export interface GetDatabaseClusterResult {
      */
     readonly version: string;
 }
+
+export function getDatabaseClusterOutput(args: GetDatabaseClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseClusterResult> {
+    return pulumi.output(args).apply(a => getDatabaseCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseCluster.
+ */
+export interface GetDatabaseClusterOutputArgs {
+    /**
+     * The name of the database cluster.
+     */
+    name: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+}

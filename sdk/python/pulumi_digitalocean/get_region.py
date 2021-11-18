@@ -12,6 +12,7 @@ __all__ = [
     'GetRegionResult',
     'AwaitableGetRegionResult',
     'get_region',
+    'get_region_output',
 ]
 
 @pulumi.output_type
@@ -136,3 +137,26 @@ def get_region(slug: Optional[str] = None,
         name=__ret__.name,
         sizes=__ret__.sizes,
         slug=__ret__.slug)
+
+
+@_utilities.lift_output_func(get_region)
+def get_region_output(slug: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
+    """
+    Get information on a single DigitalOcean region. This is useful to find out
+    what Droplet sizes and features are supported within a region.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    sfo2 = digitalocean.get_region(slug="sfo2")
+    pulumi.export("regionName", sfo2.name)
+    ```
+
+
+    :param str slug: A human-readable string that is used as a unique identifier for each region.
+    """
+    ...

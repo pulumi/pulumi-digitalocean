@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetSizesSortArgs : Pulumi.InvokeArgs
+    public sealed class GetSizesSortInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
         /// </summary>
         [Input("direction")]
-        public string? Direction { get; set; }
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Sort the sizes by this key. This may be one of `slug`,
         /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
-        public GetSizesSortArgs()
+        public GetSizesSortInputArgs()
         {
         }
     }

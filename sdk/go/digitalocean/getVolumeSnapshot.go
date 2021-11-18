@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +31,7 @@ import (
 // 		opt0 := true
 // 		opt1 := "^web"
 // 		opt2 := "nyc3"
-// 		_, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
+// 		_, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
 // 			MostRecent: &opt0,
 // 			NameRegex:  &opt1,
 // 			Region:     &opt2,
@@ -48,6 +51,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -56,7 +60,7 @@ import (
 // 		opt0 := "^web"
 // 		opt1 := "nyc3"
 // 		opt2 := true
-// 		snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
+// 		snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
 // 			NameRegex:  &opt0,
 // 			Region:     &opt1,
 // 			MostRecent: &opt2,
@@ -117,4 +121,99 @@ type LookupVolumeSnapshotResult struct {
 	Tags []string `pulumi:"tags"`
 	// The ID of the volume from which the volume snapshot originated.
 	VolumeId string `pulumi:"volumeId"`
+}
+
+func LookupVolumeSnapshotOutput(ctx *pulumi.Context, args LookupVolumeSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeSnapshotResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVolumeSnapshotResult, error) {
+			args := v.(LookupVolumeSnapshotArgs)
+			r, err := LookupVolumeSnapshot(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVolumeSnapshotResultOutput)
+}
+
+// A collection of arguments for invoking getVolumeSnapshot.
+type LookupVolumeSnapshotOutputArgs struct {
+	// If more than one result is returned, use the most recent volume snapshot.
+	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
+	// The name of the volume snapshot.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupVolumeSnapshotOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVolumeSnapshotArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVolumeSnapshot.
+type LookupVolumeSnapshotResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVolumeSnapshotResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVolumeSnapshotResult)(nil)).Elem()
+}
+
+func (o LookupVolumeSnapshotResultOutput) ToLookupVolumeSnapshotResultOutput() LookupVolumeSnapshotResultOutput {
+	return o
+}
+
+func (o LookupVolumeSnapshotResultOutput) ToLookupVolumeSnapshotResultOutputWithContext(ctx context.Context) LookupVolumeSnapshotResultOutput {
+	return o
+}
+
+// The date and time the volume snapshot was created.
+func (o LookupVolumeSnapshotResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVolumeSnapshotResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
+func (o LookupVolumeSnapshotResultOutput) MinDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) int { return v.MinDiskSize }).(pulumi.IntOutput)
+}
+
+func (o LookupVolumeSnapshotResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupVolumeSnapshotResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupVolumeSnapshotResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupVolumeSnapshotResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
+func (o LookupVolumeSnapshotResultOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// The billable size of the volume snapshot in gigabytes.
+func (o LookupVolumeSnapshotResultOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// A list of the tags associated to the volume snapshot.
+func (o LookupVolumeSnapshotResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the volume from which the volume snapshot originated.
+func (o LookupVolumeSnapshotResultOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) string { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVolumeSnapshotResultOutput{})
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -96,4 +95,30 @@ export interface GetDropletSnapshotResult {
      * The billable size of the Droplet snapshot in gigabytes.
      */
     readonly size: number;
+}
+
+export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletSnapshotResult> {
+    return pulumi.output(args).apply(a => getDropletSnapshot(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDropletSnapshot.
+ */
+export interface GetDropletSnapshotOutputArgs {
+    /**
+     * If more than one result is returned, use the most recent Droplet snapshot.
+     */
+    mostRecent?: pulumi.Input<boolean>;
+    /**
+     * The name of the Droplet snapshot.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
+     */
+    region?: pulumi.Input<string>;
 }

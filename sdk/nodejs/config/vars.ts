@@ -4,25 +4,61 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("digitalocean");
+declare var exports: any;
+const __config = new pulumi.Config("digitalocean");
 
 /**
  * The URL to use for the DigitalOcean API.
  */
-export let apiEndpoint: string | undefined = __config.get("apiEndpoint") || (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
+export declare const apiEndpoint: string;
+Object.defineProperty(exports, "apiEndpoint", {
+    get() {
+        return __config.get("apiEndpoint") ?? (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
+    },
+    enumerable: true,
+});
+
 /**
  * The access key ID for Spaces API operations.
  */
-export let spacesAccessId: string | undefined = __config.get("spacesAccessId");
+export declare const spacesAccessId: string | undefined;
+Object.defineProperty(exports, "spacesAccessId", {
+    get() {
+        return __config.get("spacesAccessId");
+    },
+    enumerable: true,
+});
+
 /**
  * The URL to use for the DigitalOcean Spaces API.
  */
-export let spacesEndpoint: string | undefined = __config.get("spacesEndpoint") || utilities.getEnv("SPACES_ENDPOINT_URL");
+export declare const spacesEndpoint: string | undefined;
+Object.defineProperty(exports, "spacesEndpoint", {
+    get() {
+        return __config.get("spacesEndpoint") ?? utilities.getEnv("SPACES_ENDPOINT_URL");
+    },
+    enumerable: true,
+});
+
 /**
  * The secret access key for Spaces API operations.
  */
-export let spacesSecretKey: string | undefined = __config.get("spacesSecretKey");
+export declare const spacesSecretKey: string | undefined;
+Object.defineProperty(exports, "spacesSecretKey", {
+    get() {
+        return __config.get("spacesSecretKey");
+    },
+    enumerable: true,
+});
+
 /**
  * The token key for API operations.
  */
-export let token: string | undefined = __config.get("token");
+export declare const token: string | undefined;
+Object.defineProperty(exports, "token", {
+    get() {
+        return __config.get("token");
+    },
+    enumerable: true,
+});
+

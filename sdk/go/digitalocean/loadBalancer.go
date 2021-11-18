@@ -14,6 +14,112 @@ import (
 // Provides a DigitalOcean Load Balancer resource. This can be used to create,
 // modify, and delete Load Balancers.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+// 			Region: pulumi.String("nyc3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+// 			Region: pulumi.String("nyc3"),
+// 			ForwardingRules: LoadBalancerForwardingRuleArray{
+// 				&LoadBalancerForwardingRuleArgs{
+// 					EntryPort:      pulumi.Int(80),
+// 					EntryProtocol:  pulumi.String("http"),
+// 					TargetPort:     pulumi.Int(80),
+// 					TargetProtocol: pulumi.String("http"),
+// 				},
+// 			},
+// 			Healthcheck: &LoadBalancerHealthcheckArgs{
+// 				Port:     pulumi.Int(22),
+// 				Protocol: pulumi.String("tcp"),
+// 			},
+// 			DropletIds: pulumi.IntArray{
+// 				web.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
+// lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
+// operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
+// `Delete old certificate`. When doing so, you must also change the name of the certificate,
+// as there cannot be multiple certificates with the same name in an account.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+// 			PrivateKey:      pulumi.String("file('key.pem')"),
+// 			LeafCertificate: pulumi.String("file('cert.pem')"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
+// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+// 			Region: pulumi.String("nyc3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+// 			Region: pulumi.String("nyc3"),
+// 			ForwardingRules: LoadBalancerForwardingRuleArray{
+// 				&LoadBalancerForwardingRuleArgs{
+// 					EntryPort:       pulumi.Int(443),
+// 					EntryProtocol:   pulumi.String("https"),
+// 					TargetPort:      pulumi.Int(80),
+// 					TargetProtocol:  pulumi.String("http"),
+// 					CertificateName: cert.Name,
+// 				},
+// 			},
+// 			Healthcheck: &LoadBalancerHealthcheckArgs{
+// 				Port:     pulumi.Int(22),
+// 				Protocol: pulumi.String("tcp"),
+// 			},
+// 			DropletIds: pulumi.IntArray{
+// 				web.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Load Balancers can be imported using the `id`, e.g.
@@ -330,7 +436,7 @@ type LoadBalancerArrayInput interface {
 type LoadBalancerArray []LoadBalancerInput
 
 func (LoadBalancerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LoadBalancer)(nil))
+	return reflect.TypeOf((*[]*LoadBalancer)(nil)).Elem()
 }
 
 func (i LoadBalancerArray) ToLoadBalancerArrayOutput() LoadBalancerArrayOutput {
@@ -355,7 +461,7 @@ type LoadBalancerMapInput interface {
 type LoadBalancerMap map[string]LoadBalancerInput
 
 func (LoadBalancerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LoadBalancer)(nil))
+	return reflect.TypeOf((*map[string]*LoadBalancer)(nil)).Elem()
 }
 
 func (i LoadBalancerMap) ToLoadBalancerMapOutput() LoadBalancerMapOutput {
@@ -366,9 +472,7 @@ func (i LoadBalancerMap) ToLoadBalancerMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMapOutput)
 }
 
-type LoadBalancerOutput struct {
-	*pulumi.OutputState
-}
+type LoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancer)(nil))
@@ -387,14 +491,12 @@ func (o LoadBalancerOutput) ToLoadBalancerPtrOutput() LoadBalancerPtrOutput {
 }
 
 func (o LoadBalancerOutput) ToLoadBalancerPtrOutputWithContext(ctx context.Context) LoadBalancerPtrOutput {
-	return o.ApplyT(func(v LoadBalancer) *LoadBalancer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancer) *LoadBalancer {
 		return &v
 	}).(LoadBalancerPtrOutput)
 }
 
-type LoadBalancerPtrOutput struct {
-	*pulumi.OutputState
-}
+type LoadBalancerPtrOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LoadBalancer)(nil))
@@ -406,6 +508,16 @@ func (o LoadBalancerPtrOutput) ToLoadBalancerPtrOutput() LoadBalancerPtrOutput {
 
 func (o LoadBalancerPtrOutput) ToLoadBalancerPtrOutputWithContext(ctx context.Context) LoadBalancerPtrOutput {
 	return o
+}
+
+func (o LoadBalancerPtrOutput) Elem() LoadBalancerOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancer
+		return ret
+	}).(LoadBalancerOutput)
 }
 
 type LoadBalancerArrayOutput struct{ *pulumi.OutputState }
@@ -449,6 +561,10 @@ func (o LoadBalancerMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerInput)(nil)).Elem(), &LoadBalancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPtrInput)(nil)).Elem(), &LoadBalancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerArrayInput)(nil)).Elem(), LoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMapInput)(nil)).Elem(), LoadBalancerMap{})
 	pulumi.RegisterOutputType(LoadBalancerOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerArrayOutput{})

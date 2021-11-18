@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +32,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetSpacesBuckets(ctx, &digitalocean.GetSpacesBucketsArgs{
-// 			Filters: []digitalocean.GetSpacesBucketsFilter{
-// 				digitalocean.GetSpacesBucketsFilter{
+// 		_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
+// 			Filters: []GetSpacesBucketsFilter{
+// 				GetSpacesBucketsFilter{
 // 					Key: "region",
 // 					Values: []string{
 // 						"nyc3",
@@ -58,17 +61,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetSpacesBuckets(ctx, &digitalocean.GetSpacesBucketsArgs{
-// 			Filters: []digitalocean.GetSpacesBucketsFilter{
-// 				digitalocean.GetSpacesBucketsFilter{
+// 		_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
+// 			Filters: []GetSpacesBucketsFilter{
+// 				GetSpacesBucketsFilter{
 // 					Key: "region",
 // 					Values: []string{
 // 						"nyc3",
 // 					},
 // 				},
 // 			},
-// 			Sorts: []digitalocean.GetSpacesBucketsSort{
-// 				digitalocean.GetSpacesBucketsSort{
+// 			Sorts: []GetSpacesBucketsSort{
+// 				GetSpacesBucketsSort{
 // 					Direction: "desc",
 // 					Key:       "name",
 // 				},
@@ -108,4 +111,64 @@ type GetSpacesBucketsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id    string                 `pulumi:"id"`
 	Sorts []GetSpacesBucketsSort `pulumi:"sorts"`
+}
+
+func GetSpacesBucketsOutput(ctx *pulumi.Context, args GetSpacesBucketsOutputArgs, opts ...pulumi.InvokeOption) GetSpacesBucketsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSpacesBucketsResult, error) {
+			args := v.(GetSpacesBucketsArgs)
+			r, err := GetSpacesBuckets(ctx, &args, opts...)
+			return *r, err
+		}).(GetSpacesBucketsResultOutput)
+}
+
+// A collection of arguments for invoking getSpacesBuckets.
+type GetSpacesBucketsOutputArgs struct {
+	// Filter the results.
+	// The `filter` block is documented below.
+	Filters GetSpacesBucketsFilterArrayInput `pulumi:"filters"`
+	// Sort the results.
+	// The `sort` block is documented below.
+	Sorts GetSpacesBucketsSortArrayInput `pulumi:"sorts"`
+}
+
+func (GetSpacesBucketsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSpacesBuckets.
+type GetSpacesBucketsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsResult)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsResultOutput) ToGetSpacesBucketsResultOutput() GetSpacesBucketsResultOutput {
+	return o
+}
+
+func (o GetSpacesBucketsResultOutput) ToGetSpacesBucketsResultOutputWithContext(ctx context.Context) GetSpacesBucketsResultOutput {
+	return o
+}
+
+// A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:
+func (o GetSpacesBucketsResultOutput) Buckets() GetSpacesBucketsBucketArrayOutput {
+	return o.ApplyT(func(v GetSpacesBucketsResult) []GetSpacesBucketsBucket { return v.Buckets }).(GetSpacesBucketsBucketArrayOutput)
+}
+
+func (o GetSpacesBucketsResultOutput) Filters() GetSpacesBucketsFilterArrayOutput {
+	return o.ApplyT(func(v GetSpacesBucketsResult) []GetSpacesBucketsFilter { return v.Filters }).(GetSpacesBucketsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSpacesBucketsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSpacesBucketsResultOutput) Sorts() GetSpacesBucketsSortArrayOutput {
+	return o.ApplyT(func(v GetSpacesBucketsResult) []GetSpacesBucketsSort { return v.Sorts }).(GetSpacesBucketsSortArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSpacesBucketsResultOutput{})
 }

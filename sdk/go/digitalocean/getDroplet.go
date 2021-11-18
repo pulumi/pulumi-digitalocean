@@ -4,6 +4,9 @@
 package digitalocean
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +33,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "web"
-// 		example, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+// 		example, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -55,7 +58,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "web"
-// 		_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+// 		_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
 // 			Tag: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -79,7 +82,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id
-// 		_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+// 		_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
 // 			Id: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -158,4 +161,172 @@ type LookupDropletResult struct {
 	VolumeIds []string `pulumi:"volumeIds"`
 	// The ID of the VPC where the Droplet is located.
 	VpcUuid string `pulumi:"vpcUuid"`
+}
+
+func LookupDropletOutput(ctx *pulumi.Context, args LookupDropletOutputArgs, opts ...pulumi.InvokeOption) LookupDropletResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDropletResult, error) {
+			args := v.(LookupDropletArgs)
+			r, err := LookupDroplet(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDropletResultOutput)
+}
+
+// A collection of arguments for invoking getDroplet.
+type LookupDropletOutputArgs struct {
+	// The ID of the Droplet
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The name of the Droplet.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A tag applied to the Droplet.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (LookupDropletOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDropletArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDroplet.
+type LookupDropletResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDropletResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDropletResult)(nil)).Elem()
+}
+
+func (o LookupDropletResultOutput) ToLookupDropletResultOutput() LookupDropletResultOutput {
+	return o
+}
+
+func (o LookupDropletResultOutput) ToLookupDropletResultOutputWithContext(ctx context.Context) LookupDropletResultOutput {
+	return o
+}
+
+// Whether backups are enabled.
+func (o LookupDropletResultOutput) Backups() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDropletResult) bool { return v.Backups }).(pulumi.BoolOutput)
+}
+
+func (o LookupDropletResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The size of the Droplets disk in GB.
+func (o LookupDropletResultOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDropletResult) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+func (o LookupDropletResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDropletResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The Droplet image ID or slug.
+func (o LookupDropletResultOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The Droplets public IPv4 address
+func (o LookupDropletResultOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+// The Droplets private IPv4 address
+func (o LookupDropletResultOutput) Ipv4AddressPrivate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Ipv4AddressPrivate }).(pulumi.StringOutput)
+}
+
+// Whether IPv6 is enabled.
+func (o LookupDropletResultOutput) Ipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDropletResult) bool { return v.Ipv6 }).(pulumi.BoolOutput)
+}
+
+// The Droplets public IPv6 address
+func (o LookupDropletResultOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+// The Droplets private IPv6 address
+func (o LookupDropletResultOutput) Ipv6AddressPrivate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Ipv6AddressPrivate }).(pulumi.StringOutput)
+}
+
+// Whether the Droplet is locked.
+func (o LookupDropletResultOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDropletResult) bool { return v.Locked }).(pulumi.BoolOutput)
+}
+
+// The amount of the Droplets memory in MB.
+func (o LookupDropletResultOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDropletResult) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// Whether monitoring agent is installed.
+func (o LookupDropletResultOutput) Monitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDropletResult) bool { return v.Monitoring }).(pulumi.BoolOutput)
+}
+
+func (o LookupDropletResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Droplet hourly price.
+func (o LookupDropletResultOutput) PriceHourly() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDropletResult) float64 { return v.PriceHourly }).(pulumi.Float64Output)
+}
+
+// Droplet monthly price.
+func (o LookupDropletResultOutput) PriceMonthly() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDropletResult) float64 { return v.PriceMonthly }).(pulumi.Float64Output)
+}
+
+// Whether private networks are enabled.
+func (o LookupDropletResultOutput) PrivateNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDropletResult) bool { return v.PrivateNetworking }).(pulumi.BoolOutput)
+}
+
+// The region the Droplet is running in.
+func (o LookupDropletResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique slug that indentifies the type of Droplet.
+func (o LookupDropletResultOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// The status of the Droplet.
+func (o LookupDropletResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupDropletResultOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDropletResult) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// A list of the tags associated to the Droplet.
+func (o LookupDropletResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDropletResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The uniform resource name of the Droplet
+func (o LookupDropletResultOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+// The number of the Droplets virtual CPUs.
+func (o LookupDropletResultOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDropletResult) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+// List of the IDs of each volumes attached to the Droplet.
+func (o LookupDropletResultOutput) VolumeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDropletResult) []string { return v.VolumeIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the VPC where the Droplet is located.
+func (o LookupDropletResultOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDropletResultOutput{})
 }

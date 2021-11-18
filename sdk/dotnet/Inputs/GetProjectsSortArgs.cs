@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetProjectsSortArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectsSortInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
         /// </summary>
         [Input("direction")]
-        public string? Direction { get; set; }
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Sort the projects by this key. This may be one of `name`,
         /// `purpose`, `description`, or `environment`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
-        public GetProjectsSortArgs()
+        public GetProjectsSortInputArgs()
         {
         }
     }

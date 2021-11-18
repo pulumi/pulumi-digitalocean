@@ -12,6 +12,7 @@ __all__ = [
     'GetDomainResult',
     'AwaitableGetDomainResult',
     'get_domain',
+    'get_domain_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,21 @@ def get_domain(name: Optional[str] = None,
         name=__ret__.name,
         ttl=__ret__.ttl,
         zone_file=__ret__.zone_file)
+
+
+@_utilities.lift_output_func(get_domain)
+def get_domain_output(name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
+    """
+    Get information on a domain. This data source provides the name, TTL, and zone
+    file as configured on your DigitalOcean account. This is useful if the domain
+    name in question is not managed by this provider or you need to utilize TTL or zone
+    file data.
+
+    An error is triggered if the provided domain name is not managed with your
+    DigitalOcean account.
+
+
+    :param str name: The name of the domain.
+    """
+    ...

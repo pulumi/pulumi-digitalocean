@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetDropletsSortArgs : Pulumi.InvokeArgs
+    public sealed class GetDropletsSortInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
         /// </summary>
         [Input("direction")]
-        public string? Direction { get; set; }
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
@@ -25,9 +25,9 @@ namespace Pulumi.DigitalOcean.Inputs
         /// `status`, `urn`, `vcpus`, or `vpc_uuid`.
         /// </summary>
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
-        public GetDropletsSortArgs()
+        public GetDropletsSortInputArgs()
         {
         }
     }

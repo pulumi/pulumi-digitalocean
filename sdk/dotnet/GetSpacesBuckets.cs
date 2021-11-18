@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -93,6 +94,89 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Task<GetSpacesBucketsResult> InvokeAsync(GetSpacesBucketsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
+        /// If no filters are specified, all Spaces buckets will be returned.
+        /// 
+        /// Note: You can use the `digitalocean.SpacesBucket` data source to
+        /// obtain metadata about a single bucket if you already know its `name` and `region`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter buckets.
+        /// 
+        /// Get all buckets in a region:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var nyc3 = Output.Create(DigitalOcean.GetSpacesBuckets.InvokeAsync(new DigitalOcean.GetSpacesBucketsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSpacesBucketsFilterArgs
+        ///                 {
+        ///                     Key = "region",
+        ///                     Values = 
+        ///                     {
+        ///                         "nyc3",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// You can sort the results as well:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var nyc3 = Output.Create(DigitalOcean.GetSpacesBuckets.InvokeAsync(new DigitalOcean.GetSpacesBucketsArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSpacesBucketsFilterArgs
+        ///                 {
+        ///                     Key = "region",
+        ///                     Values = 
+        ///                     {
+        ///                         "nyc3",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Sorts = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSpacesBucketsSortArgs
+        ///                 {
+        ///                     Direction = "desc",
+        ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSpacesBucketsResult> Invoke(GetSpacesBucketsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -125,6 +209,39 @@ namespace Pulumi.DigitalOcean
         }
 
         public GetSpacesBucketsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSpacesBucketsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetSpacesBucketsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Filter the results.
+        /// The `filter` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetSpacesBucketsFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSpacesBucketsFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        [Input("sorts")]
+        private InputList<Inputs.GetSpacesBucketsSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort the results.
+        /// The `sort` block is documented below.
+        /// </summary>
+        public InputList<Inputs.GetSpacesBucketsSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetSpacesBucketsSortInputArgs>());
+            set => _sorts = value;
+        }
+
+        public GetSpacesBucketsInvokeArgs()
         {
         }
     }

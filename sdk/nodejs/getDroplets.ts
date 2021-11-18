@@ -103,3 +103,23 @@ export interface GetDropletsResult {
     readonly id: string;
     readonly sorts?: outputs.GetDropletsSort[];
 }
+
+export function getDropletsOutput(args?: GetDropletsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletsResult> {
+    return pulumi.output(args).apply(a => getDroplets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDroplets.
+ */
+export interface GetDropletsOutputArgs {
+    /**
+     * Filter the results.
+     * The `filter` block is documented below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDropletsFilterArgs>[]>;
+    /**
+     * Sort the results.
+     * The `sort` block is documented below.
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetDropletsSortArgs>[]>;
+}
