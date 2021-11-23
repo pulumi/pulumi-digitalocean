@@ -208,7 +208,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
-        :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node.
+        :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -336,7 +336,7 @@ class _KubernetesClusterState:
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The public IPv4 address of the Kubernetes master node.
+        The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         """
         return pulumi.get(self, "ipv4_address")
 
@@ -643,7 +643,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
-        :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node.
+        :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -733,7 +733,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> pulumi.Output[str]:
         """
-        The public IPv4 address of the Kubernetes master node.
+        The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         """
         return pulumi.get(self, "ipv4_address")
 

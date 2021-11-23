@@ -115,6 +115,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly algorithm!: pulumi.Output<string | undefined>;
     /**
+     * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+     */
+    public readonly disableLetsEncryptDnsRecords!: pulumi.Output<boolean | undefined>;
+    /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
     public readonly dropletIds!: pulumi.Output<number[]>;
@@ -162,9 +166,13 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
     public readonly size!: pulumi.Output<string | undefined>;
+    /**
+     * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+     */
+    public readonly sizeUnit!: pulumi.Output<number>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A `stickySessions` block to be assigned to the
@@ -190,6 +198,7 @@ export class LoadBalancer extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
             inputs["algorithm"] = state ? state.algorithm : undefined;
+            inputs["disableLetsEncryptDnsRecords"] = state ? state.disableLetsEncryptDnsRecords : undefined;
             inputs["dropletIds"] = state ? state.dropletIds : undefined;
             inputs["dropletTag"] = state ? state.dropletTag : undefined;
             inputs["enableBackendKeepalive"] = state ? state.enableBackendKeepalive : undefined;
@@ -202,6 +211,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
+            inputs["sizeUnit"] = state ? state.sizeUnit : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["stickySessions"] = state ? state.stickySessions : undefined;
             inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
@@ -214,6 +224,7 @@ export class LoadBalancer extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             inputs["algorithm"] = args ? args.algorithm : undefined;
+            inputs["disableLetsEncryptDnsRecords"] = args ? args.disableLetsEncryptDnsRecords : undefined;
             inputs["dropletIds"] = args ? args.dropletIds : undefined;
             inputs["dropletTag"] = args ? args.dropletTag : undefined;
             inputs["enableBackendKeepalive"] = args ? args.enableBackendKeepalive : undefined;
@@ -224,6 +235,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["size"] = args ? args.size : undefined;
+            inputs["sizeUnit"] = args ? args.sizeUnit : undefined;
             inputs["stickySessions"] = args ? args.stickySessions : undefined;
             inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             inputs["ip"] = undefined /*out*/;
@@ -247,6 +259,10 @@ export interface LoadBalancerState {
      * or `leastConnections`. The default value is `roundRobin`.
      */
     algorithm?: pulumi.Input<string | enums.Algorithm>;
+    /**
+     * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+     */
+    disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -295,9 +311,13 @@ export interface LoadBalancerState {
      */
     region?: pulumi.Input<string | enums.Region>;
     /**
-     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
     size?: pulumi.Input<string>;
+    /**
+     * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+     */
+    sizeUnit?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
     /**
      * A `stickySessions` block to be assigned to the
@@ -320,6 +340,10 @@ export interface LoadBalancerArgs {
      * or `leastConnections`. The default value is `roundRobin`.
      */
     algorithm?: pulumi.Input<string | enums.Algorithm>;
+    /**
+     * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+     */
+    disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -363,9 +387,13 @@ export interface LoadBalancerArgs {
      */
     region: pulumi.Input<string | enums.Region>;
     /**
-     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
     size?: pulumi.Input<string>;
+    /**
+     * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+     */
+    sizeUnit?: pulumi.Input<number>;
     /**
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.

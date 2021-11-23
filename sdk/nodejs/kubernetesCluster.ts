@@ -67,7 +67,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly ha!: pulumi.Output<boolean | undefined>;
     /**
-     * The public IPv4 address of the Kubernetes master node.
+     * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
     public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
     public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
@@ -215,7 +215,7 @@ export interface KubernetesClusterState {
      */
     ha?: pulumi.Input<boolean>;
     /**
-     * The public IPv4 address of the Kubernetes master node.
+     * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
     ipv4Address?: pulumi.Input<string>;
     kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;

@@ -38,6 +38,7 @@
         "getApp.ts",
         "getCertificate.ts",
         "getContainerRegistry.ts",
+        "getDatabaseCa.ts",
         "getDatabaseCluster.ts",
         "getDatabaseReplica.ts",
         "getDomain.ts",

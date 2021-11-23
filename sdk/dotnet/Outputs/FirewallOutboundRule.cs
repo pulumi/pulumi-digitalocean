@@ -25,6 +25,11 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<int> DestinationDropletIds;
         /// <summary>
+        /// An array containing the IDs of
+        /// the Kubernetes clusters to which the outbound traffic will be allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> DestinationKubernetesIds;
+        /// <summary>
         /// An array containing the IDs
         /// of the Load Balancers to which the outbound traffic will be allowed.
         /// </summary>
@@ -33,7 +38,6 @@ namespace Pulumi.DigitalOcean.Outputs
         /// An array containing the names of Tags
         /// corresponding to groups of Droplets to which the outbound traffic will
         /// be allowed.
-        /// traffic.
         /// </summary>
         public readonly ImmutableArray<string> DestinationTags;
         /// <summary>
@@ -55,6 +59,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<int> destinationDropletIds,
 
+            ImmutableArray<string> destinationKubernetesIds,
+
             ImmutableArray<string> destinationLoadBalancerUids,
 
             ImmutableArray<string> destinationTags,
@@ -65,6 +71,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             DestinationAddresses = destinationAddresses;
             DestinationDropletIds = destinationDropletIds;
+            DestinationKubernetesIds = destinationKubernetesIds;
             DestinationLoadBalancerUids = destinationLoadBalancerUids;
             DestinationTags = destinationTags;
             PortRange = portRange;

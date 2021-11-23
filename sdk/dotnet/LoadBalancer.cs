@@ -131,6 +131,12 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Algorithm { get; private set; } = null!;
 
         /// <summary>
+        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        /// </summary>
+        [Output("disableLetsEncryptDnsRecords")]
+        public Output<bool?> DisableLetsEncryptDnsRecords { get; private set; } = null!;
+
+        /// <summary>
         /// A list of the IDs of each droplet to be attached to the Load Balancer.
         /// </summary>
         [Output("dropletIds")]
@@ -200,10 +206,16 @@ namespace Pulumi.DigitalOcean
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         /// </summary>
         [Output("size")]
         public Output<string?> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// </summary>
+        [Output("sizeUnit")]
+        public Output<int> SizeUnit { get; private set; } = null!;
 
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -274,6 +286,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("algorithm")]
         public InputUnion<string, Pulumi.DigitalOcean.Algorithm>? Algorithm { get; set; }
+
+        /// <summary>
+        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        /// </summary>
+        [Input("disableLetsEncryptDnsRecords")]
+        public Input<bool>? DisableLetsEncryptDnsRecords { get; set; }
 
         [Input("dropletIds")]
         private InputList<int>? _dropletIds;
@@ -348,10 +366,16 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
 
         /// <summary>
-        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// </summary>
+        [Input("sizeUnit")]
+        public Input<int>? SizeUnit { get; set; }
 
         /// <summary>
         /// A `sticky_sessions` block to be assigned to the
@@ -380,6 +404,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("algorithm")]
         public InputUnion<string, Pulumi.DigitalOcean.Algorithm>? Algorithm { get; set; }
+
+        /// <summary>
+        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        /// </summary>
+        [Input("disableLetsEncryptDnsRecords")]
+        public Input<bool>? DisableLetsEncryptDnsRecords { get; set; }
 
         [Input("dropletIds")]
         private InputList<int>? _dropletIds;
@@ -463,10 +493,16 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
-        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// </summary>
+        [Input("sizeUnit")]
+        public Input<int>? SizeUnit { get; set; }
 
         [Input("status")]
         public Input<string>? Status { get; set; }

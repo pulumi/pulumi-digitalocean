@@ -21,10 +21,13 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthchecks=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, size=None, status=None, sticky_sessions=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthchecks=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
+        if disable_lets_encrypt_dns_records and not isinstance(disable_lets_encrypt_dns_records, bool):
+            raise TypeError("Expected argument 'disable_lets_encrypt_dns_records' to be a bool")
+        pulumi.set(__self__, "disable_lets_encrypt_dns_records", disable_lets_encrypt_dns_records)
         if droplet_ids and not isinstance(droplet_ids, list):
             raise TypeError("Expected argument 'droplet_ids' to be a list")
         pulumi.set(__self__, "droplet_ids", droplet_ids)
@@ -64,6 +67,9 @@ class GetLoadBalancerResult:
         if size and not isinstance(size, str):
             raise TypeError("Expected argument 'size' to be a str")
         pulumi.set(__self__, "size", size)
+        if size_unit and not isinstance(size_unit, int):
+            raise TypeError("Expected argument 'size_unit' to be a int")
+        pulumi.set(__self__, "size_unit", size_unit)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -78,6 +84,11 @@ class GetLoadBalancerResult:
     @pulumi.getter
     def algorithm(self) -> str:
         return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="disableLetsEncryptDnsRecords")
+    def disable_lets_encrypt_dns_records(self) -> bool:
+        return pulumi.get(self, "disable_lets_encrypt_dns_records")
 
     @property
     @pulumi.getter(name="dropletIds")
@@ -148,6 +159,11 @@ class GetLoadBalancerResult:
         return pulumi.get(self, "size")
 
     @property
+    @pulumi.getter(name="sizeUnit")
+    def size_unit(self) -> int:
+        return pulumi.get(self, "size_unit")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         return pulumi.get(self, "status")
@@ -170,6 +186,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             yield self
         return GetLoadBalancerResult(
             algorithm=self.algorithm,
+            disable_lets_encrypt_dns_records=self.disable_lets_encrypt_dns_records,
             droplet_ids=self.droplet_ids,
             droplet_tag=self.droplet_tag,
             enable_backend_keepalive=self.enable_backend_keepalive,
@@ -183,6 +200,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             redirect_http_to_https=self.redirect_http_to_https,
             region=self.region,
             size=self.size,
+            size_unit=self.size_unit,
             status=self.status,
             sticky_sessions=self.sticky_sessions,
             vpc_uuid=self.vpc_uuid)
@@ -223,6 +241,7 @@ def get_load_balancer(name: Optional[str] = None,
 
     return AwaitableGetLoadBalancerResult(
         algorithm=__ret__.algorithm,
+        disable_lets_encrypt_dns_records=__ret__.disable_lets_encrypt_dns_records,
         droplet_ids=__ret__.droplet_ids,
         droplet_tag=__ret__.droplet_tag,
         enable_backend_keepalive=__ret__.enable_backend_keepalive,
@@ -236,6 +255,7 @@ def get_load_balancer(name: Optional[str] = None,
         redirect_http_to_https=__ret__.redirect_http_to_https,
         region=__ret__.region,
         size=__ret__.size,
+        size_unit=__ret__.size_unit,
         status=__ret__.status,
         sticky_sessions=__ret__.sticky_sessions,
         vpc_uuid=__ret__.vpc_uuid)

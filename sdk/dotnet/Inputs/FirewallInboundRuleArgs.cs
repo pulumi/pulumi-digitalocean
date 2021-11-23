@@ -55,6 +55,19 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _sourceDropletIds = value;
         }
 
+        [Input("sourceKubernetesIds")]
+        private InputList<string>? _sourceKubernetesIds;
+
+        /// <summary>
+        /// An array containing the IDs of
+        /// the Kubernetes clusters from which the inbound traffic will be accepted.
+        /// </summary>
+        public InputList<string> SourceKubernetesIds
+        {
+            get => _sourceKubernetesIds ?? (_sourceKubernetesIds = new InputList<string>());
+            set => _sourceKubernetesIds = value;
+        }
+
         [Input("sourceLoadBalancerUids")]
         private InputList<string>? _sourceLoadBalancerUids;
 

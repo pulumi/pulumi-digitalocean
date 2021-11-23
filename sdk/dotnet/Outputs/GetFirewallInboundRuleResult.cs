@@ -36,6 +36,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// the Droplets from which the inbound traffic will be accepted.
         /// </summary>
         public readonly ImmutableArray<int> SourceDropletIds;
+        public readonly ImmutableArray<string> SourceKubernetesIds;
         /// <summary>
         /// An array containing the IDs
         /// of the Load Balancers from which the inbound traffic will be accepted.
@@ -57,6 +58,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<int> sourceDropletIds,
 
+            ImmutableArray<string> sourceKubernetesIds,
+
             ImmutableArray<string> sourceLoadBalancerUids,
 
             ImmutableArray<string> sourceTags)
@@ -65,6 +68,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Protocol = protocol;
             SourceAddresses = sourceAddresses;
             SourceDropletIds = sourceDropletIds;
+            SourceKubernetesIds = sourceKubernetesIds;
             SourceLoadBalancerUids = sourceLoadBalancerUids;
             SourceTags = sourceTags;
         }

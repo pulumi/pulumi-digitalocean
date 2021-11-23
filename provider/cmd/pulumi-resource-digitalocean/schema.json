@@ -2043,6 +2043,18 @@
                         }
                     }
                 },
+                "sourceKubernetesIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array containing the IDs of\nthe Kubernetes clusters from which the inbound traffic will be accepted.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sourceLoadBalancerUids": {
                     "type": "array",
                     "items": {
@@ -2099,6 +2111,18 @@
                         }
                     }
                 },
+                "destinationKubernetesIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array containing the IDs of\nthe Kubernetes clusters to which the outbound traffic will be allowed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "destinationLoadBalancerUids": {
                     "type": "array",
                     "items": {
@@ -2116,7 +2140,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array containing the names of Tags\ncorresponding to groups of Droplets to which the outbound traffic will\nbe allowed.\ntraffic.\n",
+                    "description": "An array containing the names of Tags\ncorresponding to groups of Droplets to which the outbound traffic will\nbe allowed.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5465,6 +5489,17 @@
                         }
                     }
                 },
+                "sourceKubernetesIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sourceLoadBalancerUids": {
                     "type": "array",
                     "items": {
@@ -5515,6 +5550,17 @@
                         "type": "integer"
                     },
                     "description": "An array containing the IDs of\nthe Droplets to which the outbound traffic will be allowed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationKubernetesIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10555,7 +10601,7 @@
                 },
                 "ipv4Address": {
                     "type": "string",
-                    "description": "The public IPv4 address of the Kubernetes master node.\n"
+                    "description": "The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)\n"
                 },
                 "kubeConfigs": {
                     "type": "array",
@@ -10716,7 +10762,7 @@
                     },
                     "ipv4Address": {
                         "type": "string",
-                        "description": "The public IPv4 address of the Kubernetes master node.\n"
+                        "description": "The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)\n"
                     },
                     "kubeConfigs": {
                         "type": "array",
@@ -11002,6 +11048,10 @@
                     "type": "string",
                     "description": "The load balancing algorithm used to determine\nwhich backend Droplet will be selected by a client. It must be either `round_robin`\nor `least_connections`. The default value is `round_robin`.\n"
                 },
+                "disableLetsEncryptDnsRecords": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.\n"
+                },
                 "dropletIds": {
                     "type": "array",
                     "items": {
@@ -11053,7 +11103,11 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.\n"
+                    "description": "The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.\n"
+                },
+                "sizeUnit": {
+                    "type": "integer",
+                    "description": "The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
                 },
                 "status": {
                     "type": "string"
@@ -11074,6 +11128,7 @@
                 "ip",
                 "name",
                 "region",
+                "sizeUnit",
                 "status",
                 "stickySessions",
                 "loadBalancerUrn",
@@ -11092,6 +11147,10 @@
                         }
                     ],
                     "description": "The load balancing algorithm used to determine\nwhich backend Droplet will be selected by a client. It must be either `round_robin`\nor `least_connections`. The default value is `round_robin`.\n"
+                },
+                "disableLetsEncryptDnsRecords": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.\n"
                 },
                 "dropletIds": {
                     "type": "array",
@@ -11146,7 +11205,11 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.\n"
+                    "description": "The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.\n"
+                },
+                "sizeUnit": {
+                    "type": "integer",
+                    "description": "The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
                 },
                 "stickySessions": {
                     "$ref": "#/types/digitalocean:index/LoadBalancerStickySessions:LoadBalancerStickySessions",
@@ -11176,6 +11239,10 @@
                             }
                         ],
                         "description": "The load balancing algorithm used to determine\nwhich backend Droplet will be selected by a client. It must be either `round_robin`\nor `least_connections`. The default value is `round_robin`.\n"
+                    },
+                    "disableLetsEncryptDnsRecords": {
+                        "type": "boolean",
+                        "description": "A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.\n"
                     },
                     "dropletIds": {
                         "type": "array",
@@ -11237,7 +11304,11 @@
                     },
                     "size": {
                         "type": "string",
-                        "description": "The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.\n"
+                        "description": "The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.\n"
+                    },
+                    "sizeUnit": {
+                        "type": "integer",
+                        "description": "The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
                     },
                     "status": {
                         "type": "string"
@@ -11419,7 +11490,7 @@
             }
         },
         "digitalocean:index/project:Project": {
-            "description": "Provides a DigitalOcean Project resource.\n\nProjects allow you to organize your resources into groups that fit the way you work.\nYou can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)\nin ways that align with the applications you host on DigitalOcean.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n**Note:** A provider managed project cannot be set as a default project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example demonstrates the creation of an empty project:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    environment: \"Development\",\n    purpose: \"Web Application\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    environment=\"Development\",\n    purpose=\"Web Application\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Environment = \"Development\",\n            Purpose = \"Web Application\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewProject(ctx, \"playground\", \u0026digitalocean.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"A project to represent development resources.\"),\n\t\t\tEnvironment: pulumi.String(\"Development\"),\n\t\t\tPurpose:     pulumi.String(\"Web Application\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nThe following example demonstrates the creation of a project with a Droplet resource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    purpose: \"Web Application\",\n    environment: \"Development\",\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    purpose=\"Web Application\",\n    environment=\"Development\",\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Purpose = \"Web Application\",\n            Environment = \"Development\",\n            Resources = \n            {\n                foobar.DropletUrn,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewDroplet(ctx, \"foobar\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"512mb\"),\n\t\t\tImage:  pulumi.String(\"centos-7-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewProject(ctx, \"playground\", \u0026digitalocean.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"A project to represent development resources.\"),\n\t\t\tPurpose:     pulumi.String(\"Web Application\"),\n\t\t\tEnvironment: pulumi.String(\"Development\"),\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tfoobar.DropletUrn,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nProjects can be imported using the `id` returned from DigitalOcean, e.g.\n\n```sh\n $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n ",
+            "description": "Provides a DigitalOcean Project resource.\n\nProjects allow you to organize your resources into groups that fit the way you work.\nYou can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)\nin ways that align with the applications you host on DigitalOcean.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n**Note:** A provider managed project cannot be set as a default project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example demonstrates the creation of an empty project:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    environment: \"Development\",\n    purpose: \"Web Application\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    environment=\"Development\",\n    purpose=\"Web Application\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Environment = \"Development\",\n            Purpose = \"Web Application\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewProject(ctx, \"playground\", \u0026digitalocean.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"A project to represent development resources.\"),\n\t\t\tEnvironment: pulumi.String(\"Development\"),\n\t\t\tPurpose:     pulumi.String(\"Web Application\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nThe following example demonstrates the creation of a project with a Droplet resource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"s-1vcpu-1gb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst playground = new digitalocean.Project(\"playground\", {\n    description: \"A project to represent development resources.\",\n    purpose: \"Web Application\",\n    environment: \"Development\",\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"s-1vcpu-1gb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nplayground = digitalocean.Project(\"playground\",\n    description=\"A project to represent development resources.\",\n    purpose=\"Web Application\",\n    environment=\"Development\",\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"s-1vcpu-1gb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var playground = new DigitalOcean.Project(\"playground\", new DigitalOcean.ProjectArgs\n        {\n            Description = \"A project to represent development resources.\",\n            Purpose = \"Web Application\",\n            Environment = \"Development\",\n            Resources = \n            {\n                foobar.DropletUrn,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewDroplet(ctx, \"foobar\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tImage:  pulumi.String(\"centos-7-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewProject(ctx, \"playground\", \u0026digitalocean.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"A project to represent development resources.\"),\n\t\t\tPurpose:     pulumi.String(\"Web Application\"),\n\t\t\tEnvironment: pulumi.String(\"Development\"),\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tfoobar.DropletUrn,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nProjects can be imported using the `id` returned from DigitalOcean, e.g.\n\n```sh\n $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n ",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -11548,7 +11619,7 @@
             }
         },
         "digitalocean:index/projectResources:ProjectResources": {
-            "description": "Assign resources to a DigitalOcean Project. This is useful if you need to assign resources\nmanaged via this provider to a DigitalOcean Project managed outside of the provider.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example assigns a droplet to a Project managed outside of the provider:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = digitalocean.getProject({\n    name: \"playground\",\n});\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"512mb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst barfoo = new digitalocean.ProjectResources(\"barfoo\", {\n    project: data.digitalocean_project.foo.id,\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.get_project(name=\"playground\")\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"512mb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nbarfoo = digitalocean.ProjectResources(\"barfoo\",\n    project=data[\"digitalocean_project\"][\"foo\"][\"id\"],\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs\n        {\n            Name = \"playground\",\n        }));\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"512mb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var barfoo = new DigitalOcean.ProjectResources(\"barfoo\", new DigitalOcean.ProjectResourcesArgs\n        {\n            Project = data.Digitalocean_project.Foo.Id,\n            Resources = \n            {\n                foobar.DropletUrn,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"playground\"\n\t\t_, err := digitalocean.LookupProject(ctx, \u0026GetProjectArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfoobar, err := digitalocean.NewDroplet(ctx, \"foobar\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"512mb\"),\n\t\t\tImage:  pulumi.String(\"centos-7-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewProjectResources(ctx, \"barfoo\", \u0026digitalocean.ProjectResourcesArgs{\n\t\t\tProject: pulumi.Any(data.Digitalocean_project.Foo.Id),\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tfoobar.DropletUrn,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImporting this resource is not supported. ",
+            "description": "Assign resources to a DigitalOcean Project. This is useful if you need to assign resources\nmanaged via this provider to a DigitalOcean Project managed outside of the provider.\n\nThe following resource types can be associated with a project:\n\n* Database Clusters\n* Domains\n* Droplets\n* Floating IP\n* Load Balancers\n* Spaces Bucket\n* Volume\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example assigns a droplet to a Project managed outside of the provider:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = digitalocean.getProject({\n    name: \"playground\",\n});\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    size: \"s-1vcpu-1gb\",\n    image: \"centos-7-x64\",\n    region: \"nyc3\",\n});\nconst barfoo = new digitalocean.ProjectResources(\"barfoo\", {\n    project: data.digitalocean_project.foo.id,\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.get_project(name=\"playground\")\nfoobar = digitalocean.Droplet(\"foobar\",\n    size=\"s-1vcpu-1gb\",\n    image=\"centos-7-x64\",\n    region=\"nyc3\")\nbarfoo = digitalocean.ProjectResources(\"barfoo\",\n    project=data[\"digitalocean_project\"][\"foo\"][\"id\"],\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var playground = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs\n        {\n            Name = \"playground\",\n        }));\n        var foobar = new DigitalOcean.Droplet(\"foobar\", new DigitalOcean.DropletArgs\n        {\n            Size = \"s-1vcpu-1gb\",\n            Image = \"centos-7-x64\",\n            Region = \"nyc3\",\n        });\n        var barfoo = new DigitalOcean.ProjectResources(\"barfoo\", new DigitalOcean.ProjectResourcesArgs\n        {\n            Project = data.Digitalocean_project.Foo.Id,\n            Resources = \n            {\n                foobar.DropletUrn,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"playground\"\n\t\t_, err := digitalocean.LookupProject(ctx, \u0026GetProjectArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfoobar, err := digitalocean.NewDroplet(ctx, \"foobar\", \u0026digitalocean.DropletArgs{\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tImage:  pulumi.String(\"centos-7-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewProjectResources(ctx, \"barfoo\", \u0026digitalocean.ProjectResourcesArgs{\n\t\t\tProject: pulumi.Any(data.Digitalocean_project.Foo.Id),\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tfoobar.DropletUrn,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImporting this resource is not supported. ",
             "properties": {
                 "project": {
                     "type": "string",
@@ -12804,6 +12875,44 @@
                 ]
             }
         },
+        "digitalocean:index/getDatabaseCa:getDatabaseCa": {
+            "description": "Provides the CA certificate for a DigitalOcean database.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst ca = digitalocean.getDatabaseCa({\n    clusterId: \"aaa-bbb-ccc-ddd\",\n});\nexport const caOutput = ca.then(ca =\u003e ca.certificate);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nca = digitalocean.get_database_ca(cluster_id=\"aaa-bbb-ccc-ddd\")\npulumi.export(\"caOutput\", ca.certificate)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ca = Output.Create(DigitalOcean.GetDatabaseCa.InvokeAsync(new DigitalOcean.GetDatabaseCaArgs\n        {\n            ClusterId = \"aaa-bbb-ccc-ddd\",\n        }));\n        this.CaOutput = ca.Apply(ca =\u003e ca.Certificate);\n    }\n\n    [Output(\"caOutput\")]\n    public Output\u003cstring\u003e CaOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tca, err := digitalocean.GetDatabaseCa(ctx, \u0026GetDatabaseCaArgs{\n\t\t\tClusterId: \"aaa-bbb-ccc-ddd\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"caOutput\", ca.Certificate)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDatabaseCa.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The ID of the source database cluster.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDatabaseCa.\n",
+                "properties": {
+                    "certificate": {
+                        "type": "string",
+                        "description": "The CA certificate used to secure database connections decoded to a string.\n"
+                    },
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "certificate",
+                    "clusterId",
+                    "id"
+                ]
+            }
+        },
         "digitalocean:index/getDatabaseCluster:getDatabaseCluster": {
             "description": "Provides information on a DigitalOcean database cluster resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getDatabaseCluster({\n    name: \"example-cluster\",\n});\nexport const databaseOutput = example.then(example =\u003e example.uri);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_database_cluster(name=\"example-cluster\")\npulumi.export(\"databaseOutput\", example.uri)\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs\n        {\n            Name = \"example-cluster\",\n        }));\n        this.DatabaseOutput = example.Apply(example =\u003e example.Uri);\n    }\n\n    [Output(\"databaseOutput\")]\n    public Output\u003cstring\u003e DatabaseOutput { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupDatabaseCluster(ctx, \u0026GetDatabaseClusterArgs{\n\t\t\tName: \"example-cluster\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"databaseOutput\", example.Uri)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -13952,6 +14061,9 @@
                     "algorithm": {
                         "type": "string"
                     },
+                    "disableLetsEncryptDnsRecords": {
+                        "type": "boolean"
+                    },
                     "dropletIds": {
                         "type": "array",
                         "items": {
@@ -14001,6 +14113,9 @@
                     "size": {
                         "type": "string"
                     },
+                    "sizeUnit": {
+                        "type": "integer"
+                    },
                     "status": {
                         "type": "string"
                     },
@@ -14017,6 +14132,7 @@
                 "type": "object",
                 "required": [
                     "algorithm",
+                    "disableLetsEncryptDnsRecords",
                     "dropletIds",
                     "dropletTag",
                     "enableBackendKeepalive",
@@ -14028,6 +14144,7 @@
                     "redirectHttpToHttps",
                     "region",
                     "size",
+                    "sizeUnit",
                     "status",
                     "stickySessions",
                     "loadBalancerUrn",

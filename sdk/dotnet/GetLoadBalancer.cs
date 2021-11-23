@@ -123,6 +123,7 @@ namespace Pulumi.DigitalOcean
     public sealed class GetLoadBalancerResult
     {
         public readonly string Algorithm;
+        public readonly bool DisableLetsEncryptDnsRecords;
         public readonly ImmutableArray<int> DropletIds;
         public readonly string DropletTag;
         public readonly bool EnableBackendKeepalive;
@@ -139,6 +140,7 @@ namespace Pulumi.DigitalOcean
         public readonly bool RedirectHttpToHttps;
         public readonly string Region;
         public readonly string Size;
+        public readonly int SizeUnit;
         public readonly string Status;
         public readonly ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> StickySessions;
         public readonly string VpcUuid;
@@ -146,6 +148,8 @@ namespace Pulumi.DigitalOcean
         [OutputConstructor]
         private GetLoadBalancerResult(
             string algorithm,
+
+            bool disableLetsEncryptDnsRecords,
 
             ImmutableArray<int> dropletIds,
 
@@ -173,6 +177,8 @@ namespace Pulumi.DigitalOcean
 
             string size,
 
+            int sizeUnit,
+
             string status,
 
             ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> stickySessions,
@@ -180,6 +186,7 @@ namespace Pulumi.DigitalOcean
             string vpcUuid)
         {
             Algorithm = algorithm;
+            DisableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
             DropletIds = dropletIds;
             DropletTag = dropletTag;
             EnableBackendKeepalive = enableBackendKeepalive;
@@ -193,6 +200,7 @@ namespace Pulumi.DigitalOcean
             RedirectHttpToHttps = redirectHttpToHttps;
             Region = region;
             Size = size;
+            SizeUnit = sizeUnit;
             Status = status;
             StickySessions = stickySessions;
             VpcUuid = vpcUuid;

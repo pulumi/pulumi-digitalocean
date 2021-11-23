@@ -59,13 +59,14 @@ type LookupLoadBalancerArgs struct {
 
 // A collection of values returned by getLoadBalancer.
 type LookupLoadBalancerResult struct {
-	Algorithm              string                          `pulumi:"algorithm"`
-	DropletIds             []int                           `pulumi:"dropletIds"`
-	DropletTag             string                          `pulumi:"dropletTag"`
-	EnableBackendKeepalive bool                            `pulumi:"enableBackendKeepalive"`
-	EnableProxyProtocol    bool                            `pulumi:"enableProxyProtocol"`
-	ForwardingRules        []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
-	Healthchecks           []GetLoadBalancerHealthcheck    `pulumi:"healthchecks"`
+	Algorithm                    string                          `pulumi:"algorithm"`
+	DisableLetsEncryptDnsRecords bool                            `pulumi:"disableLetsEncryptDnsRecords"`
+	DropletIds                   []int                           `pulumi:"dropletIds"`
+	DropletTag                   string                          `pulumi:"dropletTag"`
+	EnableBackendKeepalive       bool                            `pulumi:"enableBackendKeepalive"`
+	EnableProxyProtocol          bool                            `pulumi:"enableProxyProtocol"`
+	ForwardingRules              []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
+	Healthchecks                 []GetLoadBalancerHealthcheck    `pulumi:"healthchecks"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string                         `pulumi:"id"`
 	Ip                  string                         `pulumi:"ip"`
@@ -74,6 +75,7 @@ type LookupLoadBalancerResult struct {
 	RedirectHttpToHttps bool                           `pulumi:"redirectHttpToHttps"`
 	Region              string                         `pulumi:"region"`
 	Size                string                         `pulumi:"size"`
+	SizeUnit            int                            `pulumi:"sizeUnit"`
 	Status              string                         `pulumi:"status"`
 	StickySessions      []GetLoadBalancerStickySession `pulumi:"stickySessions"`
 	VpcUuid             string                         `pulumi:"vpcUuid"`
@@ -115,6 +117,10 @@ func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutputWithCont
 
 func (o LookupLoadBalancerResultOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) DisableLetsEncryptDnsRecords() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) bool { return v.DisableLetsEncryptDnsRecords }).(pulumi.BoolOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) DropletIds() pulumi.IntArrayOutput {
@@ -168,6 +174,10 @@ func (o LookupLoadBalancerResultOutput) Region() pulumi.StringOutput {
 
 func (o LookupLoadBalancerResultOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Size }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) SizeUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) int { return v.SizeUnit }).(pulumi.IntOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) Status() pulumi.StringOutput {

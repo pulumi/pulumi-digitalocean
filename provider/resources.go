@@ -529,6 +529,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_records":               {Tok: makeDataSource(digitalOceanMod, "getRecords")},
 			"digitalocean_ssh_keys":              {Tok: makeDataSource(digitalOceanMod, "getSshKeys")},
 			"digitalocean_firewall":              {Tok: makeDataSource(digitalOceanMod, "getFirewall")},
+			"digitalocean_database_ca":           {Tok: makeDataSource(digitalOceanMod, "getDatabaseCa")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

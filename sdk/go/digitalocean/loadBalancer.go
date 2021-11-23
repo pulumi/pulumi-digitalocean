@@ -134,6 +134,8 @@ type LoadBalancer struct {
 	// which backend Droplet will be selected by a client. It must be either `roundRobin`
 	// or `leastConnections`. The default value is `roundRobin`.
 	Algorithm pulumi.StringPtrOutput `pulumi:"algorithm"`
+	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+	DisableLetsEncryptDnsRecords pulumi.BoolPtrOutput `pulumi:"disableLetsEncryptDnsRecords"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayOutput `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -161,9 +163,11 @@ type LoadBalancer struct {
 	RedirectHttpToHttps pulumi.BoolPtrOutput `pulumi:"redirectHttpToHttps"`
 	// The region to start in
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
-	Size   pulumi.StringPtrOutput `pulumi:"size"`
-	Status pulumi.StringOutput    `pulumi:"status"`
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
+	Size pulumi.StringPtrOutput `pulumi:"size"`
+	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	SizeUnit pulumi.IntOutput    `pulumi:"sizeUnit"`
+	Status   pulumi.StringOutput `pulumi:"status"`
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
@@ -210,6 +214,8 @@ type loadBalancerState struct {
 	// which backend Droplet will be selected by a client. It must be either `roundRobin`
 	// or `leastConnections`. The default value is `roundRobin`.
 	Algorithm *string `pulumi:"algorithm"`
+	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+	DisableLetsEncryptDnsRecords *bool `pulumi:"disableLetsEncryptDnsRecords"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds []int `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -237,9 +243,11 @@ type loadBalancerState struct {
 	RedirectHttpToHttps *bool `pulumi:"redirectHttpToHttps"`
 	// The region to start in
 	Region *string `pulumi:"region"`
-	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
-	Size   *string `pulumi:"size"`
-	Status *string `pulumi:"status"`
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
+	Size *string `pulumi:"size"`
+	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	SizeUnit *int    `pulumi:"sizeUnit"`
+	Status   *string `pulumi:"status"`
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
@@ -252,6 +260,8 @@ type LoadBalancerState struct {
 	// which backend Droplet will be selected by a client. It must be either `roundRobin`
 	// or `leastConnections`. The default value is `roundRobin`.
 	Algorithm pulumi.StringPtrInput
+	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+	DisableLetsEncryptDnsRecords pulumi.BoolPtrInput
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayInput
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -279,9 +289,11 @@ type LoadBalancerState struct {
 	RedirectHttpToHttps pulumi.BoolPtrInput
 	// The region to start in
 	Region pulumi.StringPtrInput
-	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
-	Size   pulumi.StringPtrInput
-	Status pulumi.StringPtrInput
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
+	Size pulumi.StringPtrInput
+	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	SizeUnit pulumi.IntPtrInput
+	Status   pulumi.StringPtrInput
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
@@ -298,6 +310,8 @@ type loadBalancerArgs struct {
 	// which backend Droplet will be selected by a client. It must be either `roundRobin`
 	// or `leastConnections`. The default value is `roundRobin`.
 	Algorithm *string `pulumi:"algorithm"`
+	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+	DisableLetsEncryptDnsRecords *bool `pulumi:"disableLetsEncryptDnsRecords"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds []int `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -322,8 +336,10 @@ type loadBalancerArgs struct {
 	RedirectHttpToHttps *bool `pulumi:"redirectHttpToHttps"`
 	// The region to start in
 	Region string `pulumi:"region"`
-	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
 	Size *string `pulumi:"size"`
+	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	SizeUnit *int `pulumi:"sizeUnit"`
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
@@ -337,6 +353,8 @@ type LoadBalancerArgs struct {
 	// which backend Droplet will be selected by a client. It must be either `roundRobin`
 	// or `leastConnections`. The default value is `roundRobin`.
 	Algorithm pulumi.StringPtrInput
+	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+	DisableLetsEncryptDnsRecords pulumi.BoolPtrInput
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayInput
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -361,8 +379,10 @@ type LoadBalancerArgs struct {
 	RedirectHttpToHttps pulumi.BoolPtrInput
 	// The region to start in
 	Region pulumi.StringInput
-	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
 	Size pulumi.StringPtrInput
+	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	SizeUnit pulumi.IntPtrInput
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput

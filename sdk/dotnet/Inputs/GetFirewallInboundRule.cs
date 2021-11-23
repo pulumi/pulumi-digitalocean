@@ -55,6 +55,14 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _sourceDropletIds = value;
         }
 
+        [Input("sourceKubernetesIds")]
+        private List<string>? _sourceKubernetesIds;
+        public List<string> SourceKubernetesIds
+        {
+            get => _sourceKubernetesIds ?? (_sourceKubernetesIds = new List<string>());
+            set => _sourceKubernetesIds = value;
+        }
+
         [Input("sourceLoadBalancerUids")]
         private List<string>? _sourceLoadBalancerUids;
 
