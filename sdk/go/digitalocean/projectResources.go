@@ -47,7 +47,7 @@ import (
 // 			return err
 // 		}
 // 		foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("512mb"),
+// 			Size:   pulumi.String("s-1vcpu-1gb"),
 // 			Image:  pulumi.String("centos-7-x64"),
 // 			Region: pulumi.String("nyc3"),
 // 		})

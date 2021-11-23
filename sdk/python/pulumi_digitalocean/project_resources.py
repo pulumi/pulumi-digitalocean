@@ -120,7 +120,7 @@ class ProjectResources(pulumi.CustomResource):
 
         playground = digitalocean.get_project(name="playground")
         foobar = digitalocean.Droplet("foobar",
-            size="512mb",
+            size="s-1vcpu-1gb",
             image="centos-7-x64",
             region="nyc3")
         barfoo = digitalocean.ProjectResources("barfoo",
@@ -167,7 +167,7 @@ class ProjectResources(pulumi.CustomResource):
 
         playground = digitalocean.get_project(name="playground")
         foobar = digitalocean.Droplet("foobar",
-            size="512mb",
+            size="s-1vcpu-1gb",
             image="centos-7-x64",
             region="nyc3")
         barfoo = digitalocean.ProjectResources("barfoo",

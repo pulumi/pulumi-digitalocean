@@ -39,6 +39,14 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _destinationDropletIds = value;
         }
 
+        [Input("destinationKubernetesIds")]
+        private InputList<string>? _destinationKubernetesIds;
+        public InputList<string> DestinationKubernetesIds
+        {
+            get => _destinationKubernetesIds ?? (_destinationKubernetesIds = new InputList<string>());
+            set => _destinationKubernetesIds = value;
+        }
+
         [Input("destinationLoadBalancerUids")]
         private InputList<string>? _destinationLoadBalancerUids;
 

@@ -29,6 +29,7 @@ from .get_account import *
 from .get_app import *
 from .get_certificate import *
 from .get_container_registry import *
+from .get_database_ca import *
 from .get_database_cluster import *
 from .get_database_replica import *
 from .get_domain import *

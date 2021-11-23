@@ -3144,6 +3144,7 @@ class FirewallInboundRuleArgs:
                  port_range: Optional[pulumi.Input[str]] = None,
                  source_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 source_kubernetes_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_load_balancer_uids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -3158,6 +3159,8 @@ class FirewallInboundRuleArgs:
                inbound traffic will be accepted.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] source_droplet_ids: An array containing the IDs of
                the Droplets from which the inbound traffic will be accepted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_kubernetes_ids: An array containing the IDs of
+               the Kubernetes clusters from which the inbound traffic will be accepted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_load_balancer_uids: An array containing the IDs
                of the Load Balancers from which the inbound traffic will be accepted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_tags: An array containing the names of Tags
@@ -3171,6 +3174,8 @@ class FirewallInboundRuleArgs:
             pulumi.set(__self__, "source_addresses", source_addresses)
         if source_droplet_ids is not None:
             pulumi.set(__self__, "source_droplet_ids", source_droplet_ids)
+        if source_kubernetes_ids is not None:
+            pulumi.set(__self__, "source_kubernetes_ids", source_kubernetes_ids)
         if source_load_balancer_uids is not None:
             pulumi.set(__self__, "source_load_balancer_uids", source_load_balancer_uids)
         if source_tags is not None:
@@ -3232,6 +3237,19 @@ class FirewallInboundRuleArgs:
         pulumi.set(self, "source_droplet_ids", value)
 
     @property
+    @pulumi.getter(name="sourceKubernetesIds")
+    def source_kubernetes_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array containing the IDs of
+        the Kubernetes clusters from which the inbound traffic will be accepted.
+        """
+        return pulumi.get(self, "source_kubernetes_ids")
+
+    @source_kubernetes_ids.setter
+    def source_kubernetes_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_kubernetes_ids", value)
+
+    @property
     @pulumi.getter(name="sourceLoadBalancerUids")
     def source_load_balancer_uids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -3265,6 +3283,7 @@ class FirewallOutboundRuleArgs:
                  protocol: pulumi.Input[str],
                  destination_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  destination_droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 destination_kubernetes_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  destination_load_balancer_uids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  destination_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  port_range: Optional[pulumi.Input[str]] = None):
@@ -3276,12 +3295,13 @@ class FirewallOutboundRuleArgs:
                outbound traffic will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] destination_droplet_ids: An array containing the IDs of
                the Droplets to which the outbound traffic will be allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_kubernetes_ids: An array containing the IDs of
+               the Kubernetes clusters to which the outbound traffic will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_load_balancer_uids: An array containing the IDs
                of the Load Balancers to which the outbound traffic will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_tags: An array containing the names of Tags
                corresponding to groups of Droplets to which the outbound traffic will
                be allowed.
-               traffic.
         :param pulumi.Input[str] port_range: The ports on which traffic will be allowed
                specified as a string containing a single port, a range (e.g. "8000-9000"),
                or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -3292,6 +3312,8 @@ class FirewallOutboundRuleArgs:
             pulumi.set(__self__, "destination_addresses", destination_addresses)
         if destination_droplet_ids is not None:
             pulumi.set(__self__, "destination_droplet_ids", destination_droplet_ids)
+        if destination_kubernetes_ids is not None:
+            pulumi.set(__self__, "destination_kubernetes_ids", destination_kubernetes_ids)
         if destination_load_balancer_uids is not None:
             pulumi.set(__self__, "destination_load_balancer_uids", destination_load_balancer_uids)
         if destination_tags is not None:
@@ -3340,6 +3362,19 @@ class FirewallOutboundRuleArgs:
         pulumi.set(self, "destination_droplet_ids", value)
 
     @property
+    @pulumi.getter(name="destinationKubernetesIds")
+    def destination_kubernetes_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array containing the IDs of
+        the Kubernetes clusters to which the outbound traffic will be allowed.
+        """
+        return pulumi.get(self, "destination_kubernetes_ids")
+
+    @destination_kubernetes_ids.setter
+    def destination_kubernetes_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "destination_kubernetes_ids", value)
+
+    @property
     @pulumi.getter(name="destinationLoadBalancerUids")
     def destination_load_balancer_uids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -3359,7 +3394,6 @@ class FirewallOutboundRuleArgs:
         An array containing the names of Tags
         corresponding to groups of Droplets to which the outbound traffic will
         be allowed.
-        traffic.
         """
         return pulumi.get(self, "destination_tags")
 
@@ -4988,6 +5022,7 @@ class GetFirewallInboundRuleArgs:
                  port_range: Optional[str] = None,
                  source_addresses: Optional[Sequence[str]] = None,
                  source_droplet_ids: Optional[Sequence[int]] = None,
+                 source_kubernetes_ids: Optional[Sequence[str]] = None,
                  source_load_balancer_uids: Optional[Sequence[str]] = None,
                  source_tags: Optional[Sequence[str]] = None):
         """
@@ -5014,6 +5049,8 @@ class GetFirewallInboundRuleArgs:
             pulumi.set(__self__, "source_addresses", source_addresses)
         if source_droplet_ids is not None:
             pulumi.set(__self__, "source_droplet_ids", source_droplet_ids)
+        if source_kubernetes_ids is not None:
+            pulumi.set(__self__, "source_kubernetes_ids", source_kubernetes_ids)
         if source_load_balancer_uids is not None:
             pulumi.set(__self__, "source_load_balancer_uids", source_load_balancer_uids)
         if source_tags is not None:
@@ -5075,6 +5112,15 @@ class GetFirewallInboundRuleArgs:
         pulumi.set(self, "source_droplet_ids", value)
 
     @property
+    @pulumi.getter(name="sourceKubernetesIds")
+    def source_kubernetes_ids(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "source_kubernetes_ids")
+
+    @source_kubernetes_ids.setter
+    def source_kubernetes_ids(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "source_kubernetes_ids", value)
+
+    @property
     @pulumi.getter(name="sourceLoadBalancerUids")
     def source_load_balancer_uids(self) -> Optional[Sequence[str]]:
         """
@@ -5107,6 +5153,7 @@ class GetFirewallOutboundRuleArgs:
                  protocol: str,
                  destination_addresses: Optional[Sequence[str]] = None,
                  destination_droplet_ids: Optional[Sequence[int]] = None,
+                 destination_kubernetes_ids: Optional[Sequence[str]] = None,
                  destination_load_balancer_uids: Optional[Sequence[str]] = None,
                  destination_tags: Optional[Sequence[str]] = None,
                  port_range: Optional[str] = None):
@@ -5134,6 +5181,8 @@ class GetFirewallOutboundRuleArgs:
             pulumi.set(__self__, "destination_addresses", destination_addresses)
         if destination_droplet_ids is not None:
             pulumi.set(__self__, "destination_droplet_ids", destination_droplet_ids)
+        if destination_kubernetes_ids is not None:
+            pulumi.set(__self__, "destination_kubernetes_ids", destination_kubernetes_ids)
         if destination_load_balancer_uids is not None:
             pulumi.set(__self__, "destination_load_balancer_uids", destination_load_balancer_uids)
         if destination_tags is not None:
@@ -5180,6 +5229,15 @@ class GetFirewallOutboundRuleArgs:
     @destination_droplet_ids.setter
     def destination_droplet_ids(self, value: Optional[Sequence[int]]):
         pulumi.set(self, "destination_droplet_ids", value)
+
+    @property
+    @pulumi.getter(name="destinationKubernetesIds")
+    def destination_kubernetes_ids(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "destination_kubernetes_ids")
+
+    @destination_kubernetes_ids.setter
+    def destination_kubernetes_ids(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "destination_kubernetes_ids", value)
 
     @property
     @pulumi.getter(name="destinationLoadBalancerUids")

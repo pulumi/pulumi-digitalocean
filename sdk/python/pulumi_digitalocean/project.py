@@ -313,7 +313,7 @@ class Project(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar = digitalocean.Droplet("foobar",
-            size="512mb",
+            size="s-1vcpu-1gb",
             image="centos-7-x64",
             region="nyc3")
         playground = digitalocean.Project("playground",
@@ -385,7 +385,7 @@ class Project(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar = digitalocean.Droplet("foobar",
-            size="512mb",
+            size="s-1vcpu-1gb",
             image="centos-7-x64",
             region="nyc3")
         playground = digitalocean.Project("playground",

@@ -63,7 +63,7 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         var foobar = new DigitalOcean.Droplet("foobar", new DigitalOcean.DropletArgs
     ///         {
-    ///             Size = "512mb",
+    ///             Size = "s-1vcpu-1gb",
     ///             Image = "centos-7-x64",
     ///             Region = "nyc3",
     ///         });

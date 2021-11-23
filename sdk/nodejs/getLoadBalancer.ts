@@ -55,6 +55,7 @@ export interface GetLoadBalancerArgs {
  */
 export interface GetLoadBalancerResult {
     readonly algorithm: string;
+    readonly disableLetsEncryptDnsRecords: boolean;
     readonly dropletIds: number[];
     readonly dropletTag: string;
     readonly enableBackendKeepalive: boolean;
@@ -71,6 +72,7 @@ export interface GetLoadBalancerResult {
     readonly redirectHttpToHttps: boolean;
     readonly region: string;
     readonly size: string;
+    readonly sizeUnit: number;
     readonly status: string;
     readonly stickySessions: outputs.GetLoadBalancerStickySession[];
     readonly vpcUuid: string;

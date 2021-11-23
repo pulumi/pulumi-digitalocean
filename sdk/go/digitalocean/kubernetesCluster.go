@@ -33,7 +33,7 @@ type KubernetesCluster struct {
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
 	Ha pulumi.BoolPtrOutput `pulumi:"ha"`
-	// The public IPv4 address of the Kubernetes master node.
+	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringOutput                    `pulumi:"ipv4Address"`
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
@@ -110,7 +110,7 @@ type kubernetesClusterState struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
 	Ha *bool `pulumi:"ha"`
-	// The public IPv4 address of the Kubernetes master node.
+	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address *string                       `pulumi:"ipv4Address"`
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
@@ -150,7 +150,7 @@ type KubernetesClusterState struct {
 	Endpoint pulumi.StringPtrInput
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
 	Ha pulumi.BoolPtrInput
-	// The public IPv4 address of the Kubernetes master node.
+	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringPtrInput
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.

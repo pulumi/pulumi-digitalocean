@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const foobar = new digitalocean.Droplet("foobar", {
- *     size: "512mb",
+ *     size: "s-1vcpu-1gb",
  *     image: "centos-7-x64",
  *     region: "nyc3",
  * });

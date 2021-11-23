@@ -39,6 +39,19 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _destinationDropletIds = value;
         }
 
+        [Input("destinationKubernetesIds")]
+        private InputList<string>? _destinationKubernetesIds;
+
+        /// <summary>
+        /// An array containing the IDs of
+        /// the Kubernetes clusters to which the outbound traffic will be allowed.
+        /// </summary>
+        public InputList<string> DestinationKubernetesIds
+        {
+            get => _destinationKubernetesIds ?? (_destinationKubernetesIds = new InputList<string>());
+            set => _destinationKubernetesIds = value;
+        }
+
         [Input("destinationLoadBalancerUids")]
         private InputList<string>? _destinationLoadBalancerUids;
 
@@ -59,7 +72,6 @@ namespace Pulumi.DigitalOcean.Inputs
         /// An array containing the names of Tags
         /// corresponding to groups of Droplets to which the outbound traffic will
         /// be allowed.
-        /// traffic.
         /// </summary>
         public InputList<string> DestinationTags
         {

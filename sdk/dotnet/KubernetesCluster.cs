@@ -58,7 +58,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> Ha { get; private set; } = null!;
 
         /// <summary>
-        /// The public IPv4 address of the Kubernetes master node.
+        /// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         /// </summary>
         [Output("ipv4Address")]
         public Output<string> Ipv4Address { get; private set; } = null!;
@@ -288,7 +288,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? Ha { get; set; }
 
         /// <summary>
-        /// The public IPv4 address of the Kubernetes master node.
+        /// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         /// </summary>
         [Input("ipv4Address")]
         public Input<string>? Ipv4Address { get; set; }

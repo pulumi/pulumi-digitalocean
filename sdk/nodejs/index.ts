@@ -28,6 +28,7 @@ export * from "./getAccount";
 export * from "./getApp";
 export * from "./getCertificate";
 export * from "./getContainerRegistry";
+export * from "./getDatabaseCa";
 export * from "./getDatabaseCluster";
 export * from "./getDatabaseReplica";
 export * from "./getDomain";

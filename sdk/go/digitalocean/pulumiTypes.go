@@ -6183,6 +6183,9 @@ type FirewallInboundRule struct {
 	// An array containing the IDs of
 	// the Droplets from which the inbound traffic will be accepted.
 	SourceDropletIds []int `pulumi:"sourceDropletIds"`
+	// An array containing the IDs of
+	// the Kubernetes clusters from which the inbound traffic will be accepted.
+	SourceKubernetesIds []string `pulumi:"sourceKubernetesIds"`
 	// An array containing the IDs
 	// of the Load Balancers from which the inbound traffic will be accepted.
 	SourceLoadBalancerUids []string `pulumi:"sourceLoadBalancerUids"`
@@ -6219,6 +6222,9 @@ type FirewallInboundRuleArgs struct {
 	// An array containing the IDs of
 	// the Droplets from which the inbound traffic will be accepted.
 	SourceDropletIds pulumi.IntArrayInput `pulumi:"sourceDropletIds"`
+	// An array containing the IDs of
+	// the Kubernetes clusters from which the inbound traffic will be accepted.
+	SourceKubernetesIds pulumi.StringArrayInput `pulumi:"sourceKubernetesIds"`
 	// An array containing the IDs
 	// of the Load Balancers from which the inbound traffic will be accepted.
 	SourceLoadBalancerUids pulumi.StringArrayInput `pulumi:"sourceLoadBalancerUids"`
@@ -6306,6 +6312,12 @@ func (o FirewallInboundRuleOutput) SourceDropletIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v FirewallInboundRule) []int { return v.SourceDropletIds }).(pulumi.IntArrayOutput)
 }
 
+// An array containing the IDs of
+// the Kubernetes clusters from which the inbound traffic will be accepted.
+func (o FirewallInboundRuleOutput) SourceKubernetesIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallInboundRule) []string { return v.SourceKubernetesIds }).(pulumi.StringArrayOutput)
+}
+
 // An array containing the IDs
 // of the Load Balancers from which the inbound traffic will be accepted.
 func (o FirewallInboundRuleOutput) SourceLoadBalancerUids() pulumi.StringArrayOutput {
@@ -6347,13 +6359,15 @@ type FirewallOutboundRule struct {
 	// An array containing the IDs of
 	// the Droplets to which the outbound traffic will be allowed.
 	DestinationDropletIds []int `pulumi:"destinationDropletIds"`
+	// An array containing the IDs of
+	// the Kubernetes clusters to which the outbound traffic will be allowed.
+	DestinationKubernetesIds []string `pulumi:"destinationKubernetesIds"`
 	// An array containing the IDs
 	// of the Load Balancers to which the outbound traffic will be allowed.
 	DestinationLoadBalancerUids []string `pulumi:"destinationLoadBalancerUids"`
 	// An array containing the names of Tags
 	// corresponding to groups of Droplets to which the outbound traffic will
 	// be allowed.
-	// traffic.
 	DestinationTags []string `pulumi:"destinationTags"`
 	// The ports on which traffic will be allowed
 	// specified as a string containing a single port, a range (e.g. "8000-9000"),
@@ -6384,13 +6398,15 @@ type FirewallOutboundRuleArgs struct {
 	// An array containing the IDs of
 	// the Droplets to which the outbound traffic will be allowed.
 	DestinationDropletIds pulumi.IntArrayInput `pulumi:"destinationDropletIds"`
+	// An array containing the IDs of
+	// the Kubernetes clusters to which the outbound traffic will be allowed.
+	DestinationKubernetesIds pulumi.StringArrayInput `pulumi:"destinationKubernetesIds"`
 	// An array containing the IDs
 	// of the Load Balancers to which the outbound traffic will be allowed.
 	DestinationLoadBalancerUids pulumi.StringArrayInput `pulumi:"destinationLoadBalancerUids"`
 	// An array containing the names of Tags
 	// corresponding to groups of Droplets to which the outbound traffic will
 	// be allowed.
-	// traffic.
 	DestinationTags pulumi.StringArrayInput `pulumi:"destinationTags"`
 	// The ports on which traffic will be allowed
 	// specified as a string containing a single port, a range (e.g. "8000-9000"),
@@ -6466,6 +6482,12 @@ func (o FirewallOutboundRuleOutput) DestinationDropletIds() pulumi.IntArrayOutpu
 	return o.ApplyT(func(v FirewallOutboundRule) []int { return v.DestinationDropletIds }).(pulumi.IntArrayOutput)
 }
 
+// An array containing the IDs of
+// the Kubernetes clusters to which the outbound traffic will be allowed.
+func (o FirewallOutboundRuleOutput) DestinationKubernetesIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallOutboundRule) []string { return v.DestinationKubernetesIds }).(pulumi.StringArrayOutput)
+}
+
 // An array containing the IDs
 // of the Load Balancers to which the outbound traffic will be allowed.
 func (o FirewallOutboundRuleOutput) DestinationLoadBalancerUids() pulumi.StringArrayOutput {
@@ -6475,7 +6497,6 @@ func (o FirewallOutboundRuleOutput) DestinationLoadBalancerUids() pulumi.StringA
 // An array containing the names of Tags
 // corresponding to groups of Droplets to which the outbound traffic will
 // be allowed.
-// traffic.
 func (o FirewallOutboundRuleOutput) DestinationTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallOutboundRule) []string { return v.DestinationTags }).(pulumi.StringArrayOutput)
 }
@@ -16083,7 +16104,8 @@ type GetFirewallInboundRule struct {
 	SourceAddresses []string `pulumi:"sourceAddresses"`
 	// An array containing the IDs of
 	// the Droplets from which the inbound traffic will be accepted.
-	SourceDropletIds []int `pulumi:"sourceDropletIds"`
+	SourceDropletIds    []int    `pulumi:"sourceDropletIds"`
+	SourceKubernetesIds []string `pulumi:"sourceKubernetesIds"`
 	// An array containing the IDs
 	// of the Load Balancers from which the inbound traffic will be accepted.
 	SourceLoadBalancerUids []string `pulumi:"sourceLoadBalancerUids"`
@@ -16118,7 +16140,8 @@ type GetFirewallInboundRuleArgs struct {
 	SourceAddresses pulumi.StringArrayInput `pulumi:"sourceAddresses"`
 	// An array containing the IDs of
 	// the Droplets from which the inbound traffic will be accepted.
-	SourceDropletIds pulumi.IntArrayInput `pulumi:"sourceDropletIds"`
+	SourceDropletIds    pulumi.IntArrayInput    `pulumi:"sourceDropletIds"`
+	SourceKubernetesIds pulumi.StringArrayInput `pulumi:"sourceKubernetesIds"`
 	// An array containing the IDs
 	// of the Load Balancers from which the inbound traffic will be accepted.
 	SourceLoadBalancerUids pulumi.StringArrayInput `pulumi:"sourceLoadBalancerUids"`
@@ -16205,6 +16228,10 @@ func (o GetFirewallInboundRuleOutput) SourceDropletIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFirewallInboundRule) []int { return v.SourceDropletIds }).(pulumi.IntArrayOutput)
 }
 
+func (o GetFirewallInboundRuleOutput) SourceKubernetesIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallInboundRule) []string { return v.SourceKubernetesIds }).(pulumi.StringArrayOutput)
+}
+
 // An array containing the IDs
 // of the Load Balancers from which the inbound traffic will be accepted.
 func (o GetFirewallInboundRuleOutput) SourceLoadBalancerUids() pulumi.StringArrayOutput {
@@ -16244,7 +16271,8 @@ type GetFirewallOutboundRule struct {
 	DestinationAddresses []string `pulumi:"destinationAddresses"`
 	// An array containing the IDs of
 	// the Droplets to which the outbound traffic will be allowed.
-	DestinationDropletIds []int `pulumi:"destinationDropletIds"`
+	DestinationDropletIds    []int    `pulumi:"destinationDropletIds"`
+	DestinationKubernetesIds []string `pulumi:"destinationKubernetesIds"`
 	// An array containing the IDs
 	// of the Load Balancers to which the outbound traffic will be allowed.
 	DestinationLoadBalancerUids []string `pulumi:"destinationLoadBalancerUids"`
@@ -16281,7 +16309,8 @@ type GetFirewallOutboundRuleArgs struct {
 	DestinationAddresses pulumi.StringArrayInput `pulumi:"destinationAddresses"`
 	// An array containing the IDs of
 	// the Droplets to which the outbound traffic will be allowed.
-	DestinationDropletIds pulumi.IntArrayInput `pulumi:"destinationDropletIds"`
+	DestinationDropletIds    pulumi.IntArrayInput    `pulumi:"destinationDropletIds"`
+	DestinationKubernetesIds pulumi.StringArrayInput `pulumi:"destinationKubernetesIds"`
 	// An array containing the IDs
 	// of the Load Balancers to which the outbound traffic will be allowed.
 	DestinationLoadBalancerUids pulumi.StringArrayInput `pulumi:"destinationLoadBalancerUids"`
@@ -16362,6 +16391,10 @@ func (o GetFirewallOutboundRuleOutput) DestinationAddresses() pulumi.StringArray
 // the Droplets to which the outbound traffic will be allowed.
 func (o GetFirewallOutboundRuleOutput) DestinationDropletIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFirewallOutboundRule) []int { return v.DestinationDropletIds }).(pulumi.IntArrayOutput)
+}
+
+func (o GetFirewallOutboundRuleOutput) DestinationKubernetesIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallOutboundRule) []string { return v.DestinationKubernetesIds }).(pulumi.StringArrayOutput)
 }
 
 // An array containing the IDs

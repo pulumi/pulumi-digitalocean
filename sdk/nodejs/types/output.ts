@@ -828,6 +828,11 @@ export interface FirewallInboundRule {
      */
     sourceDropletIds?: number[];
     /**
+     * An array containing the IDs of
+     * the Kubernetes clusters from which the inbound traffic will be accepted.
+     */
+    sourceKubernetesIds?: string[];
+    /**
      * An array containing the IDs
      * of the Load Balancers from which the inbound traffic will be accepted.
      */
@@ -853,6 +858,11 @@ export interface FirewallOutboundRule {
      */
     destinationDropletIds?: number[];
     /**
+     * An array containing the IDs of
+     * the Kubernetes clusters to which the outbound traffic will be allowed.
+     */
+    destinationKubernetesIds?: string[];
+    /**
      * An array containing the IDs
      * of the Load Balancers to which the outbound traffic will be allowed.
      */
@@ -861,7 +871,6 @@ export interface FirewallOutboundRule {
      * An array containing the names of Tags
      * corresponding to groups of Droplets to which the outbound traffic will
      * be allowed.
-     * traffic.
      */
     destinationTags?: string[];
     /**
@@ -1792,6 +1801,7 @@ export interface GetFirewallInboundRule {
      * the Droplets from which the inbound traffic will be accepted.
      */
     sourceDropletIds?: number[];
+    sourceKubernetesIds?: string[];
     /**
      * An array containing the IDs
      * of the Load Balancers from which the inbound traffic will be accepted.
@@ -1816,6 +1826,7 @@ export interface GetFirewallOutboundRule {
      * the Droplets to which the outbound traffic will be allowed.
      */
     destinationDropletIds?: number[];
+    destinationKubernetesIds?: string[];
     /**
      * An array containing the IDs
      * of the Load Balancers to which the outbound traffic will be allowed.

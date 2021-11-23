@@ -19,6 +19,7 @@ class LoadBalancerArgs:
                  forwarding_rules: pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]],
                  region: pulumi.Input[Union[str, 'Region']],
                  algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
+                 disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -27,6 +28,7 @@ class LoadBalancerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 size_unit: Optional[pulumi.Input[int]] = None,
                  sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None):
         """
@@ -37,6 +39,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
+        :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
@@ -49,7 +52,8 @@ class LoadBalancerArgs:
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
-        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
@@ -58,6 +62,8 @@ class LoadBalancerArgs:
         pulumi.set(__self__, "region", region)
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
+        if disable_lets_encrypt_dns_records is not None:
+            pulumi.set(__self__, "disable_lets_encrypt_dns_records", disable_lets_encrypt_dns_records)
         if droplet_ids is not None:
             pulumi.set(__self__, "droplet_ids", droplet_ids)
         if droplet_tag is not None:
@@ -74,6 +80,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if size_unit is not None:
+            pulumi.set(__self__, "size_unit", size_unit)
         if sticky_sessions is not None:
             pulumi.set(__self__, "sticky_sessions", sticky_sessions)
         if vpc_uuid is not None:
@@ -117,6 +125,18 @@ class LoadBalancerArgs:
     @algorithm.setter
     def algorithm(self, value: Optional[pulumi.Input[Union[str, 'Algorithm']]]):
         pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="disableLetsEncryptDnsRecords")
+    def disable_lets_encrypt_dns_records(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        """
+        return pulumi.get(self, "disable_lets_encrypt_dns_records")
+
+    @disable_lets_encrypt_dns_records.setter
+    def disable_lets_encrypt_dns_records(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_lets_encrypt_dns_records", value)
 
     @property
     @pulumi.getter(name="dropletIds")
@@ -211,13 +231,25 @@ class LoadBalancerArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[str]]:
         """
-        The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size")
 
     @size.setter
     def size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="sizeUnit")
+    def size_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        """
+        return pulumi.get(self, "size_unit")
+
+    @size_unit.setter
+    def size_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_unit", value)
 
     @property
     @pulumi.getter(name="stickySessions")
@@ -249,6 +281,7 @@ class LoadBalancerArgs:
 class _LoadBalancerState:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
+                 disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -261,6 +294,7 @@ class _LoadBalancerState:
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 size_unit: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None):
@@ -269,6 +303,7 @@ class _LoadBalancerState:
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
+        :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
@@ -285,13 +320,16 @@ class _LoadBalancerState:
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
-        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
+        if disable_lets_encrypt_dns_records is not None:
+            pulumi.set(__self__, "disable_lets_encrypt_dns_records", disable_lets_encrypt_dns_records)
         if droplet_ids is not None:
             pulumi.set(__self__, "droplet_ids", droplet_ids)
         if droplet_tag is not None:
@@ -316,6 +354,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "region", region)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if size_unit is not None:
+            pulumi.set(__self__, "size_unit", size_unit)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if sticky_sessions is not None:
@@ -336,6 +376,18 @@ class _LoadBalancerState:
     @algorithm.setter
     def algorithm(self, value: Optional[pulumi.Input[Union[str, 'Algorithm']]]):
         pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="disableLetsEncryptDnsRecords")
+    def disable_lets_encrypt_dns_records(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        """
+        return pulumi.get(self, "disable_lets_encrypt_dns_records")
+
+    @disable_lets_encrypt_dns_records.setter
+    def disable_lets_encrypt_dns_records(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_lets_encrypt_dns_records", value)
 
     @property
     @pulumi.getter(name="dropletIds")
@@ -476,13 +528,25 @@ class _LoadBalancerState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[str]]:
         """
-        The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size")
 
     @size.setter
     def size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="sizeUnit")
+    def size_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        """
+        return pulumi.get(self, "size_unit")
+
+    @size_unit.setter
+    def size_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_unit", value)
 
     @property
     @pulumi.getter
@@ -525,6 +589,7 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
+                 disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -535,6 +600,7 @@ class LoadBalancer(pulumi.CustomResource):
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 size_unit: Optional[pulumi.Input[int]] = None,
                  sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -613,6 +679,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
+        :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
@@ -628,7 +695,8 @@ class LoadBalancer(pulumi.CustomResource):
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
-        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
@@ -725,6 +793,7 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
+                 disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -735,6 +804,7 @@ class LoadBalancer(pulumi.CustomResource):
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 size_unit: Optional[pulumi.Input[int]] = None,
                  sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -750,6 +820,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
             __props__.__dict__["algorithm"] = algorithm
+            __props__.__dict__["disable_lets_encrypt_dns_records"] = disable_lets_encrypt_dns_records
             __props__.__dict__["droplet_ids"] = droplet_ids
             __props__.__dict__["droplet_tag"] = droplet_tag
             __props__.__dict__["enable_backend_keepalive"] = enable_backend_keepalive
@@ -764,6 +835,7 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["size"] = size
+            __props__.__dict__["size_unit"] = size_unit
             __props__.__dict__["sticky_sessions"] = sticky_sessions
             __props__.__dict__["vpc_uuid"] = vpc_uuid
             __props__.__dict__["ip"] = None
@@ -780,6 +852,7 @@ class LoadBalancer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
+            disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             droplet_tag: Optional[pulumi.Input[str]] = None,
             enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
@@ -792,6 +865,7 @@ class LoadBalancer(pulumi.CustomResource):
             redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
             size: Optional[pulumi.Input[str]] = None,
+            size_unit: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
             vpc_uuid: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
@@ -805,6 +879,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: The load balancing algorithm used to determine
                which backend Droplet will be selected by a client. It must be either `round_robin`
                or `least_connections`. The default value is `round_robin`.
+        :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
@@ -821,7 +896,8 @@ class LoadBalancer(pulumi.CustomResource):
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
-        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
@@ -831,6 +907,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__ = _LoadBalancerState.__new__(_LoadBalancerState)
 
         __props__.__dict__["algorithm"] = algorithm
+        __props__.__dict__["disable_lets_encrypt_dns_records"] = disable_lets_encrypt_dns_records
         __props__.__dict__["droplet_ids"] = droplet_ids
         __props__.__dict__["droplet_tag"] = droplet_tag
         __props__.__dict__["enable_backend_keepalive"] = enable_backend_keepalive
@@ -843,6 +920,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
         __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
+        __props__.__dict__["size_unit"] = size_unit
         __props__.__dict__["status"] = status
         __props__.__dict__["sticky_sessions"] = sticky_sessions
         __props__.__dict__["vpc_uuid"] = vpc_uuid
@@ -857,6 +935,14 @@ class LoadBalancer(pulumi.CustomResource):
         or `least_connections`. The default value is `round_robin`.
         """
         return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="disableLetsEncryptDnsRecords")
+    def disable_lets_encrypt_dns_records(self) -> pulumi.Output[Optional[bool]]:
+        """
+        A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        """
+        return pulumi.get(self, "disable_lets_encrypt_dns_records")
 
     @property
     @pulumi.getter(name="dropletIds")
@@ -953,9 +1039,17 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[Optional[str]]:
         """
-        The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`.
+        The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="sizeUnit")
+    def size_unit(self) -> pulumi.Output[int]:
+        """
+        The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        """
+        return pulumi.get(self, "size_unit")
 
     @property
     @pulumi.getter

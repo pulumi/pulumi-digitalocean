@@ -828,6 +828,11 @@ export interface FirewallInboundRule {
      */
     sourceDropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * An array containing the IDs of
+     * the Kubernetes clusters from which the inbound traffic will be accepted.
+     */
+    sourceKubernetesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * An array containing the IDs
      * of the Load Balancers from which the inbound traffic will be accepted.
      */
@@ -853,6 +858,11 @@ export interface FirewallOutboundRule {
      */
     destinationDropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * An array containing the IDs of
+     * the Kubernetes clusters to which the outbound traffic will be allowed.
+     */
+    destinationKubernetesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * An array containing the IDs
      * of the Load Balancers to which the outbound traffic will be allowed.
      */
@@ -861,7 +871,6 @@ export interface FirewallOutboundRule {
      * An array containing the names of Tags
      * corresponding to groups of Droplets to which the outbound traffic will
      * be allowed.
-     * traffic.
      */
     destinationTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1064,6 +1073,7 @@ export interface GetFirewallInboundRule {
      * the Droplets from which the inbound traffic will be accepted.
      */
     sourceDropletIds?: number[];
+    sourceKubernetesIds?: string[];
     /**
      * An array containing the IDs
      * of the Load Balancers from which the inbound traffic will be accepted.
@@ -1100,6 +1110,7 @@ export interface GetFirewallInboundRuleArgs {
      * the Droplets from which the inbound traffic will be accepted.
      */
     sourceDropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    sourceKubernetesIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An array containing the IDs
      * of the Load Balancers from which the inbound traffic will be accepted.
@@ -1124,6 +1135,7 @@ export interface GetFirewallOutboundRule {
      * the Droplets to which the outbound traffic will be allowed.
      */
     destinationDropletIds?: number[];
+    destinationKubernetesIds?: string[];
     /**
      * An array containing the IDs
      * of the Load Balancers to which the outbound traffic will be allowed.
@@ -1162,6 +1174,7 @@ export interface GetFirewallOutboundRuleArgs {
      * the Droplets to which the outbound traffic will be allowed.
      */
     destinationDropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    destinationKubernetesIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An array containing the IDs
      * of the Load Balancers to which the outbound traffic will be allowed.
