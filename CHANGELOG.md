@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.16.0 of the DigitalOcean Terraform Provider
+_(none)_
 
 
 ---
+
+## 4.10.0 (2021-11-24)
+* Upgrade to v2.16.0 of the DigitalOcean Terraform Provider
 
 ## 4.9.0 (2021-11-18)
 * Upgrade to terraform-bridge 3.11.0
