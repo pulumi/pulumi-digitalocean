@@ -468,6 +468,10 @@ export interface AppSpecServiceRoute {
      * Paths must start with `/` and must be unique within the app.
      */
     path?: string;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: boolean;
 }
 
 export interface AppSpecStaticSite {
@@ -637,6 +641,10 @@ export interface AppSpecStaticSiteRoute {
      * Paths must start with `/` and must be unique within the app.
      */
     path?: string;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: boolean;
 }
 
 export interface AppSpecWorker {
@@ -1305,6 +1313,10 @@ export interface GetAppSpecServiceRoute {
      * Paths must start with `/` and must be unique within the app.
      */
     path?: string;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: boolean;
 }
 
 export interface GetAppSpecStaticSite {
@@ -1444,6 +1456,10 @@ export interface GetAppSpecStaticSiteRoute {
      * Paths must start with `/` and must be unique within the app.
      */
     path?: string;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: boolean;
 }
 
 export interface GetAppSpecWorker {

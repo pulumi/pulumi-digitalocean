@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Get the load balancer:
+        /// Get the load balancer by name:
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -45,10 +45,29 @@ namespace Pulumi.DigitalOcean
         ///     public Output&lt;string&gt; LbOutput { get; set; }
         /// }
         /// ```
+        /// 
+        /// Get the load balancer by ID:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs
+        ///         {
+        ///             Id = "loadbalancer_id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs args, InvokeOptions? options = null)
+        public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
 
         /// <summary>
@@ -63,7 +82,7 @@ namespace Pulumi.DigitalOcean
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Get the load balancer:
+        /// Get the load balancer by name:
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -84,10 +103,29 @@ namespace Pulumi.DigitalOcean
         ///     public Output&lt;string&gt; LbOutput { get; set; }
         /// }
         /// ```
+        /// 
+        /// Get the load balancer by ID:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs
+        ///         {
+        ///             Id = "loadbalancer_id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithVersion());
     }
 
@@ -95,10 +133,16 @@ namespace Pulumi.DigitalOcean
     public sealed class GetLoadBalancerArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The ID of load balancer.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// The name of load balancer.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetLoadBalancerArgs()
         {
@@ -108,10 +152,16 @@ namespace Pulumi.DigitalOcean
     public sealed class GetLoadBalancerInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The ID of load balancer.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// The name of load balancer.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetLoadBalancerInvokeArgs()
         {
@@ -130,13 +180,10 @@ namespace Pulumi.DigitalOcean
         public readonly bool EnableProxyProtocol;
         public readonly ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> ForwardingRules;
         public readonly ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> Healthchecks;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
         public readonly string Ip;
         public readonly string LoadBalancerUrn;
-        public readonly string Name;
+        public readonly string? Name;
         public readonly bool RedirectHttpToHttps;
         public readonly string Region;
         public readonly string Size;
@@ -163,13 +210,13 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> healthchecks,
 
-            string id,
+            string? id,
 
             string ip,
 
             string loadBalancerUrn,
 
-            string name,
+            string? name,
 
             bool redirectHttpToHttps,
 

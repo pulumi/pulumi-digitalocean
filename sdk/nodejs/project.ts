@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  * * Domains
  * * Droplets
  * * Floating IP
+ * * Kubernetes Cluster
  * * Load Balancers
  * * Spaces Bucket
  * * Volume

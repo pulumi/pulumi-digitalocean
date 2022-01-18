@@ -1865,12 +1865,16 @@ class AppSpecServiceImageArgs:
 @pulumi.input_type
 class AppSpecServiceRouteArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[str]] = None):
+                 path: Optional[pulumi.Input[str]] = None,
+                 preserve_path_prefix: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] path: Paths must start with `/` and must be unique within the app.
+        :param pulumi.Input[bool] preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
         """
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if preserve_path_prefix is not None:
+            pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
 
     @property
     @pulumi.getter
@@ -1883,6 +1887,18 @@ class AppSpecServiceRouteArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> Optional[pulumi.Input[bool]]:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
+
+    @preserve_path_prefix.setter
+    def preserve_path_prefix(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preserve_path_prefix", value)
 
 
 @pulumi.input_type
@@ -2508,12 +2524,16 @@ class AppSpecStaticSiteGitlabArgs:
 @pulumi.input_type
 class AppSpecStaticSiteRouteArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[str]] = None):
+                 path: Optional[pulumi.Input[str]] = None,
+                 preserve_path_prefix: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] path: Paths must start with `/` and must be unique within the app.
+        :param pulumi.Input[bool] preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
         """
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if preserve_path_prefix is not None:
+            pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
 
     @property
     @pulumi.getter
@@ -2526,6 +2546,18 @@ class AppSpecStaticSiteRouteArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> Optional[pulumi.Input[bool]]:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
+
+    @preserve_path_prefix.setter
+    def preserve_path_prefix(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preserve_path_prefix", value)
 
 
 @pulumi.input_type

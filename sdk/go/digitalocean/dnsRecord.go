@@ -33,7 +33,7 @@ import (
 // 			return err
 // 		}
 // 		www, err := digitalocean.NewDnsRecord(ctx, "www", &digitalocean.DnsRecordArgs{
-// 			Domain: _default.Name,
+// 			Domain: _default.ID(),
 // 			Type:   pulumi.String("A"),
 // 			Value:  pulumi.String("192.168.0.11"),
 // 		})
@@ -41,7 +41,7 @@ import (
 // 			return err
 // 		}
 // 		mx, err := digitalocean.NewDnsRecord(ctx, "mx", &digitalocean.DnsRecordArgs{
-// 			Domain:   _default.Name,
+// 			Domain:   _default.ID(),
 // 			Type:     pulumi.String("MX"),
 // 			Priority: pulumi.Int(10),
 // 			Value:    pulumi.String("mail.example.com."),

@@ -17,11 +17,19 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Paths must start with `/` and must be unique within the app.
         /// </summary>
         public readonly string? Path;
+        /// <summary>
+        /// An optional flag to preserve the path that is forwarded to the backend service.
+        /// </summary>
+        public readonly bool? PreservePathPrefix;
 
         [OutputConstructor]
-        private AppSpecServiceRoute(string? path)
+        private AppSpecServiceRoute(
+            string? path,
+
+            bool? preservePathPrefix)
         {
             Path = path;
+            PreservePathPrefix = preservePathPrefix;
         }
     }
 }
