@@ -106,6 +106,7 @@ class ProjectResources(pulumi.CustomResource):
         * Domains
         * Droplets
         * Floating IP
+        * Kubernetes Cluster
         * Load Balancers
         * Spaces Bucket
         * Volume
@@ -153,6 +154,7 @@ class ProjectResources(pulumi.CustomResource):
         * Domains
         * Droplets
         * Floating IP
+        * Kubernetes Cluster
         * Load Balancers
         * Spaces Bucket
         * Volume

@@ -3460,6 +3460,8 @@ func (o AppSpecServiceImagePtrOutput) Tag() pulumi.StringPtrOutput {
 type AppSpecServiceRoute struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path *string `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
 }
 
 // AppSpecServiceRouteInput is an input type that accepts AppSpecServiceRouteArgs and AppSpecServiceRouteOutput values.
@@ -3476,6 +3478,8 @@ type AppSpecServiceRouteInput interface {
 type AppSpecServiceRouteArgs struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
 }
 
 func (AppSpecServiceRouteArgs) ElementType() reflect.Type {
@@ -3532,6 +3536,11 @@ func (o AppSpecServiceRouteOutput) ToAppSpecServiceRouteOutputWithContext(ctx co
 // Paths must start with `/` and must be unique within the app.
 func (o AppSpecServiceRouteOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// An optional flag to preserve the path that is forwarded to the backend service.
+func (o AppSpecServiceRouteOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceRoute) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
 
 type AppSpecServiceRouteArrayOutput struct{ *pulumi.OutputState }
@@ -4814,6 +4823,8 @@ func (o AppSpecStaticSiteGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 type AppSpecStaticSiteRoute struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path *string `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
 }
 
 // AppSpecStaticSiteRouteInput is an input type that accepts AppSpecStaticSiteRouteArgs and AppSpecStaticSiteRouteOutput values.
@@ -4830,6 +4841,8 @@ type AppSpecStaticSiteRouteInput interface {
 type AppSpecStaticSiteRouteArgs struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
 }
 
 func (AppSpecStaticSiteRouteArgs) ElementType() reflect.Type {
@@ -4886,6 +4899,11 @@ func (o AppSpecStaticSiteRouteOutput) ToAppSpecStaticSiteRouteOutputWithContext(
 // Paths must start with `/` and must be unique within the app.
 func (o AppSpecStaticSiteRouteOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// An optional flag to preserve the path that is forwarded to the backend service.
+func (o AppSpecStaticSiteRouteOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteRoute) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
 
 type AppSpecStaticSiteRouteArrayOutput struct{ *pulumi.OutputState }
@@ -12615,6 +12633,8 @@ func (o GetAppSpecServiceImagePtrOutput) Tag() pulumi.StringPtrOutput {
 type GetAppSpecServiceRoute struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path *string `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
 }
 
 // GetAppSpecServiceRouteInput is an input type that accepts GetAppSpecServiceRouteArgs and GetAppSpecServiceRouteOutput values.
@@ -12631,6 +12651,8 @@ type GetAppSpecServiceRouteInput interface {
 type GetAppSpecServiceRouteArgs struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
 }
 
 func (GetAppSpecServiceRouteArgs) ElementType() reflect.Type {
@@ -12687,6 +12709,11 @@ func (o GetAppSpecServiceRouteOutput) ToGetAppSpecServiceRouteOutputWithContext(
 // Paths must start with `/` and must be unique within the app.
 func (o GetAppSpecServiceRouteOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// An optional flag to preserve the path that is forwarded to the backend service.
+func (o GetAppSpecServiceRouteOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceRoute) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
 
 type GetAppSpecServiceRouteArrayOutput struct{ *pulumi.OutputState }
@@ -13930,6 +13957,8 @@ func (o GetAppSpecStaticSiteGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 type GetAppSpecStaticSiteRoute struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path *string `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
 }
 
 // GetAppSpecStaticSiteRouteInput is an input type that accepts GetAppSpecStaticSiteRouteArgs and GetAppSpecStaticSiteRouteOutput values.
@@ -13946,6 +13975,8 @@ type GetAppSpecStaticSiteRouteInput interface {
 type GetAppSpecStaticSiteRouteArgs struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
 }
 
 func (GetAppSpecStaticSiteRouteArgs) ElementType() reflect.Type {
@@ -14002,6 +14033,11 @@ func (o GetAppSpecStaticSiteRouteOutput) ToGetAppSpecStaticSiteRouteOutputWithCo
 // Paths must start with `/` and must be unique within the app.
 func (o GetAppSpecStaticSiteRouteOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// An optional flag to preserve the path that is forwarded to the backend service.
+func (o GetAppSpecStaticSiteRouteOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteRoute) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
 
 type GetAppSpecStaticSiteRouteArrayOutput struct{ *pulumi.OutputState }

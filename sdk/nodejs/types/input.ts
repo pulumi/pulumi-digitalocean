@@ -468,6 +468,10 @@ export interface AppSpecServiceRoute {
      * Paths must start with `/` and must be unique within the app.
      */
     path?: pulumi.Input<string>;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: pulumi.Input<boolean>;
 }
 
 export interface AppSpecStaticSite {
@@ -637,6 +641,10 @@ export interface AppSpecStaticSiteRoute {
      * Paths must start with `/` and must be unique within the app.
      */
     path?: pulumi.Input<string>;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: pulumi.Input<boolean>;
 }
 
 export interface AppSpecWorker {

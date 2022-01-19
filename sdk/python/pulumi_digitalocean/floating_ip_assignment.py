@@ -119,6 +119,14 @@ class FloatingIpAssignment(pulumi.CustomResource):
             droplet_id=foobar_droplet.id)
         ```
 
+        ## Import
+
+        Floating IP assignments can be imported using the Floating IP itself and the `id` of the Droplet joined with a comma. For example
+
+        ```sh
+         $ pulumi import digitalocean:index/floatingIpAssignment:FloatingIpAssignment foobar 192.0.2.1,123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
@@ -151,6 +159,14 @@ class FloatingIpAssignment(pulumi.CustomResource):
         foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment",
             ip_address=foobar_floating_ip.ip_address,
             droplet_id=foobar_droplet.id)
+        ```
+
+        ## Import
+
+        Floating IP assignments can be imported using the Floating IP itself and the `id` of the Droplet joined with a comma. For example
+
+        ```sh
+         $ pulumi import digitalocean:index/floatingIpAssignment:FloatingIpAssignment foobar 192.0.2.1,123456
         ```
 
         :param str resource_name: The name of the resource.

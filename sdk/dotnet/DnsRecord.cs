@@ -29,14 +29,14 @@ namespace Pulumi.DigitalOcean
     ///         // Add an A record to the domain for www.example.com.
     ///         var www = new DigitalOcean.DnsRecord("www", new DigitalOcean.DnsRecordArgs
     ///         {
-    ///             Domain = @default.Name,
+    ///             Domain = @default.Id,
     ///             Type = "A",
     ///             Value = "192.168.0.11",
     ///         });
     ///         // Add a MX record for the example.com domain itself.
     ///         var mx = new DigitalOcean.DnsRecord("mx", new DigitalOcean.DnsRecordArgs
     ///         {
-    ///             Domain = @default.Name,
+    ///             Domain = @default.Id,
     ///             Type = "MX",
     ///             Priority = 10,
     ///             Value = "mail.example.com.",

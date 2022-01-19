@@ -18,6 +18,12 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// An optional flag to preserve the path that is forwarded to the backend service.
+        /// </summary>
+        [Input("preservePathPrefix")]
+        public Input<bool>? PreservePathPrefix { get; set; }
+
         public AppSpecStaticSiteRouteGetArgs()
         {
         }

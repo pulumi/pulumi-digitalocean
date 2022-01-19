@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get the load balancer:
+ * Get the load balancer by name:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,8 +26,20 @@ import * as utilities from "./utilities";
  * });
  * export const lbOutput = example.then(example => example.ip);
  * ```
+ *
+ * Get the load balancer by ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = pulumi.output(digitalocean.getLoadBalancer({
+ *     id: "loadbalancer_id",
+ * }));
+ * ```
  */
-export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
+export function getLoadBalancer(args?: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -36,6 +48,7 @@ export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeO
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", {
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -45,9 +58,13 @@ export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeO
  */
 export interface GetLoadBalancerArgs {
     /**
+     * The ID of load balancer.
+     */
+    id?: string;
+    /**
      * The name of load balancer.
      */
-    name: string;
+    name?: string;
 }
 
 /**
@@ -62,13 +79,10 @@ export interface GetLoadBalancerResult {
     readonly enableProxyProtocol: boolean;
     readonly forwardingRules: outputs.GetLoadBalancerForwardingRule[];
     readonly healthchecks: outputs.GetLoadBalancerHealthcheck[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
+    readonly id?: string;
     readonly ip: string;
     readonly loadBalancerUrn: string;
-    readonly name: string;
+    readonly name?: string;
     readonly redirectHttpToHttps: boolean;
     readonly region: string;
     readonly size: string;
@@ -78,7 +92,7 @@ export interface GetLoadBalancerResult {
     readonly vpcUuid: string;
 }
 
-export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
+export function getLoadBalancerOutput(args?: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
     return pulumi.output(args).apply(a => getLoadBalancer(a, opts))
 }
 
@@ -87,7 +101,11 @@ export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pu
  */
 export interface GetLoadBalancerOutputArgs {
     /**
+     * The ID of load balancer.
+     */
+    id?: pulumi.Input<string>;
+    /**
      * The name of load balancer.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

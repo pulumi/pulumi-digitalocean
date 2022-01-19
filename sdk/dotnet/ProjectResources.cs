@@ -19,6 +19,7 @@ namespace Pulumi.DigitalOcean
     /// * Domains
     /// * Droplets
     /// * Floating IP
+    /// * Kubernetes Cluster
     /// * Load Balancers
     /// * Spaces Bucket
     /// * Volume

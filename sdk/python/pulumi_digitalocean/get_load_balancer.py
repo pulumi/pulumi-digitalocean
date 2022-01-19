@@ -122,10 +122,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
+    def id(self) -> Optional[str]:
         return pulumi.get(self, "id")
 
     @property
@@ -140,7 +137,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
 
     @property
@@ -206,7 +203,8 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             vpc_uuid=self.vpc_uuid)
 
 
-def get_load_balancer(name: Optional[str] = None,
+def get_load_balancer(id: Optional[str] = None,
+                      name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
     Get information on a load balancer for use in other resources. This data source
@@ -218,7 +216,7 @@ def get_load_balancer(name: Optional[str] = None,
 
     ## Example Usage
 
-    Get the load balancer:
+    Get the load balancer by name:
 
     ```python
     import pulumi
@@ -228,10 +226,21 @@ def get_load_balancer(name: Optional[str] = None,
     pulumi.export("lbOutput", example.ip)
     ```
 
+    Get the load balancer by ID:
 
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_load_balancer(id="loadbalancer_id")
+    ```
+
+
+    :param str id: The ID of load balancer.
     :param str name: The name of load balancer.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -262,7 +271,8 @@ def get_load_balancer(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_load_balancer)
-def get_load_balancer_output(name: Optional[pulumi.Input[str]] = None,
+def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                             name: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
     Get information on a load balancer for use in other resources. This data source
@@ -274,7 +284,7 @@ def get_load_balancer_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    Get the load balancer:
+    Get the load balancer by name:
 
     ```python
     import pulumi
@@ -284,7 +294,17 @@ def get_load_balancer_output(name: Optional[pulumi.Input[str]] = None,
     pulumi.export("lbOutput", example.ip)
     ```
 
+    Get the load balancer by ID:
 
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_load_balancer(id="loadbalancer_id")
+    ```
+
+
+    :param str id: The ID of load balancer.
     :param str name: The name of load balancer.
     """
     ...
