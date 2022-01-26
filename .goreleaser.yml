@@ -28,8 +28,12 @@ builds:
   - -X github.com/pulumi/pulumi-digitalocean/provider/v4/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-digitalocean/
 changelog:
-  use: git
+  filters:
+    exclude:
+    - Merge branch
+    - Merge pull request
   sort: asc
+  use: git
 release:
   disable: false
 snapshot:
