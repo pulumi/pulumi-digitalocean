@@ -6,9 +6,12 @@ import { input as inputs, output as outputs, enums } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring) resource.
- * Monitor alerts can be configured to alert about, e.g., disk or memory usage exceeding certain threshold, or traffic at certain
- * limits. Notifications can be sent to either an email address or a Slack channel.
+ * Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)
+ * resource. Monitor alerts can be configured to alert about, e.g., disk or memory
+ * usage exceeding a certain threshold or traffic at a certain limit. Notifications
+ * can be sent to either an email address or a Slack channel.
+ *
+ * > **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.
  *
  * ## Import
  *
@@ -53,7 +56,7 @@ export class MonitorAlert extends pulumi.CustomResource {
      */
     public readonly alerts!: pulumi.Output<outputs.MonitorAlertAlerts>;
     /**
-     * The comparison for `value`. 
+     * The comparison for `value`.
      * This may be either `GreaterThan` or `LessThan`.
      */
     public readonly compare!: pulumi.Output<string>;
@@ -66,11 +69,11 @@ export class MonitorAlert extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The resources to which the alert policy applies.
+     * A list of IDs for the resources to which the alert policy applies.
      */
     public readonly entities!: pulumi.Output<string[] | undefined>;
     /**
-     * Tags for the alert.
+     * A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -87,7 +90,7 @@ export class MonitorAlert extends pulumi.CustomResource {
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
-     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      */
     public readonly value!: pulumi.Output<number>;
@@ -168,7 +171,7 @@ export interface MonitorAlertState {
      */
     alerts?: pulumi.Input<inputs.MonitorAlertAlerts>;
     /**
-     * The comparison for `value`. 
+     * The comparison for `value`.
      * This may be either `GreaterThan` or `LessThan`.
      */
     compare?: pulumi.Input<string>;
@@ -181,11 +184,11 @@ export interface MonitorAlertState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The resources to which the alert policy applies.
+     * A list of IDs for the resources to which the alert policy applies.
      */
     entities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Tags for the alert.
+     * A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -202,7 +205,7 @@ export interface MonitorAlertState {
      */
     uuid?: pulumi.Input<string>;
     /**
-     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      */
     value?: pulumi.Input<number>;
@@ -223,7 +226,7 @@ export interface MonitorAlertArgs {
      */
     alerts: pulumi.Input<inputs.MonitorAlertAlerts>;
     /**
-     * The comparison for `value`. 
+     * The comparison for `value`.
      * This may be either `GreaterThan` or `LessThan`.
      */
     compare: pulumi.Input<string>;
@@ -236,11 +239,11 @@ export interface MonitorAlertArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The resources to which the alert policy applies.
+     * A list of IDs for the resources to which the alert policy applies.
      */
     entities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Tags for the alert.
+     * A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -253,7 +256,7 @@ export interface MonitorAlertArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      */
     value: pulumi.Input<number>;

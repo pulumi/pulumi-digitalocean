@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? DbUser;
         /// <summary>
-        /// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        /// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         /// </summary>
         public readonly string? Engine;
         /// <summary>

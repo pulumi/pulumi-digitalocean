@@ -208,7 +208,7 @@
                 },
                 "engine": {
                     "type": "string",
-                    "description": "The database engine to use (`MYSQL`, `PG`, or `REDIS`).\n",
+                    "description": "The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3265,7 +3265,7 @@
                 },
                 "engine": {
                     "type": "string",
-                    "description": "The database engine to use (`MYSQL`, `PG`, or `REDIS`).\n",
+                    "description": "The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11362,7 +11362,7 @@
             }
         },
         "digitalocean:index/monitorAlert:MonitorAlert": {
-            "description": "Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring) resource.\nMonitor alerts can be configured to alert about, e.g., disk or memory usage exceeding certain threshold, or traffic at certain\nlimits. Notifications can be sent to either an email address or a Slack channel.\n\n\n## Import\n\nMonitor alerts can be imported using the monitor alert `uuid`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3\n```\n\n ",
+            "description": "Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)\nresource. Monitor alerts can be configured to alert about, e.g., disk or memory\nusage exceeding a certain threshold or traffic at a certain limit. Notifications\ncan be sent to either an email address or a Slack channel.\n\n\u003e **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.\n\n\n## Import\n\nMonitor alerts can be imported using the monitor alert `uuid`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3\n```\n\n ",
             "properties": {
                 "alerts": {
                     "$ref": "#/types/digitalocean:index/MonitorAlertAlerts:MonitorAlertAlerts",
@@ -11370,7 +11370,7 @@
                 },
                 "compare": {
                     "type": "string",
-                    "description": "The comparison for `value`. \nThis may be either `GreaterThan` or `LessThan`.\n"
+                    "description": "The comparison for `value`.\nThis may be either `GreaterThan` or `LessThan`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -11385,14 +11385,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The resources to which the alert policy applies.\n"
+                    "description": "A list of IDs for the resources to which the alert policy applies.\n"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Tags for the alert.\n"
+                    "description": "A list of tags. When an included tag is added to a resource, the alert policy will apply to it.\n"
                 },
                 "type": {
                     "type": "string",
@@ -11404,7 +11404,7 @@
                 },
                 "value": {
                     "type": "number",
-                    "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. \nDigitalOcean will show the correct unit in the web panel.\n"
+                    "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
                 },
                 "window": {
                     "type": "string",
@@ -11427,7 +11427,7 @@
                 },
                 "compare": {
                     "type": "string",
-                    "description": "The comparison for `value`. \nThis may be either `GreaterThan` or `LessThan`.\n"
+                    "description": "The comparison for `value`.\nThis may be either `GreaterThan` or `LessThan`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -11442,14 +11442,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The resources to which the alert policy applies.\n"
+                    "description": "A list of IDs for the resources to which the alert policy applies.\n"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Tags for the alert.\n"
+                    "description": "A list of tags. When an included tag is added to a resource, the alert policy will apply to it.\n"
                 },
                 "type": {
                     "type": "string",
@@ -11457,7 +11457,7 @@
                 },
                 "value": {
                     "type": "number",
-                    "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. \nDigitalOcean will show the correct unit in the web panel.\n"
+                    "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
                 },
                 "window": {
                     "type": "string",
@@ -11481,7 +11481,7 @@
                     },
                     "compare": {
                         "type": "string",
-                        "description": "The comparison for `value`. \nThis may be either `GreaterThan` or `LessThan`.\n"
+                        "description": "The comparison for `value`.\nThis may be either `GreaterThan` or `LessThan`.\n"
                     },
                     "description": {
                         "type": "string",
@@ -11496,14 +11496,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The resources to which the alert policy applies.\n"
+                        "description": "A list of IDs for the resources to which the alert policy applies.\n"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Tags for the alert.\n"
+                        "description": "A list of tags. When an included tag is added to a resource, the alert policy will apply to it.\n"
                     },
                     "type": {
                         "type": "string",
@@ -11515,7 +11515,7 @@
                     },
                     "value": {
                         "type": "number",
-                        "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. \nDigitalOcean will show the correct unit in the web panel.\n"
+                        "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
                     },
                     "window": {
                         "type": "string",

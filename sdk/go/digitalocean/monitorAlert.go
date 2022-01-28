@@ -11,9 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring) resource.
-// Monitor alerts can be configured to alert about, e.g., disk or memory usage exceeding certain threshold, or traffic at certain
-// limits. Notifications can be sent to either an email address or a Slack channel.
+// Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)
+// resource. Monitor alerts can be configured to alert about, e.g., disk or memory
+// usage exceeding a certain threshold or traffic at a certain limit. Notifications
+// can be sent to either an email address or a Slack channel.
+//
+// > **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.
 //
 // ## Import
 //
@@ -36,9 +39,9 @@ type MonitorAlert struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The status of the alert.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The resources to which the alert policy applies.
+	// A list of IDs for the resources to which the alert policy applies.
 	Entities pulumi.StringArrayOutput `pulumi:"entities"`
-	// Tags for the alert.
+	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of the alert.
 	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
@@ -114,9 +117,9 @@ type monitorAlertState struct {
 	Description *string `pulumi:"description"`
 	// The status of the alert.
 	Enabled *bool `pulumi:"enabled"`
-	// The resources to which the alert policy applies.
+	// A list of IDs for the resources to which the alert policy applies.
 	Entities []string `pulumi:"entities"`
-	// Tags for the alert.
+	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags []string `pulumi:"tags"`
 	// The type of the alert.
 	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
@@ -146,9 +149,9 @@ type MonitorAlertState struct {
 	Description pulumi.StringPtrInput
 	// The status of the alert.
 	Enabled pulumi.BoolPtrInput
-	// The resources to which the alert policy applies.
+	// A list of IDs for the resources to which the alert policy applies.
 	Entities pulumi.StringArrayInput
-	// Tags for the alert.
+	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags pulumi.StringArrayInput
 	// The type of the alert.
 	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
@@ -182,9 +185,9 @@ type monitorAlertArgs struct {
 	Description string `pulumi:"description"`
 	// The status of the alert.
 	Enabled *bool `pulumi:"enabled"`
-	// The resources to which the alert policy applies.
+	// A list of IDs for the resources to which the alert policy applies.
 	Entities []string `pulumi:"entities"`
-	// Tags for the alert.
+	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags []string `pulumi:"tags"`
 	// The type of the alert.
 	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
@@ -213,9 +216,9 @@ type MonitorAlertArgs struct {
 	Description pulumi.StringInput
 	// The status of the alert.
 	Enabled pulumi.BoolPtrInput
-	// The resources to which the alert policy applies.
+	// A list of IDs for the resources to which the alert policy applies.
 	Entities pulumi.StringArrayInput
-	// Tags for the alert.
+	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags pulumi.StringArrayInput
 	// The type of the alert.
 	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,

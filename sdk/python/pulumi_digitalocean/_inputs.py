@@ -249,7 +249,7 @@ class AppSpecDatabaseArgs:
         :param pulumi.Input[str] cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param pulumi.Input[str] db_name: The name of the MySQL or PostgreSQL database to configure.
         :param pulumi.Input[str] db_user: The name of the MySQL or PostgreSQL user to configure.
-        :param pulumi.Input[str] engine: The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        :param pulumi.Input[str] engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[bool] production: Whether this is a production or dev database.
         :param pulumi.Input[str] version: The version of the database engine.
@@ -309,7 +309,7 @@ class AppSpecDatabaseArgs:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         """
         return pulumi.get(self, "engine")
 

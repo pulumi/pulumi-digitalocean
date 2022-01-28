@@ -694,8 +694,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e h1:jl43csgF3BSlNRmjo+TGgjW/uXk9h7+NoR3doKQ0BT4=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e/go.mod h1:JBItawj+j8Ssla5Ib6BC/W9VQkOucBfnX7VRtyx1vw8=
-github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20220118214044-19dd2c0cb7fe h1:iJEcphDrgwFV5b8B867YVQ70gZrvUuy5ZehWBTizd8o=
-github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20220118214044-19dd2c0cb7fe/go.mod h1:MXM20Ath5PK7a05rgiP6Sr7EGsuWJ0v3emDn/ZzYeZc=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20220128183141-9e021280b702 h1:oso27XUwRhPVhbJ+eF20woqsubFI9QLpEn7+9UOtQFA=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20220128183141-9e021280b702/go.mod h1:MXM20Ath5PK7a05rgiP6Sr7EGsuWJ0v3emDn/ZzYeZc=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=

@@ -300,7 +300,7 @@ class AppSpecDatabase(dict):
         :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param str db_name: The name of the MySQL or PostgreSQL database to configure.
         :param str db_user: The name of the MySQL or PostgreSQL user to configure.
-        :param str engine: The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        :param str engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         :param str name: The name of the component.
         :param bool production: Whether this is a production or dev database.
         :param str version: The version of the database engine.
@@ -348,7 +348,7 @@ class AppSpecDatabase(dict):
     @pulumi.getter
     def engine(self) -> Optional[str]:
         """
-        The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         """
         return pulumi.get(self, "engine")
 
@@ -4721,7 +4721,7 @@ class GetAppSpecDatabaseResult(dict):
         :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param str db_name: The name of the MySQL or PostgreSQL database to configure.
         :param str db_user: The name of the MySQL or PostgreSQL user to configure.
-        :param str engine: The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        :param str engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         :param str name: The name of the component.
         :param bool production: Whether this is a production or dev database.
         :param str version: The version of the database engine.
@@ -4769,7 +4769,7 @@ class GetAppSpecDatabaseResult(dict):
     @pulumi.getter
     def engine(self) -> Optional[str]:
         """
-        The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         """
         return pulumi.get(self, "engine")
 

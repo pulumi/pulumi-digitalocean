@@ -46,7 +46,7 @@ export interface AppSpecDatabase {
      */
     dbUser?: string;
     /**
-     * The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+     * The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
      */
     engine?: string;
     /**
@@ -940,7 +940,7 @@ export interface GetAppSpecDatabase {
      */
     dbUser?: string;
     /**
-     * The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+     * The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
      */
     engine?: string;
     /**

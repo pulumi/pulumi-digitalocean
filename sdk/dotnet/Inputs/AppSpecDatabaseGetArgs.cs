@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? DbUser { get; set; }
 
         /// <summary>
-        /// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+        /// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

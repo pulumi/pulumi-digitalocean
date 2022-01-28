@@ -46,7 +46,7 @@ export interface AppSpecDatabase {
      */
     dbUser?: pulumi.Input<string>;
     /**
-     * The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+     * The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
      */
     engine?: pulumi.Input<string>;
     /**

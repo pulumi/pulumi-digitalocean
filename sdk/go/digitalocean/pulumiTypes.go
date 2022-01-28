@@ -305,7 +305,7 @@ type AppSpecDatabase struct {
 	DbName *string `pulumi:"dbName"`
 	// The name of the MySQL or PostgreSQL user to configure.
 	DbUser *string `pulumi:"dbUser"`
-	// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+	// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
 	Engine *string `pulumi:"engine"`
 	// The name of the component.
 	Name *string `pulumi:"name"`
@@ -333,7 +333,7 @@ type AppSpecDatabaseArgs struct {
 	DbName pulumi.StringPtrInput `pulumi:"dbName"`
 	// The name of the MySQL or PostgreSQL user to configure.
 	DbUser pulumi.StringPtrInput `pulumi:"dbUser"`
-	// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+	// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// The name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -409,7 +409,7 @@ func (o AppSpecDatabaseOutput) DbUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.DbUser }).(pulumi.StringPtrOutput)
 }
 
-// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
 func (o AppSpecDatabaseOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
@@ -9568,7 +9568,7 @@ type GetAppSpecDatabase struct {
 	DbName *string `pulumi:"dbName"`
 	// The name of the MySQL or PostgreSQL user to configure.
 	DbUser *string `pulumi:"dbUser"`
-	// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+	// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
 	Engine *string `pulumi:"engine"`
 	// The name of the component.
 	Name *string `pulumi:"name"`
@@ -9596,7 +9596,7 @@ type GetAppSpecDatabaseArgs struct {
 	DbName pulumi.StringPtrInput `pulumi:"dbName"`
 	// The name of the MySQL or PostgreSQL user to configure.
 	DbUser pulumi.StringPtrInput `pulumi:"dbUser"`
-	// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+	// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// The name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -9672,7 +9672,7 @@ func (o GetAppSpecDatabaseOutput) DbUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.DbUser }).(pulumi.StringPtrOutput)
 }
 
-// The database engine to use (`MYSQL`, `PG`, or `REDIS`).
+// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
 func (o GetAppSpecDatabaseOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDatabase) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
