@@ -29,7 +29,7 @@ class MonitorAlertArgs:
         :param pulumi.Input['MonitorAlertAlertsArgs'] alerts: How to send notifications about the alerts. This is a list with one element, .
                Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
                read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
-        :param pulumi.Input[str] compare: The comparison for `value`. 
+        :param pulumi.Input[str] compare: The comparison for `value`.
                This may be either `GreaterThan` or `LessThan`.
         :param pulumi.Input[str] description: The description of the alert.
         :param pulumi.Input[str] type: The type of the alert.
@@ -38,12 +38,12 @@ class MonitorAlertArgs:
                `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
                `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
-        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         :param pulumi.Input[bool] enabled: The status of the alert.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: The resources to which the alert policy applies.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the alert.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: A list of IDs for the resources to which the alert policy applies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         """
         pulumi.set(__self__, "alerts", alerts)
         pulumi.set(__self__, "compare", compare)
@@ -76,7 +76,7 @@ class MonitorAlertArgs:
     @pulumi.getter
     def compare(self) -> pulumi.Input[str]:
         """
-        The comparison for `value`. 
+        The comparison for `value`.
         This may be either `GreaterThan` or `LessThan`.
         """
         return pulumi.get(self, "compare")
@@ -118,7 +118,7 @@ class MonitorAlertArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[float]:
         """
-        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         DigitalOcean will show the correct unit in the web panel.
         """
         return pulumi.get(self, "value")
@@ -155,7 +155,7 @@ class MonitorAlertArgs:
     @pulumi.getter
     def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The resources to which the alert policy applies.
+        A list of IDs for the resources to which the alert policy applies.
         """
         return pulumi.get(self, "entities")
 
@@ -167,7 +167,7 @@ class MonitorAlertArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for the alert.
+        A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         """
         return pulumi.get(self, "tags")
 
@@ -194,12 +194,12 @@ class _MonitorAlertState:
         :param pulumi.Input['MonitorAlertAlertsArgs'] alerts: How to send notifications about the alerts. This is a list with one element, .
                Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
                read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
-        :param pulumi.Input[str] compare: The comparison for `value`. 
+        :param pulumi.Input[str] compare: The comparison for `value`.
                This may be either `GreaterThan` or `LessThan`.
         :param pulumi.Input[str] description: The description of the alert.
         :param pulumi.Input[bool] enabled: The status of the alert.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: The resources to which the alert policy applies.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the alert.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: A list of IDs for the resources to which the alert policy applies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         :param pulumi.Input[str] type: The type of the alert.
                This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
                `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
@@ -207,7 +207,7 @@ class _MonitorAlertState:
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
                `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
         :param pulumi.Input[str] uuid: The uuid of the alert.
-        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         """
@@ -250,7 +250,7 @@ class _MonitorAlertState:
     @pulumi.getter
     def compare(self) -> Optional[pulumi.Input[str]]:
         """
-        The comparison for `value`. 
+        The comparison for `value`.
         This may be either `GreaterThan` or `LessThan`.
         """
         return pulumi.get(self, "compare")
@@ -287,7 +287,7 @@ class _MonitorAlertState:
     @pulumi.getter
     def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The resources to which the alert policy applies.
+        A list of IDs for the resources to which the alert policy applies.
         """
         return pulumi.get(self, "entities")
 
@@ -299,7 +299,7 @@ class _MonitorAlertState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for the alert.
+        A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         """
         return pulumi.get(self, "tags")
 
@@ -340,7 +340,7 @@ class _MonitorAlertState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[float]]:
         """
-        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         DigitalOcean will show the correct unit in the web panel.
         """
         return pulumi.get(self, "value")
@@ -378,9 +378,12 @@ class MonitorAlert(pulumi.CustomResource):
                  window: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring) resource.
-        Monitor alerts can be configured to alert about, e.g., disk or memory usage exceeding certain threshold, or traffic at certain
-        limits. Notifications can be sent to either an email address or a Slack channel.
+        Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)
+        resource. Monitor alerts can be configured to alert about, e.g., disk or memory
+        usage exceeding a certain threshold or traffic at a certain limit. Notifications
+        can be sent to either an email address or a Slack channel.
+
+        > **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.
 
         ## Import
 
@@ -395,19 +398,19 @@ class MonitorAlert(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MonitorAlertAlertsArgs']] alerts: How to send notifications about the alerts. This is a list with one element, .
                Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
                read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
-        :param pulumi.Input[str] compare: The comparison for `value`. 
+        :param pulumi.Input[str] compare: The comparison for `value`.
                This may be either `GreaterThan` or `LessThan`.
         :param pulumi.Input[str] description: The description of the alert.
         :param pulumi.Input[bool] enabled: The status of the alert.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: The resources to which the alert policy applies.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the alert.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: A list of IDs for the resources to which the alert policy applies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         :param pulumi.Input[str] type: The type of the alert.
                This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
                `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
                `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
                `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
-        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         """
@@ -418,9 +421,12 @@ class MonitorAlert(pulumi.CustomResource):
                  args: MonitorAlertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring) resource.
-        Monitor alerts can be configured to alert about, e.g., disk or memory usage exceeding certain threshold, or traffic at certain
-        limits. Notifications can be sent to either an email address or a Slack channel.
+        Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)
+        resource. Monitor alerts can be configured to alert about, e.g., disk or memory
+        usage exceeding a certain threshold or traffic at a certain limit. Notifications
+        can be sent to either an email address or a Slack channel.
+
+        > **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.
 
         ## Import
 
@@ -518,12 +524,12 @@ class MonitorAlert(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MonitorAlertAlertsArgs']] alerts: How to send notifications about the alerts. This is a list with one element, .
                Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
                read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
-        :param pulumi.Input[str] compare: The comparison for `value`. 
+        :param pulumi.Input[str] compare: The comparison for `value`.
                This may be either `GreaterThan` or `LessThan`.
         :param pulumi.Input[str] description: The description of the alert.
         :param pulumi.Input[bool] enabled: The status of the alert.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: The resources to which the alert policy applies.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the alert.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: A list of IDs for the resources to which the alert policy applies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         :param pulumi.Input[str] type: The type of the alert.
                This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
                `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
@@ -531,7 +537,7 @@ class MonitorAlert(pulumi.CustomResource):
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
                `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
         :param pulumi.Input[str] uuid: The uuid of the alert.
-        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         """
@@ -565,7 +571,7 @@ class MonitorAlert(pulumi.CustomResource):
     @pulumi.getter
     def compare(self) -> pulumi.Output[str]:
         """
-        The comparison for `value`. 
+        The comparison for `value`.
         This may be either `GreaterThan` or `LessThan`.
         """
         return pulumi.get(self, "compare")
@@ -590,7 +596,7 @@ class MonitorAlert(pulumi.CustomResource):
     @pulumi.getter
     def entities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The resources to which the alert policy applies.
+        A list of IDs for the resources to which the alert policy applies.
         """
         return pulumi.get(self, "entities")
 
@@ -598,7 +604,7 @@ class MonitorAlert(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags for the alert.
+        A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         """
         return pulumi.get(self, "tags")
 
@@ -627,7 +633,7 @@ class MonitorAlert(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[float]:
         """
-        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         DigitalOcean will show the correct unit in the web panel.
         """
         return pulumi.get(self, "value")

@@ -10,9 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring) resource.
-    /// Monitor alerts can be configured to alert about, e.g., disk or memory usage exceeding certain threshold, or traffic at certain
-    /// limits. Notifications can be sent to either an email address or a Slack channel.
+    /// Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)
+    /// resource. Monitor alerts can be configured to alert about, e.g., disk or memory
+    /// usage exceeding a certain threshold or traffic at a certain limit. Notifications
+    /// can be sent to either an email address or a Slack channel.
+    /// 
+    /// &gt; **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.
     /// 
     /// ## Import
     /// 
@@ -34,7 +37,7 @@ namespace Pulumi.DigitalOcean
         public Output<Outputs.MonitorAlertAlerts> Alerts { get; private set; } = null!;
 
         /// <summary>
-        /// The comparison for `value`. 
+        /// The comparison for `value`.
         /// This may be either `GreaterThan` or `LessThan`.
         /// </summary>
         [Output("compare")]
@@ -53,13 +56,13 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The resources to which the alert policy applies.
+        /// A list of IDs for the resources to which the alert policy applies.
         /// </summary>
         [Output("entities")]
         public Output<ImmutableArray<string>> Entities { get; private set; } = null!;
 
         /// <summary>
-        /// Tags for the alert.
+        /// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -82,7 +85,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Uuid { get; private set; } = null!;
 
         /// <summary>
-        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         /// DigitalOcean will show the correct unit in the web panel.
         /// </summary>
         [Output("value")]
@@ -149,7 +152,7 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.MonitorAlertAlertsArgs> Alerts { get; set; } = null!;
 
         /// <summary>
-        /// The comparison for `value`. 
+        /// The comparison for `value`.
         /// This may be either `GreaterThan` or `LessThan`.
         /// </summary>
         [Input("compare", required: true)]
@@ -171,7 +174,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _entities;
 
         /// <summary>
-        /// The resources to which the alert policy applies.
+        /// A list of IDs for the resources to which the alert policy applies.
         /// </summary>
         public InputList<string> Entities
         {
@@ -183,7 +186,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags for the alert.
+        /// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         /// </summary>
         public InputList<string> Tags
         {
@@ -203,7 +206,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         /// DigitalOcean will show the correct unit in the web panel.
         /// </summary>
         [Input("value", required: true)]
@@ -231,7 +234,7 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.MonitorAlertAlertsGetArgs>? Alerts { get; set; }
 
         /// <summary>
-        /// The comparison for `value`. 
+        /// The comparison for `value`.
         /// This may be either `GreaterThan` or `LessThan`.
         /// </summary>
         [Input("compare")]
@@ -253,7 +256,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _entities;
 
         /// <summary>
-        /// The resources to which the alert policy applies.
+        /// A list of IDs for the resources to which the alert policy applies.
         /// </summary>
         public InputList<string> Entities
         {
@@ -265,7 +268,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags for the alert.
+        /// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         /// </summary>
         public InputList<string> Tags
         {
@@ -291,7 +294,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number. 
+        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         /// DigitalOcean will show the correct unit in the web panel.
         /// </summary>
         [Input("value")]
