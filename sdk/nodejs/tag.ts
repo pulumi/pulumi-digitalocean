@@ -101,31 +101,29 @@ export class Tag extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TagArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagArgs | TagState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
-            inputs["databasesCount"] = state ? state.databasesCount : undefined;
-            inputs["dropletsCount"] = state ? state.dropletsCount : undefined;
-            inputs["imagesCount"] = state ? state.imagesCount : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["totalResourceCount"] = state ? state.totalResourceCount : undefined;
-            inputs["volumeSnapshotsCount"] = state ? state.volumeSnapshotsCount : undefined;
-            inputs["volumesCount"] = state ? state.volumesCount : undefined;
+            resourceInputs["databasesCount"] = state ? state.databasesCount : undefined;
+            resourceInputs["dropletsCount"] = state ? state.dropletsCount : undefined;
+            resourceInputs["imagesCount"] = state ? state.imagesCount : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["totalResourceCount"] = state ? state.totalResourceCount : undefined;
+            resourceInputs["volumeSnapshotsCount"] = state ? state.volumeSnapshotsCount : undefined;
+            resourceInputs["volumesCount"] = state ? state.volumesCount : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["databasesCount"] = undefined /*out*/;
-            inputs["dropletsCount"] = undefined /*out*/;
-            inputs["imagesCount"] = undefined /*out*/;
-            inputs["totalResourceCount"] = undefined /*out*/;
-            inputs["volumeSnapshotsCount"] = undefined /*out*/;
-            inputs["volumesCount"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["databasesCount"] = undefined /*out*/;
+            resourceInputs["dropletsCount"] = undefined /*out*/;
+            resourceInputs["imagesCount"] = undefined /*out*/;
+            resourceInputs["totalResourceCount"] = undefined /*out*/;
+            resourceInputs["volumeSnapshotsCount"] = undefined /*out*/;
+            resourceInputs["volumesCount"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Tag.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Tag.__pulumiType, name, resourceInputs, opts);
     }
 }
 

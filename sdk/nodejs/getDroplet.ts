@@ -55,9 +55,7 @@ export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
         "id": args.id,
         "name": args.name,

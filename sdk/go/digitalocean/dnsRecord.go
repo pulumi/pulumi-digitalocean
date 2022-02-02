@@ -20,13 +20,12 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDomain(ctx, "_default", &digitalocean.DomainArgs{
+// 		_, err := digitalocean.NewDomain(ctx, "default", &digitalocean.DomainArgs{
 // 			Name: pulumi.String("example.com"),
 // 		})
 // 		if err != nil {
@@ -240,7 +239,7 @@ type DnsRecordInput interface {
 }
 
 func (*DnsRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsRecord)(nil))
+	return reflect.TypeOf((**DnsRecord)(nil)).Elem()
 }
 
 func (i *DnsRecord) ToDnsRecordOutput() DnsRecordOutput {
@@ -249,35 +248,6 @@ func (i *DnsRecord) ToDnsRecordOutput() DnsRecordOutput {
 
 func (i *DnsRecord) ToDnsRecordOutputWithContext(ctx context.Context) DnsRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordOutput)
-}
-
-func (i *DnsRecord) ToDnsRecordPtrOutput() DnsRecordPtrOutput {
-	return i.ToDnsRecordPtrOutputWithContext(context.Background())
-}
-
-func (i *DnsRecord) ToDnsRecordPtrOutputWithContext(ctx context.Context) DnsRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordPtrOutput)
-}
-
-type DnsRecordPtrInput interface {
-	pulumi.Input
-
-	ToDnsRecordPtrOutput() DnsRecordPtrOutput
-	ToDnsRecordPtrOutputWithContext(ctx context.Context) DnsRecordPtrOutput
-}
-
-type dnsRecordPtrType DnsRecordArgs
-
-func (*dnsRecordPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnsRecord)(nil))
-}
-
-func (i *dnsRecordPtrType) ToDnsRecordPtrOutput() DnsRecordPtrOutput {
-	return i.ToDnsRecordPtrOutputWithContext(context.Background())
-}
-
-func (i *dnsRecordPtrType) ToDnsRecordPtrOutputWithContext(ctx context.Context) DnsRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordPtrOutput)
 }
 
 // DnsRecordArrayInput is an input type that accepts DnsRecordArray and DnsRecordArrayOutput values.
@@ -333,7 +303,7 @@ func (i DnsRecordMap) ToDnsRecordMapOutputWithContext(ctx context.Context) DnsRe
 type DnsRecordOutput struct{ *pulumi.OutputState }
 
 func (DnsRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsRecord)(nil))
+	return reflect.TypeOf((**DnsRecord)(nil)).Elem()
 }
 
 func (o DnsRecordOutput) ToDnsRecordOutput() DnsRecordOutput {
@@ -344,44 +314,10 @@ func (o DnsRecordOutput) ToDnsRecordOutputWithContext(ctx context.Context) DnsRe
 	return o
 }
 
-func (o DnsRecordOutput) ToDnsRecordPtrOutput() DnsRecordPtrOutput {
-	return o.ToDnsRecordPtrOutputWithContext(context.Background())
-}
-
-func (o DnsRecordOutput) ToDnsRecordPtrOutputWithContext(ctx context.Context) DnsRecordPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsRecord) *DnsRecord {
-		return &v
-	}).(DnsRecordPtrOutput)
-}
-
-type DnsRecordPtrOutput struct{ *pulumi.OutputState }
-
-func (DnsRecordPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnsRecord)(nil))
-}
-
-func (o DnsRecordPtrOutput) ToDnsRecordPtrOutput() DnsRecordPtrOutput {
-	return o
-}
-
-func (o DnsRecordPtrOutput) ToDnsRecordPtrOutputWithContext(ctx context.Context) DnsRecordPtrOutput {
-	return o
-}
-
-func (o DnsRecordPtrOutput) Elem() DnsRecordOutput {
-	return o.ApplyT(func(v *DnsRecord) DnsRecord {
-		if v != nil {
-			return *v
-		}
-		var ret DnsRecord
-		return ret
-	}).(DnsRecordOutput)
-}
-
 type DnsRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (DnsRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DnsRecord)(nil))
+	return reflect.TypeOf((*[]*DnsRecord)(nil)).Elem()
 }
 
 func (o DnsRecordArrayOutput) ToDnsRecordArrayOutput() DnsRecordArrayOutput {
@@ -393,15 +329,15 @@ func (o DnsRecordArrayOutput) ToDnsRecordArrayOutputWithContext(ctx context.Cont
 }
 
 func (o DnsRecordArrayOutput) Index(i pulumi.IntInput) DnsRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsRecord {
-		return vs[0].([]DnsRecord)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnsRecord {
+		return vs[0].([]*DnsRecord)[vs[1].(int)]
 	}).(DnsRecordOutput)
 }
 
 type DnsRecordMapOutput struct{ *pulumi.OutputState }
 
 func (DnsRecordMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DnsRecord)(nil))
+	return reflect.TypeOf((*map[string]*DnsRecord)(nil)).Elem()
 }
 
 func (o DnsRecordMapOutput) ToDnsRecordMapOutput() DnsRecordMapOutput {
@@ -413,18 +349,16 @@ func (o DnsRecordMapOutput) ToDnsRecordMapOutputWithContext(ctx context.Context)
 }
 
 func (o DnsRecordMapOutput) MapIndex(k pulumi.StringInput) DnsRecordOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DnsRecord {
-		return vs[0].(map[string]DnsRecord)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DnsRecord {
+		return vs[0].(map[string]*DnsRecord)[vs[1].(string)]
 	}).(DnsRecordOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordInput)(nil)).Elem(), &DnsRecord{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordPtrInput)(nil)).Elem(), &DnsRecord{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordArrayInput)(nil)).Elem(), DnsRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordMapInput)(nil)).Elem(), DnsRecordMap{})
 	pulumi.RegisterOutputType(DnsRecordOutput{})
-	pulumi.RegisterOutputType(DnsRecordPtrOutput{})
 	pulumi.RegisterOutputType(DnsRecordArrayOutput{})
 	pulumi.RegisterOutputType(DnsRecordMapOutput{})
 }

@@ -246,7 +246,7 @@ type MonitorAlertInput interface {
 }
 
 func (*MonitorAlert) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorAlert)(nil))
+	return reflect.TypeOf((**MonitorAlert)(nil)).Elem()
 }
 
 func (i *MonitorAlert) ToMonitorAlertOutput() MonitorAlertOutput {
@@ -255,35 +255,6 @@ func (i *MonitorAlert) ToMonitorAlertOutput() MonitorAlertOutput {
 
 func (i *MonitorAlert) ToMonitorAlertOutputWithContext(ctx context.Context) MonitorAlertOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertOutput)
-}
-
-func (i *MonitorAlert) ToMonitorAlertPtrOutput() MonitorAlertPtrOutput {
-	return i.ToMonitorAlertPtrOutputWithContext(context.Background())
-}
-
-func (i *MonitorAlert) ToMonitorAlertPtrOutputWithContext(ctx context.Context) MonitorAlertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertPtrOutput)
-}
-
-type MonitorAlertPtrInput interface {
-	pulumi.Input
-
-	ToMonitorAlertPtrOutput() MonitorAlertPtrOutput
-	ToMonitorAlertPtrOutputWithContext(ctx context.Context) MonitorAlertPtrOutput
-}
-
-type monitorAlertPtrType MonitorAlertArgs
-
-func (*monitorAlertPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonitorAlert)(nil))
-}
-
-func (i *monitorAlertPtrType) ToMonitorAlertPtrOutput() MonitorAlertPtrOutput {
-	return i.ToMonitorAlertPtrOutputWithContext(context.Background())
-}
-
-func (i *monitorAlertPtrType) ToMonitorAlertPtrOutputWithContext(ctx context.Context) MonitorAlertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertPtrOutput)
 }
 
 // MonitorAlertArrayInput is an input type that accepts MonitorAlertArray and MonitorAlertArrayOutput values.
@@ -339,7 +310,7 @@ func (i MonitorAlertMap) ToMonitorAlertMapOutputWithContext(ctx context.Context)
 type MonitorAlertOutput struct{ *pulumi.OutputState }
 
 func (MonitorAlertOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorAlert)(nil))
+	return reflect.TypeOf((**MonitorAlert)(nil)).Elem()
 }
 
 func (o MonitorAlertOutput) ToMonitorAlertOutput() MonitorAlertOutput {
@@ -350,44 +321,10 @@ func (o MonitorAlertOutput) ToMonitorAlertOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o MonitorAlertOutput) ToMonitorAlertPtrOutput() MonitorAlertPtrOutput {
-	return o.ToMonitorAlertPtrOutputWithContext(context.Background())
-}
-
-func (o MonitorAlertOutput) ToMonitorAlertPtrOutputWithContext(ctx context.Context) MonitorAlertPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorAlert) *MonitorAlert {
-		return &v
-	}).(MonitorAlertPtrOutput)
-}
-
-type MonitorAlertPtrOutput struct{ *pulumi.OutputState }
-
-func (MonitorAlertPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonitorAlert)(nil))
-}
-
-func (o MonitorAlertPtrOutput) ToMonitorAlertPtrOutput() MonitorAlertPtrOutput {
-	return o
-}
-
-func (o MonitorAlertPtrOutput) ToMonitorAlertPtrOutputWithContext(ctx context.Context) MonitorAlertPtrOutput {
-	return o
-}
-
-func (o MonitorAlertPtrOutput) Elem() MonitorAlertOutput {
-	return o.ApplyT(func(v *MonitorAlert) MonitorAlert {
-		if v != nil {
-			return *v
-		}
-		var ret MonitorAlert
-		return ret
-	}).(MonitorAlertOutput)
-}
-
 type MonitorAlertArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitorAlertArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitorAlert)(nil))
+	return reflect.TypeOf((*[]*MonitorAlert)(nil)).Elem()
 }
 
 func (o MonitorAlertArrayOutput) ToMonitorAlertArrayOutput() MonitorAlertArrayOutput {
@@ -399,15 +336,15 @@ func (o MonitorAlertArrayOutput) ToMonitorAlertArrayOutputWithContext(ctx contex
 }
 
 func (o MonitorAlertArrayOutput) Index(i pulumi.IntInput) MonitorAlertOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorAlert {
-		return vs[0].([]MonitorAlert)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitorAlert {
+		return vs[0].([]*MonitorAlert)[vs[1].(int)]
 	}).(MonitorAlertOutput)
 }
 
 type MonitorAlertMapOutput struct{ *pulumi.OutputState }
 
 func (MonitorAlertMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MonitorAlert)(nil))
+	return reflect.TypeOf((*map[string]*MonitorAlert)(nil)).Elem()
 }
 
 func (o MonitorAlertMapOutput) ToMonitorAlertMapOutput() MonitorAlertMapOutput {
@@ -419,18 +356,16 @@ func (o MonitorAlertMapOutput) ToMonitorAlertMapOutputWithContext(ctx context.Co
 }
 
 func (o MonitorAlertMapOutput) MapIndex(k pulumi.StringInput) MonitorAlertOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MonitorAlert {
-		return vs[0].(map[string]MonitorAlert)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MonitorAlert {
+		return vs[0].(map[string]*MonitorAlert)[vs[1].(string)]
 	}).(MonitorAlertOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertInput)(nil)).Elem(), &MonitorAlert{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertPtrInput)(nil)).Elem(), &MonitorAlert{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertArrayInput)(nil)).Elem(), MonitorAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertMapInput)(nil)).Elem(), MonitorAlertMap{})
 	pulumi.RegisterOutputType(MonitorAlertOutput{})
-	pulumi.RegisterOutputType(MonitorAlertPtrOutput{})
 	pulumi.RegisterOutputType(MonitorAlertArrayOutput{})
 	pulumi.RegisterOutputType(MonitorAlertMapOutput{})
 }

@@ -34,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewSpacesBucket(ctx, "static_assets", nil)
+// 		_, err := digitalocean.NewSpacesBucket(ctx, "static-assets", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -53,7 +53,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -76,7 +75,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -272,7 +270,7 @@ type SpacesBucketInput interface {
 }
 
 func (*SpacesBucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpacesBucket)(nil))
+	return reflect.TypeOf((**SpacesBucket)(nil)).Elem()
 }
 
 func (i *SpacesBucket) ToSpacesBucketOutput() SpacesBucketOutput {
@@ -281,35 +279,6 @@ func (i *SpacesBucket) ToSpacesBucketOutput() SpacesBucketOutput {
 
 func (i *SpacesBucket) ToSpacesBucketOutputWithContext(ctx context.Context) SpacesBucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketOutput)
-}
-
-func (i *SpacesBucket) ToSpacesBucketPtrOutput() SpacesBucketPtrOutput {
-	return i.ToSpacesBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *SpacesBucket) ToSpacesBucketPtrOutputWithContext(ctx context.Context) SpacesBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketPtrOutput)
-}
-
-type SpacesBucketPtrInput interface {
-	pulumi.Input
-
-	ToSpacesBucketPtrOutput() SpacesBucketPtrOutput
-	ToSpacesBucketPtrOutputWithContext(ctx context.Context) SpacesBucketPtrOutput
-}
-
-type spacesBucketPtrType SpacesBucketArgs
-
-func (*spacesBucketPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SpacesBucket)(nil))
-}
-
-func (i *spacesBucketPtrType) ToSpacesBucketPtrOutput() SpacesBucketPtrOutput {
-	return i.ToSpacesBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *spacesBucketPtrType) ToSpacesBucketPtrOutputWithContext(ctx context.Context) SpacesBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketPtrOutput)
 }
 
 // SpacesBucketArrayInput is an input type that accepts SpacesBucketArray and SpacesBucketArrayOutput values.
@@ -365,7 +334,7 @@ func (i SpacesBucketMap) ToSpacesBucketMapOutputWithContext(ctx context.Context)
 type SpacesBucketOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpacesBucket)(nil))
+	return reflect.TypeOf((**SpacesBucket)(nil)).Elem()
 }
 
 func (o SpacesBucketOutput) ToSpacesBucketOutput() SpacesBucketOutput {
@@ -376,44 +345,10 @@ func (o SpacesBucketOutput) ToSpacesBucketOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o SpacesBucketOutput) ToSpacesBucketPtrOutput() SpacesBucketPtrOutput {
-	return o.ToSpacesBucketPtrOutputWithContext(context.Background())
-}
-
-func (o SpacesBucketOutput) ToSpacesBucketPtrOutputWithContext(ctx context.Context) SpacesBucketPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpacesBucket) *SpacesBucket {
-		return &v
-	}).(SpacesBucketPtrOutput)
-}
-
-type SpacesBucketPtrOutput struct{ *pulumi.OutputState }
-
-func (SpacesBucketPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SpacesBucket)(nil))
-}
-
-func (o SpacesBucketPtrOutput) ToSpacesBucketPtrOutput() SpacesBucketPtrOutput {
-	return o
-}
-
-func (o SpacesBucketPtrOutput) ToSpacesBucketPtrOutputWithContext(ctx context.Context) SpacesBucketPtrOutput {
-	return o
-}
-
-func (o SpacesBucketPtrOutput) Elem() SpacesBucketOutput {
-	return o.ApplyT(func(v *SpacesBucket) SpacesBucket {
-		if v != nil {
-			return *v
-		}
-		var ret SpacesBucket
-		return ret
-	}).(SpacesBucketOutput)
-}
-
 type SpacesBucketArrayOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SpacesBucket)(nil))
+	return reflect.TypeOf((*[]*SpacesBucket)(nil)).Elem()
 }
 
 func (o SpacesBucketArrayOutput) ToSpacesBucketArrayOutput() SpacesBucketArrayOutput {
@@ -425,15 +360,15 @@ func (o SpacesBucketArrayOutput) ToSpacesBucketArrayOutputWithContext(ctx contex
 }
 
 func (o SpacesBucketArrayOutput) Index(i pulumi.IntInput) SpacesBucketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpacesBucket {
-		return vs[0].([]SpacesBucket)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpacesBucket {
+		return vs[0].([]*SpacesBucket)[vs[1].(int)]
 	}).(SpacesBucketOutput)
 }
 
 type SpacesBucketMapOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SpacesBucket)(nil))
+	return reflect.TypeOf((*map[string]*SpacesBucket)(nil)).Elem()
 }
 
 func (o SpacesBucketMapOutput) ToSpacesBucketMapOutput() SpacesBucketMapOutput {
@@ -445,18 +380,16 @@ func (o SpacesBucketMapOutput) ToSpacesBucketMapOutputWithContext(ctx context.Co
 }
 
 func (o SpacesBucketMapOutput) MapIndex(k pulumi.StringInput) SpacesBucketOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SpacesBucket {
-		return vs[0].(map[string]SpacesBucket)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SpacesBucket {
+		return vs[0].(map[string]*SpacesBucket)[vs[1].(string)]
 	}).(SpacesBucketOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketInput)(nil)).Elem(), &SpacesBucket{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketPtrInput)(nil)).Elem(), &SpacesBucket{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketArrayInput)(nil)).Elem(), SpacesBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketMapInput)(nil)).Elem(), SpacesBucketMap{})
 	pulumi.RegisterOutputType(SpacesBucketOutput{})
-	pulumi.RegisterOutputType(SpacesBucketPtrOutput{})
 	pulumi.RegisterOutputType(SpacesBucketArrayOutput{})
 	pulumi.RegisterOutputType(SpacesBucketMapOutput{})
 }

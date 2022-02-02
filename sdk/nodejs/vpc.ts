@@ -114,34 +114,32 @@ export class Vpc extends pulumi.CustomResource {
      */
     constructor(name: string, args: VpcArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcArgs | VpcState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["default"] = state ? state.default : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipRange"] = state ? state.ipRange : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["vpcUrn"] = state ? state.vpcUrn : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["default"] = state ? state.default : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["vpcUrn"] = state ? state.vpcUrn : undefined;
         } else {
             const args = argsOrState as VpcArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipRange"] = args ? args.ipRange : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["default"] = undefined /*out*/;
-            inputs["vpcUrn"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["default"] = undefined /*out*/;
+            resourceInputs["vpcUrn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Vpc.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Vpc.__pulumiType, name, resourceInputs, opts);
     }
 }
 

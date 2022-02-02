@@ -196,38 +196,38 @@ export class Droplet extends pulumi.CustomResource {
      */
     constructor(name: string, args: DropletArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DropletArgs | DropletState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DropletState | undefined;
-            inputs["backups"] = state ? state.backups : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["disk"] = state ? state.disk : undefined;
-            inputs["dropletAgent"] = state ? state.dropletAgent : undefined;
-            inputs["dropletUrn"] = state ? state.dropletUrn : undefined;
-            inputs["gracefulShutdown"] = state ? state.gracefulShutdown : undefined;
-            inputs["image"] = state ? state.image : undefined;
-            inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
-            inputs["ipv4AddressPrivate"] = state ? state.ipv4AddressPrivate : undefined;
-            inputs["ipv6"] = state ? state.ipv6 : undefined;
-            inputs["ipv6Address"] = state ? state.ipv6Address : undefined;
-            inputs["locked"] = state ? state.locked : undefined;
-            inputs["memory"] = state ? state.memory : undefined;
-            inputs["monitoring"] = state ? state.monitoring : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["priceHourly"] = state ? state.priceHourly : undefined;
-            inputs["priceMonthly"] = state ? state.priceMonthly : undefined;
-            inputs["privateNetworking"] = state ? state.privateNetworking : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["resizeDisk"] = state ? state.resizeDisk : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["sshKeys"] = state ? state.sshKeys : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["userData"] = state ? state.userData : undefined;
-            inputs["vcpus"] = state ? state.vcpus : undefined;
-            inputs["volumeIds"] = state ? state.volumeIds : undefined;
-            inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
+            resourceInputs["backups"] = state ? state.backups : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["disk"] = state ? state.disk : undefined;
+            resourceInputs["dropletAgent"] = state ? state.dropletAgent : undefined;
+            resourceInputs["dropletUrn"] = state ? state.dropletUrn : undefined;
+            resourceInputs["gracefulShutdown"] = state ? state.gracefulShutdown : undefined;
+            resourceInputs["image"] = state ? state.image : undefined;
+            resourceInputs["ipv4Address"] = state ? state.ipv4Address : undefined;
+            resourceInputs["ipv4AddressPrivate"] = state ? state.ipv4AddressPrivate : undefined;
+            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
+            resourceInputs["ipv6Address"] = state ? state.ipv6Address : undefined;
+            resourceInputs["locked"] = state ? state.locked : undefined;
+            resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["monitoring"] = state ? state.monitoring : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["priceHourly"] = state ? state.priceHourly : undefined;
+            resourceInputs["priceMonthly"] = state ? state.priceMonthly : undefined;
+            resourceInputs["privateNetworking"] = state ? state.privateNetworking : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["resizeDisk"] = state ? state.resizeDisk : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["sshKeys"] = state ? state.sshKeys : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["vcpus"] = state ? state.vcpus : undefined;
+            resourceInputs["volumeIds"] = state ? state.volumeIds : undefined;
+            resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as DropletArgs | undefined;
             if ((!args || args.image === undefined) && !opts.urn) {
@@ -239,39 +239,37 @@ export class Droplet extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            inputs["backups"] = args ? args.backups : undefined;
-            inputs["dropletAgent"] = args ? args.dropletAgent : undefined;
-            inputs["gracefulShutdown"] = args ? args.gracefulShutdown : undefined;
-            inputs["image"] = args ? args.image : undefined;
-            inputs["ipv6"] = args ? args.ipv6 : undefined;
-            inputs["monitoring"] = args ? args.monitoring : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["privateNetworking"] = args ? args.privateNetworking : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["resizeDisk"] = args ? args.resizeDisk : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["sshKeys"] = args ? args.sshKeys : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["userData"] = args ? args.userData : undefined;
-            inputs["volumeIds"] = args ? args.volumeIds : undefined;
-            inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["disk"] = undefined /*out*/;
-            inputs["dropletUrn"] = undefined /*out*/;
-            inputs["ipv4Address"] = undefined /*out*/;
-            inputs["ipv4AddressPrivate"] = undefined /*out*/;
-            inputs["ipv6Address"] = undefined /*out*/;
-            inputs["locked"] = undefined /*out*/;
-            inputs["memory"] = undefined /*out*/;
-            inputs["priceHourly"] = undefined /*out*/;
-            inputs["priceMonthly"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["vcpus"] = undefined /*out*/;
+            resourceInputs["backups"] = args ? args.backups : undefined;
+            resourceInputs["dropletAgent"] = args ? args.dropletAgent : undefined;
+            resourceInputs["gracefulShutdown"] = args ? args.gracefulShutdown : undefined;
+            resourceInputs["image"] = args ? args.image : undefined;
+            resourceInputs["ipv6"] = args ? args.ipv6 : undefined;
+            resourceInputs["monitoring"] = args ? args.monitoring : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privateNetworking"] = args ? args.privateNetworking : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["resizeDisk"] = args ? args.resizeDisk : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["sshKeys"] = args ? args.sshKeys : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["volumeIds"] = args ? args.volumeIds : undefined;
+            resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["disk"] = undefined /*out*/;
+            resourceInputs["dropletUrn"] = undefined /*out*/;
+            resourceInputs["ipv4Address"] = undefined /*out*/;
+            resourceInputs["ipv4AddressPrivate"] = undefined /*out*/;
+            resourceInputs["ipv6Address"] = undefined /*out*/;
+            resourceInputs["locked"] = undefined /*out*/;
+            resourceInputs["memory"] = undefined /*out*/;
+            resourceInputs["priceHourly"] = undefined /*out*/;
+            resourceInputs["priceMonthly"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["vcpus"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Droplet.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Droplet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

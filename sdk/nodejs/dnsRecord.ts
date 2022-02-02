@@ -122,21 +122,21 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     constructor(name: string, args: DnsRecordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DnsRecordArgs | DnsRecordState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsRecordState | undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["flags"] = state ? state.flags : undefined;
-            inputs["fqdn"] = state ? state.fqdn : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["tag"] = state ? state.tag : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["value"] = state ? state.value : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["flags"] = state ? state.flags : undefined;
+            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["tag"] = state ? state.tag : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as DnsRecordArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -148,22 +148,20 @@ export class DnsRecord extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["flags"] = args ? args.flags : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["tag"] = args ? args.tag : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
-            inputs["fqdn"] = undefined /*out*/;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["flags"] = args ? args.flags : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["tag"] = args ? args.tag : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["fqdn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DnsRecord.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DnsRecord.__pulumiType, name, resourceInputs, opts);
     }
 }
 

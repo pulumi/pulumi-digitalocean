@@ -21,7 +21,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -447,7 +446,7 @@ type DropletInput interface {
 }
 
 func (*Droplet) ElementType() reflect.Type {
-	return reflect.TypeOf((*Droplet)(nil))
+	return reflect.TypeOf((**Droplet)(nil)).Elem()
 }
 
 func (i *Droplet) ToDropletOutput() DropletOutput {
@@ -456,35 +455,6 @@ func (i *Droplet) ToDropletOutput() DropletOutput {
 
 func (i *Droplet) ToDropletOutputWithContext(ctx context.Context) DropletOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DropletOutput)
-}
-
-func (i *Droplet) ToDropletPtrOutput() DropletPtrOutput {
-	return i.ToDropletPtrOutputWithContext(context.Background())
-}
-
-func (i *Droplet) ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DropletPtrOutput)
-}
-
-type DropletPtrInput interface {
-	pulumi.Input
-
-	ToDropletPtrOutput() DropletPtrOutput
-	ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput
-}
-
-type dropletPtrType DropletArgs
-
-func (*dropletPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Droplet)(nil))
-}
-
-func (i *dropletPtrType) ToDropletPtrOutput() DropletPtrOutput {
-	return i.ToDropletPtrOutputWithContext(context.Background())
-}
-
-func (i *dropletPtrType) ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DropletPtrOutput)
 }
 
 // DropletArrayInput is an input type that accepts DropletArray and DropletArrayOutput values.
@@ -540,7 +510,7 @@ func (i DropletMap) ToDropletMapOutputWithContext(ctx context.Context) DropletMa
 type DropletOutput struct{ *pulumi.OutputState }
 
 func (DropletOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Droplet)(nil))
+	return reflect.TypeOf((**Droplet)(nil)).Elem()
 }
 
 func (o DropletOutput) ToDropletOutput() DropletOutput {
@@ -551,44 +521,10 @@ func (o DropletOutput) ToDropletOutputWithContext(ctx context.Context) DropletOu
 	return o
 }
 
-func (o DropletOutput) ToDropletPtrOutput() DropletPtrOutput {
-	return o.ToDropletPtrOutputWithContext(context.Background())
-}
-
-func (o DropletOutput) ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Droplet) *Droplet {
-		return &v
-	}).(DropletPtrOutput)
-}
-
-type DropletPtrOutput struct{ *pulumi.OutputState }
-
-func (DropletPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Droplet)(nil))
-}
-
-func (o DropletPtrOutput) ToDropletPtrOutput() DropletPtrOutput {
-	return o
-}
-
-func (o DropletPtrOutput) ToDropletPtrOutputWithContext(ctx context.Context) DropletPtrOutput {
-	return o
-}
-
-func (o DropletPtrOutput) Elem() DropletOutput {
-	return o.ApplyT(func(v *Droplet) Droplet {
-		if v != nil {
-			return *v
-		}
-		var ret Droplet
-		return ret
-	}).(DropletOutput)
-}
-
 type DropletArrayOutput struct{ *pulumi.OutputState }
 
 func (DropletArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Droplet)(nil))
+	return reflect.TypeOf((*[]*Droplet)(nil)).Elem()
 }
 
 func (o DropletArrayOutput) ToDropletArrayOutput() DropletArrayOutput {
@@ -600,15 +536,15 @@ func (o DropletArrayOutput) ToDropletArrayOutputWithContext(ctx context.Context)
 }
 
 func (o DropletArrayOutput) Index(i pulumi.IntInput) DropletOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Droplet {
-		return vs[0].([]Droplet)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Droplet {
+		return vs[0].([]*Droplet)[vs[1].(int)]
 	}).(DropletOutput)
 }
 
 type DropletMapOutput struct{ *pulumi.OutputState }
 
 func (DropletMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Droplet)(nil))
+	return reflect.TypeOf((*map[string]*Droplet)(nil)).Elem()
 }
 
 func (o DropletMapOutput) ToDropletMapOutput() DropletMapOutput {
@@ -620,18 +556,16 @@ func (o DropletMapOutput) ToDropletMapOutputWithContext(ctx context.Context) Dro
 }
 
 func (o DropletMapOutput) MapIndex(k pulumi.StringInput) DropletOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Droplet {
-		return vs[0].(map[string]Droplet)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Droplet {
+		return vs[0].(map[string]*Droplet)[vs[1].(string)]
 	}).(DropletOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DropletInput)(nil)).Elem(), &Droplet{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DropletPtrInput)(nil)).Elem(), &Droplet{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DropletArrayInput)(nil)).Elem(), DropletArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DropletMapInput)(nil)).Elem(), DropletMap{})
 	pulumi.RegisterOutputType(DropletOutput{})
-	pulumi.RegisterOutputType(DropletPtrOutput{})
 	pulumi.RegisterOutputType(DropletArrayOutput{})
 	pulumi.RegisterOutputType(DropletMapOutput{})
 }

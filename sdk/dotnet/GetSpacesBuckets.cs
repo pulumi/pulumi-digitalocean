@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -93,7 +92,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpacesBucketsResult> InvokeAsync(GetSpacesBucketsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
@@ -176,7 +175,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSpacesBucketsResult> Invoke(GetSpacesBucketsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsInvokeArgs(), options.WithDefaults());
     }
 
 

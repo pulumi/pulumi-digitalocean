@@ -54,19 +54,17 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            inputs["apiEndpoint"] = (args ? args.apiEndpoint : undefined) ?? (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
-            inputs["spacesAccessId"] = args ? args.spacesAccessId : undefined;
-            inputs["spacesEndpoint"] = (args ? args.spacesEndpoint : undefined) ?? utilities.getEnv("SPACES_ENDPOINT_URL");
-            inputs["spacesSecretKey"] = args ? args.spacesSecretKey : undefined;
-            inputs["token"] = args ? args.token : undefined;
+            resourceInputs["apiEndpoint"] = (args ? args.apiEndpoint : undefined) ?? (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
+            resourceInputs["spacesAccessId"] = args ? args.spacesAccessId : undefined;
+            resourceInputs["spacesEndpoint"] = (args ? args.spacesEndpoint : undefined) ?? utilities.getEnv("SPACES_ENDPOINT_URL");
+            resourceInputs["spacesSecretKey"] = args ? args.spacesSecretKey : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

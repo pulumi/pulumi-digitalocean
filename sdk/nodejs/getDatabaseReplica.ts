@@ -28,9 +28,7 @@ export function getDatabaseReplica(args: GetDatabaseReplicaArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseReplica:getDatabaseReplica", {
         "clusterId": args.clusterId,
         "name": args.name,

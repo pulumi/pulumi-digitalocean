@@ -169,33 +169,31 @@ export class Firewall extends pulumi.CustomResource {
      */
     constructor(name: string, args?: FirewallArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["dropletIds"] = state ? state.dropletIds : undefined;
-            inputs["inboundRules"] = state ? state.inboundRules : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["outboundRules"] = state ? state.outboundRules : undefined;
-            inputs["pendingChanges"] = state ? state.pendingChanges : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["dropletIds"] = state ? state.dropletIds : undefined;
+            resourceInputs["inboundRules"] = state ? state.inboundRules : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["outboundRules"] = state ? state.outboundRules : undefined;
+            resourceInputs["pendingChanges"] = state ? state.pendingChanges : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            inputs["dropletIds"] = args ? args.dropletIds : undefined;
-            inputs["inboundRules"] = args ? args.inboundRules : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["outboundRules"] = args ? args.outboundRules : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["pendingChanges"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dropletIds"] = args ? args.dropletIds : undefined;
+            resourceInputs["inboundRules"] = args ? args.inboundRules : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outboundRules"] = args ? args.outboundRules : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["pendingChanges"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Firewall.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Firewall.__pulumiType, name, resourceInputs, opts);
     }
 }
 

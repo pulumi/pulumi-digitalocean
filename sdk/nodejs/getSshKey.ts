@@ -36,9 +36,7 @@ export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getSshKey:getSshKey", {
         "name": args.name,
     }, opts);

@@ -123,34 +123,32 @@ export class Cdn extends pulumi.CustomResource {
      */
     constructor(name: string, args: CdnArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CdnArgs | CdnState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CdnState | undefined;
-            inputs["certificateId"] = state ? state.certificateId : undefined;
-            inputs["certificateName"] = state ? state.certificateName : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["customDomain"] = state ? state.customDomain : undefined;
-            inputs["endpoint"] = state ? state.endpoint : undefined;
-            inputs["origin"] = state ? state.origin : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
+            resourceInputs["certificateName"] = state ? state.certificateName : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["customDomain"] = state ? state.customDomain : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["origin"] = state ? state.origin : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as CdnArgs | undefined;
             if ((!args || args.origin === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'origin'");
             }
-            inputs["certificateId"] = args ? args.certificateId : undefined;
-            inputs["certificateName"] = args ? args.certificateName : undefined;
-            inputs["customDomain"] = args ? args.customDomain : undefined;
-            inputs["origin"] = args ? args.origin : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["endpoint"] = undefined /*out*/;
+            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
+            resourceInputs["certificateName"] = args ? args.certificateName : undefined;
+            resourceInputs["customDomain"] = args ? args.customDomain : undefined;
+            resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["endpoint"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Cdn.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Cdn.__pulumiType, name, resourceInputs, opts);
     }
 }
 

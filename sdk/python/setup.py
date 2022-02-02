@@ -55,6 +55,7 @@ setup(name='pulumi_digitalocean',
       package_data={
           'pulumi_digitalocean': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

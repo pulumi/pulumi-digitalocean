@@ -108,20 +108,20 @@ export class MonitorAlert extends pulumi.CustomResource {
      */
     constructor(name: string, args: MonitorAlertArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorAlertArgs | MonitorAlertState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorAlertState | undefined;
-            inputs["alerts"] = state ? state.alerts : undefined;
-            inputs["compare"] = state ? state.compare : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["entities"] = state ? state.entities : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["uuid"] = state ? state.uuid : undefined;
-            inputs["value"] = state ? state.value : undefined;
-            inputs["window"] = state ? state.window : undefined;
+            resourceInputs["alerts"] = state ? state.alerts : undefined;
+            resourceInputs["compare"] = state ? state.compare : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["entities"] = state ? state.entities : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["window"] = state ? state.window : undefined;
         } else {
             const args = argsOrState as MonitorAlertArgs | undefined;
             if ((!args || args.alerts === undefined) && !opts.urn) {
@@ -142,21 +142,19 @@ export class MonitorAlert extends pulumi.CustomResource {
             if ((!args || args.window === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'window'");
             }
-            inputs["alerts"] = args ? args.alerts : undefined;
-            inputs["compare"] = args ? args.compare : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["entities"] = args ? args.entities : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["window"] = args ? args.window : undefined;
-            inputs["uuid"] = undefined /*out*/;
+            resourceInputs["alerts"] = args ? args.alerts : undefined;
+            resourceInputs["compare"] = args ? args.compare : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["entities"] = args ? args.entities : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["window"] = args ? args.window : undefined;
+            resourceInputs["uuid"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MonitorAlert.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MonitorAlert.__pulumiType, name, resourceInputs, opts);
     }
 }
 

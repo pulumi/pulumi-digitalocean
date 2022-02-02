@@ -156,37 +156,35 @@ export class Certificate extends pulumi.CustomResource {
      */
     constructor(name: string, args?: CertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            inputs["certificateChain"] = state ? state.certificateChain : undefined;
-            inputs["domains"] = state ? state.domains : undefined;
-            inputs["leafCertificate"] = state ? state.leafCertificate : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notAfter"] = state ? state.notAfter : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["certificateChain"] = state ? state.certificateChain : undefined;
+            resourceInputs["domains"] = state ? state.domains : undefined;
+            resourceInputs["leafCertificate"] = state ? state.leafCertificate : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notAfter"] = state ? state.notAfter : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["uuid"] = state ? state.uuid : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            inputs["certificateChain"] = args ? args.certificateChain : undefined;
-            inputs["domains"] = args ? args.domains : undefined;
-            inputs["leafCertificate"] = args ? args.leafCertificate : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["privateKey"] = args ? args.privateKey : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["notAfter"] = undefined /*out*/;
-            inputs["sha1Fingerprint"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uuid"] = undefined /*out*/;
+            resourceInputs["certificateChain"] = args ? args.certificateChain : undefined;
+            resourceInputs["domains"] = args ? args.domains : undefined;
+            resourceInputs["leafCertificate"] = args ? args.leafCertificate : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["notAfter"] = undefined /*out*/;
+            resourceInputs["sha1Fingerprint"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uuid"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Certificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

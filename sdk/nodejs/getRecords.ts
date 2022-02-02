@@ -14,9 +14,7 @@ export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getRecords:getRecords", {
         "domain": args.domain,
         "filters": args.filters,

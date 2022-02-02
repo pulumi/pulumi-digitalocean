@@ -21,7 +21,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -52,7 +51,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -231,7 +229,7 @@ type CdnInput interface {
 }
 
 func (*Cdn) ElementType() reflect.Type {
-	return reflect.TypeOf((*Cdn)(nil))
+	return reflect.TypeOf((**Cdn)(nil)).Elem()
 }
 
 func (i *Cdn) ToCdnOutput() CdnOutput {
@@ -240,35 +238,6 @@ func (i *Cdn) ToCdnOutput() CdnOutput {
 
 func (i *Cdn) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnOutput)
-}
-
-func (i *Cdn) ToCdnPtrOutput() CdnPtrOutput {
-	return i.ToCdnPtrOutputWithContext(context.Background())
-}
-
-func (i *Cdn) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CdnPtrOutput)
-}
-
-type CdnPtrInput interface {
-	pulumi.Input
-
-	ToCdnPtrOutput() CdnPtrOutput
-	ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput
-}
-
-type cdnPtrType CdnArgs
-
-func (*cdnPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Cdn)(nil))
-}
-
-func (i *cdnPtrType) ToCdnPtrOutput() CdnPtrOutput {
-	return i.ToCdnPtrOutputWithContext(context.Background())
-}
-
-func (i *cdnPtrType) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CdnPtrOutput)
 }
 
 // CdnArrayInput is an input type that accepts CdnArray and CdnArrayOutput values.
@@ -324,7 +293,7 @@ func (i CdnMap) ToCdnMapOutputWithContext(ctx context.Context) CdnMapOutput {
 type CdnOutput struct{ *pulumi.OutputState }
 
 func (CdnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Cdn)(nil))
+	return reflect.TypeOf((**Cdn)(nil)).Elem()
 }
 
 func (o CdnOutput) ToCdnOutput() CdnOutput {
@@ -335,44 +304,10 @@ func (o CdnOutput) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 	return o
 }
 
-func (o CdnOutput) ToCdnPtrOutput() CdnPtrOutput {
-	return o.ToCdnPtrOutputWithContext(context.Background())
-}
-
-func (o CdnOutput) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Cdn) *Cdn {
-		return &v
-	}).(CdnPtrOutput)
-}
-
-type CdnPtrOutput struct{ *pulumi.OutputState }
-
-func (CdnPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Cdn)(nil))
-}
-
-func (o CdnPtrOutput) ToCdnPtrOutput() CdnPtrOutput {
-	return o
-}
-
-func (o CdnPtrOutput) ToCdnPtrOutputWithContext(ctx context.Context) CdnPtrOutput {
-	return o
-}
-
-func (o CdnPtrOutput) Elem() CdnOutput {
-	return o.ApplyT(func(v *Cdn) Cdn {
-		if v != nil {
-			return *v
-		}
-		var ret Cdn
-		return ret
-	}).(CdnOutput)
-}
-
 type CdnArrayOutput struct{ *pulumi.OutputState }
 
 func (CdnArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Cdn)(nil))
+	return reflect.TypeOf((*[]*Cdn)(nil)).Elem()
 }
 
 func (o CdnArrayOutput) ToCdnArrayOutput() CdnArrayOutput {
@@ -384,15 +319,15 @@ func (o CdnArrayOutput) ToCdnArrayOutputWithContext(ctx context.Context) CdnArra
 }
 
 func (o CdnArrayOutput) Index(i pulumi.IntInput) CdnOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Cdn {
-		return vs[0].([]Cdn)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Cdn {
+		return vs[0].([]*Cdn)[vs[1].(int)]
 	}).(CdnOutput)
 }
 
 type CdnMapOutput struct{ *pulumi.OutputState }
 
 func (CdnMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Cdn)(nil))
+	return reflect.TypeOf((*map[string]*Cdn)(nil)).Elem()
 }
 
 func (o CdnMapOutput) ToCdnMapOutput() CdnMapOutput {
@@ -404,18 +339,16 @@ func (o CdnMapOutput) ToCdnMapOutputWithContext(ctx context.Context) CdnMapOutpu
 }
 
 func (o CdnMapOutput) MapIndex(k pulumi.StringInput) CdnOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Cdn {
-		return vs[0].(map[string]Cdn)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Cdn {
+		return vs[0].(map[string]*Cdn)[vs[1].(string)]
 	}).(CdnOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnInput)(nil)).Elem(), &Cdn{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CdnPtrInput)(nil)).Elem(), &Cdn{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnArrayInput)(nil)).Elem(), CdnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnMapInput)(nil)).Elem(), CdnMap{})
 	pulumi.RegisterOutputType(CdnOutput{})
-	pulumi.RegisterOutputType(CdnPtrOutput{})
 	pulumi.RegisterOutputType(CdnArrayOutput{})
 	pulumi.RegisterOutputType(CdnMapOutput{})
 }

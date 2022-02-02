@@ -125,29 +125,29 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: KubernetesClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesClusterArgs | KubernetesClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesClusterState | undefined;
-            inputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
-            inputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
-            inputs["clusterUrn"] = state ? state.clusterUrn : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["endpoint"] = state ? state.endpoint : undefined;
-            inputs["ha"] = state ? state.ha : undefined;
-            inputs["ipv4Address"] = state ? state.ipv4Address : undefined;
-            inputs["kubeConfigs"] = state ? state.kubeConfigs : undefined;
-            inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodePool"] = state ? state.nodePool : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["serviceSubnet"] = state ? state.serviceSubnet : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["surgeUpgrade"] = state ? state.surgeUpgrade : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
-            inputs["version"] = state ? state.version : undefined;
-            inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
+            resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
+            resourceInputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
+            resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["ha"] = state ? state.ha : undefined;
+            resourceInputs["ipv4Address"] = state ? state.ipv4Address : undefined;
+            resourceInputs["kubeConfigs"] = state ? state.kubeConfigs : undefined;
+            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodePool"] = state ? state.nodePool : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceSubnet"] = state ? state.serviceSubnet : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["surgeUpgrade"] = state ? state.surgeUpgrade : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as KubernetesClusterArgs | undefined;
             if ((!args || args.nodePool === undefined) && !opts.urn) {
@@ -159,30 +159,28 @@ export class KubernetesCluster extends pulumi.CustomResource {
             if ((!args || args.version === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            inputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
-            inputs["ha"] = args ? args.ha : undefined;
-            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodePool"] = args ? args.nodePool : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["surgeUpgrade"] = args ? args.surgeUpgrade : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
-            inputs["clusterSubnet"] = undefined /*out*/;
-            inputs["clusterUrn"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["endpoint"] = undefined /*out*/;
-            inputs["ipv4Address"] = undefined /*out*/;
-            inputs["kubeConfigs"] = undefined /*out*/;
-            inputs["serviceSubnet"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
+            resourceInputs["ha"] = args ? args.ha : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodePool"] = args ? args.nodePool : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["surgeUpgrade"] = args ? args.surgeUpgrade : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
+            resourceInputs["clusterSubnet"] = undefined /*out*/;
+            resourceInputs["clusterUrn"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["endpoint"] = undefined /*out*/;
+            resourceInputs["ipv4Address"] = undefined /*out*/;
+            resourceInputs["kubeConfigs"] = undefined /*out*/;
+            resourceInputs["serviceSubnet"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KubernetesCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KubernetesCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 
