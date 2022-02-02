@@ -30,9 +30,7 @@ export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
         "mostRecent": args.mostRecent,
         "name": args.name,

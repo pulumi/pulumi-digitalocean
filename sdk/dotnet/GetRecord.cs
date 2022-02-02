@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -21,7 +20,7 @@ namespace Pulumi.DigitalOcean
         /// your DigitalOcean account.
         /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a DNS record. This data source provides the name, TTL, and zone
@@ -32,7 +31,7 @@ namespace Pulumi.DigitalOcean
         /// your DigitalOcean account.
         /// </summary>
         public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());
     }
 
 

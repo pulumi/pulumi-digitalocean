@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("digitalocean:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("digitalocean:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

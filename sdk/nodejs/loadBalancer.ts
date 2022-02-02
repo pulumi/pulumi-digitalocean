@@ -193,28 +193,28 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            inputs["algorithm"] = state ? state.algorithm : undefined;
-            inputs["disableLetsEncryptDnsRecords"] = state ? state.disableLetsEncryptDnsRecords : undefined;
-            inputs["dropletIds"] = state ? state.dropletIds : undefined;
-            inputs["dropletTag"] = state ? state.dropletTag : undefined;
-            inputs["enableBackendKeepalive"] = state ? state.enableBackendKeepalive : undefined;
-            inputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
-            inputs["forwardingRules"] = state ? state.forwardingRules : undefined;
-            inputs["healthcheck"] = state ? state.healthcheck : undefined;
-            inputs["ip"] = state ? state.ip : undefined;
-            inputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["sizeUnit"] = state ? state.sizeUnit : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["stickySessions"] = state ? state.stickySessions : undefined;
-            inputs["vpcUuid"] = state ? state.vpcUuid : undefined;
+            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
+            resourceInputs["disableLetsEncryptDnsRecords"] = state ? state.disableLetsEncryptDnsRecords : undefined;
+            resourceInputs["dropletIds"] = state ? state.dropletIds : undefined;
+            resourceInputs["dropletTag"] = state ? state.dropletTag : undefined;
+            resourceInputs["enableBackendKeepalive"] = state ? state.enableBackendKeepalive : undefined;
+            resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
+            resourceInputs["forwardingRules"] = state ? state.forwardingRules : undefined;
+            resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
+            resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["sizeUnit"] = state ? state.sizeUnit : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["stickySessions"] = state ? state.stickySessions : undefined;
+            resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if ((!args || args.forwardingRules === undefined) && !opts.urn) {
@@ -223,29 +223,27 @@ export class LoadBalancer extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["algorithm"] = args ? args.algorithm : undefined;
-            inputs["disableLetsEncryptDnsRecords"] = args ? args.disableLetsEncryptDnsRecords : undefined;
-            inputs["dropletIds"] = args ? args.dropletIds : undefined;
-            inputs["dropletTag"] = args ? args.dropletTag : undefined;
-            inputs["enableBackendKeepalive"] = args ? args.enableBackendKeepalive : undefined;
-            inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
-            inputs["forwardingRules"] = args ? args.forwardingRules : undefined;
-            inputs["healthcheck"] = args ? args.healthcheck : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["sizeUnit"] = args ? args.sizeUnit : undefined;
-            inputs["stickySessions"] = args ? args.stickySessions : undefined;
-            inputs["vpcUuid"] = args ? args.vpcUuid : undefined;
-            inputs["ip"] = undefined /*out*/;
-            inputs["loadBalancerUrn"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["algorithm"] = args ? args.algorithm : undefined;
+            resourceInputs["disableLetsEncryptDnsRecords"] = args ? args.disableLetsEncryptDnsRecords : undefined;
+            resourceInputs["dropletIds"] = args ? args.dropletIds : undefined;
+            resourceInputs["dropletTag"] = args ? args.dropletTag : undefined;
+            resourceInputs["enableBackendKeepalive"] = args ? args.enableBackendKeepalive : undefined;
+            resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
+            resourceInputs["forwardingRules"] = args ? args.forwardingRules : undefined;
+            resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["sizeUnit"] = args ? args.sizeUnit : undefined;
+            resourceInputs["stickySessions"] = args ? args.stickySessions : undefined;
+            resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
+            resourceInputs["ip"] = undefined /*out*/;
+            resourceInputs["loadBalancerUrn"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LoadBalancer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

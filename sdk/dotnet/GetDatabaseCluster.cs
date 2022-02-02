@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -42,7 +41,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseClusterResult> InvokeAsync(GetDatabaseClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information on a DigitalOcean database cluster resource.
@@ -74,7 +73,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseClusterResult> Invoke(GetDatabaseClusterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterInvokeArgs(), options.WithDefaults());
     }
 
 

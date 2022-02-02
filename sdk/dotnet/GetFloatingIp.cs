@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -51,7 +50,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a floating ip. This data source provides the region and Droplet id
@@ -92,7 +91,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFloatingIpResult> Invoke(GetFloatingIpInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
     }
 
 

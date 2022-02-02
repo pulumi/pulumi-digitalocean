@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -18,7 +17,7 @@ namespace Pulumi.DigitalOcean
         /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
         /// </summary>
         public static Task<GetSpacesBucketObjectsResult> InvokeAsync(GetSpacesBucketObjectsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
@@ -26,7 +25,7 @@ namespace Pulumi.DigitalOcean
         /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
         /// </summary>
         public static Output<GetSpacesBucketObjectsResult> Invoke(GetSpacesBucketObjectsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -13,9 +13,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
         "name": args.name,
         "tags": args.tags,

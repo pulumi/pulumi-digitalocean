@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -68,7 +67,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a load balancer for use in other resources. This data source
@@ -126,7 +125,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
     }
 
 

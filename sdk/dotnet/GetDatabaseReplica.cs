@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -47,7 +46,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseReplicaResult> InvokeAsync(GetDatabaseReplicaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information on a DigitalOcean database replica.
@@ -84,7 +83,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseReplicaResult> Invoke(GetDatabaseReplicaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -181,29 +181,27 @@ export class App extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppArgs | AppState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppState | undefined;
-            inputs["activeDeploymentId"] = state ? state.activeDeploymentId : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["defaultIngress"] = state ? state.defaultIngress : undefined;
-            inputs["liveUrl"] = state ? state.liveUrl : undefined;
-            inputs["spec"] = state ? state.spec : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["activeDeploymentId"] = state ? state.activeDeploymentId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["defaultIngress"] = state ? state.defaultIngress : undefined;
+            resourceInputs["liveUrl"] = state ? state.liveUrl : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["activeDeploymentId"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["defaultIngress"] = undefined /*out*/;
-            inputs["liveUrl"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["activeDeploymentId"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["defaultIngress"] = undefined /*out*/;
+            resourceInputs["liveUrl"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(App.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(App.__pulumiType, name, resourceInputs, opts);
     }
 }
 

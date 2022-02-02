@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -73,7 +72,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcResult> InvokeAsync(GetVpcArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve information about a VPC for use in other resources.
@@ -136,7 +135,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
     }
 
 

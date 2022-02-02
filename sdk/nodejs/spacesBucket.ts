@@ -152,35 +152,33 @@ export class SpacesBucket extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SpacesBucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SpacesBucketArgs | SpacesBucketState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpacesBucketState | undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
-            inputs["bucketUrn"] = state ? state.bucketUrn : undefined;
-            inputs["corsRules"] = state ? state.corsRules : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
+            resourceInputs["bucketUrn"] = state ? state.bucketUrn : undefined;
+            resourceInputs["corsRules"] = state ? state.corsRules : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["versioning"] = state ? state.versioning : undefined;
         } else {
             const args = argsOrState as SpacesBucketArgs | undefined;
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["corsRules"] = args ? args.corsRules : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["versioning"] = args ? args.versioning : undefined;
-            inputs["bucketDomainName"] = undefined /*out*/;
-            inputs["bucketUrn"] = undefined /*out*/;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["corsRules"] = args ? args.corsRules : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["bucketDomainName"] = undefined /*out*/;
+            resourceInputs["bucketUrn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SpacesBucket.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SpacesBucket.__pulumiType, name, resourceInputs, opts);
     }
 }
 

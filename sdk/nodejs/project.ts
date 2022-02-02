@@ -141,37 +141,35 @@ export class Project extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["isDefault"] = state ? state.isDefault : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ownerId"] = state ? state.ownerId : undefined;
-            inputs["ownerUuid"] = state ? state.ownerUuid : undefined;
-            inputs["purpose"] = state ? state.purpose : undefined;
-            inputs["resources"] = state ? state.resources : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ownerId"] = state ? state.ownerId : undefined;
+            resourceInputs["ownerUuid"] = state ? state.ownerUuid : undefined;
+            resourceInputs["purpose"] = state ? state.purpose : undefined;
+            resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["purpose"] = args ? args.purpose : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["isDefault"] = undefined /*out*/;
-            inputs["ownerId"] = undefined /*out*/;
-            inputs["ownerUuid"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["isDefault"] = undefined /*out*/;
+            resourceInputs["ownerId"] = undefined /*out*/;
+            resourceInputs["ownerUuid"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Project.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Project.__pulumiType, name, resourceInputs, opts);
     }
 }
 

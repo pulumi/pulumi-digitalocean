@@ -34,7 +34,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -160,7 +159,7 @@ type ProjectResourcesInput interface {
 }
 
 func (*ProjectResources) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectResources)(nil))
+	return reflect.TypeOf((**ProjectResources)(nil)).Elem()
 }
 
 func (i *ProjectResources) ToProjectResourcesOutput() ProjectResourcesOutput {
@@ -169,35 +168,6 @@ func (i *ProjectResources) ToProjectResourcesOutput() ProjectResourcesOutput {
 
 func (i *ProjectResources) ToProjectResourcesOutputWithContext(ctx context.Context) ProjectResourcesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesOutput)
-}
-
-func (i *ProjectResources) ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput {
-	return i.ToProjectResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectResources) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesPtrOutput)
-}
-
-type ProjectResourcesPtrInput interface {
-	pulumi.Input
-
-	ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput
-	ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput
-}
-
-type projectResourcesPtrType ProjectResourcesArgs
-
-func (*projectResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectResources)(nil))
-}
-
-func (i *projectResourcesPtrType) ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput {
-	return i.ToProjectResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *projectResourcesPtrType) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesPtrOutput)
 }
 
 // ProjectResourcesArrayInput is an input type that accepts ProjectResourcesArray and ProjectResourcesArrayOutput values.
@@ -253,7 +223,7 @@ func (i ProjectResourcesMap) ToProjectResourcesMapOutputWithContext(ctx context.
 type ProjectResourcesOutput struct{ *pulumi.OutputState }
 
 func (ProjectResourcesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectResources)(nil))
+	return reflect.TypeOf((**ProjectResources)(nil)).Elem()
 }
 
 func (o ProjectResourcesOutput) ToProjectResourcesOutput() ProjectResourcesOutput {
@@ -264,44 +234,10 @@ func (o ProjectResourcesOutput) ToProjectResourcesOutputWithContext(ctx context.
 	return o
 }
 
-func (o ProjectResourcesOutput) ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput {
-	return o.ToProjectResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectResourcesOutput) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectResources) *ProjectResources {
-		return &v
-	}).(ProjectResourcesPtrOutput)
-}
-
-type ProjectResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectResources)(nil))
-}
-
-func (o ProjectResourcesPtrOutput) ToProjectResourcesPtrOutput() ProjectResourcesPtrOutput {
-	return o
-}
-
-func (o ProjectResourcesPtrOutput) ToProjectResourcesPtrOutputWithContext(ctx context.Context) ProjectResourcesPtrOutput {
-	return o
-}
-
-func (o ProjectResourcesPtrOutput) Elem() ProjectResourcesOutput {
-	return o.ApplyT(func(v *ProjectResources) ProjectResources {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectResources
-		return ret
-	}).(ProjectResourcesOutput)
-}
-
 type ProjectResourcesArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectResourcesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectResources)(nil))
+	return reflect.TypeOf((*[]*ProjectResources)(nil)).Elem()
 }
 
 func (o ProjectResourcesArrayOutput) ToProjectResourcesArrayOutput() ProjectResourcesArrayOutput {
@@ -313,15 +249,15 @@ func (o ProjectResourcesArrayOutput) ToProjectResourcesArrayOutputWithContext(ct
 }
 
 func (o ProjectResourcesArrayOutput) Index(i pulumi.IntInput) ProjectResourcesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectResources {
-		return vs[0].([]ProjectResources)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectResources {
+		return vs[0].([]*ProjectResources)[vs[1].(int)]
 	}).(ProjectResourcesOutput)
 }
 
 type ProjectResourcesMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectResourcesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectResources)(nil))
+	return reflect.TypeOf((*map[string]*ProjectResources)(nil)).Elem()
 }
 
 func (o ProjectResourcesMapOutput) ToProjectResourcesMapOutput() ProjectResourcesMapOutput {
@@ -333,18 +269,16 @@ func (o ProjectResourcesMapOutput) ToProjectResourcesMapOutputWithContext(ctx co
 }
 
 func (o ProjectResourcesMapOutput) MapIndex(k pulumi.StringInput) ProjectResourcesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectResources {
-		return vs[0].(map[string]ProjectResources)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectResources {
+		return vs[0].(map[string]*ProjectResources)[vs[1].(string)]
 	}).(ProjectResourcesOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectResourcesInput)(nil)).Elem(), &ProjectResources{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectResourcesPtrInput)(nil)).Elem(), &ProjectResources{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectResourcesArrayInput)(nil)).Elem(), ProjectResourcesArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectResourcesMapInput)(nil)).Elem(), ProjectResourcesMap{})
 	pulumi.RegisterOutputType(ProjectResourcesOutput{})
-	pulumi.RegisterOutputType(ProjectResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ProjectResourcesArrayOutput{})
 	pulumi.RegisterOutputType(ProjectResourcesMapOutput{})
 }

@@ -105,24 +105,24 @@ export class CustomImage extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomImageArgs | CustomImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomImageState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["distribution"] = state ? state.distribution : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["minDiskSize"] = state ? state.minDiskSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["public"] = state ? state.public : undefined;
-            inputs["regions"] = state ? state.regions : undefined;
-            inputs["sizeGigabytes"] = state ? state.sizeGigabytes : undefined;
-            inputs["slug"] = state ? state.slug : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["distribution"] = state ? state.distribution : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["minDiskSize"] = state ? state.minDiskSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["public"] = state ? state.public : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["sizeGigabytes"] = state ? state.sizeGigabytes : undefined;
+            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as CustomImageArgs | undefined;
             if ((!args || args.regions === undefined) && !opts.urn) {
@@ -131,25 +131,23 @@ export class CustomImage extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["distribution"] = args ? args.distribution : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["regions"] = args ? args.regions : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["imageId"] = undefined /*out*/;
-            inputs["minDiskSize"] = undefined /*out*/;
-            inputs["public"] = undefined /*out*/;
-            inputs["sizeGigabytes"] = undefined /*out*/;
-            inputs["slug"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["distribution"] = args ? args.distribution : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["imageId"] = undefined /*out*/;
+            resourceInputs["minDiskSize"] = undefined /*out*/;
+            resourceInputs["public"] = undefined /*out*/;
+            resourceInputs["sizeGigabytes"] = undefined /*out*/;
+            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomImage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomImage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

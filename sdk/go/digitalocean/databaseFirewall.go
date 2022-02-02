@@ -23,13 +23,12 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 // 			Engine:    pulumi.String("pg"),
 // 			Version:   pulumi.String("11"),
 // 			Size:      pulumi.String("db-s-1vcpu-1gb"),
@@ -39,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example_fw", &digitalocean.DatabaseFirewallArgs{
+// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
 // 			ClusterId: postgres_example.ID(),
 // 			Rules: DatabaseFirewallRuleArray{
 // 				&DatabaseFirewallRuleArgs{
@@ -66,7 +65,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -80,7 +78,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 		_, err = digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 // 			Engine:    pulumi.String("pg"),
 // 			Version:   pulumi.String("11"),
 // 			Size:      pulumi.String("db-s-1vcpu-1gb"),
@@ -90,7 +88,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example_fw", &digitalocean.DatabaseFirewallArgs{
+// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
 // 			ClusterId: postgres_example.ID(),
 // 			Rules: DatabaseFirewallRuleArray{
 // 				&DatabaseFirewallRuleArgs{
@@ -202,7 +200,7 @@ type DatabaseFirewallInput interface {
 }
 
 func (*DatabaseFirewall) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseFirewall)(nil))
+	return reflect.TypeOf((**DatabaseFirewall)(nil)).Elem()
 }
 
 func (i *DatabaseFirewall) ToDatabaseFirewallOutput() DatabaseFirewallOutput {
@@ -211,35 +209,6 @@ func (i *DatabaseFirewall) ToDatabaseFirewallOutput() DatabaseFirewallOutput {
 
 func (i *DatabaseFirewall) ToDatabaseFirewallOutputWithContext(ctx context.Context) DatabaseFirewallOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallOutput)
-}
-
-func (i *DatabaseFirewall) ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput {
-	return i.ToDatabaseFirewallPtrOutputWithContext(context.Background())
-}
-
-func (i *DatabaseFirewall) ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallPtrOutput)
-}
-
-type DatabaseFirewallPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput
-	ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput
-}
-
-type databaseFirewallPtrType DatabaseFirewallArgs
-
-func (*databaseFirewallPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseFirewall)(nil))
-}
-
-func (i *databaseFirewallPtrType) ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput {
-	return i.ToDatabaseFirewallPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseFirewallPtrType) ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallPtrOutput)
 }
 
 // DatabaseFirewallArrayInput is an input type that accepts DatabaseFirewallArray and DatabaseFirewallArrayOutput values.
@@ -295,7 +264,7 @@ func (i DatabaseFirewallMap) ToDatabaseFirewallMapOutputWithContext(ctx context.
 type DatabaseFirewallOutput struct{ *pulumi.OutputState }
 
 func (DatabaseFirewallOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseFirewall)(nil))
+	return reflect.TypeOf((**DatabaseFirewall)(nil)).Elem()
 }
 
 func (o DatabaseFirewallOutput) ToDatabaseFirewallOutput() DatabaseFirewallOutput {
@@ -306,44 +275,10 @@ func (o DatabaseFirewallOutput) ToDatabaseFirewallOutputWithContext(ctx context.
 	return o
 }
 
-func (o DatabaseFirewallOutput) ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput {
-	return o.ToDatabaseFirewallPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseFirewallOutput) ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseFirewall) *DatabaseFirewall {
-		return &v
-	}).(DatabaseFirewallPtrOutput)
-}
-
-type DatabaseFirewallPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseFirewallPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseFirewall)(nil))
-}
-
-func (o DatabaseFirewallPtrOutput) ToDatabaseFirewallPtrOutput() DatabaseFirewallPtrOutput {
-	return o
-}
-
-func (o DatabaseFirewallPtrOutput) ToDatabaseFirewallPtrOutputWithContext(ctx context.Context) DatabaseFirewallPtrOutput {
-	return o
-}
-
-func (o DatabaseFirewallPtrOutput) Elem() DatabaseFirewallOutput {
-	return o.ApplyT(func(v *DatabaseFirewall) DatabaseFirewall {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseFirewall
-		return ret
-	}).(DatabaseFirewallOutput)
-}
-
 type DatabaseFirewallArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseFirewallArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatabaseFirewall)(nil))
+	return reflect.TypeOf((*[]*DatabaseFirewall)(nil)).Elem()
 }
 
 func (o DatabaseFirewallArrayOutput) ToDatabaseFirewallArrayOutput() DatabaseFirewallArrayOutput {
@@ -355,15 +290,15 @@ func (o DatabaseFirewallArrayOutput) ToDatabaseFirewallArrayOutputWithContext(ct
 }
 
 func (o DatabaseFirewallArrayOutput) Index(i pulumi.IntInput) DatabaseFirewallOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseFirewall {
-		return vs[0].([]DatabaseFirewall)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseFirewall {
+		return vs[0].([]*DatabaseFirewall)[vs[1].(int)]
 	}).(DatabaseFirewallOutput)
 }
 
 type DatabaseFirewallMapOutput struct{ *pulumi.OutputState }
 
 func (DatabaseFirewallMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatabaseFirewall)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseFirewall)(nil)).Elem()
 }
 
 func (o DatabaseFirewallMapOutput) ToDatabaseFirewallMapOutput() DatabaseFirewallMapOutput {
@@ -375,18 +310,16 @@ func (o DatabaseFirewallMapOutput) ToDatabaseFirewallMapOutputWithContext(ctx co
 }
 
 func (o DatabaseFirewallMapOutput) MapIndex(k pulumi.StringInput) DatabaseFirewallOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseFirewall {
-		return vs[0].(map[string]DatabaseFirewall)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseFirewall {
+		return vs[0].(map[string]*DatabaseFirewall)[vs[1].(string)]
 	}).(DatabaseFirewallOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallInput)(nil)).Elem(), &DatabaseFirewall{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallPtrInput)(nil)).Elem(), &DatabaseFirewall{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallArrayInput)(nil)).Elem(), DatabaseFirewallArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallMapInput)(nil)).Elem(), DatabaseFirewallMap{})
 	pulumi.RegisterOutputType(DatabaseFirewallOutput{})
-	pulumi.RegisterOutputType(DatabaseFirewallPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseFirewallArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseFirewallMapOutput{})
 }

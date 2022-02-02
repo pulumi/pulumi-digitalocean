@@ -188,30 +188,30 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseClusterArgs | DatabaseClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseClusterState | undefined;
-            inputs["clusterUrn"] = state ? state.clusterUrn : undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["engine"] = state ? state.engine : undefined;
-            inputs["evictionPolicy"] = state ? state.evictionPolicy : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["maintenanceWindows"] = state ? state.maintenanceWindows : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeCount"] = state ? state.nodeCount : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["privateHost"] = state ? state.privateHost : undefined;
-            inputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
-            inputs["privateUri"] = state ? state.privateUri : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["sqlMode"] = state ? state.sqlMode : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["uri"] = state ? state.uri : undefined;
-            inputs["user"] = state ? state.user : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["evictionPolicy"] = state ? state.evictionPolicy : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["maintenanceWindows"] = state ? state.maintenanceWindows : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["privateHost"] = state ? state.privateHost : undefined;
+            resourceInputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
+            resourceInputs["privateUri"] = state ? state.privateUri : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["sqlMode"] = state ? state.sqlMode : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["uri"] = state ? state.uri : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as DatabaseClusterArgs | undefined;
             if ((!args || args.engine === undefined) && !opts.urn) {
@@ -226,31 +226,29 @@ export class DatabaseCluster extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            inputs["engine"] = args ? args.engine : undefined;
-            inputs["evictionPolicy"] = args ? args.evictionPolicy : undefined;
-            inputs["maintenanceWindows"] = args ? args.maintenanceWindows : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeCount"] = args ? args.nodeCount : undefined;
-            inputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["sqlMode"] = args ? args.sqlMode : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["clusterUrn"] = undefined /*out*/;
-            inputs["database"] = undefined /*out*/;
-            inputs["host"] = undefined /*out*/;
-            inputs["password"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["privateHost"] = undefined /*out*/;
-            inputs["privateUri"] = undefined /*out*/;
-            inputs["uri"] = undefined /*out*/;
-            inputs["user"] = undefined /*out*/;
+            resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["evictionPolicy"] = args ? args.evictionPolicy : undefined;
+            resourceInputs["maintenanceWindows"] = args ? args.maintenanceWindows : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
+            resourceInputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["sqlMode"] = args ? args.sqlMode : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["clusterUrn"] = undefined /*out*/;
+            resourceInputs["database"] = undefined /*out*/;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["password"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["privateHost"] = undefined /*out*/;
+            resourceInputs["privateUri"] = undefined /*out*/;
+            resourceInputs["uri"] = undefined /*out*/;
+            resourceInputs["user"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DatabaseCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DatabaseCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

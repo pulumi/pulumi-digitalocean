@@ -23,9 +23,7 @@ export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getAccount:getAccount", {
     }, opts);
 }

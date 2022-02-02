@@ -25,9 +25,7 @@ export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {
         "name": args.name,
         "tags": args.tags,

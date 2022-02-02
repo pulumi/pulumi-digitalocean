@@ -154,22 +154,22 @@ export class KubernetesNodePool extends pulumi.CustomResource {
      */
     constructor(name: string, args: KubernetesNodePoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesNodePoolArgs | KubernetesNodePoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesNodePoolState | undefined;
-            inputs["actualNodeCount"] = state ? state.actualNodeCount : undefined;
-            inputs["autoScale"] = state ? state.autoScale : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["maxNodes"] = state ? state.maxNodes : undefined;
-            inputs["minNodes"] = state ? state.minNodes : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeCount"] = state ? state.nodeCount : undefined;
-            inputs["nodes"] = state ? state.nodes : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["actualNodeCount"] = state ? state.actualNodeCount : undefined;
+            resourceInputs["autoScale"] = state ? state.autoScale : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maxNodes"] = state ? state.maxNodes : undefined;
+            resourceInputs["minNodes"] = state ? state.minNodes : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
+            resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as KubernetesNodePoolArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -178,23 +178,21 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            inputs["autoScale"] = args ? args.autoScale : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["maxNodes"] = args ? args.maxNodes : undefined;
-            inputs["minNodes"] = args ? args.minNodes : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeCount"] = args ? args.nodeCount : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["taints"] = args ? args.taints : undefined;
-            inputs["actualNodeCount"] = undefined /*out*/;
-            inputs["nodes"] = undefined /*out*/;
+            resourceInputs["autoScale"] = args ? args.autoScale : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maxNodes"] = args ? args.maxNodes : undefined;
+            resourceInputs["minNodes"] = args ? args.minNodes : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["actualNodeCount"] = undefined /*out*/;
+            resourceInputs["nodes"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KubernetesNodePool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KubernetesNodePool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

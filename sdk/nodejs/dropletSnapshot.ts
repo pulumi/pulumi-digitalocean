@@ -91,32 +91,30 @@ export class DropletSnapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: DropletSnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DropletSnapshotArgs | DropletSnapshotState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DropletSnapshotState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["dropletId"] = state ? state.dropletId : undefined;
-            inputs["minDiskSize"] = state ? state.minDiskSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["regions"] = state ? state.regions : undefined;
-            inputs["size"] = state ? state.size : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["dropletId"] = state ? state.dropletId : undefined;
+            resourceInputs["minDiskSize"] = state ? state.minDiskSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
         } else {
             const args = argsOrState as DropletSnapshotArgs | undefined;
             if ((!args || args.dropletId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dropletId'");
             }
-            inputs["dropletId"] = args ? args.dropletId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["minDiskSize"] = undefined /*out*/;
-            inputs["regions"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
+            resourceInputs["dropletId"] = args ? args.dropletId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["minDiskSize"] = undefined /*out*/;
+            resourceInputs["regions"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DropletSnapshot.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DropletSnapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

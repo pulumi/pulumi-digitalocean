@@ -20,13 +20,12 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 // 			Engine:    pulumi.String("pg"),
 // 			Version:   pulumi.String("11"),
 // 			Size:      pulumi.String("db-s-1vcpu-1gb"),
@@ -36,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = digitalocean.NewDatabaseDb(ctx, "database_example", &digitalocean.DatabaseDbArgs{
+// 		_, err = digitalocean.NewDatabaseDb(ctx, "database-example", &digitalocean.DatabaseDbArgs{
 // 			ClusterId: postgres_example.ID(),
 // 		})
 // 		if err != nil {
@@ -139,7 +138,7 @@ type DatabaseDbInput interface {
 }
 
 func (*DatabaseDb) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseDb)(nil))
+	return reflect.TypeOf((**DatabaseDb)(nil)).Elem()
 }
 
 func (i *DatabaseDb) ToDatabaseDbOutput() DatabaseDbOutput {
@@ -148,35 +147,6 @@ func (i *DatabaseDb) ToDatabaseDbOutput() DatabaseDbOutput {
 
 func (i *DatabaseDb) ToDatabaseDbOutputWithContext(ctx context.Context) DatabaseDbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbOutput)
-}
-
-func (i *DatabaseDb) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
-	return i.ToDatabaseDbPtrOutputWithContext(context.Background())
-}
-
-func (i *DatabaseDb) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbPtrOutput)
-}
-
-type DatabaseDbPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseDbPtrOutput() DatabaseDbPtrOutput
-	ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput
-}
-
-type databaseDbPtrType DatabaseDbArgs
-
-func (*databaseDbPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseDb)(nil))
-}
-
-func (i *databaseDbPtrType) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
-	return i.ToDatabaseDbPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseDbPtrType) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbPtrOutput)
 }
 
 // DatabaseDbArrayInput is an input type that accepts DatabaseDbArray and DatabaseDbArrayOutput values.
@@ -232,7 +202,7 @@ func (i DatabaseDbMap) ToDatabaseDbMapOutputWithContext(ctx context.Context) Dat
 type DatabaseDbOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseDb)(nil))
+	return reflect.TypeOf((**DatabaseDb)(nil)).Elem()
 }
 
 func (o DatabaseDbOutput) ToDatabaseDbOutput() DatabaseDbOutput {
@@ -243,44 +213,10 @@ func (o DatabaseDbOutput) ToDatabaseDbOutputWithContext(ctx context.Context) Dat
 	return o
 }
 
-func (o DatabaseDbOutput) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
-	return o.ToDatabaseDbPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseDbOutput) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseDb) *DatabaseDb {
-		return &v
-	}).(DatabaseDbPtrOutput)
-}
-
-type DatabaseDbPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseDbPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseDb)(nil))
-}
-
-func (o DatabaseDbPtrOutput) ToDatabaseDbPtrOutput() DatabaseDbPtrOutput {
-	return o
-}
-
-func (o DatabaseDbPtrOutput) ToDatabaseDbPtrOutputWithContext(ctx context.Context) DatabaseDbPtrOutput {
-	return o
-}
-
-func (o DatabaseDbPtrOutput) Elem() DatabaseDbOutput {
-	return o.ApplyT(func(v *DatabaseDb) DatabaseDb {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseDb
-		return ret
-	}).(DatabaseDbOutput)
-}
-
 type DatabaseDbArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDbArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatabaseDb)(nil))
+	return reflect.TypeOf((*[]*DatabaseDb)(nil)).Elem()
 }
 
 func (o DatabaseDbArrayOutput) ToDatabaseDbArrayOutput() DatabaseDbArrayOutput {
@@ -292,15 +228,15 @@ func (o DatabaseDbArrayOutput) ToDatabaseDbArrayOutputWithContext(ctx context.Co
 }
 
 func (o DatabaseDbArrayOutput) Index(i pulumi.IntInput) DatabaseDbOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseDb {
-		return vs[0].([]DatabaseDb)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseDb {
+		return vs[0].([]*DatabaseDb)[vs[1].(int)]
 	}).(DatabaseDbOutput)
 }
 
 type DatabaseDbMapOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDbMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatabaseDb)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseDb)(nil)).Elem()
 }
 
 func (o DatabaseDbMapOutput) ToDatabaseDbMapOutput() DatabaseDbMapOutput {
@@ -312,18 +248,16 @@ func (o DatabaseDbMapOutput) ToDatabaseDbMapOutputWithContext(ctx context.Contex
 }
 
 func (o DatabaseDbMapOutput) MapIndex(k pulumi.StringInput) DatabaseDbOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseDb {
-		return vs[0].(map[string]DatabaseDb)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseDb {
+		return vs[0].(map[string]*DatabaseDb)[vs[1].(string)]
 	}).(DatabaseDbOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDbInput)(nil)).Elem(), &DatabaseDb{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDbPtrInput)(nil)).Elem(), &DatabaseDb{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDbArrayInput)(nil)).Elem(), DatabaseDbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDbMapInput)(nil)).Elem(), DatabaseDbMap{})
 	pulumi.RegisterOutputType(DatabaseDbOutput{})
-	pulumi.RegisterOutputType(DatabaseDbPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDbArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseDbMapOutput{})
 }

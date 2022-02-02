@@ -35,9 +35,7 @@ export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<G
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getTag:getTag", {
         "name": args.name,
     }, opts);

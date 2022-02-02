@@ -53,9 +53,7 @@ export function getSpacesBuckets(args?: GetSpacesBucketsArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getSpacesBuckets:getSpacesBuckets", {
         "filters": args.filters,
         "sorts": args.sorts,

@@ -41,7 +41,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -51,7 +50,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = digitalocean.NewKubernetesCluster(ctx, "example_cluster", &digitalocean.KubernetesClusterArgs{
+// 		_, err = digitalocean.NewKubernetesCluster(ctx, "example-cluster", &digitalocean.KubernetesClusterArgs{
 // 			Region:  pulumi.String("lon1"),
 // 			Version: pulumi.String(example.LatestVersion),
 // 			NodePool: &KubernetesClusterNodePoolArgs{
@@ -74,7 +73,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -87,7 +85,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = digitalocean.NewKubernetesCluster(ctx, "example_cluster", &digitalocean.KubernetesClusterArgs{
+// 		_, err = digitalocean.NewKubernetesCluster(ctx, "example-cluster", &digitalocean.KubernetesClusterArgs{
 // 			Region:  pulumi.String("lon1"),
 // 			Version: pulumi.String(example.LatestVersion),
 // 			NodePool: &KubernetesClusterNodePoolArgs{

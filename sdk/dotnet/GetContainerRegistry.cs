@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -47,7 +46,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRegistryResult> InvokeAsync(GetContainerRegistryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a container registry. This data source provides the name as
@@ -84,7 +83,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRegistryResult> Invoke(GetContainerRegistryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithDefaults());
     }
 
 

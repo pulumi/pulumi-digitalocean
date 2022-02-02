@@ -143,22 +143,22 @@ export class Volume extends pulumi.CustomResource {
      */
     constructor(name: string, args: VolumeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeArgs | VolumeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dropletIds"] = state ? state.dropletIds : undefined;
-            inputs["filesystemLabel"] = state ? state.filesystemLabel : undefined;
-            inputs["filesystemType"] = state ? state.filesystemType : undefined;
-            inputs["initialFilesystemLabel"] = state ? state.initialFilesystemLabel : undefined;
-            inputs["initialFilesystemType"] = state ? state.initialFilesystemType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["volumeUrn"] = state ? state.volumeUrn : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dropletIds"] = state ? state.dropletIds : undefined;
+            resourceInputs["filesystemLabel"] = state ? state.filesystemLabel : undefined;
+            resourceInputs["filesystemType"] = state ? state.filesystemType : undefined;
+            resourceInputs["initialFilesystemLabel"] = state ? state.initialFilesystemLabel : undefined;
+            resourceInputs["initialFilesystemType"] = state ? state.initialFilesystemType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["volumeUrn"] = state ? state.volumeUrn : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
@@ -167,23 +167,21 @@ export class Volume extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["filesystemType"] = args ? args.filesystemType : undefined;
-            inputs["initialFilesystemLabel"] = args ? args.initialFilesystemLabel : undefined;
-            inputs["initialFilesystemType"] = args ? args.initialFilesystemType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["dropletIds"] = undefined /*out*/;
-            inputs["filesystemLabel"] = undefined /*out*/;
-            inputs["volumeUrn"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["filesystemType"] = args ? args.filesystemType : undefined;
+            resourceInputs["initialFilesystemLabel"] = args ? args.initialFilesystemLabel : undefined;
+            resourceInputs["initialFilesystemType"] = args ? args.initialFilesystemType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["dropletIds"] = undefined /*out*/;
+            resourceInputs["filesystemLabel"] = undefined /*out*/;
+            resourceInputs["volumeUrn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Volume.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Volume.__pulumiType, name, resourceInputs, opts);
     }
 }
 

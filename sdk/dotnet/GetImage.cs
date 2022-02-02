@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -90,7 +89,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on an image for use in other resources (e.g. creating a Droplet
@@ -170,7 +169,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -91,30 +91,28 @@ export class DatabaseUser extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseUserArgs | DatabaseUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseUserState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["mysqlAuthPlugin"] = state ? state.mysqlAuthPlugin : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["mysqlAuthPlugin"] = state ? state.mysqlAuthPlugin : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as DatabaseUserArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["mysqlAuthPlugin"] = args ? args.mysqlAuthPlugin : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["password"] = undefined /*out*/;
-            inputs["role"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["mysqlAuthPlugin"] = args ? args.mysqlAuthPlugin : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["password"] = undefined /*out*/;
+            resourceInputs["role"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DatabaseUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DatabaseUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

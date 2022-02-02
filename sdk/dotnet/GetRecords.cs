@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -17,14 +16,14 @@ namespace Pulumi.DigitalOcean
         /// If no filters are specified, all records will be returned.
         /// </summary>
         public static Task<GetRecordsResult> InvokeAsync(GetRecordsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordsResult>("digitalocean:index/getRecords:getRecords", args ?? new GetRecordsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordsResult>("digitalocean:index/getRecords:getRecords", args ?? new GetRecordsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
         /// If no filters are specified, all records will be returned.
         /// </summary>
         public static Output<GetRecordsResult> Invoke(GetRecordsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRecordsResult>("digitalocean:index/getRecords:getRecords", args ?? new GetRecordsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRecordsResult>("digitalocean:index/getRecords:getRecords", args ?? new GetRecordsInvokeArgs(), options.WithDefaults());
     }
 
 

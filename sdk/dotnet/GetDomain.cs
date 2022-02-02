@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -22,7 +21,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account.
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a domain. This data source provides the name, TTL, and zone
@@ -34,7 +33,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account.
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
     }
 
 

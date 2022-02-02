@@ -49,9 +49,7 @@ export function getVpc(args?: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getVpc:getVpc", {
         "id": args.id,
         "name": args.name,

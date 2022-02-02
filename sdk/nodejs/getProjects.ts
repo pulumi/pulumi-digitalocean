@@ -62,9 +62,7 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getProjects:getProjects", {
         "filters": args.filters,
         "sorts": args.sorts,

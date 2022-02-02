@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -104,7 +103,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve information about all DigitalOcean projects associated with an account, with
@@ -198,7 +197,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
     }
 
 

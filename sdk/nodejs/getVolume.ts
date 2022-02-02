@@ -52,9 +52,7 @@ export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getVolume:getVolume", {
         "description": args.description,
         "name": args.name,

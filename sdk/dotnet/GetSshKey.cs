@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.DigitalOcean
 {
@@ -56,7 +55,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a ssh key. This data source provides the name, public key,
@@ -102,7 +101,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithDefaults());
     }
 
 

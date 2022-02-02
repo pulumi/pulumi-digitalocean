@@ -130,48 +130,46 @@ export class DatabaseReplica extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseReplicaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseReplicaArgs | DatabaseReplicaState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseReplicaState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["privateHost"] = state ? state.privateHost : undefined;
-            inputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
-            inputs["privateUri"] = state ? state.privateUri : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["uri"] = state ? state.uri : undefined;
-            inputs["user"] = state ? state.user : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["privateHost"] = state ? state.privateHost : undefined;
+            resourceInputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
+            resourceInputs["privateUri"] = state ? state.privateUri : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["uri"] = state ? state.uri : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as DatabaseReplicaArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["database"] = undefined /*out*/;
-            inputs["host"] = undefined /*out*/;
-            inputs["password"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["privateHost"] = undefined /*out*/;
-            inputs["privateUri"] = undefined /*out*/;
-            inputs["uri"] = undefined /*out*/;
-            inputs["user"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["database"] = undefined /*out*/;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["password"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["privateHost"] = undefined /*out*/;
+            resourceInputs["privateUri"] = undefined /*out*/;
+            resourceInputs["uri"] = undefined /*out*/;
+            resourceInputs["user"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DatabaseReplica.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DatabaseReplica.__pulumiType, name, resourceInputs, opts);
     }
 }
 

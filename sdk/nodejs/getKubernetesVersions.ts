@@ -60,9 +60,7 @@ export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("digitalocean:index/getKubernetesVersions:getKubernetesVersions", {
         "versionPrefix": args.versionPrefix,
     }, opts);

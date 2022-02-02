@@ -123,22 +123,22 @@ export class DatabaseConnectionPool extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseConnectionPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseConnectionPoolArgs | DatabaseConnectionPoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseConnectionPoolState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["dbName"] = state ? state.dbName : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["privateHost"] = state ? state.privateHost : undefined;
-            inputs["privateUri"] = state ? state.privateUri : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["uri"] = state ? state.uri : undefined;
-            inputs["user"] = state ? state.user : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["dbName"] = state ? state.dbName : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["privateHost"] = state ? state.privateHost : undefined;
+            resourceInputs["privateUri"] = state ? state.privateUri : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["uri"] = state ? state.uri : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as DatabaseConnectionPoolArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -156,23 +156,21 @@ export class DatabaseConnectionPool extends pulumi.CustomResource {
             if ((!args || args.user === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["dbName"] = args ? args.dbName : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["user"] = args ? args.user : undefined;
-            inputs["host"] = undefined /*out*/;
-            inputs["password"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["privateHost"] = undefined /*out*/;
-            inputs["privateUri"] = undefined /*out*/;
-            inputs["uri"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["dbName"] = args ? args.dbName : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["password"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["privateHost"] = undefined /*out*/;
+            resourceInputs["privateUri"] = undefined /*out*/;
+            resourceInputs["uri"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DatabaseConnectionPool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DatabaseConnectionPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -20,13 +20,12 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 // 			Engine:    pulumi.String("pg"),
 // 			NodeCount: pulumi.Int(1),
 // 			Region:    pulumi.String("nyc1"),
@@ -46,13 +45,12 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "mysql_example", &digitalocean.DatabaseClusterArgs{
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "mysql-example", &digitalocean.DatabaseClusterArgs{
 // 			Engine:    pulumi.String("mysql"),
 // 			NodeCount: pulumi.Int(1),
 // 			Region:    pulumi.String("nyc1"),
@@ -72,13 +70,12 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "redis_example", &digitalocean.DatabaseClusterArgs{
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "redis-example", &digitalocean.DatabaseClusterArgs{
 // 			Engine:    pulumi.String("redis"),
 // 			NodeCount: pulumi.Int(1),
 // 			Region:    pulumi.String("nyc1"),
@@ -98,13 +95,12 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "mongodb_example", &digitalocean.DatabaseClusterArgs{
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "mongodb-example", &digitalocean.DatabaseClusterArgs{
 // 			Engine:    pulumi.String("mongodb"),
 // 			NodeCount: pulumi.Int(1),
 // 			Region:    pulumi.String("nyc3"),
@@ -364,7 +360,7 @@ type DatabaseClusterInput interface {
 }
 
 func (*DatabaseCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseCluster)(nil))
+	return reflect.TypeOf((**DatabaseCluster)(nil)).Elem()
 }
 
 func (i *DatabaseCluster) ToDatabaseClusterOutput() DatabaseClusterOutput {
@@ -373,35 +369,6 @@ func (i *DatabaseCluster) ToDatabaseClusterOutput() DatabaseClusterOutput {
 
 func (i *DatabaseCluster) ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterOutput)
-}
-
-func (i *DatabaseCluster) ToDatabaseClusterPtrOutput() DatabaseClusterPtrOutput {
-	return i.ToDatabaseClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *DatabaseCluster) ToDatabaseClusterPtrOutputWithContext(ctx context.Context) DatabaseClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterPtrOutput)
-}
-
-type DatabaseClusterPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseClusterPtrOutput() DatabaseClusterPtrOutput
-	ToDatabaseClusterPtrOutputWithContext(ctx context.Context) DatabaseClusterPtrOutput
-}
-
-type databaseClusterPtrType DatabaseClusterArgs
-
-func (*databaseClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseCluster)(nil))
-}
-
-func (i *databaseClusterPtrType) ToDatabaseClusterPtrOutput() DatabaseClusterPtrOutput {
-	return i.ToDatabaseClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseClusterPtrType) ToDatabaseClusterPtrOutputWithContext(ctx context.Context) DatabaseClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterPtrOutput)
 }
 
 // DatabaseClusterArrayInput is an input type that accepts DatabaseClusterArray and DatabaseClusterArrayOutput values.
@@ -457,7 +424,7 @@ func (i DatabaseClusterMap) ToDatabaseClusterMapOutputWithContext(ctx context.Co
 type DatabaseClusterOutput struct{ *pulumi.OutputState }
 
 func (DatabaseClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseCluster)(nil))
+	return reflect.TypeOf((**DatabaseCluster)(nil)).Elem()
 }
 
 func (o DatabaseClusterOutput) ToDatabaseClusterOutput() DatabaseClusterOutput {
@@ -468,44 +435,10 @@ func (o DatabaseClusterOutput) ToDatabaseClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DatabaseClusterOutput) ToDatabaseClusterPtrOutput() DatabaseClusterPtrOutput {
-	return o.ToDatabaseClusterPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseClusterOutput) ToDatabaseClusterPtrOutputWithContext(ctx context.Context) DatabaseClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseCluster) *DatabaseCluster {
-		return &v
-	}).(DatabaseClusterPtrOutput)
-}
-
-type DatabaseClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseCluster)(nil))
-}
-
-func (o DatabaseClusterPtrOutput) ToDatabaseClusterPtrOutput() DatabaseClusterPtrOutput {
-	return o
-}
-
-func (o DatabaseClusterPtrOutput) ToDatabaseClusterPtrOutputWithContext(ctx context.Context) DatabaseClusterPtrOutput {
-	return o
-}
-
-func (o DatabaseClusterPtrOutput) Elem() DatabaseClusterOutput {
-	return o.ApplyT(func(v *DatabaseCluster) DatabaseCluster {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseCluster
-		return ret
-	}).(DatabaseClusterOutput)
-}
-
 type DatabaseClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatabaseCluster)(nil))
+	return reflect.TypeOf((*[]*DatabaseCluster)(nil)).Elem()
 }
 
 func (o DatabaseClusterArrayOutput) ToDatabaseClusterArrayOutput() DatabaseClusterArrayOutput {
@@ -517,15 +450,15 @@ func (o DatabaseClusterArrayOutput) ToDatabaseClusterArrayOutputWithContext(ctx 
 }
 
 func (o DatabaseClusterArrayOutput) Index(i pulumi.IntInput) DatabaseClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseCluster {
-		return vs[0].([]DatabaseCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseCluster {
+		return vs[0].([]*DatabaseCluster)[vs[1].(int)]
 	}).(DatabaseClusterOutput)
 }
 
 type DatabaseClusterMapOutput struct{ *pulumi.OutputState }
 
 func (DatabaseClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatabaseCluster)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseCluster)(nil)).Elem()
 }
 
 func (o DatabaseClusterMapOutput) ToDatabaseClusterMapOutput() DatabaseClusterMapOutput {
@@ -537,18 +470,16 @@ func (o DatabaseClusterMapOutput) ToDatabaseClusterMapOutputWithContext(ctx cont
 }
 
 func (o DatabaseClusterMapOutput) MapIndex(k pulumi.StringInput) DatabaseClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseCluster {
-		return vs[0].(map[string]DatabaseCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseCluster {
+		return vs[0].(map[string]*DatabaseCluster)[vs[1].(string)]
 	}).(DatabaseClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterInput)(nil)).Elem(), &DatabaseCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterPtrInput)(nil)).Elem(), &DatabaseCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterArrayInput)(nil)).Elem(), DatabaseClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterMapInput)(nil)).Elem(), DatabaseClusterMap{})
 	pulumi.RegisterOutputType(DatabaseClusterOutput{})
-	pulumi.RegisterOutputType(DatabaseClusterPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMapOutput{})
 }

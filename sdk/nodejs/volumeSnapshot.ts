@@ -95,34 +95,32 @@ export class VolumeSnapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: VolumeSnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeSnapshotArgs | VolumeSnapshotState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeSnapshotState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["minDiskSize"] = state ? state.minDiskSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["regions"] = state ? state.regions : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["minDiskSize"] = state ? state.minDiskSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeSnapshotArgs | undefined;
             if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["volumeId"] = args ? args.volumeId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["minDiskSize"] = undefined /*out*/;
-            inputs["regions"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["minDiskSize"] = undefined /*out*/;
+            resourceInputs["regions"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VolumeSnapshot.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VolumeSnapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

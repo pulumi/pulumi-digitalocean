@@ -20,13 +20,12 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/index"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres_example", &digitalocean.DatabaseClusterArgs{
+// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 // 			Engine:    pulumi.String("pg"),
 // 			Version:   pulumi.String("11"),
 // 			Size:      pulumi.String("db-s-1vcpu-1gb"),
@@ -36,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = digitalocean.NewDatabaseConnectionPool(ctx, "pool_01", &digitalocean.DatabaseConnectionPoolArgs{
+// 		_, err = digitalocean.NewDatabaseConnectionPool(ctx, "pool-01", &digitalocean.DatabaseConnectionPoolArgs{
 // 			ClusterId: postgres_example.ID(),
 // 			Mode:      pulumi.String("transaction"),
 // 			Size:      pulumi.Int(20),
@@ -231,7 +230,7 @@ type DatabaseConnectionPoolInput interface {
 }
 
 func (*DatabaseConnectionPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseConnectionPool)(nil))
+	return reflect.TypeOf((**DatabaseConnectionPool)(nil)).Elem()
 }
 
 func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolOutput() DatabaseConnectionPoolOutput {
@@ -240,35 +239,6 @@ func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolOutput() DatabaseConnec
 
 func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolOutputWithContext(ctx context.Context) DatabaseConnectionPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolOutput)
-}
-
-func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput {
-	return i.ToDatabaseConnectionPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolPtrOutput)
-}
-
-type DatabaseConnectionPoolPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput
-	ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput
-}
-
-type databaseConnectionPoolPtrType DatabaseConnectionPoolArgs
-
-func (*databaseConnectionPoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseConnectionPool)(nil))
-}
-
-func (i *databaseConnectionPoolPtrType) ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput {
-	return i.ToDatabaseConnectionPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseConnectionPoolPtrType) ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConnectionPoolPtrOutput)
 }
 
 // DatabaseConnectionPoolArrayInput is an input type that accepts DatabaseConnectionPoolArray and DatabaseConnectionPoolArrayOutput values.
@@ -324,7 +294,7 @@ func (i DatabaseConnectionPoolMap) ToDatabaseConnectionPoolMapOutputWithContext(
 type DatabaseConnectionPoolOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConnectionPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseConnectionPool)(nil))
+	return reflect.TypeOf((**DatabaseConnectionPool)(nil)).Elem()
 }
 
 func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolOutput() DatabaseConnectionPoolOutput {
@@ -335,44 +305,10 @@ func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolOutputWithContext(
 	return o
 }
 
-func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput {
-	return o.ToDatabaseConnectionPoolPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseConnectionPool) *DatabaseConnectionPool {
-		return &v
-	}).(DatabaseConnectionPoolPtrOutput)
-}
-
-type DatabaseConnectionPoolPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseConnectionPoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseConnectionPool)(nil))
-}
-
-func (o DatabaseConnectionPoolPtrOutput) ToDatabaseConnectionPoolPtrOutput() DatabaseConnectionPoolPtrOutput {
-	return o
-}
-
-func (o DatabaseConnectionPoolPtrOutput) ToDatabaseConnectionPoolPtrOutputWithContext(ctx context.Context) DatabaseConnectionPoolPtrOutput {
-	return o
-}
-
-func (o DatabaseConnectionPoolPtrOutput) Elem() DatabaseConnectionPoolOutput {
-	return o.ApplyT(func(v *DatabaseConnectionPool) DatabaseConnectionPool {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseConnectionPool
-		return ret
-	}).(DatabaseConnectionPoolOutput)
-}
-
 type DatabaseConnectionPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConnectionPoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatabaseConnectionPool)(nil))
+	return reflect.TypeOf((*[]*DatabaseConnectionPool)(nil)).Elem()
 }
 
 func (o DatabaseConnectionPoolArrayOutput) ToDatabaseConnectionPoolArrayOutput() DatabaseConnectionPoolArrayOutput {
@@ -384,15 +320,15 @@ func (o DatabaseConnectionPoolArrayOutput) ToDatabaseConnectionPoolArrayOutputWi
 }
 
 func (o DatabaseConnectionPoolArrayOutput) Index(i pulumi.IntInput) DatabaseConnectionPoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseConnectionPool {
-		return vs[0].([]DatabaseConnectionPool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseConnectionPool {
+		return vs[0].([]*DatabaseConnectionPool)[vs[1].(int)]
 	}).(DatabaseConnectionPoolOutput)
 }
 
 type DatabaseConnectionPoolMapOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConnectionPoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatabaseConnectionPool)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseConnectionPool)(nil)).Elem()
 }
 
 func (o DatabaseConnectionPoolMapOutput) ToDatabaseConnectionPoolMapOutput() DatabaseConnectionPoolMapOutput {
@@ -404,18 +340,16 @@ func (o DatabaseConnectionPoolMapOutput) ToDatabaseConnectionPoolMapOutputWithCo
 }
 
 func (o DatabaseConnectionPoolMapOutput) MapIndex(k pulumi.StringInput) DatabaseConnectionPoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseConnectionPool {
-		return vs[0].(map[string]DatabaseConnectionPool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseConnectionPool {
+		return vs[0].(map[string]*DatabaseConnectionPool)[vs[1].(string)]
 	}).(DatabaseConnectionPoolOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConnectionPoolInput)(nil)).Elem(), &DatabaseConnectionPool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConnectionPoolPtrInput)(nil)).Elem(), &DatabaseConnectionPool{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConnectionPoolArrayInput)(nil)).Elem(), DatabaseConnectionPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConnectionPoolMapInput)(nil)).Elem(), DatabaseConnectionPoolMap{})
 	pulumi.RegisterOutputType(DatabaseConnectionPoolOutput{})
-	pulumi.RegisterOutputType(DatabaseConnectionPoolPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseConnectionPoolArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseConnectionPoolMapOutput{})
 }

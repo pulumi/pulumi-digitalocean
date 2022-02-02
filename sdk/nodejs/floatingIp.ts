@@ -90,28 +90,26 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     constructor(name: string, args: FloatingIpArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FloatingIpArgs | FloatingIpState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloatingIpState | undefined;
-            inputs["dropletId"] = state ? state.dropletId : undefined;
-            inputs["floatingIpUrn"] = state ? state.floatingIpUrn : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["dropletId"] = state ? state.dropletId : undefined;
+            resourceInputs["floatingIpUrn"] = state ? state.floatingIpUrn : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["dropletId"] = args ? args.dropletId : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["floatingIpUrn"] = undefined /*out*/;
+            resourceInputs["dropletId"] = args ? args.dropletId : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["floatingIpUrn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FloatingIp.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FloatingIp.__pulumiType, name, resourceInputs, opts);
     }
 }
 

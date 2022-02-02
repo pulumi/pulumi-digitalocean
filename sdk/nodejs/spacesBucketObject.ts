@@ -159,27 +159,27 @@ export class SpacesBucketObject extends pulumi.CustomResource {
      */
     constructor(name: string, args: SpacesBucketObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SpacesBucketObjectArgs | SpacesBucketObjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpacesBucketObjectState | undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["cacheControl"] = state ? state.cacheControl : undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            inputs["contentDisposition"] = state ? state.contentDisposition : undefined;
-            inputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            inputs["contentLanguage"] = state ? state.contentLanguage : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["source"] = state ? state.source : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
-            inputs["websiteRedirect"] = state ? state.websiteRedirect : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["cacheControl"] = state ? state.cacheControl : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
+            resourceInputs["contentDisposition"] = state ? state.contentDisposition : undefined;
+            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
+            resourceInputs["contentLanguage"] = state ? state.contentLanguage : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["websiteRedirect"] = state ? state.websiteRedirect : undefined;
         } else {
             const args = argsOrState as SpacesBucketObjectArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
@@ -191,28 +191,26 @@ export class SpacesBucketObject extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["cacheControl"] = args ? args.cacheControl : undefined;
-            inputs["content"] = args ? args.content : undefined;
-            inputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            inputs["contentDisposition"] = args ? args.contentDisposition : undefined;
-            inputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            inputs["contentLanguage"] = args ? args.contentLanguage : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["websiteRedirect"] = args ? args.websiteRedirect : undefined;
-            inputs["versionId"] = undefined /*out*/;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["cacheControl"] = args ? args.cacheControl : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
+            resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
+            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
+            resourceInputs["contentLanguage"] = args ? args.contentLanguage : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["websiteRedirect"] = args ? args.websiteRedirect : undefined;
+            resourceInputs["versionId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SpacesBucketObject.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SpacesBucketObject.__pulumiType, name, resourceInputs, opts);
     }
 }
 
