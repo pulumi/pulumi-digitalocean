@@ -31,9 +31,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example-1.0.0"
 // 		_, err := digitalocean.GetImage(ctx, &GetImageArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("example-1.0.0"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -55,9 +54,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example-1.0.0"
 // 		exampleImage, err := digitalocean.GetImage(ctx, &GetImageArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("example-1.0.0"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -87,9 +85,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "ubuntu-18-04-x64"
 // 		_, err := digitalocean.GetImage(ctx, &GetImageArgs{
-// 			Slug: &opt0,
+// 			Slug: pulumi.StringRef("ubuntu-18-04-x64"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -32,9 +32,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "web"
 // 		example, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("web"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -57,9 +56,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "web"
 // 		_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
-// 			Tag: &opt0,
+// 			Tag: pulumi.StringRef("web"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -81,9 +79,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id
 // 		_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
-// 			Id: &opt0,
+// 			Id: pulumi.IntRef(digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

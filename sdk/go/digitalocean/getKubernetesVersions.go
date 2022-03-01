@@ -78,9 +78,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "1.16."
 // 		example, err := digitalocean.GetKubernetesVersions(ctx, &GetKubernetesVersionsArgs{
-// 			VersionPrefix: &opt0,
+// 			VersionPrefix: pulumi.StringRef("1.16."),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
