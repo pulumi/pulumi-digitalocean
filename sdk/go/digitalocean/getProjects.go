@@ -81,7 +81,7 @@ import (
 // 			},
 // 			Sorts: []GetProjectsSort{
 // 				GetProjectsSort{
-// 					Direction: "asc",
+// 					Direction: pulumi.StringRef("asc"),
 // 					Key:       "name",
 // 				},
 // 			},

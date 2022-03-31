@@ -66,9 +66,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "baz"
 // 		foobarVolumeSnapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("baz"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

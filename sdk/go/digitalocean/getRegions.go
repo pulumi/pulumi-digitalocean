@@ -79,7 +79,7 @@ import (
 // 			},
 // 			Sorts: []GetRegionsSort{
 // 				GetRegionsSort{
-// 					Direction: "desc",
+// 					Direction: pulumi.StringRef("desc"),
 // 					Key:       "name",
 // 				},
 // 			},

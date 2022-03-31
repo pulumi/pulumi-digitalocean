@@ -28,13 +28,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
-// 		opt1 := "^web"
-// 		opt2 := "nyc3"
 // 		_, err := digitalocean.LookupDropletSnapshot(ctx, &GetDropletSnapshotArgs{
-// 			MostRecent: &opt0,
-// 			NameRegex:  &opt1,
-// 			Region:     &opt2,
+// 			MostRecent: pulumi.BoolRef(true),
+// 			NameRegex:  pulumi.StringRef("^web"),
+// 			Region:     pulumi.StringRef("nyc3"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

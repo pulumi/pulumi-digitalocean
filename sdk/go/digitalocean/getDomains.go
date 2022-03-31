@@ -40,7 +40,7 @@ import (
 // 			Filters: []GetDomainsFilter{
 // 				GetDomainsFilter{
 // 					Key:     "name",
-// 					MatchBy: "re",
+// 					MatchBy: pulumi.StringRef("re"),
 // 					Values: []string{
 // 						fmt.Sprintf("%v%v", "example\\.com", "$"),
 // 					},

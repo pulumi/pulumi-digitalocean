@@ -28,13 +28,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
-// 		opt1 := "^web"
-// 		opt2 := "nyc3"
 // 		_, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
-// 			MostRecent: &opt0,
-// 			NameRegex:  &opt1,
-// 			Region:     &opt2,
+// 			MostRecent: pulumi.BoolRef(true),
+// 			NameRegex:  pulumi.StringRef("^web"),
+// 			Region:     pulumi.StringRef("nyc3"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -56,13 +53,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^web"
-// 		opt1 := "nyc3"
-// 		opt2 := true
 // 		snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
-// 			NameRegex:  &opt0,
-// 			Region:     &opt1,
-// 			MostRecent: &opt2,
+// 			NameRegex:  pulumi.StringRef("^web"),
+// 			Region:     pulumi.StringRef("nyc3"),
+// 			MostRecent: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
