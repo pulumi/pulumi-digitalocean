@@ -31,9 +31,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "app"
 // 		example, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("app"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -56,9 +55,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "loadbalancer_id"
 // 		_, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
-// 			Id: &opt0,
+// 			Id: pulumi.StringRef("loadbalancer_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

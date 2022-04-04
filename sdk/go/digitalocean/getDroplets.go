@@ -82,7 +82,7 @@ import (
 // 			},
 // 			Sorts: []GetDropletsSort{
 // 				GetDropletsSort{
-// 					Direction: "desc",
+// 					Direction: pulumi.StringRef("desc"),
 // 					Key:       "created_at",
 // 				},
 // 			},

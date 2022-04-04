@@ -32,9 +32,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example-network"
 // 		_, err := digitalocean.LookupVpc(ctx, &GetVpcArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("example-network"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -56,9 +55,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example-network"
 // 		exampleVpc, err := digitalocean.LookupVpc(ctx, &GetVpcArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("example-network"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

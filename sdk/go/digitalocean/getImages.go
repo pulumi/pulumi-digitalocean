@@ -83,7 +83,7 @@ import (
 // 			},
 // 			Sorts: []GetImagesSort{
 // 				GetImagesSort{
-// 					Direction: "desc",
+// 					Direction: pulumi.StringRef("desc"),
 // 					Key:       "created",
 // 				},
 // 			},

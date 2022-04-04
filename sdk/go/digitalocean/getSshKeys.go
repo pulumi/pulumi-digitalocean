@@ -35,7 +35,7 @@ import (
 // 		_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
 // 			Sorts: []GetSshKeysSort{
 // 				GetSshKeysSort{
-// 					Direction: "asc",
+// 					Direction: pulumi.StringRef("asc"),
 // 					Key:       "name",
 // 				},
 // 			},

@@ -72,7 +72,7 @@ import (
 // 			},
 // 			Sorts: []GetSpacesBucketsSort{
 // 				GetSpacesBucketsSort{
-// 					Direction: "desc",
+// 					Direction: pulumi.StringRef("desc"),
 // 					Key:       "name",
 // 				},
 // 			},

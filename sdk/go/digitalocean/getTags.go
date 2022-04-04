@@ -30,7 +30,7 @@ import (
 // 			Sorts: []GetTagsSort{
 // 				GetTagsSort{
 // 					Key:       "total_resource_count",
-// 					Direction: "asc",
+// 					Direction: pulumi.StringRef("asc"),
 // 				},
 // 			},
 // 		}, nil)

@@ -31,10 +31,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "nyc3"
 // 		_, err := digitalocean.LookupVolume(ctx, &GetVolumeArgs{
 // 			Name:   "app-data",
-// 			Region: &opt0,
+// 			Region: pulumi.StringRef("nyc3"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -56,10 +55,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "nyc3"
 // 		exampleVolume, err := digitalocean.LookupVolume(ctx, &GetVolumeArgs{
 // 			Name:   "app-data",
-// 			Region: &opt0,
+// 			Region: pulumi.StringRef("nyc3"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
