@@ -64,6 +64,9 @@ import * as utilities from "./utilities";
  *
  * const mono_repo_example = new digitalocean.App("mono-repo-example", {
  *     spec: {
+ *         alerts: [{
+ *             rule: "DEPLOYMENT_FAILED",
+ *         }],
  *         databases: [{
  *             engine: "PG",
  *             name: "starter-db",
@@ -77,6 +80,12 @@ import * as utilities from "./utilities";
  *         // Build a Go project in the api/ directory that listens on port 3000
  *         // and serves it at https://foo.example.com/api
  *         services: [{
+ *             alerts: [{
+ *                 operator: "GREATER_THAN",
+ *                 rule: "CPU_UTILIZATION",
+ *                 value: 75,
+ *                 window: "TEN_MINUTES",
+ *             }],
  *             environmentSlug: "go",
  *             github: {
  *                 branch: "main",
@@ -86,6 +95,12 @@ import * as utilities from "./utilities";
  *             httpPort: 3000,
  *             instanceCount: 2,
  *             instanceSizeSlug: "professional-xs",
+ *             logDestinations: [{
+ *                 name: "MyLogs",
+ *                 papertrail: {
+ *                     endpoint: "syslog+tls://example.com:12345",
+ *                 },
+ *             }],
  *             name: "api",
  *             routes: [{
  *                 path: "/api",

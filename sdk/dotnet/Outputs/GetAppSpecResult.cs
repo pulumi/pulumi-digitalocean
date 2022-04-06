@@ -13,6 +13,7 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecResult
     {
+        public readonly ImmutableArray<Outputs.GetAppSpecAlertResult> Alerts;
         public readonly ImmutableArray<Outputs.GetAppSpecDatabaseResult> Databases;
         public readonly ImmutableArray<string> Domains;
         /// <summary>
@@ -31,6 +32,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetAppSpecResult(
+            ImmutableArray<Outputs.GetAppSpecAlertResult> alerts,
+
             ImmutableArray<Outputs.GetAppSpecDatabaseResult> databases,
 
             ImmutableArray<string> domains,
@@ -49,6 +52,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.GetAppSpecWorkerResult> workers)
         {
+            Alerts = alerts;
             Databases = databases;
             Domains = domains;
             Envs = envs;

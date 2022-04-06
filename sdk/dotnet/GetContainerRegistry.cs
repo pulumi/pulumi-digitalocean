@@ -117,6 +117,13 @@ namespace Pulumi.DigitalOcean
     [OutputType]
     public sealed class GetContainerRegistryResult
     {
+        /// <summary>
+        /// The date and time when the registry was created
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
+        /// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+        /// </summary>
         public readonly string Endpoint;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -126,30 +133,48 @@ namespace Pulumi.DigitalOcean
         /// The name of the container registry
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The slug identifier for the  region
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
+        /// The domain of the container registry. Ex: `registry.digitalocean.com`
+        /// </summary>
         public readonly string ServerUrl;
         /// <summary>
+        /// The amount of storage used in the registry in bytes.
+        /// </summary>
+        public readonly int StorageUsageBytes;
+        /// <summary>
         /// The slug identifier for the subscription tier
-        /// * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
-        /// * `server_url`: The domain of the container registry. Ex: `registry.digitalocean.com`
         /// </summary>
         public readonly string SubscriptionTierSlug;
 
         [OutputConstructor]
         private GetContainerRegistryResult(
+            string createdAt,
+
             string endpoint,
 
             string id,
 
             string name,
 
+            string region,
+
             string serverUrl,
+
+            int storageUsageBytes,
 
             string subscriptionTierSlug)
         {
+            CreatedAt = createdAt;
             Endpoint = endpoint;
             Id = id;
             Name = name;
+            Region = region;
             ServerUrl = serverUrl;
+            StorageUsageBytes = storageUsageBytes;
             SubscriptionTierSlug = subscriptionTierSlug;
         }
     }

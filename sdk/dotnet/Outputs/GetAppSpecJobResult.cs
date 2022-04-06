@@ -13,6 +13,7 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecJobResult
     {
+        public readonly ImmutableArray<Outputs.GetAppSpecJobAlertResult> Alerts;
         /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
@@ -61,6 +62,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         /// </summary>
         public readonly string? Kind;
+        public readonly ImmutableArray<Outputs.GetAppSpecJobLogDestinationResult> LogDestinations;
         /// <summary>
         /// The name of the component.
         /// </summary>
@@ -76,6 +78,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetAppSpecJobResult(
+            ImmutableArray<Outputs.GetAppSpecJobAlertResult> alerts,
+
             string? buildCommand,
 
             string? dockerfilePath,
@@ -98,12 +102,15 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? kind,
 
+            ImmutableArray<Outputs.GetAppSpecJobLogDestinationResult> logDestinations,
+
             string name,
 
             string? runCommand,
 
             string? sourceDir)
         {
+            Alerts = alerts;
             BuildCommand = buildCommand;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
@@ -115,6 +122,7 @@ namespace Pulumi.DigitalOcean.Outputs
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
             Kind = kind;
+            LogDestinations = logDestinations;
             Name = name;
             RunCommand = runCommand;
             SourceDir = sourceDir;

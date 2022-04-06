@@ -34,7 +34,7 @@ class DnsRecordArgs:
         :param pulumi.Input[int] port: The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
         :param pulumi.Input[int] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
-        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0.
+        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
         """
         pulumi.set(__self__, "domain", domain)
@@ -155,7 +155,7 @@ class DnsRecordArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        The time to live for the record, in seconds. Must be at least 0.
+        The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         """
         return pulumi.get(self, "ttl")
 
@@ -199,7 +199,7 @@ class _DnsRecordState:
         :param pulumi.Input[int] port: The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
         :param pulumi.Input[int] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
-        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0.
+        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         :param pulumi.Input[Union[str, 'RecordType']] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
@@ -315,7 +315,7 @@ class _DnsRecordState:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        The time to live for the record, in seconds. Must be at least 0.
+        The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         """
         return pulumi.get(self, "ttl")
 
@@ -417,7 +417,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
         :param pulumi.Input[int] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
-        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0.
+        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         :param pulumi.Input[Union[str, 'RecordType']] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
@@ -550,7 +550,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
         :param pulumi.Input[int] priority: The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
         :param pulumi.Input[str] tag: The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
-        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0.
+        :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         :param pulumi.Input[Union[str, 'RecordType']] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
@@ -632,7 +632,7 @@ class DnsRecord(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[int]:
         """
-        The time to live for the record, in seconds. Must be at least 0.
+        The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         """
         return pulumi.get(self, "ttl")
 

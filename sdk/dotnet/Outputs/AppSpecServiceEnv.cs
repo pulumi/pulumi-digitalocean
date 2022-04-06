@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// The value of the environment variable.
+        /// The threshold for the type of the warning.
         /// </summary>
         public readonly string? Value;
 

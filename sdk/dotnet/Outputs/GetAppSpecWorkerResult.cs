@@ -13,6 +13,7 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecWorkerResult
     {
+        public readonly ImmutableArray<Outputs.GetAppSpecWorkerAlertResult> Alerts;
         /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
@@ -53,6 +54,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The instance size to use for this component.
         /// </summary>
         public readonly string? InstanceSizeSlug;
+        public readonly ImmutableArray<Outputs.GetAppSpecWorkerLogDestinationResult> LogDestinations;
         /// <summary>
         /// The name of the component.
         /// </summary>
@@ -68,6 +70,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetAppSpecWorkerResult(
+            ImmutableArray<Outputs.GetAppSpecWorkerAlertResult> alerts,
+
             string? buildCommand,
 
             string? dockerfilePath,
@@ -88,12 +92,15 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? instanceSizeSlug,
 
+            ImmutableArray<Outputs.GetAppSpecWorkerLogDestinationResult> logDestinations,
+
             string name,
 
             string? runCommand,
 
             string? sourceDir)
         {
+            Alerts = alerts;
             BuildCommand = buildCommand;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
@@ -104,6 +111,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Image = image;
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
+            LogDestinations = logDestinations;
             Name = name;
             RunCommand = runCommand;
             SourceDir = sourceDir;

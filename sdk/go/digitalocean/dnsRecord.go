@@ -79,7 +79,7 @@ type DnsRecord struct {
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
 	Tag pulumi.StringPtrOutput `pulumi:"tag"`
-	// The time to live for the record, in seconds. Must be at least 0.
+	// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
 	// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -141,7 +141,7 @@ type dnsRecordState struct {
 	Priority *int `pulumi:"priority"`
 	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
 	Tag *string `pulumi:"tag"`
-	// The time to live for the record, in seconds. Must be at least 0.
+	// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
 	Ttl *int `pulumi:"ttl"`
 	// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
 	Type *string `pulumi:"type"`
@@ -166,7 +166,7 @@ type DnsRecordState struct {
 	Priority pulumi.IntPtrInput
 	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
 	Tag pulumi.StringPtrInput
-	// The time to live for the record, in seconds. Must be at least 0.
+	// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
 	Ttl pulumi.IntPtrInput
 	// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
 	Type pulumi.StringPtrInput
@@ -193,7 +193,7 @@ type dnsRecordArgs struct {
 	Priority *int `pulumi:"priority"`
 	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
 	Tag *string `pulumi:"tag"`
-	// The time to live for the record, in seconds. Must be at least 0.
+	// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
 	Ttl *int `pulumi:"ttl"`
 	// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
 	Type string `pulumi:"type"`
@@ -217,7 +217,7 @@ type DnsRecordArgs struct {
 	Priority pulumi.IntPtrInput
 	// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
 	Tag pulumi.StringPtrInput
-	// The time to live for the record, in seconds. Must be at least 0.
+	// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
 	Ttl pulumi.IntPtrInput
 	// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
 	Type pulumi.StringInput

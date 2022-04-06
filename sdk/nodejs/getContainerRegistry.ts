@@ -51,6 +51,13 @@ export interface GetContainerRegistryArgs {
  * A collection of values returned by getContainerRegistry.
  */
 export interface GetContainerRegistryResult {
+    /**
+     * The date and time when the registry was created
+     */
+    readonly createdAt: string;
+    /**
+     * The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+     */
     readonly endpoint: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -60,11 +67,20 @@ export interface GetContainerRegistryResult {
      * The name of the container registry
      */
     readonly name: string;
+    /**
+     * The slug identifier for the  region
+     */
+    readonly region: string;
+    /**
+     * The domain of the container registry. Ex: `registry.digitalocean.com`
+     */
     readonly serverUrl: string;
     /**
+     * The amount of storage used in the registry in bytes.
+     */
+    readonly storageUsageBytes: number;
+    /**
      * The slug identifier for the subscription tier
-     * * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
-     * * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
      */
     readonly subscriptionTierSlug: string;
 }

@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecService
     {
         /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppSpecServiceAlert> Alerts;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -70,6 +74,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<int> InternalPorts;
         /// <summary>
+        /// Describes a log forwarding destination.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppSpecServiceLogDestination> LogDestinations;
+        /// <summary>
         /// The name of the component.
         /// </summary>
         public readonly string Name;
@@ -85,6 +93,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private AppSpecService(
+            ImmutableArray<Outputs.AppSpecServiceAlert> alerts,
+
             string? buildCommand,
 
             Outputs.AppSpecServiceCors? cors,
@@ -113,6 +123,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<int> internalPorts,
 
+            ImmutableArray<Outputs.AppSpecServiceLogDestination> logDestinations,
+
             string name,
 
             ImmutableArray<Outputs.AppSpecServiceRoute> routes,
@@ -121,6 +133,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? sourceDir)
         {
+            Alerts = alerts;
             BuildCommand = buildCommand;
             Cors = cors;
             DockerfilePath = dockerfilePath;
@@ -135,6 +148,7 @@ namespace Pulumi.DigitalOcean.Outputs
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
             InternalPorts = internalPorts;
+            LogDestinations = logDestinations;
             Name = name;
             Routes = routes;
             RunCommand = runCommand;

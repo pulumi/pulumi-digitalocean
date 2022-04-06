@@ -13,6 +13,10 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class AppSpec
     {
+        /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppSpecAlert> Alerts;
         public readonly ImmutableArray<Outputs.AppSpecDatabase> Databases;
         /// <summary>
         /// Describes a domain where the application will be made available.
@@ -38,6 +42,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private AppSpec(
+            ImmutableArray<Outputs.AppSpecAlert> alerts,
+
             ImmutableArray<Outputs.AppSpecDatabase> databases,
 
             ImmutableArray<Outputs.AppSpecDomainName> domainNames,
@@ -58,6 +64,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.AppSpecWorker> workers)
         {
+            Alerts = alerts;
             Databases = databases;
             DomainNames = domainNames;
             Domains = domains;

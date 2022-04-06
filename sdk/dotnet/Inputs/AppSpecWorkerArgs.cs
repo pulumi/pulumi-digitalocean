@@ -12,6 +12,18 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecWorkerArgs : Pulumi.ResourceArgs
     {
+        [Input("alerts")]
+        private InputList<Inputs.AppSpecWorkerAlertArgs>? _alerts;
+
+        /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
+        public InputList<Inputs.AppSpecWorkerAlertArgs> Alerts
+        {
+            get => _alerts ?? (_alerts = new InputList<Inputs.AppSpecWorkerAlertArgs>());
+            set => _alerts = value;
+        }
+
         /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
@@ -77,6 +89,18 @@ namespace Pulumi.DigitalOcean.Inputs
         /// </summary>
         [Input("instanceSizeSlug")]
         public Input<string>? InstanceSizeSlug { get; set; }
+
+        [Input("logDestinations")]
+        private InputList<Inputs.AppSpecWorkerLogDestinationArgs>? _logDestinations;
+
+        /// <summary>
+        /// Describes a log forwarding destination.
+        /// </summary>
+        public InputList<Inputs.AppSpecWorkerLogDestinationArgs> LogDestinations
+        {
+            get => _logDestinations ?? (_logDestinations = new InputList<Inputs.AppSpecWorkerLogDestinationArgs>());
+            set => _logDestinations = value;
+        }
 
         /// <summary>
         /// The name of the component.

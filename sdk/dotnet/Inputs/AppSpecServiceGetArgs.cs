@@ -12,6 +12,18 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecServiceGetArgs : Pulumi.ResourceArgs
     {
+        [Input("alerts")]
+        private InputList<Inputs.AppSpecServiceAlertGetArgs>? _alerts;
+
+        /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
+        public InputList<Inputs.AppSpecServiceAlertGetArgs> Alerts
+        {
+            get => _alerts ?? (_alerts = new InputList<Inputs.AppSpecServiceAlertGetArgs>());
+            set => _alerts = value;
+        }
+
         /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
@@ -106,6 +118,18 @@ namespace Pulumi.DigitalOcean.Inputs
         {
             get => _internalPorts ?? (_internalPorts = new InputList<int>());
             set => _internalPorts = value;
+        }
+
+        [Input("logDestinations")]
+        private InputList<Inputs.AppSpecServiceLogDestinationGetArgs>? _logDestinations;
+
+        /// <summary>
+        /// Describes a log forwarding destination.
+        /// </summary>
+        public InputList<Inputs.AppSpecServiceLogDestinationGetArgs> LogDestinations
+        {
+            get => _logDestinations ?? (_logDestinations = new InputList<Inputs.AppSpecServiceLogDestinationGetArgs>());
+            set => _logDestinations = value;
         }
 
         /// <summary>

@@ -12,16 +12,23 @@ from ._enums import *
 
 __all__ = [
     'AppSpec',
+    'AppSpecAlert',
     'AppSpecDatabase',
     'AppSpecDomainName',
     'AppSpecEnv',
     'AppSpecJob',
+    'AppSpecJobAlert',
     'AppSpecJobEnv',
     'AppSpecJobGit',
     'AppSpecJobGithub',
     'AppSpecJobGitlab',
     'AppSpecJobImage',
+    'AppSpecJobLogDestination',
+    'AppSpecJobLogDestinationDatadog',
+    'AppSpecJobLogDestinationLogtail',
+    'AppSpecJobLogDestinationPapertrail',
     'AppSpecService',
+    'AppSpecServiceAlert',
     'AppSpecServiceCors',
     'AppSpecServiceCorsAllowOrigins',
     'AppSpecServiceEnv',
@@ -30,6 +37,10 @@ __all__ = [
     'AppSpecServiceGitlab',
     'AppSpecServiceHealthCheck',
     'AppSpecServiceImage',
+    'AppSpecServiceLogDestination',
+    'AppSpecServiceLogDestinationDatadog',
+    'AppSpecServiceLogDestinationLogtail',
+    'AppSpecServiceLogDestinationPapertrail',
     'AppSpecServiceRoute',
     'AppSpecStaticSite',
     'AppSpecStaticSiteCors',
@@ -40,11 +51,16 @@ __all__ = [
     'AppSpecStaticSiteGitlab',
     'AppSpecStaticSiteRoute',
     'AppSpecWorker',
+    'AppSpecWorkerAlert',
     'AppSpecWorkerEnv',
     'AppSpecWorkerGit',
     'AppSpecWorkerGithub',
     'AppSpecWorkerGitlab',
     'AppSpecWorkerImage',
+    'AppSpecWorkerLogDestination',
+    'AppSpecWorkerLogDestinationDatadog',
+    'AppSpecWorkerLogDestinationLogtail',
+    'AppSpecWorkerLogDestinationPapertrail',
     'DatabaseClusterMaintenanceWindow',
     'DatabaseFirewallRule',
     'FirewallInboundRule',
@@ -68,15 +84,22 @@ __all__ = [
     'SpacesBucketLifecycleRuleNoncurrentVersionExpiration',
     'SpacesBucketVersioning',
     'GetAppSpecResult',
+    'GetAppSpecAlertResult',
     'GetAppSpecDatabaseResult',
     'GetAppSpecEnvResult',
     'GetAppSpecJobResult',
+    'GetAppSpecJobAlertResult',
     'GetAppSpecJobEnvResult',
     'GetAppSpecJobGitResult',
     'GetAppSpecJobGithubResult',
     'GetAppSpecJobGitlabResult',
     'GetAppSpecJobImageResult',
+    'GetAppSpecJobLogDestinationResult',
+    'GetAppSpecJobLogDestinationDatadogResult',
+    'GetAppSpecJobLogDestinationLogtailResult',
+    'GetAppSpecJobLogDestinationPapertrailResult',
     'GetAppSpecServiceResult',
+    'GetAppSpecServiceAlertResult',
     'GetAppSpecServiceCorsResult',
     'GetAppSpecServiceCorsAllowOriginsResult',
     'GetAppSpecServiceEnvResult',
@@ -85,6 +108,10 @@ __all__ = [
     'GetAppSpecServiceGitlabResult',
     'GetAppSpecServiceHealthCheckResult',
     'GetAppSpecServiceImageResult',
+    'GetAppSpecServiceLogDestinationResult',
+    'GetAppSpecServiceLogDestinationDatadogResult',
+    'GetAppSpecServiceLogDestinationLogtailResult',
+    'GetAppSpecServiceLogDestinationPapertrailResult',
     'GetAppSpecServiceRouteResult',
     'GetAppSpecStaticSiteResult',
     'GetAppSpecStaticSiteCorsResult',
@@ -95,11 +122,16 @@ __all__ = [
     'GetAppSpecStaticSiteGitlabResult',
     'GetAppSpecStaticSiteRouteResult',
     'GetAppSpecWorkerResult',
+    'GetAppSpecWorkerAlertResult',
     'GetAppSpecWorkerEnvResult',
     'GetAppSpecWorkerGitResult',
     'GetAppSpecWorkerGithubResult',
     'GetAppSpecWorkerGitlabResult',
     'GetAppSpecWorkerImageResult',
+    'GetAppSpecWorkerLogDestinationResult',
+    'GetAppSpecWorkerLogDestinationDatadogResult',
+    'GetAppSpecWorkerLogDestinationLogtailResult',
+    'GetAppSpecWorkerLogDestinationPapertrailResult',
     'GetDatabaseClusterMaintenanceWindowResult',
     'GetDomainsDomainResult',
     'GetDomainsFilterResult',
@@ -167,6 +199,7 @@ class AppSpec(dict):
 
     def __init__(__self__, *,
                  name: str,
+                 alerts: Optional[Sequence['outputs.AppSpecAlert']] = None,
                  databases: Optional[Sequence['outputs.AppSpecDatabase']] = None,
                  domain_names: Optional[Sequence['outputs.AppSpecDomainName']] = None,
                  domains: Optional[Sequence[str]] = None,
@@ -178,11 +211,14 @@ class AppSpec(dict):
                  workers: Optional[Sequence['outputs.AppSpecWorker']] = None):
         """
         :param str name: The name of the component.
+        :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['AppSpecDomainNameArgs'] domain_names: Describes a domain where the application will be made available.
         :param Sequence['AppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param str region: The slug for the DigitalOcean data center region hosting the app.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
         if domain_names is not None:
@@ -209,6 +245,14 @@ class AppSpec(dict):
         The name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.AppSpecAlert']]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter
@@ -263,6 +307,36 @@ class AppSpec(dict):
     @pulumi.getter
     def workers(self) -> Optional[Sequence['outputs.AppSpecWorker']]:
         return pulumi.get(self, "workers")
+
+
+@pulumi.output_type
+class AppSpecAlert(dict):
+    def __init__(__self__, *,
+                 rule: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "rule", rule)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -442,7 +516,7 @@ class AppSpecEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -481,7 +555,7 @@ class AppSpecEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -501,6 +575,8 @@ class AppSpecJob(dict):
             suggest = "instance_count"
         elif key == "instanceSizeSlug":
             suggest = "instance_size_slug"
+        elif key == "logDestinations":
+            suggest = "log_destinations"
         elif key == "runCommand":
             suggest = "run_command"
         elif key == "sourceDir":
@@ -519,6 +595,7 @@ class AppSpecJob(dict):
 
     def __init__(__self__, *,
                  name: str,
+                 alerts: Optional[Sequence['outputs.AppSpecJobAlert']] = None,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
@@ -530,10 +607,12 @@ class AppSpecJob(dict):
                  instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
                  kind: Optional[str] = None,
+                 log_destinations: Optional[Sequence['outputs.AppSpecJobLogDestination']] = None,
                  run_command: Optional[str] = None,
                  source_dir: Optional[str] = None):
         """
         :param str name: The name of the component.
+        :param Sequence['AppSpecJobAlertArgs'] alerts: Describes an alert policy for the component.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
@@ -549,10 +628,13 @@ class AppSpecJob(dict):
                - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
                - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
                - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+        :param Sequence['AppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -575,6 +657,8 @@ class AppSpecJob(dict):
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if run_command is not None:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
@@ -587,6 +671,14 @@ class AppSpecJob(dict):
         The name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.AppSpecJobAlert']]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -681,6 +773,14 @@ class AppSpecJob(dict):
         return pulumi.get(self, "kind")
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[Sequence['outputs.AppSpecJobLogDestination']]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @property
     @pulumi.getter(name="runCommand")
     def run_command(self) -> Optional[str]:
         """
@@ -698,6 +798,69 @@ class AppSpecJob(dict):
 
 
 @pulumi.output_type
+class AppSpecJobAlert(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 rule: str,
+                 value: float,
+                 window: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param str operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param float value: The threshold for the type of the warning.
+        :param str window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
 class AppSpecJobEnv(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
@@ -708,7 +871,7 @@ class AppSpecJobEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -747,7 +910,7 @@ class AppSpecJobEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -991,6 +1154,143 @@ class AppSpecJobImage(dict):
 
 
 @pulumi.output_type
+class AppSpecJobLogDestination(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 datadog: Optional['outputs.AppSpecJobLogDestinationDatadog'] = None,
+                 logtail: Optional['outputs.AppSpecJobLogDestinationLogtail'] = None,
+                 papertrail: Optional['outputs.AppSpecJobLogDestinationPapertrail'] = None):
+        """
+        :param str name: The name of the component.
+        :param 'AppSpecJobLogDestinationDatadogArgs' datadog: Datadog configuration.
+        :param 'AppSpecJobLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'AppSpecJobLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional['outputs.AppSpecJobLogDestinationDatadog']:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional['outputs.AppSpecJobLogDestinationLogtail']:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional['outputs.AppSpecJobLogDestinationPapertrail']:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+
+@pulumi.output_type
+class AppSpecJobLogDestinationDatadog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJobLogDestinationDatadog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJobLogDestinationDatadog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJobLogDestinationDatadog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: str,
+                 endpoint: Optional[str] = None):
+        """
+        :param str api_key: Datadog API key.
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class AppSpecJobLogDestinationLogtail(dict):
+    def __init__(__self__, *,
+                 token: str):
+        """
+        :param str token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class AppSpecJobLogDestinationPapertrail(dict):
+    def __init__(__self__, *,
+                 endpoint: str):
+        """
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
 class AppSpecService(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1011,6 +1311,8 @@ class AppSpecService(dict):
             suggest = "instance_size_slug"
         elif key == "internalPorts":
             suggest = "internal_ports"
+        elif key == "logDestinations":
+            suggest = "log_destinations"
         elif key == "runCommand":
             suggest = "run_command"
         elif key == "sourceDir":
@@ -1029,6 +1331,7 @@ class AppSpecService(dict):
 
     def __init__(__self__, *,
                  name: str,
+                 alerts: Optional[Sequence['outputs.AppSpecServiceAlert']] = None,
                  build_command: Optional[str] = None,
                  cors: Optional['outputs.AppSpecServiceCors'] = None,
                  dockerfile_path: Optional[str] = None,
@@ -1043,11 +1346,13 @@ class AppSpecService(dict):
                  instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
                  internal_ports: Optional[Sequence[int]] = None,
+                 log_destinations: Optional[Sequence['outputs.AppSpecServiceLogDestination']] = None,
                  routes: Optional[Sequence['outputs.AppSpecServiceRoute']] = None,
                  run_command: Optional[str] = None,
                  source_dir: Optional[str] = None):
         """
         :param str name: The name of the component.
+        :param Sequence['AppSpecServiceAlertArgs'] alerts: Describes an alert policy for the component.
         :param str build_command: An optional build command to run while building this component from source.
         :param 'AppSpecServiceCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -1062,10 +1367,13 @@ class AppSpecService(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param Sequence[int] internal_ports: A list of ports on which this service will listen for internal traffic.
+        :param Sequence['AppSpecServiceLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if cors is not None:
@@ -1094,6 +1402,8 @@ class AppSpecService(dict):
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
         if internal_ports is not None:
             pulumi.set(__self__, "internal_ports", internal_ports)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if routes is not None:
             pulumi.set(__self__, "routes", routes)
         if run_command is not None:
@@ -1108,6 +1418,14 @@ class AppSpecService(dict):
         The name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.AppSpecServiceAlert']]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -1222,6 +1540,14 @@ class AppSpecService(dict):
         return pulumi.get(self, "internal_ports")
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[Sequence['outputs.AppSpecServiceLogDestination']]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @property
     @pulumi.getter
     def routes(self) -> Optional[Sequence['outputs.AppSpecServiceRoute']]:
         return pulumi.get(self, "routes")
@@ -1241,6 +1567,69 @@ class AppSpecService(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class AppSpecServiceAlert(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 rule: str,
+                 value: float,
+                 window: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param str operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param float value: The threshold for the type of the warning.
+        :param str window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -1403,7 +1792,7 @@ class AppSpecServiceEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1442,7 +1831,7 @@ class AppSpecServiceEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -1789,6 +2178,143 @@ class AppSpecServiceImage(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class AppSpecServiceLogDestination(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 datadog: Optional['outputs.AppSpecServiceLogDestinationDatadog'] = None,
+                 logtail: Optional['outputs.AppSpecServiceLogDestinationLogtail'] = None,
+                 papertrail: Optional['outputs.AppSpecServiceLogDestinationPapertrail'] = None):
+        """
+        :param str name: The name of the component.
+        :param 'AppSpecServiceLogDestinationDatadogArgs' datadog: Datadog configuration.
+        :param 'AppSpecServiceLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'AppSpecServiceLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional['outputs.AppSpecServiceLogDestinationDatadog']:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional['outputs.AppSpecServiceLogDestinationLogtail']:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional['outputs.AppSpecServiceLogDestinationPapertrail']:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+
+@pulumi.output_type
+class AppSpecServiceLogDestinationDatadog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceLogDestinationDatadog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceLogDestinationDatadog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceLogDestinationDatadog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: str,
+                 endpoint: Optional[str] = None):
+        """
+        :param str api_key: Datadog API key.
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class AppSpecServiceLogDestinationLogtail(dict):
+    def __init__(__self__, *,
+                 token: str):
+        """
+        :param str token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class AppSpecServiceLogDestinationPapertrail(dict):
+    def __init__(__self__, *,
+                 endpoint: str):
+        """
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
 
 
 @pulumi.output_type
@@ -2212,7 +2738,7 @@ class AppSpecStaticSiteEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2251,7 +2777,7 @@ class AppSpecStaticSiteEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -2487,6 +3013,8 @@ class AppSpecWorker(dict):
             suggest = "instance_count"
         elif key == "instanceSizeSlug":
             suggest = "instance_size_slug"
+        elif key == "logDestinations":
+            suggest = "log_destinations"
         elif key == "runCommand":
             suggest = "run_command"
         elif key == "sourceDir":
@@ -2505,6 +3033,7 @@ class AppSpecWorker(dict):
 
     def __init__(__self__, *,
                  name: str,
+                 alerts: Optional[Sequence['outputs.AppSpecWorkerAlert']] = None,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
@@ -2515,10 +3044,12 @@ class AppSpecWorker(dict):
                  image: Optional['outputs.AppSpecWorkerImage'] = None,
                  instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
+                 log_destinations: Optional[Sequence['outputs.AppSpecWorkerLogDestination']] = None,
                  run_command: Optional[str] = None,
                  source_dir: Optional[str] = None):
         """
         :param str name: The name of the component.
+        :param Sequence['AppSpecWorkerAlertArgs'] alerts: Describes an alert policy for the component.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
@@ -2529,10 +3060,13 @@ class AppSpecWorker(dict):
         :param 'AppSpecWorkerImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        :param Sequence['AppSpecWorkerLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -2553,6 +3087,8 @@ class AppSpecWorker(dict):
             pulumi.set(__self__, "instance_count", instance_count)
         if instance_size_slug is not None:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if run_command is not None:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
@@ -2565,6 +3101,14 @@ class AppSpecWorker(dict):
         The name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.AppSpecWorkerAlert']]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -2647,6 +3191,14 @@ class AppSpecWorker(dict):
         return pulumi.get(self, "instance_size_slug")
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[Sequence['outputs.AppSpecWorkerLogDestination']]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @property
     @pulumi.getter(name="runCommand")
     def run_command(self) -> Optional[str]:
         """
@@ -2664,6 +3216,69 @@ class AppSpecWorker(dict):
 
 
 @pulumi.output_type
+class AppSpecWorkerAlert(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 rule: str,
+                 value: float,
+                 window: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param str operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param float value: The threshold for the type of the warning.
+        :param str window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
 class AppSpecWorkerEnv(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
@@ -2674,7 +3289,7 @@ class AppSpecWorkerEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2713,7 +3328,7 @@ class AppSpecWorkerEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -2954,6 +3569,143 @@ class AppSpecWorkerImage(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class AppSpecWorkerLogDestination(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 datadog: Optional['outputs.AppSpecWorkerLogDestinationDatadog'] = None,
+                 logtail: Optional['outputs.AppSpecWorkerLogDestinationLogtail'] = None,
+                 papertrail: Optional['outputs.AppSpecWorkerLogDestinationPapertrail'] = None):
+        """
+        :param str name: The name of the component.
+        :param 'AppSpecWorkerLogDestinationDatadogArgs' datadog: Datadog configuration.
+        :param 'AppSpecWorkerLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'AppSpecWorkerLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional['outputs.AppSpecWorkerLogDestinationDatadog']:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional['outputs.AppSpecWorkerLogDestinationLogtail']:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional['outputs.AppSpecWorkerLogDestinationPapertrail']:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+
+@pulumi.output_type
+class AppSpecWorkerLogDestinationDatadog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerLogDestinationDatadog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorkerLogDestinationDatadog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorkerLogDestinationDatadog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: str,
+                 endpoint: Optional[str] = None):
+        """
+        :param str api_key: Datadog API key.
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class AppSpecWorkerLogDestinationLogtail(dict):
+    def __init__(__self__, *,
+                 token: str):
+        """
+        :param str token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class AppSpecWorkerLogDestinationPapertrail(dict):
+    def __init__(__self__, *,
+                 endpoint: str):
+        """
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
 
 
 @pulumi.output_type
@@ -4627,6 +5379,7 @@ class GetAppSpecResult(dict):
     def __init__(__self__, *,
                  domains: Sequence[str],
                  name: str,
+                 alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
                  databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecEnvResult']] = None,
                  jobs: Optional[Sequence['outputs.GetAppSpecJobResult']] = None,
@@ -4640,6 +5393,8 @@ class GetAppSpecResult(dict):
         """
         pulumi.set(__self__, "domains", domains)
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
         if envs is not None:
@@ -4667,6 +5422,11 @@ class GetAppSpecResult(dict):
         The name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.GetAppSpecAlertResult']]:
+        return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter
@@ -4705,6 +5465,26 @@ class GetAppSpecResult(dict):
     @pulumi.getter
     def workers(self) -> Optional[Sequence['outputs.GetAppSpecWorkerResult']]:
         return pulumi.get(self, "workers")
+
+
+@pulumi.output_type
+class GetAppSpecAlertResult(dict):
+    def __init__(__self__, *,
+                 rule: str,
+                 disabled: Optional[bool] = None):
+        pulumi.set(__self__, "rule", rule)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -4856,6 +5636,7 @@ class GetAppSpecEnvResult(dict):
 class GetAppSpecJobResult(dict):
     def __init__(__self__, *,
                  name: str,
+                 alerts: Optional[Sequence['outputs.GetAppSpecJobAlertResult']] = None,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
@@ -4867,6 +5648,7 @@ class GetAppSpecJobResult(dict):
                  instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
                  kind: Optional[str] = None,
+                 log_destinations: Optional[Sequence['outputs.GetAppSpecJobLogDestinationResult']] = None,
                  run_command: Optional[str] = None,
                  source_dir: Optional[str] = None):
         """
@@ -4890,6 +5672,8 @@ class GetAppSpecJobResult(dict):
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -4912,6 +5696,8 @@ class GetAppSpecJobResult(dict):
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if run_command is not None:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
@@ -4924,6 +5710,11 @@ class GetAppSpecJobResult(dict):
         The name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.GetAppSpecJobAlertResult']]:
+        return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -5018,6 +5809,11 @@ class GetAppSpecJobResult(dict):
         return pulumi.get(self, "kind")
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[Sequence['outputs.GetAppSpecJobLogDestinationResult']]:
+        return pulumi.get(self, "log_destinations")
+
+    @property
     @pulumi.getter(name="runCommand")
     def run_command(self) -> Optional[str]:
         """
@@ -5032,6 +5828,53 @@ class GetAppSpecJobResult(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class GetAppSpecJobAlertResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 rule: str,
+                 value: float,
+                 window: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param float value: The value of the environment variable.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        return pulumi.get(self, "window")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -5259,12 +6102,99 @@ class GetAppSpecJobImageResult(dict):
 
 
 @pulumi.output_type
+class GetAppSpecJobLogDestinationResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 datadog: Optional['outputs.GetAppSpecJobLogDestinationDatadogResult'] = None,
+                 logtail: Optional['outputs.GetAppSpecJobLogDestinationLogtailResult'] = None,
+                 papertrail: Optional['outputs.GetAppSpecJobLogDestinationPapertrailResult'] = None):
+        """
+        :param str name: The name of the component.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional['outputs.GetAppSpecJobLogDestinationDatadogResult']:
+        return pulumi.get(self, "datadog")
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional['outputs.GetAppSpecJobLogDestinationLogtailResult']:
+        return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional['outputs.GetAppSpecJobLogDestinationPapertrailResult']:
+        return pulumi.get(self, "papertrail")
+
+
+@pulumi.output_type
+class GetAppSpecJobLogDestinationDatadogResult(dict):
+    def __init__(__self__, *,
+                 api_key: str,
+                 endpoint: Optional[str] = None):
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class GetAppSpecJobLogDestinationLogtailResult(dict):
+    def __init__(__self__, *,
+                 token: str):
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class GetAppSpecJobLogDestinationPapertrailResult(dict):
+    def __init__(__self__, *,
+                 endpoint: str):
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
 class GetAppSpecServiceResult(dict):
     def __init__(__self__, *,
                  http_port: int,
                  name: str,
                  routes: Sequence['outputs.GetAppSpecServiceRouteResult'],
                  run_command: str,
+                 alerts: Optional[Sequence['outputs.GetAppSpecServiceAlertResult']] = None,
                  build_command: Optional[str] = None,
                  cors: Optional['outputs.GetAppSpecServiceCorsResult'] = None,
                  dockerfile_path: Optional[str] = None,
@@ -5278,6 +6208,7 @@ class GetAppSpecServiceResult(dict):
                  instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
                  internal_ports: Optional[Sequence[int]] = None,
+                 log_destinations: Optional[Sequence['outputs.GetAppSpecServiceLogDestinationResult']] = None,
                  source_dir: Optional[str] = None):
         """
         :param int http_port: The internal port on which this service's run command will listen.
@@ -5301,6 +6232,8 @@ class GetAppSpecServiceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "routes", routes)
         pulumi.set(__self__, "run_command", run_command)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if cors is not None:
@@ -5327,6 +6260,8 @@ class GetAppSpecServiceResult(dict):
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
         if internal_ports is not None:
             pulumi.set(__self__, "internal_ports", internal_ports)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if source_dir is not None:
             pulumi.set(__self__, "source_dir", source_dir)
 
@@ -5358,6 +6293,11 @@ class GetAppSpecServiceResult(dict):
         An optional run command to override the component's default.
         """
         return pulumi.get(self, "run_command")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.GetAppSpecServiceAlertResult']]:
+        return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -5461,12 +6401,64 @@ class GetAppSpecServiceResult(dict):
         return pulumi.get(self, "internal_ports")
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[Sequence['outputs.GetAppSpecServiceLogDestinationResult']]:
+        return pulumi.get(self, "log_destinations")
+
+    @property
     @pulumi.getter(name="sourceDir")
     def source_dir(self) -> Optional[str]:
         """
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class GetAppSpecServiceAlertResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 rule: str,
+                 value: float,
+                 window: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param float value: The value of the environment variable.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        return pulumi.get(self, "window")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -5852,6 +6844,92 @@ class GetAppSpecServiceImageResult(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetAppSpecServiceLogDestinationResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 datadog: Optional['outputs.GetAppSpecServiceLogDestinationDatadogResult'] = None,
+                 logtail: Optional['outputs.GetAppSpecServiceLogDestinationLogtailResult'] = None,
+                 papertrail: Optional['outputs.GetAppSpecServiceLogDestinationPapertrailResult'] = None):
+        """
+        :param str name: The name of the component.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional['outputs.GetAppSpecServiceLogDestinationDatadogResult']:
+        return pulumi.get(self, "datadog")
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional['outputs.GetAppSpecServiceLogDestinationLogtailResult']:
+        return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional['outputs.GetAppSpecServiceLogDestinationPapertrailResult']:
+        return pulumi.get(self, "papertrail")
+
+
+@pulumi.output_type
+class GetAppSpecServiceLogDestinationDatadogResult(dict):
+    def __init__(__self__, *,
+                 api_key: str,
+                 endpoint: Optional[str] = None):
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class GetAppSpecServiceLogDestinationLogtailResult(dict):
+    def __init__(__self__, *,
+                 token: str):
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class GetAppSpecServiceLogDestinationPapertrailResult(dict):
+    def __init__(__self__, *,
+                 endpoint: str):
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        return pulumi.get(self, "endpoint")
 
 
 @pulumi.output_type
@@ -6350,6 +7428,7 @@ class GetAppSpecStaticSiteRouteResult(dict):
 class GetAppSpecWorkerResult(dict):
     def __init__(__self__, *,
                  name: str,
+                 alerts: Optional[Sequence['outputs.GetAppSpecWorkerAlertResult']] = None,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
@@ -6360,6 +7439,7 @@ class GetAppSpecWorkerResult(dict):
                  image: Optional['outputs.GetAppSpecWorkerImageResult'] = None,
                  instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
+                 log_destinations: Optional[Sequence['outputs.GetAppSpecWorkerLogDestinationResult']] = None,
                  run_command: Optional[str] = None,
                  source_dir: Optional[str] = None):
         """
@@ -6378,6 +7458,8 @@ class GetAppSpecWorkerResult(dict):
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -6398,6 +7480,8 @@ class GetAppSpecWorkerResult(dict):
             pulumi.set(__self__, "instance_count", instance_count)
         if instance_size_slug is not None:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if run_command is not None:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
@@ -6410,6 +7494,11 @@ class GetAppSpecWorkerResult(dict):
         The name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.GetAppSpecWorkerAlertResult']]:
+        return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -6492,6 +7581,11 @@ class GetAppSpecWorkerResult(dict):
         return pulumi.get(self, "instance_size_slug")
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[Sequence['outputs.GetAppSpecWorkerLogDestinationResult']]:
+        return pulumi.get(self, "log_destinations")
+
+    @property
     @pulumi.getter(name="runCommand")
     def run_command(self) -> Optional[str]:
         """
@@ -6506,6 +7600,53 @@ class GetAppSpecWorkerResult(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class GetAppSpecWorkerAlertResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 rule: str,
+                 value: float,
+                 window: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param float value: The value of the environment variable.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        return pulumi.get(self, "window")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -6730,6 +7871,92 @@ class GetAppSpecWorkerImageResult(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetAppSpecWorkerLogDestinationResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 datadog: Optional['outputs.GetAppSpecWorkerLogDestinationDatadogResult'] = None,
+                 logtail: Optional['outputs.GetAppSpecWorkerLogDestinationLogtailResult'] = None,
+                 papertrail: Optional['outputs.GetAppSpecWorkerLogDestinationPapertrailResult'] = None):
+        """
+        :param str name: The name of the component.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional['outputs.GetAppSpecWorkerLogDestinationDatadogResult']:
+        return pulumi.get(self, "datadog")
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional['outputs.GetAppSpecWorkerLogDestinationLogtailResult']:
+        return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional['outputs.GetAppSpecWorkerLogDestinationPapertrailResult']:
+        return pulumi.get(self, "papertrail")
+
+
+@pulumi.output_type
+class GetAppSpecWorkerLogDestinationDatadogResult(dict):
+    def __init__(__self__, *,
+                 api_key: str,
+                 endpoint: Optional[str] = None):
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class GetAppSpecWorkerLogDestinationLogtailResult(dict):
+    def __init__(__self__, *,
+                 token: str):
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class GetAppSpecWorkerLogDestinationPapertrailResult(dict):
+    def __init__(__self__, *,
+                 endpoint: str):
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        return pulumi.get(self, "endpoint")
 
 
 @pulumi.output_type

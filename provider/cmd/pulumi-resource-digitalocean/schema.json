@@ -53,6 +53,18 @@
     "types": {
         "digitalocean:index/AppSpec:AppSpec": {
             "properties": {
+                "alerts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecAlert:AppSpecAlert"
+                    },
+                    "description": "Describes an alert policy for the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "databases": {
                     "type": "array",
                     "items": {
@@ -176,6 +188,32 @@
                     ]
                 }
             }
+        },
+        "digitalocean:index/AppSpecAlert:AppSpecAlert": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Determines whether or not the alert is disabled (default: `false`).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "description": "The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "rule"
+            ]
         },
         "digitalocean:index/AppSpecDatabase:AppSpecDatabase": {
             "properties": {
@@ -329,7 +367,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the environment variable.\n",
+                    "description": "The threshold for the type of the warning.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -348,6 +386,18 @@
         },
         "digitalocean:index/AppSpecJob:AppSpecJob": {
             "properties": {
+                "alerts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecJobAlert:AppSpecJobAlert"
+                    },
+                    "description": "Describes an alert policy for the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n",
@@ -450,6 +500,18 @@
                         }
                     }
                 },
+                "logDestinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecJobLogDestination:AppSpecJobLogDestination"
+                    },
+                    "description": "Describes a log forwarding destination.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the component.\n",
@@ -483,6 +545,62 @@
                 "name"
             ]
         },
+        "digitalocean:index/AppSpecJobAlert:AppSpecJobAlert": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Determines whether or not the alert is disabled (default: `false`).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "description": "The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The threshold for the type of the warning.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "window": {
+                    "type": "string",
+                    "description": "The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "rule",
+                "value",
+                "window"
+            ]
+        },
         "digitalocean:index/AppSpecJobEnv:AppSpecJobEnv": {
             "properties": {
                 "key": {
@@ -514,7 +632,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the environment variable.\n",
+                    "description": "The threshold for the type of the warning.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -663,8 +781,124 @@
                 "repository"
             ]
         },
+        "digitalocean:index/AppSpecJobLogDestination:AppSpecJobLogDestination": {
+            "properties": {
+                "datadog": {
+                    "$ref": "#/types/digitalocean:index/AppSpecJobLogDestinationDatadog:AppSpecJobLogDestinationDatadog",
+                    "description": "Datadog configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logtail": {
+                    "$ref": "#/types/digitalocean:index/AppSpecJobLogDestinationLogtail:AppSpecJobLogDestinationLogtail",
+                    "description": "Logtail configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "papertrail": {
+                    "$ref": "#/types/digitalocean:index/AppSpecJobLogDestinationPapertrail:AppSpecJobLogDestinationPapertrail",
+                    "description": "Papertrail configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "digitalocean:index/AppSpecJobLogDestinationDatadog:AppSpecJobLogDestinationDatadog": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "description": "Datadog API key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "Datadog HTTP log intake endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiKey"
+            ]
+        },
+        "digitalocean:index/AppSpecJobLogDestinationLogtail:AppSpecJobLogDestinationLogtail": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Logtail token.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "token"
+            ]
+        },
+        "digitalocean:index/AppSpecJobLogDestinationPapertrail:AppSpecJobLogDestinationPapertrail": {
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "description": "Datadog HTTP log intake endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoint"
+            ]
+        },
         "digitalocean:index/AppSpecService:AppSpecService": {
             "properties": {
+                "alerts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecServiceAlert:AppSpecServiceAlert"
+                    },
+                    "description": "Describes an alert policy for the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n",
@@ -797,6 +1031,18 @@
                         }
                     }
                 },
+                "logDestinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecServiceLogDestination:AppSpecServiceLogDestination"
+                    },
+                    "description": "Describes a log forwarding destination.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the component.\n",
@@ -850,6 +1096,62 @@
                     ]
                 }
             }
+        },
+        "digitalocean:index/AppSpecServiceAlert:AppSpecServiceAlert": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Determines whether or not the alert is disabled (default: `false`).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "description": "The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The threshold for the type of the warning.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "window": {
+                    "type": "string",
+                    "description": "The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "rule",
+                "value",
+                "window"
+            ]
         },
         "digitalocean:index/AppSpecServiceCors:AppSpecServiceCors": {
             "properties": {
@@ -982,7 +1284,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the environment variable.\n",
+                    "description": "The threshold for the type of the warning.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1188,6 +1490,110 @@
             "required": [
                 "registryType",
                 "repository"
+            ]
+        },
+        "digitalocean:index/AppSpecServiceLogDestination:AppSpecServiceLogDestination": {
+            "properties": {
+                "datadog": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceLogDestinationDatadog:AppSpecServiceLogDestinationDatadog",
+                    "description": "Datadog configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logtail": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceLogDestinationLogtail:AppSpecServiceLogDestinationLogtail",
+                    "description": "Logtail configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "papertrail": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceLogDestinationPapertrail:AppSpecServiceLogDestinationPapertrail",
+                    "description": "Papertrail configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "digitalocean:index/AppSpecServiceLogDestinationDatadog:AppSpecServiceLogDestinationDatadog": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "description": "Datadog API key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "Datadog HTTP log intake endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiKey"
+            ]
+        },
+        "digitalocean:index/AppSpecServiceLogDestinationLogtail:AppSpecServiceLogDestinationLogtail": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Logtail token.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "token"
+            ]
+        },
+        "digitalocean:index/AppSpecServiceLogDestinationPapertrail:AppSpecServiceLogDestinationPapertrail": {
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "description": "Datadog HTTP log intake endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoint"
             ]
         },
         "digitalocean:index/AppSpecServiceRoute:AppSpecServiceRoute": {
@@ -1500,7 +1906,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the environment variable.\n",
+                    "description": "The threshold for the type of the warning.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1629,6 +2035,18 @@
         },
         "digitalocean:index/AppSpecWorker:AppSpecWorker": {
             "properties": {
+                "alerts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecWorkerAlert:AppSpecWorkerAlert"
+                    },
+                    "description": "Describes an alert policy for the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n",
@@ -1722,6 +2140,18 @@
                         }
                     }
                 },
+                "logDestinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecWorkerLogDestination:AppSpecWorkerLogDestination"
+                    },
+                    "description": "Describes a log forwarding destination.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the component.\n",
@@ -1755,6 +2185,62 @@
                 "name"
             ]
         },
+        "digitalocean:index/AppSpecWorkerAlert:AppSpecWorkerAlert": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Determines whether or not the alert is disabled (default: `false`).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "description": "The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The threshold for the type of the warning.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "window": {
+                    "type": "string",
+                    "description": "The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "rule",
+                "value",
+                "window"
+            ]
+        },
         "digitalocean:index/AppSpecWorkerEnv:AppSpecWorkerEnv": {
             "properties": {
                 "key": {
@@ -1786,7 +2272,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the environment variable.\n",
+                    "description": "The threshold for the type of the warning.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1933,6 +2419,110 @@
             "required": [
                 "registryType",
                 "repository"
+            ]
+        },
+        "digitalocean:index/AppSpecWorkerLogDestination:AppSpecWorkerLogDestination": {
+            "properties": {
+                "datadog": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerLogDestinationDatadog:AppSpecWorkerLogDestinationDatadog",
+                    "description": "Datadog configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logtail": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerLogDestinationLogtail:AppSpecWorkerLogDestinationLogtail",
+                    "description": "Logtail configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "papertrail": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerLogDestinationPapertrail:AppSpecWorkerLogDestinationPapertrail",
+                    "description": "Papertrail configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "digitalocean:index/AppSpecWorkerLogDestinationDatadog:AppSpecWorkerLogDestinationDatadog": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "description": "Datadog API key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "Datadog HTTP log intake endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiKey"
+            ]
+        },
+        "digitalocean:index/AppSpecWorkerLogDestinationLogtail:AppSpecWorkerLogDestinationLogtail": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Logtail token.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "token"
+            ]
+        },
+        "digitalocean:index/AppSpecWorkerLogDestinationPapertrail:AppSpecWorkerLogDestinationPapertrail": {
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "description": "Datadog HTTP log intake endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoint"
             ]
         },
         "digitalocean:index/DatabaseClusterMaintenanceWindow:DatabaseClusterMaintenanceWindow": {
@@ -3125,6 +3715,17 @@
         },
         "digitalocean:index/getAppSpec:getAppSpec": {
             "properties": {
+                "alerts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecAlert:getAppSpecAlert"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "databases": {
                     "type": "array",
                     "items": {
@@ -3227,6 +3828,35 @@
                 "domains",
                 "domains",
                 "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecAlert:getAppSpecAlert": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "rule"
             ],
             "language": {
                 "nodejs": {
@@ -3402,6 +4032,17 @@
         },
         "digitalocean:index/getAppSpecJob:getAppSpecJob": {
             "properties": {
+                "alerts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecJobAlert:getAppSpecJobAlert"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n",
@@ -3504,6 +4145,17 @@
                         }
                     }
                 },
+                "logDestinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecJobLogDestination:getAppSpecJobLogDestination"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the component.\n",
@@ -3535,6 +4187,63 @@
             "type": "object",
             "required": [
                 "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecJobAlert:getAppSpecJobAlert": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operator": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "window": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "rule",
+                "value",
+                "window"
             ],
             "language": {
                 "nodejs": {
@@ -3728,8 +4437,136 @@
                 }
             }
         },
+        "digitalocean:index/getAppSpecJobLogDestination:getAppSpecJobLogDestination": {
+            "properties": {
+                "datadog": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecJobLogDestinationDatadog:getAppSpecJobLogDestinationDatadog",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logtail": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecJobLogDestinationLogtail:getAppSpecJobLogDestinationLogtail",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "papertrail": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecJobLogDestinationPapertrail:getAppSpecJobLogDestinationPapertrail",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecJobLogDestinationDatadog:getAppSpecJobLogDestinationDatadog": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecJobLogDestinationLogtail:getAppSpecJobLogDestinationLogtail": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "token"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecJobLogDestinationPapertrail:getAppSpecJobLogDestinationPapertrail": {
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoint"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getAppSpecService:getAppSpecService": {
             "properties": {
+                "alerts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecServiceAlert:getAppSpecServiceAlert"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n",
@@ -3861,6 +4698,17 @@
                         }
                     }
                 },
+                "logDestinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecServiceLogDestination:getAppSpecServiceLogDestination"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the component.\n",
@@ -3906,6 +4754,63 @@
                 "name",
                 "routes",
                 "runCommand"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecServiceAlert:getAppSpecServiceAlert": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operator": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "window": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "rule",
+                "value",
+                "window"
             ],
             "language": {
                 "nodejs": {
@@ -4242,6 +5147,123 @@
             "required": [
                 "registryType",
                 "repository"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecServiceLogDestination:getAppSpecServiceLogDestination": {
+            "properties": {
+                "datadog": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceLogDestinationDatadog:getAppSpecServiceLogDestinationDatadog",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logtail": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceLogDestinationLogtail:getAppSpecServiceLogDestinationLogtail",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "papertrail": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceLogDestinationPapertrail:getAppSpecServiceLogDestinationPapertrail",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecServiceLogDestinationDatadog:getAppSpecServiceLogDestinationDatadog": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecServiceLogDestinationLogtail:getAppSpecServiceLogDestinationLogtail": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "token"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecServiceLogDestinationPapertrail:getAppSpecServiceLogDestinationPapertrail": {
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoint"
             ],
             "language": {
                 "nodejs": {
@@ -4677,6 +5699,17 @@
         },
         "digitalocean:index/getAppSpecWorker:getAppSpecWorker": {
             "properties": {
+                "alerts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecWorkerAlert:getAppSpecWorkerAlert"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n",
@@ -4770,6 +5803,17 @@
                         }
                     }
                 },
+                "logDestinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecWorkerLogDestination:getAppSpecWorkerLogDestination"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the component.\n",
@@ -4801,6 +5845,63 @@
             "type": "object",
             "required": [
                 "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecWorkerAlert:getAppSpecWorkerAlert": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operator": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The value of the environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "window": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "rule",
+                "value",
+                "window"
             ],
             "language": {
                 "nodejs": {
@@ -4987,6 +6088,123 @@
             "required": [
                 "registryType",
                 "repository"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecWorkerLogDestination:getAppSpecWorkerLogDestination": {
+            "properties": {
+                "datadog": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerLogDestinationDatadog:getAppSpecWorkerLogDestinationDatadog",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logtail": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerLogDestinationLogtail:getAppSpecWorkerLogDestinationLogtail",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the component.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "papertrail": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerLogDestinationPapertrail:getAppSpecWorkerLogDestinationPapertrail",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecWorkerLogDestinationDatadog:getAppSpecWorkerLogDestinationDatadog": {
+            "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecWorkerLogDestinationLogtail:getAppSpecWorkerLogDestinationLogtail": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "token"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecWorkerLogDestinationPapertrail:getAppSpecWorkerLogDestinationPapertrail": {
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoint"
             ],
             "language": {
                 "nodejs": {
@@ -8197,7 +9415,7 @@
     },
     "resources": {
         "digitalocean:index/app:App": {
-            "description": "Provides a DigitalOcean App resource.\n\n{{% examples %}}\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/references/app-specification-reference/) specifying the app's components.\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {\n    spec: {\n        name: \"golang-sample\",\n        region: \"ams\",\n        services: [{\n            environmentSlug: \"go\",\n            git: {\n                branch: \"main\",\n                repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            },\n            instanceCount: 1,\n            instanceSizeSlug: \"professional-xs\",\n            name: \"go-service\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec=digitalocean.AppSpecArgs(\n    name=\"golang-sample\",\n    region=\"ams\",\n    services=[digitalocean.AppSpecServiceArgs(\n        environment_slug=\"go\",\n        git=digitalocean.AppSpecServiceGitArgs(\n            branch=\"main\",\n            repo_clone_url=\"https://github.com/digitalocean/sample-golang.git\",\n        ),\n        instance_count=1,\n        instance_size_slug=\"professional-xs\",\n        name=\"go-service\",\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var golang_sample = new DigitalOcean.App(\"golang-sample\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Name = \"golang-sample\",\n                Region = \"ams\",\n                Services = \n                {\n                    new DigitalOcean.Inputs.AppSpecServiceArgs\n                    {\n                        EnvironmentSlug = \"go\",\n                        Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                        {\n                            Branch = \"main\",\n                            RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        },\n                        InstanceCount = 1,\n                        InstanceSizeSlug = \"professional-xs\",\n                        Name = \"go-service\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: AppSpecServiceArray{\n\t\t\t\t\t\u0026AppSpecServiceArgs{\n\t\t\t\t\t\tEnvironmentSlug: pulumi.String(\"go\"),\n\t\t\t\t\t\tGit: \u0026AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"professional-xs\"),\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Static Site Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_ste_example = new digitalocean.App(\"static-ste-example\", {\n    spec: {\n        name: \"static-ste-example\",\n        region: \"ams\",\n        staticSites: [{\n            buildCommand: \"bundle exec jekyll build -d ./public\",\n            git: {\n                branch: \"main\",\n                repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            },\n            name: \"sample-jekyll\",\n            outputDir: \"/public\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_ste_example = digitalocean.App(\"static-ste-example\", spec=digitalocean.AppSpecArgs(\n    name=\"static-ste-example\",\n    region=\"ams\",\n    static_sites=[digitalocean.AppSpecStaticSiteArgs(\n        build_command=\"bundle exec jekyll build -d ./public\",\n        git=digitalocean.AppSpecStaticSiteGitArgs(\n            branch=\"main\",\n            repo_clone_url=\"https://github.com/digitalocean/sample-jekyll.git\",\n        ),\n        name=\"sample-jekyll\",\n        output_dir=\"/public\",\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var static_ste_example = new DigitalOcean.App(\"static-ste-example\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Name = \"static-ste-example\",\n                Region = \"ams\",\n                StaticSites = \n                {\n                    new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                    {\n                        BuildCommand = \"bundle exec jekyll build -d ./public\",\n                        Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                        {\n                            Branch = \"main\",\n                            RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        },\n                        Name = \"sample-jekyll\",\n                        OutputDir = \"/public\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static-ste-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-ste-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026AppSpecStaticSiteArgs{\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tGit: \u0026AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tName:      pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tOutputDir: pulumi.String(\"/public\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Multiple Components Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mono_repo_example = new digitalocean.App(\"mono-repo-example\", {\n    spec: {\n        databases: [{\n            engine: \"PG\",\n            name: \"starter-db\",\n            production: false,\n        }],\n        domainNames: [{\n            name: \"foo.example.com\",\n        }],\n        name: \"mono-repo-example\",\n        region: \"ams\",\n        // Build a Go project in the api/ directory that listens on port 3000\n        // and serves it at https://foo.example.com/api\n        services: [{\n            environmentSlug: \"go\",\n            github: {\n                branch: \"main\",\n                deployOnPush: true,\n                repo: \"username/repo\",\n            },\n            httpPort: 3000,\n            instanceCount: 2,\n            instanceSizeSlug: \"professional-xs\",\n            name: \"api\",\n            routes: [{\n                path: \"/api\",\n            }],\n            runCommand: \"bin/api\",\n            sourceDir: \"api/\",\n        }],\n        // Builds a static site in the project's root directory\n        // and serves it at https://foo.example.com/\n        staticSites: [{\n            buildCommand: \"npm run build\",\n            github: {\n                branch: \"main\",\n                deployOnPush: true,\n                repo: \"username/repo\",\n            },\n            name: \"web\",\n            routes: [{\n                path: \"/\",\n            }],\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmono_repo_example = digitalocean.App(\"mono-repo-example\", spec=digitalocean.AppSpecArgs(\n    databases=[digitalocean.AppSpecDatabaseArgs(\n        engine=\"PG\",\n        name=\"starter-db\",\n        production=False,\n    )],\n    domains=[{\n        \"name\": \"foo.example.com\",\n    }],\n    name=\"mono-repo-example\",\n    region=\"ams\",\n    services=[digitalocean.AppSpecServiceArgs(\n        environment_slug=\"go\",\n        github=digitalocean.AppSpecServiceGithubArgs(\n            branch=\"main\",\n            deploy_on_push=True,\n            repo=\"username/repo\",\n        ),\n        http_port=3000,\n        instance_count=2,\n        instance_size_slug=\"professional-xs\",\n        name=\"api\",\n        routes=[digitalocean.AppSpecServiceRouteArgs(\n            path=\"/api\",\n        )],\n        run_command=\"bin/api\",\n        source_dir=\"api/\",\n    )],\n    static_sites=[digitalocean.AppSpecStaticSiteArgs(\n        build_command=\"npm run build\",\n        github=digitalocean.AppSpecStaticSiteGithubArgs(\n            branch=\"main\",\n            deploy_on_push=True,\n            repo=\"username/repo\",\n        ),\n        name=\"web\",\n        routes=[digitalocean.AppSpecStaticSiteRouteArgs(\n            path=\"/\",\n        )],\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mono_repo_example = new DigitalOcean.App(\"mono-repo-example\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Databases = \n                {\n                    new DigitalOcean.Inputs.AppSpecDatabaseArgs\n                    {\n                        Engine = \"PG\",\n                        Name = \"starter-db\",\n                        Production = false,\n                    },\n                },\n                Domains = \n                {\n                    \n                    {\n                        { \"name\", \"foo.example.com\" },\n                    },\n                },\n                Name = \"mono-repo-example\",\n                Region = \"ams\",\n                Services = \n                {\n                    new DigitalOcean.Inputs.AppSpecServiceArgs\n                    {\n                        EnvironmentSlug = \"go\",\n                        Github = new DigitalOcean.Inputs.AppSpecServiceGithubArgs\n                        {\n                            Branch = \"main\",\n                            DeployOnPush = true,\n                            Repo = \"username/repo\",\n                        },\n                        HttpPort = 3000,\n                        InstanceCount = 2,\n                        InstanceSizeSlug = \"professional-xs\",\n                        Name = \"api\",\n                        Routes = \n                        {\n                            new DigitalOcean.Inputs.AppSpecServiceRouteArgs\n                            {\n                                Path = \"/api\",\n                            },\n                        },\n                        RunCommand = \"bin/api\",\n                        SourceDir = \"api/\",\n                    },\n                },\n                StaticSites = \n                {\n                    new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                    {\n                        BuildCommand = \"npm run build\",\n                        Github = new DigitalOcean.Inputs.AppSpecStaticSiteGithubArgs\n                        {\n                            Branch = \"main\",\n                            DeployOnPush = true,\n                            Repo = \"username/repo\",\n                        },\n                        Name = \"web\",\n                        Routes = \n                        {\n                            new DigitalOcean.Inputs.AppSpecStaticSiteRouteArgs\n                            {\n                                Path = \"/\",\n                            },\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"mono-repo-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026AppSpecArgs{\n\t\t\t\tDatabases: AppSpecDatabaseArray{\n\t\t\t\t\t\u0026AppSpecDatabaseArgs{\n\t\t\t\t\t\tEngine:     pulumi.String(\"PG\"),\n\t\t\t\t\t\tName:       pulumi.String(\"starter-db\"),\n\t\t\t\t\t\tProduction: pulumi.Bool(false),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tDomains: pulumi.StringArray{\n\t\t\t\t\tpulumi.String{\n\t\t\t\t\t\tName: \"foo.example.com\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tName:   pulumi.String(\"mono-repo-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: AppSpecServiceArray{\n\t\t\t\t\t\u0026AppSpecServiceArgs{\n\t\t\t\t\t\tEnvironmentSlug: pulumi.String(\"go\"),\n\t\t\t\t\t\tGithub: \u0026AppSpecServiceGithubArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tDeployOnPush: pulumi.Bool(true),\n\t\t\t\t\t\t\tRepo:         pulumi.String(\"username/repo\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tHttpPort:         pulumi.Int(3000),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(2),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"professional-xs\"),\n\t\t\t\t\t\tName:             pulumi.String(\"api\"),\n\t\t\t\t\t\tRoutes: AppSpecServiceRouteArray{\n\t\t\t\t\t\t\t\u0026AppSpecServiceRouteArgs{\n\t\t\t\t\t\t\t\tPath: pulumi.String(\"/api\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tRunCommand: pulumi.String(\"bin/api\"),\n\t\t\t\t\t\tSourceDir:  pulumi.String(\"api/\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tStaticSites: AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026AppSpecStaticSiteArgs{\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"npm run build\"),\n\t\t\t\t\t\tGithub: \u0026AppSpecStaticSiteGithubArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tDeployOnPush: pulumi.Bool(true),\n\t\t\t\t\t\t\tRepo:         pulumi.String(\"username/repo\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tName: pulumi.String(\"web\"),\n\t\t\t\t\t\tRoutes: AppSpecStaticSiteRouteArray{\n\t\t\t\t\t\t\t\u0026AppSpecStaticSiteRouteArgs{\n\t\t\t\t\t\t\t\tPath: pulumi.String(\"/\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn app can be imported using its `id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661\n```\n\n ",
+            "description": "Provides a DigitalOcean App resource.\n\n{{% examples %}}\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/references/app-specification-reference/) specifying the app's components.\n{{% example %}}\n### Basic Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {\n    spec: {\n        name: \"golang-sample\",\n        region: \"ams\",\n        services: [{\n            environmentSlug: \"go\",\n            git: {\n                branch: \"main\",\n                repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            },\n            instanceCount: 1,\n            instanceSizeSlug: \"professional-xs\",\n            name: \"go-service\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec=digitalocean.AppSpecArgs(\n    name=\"golang-sample\",\n    region=\"ams\",\n    services=[digitalocean.AppSpecServiceArgs(\n        environment_slug=\"go\",\n        git=digitalocean.AppSpecServiceGitArgs(\n            branch=\"main\",\n            repo_clone_url=\"https://github.com/digitalocean/sample-golang.git\",\n        ),\n        instance_count=1,\n        instance_size_slug=\"professional-xs\",\n        name=\"go-service\",\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var golang_sample = new DigitalOcean.App(\"golang-sample\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Name = \"golang-sample\",\n                Region = \"ams\",\n                Services = \n                {\n                    new DigitalOcean.Inputs.AppSpecServiceArgs\n                    {\n                        EnvironmentSlug = \"go\",\n                        Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                        {\n                            Branch = \"main\",\n                            RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        },\n                        InstanceCount = 1,\n                        InstanceSizeSlug = \"professional-xs\",\n                        Name = \"go-service\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: AppSpecServiceArray{\n\t\t\t\t\t\u0026AppSpecServiceArgs{\n\t\t\t\t\t\tEnvironmentSlug: pulumi.String(\"go\"),\n\t\t\t\t\t\tGit: \u0026AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"professional-xs\"),\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Static Site Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_ste_example = new digitalocean.App(\"static-ste-example\", {\n    spec: {\n        name: \"static-ste-example\",\n        region: \"ams\",\n        staticSites: [{\n            buildCommand: \"bundle exec jekyll build -d ./public\",\n            git: {\n                branch: \"main\",\n                repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            },\n            name: \"sample-jekyll\",\n            outputDir: \"/public\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_ste_example = digitalocean.App(\"static-ste-example\", spec=digitalocean.AppSpecArgs(\n    name=\"static-ste-example\",\n    region=\"ams\",\n    static_sites=[digitalocean.AppSpecStaticSiteArgs(\n        build_command=\"bundle exec jekyll build -d ./public\",\n        git=digitalocean.AppSpecStaticSiteGitArgs(\n            branch=\"main\",\n            repo_clone_url=\"https://github.com/digitalocean/sample-jekyll.git\",\n        ),\n        name=\"sample-jekyll\",\n        output_dir=\"/public\",\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var static_ste_example = new DigitalOcean.App(\"static-ste-example\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Name = \"static-ste-example\",\n                Region = \"ams\",\n                StaticSites = \n                {\n                    new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                    {\n                        BuildCommand = \"bundle exec jekyll build -d ./public\",\n                        Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                        {\n                            Branch = \"main\",\n                            RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        },\n                        Name = \"sample-jekyll\",\n                        OutputDir = \"/public\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static-ste-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-ste-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026AppSpecStaticSiteArgs{\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tGit: \u0026AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tName:      pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tOutputDir: pulumi.String(\"/public\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Multiple Components Example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mono_repo_example = new digitalocean.App(\"mono-repo-example\", {\n    spec: {\n        alerts: [{\n            rule: \"DEPLOYMENT_FAILED\",\n        }],\n        databases: [{\n            engine: \"PG\",\n            name: \"starter-db\",\n            production: false,\n        }],\n        domainNames: [{\n            name: \"foo.example.com\",\n        }],\n        name: \"mono-repo-example\",\n        region: \"ams\",\n        // Build a Go project in the api/ directory that listens on port 3000\n        // and serves it at https://foo.example.com/api\n        services: [{\n            alerts: [{\n                operator: \"GREATER_THAN\",\n                rule: \"CPU_UTILIZATION\",\n                value: 75,\n                window: \"TEN_MINUTES\",\n            }],\n            environmentSlug: \"go\",\n            github: {\n                branch: \"main\",\n                deployOnPush: true,\n                repo: \"username/repo\",\n            },\n            httpPort: 3000,\n            instanceCount: 2,\n            instanceSizeSlug: \"professional-xs\",\n            logDestinations: [{\n                name: \"MyLogs\",\n                papertrail: {\n                    endpoint: \"syslog+tls://example.com:12345\",\n                },\n            }],\n            name: \"api\",\n            routes: [{\n                path: \"/api\",\n            }],\n            runCommand: \"bin/api\",\n            sourceDir: \"api/\",\n        }],\n        // Builds a static site in the project's root directory\n        // and serves it at https://foo.example.com/\n        staticSites: [{\n            buildCommand: \"npm run build\",\n            github: {\n                branch: \"main\",\n                deployOnPush: true,\n                repo: \"username/repo\",\n            },\n            name: \"web\",\n            routes: [{\n                path: \"/\",\n            }],\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmono_repo_example = digitalocean.App(\"mono-repo-example\", spec=digitalocean.AppSpecArgs(\n    alerts=[digitalocean.AppSpecAlertArgs(\n        rule=\"DEPLOYMENT_FAILED\",\n    )],\n    databases=[digitalocean.AppSpecDatabaseArgs(\n        engine=\"PG\",\n        name=\"starter-db\",\n        production=False,\n    )],\n    domains=[{\n        \"name\": \"foo.example.com\",\n    }],\n    name=\"mono-repo-example\",\n    region=\"ams\",\n    services=[digitalocean.AppSpecServiceArgs(\n        alert=[{\n            \"operator\": \"GREATER_THAN\",\n            \"rule\": \"CPU_UTILIZATION\",\n            \"value\": 75,\n            \"window\": \"TEN_MINUTES\",\n        }],\n        environment_slug=\"go\",\n        github=digitalocean.AppSpecServiceGithubArgs(\n            branch=\"main\",\n            deploy_on_push=True,\n            repo=\"username/repo\",\n        ),\n        http_port=3000,\n        instance_count=2,\n        instance_size_slug=\"professional-xs\",\n        log_destination=[{\n            \"name\": \"MyLogs\",\n            \"papertrail\": {\n                \"endpoint\": \"syslog+tls://example.com:12345\",\n            },\n        }],\n        name=\"api\",\n        routes=[digitalocean.AppSpecServiceRouteArgs(\n            path=\"/api\",\n        )],\n        run_command=\"bin/api\",\n        source_dir=\"api/\",\n    )],\n    static_sites=[digitalocean.AppSpecStaticSiteArgs(\n        build_command=\"npm run build\",\n        github=digitalocean.AppSpecStaticSiteGithubArgs(\n            branch=\"main\",\n            deploy_on_push=True,\n            repo=\"username/repo\",\n        ),\n        name=\"web\",\n        routes=[digitalocean.AppSpecStaticSiteRouteArgs(\n            path=\"/\",\n        )],\n    )],\n))\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mono_repo_example = new DigitalOcean.App(\"mono-repo-example\", new DigitalOcean.AppArgs\n        {\n            Spec = new DigitalOcean.Inputs.AppSpecArgs\n            {\n                Alerts = \n                {\n                    new DigitalOcean.Inputs.AppSpecAlertArgs\n                    {\n                        Rule = \"DEPLOYMENT_FAILED\",\n                    },\n                },\n                Databases = \n                {\n                    new DigitalOcean.Inputs.AppSpecDatabaseArgs\n                    {\n                        Engine = \"PG\",\n                        Name = \"starter-db\",\n                        Production = false,\n                    },\n                },\n                Domains = \n                {\n                    \n                    {\n                        { \"name\", \"foo.example.com\" },\n                    },\n                },\n                Name = \"mono-repo-example\",\n                Region = \"ams\",\n                Services = \n                {\n                    new DigitalOcean.Inputs.AppSpecServiceArgs\n                    {\n                        Alert = \n                        {\n                            \n                            {\n                                { \"operator\", \"GREATER_THAN\" },\n                                { \"rule\", \"CPU_UTILIZATION\" },\n                                { \"value\", 75 },\n                                { \"window\", \"TEN_MINUTES\" },\n                            },\n                        },\n                        EnvironmentSlug = \"go\",\n                        Github = new DigitalOcean.Inputs.AppSpecServiceGithubArgs\n                        {\n                            Branch = \"main\",\n                            DeployOnPush = true,\n                            Repo = \"username/repo\",\n                        },\n                        HttpPort = 3000,\n                        InstanceCount = 2,\n                        InstanceSizeSlug = \"professional-xs\",\n                        LogDestination = \n                        {\n                            \n                            {\n                                { \"name\", \"MyLogs\" },\n                                { \"papertrail\", \n                                {\n                                    { \"endpoint\", \"syslog+tls://example.com:12345\" },\n                                } },\n                            },\n                        },\n                        Name = \"api\",\n                        Routes = \n                        {\n                            new DigitalOcean.Inputs.AppSpecServiceRouteArgs\n                            {\n                                Path = \"/api\",\n                            },\n                        },\n                        RunCommand = \"bin/api\",\n                        SourceDir = \"api/\",\n                    },\n                },\n                StaticSites = \n                {\n                    new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                    {\n                        BuildCommand = \"npm run build\",\n                        Github = new DigitalOcean.Inputs.AppSpecStaticSiteGithubArgs\n                        {\n                            Branch = \"main\",\n                            DeployOnPush = true,\n                            Repo = \"username/repo\",\n                        },\n                        Name = \"web\",\n                        Routes = \n                        {\n                            new DigitalOcean.Inputs.AppSpecStaticSiteRouteArgs\n                            {\n                                Path = \"/\",\n                            },\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"mono-repo-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026AppSpecArgs{\n\t\t\t\tAlerts: AppSpecAlertArray{\n\t\t\t\t\t\u0026AppSpecAlertArgs{\n\t\t\t\t\t\tRule: pulumi.String(\"DEPLOYMENT_FAILED\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tDatabases: AppSpecDatabaseArray{\n\t\t\t\t\t\u0026AppSpecDatabaseArgs{\n\t\t\t\t\t\tEngine:     pulumi.String(\"PG\"),\n\t\t\t\t\t\tName:       pulumi.String(\"starter-db\"),\n\t\t\t\t\t\tProduction: pulumi.Bool(false),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tDomains: pulumi.StringArray{\n\t\t\t\t\tpulumi.String{\n\t\t\t\t\t\tName: \"foo.example.com\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tName:   pulumi.String(\"mono-repo-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: AppSpecServiceArray{\n\t\t\t\t\t\u0026AppSpecServiceArgs{\n\t\t\t\t\t\tAlert: []map[string]interface{}{\n\t\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\t\"operator\": \"GREATER_THAN\",\n\t\t\t\t\t\t\t\t\"rule\":     \"CPU_UTILIZATION\",\n\t\t\t\t\t\t\t\t\"value\":    75,\n\t\t\t\t\t\t\t\t\"window\":   \"TEN_MINUTES\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEnvironmentSlug: pulumi.String(\"go\"),\n\t\t\t\t\t\tGithub: \u0026AppSpecServiceGithubArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tDeployOnPush: pulumi.Bool(true),\n\t\t\t\t\t\t\tRepo:         pulumi.String(\"username/repo\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tHttpPort:         pulumi.Int(3000),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(2),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"professional-xs\"),\n\t\t\t\t\t\tLogDestination: []map[string]interface{}{\n\t\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\t\"name\": \"MyLogs\",\n\t\t\t\t\t\t\t\t\"papertrail\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\t\"endpoint\": \"syslog+tls://example.com:12345\",\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tName: pulumi.String(\"api\"),\n\t\t\t\t\t\tRoutes: AppSpecServiceRouteArray{\n\t\t\t\t\t\t\t\u0026AppSpecServiceRouteArgs{\n\t\t\t\t\t\t\t\tPath: pulumi.String(\"/api\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tRunCommand: pulumi.String(\"bin/api\"),\n\t\t\t\t\t\tSourceDir:  pulumi.String(\"api/\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tStaticSites: AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026AppSpecStaticSiteArgs{\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"npm run build\"),\n\t\t\t\t\t\tGithub: \u0026AppSpecStaticSiteGithubArgs{\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t\tDeployOnPush: pulumi.Bool(true),\n\t\t\t\t\t\t\tRepo:         pulumi.String(\"username/repo\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tName: pulumi.String(\"web\"),\n\t\t\t\t\t\tRoutes: AppSpecStaticSiteRouteArray{\n\t\t\t\t\t\t\t\u0026AppSpecStaticSiteRouteArgs{\n\t\t\t\t\t\t\t\tPath: pulumi.String(\"/\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn app can be imported using its `id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661\n```\n\n ",
             "properties": {
                 "activeDeploymentId": {
                     "type": "string",
@@ -8523,15 +9741,29 @@
         "digitalocean:index/containerRegistry:ContainerRegistry": {
             "description": "Provides a DigitalOcean Container Registry resource. A Container Registry is\na secure, private location to store your containers for rapid deployment.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new container registry\nconst foobar = new digitalocean.ContainerRegistry(\"foobar\", {\n    subscriptionTierSlug: \"starter\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new container registry\nfoobar = digitalocean.ContainerRegistry(\"foobar\", subscription_tier_slug=\"starter\")\n```\n```csharp\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new container registry\n        var foobar = new DigitalOcean.ContainerRegistry(\"foobar\", new DigitalOcean.ContainerRegistryArgs\n        {\n            SubscriptionTierSlug = \"starter\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewContainerRegistry(ctx, \"foobar\", \u0026digitalocean.ContainerRegistryArgs{\n\t\t\tSubscriptionTierSlug: pulumi.String(\"starter\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nContainer Registries can be imported using the `name`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname\n```\n\n ",
             "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the registry was created\n"
+                },
                 "endpoint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "The name of the container_registry\n"
                 },
+                "region": {
+                    "type": "string",
+                    "description": "The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.\n"
+                },
                 "serverUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The domain of the container registry. Ex: `registry.digitalocean.com`\n"
+                },
+                "storageUsageBytes": {
+                    "type": "integer",
+                    "description": "The amount of storage used in the registry in bytes.\n"
                 },
                 "subscriptionTierSlug": {
                     "type": "string",
@@ -8539,15 +9771,22 @@
                 }
             },
             "required": [
+                "createdAt",
                 "endpoint",
                 "name",
+                "region",
                 "serverUrl",
+                "storageUsageBytes",
                 "subscriptionTierSlug"
             ],
             "inputProperties": {
                 "name": {
                     "type": "string",
                     "description": "The name of the container_registry\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.\n"
                 },
                 "subscriptionTierSlug": {
                     "type": "string",
@@ -8560,15 +9799,29 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ContainerRegistry resources.\n",
                 "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the registry was created\n"
+                    },
                     "endpoint": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`\n"
                     },
                     "name": {
                         "type": "string",
                         "description": "The name of the container_registry\n"
                     },
+                    "region": {
+                        "type": "string",
+                        "description": "The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.\n"
+                    },
                     "serverUrl": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The domain of the container registry. Ex: `registry.digitalocean.com`\n"
+                    },
+                    "storageUsageBytes": {
+                        "type": "integer",
+                        "description": "The amount of storage used in the registry in bytes.\n"
                     },
                     "subscriptionTierSlug": {
                         "type": "string",
@@ -9678,7 +10931,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "The time to live for the record, in seconds. Must be at least 0.\n"
+                    "description": "The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.\n"
                 },
                 "type": {
                     "type": "string",
@@ -9728,7 +10981,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "The time to live for the record, in seconds. Must be at least 0.\n"
+                    "description": "The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.\n"
                 },
                 "type": {
                     "type": "string",
@@ -9790,7 +11043,7 @@
                     },
                     "ttl": {
                         "type": "integer",
-                        "description": "The time to live for the record, in seconds. Must be at least 0.\n"
+                        "description": "The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.\n"
                     },
                     "type": {
                         "type": "string",
@@ -12097,6 +13350,65 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n### Limiting access to specific IP addresses\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobarSpacesBucket = new digitalocean.SpacesBucket(\"foobarSpacesBucket\", {region: \"nyc3\"});\nconst foobarSpacesBucketPolicy = new digitalocean.SpacesBucketPolicy(\"foobarSpacesBucketPolicy\", {\n    region: foobarSpacesBucket.region,\n    bucket: foobarSpacesBucket.name,\n    policy: pulumi.all([foobarSpacesBucket.name, foobarSpacesBucket.name]).apply(([foobarSpacesBucketName, foobarSpacesBucketName1]) =\u003e JSON.stringify({\n        Version: \"2012-10-17\",\n        Statement: [{\n            Sid: \"IPAllow\",\n            Effect: \"Deny\",\n            Principal: \"*\",\n            Action: \"s3:*\",\n            Resource: [\n                `arn:aws:s3:::${foobarSpacesBucketName}`,\n                `arn:aws:s3:::${foobarSpacesBucketName1}/*`,\n            ],\n            Condition: {\n                NotIpAddress: {\n                    \"aws:SourceIp\": \"54.240.143.0/24\",\n                },\n            },\n        }],\n    })),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_digitalocean as digitalocean\n\nfoobar_spaces_bucket = digitalocean.SpacesBucket(\"foobarSpacesBucket\", region=\"nyc3\")\nfoobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy(\"foobarSpacesBucketPolicy\",\n    region=foobar_spaces_bucket.region,\n    bucket=foobar_spaces_bucket.name,\n    policy=pulumi.Output.all(foobar_spaces_bucket.name, foobar_spaces_bucket.name).apply(lambda foobarSpacesBucketName, foobarSpacesBucketName1: json.dumps({\n        \"Version\": \"2012-10-17\",\n        \"Statement\": [{\n            \"Sid\": \"IPAllow\",\n            \"Effect\": \"Deny\",\n            \"Principal\": \"*\",\n            \"Action\": \"s3:*\",\n            \"Resource\": [\n                f\"arn:aws:s3:::{foobar_spaces_bucket_name}\",\n                f\"arn:aws:s3:::{foobar_spaces_bucket_name1}/*\",\n            ],\n            \"Condition\": {\n                \"NotIpAddress\": {\n                    \"aws:SourceIp\": \"54.240.143.0/24\",\n                },\n            },\n        }],\n    })))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobarSpacesBucket = new DigitalOcean.SpacesBucket(\"foobarSpacesBucket\", new DigitalOcean.SpacesBucketArgs\n        {\n            Region = \"nyc3\",\n        });\n        var foobarSpacesBucketPolicy = new DigitalOcean.SpacesBucketPolicy(\"foobarSpacesBucketPolicy\", new DigitalOcean.SpacesBucketPolicyArgs\n        {\n            Region = foobarSpacesBucket.Region,\n            Bucket = foobarSpacesBucket.Name,\n            Policy = Output.Tuple(foobarSpacesBucket.Name, foobarSpacesBucket.Name).Apply(values =\u003e\n            {\n                var foobarSpacesBucketName = values.Item1;\n                var foobarSpacesBucketName1 = values.Item2;\n                return JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"Version\", \"2012-10-17\" },\n                    { \"Statement\", new[]\n                        {\n                            new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"Sid\", \"IPAllow\" },\n                                { \"Effect\", \"Deny\" },\n                                { \"Principal\", \"*\" },\n                                { \"Action\", \"s3:*\" },\n                                { \"Resource\", new[]\n                                    {\n                                        $\"arn:aws:s3:::{foobarSpacesBucketName}\",\n                                        $\"arn:aws:s3:::{foobarSpacesBucketName1}/*\",\n                                    }\n                                 },\n                                { \"Condition\", new Dictionary\u003cstring, object?\u003e\n                                {\n                                    { \"NotIpAddress\", new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"aws:SourceIp\", \"54.240.143.0/24\" },\n                                    } },\n                                } },\n                            },\n                        }\n                     },\n                });\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobarSpacesBucket, err := digitalocean.NewSpacesBucket(ctx, \"foobarSpacesBucket\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewSpacesBucketPolicy(ctx, \"foobarSpacesBucketPolicy\", \u0026digitalocean.SpacesBucketPolicyArgs{\n\t\t\tRegion: foobarSpacesBucket.Region,\n\t\t\tBucket: foobarSpacesBucket.Name,\n\t\t\tPolicy: pulumi.All(foobarSpacesBucket.Name, foobarSpacesBucket.Name).ApplyT(func(_args []interface{}) (string, error) {\n\t\t\t\tfoobarSpacesBucketName := _args[0].(string)\n\t\t\t\tfoobarSpacesBucketName1 := _args[1].(string)\n\t\t\t\tvar _zero string\n\t\t\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\t\t\"Version\": \"2012-10-17\",\n\t\t\t\t\t\"Statement\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Sid\":       \"IPAllow\",\n\t\t\t\t\t\t\t\"Effect\":    \"Deny\",\n\t\t\t\t\t\t\t\"Principal\": \"*\",\n\t\t\t\t\t\t\t\"Action\":    \"s3:*\",\n\t\t\t\t\t\t\t\"Resource\": []string{\n\t\t\t\t\t\t\t\tfmt.Sprintf(\"%v%v\", \"arn:aws:s3:::\", foobarSpacesBucketName),\n\t\t\t\t\t\t\t\tfmt.Sprintf(\"%v%v%v\", \"arn:aws:s3:::\", foobarSpacesBucketName1, \"/*\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"Condition\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"NotIpAddress\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\t\"aws:SourceIp\": \"54.240.143.0/24\",\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t})\n\t\t\t\tif err != nil {\n\t\t\t\t\treturn _zero, err\n\t\t\t\t}\n\t\t\t\tjson0 := string(tmpJSON0)\n\t\t\t\treturn json0, nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n!\u003e **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nBucket policies can be imported using the `region` and `bucket` attributes (delimited by a comma)\n\n```sh\n $ pulumi import digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy foobar `region`,`bucket`\n```\n\n ",
+            "properties": {
+                "bucket": {
+                    "type": "string",
+                    "description": "The name of the bucket to which to apply the policy.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "The text of the policy.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the bucket resides.\n"
+                }
+            },
+            "required": [
+                "bucket",
+                "policy",
+                "region"
+            ],
+            "inputProperties": {
+                "bucket": {
+                    "type": "string",
+                    "description": "The name of the bucket to which to apply the policy.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "The text of the policy.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the bucket resides.\n"
+                }
+            },
+            "requiredInputs": [
+                "bucket",
+                "policy",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SpacesBucketPolicy resources.\n",
+                "properties": {
+                    "bucket": {
+                        "type": "string",
+                        "description": "The name of the bucket to which to apply the policy.\n"
+                    },
+                    "policy": {
+                        "type": "string",
+                        "description": "The text of the policy.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the bucket resides.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/sshKey:SshKey": {
             "description": "Provides a DigitalOcean SSH key resource to allow you to manage SSH\nkeys for Droplet access. Keys created with this resource\ncan be referenced in your Droplet configuration via their ID or\nfingerprint.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * from \"fs\";\n\n// Create a new SSH key\nconst _default = new digitalocean.SshKey(\"default\", {publicKey: fs.readFileSync(\"/Users/myuser/.ssh/id_rsa.pub\")});\n// Create a new Droplet using the SSH key\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-18-04-x64\",\n    region: \"nyc3\",\n    size: \"s-1vcpu-1gb\",\n    sshKeys: [_default.fingerprint],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new SSH key\ndefault = digitalocean.SshKey(\"default\", public_key=(lambda path: open(path).read())(\"/Users/myuser/.ssh/id_rsa.pub\"))\n# Create a new Droplet using the SSH key\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-18-04-x64\",\n    region=\"nyc3\",\n    size=\"s-1vcpu-1gb\",\n    ssh_keys=[default.fingerprint])\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new SSH key\n        var @default = new DigitalOcean.SshKey(\"default\", new DigitalOcean.SshKeyArgs\n        {\n            PublicKey = File.ReadAllText(\"/Users/myuser/.ssh/id_rsa.pub\"),\n        });\n        // Create a new Droplet using the SSH key\n        var web = new DigitalOcean.Droplet(\"web\", new DigitalOcean.DropletArgs\n        {\n            Image = \"ubuntu-18-04-x64\",\n            Region = \"nyc3\",\n            Size = \"s-1vcpu-1gb\",\n            SshKeys = \n            {\n                @default.Fingerprint,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"io/ioutil\"\n\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := ioutil.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewSshKey(ctx, \"default\", \u0026digitalocean.SshKeyArgs{\n\t\t\tPublicKey: readFileOrPanic(\"/Users/myuser/.ssh/id_rsa.pub\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"web\", \u0026digitalocean.DropletArgs{\n\t\t\tImage:  pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\tSize:   pulumi.String(\"s-1vcpu-1gb\"),\n\t\t\tSshKeys: pulumi.StringArray{\n\t\t\t\t_default.Fingerprint,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSSH Keys can be imported using the `ssh key id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654\n```\n\n ",
             "properties": {
@@ -12882,8 +14194,13 @@
             "outputs": {
                 "description": "A collection of values returned by getContainerRegistry.\n",
                 "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the registry was created\n"
+                    },
                     "endpoint": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`\n"
                     },
                     "id": {
                         "type": "string",
@@ -12893,19 +14210,31 @@
                         "type": "string",
                         "description": "The name of the container registry\n"
                     },
+                    "region": {
+                        "type": "string",
+                        "description": "The slug identifier for the  region\n"
+                    },
                     "serverUrl": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The domain of the container registry. Ex: `registry.digitalocean.com`\n"
+                    },
+                    "storageUsageBytes": {
+                        "type": "integer",
+                        "description": "The amount of storage used in the registry in bytes.\n"
                     },
                     "subscriptionTierSlug": {
                         "type": "string",
-                        "description": "The slug identifier for the subscription tier\n* `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`\n* `server_url`: The domain of the container registry. Ex: `registry.digitalocean.com`\n"
+                        "description": "The slug identifier for the subscription tier\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "createdAt",
                     "endpoint",
                     "name",
+                    "region",
                     "serverUrl",
+                    "storageUsageBytes",
                     "subscriptionTierSlug",
                     "id"
                 ]

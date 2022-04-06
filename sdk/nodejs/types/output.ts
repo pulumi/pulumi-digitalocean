@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs, enums } from "../types";
 
 export interface AppSpec {
+    /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: outputs.AppSpecAlert[];
     databases?: outputs.AppSpecDatabase[];
     /**
      * Describes a domain where the application will be made available.
@@ -30,6 +34,17 @@ export interface AppSpec {
     services?: outputs.AppSpecService[];
     staticSites?: outputs.AppSpecStaticSite[];
     workers?: outputs.AppSpecWorker[];
+}
+
+export interface AppSpecAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: boolean;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: string;
 }
 
 export interface AppSpecDatabase {
@@ -96,12 +111,16 @@ export interface AppSpecEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
 
 export interface AppSpecJob {
+    /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: outputs.AppSpecJobAlert[];
     /**
      * An optional build command to run while building this component from source.
      */
@@ -151,6 +170,10 @@ export interface AppSpecJob {
      */
     kind?: string;
     /**
+     * Describes a log forwarding destination.
+     */
+    logDestinations?: outputs.AppSpecJobLogDestination[];
+    /**
      * The name of the component.
      */
     name: string;
@@ -162,6 +185,29 @@ export interface AppSpecJob {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface AppSpecJobAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: boolean;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
+    operator: string;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: string;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: number;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
+    window: string;
 }
 
 export interface AppSpecJobEnv {
@@ -178,7 +224,7 @@ export interface AppSpecJobEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
@@ -243,7 +289,55 @@ export interface AppSpecJobImage {
     tag?: string;
 }
 
+export interface AppSpecJobLogDestination {
+    /**
+     * Datadog configuration.
+     */
+    datadog?: outputs.AppSpecJobLogDestinationDatadog;
+    /**
+     * Logtail configuration.
+     */
+    logtail?: outputs.AppSpecJobLogDestinationLogtail;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * Papertrail configuration.
+     */
+    papertrail?: outputs.AppSpecJobLogDestinationPapertrail;
+}
+
+export interface AppSpecJobLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
+    apiKey: string;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint?: string;
+}
+
+export interface AppSpecJobLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
+    token: string;
+}
+
+export interface AppSpecJobLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint: string;
+}
+
 export interface AppSpecService {
+    /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: outputs.AppSpecServiceAlert[];
     /**
      * An optional build command to run while building this component from source.
      */
@@ -301,6 +395,10 @@ export interface AppSpecService {
      */
     internalPorts?: number[];
     /**
+     * Describes a log forwarding destination.
+     */
+    logDestinations?: outputs.AppSpecServiceLogDestination[];
+    /**
      * The name of the component.
      */
     name: string;
@@ -313,6 +411,29 @@ export interface AppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface AppSpecServiceAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: boolean;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
+    operator: string;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: string;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: number;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
+    window: string;
 }
 
 export interface AppSpecServiceCors {
@@ -371,7 +492,7 @@ export interface AppSpecServiceEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
@@ -461,6 +582,50 @@ export interface AppSpecServiceImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface AppSpecServiceLogDestination {
+    /**
+     * Datadog configuration.
+     */
+    datadog?: outputs.AppSpecServiceLogDestinationDatadog;
+    /**
+     * Logtail configuration.
+     */
+    logtail?: outputs.AppSpecServiceLogDestinationLogtail;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * Papertrail configuration.
+     */
+    papertrail?: outputs.AppSpecServiceLogDestinationPapertrail;
+}
+
+export interface AppSpecServiceLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
+    apiKey: string;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint?: string;
+}
+
+export interface AppSpecServiceLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
+    token: string;
+}
+
+export interface AppSpecServiceLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint: string;
 }
 
 export interface AppSpecServiceRoute {
@@ -590,7 +755,7 @@ export interface AppSpecStaticSiteEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
@@ -649,6 +814,10 @@ export interface AppSpecStaticSiteRoute {
 
 export interface AppSpecWorker {
     /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: outputs.AppSpecWorkerAlert[];
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -689,6 +858,10 @@ export interface AppSpecWorker {
      */
     instanceSizeSlug?: string;
     /**
+     * Describes a log forwarding destination.
+     */
+    logDestinations?: outputs.AppSpecWorkerLogDestination[];
+    /**
      * The name of the component.
      */
     name: string;
@@ -700,6 +873,29 @@ export interface AppSpecWorker {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface AppSpecWorkerAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: boolean;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
+    operator: string;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: string;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: number;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
+    window: string;
 }
 
 export interface AppSpecWorkerEnv {
@@ -716,7 +912,7 @@ export interface AppSpecWorkerEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
@@ -779,6 +975,50 @@ export interface AppSpecWorkerImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface AppSpecWorkerLogDestination {
+    /**
+     * Datadog configuration.
+     */
+    datadog?: outputs.AppSpecWorkerLogDestinationDatadog;
+    /**
+     * Logtail configuration.
+     */
+    logtail?: outputs.AppSpecWorkerLogDestinationLogtail;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * Papertrail configuration.
+     */
+    papertrail?: outputs.AppSpecWorkerLogDestinationPapertrail;
+}
+
+export interface AppSpecWorkerLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
+    apiKey: string;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint?: string;
+}
+
+export interface AppSpecWorkerLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
+    token: string;
+}
+
+export interface AppSpecWorkerLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint: string;
 }
 
 export interface DatabaseClusterMaintenanceWindow {
@@ -906,6 +1146,7 @@ export interface FirewallPendingChange {
 }
 
 export interface GetAppSpec {
+    alerts?: outputs.GetAppSpecAlert[];
     databases?: outputs.GetAppSpecDatabase[];
     /**
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
@@ -924,6 +1165,11 @@ export interface GetAppSpec {
     services?: outputs.GetAppSpecService[];
     staticSites?: outputs.GetAppSpecStaticSite[];
     workers?: outputs.GetAppSpecWorker[];
+}
+
+export interface GetAppSpecAlert {
+    disabled?: boolean;
+    rule: string;
 }
 
 export interface GetAppSpecDatabase {
@@ -977,6 +1223,7 @@ export interface GetAppSpecEnv {
 }
 
 export interface GetAppSpecJob {
+    alerts?: outputs.GetAppSpecJobAlert[];
     /**
      * An optional build command to run while building this component from source.
      */
@@ -1025,6 +1272,7 @@ export interface GetAppSpecJob {
      * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: string;
+    logDestinations?: outputs.GetAppSpecJobLogDestination[];
     /**
      * The name of the component.
      */
@@ -1037,6 +1285,17 @@ export interface GetAppSpecJob {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface GetAppSpecJobAlert {
+    disabled?: boolean;
+    operator: string;
+    rule: string;
+    /**
+     * The value of the environment variable.
+     */
+    value: number;
+    window: string;
 }
 
 export interface GetAppSpecJobEnv {
@@ -1118,7 +1377,31 @@ export interface GetAppSpecJobImage {
     tag?: string;
 }
 
+export interface GetAppSpecJobLogDestination {
+    datadog?: outputs.GetAppSpecJobLogDestinationDatadog;
+    logtail?: outputs.GetAppSpecJobLogDestinationLogtail;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    papertrail?: outputs.GetAppSpecJobLogDestinationPapertrail;
+}
+
+export interface GetAppSpecJobLogDestinationDatadog {
+    apiKey: string;
+    endpoint?: string;
+}
+
+export interface GetAppSpecJobLogDestinationLogtail {
+    token: string;
+}
+
+export interface GetAppSpecJobLogDestinationPapertrail {
+    endpoint: string;
+}
+
 export interface GetAppSpecService {
+    alerts?: outputs.GetAppSpecServiceAlert[];
     /**
      * An optional build command to run while building this component from source.
      */
@@ -1172,6 +1455,7 @@ export interface GetAppSpecService {
      * A list of ports on which this service will listen for internal traffic.
      */
     internalPorts?: number[];
+    logDestinations?: outputs.GetAppSpecServiceLogDestination[];
     /**
      * The name of the component.
      */
@@ -1185,6 +1469,17 @@ export interface GetAppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface GetAppSpecServiceAlert {
+    disabled?: boolean;
+    operator: string;
+    rule: string;
+    /**
+     * The value of the environment variable.
+     */
+    value: number;
+    window: string;
 }
 
 export interface GetAppSpecServiceCors {
@@ -1306,6 +1601,29 @@ export interface GetAppSpecServiceImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface GetAppSpecServiceLogDestination {
+    datadog?: outputs.GetAppSpecServiceLogDestinationDatadog;
+    logtail?: outputs.GetAppSpecServiceLogDestinationLogtail;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    papertrail?: outputs.GetAppSpecServiceLogDestinationPapertrail;
+}
+
+export interface GetAppSpecServiceLogDestinationDatadog {
+    apiKey: string;
+    endpoint?: string;
+}
+
+export interface GetAppSpecServiceLogDestinationLogtail {
+    token: string;
+}
+
+export interface GetAppSpecServiceLogDestinationPapertrail {
+    endpoint: string;
 }
 
 export interface GetAppSpecServiceRoute {
@@ -1463,6 +1781,7 @@ export interface GetAppSpecStaticSiteRoute {
 }
 
 export interface GetAppSpecWorker {
+    alerts?: outputs.GetAppSpecWorkerAlert[];
     /**
      * An optional build command to run while building this component from source.
      */
@@ -1503,6 +1822,7 @@ export interface GetAppSpecWorker {
      * The instance size to use for this component.
      */
     instanceSizeSlug?: string;
+    logDestinations?: outputs.GetAppSpecWorkerLogDestination[];
     /**
      * The name of the component.
      */
@@ -1515,6 +1835,17 @@ export interface GetAppSpecWorker {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface GetAppSpecWorkerAlert {
+    disabled?: boolean;
+    operator: string;
+    rule: string;
+    /**
+     * The value of the environment variable.
+     */
+    value: number;
+    window: string;
 }
 
 export interface GetAppSpecWorkerEnv {
@@ -1594,6 +1925,29 @@ export interface GetAppSpecWorkerImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface GetAppSpecWorkerLogDestination {
+    datadog?: outputs.GetAppSpecWorkerLogDestinationDatadog;
+    logtail?: outputs.GetAppSpecWorkerLogDestinationLogtail;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    papertrail?: outputs.GetAppSpecWorkerLogDestinationPapertrail;
+}
+
+export interface GetAppSpecWorkerLogDestinationDatadog {
+    apiKey: string;
+    endpoint?: string;
+}
+
+export interface GetAppSpecWorkerLogDestinationLogtail {
+    token: string;
+}
+
+export interface GetAppSpecWorkerLogDestinationPapertrail {
+    endpoint: string;
 }
 
 export interface GetDatabaseClusterMaintenanceWindow {
@@ -2886,4 +3240,3 @@ export interface SpacesBucketVersioning {
      */
     enabled?: boolean;
 }
-

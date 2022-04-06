@@ -70,6 +70,7 @@ export * from "./projectResources";
 export * from "./provider";
 export * from "./spacesBucket";
 export * from "./spacesBucketObject";
+export * from "./spacesBucketPolicy";
 export * from "./sshKey";
 export * from "./tag";
 export * from "./volume";
@@ -117,6 +118,7 @@ import { Project } from "./project";
 import { ProjectResources } from "./projectResources";
 import { SpacesBucket } from "./spacesBucket";
 import { SpacesBucketObject } from "./spacesBucketObject";
+import { SpacesBucketPolicy } from "./spacesBucketPolicy";
 import { SshKey } from "./sshKey";
 import { Tag } from "./tag";
 import { Volume } from "./volume";
@@ -182,6 +184,8 @@ const _module = {
                 return new SpacesBucket(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucketObject:SpacesBucketObject":
                 return new SpacesBucketObject(name, <any>undefined, { urn })
+            case "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy":
+                return new SpacesBucketPolicy(name, <any>undefined, { urn })
             case "digitalocean:index/sshKey:SshKey":
                 return new SshKey(name, <any>undefined, { urn })
             case "digitalocean:index/tag:Tag":
@@ -226,6 +230,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/project", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/projectResources", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucket", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketObject", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketPolicy", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/tag", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volume", _module)
