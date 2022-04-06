@@ -102,6 +102,13 @@ namespace Pulumi.DigitalOcean
     ///         {
     ///             Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///             {
+    ///                 Alerts = 
+    ///                 {
+    ///                     new DigitalOcean.Inputs.AppSpecAlertArgs
+    ///                     {
+    ///                         Rule = "DEPLOYMENT_FAILED",
+    ///                     },
+    ///                 },
     ///                 Databases = 
     ///                 {
     ///                     new DigitalOcean.Inputs.AppSpecDatabaseArgs
@@ -124,6 +131,16 @@ namespace Pulumi.DigitalOcean
     ///                 {
     ///                     new DigitalOcean.Inputs.AppSpecServiceArgs
     ///                     {
+    ///                         Alert = 
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "operator", "GREATER_THAN" },
+    ///                                 { "rule", "CPU_UTILIZATION" },
+    ///                                 { "value", 75 },
+    ///                                 { "window", "TEN_MINUTES" },
+    ///                             },
+    ///                         },
     ///                         EnvironmentSlug = "go",
     ///                         Github = new DigitalOcean.Inputs.AppSpecServiceGithubArgs
     ///                         {
@@ -134,6 +151,17 @@ namespace Pulumi.DigitalOcean
     ///                         HttpPort = 3000,
     ///                         InstanceCount = 2,
     ///                         InstanceSizeSlug = "professional-xs",
+    ///                         LogDestination = 
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "name", "MyLogs" },
+    ///                                 { "papertrail", 
+    ///                                 {
+    ///                                     { "endpoint", "syslog+tls://example.com:12345" },
+    ///                                 } },
+    ///                             },
+    ///                         },
     ///                         Name = "api",
     ///                         Routes = 
     ///                         {

@@ -11,6 +11,8 @@ import (
 )
 
 type AppSpec struct {
+	// Describes an alert policy for the component.
+	Alerts    []AppSpecAlert    `pulumi:"alerts"`
 	Databases []AppSpecDatabase `pulumi:"databases"`
 	// Describes a domain where the application will be made available.
 	DomainNames []AppSpecDomainName `pulumi:"domainNames"`
@@ -40,6 +42,8 @@ type AppSpecInput interface {
 }
 
 type AppSpecArgs struct {
+	// Describes an alert policy for the component.
+	Alerts    AppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
 	// Describes a domain where the application will be made available.
 	DomainNames AppSpecDomainNameArrayInput `pulumi:"domainNames"`
@@ -134,6 +138,11 @@ func (o AppSpecOutput) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpe
 	}).(AppSpecPtrOutput)
 }
 
+// Describes an alert policy for the component.
+func (o AppSpecOutput) Alerts() AppSpecAlertArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecAlert { return v.Alerts }).(AppSpecAlertArrayOutput)
+}
+
 func (o AppSpecOutput) Databases() AppSpecDatabaseArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecDatabase { return v.Databases }).(AppSpecDatabaseArrayOutput)
 }
@@ -201,6 +210,16 @@ func (o AppSpecPtrOutput) Elem() AppSpecOutput {
 		var ret AppSpec
 		return ret
 	}).(AppSpecOutput)
+}
+
+// Describes an alert policy for the component.
+func (o AppSpecPtrOutput) Alerts() AppSpecAlertArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecAlert {
+		if v == nil {
+			return nil
+		}
+		return v.Alerts
+	}).(AppSpecAlertArrayOutput)
 }
 
 func (o AppSpecPtrOutput) Databases() AppSpecDatabaseArrayOutput {
@@ -296,6 +315,112 @@ func (o AppSpecPtrOutput) Workers() AppSpecWorkerArrayOutput {
 		}
 		return v.Workers
 	}).(AppSpecWorkerArrayOutput)
+}
+
+type AppSpecAlert struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+}
+
+// AppSpecAlertInput is an input type that accepts AppSpecAlertArgs and AppSpecAlertOutput values.
+// You can construct a concrete instance of `AppSpecAlertInput` via:
+//
+//          AppSpecAlertArgs{...}
+type AppSpecAlertInput interface {
+	pulumi.Input
+
+	ToAppSpecAlertOutput() AppSpecAlertOutput
+	ToAppSpecAlertOutputWithContext(context.Context) AppSpecAlertOutput
+}
+
+type AppSpecAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (AppSpecAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecAlert)(nil)).Elem()
+}
+
+func (i AppSpecAlertArgs) ToAppSpecAlertOutput() AppSpecAlertOutput {
+	return i.ToAppSpecAlertOutputWithContext(context.Background())
+}
+
+func (i AppSpecAlertArgs) ToAppSpecAlertOutputWithContext(ctx context.Context) AppSpecAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecAlertOutput)
+}
+
+// AppSpecAlertArrayInput is an input type that accepts AppSpecAlertArray and AppSpecAlertArrayOutput values.
+// You can construct a concrete instance of `AppSpecAlertArrayInput` via:
+//
+//          AppSpecAlertArray{ AppSpecAlertArgs{...} }
+type AppSpecAlertArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecAlertArrayOutput() AppSpecAlertArrayOutput
+	ToAppSpecAlertArrayOutputWithContext(context.Context) AppSpecAlertArrayOutput
+}
+
+type AppSpecAlertArray []AppSpecAlertInput
+
+func (AppSpecAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecAlert)(nil)).Elem()
+}
+
+func (i AppSpecAlertArray) ToAppSpecAlertArrayOutput() AppSpecAlertArrayOutput {
+	return i.ToAppSpecAlertArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecAlertArray) ToAppSpecAlertArrayOutputWithContext(ctx context.Context) AppSpecAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecAlertArrayOutput)
+}
+
+type AppSpecAlertOutput struct{ *pulumi.OutputState }
+
+func (AppSpecAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecAlert)(nil)).Elem()
+}
+
+func (o AppSpecAlertOutput) ToAppSpecAlertOutput() AppSpecAlertOutput {
+	return o
+}
+
+func (o AppSpecAlertOutput) ToAppSpecAlertOutputWithContext(ctx context.Context) AppSpecAlertOutput {
+	return o
+}
+
+// Determines whether or not the alert is disabled (default: `false`).
+func (o AppSpecAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+func (o AppSpecAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type AppSpecAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecAlert)(nil)).Elem()
+}
+
+func (o AppSpecAlertArrayOutput) ToAppSpecAlertArrayOutput() AppSpecAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecAlertArrayOutput) ToAppSpecAlertArrayOutputWithContext(ctx context.Context) AppSpecAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecAlertArrayOutput) Index(i pulumi.IntInput) AppSpecAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecAlert {
+		return vs[0].([]AppSpecAlert)[vs[1].(int)]
+	}).(AppSpecAlertOutput)
 }
 
 type AppSpecDatabase struct {
@@ -580,7 +705,7 @@ type AppSpecEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -602,7 +727,7 @@ type AppSpecEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -672,7 +797,7 @@ func (o AppSpecEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o AppSpecEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -698,6 +823,8 @@ func (o AppSpecEnvArrayOutput) Index(i pulumi.IntInput) AppSpecEnvOutput {
 }
 
 type AppSpecJob struct {
+	// Describes an alert policy for the component.
+	Alerts []AppSpecJobAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -724,6 +851,8 @@ type AppSpecJob struct {
 	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
 	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
+	// Describes a log forwarding destination.
+	LogDestinations []AppSpecJobLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -744,6 +873,8 @@ type AppSpecJobInput interface {
 }
 
 type AppSpecJobArgs struct {
+	// Describes an alert policy for the component.
+	Alerts AppSpecJobAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -770,6 +901,8 @@ type AppSpecJobArgs struct {
 	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
 	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Describes a log forwarding destination.
+	LogDestinations AppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -827,6 +960,11 @@ func (o AppSpecJobOutput) ToAppSpecJobOutput() AppSpecJobOutput {
 
 func (o AppSpecJobOutput) ToAppSpecJobOutputWithContext(ctx context.Context) AppSpecJobOutput {
 	return o
+}
+
+// Describes an alert policy for the component.
+func (o AppSpecJobOutput) Alerts() AppSpecJobAlertArrayOutput {
+	return o.ApplyT(func(v AppSpecJob) []AppSpecJobAlert { return v.Alerts }).(AppSpecJobAlertArrayOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -888,6 +1026,11 @@ func (o AppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Describes a log forwarding destination.
+func (o AppSpecJobOutput) LogDestinations() AppSpecJobLogDestinationArrayOutput {
+	return o.ApplyT(func(v AppSpecJob) []AppSpecJobLogDestination { return v.LogDestinations }).(AppSpecJobLogDestinationArrayOutput)
+}
+
 // The name of the component.
 func (o AppSpecJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJob) string { return v.Name }).(pulumi.StringOutput)
@@ -923,6 +1066,139 @@ func (o AppSpecJobArrayOutput) Index(i pulumi.IntInput) AppSpecJobOutput {
 	}).(AppSpecJobOutput)
 }
 
+type AppSpecJobAlert struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator string `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
+}
+
+// AppSpecJobAlertInput is an input type that accepts AppSpecJobAlertArgs and AppSpecJobAlertOutput values.
+// You can construct a concrete instance of `AppSpecJobAlertInput` via:
+//
+//          AppSpecJobAlertArgs{...}
+type AppSpecJobAlertInput interface {
+	pulumi.Input
+
+	ToAppSpecJobAlertOutput() AppSpecJobAlertOutput
+	ToAppSpecJobAlertOutputWithContext(context.Context) AppSpecJobAlertOutput
+}
+
+type AppSpecJobAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
+}
+
+func (AppSpecJobAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobAlert)(nil)).Elem()
+}
+
+func (i AppSpecJobAlertArgs) ToAppSpecJobAlertOutput() AppSpecJobAlertOutput {
+	return i.ToAppSpecJobAlertOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobAlertArgs) ToAppSpecJobAlertOutputWithContext(ctx context.Context) AppSpecJobAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobAlertOutput)
+}
+
+// AppSpecJobAlertArrayInput is an input type that accepts AppSpecJobAlertArray and AppSpecJobAlertArrayOutput values.
+// You can construct a concrete instance of `AppSpecJobAlertArrayInput` via:
+//
+//          AppSpecJobAlertArray{ AppSpecJobAlertArgs{...} }
+type AppSpecJobAlertArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecJobAlertArrayOutput() AppSpecJobAlertArrayOutput
+	ToAppSpecJobAlertArrayOutputWithContext(context.Context) AppSpecJobAlertArrayOutput
+}
+
+type AppSpecJobAlertArray []AppSpecJobAlertInput
+
+func (AppSpecJobAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecJobAlert)(nil)).Elem()
+}
+
+func (i AppSpecJobAlertArray) ToAppSpecJobAlertArrayOutput() AppSpecJobAlertArrayOutput {
+	return i.ToAppSpecJobAlertArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobAlertArray) ToAppSpecJobAlertArrayOutputWithContext(ctx context.Context) AppSpecJobAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobAlertArrayOutput)
+}
+
+type AppSpecJobAlertOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobAlert)(nil)).Elem()
+}
+
+func (o AppSpecJobAlertOutput) ToAppSpecJobAlertOutput() AppSpecJobAlertOutput {
+	return o
+}
+
+func (o AppSpecJobAlertOutput) ToAppSpecJobAlertOutputWithContext(ctx context.Context) AppSpecJobAlertOutput {
+	return o
+}
+
+// Determines whether or not the alert is disabled (default: `false`).
+func (o AppSpecJobAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecJobAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+func (o AppSpecJobAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+func (o AppSpecJobAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o AppSpecJobAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AppSpecJobAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+func (o AppSpecJobAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type AppSpecJobAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecJobAlert)(nil)).Elem()
+}
+
+func (o AppSpecJobAlertArrayOutput) ToAppSpecJobAlertArrayOutput() AppSpecJobAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecJobAlertArrayOutput) ToAppSpecJobAlertArrayOutputWithContext(ctx context.Context) AppSpecJobAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecJobAlertArrayOutput) Index(i pulumi.IntInput) AppSpecJobAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecJobAlert {
+		return vs[0].([]AppSpecJobAlert)[vs[1].(int)]
+	}).(AppSpecJobAlertOutput)
+}
+
 type AppSpecJobEnv struct {
 	// The name of the environment variable.
 	Key *string `pulumi:"key"`
@@ -930,7 +1206,7 @@ type AppSpecJobEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -952,7 +1228,7 @@ type AppSpecJobEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1022,7 +1298,7 @@ func (o AppSpecJobEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o AppSpecJobEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1747,7 +2023,563 @@ func (o AppSpecJobImagePtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AppSpecJobLogDestination struct {
+	// Datadog configuration.
+	Datadog *AppSpecJobLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail *AppSpecJobLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name string `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail *AppSpecJobLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// AppSpecJobLogDestinationInput is an input type that accepts AppSpecJobLogDestinationArgs and AppSpecJobLogDestinationOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationInput` via:
+//
+//          AppSpecJobLogDestinationArgs{...}
+type AppSpecJobLogDestinationInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationOutput() AppSpecJobLogDestinationOutput
+	ToAppSpecJobLogDestinationOutputWithContext(context.Context) AppSpecJobLogDestinationOutput
+}
+
+type AppSpecJobLogDestinationArgs struct {
+	// Datadog configuration.
+	Datadog AppSpecJobLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail AppSpecJobLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail AppSpecJobLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (AppSpecJobLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestination)(nil)).Elem()
+}
+
+func (i AppSpecJobLogDestinationArgs) ToAppSpecJobLogDestinationOutput() AppSpecJobLogDestinationOutput {
+	return i.ToAppSpecJobLogDestinationOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationArgs) ToAppSpecJobLogDestinationOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationOutput)
+}
+
+// AppSpecJobLogDestinationArrayInput is an input type that accepts AppSpecJobLogDestinationArray and AppSpecJobLogDestinationArrayOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationArrayInput` via:
+//
+//          AppSpecJobLogDestinationArray{ AppSpecJobLogDestinationArgs{...} }
+type AppSpecJobLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationArrayOutput() AppSpecJobLogDestinationArrayOutput
+	ToAppSpecJobLogDestinationArrayOutputWithContext(context.Context) AppSpecJobLogDestinationArrayOutput
+}
+
+type AppSpecJobLogDestinationArray []AppSpecJobLogDestinationInput
+
+func (AppSpecJobLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecJobLogDestination)(nil)).Elem()
+}
+
+func (i AppSpecJobLogDestinationArray) ToAppSpecJobLogDestinationArrayOutput() AppSpecJobLogDestinationArrayOutput {
+	return i.ToAppSpecJobLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationArray) ToAppSpecJobLogDestinationArrayOutputWithContext(ctx context.Context) AppSpecJobLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationArrayOutput)
+}
+
+type AppSpecJobLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestination)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationOutput) ToAppSpecJobLogDestinationOutput() AppSpecJobLogDestinationOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOutput) ToAppSpecJobLogDestinationOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOutput {
+	return o
+}
+
+// Datadog configuration.
+func (o AppSpecJobLogDestinationOutput) Datadog() AppSpecJobLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestination) *AppSpecJobLogDestinationDatadog { return v.Datadog }).(AppSpecJobLogDestinationDatadogPtrOutput)
+}
+
+// Logtail configuration.
+func (o AppSpecJobLogDestinationOutput) Logtail() AppSpecJobLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestination) *AppSpecJobLogDestinationLogtail { return v.Logtail }).(AppSpecJobLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o AppSpecJobLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Papertrail configuration.
+func (o AppSpecJobLogDestinationOutput) Papertrail() AppSpecJobLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestination) *AppSpecJobLogDestinationPapertrail { return v.Papertrail }).(AppSpecJobLogDestinationPapertrailPtrOutput)
+}
+
+type AppSpecJobLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecJobLogDestination)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationArrayOutput) ToAppSpecJobLogDestinationArrayOutput() AppSpecJobLogDestinationArrayOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationArrayOutput) ToAppSpecJobLogDestinationArrayOutputWithContext(ctx context.Context) AppSpecJobLogDestinationArrayOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationArrayOutput) Index(i pulumi.IntInput) AppSpecJobLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecJobLogDestination {
+		return vs[0].([]AppSpecJobLogDestination)[vs[1].(int)]
+	}).(AppSpecJobLogDestinationOutput)
+}
+
+type AppSpecJobLogDestinationDatadog struct {
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// AppSpecJobLogDestinationDatadogInput is an input type that accepts AppSpecJobLogDestinationDatadogArgs and AppSpecJobLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationDatadogInput` via:
+//
+//          AppSpecJobLogDestinationDatadogArgs{...}
+type AppSpecJobLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationDatadogOutput() AppSpecJobLogDestinationDatadogOutput
+	ToAppSpecJobLogDestinationDatadogOutputWithContext(context.Context) AppSpecJobLogDestinationDatadogOutput
+}
+
+type AppSpecJobLogDestinationDatadogArgs struct {
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (AppSpecJobLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i AppSpecJobLogDestinationDatadogArgs) ToAppSpecJobLogDestinationDatadogOutput() AppSpecJobLogDestinationDatadogOutput {
+	return i.ToAppSpecJobLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationDatadogArgs) ToAppSpecJobLogDestinationDatadogOutputWithContext(ctx context.Context) AppSpecJobLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationDatadogOutput)
+}
+
+func (i AppSpecJobLogDestinationDatadogArgs) ToAppSpecJobLogDestinationDatadogPtrOutput() AppSpecJobLogDestinationDatadogPtrOutput {
+	return i.ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationDatadogArgs) ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationDatadogOutput).ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// AppSpecJobLogDestinationDatadogPtrInput is an input type that accepts AppSpecJobLogDestinationDatadogArgs, AppSpecJobLogDestinationDatadogPtr and AppSpecJobLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationDatadogPtrInput` via:
+//
+//          AppSpecJobLogDestinationDatadogArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecJobLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationDatadogPtrOutput() AppSpecJobLogDestinationDatadogPtrOutput
+	ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(context.Context) AppSpecJobLogDestinationDatadogPtrOutput
+}
+
+type appSpecJobLogDestinationDatadogPtrType AppSpecJobLogDestinationDatadogArgs
+
+func AppSpecJobLogDestinationDatadogPtr(v *AppSpecJobLogDestinationDatadogArgs) AppSpecJobLogDestinationDatadogPtrInput {
+	return (*appSpecJobLogDestinationDatadogPtrType)(v)
+}
+
+func (*appSpecJobLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *appSpecJobLogDestinationDatadogPtrType) ToAppSpecJobLogDestinationDatadogPtrOutput() AppSpecJobLogDestinationDatadogPtrOutput {
+	return i.ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecJobLogDestinationDatadogPtrType) ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationDatadogPtrOutput)
+}
+
+type AppSpecJobLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationDatadogOutput) ToAppSpecJobLogDestinationDatadogOutput() AppSpecJobLogDestinationDatadogOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationDatadogOutput) ToAppSpecJobLogDestinationDatadogOutputWithContext(ctx context.Context) AppSpecJobLogDestinationDatadogOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationDatadogOutput) ToAppSpecJobLogDestinationDatadogPtrOutput() AppSpecJobLogDestinationDatadogPtrOutput {
+	return o.ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecJobLogDestinationDatadogOutput) ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobLogDestinationDatadog) *AppSpecJobLogDestinationDatadog {
+		return &v
+	}).(AppSpecJobLogDestinationDatadogPtrOutput)
+}
+
+// Datadog API key.
+func (o AppSpecJobLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecJobLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationDatadogPtrOutput) ToAppSpecJobLogDestinationDatadogPtrOutput() AppSpecJobLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationDatadogPtrOutput) ToAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationDatadogPtrOutput) Elem() AppSpecJobLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationDatadog) AppSpecJobLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobLogDestinationDatadog
+		return ret
+	}).(AppSpecJobLogDestinationDatadogOutput)
+}
+
+// Datadog API key.
+func (o AppSpecJobLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobLogDestinationLogtail struct {
+	// Logtail token.
+	Token string `pulumi:"token"`
+}
+
+// AppSpecJobLogDestinationLogtailInput is an input type that accepts AppSpecJobLogDestinationLogtailArgs and AppSpecJobLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationLogtailInput` via:
+//
+//          AppSpecJobLogDestinationLogtailArgs{...}
+type AppSpecJobLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationLogtailOutput() AppSpecJobLogDestinationLogtailOutput
+	ToAppSpecJobLogDestinationLogtailOutputWithContext(context.Context) AppSpecJobLogDestinationLogtailOutput
+}
+
+type AppSpecJobLogDestinationLogtailArgs struct {
+	// Logtail token.
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (AppSpecJobLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i AppSpecJobLogDestinationLogtailArgs) ToAppSpecJobLogDestinationLogtailOutput() AppSpecJobLogDestinationLogtailOutput {
+	return i.ToAppSpecJobLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationLogtailArgs) ToAppSpecJobLogDestinationLogtailOutputWithContext(ctx context.Context) AppSpecJobLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationLogtailOutput)
+}
+
+func (i AppSpecJobLogDestinationLogtailArgs) ToAppSpecJobLogDestinationLogtailPtrOutput() AppSpecJobLogDestinationLogtailPtrOutput {
+	return i.ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationLogtailArgs) ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationLogtailOutput).ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// AppSpecJobLogDestinationLogtailPtrInput is an input type that accepts AppSpecJobLogDestinationLogtailArgs, AppSpecJobLogDestinationLogtailPtr and AppSpecJobLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationLogtailPtrInput` via:
+//
+//          AppSpecJobLogDestinationLogtailArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecJobLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationLogtailPtrOutput() AppSpecJobLogDestinationLogtailPtrOutput
+	ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(context.Context) AppSpecJobLogDestinationLogtailPtrOutput
+}
+
+type appSpecJobLogDestinationLogtailPtrType AppSpecJobLogDestinationLogtailArgs
+
+func AppSpecJobLogDestinationLogtailPtr(v *AppSpecJobLogDestinationLogtailArgs) AppSpecJobLogDestinationLogtailPtrInput {
+	return (*appSpecJobLogDestinationLogtailPtrType)(v)
+}
+
+func (*appSpecJobLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *appSpecJobLogDestinationLogtailPtrType) ToAppSpecJobLogDestinationLogtailPtrOutput() AppSpecJobLogDestinationLogtailPtrOutput {
+	return i.ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecJobLogDestinationLogtailPtrType) ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationLogtailPtrOutput)
+}
+
+type AppSpecJobLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationLogtailOutput) ToAppSpecJobLogDestinationLogtailOutput() AppSpecJobLogDestinationLogtailOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationLogtailOutput) ToAppSpecJobLogDestinationLogtailOutputWithContext(ctx context.Context) AppSpecJobLogDestinationLogtailOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationLogtailOutput) ToAppSpecJobLogDestinationLogtailPtrOutput() AppSpecJobLogDestinationLogtailPtrOutput {
+	return o.ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecJobLogDestinationLogtailOutput) ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobLogDestinationLogtail) *AppSpecJobLogDestinationLogtail {
+		return &v
+	}).(AppSpecJobLogDestinationLogtailPtrOutput)
+}
+
+// Logtail token.
+func (o AppSpecJobLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type AppSpecJobLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationLogtailPtrOutput) ToAppSpecJobLogDestinationLogtailPtrOutput() AppSpecJobLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationLogtailPtrOutput) ToAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationLogtailPtrOutput) Elem() AppSpecJobLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationLogtail) AppSpecJobLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobLogDestinationLogtail
+		return ret
+	}).(AppSpecJobLogDestinationLogtailOutput)
+}
+
+// Logtail token.
+func (o AppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobLogDestinationPapertrail struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// AppSpecJobLogDestinationPapertrailInput is an input type that accepts AppSpecJobLogDestinationPapertrailArgs and AppSpecJobLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationPapertrailInput` via:
+//
+//          AppSpecJobLogDestinationPapertrailArgs{...}
+type AppSpecJobLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationPapertrailOutput() AppSpecJobLogDestinationPapertrailOutput
+	ToAppSpecJobLogDestinationPapertrailOutputWithContext(context.Context) AppSpecJobLogDestinationPapertrailOutput
+}
+
+type AppSpecJobLogDestinationPapertrailArgs struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (AppSpecJobLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i AppSpecJobLogDestinationPapertrailArgs) ToAppSpecJobLogDestinationPapertrailOutput() AppSpecJobLogDestinationPapertrailOutput {
+	return i.ToAppSpecJobLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationPapertrailArgs) ToAppSpecJobLogDestinationPapertrailOutputWithContext(ctx context.Context) AppSpecJobLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationPapertrailOutput)
+}
+
+func (i AppSpecJobLogDestinationPapertrailArgs) ToAppSpecJobLogDestinationPapertrailPtrOutput() AppSpecJobLogDestinationPapertrailPtrOutput {
+	return i.ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationPapertrailArgs) ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationPapertrailOutput).ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// AppSpecJobLogDestinationPapertrailPtrInput is an input type that accepts AppSpecJobLogDestinationPapertrailArgs, AppSpecJobLogDestinationPapertrailPtr and AppSpecJobLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationPapertrailPtrInput` via:
+//
+//          AppSpecJobLogDestinationPapertrailArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecJobLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationPapertrailPtrOutput() AppSpecJobLogDestinationPapertrailPtrOutput
+	ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(context.Context) AppSpecJobLogDestinationPapertrailPtrOutput
+}
+
+type appSpecJobLogDestinationPapertrailPtrType AppSpecJobLogDestinationPapertrailArgs
+
+func AppSpecJobLogDestinationPapertrailPtr(v *AppSpecJobLogDestinationPapertrailArgs) AppSpecJobLogDestinationPapertrailPtrInput {
+	return (*appSpecJobLogDestinationPapertrailPtrType)(v)
+}
+
+func (*appSpecJobLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *appSpecJobLogDestinationPapertrailPtrType) ToAppSpecJobLogDestinationPapertrailPtrOutput() AppSpecJobLogDestinationPapertrailPtrOutput {
+	return i.ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecJobLogDestinationPapertrailPtrType) ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationPapertrailPtrOutput)
+}
+
+type AppSpecJobLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationPapertrailOutput) ToAppSpecJobLogDestinationPapertrailOutput() AppSpecJobLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationPapertrailOutput) ToAppSpecJobLogDestinationPapertrailOutputWithContext(ctx context.Context) AppSpecJobLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationPapertrailOutput) ToAppSpecJobLogDestinationPapertrailPtrOutput() AppSpecJobLogDestinationPapertrailPtrOutput {
+	return o.ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecJobLogDestinationPapertrailOutput) ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobLogDestinationPapertrail) *AppSpecJobLogDestinationPapertrail {
+		return &v
+	}).(AppSpecJobLogDestinationPapertrailPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecJobLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type AppSpecJobLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationPapertrailPtrOutput) ToAppSpecJobLogDestinationPapertrailPtrOutput() AppSpecJobLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationPapertrailPtrOutput) ToAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationPapertrailPtrOutput) Elem() AppSpecJobLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationPapertrail) AppSpecJobLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobLogDestinationPapertrail
+		return ret
+	}).(AppSpecJobLogDestinationPapertrailOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppSpecService struct {
+	// Describes an alert policy for the component.
+	Alerts []AppSpecServiceAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -1776,6 +2608,8 @@ type AppSpecService struct {
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
 	InternalPorts []int `pulumi:"internalPorts"`
+	// Describes a log forwarding destination.
+	LogDestinations []AppSpecServiceLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name   string                `pulumi:"name"`
 	Routes []AppSpecServiceRoute `pulumi:"routes"`
@@ -1797,6 +2631,8 @@ type AppSpecServiceInput interface {
 }
 
 type AppSpecServiceArgs struct {
+	// Describes an alert policy for the component.
+	Alerts AppSpecServiceAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -1825,6 +2661,8 @@ type AppSpecServiceArgs struct {
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
 	InternalPorts pulumi.IntArrayInput `pulumi:"internalPorts"`
+	// Describes a log forwarding destination.
+	LogDestinations AppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name   pulumi.StringInput            `pulumi:"name"`
 	Routes AppSpecServiceRouteArrayInput `pulumi:"routes"`
@@ -1883,6 +2721,11 @@ func (o AppSpecServiceOutput) ToAppSpecServiceOutput() AppSpecServiceOutput {
 
 func (o AppSpecServiceOutput) ToAppSpecServiceOutputWithContext(ctx context.Context) AppSpecServiceOutput {
 	return o
+}
+
+// Describes an alert policy for the component.
+func (o AppSpecServiceOutput) Alerts() AppSpecServiceAlertArrayOutput {
+	return o.ApplyT(func(v AppSpecService) []AppSpecServiceAlert { return v.Alerts }).(AppSpecServiceAlertArrayOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -1955,6 +2798,11 @@ func (o AppSpecServiceOutput) InternalPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v AppSpecService) []int { return v.InternalPorts }).(pulumi.IntArrayOutput)
 }
 
+// Describes a log forwarding destination.
+func (o AppSpecServiceOutput) LogDestinations() AppSpecServiceLogDestinationArrayOutput {
+	return o.ApplyT(func(v AppSpecService) []AppSpecServiceLogDestination { return v.LogDestinations }).(AppSpecServiceLogDestinationArrayOutput)
+}
+
 // The name of the component.
 func (o AppSpecServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecService) string { return v.Name }).(pulumi.StringOutput)
@@ -1992,6 +2840,139 @@ func (o AppSpecServiceArrayOutput) Index(i pulumi.IntInput) AppSpecServiceOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecService {
 		return vs[0].([]AppSpecService)[vs[1].(int)]
 	}).(AppSpecServiceOutput)
+}
+
+type AppSpecServiceAlert struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator string `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
+}
+
+// AppSpecServiceAlertInput is an input type that accepts AppSpecServiceAlertArgs and AppSpecServiceAlertOutput values.
+// You can construct a concrete instance of `AppSpecServiceAlertInput` via:
+//
+//          AppSpecServiceAlertArgs{...}
+type AppSpecServiceAlertInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAlertOutput() AppSpecServiceAlertOutput
+	ToAppSpecServiceAlertOutputWithContext(context.Context) AppSpecServiceAlertOutput
+}
+
+type AppSpecServiceAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
+}
+
+func (AppSpecServiceAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAlert)(nil)).Elem()
+}
+
+func (i AppSpecServiceAlertArgs) ToAppSpecServiceAlertOutput() AppSpecServiceAlertOutput {
+	return i.ToAppSpecServiceAlertOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAlertArgs) ToAppSpecServiceAlertOutputWithContext(ctx context.Context) AppSpecServiceAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAlertOutput)
+}
+
+// AppSpecServiceAlertArrayInput is an input type that accepts AppSpecServiceAlertArray and AppSpecServiceAlertArrayOutput values.
+// You can construct a concrete instance of `AppSpecServiceAlertArrayInput` via:
+//
+//          AppSpecServiceAlertArray{ AppSpecServiceAlertArgs{...} }
+type AppSpecServiceAlertArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAlertArrayOutput() AppSpecServiceAlertArrayOutput
+	ToAppSpecServiceAlertArrayOutputWithContext(context.Context) AppSpecServiceAlertArrayOutput
+}
+
+type AppSpecServiceAlertArray []AppSpecServiceAlertInput
+
+func (AppSpecServiceAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceAlert)(nil)).Elem()
+}
+
+func (i AppSpecServiceAlertArray) ToAppSpecServiceAlertArrayOutput() AppSpecServiceAlertArrayOutput {
+	return i.ToAppSpecServiceAlertArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAlertArray) ToAppSpecServiceAlertArrayOutputWithContext(ctx context.Context) AppSpecServiceAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAlertArrayOutput)
+}
+
+type AppSpecServiceAlertOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAlert)(nil)).Elem()
+}
+
+func (o AppSpecServiceAlertOutput) ToAppSpecServiceAlertOutput() AppSpecServiceAlertOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertOutput) ToAppSpecServiceAlertOutputWithContext(ctx context.Context) AppSpecServiceAlertOutput {
+	return o
+}
+
+// Determines whether or not the alert is disabled (default: `false`).
+func (o AppSpecServiceAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+func (o AppSpecServiceAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+func (o AppSpecServiceAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o AppSpecServiceAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AppSpecServiceAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+func (o AppSpecServiceAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type AppSpecServiceAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceAlert)(nil)).Elem()
+}
+
+func (o AppSpecServiceAlertArrayOutput) ToAppSpecServiceAlertArrayOutput() AppSpecServiceAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertArrayOutput) ToAppSpecServiceAlertArrayOutputWithContext(ctx context.Context) AppSpecServiceAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) AppSpecServiceAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecServiceAlert {
+		return vs[0].([]AppSpecServiceAlert)[vs[1].(int)]
+	}).(AppSpecServiceAlertOutput)
 }
 
 type AppSpecServiceCors struct {
@@ -2408,7 +3389,7 @@ type AppSpecServiceEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -2430,7 +3411,7 @@ type AppSpecServiceEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2500,7 +3481,7 @@ func (o AppSpecServiceEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o AppSpecServiceEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -3457,6 +4438,560 @@ func (o AppSpecServiceImagePtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AppSpecServiceLogDestination struct {
+	// Datadog configuration.
+	Datadog *AppSpecServiceLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail *AppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name string `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail *AppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// AppSpecServiceLogDestinationInput is an input type that accepts AppSpecServiceLogDestinationArgs and AppSpecServiceLogDestinationOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationInput` via:
+//
+//          AppSpecServiceLogDestinationArgs{...}
+type AppSpecServiceLogDestinationInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationOutput() AppSpecServiceLogDestinationOutput
+	ToAppSpecServiceLogDestinationOutputWithContext(context.Context) AppSpecServiceLogDestinationOutput
+}
+
+type AppSpecServiceLogDestinationArgs struct {
+	// Datadog configuration.
+	Datadog AppSpecServiceLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail AppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail AppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (AppSpecServiceLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (i AppSpecServiceLogDestinationArgs) ToAppSpecServiceLogDestinationOutput() AppSpecServiceLogDestinationOutput {
+	return i.ToAppSpecServiceLogDestinationOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationArgs) ToAppSpecServiceLogDestinationOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationOutput)
+}
+
+// AppSpecServiceLogDestinationArrayInput is an input type that accepts AppSpecServiceLogDestinationArray and AppSpecServiceLogDestinationArrayOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationArrayInput` via:
+//
+//          AppSpecServiceLogDestinationArray{ AppSpecServiceLogDestinationArgs{...} }
+type AppSpecServiceLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationArrayOutput() AppSpecServiceLogDestinationArrayOutput
+	ToAppSpecServiceLogDestinationArrayOutputWithContext(context.Context) AppSpecServiceLogDestinationArrayOutput
+}
+
+type AppSpecServiceLogDestinationArray []AppSpecServiceLogDestinationInput
+
+func (AppSpecServiceLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (i AppSpecServiceLogDestinationArray) ToAppSpecServiceLogDestinationArrayOutput() AppSpecServiceLogDestinationArrayOutput {
+	return i.ToAppSpecServiceLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationArray) ToAppSpecServiceLogDestinationArrayOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationArrayOutput)
+}
+
+type AppSpecServiceLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationOutput) ToAppSpecServiceLogDestinationOutput() AppSpecServiceLogDestinationOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOutput) ToAppSpecServiceLogDestinationOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOutput {
+	return o
+}
+
+// Datadog configuration.
+func (o AppSpecServiceLogDestinationOutput) Datadog() AppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestination) *AppSpecServiceLogDestinationDatadog { return v.Datadog }).(AppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+// Logtail configuration.
+func (o AppSpecServiceLogDestinationOutput) Logtail() AppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestination) *AppSpecServiceLogDestinationLogtail { return v.Logtail }).(AppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o AppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Papertrail configuration.
+func (o AppSpecServiceLogDestinationOutput) Papertrail() AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestination) *AppSpecServiceLogDestinationPapertrail { return v.Papertrail }).(AppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+type AppSpecServiceLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationArrayOutput) ToAppSpecServiceLogDestinationArrayOutput() AppSpecServiceLogDestinationArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationArrayOutput) ToAppSpecServiceLogDestinationArrayOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationArrayOutput) Index(i pulumi.IntInput) AppSpecServiceLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecServiceLogDestination {
+		return vs[0].([]AppSpecServiceLogDestination)[vs[1].(int)]
+	}).(AppSpecServiceLogDestinationOutput)
+}
+
+type AppSpecServiceLogDestinationDatadog struct {
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// AppSpecServiceLogDestinationDatadogInput is an input type that accepts AppSpecServiceLogDestinationDatadogArgs and AppSpecServiceLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationDatadogInput` via:
+//
+//          AppSpecServiceLogDestinationDatadogArgs{...}
+type AppSpecServiceLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationDatadogOutput() AppSpecServiceLogDestinationDatadogOutput
+	ToAppSpecServiceLogDestinationDatadogOutputWithContext(context.Context) AppSpecServiceLogDestinationDatadogOutput
+}
+
+type AppSpecServiceLogDestinationDatadogArgs struct {
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (AppSpecServiceLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i AppSpecServiceLogDestinationDatadogArgs) ToAppSpecServiceLogDestinationDatadogOutput() AppSpecServiceLogDestinationDatadogOutput {
+	return i.ToAppSpecServiceLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationDatadogArgs) ToAppSpecServiceLogDestinationDatadogOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationDatadogOutput)
+}
+
+func (i AppSpecServiceLogDestinationDatadogArgs) ToAppSpecServiceLogDestinationDatadogPtrOutput() AppSpecServiceLogDestinationDatadogPtrOutput {
+	return i.ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationDatadogArgs) ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationDatadogOutput).ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceLogDestinationDatadogPtrInput is an input type that accepts AppSpecServiceLogDestinationDatadogArgs, AppSpecServiceLogDestinationDatadogPtr and AppSpecServiceLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationDatadogPtrInput` via:
+//
+//          AppSpecServiceLogDestinationDatadogArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationDatadogPtrOutput() AppSpecServiceLogDestinationDatadogPtrOutput
+	ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Context) AppSpecServiceLogDestinationDatadogPtrOutput
+}
+
+type appSpecServiceLogDestinationDatadogPtrType AppSpecServiceLogDestinationDatadogArgs
+
+func AppSpecServiceLogDestinationDatadogPtr(v *AppSpecServiceLogDestinationDatadogArgs) AppSpecServiceLogDestinationDatadogPtrInput {
+	return (*appSpecServiceLogDestinationDatadogPtrType)(v)
+}
+
+func (*appSpecServiceLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *appSpecServiceLogDestinationDatadogPtrType) ToAppSpecServiceLogDestinationDatadogPtrOutput() AppSpecServiceLogDestinationDatadogPtrOutput {
+	return i.ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceLogDestinationDatadogPtrType) ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+type AppSpecServiceLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationDatadogOutput) ToAppSpecServiceLogDestinationDatadogOutput() AppSpecServiceLogDestinationDatadogOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationDatadogOutput) ToAppSpecServiceLogDestinationDatadogOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationDatadogOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationDatadogOutput) ToAppSpecServiceLogDestinationDatadogPtrOutput() AppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceLogDestinationDatadogOutput) ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceLogDestinationDatadog) *AppSpecServiceLogDestinationDatadog {
+		return &v
+	}).(AppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+// Datadog API key.
+func (o AppSpecServiceLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecServiceLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationDatadogPtrOutput) ToAppSpecServiceLogDestinationDatadogPtrOutput() AppSpecServiceLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationDatadogPtrOutput) ToAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationDatadogPtrOutput) Elem() AppSpecServiceLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationDatadog) AppSpecServiceLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceLogDestinationDatadog
+		return ret
+	}).(AppSpecServiceLogDestinationDatadogOutput)
+}
+
+// Datadog API key.
+func (o AppSpecServiceLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceLogDestinationLogtail struct {
+	// Logtail token.
+	Token string `pulumi:"token"`
+}
+
+// AppSpecServiceLogDestinationLogtailInput is an input type that accepts AppSpecServiceLogDestinationLogtailArgs and AppSpecServiceLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationLogtailInput` via:
+//
+//          AppSpecServiceLogDestinationLogtailArgs{...}
+type AppSpecServiceLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationLogtailOutput() AppSpecServiceLogDestinationLogtailOutput
+	ToAppSpecServiceLogDestinationLogtailOutputWithContext(context.Context) AppSpecServiceLogDestinationLogtailOutput
+}
+
+type AppSpecServiceLogDestinationLogtailArgs struct {
+	// Logtail token.
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (AppSpecServiceLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i AppSpecServiceLogDestinationLogtailArgs) ToAppSpecServiceLogDestinationLogtailOutput() AppSpecServiceLogDestinationLogtailOutput {
+	return i.ToAppSpecServiceLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationLogtailArgs) ToAppSpecServiceLogDestinationLogtailOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationLogtailOutput)
+}
+
+func (i AppSpecServiceLogDestinationLogtailArgs) ToAppSpecServiceLogDestinationLogtailPtrOutput() AppSpecServiceLogDestinationLogtailPtrOutput {
+	return i.ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationLogtailArgs) ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationLogtailOutput).ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceLogDestinationLogtailPtrInput is an input type that accepts AppSpecServiceLogDestinationLogtailArgs, AppSpecServiceLogDestinationLogtailPtr and AppSpecServiceLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationLogtailPtrInput` via:
+//
+//          AppSpecServiceLogDestinationLogtailArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationLogtailPtrOutput() AppSpecServiceLogDestinationLogtailPtrOutput
+	ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Context) AppSpecServiceLogDestinationLogtailPtrOutput
+}
+
+type appSpecServiceLogDestinationLogtailPtrType AppSpecServiceLogDestinationLogtailArgs
+
+func AppSpecServiceLogDestinationLogtailPtr(v *AppSpecServiceLogDestinationLogtailArgs) AppSpecServiceLogDestinationLogtailPtrInput {
+	return (*appSpecServiceLogDestinationLogtailPtrType)(v)
+}
+
+func (*appSpecServiceLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *appSpecServiceLogDestinationLogtailPtrType) ToAppSpecServiceLogDestinationLogtailPtrOutput() AppSpecServiceLogDestinationLogtailPtrOutput {
+	return i.ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceLogDestinationLogtailPtrType) ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+type AppSpecServiceLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationLogtailOutput) ToAppSpecServiceLogDestinationLogtailOutput() AppSpecServiceLogDestinationLogtailOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationLogtailOutput) ToAppSpecServiceLogDestinationLogtailOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationLogtailOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationLogtailOutput) ToAppSpecServiceLogDestinationLogtailPtrOutput() AppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceLogDestinationLogtailOutput) ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceLogDestinationLogtail) *AppSpecServiceLogDestinationLogtail {
+		return &v
+	}).(AppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+// Logtail token.
+func (o AppSpecServiceLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type AppSpecServiceLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationLogtailPtrOutput) ToAppSpecServiceLogDestinationLogtailPtrOutput() AppSpecServiceLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationLogtailPtrOutput) ToAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationLogtailPtrOutput) Elem() AppSpecServiceLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationLogtail) AppSpecServiceLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceLogDestinationLogtail
+		return ret
+	}).(AppSpecServiceLogDestinationLogtailOutput)
+}
+
+// Logtail token.
+func (o AppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceLogDestinationPapertrail struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// AppSpecServiceLogDestinationPapertrailInput is an input type that accepts AppSpecServiceLogDestinationPapertrailArgs and AppSpecServiceLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationPapertrailInput` via:
+//
+//          AppSpecServiceLogDestinationPapertrailArgs{...}
+type AppSpecServiceLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationPapertrailOutput() AppSpecServiceLogDestinationPapertrailOutput
+	ToAppSpecServiceLogDestinationPapertrailOutputWithContext(context.Context) AppSpecServiceLogDestinationPapertrailOutput
+}
+
+type AppSpecServiceLogDestinationPapertrailArgs struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (AppSpecServiceLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i AppSpecServiceLogDestinationPapertrailArgs) ToAppSpecServiceLogDestinationPapertrailOutput() AppSpecServiceLogDestinationPapertrailOutput {
+	return i.ToAppSpecServiceLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationPapertrailArgs) ToAppSpecServiceLogDestinationPapertrailOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationPapertrailOutput)
+}
+
+func (i AppSpecServiceLogDestinationPapertrailArgs) ToAppSpecServiceLogDestinationPapertrailPtrOutput() AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return i.ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationPapertrailArgs) ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationPapertrailOutput).ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceLogDestinationPapertrailPtrInput is an input type that accepts AppSpecServiceLogDestinationPapertrailArgs, AppSpecServiceLogDestinationPapertrailPtr and AppSpecServiceLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationPapertrailPtrInput` via:
+//
+//          AppSpecServiceLogDestinationPapertrailArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecServiceLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationPapertrailPtrOutput() AppSpecServiceLogDestinationPapertrailPtrOutput
+	ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Context) AppSpecServiceLogDestinationPapertrailPtrOutput
+}
+
+type appSpecServiceLogDestinationPapertrailPtrType AppSpecServiceLogDestinationPapertrailArgs
+
+func AppSpecServiceLogDestinationPapertrailPtr(v *AppSpecServiceLogDestinationPapertrailArgs) AppSpecServiceLogDestinationPapertrailPtrInput {
+	return (*appSpecServiceLogDestinationPapertrailPtrType)(v)
+}
+
+func (*appSpecServiceLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *appSpecServiceLogDestinationPapertrailPtrType) ToAppSpecServiceLogDestinationPapertrailPtrOutput() AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return i.ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceLogDestinationPapertrailPtrType) ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+type AppSpecServiceLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationPapertrailOutput) ToAppSpecServiceLogDestinationPapertrailOutput() AppSpecServiceLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationPapertrailOutput) ToAppSpecServiceLogDestinationPapertrailOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationPapertrailOutput) ToAppSpecServiceLogDestinationPapertrailPtrOutput() AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceLogDestinationPapertrailOutput) ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceLogDestinationPapertrail) *AppSpecServiceLogDestinationPapertrail {
+		return &v
+	}).(AppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecServiceLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type AppSpecServiceLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationPapertrailPtrOutput) ToAppSpecServiceLogDestinationPapertrailPtrOutput() AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationPapertrailPtrOutput) ToAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationPapertrailPtrOutput) Elem() AppSpecServiceLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationPapertrail) AppSpecServiceLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceLogDestinationPapertrail
+		return ret
+	}).(AppSpecServiceLogDestinationPapertrailOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecServiceLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppSpecServiceRoute struct {
 	// Paths must start with `/` and must be unique within the app.
 	Path *string `pulumi:"path"`
@@ -4197,7 +5732,7 @@ type AppSpecStaticSiteEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -4219,7 +5754,7 @@ type AppSpecStaticSiteEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -4289,7 +5824,7 @@ func (o AppSpecStaticSiteEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o AppSpecStaticSiteEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -4927,6 +6462,8 @@ func (o AppSpecStaticSiteRouteArrayOutput) Index(i pulumi.IntInput) AppSpecStati
 }
 
 type AppSpecWorker struct {
+	// Describes an alert policy for the component.
+	Alerts []AppSpecWorkerAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -4947,6 +6484,8 @@ type AppSpecWorker struct {
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	// Describes a log forwarding destination.
+	LogDestinations []AppSpecWorkerLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -4967,6 +6506,8 @@ type AppSpecWorkerInput interface {
 }
 
 type AppSpecWorkerArgs struct {
+	// Describes an alert policy for the component.
+	Alerts AppSpecWorkerAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -4987,6 +6528,8 @@ type AppSpecWorkerArgs struct {
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	// Describes a log forwarding destination.
+	LogDestinations AppSpecWorkerLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -5046,6 +6589,11 @@ func (o AppSpecWorkerOutput) ToAppSpecWorkerOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Describes an alert policy for the component.
+func (o AppSpecWorkerOutput) Alerts() AppSpecWorkerAlertArrayOutput {
+	return o.ApplyT(func(v AppSpecWorker) []AppSpecWorkerAlert { return v.Alerts }).(AppSpecWorkerAlertArrayOutput)
+}
+
 // An optional build command to run while building this component from source.
 func (o AppSpecWorkerOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
@@ -5096,6 +6644,11 @@ func (o AppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
 
+// Describes a log forwarding destination.
+func (o AppSpecWorkerOutput) LogDestinations() AppSpecWorkerLogDestinationArrayOutput {
+	return o.ApplyT(func(v AppSpecWorker) []AppSpecWorkerLogDestination { return v.LogDestinations }).(AppSpecWorkerLogDestinationArrayOutput)
+}
+
 // The name of the component.
 func (o AppSpecWorkerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorker) string { return v.Name }).(pulumi.StringOutput)
@@ -5131,6 +6684,139 @@ func (o AppSpecWorkerArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerOutput {
 	}).(AppSpecWorkerOutput)
 }
 
+type AppSpecWorkerAlert struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator string `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
+}
+
+// AppSpecWorkerAlertInput is an input type that accepts AppSpecWorkerAlertArgs and AppSpecWorkerAlertOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAlertInput` via:
+//
+//          AppSpecWorkerAlertArgs{...}
+type AppSpecWorkerAlertInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAlertOutput() AppSpecWorkerAlertOutput
+	ToAppSpecWorkerAlertOutputWithContext(context.Context) AppSpecWorkerAlertOutput
+}
+
+type AppSpecWorkerAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
+}
+
+func (AppSpecWorkerAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAlert)(nil)).Elem()
+}
+
+func (i AppSpecWorkerAlertArgs) ToAppSpecWorkerAlertOutput() AppSpecWorkerAlertOutput {
+	return i.ToAppSpecWorkerAlertOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAlertArgs) ToAppSpecWorkerAlertOutputWithContext(ctx context.Context) AppSpecWorkerAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAlertOutput)
+}
+
+// AppSpecWorkerAlertArrayInput is an input type that accepts AppSpecWorkerAlertArray and AppSpecWorkerAlertArrayOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAlertArrayInput` via:
+//
+//          AppSpecWorkerAlertArray{ AppSpecWorkerAlertArgs{...} }
+type AppSpecWorkerAlertArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAlertArrayOutput() AppSpecWorkerAlertArrayOutput
+	ToAppSpecWorkerAlertArrayOutputWithContext(context.Context) AppSpecWorkerAlertArrayOutput
+}
+
+type AppSpecWorkerAlertArray []AppSpecWorkerAlertInput
+
+func (AppSpecWorkerAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerAlert)(nil)).Elem()
+}
+
+func (i AppSpecWorkerAlertArray) ToAppSpecWorkerAlertArrayOutput() AppSpecWorkerAlertArrayOutput {
+	return i.ToAppSpecWorkerAlertArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAlertArray) ToAppSpecWorkerAlertArrayOutputWithContext(ctx context.Context) AppSpecWorkerAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAlertArrayOutput)
+}
+
+type AppSpecWorkerAlertOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAlert)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAlertOutput) ToAppSpecWorkerAlertOutput() AppSpecWorkerAlertOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertOutput) ToAppSpecWorkerAlertOutputWithContext(ctx context.Context) AppSpecWorkerAlertOutput {
+	return o
+}
+
+// Determines whether or not the alert is disabled (default: `false`).
+func (o AppSpecWorkerAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+func (o AppSpecWorkerAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+func (o AppSpecWorkerAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o AppSpecWorkerAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AppSpecWorkerAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+func (o AppSpecWorkerAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type AppSpecWorkerAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerAlert)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAlertArrayOutput) ToAppSpecWorkerAlertArrayOutput() AppSpecWorkerAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertArrayOutput) ToAppSpecWorkerAlertArrayOutputWithContext(ctx context.Context) AppSpecWorkerAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorkerAlert {
+		return vs[0].([]AppSpecWorkerAlert)[vs[1].(int)]
+	}).(AppSpecWorkerAlertOutput)
+}
+
 type AppSpecWorkerEnv struct {
 	// The name of the environment variable.
 	Key *string `pulumi:"key"`
@@ -5138,7 +6824,7 @@ type AppSpecWorkerEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -5160,7 +6846,7 @@ type AppSpecWorkerEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5230,7 +6916,7 @@ func (o AppSpecWorkerEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o AppSpecWorkerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5952,6 +7638,560 @@ func (o AppSpecWorkerImagePtrOutput) Tag() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerLogDestination struct {
+	// Datadog configuration.
+	Datadog *AppSpecWorkerLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail *AppSpecWorkerLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name string `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail *AppSpecWorkerLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// AppSpecWorkerLogDestinationInput is an input type that accepts AppSpecWorkerLogDestinationArgs and AppSpecWorkerLogDestinationOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationInput` via:
+//
+//          AppSpecWorkerLogDestinationArgs{...}
+type AppSpecWorkerLogDestinationInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationOutput() AppSpecWorkerLogDestinationOutput
+	ToAppSpecWorkerLogDestinationOutputWithContext(context.Context) AppSpecWorkerLogDestinationOutput
+}
+
+type AppSpecWorkerLogDestinationArgs struct {
+	// Datadog configuration.
+	Datadog AppSpecWorkerLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail AppSpecWorkerLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail AppSpecWorkerLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (AppSpecWorkerLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestination)(nil)).Elem()
+}
+
+func (i AppSpecWorkerLogDestinationArgs) ToAppSpecWorkerLogDestinationOutput() AppSpecWorkerLogDestinationOutput {
+	return i.ToAppSpecWorkerLogDestinationOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationArgs) ToAppSpecWorkerLogDestinationOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationOutput)
+}
+
+// AppSpecWorkerLogDestinationArrayInput is an input type that accepts AppSpecWorkerLogDestinationArray and AppSpecWorkerLogDestinationArrayOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationArrayInput` via:
+//
+//          AppSpecWorkerLogDestinationArray{ AppSpecWorkerLogDestinationArgs{...} }
+type AppSpecWorkerLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationArrayOutput() AppSpecWorkerLogDestinationArrayOutput
+	ToAppSpecWorkerLogDestinationArrayOutputWithContext(context.Context) AppSpecWorkerLogDestinationArrayOutput
+}
+
+type AppSpecWorkerLogDestinationArray []AppSpecWorkerLogDestinationInput
+
+func (AppSpecWorkerLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerLogDestination)(nil)).Elem()
+}
+
+func (i AppSpecWorkerLogDestinationArray) ToAppSpecWorkerLogDestinationArrayOutput() AppSpecWorkerLogDestinationArrayOutput {
+	return i.ToAppSpecWorkerLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationArray) ToAppSpecWorkerLogDestinationArrayOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationArrayOutput)
+}
+
+type AppSpecWorkerLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestination)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationOutput) ToAppSpecWorkerLogDestinationOutput() AppSpecWorkerLogDestinationOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOutput) ToAppSpecWorkerLogDestinationOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOutput {
+	return o
+}
+
+// Datadog configuration.
+func (o AppSpecWorkerLogDestinationOutput) Datadog() AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestination) *AppSpecWorkerLogDestinationDatadog { return v.Datadog }).(AppSpecWorkerLogDestinationDatadogPtrOutput)
+}
+
+// Logtail configuration.
+func (o AppSpecWorkerLogDestinationOutput) Logtail() AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestination) *AppSpecWorkerLogDestinationLogtail { return v.Logtail }).(AppSpecWorkerLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o AppSpecWorkerLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Papertrail configuration.
+func (o AppSpecWorkerLogDestinationOutput) Papertrail() AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestination) *AppSpecWorkerLogDestinationPapertrail { return v.Papertrail }).(AppSpecWorkerLogDestinationPapertrailPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerLogDestination)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationArrayOutput) ToAppSpecWorkerLogDestinationArrayOutput() AppSpecWorkerLogDestinationArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationArrayOutput) ToAppSpecWorkerLogDestinationArrayOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorkerLogDestination {
+		return vs[0].([]AppSpecWorkerLogDestination)[vs[1].(int)]
+	}).(AppSpecWorkerLogDestinationOutput)
+}
+
+type AppSpecWorkerLogDestinationDatadog struct {
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// AppSpecWorkerLogDestinationDatadogInput is an input type that accepts AppSpecWorkerLogDestinationDatadogArgs and AppSpecWorkerLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationDatadogInput` via:
+//
+//          AppSpecWorkerLogDestinationDatadogArgs{...}
+type AppSpecWorkerLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationDatadogOutput() AppSpecWorkerLogDestinationDatadogOutput
+	ToAppSpecWorkerLogDestinationDatadogOutputWithContext(context.Context) AppSpecWorkerLogDestinationDatadogOutput
+}
+
+type AppSpecWorkerLogDestinationDatadogArgs struct {
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (AppSpecWorkerLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i AppSpecWorkerLogDestinationDatadogArgs) ToAppSpecWorkerLogDestinationDatadogOutput() AppSpecWorkerLogDestinationDatadogOutput {
+	return i.ToAppSpecWorkerLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationDatadogArgs) ToAppSpecWorkerLogDestinationDatadogOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationDatadogOutput)
+}
+
+func (i AppSpecWorkerLogDestinationDatadogArgs) ToAppSpecWorkerLogDestinationDatadogPtrOutput() AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationDatadogArgs) ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationDatadogOutput).ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerLogDestinationDatadogPtrInput is an input type that accepts AppSpecWorkerLogDestinationDatadogArgs, AppSpecWorkerLogDestinationDatadogPtr and AppSpecWorkerLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationDatadogPtrInput` via:
+//
+//          AppSpecWorkerLogDestinationDatadogArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecWorkerLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationDatadogPtrOutput() AppSpecWorkerLogDestinationDatadogPtrOutput
+	ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(context.Context) AppSpecWorkerLogDestinationDatadogPtrOutput
+}
+
+type appSpecWorkerLogDestinationDatadogPtrType AppSpecWorkerLogDestinationDatadogArgs
+
+func AppSpecWorkerLogDestinationDatadogPtr(v *AppSpecWorkerLogDestinationDatadogArgs) AppSpecWorkerLogDestinationDatadogPtrInput {
+	return (*appSpecWorkerLogDestinationDatadogPtrType)(v)
+}
+
+func (*appSpecWorkerLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *appSpecWorkerLogDestinationDatadogPtrType) ToAppSpecWorkerLogDestinationDatadogPtrOutput() AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerLogDestinationDatadogPtrType) ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationDatadogPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationDatadogOutput) ToAppSpecWorkerLogDestinationDatadogOutput() AppSpecWorkerLogDestinationDatadogOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationDatadogOutput) ToAppSpecWorkerLogDestinationDatadogOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationDatadogOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationDatadogOutput) ToAppSpecWorkerLogDestinationDatadogPtrOutput() AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o.ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerLogDestinationDatadogOutput) ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerLogDestinationDatadog) *AppSpecWorkerLogDestinationDatadog {
+		return &v
+	}).(AppSpecWorkerLogDestinationDatadogPtrOutput)
+}
+
+// Datadog API key.
+func (o AppSpecWorkerLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecWorkerLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationDatadogPtrOutput) ToAppSpecWorkerLogDestinationDatadogPtrOutput() AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationDatadogPtrOutput) ToAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationDatadogPtrOutput) Elem() AppSpecWorkerLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationDatadog) AppSpecWorkerLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerLogDestinationDatadog
+		return ret
+	}).(AppSpecWorkerLogDestinationDatadogOutput)
+}
+
+// Datadog API key.
+func (o AppSpecWorkerLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationLogtail struct {
+	// Logtail token.
+	Token string `pulumi:"token"`
+}
+
+// AppSpecWorkerLogDestinationLogtailInput is an input type that accepts AppSpecWorkerLogDestinationLogtailArgs and AppSpecWorkerLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationLogtailInput` via:
+//
+//          AppSpecWorkerLogDestinationLogtailArgs{...}
+type AppSpecWorkerLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationLogtailOutput() AppSpecWorkerLogDestinationLogtailOutput
+	ToAppSpecWorkerLogDestinationLogtailOutputWithContext(context.Context) AppSpecWorkerLogDestinationLogtailOutput
+}
+
+type AppSpecWorkerLogDestinationLogtailArgs struct {
+	// Logtail token.
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (AppSpecWorkerLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i AppSpecWorkerLogDestinationLogtailArgs) ToAppSpecWorkerLogDestinationLogtailOutput() AppSpecWorkerLogDestinationLogtailOutput {
+	return i.ToAppSpecWorkerLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationLogtailArgs) ToAppSpecWorkerLogDestinationLogtailOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationLogtailOutput)
+}
+
+func (i AppSpecWorkerLogDestinationLogtailArgs) ToAppSpecWorkerLogDestinationLogtailPtrOutput() AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationLogtailArgs) ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationLogtailOutput).ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerLogDestinationLogtailPtrInput is an input type that accepts AppSpecWorkerLogDestinationLogtailArgs, AppSpecWorkerLogDestinationLogtailPtr and AppSpecWorkerLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationLogtailPtrInput` via:
+//
+//          AppSpecWorkerLogDestinationLogtailArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecWorkerLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationLogtailPtrOutput() AppSpecWorkerLogDestinationLogtailPtrOutput
+	ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(context.Context) AppSpecWorkerLogDestinationLogtailPtrOutput
+}
+
+type appSpecWorkerLogDestinationLogtailPtrType AppSpecWorkerLogDestinationLogtailArgs
+
+func AppSpecWorkerLogDestinationLogtailPtr(v *AppSpecWorkerLogDestinationLogtailArgs) AppSpecWorkerLogDestinationLogtailPtrInput {
+	return (*appSpecWorkerLogDestinationLogtailPtrType)(v)
+}
+
+func (*appSpecWorkerLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *appSpecWorkerLogDestinationLogtailPtrType) ToAppSpecWorkerLogDestinationLogtailPtrOutput() AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerLogDestinationLogtailPtrType) ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationLogtailPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationLogtailOutput) ToAppSpecWorkerLogDestinationLogtailOutput() AppSpecWorkerLogDestinationLogtailOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationLogtailOutput) ToAppSpecWorkerLogDestinationLogtailOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationLogtailOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationLogtailOutput) ToAppSpecWorkerLogDestinationLogtailPtrOutput() AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o.ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerLogDestinationLogtailOutput) ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerLogDestinationLogtail) *AppSpecWorkerLogDestinationLogtail {
+		return &v
+	}).(AppSpecWorkerLogDestinationLogtailPtrOutput)
+}
+
+// Logtail token.
+func (o AppSpecWorkerLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type AppSpecWorkerLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationLogtailPtrOutput) ToAppSpecWorkerLogDestinationLogtailPtrOutput() AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationLogtailPtrOutput) ToAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Elem() AppSpecWorkerLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationLogtail) AppSpecWorkerLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerLogDestinationLogtail
+		return ret
+	}).(AppSpecWorkerLogDestinationLogtailOutput)
+}
+
+// Logtail token.
+func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationPapertrail struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// AppSpecWorkerLogDestinationPapertrailInput is an input type that accepts AppSpecWorkerLogDestinationPapertrailArgs and AppSpecWorkerLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationPapertrailInput` via:
+//
+//          AppSpecWorkerLogDestinationPapertrailArgs{...}
+type AppSpecWorkerLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationPapertrailOutput() AppSpecWorkerLogDestinationPapertrailOutput
+	ToAppSpecWorkerLogDestinationPapertrailOutputWithContext(context.Context) AppSpecWorkerLogDestinationPapertrailOutput
+}
+
+type AppSpecWorkerLogDestinationPapertrailArgs struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (AppSpecWorkerLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i AppSpecWorkerLogDestinationPapertrailArgs) ToAppSpecWorkerLogDestinationPapertrailOutput() AppSpecWorkerLogDestinationPapertrailOutput {
+	return i.ToAppSpecWorkerLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationPapertrailArgs) ToAppSpecWorkerLogDestinationPapertrailOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationPapertrailOutput)
+}
+
+func (i AppSpecWorkerLogDestinationPapertrailArgs) ToAppSpecWorkerLogDestinationPapertrailPtrOutput() AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationPapertrailArgs) ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationPapertrailOutput).ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerLogDestinationPapertrailPtrInput is an input type that accepts AppSpecWorkerLogDestinationPapertrailArgs, AppSpecWorkerLogDestinationPapertrailPtr and AppSpecWorkerLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationPapertrailPtrInput` via:
+//
+//          AppSpecWorkerLogDestinationPapertrailArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecWorkerLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationPapertrailPtrOutput() AppSpecWorkerLogDestinationPapertrailPtrOutput
+	ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(context.Context) AppSpecWorkerLogDestinationPapertrailPtrOutput
+}
+
+type appSpecWorkerLogDestinationPapertrailPtrType AppSpecWorkerLogDestinationPapertrailArgs
+
+func AppSpecWorkerLogDestinationPapertrailPtr(v *AppSpecWorkerLogDestinationPapertrailArgs) AppSpecWorkerLogDestinationPapertrailPtrInput {
+	return (*appSpecWorkerLogDestinationPapertrailPtrType)(v)
+}
+
+func (*appSpecWorkerLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *appSpecWorkerLogDestinationPapertrailPtrType) ToAppSpecWorkerLogDestinationPapertrailPtrOutput() AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerLogDestinationPapertrailPtrType) ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationPapertrailPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationPapertrailOutput) ToAppSpecWorkerLogDestinationPapertrailOutput() AppSpecWorkerLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationPapertrailOutput) ToAppSpecWorkerLogDestinationPapertrailOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationPapertrailOutput) ToAppSpecWorkerLogDestinationPapertrailPtrOutput() AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o.ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerLogDestinationPapertrailOutput) ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerLogDestinationPapertrail) *AppSpecWorkerLogDestinationPapertrail {
+		return &v
+	}).(AppSpecWorkerLogDestinationPapertrailPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecWorkerLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type AppSpecWorkerLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) ToAppSpecWorkerLogDestinationPapertrailPtrOutput() AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) ToAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) Elem() AppSpecWorkerLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationPapertrail) AppSpecWorkerLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerLogDestinationPapertrail
+		return ret
+	}).(AppSpecWorkerLogDestinationPapertrailOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9411,6 +11651,7 @@ func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type GetAppSpec struct {
+	Alerts    []GetAppSpecAlert    `pulumi:"alerts"`
 	Databases []GetAppSpecDatabase `pulumi:"databases"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
@@ -9437,6 +11678,7 @@ type GetAppSpecInput interface {
 }
 
 type GetAppSpecArgs struct {
+	Alerts    GetAppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
@@ -9502,6 +11744,10 @@ func (o GetAppSpecOutput) ToGetAppSpecOutputWithContext(ctx context.Context) Get
 	return o
 }
 
+func (o GetAppSpecOutput) Alerts() GetAppSpecAlertArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecAlert { return v.Alerts }).(GetAppSpecAlertArrayOutput)
+}
+
 func (o GetAppSpecOutput) Databases() GetAppSpecDatabaseArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecDatabase { return v.Databases }).(GetAppSpecDatabaseArrayOutput)
 }
@@ -9559,6 +11805,106 @@ func (o GetAppSpecArrayOutput) Index(i pulumi.IntInput) GetAppSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpec {
 		return vs[0].([]GetAppSpec)[vs[1].(int)]
 	}).(GetAppSpecOutput)
+}
+
+type GetAppSpecAlert struct {
+	Disabled *bool  `pulumi:"disabled"`
+	Rule     string `pulumi:"rule"`
+}
+
+// GetAppSpecAlertInput is an input type that accepts GetAppSpecAlertArgs and GetAppSpecAlertOutput values.
+// You can construct a concrete instance of `GetAppSpecAlertInput` via:
+//
+//          GetAppSpecAlertArgs{...}
+type GetAppSpecAlertInput interface {
+	pulumi.Input
+
+	ToGetAppSpecAlertOutput() GetAppSpecAlertOutput
+	ToGetAppSpecAlertOutputWithContext(context.Context) GetAppSpecAlertOutput
+}
+
+type GetAppSpecAlertArgs struct {
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	Rule     pulumi.StringInput  `pulumi:"rule"`
+}
+
+func (GetAppSpecAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecAlertArgs) ToGetAppSpecAlertOutput() GetAppSpecAlertOutput {
+	return i.ToGetAppSpecAlertOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecAlertArgs) ToGetAppSpecAlertOutputWithContext(ctx context.Context) GetAppSpecAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecAlertOutput)
+}
+
+// GetAppSpecAlertArrayInput is an input type that accepts GetAppSpecAlertArray and GetAppSpecAlertArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecAlertArrayInput` via:
+//
+//          GetAppSpecAlertArray{ GetAppSpecAlertArgs{...} }
+type GetAppSpecAlertArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecAlertArrayOutput() GetAppSpecAlertArrayOutput
+	ToGetAppSpecAlertArrayOutputWithContext(context.Context) GetAppSpecAlertArrayOutput
+}
+
+type GetAppSpecAlertArray []GetAppSpecAlertInput
+
+func (GetAppSpecAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecAlertArray) ToGetAppSpecAlertArrayOutput() GetAppSpecAlertArrayOutput {
+	return i.ToGetAppSpecAlertArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecAlertArray) ToGetAppSpecAlertArrayOutputWithContext(ctx context.Context) GetAppSpecAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecAlertArrayOutput)
+}
+
+type GetAppSpecAlertOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecAlertOutput) ToGetAppSpecAlertOutput() GetAppSpecAlertOutput {
+	return o
+}
+
+func (o GetAppSpecAlertOutput) ToGetAppSpecAlertOutputWithContext(ctx context.Context) GetAppSpecAlertOutput {
+	return o
+}
+
+func (o GetAppSpecAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type GetAppSpecAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecAlertArrayOutput) ToGetAppSpecAlertArrayOutput() GetAppSpecAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecAlertArrayOutput) ToGetAppSpecAlertArrayOutputWithContext(ctx context.Context) GetAppSpecAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecAlert {
+		return vs[0].([]GetAppSpecAlert)[vs[1].(int)]
+	}).(GetAppSpecAlertOutput)
 }
 
 type GetAppSpecDatabase struct {
@@ -9910,6 +12256,7 @@ func (o GetAppSpecEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecEnvOutput {
 }
 
 type GetAppSpecJob struct {
+	Alerts []GetAppSpecJobAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -9935,7 +12282,8 @@ type GetAppSpecJob struct {
 	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
 	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
 	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
-	Kind *string `pulumi:"kind"`
+	Kind            *string                       `pulumi:"kind"`
+	LogDestinations []GetAppSpecJobLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -9956,6 +12304,7 @@ type GetAppSpecJobInput interface {
 }
 
 type GetAppSpecJobArgs struct {
+	Alerts GetAppSpecJobAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -9981,7 +12330,8 @@ type GetAppSpecJobArgs struct {
 	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
 	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
 	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	Kind            pulumi.StringPtrInput                 `pulumi:"kind"`
+	LogDestinations GetAppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -10039,6 +12389,10 @@ func (o GetAppSpecJobOutput) ToGetAppSpecJobOutput() GetAppSpecJobOutput {
 
 func (o GetAppSpecJobOutput) ToGetAppSpecJobOutputWithContext(ctx context.Context) GetAppSpecJobOutput {
 	return o
+}
+
+func (o GetAppSpecJobOutput) Alerts() GetAppSpecJobAlertArrayOutput {
+	return o.ApplyT(func(v GetAppSpecJob) []GetAppSpecJobAlert { return v.Alerts }).(GetAppSpecJobAlertArrayOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -10100,6 +12454,10 @@ func (o GetAppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+func (o GetAppSpecJobOutput) LogDestinations() GetAppSpecJobLogDestinationArrayOutput {
+	return o.ApplyT(func(v GetAppSpecJob) []GetAppSpecJobLogDestination { return v.LogDestinations }).(GetAppSpecJobLogDestinationArrayOutput)
+}
+
 // The name of the component.
 func (o GetAppSpecJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJob) string { return v.Name }).(pulumi.StringOutput)
@@ -10133,6 +12491,127 @@ func (o GetAppSpecJobArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecJob {
 		return vs[0].([]GetAppSpecJob)[vs[1].(int)]
 	}).(GetAppSpecJobOutput)
+}
+
+type GetAppSpecJobAlert struct {
+	Disabled *bool  `pulumi:"disabled"`
+	Operator string `pulumi:"operator"`
+	Rule     string `pulumi:"rule"`
+	// The value of the environment variable.
+	Value  float64 `pulumi:"value"`
+	Window string  `pulumi:"window"`
+}
+
+// GetAppSpecJobAlertInput is an input type that accepts GetAppSpecJobAlertArgs and GetAppSpecJobAlertOutput values.
+// You can construct a concrete instance of `GetAppSpecJobAlertInput` via:
+//
+//          GetAppSpecJobAlertArgs{...}
+type GetAppSpecJobAlertInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobAlertOutput() GetAppSpecJobAlertOutput
+	ToGetAppSpecJobAlertOutputWithContext(context.Context) GetAppSpecJobAlertOutput
+}
+
+type GetAppSpecJobAlertArgs struct {
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	Operator pulumi.StringInput  `pulumi:"operator"`
+	Rule     pulumi.StringInput  `pulumi:"rule"`
+	// The value of the environment variable.
+	Value  pulumi.Float64Input `pulumi:"value"`
+	Window pulumi.StringInput  `pulumi:"window"`
+}
+
+func (GetAppSpecJobAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecJobAlertArgs) ToGetAppSpecJobAlertOutput() GetAppSpecJobAlertOutput {
+	return i.ToGetAppSpecJobAlertOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobAlertArgs) ToGetAppSpecJobAlertOutputWithContext(ctx context.Context) GetAppSpecJobAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobAlertOutput)
+}
+
+// GetAppSpecJobAlertArrayInput is an input type that accepts GetAppSpecJobAlertArray and GetAppSpecJobAlertArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecJobAlertArrayInput` via:
+//
+//          GetAppSpecJobAlertArray{ GetAppSpecJobAlertArgs{...} }
+type GetAppSpecJobAlertArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobAlertArrayOutput() GetAppSpecJobAlertArrayOutput
+	ToGetAppSpecJobAlertArrayOutputWithContext(context.Context) GetAppSpecJobAlertArrayOutput
+}
+
+type GetAppSpecJobAlertArray []GetAppSpecJobAlertInput
+
+func (GetAppSpecJobAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecJobAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecJobAlertArray) ToGetAppSpecJobAlertArrayOutput() GetAppSpecJobAlertArrayOutput {
+	return i.ToGetAppSpecJobAlertArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobAlertArray) ToGetAppSpecJobAlertArrayOutputWithContext(ctx context.Context) GetAppSpecJobAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobAlertArrayOutput)
+}
+
+type GetAppSpecJobAlertOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecJobAlertOutput) ToGetAppSpecJobAlertOutput() GetAppSpecJobAlertOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertOutput) ToGetAppSpecJobAlertOutputWithContext(ctx context.Context) GetAppSpecJobAlertOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecJobAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecJobAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o GetAppSpecJobAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAppSpecJobAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+func (o GetAppSpecJobAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type GetAppSpecJobAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecJobAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecJobAlertArrayOutput) ToGetAppSpecJobAlertArrayOutput() GetAppSpecJobAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertArrayOutput) ToGetAppSpecJobAlertArrayOutputWithContext(ctx context.Context) GetAppSpecJobAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecJobAlert {
+		return vs[0].([]GetAppSpecJobAlert)[vs[1].(int)]
+	}).(GetAppSpecJobAlertOutput)
 }
 
 type GetAppSpecJobEnv struct {
@@ -10959,7 +13438,537 @@ func (o GetAppSpecJobImagePtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAppSpecJobLogDestination struct {
+	Datadog *GetAppSpecJobLogDestinationDatadog `pulumi:"datadog"`
+	Logtail *GetAppSpecJobLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name       string                                 `pulumi:"name"`
+	Papertrail *GetAppSpecJobLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// GetAppSpecJobLogDestinationInput is an input type that accepts GetAppSpecJobLogDestinationArgs and GetAppSpecJobLogDestinationOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationInput` via:
+//
+//          GetAppSpecJobLogDestinationArgs{...}
+type GetAppSpecJobLogDestinationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationOutput() GetAppSpecJobLogDestinationOutput
+	ToGetAppSpecJobLogDestinationOutputWithContext(context.Context) GetAppSpecJobLogDestinationOutput
+}
+
+type GetAppSpecJobLogDestinationArgs struct {
+	Datadog GetAppSpecJobLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	Logtail GetAppSpecJobLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name       pulumi.StringInput                            `pulumi:"name"`
+	Papertrail GetAppSpecJobLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (GetAppSpecJobLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecJobLogDestinationArgs) ToGetAppSpecJobLogDestinationOutput() GetAppSpecJobLogDestinationOutput {
+	return i.ToGetAppSpecJobLogDestinationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationArgs) ToGetAppSpecJobLogDestinationOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationOutput)
+}
+
+// GetAppSpecJobLogDestinationArrayInput is an input type that accepts GetAppSpecJobLogDestinationArray and GetAppSpecJobLogDestinationArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationArrayInput` via:
+//
+//          GetAppSpecJobLogDestinationArray{ GetAppSpecJobLogDestinationArgs{...} }
+type GetAppSpecJobLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationArrayOutput() GetAppSpecJobLogDestinationArrayOutput
+	ToGetAppSpecJobLogDestinationArrayOutputWithContext(context.Context) GetAppSpecJobLogDestinationArrayOutput
+}
+
+type GetAppSpecJobLogDestinationArray []GetAppSpecJobLogDestinationInput
+
+func (GetAppSpecJobLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecJobLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecJobLogDestinationArray) ToGetAppSpecJobLogDestinationArrayOutput() GetAppSpecJobLogDestinationArrayOutput {
+	return i.ToGetAppSpecJobLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationArray) ToGetAppSpecJobLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationArrayOutput)
+}
+
+type GetAppSpecJobLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationOutput) ToGetAppSpecJobLogDestinationOutput() GetAppSpecJobLogDestinationOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOutput) ToGetAppSpecJobLogDestinationOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOutput) Datadog() GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestination) *GetAppSpecJobLogDestinationDatadog { return v.Datadog }).(GetAppSpecJobLogDestinationDatadogPtrOutput)
+}
+
+func (o GetAppSpecJobLogDestinationOutput) Logtail() GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestination) *GetAppSpecJobLogDestinationLogtail { return v.Logtail }).(GetAppSpecJobLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecJobLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecJobLogDestinationOutput) Papertrail() GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestination) *GetAppSpecJobLogDestinationPapertrail { return v.Papertrail }).(GetAppSpecJobLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecJobLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationArrayOutput) ToGetAppSpecJobLogDestinationArrayOutput() GetAppSpecJobLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationArrayOutput) ToGetAppSpecJobLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecJobLogDestination {
+		return vs[0].([]GetAppSpecJobLogDestination)[vs[1].(int)]
+	}).(GetAppSpecJobLogDestinationOutput)
+}
+
+type GetAppSpecJobLogDestinationDatadog struct {
+	ApiKey   string  `pulumi:"apiKey"`
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// GetAppSpecJobLogDestinationDatadogInput is an input type that accepts GetAppSpecJobLogDestinationDatadogArgs and GetAppSpecJobLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationDatadogInput` via:
+//
+//          GetAppSpecJobLogDestinationDatadogArgs{...}
+type GetAppSpecJobLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationDatadogOutput() GetAppSpecJobLogDestinationDatadogOutput
+	ToGetAppSpecJobLogDestinationDatadogOutputWithContext(context.Context) GetAppSpecJobLogDestinationDatadogOutput
+}
+
+type GetAppSpecJobLogDestinationDatadogArgs struct {
+	ApiKey   pulumi.StringInput    `pulumi:"apiKey"`
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecJobLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i GetAppSpecJobLogDestinationDatadogArgs) ToGetAppSpecJobLogDestinationDatadogOutput() GetAppSpecJobLogDestinationDatadogOutput {
+	return i.ToGetAppSpecJobLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationDatadogArgs) ToGetAppSpecJobLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationDatadogOutput)
+}
+
+func (i GetAppSpecJobLogDestinationDatadogArgs) ToGetAppSpecJobLogDestinationDatadogPtrOutput() GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationDatadogArgs) ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationDatadogOutput).ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecJobLogDestinationDatadogArgs, GetAppSpecJobLogDestinationDatadogPtr and GetAppSpecJobLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationDatadogPtrInput` via:
+//
+//          GetAppSpecJobLogDestinationDatadogArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecJobLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationDatadogPtrOutput() GetAppSpecJobLogDestinationDatadogPtrOutput
+	ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(context.Context) GetAppSpecJobLogDestinationDatadogPtrOutput
+}
+
+type getAppSpecJobLogDestinationDatadogPtrType GetAppSpecJobLogDestinationDatadogArgs
+
+func GetAppSpecJobLogDestinationDatadogPtr(v *GetAppSpecJobLogDestinationDatadogArgs) GetAppSpecJobLogDestinationDatadogPtrInput {
+	return (*getAppSpecJobLogDestinationDatadogPtrType)(v)
+}
+
+func (*getAppSpecJobLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *getAppSpecJobLogDestinationDatadogPtrType) ToGetAppSpecJobLogDestinationDatadogPtrOutput() GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobLogDestinationDatadogPtrType) ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationDatadogPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationDatadogOutput) ToGetAppSpecJobLogDestinationDatadogOutput() GetAppSpecJobLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationDatadogOutput) ToGetAppSpecJobLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationDatadogOutput) ToGetAppSpecJobLogDestinationDatadogPtrOutput() GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return o.ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobLogDestinationDatadogOutput) ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobLogDestinationDatadog) *GetAppSpecJobLogDestinationDatadog {
+		return &v
+	}).(GetAppSpecJobLogDestinationDatadogPtrOutput)
+}
+
+func (o GetAppSpecJobLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecJobLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationDatadogPtrOutput) ToGetAppSpecJobLogDestinationDatadogPtrOutput() GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationDatadogPtrOutput) ToGetAppSpecJobLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationDatadogPtrOutput) Elem() GetAppSpecJobLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationDatadog) GetAppSpecJobLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobLogDestinationDatadog
+		return ret
+	}).(GetAppSpecJobLogDestinationDatadogOutput)
+}
+
+func (o GetAppSpecJobLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationLogtail struct {
+	Token string `pulumi:"token"`
+}
+
+// GetAppSpecJobLogDestinationLogtailInput is an input type that accepts GetAppSpecJobLogDestinationLogtailArgs and GetAppSpecJobLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationLogtailInput` via:
+//
+//          GetAppSpecJobLogDestinationLogtailArgs{...}
+type GetAppSpecJobLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationLogtailOutput() GetAppSpecJobLogDestinationLogtailOutput
+	ToGetAppSpecJobLogDestinationLogtailOutputWithContext(context.Context) GetAppSpecJobLogDestinationLogtailOutput
+}
+
+type GetAppSpecJobLogDestinationLogtailArgs struct {
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (GetAppSpecJobLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i GetAppSpecJobLogDestinationLogtailArgs) ToGetAppSpecJobLogDestinationLogtailOutput() GetAppSpecJobLogDestinationLogtailOutput {
+	return i.ToGetAppSpecJobLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationLogtailArgs) ToGetAppSpecJobLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationLogtailOutput)
+}
+
+func (i GetAppSpecJobLogDestinationLogtailArgs) ToGetAppSpecJobLogDestinationLogtailPtrOutput() GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationLogtailArgs) ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationLogtailOutput).ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecJobLogDestinationLogtailArgs, GetAppSpecJobLogDestinationLogtailPtr and GetAppSpecJobLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationLogtailPtrInput` via:
+//
+//          GetAppSpecJobLogDestinationLogtailArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecJobLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationLogtailPtrOutput() GetAppSpecJobLogDestinationLogtailPtrOutput
+	ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(context.Context) GetAppSpecJobLogDestinationLogtailPtrOutput
+}
+
+type getAppSpecJobLogDestinationLogtailPtrType GetAppSpecJobLogDestinationLogtailArgs
+
+func GetAppSpecJobLogDestinationLogtailPtr(v *GetAppSpecJobLogDestinationLogtailArgs) GetAppSpecJobLogDestinationLogtailPtrInput {
+	return (*getAppSpecJobLogDestinationLogtailPtrType)(v)
+}
+
+func (*getAppSpecJobLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *getAppSpecJobLogDestinationLogtailPtrType) ToGetAppSpecJobLogDestinationLogtailPtrOutput() GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobLogDestinationLogtailPtrType) ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationLogtailPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationLogtailOutput) ToGetAppSpecJobLogDestinationLogtailOutput() GetAppSpecJobLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationLogtailOutput) ToGetAppSpecJobLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationLogtailOutput) ToGetAppSpecJobLogDestinationLogtailPtrOutput() GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return o.ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobLogDestinationLogtailOutput) ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobLogDestinationLogtail) *GetAppSpecJobLogDestinationLogtail {
+		return &v
+	}).(GetAppSpecJobLogDestinationLogtailPtrOutput)
+}
+
+func (o GetAppSpecJobLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type GetAppSpecJobLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationLogtailPtrOutput) ToGetAppSpecJobLogDestinationLogtailPtrOutput() GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationLogtailPtrOutput) ToGetAppSpecJobLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationLogtailPtrOutput) Elem() GetAppSpecJobLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationLogtail) GetAppSpecJobLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobLogDestinationLogtail
+		return ret
+	}).(GetAppSpecJobLogDestinationLogtailOutput)
+}
+
+func (o GetAppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationPapertrail struct {
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// GetAppSpecJobLogDestinationPapertrailInput is an input type that accepts GetAppSpecJobLogDestinationPapertrailArgs and GetAppSpecJobLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationPapertrailInput` via:
+//
+//          GetAppSpecJobLogDestinationPapertrailArgs{...}
+type GetAppSpecJobLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationPapertrailOutput() GetAppSpecJobLogDestinationPapertrailOutput
+	ToGetAppSpecJobLogDestinationPapertrailOutputWithContext(context.Context) GetAppSpecJobLogDestinationPapertrailOutput
+}
+
+type GetAppSpecJobLogDestinationPapertrailArgs struct {
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecJobLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i GetAppSpecJobLogDestinationPapertrailArgs) ToGetAppSpecJobLogDestinationPapertrailOutput() GetAppSpecJobLogDestinationPapertrailOutput {
+	return i.ToGetAppSpecJobLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationPapertrailArgs) ToGetAppSpecJobLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationPapertrailOutput)
+}
+
+func (i GetAppSpecJobLogDestinationPapertrailArgs) ToGetAppSpecJobLogDestinationPapertrailPtrOutput() GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationPapertrailArgs) ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationPapertrailOutput).ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecJobLogDestinationPapertrailArgs, GetAppSpecJobLogDestinationPapertrailPtr and GetAppSpecJobLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationPapertrailPtrInput` via:
+//
+//          GetAppSpecJobLogDestinationPapertrailArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecJobLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationPapertrailPtrOutput() GetAppSpecJobLogDestinationPapertrailPtrOutput
+	ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(context.Context) GetAppSpecJobLogDestinationPapertrailPtrOutput
+}
+
+type getAppSpecJobLogDestinationPapertrailPtrType GetAppSpecJobLogDestinationPapertrailArgs
+
+func GetAppSpecJobLogDestinationPapertrailPtr(v *GetAppSpecJobLogDestinationPapertrailArgs) GetAppSpecJobLogDestinationPapertrailPtrInput {
+	return (*getAppSpecJobLogDestinationPapertrailPtrType)(v)
+}
+
+func (*getAppSpecJobLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *getAppSpecJobLogDestinationPapertrailPtrType) ToGetAppSpecJobLogDestinationPapertrailPtrOutput() GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobLogDestinationPapertrailPtrType) ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailOutput) ToGetAppSpecJobLogDestinationPapertrailOutput() GetAppSpecJobLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailOutput) ToGetAppSpecJobLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailOutput) ToGetAppSpecJobLogDestinationPapertrailPtrOutput() GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return o.ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailOutput) ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobLogDestinationPapertrail) *GetAppSpecJobLogDestinationPapertrail {
+		return &v
+	}).(GetAppSpecJobLogDestinationPapertrailPtrOutput)
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type GetAppSpecJobLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) ToGetAppSpecJobLogDestinationPapertrailPtrOutput() GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) ToGetAppSpecJobLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Elem() GetAppSpecJobLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationPapertrail) GetAppSpecJobLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobLogDestinationPapertrail
+		return ret
+	}).(GetAppSpecJobLogDestinationPapertrailOutput)
+}
+
+func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecService struct {
+	Alerts []GetAppSpecServiceAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string                `pulumi:"buildCommand"`
 	Cors         *GetAppSpecServiceCors `pulumi:"cors"`
@@ -10986,7 +13995,8 @@ type GetAppSpecService struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
-	InternalPorts []int `pulumi:"internalPorts"`
+	InternalPorts   []int                             `pulumi:"internalPorts"`
+	LogDestinations []GetAppSpecServiceLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name   string                   `pulumi:"name"`
 	Routes []GetAppSpecServiceRoute `pulumi:"routes"`
@@ -11008,6 +14018,7 @@ type GetAppSpecServiceInput interface {
 }
 
 type GetAppSpecServiceArgs struct {
+	Alerts GetAppSpecServiceAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput         `pulumi:"buildCommand"`
 	Cors         GetAppSpecServiceCorsPtrInput `pulumi:"cors"`
@@ -11034,7 +14045,8 @@ type GetAppSpecServiceArgs struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
-	InternalPorts pulumi.IntArrayInput `pulumi:"internalPorts"`
+	InternalPorts   pulumi.IntArrayInput                      `pulumi:"internalPorts"`
+	LogDestinations GetAppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name   pulumi.StringInput               `pulumi:"name"`
 	Routes GetAppSpecServiceRouteArrayInput `pulumi:"routes"`
@@ -11093,6 +14105,10 @@ func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutput() GetAppSpecServiceOu
 
 func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutputWithContext(ctx context.Context) GetAppSpecServiceOutput {
 	return o
+}
+
+func (o GetAppSpecServiceOutput) Alerts() GetAppSpecServiceAlertArrayOutput {
+	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceAlert { return v.Alerts }).(GetAppSpecServiceAlertArrayOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -11164,6 +14180,10 @@ func (o GetAppSpecServiceOutput) InternalPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetAppSpecService) []int { return v.InternalPorts }).(pulumi.IntArrayOutput)
 }
 
+func (o GetAppSpecServiceOutput) LogDestinations() GetAppSpecServiceLogDestinationArrayOutput {
+	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceLogDestination { return v.LogDestinations }).(GetAppSpecServiceLogDestinationArrayOutput)
+}
+
 // The name of the component.
 func (o GetAppSpecServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecService) string { return v.Name }).(pulumi.StringOutput)
@@ -11201,6 +14221,127 @@ func (o GetAppSpecServiceArrayOutput) Index(i pulumi.IntInput) GetAppSpecService
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecService {
 		return vs[0].([]GetAppSpecService)[vs[1].(int)]
 	}).(GetAppSpecServiceOutput)
+}
+
+type GetAppSpecServiceAlert struct {
+	Disabled *bool  `pulumi:"disabled"`
+	Operator string `pulumi:"operator"`
+	Rule     string `pulumi:"rule"`
+	// The value of the environment variable.
+	Value  float64 `pulumi:"value"`
+	Window string  `pulumi:"window"`
+}
+
+// GetAppSpecServiceAlertInput is an input type that accepts GetAppSpecServiceAlertArgs and GetAppSpecServiceAlertOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertInput` via:
+//
+//          GetAppSpecServiceAlertArgs{...}
+type GetAppSpecServiceAlertInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput
+	ToGetAppSpecServiceAlertOutputWithContext(context.Context) GetAppSpecServiceAlertOutput
+}
+
+type GetAppSpecServiceAlertArgs struct {
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	Operator pulumi.StringInput  `pulumi:"operator"`
+	Rule     pulumi.StringInput  `pulumi:"rule"`
+	// The value of the environment variable.
+	Value  pulumi.Float64Input `pulumi:"value"`
+	Window pulumi.StringInput  `pulumi:"window"`
+}
+
+func (GetAppSpecServiceAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertArgs) ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput {
+	return i.ToGetAppSpecServiceAlertOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertArgs) ToGetAppSpecServiceAlertOutputWithContext(ctx context.Context) GetAppSpecServiceAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertOutput)
+}
+
+// GetAppSpecServiceAlertArrayInput is an input type that accepts GetAppSpecServiceAlertArray and GetAppSpecServiceAlertArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertArrayInput` via:
+//
+//          GetAppSpecServiceAlertArray{ GetAppSpecServiceAlertArgs{...} }
+type GetAppSpecServiceAlertArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput
+	ToGetAppSpecServiceAlertArrayOutputWithContext(context.Context) GetAppSpecServiceAlertArrayOutput
+}
+
+type GetAppSpecServiceAlertArray []GetAppSpecServiceAlertInput
+
+func (GetAppSpecServiceAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertArray) ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput {
+	return i.ToGetAppSpecServiceAlertArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertArray) ToGetAppSpecServiceAlertArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertArrayOutput)
+}
+
+type GetAppSpecServiceAlertOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertOutput) ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertOutput) ToGetAppSpecServiceAlertOutputWithContext(ctx context.Context) GetAppSpecServiceAlertOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecServiceAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecServiceAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o GetAppSpecServiceAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+func (o GetAppSpecServiceAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type GetAppSpecServiceAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertArrayOutput) ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertArrayOutput) ToGetAppSpecServiceAlertArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceAlert {
+		return vs[0].([]GetAppSpecServiceAlert)[vs[1].(int)]
+	}).(GetAppSpecServiceAlertOutput)
 }
 
 type GetAppSpecServiceCors struct {
@@ -12627,6 +15768,537 @@ func (o GetAppSpecServiceImagePtrOutput) Tag() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestination struct {
+	Datadog *GetAppSpecServiceLogDestinationDatadog `pulumi:"datadog"`
+	Logtail *GetAppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name       string                                     `pulumi:"name"`
+	Papertrail *GetAppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// GetAppSpecServiceLogDestinationInput is an input type that accepts GetAppSpecServiceLogDestinationArgs and GetAppSpecServiceLogDestinationOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationInput` via:
+//
+//          GetAppSpecServiceLogDestinationArgs{...}
+type GetAppSpecServiceLogDestinationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOutput() GetAppSpecServiceLogDestinationOutput
+	ToGetAppSpecServiceLogDestinationOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOutput
+}
+
+type GetAppSpecServiceLogDestinationArgs struct {
+	Datadog GetAppSpecServiceLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	Logtail GetAppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name       pulumi.StringInput                                `pulumi:"name"`
+	Papertrail GetAppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (GetAppSpecServiceLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationArgs) ToGetAppSpecServiceLogDestinationOutput() GetAppSpecServiceLogDestinationOutput {
+	return i.ToGetAppSpecServiceLogDestinationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationArgs) ToGetAppSpecServiceLogDestinationOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOutput)
+}
+
+// GetAppSpecServiceLogDestinationArrayInput is an input type that accepts GetAppSpecServiceLogDestinationArray and GetAppSpecServiceLogDestinationArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationArrayInput` via:
+//
+//          GetAppSpecServiceLogDestinationArray{ GetAppSpecServiceLogDestinationArgs{...} }
+type GetAppSpecServiceLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationArrayOutput() GetAppSpecServiceLogDestinationArrayOutput
+	ToGetAppSpecServiceLogDestinationArrayOutputWithContext(context.Context) GetAppSpecServiceLogDestinationArrayOutput
+}
+
+type GetAppSpecServiceLogDestinationArray []GetAppSpecServiceLogDestinationInput
+
+func (GetAppSpecServiceLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationArray) ToGetAppSpecServiceLogDestinationArrayOutput() GetAppSpecServiceLogDestinationArrayOutput {
+	return i.ToGetAppSpecServiceLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationArray) ToGetAppSpecServiceLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationArrayOutput)
+}
+
+type GetAppSpecServiceLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOutput) ToGetAppSpecServiceLogDestinationOutput() GetAppSpecServiceLogDestinationOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOutput) ToGetAppSpecServiceLogDestinationOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOutput) Datadog() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationDatadog { return v.Datadog }).(GetAppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationOutput) Logtail() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationLogtail { return v.Logtail }).(GetAppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationOutput) Papertrail() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationPapertrail {
+		return v.Papertrail
+	}).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationArrayOutput) ToGetAppSpecServiceLogDestinationArrayOutput() GetAppSpecServiceLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationArrayOutput) ToGetAppSpecServiceLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceLogDestination {
+		return vs[0].([]GetAppSpecServiceLogDestination)[vs[1].(int)]
+	}).(GetAppSpecServiceLogDestinationOutput)
+}
+
+type GetAppSpecServiceLogDestinationDatadog struct {
+	ApiKey   string  `pulumi:"apiKey"`
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// GetAppSpecServiceLogDestinationDatadogInput is an input type that accepts GetAppSpecServiceLogDestinationDatadogArgs and GetAppSpecServiceLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationDatadogInput` via:
+//
+//          GetAppSpecServiceLogDestinationDatadogArgs{...}
+type GetAppSpecServiceLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationDatadogOutput() GetAppSpecServiceLogDestinationDatadogOutput
+	ToGetAppSpecServiceLogDestinationDatadogOutputWithContext(context.Context) GetAppSpecServiceLogDestinationDatadogOutput
+}
+
+type GetAppSpecServiceLogDestinationDatadogArgs struct {
+	ApiKey   pulumi.StringInput    `pulumi:"apiKey"`
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecServiceLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestinationDatadogOutput() GetAppSpecServiceLogDestinationDatadogOutput {
+	return i.ToGetAppSpecServiceLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationDatadogOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationDatadogOutput).ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecServiceLogDestinationDatadogArgs, GetAppSpecServiceLogDestinationDatadogPtr and GetAppSpecServiceLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationDatadogPtrInput` via:
+//
+//          GetAppSpecServiceLogDestinationDatadogArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput
+	ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput
+}
+
+type getAppSpecServiceLogDestinationDatadogPtrType GetAppSpecServiceLogDestinationDatadogArgs
+
+func GetAppSpecServiceLogDestinationDatadogPtr(v *GetAppSpecServiceLogDestinationDatadogArgs) GetAppSpecServiceLogDestinationDatadogPtrInput {
+	return (*getAppSpecServiceLogDestinationDatadogPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationDatadogPtrType) ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationDatadogPtrType) ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDestinationDatadogOutput() GetAppSpecServiceLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationDatadog) *GetAppSpecServiceLogDestinationDatadog {
+		return &v
+	}).(GetAppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) Elem() GetAppSpecServiceLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) GetAppSpecServiceLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationDatadog
+		return ret
+	}).(GetAppSpecServiceLogDestinationDatadogOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationLogtail struct {
+	Token string `pulumi:"token"`
+}
+
+// GetAppSpecServiceLogDestinationLogtailInput is an input type that accepts GetAppSpecServiceLogDestinationLogtailArgs and GetAppSpecServiceLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationLogtailInput` via:
+//
+//          GetAppSpecServiceLogDestinationLogtailArgs{...}
+type GetAppSpecServiceLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationLogtailOutput() GetAppSpecServiceLogDestinationLogtailOutput
+	ToGetAppSpecServiceLogDestinationLogtailOutputWithContext(context.Context) GetAppSpecServiceLogDestinationLogtailOutput
+}
+
+type GetAppSpecServiceLogDestinationLogtailArgs struct {
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (GetAppSpecServiceLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestinationLogtailOutput() GetAppSpecServiceLogDestinationLogtailOutput {
+	return i.ToGetAppSpecServiceLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationLogtailOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationLogtailOutput).ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecServiceLogDestinationLogtailArgs, GetAppSpecServiceLogDestinationLogtailPtr and GetAppSpecServiceLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationLogtailPtrInput` via:
+//
+//          GetAppSpecServiceLogDestinationLogtailArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput
+	ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput
+}
+
+type getAppSpecServiceLogDestinationLogtailPtrType GetAppSpecServiceLogDestinationLogtailArgs
+
+func GetAppSpecServiceLogDestinationLogtailPtr(v *GetAppSpecServiceLogDestinationLogtailArgs) GetAppSpecServiceLogDestinationLogtailPtrInput {
+	return (*getAppSpecServiceLogDestinationLogtailPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationLogtailPtrType) ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationLogtailPtrType) ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDestinationLogtailOutput() GetAppSpecServiceLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationLogtail) *GetAppSpecServiceLogDestinationLogtail {
+		return &v
+	}).(GetAppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type GetAppSpecServiceLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) Elem() GetAppSpecServiceLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationLogtail) GetAppSpecServiceLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationLogtail
+		return ret
+	}).(GetAppSpecServiceLogDestinationLogtailOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationPapertrail struct {
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// GetAppSpecServiceLogDestinationPapertrailInput is an input type that accepts GetAppSpecServiceLogDestinationPapertrailArgs and GetAppSpecServiceLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationPapertrailInput` via:
+//
+//          GetAppSpecServiceLogDestinationPapertrailArgs{...}
+type GetAppSpecServiceLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput
+	ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(context.Context) GetAppSpecServiceLogDestinationPapertrailOutput
+}
+
+type GetAppSpecServiceLogDestinationPapertrailArgs struct {
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecServiceLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput {
+	return i.ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailOutput).ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecServiceLogDestinationPapertrailArgs, GetAppSpecServiceLogDestinationPapertrailPtr and GetAppSpecServiceLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationPapertrailPtrInput` via:
+//
+//          GetAppSpecServiceLogDestinationPapertrailArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecServiceLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput
+	ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput
+}
+
+type getAppSpecServiceLogDestinationPapertrailPtrType GetAppSpecServiceLogDestinationPapertrailArgs
+
+func GetAppSpecServiceLogDestinationPapertrailPtr(v *GetAppSpecServiceLogDestinationPapertrailArgs) GetAppSpecServiceLogDestinationPapertrailPtrInput {
+	return (*getAppSpecServiceLogDestinationPapertrailPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationPapertrailPtrType) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationPapertrailPtrType) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationPapertrail) *GetAppSpecServiceLogDestinationPapertrail {
+		return &v
+	}).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type GetAppSpecServiceLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Elem() GetAppSpecServiceLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationPapertrail) GetAppSpecServiceLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationPapertrail
+		return ret
+	}).(GetAppSpecServiceLogDestinationPapertrailOutput)
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14061,6 +17733,7 @@ func (o GetAppSpecStaticSiteRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpe
 }
 
 type GetAppSpecWorker struct {
+	Alerts []GetAppSpecWorkerAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -14080,7 +17753,8 @@ type GetAppSpecWorker struct {
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
-	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	InstanceSizeSlug *string                          `pulumi:"instanceSizeSlug"`
+	LogDestinations  []GetAppSpecWorkerLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -14101,6 +17775,7 @@ type GetAppSpecWorkerInput interface {
 }
 
 type GetAppSpecWorkerArgs struct {
+	Alerts GetAppSpecWorkerAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -14120,7 +17795,8 @@ type GetAppSpecWorkerArgs struct {
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
-	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	InstanceSizeSlug pulumi.StringPtrInput                    `pulumi:"instanceSizeSlug"`
+	LogDestinations  GetAppSpecWorkerLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -14180,6 +17856,10 @@ func (o GetAppSpecWorkerOutput) ToGetAppSpecWorkerOutputWithContext(ctx context.
 	return o
 }
 
+func (o GetAppSpecWorkerOutput) Alerts() GetAppSpecWorkerAlertArrayOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) []GetAppSpecWorkerAlert { return v.Alerts }).(GetAppSpecWorkerAlertArrayOutput)
+}
+
 // An optional build command to run while building this component from source.
 func (o GetAppSpecWorkerOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
@@ -14230,6 +17910,10 @@ func (o GetAppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
 
+func (o GetAppSpecWorkerOutput) LogDestinations() GetAppSpecWorkerLogDestinationArrayOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) []GetAppSpecWorkerLogDestination { return v.LogDestinations }).(GetAppSpecWorkerLogDestinationArrayOutput)
+}
+
 // The name of the component.
 func (o GetAppSpecWorkerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) string { return v.Name }).(pulumi.StringOutput)
@@ -14263,6 +17947,127 @@ func (o GetAppSpecWorkerArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorker {
 		return vs[0].([]GetAppSpecWorker)[vs[1].(int)]
 	}).(GetAppSpecWorkerOutput)
+}
+
+type GetAppSpecWorkerAlert struct {
+	Disabled *bool  `pulumi:"disabled"`
+	Operator string `pulumi:"operator"`
+	Rule     string `pulumi:"rule"`
+	// The value of the environment variable.
+	Value  float64 `pulumi:"value"`
+	Window string  `pulumi:"window"`
+}
+
+// GetAppSpecWorkerAlertInput is an input type that accepts GetAppSpecWorkerAlertArgs and GetAppSpecWorkerAlertOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAlertInput` via:
+//
+//          GetAppSpecWorkerAlertArgs{...}
+type GetAppSpecWorkerAlertInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAlertOutput() GetAppSpecWorkerAlertOutput
+	ToGetAppSpecWorkerAlertOutputWithContext(context.Context) GetAppSpecWorkerAlertOutput
+}
+
+type GetAppSpecWorkerAlertArgs struct {
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	Operator pulumi.StringInput  `pulumi:"operator"`
+	Rule     pulumi.StringInput  `pulumi:"rule"`
+	// The value of the environment variable.
+	Value  pulumi.Float64Input `pulumi:"value"`
+	Window pulumi.StringInput  `pulumi:"window"`
+}
+
+func (GetAppSpecWorkerAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerAlertArgs) ToGetAppSpecWorkerAlertOutput() GetAppSpecWorkerAlertOutput {
+	return i.ToGetAppSpecWorkerAlertOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAlertArgs) ToGetAppSpecWorkerAlertOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAlertOutput)
+}
+
+// GetAppSpecWorkerAlertArrayInput is an input type that accepts GetAppSpecWorkerAlertArray and GetAppSpecWorkerAlertArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAlertArrayInput` via:
+//
+//          GetAppSpecWorkerAlertArray{ GetAppSpecWorkerAlertArgs{...} }
+type GetAppSpecWorkerAlertArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAlertArrayOutput() GetAppSpecWorkerAlertArrayOutput
+	ToGetAppSpecWorkerAlertArrayOutputWithContext(context.Context) GetAppSpecWorkerAlertArrayOutput
+}
+
+type GetAppSpecWorkerAlertArray []GetAppSpecWorkerAlertInput
+
+func (GetAppSpecWorkerAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerAlertArray) ToGetAppSpecWorkerAlertArrayOutput() GetAppSpecWorkerAlertArrayOutput {
+	return i.ToGetAppSpecWorkerAlertArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAlertArray) ToGetAppSpecWorkerAlertArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAlertArrayOutput)
+}
+
+type GetAppSpecWorkerAlertOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAlertOutput) ToGetAppSpecWorkerAlertOutput() GetAppSpecWorkerAlertOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertOutput) ToGetAppSpecWorkerAlertOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecWorkerAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecWorkerAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o GetAppSpecWorkerAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAppSpecWorkerAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+func (o GetAppSpecWorkerAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type GetAppSpecWorkerAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAlertArrayOutput) ToGetAppSpecWorkerAlertArrayOutput() GetAppSpecWorkerAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertArrayOutput) ToGetAppSpecWorkerAlertArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorkerAlert {
+		return vs[0].([]GetAppSpecWorkerAlert)[vs[1].(int)]
+	}).(GetAppSpecWorkerAlertOutput)
 }
 
 type GetAppSpecWorkerEnv struct {
@@ -15086,6 +18891,535 @@ func (o GetAppSpecWorkerImagePtrOutput) Tag() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestination struct {
+	Datadog *GetAppSpecWorkerLogDestinationDatadog `pulumi:"datadog"`
+	Logtail *GetAppSpecWorkerLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name       string                                    `pulumi:"name"`
+	Papertrail *GetAppSpecWorkerLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// GetAppSpecWorkerLogDestinationInput is an input type that accepts GetAppSpecWorkerLogDestinationArgs and GetAppSpecWorkerLogDestinationOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationInput` via:
+//
+//          GetAppSpecWorkerLogDestinationArgs{...}
+type GetAppSpecWorkerLogDestinationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationOutput() GetAppSpecWorkerLogDestinationOutput
+	ToGetAppSpecWorkerLogDestinationOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationOutput
+}
+
+type GetAppSpecWorkerLogDestinationArgs struct {
+	Datadog GetAppSpecWorkerLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	Logtail GetAppSpecWorkerLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name       pulumi.StringInput                               `pulumi:"name"`
+	Papertrail GetAppSpecWorkerLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (GetAppSpecWorkerLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerLogDestinationArgs) ToGetAppSpecWorkerLogDestinationOutput() GetAppSpecWorkerLogDestinationOutput {
+	return i.ToGetAppSpecWorkerLogDestinationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationArgs) ToGetAppSpecWorkerLogDestinationOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationOutput)
+}
+
+// GetAppSpecWorkerLogDestinationArrayInput is an input type that accepts GetAppSpecWorkerLogDestinationArray and GetAppSpecWorkerLogDestinationArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationArrayInput` via:
+//
+//          GetAppSpecWorkerLogDestinationArray{ GetAppSpecWorkerLogDestinationArgs{...} }
+type GetAppSpecWorkerLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationArrayOutput() GetAppSpecWorkerLogDestinationArrayOutput
+	ToGetAppSpecWorkerLogDestinationArrayOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationArrayOutput
+}
+
+type GetAppSpecWorkerLogDestinationArray []GetAppSpecWorkerLogDestinationInput
+
+func (GetAppSpecWorkerLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerLogDestinationArray) ToGetAppSpecWorkerLogDestinationArrayOutput() GetAppSpecWorkerLogDestinationArrayOutput {
+	return i.ToGetAppSpecWorkerLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationArray) ToGetAppSpecWorkerLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationArrayOutput)
+}
+
+type GetAppSpecWorkerLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationOutput) ToGetAppSpecWorkerLogDestinationOutput() GetAppSpecWorkerLogDestinationOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOutput) ToGetAppSpecWorkerLogDestinationOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOutput) Datadog() GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) *GetAppSpecWorkerLogDestinationDatadog { return v.Datadog }).(GetAppSpecWorkerLogDestinationDatadogPtrOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationOutput) Logtail() GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) *GetAppSpecWorkerLogDestinationLogtail { return v.Logtail }).(GetAppSpecWorkerLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecWorkerLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationOutput) Papertrail() GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) *GetAppSpecWorkerLogDestinationPapertrail { return v.Papertrail }).(GetAppSpecWorkerLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationArrayOutput) ToGetAppSpecWorkerLogDestinationArrayOutput() GetAppSpecWorkerLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationArrayOutput) ToGetAppSpecWorkerLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorkerLogDestination {
+		return vs[0].([]GetAppSpecWorkerLogDestination)[vs[1].(int)]
+	}).(GetAppSpecWorkerLogDestinationOutput)
+}
+
+type GetAppSpecWorkerLogDestinationDatadog struct {
+	ApiKey   string  `pulumi:"apiKey"`
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// GetAppSpecWorkerLogDestinationDatadogInput is an input type that accepts GetAppSpecWorkerLogDestinationDatadogArgs and GetAppSpecWorkerLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationDatadogInput` via:
+//
+//          GetAppSpecWorkerLogDestinationDatadogArgs{...}
+type GetAppSpecWorkerLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationDatadogOutput() GetAppSpecWorkerLogDestinationDatadogOutput
+	ToGetAppSpecWorkerLogDestinationDatadogOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationDatadogOutput
+}
+
+type GetAppSpecWorkerLogDestinationDatadogArgs struct {
+	ApiKey   pulumi.StringInput    `pulumi:"apiKey"`
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecWorkerLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerLogDestinationDatadogArgs) ToGetAppSpecWorkerLogDestinationDatadogOutput() GetAppSpecWorkerLogDestinationDatadogOutput {
+	return i.ToGetAppSpecWorkerLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationDatadogArgs) ToGetAppSpecWorkerLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationDatadogOutput)
+}
+
+func (i GetAppSpecWorkerLogDestinationDatadogArgs) ToGetAppSpecWorkerLogDestinationDatadogPtrOutput() GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationDatadogArgs) ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationDatadogOutput).ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecWorkerLogDestinationDatadogArgs, GetAppSpecWorkerLogDestinationDatadogPtr and GetAppSpecWorkerLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationDatadogPtrInput` via:
+//
+//          GetAppSpecWorkerLogDestinationDatadogArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecWorkerLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationDatadogPtrOutput() GetAppSpecWorkerLogDestinationDatadogPtrOutput
+	ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationDatadogPtrOutput
+}
+
+type getAppSpecWorkerLogDestinationDatadogPtrType GetAppSpecWorkerLogDestinationDatadogArgs
+
+func GetAppSpecWorkerLogDestinationDatadogPtr(v *GetAppSpecWorkerLogDestinationDatadogArgs) GetAppSpecWorkerLogDestinationDatadogPtrInput {
+	return (*getAppSpecWorkerLogDestinationDatadogPtrType)(v)
+}
+
+func (*getAppSpecWorkerLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerLogDestinationDatadogPtrType) ToGetAppSpecWorkerLogDestinationDatadogPtrOutput() GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerLogDestinationDatadogPtrType) ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationDatadogPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogOutput) ToGetAppSpecWorkerLogDestinationDatadogOutput() GetAppSpecWorkerLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogOutput) ToGetAppSpecWorkerLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogOutput) ToGetAppSpecWorkerLogDestinationDatadogPtrOutput() GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o.ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogOutput) ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerLogDestinationDatadog) *GetAppSpecWorkerLogDestinationDatadog {
+		return &v
+	}).(GetAppSpecWorkerLogDestinationDatadogPtrOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) ToGetAppSpecWorkerLogDestinationDatadogPtrOutput() GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) ToGetAppSpecWorkerLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) Elem() GetAppSpecWorkerLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationDatadog) GetAppSpecWorkerLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerLogDestinationDatadog
+		return ret
+	}).(GetAppSpecWorkerLogDestinationDatadogOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationLogtail struct {
+	Token string `pulumi:"token"`
+}
+
+// GetAppSpecWorkerLogDestinationLogtailInput is an input type that accepts GetAppSpecWorkerLogDestinationLogtailArgs and GetAppSpecWorkerLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationLogtailInput` via:
+//
+//          GetAppSpecWorkerLogDestinationLogtailArgs{...}
+type GetAppSpecWorkerLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationLogtailOutput() GetAppSpecWorkerLogDestinationLogtailOutput
+	ToGetAppSpecWorkerLogDestinationLogtailOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationLogtailOutput
+}
+
+type GetAppSpecWorkerLogDestinationLogtailArgs struct {
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (GetAppSpecWorkerLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerLogDestinationLogtailArgs) ToGetAppSpecWorkerLogDestinationLogtailOutput() GetAppSpecWorkerLogDestinationLogtailOutput {
+	return i.ToGetAppSpecWorkerLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationLogtailArgs) ToGetAppSpecWorkerLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationLogtailOutput)
+}
+
+func (i GetAppSpecWorkerLogDestinationLogtailArgs) ToGetAppSpecWorkerLogDestinationLogtailPtrOutput() GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationLogtailArgs) ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationLogtailOutput).ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecWorkerLogDestinationLogtailArgs, GetAppSpecWorkerLogDestinationLogtailPtr and GetAppSpecWorkerLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationLogtailPtrInput` via:
+//
+//          GetAppSpecWorkerLogDestinationLogtailArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecWorkerLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationLogtailPtrOutput() GetAppSpecWorkerLogDestinationLogtailPtrOutput
+	ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationLogtailPtrOutput
+}
+
+type getAppSpecWorkerLogDestinationLogtailPtrType GetAppSpecWorkerLogDestinationLogtailArgs
+
+func GetAppSpecWorkerLogDestinationLogtailPtr(v *GetAppSpecWorkerLogDestinationLogtailArgs) GetAppSpecWorkerLogDestinationLogtailPtrInput {
+	return (*getAppSpecWorkerLogDestinationLogtailPtrType)(v)
+}
+
+func (*getAppSpecWorkerLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerLogDestinationLogtailPtrType) ToGetAppSpecWorkerLogDestinationLogtailPtrOutput() GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerLogDestinationLogtailPtrType) ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationLogtailPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailOutput) ToGetAppSpecWorkerLogDestinationLogtailOutput() GetAppSpecWorkerLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailOutput) ToGetAppSpecWorkerLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailOutput) ToGetAppSpecWorkerLogDestinationLogtailPtrOutput() GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o.ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailOutput) ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerLogDestinationLogtail) *GetAppSpecWorkerLogDestinationLogtail {
+		return &v
+	}).(GetAppSpecWorkerLogDestinationLogtailPtrOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type GetAppSpecWorkerLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailPtrOutput) ToGetAppSpecWorkerLogDestinationLogtailPtrOutput() GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailPtrOutput) ToGetAppSpecWorkerLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailPtrOutput) Elem() GetAppSpecWorkerLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationLogtail) GetAppSpecWorkerLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerLogDestinationLogtail
+		return ret
+	}).(GetAppSpecWorkerLogDestinationLogtailOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationPapertrail struct {
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// GetAppSpecWorkerLogDestinationPapertrailInput is an input type that accepts GetAppSpecWorkerLogDestinationPapertrailArgs and GetAppSpecWorkerLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationPapertrailInput` via:
+//
+//          GetAppSpecWorkerLogDestinationPapertrailArgs{...}
+type GetAppSpecWorkerLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationPapertrailOutput() GetAppSpecWorkerLogDestinationPapertrailOutput
+	ToGetAppSpecWorkerLogDestinationPapertrailOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationPapertrailOutput
+}
+
+type GetAppSpecWorkerLogDestinationPapertrailArgs struct {
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecWorkerLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerLogDestinationPapertrailArgs) ToGetAppSpecWorkerLogDestinationPapertrailOutput() GetAppSpecWorkerLogDestinationPapertrailOutput {
+	return i.ToGetAppSpecWorkerLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationPapertrailArgs) ToGetAppSpecWorkerLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationPapertrailOutput)
+}
+
+func (i GetAppSpecWorkerLogDestinationPapertrailArgs) ToGetAppSpecWorkerLogDestinationPapertrailPtrOutput() GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationPapertrailArgs) ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationPapertrailOutput).ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecWorkerLogDestinationPapertrailArgs, GetAppSpecWorkerLogDestinationPapertrailPtr and GetAppSpecWorkerLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationPapertrailPtrInput` via:
+//
+//          GetAppSpecWorkerLogDestinationPapertrailArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecWorkerLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationPapertrailPtrOutput() GetAppSpecWorkerLogDestinationPapertrailPtrOutput
+	ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationPapertrailPtrOutput
+}
+
+type getAppSpecWorkerLogDestinationPapertrailPtrType GetAppSpecWorkerLogDestinationPapertrailArgs
+
+func GetAppSpecWorkerLogDestinationPapertrailPtr(v *GetAppSpecWorkerLogDestinationPapertrailArgs) GetAppSpecWorkerLogDestinationPapertrailPtrInput {
+	return (*getAppSpecWorkerLogDestinationPapertrailPtrType)(v)
+}
+
+func (*getAppSpecWorkerLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerLogDestinationPapertrailPtrType) ToGetAppSpecWorkerLogDestinationPapertrailPtrOutput() GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerLogDestinationPapertrailPtrType) ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailOutput) ToGetAppSpecWorkerLogDestinationPapertrailOutput() GetAppSpecWorkerLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailOutput) ToGetAppSpecWorkerLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailOutput) ToGetAppSpecWorkerLogDestinationPapertrailPtrOutput() GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o.ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailOutput) ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerLogDestinationPapertrail) *GetAppSpecWorkerLogDestinationPapertrail {
+		return &v
+	}).(GetAppSpecWorkerLogDestinationPapertrailPtrOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type GetAppSpecWorkerLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) ToGetAppSpecWorkerLogDestinationPapertrailPtrOutput() GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) ToGetAppSpecWorkerLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) Elem() GetAppSpecWorkerLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationPapertrail) GetAppSpecWorkerLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerLogDestinationPapertrail
+		return ret
+	}).(GetAppSpecWorkerLogDestinationPapertrailOutput)
+}
+
+func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20906,6 +25240,8 @@ func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecInput)(nil)).Elem(), AppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecPtrInput)(nil)).Elem(), AppSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertInput)(nil)).Elem(), AppSpecAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertArrayInput)(nil)).Elem(), AppSpecAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDatabaseInput)(nil)).Elem(), AppSpecDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDatabaseArrayInput)(nil)).Elem(), AppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameInput)(nil)).Elem(), AppSpecDomainNameArgs{})
@@ -20914,6 +25250,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvArrayInput)(nil)).Elem(), AppSpecEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobInput)(nil)).Elem(), AppSpecJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobArrayInput)(nil)).Elem(), AppSpecJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertInput)(nil)).Elem(), AppSpecJobAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertArrayInput)(nil)).Elem(), AppSpecJobAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobEnvInput)(nil)).Elem(), AppSpecJobEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobEnvArrayInput)(nil)).Elem(), AppSpecJobEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGitInput)(nil)).Elem(), AppSpecJobGitArgs{})
@@ -20924,8 +25262,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGitlabPtrInput)(nil)).Elem(), AppSpecJobGitlabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobImageInput)(nil)).Elem(), AppSpecJobImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobImagePtrInput)(nil)).Elem(), AppSpecJobImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationInput)(nil)).Elem(), AppSpecJobLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationArrayInput)(nil)).Elem(), AppSpecJobLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationDatadogInput)(nil)).Elem(), AppSpecJobLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationDatadogPtrInput)(nil)).Elem(), AppSpecJobLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationLogtailInput)(nil)).Elem(), AppSpecJobLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecJobLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationPapertrailInput)(nil)).Elem(), AppSpecJobLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceInput)(nil)).Elem(), AppSpecServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceArrayInput)(nil)).Elem(), AppSpecServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertInput)(nil)).Elem(), AppSpecServiceAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertArrayInput)(nil)).Elem(), AppSpecServiceAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsInput)(nil)).Elem(), AppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsPtrInput)(nil)).Elem(), AppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), AppSpecServiceCorsAllowOriginsArgs{})
@@ -20942,6 +25290,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceHealthCheckPtrInput)(nil)).Elem(), AppSpecServiceHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImageInput)(nil)).Elem(), AppSpecServiceImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImagePtrInput)(nil)).Elem(), AppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationInput)(nil)).Elem(), AppSpecServiceLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationArrayInput)(nil)).Elem(), AppSpecServiceLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationDatadogInput)(nil)).Elem(), AppSpecServiceLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationDatadogPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationLogtailInput)(nil)).Elem(), AppSpecServiceLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationPapertrailInput)(nil)).Elem(), AppSpecServiceLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceRouteInput)(nil)).Elem(), AppSpecServiceRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceRouteArrayInput)(nil)).Elem(), AppSpecServiceRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteInput)(nil)).Elem(), AppSpecStaticSiteArgs{})
@@ -20962,6 +25318,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteRouteArrayInput)(nil)).Elem(), AppSpecStaticSiteRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerInput)(nil)).Elem(), AppSpecWorkerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerArrayInput)(nil)).Elem(), AppSpecWorkerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertInput)(nil)).Elem(), AppSpecWorkerAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertArrayInput)(nil)).Elem(), AppSpecWorkerAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerEnvInput)(nil)).Elem(), AppSpecWorkerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerEnvArrayInput)(nil)).Elem(), AppSpecWorkerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitInput)(nil)).Elem(), AppSpecWorkerGitArgs{})
@@ -20972,6 +25330,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitlabPtrInput)(nil)).Elem(), AppSpecWorkerGitlabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImageInput)(nil)).Elem(), AppSpecWorkerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImagePtrInput)(nil)).Elem(), AppSpecWorkerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationInput)(nil)).Elem(), AppSpecWorkerLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationArrayInput)(nil)).Elem(), AppSpecWorkerLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationDatadogInput)(nil)).Elem(), AppSpecWorkerLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationDatadogPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationLogtailInput)(nil)).Elem(), AppSpecWorkerLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrailInput)(nil)).Elem(), AppSpecWorkerLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterMaintenanceWindowInput)(nil)).Elem(), DatabaseClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterMaintenanceWindowArrayInput)(nil)).Elem(), DatabaseClusterMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallRuleInput)(nil)).Elem(), DatabaseFirewallRuleArgs{})
@@ -21018,6 +25384,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketVersioningPtrInput)(nil)).Elem(), SpacesBucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecInput)(nil)).Elem(), GetAppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecArrayInput)(nil)).Elem(), GetAppSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertInput)(nil)).Elem(), GetAppSpecAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertArrayInput)(nil)).Elem(), GetAppSpecAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseInput)(nil)).Elem(), GetAppSpecDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseArrayInput)(nil)).Elem(), GetAppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainInput)(nil)).Elem(), GetAppSpecDomainArgs{})
@@ -21025,6 +25393,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvArrayInput)(nil)).Elem(), GetAppSpecEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobInput)(nil)).Elem(), GetAppSpecJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobArrayInput)(nil)).Elem(), GetAppSpecJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertInput)(nil)).Elem(), GetAppSpecJobAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertArrayInput)(nil)).Elem(), GetAppSpecJobAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobEnvInput)(nil)).Elem(), GetAppSpecJobEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobEnvArrayInput)(nil)).Elem(), GetAppSpecJobEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGitInput)(nil)).Elem(), GetAppSpecJobGitArgs{})
@@ -21035,8 +25405,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGitlabPtrInput)(nil)).Elem(), GetAppSpecJobGitlabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobImageInput)(nil)).Elem(), GetAppSpecJobImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobImagePtrInput)(nil)).Elem(), GetAppSpecJobImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationInput)(nil)).Elem(), GetAppSpecJobLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationArrayInput)(nil)).Elem(), GetAppSpecJobLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecJobLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecJobLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceInput)(nil)).Elem(), GetAppSpecServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceArrayInput)(nil)).Elem(), GetAppSpecServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertInput)(nil)).Elem(), GetAppSpecServiceAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertArrayInput)(nil)).Elem(), GetAppSpecServiceAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
@@ -21053,6 +25433,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceHealthCheckPtrInput)(nil)).Elem(), GetAppSpecServiceHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImagePtrInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationInput)(nil)).Elem(), GetAppSpecServiceLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationArrayInput)(nil)).Elem(), GetAppSpecServiceLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecServiceLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecServiceLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteInput)(nil)).Elem(), GetAppSpecServiceRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteArrayInput)(nil)).Elem(), GetAppSpecServiceRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteInput)(nil)).Elem(), GetAppSpecStaticSiteArgs{})
@@ -21073,6 +25461,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteRouteArrayInput)(nil)).Elem(), GetAppSpecStaticSiteRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerInput)(nil)).Elem(), GetAppSpecWorkerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerArrayInput)(nil)).Elem(), GetAppSpecWorkerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertInput)(nil)).Elem(), GetAppSpecWorkerAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertArrayInput)(nil)).Elem(), GetAppSpecWorkerAlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerEnvInput)(nil)).Elem(), GetAppSpecWorkerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerEnvArrayInput)(nil)).Elem(), GetAppSpecWorkerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitInput)(nil)).Elem(), GetAppSpecWorkerGitArgs{})
@@ -21083,6 +25473,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitlabPtrInput)(nil)).Elem(), GetAppSpecWorkerGitlabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImageInput)(nil)).Elem(), GetAppSpecWorkerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImagePtrInput)(nil)).Elem(), GetAppSpecWorkerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationArrayInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
@@ -21169,6 +25567,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
 	pulumi.RegisterOutputType(AppSpecPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecAlertOutput{})
+	pulumi.RegisterOutputType(AppSpecAlertArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecDomainNameOutput{})
@@ -21177,6 +25577,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobOutput{})
 	pulumi.RegisterOutputType(AppSpecJobArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecJobAlertOutput{})
+	pulumi.RegisterOutputType(AppSpecJobAlertArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecJobEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobGitOutput{})
@@ -21187,8 +25589,18 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecJobGitlabPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecJobImageOutput{})
 	pulumi.RegisterOutputType(AppSpecJobImagePtrOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAlertOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAlertArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsAllowOriginsOutput{})
@@ -21205,6 +25617,14 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceImageOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceImagePtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceRouteOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceRouteArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteOutput{})
@@ -21225,6 +25645,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecStaticSiteRouteArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAlertOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAlertArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerGitOutput{})
@@ -21235,6 +25657,14 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerGitlabPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerImageOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerImagePtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseFirewallRuleOutput{})
@@ -21281,6 +25711,8 @@ func init() {
 	pulumi.RegisterOutputType(SpacesBucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecOutput{})
 	pulumi.RegisterOutputType(GetAppSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecAlertOutput{})
+	pulumi.RegisterOutputType(GetAppSpecAlertArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDomainOutput{})
@@ -21288,6 +25720,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobAlertOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobAlertArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobGitOutput{})
@@ -21298,8 +25732,18 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobGitlabPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobImageOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobImagePtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsOutput{})
@@ -21316,6 +25760,14 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceImageOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceImagePtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceRouteOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteOutput{})
@@ -21336,6 +25788,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAlertOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAlertArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerGitOutput{})
@@ -21346,6 +25800,14 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerGitlabPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerImageOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerImagePtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})

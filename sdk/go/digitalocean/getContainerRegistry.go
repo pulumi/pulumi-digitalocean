@@ -59,15 +59,21 @@ type LookupContainerRegistryArgs struct {
 
 // A collection of values returned by getContainerRegistry.
 type LookupContainerRegistryResult struct {
+	// The date and time when the registry was created
+	CreatedAt string `pulumi:"createdAt"`
+	// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
 	Endpoint string `pulumi:"endpoint"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the container registry
-	Name      string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The slug identifier for the  region
+	Region string `pulumi:"region"`
+	// The domain of the container registry. Ex: `registry.digitalocean.com`
 	ServerUrl string `pulumi:"serverUrl"`
+	// The amount of storage used in the registry in bytes.
+	StorageUsageBytes int `pulumi:"storageUsageBytes"`
 	// The slug identifier for the subscription tier
-	// * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
-	// * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
 	SubscriptionTierSlug string `pulumi:"subscriptionTierSlug"`
 }
 
@@ -105,6 +111,12 @@ func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutp
 	return o
 }
 
+// The date and time when the registry was created
+func (o LookupContainerRegistryResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
 func (o LookupContainerRegistryResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -119,13 +131,22 @@ func (o LookupContainerRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The slug identifier for the  region
+func (o LookupContainerRegistryResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The domain of the container registry. Ex: `registry.digitalocean.com`
 func (o LookupContainerRegistryResultOutput) ServerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.ServerUrl }).(pulumi.StringOutput)
 }
 
+// The amount of storage used in the registry in bytes.
+func (o LookupContainerRegistryResultOutput) StorageUsageBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupContainerRegistryResult) int { return v.StorageUsageBytes }).(pulumi.IntOutput)
+}
+
 // The slug identifier for the subscription tier
-// * `endpoint`: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
-// * `serverUrl`: The domain of the container registry. Ex: `registry.digitalocean.com`
 func (o LookupContainerRegistryResultOutput) SubscriptionTierSlug() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.SubscriptionTierSlug }).(pulumi.StringOutput)
 }

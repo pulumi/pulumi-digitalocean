@@ -14,15 +14,19 @@ __all__ = ['ContainerRegistryArgs', 'ContainerRegistry']
 class ContainerRegistryArgs:
     def __init__(__self__, *,
                  subscription_tier_slug: pulumi.Input[str],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ContainerRegistry resource.
         :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         :param pulumi.Input[str] name: The name of the container_registry
+        :param pulumi.Input[str] region: The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
         """
         pulumi.set(__self__, "subscription_tier_slug", subscription_tier_slug)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="subscriptionTierSlug")
@@ -48,31 +52,72 @@ class ContainerRegistryArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _ContainerRegistryState:
     def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  server_url: Optional[pulumi.Input[str]] = None,
+                 storage_usage_bytes: Optional[pulumi.Input[int]] = None,
                  subscription_tier_slug: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ContainerRegistry resources.
+        :param pulumi.Input[str] created_at: The date and time when the registry was created
+        :param pulumi.Input[str] endpoint: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
         :param pulumi.Input[str] name: The name of the container_registry
+        :param pulumi.Input[str] region: The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+        :param pulumi.Input[str] server_url: The domain of the container registry. Ex: `registry.digitalocean.com`
+        :param pulumi.Input[int] storage_usage_bytes: The amount of storage used in the registry in bytes.
         :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if server_url is not None:
             pulumi.set(__self__, "server_url", server_url)
+        if storage_usage_bytes is not None:
+            pulumi.set(__self__, "storage_usage_bytes", storage_usage_bytes)
         if subscription_tier_slug is not None:
             pulumi.set(__self__, "subscription_tier_slug", subscription_tier_slug)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time when the registry was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -92,13 +137,40 @@ class _ContainerRegistryState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain of the container registry. Ex: `registry.digitalocean.com`
+        """
         return pulumi.get(self, "server_url")
 
     @server_url.setter
     def server_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server_url", value)
+
+    @property
+    @pulumi.getter(name="storageUsageBytes")
+    def storage_usage_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of storage used in the registry in bytes.
+        """
+        return pulumi.get(self, "storage_usage_bytes")
+
+    @storage_usage_bytes.setter
+    def storage_usage_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_usage_bytes", value)
 
     @property
     @pulumi.getter(name="subscriptionTierSlug")
@@ -119,6 +191,7 @@ class ContainerRegistry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  subscription_tier_slug: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -146,6 +219,7 @@ class ContainerRegistry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the container_registry
+        :param pulumi.Input[str] region: The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
         :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
         ...
@@ -192,6 +266,7 @@ class ContainerRegistry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  subscription_tier_slug: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -206,11 +281,14 @@ class ContainerRegistry(pulumi.CustomResource):
             __props__ = ContainerRegistryArgs.__new__(ContainerRegistryArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
             if subscription_tier_slug is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription_tier_slug'")
             __props__.__dict__["subscription_tier_slug"] = subscription_tier_slug
+            __props__.__dict__["created_at"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["server_url"] = None
+            __props__.__dict__["storage_usage_bytes"] = None
         super(ContainerRegistry, __self__).__init__(
             'digitalocean:index/containerRegistry:ContainerRegistry',
             resource_name,
@@ -221,9 +299,12 @@ class ContainerRegistry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             server_url: Optional[pulumi.Input[str]] = None,
+            storage_usage_bytes: Optional[pulumi.Input[int]] = None,
             subscription_tier_slug: Optional[pulumi.Input[str]] = None) -> 'ContainerRegistry':
         """
         Get an existing ContainerRegistry resource's state with the given name, id, and optional extra
@@ -232,22 +313,41 @@ class ContainerRegistry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created_at: The date and time when the registry was created
+        :param pulumi.Input[str] endpoint: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
         :param pulumi.Input[str] name: The name of the container_registry
+        :param pulumi.Input[str] region: The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+        :param pulumi.Input[str] server_url: The domain of the container registry. Ex: `registry.digitalocean.com`
+        :param pulumi.Input[int] storage_usage_bytes: The amount of storage used in the registry in bytes.
         :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ContainerRegistryState.__new__(_ContainerRegistryState)
 
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
         __props__.__dict__["server_url"] = server_url
+        __props__.__dict__["storage_usage_bytes"] = storage_usage_bytes
         __props__.__dict__["subscription_tier_slug"] = subscription_tier_slug
         return ContainerRegistry(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        The date and time when the registry was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[str]:
+        """
+        The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+        """
         return pulumi.get(self, "endpoint")
 
     @property
@@ -259,9 +359,28 @@ class ContainerRegistry(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> pulumi.Output[str]:
+        """
+        The domain of the container registry. Ex: `registry.digitalocean.com`
+        """
         return pulumi.get(self, "server_url")
+
+    @property
+    @pulumi.getter(name="storageUsageBytes")
+    def storage_usage_bytes(self) -> pulumi.Output[int]:
+        """
+        The amount of storage used in the registry in bytes.
+        """
+        return pulumi.get(self, "storage_usage_bytes")
 
     @property
     @pulumi.getter(name="subscriptionTierSlug")

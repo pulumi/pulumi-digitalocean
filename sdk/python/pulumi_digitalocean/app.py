@@ -201,6 +201,9 @@ class App(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         mono_repo_example = digitalocean.App("mono-repo-example", spec=digitalocean.AppSpecArgs(
+            alerts=[digitalocean.AppSpecAlertArgs(
+                rule="DEPLOYMENT_FAILED",
+            )],
             databases=[digitalocean.AppSpecDatabaseArgs(
                 engine="PG",
                 name="starter-db",
@@ -212,6 +215,12 @@ class App(pulumi.CustomResource):
             name="mono-repo-example",
             region="ams",
             services=[digitalocean.AppSpecServiceArgs(
+                alert=[{
+                    "operator": "GREATER_THAN",
+                    "rule": "CPU_UTILIZATION",
+                    "value": 75,
+                    "window": "TEN_MINUTES",
+                }],
                 environment_slug="go",
                 github=digitalocean.AppSpecServiceGithubArgs(
                     branch="main",
@@ -221,6 +230,12 @@ class App(pulumi.CustomResource):
                 http_port=3000,
                 instance_count=2,
                 instance_size_slug="professional-xs",
+                log_destination=[{
+                    "name": "MyLogs",
+                    "papertrail": {
+                        "endpoint": "syslog+tls://example.com:12345",
+                    },
+                }],
                 name="api",
                 routes=[digitalocean.AppSpecServiceRouteArgs(
                     path="/api",
@@ -315,6 +330,9 @@ class App(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         mono_repo_example = digitalocean.App("mono-repo-example", spec=digitalocean.AppSpecArgs(
+            alerts=[digitalocean.AppSpecAlertArgs(
+                rule="DEPLOYMENT_FAILED",
+            )],
             databases=[digitalocean.AppSpecDatabaseArgs(
                 engine="PG",
                 name="starter-db",
@@ -326,6 +344,12 @@ class App(pulumi.CustomResource):
             name="mono-repo-example",
             region="ams",
             services=[digitalocean.AppSpecServiceArgs(
+                alert=[{
+                    "operator": "GREATER_THAN",
+                    "rule": "CPU_UTILIZATION",
+                    "value": 75,
+                    "window": "TEN_MINUTES",
+                }],
                 environment_slug="go",
                 github=digitalocean.AppSpecServiceGithubArgs(
                     branch="main",
@@ -335,6 +359,12 @@ class App(pulumi.CustomResource):
                 http_port=3000,
                 instance_count=2,
                 instance_size_slug="professional-xs",
+                log_destination=[{
+                    "name": "MyLogs",
+                    "papertrail": {
+                        "endpoint": "syslog+tls://example.com:12345",
+                    },
+                }],
                 name="api",
                 routes=[digitalocean.AppSpecServiceRouteArgs(
                     path="/api",

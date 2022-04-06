@@ -44,6 +44,15 @@ namespace Pulumi.DigitalOcean
     [DigitalOceanResourceType("digitalocean:index/containerRegistry:ContainerRegistry")]
     public partial class ContainerRegistry : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The date and time when the registry was created
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+        /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
 
@@ -53,8 +62,23 @@ namespace Pulumi.DigitalOcean
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The domain of the container registry. Ex: `registry.digitalocean.com`
+        /// </summary>
         [Output("serverUrl")]
         public Output<string> ServerUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The amount of storage used in the registry in bytes.
+        /// </summary>
+        [Output("storageUsageBytes")]
+        public Output<int> StorageUsageBytes { get; private set; } = null!;
 
         /// <summary>
         /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
@@ -115,6 +139,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         /// </summary>
         [Input("subscriptionTierSlug", required: true)]
@@ -127,6 +157,15 @@ namespace Pulumi.DigitalOcean
 
     public sealed class ContainerRegistryState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The date and time when the registry was created
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
@@ -136,8 +175,23 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The domain of the container registry. Ex: `registry.digitalocean.com`
+        /// </summary>
         [Input("serverUrl")]
         public Input<string>? ServerUrl { get; set; }
+
+        /// <summary>
+        /// The amount of storage used in the registry in bytes.
+        /// </summary>
+        [Input("storageUsageBytes")]
+        public Input<int>? StorageUsageBytes { get; set; }
 
         /// <summary>
         /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)

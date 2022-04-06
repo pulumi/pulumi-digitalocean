@@ -102,6 +102,11 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := digitalocean.NewApp(ctx, "mono-repo-example", &digitalocean.AppArgs{
 // 			Spec: &AppSpecArgs{
+// 				Alerts: AppSpecAlertArray{
+// 					&AppSpecAlertArgs{
+// 						Rule: pulumi.String("DEPLOYMENT_FAILED"),
+// 					},
+// 				},
 // 				Databases: AppSpecDatabaseArray{
 // 					&AppSpecDatabaseArgs{
 // 						Engine:     pulumi.String("PG"),
@@ -118,6 +123,14 @@ import (
 // 				Region: pulumi.String("ams"),
 // 				Services: AppSpecServiceArray{
 // 					&AppSpecServiceArgs{
+// 						Alert: []map[string]interface{}{
+// 							map[string]interface{}{
+// 								"operator": "GREATER_THAN",
+// 								"rule":     "CPU_UTILIZATION",
+// 								"value":    75,
+// 								"window":   "TEN_MINUTES",
+// 							},
+// 						},
 // 						EnvironmentSlug: pulumi.String("go"),
 // 						Github: &AppSpecServiceGithubArgs{
 // 							Branch:       pulumi.String("main"),
@@ -127,7 +140,15 @@ import (
 // 						HttpPort:         pulumi.Int(3000),
 // 						InstanceCount:    pulumi.Int(2),
 // 						InstanceSizeSlug: pulumi.String("professional-xs"),
-// 						Name:             pulumi.String("api"),
+// 						LogDestination: []map[string]interface{}{
+// 							map[string]interface{}{
+// 								"name": "MyLogs",
+// 								"papertrail": map[string]interface{}{
+// 									"endpoint": "syslog+tls://example.com:12345",
+// 								},
+// 							},
+// 						},
+// 						Name: pulumi.String("api"),
 // 						Routes: AppSpecServiceRouteArray{
 // 							&AppSpecServiceRouteArgs{
 // 								Path: pulumi.String("/api"),

@@ -97,7 +97,7 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     public readonly tag!: pulumi.Output<string | undefined>;
     /**
-     * The time to live for the record, in seconds. Must be at least 0.
+     * The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
      */
     public readonly ttl!: pulumi.Output<number>;
     /**
@@ -198,7 +198,7 @@ export interface DnsRecordState {
      */
     tag?: pulumi.Input<string>;
     /**
-     * The time to live for the record, in seconds. Must be at least 0.
+     * The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
      */
     ttl?: pulumi.Input<number>;
     /**
@@ -244,7 +244,7 @@ export interface DnsRecordArgs {
      */
     tag?: pulumi.Input<string>;
     /**
-     * The time to live for the record, in seconds. Must be at least 0.
+     * The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
      */
     ttl?: pulumi.Input<number>;
     /**

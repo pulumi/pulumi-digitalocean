@@ -12,6 +12,18 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecGetArgs : Pulumi.ResourceArgs
     {
+        [Input("alerts")]
+        private InputList<Inputs.AppSpecAlertGetArgs>? _alerts;
+
+        /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
+        public InputList<Inputs.AppSpecAlertGetArgs> Alerts
+        {
+            get => _alerts ?? (_alerts = new InputList<Inputs.AppSpecAlertGetArgs>());
+            set => _alerts = value;
+        }
+
         [Input("databases")]
         private InputList<Inputs.AppSpecDatabaseGetArgs>? _databases;
         public InputList<Inputs.AppSpecDatabaseGetArgs> Databases

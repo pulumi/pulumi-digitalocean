@@ -81,6 +81,7 @@
         "provider.ts",
         "spacesBucket.ts",
         "spacesBucketObject.ts",
+        "spacesBucketPolicy.ts",
         "sshKey.ts",
         "tag.ts",
         "types/enums/index.ts",

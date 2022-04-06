@@ -47,10 +47,18 @@ import (
 type ContainerRegistry struct {
 	pulumi.CustomResourceState
 
+	// The date and time when the registry was created
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The name of the container_registry
-	Name      pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+	Region pulumi.StringOutput `pulumi:"region"`
+	// The domain of the container registry. Ex: `registry.digitalocean.com`
 	ServerUrl pulumi.StringOutput `pulumi:"serverUrl"`
+	// The amount of storage used in the registry in bytes.
+	StorageUsageBytes pulumi.IntOutput `pulumi:"storageUsageBytes"`
 	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug pulumi.StringOutput `pulumi:"subscriptionTierSlug"`
 }
@@ -87,19 +95,35 @@ func GetContainerRegistry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerRegistry resources.
 type containerRegistryState struct {
+	// The date and time when the registry was created
+	CreatedAt *string `pulumi:"createdAt"`
+	// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
 	Endpoint *string `pulumi:"endpoint"`
 	// The name of the container_registry
-	Name      *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+	Region *string `pulumi:"region"`
+	// The domain of the container registry. Ex: `registry.digitalocean.com`
 	ServerUrl *string `pulumi:"serverUrl"`
+	// The amount of storage used in the registry in bytes.
+	StorageUsageBytes *int `pulumi:"storageUsageBytes"`
 	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug *string `pulumi:"subscriptionTierSlug"`
 }
 
 type ContainerRegistryState struct {
+	// The date and time when the registry was created
+	CreatedAt pulumi.StringPtrInput
+	// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
 	Endpoint pulumi.StringPtrInput
 	// The name of the container_registry
-	Name      pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+	Region pulumi.StringPtrInput
+	// The domain of the container registry. Ex: `registry.digitalocean.com`
 	ServerUrl pulumi.StringPtrInput
+	// The amount of storage used in the registry in bytes.
+	StorageUsageBytes pulumi.IntPtrInput
 	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug pulumi.StringPtrInput
 }
@@ -111,6 +135,8 @@ func (ContainerRegistryState) ElementType() reflect.Type {
 type containerRegistryArgs struct {
 	// The name of the container_registry
 	Name *string `pulumi:"name"`
+	// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+	Region *string `pulumi:"region"`
 	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug string `pulumi:"subscriptionTierSlug"`
 }
@@ -119,6 +145,8 @@ type containerRegistryArgs struct {
 type ContainerRegistryArgs struct {
 	// The name of the container_registry
 	Name pulumi.StringPtrInput
+	// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+	Region pulumi.StringPtrInput
 	// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
 	SubscriptionTierSlug pulumi.StringInput
 }

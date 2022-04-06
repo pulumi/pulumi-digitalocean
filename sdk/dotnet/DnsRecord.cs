@@ -106,7 +106,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Tag { get; private set; } = null!;
 
         /// <summary>
-        /// The time to live for the record, in seconds. Must be at least 0.
+        /// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         /// </summary>
         [Output("ttl")]
         public Output<int> Ttl { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The time to live for the record, in seconds. Must be at least 0.
+        /// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The time to live for the record, in seconds. Must be at least 0.
+        /// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }

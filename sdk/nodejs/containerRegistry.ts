@@ -56,12 +56,30 @@ export class ContainerRegistry extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContainerRegistry.__pulumiType;
     }
 
+    /**
+     * The date and time when the registry was created
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+     */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
      * The name of the container_registry
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * The domain of the container registry. Ex: `registry.digitalocean.com`
+     */
     public /*out*/ readonly serverUrl!: pulumi.Output<string>;
+    /**
+     * The amount of storage used in the registry in bytes.
+     */
+    public /*out*/ readonly storageUsageBytes!: pulumi.Output<number>;
     /**
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      */
@@ -80,9 +98,12 @@ export class ContainerRegistry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerRegistryState | undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serverUrl"] = state ? state.serverUrl : undefined;
+            resourceInputs["storageUsageBytes"] = state ? state.storageUsageBytes : undefined;
             resourceInputs["subscriptionTierSlug"] = state ? state.subscriptionTierSlug : undefined;
         } else {
             const args = argsOrState as ContainerRegistryArgs | undefined;
@@ -90,9 +111,12 @@ export class ContainerRegistry extends pulumi.CustomResource {
                 throw new Error("Missing required property 'subscriptionTierSlug'");
             }
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["subscriptionTierSlug"] = args ? args.subscriptionTierSlug : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["serverUrl"] = undefined /*out*/;
+            resourceInputs["storageUsageBytes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContainerRegistry.__pulumiType, name, resourceInputs, opts);
@@ -103,12 +127,30 @@ export class ContainerRegistry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContainerRegistry resources.
  */
 export interface ContainerRegistryState {
+    /**
+     * The date and time when the registry was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+     */
     endpoint?: pulumi.Input<string>;
     /**
      * The name of the container_registry
      */
     name?: pulumi.Input<string>;
+    /**
+     * The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The domain of the container registry. Ex: `registry.digitalocean.com`
+     */
     serverUrl?: pulumi.Input<string>;
+    /**
+     * The amount of storage used in the registry in bytes.
+     */
+    storageUsageBytes?: pulumi.Input<number>;
     /**
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      */
@@ -123,6 +165,10 @@ export interface ContainerRegistryArgs {
      * The name of the container_registry
      */
     name?: pulumi.Input<string>;
+    /**
+     * The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      */

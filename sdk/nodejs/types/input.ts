@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs, enums } from "../types";
 
 export interface AppSpec {
+    /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecAlert>[]>;
     databases?: pulumi.Input<pulumi.Input<inputs.AppSpecDatabase>[]>;
     /**
      * Describes a domain where the application will be made available.
@@ -30,6 +34,17 @@ export interface AppSpec {
     services?: pulumi.Input<pulumi.Input<inputs.AppSpecService>[]>;
     staticSites?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSite>[]>;
     workers?: pulumi.Input<pulumi.Input<inputs.AppSpecWorker>[]>;
+}
+
+export interface AppSpecAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: pulumi.Input<string>;
 }
 
 export interface AppSpecDatabase {
@@ -96,12 +111,16 @@ export interface AppSpecEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface AppSpecJob {
+    /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecJobAlert>[]>;
     /**
      * An optional build command to run while building this component from source.
      */
@@ -151,6 +170,10 @@ export interface AppSpecJob {
      */
     kind?: pulumi.Input<string>;
     /**
+     * Describes a log forwarding destination.
+     */
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecJobLogDestination>[]>;
+    /**
      * The name of the component.
      */
     name: pulumi.Input<string>;
@@ -162,6 +185,29 @@ export interface AppSpecJob {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: pulumi.Input<string>;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: pulumi.Input<number>;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
+    window: pulumi.Input<string>;
 }
 
 export interface AppSpecJobEnv {
@@ -178,7 +224,7 @@ export interface AppSpecJobEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: pulumi.Input<string>;
 }
@@ -243,7 +289,55 @@ export interface AppSpecJobImage {
     tag?: pulumi.Input<string>;
 }
 
+export interface AppSpecJobLogDestination {
+    /**
+     * Datadog configuration.
+     */
+    datadog?: pulumi.Input<inputs.AppSpecJobLogDestinationDatadog>;
+    /**
+     * Logtail configuration.
+     */
+    logtail?: pulumi.Input<inputs.AppSpecJobLogDestinationLogtail>;
+    /**
+     * The name of the component.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Papertrail configuration.
+     */
+    papertrail?: pulumi.Input<inputs.AppSpecJobLogDestinationPapertrail>;
+}
+
+export interface AppSpecJobLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
+    token: pulumi.Input<string>;
+}
+
+export interface AppSpecJobLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint: pulumi.Input<string>;
+}
+
 export interface AppSpecService {
+    /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceAlert>[]>;
     /**
      * An optional build command to run while building this component from source.
      */
@@ -301,6 +395,10 @@ export interface AppSpecService {
      */
     internalPorts?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * Describes a log forwarding destination.
+     */
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceLogDestination>[]>;
+    /**
      * The name of the component.
      */
     name: pulumi.Input<string>;
@@ -313,6 +411,29 @@ export interface AppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: pulumi.Input<string>;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: pulumi.Input<number>;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
+    window: pulumi.Input<string>;
 }
 
 export interface AppSpecServiceCors {
@@ -371,7 +492,7 @@ export interface AppSpecServiceEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: pulumi.Input<string>;
 }
@@ -461,6 +582,50 @@ export interface AppSpecServiceImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceLogDestination {
+    /**
+     * Datadog configuration.
+     */
+    datadog?: pulumi.Input<inputs.AppSpecServiceLogDestinationDatadog>;
+    /**
+     * Logtail configuration.
+     */
+    logtail?: pulumi.Input<inputs.AppSpecServiceLogDestinationLogtail>;
+    /**
+     * The name of the component.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Papertrail configuration.
+     */
+    papertrail?: pulumi.Input<inputs.AppSpecServiceLogDestinationPapertrail>;
+}
+
+export interface AppSpecServiceLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
+    token: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint: pulumi.Input<string>;
 }
 
 export interface AppSpecServiceRoute {
@@ -590,7 +755,7 @@ export interface AppSpecStaticSiteEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: pulumi.Input<string>;
 }
@@ -649,6 +814,10 @@ export interface AppSpecStaticSiteRoute {
 
 export interface AppSpecWorker {
     /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerAlert>[]>;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: pulumi.Input<string>;
@@ -689,6 +858,10 @@ export interface AppSpecWorker {
      */
     instanceSizeSlug?: pulumi.Input<string>;
     /**
+     * Describes a log forwarding destination.
+     */
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerLogDestination>[]>;
+    /**
      * The name of the component.
      */
     name: pulumi.Input<string>;
@@ -700,6 +873,29 @@ export interface AppSpecWorker {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: pulumi.Input<string>;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: pulumi.Input<number>;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
+    window: pulumi.Input<string>;
 }
 
 export interface AppSpecWorkerEnv {
@@ -716,7 +912,7 @@ export interface AppSpecWorkerEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: pulumi.Input<string>;
 }
@@ -779,6 +975,50 @@ export interface AppSpecWorkerImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerLogDestination {
+    /**
+     * Datadog configuration.
+     */
+    datadog?: pulumi.Input<inputs.AppSpecWorkerLogDestinationDatadog>;
+    /**
+     * Logtail configuration.
+     */
+    logtail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationLogtail>;
+    /**
+     * The name of the component.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Papertrail configuration.
+     */
+    papertrail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationPapertrail>;
+}
+
+export interface AppSpecWorkerLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
+    token: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint: pulumi.Input<string>;
 }
 
 export interface DatabaseClusterMaintenanceWindow {
@@ -975,33 +1215,6 @@ export interface GetDomainsSort {
     key: string;
 }
 
-export interface GetDropletsFilter {
-    /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
-     */
-    all?: boolean;
-    /**
-     * Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
-     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
-     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
-     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
-     */
-    key: string;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: string;
-    /**
-     * A list of values to match against the `key` field. Only retrieves Droplets
-     * where the `key` field takes on one or more of the values provided here.
-     */
-    values: string[];
-}
-
 export interface GetDropletsFilterArgs {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -1027,6 +1240,33 @@ export interface GetDropletsFilterArgs {
      * where the `key` field takes on one or more of the values provided here.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDropletsFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves Droplets
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
 }
 
 export interface GetDropletsSortArgs {
@@ -1285,31 +1525,6 @@ export interface GetImagesSortArgs {
     key: pulumi.Input<string>;
 }
 
-export interface GetProjectsFilter {
-    /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
-     */
-    all?: boolean;
-    /**
-     * Filter the projects by this key. This may be one of `name`,
-     * `purpose`, `description`, `environment`, or `isDefault`.
-     */
-    key: string;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: string;
-    /**
-     * A list of values to match against the `key` field. Only retrieves projects
-     * where the `key` field takes on one or more of the values provided here.
-     */
-    values: string[];
-}
-
 export interface GetProjectsFilterArgs {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -1333,6 +1548,31 @@ export interface GetProjectsFilterArgs {
      * where the `key` field takes on one or more of the values provided here.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetProjectsFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the projects by this key. This may be one of `name`,
+     * `purpose`, `description`, `environment`, or `isDefault`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves projects
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
 }
 
 export interface GetProjectsSort {
@@ -1433,31 +1673,6 @@ export interface GetRecordsSort {
     key: string;
 }
 
-export interface GetRegionsFilterArgs {
-    /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
-     */
-    all?: pulumi.Input<boolean>;
-    /**
-     * Filter the regions by this key. This may be one of `slug`,
-     * `name`, `available`, `features`, or `sizes`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * A list of values to match against the `key` field. Only retrieves regions
-     * where the `key` field takes on one or more of the values provided here.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetRegionsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -1481,6 +1696,31 @@ export interface GetRegionsFilter {
      * where the `key` field takes on one or more of the values provided here.
      */
     values: string[];
+}
+
+export interface GetRegionsFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * Filter the regions by this key. This may be one of `slug`,
+     * `name`, `available`, `features`, or `sizes`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * A list of values to match against the `key` field. Only retrieves regions
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetRegionsSort {
@@ -1559,18 +1799,6 @@ export interface GetSizesFilter {
     values: string[];
 }
 
-export interface GetSizesSort {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: string;
-    /**
-     * Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
-     */
-    key: string;
-}
-
 export interface GetSizesSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -1583,28 +1811,16 @@ export interface GetSizesSortArgs {
     key: pulumi.Input<string>;
 }
 
-export interface GetSpacesBucketsFilter {
+export interface GetSizesSort {
     /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
+     * The sort direction. This may be either `asc` or `desc`.
      */
-    all?: boolean;
+    direction?: string;
     /**
-     * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     * Sort the sizes by this key. This may be one of `slug`,
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      */
     key: string;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: string;
-    /**
-     * A list of values to match against the `key` field. Only retrieves Spaces buckets
-     * where the `key` field takes on one or more of the values provided here.
-     */
-    values: string[];
 }
 
 export interface GetSpacesBucketsFilterArgs {
@@ -1631,15 +1847,28 @@ export interface GetSpacesBucketsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSpacesBucketsSort {
+export interface GetSpacesBucketsFilter {
     /**
-     * The sort direction. This may be either `asc` or `desc`.
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
      */
-    direction?: string;
+    all?: boolean;
     /**
-     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
     key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves Spaces buckets
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
 }
 
 export interface GetSpacesBucketsSortArgs {
@@ -1653,14 +1882,15 @@ export interface GetSpacesBucketsSortArgs {
     key: pulumi.Input<string>;
 }
 
-export interface GetSshKeysFilterArgs {
-    all?: pulumi.Input<boolean>;
+export interface GetSpacesBucketsSort {
     /**
-     * Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+     * The sort direction. This may be either `asc` or `desc`.
      */
-    key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
-    values: pulumi.Input<pulumi.Input<string>[]>;
+    direction?: string;
+    /**
+     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     */
+    key: string;
 }
 
 export interface GetSshKeysFilter {
@@ -1673,15 +1903,14 @@ export interface GetSshKeysFilter {
     values: string[];
 }
 
-export interface GetSshKeysSort {
+export interface GetSshKeysFilterArgs {
+    all?: pulumi.Input<boolean>;
     /**
-     * The sort direction. This may be either `asc` or `desc`.
+     * Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      */
-    direction?: string;
-    /**
-     * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-     */
-    key: string;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetSshKeysSortArgs {
@@ -1695,28 +1924,15 @@ export interface GetSshKeysSortArgs {
     key: pulumi.Input<string>;
 }
 
-export interface GetTagsFilter {
+export interface GetSshKeysSort {
     /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
+     * The sort direction. This may be either `asc` or `desc`.
      */
-    all?: boolean;
+    direction?: string;
     /**
-     * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      */
     key: string;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: string;
-    /**
-     * Only retrieves tags which keys has value that matches
-     * one of the values provided here.
-     */
-    values: string[];
 }
 
 export interface GetTagsFilterArgs {
@@ -1743,15 +1959,28 @@ export interface GetTagsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetTagsSort {
+export interface GetTagsFilter {
     /**
-     * The sort direction. This may be either `asc` or `desc`.
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
      */
-    direction?: string;
+    all?: boolean;
     /**
-     * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
     key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * Only retrieves tags which keys has value that matches
+     * one of the values provided here.
+     */
+    values: string[];
 }
 
 export interface GetTagsSortArgs {
@@ -1763,6 +1992,17 @@ export interface GetTagsSortArgs {
      * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
     key: pulumi.Input<string>;
+}
+
+export interface GetTagsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     */
+    key: string;
 }
 
 export interface KubernetesClusterKubeConfig {
@@ -2110,4 +2350,3 @@ export interface SpacesBucketVersioning {
      */
     enabled?: pulumi.Input<boolean>;
 }
-

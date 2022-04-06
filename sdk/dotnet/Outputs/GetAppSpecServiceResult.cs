@@ -13,6 +13,7 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecServiceResult
     {
+        public readonly ImmutableArray<Outputs.GetAppSpecServiceAlertResult> Alerts;
         /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
@@ -66,6 +67,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// A list of ports on which this service will listen for internal traffic.
         /// </summary>
         public readonly ImmutableArray<int> InternalPorts;
+        public readonly ImmutableArray<Outputs.GetAppSpecServiceLogDestinationResult> LogDestinations;
         /// <summary>
         /// The name of the component.
         /// </summary>
@@ -82,6 +84,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetAppSpecServiceResult(
+            ImmutableArray<Outputs.GetAppSpecServiceAlertResult> alerts,
+
             string? buildCommand,
 
             Outputs.GetAppSpecServiceCorsResult? cors,
@@ -110,6 +114,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<int> internalPorts,
 
+            ImmutableArray<Outputs.GetAppSpecServiceLogDestinationResult> logDestinations,
+
             string name,
 
             ImmutableArray<Outputs.GetAppSpecServiceRouteResult> routes,
@@ -118,6 +124,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? sourceDir)
         {
+            Alerts = alerts;
             BuildCommand = buildCommand;
             Cors = cors;
             DockerfilePath = dockerfilePath;
@@ -132,6 +139,7 @@ namespace Pulumi.DigitalOcean.Outputs
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
             InternalPorts = internalPorts;
+            LogDestinations = logDestinations;
             Name = name;
             Routes = routes;
             RunCommand = runCommand;

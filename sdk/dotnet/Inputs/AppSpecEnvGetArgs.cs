@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The value of the environment variable.
+        /// The threshold for the type of the warning.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

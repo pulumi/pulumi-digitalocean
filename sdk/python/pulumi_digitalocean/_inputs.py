@@ -11,16 +11,23 @@ from ._enums import *
 
 __all__ = [
     'AppSpecArgs',
+    'AppSpecAlertArgs',
     'AppSpecDatabaseArgs',
     'AppSpecDomainNameArgs',
     'AppSpecEnvArgs',
     'AppSpecJobArgs',
+    'AppSpecJobAlertArgs',
     'AppSpecJobEnvArgs',
     'AppSpecJobGitArgs',
     'AppSpecJobGithubArgs',
     'AppSpecJobGitlabArgs',
     'AppSpecJobImageArgs',
+    'AppSpecJobLogDestinationArgs',
+    'AppSpecJobLogDestinationDatadogArgs',
+    'AppSpecJobLogDestinationLogtailArgs',
+    'AppSpecJobLogDestinationPapertrailArgs',
     'AppSpecServiceArgs',
+    'AppSpecServiceAlertArgs',
     'AppSpecServiceCorsArgs',
     'AppSpecServiceCorsAllowOriginsArgs',
     'AppSpecServiceEnvArgs',
@@ -29,6 +36,10 @@ __all__ = [
     'AppSpecServiceGitlabArgs',
     'AppSpecServiceHealthCheckArgs',
     'AppSpecServiceImageArgs',
+    'AppSpecServiceLogDestinationArgs',
+    'AppSpecServiceLogDestinationDatadogArgs',
+    'AppSpecServiceLogDestinationLogtailArgs',
+    'AppSpecServiceLogDestinationPapertrailArgs',
     'AppSpecServiceRouteArgs',
     'AppSpecStaticSiteArgs',
     'AppSpecStaticSiteCorsArgs',
@@ -39,11 +50,16 @@ __all__ = [
     'AppSpecStaticSiteGitlabArgs',
     'AppSpecStaticSiteRouteArgs',
     'AppSpecWorkerArgs',
+    'AppSpecWorkerAlertArgs',
     'AppSpecWorkerEnvArgs',
     'AppSpecWorkerGitArgs',
     'AppSpecWorkerGithubArgs',
     'AppSpecWorkerGitlabArgs',
     'AppSpecWorkerImageArgs',
+    'AppSpecWorkerLogDestinationArgs',
+    'AppSpecWorkerLogDestinationDatadogArgs',
+    'AppSpecWorkerLogDestinationLogtailArgs',
+    'AppSpecWorkerLogDestinationPapertrailArgs',
     'DatabaseClusterMaintenanceWindowArgs',
     'DatabaseFirewallRuleArgs',
     'FirewallInboundRuleArgs',
@@ -94,6 +110,7 @@ __all__ = [
 class AppSpecArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 alerts: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -105,11 +122,14 @@ class AppSpecArgs:
                  workers: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]] alerts: Describes an alert policy for the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]] domain_names: Describes a domain where the application will be made available.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
         if domain_names is not None:
@@ -143,6 +163,18 @@ class AppSpecArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]]]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
+
+    @alerts.setter
+    def alerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]]]):
+        pulumi.set(self, "alerts", value)
 
     @property
     @pulumi.getter
@@ -233,6 +265,44 @@ class AppSpecArgs:
     @workers.setter
     def workers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]]):
         pulumi.set(self, "workers", value)
+
+
+@pulumi.input_type
+class AppSpecAlertArgs:
+    def __init__(__self__, *,
+                 rule: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input[bool] disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "rule", rule)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[str]:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
 
 @pulumi.input_type
@@ -435,7 +505,7 @@ class AppSpecEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The value of the environment variable.
+        :param pulumi.Input[str] value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -486,7 +556,7 @@ class AppSpecEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -499,6 +569,7 @@ class AppSpecEnvArgs:
 class AppSpecJobArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 alerts: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertArgs']]]] = None,
                  build_command: Optional[pulumi.Input[str]] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
                  environment_slug: Optional[pulumi.Input[str]] = None,
@@ -510,10 +581,12 @@ class AppSpecJobArgs:
                  instance_count: Optional[pulumi.Input[int]] = None,
                  instance_size_slug: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]]] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertArgs']]] alerts: Describes an alert policy for the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
@@ -529,10 +602,13 @@ class AppSpecJobArgs:
                - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
                - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
                - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -555,6 +631,8 @@ class AppSpecJobArgs:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if run_command is not None:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
@@ -571,6 +649,18 @@ class AppSpecJobArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertArgs']]]]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
+
+    @alerts.setter
+    def alerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertArgs']]]]):
+        pulumi.set(self, "alerts", value)
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -709,6 +799,18 @@ class AppSpecJobArgs:
         pulumi.set(self, "kind", value)
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]]]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @log_destinations.setter
+    def log_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]]]):
+        pulumi.set(self, "log_destinations", value)
+
+    @property
     @pulumi.getter(name="runCommand")
     def run_command(self) -> Optional[pulumi.Input[str]]:
         """
@@ -734,6 +836,89 @@ class AppSpecJobArgs:
 
 
 @pulumi.input_type
+class AppSpecJobAlertArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 rule: pulumi.Input[str],
+                 value: pulumi.Input[float],
+                 window: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param pulumi.Input[str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input[float] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param pulumi.Input[bool] disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[str]:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[float]:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def window(self) -> pulumi.Input[str]:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @window.setter
+    def window(self, value: pulumi.Input[str]):
+        pulumi.set(self, "window", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
 class AppSpecJobEnvArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
@@ -744,7 +929,7 @@ class AppSpecJobEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The value of the environment variable.
+        :param pulumi.Input[str] value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -795,7 +980,7 @@ class AppSpecJobEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -1023,9 +1208,162 @@ class AppSpecJobImageArgs:
 
 
 @pulumi.input_type
+class AppSpecJobLogDestinationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 datadog: Optional[pulumi.Input['AppSpecJobLogDestinationDatadogArgs']] = None,
+                 logtail: Optional[pulumi.Input['AppSpecJobLogDestinationLogtailArgs']] = None,
+                 papertrail: Optional[pulumi.Input['AppSpecJobLogDestinationPapertrailArgs']] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input['AppSpecJobLogDestinationDatadogArgs'] datadog: Datadog configuration.
+        :param pulumi.Input['AppSpecJobLogDestinationLogtailArgs'] logtail: Logtail configuration.
+        :param pulumi.Input['AppSpecJobLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional[pulumi.Input['AppSpecJobLogDestinationDatadogArgs']]:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @datadog.setter
+    def datadog(self, value: Optional[pulumi.Input['AppSpecJobLogDestinationDatadogArgs']]):
+        pulumi.set(self, "datadog", value)
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional[pulumi.Input['AppSpecJobLogDestinationLogtailArgs']]:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @logtail.setter
+    def logtail(self, value: Optional[pulumi.Input['AppSpecJobLogDestinationLogtailArgs']]):
+        pulumi.set(self, "logtail", value)
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional[pulumi.Input['AppSpecJobLogDestinationPapertrailArgs']]:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+    @papertrail.setter
+    def papertrail(self, value: Optional[pulumi.Input['AppSpecJobLogDestinationPapertrailArgs']]):
+        pulumi.set(self, "papertrail", value)
+
+
+@pulumi.input_type
+class AppSpecJobLogDestinationDatadogArgs:
+    def __init__(__self__, *,
+                 api_key: pulumi.Input[str],
+                 endpoint: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_key: Datadog API key.
+        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[str]:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+
+@pulumi.input_type
+class AppSpecJobLogDestinationLogtailArgs:
+    def __init__(__self__, *,
+                 token: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[str]:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class AppSpecJobLogDestinationPapertrailArgs:
+    def __init__(__self__, *,
+                 endpoint: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint", value)
+
+
+@pulumi.input_type
 class AppSpecServiceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 alerts: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]]] = None,
                  build_command: Optional[pulumi.Input[str]] = None,
                  cors: Optional[pulumi.Input['AppSpecServiceCorsArgs']] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
@@ -1040,11 +1378,13 @@ class AppSpecServiceArgs:
                  instance_count: Optional[pulumi.Input[int]] = None,
                  instance_size_slug: Optional[pulumi.Input[str]] = None,
                  internal_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]]] = None,
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]] alerts: Describes an alert policy for the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input['AppSpecServiceCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -1059,10 +1399,13 @@ class AppSpecServiceArgs:
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] internal_ports: A list of ports on which this service will listen for internal traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if cors is not None:
@@ -1091,6 +1434,8 @@ class AppSpecServiceArgs:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
         if internal_ports is not None:
             pulumi.set(__self__, "internal_ports", internal_ports)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if routes is not None:
             pulumi.set(__self__, "routes", routes)
         if run_command is not None:
@@ -1109,6 +1454,18 @@ class AppSpecServiceArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]]]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
+
+    @alerts.setter
+    def alerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]]]):
+        pulumi.set(self, "alerts", value)
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -1279,6 +1636,18 @@ class AppSpecServiceArgs:
         pulumi.set(self, "internal_ports", value)
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]]]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @log_destinations.setter
+    def log_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]]]):
+        pulumi.set(self, "log_destinations", value)
+
+    @property
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]]:
         return pulumi.get(self, "routes")
@@ -1310,6 +1679,89 @@ class AppSpecServiceArgs:
     @source_dir.setter
     def source_dir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_dir", value)
+
+
+@pulumi.input_type
+class AppSpecServiceAlertArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 rule: pulumi.Input[str],
+                 value: pulumi.Input[float],
+                 window: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param pulumi.Input[str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input[float] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param pulumi.Input[bool] disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[str]:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[float]:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def window(self) -> pulumi.Input[str]:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @window.setter
+    def window(self, value: pulumi.Input[str]):
+        pulumi.set(self, "window", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
 
 @pulumi.input_type
@@ -1481,7 +1933,7 @@ class AppSpecServiceEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The value of the environment variable.
+        :param pulumi.Input[str] value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1532,7 +1984,7 @@ class AppSpecServiceEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -1860,6 +2312,158 @@ class AppSpecServiceImageArgs:
     @tag.setter
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
+class AppSpecServiceLogDestinationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 datadog: Optional[pulumi.Input['AppSpecServiceLogDestinationDatadogArgs']] = None,
+                 logtail: Optional[pulumi.Input['AppSpecServiceLogDestinationLogtailArgs']] = None,
+                 papertrail: Optional[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs']] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input['AppSpecServiceLogDestinationDatadogArgs'] datadog: Datadog configuration.
+        :param pulumi.Input['AppSpecServiceLogDestinationLogtailArgs'] logtail: Logtail configuration.
+        :param pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional[pulumi.Input['AppSpecServiceLogDestinationDatadogArgs']]:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @datadog.setter
+    def datadog(self, value: Optional[pulumi.Input['AppSpecServiceLogDestinationDatadogArgs']]):
+        pulumi.set(self, "datadog", value)
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional[pulumi.Input['AppSpecServiceLogDestinationLogtailArgs']]:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @logtail.setter
+    def logtail(self, value: Optional[pulumi.Input['AppSpecServiceLogDestinationLogtailArgs']]):
+        pulumi.set(self, "logtail", value)
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs']]:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+    @papertrail.setter
+    def papertrail(self, value: Optional[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs']]):
+        pulumi.set(self, "papertrail", value)
+
+
+@pulumi.input_type
+class AppSpecServiceLogDestinationDatadogArgs:
+    def __init__(__self__, *,
+                 api_key: pulumi.Input[str],
+                 endpoint: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_key: Datadog API key.
+        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[str]:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+
+@pulumi.input_type
+class AppSpecServiceLogDestinationLogtailArgs:
+    def __init__(__self__, *,
+                 token: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[str]:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class AppSpecServiceLogDestinationPapertrailArgs:
+    def __init__(__self__, *,
+                 endpoint: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint", value)
 
 
 @pulumi.input_type
@@ -2312,7 +2916,7 @@ class AppSpecStaticSiteEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The value of the environment variable.
+        :param pulumi.Input[str] value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2363,7 +2967,7 @@ class AppSpecStaticSiteEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -2564,6 +3168,7 @@ class AppSpecStaticSiteRouteArgs:
 class AppSpecWorkerArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 alerts: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgs']]]] = None,
                  build_command: Optional[pulumi.Input[str]] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
                  environment_slug: Optional[pulumi.Input[str]] = None,
@@ -2574,10 +3179,12 @@ class AppSpecWorkerArgs:
                  image: Optional[pulumi.Input['AppSpecWorkerImageArgs']] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  instance_size_slug: Optional[pulumi.Input[str]] = None,
+                 log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]]] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
                  source_dir: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgs']]] alerts: Describes an alert policy for the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
@@ -2588,10 +3195,13 @@ class AppSpecWorkerArgs:
         :param pulumi.Input['AppSpecWorkerImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -2612,6 +3222,8 @@ class AppSpecWorkerArgs:
             pulumi.set(__self__, "instance_count", instance_count)
         if instance_size_slug is not None:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
         if run_command is not None:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
@@ -2628,6 +3240,18 @@ class AppSpecWorkerArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgs']]]]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
+
+    @alerts.setter
+    def alerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgs']]]]):
+        pulumi.set(self, "alerts", value)
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -2750,6 +3374,18 @@ class AppSpecWorkerArgs:
         pulumi.set(self, "instance_size_slug", value)
 
     @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]]]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @log_destinations.setter
+    def log_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]]]):
+        pulumi.set(self, "log_destinations", value)
+
+    @property
     @pulumi.getter(name="runCommand")
     def run_command(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2775,6 +3411,89 @@ class AppSpecWorkerArgs:
 
 
 @pulumi.input_type
+class AppSpecWorkerAlertArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 rule: pulumi.Input[str],
+                 value: pulumi.Input[float],
+                 window: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param pulumi.Input[str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input[float] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param pulumi.Input[bool] disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[str]:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[float]:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def window(self) -> pulumi.Input[str]:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @window.setter
+    def window(self, value: pulumi.Input[str]):
+        pulumi.set(self, "window", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
 class AppSpecWorkerEnvArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
@@ -2785,7 +3504,7 @@ class AppSpecWorkerEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The value of the environment variable.
+        :param pulumi.Input[str] value: The threshold for the type of the warning.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2836,7 +3555,7 @@ class AppSpecWorkerEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -3061,6 +3780,158 @@ class AppSpecWorkerImageArgs:
     @tag.setter
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerLogDestinationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 datadog: Optional[pulumi.Input['AppSpecWorkerLogDestinationDatadogArgs']] = None,
+                 logtail: Optional[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs']] = None,
+                 papertrail: Optional[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs']] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input['AppSpecWorkerLogDestinationDatadogArgs'] datadog: Datadog configuration.
+        :param pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs'] logtail: Logtail configuration.
+        :param pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional[pulumi.Input['AppSpecWorkerLogDestinationDatadogArgs']]:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @datadog.setter
+    def datadog(self, value: Optional[pulumi.Input['AppSpecWorkerLogDestinationDatadogArgs']]):
+        pulumi.set(self, "datadog", value)
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs']]:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @logtail.setter
+    def logtail(self, value: Optional[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs']]):
+        pulumi.set(self, "logtail", value)
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs']]:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+    @papertrail.setter
+    def papertrail(self, value: Optional[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs']]):
+        pulumi.set(self, "papertrail", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerLogDestinationDatadogArgs:
+    def __init__(__self__, *,
+                 api_key: pulumi.Input[str],
+                 endpoint: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_key: Datadog API key.
+        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[str]:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerLogDestinationLogtailArgs:
+    def __init__(__self__, *,
+                 token: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[str]:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerLogDestinationPapertrailArgs:
+    def __init__(__self__, *,
+                 endpoint: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint", value)
 
 
 @pulumi.input_type

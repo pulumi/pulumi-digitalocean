@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecJob
     {
         /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppSpecJobAlert> Alerts;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -62,6 +66,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Kind;
         /// <summary>
+        /// Describes a log forwarding destination.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppSpecJobLogDestination> LogDestinations;
+        /// <summary>
         /// The name of the component.
         /// </summary>
         public readonly string Name;
@@ -76,6 +84,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private AppSpecJob(
+            ImmutableArray<Outputs.AppSpecJobAlert> alerts,
+
             string? buildCommand,
 
             string? dockerfilePath,
@@ -98,12 +108,15 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? kind,
 
+            ImmutableArray<Outputs.AppSpecJobLogDestination> logDestinations,
+
             string name,
 
             string? runCommand,
 
             string? sourceDir)
         {
+            Alerts = alerts;
             BuildCommand = buildCommand;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
@@ -115,6 +128,7 @@ namespace Pulumi.DigitalOcean.Outputs
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
             Kind = kind;
+            LogDestinations = logDestinations;
             Name = name;
             RunCommand = runCommand;
             SourceDir = sourceDir;

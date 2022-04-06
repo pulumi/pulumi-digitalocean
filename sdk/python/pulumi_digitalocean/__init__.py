@@ -71,6 +71,7 @@ from .project_resources import *
 from .provider import *
 from .spaces_bucket import *
 from .spaces_bucket_object import *
+from .spaces_bucket_policy import *
 from .ssh_key import *
 from .tag import *
 from .volume import *
@@ -304,6 +305,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/spacesBucketObject:SpacesBucketObject": "SpacesBucketObject"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/spacesBucketPolicy",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy": "SpacesBucketPolicy"
   }
  },
  {
