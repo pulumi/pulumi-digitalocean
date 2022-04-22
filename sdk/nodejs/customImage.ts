@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *     image: flatcar.id,
  *     region: "nyc3",
  *     size: "s-1vcpu-1gb",
- *     sshKeys: [12345],
+ *     sshKeys: ["12345"],
  * });
  * ```
  */
