@@ -407,7 +407,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         foo = digitalocean.KubernetesCluster("foo",
             region="nyc1",
-            version="1.20.2-do.0",
+            version="1.22.8-do.1",
             node_pool=digitalocean.KubernetesClusterNodePoolArgs(
                 name="front-end-pool",
                 size="s-2vcpu-2gb",
@@ -486,7 +486,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         foo = digitalocean.KubernetesCluster("foo",
             region="nyc1",
-            version="1.20.2-do.0",
+            version="1.22.8-do.1",
             node_pool=digitalocean.KubernetesClusterNodePoolArgs(
                 name="front-end-pool",
                 size="s-2vcpu-2gb",

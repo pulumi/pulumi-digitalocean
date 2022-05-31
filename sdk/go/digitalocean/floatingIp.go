@@ -232,6 +232,26 @@ func (o FloatingIpOutput) ToFloatingIpOutputWithContext(ctx context.Context) Flo
 	return o
 }
 
+// The ID of Droplet that the Floating IP will be assigned to.
+func (o FloatingIpOutput) DropletId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.IntPtrOutput { return v.DropletId }).(pulumi.IntPtrOutput)
+}
+
+// The uniform resource name of the floating ip
+func (o FloatingIpOutput) FloatingIpUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.FloatingIpUrn }).(pulumi.StringOutput)
+}
+
+// The IP Address of the resource
+func (o FloatingIpOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The region that the Floating IP is reserved to.
+func (o FloatingIpOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type FloatingIpArrayOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpArrayOutput) ElementType() reflect.Type {

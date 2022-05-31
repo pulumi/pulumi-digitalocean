@@ -235,6 +235,36 @@ func (o DropletSnapshotOutput) ToDropletSnapshotOutputWithContext(ctx context.Co
 	return o
 }
 
+// The date and time the Droplet snapshot was created.
+func (o DropletSnapshotOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *DropletSnapshot) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The ID of the Droplet from which the snapshot will be taken.
+func (o DropletSnapshotOutput) DropletId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DropletSnapshot) pulumi.StringOutput { return v.DropletId }).(pulumi.StringOutput)
+}
+
+// The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
+func (o DropletSnapshotOutput) MinDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *DropletSnapshot) pulumi.IntOutput { return v.MinDiskSize }).(pulumi.IntOutput)
+}
+
+// A name for the Droplet snapshot.
+func (o DropletSnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DropletSnapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
+func (o DropletSnapshotOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DropletSnapshot) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// The billable size of the Droplet snapshot in gigabytes.
+func (o DropletSnapshotOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v *DropletSnapshot) pulumi.Float64Output { return v.Size }).(pulumi.Float64Output)
+}
+
 type DropletSnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (DropletSnapshotArrayOutput) ElementType() reflect.Type {

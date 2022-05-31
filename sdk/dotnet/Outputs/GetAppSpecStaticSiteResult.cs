@@ -21,6 +21,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
         /// </summary>
         public readonly string? CatchallDocument;
+        /// <summary>
+        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// </summary>
         public readonly Outputs.GetAppSpecStaticSiteCorsResult? Cors;
         /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.

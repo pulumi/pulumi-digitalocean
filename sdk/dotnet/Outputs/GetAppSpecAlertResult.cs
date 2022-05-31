@@ -13,7 +13,13 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecAlertResult
     {
+        /// <summary>
+        /// Determines whether or not the alert is disabled (default: `false`).
+        /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        /// </summary>
         public readonly string Rule;
 
         [OutputConstructor]

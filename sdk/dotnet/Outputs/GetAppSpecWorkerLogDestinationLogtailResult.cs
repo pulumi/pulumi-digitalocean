@@ -13,6 +13,9 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecWorkerLogDestinationLogtailResult
     {
+        /// <summary>
+        /// Logtail token.
+        /// </summary>
         public readonly string Token;
 
         [OutputConstructor]

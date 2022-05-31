@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * For example to find all SSH Keys:
+ * For example, to find all SSH keys:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,23 @@ import * as utilities from "./utilities";
  *     sorts: [{
  *         direction: "asc",
  *         key: "name",
+ *     }],
+ * }));
+ * ```
+ *
+ * Or to find ones matching specific values:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const keys = pulumi.output(digitalocean.getSshKeys({
+ *     filters: [{
+ *         key: "name",
+ *         values: [
+ *             "laptop",
+ *             "desktop",
+ *         ],
  *     }],
  * }));
  * ```

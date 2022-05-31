@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// For example to find all SSH Keys:
+        /// For example, to find all SSH keys:
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -42,6 +42,36 @@ namespace Pulumi.DigitalOcean
         ///                 {
         ///                     Direction = "asc",
         ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// Or to find ones matching specific values:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var keys = Output.Create(DigitalOcean.GetSshKeys.InvokeAsync(new DigitalOcean.GetSshKeysArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSshKeysFilterArgs
+        ///                 {
+        ///                     Key = "name",
+        ///                     Values = 
+        ///                     {
+        ///                         "laptop",
+        ///                         "desktop",
+        ///                     },
         ///                 },
         ///             },
         ///         }));
@@ -68,7 +98,7 @@ namespace Pulumi.DigitalOcean
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// For example to find all SSH Keys:
+        /// For example, to find all SSH keys:
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -86,6 +116,36 @@ namespace Pulumi.DigitalOcean
         ///                 {
         ///                     Direction = "asc",
         ///                     Key = "name",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// Or to find ones matching specific values:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var keys = Output.Create(DigitalOcean.GetSshKeys.InvokeAsync(new DigitalOcean.GetSshKeysArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new DigitalOcean.Inputs.GetSshKeysFilterArgs
+        ///                 {
+        ///                     Key = "name",
+        ///                     Values = 
+        ///                     {
+        ///                         "laptop",
+        ///                         "desktop",
+        ///                     },
         ///                 },
         ///             },
         ///         }));

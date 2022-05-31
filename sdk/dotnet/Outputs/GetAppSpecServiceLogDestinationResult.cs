@@ -13,12 +13,21 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecServiceLogDestinationResult
     {
+        /// <summary>
+        /// Datadog configuration.
+        /// </summary>
         public readonly Outputs.GetAppSpecServiceLogDestinationDatadogResult? Datadog;
+        /// <summary>
+        /// Logtail configuration.
+        /// </summary>
         public readonly Outputs.GetAppSpecServiceLogDestinationLogtailResult? Logtail;
         /// <summary>
         /// The name of the component.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Papertrail configuration.
+        /// </summary>
         public readonly Outputs.GetAppSpecServiceLogDestinationPapertrailResult? Papertrail;
 
         [OutputConstructor]

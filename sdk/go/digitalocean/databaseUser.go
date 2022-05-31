@@ -237,6 +237,31 @@ func (o DatabaseUserOutput) ToDatabaseUserOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The ID of the original source database cluster.
+func (o DatabaseUserOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseUser) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
+func (o DatabaseUserOutput) MysqlAuthPlugin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseUser) pulumi.StringPtrOutput { return v.MysqlAuthPlugin }).(pulumi.StringPtrOutput)
+}
+
+// The name for the database user.
+func (o DatabaseUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Password for the database user.
+func (o DatabaseUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// Role for the database user. The value will be either "primary" or "normal".
+func (o DatabaseUserOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseUser) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
 type DatabaseUserArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseUserArrayOutput) ElementType() reflect.Type {

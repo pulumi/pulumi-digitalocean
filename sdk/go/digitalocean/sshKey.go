@@ -238,6 +238,22 @@ func (o SshKeyOutput) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutpu
 	return o
 }
 
+// The fingerprint of the SSH key
+func (o SshKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The name of the SSH key for identification
+func (o SshKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The public key. If this is a file, it
+// can be read using the file interpolation function
+func (o SshKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
+}
+
 type SshKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (SshKeyArrayOutput) ElementType() reflect.Type {

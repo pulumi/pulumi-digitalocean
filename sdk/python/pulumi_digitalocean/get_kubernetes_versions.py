@@ -113,7 +113,7 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example = digitalocean.get_kubernetes_versions(version_prefix="1.16.")
+    example = digitalocean.get_kubernetes_versions(version_prefix="1.22.")
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
         region="lon1",
         version=example.latest_version,
@@ -180,7 +180,7 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example = digitalocean.get_kubernetes_versions(version_prefix="1.16.")
+    example = digitalocean.get_kubernetes_versions(version_prefix="1.22.")
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
         region="lon1",
         version=example.latest_version,

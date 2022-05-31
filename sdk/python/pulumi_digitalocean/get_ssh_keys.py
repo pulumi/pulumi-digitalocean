@@ -89,7 +89,7 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
 
     ## Example Usage
 
-    For example to find all SSH Keys:
+    For example, to find all SSH keys:
 
     ```python
     import pulumi
@@ -98,6 +98,21 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
     keys = digitalocean.get_ssh_keys(sorts=[digitalocean.GetSshKeysSortArgs(
         direction="asc",
         key="name",
+    )])
+    ```
+
+    Or to find ones matching specific values:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    keys = digitalocean.get_ssh_keys(filters=[digitalocean.GetSshKeysFilterArgs(
+        key="name",
+        values=[
+            "laptop",
+            "desktop",
+        ],
     )])
     ```
 
@@ -138,7 +153,7 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
 
     ## Example Usage
 
-    For example to find all SSH Keys:
+    For example, to find all SSH keys:
 
     ```python
     import pulumi
@@ -147,6 +162,21 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     keys = digitalocean.get_ssh_keys(sorts=[digitalocean.GetSshKeysSortArgs(
         direction="asc",
         key="name",
+    )])
+    ```
+
+    Or to find ones matching specific values:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    keys = digitalocean.get_ssh_keys(filters=[digitalocean.GetSshKeysFilterArgs(
+        key="name",
+        values=[
+            "laptop",
+            "desktop",
+        ],
     )])
     ```
 

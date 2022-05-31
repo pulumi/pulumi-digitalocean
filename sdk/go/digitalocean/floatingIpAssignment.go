@@ -225,6 +225,16 @@ func (o FloatingIpAssignmentOutput) ToFloatingIpAssignmentOutputWithContext(ctx 
 	return o
 }
 
+// The ID of Droplet that the Floating IP will be assigned to.
+func (o FloatingIpAssignmentOutput) DropletId() pulumi.IntOutput {
+	return o.ApplyT(func(v *FloatingIpAssignment) pulumi.IntOutput { return v.DropletId }).(pulumi.IntOutput)
+}
+
+// The Floating IP to assign to the Droplet.
+func (o FloatingIpAssignmentOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIpAssignment) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
 type FloatingIpAssignmentArrayOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssignmentArrayOutput) ElementType() reflect.Type {

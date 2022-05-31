@@ -213,6 +213,16 @@ func (o DatabaseDbOutput) ToDatabaseDbOutputWithContext(ctx context.Context) Dat
 	return o
 }
 
+// The ID of the original source database cluster.
+func (o DatabaseDbOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseDb) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name for the database.
+func (o DatabaseDbOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseDb) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type DatabaseDbArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDbArrayOutput) ElementType() reflect.Type {

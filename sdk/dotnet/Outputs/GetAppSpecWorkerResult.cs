@@ -13,6 +13,9 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecWorkerResult
     {
+        /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecWorkerAlertResult> Alerts;
         /// <summary>
         /// An optional build command to run while building this component from source.
@@ -54,6 +57,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The instance size to use for this component.
         /// </summary>
         public readonly string? InstanceSizeSlug;
+        /// <summary>
+        /// Describes a log forwarding destination.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecWorkerLogDestinationResult> LogDestinations;
         /// <summary>
         /// The name of the component.

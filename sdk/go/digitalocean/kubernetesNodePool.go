@@ -28,7 +28,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
 // 			Region:  pulumi.String("nyc1"),
-// 			Version: pulumi.String("1.20.2-do.0"),
+// 			Version: pulumi.String("1.22.8-do.1"),
 // 			NodePool: &KubernetesClusterNodePoolArgs{
 // 				Name:      pulumi.String("front-end-pool"),
 // 				Size:      pulumi.String("s-2vcpu-2gb"),
@@ -356,6 +356,66 @@ func (o KubernetesNodePoolOutput) ToKubernetesNodePoolOutput() KubernetesNodePoo
 
 func (o KubernetesNodePoolOutput) ToKubernetesNodePoolOutputWithContext(ctx context.Context) KubernetesNodePoolOutput {
 	return o
+}
+
+// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+func (o KubernetesNodePoolOutput) ActualNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.IntOutput { return v.ActualNodeCount }).(pulumi.IntOutput)
+}
+
+// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+func (o KubernetesNodePoolOutput) AutoScale() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.BoolPtrOutput { return v.AutoScale }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Kubernetes cluster to which the node pool is associated.
+func (o KubernetesNodePoolOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+func (o KubernetesNodePoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+func (o KubernetesNodePoolOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.IntPtrOutput { return v.MaxNodes }).(pulumi.IntPtrOutput)
+}
+
+// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+func (o KubernetesNodePoolOutput) MinNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.IntPtrOutput { return v.MinNodes }).(pulumi.IntPtrOutput)
+}
+
+// A name for the node pool.
+func (o KubernetesNodePoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+func (o KubernetesNodePoolOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.IntPtrOutput { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// A list of nodes in the pool. Each node exports the following attributes:
+func (o KubernetesNodePoolOutput) Nodes() KubernetesNodePoolNodeArrayOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) KubernetesNodePoolNodeArrayOutput { return v.Nodes }).(KubernetesNodePoolNodeArrayOutput)
+}
+
+// The slug identifier for the type of Droplet to be used as workers in the node pool.
+func (o KubernetesNodePoolOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
+}
+
+// A list of tag names to be applied to the Kubernetes cluster.
+func (o KubernetesNodePoolOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// A list of taints applied to all nodes in the pool.
+func (o KubernetesNodePoolOutput) Taints() KubernetesNodePoolTaintArrayOutput {
+	return o.ApplyT(func(v *KubernetesNodePool) KubernetesNodePoolTaintArrayOutput { return v.Taints }).(KubernetesNodePoolTaintArrayOutput)
 }
 
 type KubernetesNodePoolArrayOutput struct{ *pulumi.OutputState }

@@ -280,6 +280,41 @@ func (o VpcOutput) ToVpcOutputWithContext(ctx context.Context) VpcOutput {
 	return o
 }
 
+// The date and time of when the VPC was created.
+func (o VpcOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A boolean indicating whether or not the VPC is the default one for the region.
+func (o VpcOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Vpc) pulumi.BoolOutput { return v.Default }).(pulumi.BoolOutput)
+}
+
+// A free-form text field up to a limit of 255 characters to describe the VPC.
+func (o VpcOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vpc) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
+func (o VpcOutput) IpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.IpRange }).(pulumi.StringOutput)
+}
+
+// A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
+func (o VpcOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The DigitalOcean region slug for the VPC's location.
+func (o VpcOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The uniform resource name (URN) for the VPC.
+func (o VpcOutput) VpcUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.VpcUrn }).(pulumi.StringOutput)
+}
+
 type VpcArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcArrayOutput) ElementType() reflect.Type {

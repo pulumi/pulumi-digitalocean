@@ -475,6 +475,103 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The load balancing algorithm used to determine
+// which backend Droplet will be selected by a client. It must be either `roundRobin`
+// or `leastConnections`. The default value is `roundRobin`.
+func (o LoadBalancerOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+func (o LoadBalancerOutput) DisableLetsEncryptDnsRecords() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.DisableLetsEncryptDnsRecords }).(pulumi.BoolPtrOutput)
+}
+
+// A list of the IDs of each droplet to be attached to the Load Balancer.
+func (o LoadBalancerOutput) DropletIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.IntArrayOutput { return v.DropletIds }).(pulumi.IntArrayOutput)
+}
+
+// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
+func (o LoadBalancerOutput) DropletTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.DropletTag }).(pulumi.StringPtrOutput)
+}
+
+// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+func (o LoadBalancerOutput) EnableBackendKeepalive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.EnableBackendKeepalive }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value indicating whether PROXY
+// Protocol should be used to pass information from connecting client requests to
+// the backend service. Default value is `false`.
+func (o LoadBalancerOutput) EnableProxyProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.EnableProxyProtocol }).(pulumi.BoolPtrOutput)
+}
+
+// A list of `forwardingRule` to be assigned to the
+// Load Balancer. The `forwardingRule` block is documented below.
+func (o LoadBalancerOutput) ForwardingRules() LoadBalancerForwardingRuleArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerForwardingRuleArrayOutput { return v.ForwardingRules }).(LoadBalancerForwardingRuleArrayOutput)
+}
+
+// A `healthcheck` block to be assigned to the
+// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+func (o LoadBalancerOutput) Healthcheck() LoadBalancerHealthcheckOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerHealthcheckOutput { return v.Healthcheck }).(LoadBalancerHealthcheckOutput)
+}
+
+func (o LoadBalancerOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The uniform resource name for the Load Balancer
+func (o LoadBalancerOutput) LoadBalancerUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerUrn }).(pulumi.StringOutput)
+}
+
+// The Load Balancer name
+func (o LoadBalancerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A boolean value indicating whether
+// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
+// Default value is `false`.
+func (o LoadBalancerOutput) RedirectHttpToHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.RedirectHttpToHttps }).(pulumi.BoolPtrOutput)
+}
+
+// The region to start in
+func (o LoadBalancerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
+func (o LoadBalancerOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+func (o LoadBalancerOutput) SizeUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.IntOutput { return v.SizeUnit }).(pulumi.IntOutput)
+}
+
+func (o LoadBalancerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A `stickySessions` block to be assigned to the
+// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
+func (o LoadBalancerOutput) StickySessions() LoadBalancerStickySessionsOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerStickySessionsOutput { return v.StickySessions }).(LoadBalancerStickySessionsOutput)
+}
+
+// The ID of the VPC where the load balancer will be located.
+func (o LoadBalancerOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
 type LoadBalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerArrayOutput) ElementType() reflect.Type {

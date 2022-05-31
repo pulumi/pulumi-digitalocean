@@ -77,7 +77,7 @@ namespace Pulumi.DigitalOcean
         ///     {
         ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync(new DigitalOcean.GetKubernetesVersionsArgs
         ///         {
-        ///             VersionPrefix = "1.16.",
+        ///             VersionPrefix = "1.22.",
         ///         }));
         ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
         ///         {
@@ -166,7 +166,7 @@ namespace Pulumi.DigitalOcean
         ///     {
         ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync(new DigitalOcean.GetKubernetesVersionsArgs
         ///         {
-        ///             VersionPrefix = "1.16.",
+        ///             VersionPrefix = "1.22.",
         ///         }));
         ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
         ///         {

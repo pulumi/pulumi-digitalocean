@@ -260,6 +260,21 @@ func (o SpacesBucketPolicyOutput) ToSpacesBucketPolicyOutputWithContext(ctx cont
 	return o
 }
 
+// The name of the bucket to which to apply the policy.
+func (o SpacesBucketPolicyOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketPolicy) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The text of the policy.
+func (o SpacesBucketPolicyOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketPolicy) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
+}
+
+// The region where the bucket resides.
+func (o SpacesBucketPolicyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type SpacesBucketPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketPolicyArrayOutput) ElementType() reflect.Type {

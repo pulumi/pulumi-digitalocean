@@ -303,6 +303,76 @@ func (o DatabaseReplicaOutput) ToDatabaseReplicaOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the original source database cluster.
+func (o DatabaseReplicaOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Name of the replica's default database.
+func (o DatabaseReplicaOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// Database replica's hostname.
+func (o DatabaseReplicaOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// The name for the database replica.
+func (o DatabaseReplicaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Password for the replica's default user.
+func (o DatabaseReplicaOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// Network port that the database replica is listening on.
+func (o DatabaseReplicaOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Same as `host`, but only accessible from resources within the account and in the same region.
+func (o DatabaseReplicaOutput) PrivateHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.PrivateHost }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC where the database replica will be located.
+func (o DatabaseReplicaOutput) PrivateNetworkUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.PrivateNetworkUuid }).(pulumi.StringOutput)
+}
+
+// Same as `uri`, but only accessible from resources within the account and in the same region.
+func (o DatabaseReplicaOutput) PrivateUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.PrivateUri }).(pulumi.StringOutput)
+}
+
+// DigitalOcean region where the replica will reside.
+func (o DatabaseReplicaOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+func (o DatabaseReplicaOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringPtrOutput { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// A list of tag names to be applied to the database replica.
+func (o DatabaseReplicaOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The full URI for connecting to the database replica.
+func (o DatabaseReplicaOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Username for the replica's default user.
+func (o DatabaseReplicaOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+}
+
 type DatabaseReplicaArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseReplicaArrayOutput) ElementType() reflect.Type {

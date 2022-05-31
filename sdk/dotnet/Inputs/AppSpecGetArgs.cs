@@ -65,6 +65,14 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _envs = value;
         }
 
+        [Input("functions")]
+        private InputList<Inputs.AppSpecFunctionGetArgs>? _functions;
+        public InputList<Inputs.AppSpecFunctionGetArgs> Functions
+        {
+            get => _functions ?? (_functions = new InputList<Inputs.AppSpecFunctionGetArgs>());
+            set => _functions = value;
+        }
+
         [Input("jobs")]
         private InputList<Inputs.AppSpecJobGetArgs>? _jobs;
         public InputList<Inputs.AppSpecJobGetArgs> Jobs

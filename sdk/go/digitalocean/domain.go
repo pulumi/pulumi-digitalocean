@@ -221,6 +221,27 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// The uniform resource name of the domain
+func (o DomainOutput) DomainUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainUrn }).(pulumi.StringOutput)
+}
+
+// The IP address of the domain. If specified, this IP
+// is used to created an initial A record for the domain.
+func (o DomainOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The name of the domain
+func (o DomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The TTL value of the domain
+func (o DomainOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
 type DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainArrayOutput) ElementType() reflect.Type {

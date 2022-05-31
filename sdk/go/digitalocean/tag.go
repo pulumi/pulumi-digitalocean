@@ -237,6 +237,41 @@ func (o TagOutput) ToTagOutputWithContext(ctx context.Context) TagOutput {
 	return o
 }
 
+// A count of the database clusters that the tag is applied to.
+func (o TagOutput) DatabasesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Tag) pulumi.IntOutput { return v.DatabasesCount }).(pulumi.IntOutput)
+}
+
+// A count of the Droplets the tag is applied to.
+func (o TagOutput) DropletsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Tag) pulumi.IntOutput { return v.DropletsCount }).(pulumi.IntOutput)
+}
+
+// A count of the images that the tag is applied to.
+func (o TagOutput) ImagesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Tag) pulumi.IntOutput { return v.ImagesCount }).(pulumi.IntOutput)
+}
+
+// The name of the tag
+func (o TagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A count of the total number of resources that the tag is applied to.
+func (o TagOutput) TotalResourceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Tag) pulumi.IntOutput { return v.TotalResourceCount }).(pulumi.IntOutput)
+}
+
+// A count of the volume snapshots that the tag is applied to.
+func (o TagOutput) VolumeSnapshotsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Tag) pulumi.IntOutput { return v.VolumeSnapshotsCount }).(pulumi.IntOutput)
+}
+
+// A count of the volumes that the tag is applied to.
+func (o TagOutput) VolumesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Tag) pulumi.IntOutput { return v.VolumesCount }).(pulumi.IntOutput)
+}
+
 type TagArrayOutput struct{ *pulumi.OutputState }
 
 func (TagArrayOutput) ElementType() reflect.Type {

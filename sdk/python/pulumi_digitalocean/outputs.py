@@ -16,6 +16,19 @@ __all__ = [
     'AppSpecDatabase',
     'AppSpecDomainName',
     'AppSpecEnv',
+    'AppSpecFunction',
+    'AppSpecFunctionAlert',
+    'AppSpecFunctionCors',
+    'AppSpecFunctionCorsAllowOrigins',
+    'AppSpecFunctionEnv',
+    'AppSpecFunctionGit',
+    'AppSpecFunctionGithub',
+    'AppSpecFunctionGitlab',
+    'AppSpecFunctionLogDestination',
+    'AppSpecFunctionLogDestinationDatadog',
+    'AppSpecFunctionLogDestinationLogtail',
+    'AppSpecFunctionLogDestinationPapertrail',
+    'AppSpecFunctionRoute',
     'AppSpecJob',
     'AppSpecJobAlert',
     'AppSpecJobEnv',
@@ -87,6 +100,19 @@ __all__ = [
     'GetAppSpecAlertResult',
     'GetAppSpecDatabaseResult',
     'GetAppSpecEnvResult',
+    'GetAppSpecFunctionResult',
+    'GetAppSpecFunctionAlertResult',
+    'GetAppSpecFunctionCorsResult',
+    'GetAppSpecFunctionCorsAllowOriginsResult',
+    'GetAppSpecFunctionEnvResult',
+    'GetAppSpecFunctionGitResult',
+    'GetAppSpecFunctionGithubResult',
+    'GetAppSpecFunctionGitlabResult',
+    'GetAppSpecFunctionLogDestinationResult',
+    'GetAppSpecFunctionLogDestinationDatadogResult',
+    'GetAppSpecFunctionLogDestinationLogtailResult',
+    'GetAppSpecFunctionLogDestinationPapertrailResult',
+    'GetAppSpecFunctionRouteResult',
     'GetAppSpecJobResult',
     'GetAppSpecJobAlertResult',
     'GetAppSpecJobEnvResult',
@@ -204,6 +230,7 @@ class AppSpec(dict):
                  domain_names: Optional[Sequence['outputs.AppSpecDomainName']] = None,
                  domains: Optional[Sequence[str]] = None,
                  envs: Optional[Sequence['outputs.AppSpecEnv']] = None,
+                 functions: Optional[Sequence['outputs.AppSpecFunction']] = None,
                  jobs: Optional[Sequence['outputs.AppSpecJob']] = None,
                  region: Optional[str] = None,
                  services: Optional[Sequence['outputs.AppSpecService']] = None,
@@ -227,6 +254,8 @@ class AppSpec(dict):
             pulumi.set(__self__, "domains", domains)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if functions is not None:
+            pulumi.set(__self__, "functions", functions)
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
         if region is not None:
@@ -279,6 +308,11 @@ class AppSpec(dict):
         Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter
+    def functions(self) -> Optional[Sequence['outputs.AppSpecFunction']]:
+        return pulumi.get(self, "functions")
 
     @property
     @pulumi.getter
@@ -561,6 +595,767 @@ class AppSpecEnv(dict):
 
 
 @pulumi.output_type
+class AppSpecFunction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logDestinations":
+            suggest = "log_destinations"
+        elif key == "sourceDir":
+            suggest = "source_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 alerts: Optional[Sequence['outputs.AppSpecFunctionAlert']] = None,
+                 cors: Optional['outputs.AppSpecFunctionCors'] = None,
+                 envs: Optional[Sequence['outputs.AppSpecFunctionEnv']] = None,
+                 git: Optional['outputs.AppSpecFunctionGit'] = None,
+                 github: Optional['outputs.AppSpecFunctionGithub'] = None,
+                 gitlab: Optional['outputs.AppSpecFunctionGitlab'] = None,
+                 log_destinations: Optional[Sequence['outputs.AppSpecFunctionLogDestination']] = None,
+                 routes: Optional[Sequence['outputs.AppSpecFunctionRoute']] = None,
+                 source_dir: Optional[str] = None):
+        """
+        :param str name: The name of the component.
+        :param Sequence['AppSpecFunctionAlertArgs'] alerts: Describes an alert policy for the component.
+        :param 'AppSpecFunctionCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param Sequence['AppSpecFunctionEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param 'AppSpecFunctionGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param 'AppSpecFunctionGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param 'AppSpecFunctionGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param Sequence['AppSpecFunctionLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
+        :param str source_dir: An optional path to the working directory to use for the build.
+        """
+        pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if github is not None:
+            pulumi.set(__self__, "github", github)
+        if gitlab is not None:
+            pulumi.set(__self__, "gitlab", gitlab)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+        if source_dir is not None:
+            pulumi.set(__self__, "source_dir", source_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.AppSpecFunctionAlert']]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional['outputs.AppSpecFunctionCors']:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.AppSpecFunctionEnv']]:
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional['outputs.AppSpecFunctionGit']:
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        """
+        return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter
+    def github(self) -> Optional['outputs.AppSpecFunctionGithub']:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "github")
+
+    @property
+    @pulumi.getter
+    def gitlab(self) -> Optional['outputs.AppSpecFunctionGitlab']:
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "gitlab")
+
+    @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[Sequence['outputs.AppSpecFunctionLogDestination']]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[Sequence['outputs.AppSpecFunctionRoute']]:
+        return pulumi.get(self, "routes")
+
+    @property
+    @pulumi.getter(name="sourceDir")
+    def source_dir(self) -> Optional[str]:
+        """
+        An optional path to the working directory to use for the build.
+        """
+        return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class AppSpecFunctionAlert(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 rule: str,
+                 value: float,
+                 window: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param str operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param float value: The threshold for the type of the warning.
+        :param str window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AppSpecFunctionCors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionCors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionCors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionCors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.AppSpecFunctionCorsAllowOrigins'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'AppSpecFunctionCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.AppSpecFunctionCorsAllowOrigins']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class AppSpecFunctionCorsAllowOrigins(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class AppSpecFunctionEnv(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 scope: Optional[str] = None,
+                 type: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The name of the environment variable.
+        :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param str value: The threshold for the type of the warning.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AppSpecFunctionGit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoCloneUrl":
+            suggest = "repo_clone_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionGit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionGit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionGit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 repo_clone_url: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param str repo_clone_url: The clone URL of the repo.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if repo_clone_url is not None:
+            pulumi.set(__self__, "repo_clone_url", repo_clone_url)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="repoCloneUrl")
+    def repo_clone_url(self) -> Optional[str]:
+        """
+        The clone URL of the repo.
+        """
+        return pulumi.get(self, "repo_clone_url")
+
+
+@pulumi.output_type
+class AppSpecFunctionGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionGithub.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class AppSpecFunctionGitlab(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionGitlab. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionGitlab.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionGitlab.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class AppSpecFunctionLogDestination(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 datadog: Optional['outputs.AppSpecFunctionLogDestinationDatadog'] = None,
+                 logtail: Optional['outputs.AppSpecFunctionLogDestinationLogtail'] = None,
+                 papertrail: Optional['outputs.AppSpecFunctionLogDestinationPapertrail'] = None):
+        """
+        :param str name: The name of the component.
+        :param 'AppSpecFunctionLogDestinationDatadogArgs' datadog: Datadog configuration.
+        :param 'AppSpecFunctionLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'AppSpecFunctionLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional['outputs.AppSpecFunctionLogDestinationDatadog']:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional['outputs.AppSpecFunctionLogDestinationLogtail']:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional['outputs.AppSpecFunctionLogDestinationPapertrail']:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+
+@pulumi.output_type
+class AppSpecFunctionLogDestinationDatadog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionLogDestinationDatadog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionLogDestinationDatadog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionLogDestinationDatadog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: str,
+                 endpoint: Optional[str] = None):
+        """
+        :param str api_key: Datadog API key.
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class AppSpecFunctionLogDestinationLogtail(dict):
+    def __init__(__self__, *,
+                 token: str):
+        """
+        :param str token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class AppSpecFunctionLogDestinationPapertrail(dict):
+    def __init__(__self__, *,
+                 endpoint: str):
+        """
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class AppSpecFunctionRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preservePathPrefix":
+            suggest = "preserve_path_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: Optional[str] = None,
+                 preserve_path_prefix: Optional[bool] = None):
+        """
+        :param str path: Paths must start with `/` and must be unique within the app.
+        :param bool preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if preserve_path_prefix is not None:
+            pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> Optional[bool]:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
+
+
+@pulumi.output_type
 class AppSpecJob(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -617,7 +1412,7 @@ class AppSpecJob(dict):
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecJobEnvArgs'] envs: Describes an environment variable made available to an app competent.
-        :param 'AppSpecJobGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param 'AppSpecJobGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param 'AppSpecJobGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecJobGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecJobImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
@@ -716,7 +1511,7 @@ class AppSpecJob(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecJobGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         """
         return pulumi.get(self, "git")
 
@@ -1358,7 +2153,7 @@ class AppSpecService(dict):
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
-        :param 'AppSpecServiceGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param 'AppSpecServiceGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param 'AppSpecServiceGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecServiceGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecServiceHealthCheckArgs' health_check: A health check to determine the availability of this component.
@@ -1471,7 +2266,7 @@ class AppSpecService(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecServiceGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         """
         return pulumi.get(self, "git")
 
@@ -2423,7 +3218,7 @@ class AppSpecStaticSite(dict):
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param str error_document: The name of the error document to use when serving this static site.
-        :param 'AppSpecStaticSiteGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param 'AppSpecStaticSiteGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param 'AppSpecStaticSiteGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecStaticSiteGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param str index_document: The name of the index document to use when serving this static site.
@@ -2528,7 +3323,7 @@ class AppSpecStaticSite(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecStaticSiteGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         """
         return pulumi.get(self, "git")
 
@@ -3054,7 +3849,7 @@ class AppSpecWorker(dict):
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecWorkerEnvArgs'] envs: Describes an environment variable made available to an app competent.
-        :param 'AppSpecWorkerGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param 'AppSpecWorkerGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param 'AppSpecWorkerGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecWorkerGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecWorkerImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
@@ -3146,7 +3941,7 @@ class AppSpecWorker(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecWorkerGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         """
         return pulumi.get(self, "git")
 
@@ -5382,6 +6177,7 @@ class GetAppSpecResult(dict):
                  alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
                  databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecEnvResult']] = None,
+                 functions: Optional[Sequence['outputs.GetAppSpecFunctionResult']] = None,
                  jobs: Optional[Sequence['outputs.GetAppSpecJobResult']] = None,
                  region: Optional[str] = None,
                  services: Optional[Sequence['outputs.GetAppSpecServiceResult']] = None,
@@ -5389,6 +6185,7 @@ class GetAppSpecResult(dict):
                  workers: Optional[Sequence['outputs.GetAppSpecWorkerResult']] = None):
         """
         :param str name: The name of the component.
+        :param Sequence['GetAppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['GetAppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
         """
         pulumi.set(__self__, "domains", domains)
@@ -5399,6 +6196,8 @@ class GetAppSpecResult(dict):
             pulumi.set(__self__, "databases", databases)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if functions is not None:
+            pulumi.set(__self__, "functions", functions)
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
         if region is not None:
@@ -5426,6 +6225,9 @@ class GetAppSpecResult(dict):
     @property
     @pulumi.getter
     def alerts(self) -> Optional[Sequence['outputs.GetAppSpecAlertResult']]:
+        """
+        Describes an alert policy for the component.
+        """
         return pulumi.get(self, "alerts")
 
     @property
@@ -5440,6 +6242,11 @@ class GetAppSpecResult(dict):
         Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter
+    def functions(self) -> Optional[Sequence['outputs.GetAppSpecFunctionResult']]:
+        return pulumi.get(self, "functions")
 
     @property
     @pulumi.getter
@@ -5472,6 +6279,10 @@ class GetAppSpecAlertResult(dict):
     def __init__(__self__, *,
                  rule: str,
                  disabled: Optional[bool] = None):
+        """
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
         pulumi.set(__self__, "rule", rule)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -5479,11 +6290,17 @@ class GetAppSpecAlertResult(dict):
     @property
     @pulumi.getter
     def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
         return pulumi.get(self, "disabled")
 
 
@@ -5589,7 +6406,7 @@ class GetAppSpecEnvResult(dict):
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         pulumi.set(__self__, "type", type)
         if key is not None:
@@ -5627,9 +6444,637 @@ class GetAppSpecEnvResult(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 routes: Sequence['outputs.GetAppSpecFunctionRouteResult'],
+                 alerts: Optional[Sequence['outputs.GetAppSpecFunctionAlertResult']] = None,
+                 cors: Optional['outputs.GetAppSpecFunctionCorsResult'] = None,
+                 envs: Optional[Sequence['outputs.GetAppSpecFunctionEnvResult']] = None,
+                 git: Optional['outputs.GetAppSpecFunctionGitResult'] = None,
+                 github: Optional['outputs.GetAppSpecFunctionGithubResult'] = None,
+                 gitlab: Optional['outputs.GetAppSpecFunctionGitlabResult'] = None,
+                 log_destinations: Optional[Sequence['outputs.GetAppSpecFunctionLogDestinationResult']] = None,
+                 source_dir: Optional[str] = None):
+        """
+        :param str name: The name of the component.
+        :param Sequence['GetAppSpecFunctionAlertArgs'] alerts: Describes an alert policy for the component.
+        :param 'GetAppSpecFunctionCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param Sequence['GetAppSpecFunctionEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param 'GetAppSpecFunctionGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param 'GetAppSpecFunctionGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecFunctionGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param Sequence['GetAppSpecFunctionLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
+        :param str source_dir: An optional path to the working directory to use for the build.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "routes", routes)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if github is not None:
+            pulumi.set(__self__, "github", github)
+        if gitlab is not None:
+            pulumi.set(__self__, "gitlab", gitlab)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
+        if source_dir is not None:
+            pulumi.set(__self__, "source_dir", source_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Sequence['outputs.GetAppSpecFunctionRouteResult']:
+        return pulumi.get(self, "routes")
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[Sequence['outputs.GetAppSpecFunctionAlertResult']]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional['outputs.GetAppSpecFunctionCorsResult']:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['outputs.GetAppSpecFunctionEnvResult']]:
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional['outputs.GetAppSpecFunctionGitResult']:
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        """
+        return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter
+    def github(self) -> Optional['outputs.GetAppSpecFunctionGithubResult']:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "github")
+
+    @property
+    @pulumi.getter
+    def gitlab(self) -> Optional['outputs.GetAppSpecFunctionGitlabResult']:
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "gitlab")
+
+    @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[Sequence['outputs.GetAppSpecFunctionLogDestinationResult']]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @property
+    @pulumi.getter(name="sourceDir")
+    def source_dir(self) -> Optional[str]:
+        """
+        An optional path to the working directory to use for the build.
+        """
+        return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionAlertResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 rule: str,
+                 value: float,
+                 window: str,
+                 disabled: Optional[bool] = None):
+        """
+        :param str operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param float value: The threshold for the type of the warning.
+        :param str window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionCorsResult(dict):
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.GetAppSpecFunctionCorsAllowOriginsResult'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'GetAppSpecFunctionCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.GetAppSpecFunctionCorsAllowOriginsResult']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionCorsAllowOriginsResult(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionEnvResult(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 key: Optional[str] = None,
+                 scope: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param str key: The name of the environment variable.
+        :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        :param str value: The threshold for the type of the warning.
+        """
+        pulumi.set(__self__, "type", type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionGitResult(dict):
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 repo_clone_url: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param str repo_clone_url: The clone URL of the repo.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if repo_clone_url is not None:
+            pulumi.set(__self__, "repo_clone_url", repo_clone_url)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="repoCloneUrl")
+    def repo_clone_url(self) -> Optional[str]:
+        """
+        The clone URL of the repo.
+        """
+        return pulumi.get(self, "repo_clone_url")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionGithubResult(dict):
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionGitlabResult(dict):
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionLogDestinationResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 datadog: Optional['outputs.GetAppSpecFunctionLogDestinationDatadogResult'] = None,
+                 logtail: Optional['outputs.GetAppSpecFunctionLogDestinationLogtailResult'] = None,
+                 papertrail: Optional['outputs.GetAppSpecFunctionLogDestinationPapertrailResult'] = None):
+        """
+        :param str name: The name of the component.
+        :param 'GetAppSpecFunctionLogDestinationDatadogArgs' datadog: Datadog configuration.
+        :param 'GetAppSpecFunctionLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'GetAppSpecFunctionLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional['outputs.GetAppSpecFunctionLogDestinationDatadogResult']:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional['outputs.GetAppSpecFunctionLogDestinationLogtailResult']:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional['outputs.GetAppSpecFunctionLogDestinationPapertrailResult']:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionLogDestinationDatadogResult(dict):
+    def __init__(__self__, *,
+                 api_key: str,
+                 endpoint: Optional[str] = None):
+        """
+        :param str api_key: Datadog API key.
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionLogDestinationLogtailResult(dict):
+    def __init__(__self__, *,
+                 token: str):
+        """
+        :param str token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionLogDestinationPapertrailResult(dict):
+    def __init__(__self__, *,
+                 endpoint: str):
+        """
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionRouteResult(dict):
+    def __init__(__self__, *,
+                 path: Optional[str] = None,
+                 preserve_path_prefix: Optional[bool] = None):
+        """
+        :param str path: Paths must start with `/` and must be unique within the app.
+        :param bool preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if preserve_path_prefix is not None:
+            pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> Optional[bool]:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
 
 
 @pulumi.output_type
@@ -5653,6 +7098,7 @@ class GetAppSpecJobResult(dict):
                  source_dir: Optional[str] = None):
         """
         :param str name: The name of the component.
+        :param Sequence['GetAppSpecJobAlertArgs'] alerts: Describes an alert policy for the component.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
@@ -5668,6 +7114,7 @@ class GetAppSpecJobResult(dict):
                - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
                - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
                - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+        :param Sequence['GetAppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
@@ -5714,6 +7161,9 @@ class GetAppSpecJobResult(dict):
     @property
     @pulumi.getter
     def alerts(self) -> Optional[Sequence['outputs.GetAppSpecJobAlertResult']]:
+        """
+        Describes an alert policy for the component.
+        """
         return pulumi.get(self, "alerts")
 
     @property
@@ -5811,6 +7261,9 @@ class GetAppSpecJobResult(dict):
     @property
     @pulumi.getter(name="logDestinations")
     def log_destinations(self) -> Optional[Sequence['outputs.GetAppSpecJobLogDestinationResult']]:
+        """
+        Describes a log forwarding destination.
+        """
         return pulumi.get(self, "log_destinations")
 
     @property
@@ -5839,7 +7292,11 @@ class GetAppSpecJobAlertResult(dict):
                  window: str,
                  disabled: Optional[bool] = None):
         """
-        :param float value: The value of the environment variable.
+        :param str operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param float value: The threshold for the type of the warning.
+        :param str window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "rule", rule)
@@ -5851,29 +7308,41 @@ class GetAppSpecJobAlertResult(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter
     def value(self) -> float:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def window(self) -> str:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
         return pulumi.get(self, "window")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
         return pulumi.get(self, "disabled")
 
 
@@ -5888,7 +7357,7 @@ class GetAppSpecJobEnvResult(dict):
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         pulumi.set(__self__, "type", type)
         if key is not None:
@@ -5926,7 +7395,7 @@ class GetAppSpecJobEnvResult(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -6110,6 +7579,9 @@ class GetAppSpecJobLogDestinationResult(dict):
                  papertrail: Optional['outputs.GetAppSpecJobLogDestinationPapertrailResult'] = None):
         """
         :param str name: The name of the component.
+        :param 'GetAppSpecJobLogDestinationDatadogArgs' datadog: Datadog configuration.
+        :param 'GetAppSpecJobLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'GetAppSpecJobLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
         if datadog is not None:
@@ -6130,16 +7602,25 @@ class GetAppSpecJobLogDestinationResult(dict):
     @property
     @pulumi.getter
     def datadog(self) -> Optional['outputs.GetAppSpecJobLogDestinationDatadogResult']:
+        """
+        Datadog configuration.
+        """
         return pulumi.get(self, "datadog")
 
     @property
     @pulumi.getter
     def logtail(self) -> Optional['outputs.GetAppSpecJobLogDestinationLogtailResult']:
+        """
+        Logtail configuration.
+        """
         return pulumi.get(self, "logtail")
 
     @property
     @pulumi.getter
     def papertrail(self) -> Optional['outputs.GetAppSpecJobLogDestinationPapertrailResult']:
+        """
+        Papertrail configuration.
+        """
         return pulumi.get(self, "papertrail")
 
 
@@ -6148,6 +7629,10 @@ class GetAppSpecJobLogDestinationDatadogResult(dict):
     def __init__(__self__, *,
                  api_key: str,
                  endpoint: Optional[str] = None):
+        """
+        :param str api_key: Datadog API key.
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
         pulumi.set(__self__, "api_key", api_key)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
@@ -6155,11 +7640,17 @@ class GetAppSpecJobLogDestinationDatadogResult(dict):
     @property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> str:
+        """
+        Datadog API key.
+        """
         return pulumi.get(self, "api_key")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
         return pulumi.get(self, "endpoint")
 
 
@@ -6167,11 +7658,17 @@ class GetAppSpecJobLogDestinationDatadogResult(dict):
 class GetAppSpecJobLogDestinationLogtailResult(dict):
     def __init__(__self__, *,
                  token: str):
+        """
+        :param str token: Logtail token.
+        """
         pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        Logtail token.
+        """
         return pulumi.get(self, "token")
 
 
@@ -6179,11 +7676,17 @@ class GetAppSpecJobLogDestinationLogtailResult(dict):
 class GetAppSpecJobLogDestinationPapertrailResult(dict):
     def __init__(__self__, *,
                  endpoint: str):
+        """
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
         pulumi.set(__self__, "endpoint", endpoint)
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Datadog HTTP log intake endpoint.
+        """
         return pulumi.get(self, "endpoint")
 
 
@@ -6214,7 +7717,9 @@ class GetAppSpecServiceResult(dict):
         :param int http_port: The internal port on which this service's run command will listen.
         :param str name: The name of the component.
         :param str run_command: An optional run command to override the component's default.
+        :param Sequence['GetAppSpecServiceAlertArgs'] alerts: Describes an alert policy for the component.
         :param str build_command: An optional build command to run while building this component from source.
+        :param 'GetAppSpecServiceCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['GetAppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
@@ -6226,6 +7731,7 @@ class GetAppSpecServiceResult(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param Sequence[int] internal_ports: A list of ports on which this service will listen for internal traffic.
+        :param Sequence['GetAppSpecServiceLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "http_port", http_port)
@@ -6297,6 +7803,9 @@ class GetAppSpecServiceResult(dict):
     @property
     @pulumi.getter
     def alerts(self) -> Optional[Sequence['outputs.GetAppSpecServiceAlertResult']]:
+        """
+        Describes an alert policy for the component.
+        """
         return pulumi.get(self, "alerts")
 
     @property
@@ -6310,6 +7819,9 @@ class GetAppSpecServiceResult(dict):
     @property
     @pulumi.getter
     def cors(self) -> Optional['outputs.GetAppSpecServiceCorsResult']:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
         return pulumi.get(self, "cors")
 
     @property
@@ -6403,6 +7915,9 @@ class GetAppSpecServiceResult(dict):
     @property
     @pulumi.getter(name="logDestinations")
     def log_destinations(self) -> Optional[Sequence['outputs.GetAppSpecServiceLogDestinationResult']]:
+        """
+        Describes a log forwarding destination.
+        """
         return pulumi.get(self, "log_destinations")
 
     @property
@@ -6423,7 +7938,11 @@ class GetAppSpecServiceAlertResult(dict):
                  window: str,
                  disabled: Optional[bool] = None):
         """
-        :param float value: The value of the environment variable.
+        :param str operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param float value: The threshold for the type of the warning.
+        :param str window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "rule", rule)
@@ -6435,29 +7954,41 @@ class GetAppSpecServiceAlertResult(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter
     def value(self) -> float:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def window(self) -> str:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
         return pulumi.get(self, "window")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
         return pulumi.get(self, "disabled")
 
 
@@ -6470,6 +8001,14 @@ class GetAppSpecServiceCorsResult(dict):
                  allow_origins: Optional['outputs.GetAppSpecServiceCorsAllowOriginsResult'] = None,
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'GetAppSpecServiceCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
         if allow_credentials is not None:
             pulumi.set(__self__, "allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -6486,31 +8025,49 @@ class GetAppSpecServiceCorsResult(dict):
     @property
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
         return pulumi.get(self, "allow_credentials")
 
     @property
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
         return pulumi.get(self, "allow_headers")
 
     @property
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
         return pulumi.get(self, "allow_methods")
 
     @property
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional['outputs.GetAppSpecServiceCorsAllowOriginsResult']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
         return pulumi.get(self, "allow_origins")
 
     @property
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
         return pulumi.get(self, "expose_headers")
 
     @property
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
         return pulumi.get(self, "max_age")
 
 
@@ -6520,6 +8077,11 @@ class GetAppSpecServiceCorsAllowOriginsResult(dict):
                  exact: Optional[str] = None,
                  prefix: Optional[str] = None,
                  regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
@@ -6530,16 +8092,25 @@ class GetAppSpecServiceCorsAllowOriginsResult(dict):
     @property
     @pulumi.getter
     def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
         return pulumi.get(self, "exact")
 
     @property
     @pulumi.getter
     def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
         return pulumi.get(self, "prefix")
 
     @property
     @pulumi.getter
     def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
         return pulumi.get(self, "regex")
 
 
@@ -6554,7 +8125,7 @@ class GetAppSpecServiceEnvResult(dict):
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         pulumi.set(__self__, "type", type)
         if key is not None:
@@ -6592,7 +8163,7 @@ class GetAppSpecServiceEnvResult(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -6855,6 +8426,9 @@ class GetAppSpecServiceLogDestinationResult(dict):
                  papertrail: Optional['outputs.GetAppSpecServiceLogDestinationPapertrailResult'] = None):
         """
         :param str name: The name of the component.
+        :param 'GetAppSpecServiceLogDestinationDatadogArgs' datadog: Datadog configuration.
+        :param 'GetAppSpecServiceLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'GetAppSpecServiceLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
         if datadog is not None:
@@ -6875,16 +8449,25 @@ class GetAppSpecServiceLogDestinationResult(dict):
     @property
     @pulumi.getter
     def datadog(self) -> Optional['outputs.GetAppSpecServiceLogDestinationDatadogResult']:
+        """
+        Datadog configuration.
+        """
         return pulumi.get(self, "datadog")
 
     @property
     @pulumi.getter
     def logtail(self) -> Optional['outputs.GetAppSpecServiceLogDestinationLogtailResult']:
+        """
+        Logtail configuration.
+        """
         return pulumi.get(self, "logtail")
 
     @property
     @pulumi.getter
     def papertrail(self) -> Optional['outputs.GetAppSpecServiceLogDestinationPapertrailResult']:
+        """
+        Papertrail configuration.
+        """
         return pulumi.get(self, "papertrail")
 
 
@@ -6893,6 +8476,10 @@ class GetAppSpecServiceLogDestinationDatadogResult(dict):
     def __init__(__self__, *,
                  api_key: str,
                  endpoint: Optional[str] = None):
+        """
+        :param str api_key: Datadog API key.
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
         pulumi.set(__self__, "api_key", api_key)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
@@ -6900,11 +8487,17 @@ class GetAppSpecServiceLogDestinationDatadogResult(dict):
     @property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> str:
+        """
+        Datadog API key.
+        """
         return pulumi.get(self, "api_key")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
         return pulumi.get(self, "endpoint")
 
 
@@ -6912,11 +8505,17 @@ class GetAppSpecServiceLogDestinationDatadogResult(dict):
 class GetAppSpecServiceLogDestinationLogtailResult(dict):
     def __init__(__self__, *,
                  token: str):
+        """
+        :param str token: Logtail token.
+        """
         pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        Logtail token.
+        """
         return pulumi.get(self, "token")
 
 
@@ -6924,11 +8523,17 @@ class GetAppSpecServiceLogDestinationLogtailResult(dict):
 class GetAppSpecServiceLogDestinationPapertrailResult(dict):
     def __init__(__self__, *,
                  endpoint: str):
+        """
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
         pulumi.set(__self__, "endpoint", endpoint)
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Datadog HTTP log intake endpoint.
+        """
         return pulumi.get(self, "endpoint")
 
 
@@ -6985,6 +8590,7 @@ class GetAppSpecStaticSiteResult(dict):
         :param str name: The name of the component.
         :param str build_command: An optional build command to run while building this component from source.
         :param str catchall_document: The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+        :param 'GetAppSpecStaticSiteCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['GetAppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
@@ -7057,6 +8663,9 @@ class GetAppSpecStaticSiteResult(dict):
     @property
     @pulumi.getter
     def cors(self) -> Optional['outputs.GetAppSpecStaticSiteCorsResult']:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
         return pulumi.get(self, "cors")
 
     @property
@@ -7149,6 +8758,14 @@ class GetAppSpecStaticSiteCorsResult(dict):
                  allow_origins: Optional['outputs.GetAppSpecStaticSiteCorsAllowOriginsResult'] = None,
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'GetAppSpecStaticSiteCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
         if allow_credentials is not None:
             pulumi.set(__self__, "allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -7165,31 +8782,49 @@ class GetAppSpecStaticSiteCorsResult(dict):
     @property
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
         return pulumi.get(self, "allow_credentials")
 
     @property
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
         return pulumi.get(self, "allow_headers")
 
     @property
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
         return pulumi.get(self, "allow_methods")
 
     @property
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional['outputs.GetAppSpecStaticSiteCorsAllowOriginsResult']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
         return pulumi.get(self, "allow_origins")
 
     @property
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
         return pulumi.get(self, "expose_headers")
 
     @property
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
         return pulumi.get(self, "max_age")
 
 
@@ -7199,6 +8834,11 @@ class GetAppSpecStaticSiteCorsAllowOriginsResult(dict):
                  exact: Optional[str] = None,
                  prefix: Optional[str] = None,
                  regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
@@ -7209,16 +8849,25 @@ class GetAppSpecStaticSiteCorsAllowOriginsResult(dict):
     @property
     @pulumi.getter
     def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
         return pulumi.get(self, "exact")
 
     @property
     @pulumi.getter
     def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
         return pulumi.get(self, "prefix")
 
     @property
     @pulumi.getter
     def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
         return pulumi.get(self, "regex")
 
 
@@ -7233,7 +8882,7 @@ class GetAppSpecStaticSiteEnvResult(dict):
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         pulumi.set(__self__, "type", type)
         if key is not None:
@@ -7271,7 +8920,7 @@ class GetAppSpecStaticSiteEnvResult(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -7444,6 +9093,7 @@ class GetAppSpecWorkerResult(dict):
                  source_dir: Optional[str] = None):
         """
         :param str name: The name of the component.
+        :param Sequence['GetAppSpecWorkerAlertArgs'] alerts: Describes an alert policy for the component.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
@@ -7454,6 +9104,7 @@ class GetAppSpecWorkerResult(dict):
         :param 'GetAppSpecWorkerImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
+        :param Sequence['GetAppSpecWorkerLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
@@ -7498,6 +9149,9 @@ class GetAppSpecWorkerResult(dict):
     @property
     @pulumi.getter
     def alerts(self) -> Optional[Sequence['outputs.GetAppSpecWorkerAlertResult']]:
+        """
+        Describes an alert policy for the component.
+        """
         return pulumi.get(self, "alerts")
 
     @property
@@ -7583,6 +9237,9 @@ class GetAppSpecWorkerResult(dict):
     @property
     @pulumi.getter(name="logDestinations")
     def log_destinations(self) -> Optional[Sequence['outputs.GetAppSpecWorkerLogDestinationResult']]:
+        """
+        Describes a log forwarding destination.
+        """
         return pulumi.get(self, "log_destinations")
 
     @property
@@ -7611,7 +9268,11 @@ class GetAppSpecWorkerAlertResult(dict):
                  window: str,
                  disabled: Optional[bool] = None):
         """
-        :param float value: The value of the environment variable.
+        :param str operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param float value: The threshold for the type of the warning.
+        :param str window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "rule", rule)
@@ -7623,29 +9284,41 @@ class GetAppSpecWorkerAlertResult(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def rule(self) -> str:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter
     def value(self) -> float:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def window(self) -> str:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
         return pulumi.get(self, "window")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
         return pulumi.get(self, "disabled")
 
 
@@ -7660,7 +9333,7 @@ class GetAppSpecWorkerEnvResult(dict):
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        :param str value: The value of the environment variable.
+        :param str value: The threshold for the type of the warning.
         """
         pulumi.set(__self__, "type", type)
         if key is not None:
@@ -7698,7 +9371,7 @@ class GetAppSpecWorkerEnvResult(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the environment variable.
+        The threshold for the type of the warning.
         """
         return pulumi.get(self, "value")
 
@@ -7882,6 +9555,9 @@ class GetAppSpecWorkerLogDestinationResult(dict):
                  papertrail: Optional['outputs.GetAppSpecWorkerLogDestinationPapertrailResult'] = None):
         """
         :param str name: The name of the component.
+        :param 'GetAppSpecWorkerLogDestinationDatadogArgs' datadog: Datadog configuration.
+        :param 'GetAppSpecWorkerLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'GetAppSpecWorkerLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
         if datadog is not None:
@@ -7902,16 +9578,25 @@ class GetAppSpecWorkerLogDestinationResult(dict):
     @property
     @pulumi.getter
     def datadog(self) -> Optional['outputs.GetAppSpecWorkerLogDestinationDatadogResult']:
+        """
+        Datadog configuration.
+        """
         return pulumi.get(self, "datadog")
 
     @property
     @pulumi.getter
     def logtail(self) -> Optional['outputs.GetAppSpecWorkerLogDestinationLogtailResult']:
+        """
+        Logtail configuration.
+        """
         return pulumi.get(self, "logtail")
 
     @property
     @pulumi.getter
     def papertrail(self) -> Optional['outputs.GetAppSpecWorkerLogDestinationPapertrailResult']:
+        """
+        Papertrail configuration.
+        """
         return pulumi.get(self, "papertrail")
 
 
@@ -7920,6 +9605,10 @@ class GetAppSpecWorkerLogDestinationDatadogResult(dict):
     def __init__(__self__, *,
                  api_key: str,
                  endpoint: Optional[str] = None):
+        """
+        :param str api_key: Datadog API key.
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
         pulumi.set(__self__, "api_key", api_key)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
@@ -7927,11 +9616,17 @@ class GetAppSpecWorkerLogDestinationDatadogResult(dict):
     @property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> str:
+        """
+        Datadog API key.
+        """
         return pulumi.get(self, "api_key")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
         return pulumi.get(self, "endpoint")
 
 
@@ -7939,11 +9634,17 @@ class GetAppSpecWorkerLogDestinationDatadogResult(dict):
 class GetAppSpecWorkerLogDestinationLogtailResult(dict):
     def __init__(__self__, *,
                  token: str):
+        """
+        :param str token: Logtail token.
+        """
         pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        Logtail token.
+        """
         return pulumi.get(self, "token")
 
 
@@ -7951,11 +9652,17 @@ class GetAppSpecWorkerLogDestinationLogtailResult(dict):
 class GetAppSpecWorkerLogDestinationPapertrailResult(dict):
     def __init__(__self__, *,
                  endpoint: str):
+        """
+        :param str endpoint: Datadog HTTP log intake endpoint.
+        """
         pulumi.set(__self__, "endpoint", endpoint)
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Datadog HTTP log intake endpoint.
+        """
         return pulumi.get(self, "endpoint")
 
 
@@ -10417,6 +12124,7 @@ class GetSshKeysFilterResult(dict):
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        :param Sequence[str] values: A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
@@ -10436,6 +12144,9 @@ class GetSshKeysFilterResult(dict):
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+        """
         return pulumi.get(self, "values")
 
     @property

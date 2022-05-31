@@ -218,6 +218,16 @@ func (o VolumeAttachmentOutput) ToVolumeAttachmentOutputWithContext(ctx context.
 	return o
 }
 
+// ID of the Droplet to attach the volume to.
+func (o VolumeAttachmentOutput) DropletId() pulumi.IntOutput {
+	return o.ApplyT(func(v *VolumeAttachment) pulumi.IntOutput { return v.DropletId }).(pulumi.IntOutput)
+}
+
+// ID of the Volume to be attached to the Droplet.
+func (o VolumeAttachmentOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttachment) pulumi.StringOutput { return v.VolumeId }).(pulumi.StringOutput)
+}
+
 type VolumeAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeAttachmentArrayOutput) ElementType() reflect.Type {

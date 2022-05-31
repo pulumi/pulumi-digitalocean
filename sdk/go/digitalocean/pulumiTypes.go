@@ -19,8 +19,9 @@ type AppSpec struct {
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
-	Envs []AppSpecEnv `pulumi:"envs"`
-	Jobs []AppSpecJob `pulumi:"jobs"`
+	Envs      []AppSpecEnv      `pulumi:"envs"`
+	Functions []AppSpecFunction `pulumi:"functions"`
+	Jobs      []AppSpecJob      `pulumi:"jobs"`
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
@@ -50,8 +51,9 @@ type AppSpecArgs struct {
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
-	Envs AppSpecEnvArrayInput `pulumi:"envs"`
-	Jobs AppSpecJobArrayInput `pulumi:"jobs"`
+	Envs      AppSpecEnvArrayInput      `pulumi:"envs"`
+	Functions AppSpecFunctionArrayInput `pulumi:"functions"`
+	Jobs      AppSpecJobArrayInput      `pulumi:"jobs"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
@@ -162,6 +164,10 @@ func (o AppSpecOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecEnv { return v.Envs }).(AppSpecEnvArrayOutput)
 }
 
+func (o AppSpecOutput) Functions() AppSpecFunctionArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecFunction { return v.Functions }).(AppSpecFunctionArrayOutput)
+}
+
 func (o AppSpecOutput) Jobs() AppSpecJobArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecJob { return v.Jobs }).(AppSpecJobArrayOutput)
 }
@@ -259,6 +265,15 @@ func (o AppSpecPtrOutput) Envs() AppSpecEnvArrayOutput {
 		}
 		return v.Envs
 	}).(AppSpecEnvArrayOutput)
+}
+
+func (o AppSpecPtrOutput) Functions() AppSpecFunctionArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecFunction {
+		if v == nil {
+			return nil
+		}
+		return v.Functions
+	}).(AppSpecFunctionArrayOutput)
 }
 
 func (o AppSpecPtrOutput) Jobs() AppSpecJobArrayOutput {
@@ -822,6 +837,2011 @@ func (o AppSpecEnvArrayOutput) Index(i pulumi.IntInput) AppSpecEnvOutput {
 	}).(AppSpecEnvOutput)
 }
 
+type AppSpecFunction struct {
+	// Describes an alert policy for the component.
+	Alerts []AppSpecFunctionAlert `pulumi:"alerts"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors *AppSpecFunctionCors `pulumi:"cors"`
+	// Describes an environment variable made available to an app competent.
+	Envs []AppSpecFunctionEnv `pulumi:"envs"`
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	Git *AppSpecFunctionGit `pulumi:"git"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	Github *AppSpecFunctionGithub `pulumi:"github"`
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	Gitlab *AppSpecFunctionGitlab `pulumi:"gitlab"`
+	// Describes a log forwarding destination.
+	LogDestinations []AppSpecFunctionLogDestination `pulumi:"logDestinations"`
+	// The name of the component.
+	Name   string                 `pulumi:"name"`
+	Routes []AppSpecFunctionRoute `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// AppSpecFunctionInput is an input type that accepts AppSpecFunctionArgs and AppSpecFunctionOutput values.
+// You can construct a concrete instance of `AppSpecFunctionInput` via:
+//
+//          AppSpecFunctionArgs{...}
+type AppSpecFunctionInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionOutput() AppSpecFunctionOutput
+	ToAppSpecFunctionOutputWithContext(context.Context) AppSpecFunctionOutput
+}
+
+type AppSpecFunctionArgs struct {
+	// Describes an alert policy for the component.
+	Alerts AppSpecFunctionAlertArrayInput `pulumi:"alerts"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors AppSpecFunctionCorsPtrInput `pulumi:"cors"`
+	// Describes an environment variable made available to an app competent.
+	Envs AppSpecFunctionEnvArrayInput `pulumi:"envs"`
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	Git AppSpecFunctionGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	Github AppSpecFunctionGithubPtrInput `pulumi:"github"`
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	Gitlab AppSpecFunctionGitlabPtrInput `pulumi:"gitlab"`
+	// Describes a log forwarding destination.
+	LogDestinations AppSpecFunctionLogDestinationArrayInput `pulumi:"logDestinations"`
+	// The name of the component.
+	Name   pulumi.StringInput             `pulumi:"name"`
+	Routes AppSpecFunctionRouteArrayInput `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (AppSpecFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunction)(nil)).Elem()
+}
+
+func (i AppSpecFunctionArgs) ToAppSpecFunctionOutput() AppSpecFunctionOutput {
+	return i.ToAppSpecFunctionOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionArgs) ToAppSpecFunctionOutputWithContext(ctx context.Context) AppSpecFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionOutput)
+}
+
+// AppSpecFunctionArrayInput is an input type that accepts AppSpecFunctionArray and AppSpecFunctionArrayOutput values.
+// You can construct a concrete instance of `AppSpecFunctionArrayInput` via:
+//
+//          AppSpecFunctionArray{ AppSpecFunctionArgs{...} }
+type AppSpecFunctionArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionArrayOutput() AppSpecFunctionArrayOutput
+	ToAppSpecFunctionArrayOutputWithContext(context.Context) AppSpecFunctionArrayOutput
+}
+
+type AppSpecFunctionArray []AppSpecFunctionInput
+
+func (AppSpecFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunction)(nil)).Elem()
+}
+
+func (i AppSpecFunctionArray) ToAppSpecFunctionArrayOutput() AppSpecFunctionArrayOutput {
+	return i.ToAppSpecFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionArray) ToAppSpecFunctionArrayOutputWithContext(ctx context.Context) AppSpecFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionArrayOutput)
+}
+
+type AppSpecFunctionOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunction)(nil)).Elem()
+}
+
+func (o AppSpecFunctionOutput) ToAppSpecFunctionOutput() AppSpecFunctionOutput {
+	return o
+}
+
+func (o AppSpecFunctionOutput) ToAppSpecFunctionOutputWithContext(ctx context.Context) AppSpecFunctionOutput {
+	return o
+}
+
+// Describes an alert policy for the component.
+func (o AppSpecFunctionOutput) Alerts() AppSpecFunctionAlertArrayOutput {
+	return o.ApplyT(func(v AppSpecFunction) []AppSpecFunctionAlert { return v.Alerts }).(AppSpecFunctionAlertArrayOutput)
+}
+
+// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+func (o AppSpecFunctionOutput) Cors() AppSpecFunctionCorsPtrOutput {
+	return o.ApplyT(func(v AppSpecFunction) *AppSpecFunctionCors { return v.Cors }).(AppSpecFunctionCorsPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o AppSpecFunctionOutput) Envs() AppSpecFunctionEnvArrayOutput {
+	return o.ApplyT(func(v AppSpecFunction) []AppSpecFunctionEnv { return v.Envs }).(AppSpecFunctionEnvArrayOutput)
+}
+
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+func (o AppSpecFunctionOutput) Git() AppSpecFunctionGitPtrOutput {
+	return o.ApplyT(func(v AppSpecFunction) *AppSpecFunctionGit { return v.Git }).(AppSpecFunctionGitPtrOutput)
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+func (o AppSpecFunctionOutput) Github() AppSpecFunctionGithubPtrOutput {
+	return o.ApplyT(func(v AppSpecFunction) *AppSpecFunctionGithub { return v.Github }).(AppSpecFunctionGithubPtrOutput)
+}
+
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+func (o AppSpecFunctionOutput) Gitlab() AppSpecFunctionGitlabPtrOutput {
+	return o.ApplyT(func(v AppSpecFunction) *AppSpecFunctionGitlab { return v.Gitlab }).(AppSpecFunctionGitlabPtrOutput)
+}
+
+// Describes a log forwarding destination.
+func (o AppSpecFunctionOutput) LogDestinations() AppSpecFunctionLogDestinationArrayOutput {
+	return o.ApplyT(func(v AppSpecFunction) []AppSpecFunctionLogDestination { return v.LogDestinations }).(AppSpecFunctionLogDestinationArrayOutput)
+}
+
+// The name of the component.
+func (o AppSpecFunctionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AppSpecFunctionOutput) Routes() AppSpecFunctionRouteArrayOutput {
+	return o.ApplyT(func(v AppSpecFunction) []AppSpecFunctionRoute { return v.Routes }).(AppSpecFunctionRouteArrayOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o AppSpecFunctionOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunction) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunction)(nil)).Elem()
+}
+
+func (o AppSpecFunctionArrayOutput) ToAppSpecFunctionArrayOutput() AppSpecFunctionArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionArrayOutput) ToAppSpecFunctionArrayOutputWithContext(ctx context.Context) AppSpecFunctionArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionArrayOutput) Index(i pulumi.IntInput) AppSpecFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecFunction {
+		return vs[0].([]AppSpecFunction)[vs[1].(int)]
+	}).(AppSpecFunctionOutput)
+}
+
+type AppSpecFunctionAlert struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator string `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
+}
+
+// AppSpecFunctionAlertInput is an input type that accepts AppSpecFunctionAlertArgs and AppSpecFunctionAlertOutput values.
+// You can construct a concrete instance of `AppSpecFunctionAlertInput` via:
+//
+//          AppSpecFunctionAlertArgs{...}
+type AppSpecFunctionAlertInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionAlertOutput() AppSpecFunctionAlertOutput
+	ToAppSpecFunctionAlertOutputWithContext(context.Context) AppSpecFunctionAlertOutput
+}
+
+type AppSpecFunctionAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
+}
+
+func (AppSpecFunctionAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionAlert)(nil)).Elem()
+}
+
+func (i AppSpecFunctionAlertArgs) ToAppSpecFunctionAlertOutput() AppSpecFunctionAlertOutput {
+	return i.ToAppSpecFunctionAlertOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionAlertArgs) ToAppSpecFunctionAlertOutputWithContext(ctx context.Context) AppSpecFunctionAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionAlertOutput)
+}
+
+// AppSpecFunctionAlertArrayInput is an input type that accepts AppSpecFunctionAlertArray and AppSpecFunctionAlertArrayOutput values.
+// You can construct a concrete instance of `AppSpecFunctionAlertArrayInput` via:
+//
+//          AppSpecFunctionAlertArray{ AppSpecFunctionAlertArgs{...} }
+type AppSpecFunctionAlertArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionAlertArrayOutput() AppSpecFunctionAlertArrayOutput
+	ToAppSpecFunctionAlertArrayOutputWithContext(context.Context) AppSpecFunctionAlertArrayOutput
+}
+
+type AppSpecFunctionAlertArray []AppSpecFunctionAlertInput
+
+func (AppSpecFunctionAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionAlert)(nil)).Elem()
+}
+
+func (i AppSpecFunctionAlertArray) ToAppSpecFunctionAlertArrayOutput() AppSpecFunctionAlertArrayOutput {
+	return i.ToAppSpecFunctionAlertArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionAlertArray) ToAppSpecFunctionAlertArrayOutputWithContext(ctx context.Context) AppSpecFunctionAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionAlertArrayOutput)
+}
+
+type AppSpecFunctionAlertOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionAlert)(nil)).Elem()
+}
+
+func (o AppSpecFunctionAlertOutput) ToAppSpecFunctionAlertOutput() AppSpecFunctionAlertOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertOutput) ToAppSpecFunctionAlertOutputWithContext(ctx context.Context) AppSpecFunctionAlertOutput {
+	return o
+}
+
+// Determines whether or not the alert is disabled (default: `false`).
+func (o AppSpecFunctionAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+func (o AppSpecFunctionAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+func (o AppSpecFunctionAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o AppSpecFunctionAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AppSpecFunctionAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+func (o AppSpecFunctionAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type AppSpecFunctionAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionAlert)(nil)).Elem()
+}
+
+func (o AppSpecFunctionAlertArrayOutput) ToAppSpecFunctionAlertArrayOutput() AppSpecFunctionAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertArrayOutput) ToAppSpecFunctionAlertArrayOutputWithContext(ctx context.Context) AppSpecFunctionAlertArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) AppSpecFunctionAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecFunctionAlert {
+		return vs[0].([]AppSpecFunctionAlert)[vs[1].(int)]
+	}).(AppSpecFunctionAlertOutput)
+}
+
+type AppSpecFunctionCors struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins *AppSpecFunctionCorsAllowOrigins `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge *string `pulumi:"maxAge"`
+}
+
+// AppSpecFunctionCorsInput is an input type that accepts AppSpecFunctionCorsArgs and AppSpecFunctionCorsOutput values.
+// You can construct a concrete instance of `AppSpecFunctionCorsInput` via:
+//
+//          AppSpecFunctionCorsArgs{...}
+type AppSpecFunctionCorsInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionCorsOutput() AppSpecFunctionCorsOutput
+	ToAppSpecFunctionCorsOutputWithContext(context.Context) AppSpecFunctionCorsOutput
+}
+
+type AppSpecFunctionCorsArgs struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins AppSpecFunctionCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
+}
+
+func (AppSpecFunctionCorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionCors)(nil)).Elem()
+}
+
+func (i AppSpecFunctionCorsArgs) ToAppSpecFunctionCorsOutput() AppSpecFunctionCorsOutput {
+	return i.ToAppSpecFunctionCorsOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionCorsArgs) ToAppSpecFunctionCorsOutputWithContext(ctx context.Context) AppSpecFunctionCorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionCorsOutput)
+}
+
+func (i AppSpecFunctionCorsArgs) ToAppSpecFunctionCorsPtrOutput() AppSpecFunctionCorsPtrOutput {
+	return i.ToAppSpecFunctionCorsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionCorsArgs) ToAppSpecFunctionCorsPtrOutputWithContext(ctx context.Context) AppSpecFunctionCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionCorsOutput).ToAppSpecFunctionCorsPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionCorsPtrInput is an input type that accepts AppSpecFunctionCorsArgs, AppSpecFunctionCorsPtr and AppSpecFunctionCorsPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionCorsPtrInput` via:
+//
+//          AppSpecFunctionCorsArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecFunctionCorsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionCorsPtrOutput() AppSpecFunctionCorsPtrOutput
+	ToAppSpecFunctionCorsPtrOutputWithContext(context.Context) AppSpecFunctionCorsPtrOutput
+}
+
+type appSpecFunctionCorsPtrType AppSpecFunctionCorsArgs
+
+func AppSpecFunctionCorsPtr(v *AppSpecFunctionCorsArgs) AppSpecFunctionCorsPtrInput {
+	return (*appSpecFunctionCorsPtrType)(v)
+}
+
+func (*appSpecFunctionCorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionCors)(nil)).Elem()
+}
+
+func (i *appSpecFunctionCorsPtrType) ToAppSpecFunctionCorsPtrOutput() AppSpecFunctionCorsPtrOutput {
+	return i.ToAppSpecFunctionCorsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionCorsPtrType) ToAppSpecFunctionCorsPtrOutputWithContext(ctx context.Context) AppSpecFunctionCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionCorsPtrOutput)
+}
+
+type AppSpecFunctionCorsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionCorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionCors)(nil)).Elem()
+}
+
+func (o AppSpecFunctionCorsOutput) ToAppSpecFunctionCorsOutput() AppSpecFunctionCorsOutput {
+	return o
+}
+
+func (o AppSpecFunctionCorsOutput) ToAppSpecFunctionCorsOutputWithContext(ctx context.Context) AppSpecFunctionCorsOutput {
+	return o
+}
+
+func (o AppSpecFunctionCorsOutput) ToAppSpecFunctionCorsPtrOutput() AppSpecFunctionCorsPtrOutput {
+	return o.ToAppSpecFunctionCorsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionCorsOutput) ToAppSpecFunctionCorsPtrOutputWithContext(ctx context.Context) AppSpecFunctionCorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionCors) *AppSpecFunctionCors {
+		return &v
+	}).(AppSpecFunctionCorsPtrOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o AppSpecFunctionCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o AppSpecFunctionCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o AppSpecFunctionCorsOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o AppSpecFunctionCorsOutput) AllowOrigins() AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionCors) *AppSpecFunctionCorsAllowOrigins { return v.AllowOrigins }).(AppSpecFunctionCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o AppSpecFunctionCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o AppSpecFunctionCorsOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionCorsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionCorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionCors)(nil)).Elem()
+}
+
+func (o AppSpecFunctionCorsPtrOutput) ToAppSpecFunctionCorsPtrOutput() AppSpecFunctionCorsPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionCorsPtrOutput) ToAppSpecFunctionCorsPtrOutputWithContext(ctx context.Context) AppSpecFunctionCorsPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionCorsPtrOutput) Elem() AppSpecFunctionCorsOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCors) AppSpecFunctionCors {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionCors
+		return ret
+	}).(AppSpecFunctionCorsOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o AppSpecFunctionCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o AppSpecFunctionCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o AppSpecFunctionCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o AppSpecFunctionCorsPtrOutput) AllowOrigins() AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCors) *AppSpecFunctionCorsAllowOrigins {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(AppSpecFunctionCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o AppSpecFunctionCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o AppSpecFunctionCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionCorsAllowOrigins struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	Prefix *string `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex *string `pulumi:"regex"`
+}
+
+// AppSpecFunctionCorsAllowOriginsInput is an input type that accepts AppSpecFunctionCorsAllowOriginsArgs and AppSpecFunctionCorsAllowOriginsOutput values.
+// You can construct a concrete instance of `AppSpecFunctionCorsAllowOriginsInput` via:
+//
+//          AppSpecFunctionCorsAllowOriginsArgs{...}
+type AppSpecFunctionCorsAllowOriginsInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionCorsAllowOriginsOutput() AppSpecFunctionCorsAllowOriginsOutput
+	ToAppSpecFunctionCorsAllowOriginsOutputWithContext(context.Context) AppSpecFunctionCorsAllowOriginsOutput
+}
+
+type AppSpecFunctionCorsAllowOriginsArgs struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (AppSpecFunctionCorsAllowOriginsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i AppSpecFunctionCorsAllowOriginsArgs) ToAppSpecFunctionCorsAllowOriginsOutput() AppSpecFunctionCorsAllowOriginsOutput {
+	return i.ToAppSpecFunctionCorsAllowOriginsOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionCorsAllowOriginsArgs) ToAppSpecFunctionCorsAllowOriginsOutputWithContext(ctx context.Context) AppSpecFunctionCorsAllowOriginsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionCorsAllowOriginsOutput)
+}
+
+func (i AppSpecFunctionCorsAllowOriginsArgs) ToAppSpecFunctionCorsAllowOriginsPtrOutput() AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return i.ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionCorsAllowOriginsArgs) ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionCorsAllowOriginsOutput).ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionCorsAllowOriginsPtrInput is an input type that accepts AppSpecFunctionCorsAllowOriginsArgs, AppSpecFunctionCorsAllowOriginsPtr and AppSpecFunctionCorsAllowOriginsPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionCorsAllowOriginsPtrInput` via:
+//
+//          AppSpecFunctionCorsAllowOriginsArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecFunctionCorsAllowOriginsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionCorsAllowOriginsPtrOutput() AppSpecFunctionCorsAllowOriginsPtrOutput
+	ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(context.Context) AppSpecFunctionCorsAllowOriginsPtrOutput
+}
+
+type appSpecFunctionCorsAllowOriginsPtrType AppSpecFunctionCorsAllowOriginsArgs
+
+func AppSpecFunctionCorsAllowOriginsPtr(v *AppSpecFunctionCorsAllowOriginsArgs) AppSpecFunctionCorsAllowOriginsPtrInput {
+	return (*appSpecFunctionCorsAllowOriginsPtrType)(v)
+}
+
+func (*appSpecFunctionCorsAllowOriginsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i *appSpecFunctionCorsAllowOriginsPtrType) ToAppSpecFunctionCorsAllowOriginsPtrOutput() AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return i.ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionCorsAllowOriginsPtrType) ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionCorsAllowOriginsPtrOutput)
+}
+
+type AppSpecFunctionCorsAllowOriginsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionCorsAllowOriginsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o AppSpecFunctionCorsAllowOriginsOutput) ToAppSpecFunctionCorsAllowOriginsOutput() AppSpecFunctionCorsAllowOriginsOutput {
+	return o
+}
+
+func (o AppSpecFunctionCorsAllowOriginsOutput) ToAppSpecFunctionCorsAllowOriginsOutputWithContext(ctx context.Context) AppSpecFunctionCorsAllowOriginsOutput {
+	return o
+}
+
+func (o AppSpecFunctionCorsAllowOriginsOutput) ToAppSpecFunctionCorsAllowOriginsPtrOutput() AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o.ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionCorsAllowOriginsOutput) ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionCorsAllowOrigins) *AppSpecFunctionCorsAllowOrigins {
+		return &v
+	}).(AppSpecFunctionCorsAllowOriginsPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o AppSpecFunctionCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o AppSpecFunctionCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o AppSpecFunctionCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionCorsAllowOriginsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionCorsAllowOriginsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o AppSpecFunctionCorsAllowOriginsPtrOutput) ToAppSpecFunctionCorsAllowOriginsPtrOutput() AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionCorsAllowOriginsPtrOutput) ToAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx context.Context) AppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Elem() AppSpecFunctionCorsAllowOriginsOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) AppSpecFunctionCorsAllowOrigins {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionCorsAllowOrigins
+		return ret
+	}).(AppSpecFunctionCorsAllowOriginsOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type *string `pulumi:"type"`
+	// The threshold for the type of the warning.
+	Value *string `pulumi:"value"`
+}
+
+// AppSpecFunctionEnvInput is an input type that accepts AppSpecFunctionEnvArgs and AppSpecFunctionEnvOutput values.
+// You can construct a concrete instance of `AppSpecFunctionEnvInput` via:
+//
+//          AppSpecFunctionEnvArgs{...}
+type AppSpecFunctionEnvInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionEnvOutput() AppSpecFunctionEnvOutput
+	ToAppSpecFunctionEnvOutputWithContext(context.Context) AppSpecFunctionEnvOutput
+}
+
+type AppSpecFunctionEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The threshold for the type of the warning.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AppSpecFunctionEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionEnv)(nil)).Elem()
+}
+
+func (i AppSpecFunctionEnvArgs) ToAppSpecFunctionEnvOutput() AppSpecFunctionEnvOutput {
+	return i.ToAppSpecFunctionEnvOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionEnvArgs) ToAppSpecFunctionEnvOutputWithContext(ctx context.Context) AppSpecFunctionEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionEnvOutput)
+}
+
+// AppSpecFunctionEnvArrayInput is an input type that accepts AppSpecFunctionEnvArray and AppSpecFunctionEnvArrayOutput values.
+// You can construct a concrete instance of `AppSpecFunctionEnvArrayInput` via:
+//
+//          AppSpecFunctionEnvArray{ AppSpecFunctionEnvArgs{...} }
+type AppSpecFunctionEnvArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionEnvArrayOutput() AppSpecFunctionEnvArrayOutput
+	ToAppSpecFunctionEnvArrayOutputWithContext(context.Context) AppSpecFunctionEnvArrayOutput
+}
+
+type AppSpecFunctionEnvArray []AppSpecFunctionEnvInput
+
+func (AppSpecFunctionEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionEnv)(nil)).Elem()
+}
+
+func (i AppSpecFunctionEnvArray) ToAppSpecFunctionEnvArrayOutput() AppSpecFunctionEnvArrayOutput {
+	return i.ToAppSpecFunctionEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionEnvArray) ToAppSpecFunctionEnvArrayOutputWithContext(ctx context.Context) AppSpecFunctionEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionEnvArrayOutput)
+}
+
+type AppSpecFunctionEnvOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionEnv)(nil)).Elem()
+}
+
+func (o AppSpecFunctionEnvOutput) ToAppSpecFunctionEnvOutput() AppSpecFunctionEnvOutput {
+	return o
+}
+
+func (o AppSpecFunctionEnvOutput) ToAppSpecFunctionEnvOutputWithContext(ctx context.Context) AppSpecFunctionEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o AppSpecFunctionEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o AppSpecFunctionEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o AppSpecFunctionEnvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for the type of the warning.
+func (o AppSpecFunctionEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionEnv)(nil)).Elem()
+}
+
+func (o AppSpecFunctionEnvArrayOutput) ToAppSpecFunctionEnvArrayOutput() AppSpecFunctionEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionEnvArrayOutput) ToAppSpecFunctionEnvArrayOutputWithContext(ctx context.Context) AppSpecFunctionEnvArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionEnvArrayOutput) Index(i pulumi.IntInput) AppSpecFunctionEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecFunctionEnv {
+		return vs[0].([]AppSpecFunctionEnv)[vs[1].(int)]
+	}).(AppSpecFunctionEnvOutput)
+}
+
+type AppSpecFunctionGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// AppSpecFunctionGitInput is an input type that accepts AppSpecFunctionGitArgs and AppSpecFunctionGitOutput values.
+// You can construct a concrete instance of `AppSpecFunctionGitInput` via:
+//
+//          AppSpecFunctionGitArgs{...}
+type AppSpecFunctionGitInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionGitOutput() AppSpecFunctionGitOutput
+	ToAppSpecFunctionGitOutputWithContext(context.Context) AppSpecFunctionGitOutput
+}
+
+type AppSpecFunctionGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (AppSpecFunctionGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionGit)(nil)).Elem()
+}
+
+func (i AppSpecFunctionGitArgs) ToAppSpecFunctionGitOutput() AppSpecFunctionGitOutput {
+	return i.ToAppSpecFunctionGitOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionGitArgs) ToAppSpecFunctionGitOutputWithContext(ctx context.Context) AppSpecFunctionGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGitOutput)
+}
+
+func (i AppSpecFunctionGitArgs) ToAppSpecFunctionGitPtrOutput() AppSpecFunctionGitPtrOutput {
+	return i.ToAppSpecFunctionGitPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionGitArgs) ToAppSpecFunctionGitPtrOutputWithContext(ctx context.Context) AppSpecFunctionGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGitOutput).ToAppSpecFunctionGitPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionGitPtrInput is an input type that accepts AppSpecFunctionGitArgs, AppSpecFunctionGitPtr and AppSpecFunctionGitPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionGitPtrInput` via:
+//
+//          AppSpecFunctionGitArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecFunctionGitPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionGitPtrOutput() AppSpecFunctionGitPtrOutput
+	ToAppSpecFunctionGitPtrOutputWithContext(context.Context) AppSpecFunctionGitPtrOutput
+}
+
+type appSpecFunctionGitPtrType AppSpecFunctionGitArgs
+
+func AppSpecFunctionGitPtr(v *AppSpecFunctionGitArgs) AppSpecFunctionGitPtrInput {
+	return (*appSpecFunctionGitPtrType)(v)
+}
+
+func (*appSpecFunctionGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionGit)(nil)).Elem()
+}
+
+func (i *appSpecFunctionGitPtrType) ToAppSpecFunctionGitPtrOutput() AppSpecFunctionGitPtrOutput {
+	return i.ToAppSpecFunctionGitPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionGitPtrType) ToAppSpecFunctionGitPtrOutputWithContext(ctx context.Context) AppSpecFunctionGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGitPtrOutput)
+}
+
+type AppSpecFunctionGitOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionGit)(nil)).Elem()
+}
+
+func (o AppSpecFunctionGitOutput) ToAppSpecFunctionGitOutput() AppSpecFunctionGitOutput {
+	return o
+}
+
+func (o AppSpecFunctionGitOutput) ToAppSpecFunctionGitOutputWithContext(ctx context.Context) AppSpecFunctionGitOutput {
+	return o
+}
+
+func (o AppSpecFunctionGitOutput) ToAppSpecFunctionGitPtrOutput() AppSpecFunctionGitPtrOutput {
+	return o.ToAppSpecFunctionGitPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionGitOutput) ToAppSpecFunctionGitPtrOutputWithContext(ctx context.Context) AppSpecFunctionGitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionGit) *AppSpecFunctionGit {
+		return &v
+	}).(AppSpecFunctionGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecFunctionGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o AppSpecFunctionGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionGitPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionGit)(nil)).Elem()
+}
+
+func (o AppSpecFunctionGitPtrOutput) ToAppSpecFunctionGitPtrOutput() AppSpecFunctionGitPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionGitPtrOutput) ToAppSpecFunctionGitPtrOutputWithContext(ctx context.Context) AppSpecFunctionGitPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionGitPtrOutput) Elem() AppSpecFunctionGitOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGit) AppSpecFunctionGit {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionGit
+		return ret
+	}).(AppSpecFunctionGitOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecFunctionGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o AppSpecFunctionGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecFunctionGithubInput is an input type that accepts AppSpecFunctionGithubArgs and AppSpecFunctionGithubOutput values.
+// You can construct a concrete instance of `AppSpecFunctionGithubInput` via:
+//
+//          AppSpecFunctionGithubArgs{...}
+type AppSpecFunctionGithubInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionGithubOutput() AppSpecFunctionGithubOutput
+	ToAppSpecFunctionGithubOutputWithContext(context.Context) AppSpecFunctionGithubOutput
+}
+
+type AppSpecFunctionGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecFunctionGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionGithub)(nil)).Elem()
+}
+
+func (i AppSpecFunctionGithubArgs) ToAppSpecFunctionGithubOutput() AppSpecFunctionGithubOutput {
+	return i.ToAppSpecFunctionGithubOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionGithubArgs) ToAppSpecFunctionGithubOutputWithContext(ctx context.Context) AppSpecFunctionGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGithubOutput)
+}
+
+func (i AppSpecFunctionGithubArgs) ToAppSpecFunctionGithubPtrOutput() AppSpecFunctionGithubPtrOutput {
+	return i.ToAppSpecFunctionGithubPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionGithubArgs) ToAppSpecFunctionGithubPtrOutputWithContext(ctx context.Context) AppSpecFunctionGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGithubOutput).ToAppSpecFunctionGithubPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionGithubPtrInput is an input type that accepts AppSpecFunctionGithubArgs, AppSpecFunctionGithubPtr and AppSpecFunctionGithubPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionGithubPtrInput` via:
+//
+//          AppSpecFunctionGithubArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecFunctionGithubPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionGithubPtrOutput() AppSpecFunctionGithubPtrOutput
+	ToAppSpecFunctionGithubPtrOutputWithContext(context.Context) AppSpecFunctionGithubPtrOutput
+}
+
+type appSpecFunctionGithubPtrType AppSpecFunctionGithubArgs
+
+func AppSpecFunctionGithubPtr(v *AppSpecFunctionGithubArgs) AppSpecFunctionGithubPtrInput {
+	return (*appSpecFunctionGithubPtrType)(v)
+}
+
+func (*appSpecFunctionGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionGithub)(nil)).Elem()
+}
+
+func (i *appSpecFunctionGithubPtrType) ToAppSpecFunctionGithubPtrOutput() AppSpecFunctionGithubPtrOutput {
+	return i.ToAppSpecFunctionGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionGithubPtrType) ToAppSpecFunctionGithubPtrOutputWithContext(ctx context.Context) AppSpecFunctionGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGithubPtrOutput)
+}
+
+type AppSpecFunctionGithubOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionGithub)(nil)).Elem()
+}
+
+func (o AppSpecFunctionGithubOutput) ToAppSpecFunctionGithubOutput() AppSpecFunctionGithubOutput {
+	return o
+}
+
+func (o AppSpecFunctionGithubOutput) ToAppSpecFunctionGithubOutputWithContext(ctx context.Context) AppSpecFunctionGithubOutput {
+	return o
+}
+
+func (o AppSpecFunctionGithubOutput) ToAppSpecFunctionGithubPtrOutput() AppSpecFunctionGithubPtrOutput {
+	return o.ToAppSpecFunctionGithubPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionGithubOutput) ToAppSpecFunctionGithubPtrOutputWithContext(ctx context.Context) AppSpecFunctionGithubPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionGithub) *AppSpecFunctionGithub {
+		return &v
+	}).(AppSpecFunctionGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecFunctionGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecFunctionGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecFunctionGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionGithub)(nil)).Elem()
+}
+
+func (o AppSpecFunctionGithubPtrOutput) ToAppSpecFunctionGithubPtrOutput() AppSpecFunctionGithubPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionGithubPtrOutput) ToAppSpecFunctionGithubPtrOutputWithContext(ctx context.Context) AppSpecFunctionGithubPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionGithubPtrOutput) Elem() AppSpecFunctionGithubOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGithub) AppSpecFunctionGithub {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionGithub
+		return ret
+	}).(AppSpecFunctionGithubOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecFunctionGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecFunctionGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecFunctionGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecFunctionGitlabInput is an input type that accepts AppSpecFunctionGitlabArgs and AppSpecFunctionGitlabOutput values.
+// You can construct a concrete instance of `AppSpecFunctionGitlabInput` via:
+//
+//          AppSpecFunctionGitlabArgs{...}
+type AppSpecFunctionGitlabInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionGitlabOutput() AppSpecFunctionGitlabOutput
+	ToAppSpecFunctionGitlabOutputWithContext(context.Context) AppSpecFunctionGitlabOutput
+}
+
+type AppSpecFunctionGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecFunctionGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionGitlab)(nil)).Elem()
+}
+
+func (i AppSpecFunctionGitlabArgs) ToAppSpecFunctionGitlabOutput() AppSpecFunctionGitlabOutput {
+	return i.ToAppSpecFunctionGitlabOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionGitlabArgs) ToAppSpecFunctionGitlabOutputWithContext(ctx context.Context) AppSpecFunctionGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGitlabOutput)
+}
+
+func (i AppSpecFunctionGitlabArgs) ToAppSpecFunctionGitlabPtrOutput() AppSpecFunctionGitlabPtrOutput {
+	return i.ToAppSpecFunctionGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionGitlabArgs) ToAppSpecFunctionGitlabPtrOutputWithContext(ctx context.Context) AppSpecFunctionGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGitlabOutput).ToAppSpecFunctionGitlabPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionGitlabPtrInput is an input type that accepts AppSpecFunctionGitlabArgs, AppSpecFunctionGitlabPtr and AppSpecFunctionGitlabPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionGitlabPtrInput` via:
+//
+//          AppSpecFunctionGitlabArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecFunctionGitlabPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionGitlabPtrOutput() AppSpecFunctionGitlabPtrOutput
+	ToAppSpecFunctionGitlabPtrOutputWithContext(context.Context) AppSpecFunctionGitlabPtrOutput
+}
+
+type appSpecFunctionGitlabPtrType AppSpecFunctionGitlabArgs
+
+func AppSpecFunctionGitlabPtr(v *AppSpecFunctionGitlabArgs) AppSpecFunctionGitlabPtrInput {
+	return (*appSpecFunctionGitlabPtrType)(v)
+}
+
+func (*appSpecFunctionGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionGitlab)(nil)).Elem()
+}
+
+func (i *appSpecFunctionGitlabPtrType) ToAppSpecFunctionGitlabPtrOutput() AppSpecFunctionGitlabPtrOutput {
+	return i.ToAppSpecFunctionGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionGitlabPtrType) ToAppSpecFunctionGitlabPtrOutputWithContext(ctx context.Context) AppSpecFunctionGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionGitlabPtrOutput)
+}
+
+type AppSpecFunctionGitlabOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionGitlab)(nil)).Elem()
+}
+
+func (o AppSpecFunctionGitlabOutput) ToAppSpecFunctionGitlabOutput() AppSpecFunctionGitlabOutput {
+	return o
+}
+
+func (o AppSpecFunctionGitlabOutput) ToAppSpecFunctionGitlabOutputWithContext(ctx context.Context) AppSpecFunctionGitlabOutput {
+	return o
+}
+
+func (o AppSpecFunctionGitlabOutput) ToAppSpecFunctionGitlabPtrOutput() AppSpecFunctionGitlabPtrOutput {
+	return o.ToAppSpecFunctionGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionGitlabOutput) ToAppSpecFunctionGitlabPtrOutputWithContext(ctx context.Context) AppSpecFunctionGitlabPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionGitlab) *AppSpecFunctionGitlab {
+		return &v
+	}).(AppSpecFunctionGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecFunctionGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecFunctionGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecFunctionGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionGitlab)(nil)).Elem()
+}
+
+func (o AppSpecFunctionGitlabPtrOutput) ToAppSpecFunctionGitlabPtrOutput() AppSpecFunctionGitlabPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionGitlabPtrOutput) ToAppSpecFunctionGitlabPtrOutputWithContext(ctx context.Context) AppSpecFunctionGitlabPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionGitlabPtrOutput) Elem() AppSpecFunctionGitlabOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGitlab) AppSpecFunctionGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionGitlab
+		return ret
+	}).(AppSpecFunctionGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecFunctionGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecFunctionGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecFunctionGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionLogDestination struct {
+	// Datadog configuration.
+	Datadog *AppSpecFunctionLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail *AppSpecFunctionLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name string `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail *AppSpecFunctionLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// AppSpecFunctionLogDestinationInput is an input type that accepts AppSpecFunctionLogDestinationArgs and AppSpecFunctionLogDestinationOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationInput` via:
+//
+//          AppSpecFunctionLogDestinationArgs{...}
+type AppSpecFunctionLogDestinationInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationOutput() AppSpecFunctionLogDestinationOutput
+	ToAppSpecFunctionLogDestinationOutputWithContext(context.Context) AppSpecFunctionLogDestinationOutput
+}
+
+type AppSpecFunctionLogDestinationArgs struct {
+	// Datadog configuration.
+	Datadog AppSpecFunctionLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail AppSpecFunctionLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail AppSpecFunctionLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (AppSpecFunctionLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestination)(nil)).Elem()
+}
+
+func (i AppSpecFunctionLogDestinationArgs) ToAppSpecFunctionLogDestinationOutput() AppSpecFunctionLogDestinationOutput {
+	return i.ToAppSpecFunctionLogDestinationOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationArgs) ToAppSpecFunctionLogDestinationOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationOutput)
+}
+
+// AppSpecFunctionLogDestinationArrayInput is an input type that accepts AppSpecFunctionLogDestinationArray and AppSpecFunctionLogDestinationArrayOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationArrayInput` via:
+//
+//          AppSpecFunctionLogDestinationArray{ AppSpecFunctionLogDestinationArgs{...} }
+type AppSpecFunctionLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationArrayOutput() AppSpecFunctionLogDestinationArrayOutput
+	ToAppSpecFunctionLogDestinationArrayOutputWithContext(context.Context) AppSpecFunctionLogDestinationArrayOutput
+}
+
+type AppSpecFunctionLogDestinationArray []AppSpecFunctionLogDestinationInput
+
+func (AppSpecFunctionLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionLogDestination)(nil)).Elem()
+}
+
+func (i AppSpecFunctionLogDestinationArray) ToAppSpecFunctionLogDestinationArrayOutput() AppSpecFunctionLogDestinationArrayOutput {
+	return i.ToAppSpecFunctionLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationArray) ToAppSpecFunctionLogDestinationArrayOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationArrayOutput)
+}
+
+type AppSpecFunctionLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestination)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationOutput) ToAppSpecFunctionLogDestinationOutput() AppSpecFunctionLogDestinationOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOutput) ToAppSpecFunctionLogDestinationOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOutput {
+	return o
+}
+
+// Datadog configuration.
+func (o AppSpecFunctionLogDestinationOutput) Datadog() AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestination) *AppSpecFunctionLogDestinationDatadog { return v.Datadog }).(AppSpecFunctionLogDestinationDatadogPtrOutput)
+}
+
+// Logtail configuration.
+func (o AppSpecFunctionLogDestinationOutput) Logtail() AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestination) *AppSpecFunctionLogDestinationLogtail { return v.Logtail }).(AppSpecFunctionLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o AppSpecFunctionLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Papertrail configuration.
+func (o AppSpecFunctionLogDestinationOutput) Papertrail() AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestination) *AppSpecFunctionLogDestinationPapertrail { return v.Papertrail }).(AppSpecFunctionLogDestinationPapertrailPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionLogDestination)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationArrayOutput) ToAppSpecFunctionLogDestinationArrayOutput() AppSpecFunctionLogDestinationArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationArrayOutput) ToAppSpecFunctionLogDestinationArrayOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationArrayOutput) Index(i pulumi.IntInput) AppSpecFunctionLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecFunctionLogDestination {
+		return vs[0].([]AppSpecFunctionLogDestination)[vs[1].(int)]
+	}).(AppSpecFunctionLogDestinationOutput)
+}
+
+type AppSpecFunctionLogDestinationDatadog struct {
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// AppSpecFunctionLogDestinationDatadogInput is an input type that accepts AppSpecFunctionLogDestinationDatadogArgs and AppSpecFunctionLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationDatadogInput` via:
+//
+//          AppSpecFunctionLogDestinationDatadogArgs{...}
+type AppSpecFunctionLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationDatadogOutput() AppSpecFunctionLogDestinationDatadogOutput
+	ToAppSpecFunctionLogDestinationDatadogOutputWithContext(context.Context) AppSpecFunctionLogDestinationDatadogOutput
+}
+
+type AppSpecFunctionLogDestinationDatadogArgs struct {
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (AppSpecFunctionLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i AppSpecFunctionLogDestinationDatadogArgs) ToAppSpecFunctionLogDestinationDatadogOutput() AppSpecFunctionLogDestinationDatadogOutput {
+	return i.ToAppSpecFunctionLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationDatadogArgs) ToAppSpecFunctionLogDestinationDatadogOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationDatadogOutput)
+}
+
+func (i AppSpecFunctionLogDestinationDatadogArgs) ToAppSpecFunctionLogDestinationDatadogPtrOutput() AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationDatadogArgs) ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationDatadogOutput).ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionLogDestinationDatadogPtrInput is an input type that accepts AppSpecFunctionLogDestinationDatadogArgs, AppSpecFunctionLogDestinationDatadogPtr and AppSpecFunctionLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationDatadogPtrInput` via:
+//
+//          AppSpecFunctionLogDestinationDatadogArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecFunctionLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationDatadogPtrOutput() AppSpecFunctionLogDestinationDatadogPtrOutput
+	ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(context.Context) AppSpecFunctionLogDestinationDatadogPtrOutput
+}
+
+type appSpecFunctionLogDestinationDatadogPtrType AppSpecFunctionLogDestinationDatadogArgs
+
+func AppSpecFunctionLogDestinationDatadogPtr(v *AppSpecFunctionLogDestinationDatadogArgs) AppSpecFunctionLogDestinationDatadogPtrInput {
+	return (*appSpecFunctionLogDestinationDatadogPtrType)(v)
+}
+
+func (*appSpecFunctionLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *appSpecFunctionLogDestinationDatadogPtrType) ToAppSpecFunctionLogDestinationDatadogPtrOutput() AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionLogDestinationDatadogPtrType) ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationDatadogPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationDatadogOutput) ToAppSpecFunctionLogDestinationDatadogOutput() AppSpecFunctionLogDestinationDatadogOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationDatadogOutput) ToAppSpecFunctionLogDestinationDatadogOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationDatadogOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationDatadogOutput) ToAppSpecFunctionLogDestinationDatadogPtrOutput() AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o.ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionLogDestinationDatadogOutput) ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionLogDestinationDatadog) *AppSpecFunctionLogDestinationDatadog {
+		return &v
+	}).(AppSpecFunctionLogDestinationDatadogPtrOutput)
+}
+
+// Datadog API key.
+func (o AppSpecFunctionLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecFunctionLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationDatadogPtrOutput) ToAppSpecFunctionLogDestinationDatadogPtrOutput() AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationDatadogPtrOutput) ToAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationDatadogPtrOutput) Elem() AppSpecFunctionLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationDatadog) AppSpecFunctionLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionLogDestinationDatadog
+		return ret
+	}).(AppSpecFunctionLogDestinationDatadogOutput)
+}
+
+// Datadog API key.
+func (o AppSpecFunctionLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecFunctionLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationLogtail struct {
+	// Logtail token.
+	Token string `pulumi:"token"`
+}
+
+// AppSpecFunctionLogDestinationLogtailInput is an input type that accepts AppSpecFunctionLogDestinationLogtailArgs and AppSpecFunctionLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationLogtailInput` via:
+//
+//          AppSpecFunctionLogDestinationLogtailArgs{...}
+type AppSpecFunctionLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationLogtailOutput() AppSpecFunctionLogDestinationLogtailOutput
+	ToAppSpecFunctionLogDestinationLogtailOutputWithContext(context.Context) AppSpecFunctionLogDestinationLogtailOutput
+}
+
+type AppSpecFunctionLogDestinationLogtailArgs struct {
+	// Logtail token.
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (AppSpecFunctionLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i AppSpecFunctionLogDestinationLogtailArgs) ToAppSpecFunctionLogDestinationLogtailOutput() AppSpecFunctionLogDestinationLogtailOutput {
+	return i.ToAppSpecFunctionLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationLogtailArgs) ToAppSpecFunctionLogDestinationLogtailOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationLogtailOutput)
+}
+
+func (i AppSpecFunctionLogDestinationLogtailArgs) ToAppSpecFunctionLogDestinationLogtailPtrOutput() AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationLogtailArgs) ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationLogtailOutput).ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionLogDestinationLogtailPtrInput is an input type that accepts AppSpecFunctionLogDestinationLogtailArgs, AppSpecFunctionLogDestinationLogtailPtr and AppSpecFunctionLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationLogtailPtrInput` via:
+//
+//          AppSpecFunctionLogDestinationLogtailArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecFunctionLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationLogtailPtrOutput() AppSpecFunctionLogDestinationLogtailPtrOutput
+	ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(context.Context) AppSpecFunctionLogDestinationLogtailPtrOutput
+}
+
+type appSpecFunctionLogDestinationLogtailPtrType AppSpecFunctionLogDestinationLogtailArgs
+
+func AppSpecFunctionLogDestinationLogtailPtr(v *AppSpecFunctionLogDestinationLogtailArgs) AppSpecFunctionLogDestinationLogtailPtrInput {
+	return (*appSpecFunctionLogDestinationLogtailPtrType)(v)
+}
+
+func (*appSpecFunctionLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *appSpecFunctionLogDestinationLogtailPtrType) ToAppSpecFunctionLogDestinationLogtailPtrOutput() AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionLogDestinationLogtailPtrType) ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationLogtailPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationLogtailOutput) ToAppSpecFunctionLogDestinationLogtailOutput() AppSpecFunctionLogDestinationLogtailOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationLogtailOutput) ToAppSpecFunctionLogDestinationLogtailOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationLogtailOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationLogtailOutput) ToAppSpecFunctionLogDestinationLogtailPtrOutput() AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o.ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionLogDestinationLogtailOutput) ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionLogDestinationLogtail) *AppSpecFunctionLogDestinationLogtail {
+		return &v
+	}).(AppSpecFunctionLogDestinationLogtailPtrOutput)
+}
+
+// Logtail token.
+func (o AppSpecFunctionLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type AppSpecFunctionLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationLogtailPtrOutput) ToAppSpecFunctionLogDestinationLogtailPtrOutput() AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationLogtailPtrOutput) ToAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Elem() AppSpecFunctionLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationLogtail) AppSpecFunctionLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionLogDestinationLogtail
+		return ret
+	}).(AppSpecFunctionLogDestinationLogtailOutput)
+}
+
+// Logtail token.
+func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationPapertrail struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// AppSpecFunctionLogDestinationPapertrailInput is an input type that accepts AppSpecFunctionLogDestinationPapertrailArgs and AppSpecFunctionLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationPapertrailInput` via:
+//
+//          AppSpecFunctionLogDestinationPapertrailArgs{...}
+type AppSpecFunctionLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationPapertrailOutput() AppSpecFunctionLogDestinationPapertrailOutput
+	ToAppSpecFunctionLogDestinationPapertrailOutputWithContext(context.Context) AppSpecFunctionLogDestinationPapertrailOutput
+}
+
+type AppSpecFunctionLogDestinationPapertrailArgs struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (AppSpecFunctionLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i AppSpecFunctionLogDestinationPapertrailArgs) ToAppSpecFunctionLogDestinationPapertrailOutput() AppSpecFunctionLogDestinationPapertrailOutput {
+	return i.ToAppSpecFunctionLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationPapertrailArgs) ToAppSpecFunctionLogDestinationPapertrailOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationPapertrailOutput)
+}
+
+func (i AppSpecFunctionLogDestinationPapertrailArgs) ToAppSpecFunctionLogDestinationPapertrailPtrOutput() AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationPapertrailArgs) ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationPapertrailOutput).ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionLogDestinationPapertrailPtrInput is an input type that accepts AppSpecFunctionLogDestinationPapertrailArgs, AppSpecFunctionLogDestinationPapertrailPtr and AppSpecFunctionLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationPapertrailPtrInput` via:
+//
+//          AppSpecFunctionLogDestinationPapertrailArgs{...}
+//
+//  or:
+//
+//          nil
+type AppSpecFunctionLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationPapertrailPtrOutput() AppSpecFunctionLogDestinationPapertrailPtrOutput
+	ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(context.Context) AppSpecFunctionLogDestinationPapertrailPtrOutput
+}
+
+type appSpecFunctionLogDestinationPapertrailPtrType AppSpecFunctionLogDestinationPapertrailArgs
+
+func AppSpecFunctionLogDestinationPapertrailPtr(v *AppSpecFunctionLogDestinationPapertrailArgs) AppSpecFunctionLogDestinationPapertrailPtrInput {
+	return (*appSpecFunctionLogDestinationPapertrailPtrType)(v)
+}
+
+func (*appSpecFunctionLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *appSpecFunctionLogDestinationPapertrailPtrType) ToAppSpecFunctionLogDestinationPapertrailPtrOutput() AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionLogDestinationPapertrailPtrType) ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationPapertrailPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationPapertrailOutput) ToAppSpecFunctionLogDestinationPapertrailOutput() AppSpecFunctionLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationPapertrailOutput) ToAppSpecFunctionLogDestinationPapertrailOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationPapertrailOutput) ToAppSpecFunctionLogDestinationPapertrailPtrOutput() AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o.ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionLogDestinationPapertrailOutput) ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionLogDestinationPapertrail) *AppSpecFunctionLogDestinationPapertrail {
+		return &v
+	}).(AppSpecFunctionLogDestinationPapertrailPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecFunctionLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type AppSpecFunctionLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationPapertrailPtrOutput) ToAppSpecFunctionLogDestinationPapertrailPtrOutput() AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationPapertrailPtrOutput) ToAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationPapertrailPtrOutput) Elem() AppSpecFunctionLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationPapertrail) AppSpecFunctionLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionLogDestinationPapertrail
+		return ret
+	}).(AppSpecFunctionLogDestinationPapertrailOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o AppSpecFunctionLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionRoute struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
+}
+
+// AppSpecFunctionRouteInput is an input type that accepts AppSpecFunctionRouteArgs and AppSpecFunctionRouteOutput values.
+// You can construct a concrete instance of `AppSpecFunctionRouteInput` via:
+//
+//          AppSpecFunctionRouteArgs{...}
+type AppSpecFunctionRouteInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionRouteOutput() AppSpecFunctionRouteOutput
+	ToAppSpecFunctionRouteOutputWithContext(context.Context) AppSpecFunctionRouteOutput
+}
+
+type AppSpecFunctionRouteArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
+}
+
+func (AppSpecFunctionRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionRoute)(nil)).Elem()
+}
+
+func (i AppSpecFunctionRouteArgs) ToAppSpecFunctionRouteOutput() AppSpecFunctionRouteOutput {
+	return i.ToAppSpecFunctionRouteOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionRouteArgs) ToAppSpecFunctionRouteOutputWithContext(ctx context.Context) AppSpecFunctionRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionRouteOutput)
+}
+
+// AppSpecFunctionRouteArrayInput is an input type that accepts AppSpecFunctionRouteArray and AppSpecFunctionRouteArrayOutput values.
+// You can construct a concrete instance of `AppSpecFunctionRouteArrayInput` via:
+//
+//          AppSpecFunctionRouteArray{ AppSpecFunctionRouteArgs{...} }
+type AppSpecFunctionRouteArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionRouteArrayOutput() AppSpecFunctionRouteArrayOutput
+	ToAppSpecFunctionRouteArrayOutputWithContext(context.Context) AppSpecFunctionRouteArrayOutput
+}
+
+type AppSpecFunctionRouteArray []AppSpecFunctionRouteInput
+
+func (AppSpecFunctionRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionRoute)(nil)).Elem()
+}
+
+func (i AppSpecFunctionRouteArray) ToAppSpecFunctionRouteArrayOutput() AppSpecFunctionRouteArrayOutput {
+	return i.ToAppSpecFunctionRouteArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionRouteArray) ToAppSpecFunctionRouteArrayOutputWithContext(ctx context.Context) AppSpecFunctionRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionRouteArrayOutput)
+}
+
+type AppSpecFunctionRouteOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionRoute)(nil)).Elem()
+}
+
+func (o AppSpecFunctionRouteOutput) ToAppSpecFunctionRouteOutput() AppSpecFunctionRouteOutput {
+	return o
+}
+
+func (o AppSpecFunctionRouteOutput) ToAppSpecFunctionRouteOutputWithContext(ctx context.Context) AppSpecFunctionRouteOutput {
+	return o
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o AppSpecFunctionRouteOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// An optional flag to preserve the path that is forwarded to the backend service.
+func (o AppSpecFunctionRouteOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionRoute) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
+}
+
+type AppSpecFunctionRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionRoute)(nil)).Elem()
+}
+
+func (o AppSpecFunctionRouteArrayOutput) ToAppSpecFunctionRouteArrayOutput() AppSpecFunctionRouteArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionRouteArrayOutput) ToAppSpecFunctionRouteArrayOutputWithContext(ctx context.Context) AppSpecFunctionRouteArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionRouteArrayOutput) Index(i pulumi.IntInput) AppSpecFunctionRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecFunctionRoute {
+		return vs[0].([]AppSpecFunctionRoute)[vs[1].(int)]
+	}).(AppSpecFunctionRouteOutput)
+}
+
 type AppSpecJob struct {
 	// Describes an alert policy for the component.
 	Alerts []AppSpecJobAlert `pulumi:"alerts"`
@@ -833,7 +2853,7 @@ type AppSpecJob struct {
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecJobEnv `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *AppSpecJobGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecJobGithub `pulumi:"github"`
@@ -883,7 +2903,7 @@ type AppSpecJobArgs struct {
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecJobEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git AppSpecJobGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecJobGithubPtrInput `pulumi:"github"`
@@ -987,7 +3007,7 @@ func (o AppSpecJobOutput) Envs() AppSpecJobEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecJob) []AppSpecJobEnv { return v.Envs }).(AppSpecJobEnvArrayOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 func (o AppSpecJobOutput) Git() AppSpecJobGitPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *AppSpecJobGit { return v.Git }).(AppSpecJobGitPtrOutput)
 }
@@ -2590,7 +4610,7 @@ type AppSpecService struct {
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecServiceEnv `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *AppSpecServiceGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecServiceGithub `pulumi:"github"`
@@ -2643,7 +4663,7 @@ type AppSpecServiceArgs struct {
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecServiceEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git AppSpecServiceGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecServiceGithubPtrInput `pulumi:"github"`
@@ -2753,7 +4773,7 @@ func (o AppSpecServiceOutput) Envs() AppSpecServiceEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecService) []AppSpecServiceEnv { return v.Envs }).(AppSpecServiceEnvArrayOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 func (o AppSpecServiceOutput) Git() AppSpecServiceGitPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *AppSpecServiceGit { return v.Git }).(AppSpecServiceGitPtrOutput)
 }
@@ -5113,7 +7133,7 @@ type AppSpecStaticSite struct {
 	Envs []AppSpecStaticSiteEnv `pulumi:"envs"`
 	// The name of the error document to use when serving this static site.
 	ErrorDocument *string `pulumi:"errorDocument"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *AppSpecStaticSiteGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecStaticSiteGithub `pulumi:"github"`
@@ -5156,7 +7176,7 @@ type AppSpecStaticSiteArgs struct {
 	Envs AppSpecStaticSiteEnvArrayInput `pulumi:"envs"`
 	// The name of the error document to use when serving this static site.
 	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git AppSpecStaticSiteGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecStaticSiteGithubPtrInput `pulumi:"github"`
@@ -5259,7 +7279,7 @@ func (o AppSpecStaticSiteOutput) ErrorDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 func (o AppSpecStaticSiteOutput) Git() AppSpecStaticSiteGitPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteGit { return v.Git }).(AppSpecStaticSiteGitPtrOutput)
 }
@@ -6472,7 +8492,7 @@ type AppSpecWorker struct {
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecWorkerEnv `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *AppSpecWorkerGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecWorkerGithub `pulumi:"github"`
@@ -6516,7 +8536,7 @@ type AppSpecWorkerArgs struct {
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecWorkerEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git AppSpecWorkerGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecWorkerGithubPtrInput `pulumi:"github"`
@@ -6614,7 +8634,7 @@ func (o AppSpecWorkerOutput) Envs() AppSpecWorkerEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecWorker) []AppSpecWorkerEnv { return v.Envs }).(AppSpecWorkerEnvArrayOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 func (o AppSpecWorkerOutput) Git() AppSpecWorkerGitPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerGit { return v.Git }).(AppSpecWorkerGitPtrOutput)
 }
@@ -11651,13 +13671,15 @@ func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type GetAppSpec struct {
+	// Describes an alert policy for the component.
 	Alerts    []GetAppSpecAlert    `pulumi:"alerts"`
 	Databases []GetAppSpecDatabase `pulumi:"databases"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
-	Envs []GetAppSpecEnv `pulumi:"envs"`
-	Jobs []GetAppSpecJob `pulumi:"jobs"`
+	Envs      []GetAppSpecEnv      `pulumi:"envs"`
+	Functions []GetAppSpecFunction `pulumi:"functions"`
+	Jobs      []GetAppSpecJob      `pulumi:"jobs"`
 	// The name of the component.
 	Name        string                 `pulumi:"name"`
 	Region      *string                `pulumi:"region"`
@@ -11678,13 +13700,15 @@ type GetAppSpecInput interface {
 }
 
 type GetAppSpecArgs struct {
+	// Describes an alert policy for the component.
 	Alerts    GetAppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
-	Envs GetAppSpecEnvArrayInput `pulumi:"envs"`
-	Jobs GetAppSpecJobArrayInput `pulumi:"jobs"`
+	Envs      GetAppSpecEnvArrayInput      `pulumi:"envs"`
+	Functions GetAppSpecFunctionArrayInput `pulumi:"functions"`
+	Jobs      GetAppSpecJobArrayInput      `pulumi:"jobs"`
 	// The name of the component.
 	Name        pulumi.StringInput             `pulumi:"name"`
 	Region      pulumi.StringPtrInput          `pulumi:"region"`
@@ -11744,6 +13768,7 @@ func (o GetAppSpecOutput) ToGetAppSpecOutputWithContext(ctx context.Context) Get
 	return o
 }
 
+// Describes an alert policy for the component.
 func (o GetAppSpecOutput) Alerts() GetAppSpecAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecAlert { return v.Alerts }).(GetAppSpecAlertArrayOutput)
 }
@@ -11760,6 +13785,10 @@ func (o GetAppSpecOutput) Domains() pulumi.StringArrayOutput {
 // Describes an environment variable made available to an app competent.
 func (o GetAppSpecOutput) Envs() GetAppSpecEnvArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecEnv { return v.Envs }).(GetAppSpecEnvArrayOutput)
+}
+
+func (o GetAppSpecOutput) Functions() GetAppSpecFunctionArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecFunction { return v.Functions }).(GetAppSpecFunctionArrayOutput)
 }
 
 func (o GetAppSpecOutput) Jobs() GetAppSpecJobArrayOutput {
@@ -11808,8 +13837,10 @@ func (o GetAppSpecArrayOutput) Index(i pulumi.IntInput) GetAppSpecOutput {
 }
 
 type GetAppSpecAlert struct {
-	Disabled *bool  `pulumi:"disabled"`
-	Rule     string `pulumi:"rule"`
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
 }
 
 // GetAppSpecAlertInput is an input type that accepts GetAppSpecAlertArgs and GetAppSpecAlertOutput values.
@@ -11824,8 +13855,10 @@ type GetAppSpecAlertInput interface {
 }
 
 type GetAppSpecAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	Rule     pulumi.StringInput  `pulumi:"rule"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
 func (GetAppSpecAlertArgs) ElementType() reflect.Type {
@@ -11879,10 +13912,12 @@ func (o GetAppSpecAlertOutput) ToGetAppSpecAlertOutputWithContext(ctx context.Co
 	return o
 }
 
+// Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
 func (o GetAppSpecAlertOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecAlert) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -12138,7 +14173,7 @@ type GetAppSpecEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -12160,7 +14195,7 @@ type GetAppSpecEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -12230,7 +14265,7 @@ func (o GetAppSpecEnvOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecEnv) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o GetAppSpecEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -12255,7 +14290,2015 @@ func (o GetAppSpecEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecEnvOutput {
 	}).(GetAppSpecEnvOutput)
 }
 
+type GetAppSpecFunction struct {
+	// Describes an alert policy for the component.
+	Alerts []GetAppSpecFunctionAlert `pulumi:"alerts"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors *GetAppSpecFunctionCors `pulumi:"cors"`
+	// Describes an environment variable made available to an app competent.
+	Envs []GetAppSpecFunctionEnv `pulumi:"envs"`
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	Git *GetAppSpecFunctionGit `pulumi:"git"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	Github *GetAppSpecFunctionGithub `pulumi:"github"`
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	Gitlab *GetAppSpecFunctionGitlab `pulumi:"gitlab"`
+	// Describes a log forwarding destination.
+	LogDestinations []GetAppSpecFunctionLogDestination `pulumi:"logDestinations"`
+	// The name of the component.
+	Name   string                    `pulumi:"name"`
+	Routes []GetAppSpecFunctionRoute `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// GetAppSpecFunctionInput is an input type that accepts GetAppSpecFunctionArgs and GetAppSpecFunctionOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionInput` via:
+//
+//          GetAppSpecFunctionArgs{...}
+type GetAppSpecFunctionInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionOutput() GetAppSpecFunctionOutput
+	ToGetAppSpecFunctionOutputWithContext(context.Context) GetAppSpecFunctionOutput
+}
+
+type GetAppSpecFunctionArgs struct {
+	// Describes an alert policy for the component.
+	Alerts GetAppSpecFunctionAlertArrayInput `pulumi:"alerts"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors GetAppSpecFunctionCorsPtrInput `pulumi:"cors"`
+	// Describes an environment variable made available to an app competent.
+	Envs GetAppSpecFunctionEnvArrayInput `pulumi:"envs"`
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	Git GetAppSpecFunctionGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	Github GetAppSpecFunctionGithubPtrInput `pulumi:"github"`
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	Gitlab GetAppSpecFunctionGitlabPtrInput `pulumi:"gitlab"`
+	// Describes a log forwarding destination.
+	LogDestinations GetAppSpecFunctionLogDestinationArrayInput `pulumi:"logDestinations"`
+	// The name of the component.
+	Name   pulumi.StringInput                `pulumi:"name"`
+	Routes GetAppSpecFunctionRouteArrayInput `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (GetAppSpecFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunction)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionArgs) ToGetAppSpecFunctionOutput() GetAppSpecFunctionOutput {
+	return i.ToGetAppSpecFunctionOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionArgs) ToGetAppSpecFunctionOutputWithContext(ctx context.Context) GetAppSpecFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionOutput)
+}
+
+// GetAppSpecFunctionArrayInput is an input type that accepts GetAppSpecFunctionArray and GetAppSpecFunctionArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionArrayInput` via:
+//
+//          GetAppSpecFunctionArray{ GetAppSpecFunctionArgs{...} }
+type GetAppSpecFunctionArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionArrayOutput() GetAppSpecFunctionArrayOutput
+	ToGetAppSpecFunctionArrayOutputWithContext(context.Context) GetAppSpecFunctionArrayOutput
+}
+
+type GetAppSpecFunctionArray []GetAppSpecFunctionInput
+
+func (GetAppSpecFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunction)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionArray) ToGetAppSpecFunctionArrayOutput() GetAppSpecFunctionArrayOutput {
+	return i.ToGetAppSpecFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionArray) ToGetAppSpecFunctionArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionArrayOutput)
+}
+
+type GetAppSpecFunctionOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunction)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionOutput) ToGetAppSpecFunctionOutput() GetAppSpecFunctionOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionOutput) ToGetAppSpecFunctionOutputWithContext(ctx context.Context) GetAppSpecFunctionOutput {
+	return o
+}
+
+// Describes an alert policy for the component.
+func (o GetAppSpecFunctionOutput) Alerts() GetAppSpecFunctionAlertArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) []GetAppSpecFunctionAlert { return v.Alerts }).(GetAppSpecFunctionAlertArrayOutput)
+}
+
+// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+func (o GetAppSpecFunctionOutput) Cors() GetAppSpecFunctionCorsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionCors { return v.Cors }).(GetAppSpecFunctionCorsPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o GetAppSpecFunctionOutput) Envs() GetAppSpecFunctionEnvArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) []GetAppSpecFunctionEnv { return v.Envs }).(GetAppSpecFunctionEnvArrayOutput)
+}
+
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+func (o GetAppSpecFunctionOutput) Git() GetAppSpecFunctionGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionGit { return v.Git }).(GetAppSpecFunctionGitPtrOutput)
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+func (o GetAppSpecFunctionOutput) Github() GetAppSpecFunctionGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionGithub { return v.Github }).(GetAppSpecFunctionGithubPtrOutput)
+}
+
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+func (o GetAppSpecFunctionOutput) Gitlab() GetAppSpecFunctionGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionGitlab { return v.Gitlab }).(GetAppSpecFunctionGitlabPtrOutput)
+}
+
+// Describes a log forwarding destination.
+func (o GetAppSpecFunctionOutput) LogDestinations() GetAppSpecFunctionLogDestinationArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) []GetAppSpecFunctionLogDestination { return v.LogDestinations }).(GetAppSpecFunctionLogDestinationArrayOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecFunctionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppSpecFunctionOutput) Routes() GetAppSpecFunctionRouteArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) []GetAppSpecFunctionRoute { return v.Routes }).(GetAppSpecFunctionRouteArrayOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o GetAppSpecFunctionOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunction)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionArrayOutput) ToGetAppSpecFunctionArrayOutput() GetAppSpecFunctionArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionArrayOutput) ToGetAppSpecFunctionArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionArrayOutput) Index(i pulumi.IntInput) GetAppSpecFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecFunction {
+		return vs[0].([]GetAppSpecFunction)[vs[1].(int)]
+	}).(GetAppSpecFunctionOutput)
+}
+
+type GetAppSpecFunctionAlert struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator string `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
+}
+
+// GetAppSpecFunctionAlertInput is an input type that accepts GetAppSpecFunctionAlertArgs and GetAppSpecFunctionAlertOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionAlertInput` via:
+//
+//          GetAppSpecFunctionAlertArgs{...}
+type GetAppSpecFunctionAlertInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionAlertOutput() GetAppSpecFunctionAlertOutput
+	ToGetAppSpecFunctionAlertOutputWithContext(context.Context) GetAppSpecFunctionAlertOutput
+}
+
+type GetAppSpecFunctionAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
+}
+
+func (GetAppSpecFunctionAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionAlertArgs) ToGetAppSpecFunctionAlertOutput() GetAppSpecFunctionAlertOutput {
+	return i.ToGetAppSpecFunctionAlertOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionAlertArgs) ToGetAppSpecFunctionAlertOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionAlertOutput)
+}
+
+// GetAppSpecFunctionAlertArrayInput is an input type that accepts GetAppSpecFunctionAlertArray and GetAppSpecFunctionAlertArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionAlertArrayInput` via:
+//
+//          GetAppSpecFunctionAlertArray{ GetAppSpecFunctionAlertArgs{...} }
+type GetAppSpecFunctionAlertArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionAlertArrayOutput() GetAppSpecFunctionAlertArrayOutput
+	ToGetAppSpecFunctionAlertArrayOutputWithContext(context.Context) GetAppSpecFunctionAlertArrayOutput
+}
+
+type GetAppSpecFunctionAlertArray []GetAppSpecFunctionAlertInput
+
+func (GetAppSpecFunctionAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionAlertArray) ToGetAppSpecFunctionAlertArrayOutput() GetAppSpecFunctionAlertArrayOutput {
+	return i.ToGetAppSpecFunctionAlertArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionAlertArray) ToGetAppSpecFunctionAlertArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionAlertArrayOutput)
+}
+
+type GetAppSpecFunctionAlertOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionAlertOutput) ToGetAppSpecFunctionAlertOutput() GetAppSpecFunctionAlertOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertOutput) ToGetAppSpecFunctionAlertOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertOutput {
+	return o
+}
+
+// Determines whether or not the alert is disabled (default: `false`).
+func (o GetAppSpecFunctionAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+func (o GetAppSpecFunctionAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+func (o GetAppSpecFunctionAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o GetAppSpecFunctionAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAppSpecFunctionAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+func (o GetAppSpecFunctionAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type GetAppSpecFunctionAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionAlertArrayOutput) ToGetAppSpecFunctionAlertArrayOutput() GetAppSpecFunctionAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertArrayOutput) ToGetAppSpecFunctionAlertArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecFunctionAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecFunctionAlert {
+		return vs[0].([]GetAppSpecFunctionAlert)[vs[1].(int)]
+	}).(GetAppSpecFunctionAlertOutput)
+}
+
+type GetAppSpecFunctionCors struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins *GetAppSpecFunctionCorsAllowOrigins `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge *string `pulumi:"maxAge"`
+}
+
+// GetAppSpecFunctionCorsInput is an input type that accepts GetAppSpecFunctionCorsArgs and GetAppSpecFunctionCorsOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionCorsInput` via:
+//
+//          GetAppSpecFunctionCorsArgs{...}
+type GetAppSpecFunctionCorsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionCorsOutput() GetAppSpecFunctionCorsOutput
+	ToGetAppSpecFunctionCorsOutputWithContext(context.Context) GetAppSpecFunctionCorsOutput
+}
+
+type GetAppSpecFunctionCorsArgs struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins GetAppSpecFunctionCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
+}
+
+func (GetAppSpecFunctionCorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionCors)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionCorsArgs) ToGetAppSpecFunctionCorsOutput() GetAppSpecFunctionCorsOutput {
+	return i.ToGetAppSpecFunctionCorsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionCorsArgs) ToGetAppSpecFunctionCorsOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionCorsOutput)
+}
+
+func (i GetAppSpecFunctionCorsArgs) ToGetAppSpecFunctionCorsPtrOutput() GetAppSpecFunctionCorsPtrOutput {
+	return i.ToGetAppSpecFunctionCorsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionCorsArgs) ToGetAppSpecFunctionCorsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionCorsOutput).ToGetAppSpecFunctionCorsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionCorsPtrInput is an input type that accepts GetAppSpecFunctionCorsArgs, GetAppSpecFunctionCorsPtr and GetAppSpecFunctionCorsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionCorsPtrInput` via:
+//
+//          GetAppSpecFunctionCorsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecFunctionCorsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionCorsPtrOutput() GetAppSpecFunctionCorsPtrOutput
+	ToGetAppSpecFunctionCorsPtrOutputWithContext(context.Context) GetAppSpecFunctionCorsPtrOutput
+}
+
+type getAppSpecFunctionCorsPtrType GetAppSpecFunctionCorsArgs
+
+func GetAppSpecFunctionCorsPtr(v *GetAppSpecFunctionCorsArgs) GetAppSpecFunctionCorsPtrInput {
+	return (*getAppSpecFunctionCorsPtrType)(v)
+}
+
+func (*getAppSpecFunctionCorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionCors)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionCorsPtrType) ToGetAppSpecFunctionCorsPtrOutput() GetAppSpecFunctionCorsPtrOutput {
+	return i.ToGetAppSpecFunctionCorsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionCorsPtrType) ToGetAppSpecFunctionCorsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionCorsPtrOutput)
+}
+
+type GetAppSpecFunctionCorsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionCorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionCors)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionCorsOutput) ToGetAppSpecFunctionCorsOutput() GetAppSpecFunctionCorsOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionCorsOutput) ToGetAppSpecFunctionCorsOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionCorsOutput) ToGetAppSpecFunctionCorsPtrOutput() GetAppSpecFunctionCorsPtrOutput {
+	return o.ToGetAppSpecFunctionCorsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionCorsOutput) ToGetAppSpecFunctionCorsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionCors) *GetAppSpecFunctionCors {
+		return &v
+	}).(GetAppSpecFunctionCorsPtrOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o GetAppSpecFunctionCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o GetAppSpecFunctionCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o GetAppSpecFunctionCorsOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o GetAppSpecFunctionCorsOutput) AllowOrigins() GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCors) *GetAppSpecFunctionCorsAllowOrigins { return v.AllowOrigins }).(GetAppSpecFunctionCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o GetAppSpecFunctionCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o GetAppSpecFunctionCorsOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionCorsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionCorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionCors)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionCorsPtrOutput) ToGetAppSpecFunctionCorsPtrOutput() GetAppSpecFunctionCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionCorsPtrOutput) ToGetAppSpecFunctionCorsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionCorsPtrOutput) Elem() GetAppSpecFunctionCorsOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCors) GetAppSpecFunctionCors {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionCors
+		return ret
+	}).(GetAppSpecFunctionCorsOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o GetAppSpecFunctionCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o GetAppSpecFunctionCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o GetAppSpecFunctionCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o GetAppSpecFunctionCorsPtrOutput) AllowOrigins() GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCors) *GetAppSpecFunctionCorsAllowOrigins {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(GetAppSpecFunctionCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o GetAppSpecFunctionCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o GetAppSpecFunctionCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionCorsAllowOrigins struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	Prefix *string `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex *string `pulumi:"regex"`
+}
+
+// GetAppSpecFunctionCorsAllowOriginsInput is an input type that accepts GetAppSpecFunctionCorsAllowOriginsArgs and GetAppSpecFunctionCorsAllowOriginsOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionCorsAllowOriginsInput` via:
+//
+//          GetAppSpecFunctionCorsAllowOriginsArgs{...}
+type GetAppSpecFunctionCorsAllowOriginsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionCorsAllowOriginsOutput() GetAppSpecFunctionCorsAllowOriginsOutput
+	ToGetAppSpecFunctionCorsAllowOriginsOutputWithContext(context.Context) GetAppSpecFunctionCorsAllowOriginsOutput
+}
+
+type GetAppSpecFunctionCorsAllowOriginsArgs struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (GetAppSpecFunctionCorsAllowOriginsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionCorsAllowOriginsArgs) ToGetAppSpecFunctionCorsAllowOriginsOutput() GetAppSpecFunctionCorsAllowOriginsOutput {
+	return i.ToGetAppSpecFunctionCorsAllowOriginsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionCorsAllowOriginsArgs) ToGetAppSpecFunctionCorsAllowOriginsOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsAllowOriginsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionCorsAllowOriginsOutput)
+}
+
+func (i GetAppSpecFunctionCorsAllowOriginsArgs) ToGetAppSpecFunctionCorsAllowOriginsPtrOutput() GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return i.ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionCorsAllowOriginsArgs) ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionCorsAllowOriginsOutput).ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionCorsAllowOriginsPtrInput is an input type that accepts GetAppSpecFunctionCorsAllowOriginsArgs, GetAppSpecFunctionCorsAllowOriginsPtr and GetAppSpecFunctionCorsAllowOriginsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionCorsAllowOriginsPtrInput` via:
+//
+//          GetAppSpecFunctionCorsAllowOriginsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecFunctionCorsAllowOriginsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionCorsAllowOriginsPtrOutput() GetAppSpecFunctionCorsAllowOriginsPtrOutput
+	ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(context.Context) GetAppSpecFunctionCorsAllowOriginsPtrOutput
+}
+
+type getAppSpecFunctionCorsAllowOriginsPtrType GetAppSpecFunctionCorsAllowOriginsArgs
+
+func GetAppSpecFunctionCorsAllowOriginsPtr(v *GetAppSpecFunctionCorsAllowOriginsArgs) GetAppSpecFunctionCorsAllowOriginsPtrInput {
+	return (*getAppSpecFunctionCorsAllowOriginsPtrType)(v)
+}
+
+func (*getAppSpecFunctionCorsAllowOriginsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionCorsAllowOriginsPtrType) ToGetAppSpecFunctionCorsAllowOriginsPtrOutput() GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return i.ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionCorsAllowOriginsPtrType) ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionCorsAllowOriginsPtrOutput)
+}
+
+type GetAppSpecFunctionCorsAllowOriginsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionCorsAllowOriginsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionCorsAllowOriginsOutput) ToGetAppSpecFunctionCorsAllowOriginsOutput() GetAppSpecFunctionCorsAllowOriginsOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionCorsAllowOriginsOutput) ToGetAppSpecFunctionCorsAllowOriginsOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsAllowOriginsOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionCorsAllowOriginsOutput) ToGetAppSpecFunctionCorsAllowOriginsPtrOutput() GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o.ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionCorsAllowOriginsOutput) ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionCorsAllowOrigins) *GetAppSpecFunctionCorsAllowOrigins {
+		return &v
+	}).(GetAppSpecFunctionCorsAllowOriginsPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o GetAppSpecFunctionCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o GetAppSpecFunctionCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o GetAppSpecFunctionCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionCorsAllowOriginsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionCorsAllowOriginsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionCorsAllowOriginsPtrOutput) ToGetAppSpecFunctionCorsAllowOriginsPtrOutput() GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionCorsAllowOriginsPtrOutput) ToGetAppSpecFunctionCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionCorsAllowOriginsPtrOutput) Elem() GetAppSpecFunctionCorsAllowOriginsOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCorsAllowOrigins) GetAppSpecFunctionCorsAllowOrigins {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionCorsAllowOrigins
+		return ret
+	}).(GetAppSpecFunctionCorsAllowOriginsOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o GetAppSpecFunctionCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o GetAppSpecFunctionCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o GetAppSpecFunctionCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type string `pulumi:"type"`
+	// The threshold for the type of the warning.
+	Value *string `pulumi:"value"`
+}
+
+// GetAppSpecFunctionEnvInput is an input type that accepts GetAppSpecFunctionEnvArgs and GetAppSpecFunctionEnvOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionEnvInput` via:
+//
+//          GetAppSpecFunctionEnvArgs{...}
+type GetAppSpecFunctionEnvInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionEnvOutput() GetAppSpecFunctionEnvOutput
+	ToGetAppSpecFunctionEnvOutputWithContext(context.Context) GetAppSpecFunctionEnvOutput
+}
+
+type GetAppSpecFunctionEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The threshold for the type of the warning.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetAppSpecFunctionEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionEnvArgs) ToGetAppSpecFunctionEnvOutput() GetAppSpecFunctionEnvOutput {
+	return i.ToGetAppSpecFunctionEnvOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionEnvArgs) ToGetAppSpecFunctionEnvOutputWithContext(ctx context.Context) GetAppSpecFunctionEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionEnvOutput)
+}
+
+// GetAppSpecFunctionEnvArrayInput is an input type that accepts GetAppSpecFunctionEnvArray and GetAppSpecFunctionEnvArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionEnvArrayInput` via:
+//
+//          GetAppSpecFunctionEnvArray{ GetAppSpecFunctionEnvArgs{...} }
+type GetAppSpecFunctionEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionEnvArrayOutput() GetAppSpecFunctionEnvArrayOutput
+	ToGetAppSpecFunctionEnvArrayOutputWithContext(context.Context) GetAppSpecFunctionEnvArrayOutput
+}
+
+type GetAppSpecFunctionEnvArray []GetAppSpecFunctionEnvInput
+
+func (GetAppSpecFunctionEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionEnvArray) ToGetAppSpecFunctionEnvArrayOutput() GetAppSpecFunctionEnvArrayOutput {
+	return i.ToGetAppSpecFunctionEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionEnvArray) ToGetAppSpecFunctionEnvArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionEnvArrayOutput)
+}
+
+type GetAppSpecFunctionEnvOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionEnvOutput) ToGetAppSpecFunctionEnvOutput() GetAppSpecFunctionEnvOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionEnvOutput) ToGetAppSpecFunctionEnvOutputWithContext(ctx context.Context) GetAppSpecFunctionEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o GetAppSpecFunctionEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o GetAppSpecFunctionEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o GetAppSpecFunctionEnvOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionEnv) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o GetAppSpecFunctionEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionEnvArrayOutput) ToGetAppSpecFunctionEnvArrayOutput() GetAppSpecFunctionEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionEnvArrayOutput) ToGetAppSpecFunctionEnvArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecFunctionEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecFunctionEnv {
+		return vs[0].([]GetAppSpecFunctionEnv)[vs[1].(int)]
+	}).(GetAppSpecFunctionEnvOutput)
+}
+
+type GetAppSpecFunctionGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// GetAppSpecFunctionGitInput is an input type that accepts GetAppSpecFunctionGitArgs and GetAppSpecFunctionGitOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionGitInput` via:
+//
+//          GetAppSpecFunctionGitArgs{...}
+type GetAppSpecFunctionGitInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionGitOutput() GetAppSpecFunctionGitOutput
+	ToGetAppSpecFunctionGitOutputWithContext(context.Context) GetAppSpecFunctionGitOutput
+}
+
+type GetAppSpecFunctionGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (GetAppSpecFunctionGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionGit)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionGitArgs) ToGetAppSpecFunctionGitOutput() GetAppSpecFunctionGitOutput {
+	return i.ToGetAppSpecFunctionGitOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionGitArgs) ToGetAppSpecFunctionGitOutputWithContext(ctx context.Context) GetAppSpecFunctionGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGitOutput)
+}
+
+func (i GetAppSpecFunctionGitArgs) ToGetAppSpecFunctionGitPtrOutput() GetAppSpecFunctionGitPtrOutput {
+	return i.ToGetAppSpecFunctionGitPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionGitArgs) ToGetAppSpecFunctionGitPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGitOutput).ToGetAppSpecFunctionGitPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionGitPtrInput is an input type that accepts GetAppSpecFunctionGitArgs, GetAppSpecFunctionGitPtr and GetAppSpecFunctionGitPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionGitPtrInput` via:
+//
+//          GetAppSpecFunctionGitArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecFunctionGitPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionGitPtrOutput() GetAppSpecFunctionGitPtrOutput
+	ToGetAppSpecFunctionGitPtrOutputWithContext(context.Context) GetAppSpecFunctionGitPtrOutput
+}
+
+type getAppSpecFunctionGitPtrType GetAppSpecFunctionGitArgs
+
+func GetAppSpecFunctionGitPtr(v *GetAppSpecFunctionGitArgs) GetAppSpecFunctionGitPtrInput {
+	return (*getAppSpecFunctionGitPtrType)(v)
+}
+
+func (*getAppSpecFunctionGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionGit)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionGitPtrType) ToGetAppSpecFunctionGitPtrOutput() GetAppSpecFunctionGitPtrOutput {
+	return i.ToGetAppSpecFunctionGitPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionGitPtrType) ToGetAppSpecFunctionGitPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGitPtrOutput)
+}
+
+type GetAppSpecFunctionGitOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionGit)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionGitOutput) ToGetAppSpecFunctionGitOutput() GetAppSpecFunctionGitOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGitOutput) ToGetAppSpecFunctionGitOutputWithContext(ctx context.Context) GetAppSpecFunctionGitOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGitOutput) ToGetAppSpecFunctionGitPtrOutput() GetAppSpecFunctionGitPtrOutput {
+	return o.ToGetAppSpecFunctionGitPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionGitOutput) ToGetAppSpecFunctionGitPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionGit) *GetAppSpecFunctionGit {
+		return &v
+	}).(GetAppSpecFunctionGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecFunctionGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecFunctionGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionGitPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionGit)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionGitPtrOutput) ToGetAppSpecFunctionGitPtrOutput() GetAppSpecFunctionGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGitPtrOutput) ToGetAppSpecFunctionGitPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGitPtrOutput) Elem() GetAppSpecFunctionGitOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGit) GetAppSpecFunctionGit {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionGit
+		return ret
+	}).(GetAppSpecFunctionGitOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecFunctionGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecFunctionGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecFunctionGithubInput is an input type that accepts GetAppSpecFunctionGithubArgs and GetAppSpecFunctionGithubOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionGithubInput` via:
+//
+//          GetAppSpecFunctionGithubArgs{...}
+type GetAppSpecFunctionGithubInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionGithubOutput() GetAppSpecFunctionGithubOutput
+	ToGetAppSpecFunctionGithubOutputWithContext(context.Context) GetAppSpecFunctionGithubOutput
+}
+
+type GetAppSpecFunctionGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecFunctionGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionGithub)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionGithubArgs) ToGetAppSpecFunctionGithubOutput() GetAppSpecFunctionGithubOutput {
+	return i.ToGetAppSpecFunctionGithubOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionGithubArgs) ToGetAppSpecFunctionGithubOutputWithContext(ctx context.Context) GetAppSpecFunctionGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGithubOutput)
+}
+
+func (i GetAppSpecFunctionGithubArgs) ToGetAppSpecFunctionGithubPtrOutput() GetAppSpecFunctionGithubPtrOutput {
+	return i.ToGetAppSpecFunctionGithubPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionGithubArgs) ToGetAppSpecFunctionGithubPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGithubOutput).ToGetAppSpecFunctionGithubPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionGithubPtrInput is an input type that accepts GetAppSpecFunctionGithubArgs, GetAppSpecFunctionGithubPtr and GetAppSpecFunctionGithubPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionGithubPtrInput` via:
+//
+//          GetAppSpecFunctionGithubArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecFunctionGithubPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionGithubPtrOutput() GetAppSpecFunctionGithubPtrOutput
+	ToGetAppSpecFunctionGithubPtrOutputWithContext(context.Context) GetAppSpecFunctionGithubPtrOutput
+}
+
+type getAppSpecFunctionGithubPtrType GetAppSpecFunctionGithubArgs
+
+func GetAppSpecFunctionGithubPtr(v *GetAppSpecFunctionGithubArgs) GetAppSpecFunctionGithubPtrInput {
+	return (*getAppSpecFunctionGithubPtrType)(v)
+}
+
+func (*getAppSpecFunctionGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionGithub)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionGithubPtrType) ToGetAppSpecFunctionGithubPtrOutput() GetAppSpecFunctionGithubPtrOutput {
+	return i.ToGetAppSpecFunctionGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionGithubPtrType) ToGetAppSpecFunctionGithubPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGithubPtrOutput)
+}
+
+type GetAppSpecFunctionGithubOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionGithubOutput) ToGetAppSpecFunctionGithubOutput() GetAppSpecFunctionGithubOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGithubOutput) ToGetAppSpecFunctionGithubOutputWithContext(ctx context.Context) GetAppSpecFunctionGithubOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGithubOutput) ToGetAppSpecFunctionGithubPtrOutput() GetAppSpecFunctionGithubPtrOutput {
+	return o.ToGetAppSpecFunctionGithubPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionGithubOutput) ToGetAppSpecFunctionGithubPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGithubPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionGithub) *GetAppSpecFunctionGithub {
+		return &v
+	}).(GetAppSpecFunctionGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecFunctionGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecFunctionGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecFunctionGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionGithubPtrOutput) ToGetAppSpecFunctionGithubPtrOutput() GetAppSpecFunctionGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGithubPtrOutput) ToGetAppSpecFunctionGithubPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGithubPtrOutput) Elem() GetAppSpecFunctionGithubOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGithub) GetAppSpecFunctionGithub {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionGithub
+		return ret
+	}).(GetAppSpecFunctionGithubOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecFunctionGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecFunctionGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecFunctionGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecFunctionGitlabInput is an input type that accepts GetAppSpecFunctionGitlabArgs and GetAppSpecFunctionGitlabOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionGitlabInput` via:
+//
+//          GetAppSpecFunctionGitlabArgs{...}
+type GetAppSpecFunctionGitlabInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionGitlabOutput() GetAppSpecFunctionGitlabOutput
+	ToGetAppSpecFunctionGitlabOutputWithContext(context.Context) GetAppSpecFunctionGitlabOutput
+}
+
+type GetAppSpecFunctionGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecFunctionGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionGitlab)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionGitlabArgs) ToGetAppSpecFunctionGitlabOutput() GetAppSpecFunctionGitlabOutput {
+	return i.ToGetAppSpecFunctionGitlabOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionGitlabArgs) ToGetAppSpecFunctionGitlabOutputWithContext(ctx context.Context) GetAppSpecFunctionGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGitlabOutput)
+}
+
+func (i GetAppSpecFunctionGitlabArgs) ToGetAppSpecFunctionGitlabPtrOutput() GetAppSpecFunctionGitlabPtrOutput {
+	return i.ToGetAppSpecFunctionGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionGitlabArgs) ToGetAppSpecFunctionGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGitlabOutput).ToGetAppSpecFunctionGitlabPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionGitlabPtrInput is an input type that accepts GetAppSpecFunctionGitlabArgs, GetAppSpecFunctionGitlabPtr and GetAppSpecFunctionGitlabPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionGitlabPtrInput` via:
+//
+//          GetAppSpecFunctionGitlabArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecFunctionGitlabPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionGitlabPtrOutput() GetAppSpecFunctionGitlabPtrOutput
+	ToGetAppSpecFunctionGitlabPtrOutputWithContext(context.Context) GetAppSpecFunctionGitlabPtrOutput
+}
+
+type getAppSpecFunctionGitlabPtrType GetAppSpecFunctionGitlabArgs
+
+func GetAppSpecFunctionGitlabPtr(v *GetAppSpecFunctionGitlabArgs) GetAppSpecFunctionGitlabPtrInput {
+	return (*getAppSpecFunctionGitlabPtrType)(v)
+}
+
+func (*getAppSpecFunctionGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionGitlab)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionGitlabPtrType) ToGetAppSpecFunctionGitlabPtrOutput() GetAppSpecFunctionGitlabPtrOutput {
+	return i.ToGetAppSpecFunctionGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionGitlabPtrType) ToGetAppSpecFunctionGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionGitlabPtrOutput)
+}
+
+type GetAppSpecFunctionGitlabOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionGitlabOutput) ToGetAppSpecFunctionGitlabOutput() GetAppSpecFunctionGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGitlabOutput) ToGetAppSpecFunctionGitlabOutputWithContext(ctx context.Context) GetAppSpecFunctionGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGitlabOutput) ToGetAppSpecFunctionGitlabPtrOutput() GetAppSpecFunctionGitlabPtrOutput {
+	return o.ToGetAppSpecFunctionGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionGitlabOutput) ToGetAppSpecFunctionGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGitlabPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionGitlab) *GetAppSpecFunctionGitlab {
+		return &v
+	}).(GetAppSpecFunctionGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecFunctionGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecFunctionGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecFunctionGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionGitlabPtrOutput) ToGetAppSpecFunctionGitlabPtrOutput() GetAppSpecFunctionGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGitlabPtrOutput) ToGetAppSpecFunctionGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionGitlabPtrOutput) Elem() GetAppSpecFunctionGitlabOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGitlab) GetAppSpecFunctionGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionGitlab
+		return ret
+	}).(GetAppSpecFunctionGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecFunctionGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecFunctionGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecFunctionGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestination struct {
+	// Datadog configuration.
+	Datadog *GetAppSpecFunctionLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail *GetAppSpecFunctionLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name string `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail *GetAppSpecFunctionLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// GetAppSpecFunctionLogDestinationInput is an input type that accepts GetAppSpecFunctionLogDestinationArgs and GetAppSpecFunctionLogDestinationOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationInput` via:
+//
+//          GetAppSpecFunctionLogDestinationArgs{...}
+type GetAppSpecFunctionLogDestinationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationOutput() GetAppSpecFunctionLogDestinationOutput
+	ToGetAppSpecFunctionLogDestinationOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationOutput
+}
+
+type GetAppSpecFunctionLogDestinationArgs struct {
+	// Datadog configuration.
+	Datadog GetAppSpecFunctionLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail GetAppSpecFunctionLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Papertrail configuration.
+	Papertrail GetAppSpecFunctionLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (GetAppSpecFunctionLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionLogDestinationArgs) ToGetAppSpecFunctionLogDestinationOutput() GetAppSpecFunctionLogDestinationOutput {
+	return i.ToGetAppSpecFunctionLogDestinationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationArgs) ToGetAppSpecFunctionLogDestinationOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationOutput)
+}
+
+// GetAppSpecFunctionLogDestinationArrayInput is an input type that accepts GetAppSpecFunctionLogDestinationArray and GetAppSpecFunctionLogDestinationArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationArrayInput` via:
+//
+//          GetAppSpecFunctionLogDestinationArray{ GetAppSpecFunctionLogDestinationArgs{...} }
+type GetAppSpecFunctionLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationArrayOutput() GetAppSpecFunctionLogDestinationArrayOutput
+	ToGetAppSpecFunctionLogDestinationArrayOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationArrayOutput
+}
+
+type GetAppSpecFunctionLogDestinationArray []GetAppSpecFunctionLogDestinationInput
+
+func (GetAppSpecFunctionLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionLogDestinationArray) ToGetAppSpecFunctionLogDestinationArrayOutput() GetAppSpecFunctionLogDestinationArrayOutput {
+	return i.ToGetAppSpecFunctionLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationArray) ToGetAppSpecFunctionLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationArrayOutput)
+}
+
+type GetAppSpecFunctionLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationOutput) ToGetAppSpecFunctionLogDestinationOutput() GetAppSpecFunctionLogDestinationOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOutput) ToGetAppSpecFunctionLogDestinationOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOutput {
+	return o
+}
+
+// Datadog configuration.
+func (o GetAppSpecFunctionLogDestinationOutput) Datadog() GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestination) *GetAppSpecFunctionLogDestinationDatadog { return v.Datadog }).(GetAppSpecFunctionLogDestinationDatadogPtrOutput)
+}
+
+// Logtail configuration.
+func (o GetAppSpecFunctionLogDestinationOutput) Logtail() GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestination) *GetAppSpecFunctionLogDestinationLogtail { return v.Logtail }).(GetAppSpecFunctionLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecFunctionLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Papertrail configuration.
+func (o GetAppSpecFunctionLogDestinationOutput) Papertrail() GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestination) *GetAppSpecFunctionLogDestinationPapertrail {
+		return v.Papertrail
+	}).(GetAppSpecFunctionLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationArrayOutput) ToGetAppSpecFunctionLogDestinationArrayOutput() GetAppSpecFunctionLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationArrayOutput) ToGetAppSpecFunctionLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationArrayOutput) Index(i pulumi.IntInput) GetAppSpecFunctionLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecFunctionLogDestination {
+		return vs[0].([]GetAppSpecFunctionLogDestination)[vs[1].(int)]
+	}).(GetAppSpecFunctionLogDestinationOutput)
+}
+
+type GetAppSpecFunctionLogDestinationDatadog struct {
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// GetAppSpecFunctionLogDestinationDatadogInput is an input type that accepts GetAppSpecFunctionLogDestinationDatadogArgs and GetAppSpecFunctionLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationDatadogInput` via:
+//
+//          GetAppSpecFunctionLogDestinationDatadogArgs{...}
+type GetAppSpecFunctionLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationDatadogOutput() GetAppSpecFunctionLogDestinationDatadogOutput
+	ToGetAppSpecFunctionLogDestinationDatadogOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationDatadogOutput
+}
+
+type GetAppSpecFunctionLogDestinationDatadogArgs struct {
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecFunctionLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionLogDestinationDatadogArgs) ToGetAppSpecFunctionLogDestinationDatadogOutput() GetAppSpecFunctionLogDestinationDatadogOutput {
+	return i.ToGetAppSpecFunctionLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationDatadogArgs) ToGetAppSpecFunctionLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationDatadogOutput)
+}
+
+func (i GetAppSpecFunctionLogDestinationDatadogArgs) ToGetAppSpecFunctionLogDestinationDatadogPtrOutput() GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationDatadogArgs) ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationDatadogOutput).ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecFunctionLogDestinationDatadogArgs, GetAppSpecFunctionLogDestinationDatadogPtr and GetAppSpecFunctionLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationDatadogPtrInput` via:
+//
+//          GetAppSpecFunctionLogDestinationDatadogArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecFunctionLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationDatadogPtrOutput() GetAppSpecFunctionLogDestinationDatadogPtrOutput
+	ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationDatadogPtrOutput
+}
+
+type getAppSpecFunctionLogDestinationDatadogPtrType GetAppSpecFunctionLogDestinationDatadogArgs
+
+func GetAppSpecFunctionLogDestinationDatadogPtr(v *GetAppSpecFunctionLogDestinationDatadogArgs) GetAppSpecFunctionLogDestinationDatadogPtrInput {
+	return (*getAppSpecFunctionLogDestinationDatadogPtrType)(v)
+}
+
+func (*getAppSpecFunctionLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionLogDestinationDatadogPtrType) ToGetAppSpecFunctionLogDestinationDatadogPtrOutput() GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionLogDestinationDatadogPtrType) ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationDatadogPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationDatadogOutput) ToGetAppSpecFunctionLogDestinationDatadogOutput() GetAppSpecFunctionLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationDatadogOutput) ToGetAppSpecFunctionLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationDatadogOutput) ToGetAppSpecFunctionLogDestinationDatadogPtrOutput() GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o.ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionLogDestinationDatadogOutput) ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionLogDestinationDatadog) *GetAppSpecFunctionLogDestinationDatadog {
+		return &v
+	}).(GetAppSpecFunctionLogDestinationDatadogPtrOutput)
+}
+
+// Datadog API key.
+func (o GetAppSpecFunctionLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o GetAppSpecFunctionLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationDatadogPtrOutput) ToGetAppSpecFunctionLogDestinationDatadogPtrOutput() GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationDatadogPtrOutput) ToGetAppSpecFunctionLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationDatadogPtrOutput) Elem() GetAppSpecFunctionLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationDatadog) GetAppSpecFunctionLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionLogDestinationDatadog
+		return ret
+	}).(GetAppSpecFunctionLogDestinationDatadogOutput)
+}
+
+// Datadog API key.
+func (o GetAppSpecFunctionLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o GetAppSpecFunctionLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationLogtail struct {
+	// Logtail token.
+	Token string `pulumi:"token"`
+}
+
+// GetAppSpecFunctionLogDestinationLogtailInput is an input type that accepts GetAppSpecFunctionLogDestinationLogtailArgs and GetAppSpecFunctionLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationLogtailInput` via:
+//
+//          GetAppSpecFunctionLogDestinationLogtailArgs{...}
+type GetAppSpecFunctionLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationLogtailOutput() GetAppSpecFunctionLogDestinationLogtailOutput
+	ToGetAppSpecFunctionLogDestinationLogtailOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationLogtailOutput
+}
+
+type GetAppSpecFunctionLogDestinationLogtailArgs struct {
+	// Logtail token.
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (GetAppSpecFunctionLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionLogDestinationLogtailArgs) ToGetAppSpecFunctionLogDestinationLogtailOutput() GetAppSpecFunctionLogDestinationLogtailOutput {
+	return i.ToGetAppSpecFunctionLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationLogtailArgs) ToGetAppSpecFunctionLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationLogtailOutput)
+}
+
+func (i GetAppSpecFunctionLogDestinationLogtailArgs) ToGetAppSpecFunctionLogDestinationLogtailPtrOutput() GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationLogtailArgs) ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationLogtailOutput).ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecFunctionLogDestinationLogtailArgs, GetAppSpecFunctionLogDestinationLogtailPtr and GetAppSpecFunctionLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationLogtailPtrInput` via:
+//
+//          GetAppSpecFunctionLogDestinationLogtailArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecFunctionLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationLogtailPtrOutput() GetAppSpecFunctionLogDestinationLogtailPtrOutput
+	ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationLogtailPtrOutput
+}
+
+type getAppSpecFunctionLogDestinationLogtailPtrType GetAppSpecFunctionLogDestinationLogtailArgs
+
+func GetAppSpecFunctionLogDestinationLogtailPtr(v *GetAppSpecFunctionLogDestinationLogtailArgs) GetAppSpecFunctionLogDestinationLogtailPtrInput {
+	return (*getAppSpecFunctionLogDestinationLogtailPtrType)(v)
+}
+
+func (*getAppSpecFunctionLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionLogDestinationLogtailPtrType) ToGetAppSpecFunctionLogDestinationLogtailPtrOutput() GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionLogDestinationLogtailPtrType) ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationLogtailPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationLogtailOutput) ToGetAppSpecFunctionLogDestinationLogtailOutput() GetAppSpecFunctionLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationLogtailOutput) ToGetAppSpecFunctionLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationLogtailOutput) ToGetAppSpecFunctionLogDestinationLogtailPtrOutput() GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o.ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionLogDestinationLogtailOutput) ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionLogDestinationLogtail) *GetAppSpecFunctionLogDestinationLogtail {
+		return &v
+	}).(GetAppSpecFunctionLogDestinationLogtailPtrOutput)
+}
+
+// Logtail token.
+func (o GetAppSpecFunctionLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type GetAppSpecFunctionLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationLogtailPtrOutput) ToGetAppSpecFunctionLogDestinationLogtailPtrOutput() GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationLogtailPtrOutput) ToGetAppSpecFunctionLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationLogtailPtrOutput) Elem() GetAppSpecFunctionLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationLogtail) GetAppSpecFunctionLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionLogDestinationLogtail
+		return ret
+	}).(GetAppSpecFunctionLogDestinationLogtailOutput)
+}
+
+// Logtail token.
+func (o GetAppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationPapertrail struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// GetAppSpecFunctionLogDestinationPapertrailInput is an input type that accepts GetAppSpecFunctionLogDestinationPapertrailArgs and GetAppSpecFunctionLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationPapertrailInput` via:
+//
+//          GetAppSpecFunctionLogDestinationPapertrailArgs{...}
+type GetAppSpecFunctionLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationPapertrailOutput() GetAppSpecFunctionLogDestinationPapertrailOutput
+	ToGetAppSpecFunctionLogDestinationPapertrailOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationPapertrailOutput
+}
+
+type GetAppSpecFunctionLogDestinationPapertrailArgs struct {
+	// Datadog HTTP log intake endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecFunctionLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionLogDestinationPapertrailArgs) ToGetAppSpecFunctionLogDestinationPapertrailOutput() GetAppSpecFunctionLogDestinationPapertrailOutput {
+	return i.ToGetAppSpecFunctionLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationPapertrailArgs) ToGetAppSpecFunctionLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationPapertrailOutput)
+}
+
+func (i GetAppSpecFunctionLogDestinationPapertrailArgs) ToGetAppSpecFunctionLogDestinationPapertrailPtrOutput() GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationPapertrailArgs) ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationPapertrailOutput).ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecFunctionLogDestinationPapertrailArgs, GetAppSpecFunctionLogDestinationPapertrailPtr and GetAppSpecFunctionLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationPapertrailPtrInput` via:
+//
+//          GetAppSpecFunctionLogDestinationPapertrailArgs{...}
+//
+//  or:
+//
+//          nil
+type GetAppSpecFunctionLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationPapertrailPtrOutput() GetAppSpecFunctionLogDestinationPapertrailPtrOutput
+	ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationPapertrailPtrOutput
+}
+
+type getAppSpecFunctionLogDestinationPapertrailPtrType GetAppSpecFunctionLogDestinationPapertrailArgs
+
+func GetAppSpecFunctionLogDestinationPapertrailPtr(v *GetAppSpecFunctionLogDestinationPapertrailArgs) GetAppSpecFunctionLogDestinationPapertrailPtrInput {
+	return (*getAppSpecFunctionLogDestinationPapertrailPtrType)(v)
+}
+
+func (*getAppSpecFunctionLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionLogDestinationPapertrailPtrType) ToGetAppSpecFunctionLogDestinationPapertrailPtrOutput() GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionLogDestinationPapertrailPtrType) ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationPapertrailOutput) ToGetAppSpecFunctionLogDestinationPapertrailOutput() GetAppSpecFunctionLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationPapertrailOutput) ToGetAppSpecFunctionLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationPapertrailOutput) ToGetAppSpecFunctionLogDestinationPapertrailPtrOutput() GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o.ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionLogDestinationPapertrailOutput) ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionLogDestinationPapertrail) *GetAppSpecFunctionLogDestinationPapertrail {
+		return &v
+	}).(GetAppSpecFunctionLogDestinationPapertrailPtrOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o GetAppSpecFunctionLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type GetAppSpecFunctionLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationPapertrailPtrOutput) ToGetAppSpecFunctionLogDestinationPapertrailPtrOutput() GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationPapertrailPtrOutput) ToGetAppSpecFunctionLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationPapertrailPtrOutput) Elem() GetAppSpecFunctionLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationPapertrail) GetAppSpecFunctionLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionLogDestinationPapertrail
+		return ret
+	}).(GetAppSpecFunctionLogDestinationPapertrailOutput)
+}
+
+// Datadog HTTP log intake endpoint.
+func (o GetAppSpecFunctionLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionRoute struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
+}
+
+// GetAppSpecFunctionRouteInput is an input type that accepts GetAppSpecFunctionRouteArgs and GetAppSpecFunctionRouteOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionRouteInput` via:
+//
+//          GetAppSpecFunctionRouteArgs{...}
+type GetAppSpecFunctionRouteInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionRouteOutput() GetAppSpecFunctionRouteOutput
+	ToGetAppSpecFunctionRouteOutputWithContext(context.Context) GetAppSpecFunctionRouteOutput
+}
+
+type GetAppSpecFunctionRouteArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
+}
+
+func (GetAppSpecFunctionRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionRoute)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionRouteArgs) ToGetAppSpecFunctionRouteOutput() GetAppSpecFunctionRouteOutput {
+	return i.ToGetAppSpecFunctionRouteOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionRouteArgs) ToGetAppSpecFunctionRouteOutputWithContext(ctx context.Context) GetAppSpecFunctionRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionRouteOutput)
+}
+
+// GetAppSpecFunctionRouteArrayInput is an input type that accepts GetAppSpecFunctionRouteArray and GetAppSpecFunctionRouteArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionRouteArrayInput` via:
+//
+//          GetAppSpecFunctionRouteArray{ GetAppSpecFunctionRouteArgs{...} }
+type GetAppSpecFunctionRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionRouteArrayOutput() GetAppSpecFunctionRouteArrayOutput
+	ToGetAppSpecFunctionRouteArrayOutputWithContext(context.Context) GetAppSpecFunctionRouteArrayOutput
+}
+
+type GetAppSpecFunctionRouteArray []GetAppSpecFunctionRouteInput
+
+func (GetAppSpecFunctionRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionRoute)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionRouteArray) ToGetAppSpecFunctionRouteArrayOutput() GetAppSpecFunctionRouteArrayOutput {
+	return i.ToGetAppSpecFunctionRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionRouteArray) ToGetAppSpecFunctionRouteArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionRouteArrayOutput)
+}
+
+type GetAppSpecFunctionRouteOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionRoute)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionRouteOutput) ToGetAppSpecFunctionRouteOutput() GetAppSpecFunctionRouteOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionRouteOutput) ToGetAppSpecFunctionRouteOutputWithContext(ctx context.Context) GetAppSpecFunctionRouteOutput {
+	return o
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o GetAppSpecFunctionRouteOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// An optional flag to preserve the path that is forwarded to the backend service.
+func (o GetAppSpecFunctionRouteOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionRoute) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
+}
+
+type GetAppSpecFunctionRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionRoute)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionRouteArrayOutput) ToGetAppSpecFunctionRouteArrayOutput() GetAppSpecFunctionRouteArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionRouteArrayOutput) ToGetAppSpecFunctionRouteArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionRouteArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpecFunctionRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecFunctionRoute {
+		return vs[0].([]GetAppSpecFunctionRoute)[vs[1].(int)]
+	}).(GetAppSpecFunctionRouteOutput)
+}
+
 type GetAppSpecJob struct {
+	// Describes an alert policy for the component.
 	Alerts []GetAppSpecJobAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
@@ -12282,7 +16325,8 @@ type GetAppSpecJob struct {
 	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
 	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
 	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
-	Kind            *string                       `pulumi:"kind"`
+	Kind *string `pulumi:"kind"`
+	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecJobLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name string `pulumi:"name"`
@@ -12304,6 +16348,7 @@ type GetAppSpecJobInput interface {
 }
 
 type GetAppSpecJobArgs struct {
+	// Describes an alert policy for the component.
 	Alerts GetAppSpecJobAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
@@ -12330,7 +16375,8 @@ type GetAppSpecJobArgs struct {
 	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
 	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
 	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
-	Kind            pulumi.StringPtrInput                 `pulumi:"kind"`
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -12391,6 +16437,7 @@ func (o GetAppSpecJobOutput) ToGetAppSpecJobOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Describes an alert policy for the component.
 func (o GetAppSpecJobOutput) Alerts() GetAppSpecJobAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecJob) []GetAppSpecJobAlert { return v.Alerts }).(GetAppSpecJobAlertArrayOutput)
 }
@@ -12454,6 +16501,7 @@ func (o GetAppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Describes a log forwarding destination.
 func (o GetAppSpecJobOutput) LogDestinations() GetAppSpecJobLogDestinationArrayOutput {
 	return o.ApplyT(func(v GetAppSpecJob) []GetAppSpecJobLogDestination { return v.LogDestinations }).(GetAppSpecJobLogDestinationArrayOutput)
 }
@@ -12494,12 +16542,16 @@ func (o GetAppSpecJobArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobOutput {
 }
 
 type GetAppSpecJobAlert struct {
-	Disabled *bool  `pulumi:"disabled"`
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
 	Operator string `pulumi:"operator"`
-	Rule     string `pulumi:"rule"`
-	// The value of the environment variable.
-	Value  float64 `pulumi:"value"`
-	Window string  `pulumi:"window"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
 }
 
 // GetAppSpecJobAlertInput is an input type that accepts GetAppSpecJobAlertArgs and GetAppSpecJobAlertOutput values.
@@ -12514,12 +16566,16 @@ type GetAppSpecJobAlertInput interface {
 }
 
 type GetAppSpecJobAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	Operator pulumi.StringInput  `pulumi:"operator"`
-	Rule     pulumi.StringInput  `pulumi:"rule"`
-	// The value of the environment variable.
-	Value  pulumi.Float64Input `pulumi:"value"`
-	Window pulumi.StringInput  `pulumi:"window"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
 }
 
 func (GetAppSpecJobAlertArgs) ElementType() reflect.Type {
@@ -12573,23 +16629,27 @@ func (o GetAppSpecJobAlertOutput) ToGetAppSpecJobAlertOutputWithContext(ctx cont
 	return o
 }
 
+// Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecJobAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
 func (o GetAppSpecJobAlertOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobAlert) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
 func (o GetAppSpecJobAlertOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobAlert) string { return v.Rule }).(pulumi.StringOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o GetAppSpecJobAlertOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v GetAppSpecJobAlert) float64 { return v.Value }).(pulumi.Float64Output)
 }
 
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
 func (o GetAppSpecJobAlertOutput) Window() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobAlert) string { return v.Window }).(pulumi.StringOutput)
 }
@@ -12621,7 +16681,7 @@ type GetAppSpecJobEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -12643,7 +16703,7 @@ type GetAppSpecJobEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -12713,7 +16773,7 @@ func (o GetAppSpecJobEnvOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobEnv) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o GetAppSpecJobEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -13439,10 +17499,13 @@ func (o GetAppSpecJobImagePtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 type GetAppSpecJobLogDestination struct {
+	// Datadog configuration.
 	Datadog *GetAppSpecJobLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
 	Logtail *GetAppSpecJobLogDestinationLogtail `pulumi:"logtail"`
 	// The name of the component.
-	Name       string                                 `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Papertrail configuration.
 	Papertrail *GetAppSpecJobLogDestinationPapertrail `pulumi:"papertrail"`
 }
 
@@ -13458,10 +17521,13 @@ type GetAppSpecJobLogDestinationInput interface {
 }
 
 type GetAppSpecJobLogDestinationArgs struct {
+	// Datadog configuration.
 	Datadog GetAppSpecJobLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
 	Logtail GetAppSpecJobLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// The name of the component.
-	Name       pulumi.StringInput                            `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Papertrail configuration.
 	Papertrail GetAppSpecJobLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
 
@@ -13516,10 +17582,12 @@ func (o GetAppSpecJobLogDestinationOutput) ToGetAppSpecJobLogDestinationOutputWi
 	return o
 }
 
+// Datadog configuration.
 func (o GetAppSpecJobLogDestinationOutput) Datadog() GetAppSpecJobLogDestinationDatadogPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestination) *GetAppSpecJobLogDestinationDatadog { return v.Datadog }).(GetAppSpecJobLogDestinationDatadogPtrOutput)
 }
 
+// Logtail configuration.
 func (o GetAppSpecJobLogDestinationOutput) Logtail() GetAppSpecJobLogDestinationLogtailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestination) *GetAppSpecJobLogDestinationLogtail { return v.Logtail }).(GetAppSpecJobLogDestinationLogtailPtrOutput)
 }
@@ -13529,6 +17597,7 @@ func (o GetAppSpecJobLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Papertrail configuration.
 func (o GetAppSpecJobLogDestinationOutput) Papertrail() GetAppSpecJobLogDestinationPapertrailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestination) *GetAppSpecJobLogDestinationPapertrail { return v.Papertrail }).(GetAppSpecJobLogDestinationPapertrailPtrOutput)
 }
@@ -13554,7 +17623,9 @@ func (o GetAppSpecJobLogDestinationArrayOutput) Index(i pulumi.IntInput) GetAppS
 }
 
 type GetAppSpecJobLogDestinationDatadog struct {
-	ApiKey   string  `pulumi:"apiKey"`
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
 	Endpoint *string `pulumi:"endpoint"`
 }
 
@@ -13570,7 +17641,9 @@ type GetAppSpecJobLogDestinationDatadogInput interface {
 }
 
 type GetAppSpecJobLogDestinationDatadogArgs struct {
-	ApiKey   pulumi.StringInput    `pulumi:"apiKey"`
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 }
 
@@ -13651,10 +17724,12 @@ func (o GetAppSpecJobLogDestinationDatadogOutput) ToGetAppSpecJobLogDestinationD
 	}).(GetAppSpecJobLogDestinationDatadogPtrOutput)
 }
 
+// Datadog API key.
 func (o GetAppSpecJobLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecJobLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
@@ -13683,6 +17758,7 @@ func (o GetAppSpecJobLogDestinationDatadogPtrOutput) Elem() GetAppSpecJobLogDest
 	}).(GetAppSpecJobLogDestinationDatadogOutput)
 }
 
+// Datadog API key.
 func (o GetAppSpecJobLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecJobLogDestinationDatadog) *string {
 		if v == nil {
@@ -13692,6 +17768,7 @@ func (o GetAppSpecJobLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecJobLogDestinationDatadog) *string {
 		if v == nil {
@@ -13702,6 +17779,7 @@ func (o GetAppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtr
 }
 
 type GetAppSpecJobLogDestinationLogtail struct {
+	// Logtail token.
 	Token string `pulumi:"token"`
 }
 
@@ -13717,6 +17795,7 @@ type GetAppSpecJobLogDestinationLogtailInput interface {
 }
 
 type GetAppSpecJobLogDestinationLogtailArgs struct {
+	// Logtail token.
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -13797,6 +17876,7 @@ func (o GetAppSpecJobLogDestinationLogtailOutput) ToGetAppSpecJobLogDestinationL
 	}).(GetAppSpecJobLogDestinationLogtailPtrOutput)
 }
 
+// Logtail token.
 func (o GetAppSpecJobLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -13825,6 +17905,7 @@ func (o GetAppSpecJobLogDestinationLogtailPtrOutput) Elem() GetAppSpecJobLogDest
 	}).(GetAppSpecJobLogDestinationLogtailOutput)
 }
 
+// Logtail token.
 func (o GetAppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecJobLogDestinationLogtail) *string {
 		if v == nil {
@@ -13835,6 +17916,7 @@ func (o GetAppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOut
 }
 
 type GetAppSpecJobLogDestinationPapertrail struct {
+	// Datadog HTTP log intake endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -13850,6 +17932,7 @@ type GetAppSpecJobLogDestinationPapertrailInput interface {
 }
 
 type GetAppSpecJobLogDestinationPapertrailArgs struct {
+	// Datadog HTTP log intake endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -13930,6 +18013,7 @@ func (o GetAppSpecJobLogDestinationPapertrailOutput) ToGetAppSpecJobLogDestinati
 	}).(GetAppSpecJobLogDestinationPapertrailPtrOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecJobLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -13958,6 +18042,7 @@ func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Elem() GetAppSpecJobLogD
 	}).(GetAppSpecJobLogDestinationPapertrailOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecJobLogDestinationPapertrail) *string {
 		if v == nil {
@@ -13968,10 +18053,12 @@ func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.String
 }
 
 type GetAppSpecService struct {
+	// Describes an alert policy for the component.
 	Alerts []GetAppSpecServiceAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
-	BuildCommand *string                `pulumi:"buildCommand"`
-	Cors         *GetAppSpecServiceCors `pulumi:"cors"`
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors *GetAppSpecServiceCors `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath *string `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -13995,7 +18082,8 @@ type GetAppSpecService struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
-	InternalPorts   []int                             `pulumi:"internalPorts"`
+	InternalPorts []int `pulumi:"internalPorts"`
+	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecServiceLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name   string                   `pulumi:"name"`
@@ -14018,10 +18106,12 @@ type GetAppSpecServiceInput interface {
 }
 
 type GetAppSpecServiceArgs struct {
+	// Describes an alert policy for the component.
 	Alerts GetAppSpecServiceAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
-	BuildCommand pulumi.StringPtrInput         `pulumi:"buildCommand"`
-	Cors         GetAppSpecServiceCorsPtrInput `pulumi:"cors"`
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors GetAppSpecServiceCorsPtrInput `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -14045,7 +18135,8 @@ type GetAppSpecServiceArgs struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
-	InternalPorts   pulumi.IntArrayInput                      `pulumi:"internalPorts"`
+	InternalPorts pulumi.IntArrayInput `pulumi:"internalPorts"`
+	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name   pulumi.StringInput               `pulumi:"name"`
@@ -14107,6 +18198,7 @@ func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutputWithContext(ctx contex
 	return o
 }
 
+// Describes an alert policy for the component.
 func (o GetAppSpecServiceOutput) Alerts() GetAppSpecServiceAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceAlert { return v.Alerts }).(GetAppSpecServiceAlertArrayOutput)
 }
@@ -14116,6 +18208,7 @@ func (o GetAppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
 }
 
+// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 func (o GetAppSpecServiceOutput) Cors() GetAppSpecServiceCorsPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceCors { return v.Cors }).(GetAppSpecServiceCorsPtrOutput)
 }
@@ -14180,6 +18273,7 @@ func (o GetAppSpecServiceOutput) InternalPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetAppSpecService) []int { return v.InternalPorts }).(pulumi.IntArrayOutput)
 }
 
+// Describes a log forwarding destination.
 func (o GetAppSpecServiceOutput) LogDestinations() GetAppSpecServiceLogDestinationArrayOutput {
 	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceLogDestination { return v.LogDestinations }).(GetAppSpecServiceLogDestinationArrayOutput)
 }
@@ -14224,12 +18318,16 @@ func (o GetAppSpecServiceArrayOutput) Index(i pulumi.IntInput) GetAppSpecService
 }
 
 type GetAppSpecServiceAlert struct {
-	Disabled *bool  `pulumi:"disabled"`
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
 	Operator string `pulumi:"operator"`
-	Rule     string `pulumi:"rule"`
-	// The value of the environment variable.
-	Value  float64 `pulumi:"value"`
-	Window string  `pulumi:"window"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
 }
 
 // GetAppSpecServiceAlertInput is an input type that accepts GetAppSpecServiceAlertArgs and GetAppSpecServiceAlertOutput values.
@@ -14244,12 +18342,16 @@ type GetAppSpecServiceAlertInput interface {
 }
 
 type GetAppSpecServiceAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	Operator pulumi.StringInput  `pulumi:"operator"`
-	Rule     pulumi.StringInput  `pulumi:"rule"`
-	// The value of the environment variable.
-	Value  pulumi.Float64Input `pulumi:"value"`
-	Window pulumi.StringInput  `pulumi:"window"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
 }
 
 func (GetAppSpecServiceAlertArgs) ElementType() reflect.Type {
@@ -14303,23 +18405,27 @@ func (o GetAppSpecServiceAlertOutput) ToGetAppSpecServiceAlertOutputWithContext(
 	return o
 }
 
+// Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecServiceAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
 func (o GetAppSpecServiceAlertOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
 func (o GetAppSpecServiceAlertOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Rule }).(pulumi.StringOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o GetAppSpecServiceAlertOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v GetAppSpecServiceAlert) float64 { return v.Value }).(pulumi.Float64Output)
 }
 
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
 func (o GetAppSpecServiceAlertOutput) Window() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Window }).(pulumi.StringOutput)
 }
@@ -14345,12 +18451,18 @@ func (o GetAppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecSe
 }
 
 type GetAppSpecServiceCors struct {
-	AllowCredentials *bool                              `pulumi:"allowCredentials"`
-	AllowHeaders     []string                           `pulumi:"allowHeaders"`
-	AllowMethods     []string                           `pulumi:"allowMethods"`
-	AllowOrigins     *GetAppSpecServiceCorsAllowOrigins `pulumi:"allowOrigins"`
-	ExposeHeaders    []string                           `pulumi:"exposeHeaders"`
-	MaxAge           *string                            `pulumi:"maxAge"`
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins *GetAppSpecServiceCorsAllowOrigins `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge *string `pulumi:"maxAge"`
 }
 
 // GetAppSpecServiceCorsInput is an input type that accepts GetAppSpecServiceCorsArgs and GetAppSpecServiceCorsOutput values.
@@ -14365,12 +18477,18 @@ type GetAppSpecServiceCorsInput interface {
 }
 
 type GetAppSpecServiceCorsArgs struct {
-	AllowCredentials pulumi.BoolPtrInput                       `pulumi:"allowCredentials"`
-	AllowHeaders     pulumi.StringArrayInput                   `pulumi:"allowHeaders"`
-	AllowMethods     pulumi.StringArrayInput                   `pulumi:"allowMethods"`
-	AllowOrigins     GetAppSpecServiceCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	ExposeHeaders    pulumi.StringArrayInput                   `pulumi:"exposeHeaders"`
-	MaxAge           pulumi.StringPtrInput                     `pulumi:"maxAge"`
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins GetAppSpecServiceCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
 }
 
 func (GetAppSpecServiceCorsArgs) ElementType() reflect.Type {
@@ -14450,26 +18568,32 @@ func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutputWithContext
 	}).(GetAppSpecServiceCorsPtrOutput)
 }
 
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 func (o GetAppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 func (o GetAppSpecServiceCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
 func (o GetAppSpecServiceCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
+// The `Access-Control-Allow-Origin` can be
 func (o GetAppSpecServiceCorsOutput) AllowOrigins() GetAppSpecServiceCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCors) *GetAppSpecServiceCorsAllowOrigins { return v.AllowOrigins }).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
 func (o GetAppSpecServiceCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 func (o GetAppSpecServiceCorsOutput) MaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
 }
@@ -14498,6 +18622,7 @@ func (o GetAppSpecServiceCorsPtrOutput) Elem() GetAppSpecServiceCorsOutput {
 	}).(GetAppSpecServiceCorsOutput)
 }
 
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 func (o GetAppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCors) *bool {
 		if v == nil {
@@ -14507,6 +18632,7 @@ func (o GetAppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 func (o GetAppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
 		if v == nil {
@@ -14516,6 +18642,7 @@ func (o GetAppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
 func (o GetAppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
 		if v == nil {
@@ -14525,6 +18652,7 @@ func (o GetAppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// The `Access-Control-Allow-Origin` can be
 func (o GetAppSpecServiceCorsPtrOutput) AllowOrigins() GetAppSpecServiceCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCors) *GetAppSpecServiceCorsAllowOrigins {
 		if v == nil {
@@ -14534,6 +18662,7 @@ func (o GetAppSpecServiceCorsPtrOutput) AllowOrigins() GetAppSpecServiceCorsAllo
 	}).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
 func (o GetAppSpecServiceCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
 		if v == nil {
@@ -14543,6 +18672,7 @@ func (o GetAppSpecServiceCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 func (o GetAppSpecServiceCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCors) *string {
 		if v == nil {
@@ -14553,9 +18683,12 @@ func (o GetAppSpecServiceCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type GetAppSpecServiceCorsAllowOrigins struct {
-	Exact  *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 	Prefix *string `pulumi:"prefix"`
-	Regex  *string `pulumi:"regex"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex *string `pulumi:"regex"`
 }
 
 // GetAppSpecServiceCorsAllowOriginsInput is an input type that accepts GetAppSpecServiceCorsAllowOriginsArgs and GetAppSpecServiceCorsAllowOriginsOutput values.
@@ -14570,9 +18703,12 @@ type GetAppSpecServiceCorsAllowOriginsInput interface {
 }
 
 type GetAppSpecServiceCorsAllowOriginsArgs struct {
-	Exact  pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	Regex  pulumi.StringPtrInput `pulumi:"regex"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
 func (GetAppSpecServiceCorsAllowOriginsArgs) ElementType() reflect.Type {
@@ -14652,14 +18788,17 @@ func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOri
 	}).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 func (o GetAppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 func (o GetAppSpecServiceCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 func (o GetAppSpecServiceCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -14688,6 +18827,7 @@ func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Elem() GetAppSpecServiceCors
 	}).(GetAppSpecServiceCorsAllowOriginsOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -14697,6 +18837,7 @@ func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -14706,6 +18847,7 @@ func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -14722,7 +18864,7 @@ type GetAppSpecServiceEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -14744,7 +18886,7 @@ type GetAppSpecServiceEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -14814,7 +18956,7 @@ func (o GetAppSpecServiceEnvOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceEnv) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o GetAppSpecServiceEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -15772,10 +19914,13 @@ func (o GetAppSpecServiceImagePtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 type GetAppSpecServiceLogDestination struct {
+	// Datadog configuration.
 	Datadog *GetAppSpecServiceLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
 	Logtail *GetAppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
 	// The name of the component.
-	Name       string                                     `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Papertrail configuration.
 	Papertrail *GetAppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
 }
 
@@ -15791,10 +19936,13 @@ type GetAppSpecServiceLogDestinationInput interface {
 }
 
 type GetAppSpecServiceLogDestinationArgs struct {
+	// Datadog configuration.
 	Datadog GetAppSpecServiceLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
 	Logtail GetAppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// The name of the component.
-	Name       pulumi.StringInput                                `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Papertrail configuration.
 	Papertrail GetAppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
 
@@ -15849,10 +19997,12 @@ func (o GetAppSpecServiceLogDestinationOutput) ToGetAppSpecServiceLogDestination
 	return o
 }
 
+// Datadog configuration.
 func (o GetAppSpecServiceLogDestinationOutput) Datadog() GetAppSpecServiceLogDestinationDatadogPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationDatadog { return v.Datadog }).(GetAppSpecServiceLogDestinationDatadogPtrOutput)
 }
 
+// Logtail configuration.
 func (o GetAppSpecServiceLogDestinationOutput) Logtail() GetAppSpecServiceLogDestinationLogtailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationLogtail { return v.Logtail }).(GetAppSpecServiceLogDestinationLogtailPtrOutput)
 }
@@ -15862,6 +20012,7 @@ func (o GetAppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Papertrail configuration.
 func (o GetAppSpecServiceLogDestinationOutput) Papertrail() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationPapertrail {
 		return v.Papertrail
@@ -15889,7 +20040,9 @@ func (o GetAppSpecServiceLogDestinationArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetAppSpecServiceLogDestinationDatadog struct {
-	ApiKey   string  `pulumi:"apiKey"`
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
 	Endpoint *string `pulumi:"endpoint"`
 }
 
@@ -15905,7 +20058,9 @@ type GetAppSpecServiceLogDestinationDatadogInput interface {
 }
 
 type GetAppSpecServiceLogDestinationDatadogArgs struct {
-	ApiKey   pulumi.StringInput    `pulumi:"apiKey"`
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 }
 
@@ -15986,10 +20141,12 @@ func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDest
 	}).(GetAppSpecServiceLogDestinationDatadogPtrOutput)
 }
 
+// Datadog API key.
 func (o GetAppSpecServiceLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecServiceLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
@@ -16018,6 +20175,7 @@ func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) Elem() GetAppSpecServic
 	}).(GetAppSpecServiceLogDestinationDatadogOutput)
 }
 
+// Datadog API key.
 func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) *string {
 		if v == nil {
@@ -16027,6 +20185,7 @@ func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) *string {
 		if v == nil {
@@ -16037,6 +20196,7 @@ func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.Strin
 }
 
 type GetAppSpecServiceLogDestinationLogtail struct {
+	// Logtail token.
 	Token string `pulumi:"token"`
 }
 
@@ -16052,6 +20212,7 @@ type GetAppSpecServiceLogDestinationLogtailInput interface {
 }
 
 type GetAppSpecServiceLogDestinationLogtailArgs struct {
+	// Logtail token.
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -16132,6 +20293,7 @@ func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDest
 	}).(GetAppSpecServiceLogDestinationLogtailPtrOutput)
 }
 
+// Logtail token.
 func (o GetAppSpecServiceLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -16160,6 +20322,7 @@ func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) Elem() GetAppSpecServic
 	}).(GetAppSpecServiceLogDestinationLogtailOutput)
 }
 
+// Logtail token.
 func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationLogtail) *string {
 		if v == nil {
@@ -16170,6 +20333,7 @@ func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPt
 }
 
 type GetAppSpecServiceLogDestinationPapertrail struct {
+	// Datadog HTTP log intake endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -16185,6 +20349,7 @@ type GetAppSpecServiceLogDestinationPapertrailInput interface {
 }
 
 type GetAppSpecServiceLogDestinationPapertrailArgs struct {
+	// Datadog HTTP log intake endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -16265,6 +20430,7 @@ func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogD
 	}).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecServiceLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -16293,6 +20459,7 @@ func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Elem() GetAppSpecSer
 	}).(GetAppSpecServiceLogDestinationPapertrailOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationPapertrail) *string {
 		if v == nil {
@@ -16412,8 +20579,9 @@ type GetAppSpecStaticSite struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-	CatchallDocument *string                   `pulumi:"catchallDocument"`
-	Cors             *GetAppSpecStaticSiteCors `pulumi:"cors"`
+	CatchallDocument *string `pulumi:"catchallDocument"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors *GetAppSpecStaticSiteCors `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath *string `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -16454,8 +20622,9 @@ type GetAppSpecStaticSiteArgs struct {
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-	CatchallDocument pulumi.StringPtrInput            `pulumi:"catchallDocument"`
-	Cors             GetAppSpecStaticSiteCorsPtrInput `pulumi:"cors"`
+	CatchallDocument pulumi.StringPtrInput `pulumi:"catchallDocument"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	Cors GetAppSpecStaticSiteCorsPtrInput `pulumi:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
 	// An environment slug describing the type of this app.
@@ -16542,6 +20711,7 @@ func (o GetAppSpecStaticSiteOutput) CatchallDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.CatchallDocument }).(pulumi.StringPtrOutput)
 }
 
+// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 func (o GetAppSpecStaticSiteOutput) Cors() GetAppSpecStaticSiteCorsPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteCors { return v.Cors }).(GetAppSpecStaticSiteCorsPtrOutput)
 }
@@ -16626,12 +20796,18 @@ func (o GetAppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) GetAppSpecStat
 }
 
 type GetAppSpecStaticSiteCors struct {
-	AllowCredentials *bool                                 `pulumi:"allowCredentials"`
-	AllowHeaders     []string                              `pulumi:"allowHeaders"`
-	AllowMethods     []string                              `pulumi:"allowMethods"`
-	AllowOrigins     *GetAppSpecStaticSiteCorsAllowOrigins `pulumi:"allowOrigins"`
-	ExposeHeaders    []string                              `pulumi:"exposeHeaders"`
-	MaxAge           *string                               `pulumi:"maxAge"`
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins *GetAppSpecStaticSiteCorsAllowOrigins `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge *string `pulumi:"maxAge"`
 }
 
 // GetAppSpecStaticSiteCorsInput is an input type that accepts GetAppSpecStaticSiteCorsArgs and GetAppSpecStaticSiteCorsOutput values.
@@ -16646,12 +20822,18 @@ type GetAppSpecStaticSiteCorsInput interface {
 }
 
 type GetAppSpecStaticSiteCorsArgs struct {
-	AllowCredentials pulumi.BoolPtrInput                          `pulumi:"allowCredentials"`
-	AllowHeaders     pulumi.StringArrayInput                      `pulumi:"allowHeaders"`
-	AllowMethods     pulumi.StringArrayInput                      `pulumi:"allowMethods"`
-	AllowOrigins     GetAppSpecStaticSiteCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	ExposeHeaders    pulumi.StringArrayInput                      `pulumi:"exposeHeaders"`
-	MaxAge           pulumi.StringPtrInput                        `pulumi:"maxAge"`
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins GetAppSpecStaticSiteCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
 }
 
 func (GetAppSpecStaticSiteCorsArgs) ElementType() reflect.Type {
@@ -16731,26 +20913,32 @@ func (o GetAppSpecStaticSiteCorsOutput) ToGetAppSpecStaticSiteCorsPtrOutputWithC
 	}).(GetAppSpecStaticSiteCorsPtrOutput)
 }
 
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 func (o GetAppSpecStaticSiteCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 func (o GetAppSpecStaticSiteCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
 func (o GetAppSpecStaticSiteCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
+// The `Access-Control-Allow-Origin` can be
 func (o GetAppSpecStaticSiteCorsOutput) AllowOrigins() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *GetAppSpecStaticSiteCorsAllowOrigins { return v.AllowOrigins }).(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
 func (o GetAppSpecStaticSiteCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 func (o GetAppSpecStaticSiteCorsOutput) MaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
 }
@@ -16779,6 +20967,7 @@ func (o GetAppSpecStaticSiteCorsPtrOutput) Elem() GetAppSpecStaticSiteCorsOutput
 	}).(GetAppSpecStaticSiteCorsOutput)
 }
 
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 func (o GetAppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) *bool {
 		if v == nil {
@@ -16788,6 +20977,7 @@ func (o GetAppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 func (o GetAppSpecStaticSiteCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -16797,6 +20987,7 @@ func (o GetAppSpecStaticSiteCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
 func (o GetAppSpecStaticSiteCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -16806,6 +20997,7 @@ func (o GetAppSpecStaticSiteCorsPtrOutput) AllowMethods() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// The `Access-Control-Allow-Origin` can be
 func (o GetAppSpecStaticSiteCorsPtrOutput) AllowOrigins() GetAppSpecStaticSiteCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) *GetAppSpecStaticSiteCorsAllowOrigins {
 		if v == nil {
@@ -16815,6 +21007,7 @@ func (o GetAppSpecStaticSiteCorsPtrOutput) AllowOrigins() GetAppSpecStaticSiteCo
 	}).(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
 func (o GetAppSpecStaticSiteCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -16824,6 +21017,7 @@ func (o GetAppSpecStaticSiteCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 func (o GetAppSpecStaticSiteCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCors) *string {
 		if v == nil {
@@ -16834,9 +21028,12 @@ func (o GetAppSpecStaticSiteCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type GetAppSpecStaticSiteCorsAllowOrigins struct {
-	Exact  *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 	Prefix *string `pulumi:"prefix"`
-	Regex  *string `pulumi:"regex"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex *string `pulumi:"regex"`
 }
 
 // GetAppSpecStaticSiteCorsAllowOriginsInput is an input type that accepts GetAppSpecStaticSiteCorsAllowOriginsArgs and GetAppSpecStaticSiteCorsAllowOriginsOutput values.
@@ -16851,9 +21048,12 @@ type GetAppSpecStaticSiteCorsAllowOriginsInput interface {
 }
 
 type GetAppSpecStaticSiteCorsAllowOriginsArgs struct {
-	Exact  pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	Regex  pulumi.StringPtrInput `pulumi:"regex"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
 func (GetAppSpecStaticSiteCorsAllowOriginsArgs) ElementType() reflect.Type {
@@ -16933,14 +21133,17 @@ func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) ToGetAppSpecStaticSiteCorsAl
 	}).(GetAppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -16969,6 +21172,7 @@ func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Elem() GetAppSpecStaticSi
 	}).(GetAppSpecStaticSiteCorsAllowOriginsOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -16978,6 +21182,7 @@ func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -16987,6 +21192,7 @@ func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -17003,7 +21209,7 @@ type GetAppSpecStaticSiteEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -17025,7 +21231,7 @@ type GetAppSpecStaticSiteEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -17095,7 +21301,7 @@ func (o GetAppSpecStaticSiteEnvOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteEnv) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o GetAppSpecStaticSiteEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -17733,6 +21939,7 @@ func (o GetAppSpecStaticSiteRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpe
 }
 
 type GetAppSpecWorker struct {
+	// Describes an alert policy for the component.
 	Alerts []GetAppSpecWorkerAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
@@ -17753,8 +21960,9 @@ type GetAppSpecWorker struct {
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
-	InstanceSizeSlug *string                          `pulumi:"instanceSizeSlug"`
-	LogDestinations  []GetAppSpecWorkerLogDestination `pulumi:"logDestinations"`
+	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	// Describes a log forwarding destination.
+	LogDestinations []GetAppSpecWorkerLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -17775,6 +21983,7 @@ type GetAppSpecWorkerInput interface {
 }
 
 type GetAppSpecWorkerArgs struct {
+	// Describes an alert policy for the component.
 	Alerts GetAppSpecWorkerAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
@@ -17795,8 +22004,9 @@ type GetAppSpecWorkerArgs struct {
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
-	InstanceSizeSlug pulumi.StringPtrInput                    `pulumi:"instanceSizeSlug"`
-	LogDestinations  GetAppSpecWorkerLogDestinationArrayInput `pulumi:"logDestinations"`
+	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	// Describes a log forwarding destination.
+	LogDestinations GetAppSpecWorkerLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional run command to override the component's default.
@@ -17856,6 +22066,7 @@ func (o GetAppSpecWorkerOutput) ToGetAppSpecWorkerOutputWithContext(ctx context.
 	return o
 }
 
+// Describes an alert policy for the component.
 func (o GetAppSpecWorkerOutput) Alerts() GetAppSpecWorkerAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) []GetAppSpecWorkerAlert { return v.Alerts }).(GetAppSpecWorkerAlertArrayOutput)
 }
@@ -17910,6 +22121,7 @@ func (o GetAppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
 }
 
+// Describes a log forwarding destination.
 func (o GetAppSpecWorkerOutput) LogDestinations() GetAppSpecWorkerLogDestinationArrayOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) []GetAppSpecWorkerLogDestination { return v.LogDestinations }).(GetAppSpecWorkerLogDestinationArrayOutput)
 }
@@ -17950,12 +22162,16 @@ func (o GetAppSpecWorkerArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerOu
 }
 
 type GetAppSpecWorkerAlert struct {
-	Disabled *bool  `pulumi:"disabled"`
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
 	Operator string `pulumi:"operator"`
-	Rule     string `pulumi:"rule"`
-	// The value of the environment variable.
-	Value  float64 `pulumi:"value"`
-	Window string  `pulumi:"window"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
 }
 
 // GetAppSpecWorkerAlertInput is an input type that accepts GetAppSpecWorkerAlertArgs and GetAppSpecWorkerAlertOutput values.
@@ -17970,12 +22186,16 @@ type GetAppSpecWorkerAlertInput interface {
 }
 
 type GetAppSpecWorkerAlertArgs struct {
+	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	Operator pulumi.StringInput  `pulumi:"operator"`
-	Rule     pulumi.StringInput  `pulumi:"rule"`
-	// The value of the environment variable.
-	Value  pulumi.Float64Input `pulumi:"value"`
-	Window pulumi.StringInput  `pulumi:"window"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
 }
 
 func (GetAppSpecWorkerAlertArgs) ElementType() reflect.Type {
@@ -18029,23 +22249,27 @@ func (o GetAppSpecWorkerAlertOutput) ToGetAppSpecWorkerAlertOutputWithContext(ct
 	return o
 }
 
+// Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecWorkerAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
 func (o GetAppSpecWorkerAlertOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerAlert) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
 func (o GetAppSpecWorkerAlertOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerAlert) string { return v.Rule }).(pulumi.StringOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o GetAppSpecWorkerAlertOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v GetAppSpecWorkerAlert) float64 { return v.Value }).(pulumi.Float64Output)
 }
 
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
 func (o GetAppSpecWorkerAlertOutput) Window() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerAlert) string { return v.Window }).(pulumi.StringOutput)
 }
@@ -18077,7 +22301,7 @@ type GetAppSpecWorkerEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type string `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value *string `pulumi:"value"`
 }
 
@@ -18099,7 +22323,7 @@ type GetAppSpecWorkerEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The value of the environment variable.
+	// The threshold for the type of the warning.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -18169,7 +22393,7 @@ func (o GetAppSpecWorkerEnvOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerEnv) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the environment variable.
+// The threshold for the type of the warning.
 func (o GetAppSpecWorkerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -18895,10 +23119,13 @@ func (o GetAppSpecWorkerImagePtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 type GetAppSpecWorkerLogDestination struct {
+	// Datadog configuration.
 	Datadog *GetAppSpecWorkerLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
 	Logtail *GetAppSpecWorkerLogDestinationLogtail `pulumi:"logtail"`
 	// The name of the component.
-	Name       string                                    `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Papertrail configuration.
 	Papertrail *GetAppSpecWorkerLogDestinationPapertrail `pulumi:"papertrail"`
 }
 
@@ -18914,10 +23141,13 @@ type GetAppSpecWorkerLogDestinationInput interface {
 }
 
 type GetAppSpecWorkerLogDestinationArgs struct {
+	// Datadog configuration.
 	Datadog GetAppSpecWorkerLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
 	Logtail GetAppSpecWorkerLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// The name of the component.
-	Name       pulumi.StringInput                               `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Papertrail configuration.
 	Papertrail GetAppSpecWorkerLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
 
@@ -18972,10 +23202,12 @@ func (o GetAppSpecWorkerLogDestinationOutput) ToGetAppSpecWorkerLogDestinationOu
 	return o
 }
 
+// Datadog configuration.
 func (o GetAppSpecWorkerLogDestinationOutput) Datadog() GetAppSpecWorkerLogDestinationDatadogPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) *GetAppSpecWorkerLogDestinationDatadog { return v.Datadog }).(GetAppSpecWorkerLogDestinationDatadogPtrOutput)
 }
 
+// Logtail configuration.
 func (o GetAppSpecWorkerLogDestinationOutput) Logtail() GetAppSpecWorkerLogDestinationLogtailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) *GetAppSpecWorkerLogDestinationLogtail { return v.Logtail }).(GetAppSpecWorkerLogDestinationLogtailPtrOutput)
 }
@@ -18985,6 +23217,7 @@ func (o GetAppSpecWorkerLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Papertrail configuration.
 func (o GetAppSpecWorkerLogDestinationOutput) Papertrail() GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) *GetAppSpecWorkerLogDestinationPapertrail { return v.Papertrail }).(GetAppSpecWorkerLogDestinationPapertrailPtrOutput)
 }
@@ -19010,7 +23243,9 @@ func (o GetAppSpecWorkerLogDestinationArrayOutput) Index(i pulumi.IntInput) GetA
 }
 
 type GetAppSpecWorkerLogDestinationDatadog struct {
-	ApiKey   string  `pulumi:"apiKey"`
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
 	Endpoint *string `pulumi:"endpoint"`
 }
 
@@ -19026,7 +23261,9 @@ type GetAppSpecWorkerLogDestinationDatadogInput interface {
 }
 
 type GetAppSpecWorkerLogDestinationDatadogArgs struct {
-	ApiKey   pulumi.StringInput    `pulumi:"apiKey"`
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Datadog HTTP log intake endpoint.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 }
 
@@ -19107,10 +23344,12 @@ func (o GetAppSpecWorkerLogDestinationDatadogOutput) ToGetAppSpecWorkerLogDestin
 	}).(GetAppSpecWorkerLogDestinationDatadogPtrOutput)
 }
 
+// Datadog API key.
 func (o GetAppSpecWorkerLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecWorkerLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
@@ -19139,6 +23378,7 @@ func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) Elem() GetAppSpecWorkerL
 	}).(GetAppSpecWorkerLogDestinationDatadogOutput)
 }
 
+// Datadog API key.
 func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationDatadog) *string {
 		if v == nil {
@@ -19148,6 +23388,7 @@ func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationDatadog) *string {
 		if v == nil {
@@ -19158,6 +23399,7 @@ func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.String
 }
 
 type GetAppSpecWorkerLogDestinationLogtail struct {
+	// Logtail token.
 	Token string `pulumi:"token"`
 }
 
@@ -19173,6 +23415,7 @@ type GetAppSpecWorkerLogDestinationLogtailInput interface {
 }
 
 type GetAppSpecWorkerLogDestinationLogtailArgs struct {
+	// Logtail token.
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -19253,6 +23496,7 @@ func (o GetAppSpecWorkerLogDestinationLogtailOutput) ToGetAppSpecWorkerLogDestin
 	}).(GetAppSpecWorkerLogDestinationLogtailPtrOutput)
 }
 
+// Logtail token.
 func (o GetAppSpecWorkerLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -19281,6 +23525,7 @@ func (o GetAppSpecWorkerLogDestinationLogtailPtrOutput) Elem() GetAppSpecWorkerL
 	}).(GetAppSpecWorkerLogDestinationLogtailOutput)
 }
 
+// Logtail token.
 func (o GetAppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationLogtail) *string {
 		if v == nil {
@@ -19291,6 +23536,7 @@ func (o GetAppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtr
 }
 
 type GetAppSpecWorkerLogDestinationPapertrail struct {
+	// Datadog HTTP log intake endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -19306,6 +23552,7 @@ type GetAppSpecWorkerLogDestinationPapertrailInput interface {
 }
 
 type GetAppSpecWorkerLogDestinationPapertrailArgs struct {
+	// Datadog HTTP log intake endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -19386,6 +23633,7 @@ func (o GetAppSpecWorkerLogDestinationPapertrailOutput) ToGetAppSpecWorkerLogDes
 	}).(GetAppSpecWorkerLogDestinationPapertrailPtrOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecWorkerLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -19414,6 +23662,7 @@ func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) Elem() GetAppSpecWork
 	}).(GetAppSpecWorkerLogDestinationPapertrailOutput)
 }
 
+// Datadog HTTP log intake endpoint.
 func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationPapertrail) *string {
 		if v == nil {
@@ -24499,9 +28748,10 @@ func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucke
 type GetSshKeysFilter struct {
 	All *bool `pulumi:"all"`
 	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-	Key     string   `pulumi:"key"`
-	MatchBy *string  `pulumi:"matchBy"`
-	Values  []string `pulumi:"values"`
+	Key     string  `pulumi:"key"`
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+	Values []string `pulumi:"values"`
 }
 
 // GetSshKeysFilterInput is an input type that accepts GetSshKeysFilterArgs and GetSshKeysFilterOutput values.
@@ -24518,9 +28768,10 @@ type GetSshKeysFilterInput interface {
 type GetSshKeysFilterArgs struct {
 	All pulumi.BoolPtrInput `pulumi:"all"`
 	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-	Key     pulumi.StringInput      `pulumi:"key"`
-	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
-	Values  pulumi.StringArrayInput `pulumi:"values"`
+	Key     pulumi.StringInput    `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (GetSshKeysFilterArgs) ElementType() reflect.Type {
@@ -24587,6 +28838,7 @@ func (o GetSshKeysFilterOutput) MatchBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSshKeysFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
+// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
 func (o GetSshKeysFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSshKeysFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -25248,6 +29500,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameArrayInput)(nil)).Elem(), AppSpecDomainNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvInput)(nil)).Elem(), AppSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvArrayInput)(nil)).Elem(), AppSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionInput)(nil)).Elem(), AppSpecFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionArrayInput)(nil)).Elem(), AppSpecFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertInput)(nil)).Elem(), AppSpecFunctionAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertArrayInput)(nil)).Elem(), AppSpecFunctionAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionCorsInput)(nil)).Elem(), AppSpecFunctionCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionCorsPtrInput)(nil)).Elem(), AppSpecFunctionCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionCorsAllowOriginsInput)(nil)).Elem(), AppSpecFunctionCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionCorsAllowOriginsPtrInput)(nil)).Elem(), AppSpecFunctionCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionEnvInput)(nil)).Elem(), AppSpecFunctionEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionEnvArrayInput)(nil)).Elem(), AppSpecFunctionEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionGitInput)(nil)).Elem(), AppSpecFunctionGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionGitPtrInput)(nil)).Elem(), AppSpecFunctionGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionGithubInput)(nil)).Elem(), AppSpecFunctionGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionGithubPtrInput)(nil)).Elem(), AppSpecFunctionGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionGitlabInput)(nil)).Elem(), AppSpecFunctionGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionGitlabPtrInput)(nil)).Elem(), AppSpecFunctionGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationInput)(nil)).Elem(), AppSpecFunctionLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationArrayInput)(nil)).Elem(), AppSpecFunctionLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationDatadogInput)(nil)).Elem(), AppSpecFunctionLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationDatadogPtrInput)(nil)).Elem(), AppSpecFunctionLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationLogtailInput)(nil)).Elem(), AppSpecFunctionLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecFunctionLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationPapertrailInput)(nil)).Elem(), AppSpecFunctionLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecFunctionLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionRouteInput)(nil)).Elem(), AppSpecFunctionRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionRouteArrayInput)(nil)).Elem(), AppSpecFunctionRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobInput)(nil)).Elem(), AppSpecJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobArrayInput)(nil)).Elem(), AppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertInput)(nil)).Elem(), AppSpecJobAlertArgs{})
@@ -25391,6 +29669,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainInput)(nil)).Elem(), GetAppSpecDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvInput)(nil)).Elem(), GetAppSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvArrayInput)(nil)).Elem(), GetAppSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionInput)(nil)).Elem(), GetAppSpecFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionArrayInput)(nil)).Elem(), GetAppSpecFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertInput)(nil)).Elem(), GetAppSpecFunctionAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertArrayInput)(nil)).Elem(), GetAppSpecFunctionAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionCorsInput)(nil)).Elem(), GetAppSpecFunctionCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionCorsPtrInput)(nil)).Elem(), GetAppSpecFunctionCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecFunctionCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionCorsAllowOriginsPtrInput)(nil)).Elem(), GetAppSpecFunctionCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionEnvInput)(nil)).Elem(), GetAppSpecFunctionEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionEnvArrayInput)(nil)).Elem(), GetAppSpecFunctionEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionGitInput)(nil)).Elem(), GetAppSpecFunctionGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionGitPtrInput)(nil)).Elem(), GetAppSpecFunctionGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionGithubInput)(nil)).Elem(), GetAppSpecFunctionGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionGithubPtrInput)(nil)).Elem(), GetAppSpecFunctionGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionGitlabInput)(nil)).Elem(), GetAppSpecFunctionGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionGitlabPtrInput)(nil)).Elem(), GetAppSpecFunctionGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationArrayInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionRouteInput)(nil)).Elem(), GetAppSpecFunctionRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionRouteArrayInput)(nil)).Elem(), GetAppSpecFunctionRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobInput)(nil)).Elem(), GetAppSpecJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobArrayInput)(nil)).Elem(), GetAppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertInput)(nil)).Elem(), GetAppSpecJobAlertArgs{})
@@ -25575,6 +29879,32 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecDomainNameArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecEnvArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionAlertOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionCorsOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionCorsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionCorsAllowOriginsOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionCorsAllowOriginsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionEnvOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionEnvArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionGitOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionGitPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionGithubOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionGithubPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionGitlabOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionGitlabPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationPapertrailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionRouteOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionRouteArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobOutput{})
 	pulumi.RegisterOutputType(AppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobAlertOutput{})
@@ -25718,6 +30048,32 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecDomainOutput{})
 	pulumi.RegisterOutputType(GetAppSpecEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionAlertOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionCorsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionCorsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionCorsAllowOriginsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionCorsAllowOriginsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionEnvOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionGitOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionGitPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionGithubOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionGithubPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionGitlabOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionGitlabPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationPapertrailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionRouteOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobAlertOutput{})

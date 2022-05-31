@@ -13,6 +13,9 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecJobResult
     {
+        /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecJobAlertResult> Alerts;
         /// <summary>
         /// An optional build command to run while building this component from source.
@@ -62,6 +65,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         /// </summary>
         public readonly string? Kind;
+        /// <summary>
+        /// Describes a log forwarding destination.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecJobLogDestinationResult> LogDestinations;
         /// <summary>
         /// The name of the component.

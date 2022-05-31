@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const foo = new digitalocean.KubernetesCluster("foo", {
  *     region: "nyc1",
- *     version: "1.20.2-do.0",
+ *     version: "1.22.8-do.1",
  *     nodePool: {
  *         name: "front-end-pool",
  *         size: "s-2vcpu-2gb",

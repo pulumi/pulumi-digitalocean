@@ -304,6 +304,43 @@ func (o CdnOutput) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 	return o
 }
 
+// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+//
+// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
+func (o CdnOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cdn) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
+func (o CdnOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cdn) pulumi.StringOutput { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// The date and time when the CDN Endpoint was created.
+func (o CdnOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cdn) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
+func (o CdnOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cdn) pulumi.StringPtrOutput { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified domain name (FQDN) from which the CDN-backed content is served.
+func (o CdnOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cdn) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The fully qualified domain name, (FQDN) for a Space.
+func (o CdnOutput) Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cdn) pulumi.StringOutput { return v.Origin }).(pulumi.StringOutput)
+}
+
+// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
+func (o CdnOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cdn) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
 type CdnArrayOutput struct{ *pulumi.OutputState }
 
 func (CdnArrayOutput) ElementType() reflect.Type {

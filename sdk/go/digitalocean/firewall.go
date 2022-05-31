@@ -346,6 +346,54 @@ func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) Firewal
 	return o
 }
 
+// A time value given in ISO8601 combined date and time format
+// that represents when the Firewall was created.
+func (o FirewallOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The list of the IDs of the Droplets assigned
+// to the Firewall.
+func (o FirewallOutput) DropletIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.IntArrayOutput { return v.DropletIds }).(pulumi.IntArrayOutput)
+}
+
+// The inbound access rule block for the Firewall.
+// The `inboundRule` block is documented below.
+func (o FirewallOutput) InboundRules() FirewallInboundRuleArrayOutput {
+	return o.ApplyT(func(v *Firewall) FirewallInboundRuleArrayOutput { return v.InboundRules }).(FirewallInboundRuleArrayOutput)
+}
+
+// The Firewall name
+func (o FirewallOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The outbound access rule block for the Firewall.
+// The `outboundRule` block is documented below.
+func (o FirewallOutput) OutboundRules() FirewallOutboundRuleArrayOutput {
+	return o.ApplyT(func(v *Firewall) FirewallOutboundRuleArrayOutput { return v.OutboundRules }).(FirewallOutboundRuleArrayOutput)
+}
+
+// An list of object containing the fields, "dropletId",
+// "removing", and "status".  It is provided to detail exactly which Droplets
+// are having their security policies updated.  When empty, all changes
+// have been successfully applied.
+func (o FirewallOutput) PendingChanges() FirewallPendingChangeArrayOutput {
+	return o.ApplyT(func(v *Firewall) FirewallPendingChangeArrayOutput { return v.PendingChanges }).(FirewallPendingChangeArrayOutput)
+}
+
+// A status string indicating the current state of the Firewall.
+// This can be "waiting", "succeeded", or "failed".
+func (o FirewallOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The names of the Tags assigned to the Firewall.
+func (o FirewallOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type FirewallArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallArrayOutput) ElementType() reflect.Type {

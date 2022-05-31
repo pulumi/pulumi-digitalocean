@@ -353,6 +353,68 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
+// A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
+func (o VolumeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A list of associated droplet ids.
+func (o VolumeOutput) DropletIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Volume) pulumi.IntArrayOutput { return v.DropletIds }).(pulumi.IntArrayOutput)
+}
+
+// Filesystem label for the block storage volume.
+func (o VolumeOutput) FilesystemLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.FilesystemLabel }).(pulumi.StringOutput)
+}
+
+// Filesystem type (`xfs` or `ext4`) for the block storage volume.
+//
+// Deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+func (o VolumeOutput) FilesystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.FilesystemType }).(pulumi.StringOutput)
+}
+
+// Initial filesystem label for the block storage volume.
+func (o VolumeOutput) InitialFilesystemLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.InitialFilesystemLabel }).(pulumi.StringPtrOutput)
+}
+
+// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
+func (o VolumeOutput) InitialFilesystemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.InitialFilesystemType }).(pulumi.StringPtrOutput)
+}
+
+// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+func (o VolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region that the block storage volume will be created in.
+func (o VolumeOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The size of the block storage volume in GiB. If updated, can only be expanded.
+func (o VolumeOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *Volume) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+func (o VolumeOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+// A list of the tags to be applied to this Volume.
+func (o VolumeOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The uniform resource name for the volume.
+func (o VolumeOutput) VolumeUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.VolumeUrn }).(pulumi.StringOutput)
+}
+
 type VolumeArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeArrayOutput) ElementType() reflect.Type {

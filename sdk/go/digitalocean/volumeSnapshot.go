@@ -245,6 +245,41 @@ func (o VolumeSnapshotOutput) ToVolumeSnapshotOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The date and time the volume snapshot was created.
+func (o VolumeSnapshotOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeSnapshot) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
+func (o VolumeSnapshotOutput) MinDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *VolumeSnapshot) pulumi.IntOutput { return v.MinDiskSize }).(pulumi.IntOutput)
+}
+
+// A name for the volume snapshot.
+func (o VolumeSnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeSnapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
+func (o VolumeSnapshotOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VolumeSnapshot) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// The billable size of the volume snapshot in gigabytes.
+func (o VolumeSnapshotOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v *VolumeSnapshot) pulumi.Float64Output { return v.Size }).(pulumi.Float64Output)
+}
+
+// A list of the tags to be applied to this volume snapshot.
+func (o VolumeSnapshotOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VolumeSnapshot) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the volume from which the volume snapshot originated.
+func (o VolumeSnapshotOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeSnapshot) pulumi.StringOutput { return v.VolumeId }).(pulumi.StringOutput)
+}
+
 type VolumeSnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeSnapshotArrayOutput) ElementType() reflect.Type {

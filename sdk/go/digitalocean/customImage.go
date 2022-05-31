@@ -286,6 +286,68 @@ func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) C
 	return o
 }
 
+func (o CustomImageOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// An optional description for the image.
+func (o CustomImageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+func (o CustomImageOutput) Distribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Distribution }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomImageOutput) ImageId() pulumi.IntOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.IntOutput { return v.ImageId }).(pulumi.IntOutput)
+}
+
+func (o CustomImageOutput) MinDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.IntOutput { return v.MinDiskSize }).(pulumi.IntOutput)
+}
+
+// A name for the Custom Image.
+func (o CustomImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CustomImageOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.BoolOutput { return v.Public }).(pulumi.BoolOutput)
+}
+
+// A list of regions. (Currently only one is supported).
+func (o CustomImageOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+func (o CustomImageOutput) SizeGigabytes() pulumi.Float64Output {
+	return o.ApplyT(func(v *CustomImage) pulumi.Float64Output { return v.SizeGigabytes }).(pulumi.Float64Output)
+}
+
+func (o CustomImageOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
+}
+
+func (o CustomImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of optional tags for the image.
+func (o CustomImageOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o CustomImageOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// A URL from which the custom Linux virtual machine image may be retrieved.
+func (o CustomImageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 type CustomImageArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomImageArrayOutput) ElementType() reflect.Type {

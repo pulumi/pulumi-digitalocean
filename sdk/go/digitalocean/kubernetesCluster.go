@@ -315,6 +315,100 @@ func (o KubernetesClusterOutput) ToKubernetesClusterOutputWithContext(ctx contex
 	return o
 }
 
+// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+func (o KubernetesClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// The range of IP addresses in the overlay network of the Kubernetes cluster.
+func (o KubernetesClusterOutput) ClusterSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ClusterSubnet }).(pulumi.StringOutput)
+}
+
+// The uniform resource name (URN) for the Kubernetes cluster.
+func (o KubernetesClusterOutput) ClusterUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ClusterUrn }).(pulumi.StringOutput)
+}
+
+// The date and time when the node was created.
+func (o KubernetesClusterOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The base URL of the API server on the Kubernetes master node.
+func (o KubernetesClusterOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+func (o KubernetesClusterOutput) Ha() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.Ha }).(pulumi.BoolPtrOutput)
+}
+
+// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
+func (o KubernetesClusterOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+func (o KubernetesClusterOutput) KubeConfigs() KubernetesClusterKubeConfigArrayOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterKubeConfigArrayOutput { return v.KubeConfigs }).(KubernetesClusterKubeConfigArrayOutput)
+}
+
+// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
+func (o KubernetesClusterOutput) MaintenancePolicy() KubernetesClusterMaintenancePolicyOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterMaintenancePolicyOutput { return v.MaintenancePolicy }).(KubernetesClusterMaintenancePolicyOutput)
+}
+
+// A name for the node pool.
+func (o KubernetesClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+func (o KubernetesClusterOutput) NodePool() KubernetesClusterNodePoolOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterNodePoolOutput { return v.NodePool }).(KubernetesClusterNodePoolOutput)
+}
+
+// The slug identifier for the region where the Kubernetes cluster will be created.
+func (o KubernetesClusterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The range of assignable IP addresses for services running in the Kubernetes cluster.
+func (o KubernetesClusterOutput) ServiceSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ServiceSubnet }).(pulumi.StringOutput)
+}
+
+// A string indicating the current status of the individual node.
+func (o KubernetesClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Enable/disable surge upgrades for a cluster. Default: false
+func (o KubernetesClusterOutput) SurgeUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.SurgeUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// A list of tag names to be applied to the Kubernetes cluster.
+func (o KubernetesClusterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The date and time when the node was last updated.
+func (o KubernetesClusterOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
+func (o KubernetesClusterOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC where the Kubernetes cluster will be located.
+func (o KubernetesClusterOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
 type KubernetesClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterArrayOutput) ElementType() reflect.Type {
