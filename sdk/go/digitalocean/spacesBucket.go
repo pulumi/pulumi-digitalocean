@@ -345,6 +345,51 @@ func (o SpacesBucketOutput) ToSpacesBucketOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Canned ACL applied on bucket creation (`private` or `public-read`)
+func (o SpacesBucketOutput) Acl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+}
+
+// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+func (o SpacesBucketOutput) BucketDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucket) pulumi.StringOutput { return v.BucketDomainName }).(pulumi.StringOutput)
+}
+
+// The uniform resource name for the bucket
+func (o SpacesBucketOutput) BucketUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucket) pulumi.StringOutput { return v.BucketUrn }).(pulumi.StringOutput)
+}
+
+// A rule of Cross-Origin Resource Sharing (documented below).
+func (o SpacesBucketOutput) CorsRules() SpacesBucketCorsRuleArrayOutput {
+	return o.ApplyT(func(v *SpacesBucket) SpacesBucketCorsRuleArrayOutput { return v.CorsRules }).(SpacesBucketCorsRuleArrayOutput)
+}
+
+// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+func (o SpacesBucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SpacesBucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// A configuration of object lifecycle management (documented below).
+func (o SpacesBucketOutput) LifecycleRules() SpacesBucketLifecycleRuleArrayOutput {
+	return o.ApplyT(func(v *SpacesBucket) SpacesBucketLifecycleRuleArrayOutput { return v.LifecycleRules }).(SpacesBucketLifecycleRuleArrayOutput)
+}
+
+// The name of the bucket
+func (o SpacesBucketOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region where the bucket resides (Defaults to `nyc3`)
+func (o SpacesBucketOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucket) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A state of versioning (documented below)
+func (o SpacesBucketOutput) Versioning() SpacesBucketVersioningPtrOutput {
+	return o.ApplyT(func(v *SpacesBucket) SpacesBucketVersioningPtrOutput { return v.Versioning }).(SpacesBucketVersioningPtrOutput)
+}
+
 type SpacesBucketArrayOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketArrayOutput) ElementType() reflect.Type {

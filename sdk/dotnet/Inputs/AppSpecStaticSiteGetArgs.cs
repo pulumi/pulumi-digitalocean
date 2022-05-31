@@ -61,7 +61,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? ErrorDocument { get; set; }
 
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         /// </summary>
         [Input("git")]
         public Input<Inputs.AppSpecStaticSiteGitGetArgs>? Git { get; set; }

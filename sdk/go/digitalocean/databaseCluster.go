@@ -435,6 +435,106 @@ func (o DatabaseClusterOutput) ToDatabaseClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+// The uniform resource name of the database cluster.
+func (o DatabaseClusterOutput) ClusterUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.ClusterUrn }).(pulumi.StringOutput)
+}
+
+// Name of the cluster's default database.
+func (o DatabaseClusterOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+func (o DatabaseClusterOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+func (o DatabaseClusterOutput) EvictionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.EvictionPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Database cluster's hostname.
+func (o DatabaseClusterOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// Defines when the automatic maintenance should be performed for the database cluster.
+func (o DatabaseClusterOutput) MaintenanceWindows() DatabaseClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v *DatabaseCluster) DatabaseClusterMaintenanceWindowArrayOutput { return v.MaintenanceWindows }).(DatabaseClusterMaintenanceWindowArrayOutput)
+}
+
+// The name of the database cluster.
+func (o DatabaseClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Number of nodes that will be included in the cluster.
+func (o DatabaseClusterOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Password for the cluster's default user.
+func (o DatabaseClusterOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// Network port that the database cluster is listening on.
+func (o DatabaseClusterOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Same as `host`, but only accessible from resources within the account and in the same region.
+func (o DatabaseClusterOutput) PrivateHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.PrivateHost }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC where the database cluster will be located.
+func (o DatabaseClusterOutput) PrivateNetworkUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.PrivateNetworkUuid }).(pulumi.StringOutput)
+}
+
+// Same as `uri`, but only accessible from resources within the account and in the same region.
+func (o DatabaseClusterOutput) PrivateUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.PrivateUri }).(pulumi.StringOutput)
+}
+
+// DigitalOcean region where the cluster will reside.
+func (o DatabaseClusterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+func (o DatabaseClusterOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
+}
+
+// A comma separated string specifying the  SQL modes for a MySQL cluster.
+func (o DatabaseClusterOutput) SqlMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.SqlMode }).(pulumi.StringPtrOutput)
+}
+
+// A list of tag names to be applied to the database cluster.
+func (o DatabaseClusterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The full URI for connecting to the database cluster.
+func (o DatabaseClusterOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Username for the cluster's default user.
+func (o DatabaseClusterOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+}
+
+// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+func (o DatabaseClusterOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type DatabaseClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseClusterArrayOutput) ElementType() reflect.Type {

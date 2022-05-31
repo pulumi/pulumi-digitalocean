@@ -13,6 +13,9 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecResult
     {
+        /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecAlertResult> Alerts;
         public readonly ImmutableArray<Outputs.GetAppSpecDatabaseResult> Databases;
         public readonly ImmutableArray<string> Domains;
@@ -20,6 +23,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Describes an environment variable made available to an app competent.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecEnvResult> Envs;
+        public readonly ImmutableArray<Outputs.GetAppSpecFunctionResult> Functions;
         public readonly ImmutableArray<Outputs.GetAppSpecJobResult> Jobs;
         /// <summary>
         /// The name of the component.
@@ -40,6 +44,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.GetAppSpecEnvResult> envs,
 
+            ImmutableArray<Outputs.GetAppSpecFunctionResult> functions,
+
             ImmutableArray<Outputs.GetAppSpecJobResult> jobs,
 
             string name,
@@ -56,6 +62,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Databases = databases;
             Domains = domains;
             Envs = envs;
+            Functions = functions;
             Jobs = jobs;
             Name = name;
             Region = region;

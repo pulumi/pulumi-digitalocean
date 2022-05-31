@@ -275,6 +275,16 @@ func (o DatabaseFirewallOutput) ToDatabaseFirewallOutputWithContext(ctx context.
 	return o
 }
 
+// The ID of the target database cluster.
+func (o DatabaseFirewallOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseFirewall) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+func (o DatabaseFirewallOutput) Rules() DatabaseFirewallRuleArrayOutput {
+	return o.ApplyT(func(v *DatabaseFirewall) DatabaseFirewallRuleArrayOutput { return v.Rules }).(DatabaseFirewallRuleArrayOutput)
+}
+
 type DatabaseFirewallArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseFirewallArrayOutput) ElementType() reflect.Type {

@@ -15,6 +15,19 @@ __all__ = [
     'AppSpecDatabaseArgs',
     'AppSpecDomainNameArgs',
     'AppSpecEnvArgs',
+    'AppSpecFunctionArgs',
+    'AppSpecFunctionAlertArgs',
+    'AppSpecFunctionCorsArgs',
+    'AppSpecFunctionCorsAllowOriginsArgs',
+    'AppSpecFunctionEnvArgs',
+    'AppSpecFunctionGitArgs',
+    'AppSpecFunctionGithubArgs',
+    'AppSpecFunctionGitlabArgs',
+    'AppSpecFunctionLogDestinationArgs',
+    'AppSpecFunctionLogDestinationDatadogArgs',
+    'AppSpecFunctionLogDestinationLogtailArgs',
+    'AppSpecFunctionLogDestinationPapertrailArgs',
+    'AppSpecFunctionRouteArgs',
     'AppSpecJobArgs',
     'AppSpecJobAlertArgs',
     'AppSpecJobEnvArgs',
@@ -115,6 +128,7 @@ class AppSpecArgs:
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]] = None,
+                 functions: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgs']]]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgs']]]] = None,
@@ -141,6 +155,8 @@ class AppSpecArgs:
             pulumi.set(__self__, "domains", domains)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if functions is not None:
+            pulumi.set(__self__, "functions", functions)
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
         if region is not None:
@@ -217,6 +233,15 @@ class AppSpecArgs:
     @envs.setter
     def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]]):
         pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def functions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgs']]]]:
+        return pulumi.get(self, "functions")
+
+    @functions.setter
+    def functions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgs']]]]):
+        pulumi.set(self, "functions", value)
 
     @property
     @pulumi.getter
@@ -566,6 +591,820 @@ class AppSpecEnvArgs:
 
 
 @pulumi.input_type
+class AppSpecFunctionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 alerts: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgs']]]] = None,
+                 cors: Optional[pulumi.Input['AppSpecFunctionCorsArgs']] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgs']]]] = None,
+                 git: Optional[pulumi.Input['AppSpecFunctionGitArgs']] = None,
+                 github: Optional[pulumi.Input['AppSpecFunctionGithubArgs']] = None,
+                 gitlab: Optional[pulumi.Input['AppSpecFunctionGitlabArgs']] = None,
+                 log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgs']]]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgs']]]] = None,
+                 source_dir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgs']]] alerts: Describes an alert policy for the component.
+        :param pulumi.Input['AppSpecFunctionCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input['AppSpecFunctionGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param pulumi.Input['AppSpecFunctionGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input['AppSpecFunctionGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
+        :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
+        """
+        pulumi.set(__self__, "name", name)
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if github is not None:
+            pulumi.set(__self__, "github", github)
+        if gitlab is not None:
+            pulumi.set(__self__, "gitlab", gitlab)
+        if log_destinations is not None:
+            pulumi.set(__self__, "log_destinations", log_destinations)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+        if source_dir is not None:
+            pulumi.set(__self__, "source_dir", source_dir)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgs']]]]:
+        """
+        Describes an alert policy for the component.
+        """
+        return pulumi.get(self, "alerts")
+
+    @alerts.setter
+    def alerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgs']]]]):
+        pulumi.set(self, "alerts", value)
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional[pulumi.Input['AppSpecFunctionCorsArgs']]:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @cors.setter
+    def cors(self, value: Optional[pulumi.Input['AppSpecFunctionCorsArgs']]):
+        pulumi.set(self, "cors", value)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgs']]]]:
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional[pulumi.Input['AppSpecFunctionGitArgs']]:
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        """
+        return pulumi.get(self, "git")
+
+    @git.setter
+    def git(self, value: Optional[pulumi.Input['AppSpecFunctionGitArgs']]):
+        pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter
+    def github(self) -> Optional[pulumi.Input['AppSpecFunctionGithubArgs']]:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "github")
+
+    @github.setter
+    def github(self, value: Optional[pulumi.Input['AppSpecFunctionGithubArgs']]):
+        pulumi.set(self, "github", value)
+
+    @property
+    @pulumi.getter
+    def gitlab(self) -> Optional[pulumi.Input['AppSpecFunctionGitlabArgs']]:
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "gitlab")
+
+    @gitlab.setter
+    def gitlab(self, value: Optional[pulumi.Input['AppSpecFunctionGitlabArgs']]):
+        pulumi.set(self, "gitlab", value)
+
+    @property
+    @pulumi.getter(name="logDestinations")
+    def log_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgs']]]]:
+        """
+        Describes a log forwarding destination.
+        """
+        return pulumi.get(self, "log_destinations")
+
+    @log_destinations.setter
+    def log_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgs']]]]):
+        pulumi.set(self, "log_destinations", value)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgs']]]]:
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgs']]]]):
+        pulumi.set(self, "routes", value)
+
+    @property
+    @pulumi.getter(name="sourceDir")
+    def source_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional path to the working directory to use for the build.
+        """
+        return pulumi.get(self, "source_dir")
+
+    @source_dir.setter
+    def source_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_dir", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionAlertArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 rule: pulumi.Input[str],
+                 value: pulumi.Input[float],
+                 window: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        :param pulumi.Input[str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input[float] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param pulumi.Input[bool] disabled: Determines whether or not the alert is disabled (default: `false`).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "window", window)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[str]:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[float]:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def window(self) -> pulumi.Input[str]:
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        return pulumi.get(self, "window")
+
+    @window.setter
+    def window(self, value: pulumi.Input[str]):
+        pulumi.set(self, "window", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionCorsArgs:
+    def __init__(__self__, *,
+                 allow_credentials: Optional[pulumi.Input[bool]] = None,
+                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_origins: Optional[pulumi.Input['AppSpecFunctionCorsAllowOriginsArgs']] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param pulumi.Input['AppSpecFunctionCorsAllowOriginsArgs'] allow_origins: The `Access-Control-Allow-Origin` can be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param pulumi.Input[str] max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @allow_headers.setter
+    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_headers", value)
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @allow_methods.setter
+    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_methods", value)
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[pulumi.Input['AppSpecFunctionCorsAllowOriginsArgs']]:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @allow_origins.setter
+    def allow_origins(self, value: Optional[pulumi.Input['AppSpecFunctionCorsAllowOriginsArgs']]):
+        pulumi.set(self, "allow_origins", value)
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @expose_headers.setter
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "expose_headers", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_age", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionCorsAllowOriginsArgs:
+    def __init__(__self__, *,
+                 exact: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 regex: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param pulumi.Input[str] prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param pulumi.Input[str] regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exact", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionEnvArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The name of the environment variable.
+        :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionGitArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 repo_clone_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[str] repo_clone_url: The clone URL of the repo.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if repo_clone_url is not None:
+            pulumi.set(__self__, "repo_clone_url", repo_clone_url)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="repoCloneUrl")
+    def repo_clone_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The clone URL of the repo.
+        """
+        return pulumi.get(self, "repo_clone_url")
+
+    @repo_clone_url.setter
+    def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_clone_url", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionGithubArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deploy_on_push: Optional[pulumi.Input[bool]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[bool] deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[str] repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @deploy_on_push.setter
+    def deploy_on_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_on_push", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionGitlabArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deploy_on_push: Optional[pulumi.Input[bool]] = None,
+                 repo: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: The name of the branch to use.
+        :param pulumi.Input[bool] deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[str] repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @deploy_on_push.setter
+    def deploy_on_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_on_push", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionLogDestinationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 datadog: Optional[pulumi.Input['AppSpecFunctionLogDestinationDatadogArgs']] = None,
+                 logtail: Optional[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs']] = None,
+                 papertrail: Optional[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs']] = None):
+        """
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input['AppSpecFunctionLogDestinationDatadogArgs'] datadog: Datadog configuration.
+        :param pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs'] logtail: Logtail configuration.
+        :param pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
+        """
+        pulumi.set(__self__, "name", name)
+        if datadog is not None:
+            pulumi.set(__self__, "datadog", datadog)
+        if logtail is not None:
+            pulumi.set(__self__, "logtail", logtail)
+        if papertrail is not None:
+            pulumi.set(__self__, "papertrail", papertrail)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def datadog(self) -> Optional[pulumi.Input['AppSpecFunctionLogDestinationDatadogArgs']]:
+        """
+        Datadog configuration.
+        """
+        return pulumi.get(self, "datadog")
+
+    @datadog.setter
+    def datadog(self, value: Optional[pulumi.Input['AppSpecFunctionLogDestinationDatadogArgs']]):
+        pulumi.set(self, "datadog", value)
+
+    @property
+    @pulumi.getter
+    def logtail(self) -> Optional[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs']]:
+        """
+        Logtail configuration.
+        """
+        return pulumi.get(self, "logtail")
+
+    @logtail.setter
+    def logtail(self, value: Optional[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs']]):
+        pulumi.set(self, "logtail", value)
+
+    @property
+    @pulumi.getter
+    def papertrail(self) -> Optional[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs']]:
+        """
+        Papertrail configuration.
+        """
+        return pulumi.get(self, "papertrail")
+
+    @papertrail.setter
+    def papertrail(self, value: Optional[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs']]):
+        pulumi.set(self, "papertrail", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionLogDestinationDatadogArgs:
+    def __init__(__self__, *,
+                 api_key: pulumi.Input[str],
+                 endpoint: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_key: Datadog API key.
+        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[str]:
+        """
+        Datadog API key.
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionLogDestinationLogtailArgs:
+    def __init__(__self__, *,
+                 token: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token: Logtail token.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[str]:
+        """
+        Logtail token.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionLogDestinationPapertrailArgs:
+    def __init__(__self__, *,
+                 endpoint: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[str]:
+        """
+        Datadog HTTP log intake endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionRouteArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None,
+                 preserve_path_prefix: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] path: Paths must start with `/` and must be unique within the app.
+        :param pulumi.Input[bool] preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if preserve_path_prefix is not None:
+            pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> Optional[pulumi.Input[bool]]:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
+
+    @preserve_path_prefix.setter
+    def preserve_path_prefix(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preserve_path_prefix", value)
+
+
+@pulumi.input_type
 class AppSpecJobArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -591,7 +1430,7 @@ class AppSpecJobArgs:
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecJobGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param pulumi.Input['AppSpecJobGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param pulumi.Input['AppSpecJobGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecJobGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecJobImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
@@ -714,7 +1553,7 @@ class AppSpecJobArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecJobGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         """
         return pulumi.get(self, "git")
 
@@ -1390,7 +2229,7 @@ class AppSpecServiceArgs:
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecServiceGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param pulumi.Input['AppSpecServiceGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param pulumi.Input['AppSpecServiceGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecServiceGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecServiceHealthCheckArgs'] health_check: A health check to determine the availability of this component.
@@ -1531,7 +2370,7 @@ class AppSpecServiceArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecServiceGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         """
         return pulumi.get(self, "git")
 
@@ -2532,7 +3371,7 @@ class AppSpecStaticSiteArgs:
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[str] error_document: The name of the error document to use when serving this static site.
-        :param pulumi.Input['AppSpecStaticSiteGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param pulumi.Input['AppSpecStaticSiteGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param pulumi.Input['AppSpecStaticSiteGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecStaticSiteGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[str] index_document: The name of the index document to use when serving this static site.
@@ -2669,7 +3508,7 @@ class AppSpecStaticSiteArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecStaticSiteGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         """
         return pulumi.get(self, "git")
 
@@ -3189,7 +4028,7 @@ class AppSpecWorkerArgs:
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecWorkerGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        :param pulumi.Input['AppSpecWorkerGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param pulumi.Input['AppSpecWorkerGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecWorkerGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecWorkerImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
@@ -3305,7 +4144,7 @@ class AppSpecWorkerArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecWorkerGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         """
         return pulumi.get(self, "git")
 
@@ -6921,6 +7760,7 @@ class GetSshKeysFilterArgs:
                  match_by: Optional[str] = None):
         """
         :param str key: Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        :param Sequence[str] values: A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
@@ -6944,6 +7784,9 @@ class GetSshKeysFilterArgs:
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+        """
         return pulumi.get(self, "values")
 
     @values.setter

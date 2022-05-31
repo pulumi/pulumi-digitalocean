@@ -313,6 +313,55 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// the date and time when the project was created, (ISO8601)
+func (o ProjectOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// the description of the project
+func (o ProjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
+func (o ProjectOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The name of the Project
+func (o ProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// the id of the project owner.
+func (o ProjectOutput) OwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.OwnerId }).(pulumi.IntOutput)
+}
+
+// the unique universal identifier of the project owner.
+func (o ProjectOutput) OwnerUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OwnerUuid }).(pulumi.StringOutput)
+}
+
+// the purpose of the project, (Default: "Web Application")
+func (o ProjectOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Purpose }).(pulumi.StringPtrOutput)
+}
+
+// a list of uniform resource names (URNs) for the resources associated with the project
+func (o ProjectOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+// the date and time when the project was last updated, (ISO8601)
+func (o ProjectOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type ProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectArrayOutput) ElementType() reflect.Type {

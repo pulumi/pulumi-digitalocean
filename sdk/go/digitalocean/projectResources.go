@@ -233,6 +233,16 @@ func (o ProjectResourcesOutput) ToProjectResourcesOutputWithContext(ctx context.
 	return o
 }
 
+// the ID of the project
+func (o ProjectResourcesOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectResources) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// a list of uniform resource names (URNs) for the resources associated with the project
+func (o ProjectResourcesOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectResources) pulumi.StringArrayOutput { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
 type ProjectResourcesArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectResourcesArrayOutput) ElementType() reflect.Type {

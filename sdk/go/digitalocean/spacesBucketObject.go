@@ -402,6 +402,92 @@ func (o SpacesBucketObjectOutput) ToSpacesBucketObjectOutputWithContext(ctx cont
 	return o
 }
 
+// The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
+func (o SpacesBucketObjectOutput) Acl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+}
+
+// The name of the bucket to put the file in.
+func (o SpacesBucketObjectOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+func (o SpacesBucketObjectOutput) CacheControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.CacheControl }).(pulumi.StringPtrOutput)
+}
+
+// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
+func (o SpacesBucketObjectOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+func (o SpacesBucketObjectOutput) ContentBase64() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
+}
+
+// Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+func (o SpacesBucketObjectOutput) ContentDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.ContentDisposition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
+func (o SpacesBucketObjectOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.ContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+// The language the content is in e.g. en-US or en-GB.
+func (o SpacesBucketObjectOutput) ContentLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.ContentLanguage }).(pulumi.StringPtrOutput)
+}
+
+// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+func (o SpacesBucketObjectOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// Used to trigger updates.
+func (o SpacesBucketObjectOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Allow the object to be deleted by removing any legal hold on any object version.
+// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+func (o SpacesBucketObjectOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the object once it is in the bucket.
+func (o SpacesBucketObjectOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
+func (o SpacesBucketObjectOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The region where the bucket resides (Defaults to `nyc3`)
+func (o SpacesBucketObjectOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The path to a file that will be read and uploaded as raw bytes for the object content.
+func (o SpacesBucketObjectOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// A unique version ID value for the object, if bucket versioning is enabled.
+func (o SpacesBucketObjectOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
+}
+
+// Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
+func (o SpacesBucketObjectOutput) WebsiteRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringPtrOutput { return v.WebsiteRedirect }).(pulumi.StringPtrOutput)
+}
+
 type SpacesBucketObjectArrayOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketObjectArrayOutput) ElementType() reflect.Type {

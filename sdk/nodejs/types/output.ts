@@ -22,6 +22,7 @@ export interface AppSpec {
      * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.AppSpecEnv[];
+    functions?: outputs.AppSpecFunction[];
     jobs?: outputs.AppSpecJob[];
     /**
      * The name of the component.
@@ -116,6 +117,226 @@ export interface AppSpecEnv {
     value?: string;
 }
 
+export interface AppSpecFunction {
+    /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: outputs.AppSpecFunctionAlert[];
+    /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors?: outputs.AppSpecFunctionCors;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.AppSpecFunctionEnv[];
+    /**
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     */
+    git?: outputs.AppSpecFunctionGit;
+    /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    github?: outputs.AppSpecFunctionGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    gitlab?: outputs.AppSpecFunctionGitlab;
+    /**
+     * Describes a log forwarding destination.
+     */
+    logDestinations?: outputs.AppSpecFunctionLogDestination[];
+    /**
+     * The name of the component.
+     */
+    name: string;
+    routes: outputs.AppSpecFunctionRoute[];
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface AppSpecFunctionAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: boolean;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
+    operator: string;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: string;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: number;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
+    window: string;
+}
+
+export interface AppSpecFunctionCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
+    allowCredentials?: boolean;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: string[];
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: string[];
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: outputs.AppSpecFunctionCorsAllowOrigins;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: string[];
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: string;
+}
+
+export interface AppSpecFunctionCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: string;
+}
+
+export interface AppSpecFunctionEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value?: string;
+}
+
+export interface AppSpecFunctionGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface AppSpecFunctionGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface AppSpecFunctionGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface AppSpecFunctionLogDestination {
+    /**
+     * Datadog configuration.
+     */
+    datadog?: outputs.AppSpecFunctionLogDestinationDatadog;
+    /**
+     * Logtail configuration.
+     */
+    logtail?: outputs.AppSpecFunctionLogDestinationLogtail;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * Papertrail configuration.
+     */
+    papertrail?: outputs.AppSpecFunctionLogDestinationPapertrail;
+}
+
+export interface AppSpecFunctionLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
+    apiKey: string;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint?: string;
+}
+
+export interface AppSpecFunctionLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
+    token: string;
+}
+
+export interface AppSpecFunctionLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint: string;
+}
+
+export interface AppSpecFunctionRoute {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: string;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: boolean;
+}
+
 export interface AppSpecJob {
     /**
      * Describes an alert policy for the component.
@@ -138,7 +359,7 @@ export interface AppSpecJob {
      */
     envs?: outputs.AppSpecJobEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      */
     git?: outputs.AppSpecJobGit;
     /**
@@ -359,7 +580,7 @@ export interface AppSpecService {
      */
     envs?: outputs.AppSpecServiceEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      */
     git?: outputs.AppSpecServiceGit;
     /**
@@ -669,7 +890,7 @@ export interface AppSpecStaticSite {
      */
     errorDocument?: string;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      */
     git?: outputs.AppSpecStaticSiteGit;
     /**
@@ -834,7 +1055,7 @@ export interface AppSpecWorker {
      */
     envs?: outputs.AppSpecWorkerEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      */
     git?: outputs.AppSpecWorkerGit;
     /**
@@ -1146,6 +1367,9 @@ export interface FirewallPendingChange {
 }
 
 export interface GetAppSpec {
+    /**
+     * Describes an alert policy for the component.
+     */
     alerts?: outputs.GetAppSpecAlert[];
     databases?: outputs.GetAppSpecDatabase[];
     /**
@@ -1156,6 +1380,7 @@ export interface GetAppSpec {
      * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.GetAppSpecEnv[];
+    functions?: outputs.GetAppSpecFunction[];
     jobs?: outputs.GetAppSpecJob[];
     /**
      * The name of the component.
@@ -1168,7 +1393,13 @@ export interface GetAppSpec {
 }
 
 export interface GetAppSpecAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
     disabled?: boolean;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
     rule: string;
 }
 
@@ -1217,12 +1448,235 @@ export interface GetAppSpecEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
 
+export interface GetAppSpecFunction {
+    /**
+     * Describes an alert policy for the component.
+     */
+    alerts?: outputs.GetAppSpecFunctionAlert[];
+    /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors?: outputs.GetAppSpecFunctionCors;
+    /**
+     * Describes an environment variable made available to an app competent.
+     */
+    envs?: outputs.GetAppSpecFunctionEnv[];
+    /**
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     */
+    git?: outputs.GetAppSpecFunctionGit;
+    /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    github?: outputs.GetAppSpecFunctionGithub;
+    /**
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     */
+    gitlab?: outputs.GetAppSpecFunctionGitlab;
+    /**
+     * Describes a log forwarding destination.
+     */
+    logDestinations?: outputs.GetAppSpecFunctionLogDestination[];
+    /**
+     * The name of the component.
+     */
+    name: string;
+    routes: outputs.GetAppSpecFunctionRoute[];
+    /**
+     * An optional path to the working directory to use for the build.
+     */
+    sourceDir?: string;
+}
+
+export interface GetAppSpecFunctionAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
+    disabled?: boolean;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
+    operator: string;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rule: string;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: number;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
+    window: string;
+}
+
+export interface GetAppSpecFunctionCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
+    allowCredentials?: boolean;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: string[];
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: string[];
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: outputs.GetAppSpecFunctionCorsAllowOrigins;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: string[];
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: string;
+}
+
+export interface GetAppSpecFunctionCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: string;
+}
+
+export interface GetAppSpecFunctionEnv {
+    /**
+     * The name of the environment variable.
+     */
+    key?: string;
+    /**
+     * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+     */
+    scope?: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value?: string;
+}
+
+export interface GetAppSpecFunctionGit {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * The clone URL of the repo.
+     */
+    repoCloneUrl?: string;
+}
+
+export interface GetAppSpecFunctionGithub {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface GetAppSpecFunctionGitlab {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
+}
+
+export interface GetAppSpecFunctionLogDestination {
+    /**
+     * Datadog configuration.
+     */
+    datadog?: outputs.GetAppSpecFunctionLogDestinationDatadog;
+    /**
+     * Logtail configuration.
+     */
+    logtail?: outputs.GetAppSpecFunctionLogDestinationLogtail;
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * Papertrail configuration.
+     */
+    papertrail?: outputs.GetAppSpecFunctionLogDestinationPapertrail;
+}
+
+export interface GetAppSpecFunctionLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
+    apiKey: string;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint?: string;
+}
+
+export interface GetAppSpecFunctionLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
+    token: string;
+}
+
+export interface GetAppSpecFunctionLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
+    endpoint: string;
+}
+
+export interface GetAppSpecFunctionRoute {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: string;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: boolean;
+}
+
 export interface GetAppSpecJob {
+    /**
+     * Describes an alert policy for the component.
+     */
     alerts?: outputs.GetAppSpecJobAlert[];
     /**
      * An optional build command to run while building this component from source.
@@ -1272,6 +1726,9 @@ export interface GetAppSpecJob {
      * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: string;
+    /**
+     * Describes a log forwarding destination.
+     */
     logDestinations?: outputs.GetAppSpecJobLogDestination[];
     /**
      * The name of the component.
@@ -1288,13 +1745,25 @@ export interface GetAppSpecJob {
 }
 
 export interface GetAppSpecJobAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
     disabled?: boolean;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
     operator: string;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
     rule: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value: number;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
     window: string;
 }
 
@@ -1312,7 +1781,7 @@ export interface GetAppSpecJobEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
@@ -1378,34 +1847,61 @@ export interface GetAppSpecJobImage {
 }
 
 export interface GetAppSpecJobLogDestination {
+    /**
+     * Datadog configuration.
+     */
     datadog?: outputs.GetAppSpecJobLogDestinationDatadog;
+    /**
+     * Logtail configuration.
+     */
     logtail?: outputs.GetAppSpecJobLogDestinationLogtail;
     /**
      * The name of the component.
      */
     name: string;
+    /**
+     * Papertrail configuration.
+     */
     papertrail?: outputs.GetAppSpecJobLogDestinationPapertrail;
 }
 
 export interface GetAppSpecJobLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
     apiKey: string;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
     endpoint?: string;
 }
 
 export interface GetAppSpecJobLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
     token: string;
 }
 
 export interface GetAppSpecJobLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
     endpoint: string;
 }
 
 export interface GetAppSpecService {
+    /**
+     * Describes an alert policy for the component.
+     */
     alerts?: outputs.GetAppSpecServiceAlert[];
     /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
+    /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
     cors?: outputs.GetAppSpecServiceCors;
     /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -1455,6 +1951,9 @@ export interface GetAppSpecService {
      * A list of ports on which this service will listen for internal traffic.
      */
     internalPorts?: number[];
+    /**
+     * Describes a log forwarding destination.
+     */
     logDestinations?: outputs.GetAppSpecServiceLogDestination[];
     /**
      * The name of the component.
@@ -1472,28 +1971,67 @@ export interface GetAppSpecService {
 }
 
 export interface GetAppSpecServiceAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
     disabled?: boolean;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
     operator: string;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
     rule: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value: number;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
     window: string;
 }
 
 export interface GetAppSpecServiceCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
     allowCredentials?: boolean;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
     allowHeaders?: string[];
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
     allowMethods?: string[];
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
     allowOrigins?: outputs.GetAppSpecServiceCorsAllowOrigins;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
     exposeHeaders?: string[];
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
     maxAge?: string;
 }
 
 export interface GetAppSpecServiceCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
     exact?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
     prefix?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
     regex?: string;
 }
 
@@ -1511,7 +2049,7 @@ export interface GetAppSpecServiceEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
@@ -1604,25 +2142,46 @@ export interface GetAppSpecServiceImage {
 }
 
 export interface GetAppSpecServiceLogDestination {
+    /**
+     * Datadog configuration.
+     */
     datadog?: outputs.GetAppSpecServiceLogDestinationDatadog;
+    /**
+     * Logtail configuration.
+     */
     logtail?: outputs.GetAppSpecServiceLogDestinationLogtail;
     /**
      * The name of the component.
      */
     name: string;
+    /**
+     * Papertrail configuration.
+     */
     papertrail?: outputs.GetAppSpecServiceLogDestinationPapertrail;
 }
 
 export interface GetAppSpecServiceLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
     apiKey: string;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
     endpoint?: string;
 }
 
 export interface GetAppSpecServiceLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
     token: string;
 }
 
 export interface GetAppSpecServiceLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
     endpoint: string;
 }
 
@@ -1646,6 +2205,9 @@ export interface GetAppSpecStaticSite {
      * The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
      */
     catchallDocument?: string;
+    /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
     cors?: outputs.GetAppSpecStaticSiteCors;
     /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -1695,17 +2257,44 @@ export interface GetAppSpecStaticSite {
 }
 
 export interface GetAppSpecStaticSiteCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
     allowCredentials?: boolean;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
     allowHeaders?: string[];
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
     allowMethods?: string[];
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
     allowOrigins?: outputs.GetAppSpecStaticSiteCorsAllowOrigins;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
     exposeHeaders?: string[];
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
     maxAge?: string;
 }
 
 export interface GetAppSpecStaticSiteCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
     exact?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
     prefix?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
     regex?: string;
 }
 
@@ -1723,7 +2312,7 @@ export interface GetAppSpecStaticSiteEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
@@ -1781,6 +2370,9 @@ export interface GetAppSpecStaticSiteRoute {
 }
 
 export interface GetAppSpecWorker {
+    /**
+     * Describes an alert policy for the component.
+     */
     alerts?: outputs.GetAppSpecWorkerAlert[];
     /**
      * An optional build command to run while building this component from source.
@@ -1822,6 +2414,9 @@ export interface GetAppSpecWorker {
      * The instance size to use for this component.
      */
     instanceSizeSlug?: string;
+    /**
+     * Describes a log forwarding destination.
+     */
     logDestinations?: outputs.GetAppSpecWorkerLogDestination[];
     /**
      * The name of the component.
@@ -1838,13 +2433,25 @@ export interface GetAppSpecWorker {
 }
 
 export interface GetAppSpecWorkerAlert {
+    /**
+     * Determines whether or not the alert is disabled (default: `false`).
+     */
     disabled?: boolean;
+    /**
+     * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+     */
     operator: string;
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
     rule: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value: number;
+    /**
+     * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+     */
     window: string;
 }
 
@@ -1862,7 +2469,7 @@ export interface GetAppSpecWorkerEnv {
      */
     type: string;
     /**
-     * The value of the environment variable.
+     * The threshold for the type of the warning.
      */
     value?: string;
 }
@@ -1928,25 +2535,46 @@ export interface GetAppSpecWorkerImage {
 }
 
 export interface GetAppSpecWorkerLogDestination {
+    /**
+     * Datadog configuration.
+     */
     datadog?: outputs.GetAppSpecWorkerLogDestinationDatadog;
+    /**
+     * Logtail configuration.
+     */
     logtail?: outputs.GetAppSpecWorkerLogDestinationLogtail;
     /**
      * The name of the component.
      */
     name: string;
+    /**
+     * Papertrail configuration.
+     */
     papertrail?: outputs.GetAppSpecWorkerLogDestinationPapertrail;
 }
 
 export interface GetAppSpecWorkerLogDestinationDatadog {
+    /**
+     * Datadog API key.
+     */
     apiKey: string;
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
     endpoint?: string;
 }
 
 export interface GetAppSpecWorkerLogDestinationLogtail {
+    /**
+     * Logtail token.
+     */
     token: string;
 }
 
 export interface GetAppSpecWorkerLogDestinationPapertrail {
+    /**
+     * Datadog HTTP log intake endpoint.
+     */
     endpoint: string;
 }
 
@@ -2802,6 +3430,9 @@ export interface GetSshKeysFilter {
      */
     key: string;
     matchBy?: string;
+    /**
+     * A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+     */
     values: string[];
 }
 

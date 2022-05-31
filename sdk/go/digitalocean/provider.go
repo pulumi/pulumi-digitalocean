@@ -114,6 +114,31 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// The URL to use for the DigitalOcean API.
+func (o ProviderOutput) ApiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The access key ID for Spaces API operations.
+func (o ProviderOutput) SpacesAccessId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SpacesAccessId }).(pulumi.StringPtrOutput)
+}
+
+// The URL to use for the DigitalOcean Spaces API.
+func (o ProviderOutput) SpacesEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SpacesEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The secret access key for Spaces API operations.
+func (o ProviderOutput) SpacesSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SpacesSecretKey }).(pulumi.StringPtrOutput)
+}
+
+// The token key for API operations.
+func (o ProviderOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

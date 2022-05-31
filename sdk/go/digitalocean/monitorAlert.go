@@ -44,11 +44,13 @@ type MonitorAlert struct {
 	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of the alert.
-	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+	// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
 	// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
 	// `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
 	// `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+	// `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+	// `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The uuid of the alert.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
@@ -122,11 +124,13 @@ type monitorAlertState struct {
 	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags []string `pulumi:"tags"`
 	// The type of the alert.
-	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+	// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
 	// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
 	// `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
 	// `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+	// `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+	// `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
 	Type *string `pulumi:"type"`
 	// The uuid of the alert.
 	Uuid *string `pulumi:"uuid"`
@@ -154,11 +158,13 @@ type MonitorAlertState struct {
 	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags pulumi.StringArrayInput
 	// The type of the alert.
-	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+	// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
 	// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
 	// `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
 	// `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+	// `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+	// `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
 	Type pulumi.StringPtrInput
 	// The uuid of the alert.
 	Uuid pulumi.StringPtrInput
@@ -190,11 +196,13 @@ type monitorAlertArgs struct {
 	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags []string `pulumi:"tags"`
 	// The type of the alert.
-	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+	// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
 	// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
 	// `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
 	// `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+	// `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+	// `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
 	Type string `pulumi:"type"`
 	// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
 	// DigitalOcean will show the correct unit in the web panel.
@@ -221,11 +229,13 @@ type MonitorAlertArgs struct {
 	// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
 	Tags pulumi.StringArrayInput
 	// The type of the alert.
-	// This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+	// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
 	// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
 	// `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
 	// `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+	// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+	// `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+	// `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
 	Type pulumi.StringInput
 	// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
 	// DigitalOcean will show the correct unit in the web panel.
@@ -319,6 +329,67 @@ func (o MonitorAlertOutput) ToMonitorAlertOutput() MonitorAlertOutput {
 
 func (o MonitorAlertOutput) ToMonitorAlertOutputWithContext(ctx context.Context) MonitorAlertOutput {
 	return o
+}
+
+// How to send notifications about the alerts. This is a list with one element, .
+// Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
+// read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
+func (o MonitorAlertOutput) Alerts() MonitorAlertAlertsOutput {
+	return o.ApplyT(func(v *MonitorAlert) MonitorAlertAlertsOutput { return v.Alerts }).(MonitorAlertAlertsOutput)
+}
+
+// The comparison for `value`.
+// This may be either `GreaterThan` or `LessThan`.
+func (o MonitorAlertOutput) Compare() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.StringOutput { return v.Compare }).(pulumi.StringOutput)
+}
+
+// The description of the alert.
+func (o MonitorAlertOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The status of the alert.
+func (o MonitorAlertOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// A list of IDs for the resources to which the alert policy applies.
+func (o MonitorAlertOutput) Entities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.StringArrayOutput { return v.Entities }).(pulumi.StringArrayOutput)
+}
+
+// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
+func (o MonitorAlertOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The type of the alert.
+// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
+// `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
+// `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
+// `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+// `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+// `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+func (o MonitorAlertOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The uuid of the alert.
+func (o MonitorAlertOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+// DigitalOcean will show the correct unit in the web panel.
+func (o MonitorAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.Float64Output { return v.Value }).(pulumi.Float64Output)
+}
+
+// The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
+func (o MonitorAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorAlert) pulumi.StringOutput { return v.Window }).(pulumi.StringOutput)
 }
 
 type MonitorAlertArrayOutput struct{ *pulumi.OutputState }

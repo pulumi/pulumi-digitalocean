@@ -246,6 +246,29 @@ func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCrede
 	return o
 }
 
+func (o ContainerRegistryDockerCredentialsOutput) CredentialExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistryDockerCredentials) pulumi.StringOutput { return v.CredentialExpirationTime }).(pulumi.StringOutput)
+}
+
+func (o ContainerRegistryDockerCredentialsOutput) DockerCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistryDockerCredentials) pulumi.StringOutput { return v.DockerCredentials }).(pulumi.StringOutput)
+}
+
+// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
+func (o ContainerRegistryDockerCredentialsOutput) ExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerRegistryDockerCredentials) pulumi.IntPtrOutput { return v.ExpirySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The name of the container registry.
+func (o ContainerRegistryDockerCredentialsOutput) RegistryName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistryDockerCredentials) pulumi.StringOutput { return v.RegistryName }).(pulumi.StringOutput)
+}
+
+// Allow for write access to the container registry. Defaults to false.
+func (o ContainerRegistryDockerCredentialsOutput) Write() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerRegistryDockerCredentials) pulumi.BoolPtrOutput { return v.Write }).(pulumi.BoolPtrOutput)
+}
+
 type ContainerRegistryDockerCredentialsArrayOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryDockerCredentialsArrayOutput) ElementType() reflect.Type {

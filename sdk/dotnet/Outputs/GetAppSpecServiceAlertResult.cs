@@ -13,13 +13,25 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecServiceAlertResult
     {
+        /// <summary>
+        /// Determines whether or not the alert is disabled (default: `false`).
+        /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        /// </summary>
         public readonly string Rule;
         /// <summary>
-        /// The value of the environment variable.
+        /// The threshold for the type of the warning.
         /// </summary>
         public readonly double Value;
+        /// <summary>
+        /// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        /// </summary>
         public readonly string Window;
 
         [OutputConstructor]

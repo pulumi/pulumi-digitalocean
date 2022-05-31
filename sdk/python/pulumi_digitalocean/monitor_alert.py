@@ -33,11 +33,13 @@ class MonitorAlertArgs:
                This may be either `GreaterThan` or `LessThan`.
         :param pulumi.Input[str] description: The description of the alert.
         :param pulumi.Input[str] type: The type of the alert.
-               This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+               This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
                `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
                `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-               `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+               `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+               `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+               `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
         :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -102,11 +104,13 @@ class MonitorAlertArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of the alert.
-        This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+        This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
         `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
         `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
         `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-        `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+        `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+        `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+        `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
         """
         return pulumi.get(self, "type")
 
@@ -201,11 +205,13 @@ class _MonitorAlertState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: A list of IDs for the resources to which the alert policy applies.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         :param pulumi.Input[str] type: The type of the alert.
-               This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+               This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
                `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
                `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-               `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+               `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+               `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+               `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
         :param pulumi.Input[str] uuid: The uuid of the alert.
         :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
@@ -312,11 +318,13 @@ class _MonitorAlertState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the alert.
-        This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+        This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
         `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
         `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
         `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-        `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+        `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+        `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+        `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
         """
         return pulumi.get(self, "type")
 
@@ -405,11 +413,13 @@ class MonitorAlert(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: A list of IDs for the resources to which the alert policy applies.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         :param pulumi.Input[str] type: The type of the alert.
-               This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+               This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
                `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
                `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-               `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+               `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+               `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+               `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
         :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -531,11 +541,13 @@ class MonitorAlert(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: A list of IDs for the resources to which the alert policy applies.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         :param pulumi.Input[str] type: The type of the alert.
-               This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+               This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
                `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
                `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-               `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+               `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+               `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+               `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
         :param pulumi.Input[str] uuid: The uuid of the alert.
         :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
@@ -613,11 +625,13 @@ class MonitorAlert(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of the alert.
-        This may be either `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
+        This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
         `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
         `v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,
         `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
-        `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`.
+        `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
+        `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
+        `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
         """
         return pulumi.get(self, "type")
 

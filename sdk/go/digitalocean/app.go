@@ -368,6 +368,36 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
 }
 
+// The ID the app's currently active deployment.
+func (o AppOutput) ActiveDeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ActiveDeploymentId }).(pulumi.StringOutput)
+}
+
+// The date and time of when the app was created.
+func (o AppOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The default URL to access the app.
+func (o AppOutput) DefaultIngress() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DefaultIngress }).(pulumi.StringOutput)
+}
+
+// The live URL of the app.
+func (o AppOutput) LiveUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.LiveUrl }).(pulumi.StringOutput)
+}
+
+// A DigitalOcean App spec describing the app.
+func (o AppOutput) Spec() AppSpecPtrOutput {
+	return o.ApplyT(func(v *App) AppSpecPtrOutput { return v.Spec }).(AppSpecPtrOutput)
+}
+
+// The date and time of when the app was last updated.
+func (o AppOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type AppArrayOutput struct{ *pulumi.OutputState }
 
 func (AppArrayOutput) ElementType() reflect.Type {

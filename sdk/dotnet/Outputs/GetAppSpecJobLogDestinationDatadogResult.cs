@@ -13,7 +13,13 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecJobLogDestinationDatadogResult
     {
+        /// <summary>
+        /// Datadog API key.
+        /// </summary>
         public readonly string ApiKey;
+        /// <summary>
+        /// Datadog HTTP log intake endpoint.
+        /// </summary>
         public readonly string? Endpoint;
 
         [OutputConstructor]

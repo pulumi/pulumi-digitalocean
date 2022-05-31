@@ -13,8 +13,17 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecStaticSiteCorsAllowOriginsResult
     {
+        /// <summary>
+        /// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        /// </summary>
         public readonly string? Exact;
+        /// <summary>
+        /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        /// </summary>
         public readonly string? Prefix;
+        /// <summary>
+        /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        /// </summary>
         public readonly string? Regex;
 
         [OutputConstructor]

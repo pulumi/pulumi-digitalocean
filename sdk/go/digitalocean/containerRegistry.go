@@ -238,6 +238,41 @@ func (o ContainerRegistryOutput) ToContainerRegistryOutputWithContext(ctx contex
 	return o
 }
 
+// The date and time when the registry was created
+func (o ContainerRegistryOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
+func (o ContainerRegistryOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The name of the container_registry
+func (o ContainerRegistryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
+func (o ContainerRegistryOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The domain of the container registry. Ex: `registry.digitalocean.com`
+func (o ContainerRegistryOutput) ServerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.ServerUrl }).(pulumi.StringOutput)
+}
+
+// The amount of storage used in the registry in bytes.
+func (o ContainerRegistryOutput) StorageUsageBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ContainerRegistry) pulumi.IntOutput { return v.StorageUsageBytes }).(pulumi.IntOutput)
+}
+
+// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+func (o ContainerRegistryOutput) SubscriptionTierSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.SubscriptionTierSlug }).(pulumi.StringOutput)
+}
+
 type ContainerRegistryArrayOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryArrayOutput) ElementType() reflect.Type {

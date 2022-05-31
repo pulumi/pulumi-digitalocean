@@ -27,6 +27,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Describes an environment variable made available to an app competent.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecEnv> Envs;
+        public readonly ImmutableArray<Outputs.AppSpecFunction> Functions;
         public readonly ImmutableArray<Outputs.AppSpecJob> Jobs;
         /// <summary>
         /// The name of the component.
@@ -52,6 +53,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.AppSpecEnv> envs,
 
+            ImmutableArray<Outputs.AppSpecFunction> functions,
+
             ImmutableArray<Outputs.AppSpecJob> jobs,
 
             string name,
@@ -69,6 +72,7 @@ namespace Pulumi.DigitalOcean.Outputs
             DomainNames = domainNames;
             Domains = domains;
             Envs = envs;
+            Functions = functions;
             Jobs = jobs;
             Name = name;
             Region = region;

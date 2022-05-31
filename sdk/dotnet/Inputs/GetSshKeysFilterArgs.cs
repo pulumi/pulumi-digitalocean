@@ -26,6 +26,10 @@ namespace Pulumi.DigitalOcean.Inputs
 
         [Input("values", required: true)]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

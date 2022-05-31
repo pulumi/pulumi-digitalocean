@@ -19,6 +19,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Key;
         public readonly string? MatchBy;
+        /// <summary>
+        /// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

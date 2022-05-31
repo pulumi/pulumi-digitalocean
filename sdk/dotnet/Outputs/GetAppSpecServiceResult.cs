@@ -13,11 +13,17 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecServiceResult
     {
+        /// <summary>
+        /// Describes an alert policy for the component.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecServiceAlertResult> Alerts;
         /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
+        /// <summary>
+        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// </summary>
         public readonly Outputs.GetAppSpecServiceCorsResult? Cors;
         /// <summary>
         /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -67,6 +73,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// A list of ports on which this service will listen for internal traffic.
         /// </summary>
         public readonly ImmutableArray<int> InternalPorts;
+        /// <summary>
+        /// Describes a log forwarding destination.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecServiceLogDestinationResult> LogDestinations;
         /// <summary>
         /// The name of the component.

@@ -305,6 +305,66 @@ func (o DatabaseConnectionPoolOutput) ToDatabaseConnectionPoolOutputWithContext(
 	return o
 }
 
+// The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
+func (o DatabaseConnectionPoolOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The database for use with the connection pool.
+func (o DatabaseConnectionPoolOutput) DbName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.DbName }).(pulumi.StringOutput)
+}
+
+// The hostname used to connect to the database connection pool.
+func (o DatabaseConnectionPoolOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
+func (o DatabaseConnectionPoolOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The name for the database connection pool.
+func (o DatabaseConnectionPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Password for the connection pool's user.
+func (o DatabaseConnectionPoolOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// Network port that the database connection pool is listening on.
+func (o DatabaseConnectionPoolOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Same as `host`, but only accessible from resources within the account and in the same region.
+func (o DatabaseConnectionPoolOutput) PrivateHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.PrivateHost }).(pulumi.StringOutput)
+}
+
+// Same as `uri`, but only accessible from resources within the account and in the same region.
+func (o DatabaseConnectionPoolOutput) PrivateUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.PrivateUri }).(pulumi.StringOutput)
+}
+
+// The desired size of the PGBouncer connection pool.
+func (o DatabaseConnectionPoolOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The full URI for connecting to the database connection pool.
+func (o DatabaseConnectionPoolOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
+}
+
+// The name of the database user for use with the connection pool.
+func (o DatabaseConnectionPoolOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+}
+
 type DatabaseConnectionPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConnectionPoolArrayOutput) ElementType() reflect.Type {

@@ -383,6 +383,62 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// The full PEM-formatted trust chain
+// between the certificate authority's certificate and your domain's TLS
+// certificate. Only valid when type is `custom`.
+func (o CertificateOutput) CertificateChain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.CertificateChain }).(pulumi.StringPtrOutput)
+}
+
+// List of fully qualified domain names (FQDNs) for
+// which the certificate will be issued. The domains must be managed using
+// DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
+func (o CertificateOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The contents of a PEM-formatted public
+// TLS certificate. Only valid when type is `custom`.
+func (o CertificateOutput) LeafCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.LeafCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The name of the certificate for identification.
+func (o CertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The expiration date of the certificate
+func (o CertificateOutput) NotAfter() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.NotAfter }).(pulumi.StringOutput)
+}
+
+// The contents of a PEM-formatted private-key
+// corresponding to the SSL certificate. Only valid when type is `custom`.
+func (o CertificateOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// The SHA-1 fingerprint of the certificate
+func (o CertificateOutput) Sha1Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Sha1Fingerprint }).(pulumi.StringOutput)
+}
+
+func (o CertificateOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The type of certificate to provision. Can be either
+// `custom` or `letsEncrypt`. Defaults to `custom`.
+func (o CertificateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The UUID of the certificate
+func (o CertificateOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
+}
+
 type CertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (CertificateArrayOutput) ElementType() reflect.Type {

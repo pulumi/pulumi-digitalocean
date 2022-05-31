@@ -314,6 +314,61 @@ func (o DnsRecordOutput) ToDnsRecordOutputWithContext(ctx context.Context) DnsRe
 	return o
 }
 
+// The domain to add the record to.
+func (o DnsRecordOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
+func (o DnsRecordOutput) Flags() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.IntPtrOutput { return v.Flags }).(pulumi.IntPtrOutput)
+}
+
+// The FQDN of the record
+func (o DnsRecordOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// The hostname of the record. Use `@` for records on domain's name itself.
+func (o DnsRecordOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
+func (o DnsRecordOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
+func (o DnsRecordOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+func (o DnsRecordOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringPtrOutput { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
+func (o DnsRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
+func (o DnsRecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the record.
+func (o DnsRecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
+func (o DnsRecordOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
 type DnsRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (DnsRecordArrayOutput) ElementType() reflect.Type {
