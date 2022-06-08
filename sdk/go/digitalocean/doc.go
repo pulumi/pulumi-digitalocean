@@ -1,3 +1,3 @@
-// A Pulumi package for creating and managing Digital Ocean cloud resources.
+// A Pulumi package for creating and managing DigitalOcean cloud resources.
 //
 package digitalocean

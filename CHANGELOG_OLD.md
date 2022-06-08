@@ -251,7 +251,7 @@ _(none)_
 * Communicate detailed information about the difference between a resource's desired and actual state during a Pulumi update
 
 ## 0.18.6 (2019-07-04)
-* Upgraded to v1.5.0 of the Digital Ocean Terraform Provider
+* Upgraded to v1.5.0 of the DigitalOcean Terraform Provider
 
 ## 0.18.5 (2019-06-25)
 * Disable automatic naming for domain names. The `name` property on `Domain` resources is now required.
@@ -274,7 +274,7 @@ _(none)_
 * Add constants for File System types
 
 ## 0.18.1 (2019-05-31)
-* Upgraded to v1.4.0 of the Digital Ocean Terraform Provider
+* Upgraded to v1.4.0 of the DigitalOcean Terraform Provider
 
 ## 0.18.0 (2019-05-21)
 * Initial Release

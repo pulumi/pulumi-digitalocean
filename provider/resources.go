@@ -36,18 +36,18 @@ const (
 	digitalOceanMod = "index" // the root index.
 )
 
-// makeMember manufactures a type token for the Digital Ocean package and the given module and type.
+// makeMember manufactures a type token for the DigitalOcean package and the given module and type.
 func makeMember(mod string, mem string) tokens.ModuleMember {
 	return tokens.ModuleMember(digitalOceanPkg + ":" + mod + ":" + mem)
 }
 
-// makeType manufactures a type token for the Digital Ocean package and the given module and type.
+// makeType manufactures a type token for the DigitalOcean package and the given module and type.
 func makeType(mod string, typ string) tokens.Type {
 	return tokens.Type(makeMember(mod, typ))
 }
 
 // makeDataSource manufactures a standard resource token given a module and resource name.
-// It automatically uses the Digital Ocean package and names the file by simply lower casing the data
+// It automatically uses the DigitalOcean package and names the file by simply lower casing the data
 // source's first character.
 func makeDataSource(mod string, res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
@@ -62,13 +62,13 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// Provider returns additional overlaid schema and metadata associated with the Digital Ocean package.
+// Provider returns additional overlaid schema and metadata associated with the DigitalOcean package.
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(digitalocean.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "digitalocean",
-		Description: "A Pulumi package for creating and managing Digital Ocean cloud resources.",
+		Description: "A Pulumi package for creating and managing DigitalOcean cloud resources.",
 		Keywords:    []string{"pulumi", "digitalocean"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
