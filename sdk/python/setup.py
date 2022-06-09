@@ -39,7 +39,7 @@ def readme():
 
 setup(name='pulumi_digitalocean',
       version=VERSION,
-      description="A Pulumi package for creating and managing Digital Ocean cloud resources.",
+      description="A Pulumi package for creating and managing DigitalOcean cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={

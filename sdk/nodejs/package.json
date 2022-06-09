@@ -1,7 +1,7 @@
 {
     "name": "@pulumi/digitalocean",
     "version": "${VERSION}",
-    "description": "A Pulumi package for creating and managing Digital Ocean cloud resources.",
+    "description": "A Pulumi package for creating and managing DigitalOcean cloud resources.",
     "keywords": [
         "pulumi",
         "digitalocean"
