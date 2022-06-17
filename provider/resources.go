@@ -281,9 +281,11 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_custom_image":         {Tok: makeResource(digitalOceanMod, "CustomImage")},
-			"digitalocean_monitor_alert":        {Tok: makeResource(digitalOceanMod, "MonitorAlert")},
-			"digitalocean_spaces_bucket_policy": {Tok: makeResource(digitalOceanMod, "SpacesBucketPolicy")},
+			"digitalocean_custom_image":           {Tok: makeResource(digitalOceanMod, "CustomImage")},
+			"digitalocean_monitor_alert":          {Tok: makeResource(digitalOceanMod, "MonitorAlert")},
+			"digitalocean_spaces_bucket_policy":   {Tok: makeResource(digitalOceanMod, "SpacesBucketPolicy")},
+			"digitalocean_reserved_ip":            {Tok: makeResource(digitalOceanMod, "ReservedIp")},
+			"digitalocean_reserved_ip_assignment": {Tok: makeResource(digitalOceanMod, "ReservedIpAssignment")},
 		},
 		ExtraTypes: map[string]schema.ComplexTypeSpec{
 			"digitalocean:index:Region": {
@@ -531,6 +533,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_ssh_keys":              {Tok: makeDataSource(digitalOceanMod, "getSshKeys")},
 			"digitalocean_firewall":              {Tok: makeDataSource(digitalOceanMod, "getFirewall")},
 			"digitalocean_database_ca":           {Tok: makeDataSource(digitalOceanMod, "getDatabaseCa")},
+			"digitalocean_reserved_ip":           {Tok: makeDataSource(digitalOceanMod, "getReservedIp")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

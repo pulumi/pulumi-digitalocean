@@ -70,6 +70,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Project{}
 	case "digitalocean:index/projectResources:ProjectResources":
 		r = &ProjectResources{}
+	case "digitalocean:index/reservedIp:ReservedIp":
+		r = &ReservedIp{}
+	case "digitalocean:index/reservedIpAssignment:ReservedIpAssignment":
+		r = &ReservedIpAssignment{}
 	case "digitalocean:index/spacesBucket:SpacesBucket":
 		r = &SpacesBucket{}
 	case "digitalocean:index/spacesBucketObject:SpacesBucketObject":
@@ -239,6 +243,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/projectResources",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/reservedIp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/reservedIpAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

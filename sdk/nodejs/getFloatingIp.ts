@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
+ *
  * Get information on a floating ip. This data source provides the region and Droplet id
  * as configured on your DigitalOcean account. This is useful if the floating IP
  * in question is not managed by the provider or you need to find the Droplet the IP is

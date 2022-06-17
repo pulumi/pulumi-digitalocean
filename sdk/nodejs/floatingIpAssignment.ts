@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This resource will be removed in a future release. Please use `digitalocean.ReservedIpAssignment` instead.
+ *
  * Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
  * makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
  * Droplet.

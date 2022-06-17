@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This resource will be removed in a future release. Please use `ReservedIpAssignment` instead.
+//
 // Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
 // makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
 // Droplet.

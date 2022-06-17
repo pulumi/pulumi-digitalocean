@@ -307,8 +307,8 @@ github.com/denisenkom/go-mssqldb v0.9.0/go.mod h1:xbL0rPBG9cCiLr28tMa8zpbdarY27N
 github.com/devigned/tab v0.1.1/go.mod h1:XG9mPq0dFghrYvoBF3xdRrJzSTX1b7IQrvaL9mzjeJY=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8PWV+bWy6jNmig1y/TA+kYO4g3RSRF0IAv0no=
-github.com/digitalocean/godo v1.79.0 h1:Uwef1rh/QLnADR1pR6oyZfqA5zLqondiSnWFPwDzbog=
-github.com/digitalocean/godo v1.79.0/go.mod h1:BPCqvwbjbGqxuUnIKB4EvS/AX7IDnNmt5fwvIkWo+ew=
+github.com/digitalocean/godo v1.81.0 h1:sjb3fOfPfSlUQUK22E87BcI8Zx2qtnF7VUCCO4UK3C8=
+github.com/digitalocean/godo v1.81.0/go.mod h1:BPCqvwbjbGqxuUnIKB4EvS/AX7IDnNmt5fwvIkWo+ew=
 github.com/dimchansky/utfbom v1.1.0/go.mod h1:rO41eb7gLfo8SF1jd9F8HplJm1Fewwi4mQvIirEdv+8=
 github.com/dimchansky/utfbom v1.1.1 h1:vV6w1AhK4VMnhBno/TPVCoK9U/LP0PkLCS9tbxHdi/U=
 github.com/dimchansky/utfbom v1.1.1/go.mod h1:SxdoEBH5qIqFocHMyGOXVAybYJdr71b1Q/j0mACtrfE=
@@ -897,8 +897,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220505215311-795430389fa7 h1:RAiGj0GniixD+G+HuUzFWZh2VKdQ50nv5+EmkKG1u3E=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220505215311-795430389fa7/go.mod h1:TPjMXvpPNWagHzYOmVPzzRRIBTuaLVukR+esL08tgzg=
-github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20220531092225-fd1d6f711343 h1:ybcGbjyzTZr5xqO8UR4bBXcENYaX6VgObbcQdOpZhvU=
-github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20220531092225-fd1d6f711343/go.mod h1:sKTTUvNq1fasi68KbN7X9CIwVQIAq/crYZbZuq8XC4g=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20220617092935-7234d885abe8 h1:9VUC2YonSFjqbVv6urlkRwIXUbPVmBgDaifonYMrBDQ=
+github.com/pulumi/terraform-provider-digitalocean v1.19.1-0.20220617092935-7234d885abe8/go.mod h1:2yOYT8mLcnhegILmr2EURCp6ZL23/vv5WD2wBsbsocA=
 github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=

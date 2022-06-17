@@ -50,6 +50,7 @@ from .get_record import *
 from .get_records import *
 from .get_region import *
 from .get_regions import *
+from .get_reserved_ip import *
 from .get_sizes import *
 from .get_spaces_bucket import *
 from .get_spaces_bucket_object import *
@@ -69,6 +70,8 @@ from .monitor_alert import *
 from .project import *
 from .project_resources import *
 from .provider import *
+from .reserved_ip import *
+from .reserved_ip_assignment import *
 from .spaces_bucket import *
 from .spaces_bucket_object import *
 from .spaces_bucket_policy import *
@@ -289,6 +292,22 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/projectResources:ProjectResources": "ProjectResources"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/reservedIp",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/reservedIp:ReservedIp": "ReservedIp"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/reservedIpAssignment",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/reservedIpAssignment:ReservedIpAssignment": "ReservedIpAssignment"
   }
  },
  {

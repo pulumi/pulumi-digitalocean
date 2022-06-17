@@ -10,10 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This resource will be removed in a future release. Please use `digitalocean.ReservedIpAssignment` instead.
-    /// 
-    /// Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
-    /// makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
+    /// Provides a resource for assigning an existing DigitalOcean reserved IP to a Droplet. This
+    /// makes it easy to provision reserved IP addresses that are not tied to the lifecycle of your
     /// Droplet.
     /// 
     /// ## Example Usage
@@ -26,22 +24,22 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     public MyStack()
     ///     {
-    ///         var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new DigitalOcean.FloatingIpArgs
+    ///         var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new DigitalOcean.ReservedIpArgs
     ///         {
-    ///             Region = "sgp1",
+    ///             Region = "nyc3",
     ///         });
-    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
+    ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
     ///         {
     ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "sgp1",
+    ///             Image = "ubuntu-22-04-x64",
+    ///             Region = "nyc3",
     ///             Ipv6 = true,
     ///             PrivateNetworking = true,
     ///         });
-    ///         var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobarFloatingIpAssignment", new DigitalOcean.FloatingIpAssignmentArgs
+    ///         var exampleReservedIpAssignment = new DigitalOcean.ReservedIpAssignment("exampleReservedIpAssignment", new DigitalOcean.ReservedIpAssignmentArgs
     ///         {
-    ///             IpAddress = foobarFloatingIp.IpAddress,
-    ///             DropletId = foobarDroplet.Id,
+    ///             IpAddress = exampleReservedIp.IpAddress,
+    ///             DropletId = exampleDroplet.Id,
     ///         });
     ///     }
     /// 
@@ -50,42 +48,42 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Floating IP assignments can be imported using the Floating IP itself and the `id` of the Droplet joined with a comma. For example
+    /// Reserved IP assignments can be imported using the reserved IP itself and the `id` of the Droplet joined with a comma. For example
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index/floatingIpAssignment:FloatingIpAssignment foobar 192.0.2.1,123456
+    ///  $ pulumi import digitalocean:index/reservedIpAssignment:ReservedIpAssignment foobar 192.0.2.1,123456
     /// ```
     /// </summary>
-    [DigitalOceanResourceType("digitalocean:index/floatingIpAssignment:FloatingIpAssignment")]
-    public partial class FloatingIpAssignment : Pulumi.CustomResource
+    [DigitalOceanResourceType("digitalocean:index/reservedIpAssignment:ReservedIpAssignment")]
+    public partial class ReservedIpAssignment : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of Droplet that the Floating IP will be assigned to.
+        /// The ID of Droplet that the reserved IP will be assigned to.
         /// </summary>
         [Output("dropletId")]
         public Output<int> DropletId { get; private set; } = null!;
 
         /// <summary>
-        /// The Floating IP to assign to the Droplet.
+        /// The reserved IP to assign to the Droplet.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a FloatingIpAssignment resource with the given unique name, arguments, and options.
+        /// Create a ReservedIpAssignment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FloatingIpAssignment(string name, FloatingIpAssignmentArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", name, args ?? new FloatingIpAssignmentArgs(), MakeResourceOptions(options, ""))
+        public ReservedIpAssignment(string name, ReservedIpAssignmentArgs args, CustomResourceOptions? options = null)
+            : base("digitalocean:index/reservedIpAssignment:ReservedIpAssignment", name, args ?? new ReservedIpAssignmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private FloatingIpAssignment(string name, Input<string> id, FloatingIpAssignmentState? state = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", name, state, MakeResourceOptions(options, id))
+        private ReservedIpAssignment(string name, Input<string> id, ReservedIpAssignmentState? state = null, CustomResourceOptions? options = null)
+            : base("digitalocean:index/reservedIpAssignment:ReservedIpAssignment", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -101,7 +99,7 @@ namespace Pulumi.DigitalOcean
             return merged;
         }
         /// <summary>
-        /// Get an existing FloatingIpAssignment resource's state with the given name, ID, and optional extra
+        /// Get an existing ReservedIpAssignment resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -109,46 +107,46 @@ namespace Pulumi.DigitalOcean
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static FloatingIpAssignment Get(string name, Input<string> id, FloatingIpAssignmentState? state = null, CustomResourceOptions? options = null)
+        public static ReservedIpAssignment Get(string name, Input<string> id, ReservedIpAssignmentState? state = null, CustomResourceOptions? options = null)
         {
-            return new FloatingIpAssignment(name, id, state, options);
+            return new ReservedIpAssignment(name, id, state, options);
         }
     }
 
-    public sealed class FloatingIpAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class ReservedIpAssignmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of Droplet that the Floating IP will be assigned to.
+        /// The ID of Droplet that the reserved IP will be assigned to.
         /// </summary>
         [Input("dropletId", required: true)]
         public Input<int> DropletId { get; set; } = null!;
 
         /// <summary>
-        /// The Floating IP to assign to the Droplet.
+        /// The reserved IP to assign to the Droplet.
         /// </summary>
         [Input("ipAddress", required: true)]
         public Input<string> IpAddress { get; set; } = null!;
 
-        public FloatingIpAssignmentArgs()
+        public ReservedIpAssignmentArgs()
         {
         }
     }
 
-    public sealed class FloatingIpAssignmentState : Pulumi.ResourceArgs
+    public sealed class ReservedIpAssignmentState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of Droplet that the Floating IP will be assigned to.
+        /// The ID of Droplet that the reserved IP will be assigned to.
         /// </summary>
         [Input("dropletId")]
         public Input<int>? DropletId { get; set; }
 
         /// <summary>
-        /// The Floating IP to assign to the Droplet.
+        /// The reserved IP to assign to the Droplet.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
-        public FloatingIpAssignmentState()
+        public ReservedIpAssignmentState()
         {
         }
     }

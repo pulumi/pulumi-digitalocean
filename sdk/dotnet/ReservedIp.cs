@@ -10,11 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This resource will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
+    /// Provides a DigitalOcean reserved IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
     /// 
-    /// Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
-    /// 
-    /// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean.FloatingIp` resource by setting a `droplet_id` or using the `digitalocean.FloatingIpAssignment` resource, but the two cannot be used together.
+    /// &gt; **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `digitalocean.ReservedIp` resource by setting a `droplet_id` or using the `digitalocean.ReservedIpAssignment` resource, but the two cannot be used together.
     /// 
     /// ## Example Usage
     /// 
@@ -26,18 +24,18 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     public MyStack()
     ///     {
-    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
+    ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
     ///         {
     ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "sgp1",
+    ///             Image = "ubuntu-22-04-x64",
+    ///             Region = "nyc3",
     ///             Ipv6 = true,
     ///             PrivateNetworking = true,
     ///         });
-    ///         var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new DigitalOcean.FloatingIpArgs
+    ///         var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new DigitalOcean.ReservedIpArgs
     ///         {
-    ///             DropletId = foobarDroplet.Id,
-    ///             Region = foobarDroplet.Region,
+    ///             DropletId = exampleDroplet.Id,
+    ///             Region = exampleDroplet.Region,
     ///         });
     ///     }
     /// 
@@ -46,26 +44,20 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Floating IPs can be imported using the `ip`, e.g.
+    /// Reserved IPs can be imported using the `ip`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+    ///  $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
     /// ```
     /// </summary>
-    [DigitalOceanResourceType("digitalocean:index/floatingIp:FloatingIp")]
-    public partial class FloatingIp : Pulumi.CustomResource
+    [DigitalOceanResourceType("digitalocean:index/reservedIp:ReservedIp")]
+    public partial class ReservedIp : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of Droplet that the Floating IP will be assigned to.
+        /// The ID of Droplet that the reserved IP will be assigned to.
         /// </summary>
         [Output("dropletId")]
         public Output<int?> DropletId { get; private set; } = null!;
-
-        /// <summary>
-        /// The uniform resource name of the floating ip
-        /// </summary>
-        [Output("floatingIpUrn")]
-        public Output<string> FloatingIpUrn { get; private set; } = null!;
 
         /// <summary>
         /// The IP Address of the resource
@@ -74,26 +66,32 @@ namespace Pulumi.DigitalOcean
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The region that the Floating IP is reserved to.
+        /// The region that the reserved IP is reserved to.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// The uniform resource name of the reserved ip
+        /// </summary>
+        [Output("urn")]
+        public Output<string> Urn { get; private set; } = null!;
+
 
         /// <summary>
-        /// Create a FloatingIp resource with the given unique name, arguments, and options.
+        /// Create a ReservedIp resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FloatingIp(string name, FloatingIpArgs args, CustomResourceOptions? options = null)
-            : base("digitalocean:index/floatingIp:FloatingIp", name, args ?? new FloatingIpArgs(), MakeResourceOptions(options, ""))
+        public ReservedIp(string name, ReservedIpArgs args, CustomResourceOptions? options = null)
+            : base("digitalocean:index/reservedIp:ReservedIp", name, args ?? new ReservedIpArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private FloatingIp(string name, Input<string> id, FloatingIpState? state = null, CustomResourceOptions? options = null)
-            : base("digitalocean:index/floatingIp:FloatingIp", name, state, MakeResourceOptions(options, id))
+        private ReservedIp(string name, Input<string> id, ReservedIpState? state = null, CustomResourceOptions? options = null)
+            : base("digitalocean:index/reservedIp:ReservedIp", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -109,7 +107,7 @@ namespace Pulumi.DigitalOcean
             return merged;
         }
         /// <summary>
-        /// Get an existing FloatingIp resource's state with the given name, ID, and optional extra
+        /// Get an existing ReservedIp resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -117,16 +115,16 @@ namespace Pulumi.DigitalOcean
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static FloatingIp Get(string name, Input<string> id, FloatingIpState? state = null, CustomResourceOptions? options = null)
+        public static ReservedIp Get(string name, Input<string> id, ReservedIpState? state = null, CustomResourceOptions? options = null)
         {
-            return new FloatingIp(name, id, state, options);
+            return new ReservedIp(name, id, state, options);
         }
     }
 
-    public sealed class FloatingIpArgs : Pulumi.ResourceArgs
+    public sealed class ReservedIpArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of Droplet that the Floating IP will be assigned to.
+        /// The ID of Droplet that the reserved IP will be assigned to.
         /// </summary>
         [Input("dropletId")]
         public Input<int>? DropletId { get; set; }
@@ -138,29 +136,23 @@ namespace Pulumi.DigitalOcean
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The region that the Floating IP is reserved to.
+        /// The region that the reserved IP is reserved to.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
-        public FloatingIpArgs()
+        public ReservedIpArgs()
         {
         }
     }
 
-    public sealed class FloatingIpState : Pulumi.ResourceArgs
+    public sealed class ReservedIpState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of Droplet that the Floating IP will be assigned to.
+        /// The ID of Droplet that the reserved IP will be assigned to.
         /// </summary>
         [Input("dropletId")]
         public Input<int>? DropletId { get; set; }
-
-        /// <summary>
-        /// The uniform resource name of the floating ip
-        /// </summary>
-        [Input("floatingIpUrn")]
-        public Input<string>? FloatingIpUrn { get; set; }
 
         /// <summary>
         /// The IP Address of the resource
@@ -169,12 +161,18 @@ namespace Pulumi.DigitalOcean
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The region that the Floating IP is reserved to.
+        /// The region that the reserved IP is reserved to.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        public FloatingIpState()
+        /// <summary>
+        /// The uniform resource name of the reserved ip
+        /// </summary>
+        [Input("urn")]
+        public Input<string>? Urn { get; set; }
+
+        public ReservedIpState()
         {
         }
     }

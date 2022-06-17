@@ -49,6 +49,7 @@ export * from "./getRecord";
 export * from "./getRecords";
 export * from "./getRegion";
 export * from "./getRegions";
+export * from "./getReservedIp";
 export * from "./getSizes";
 export * from "./getSpacesBucket";
 export * from "./getSpacesBucketObject";
@@ -68,6 +69,8 @@ export * from "./monitorAlert";
 export * from "./project";
 export * from "./projectResources";
 export * from "./provider";
+export * from "./reservedIp";
+export * from "./reservedIpAssignment";
 export * from "./spacesBucket";
 export * from "./spacesBucketObject";
 export * from "./spacesBucketPolicy";
@@ -116,6 +119,8 @@ import { LoadBalancer } from "./loadBalancer";
 import { MonitorAlert } from "./monitorAlert";
 import { Project } from "./project";
 import { ProjectResources } from "./projectResources";
+import { ReservedIp } from "./reservedIp";
+import { ReservedIpAssignment } from "./reservedIpAssignment";
 import { SpacesBucket } from "./spacesBucket";
 import { SpacesBucketObject } from "./spacesBucketObject";
 import { SpacesBucketPolicy } from "./spacesBucketPolicy";
@@ -180,6 +185,10 @@ const _module = {
                 return new Project(name, <any>undefined, { urn })
             case "digitalocean:index/projectResources:ProjectResources":
                 return new ProjectResources(name, <any>undefined, { urn })
+            case "digitalocean:index/reservedIp:ReservedIp":
+                return new ReservedIp(name, <any>undefined, { urn })
+            case "digitalocean:index/reservedIpAssignment:ReservedIpAssignment":
+                return new ReservedIpAssignment(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucket:SpacesBucket":
                 return new SpacesBucket(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucketObject:SpacesBucketObject":
@@ -228,6 +237,8 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _mod
 pulumi.runtime.registerResourceModule("digitalocean", "index/monitorAlert", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/project", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/projectResources", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIp", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIpAssignment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucket", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketObject", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketPolicy", _module)
