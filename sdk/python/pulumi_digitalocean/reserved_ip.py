@@ -8,18 +8,18 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['FloatingIpArgs', 'FloatingIp']
+__all__ = ['ReservedIpArgs', 'ReservedIp']
 
 @pulumi.input_type
-class FloatingIpArgs:
+class ReservedIpArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
                  droplet_id: Optional[pulumi.Input[int]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a FloatingIp resource.
-        :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
-        :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
+        The set of arguments for constructing a ReservedIp resource.
+        :param pulumi.Input[str] region: The region that the reserved IP is reserved to.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         """
         pulumi.set(__self__, "region", region)
@@ -32,7 +32,7 @@ class FloatingIpArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        The region that the Floating IP is reserved to.
+        The region that the reserved IP is reserved to.
         """
         return pulumi.get(self, "region")
 
@@ -44,7 +44,7 @@ class FloatingIpArgs:
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of Droplet that the Floating IP will be assigned to.
+        The ID of Droplet that the reserved IP will be assigned to.
         """
         return pulumi.get(self, "droplet_id")
 
@@ -66,51 +66,39 @@ class FloatingIpArgs:
 
 
 @pulumi.input_type
-class _FloatingIpState:
+class _ReservedIpState:
     def __init__(__self__, *,
                  droplet_id: Optional[pulumi.Input[int]] = None,
-                 floating_ip_urn: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 urn: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering FloatingIp resources.
-        :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
-        :param pulumi.Input[str] floating_ip_urn: The uniform resource name of the floating ip
+        Input properties used for looking up and filtering ReservedIp resources.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
-        :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
+        :param pulumi.Input[str] region: The region that the reserved IP is reserved to.
+        :param pulumi.Input[str] urn: The uniform resource name of the reserved ip
         """
         if droplet_id is not None:
             pulumi.set(__self__, "droplet_id", droplet_id)
-        if floating_ip_urn is not None:
-            pulumi.set(__self__, "floating_ip_urn", floating_ip_urn)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
 
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of Droplet that the Floating IP will be assigned to.
+        The ID of Droplet that the reserved IP will be assigned to.
         """
         return pulumi.get(self, "droplet_id")
 
     @droplet_id.setter
     def droplet_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "droplet_id", value)
-
-    @property
-    @pulumi.getter(name="floatingIpUrn")
-    def floating_ip_urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The uniform resource name of the floating ip
-        """
-        return pulumi.get(self, "floating_ip_urn")
-
-    @floating_ip_urn.setter
-    def floating_ip_urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "floating_ip_urn", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -128,7 +116,7 @@ class _FloatingIpState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region that the Floating IP is reserved to.
+        The region that the reserved IP is reserved to.
         """
         return pulumi.get(self, "region")
 
@@ -136,8 +124,20 @@ class _FloatingIpState:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter
+    def urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uniform resource name of the reserved ip
+        """
+        return pulumi.get(self, "urn")
 
-class FloatingIp(pulumi.CustomResource):
+    @urn.setter
+    def urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "urn", value)
+
+
+class ReservedIp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -147,11 +147,9 @@ class FloatingIp(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This resource will be removed in a future release. Please use `ReservedIp` instead.
+        Provides a DigitalOcean reserved IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
 
-        Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
-
-        > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `FloatingIp` resource by setting a `droplet_id` or using the `FloatingIpAssignment` resource, but the two cannot be used together.
+        > **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `ReservedIp` resource by setting a `droplet_id` or using the `ReservedIpAssignment` resource, but the two cannot be used together.
 
         ## Example Usage
 
@@ -159,43 +157,41 @@ class FloatingIp(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+        example_droplet = digitalocean.Droplet("exampleDroplet",
             size="s-1vcpu-1gb",
-            image="ubuntu-18-04-x64",
-            region="sgp1",
+            image="ubuntu-22-04-x64",
+            region="nyc3",
             ipv6=True,
             private_networking=True)
-        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp",
-            droplet_id=foobar_droplet.id,
-            region=foobar_droplet.region)
+        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp",
+            droplet_id=example_droplet.id,
+            region=example_droplet.region)
         ```
 
         ## Import
 
-        Floating IPs can be imported using the `ip`, e.g.
+        Reserved IPs can be imported using the `ip`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+         $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
-        :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
+        :param pulumi.Input[str] region: The region that the reserved IP is reserved to.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FloatingIpArgs,
+                 args: ReservedIpArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This resource will be removed in a future release. Please use `ReservedIp` instead.
+        Provides a DigitalOcean reserved IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
 
-        Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
-
-        > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `FloatingIp` resource by setting a `droplet_id` or using the `FloatingIpAssignment` resource, but the two cannot be used together.
+        > **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `ReservedIp` resource by setting a `droplet_id` or using the `ReservedIpAssignment` resource, but the two cannot be used together.
 
         ## Example Usage
 
@@ -203,32 +199,32 @@ class FloatingIp(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+        example_droplet = digitalocean.Droplet("exampleDroplet",
             size="s-1vcpu-1gb",
-            image="ubuntu-18-04-x64",
-            region="sgp1",
+            image="ubuntu-22-04-x64",
+            region="nyc3",
             ipv6=True,
             private_networking=True)
-        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp",
-            droplet_id=foobar_droplet.id,
-            region=foobar_droplet.region)
+        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp",
+            droplet_id=example_droplet.id,
+            region=example_droplet.region)
         ```
 
         ## Import
 
-        Floating IPs can be imported using the `ip`, e.g.
+        Reserved IPs can be imported using the `ip`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+         $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
         ```
 
         :param str resource_name: The name of the resource.
-        :param FloatingIpArgs args: The arguments to use to populate this resource's properties.
+        :param ReservedIpArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FloatingIpArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ReservedIpArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -250,16 +246,16 @@ class FloatingIp(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FloatingIpArgs.__new__(FloatingIpArgs)
+            __props__ = ReservedIpArgs.__new__(ReservedIpArgs)
 
             __props__.__dict__["droplet_id"] = droplet_id
             __props__.__dict__["ip_address"] = ip_address
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
-            __props__.__dict__["floating_ip_urn"] = None
-        super(FloatingIp, __self__).__init__(
-            'digitalocean:index/floatingIp:FloatingIp',
+            __props__.__dict__["urn"] = None
+        super(ReservedIp, __self__).__init__(
+            'digitalocean:index/reservedIp:ReservedIp',
             resource_name,
             __props__,
             opts)
@@ -269,46 +265,38 @@ class FloatingIp(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             droplet_id: Optional[pulumi.Input[int]] = None,
-            floating_ip_urn: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
-            region: Optional[pulumi.Input[str]] = None) -> 'FloatingIp':
+            region: Optional[pulumi.Input[str]] = None,
+            urn: Optional[pulumi.Input[str]] = None) -> 'ReservedIp':
         """
-        Get an existing FloatingIp resource's state with the given name, id, and optional extra
+        Get an existing ReservedIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
-        :param pulumi.Input[str] floating_ip_urn: The uniform resource name of the floating ip
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
-        :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
+        :param pulumi.Input[str] region: The region that the reserved IP is reserved to.
+        :param pulumi.Input[str] urn: The uniform resource name of the reserved ip
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FloatingIpState.__new__(_FloatingIpState)
+        __props__ = _ReservedIpState.__new__(_ReservedIpState)
 
         __props__.__dict__["droplet_id"] = droplet_id
-        __props__.__dict__["floating_ip_urn"] = floating_ip_urn
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["region"] = region
-        return FloatingIp(resource_name, opts=opts, __props__=__props__)
+        __props__.__dict__["urn"] = urn
+        return ReservedIp(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of Droplet that the Floating IP will be assigned to.
+        The ID of Droplet that the reserved IP will be assigned to.
         """
         return pulumi.get(self, "droplet_id")
-
-    @property
-    @pulumi.getter(name="floatingIpUrn")
-    def floating_ip_urn(self) -> pulumi.Output[str]:
-        """
-        The uniform resource name of the floating ip
-        """
-        return pulumi.get(self, "floating_ip_urn")
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -322,7 +310,15 @@ class FloatingIp(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region that the Floating IP is reserved to.
+        The region that the reserved IP is reserved to.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> pulumi.Output[str]:
+        """
+        The uniform resource name of the reserved ip
+        """
+        return pulumi.get(self, "urn")
 

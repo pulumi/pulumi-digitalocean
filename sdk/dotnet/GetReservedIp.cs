@@ -9,23 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
-    public static class GetFloatingIp
+    public static class GetReservedIp
     {
         /// <summary>
-        /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
-        /// 
-        /// Get information on a floating ip. This data source provides the region and Droplet id
-        /// as configured on your DigitalOcean account. This is useful if the floating IP
-        /// in question is not managed by the provider or you need to find the Droplet the IP is
-        /// attached to.
-        /// 
-        /// An error is triggered if the provided floating IP does not exist.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Get the floating IP:
+        /// Get the reserved IP:
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -37,7 +28,7 @@ namespace Pulumi.DigitalOcean
         ///     {
         ///         var config = new Config();
         ///         var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///         var example = Output.Create(DigitalOcean.GetFloatingIp.InvokeAsync(new DigitalOcean.GetFloatingIpArgs
+        ///         var example = Output.Create(DigitalOcean.GetReservedIp.InvokeAsync(new DigitalOcean.GetReservedIpArgs
         ///         {
         ///             IpAddress = publicIp,
         ///         }));
@@ -51,24 +42,15 @@ namespace Pulumi.DigitalOcean
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithDefaults());
+        public static Task<GetReservedIpResult> InvokeAsync(GetReservedIpArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
-        /// 
-        /// Get information on a floating ip. This data source provides the region and Droplet id
-        /// as configured on your DigitalOcean account. This is useful if the floating IP
-        /// in question is not managed by the provider or you need to find the Droplet the IP is
-        /// attached to.
-        /// 
-        /// An error is triggered if the provided floating IP does not exist.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Get the floating IP:
+        /// Get the reserved IP:
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -80,7 +62,7 @@ namespace Pulumi.DigitalOcean
         ///     {
         ///         var config = new Config();
         ///         var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///         var example = Output.Create(DigitalOcean.GetFloatingIp.InvokeAsync(new DigitalOcean.GetFloatingIpArgs
+        ///         var example = Output.Create(DigitalOcean.GetReservedIp.InvokeAsync(new DigitalOcean.GetReservedIpArgs
         ///         {
         ///             IpAddress = publicIp,
         ///         }));
@@ -94,67 +76,67 @@ namespace Pulumi.DigitalOcean
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetFloatingIpResult> Invoke(GetFloatingIpInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
+        public static Output<GetReservedIpResult> Invoke(GetReservedIpInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFloatingIpArgs : Pulumi.InvokeArgs
+    public sealed class GetReservedIpArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The allocated IP address of the specific floating IP to retrieve.
+        /// The allocated IP address of the specific reserved IP to retrieve.
         /// </summary>
         [Input("ipAddress", required: true)]
         public string IpAddress { get; set; } = null!;
 
-        public GetFloatingIpArgs()
+        public GetReservedIpArgs()
         {
         }
     }
 
-    public sealed class GetFloatingIpInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReservedIpInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The allocated IP address of the specific floating IP to retrieve.
+        /// The allocated IP address of the specific reserved IP to retrieve.
         /// </summary>
         [Input("ipAddress", required: true)]
         public Input<string> IpAddress { get; set; } = null!;
 
-        public GetFloatingIpInvokeArgs()
+        public GetReservedIpInvokeArgs()
         {
         }
     }
 
 
     [OutputType]
-    public sealed class GetFloatingIpResult
+    public sealed class GetReservedIpResult
     {
         public readonly int DropletId;
-        public readonly string FloatingIpUrn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string IpAddress;
         public readonly string Region;
+        public readonly string Urn;
 
         [OutputConstructor]
-        private GetFloatingIpResult(
+        private GetReservedIpResult(
             int dropletId,
-
-            string floatingIpUrn,
 
             string id,
 
             string ipAddress,
 
-            string region)
+            string region,
+
+            string urn)
         {
             DropletId = dropletId;
-            FloatingIpUrn = floatingIpUrn;
             Id = id;
             IpAddress = ipAddress;
             Region = region;
+            Urn = urn;
         }
     }
 }
