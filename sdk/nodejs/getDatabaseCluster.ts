@@ -7,18 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information on a DigitalOcean database cluster resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example = digitalocean.getDatabaseCluster({
- *     name: "example-cluster",
- * });
- * export const databaseOutput = example.then(example => example.uri);
- * ```
  */
 export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseClusterResult> {
     if (!opts) {

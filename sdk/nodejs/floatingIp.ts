@@ -11,25 +11,6 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean.FloatingIp` resource by setting a `dropletId` or using the `digitalocean.FloatingIpAssignment` resource, but the two cannot be used together.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobarDroplet = new digitalocean.Droplet("foobarDroplet", {
- *     size: "s-1vcpu-1gb",
- *     image: "ubuntu-18-04-x64",
- *     region: "sgp1",
- *     ipv6: true,
- *     privateNetworking: true,
- * });
- * const foobarFloatingIp = new digitalocean.FloatingIp("foobarFloatingIp", {
- *     dropletId: foobarDroplet.id,
- *     region: foobarDroplet.region,
- * });
- * ```
- *
  * ## Import
  *
  * Floating IPs can be imported using the `ip`, e.g.

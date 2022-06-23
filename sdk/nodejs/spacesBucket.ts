@@ -20,14 +20,6 @@ import * as utilities from "./utilities";
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
- * // ...
- * ```
- *
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  *
  * ## Example Usage

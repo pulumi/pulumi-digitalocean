@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * Get the reserved IP:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const config = new pulumi.Config();
- * const publicIp = config.requireObject("publicIp");
- * const example = digitalocean.getReservedIp({
- *     ipAddress: publicIp,
- * });
- * export const fipOutput = example.then(example => example.dropletId);
- * ```
- */
 export function getReservedIp(args: GetReservedIpArgs, opts?: pulumi.InvokeOptions): Promise<GetReservedIpResult> {
     if (!opts) {
         opts = {}

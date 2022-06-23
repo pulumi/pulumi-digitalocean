@@ -13,22 +13,6 @@ import * as utilities from "./utilities";
  * attached to.
  *
  * An error is triggered if the provided floating IP does not exist.
- *
- * ## Example Usage
- *
- * Get the floating IP:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const config = new pulumi.Config();
- * const publicIp = config.requireObject("publicIp");
- * const example = digitalocean.getFloatingIp({
- *     ipAddress: publicIp,
- * });
- * export const fipOutput = example.then(example => example.dropletId);
- * ```
  */
 export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     if (!opts) {

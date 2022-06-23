@@ -42,7 +42,7 @@ import (
 // 					Key:     "name",
 // 					MatchBy: pulumi.StringRef("re"),
 // 					Values: []string{
-// 						fmt.Sprintf("%v%v", "example\\.com", "$"),
+// 						fmt.Sprintf("example\\.com$"),
 // 					},
 // 				},
 // 			},

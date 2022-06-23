@@ -22,19 +22,6 @@ import * as utilities from "./utilities";
  *     registryName: "example",
  * });
  * ```
- * ### Docker Provider Example
- *
- * Use the `endpoint` and `dockerCredentials` with the Docker provider:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const exampleContainerRegistry = digitalocean.getContainerRegistry({
- *     name: "example",
- * });
- * const exampleContainerRegistryDockerCredentials = new digitalocean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", {registryName: "example"});
- * ```
  */
 export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
     /**

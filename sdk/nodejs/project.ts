@@ -24,40 +24,6 @@ import * as utilities from "./utilities";
  *
  * **Note:** A provider managed project cannot be set as a default project.
  *
- * ## Example Usage
- *
- * The following example demonstrates the creation of an empty project:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const playground = new digitalocean.Project("playground", {
- *     description: "A project to represent development resources.",
- *     environment: "Development",
- *     purpose: "Web Application",
- * });
- * ```
- *
- * The following example demonstrates the creation of a project with a Droplet resource:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobar = new digitalocean.Droplet("foobar", {
- *     size: "s-1vcpu-1gb",
- *     image: "centos-7-x64",
- *     region: "nyc3",
- * });
- * const playground = new digitalocean.Project("playground", {
- *     description: "A project to represent development resources.",
- *     purpose: "Web Application",
- *     environment: "Development",
- *     resources: [foobar.dropletUrn],
- * });
- * ```
- *
  * ## Import
  *
  * Projects can be imported using the `id` returned from DigitalOcean, e.g.

@@ -11,28 +11,6 @@ import * as utilities from "./utilities";
  * > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
  * `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
  * downloading large amount of data which would be thrown away in favor of metadata.
- *
- * ## Example Usage
- *
- * The following example retrieves a text object (which must have a `Content-Type`
- * value starting with `text/`) and uses it as the `userData` for a Droplet:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const bootstrapScript = digitalocean.getSpacesBucketObject({
- *     bucket: "ourcorp-deploy-config",
- *     region: "nyc3",
- *     key: "droplet-bootstrap-script.sh",
- * });
- * const web = new digitalocean.Droplet("web", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
- *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),
- * });
- * ```
  */
 export function getSpacesBucketObject(args: GetSpacesBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectResult> {
     if (!opts) {

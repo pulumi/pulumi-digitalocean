@@ -49,8 +49,8 @@ import (
 // 							"Principal": "*",
 // 							"Action":    "s3:*",
 // 							"Resource": []string{
-// 								fmt.Sprintf("%v%v", "arn:aws:s3:::", foobarSpacesBucketName),
-// 								fmt.Sprintf("%v%v%v", "arn:aws:s3:::", foobarSpacesBucketName1, "/*"),
+// 								fmt.Sprintf("arn:aws:s3:::%v", foobarSpacesBucketName),
+// 								fmt.Sprintf("arn:aws:s3:::%v/*", foobarSpacesBucketName1),
 // 							},
 // 							"Condition": map[string]interface{}{
 // 								"NotIpAddress": map[string]interface{}{

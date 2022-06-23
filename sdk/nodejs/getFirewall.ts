@@ -7,20 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Get information on a DigitalOcean Firewall.
- *
- * ## Example Usage
- *
- * Get the firewall:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example = digitalocean.getFirewall({
- *     firewallId: "1df48973-6eef-4214-854f-fa7726e7e583",
- * });
- * export const exampleFirewallName = example.then(example => example.name);
- * ```
  */
 export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallResult> {
     if (!opts) {

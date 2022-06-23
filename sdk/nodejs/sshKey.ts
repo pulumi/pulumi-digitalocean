@@ -10,24 +10,6 @@ import * as utilities from "./utilities";
  * can be referenced in your Droplet configuration via their ID or
  * fingerprint.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * import * from "fs";
- *
- * // Create a new SSH key
- * const _default = new digitalocean.SshKey("default", {publicKey: fs.readFileSync("/Users/myuser/.ssh/id_rsa.pub")});
- * // Create a new Droplet using the SSH key
- * const web = new digitalocean.Droplet("web", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
- *     size: "s-1vcpu-1gb",
- *     sshKeys: [_default.fingerprint],
- * });
- * ```
- *
  * ## Import
  *
  * SSH Keys can be imported using the `ssh key id`, e.g.

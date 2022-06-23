@@ -12,31 +12,6 @@ import * as utilities from "./utilities";
  * the provider or you need to utilize any of the load balancers data.
  *
  * An error is triggered if the provided load balancer name does not exist.
- *
- * ## Example Usage
- *
- * Get the load balancer by name:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example = digitalocean.getLoadBalancer({
- *     name: "app",
- * });
- * export const lbOutput = example.then(example => example.ip);
- * ```
- *
- * Get the load balancer by ID:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example = pulumi.output(digitalocean.getLoadBalancer({
- *     id: "loadbalancer_id",
- * }));
- * ```
  */
 export function getLoadBalancer(args?: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
     args = args || {};

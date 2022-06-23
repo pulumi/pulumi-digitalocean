@@ -11,46 +11,6 @@ import * as utilities from "./utilities";
  * is not managed by the provider or you need to utilize any of the image's data.
  *
  * An error is triggered if zero or more than one result is returned by the query.
- *
- * ## Example Usage
- *
- * Get the data about a snapshot:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example1 = pulumi.output(digitalocean.getImage({
- *     name: "example-1.0.0",
- * }));
- * ```
- *
- * Reuse the data about a snapshot to create a Droplet:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const exampleImage = digitalocean.getImage({
- *     name: "example-1.0.0",
- * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     image: exampleImage.then(exampleImage => exampleImage.id),
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
- * });
- * ```
- *
- * Get the data about an official image:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example2 = pulumi.output(digitalocean.getImage({
- *     slug: "ubuntu-18-04-x64",
- * }));
- * ```
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
