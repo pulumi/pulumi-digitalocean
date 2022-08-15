@@ -18,25 +18,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		publicIp := cfg.RequireObject("publicIp")
-// 		example, err := digitalocean.LookupReservedIp(ctx, &GetReservedIpArgs{
-// 			IpAddress: publicIp,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("fipOutput", example.DropletId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			publicIp := cfg.RequireObject("publicIp")
+//			example, err := digitalocean.LookupReservedIp(ctx, &GetReservedIpArgs{
+//				IpAddress: publicIp,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("fipOutput", example.DropletId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupReservedIp(ctx *pulumi.Context, args *LookupReservedIpArgs, opts ...pulumi.InvokeOption) (*LookupReservedIpResult, error) {
 	var rv LookupReservedIpResult

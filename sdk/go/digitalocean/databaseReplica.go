@@ -19,33 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("pg"),
-// 			Version:   pulumi.String("11"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Region:    pulumi.String("nyc1"),
-// 			NodeCount: pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDatabaseReplica(ctx, "read-replica", &digitalocean.DatabaseReplicaArgs{
-// 			ClusterId: postgres_example.ID(),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Region:    pulumi.String("nyc1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseReplica(ctx, "read-replica", &digitalocean.DatabaseReplicaArgs{
+//				ClusterId: postgres_example.ID(),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // Database replicas can be imported using the `id` of the source database cluster and the `name` of the replica joined with a comma. For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica
+//
+//	$ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica
+//
 // ```
 type DatabaseReplica struct {
 	pulumi.CustomResourceState
@@ -242,7 +247,7 @@ func (i *DatabaseReplica) ToDatabaseReplicaOutputWithContext(ctx context.Context
 // DatabaseReplicaArrayInput is an input type that accepts DatabaseReplicaArray and DatabaseReplicaArrayOutput values.
 // You can construct a concrete instance of `DatabaseReplicaArrayInput` via:
 //
-//          DatabaseReplicaArray{ DatabaseReplicaArgs{...} }
+//	DatabaseReplicaArray{ DatabaseReplicaArgs{...} }
 type DatabaseReplicaArrayInput interface {
 	pulumi.Input
 
@@ -267,7 +272,7 @@ func (i DatabaseReplicaArray) ToDatabaseReplicaArrayOutputWithContext(ctx contex
 // DatabaseReplicaMapInput is an input type that accepts DatabaseReplicaMap and DatabaseReplicaMapOutput values.
 // You can construct a concrete instance of `DatabaseReplicaMapInput` via:
 //
-//          DatabaseReplicaMap{ "key": DatabaseReplicaArgs{...} }
+//	DatabaseReplicaMap{ "key": DatabaseReplicaArgs{...} }
 type DatabaseReplicaMapInput interface {
 	pulumi.Input
 

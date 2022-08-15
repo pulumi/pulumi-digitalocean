@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecStaticSiteGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecStaticSiteGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional build command to run while building this component from source.
@@ -113,5 +113,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecStaticSiteGetArgs()
         {
         }
+        public static new AppSpecStaticSiteGetArgs Empty => new AppSpecStaticSiteGetArgs();
     }
 }

@@ -18,31 +18,28 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new tag
-    ///         var foobar = new DigitalOcean.Tag("foobar", new DigitalOcean.TagArgs
-    ///         {
-    ///         });
-    ///         // Create a new Droplet in nyc3 with the foobar tag
-    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc3",
-    ///             Size = "s-1vcpu-1gb",
-    ///             Tags = 
-    ///             {
-    ///                 foobar.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///     // Create a new tag
+    ///     var foobar = new DigitalOcean.Tag("foobar");
     /// 
-    /// }
+    ///     // Create a new Droplet in nyc3 with the foobar tag
+    ///     var web = new DigitalOcean.Droplet("web", new()
+    ///     {
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc3",
+    ///         Size = "s-1vcpu-1gb",
+    ///         Tags = new[]
+    ///         {
+    ///             foobar.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +51,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/tag:Tag")]
-    public partial class Tag : Pulumi.CustomResource
+    public partial class Tag : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A count of the database clusters that the tag is applied to.
@@ -142,7 +139,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class TagArgs : Pulumi.ResourceArgs
+    public sealed class TagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the tag
@@ -153,9 +150,10 @@ namespace Pulumi.DigitalOcean
         public TagArgs()
         {
         }
+        public static new TagArgs Empty => new TagArgs();
     }
 
-    public sealed class TagState : Pulumi.ResourceArgs
+    public sealed class TagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A count of the database clusters that the tag is applied to.
@@ -202,5 +200,6 @@ namespace Pulumi.DigitalOcean
         public TagState()
         {
         }
+        public static new TagState Empty => new TagState();
     }
 }

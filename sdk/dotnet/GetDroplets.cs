@@ -30,75 +30,71 @@ namespace Pulumi.DigitalOcean
         /// For example to find all Droplets with size `s-1vcpu-1gb`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var small = DigitalOcean.GetDroplets.Invoke(new()
         ///     {
-        ///         var small = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 Key = "size",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "size",
-        ///                     Values = 
-        ///                     {
-        ///                         "s-1vcpu-1gb",
-        ///                     },
+        ///                     "s-1vcpu-1gb",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()
         ///     {
-        ///         var small_with_backups = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 Key = "size",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "size",
-        ///                     Values = 
-        ///                     {
-        ///                         "s-1vcpu-1gb",
-        ///                     },
-        ///                 },
-        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
-        ///                 {
-        ///                     Key = "backups",
-        ///                     Values = 
-        ///                     {
-        ///                         "true",
-        ///                     },
+        ///                     "s-1vcpu-1gb",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetDropletsSortArgs
+        ///                 Key = "backups",
+        ///                 Values = new[]
         ///                 {
-        ///                     Direction = "desc",
-        ///                     Key = "created_at",
+        ///                     "true",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsSortInputArgs
+        ///             {
+        ///                 Direction = "desc",
+        ///                 Key = "created_at",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -125,75 +121,71 @@ namespace Pulumi.DigitalOcean
         /// For example to find all Droplets with size `s-1vcpu-1gb`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var small = DigitalOcean.GetDroplets.Invoke(new()
         ///     {
-        ///         var small = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 Key = "size",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "size",
-        ///                     Values = 
-        ///                     {
-        ///                         "s-1vcpu-1gb",
-        ///                     },
+        ///                     "s-1vcpu-1gb",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()
         ///     {
-        ///         var small_with_backups = Output.Create(DigitalOcean.GetDroplets.InvokeAsync(new DigitalOcean.GetDropletsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
+        ///                 Key = "size",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "size",
-        ///                     Values = 
-        ///                     {
-        ///                         "s-1vcpu-1gb",
-        ///                     },
-        ///                 },
-        ///                 new DigitalOcean.Inputs.GetDropletsFilterArgs
-        ///                 {
-        ///                     Key = "backups",
-        ///                     Values = 
-        ///                     {
-        ///                         "true",
-        ///                     },
+        ///                     "s-1vcpu-1gb",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetDropletsSortArgs
+        ///                 Key = "backups",
+        ///                 Values = new[]
         ///                 {
-        ///                     Direction = "desc",
-        ///                     Key = "created_at",
+        ///                     "true",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsSortInputArgs
+        ///             {
+        ///                 Direction = "desc",
+        ///                 Key = "created_at",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -203,7 +195,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetDropletsArgs : Pulumi.InvokeArgs
+    public sealed class GetDropletsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetDropletsFilterArgs>? _filters;
@@ -234,9 +226,10 @@ namespace Pulumi.DigitalOcean
         public GetDropletsArgs()
         {
         }
+        public static new GetDropletsArgs Empty => new GetDropletsArgs();
     }
 
-    public sealed class GetDropletsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDropletsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetDropletsFilterInputArgs>? _filters;
@@ -267,6 +260,7 @@ namespace Pulumi.DigitalOcean
         public GetDropletsInvokeArgs()
         {
         }
+        public static new GetDropletsInvokeArgs Empty => new GetDropletsInvokeArgs();
     }
 
 

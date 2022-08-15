@@ -19,39 +19,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
-// 			Region:                pulumi.String("nyc1"),
-// 			Size:                  pulumi.Int(100),
-// 			InitialFilesystemType: pulumi.String("ext4"),
-// 			Description:           pulumi.String("an example volume"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewVolumeAttachment(ctx, "foobarVolumeAttachment", &digitalocean.VolumeAttachmentArgs{
-// 			DropletId: foobarDroplet.ID(),
-// 			VolumeId:  foobarVolume.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+//				Region:                pulumi.String("nyc1"),
+//				Size:                  pulumi.Int(100),
+//				InitialFilesystemType: pulumi.String("ext4"),
+//				Description:           pulumi.String("an example volume"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewVolumeAttachment(ctx, "foobarVolumeAttachment", &digitalocean.VolumeAttachmentArgs{
+//				DropletId: foobarDroplet.ID(),
+//				VolumeId:  foobarVolume.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // You can also create a volume from an existing snapshot.
@@ -60,29 +63,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarVolumeSnapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
-// 			Name: pulumi.StringRef("baz"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
-// 			Region:     pulumi.String("lon1"),
-// 			Size:       pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
-// 			SnapshotId: pulumi.String(foobarVolumeSnapshot.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarVolumeSnapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
+//				Name: pulumi.StringRef("baz"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+//				Region:     pulumi.String("lon1"),
+//				Size:       pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
+//				SnapshotId: pulumi.String(foobarVolumeSnapshot.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -90,7 +96,9 @@ import (
 // Volumes can be imported using the `volume id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/volume:Volume volume 506f78a4-e098-11e5-ad9f-000f53306ae1
+//
+//	$ pulumi import digitalocean:index/volume:Volume volume 506f78a4-e098-11e5-ad9f-000f53306ae1
+//
 // ```
 type Volume struct {
 	pulumi.CustomResourceState
@@ -292,7 +300,7 @@ func (i *Volume) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
 // VolumeArrayInput is an input type that accepts VolumeArray and VolumeArrayOutput values.
 // You can construct a concrete instance of `VolumeArrayInput` via:
 //
-//          VolumeArray{ VolumeArgs{...} }
+//	VolumeArray{ VolumeArgs{...} }
 type VolumeArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +325,7 @@ func (i VolumeArray) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeA
 // VolumeMapInput is an input type that accepts VolumeMap and VolumeMapOutput values.
 // You can construct a concrete instance of `VolumeMapInput` via:
 //
-//          VolumeMap{ "key": VolumeArgs{...} }
+//	VolumeMap{ "key": VolumeArgs{...} }
 type VolumeMapInput interface {
 	pulumi.Input
 

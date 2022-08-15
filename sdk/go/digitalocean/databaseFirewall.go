@@ -22,41 +22,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("pg"),
-// 			Version:   pulumi.String("11"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Region:    pulumi.String("nyc1"),
-// 			NodeCount: pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
-// 			ClusterId: postgres_example.ID(),
-// 			Rules: DatabaseFirewallRuleArray{
-// 				&DatabaseFirewallRuleArgs{
-// 					Type:  pulumi.String("ip_addr"),
-// 					Value: pulumi.String("192.168.1.1"),
-// 				},
-// 				&DatabaseFirewallRuleArgs{
-// 					Type:  pulumi.String("ip_addr"),
-// 					Value: pulumi.String("192.0.2.0"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
+//				ClusterId: postgres_example.ID(),
+//				Rules: DatabaseFirewallRuleArray{
+//					&DatabaseFirewallRuleArgs{
+//						Type:  pulumi.String("ip_addr"),
+//						Value: pulumi.String("192.168.1.1"),
+//					},
+//					&DatabaseFirewallRuleArgs{
+//						Type:  pulumi.String("ip_addr"),
+//						Value: pulumi.String("192.0.2.0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create a new database firewall allowing a Droplet
 //
@@ -64,53 +67,58 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("centos-7-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("pg"),
-// 			Version:   pulumi.String("11"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Region:    pulumi.String("nyc1"),
-// 			NodeCount: pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
-// 			ClusterId: postgres_example.ID(),
-// 			Rules: DatabaseFirewallRuleArray{
-// 				&DatabaseFirewallRuleArgs{
-// 					Type:  pulumi.String("droplet"),
-// 					Value: web.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-22-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
+//				ClusterId: postgres_example.ID(),
+//				Rules: DatabaseFirewallRuleArray{
+//					&DatabaseFirewallRuleArgs{
+//						Type:  pulumi.String("droplet"),
+//						Value: web.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Database firewalls can be imported using the `id` of the target database cluster For example
+// # Database firewalls can be imported using the `id` of the target database cluster For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+//
+//	$ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+//
 // ```
 type DatabaseFirewall struct {
 	pulumi.CustomResourceState
@@ -214,7 +222,7 @@ func (i *DatabaseFirewall) ToDatabaseFirewallOutputWithContext(ctx context.Conte
 // DatabaseFirewallArrayInput is an input type that accepts DatabaseFirewallArray and DatabaseFirewallArrayOutput values.
 // You can construct a concrete instance of `DatabaseFirewallArrayInput` via:
 //
-//          DatabaseFirewallArray{ DatabaseFirewallArgs{...} }
+//	DatabaseFirewallArray{ DatabaseFirewallArgs{...} }
 type DatabaseFirewallArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +247,7 @@ func (i DatabaseFirewallArray) ToDatabaseFirewallArrayOutputWithContext(ctx cont
 // DatabaseFirewallMapInput is an input type that accepts DatabaseFirewallMap and DatabaseFirewallMapOutput values.
 // You can construct a concrete instance of `DatabaseFirewallMapInput` via:
 //
-//          DatabaseFirewallMap{ "key": DatabaseFirewallArgs{...} }
+//	DatabaseFirewallMap{ "key": DatabaseFirewallArgs{...} }
 type DatabaseFirewallMapInput interface {
 	pulumi.Input
 

@@ -26,26 +26,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
-// 			Sorts: []GetSshKeysSort{
-// 				GetSshKeysSort{
-// 					Direction: pulumi.StringRef("asc"),
-// 					Key:       "name",
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
+//				Sorts: []GetSshKeysSort{
+//					GetSshKeysSort{
+//						Direction: pulumi.StringRef("asc"),
+//						Key:       "name",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Or to find ones matching specific values:
@@ -54,29 +57,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
-// 			Filters: []GetSshKeysFilter{
-// 				GetSshKeysFilter{
-// 					Key: "name",
-// 					Values: []string{
-// 						"laptop",
-// 						"desktop",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
+//				Filters: []GetSshKeysFilter{
+//					GetSshKeysFilter{
+//						Key: "name",
+//						Values: []string{
+//							"laptop",
+//							"desktop",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSshKeys(ctx *pulumi.Context, args *GetSshKeysArgs, opts ...pulumi.InvokeOption) (*GetSshKeysResult, error) {
 	var rv GetSshKeysResult

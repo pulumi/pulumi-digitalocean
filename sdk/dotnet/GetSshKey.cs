@@ -26,30 +26,29 @@ namespace Pulumi.DigitalOcean
         /// Get the ssh key:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleSshKey = DigitalOcean.GetSshKey.Invoke(new()
         ///     {
-        ///         var exampleSshKey = Output.Create(DigitalOcean.GetSshKey.InvokeAsync(new DigitalOcean.GetSshKeyArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc2",
-        ///             Size = "s-1vcpu-1gb",
-        ///             SshKeys = 
-        ///             {
-        ///                 exampleSshKey.Apply(exampleSshKey =&gt; exampleSshKey.Id),
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "example",
+        ///     });
         /// 
-        /// }
+        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = "nyc2",
+        ///         Size = "s-1vcpu-1gb",
+        ///         SshKeys = new[]
+        ///         {
+        ///             exampleSshKey.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -72,30 +71,29 @@ namespace Pulumi.DigitalOcean
         /// Get the ssh key:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleSshKey = DigitalOcean.GetSshKey.Invoke(new()
         ///     {
-        ///         var exampleSshKey = Output.Create(DigitalOcean.GetSshKey.InvokeAsync(new DigitalOcean.GetSshKeyArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc2",
-        ///             Size = "s-1vcpu-1gb",
-        ///             SshKeys = 
-        ///             {
-        ///                 exampleSshKey.Apply(exampleSshKey =&gt; exampleSshKey.Id),
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "example",
+        ///     });
         /// 
-        /// }
+        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = "nyc2",
+        ///         Size = "s-1vcpu-1gb",
+        ///         SshKeys = new[]
+        ///         {
+        ///             exampleSshKey.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -105,7 +103,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetSshKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the ssh key.
@@ -116,9 +114,10 @@ namespace Pulumi.DigitalOcean
         public GetSshKeyArgs()
         {
         }
+        public static new GetSshKeyArgs Empty => new GetSshKeyArgs();
     }
 
-    public sealed class GetSshKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the ssh key.
@@ -129,6 +128,7 @@ namespace Pulumi.DigitalOcean
         public GetSshKeyInvokeArgs()
         {
         }
+        public static new GetSshKeyInvokeArgs Empty => new GetSshKeyInvokeArgs();
     }
 
 

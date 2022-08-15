@@ -29,28 +29,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetDroplets(ctx, &GetDropletsArgs{
-// 			Filters: []GetDropletsFilter{
-// 				GetDropletsFilter{
-// 					Key: "size",
-// 					Values: []string{
-// 						"s-1vcpu-1gb",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetDroplets(ctx, &GetDropletsArgs{
+//				Filters: []GetDropletsFilter{
+//					GetDropletsFilter{
+//						Key: "size",
+//						Values: []string{
+//							"s-1vcpu-1gb",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // You can filter on multiple fields and sort the results as well:
@@ -59,40 +62,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetDroplets(ctx, &GetDropletsArgs{
-// 			Filters: []GetDropletsFilter{
-// 				GetDropletsFilter{
-// 					Key: "size",
-// 					Values: []string{
-// 						"s-1vcpu-1gb",
-// 					},
-// 				},
-// 				GetDropletsFilter{
-// 					Key: "backups",
-// 					Values: []string{
-// 						"true",
-// 					},
-// 				},
-// 			},
-// 			Sorts: []GetDropletsSort{
-// 				GetDropletsSort{
-// 					Direction: pulumi.StringRef("desc"),
-// 					Key:       "created_at",
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetDroplets(ctx, &GetDropletsArgs{
+//				Filters: []GetDropletsFilter{
+//					GetDropletsFilter{
+//						Key: "size",
+//						Values: []string{
+//							"s-1vcpu-1gb",
+//						},
+//					},
+//					GetDropletsFilter{
+//						Key: "backups",
+//						Values: []string{
+//							"true",
+//						},
+//					},
+//				},
+//				Sorts: []GetDropletsSort{
+//					GetDropletsSort{
+//						Direction: pulumi.StringRef("desc"),
+//						Key:       "created_at",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDroplets(ctx *pulumi.Context, args *GetDropletsArgs, opts ...pulumi.InvokeOption) (*GetDropletsResult, error) {
 	var rv GetDropletsResult

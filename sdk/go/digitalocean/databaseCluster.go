@@ -19,100 +19,112 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("pg"),
-// 			NodeCount: pulumi.Int(1),
-// 			Region:    pulumi.String("nyc1"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Version:   pulumi.String("11"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				NodeCount: pulumi.Int(1),
+//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Version:   pulumi.String("11"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create a new MySQL database cluster
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "mysql-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("mysql"),
-// 			NodeCount: pulumi.Int(1),
-// 			Region:    pulumi.String("nyc1"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Version:   pulumi.String("8"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "mysql-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("mysql"),
+//				NodeCount: pulumi.Int(1),
+//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Version:   pulumi.String("8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create a new Redis database cluster
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "redis-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("redis"),
-// 			NodeCount: pulumi.Int(1),
-// 			Region:    pulumi.String("nyc1"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Version:   pulumi.String("6"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "redis-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("redis"),
+//				NodeCount: pulumi.Int(1),
+//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Version:   pulumi.String("6"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create a new MongoDB database cluster
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "mongodb-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("mongodb"),
-// 			NodeCount: pulumi.Int(1),
-// 			Region:    pulumi.String("nyc3"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Version:   pulumi.String("4"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "mongodb-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("mongodb"),
+//				NodeCount: pulumi.Int(1),
+//				Region:    pulumi.String("nyc3"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Version:   pulumi.String("4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -120,7 +132,9 @@ import (
 // Database clusters can be imported using the `id` returned from DigitalOcean, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+//
+//	$ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+//
 // ```
 type DatabaseCluster struct {
 	pulumi.CustomResourceState
@@ -374,7 +388,7 @@ func (i *DatabaseCluster) ToDatabaseClusterOutputWithContext(ctx context.Context
 // DatabaseClusterArrayInput is an input type that accepts DatabaseClusterArray and DatabaseClusterArrayOutput values.
 // You can construct a concrete instance of `DatabaseClusterArrayInput` via:
 //
-//          DatabaseClusterArray{ DatabaseClusterArgs{...} }
+//	DatabaseClusterArray{ DatabaseClusterArgs{...} }
 type DatabaseClusterArrayInput interface {
 	pulumi.Input
 
@@ -399,7 +413,7 @@ func (i DatabaseClusterArray) ToDatabaseClusterArrayOutputWithContext(ctx contex
 // DatabaseClusterMapInput is an input type that accepts DatabaseClusterMap and DatabaseClusterMapOutput values.
 // You can construct a concrete instance of `DatabaseClusterMapInput` via:
 //
-//          DatabaseClusterMap{ "key": DatabaseClusterArgs{...} }
+//	DatabaseClusterMap{ "key": DatabaseClusterArgs{...} }
 type DatabaseClusterMapInput interface {
 	pulumi.Input
 

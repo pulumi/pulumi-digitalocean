@@ -76,6 +76,10 @@ export interface GetAppResult {
      * The date and time of when the app was last updated.
      */
     readonly updatedAt: string;
+    /**
+     * The uniform resource identifier for the app.
+     */
+    readonly urn: string;
 }
 
 export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {

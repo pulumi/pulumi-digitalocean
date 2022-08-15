@@ -21,17 +21,15 @@ namespace Pulumi.DigitalOcean
         /// Get the account:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(DigitalOcean.GetAccount.InvokeAsync());
-        ///     }
+        ///     var example = DigitalOcean.GetAccount.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

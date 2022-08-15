@@ -19,29 +19,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
-// 			Region:      pulumi.String("nyc1"),
-// 			Size:        pulumi.Int(100),
-// 			Description: pulumi.String("an example volume"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewVolumeSnapshot(ctx, "foobarVolumeSnapshot", &digitalocean.VolumeSnapshotArgs{
-// 			VolumeId: foobarVolume.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+//				Region:      pulumi.String("nyc1"),
+//				Size:        pulumi.Int(100),
+//				Description: pulumi.String("an example volume"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewVolumeSnapshot(ctx, "foobarVolumeSnapshot", &digitalocean.VolumeSnapshotArgs{
+//				VolumeId: foobarVolume.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Volume Snapshots can be imported using the `snapshot id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
+//
+//	$ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
+//
 // ```
 type VolumeSnapshot struct {
 	pulumi.CustomResourceState
@@ -184,7 +189,7 @@ func (i *VolumeSnapshot) ToVolumeSnapshotOutputWithContext(ctx context.Context) 
 // VolumeSnapshotArrayInput is an input type that accepts VolumeSnapshotArray and VolumeSnapshotArrayOutput values.
 // You can construct a concrete instance of `VolumeSnapshotArrayInput` via:
 //
-//          VolumeSnapshotArray{ VolumeSnapshotArgs{...} }
+//	VolumeSnapshotArray{ VolumeSnapshotArgs{...} }
 type VolumeSnapshotArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +214,7 @@ func (i VolumeSnapshotArray) ToVolumeSnapshotArrayOutputWithContext(ctx context.
 // VolumeSnapshotMapInput is an input type that accepts VolumeSnapshotMap and VolumeSnapshotMapOutput values.
 // You can construct a concrete instance of `VolumeSnapshotMapInput` via:
 //
-//          VolumeSnapshotMap{ "key": VolumeSnapshotArgs{...} }
+//	VolumeSnapshotMap{ "key": VolumeSnapshotArgs{...} }
 type VolumeSnapshotMapInput interface {
 	pulumi.Input
 

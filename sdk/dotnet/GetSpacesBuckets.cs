@@ -27,66 +27,62 @@ namespace Pulumi.DigitalOcean
         /// Get all buckets in a region:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
         ///     {
-        ///         var nyc3 = Output.Create(DigitalOcean.GetSpacesBuckets.InvokeAsync(new DigitalOcean.GetSpacesBucketsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSpacesBucketsFilterArgs
+        ///                 Key = "region",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "region",
-        ///                     Values = 
-        ///                     {
-        ///                         "nyc3",
-        ///                     },
+        ///                     "nyc3",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// You can sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
         ///     {
-        ///         var nyc3 = Output.Create(DigitalOcean.GetSpacesBuckets.InvokeAsync(new DigitalOcean.GetSpacesBucketsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSpacesBucketsFilterArgs
+        ///                 Key = "region",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "region",
-        ///                     Values = 
-        ///                     {
-        ///                         "nyc3",
-        ///                     },
+        ///                     "nyc3",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsSortInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSpacesBucketsSortArgs
-        ///                 {
-        ///                     Direction = "desc",
-        ///                     Key = "name",
-        ///                 },
+        ///                 Direction = "desc",
+        ///                 Key = "name",
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -110,66 +106,62 @@ namespace Pulumi.DigitalOcean
         /// Get all buckets in a region:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
         ///     {
-        ///         var nyc3 = Output.Create(DigitalOcean.GetSpacesBuckets.InvokeAsync(new DigitalOcean.GetSpacesBucketsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSpacesBucketsFilterArgs
+        ///                 Key = "region",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "region",
-        ///                     Values = 
-        ///                     {
-        ///                         "nyc3",
-        ///                     },
+        ///                     "nyc3",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// You can sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
         ///     {
-        ///         var nyc3 = Output.Create(DigitalOcean.GetSpacesBuckets.InvokeAsync(new DigitalOcean.GetSpacesBucketsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSpacesBucketsFilterArgs
+        ///                 Key = "region",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "region",
-        ///                     Values = 
-        ///                     {
-        ///                         "nyc3",
-        ///                     },
+        ///                     "nyc3",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsSortInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSpacesBucketsSortArgs
-        ///                 {
-        ///                     Direction = "desc",
-        ///                     Key = "name",
-        ///                 },
+        ///                 Direction = "desc",
+        ///                 Key = "name",
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -179,7 +171,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetSpacesBucketsArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetSpacesBucketsFilterArgs>? _filters;
@@ -210,9 +202,10 @@ namespace Pulumi.DigitalOcean
         public GetSpacesBucketsArgs()
         {
         }
+        public static new GetSpacesBucketsArgs Empty => new GetSpacesBucketsArgs();
     }
 
-    public sealed class GetSpacesBucketsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetSpacesBucketsFilterInputArgs>? _filters;
@@ -243,6 +236,7 @@ namespace Pulumi.DigitalOcean
         public GetSpacesBucketsInvokeArgs()
         {
         }
+        public static new GetSpacesBucketsInvokeArgs Empty => new GetSpacesBucketsInvokeArgs();
     }
 
 

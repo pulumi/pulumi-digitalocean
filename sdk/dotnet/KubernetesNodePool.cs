@@ -16,51 +16,50 @@ namespace Pulumi.DigitalOcean
     /// ### Basic Example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new DigitalOcean.KubernetesCluster("foo", new()
     ///     {
-    ///         var foo = new DigitalOcean.KubernetesCluster("foo", new DigitalOcean.KubernetesClusterArgs
+    ///         Region = "nyc1",
+    ///         Version = "1.22.8-do.1",
+    ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
     ///         {
-    ///             Region = "nyc1",
-    ///             Version = "1.22.8-do.1",
-    ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
-    ///             {
-    ///                 Name = "front-end-pool",
-    ///                 Size = "s-2vcpu-2gb",
-    ///                 NodeCount = 3,
-    ///             },
-    ///         });
-    ///         var bar = new DigitalOcean.KubernetesNodePool("bar", new DigitalOcean.KubernetesNodePoolArgs
-    ///         {
-    ///             ClusterId = foo.Id,
-    ///             Size = "c-2",
-    ///             NodeCount = 2,
-    ///             Tags = 
-    ///             {
-    ///                 "backend",
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "service", "backend" },
-    ///                 { "priority", "high" },
-    ///             },
-    ///             Taints = 
-    ///             {
-    ///                 new DigitalOcean.Inputs.KubernetesNodePoolTaintArgs
-    ///                 {
-    ///                     Key = "workloadKind",
-    ///                     Value = "database",
-    ///                     Effect = "NoSchedule",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             Name = "front-end-pool",
+    ///             Size = "s-2vcpu-2gb",
+    ///             NodeCount = 3,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var bar = new DigitalOcean.KubernetesNodePool("bar", new()
+    ///     {
+    ///         ClusterId = foo.Id,
+    ///         Size = "c-2",
+    ///         NodeCount = 2,
+    ///         Tags = new[]
+    ///         {
+    ///             "backend",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "service", "backend" },
+    ///             { "priority", "high" },
+    ///         },
+    ///         Taints = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.KubernetesNodePoolTaintArgs
+    ///             {
+    ///                 Key = "workloadKind",
+    ///                 Value = "database",
+    ///                 Effect = "NoSchedule",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Autoscaling Example
     /// 
@@ -68,24 +67,22 @@ namespace Pulumi.DigitalOcean
     /// For example:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool("autoscale-pool-01", new()
     ///     {
-    ///         var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool("autoscale-pool-01", new DigitalOcean.KubernetesNodePoolArgs
-    ///         {
-    ///             ClusterId = digitalocean_kubernetes_cluster.Foo.Id,
-    ///             Size = "s-1vcpu-2gb",
-    ///             AutoScale = true,
-    ///             MinNodes = 1,
-    ///             MaxNodes = 5,
-    ///         });
-    ///     }
+    ///         ClusterId = digitalocean_kubernetes_cluster.Foo.Id,
+    ///         Size = "s-1vcpu-2gb",
+    ///         AutoScale = true,
+    ///         MinNodes = 1,
+    ///         MaxNodes = 5,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -99,7 +96,7 @@ namespace Pulumi.DigitalOcean
     ///  NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource.
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/kubernetesNodePool:KubernetesNodePool")]
-    public partial class KubernetesNodePool : Pulumi.CustomResource
+    public partial class KubernetesNodePool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
@@ -217,7 +214,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class KubernetesNodePoolArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesNodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
@@ -300,9 +297,10 @@ namespace Pulumi.DigitalOcean
         public KubernetesNodePoolArgs()
         {
         }
+        public static new KubernetesNodePoolArgs Empty => new KubernetesNodePoolArgs();
     }
 
-    public sealed class KubernetesNodePoolState : Pulumi.ResourceArgs
+    public sealed class KubernetesNodePoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
@@ -403,5 +401,6 @@ namespace Pulumi.DigitalOcean
         public KubernetesNodePoolState()
         {
         }
+        public static new KubernetesNodePoolState Empty => new KubernetesNodePoolState();
     }
 }

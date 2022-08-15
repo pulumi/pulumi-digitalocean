@@ -22,24 +22,23 @@ namespace Pulumi.DigitalOcean
         /// Get the bucket by name:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetSpacesBucket.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetSpacesBucket.InvokeAsync(new DigitalOcean.GetSpacesBucketArgs
-        ///         {
-        ///             Name = "my-spaces-bucket",
-        ///             Region = "nyc3",
-        ///         }));
-        ///         this.BucketDomainName = example.Apply(example =&gt; example.BucketDomainName);
-        ///     }
+        ///         Name = "my-spaces-bucket",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        ///     [Output("bucketDomainName")]
-        ///     public Output&lt;string&gt; BucketDomainName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bucketDomainName"] = example.Apply(getSpacesBucketResult =&gt; getSpacesBucketResult.BucketDomainName),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -58,24 +57,23 @@ namespace Pulumi.DigitalOcean
         /// Get the bucket by name:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetSpacesBucket.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetSpacesBucket.InvokeAsync(new DigitalOcean.GetSpacesBucketArgs
-        ///         {
-        ///             Name = "my-spaces-bucket",
-        ///             Region = "nyc3",
-        ///         }));
-        ///         this.BucketDomainName = example.Apply(example =&gt; example.BucketDomainName);
-        ///     }
+        ///         Name = "my-spaces-bucket",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        ///     [Output("bucketDomainName")]
-        ///     public Output&lt;string&gt; BucketDomainName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bucketDomainName"] = example.Apply(getSpacesBucketResult =&gt; getSpacesBucketResult.BucketDomainName),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +83,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetSpacesBucketArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Spaces bucket.
@@ -102,9 +100,10 @@ namespace Pulumi.DigitalOcean
         public GetSpacesBucketArgs()
         {
         }
+        public static new GetSpacesBucketArgs Empty => new GetSpacesBucketArgs();
     }
 
-    public sealed class GetSpacesBucketInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Spaces bucket.
@@ -121,6 +120,7 @@ namespace Pulumi.DigitalOcean
         public GetSpacesBucketInvokeArgs()
         {
         }
+        public static new GetSpacesBucketInvokeArgs Empty => new GetSpacesBucketInvokeArgs();
     }
 
 

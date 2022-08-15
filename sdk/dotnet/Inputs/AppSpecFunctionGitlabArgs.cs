@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecFunctionGitlabArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecFunctionGitlabArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the branch to use.
@@ -33,5 +33,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecFunctionGitlabArgs()
         {
         }
+        public static new AppSpecFunctionGitlabArgs Empty => new AppSpecFunctionGitlabArgs();
     }
 }

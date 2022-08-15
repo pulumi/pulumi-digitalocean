@@ -19,23 +19,22 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs
-        ///         {
-        ///             Name = "example-cluster",
-        ///         }));
-        ///         this.DatabaseOutput = example.Apply(example =&gt; example.Uri);
-        ///     }
+        ///         Name = "example-cluster",
+        ///     });
         /// 
-        ///     [Output("databaseOutput")]
-        ///     public Output&lt;string&gt; DatabaseOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseOutput"] = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Uri),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -51,23 +50,22 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs
-        ///         {
-        ///             Name = "example-cluster",
-        ///         }));
-        ///         this.DatabaseOutput = example.Apply(example =&gt; example.Uri);
-        ///     }
+        ///         Name = "example-cluster",
+        ///     });
         /// 
-        ///     [Output("databaseOutput")]
-        ///     public Output&lt;string&gt; DatabaseOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseOutput"] = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Uri),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -77,7 +75,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetDatabaseClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the database cluster.
@@ -96,9 +94,10 @@ namespace Pulumi.DigitalOcean
         public GetDatabaseClusterArgs()
         {
         }
+        public static new GetDatabaseClusterArgs Empty => new GetDatabaseClusterArgs();
     }
 
-    public sealed class GetDatabaseClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the database cluster.
@@ -117,6 +116,7 @@ namespace Pulumi.DigitalOcean
         public GetDatabaseClusterInvokeArgs()
         {
         }
+        public static new GetDatabaseClusterInvokeArgs Empty => new GetDatabaseClusterInvokeArgs();
     }
 
 

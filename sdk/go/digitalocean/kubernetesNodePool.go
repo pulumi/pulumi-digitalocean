@@ -20,49 +20,52 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
-// 			Region:  pulumi.String("nyc1"),
-// 			Version: pulumi.String("1.22.8-do.1"),
-// 			NodePool: &KubernetesClusterNodePoolArgs{
-// 				Name:      pulumi.String("front-end-pool"),
-// 				Size:      pulumi.String("s-2vcpu-2gb"),
-// 				NodeCount: pulumi.Int(3),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewKubernetesNodePool(ctx, "bar", &digitalocean.KubernetesNodePoolArgs{
-// 			ClusterId: foo.ID(),
-// 			Size:      pulumi.String("c-2"),
-// 			NodeCount: pulumi.Int(2),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("backend"),
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"service":  pulumi.String("backend"),
-// 				"priority": pulumi.String("high"),
-// 			},
-// 			Taints: KubernetesNodePoolTaintArray{
-// 				&KubernetesNodePoolTaintArgs{
-// 					Key:    pulumi.String("workloadKind"),
-// 					Value:  pulumi.String("database"),
-// 					Effect: pulumi.String("NoSchedule"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+//				Region:  pulumi.String("nyc1"),
+//				Version: pulumi.String("1.22.8-do.1"),
+//				NodePool: &KubernetesClusterNodePoolArgs{
+//					Name:      pulumi.String("front-end-pool"),
+//					Size:      pulumi.String("s-2vcpu-2gb"),
+//					NodeCount: pulumi.Int(3),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewKubernetesNodePool(ctx, "bar", &digitalocean.KubernetesNodePoolArgs{
+//				ClusterId: foo.ID(),
+//				Size:      pulumi.String("c-2"),
+//				NodeCount: pulumi.Int(2),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("backend"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"service":  pulumi.String("backend"),
+//					"priority": pulumi.String("high"),
+//				},
+//				Taints: KubernetesNodePoolTaintArray{
+//					&KubernetesNodePoolTaintArgs{
+//						Key:    pulumi.String("workloadKind"),
+//						Value:  pulumi.String("database"),
+//						Effect: pulumi.String("NoSchedule"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Autoscaling Example
 //
@@ -73,25 +76,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewKubernetesNodePool(ctx, "autoscale-pool-01", &digitalocean.KubernetesNodePoolArgs{
-// 			ClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),
-// 			Size:      pulumi.String("s-1vcpu-2gb"),
-// 			AutoScale: pulumi.Bool(true),
-// 			MinNodes:  pulumi.Int(1),
-// 			MaxNodes:  pulumi.Int(5),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewKubernetesNodePool(ctx, "autoscale-pool-01", &digitalocean.KubernetesNodePoolArgs{
+//				ClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),
+//				Size:      pulumi.String("s-1vcpu-2gb"),
+//				AutoScale: pulumi.Bool(true),
+//				MinNodes:  pulumi.Int(1),
+//				MaxNodes:  pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -99,10 +105,12 @@ import (
 // If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
+//
+//	$ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
+//
 // ```
 //
-//  NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource.
+//	NoteIf the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an existing cluster. The provider will refuse to import the node pool in that case because the node pool is managed by the `digitalocean_kubernetes_cluster` resource and not by this `digitalocean_kubernetes_node_pool` resource.
 type KubernetesNodePool struct {
 	pulumi.CustomResourceState
 
@@ -297,7 +305,7 @@ func (i *KubernetesNodePool) ToKubernetesNodePoolOutputWithContext(ctx context.C
 // KubernetesNodePoolArrayInput is an input type that accepts KubernetesNodePoolArray and KubernetesNodePoolArrayOutput values.
 // You can construct a concrete instance of `KubernetesNodePoolArrayInput` via:
 //
-//          KubernetesNodePoolArray{ KubernetesNodePoolArgs{...} }
+//	KubernetesNodePoolArray{ KubernetesNodePoolArgs{...} }
 type KubernetesNodePoolArrayInput interface {
 	pulumi.Input
 
@@ -322,7 +330,7 @@ func (i KubernetesNodePoolArray) ToKubernetesNodePoolArrayOutputWithContext(ctx 
 // KubernetesNodePoolMapInput is an input type that accepts KubernetesNodePoolMap and KubernetesNodePoolMapOutput values.
 // You can construct a concrete instance of `KubernetesNodePoolMapInput` via:
 //
-//          KubernetesNodePoolMap{ "key": KubernetesNodePoolArgs{...} }
+//	KubernetesNodePoolMap{ "key": KubernetesNodePoolArgs{...} }
 type KubernetesNodePoolMapInput interface {
 	pulumi.Input
 

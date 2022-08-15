@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/monitorAlert:MonitorAlert")]
-    public partial class MonitorAlert : Pulumi.CustomResource
+    public partial class MonitorAlert : global::Pulumi.CustomResource
     {
         /// <summary>
         /// How to send notifications about the alerts. This is a list with one element, .
@@ -143,7 +143,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class MonitorAlertArgs : Pulumi.ResourceArgs
+    public sealed class MonitorAlertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How to send notifications about the alerts. This is a list with one element, .
@@ -225,9 +225,10 @@ namespace Pulumi.DigitalOcean
         public MonitorAlertArgs()
         {
         }
+        public static new MonitorAlertArgs Empty => new MonitorAlertArgs();
     }
 
-    public sealed class MonitorAlertState : Pulumi.ResourceArgs
+    public sealed class MonitorAlertState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How to send notifications about the alerts. This is a list with one element, .
@@ -315,5 +316,6 @@ namespace Pulumi.DigitalOcean
         public MonitorAlertState()
         {
         }
+        public static new MonitorAlertState Empty => new MonitorAlertState();
     }
 }

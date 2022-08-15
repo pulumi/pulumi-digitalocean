@@ -18,21 +18,19 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new DigitalOcean.Vpc("example", new()
     ///     {
-    ///         var example = new DigitalOcean.Vpc("example", new DigitalOcean.VpcArgs
-    ///         {
-    ///             IpRange = "10.10.10.0/24",
-    ///             Region = "nyc3",
-    ///         });
-    ///     }
+    ///         IpRange = "10.10.10.0/24",
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Resource Assignment
     /// 
@@ -41,27 +39,26 @@ namespace Pulumi.DigitalOcean
     /// may be assigned to a VPC by referencing its `id`. For example:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleVpc = new DigitalOcean.Vpc("exampleVpc", new()
     ///     {
-    ///         var exampleVpc = new DigitalOcean.Vpc("exampleVpc", new DigitalOcean.VpcArgs
-    ///         {
-    ///             Region = "nyc3",
-    ///         });
-    ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc3",
-    ///             VpcUuid = exampleVpc.Id,
-    ///         });
-    ///     }
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc3",
+    ///         VpcUuid = exampleVpc.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +70,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/vpc:Vpc")]
-    public partial class Vpc : Pulumi.CustomResource
+    public partial class Vpc : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date and time of when the VPC was created.
@@ -161,7 +158,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class VpcArgs : Pulumi.ResourceArgs
+    public sealed class VpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A free-form text field up to a limit of 255 characters to describe the VPC.
@@ -190,9 +187,10 @@ namespace Pulumi.DigitalOcean
         public VpcArgs()
         {
         }
+        public static new VpcArgs Empty => new VpcArgs();
     }
 
-    public sealed class VpcState : Pulumi.ResourceArgs
+    public sealed class VpcState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date and time of when the VPC was created.
@@ -239,5 +237,6 @@ namespace Pulumi.DigitalOcean
         public VpcState()
         {
         }
+        public static new VpcState Empty => new VpcState();
     }
 }

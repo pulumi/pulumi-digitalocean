@@ -18,33 +18,32 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new SSH key
+    ///     var @default = new DigitalOcean.SshKey("default", new()
     ///     {
-    ///         // Create a new SSH key
-    ///         var @default = new DigitalOcean.SshKey("default", new DigitalOcean.SshKeyArgs
-    ///         {
-    ///             PublicKey = File.ReadAllText("/Users/myuser/.ssh/id_rsa.pub"),
-    ///         });
-    ///         // Create a new Droplet using the SSH key
-    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc3",
-    ///             Size = "s-1vcpu-1gb",
-    ///             SshKeys = 
-    ///             {
-    ///                 @default.Fingerprint,
-    ///             },
-    ///         });
-    ///     }
+    ///         PublicKey = File.ReadAllText("/Users/myuser/.ssh/id_rsa.pub"),
+    ///     });
     /// 
-    /// }
+    ///     // Create a new Droplet using the SSH key
+    ///     var web = new DigitalOcean.Droplet("web", new()
+    ///     {
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc3",
+    ///         Size = "s-1vcpu-1gb",
+    ///         SshKeys = new[]
+    ///         {
+    ///             @default.Fingerprint,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +55,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/sshKey:SshKey")]
-    public partial class SshKey : Pulumi.CustomResource
+    public partial class SshKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The fingerprint of the SSH key
@@ -121,7 +120,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class SshKeyArgs : Pulumi.ResourceArgs
+    public sealed class SshKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the SSH key for identification
@@ -139,9 +138,10 @@ namespace Pulumi.DigitalOcean
         public SshKeyArgs()
         {
         }
+        public static new SshKeyArgs Empty => new SshKeyArgs();
     }
 
-    public sealed class SshKeyState : Pulumi.ResourceArgs
+    public sealed class SshKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fingerprint of the SSH key
@@ -165,5 +165,6 @@ namespace Pulumi.DigitalOcean
         public SshKeyState()
         {
         }
+        public static new SshKeyState Empty => new SshKeyState();
     }
 }

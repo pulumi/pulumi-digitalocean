@@ -19,29 +19,28 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
     ///     {
-    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "sgp1",
-    ///             Ipv6 = true,
-    ///             PrivateNetworking = true,
-    ///         });
-    ///         var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new DigitalOcean.FloatingIpArgs
-    ///         {
-    ///             DropletId = foobarDroplet.Id,
-    ///             Region = foobarDroplet.Region,
-    ///         });
-    ///     }
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "sgp1",
+    ///         Ipv6 = true,
+    ///         PrivateNetworking = true,
+    ///     });
     /// 
-    /// }
+    ///     var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new()
+    ///     {
+    ///         DropletId = foobarDroplet.Id,
+    ///         Region = foobarDroplet.Region,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +52,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/floatingIp:FloatingIp")]
-    public partial class FloatingIp : Pulumi.CustomResource
+    public partial class FloatingIp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of Droplet that the Floating IP will be assigned to.
@@ -123,7 +122,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class FloatingIpArgs : Pulumi.ResourceArgs
+    public sealed class FloatingIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Droplet that the Floating IP will be assigned to.
@@ -146,9 +145,10 @@ namespace Pulumi.DigitalOcean
         public FloatingIpArgs()
         {
         }
+        public static new FloatingIpArgs Empty => new FloatingIpArgs();
     }
 
-    public sealed class FloatingIpState : Pulumi.ResourceArgs
+    public sealed class FloatingIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Droplet that the Floating IP will be assigned to.
@@ -177,5 +177,6 @@ namespace Pulumi.DigitalOcean
         public FloatingIpState()
         {
         }
+        public static new FloatingIpState Empty => new FloatingIpState();
     }
 }

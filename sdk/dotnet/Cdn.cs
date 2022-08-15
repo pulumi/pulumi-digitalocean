@@ -16,66 +16,66 @@ namespace Pulumi.DigitalOcean
     /// ### Basic Example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Spaces Bucket
+    ///     var mybucket = new DigitalOcean.SpacesBucket("mybucket", new()
     ///     {
-    ///         // Create a new Spaces Bucket
-    ///         var mybucket = new DigitalOcean.SpacesBucket("mybucket", new DigitalOcean.SpacesBucketArgs
-    ///         {
-    ///             Region = "sfo2",
-    ///             Acl = "public-read",
-    ///         });
-    ///         // Add a CDN endpoint to the Spaces Bucket
-    ///         var mycdn = new DigitalOcean.Cdn("mycdn", new DigitalOcean.CdnArgs
-    ///         {
-    ///             Origin = mybucket.BucketDomainName,
-    ///         });
-    ///         this.Fqdn = mycdn.Endpoint;
-    ///     }
+    ///         Region = "sfo2",
+    ///         Acl = "public-read",
+    ///     });
     /// 
-    ///     [Output("fqdn")]
-    ///     public Output&lt;string&gt; Fqdn { get; set; }
-    /// }
+    ///     // Add a CDN endpoint to the Spaces Bucket
+    ///     var mycdn = new DigitalOcean.Cdn("mycdn", new()
+    ///     {
+    ///         Origin = mybucket.BucketDomainName,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["fqdn"] = mycdn.Endpoint,
+    ///     };
+    /// });
     /// ```
     /// ### Custom Sub-Domain Example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Spaces Bucket
+    ///     var mybucket = new DigitalOcean.SpacesBucket("mybucket", new()
     ///     {
-    ///         // Create a new Spaces Bucket
-    ///         var mybucket = new DigitalOcean.SpacesBucket("mybucket", new DigitalOcean.SpacesBucketArgs
-    ///         {
-    ///             Region = "sfo2",
-    ///             Acl = "public-read",
-    ///         });
-    ///         // Create a DigitalOcean managed Let's Encrypt Certificate
-    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
-    ///         {
-    ///             Type = "lets_encrypt",
-    ///             Domains = 
-    ///             {
-    ///                 "static.example.com",
-    ///             },
-    ///         });
-    ///         // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
-    ///         var mycdn = new DigitalOcean.Cdn("mycdn", new DigitalOcean.CdnArgs
-    ///         {
-    ///             Origin = mybucket.BucketDomainName,
-    ///             CustomDomain = "static.example.com",
-    ///             CertificateName = cert.Name,
-    ///         });
-    ///     }
+    ///         Region = "sfo2",
+    ///         Acl = "public-read",
+    ///     });
     /// 
-    /// }
+    ///     // Create a DigitalOcean managed Let's Encrypt Certificate
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
+    ///     {
+    ///         Type = "lets_encrypt",
+    ///         Domains = new[]
+    ///         {
+    ///             "static.example.com",
+    ///         },
+    ///     });
+    /// 
+    ///     // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
+    ///     var mycdn = new DigitalOcean.Cdn("mycdn", new()
+    ///     {
+    ///         Origin = mybucket.BucketDomainName,
+    ///         CustomDomain = "static.example.com",
+    ///         CertificateName = cert.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -87,7 +87,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/cdn:Cdn")]
-    public partial class Cdn : Pulumi.CustomResource
+    public partial class Cdn : global::Pulumi.CustomResource
     {
         /// <summary>
         /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -175,7 +175,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class CdnArgs : Pulumi.ResourceArgs
+    public sealed class CdnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -210,9 +210,10 @@ namespace Pulumi.DigitalOcean
         public CdnArgs()
         {
         }
+        public static new CdnArgs Empty => new CdnArgs();
     }
 
-    public sealed class CdnState : Pulumi.ResourceArgs
+    public sealed class CdnState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -259,5 +260,6 @@ namespace Pulumi.DigitalOcean
         public CdnState()
         {
         }
+        public static new CdnState Empty => new CdnState();
     }
 }

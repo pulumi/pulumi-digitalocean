@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecFunctionLogDestinationPapertrailArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecFunctionLogDestinationPapertrailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Datadog HTTP log intake endpoint.
@@ -21,5 +21,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecFunctionLogDestinationPapertrailArgs()
         {
         }
+        public static new AppSpecFunctionLogDestinationPapertrailArgs Empty => new AppSpecFunctionLogDestinationPapertrailArgs();
     }
 }

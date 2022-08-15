@@ -19,89 +19,92 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		webDroplet, err := digitalocean.NewDroplet(ctx, "webDroplet", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewFirewall(ctx, "webFirewall", &digitalocean.FirewallArgs{
-// 			DropletIds: pulumi.IntArray{
-// 				webDroplet.ID(),
-// 			},
-// 			InboundRules: FirewallInboundRuleArray{
-// 				&FirewallInboundRuleArgs{
-// 					Protocol:  pulumi.String("tcp"),
-// 					PortRange: pulumi.String("22"),
-// 					SourceAddresses: pulumi.StringArray{
-// 						pulumi.String("192.168.1.0/24"),
-// 						pulumi.String("2002:1:2::/48"),
-// 					},
-// 				},
-// 				&FirewallInboundRuleArgs{
-// 					Protocol:  pulumi.String("tcp"),
-// 					PortRange: pulumi.String("80"),
-// 					SourceAddresses: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 				&FirewallInboundRuleArgs{
-// 					Protocol:  pulumi.String("tcp"),
-// 					PortRange: pulumi.String("443"),
-// 					SourceAddresses: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 				&FirewallInboundRuleArgs{
-// 					Protocol: pulumi.String("icmp"),
-// 					SourceAddresses: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 			},
-// 			OutboundRules: FirewallOutboundRuleArray{
-// 				&FirewallOutboundRuleArgs{
-// 					Protocol:  pulumi.String("tcp"),
-// 					PortRange: pulumi.String("53"),
-// 					DestinationAddresses: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 				&FirewallOutboundRuleArgs{
-// 					Protocol:  pulumi.String("udp"),
-// 					PortRange: pulumi.String("53"),
-// 					DestinationAddresses: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 				&FirewallOutboundRuleArgs{
-// 					Protocol: pulumi.String("icmp"),
-// 					DestinationAddresses: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			webDroplet, err := digitalocean.NewDroplet(ctx, "webDroplet", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewFirewall(ctx, "webFirewall", &digitalocean.FirewallArgs{
+//				DropletIds: pulumi.IntArray{
+//					webDroplet.ID(),
+//				},
+//				InboundRules: FirewallInboundRuleArray{
+//					&FirewallInboundRuleArgs{
+//						Protocol:  pulumi.String("tcp"),
+//						PortRange: pulumi.String("22"),
+//						SourceAddresses: pulumi.StringArray{
+//							pulumi.String("192.168.1.0/24"),
+//							pulumi.String("2002:1:2::/48"),
+//						},
+//					},
+//					&FirewallInboundRuleArgs{
+//						Protocol:  pulumi.String("tcp"),
+//						PortRange: pulumi.String("80"),
+//						SourceAddresses: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//							pulumi.String("::/0"),
+//						},
+//					},
+//					&FirewallInboundRuleArgs{
+//						Protocol:  pulumi.String("tcp"),
+//						PortRange: pulumi.String("443"),
+//						SourceAddresses: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//							pulumi.String("::/0"),
+//						},
+//					},
+//					&FirewallInboundRuleArgs{
+//						Protocol: pulumi.String("icmp"),
+//						SourceAddresses: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//							pulumi.String("::/0"),
+//						},
+//					},
+//				},
+//				OutboundRules: FirewallOutboundRuleArray{
+//					&FirewallOutboundRuleArgs{
+//						Protocol:  pulumi.String("tcp"),
+//						PortRange: pulumi.String("53"),
+//						DestinationAddresses: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//							pulumi.String("::/0"),
+//						},
+//					},
+//					&FirewallOutboundRuleArgs{
+//						Protocol:  pulumi.String("udp"),
+//						PortRange: pulumi.String("53"),
+//						DestinationAddresses: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//							pulumi.String("::/0"),
+//						},
+//					},
+//					&FirewallOutboundRuleArgs{
+//						Protocol: pulumi.String("icmp"),
+//						DestinationAddresses: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//							pulumi.String("::/0"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -109,7 +112,9 @@ import (
 // Firewalls can be imported using the firewall `id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
+//
+//	$ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
+//
 // ```
 type Firewall struct {
 	pulumi.CustomResourceState
@@ -285,7 +290,7 @@ func (i *Firewall) ToFirewallOutputWithContext(ctx context.Context) FirewallOutp
 // FirewallArrayInput is an input type that accepts FirewallArray and FirewallArrayOutput values.
 // You can construct a concrete instance of `FirewallArrayInput` via:
 //
-//          FirewallArray{ FirewallArgs{...} }
+//	FirewallArray{ FirewallArgs{...} }
 type FirewallArrayInput interface {
 	pulumi.Input
 
@@ -310,7 +315,7 @@ func (i FirewallArray) ToFirewallArrayOutputWithContext(ctx context.Context) Fir
 // FirewallMapInput is an input type that accepts FirewallMap and FirewallMapOutput values.
 // You can construct a concrete instance of `FirewallMapInput` via:
 //
-//          FirewallMap{ "key": FirewallArgs{...} }
+//	FirewallMap{ "key": FirewallArgs{...} }
 type FirewallMapInput interface {
 	pulumi.Input
 

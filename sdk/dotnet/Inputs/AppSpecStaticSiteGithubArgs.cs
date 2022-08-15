@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecStaticSiteGithubArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecStaticSiteGithubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the branch to use.
@@ -33,5 +33,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecStaticSiteGithubArgs()
         {
         }
+        public static new AppSpecStaticSiteGithubArgs Empty => new AppSpecStaticSiteGithubArgs();
     }
 }

@@ -24,21 +24,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewContainerRegistryDockerCredentials(ctx, "example", &digitalocean.ContainerRegistryDockerCredentialsArgs{
-// 			RegistryName: pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewContainerRegistryDockerCredentials(ctx, "example", &digitalocean.ContainerRegistryDockerCredentialsArgs{
+//				RegistryName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Docker Provider Example
 //
@@ -48,27 +51,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.LookupContainerRegistry(ctx, &GetContainerRegistryArgs{
-// 			Name: "example",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewContainerRegistryDockerCredentials(ctx, "exampleContainerRegistryDockerCredentials", &digitalocean.ContainerRegistryDockerCredentialsArgs{
-// 			RegistryName: pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.LookupContainerRegistry(ctx, &GetContainerRegistryArgs{
+//				Name: "example",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewContainerRegistryDockerCredentials(ctx, "exampleContainerRegistryDockerCredentials", &digitalocean.ContainerRegistryDockerCredentialsArgs{
+//				RegistryName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ContainerRegistryDockerCredentials struct {
 	pulumi.CustomResourceState
@@ -185,7 +191,7 @@ func (i *ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredential
 // ContainerRegistryDockerCredentialsArrayInput is an input type that accepts ContainerRegistryDockerCredentialsArray and ContainerRegistryDockerCredentialsArrayOutput values.
 // You can construct a concrete instance of `ContainerRegistryDockerCredentialsArrayInput` via:
 //
-//          ContainerRegistryDockerCredentialsArray{ ContainerRegistryDockerCredentialsArgs{...} }
+//	ContainerRegistryDockerCredentialsArray{ ContainerRegistryDockerCredentialsArgs{...} }
 type ContainerRegistryDockerCredentialsArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +216,7 @@ func (i ContainerRegistryDockerCredentialsArray) ToContainerRegistryDockerCreden
 // ContainerRegistryDockerCredentialsMapInput is an input type that accepts ContainerRegistryDockerCredentialsMap and ContainerRegistryDockerCredentialsMapOutput values.
 // You can construct a concrete instance of `ContainerRegistryDockerCredentialsMapInput` via:
 //
-//          ContainerRegistryDockerCredentialsMap{ "key": ContainerRegistryDockerCredentialsArgs{...} }
+//	ContainerRegistryDockerCredentialsMap{ "key": ContainerRegistryDockerCredentialsArgs{...} }
 type ContainerRegistryDockerCredentialsMapInput interface {
 	pulumi.Input
 

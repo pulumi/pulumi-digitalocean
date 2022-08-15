@@ -25,20 +25,16 @@ namespace Pulumi.DigitalOcean
     /// example:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var static_assets = new DigitalOcean.SpacesBucket("static-assets", new DigitalOcean.SpacesBucketArgs
-    ///         {
-    ///         });
-    ///         // ...
-    ///     }
+    ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
     /// 
-    /// }
+    ///     // ...
+    /// });
     /// ```
     /// 
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -47,75 +43,71 @@ namespace Pulumi.DigitalOcean
     /// ### Create a New Bucket
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
-    ///         var foobar = new DigitalOcean.SpacesBucket("foobar", new DigitalOcean.SpacesBucketArgs
-    ///         {
-    ///             Region = "nyc3",
-    ///         });
-    ///     }
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Create a New Bucket With CORS Rules
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
-    ///         var foobar = new DigitalOcean.SpacesBucket("foobar", new DigitalOcean.SpacesBucketArgs
+    ///         CorsRules = new[]
     ///         {
-    ///             CorsRules = 
+    ///             new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
     ///             {
-    ///                 new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
+    ///                 AllowedHeaders = new[]
     ///                 {
-    ///                     AllowedHeaders = 
-    ///                     {
-    ///                         "*",
-    ///                     },
-    ///                     AllowedMethods = 
-    ///                     {
-    ///                         "GET",
-    ///                     },
-    ///                     AllowedOrigins = 
-    ///                     {
-    ///                         "*",
-    ///                     },
-    ///                     MaxAgeSeconds = 3000,
+    ///                     "*",
     ///                 },
-    ///                 new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
+    ///                 AllowedMethods = new[]
     ///                 {
-    ///                     AllowedHeaders = 
-    ///                     {
-    ///                         "*",
-    ///                     },
-    ///                     AllowedMethods = 
-    ///                     {
-    ///                         "PUT",
-    ///                         "POST",
-    ///                         "DELETE",
-    ///                     },
-    ///                     AllowedOrigins = 
-    ///                     {
-    ///                         "https://www.example.com",
-    ///                     },
-    ///                     MaxAgeSeconds = 3000,
+    ///                     "GET",
     ///                 },
+    ///                 AllowedOrigins = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///                 MaxAgeSeconds = 3000,
     ///             },
-    ///             Region = "nyc3",
-    ///         });
-    ///     }
+    ///             new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
+    ///             {
+    ///                 AllowedHeaders = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///                 AllowedMethods = new[]
+    ///                 {
+    ///                     "PUT",
+    ///                     "POST",
+    ///                     "DELETE",
+    ///                 },
+    ///                 AllowedOrigins = new[]
+    ///                 {
+    ///                     "https://www.example.com",
+    ///                 },
+    ///                 MaxAgeSeconds = 3000,
+    ///             },
+    ///         },
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -127,7 +119,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/spacesBucket:SpacesBucket")]
-    public partial class SpacesBucket : Pulumi.CustomResource
+    public partial class SpacesBucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Canned ACL applied on bucket creation (`private` or `public-read`)
@@ -227,7 +219,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class SpacesBucketArgs : Pulumi.ResourceArgs
+    public sealed class SpacesBucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Canned ACL applied on bucket creation (`private` or `public-read`)
@@ -286,9 +278,10 @@ namespace Pulumi.DigitalOcean
         public SpacesBucketArgs()
         {
         }
+        public static new SpacesBucketArgs Empty => new SpacesBucketArgs();
     }
 
-    public sealed class SpacesBucketState : Pulumi.ResourceArgs
+    public sealed class SpacesBucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Canned ACL applied on bucket creation (`private` or `public-read`)
@@ -359,5 +352,6 @@ namespace Pulumi.DigitalOcean
         public SpacesBucketState()
         {
         }
+        public static new SpacesBucketState Empty => new SpacesBucketState();
     }
 }

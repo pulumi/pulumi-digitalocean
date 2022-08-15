@@ -19,33 +19,33 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new()
     ///     {
-    ///         var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new DigitalOcean.FloatingIpArgs
-    ///         {
-    ///             Region = "sgp1",
-    ///         });
-    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "sgp1",
-    ///             Ipv6 = true,
-    ///             PrivateNetworking = true,
-    ///         });
-    ///         var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobarFloatingIpAssignment", new DigitalOcean.FloatingIpAssignmentArgs
-    ///         {
-    ///             IpAddress = foobarFloatingIp.IpAddress,
-    ///             DropletId = foobarDroplet.Id,
-    ///         });
-    ///     }
+    ///         Region = "sgp1",
+    ///     });
     /// 
-    /// }
+    ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "sgp1",
+    ///         Ipv6 = true,
+    ///         PrivateNetworking = true,
+    ///     });
+    /// 
+    ///     var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobarFloatingIpAssignment", new()
+    ///     {
+    ///         IpAddress = foobarFloatingIp.IpAddress,
+    ///         DropletId = foobarDroplet.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +57,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/floatingIpAssignment:FloatingIpAssignment")]
-    public partial class FloatingIpAssignment : Pulumi.CustomResource
+    public partial class FloatingIpAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of Droplet that the Floating IP will be assigned to.
@@ -115,7 +115,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class FloatingIpAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class FloatingIpAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Droplet that the Floating IP will be assigned to.
@@ -132,9 +132,10 @@ namespace Pulumi.DigitalOcean
         public FloatingIpAssignmentArgs()
         {
         }
+        public static new FloatingIpAssignmentArgs Empty => new FloatingIpAssignmentArgs();
     }
 
-    public sealed class FloatingIpAssignmentState : Pulumi.ResourceArgs
+    public sealed class FloatingIpAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Droplet that the Floating IP will be assigned to.
@@ -151,5 +152,6 @@ namespace Pulumi.DigitalOcean
         public FloatingIpAssignmentState()
         {
         }
+        public static new FloatingIpAssignmentState Empty => new FloatingIpAssignmentState();
     }
 }

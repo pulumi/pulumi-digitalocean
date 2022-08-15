@@ -15,10 +15,15 @@ import * as utilities from "./utilities";
  *
  * const web = new digitalocean.Droplet("web", {
  *     size: "s-1vcpu-1gb",
- *     image: "centos-7-x64",
+ *     image: "ubuntu-22-04-x64",
  *     region: "nyc3",
  * });
  * const web_snapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
+ * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
+ *     image: web_snapshot.id,
+ *     region: "nyc3",
+ *     size: "s-2vcpu-4gb",
+ * });
  * ```
  *
  * ## Import

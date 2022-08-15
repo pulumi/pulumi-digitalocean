@@ -26,42 +26,39 @@ namespace Pulumi.DigitalOcean
         /// Get the load balancer by name:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs
-        ///         {
-        ///             Name = "app",
-        ///         }));
-        ///         this.LbOutput = example.Apply(example =&gt; example.Ip);
-        ///     }
+        ///         Name = "app",
+        ///     });
         /// 
-        ///     [Output("lbOutput")]
-        ///     public Output&lt;string&gt; LbOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["lbOutput"] = example.Apply(getLoadBalancerResult =&gt; getLoadBalancerResult.Ip),
+        ///     };
+        /// });
         /// ```
         /// 
         /// Get the load balancer by ID:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs
-        ///         {
-        ///             Id = "loadbalancer_id",
-        ///         }));
-        ///     }
+        ///         Id = "loadbalancer_id",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -84,42 +81,39 @@ namespace Pulumi.DigitalOcean
         /// Get the load balancer by name:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs
-        ///         {
-        ///             Name = "app",
-        ///         }));
-        ///         this.LbOutput = example.Apply(example =&gt; example.Ip);
-        ///     }
+        ///         Name = "app",
+        ///     });
         /// 
-        ///     [Output("lbOutput")]
-        ///     public Output&lt;string&gt; LbOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["lbOutput"] = example.Apply(getLoadBalancerResult =&gt; getLoadBalancerResult.Ip),
+        ///     };
+        /// });
         /// ```
         /// 
         /// Get the load balancer by ID:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetLoadBalancer.InvokeAsync(new DigitalOcean.GetLoadBalancerArgs
-        ///         {
-        ///             Id = "loadbalancer_id",
-        ///         }));
-        ///     }
+        ///         Id = "loadbalancer_id",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -129,7 +123,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetLoadBalancerArgs : Pulumi.InvokeArgs
+    public sealed class GetLoadBalancerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of load balancer.
@@ -146,9 +140,10 @@ namespace Pulumi.DigitalOcean
         public GetLoadBalancerArgs()
         {
         }
+        public static new GetLoadBalancerArgs Empty => new GetLoadBalancerArgs();
     }
 
-    public sealed class GetLoadBalancerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLoadBalancerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of load balancer.
@@ -165,6 +160,7 @@ namespace Pulumi.DigitalOcean
         public GetLoadBalancerInvokeArgs()
         {
         }
+        public static new GetLoadBalancerInvokeArgs Empty => new GetLoadBalancerInvokeArgs();
     }
 
 

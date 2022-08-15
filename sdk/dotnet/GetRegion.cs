@@ -20,23 +20,22 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sfo2 = DigitalOcean.GetRegion.Invoke(new()
         ///     {
-        ///         var sfo2 = Output.Create(DigitalOcean.GetRegion.InvokeAsync(new DigitalOcean.GetRegionArgs
-        ///         {
-        ///             Slug = "sfo2",
-        ///         }));
-        ///         this.RegionName = sfo2.Apply(sfo2 =&gt; sfo2.Name);
-        ///     }
+        ///         Slug = "sfo2",
+        ///     });
         /// 
-        ///     [Output("regionName")]
-        ///     public Output&lt;string&gt; RegionName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["regionName"] = sfo2.Apply(getRegionResult =&gt; getRegionResult.Name),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -53,23 +52,22 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sfo2 = DigitalOcean.GetRegion.Invoke(new()
         ///     {
-        ///         var sfo2 = Output.Create(DigitalOcean.GetRegion.InvokeAsync(new DigitalOcean.GetRegionArgs
-        ///         {
-        ///             Slug = "sfo2",
-        ///         }));
-        ///         this.RegionName = sfo2.Apply(sfo2 =&gt; sfo2.Name);
-        ///     }
+        ///         Slug = "sfo2",
+        ///     });
         /// 
-        ///     [Output("regionName")]
-        ///     public Output&lt;string&gt; RegionName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["regionName"] = sfo2.Apply(getRegionResult =&gt; getRegionResult.Name),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,7 +77,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetRegionArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A human-readable string that is used as a unique identifier for each region.
@@ -90,9 +88,10 @@ namespace Pulumi.DigitalOcean
         public GetRegionArgs()
         {
         }
+        public static new GetRegionArgs Empty => new GetRegionArgs();
     }
 
-    public sealed class GetRegionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A human-readable string that is used as a unique identifier for each region.
@@ -103,6 +102,7 @@ namespace Pulumi.DigitalOcean
         public GetRegionInvokeArgs()
         {
         }
+        public static new GetRegionInvokeArgs Empty => new GetRegionInvokeArgs();
     }
 
 

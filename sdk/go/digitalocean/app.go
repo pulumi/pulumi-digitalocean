@@ -21,36 +21,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewApp(ctx, "golang-sample", &digitalocean.AppArgs{
-// 			Spec: &AppSpecArgs{
-// 				Name:   pulumi.String("golang-sample"),
-// 				Region: pulumi.String("ams"),
-// 				Services: AppSpecServiceArray{
-// 					&AppSpecServiceArgs{
-// 						EnvironmentSlug: pulumi.String("go"),
-// 						Git: &AppSpecServiceGitArgs{
-// 							Branch:       pulumi.String("main"),
-// 							RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
-// 						},
-// 						InstanceCount:    pulumi.Int(1),
-// 						InstanceSizeSlug: pulumi.String("professional-xs"),
-// 						Name:             pulumi.String("go-service"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewApp(ctx, "golang-sample", &digitalocean.AppArgs{
+//				Spec: &AppSpecArgs{
+//					Name:   pulumi.String("golang-sample"),
+//					Region: pulumi.String("ams"),
+//					Services: AppSpecServiceArray{
+//						&AppSpecServiceArgs{
+//							EnvironmentSlug: pulumi.String("go"),
+//							Git: &AppSpecServiceGitArgs{
+//								Branch:       pulumi.String("main"),
+//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
+//							},
+//							InstanceCount:    pulumi.Int(1),
+//							InstanceSizeSlug: pulumi.String("professional-xs"),
+//							Name:             pulumi.String("go-service"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Static Site Example
 //
@@ -58,130 +61,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewApp(ctx, "static-ste-example", &digitalocean.AppArgs{
-// 			Spec: &AppSpecArgs{
-// 				Name:   pulumi.String("static-ste-example"),
-// 				Region: pulumi.String("ams"),
-// 				StaticSites: AppSpecStaticSiteArray{
-// 					&AppSpecStaticSiteArgs{
-// 						BuildCommand: pulumi.String("bundle exec jekyll build -d ./public"),
-// 						Git: &AppSpecStaticSiteGitArgs{
-// 							Branch:       pulumi.String("main"),
-// 							RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-jekyll.git"),
-// 						},
-// 						Name:      pulumi.String("sample-jekyll"),
-// 						OutputDir: pulumi.String("/public"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Multiple Components Example
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewApp(ctx, "static-ste-example", &digitalocean.AppArgs{
+//				Spec: &AppSpecArgs{
+//					Name:   pulumi.String("static-ste-example"),
+//					Region: pulumi.String("ams"),
+//					StaticSites: AppSpecStaticSiteArray{
+//						&AppSpecStaticSiteArgs{
+//							BuildCommand: pulumi.String("bundle exec jekyll build -d ./public"),
+//							Git: &AppSpecStaticSiteGitArgs{
+//								Branch:       pulumi.String("main"),
+//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-jekyll.git"),
+//							},
+//							Name:      pulumi.String("sample-jekyll"),
+//							OutputDir: pulumi.String("/public"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
 //
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewApp(ctx, "mono-repo-example", &digitalocean.AppArgs{
-// 			Spec: &AppSpecArgs{
-// 				Alerts: AppSpecAlertArray{
-// 					&AppSpecAlertArgs{
-// 						Rule: pulumi.String("DEPLOYMENT_FAILED"),
-// 					},
-// 				},
-// 				Databases: AppSpecDatabaseArray{
-// 					&AppSpecDatabaseArgs{
-// 						Engine:     pulumi.String("PG"),
-// 						Name:       pulumi.String("starter-db"),
-// 						Production: pulumi.Bool(false),
-// 					},
-// 				},
-// 				Domains: pulumi.StringArray{
-// 					pulumi.String{
-// 						Name: "foo.example.com",
-// 					},
-// 				},
-// 				Name:   pulumi.String("mono-repo-example"),
-// 				Region: pulumi.String("ams"),
-// 				Services: AppSpecServiceArray{
-// 					&AppSpecServiceArgs{
-// 						Alert: []map[string]interface{}{
-// 							map[string]interface{}{
-// 								"operator": "GREATER_THAN",
-// 								"rule":     "CPU_UTILIZATION",
-// 								"value":    75,
-// 								"window":   "TEN_MINUTES",
-// 							},
-// 						},
-// 						EnvironmentSlug: pulumi.String("go"),
-// 						Github: &AppSpecServiceGithubArgs{
-// 							Branch:       pulumi.String("main"),
-// 							DeployOnPush: pulumi.Bool(true),
-// 							Repo:         pulumi.String("username/repo"),
-// 						},
-// 						HttpPort:         pulumi.Int(3000),
-// 						InstanceCount:    pulumi.Int(2),
-// 						InstanceSizeSlug: pulumi.String("professional-xs"),
-// 						LogDestination: []map[string]interface{}{
-// 							map[string]interface{}{
-// 								"name": "MyLogs",
-// 								"papertrail": map[string]interface{}{
-// 									"endpoint": "syslog+tls://example.com:12345",
-// 								},
-// 							},
-// 						},
-// 						Name: pulumi.String("api"),
-// 						Routes: AppSpecServiceRouteArray{
-// 							&AppSpecServiceRouteArgs{
-// 								Path: pulumi.String("/api"),
-// 							},
-// 						},
-// 						RunCommand: pulumi.String("bin/api"),
-// 						SourceDir:  pulumi.String("api/"),
-// 					},
-// 				},
-// 				StaticSites: AppSpecStaticSiteArray{
-// 					&AppSpecStaticSiteArgs{
-// 						BuildCommand: pulumi.String("npm run build"),
-// 						Github: &AppSpecStaticSiteGithubArgs{
-// 							Branch:       pulumi.String("main"),
-// 							DeployOnPush: pulumi.Bool(true),
-// 							Repo:         pulumi.String("username/repo"),
-// 						},
-// 						Name: pulumi.String("web"),
-// 						Routes: AppSpecStaticSiteRouteArray{
-// 							&AppSpecStaticSiteRouteArgs{
-// 								Path: pulumi.String("/"),
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
 // ```
 //
 // ## Import
@@ -189,7 +100,9 @@ import (
 // An app can be imported using its `id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
+//
+//	$ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
+//
 // ```
 type App struct {
 	pulumi.CustomResourceState
@@ -206,6 +119,8 @@ type App struct {
 	Spec AppSpecPtrOutput `pulumi:"spec"`
 	// The date and time of when the app was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// The uniform resource identifier for the app.
+	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
 // NewApp registers a new resource with the given unique name, arguments, and options.
@@ -249,6 +164,8 @@ type appState struct {
 	Spec *AppSpec `pulumi:"spec"`
 	// The date and time of when the app was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
+	// The uniform resource identifier for the app.
+	Urn *string `pulumi:"urn"`
 }
 
 type AppState struct {
@@ -264,6 +181,8 @@ type AppState struct {
 	Spec AppSpecPtrInput
 	// The date and time of when the app was last updated.
 	UpdatedAt pulumi.StringPtrInput
+	// The uniform resource identifier for the app.
+	Urn pulumi.StringPtrInput
 }
 
 func (AppState) ElementType() reflect.Type {
@@ -307,7 +226,7 @@ func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 // AppArrayInput is an input type that accepts AppArray and AppArrayOutput values.
 // You can construct a concrete instance of `AppArrayInput` via:
 //
-//          AppArray{ AppArgs{...} }
+//	AppArray{ AppArgs{...} }
 type AppArrayInput interface {
 	pulumi.Input
 
@@ -332,7 +251,7 @@ func (i AppArray) ToAppArrayOutputWithContext(ctx context.Context) AppArrayOutpu
 // AppMapInput is an input type that accepts AppMap and AppMapOutput values.
 // You can construct a concrete instance of `AppMapInput` via:
 //
-//          AppMap{ "key": AppArgs{...} }
+//	AppMap{ "key": AppArgs{...} }
 type AppMapInput interface {
 	pulumi.Input
 
@@ -396,6 +315,11 @@ func (o AppOutput) Spec() AppSpecPtrOutput {
 // The date and time of when the app was last updated.
 func (o AppOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The uniform resource identifier for the app.
+func (o AppOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }

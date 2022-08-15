@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * import * from "fs";
+ * import * as fs from "fs";
  *
  * const cert = new digitalocean.Certificate("cert", {
  *     type: "custom",

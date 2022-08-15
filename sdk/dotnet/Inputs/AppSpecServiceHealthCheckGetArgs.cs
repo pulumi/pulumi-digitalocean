@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecServiceHealthCheckGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecServiceHealthCheckGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of failed health checks before considered unhealthy.
@@ -51,5 +51,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecServiceHealthCheckGetArgs()
         {
         }
+        public static new AppSpecServiceHealthCheckGetArgs Empty => new AppSpecServiceHealthCheckGetArgs();
     }
 }

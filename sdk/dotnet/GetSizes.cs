@@ -29,7 +29,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetSizesArgs : Pulumi.InvokeArgs
+    public sealed class GetSizesArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetSizesFilterArgs>? _filters;
@@ -60,9 +60,10 @@ namespace Pulumi.DigitalOcean
         public GetSizesArgs()
         {
         }
+        public static new GetSizesArgs Empty => new GetSizesArgs();
     }
 
-    public sealed class GetSizesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSizesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetSizesFilterInputArgs>? _filters;
@@ -93,6 +94,7 @@ namespace Pulumi.DigitalOcean
         public GetSizesInvokeArgs()
         {
         }
+        public static new GetSizesInvokeArgs Empty => new GetSizesInvokeArgs();
     }
 
 

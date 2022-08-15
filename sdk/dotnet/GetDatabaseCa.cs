@@ -19,23 +19,22 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ca = DigitalOcean.GetDatabaseCa.Invoke(new()
         ///     {
-        ///         var ca = Output.Create(DigitalOcean.GetDatabaseCa.InvokeAsync(new DigitalOcean.GetDatabaseCaArgs
-        ///         {
-        ///             ClusterId = "aaa-bbb-ccc-ddd",
-        ///         }));
-        ///         this.CaOutput = ca.Apply(ca =&gt; ca.Certificate);
-        ///     }
+        ///         ClusterId = "aaa-bbb-ccc-ddd",
+        ///     });
         /// 
-        ///     [Output("caOutput")]
-        ///     public Output&lt;string&gt; CaOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["caOutput"] = ca.Apply(getDatabaseCaResult =&gt; getDatabaseCaResult.Certificate),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -51,23 +50,22 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ca = DigitalOcean.GetDatabaseCa.Invoke(new()
         ///     {
-        ///         var ca = Output.Create(DigitalOcean.GetDatabaseCa.InvokeAsync(new DigitalOcean.GetDatabaseCaArgs
-        ///         {
-        ///             ClusterId = "aaa-bbb-ccc-ddd",
-        ///         }));
-        ///         this.CaOutput = ca.Apply(ca =&gt; ca.Certificate);
-        ///     }
+        ///         ClusterId = "aaa-bbb-ccc-ddd",
+        ///     });
         /// 
-        ///     [Output("caOutput")]
-        ///     public Output&lt;string&gt; CaOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["caOutput"] = ca.Apply(getDatabaseCaResult =&gt; getDatabaseCaResult.Certificate),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -77,7 +75,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetDatabaseCaArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseCaArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the source database cluster.
@@ -88,9 +86,10 @@ namespace Pulumi.DigitalOcean
         public GetDatabaseCaArgs()
         {
         }
+        public static new GetDatabaseCaArgs Empty => new GetDatabaseCaArgs();
     }
 
-    public sealed class GetDatabaseCaInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseCaInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the source database cluster.
@@ -101,6 +100,7 @@ namespace Pulumi.DigitalOcean
         public GetDatabaseCaInvokeArgs()
         {
         }
+        public static new GetDatabaseCaInvokeArgs Empty => new GetDatabaseCaInvokeArgs();
     }
 
 

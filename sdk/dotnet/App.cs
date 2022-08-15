@@ -18,188 +18,71 @@ namespace Pulumi.DigitalOcean
     /// ### Basic Example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var golang_sample = new DigitalOcean.App("golang-sample", new()
     ///     {
-    ///         var golang_sample = new DigitalOcean.App("golang-sample", new DigitalOcean.AppArgs
+    ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///         {
-    ///             Spec = new DigitalOcean.Inputs.AppSpecArgs
+    ///             Name = "golang-sample",
+    ///             Region = "ams",
+    ///             Services = new[]
     ///             {
-    ///                 Name = "golang-sample",
-    ///                 Region = "ams",
-    ///                 Services = 
+    ///                 new DigitalOcean.Inputs.AppSpecServiceArgs
     ///                 {
-    ///                     new DigitalOcean.Inputs.AppSpecServiceArgs
+    ///                     EnvironmentSlug = "go",
+    ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
     ///                     {
-    ///                         EnvironmentSlug = "go",
-    ///                         Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
-    ///                         {
-    ///                             Branch = "main",
-    ///                             RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
-    ///                         },
-    ///                         InstanceCount = 1,
-    ///                         InstanceSizeSlug = "professional-xs",
-    ///                         Name = "go-service",
+    ///                         Branch = "main",
+    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
     ///                     },
+    ///                     InstanceCount = 1,
+    ///                     InstanceSizeSlug = "professional-xs",
+    ///                     Name = "go-service",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Static Site Example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var static_ste_example = new DigitalOcean.App("static-ste-example", new()
     ///     {
-    ///         var static_ste_example = new DigitalOcean.App("static-ste-example", new DigitalOcean.AppArgs
+    ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///         {
-    ///             Spec = new DigitalOcean.Inputs.AppSpecArgs
+    ///             Name = "static-ste-example",
+    ///             Region = "ams",
+    ///             StaticSites = new[]
     ///             {
-    ///                 Name = "static-ste-example",
-    ///                 Region = "ams",
-    ///                 StaticSites = 
+    ///                 new DigitalOcean.Inputs.AppSpecStaticSiteArgs
     ///                 {
-    ///                     new DigitalOcean.Inputs.AppSpecStaticSiteArgs
+    ///                     BuildCommand = "bundle exec jekyll build -d ./public",
+    ///                     Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs
     ///                     {
-    ///                         BuildCommand = "bundle exec jekyll build -d ./public",
-    ///                         Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs
-    ///                         {
-    ///                             Branch = "main",
-    ///                             RepoCloneUrl = "https://github.com/digitalocean/sample-jekyll.git",
-    ///                         },
-    ///                         Name = "sample-jekyll",
-    ///                         OutputDir = "/public",
+    ///                         Branch = "main",
+    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-jekyll.git",
     ///                     },
+    ///                     Name = "sample-jekyll",
+    ///                     OutputDir = "/public",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
-    /// ```
-    /// ### Multiple Components Example
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var mono_repo_example = new DigitalOcean.App("mono-repo-example", new DigitalOcean.AppArgs
-    ///         {
-    ///             Spec = new DigitalOcean.Inputs.AppSpecArgs
-    ///             {
-    ///                 Alerts = 
-    ///                 {
-    ///                     new DigitalOcean.Inputs.AppSpecAlertArgs
-    ///                     {
-    ///                         Rule = "DEPLOYMENT_FAILED",
-    ///                     },
-    ///                 },
-    ///                 Databases = 
-    ///                 {
-    ///                     new DigitalOcean.Inputs.AppSpecDatabaseArgs
-    ///                     {
-    ///                         Engine = "PG",
-    ///                         Name = "starter-db",
-    ///                         Production = false,
-    ///                     },
-    ///                 },
-    ///                 Domains = 
-    ///                 {
-    ///                     
-    ///                     {
-    ///                         { "name", "foo.example.com" },
-    ///                     },
-    ///                 },
-    ///                 Name = "mono-repo-example",
-    ///                 Region = "ams",
-    ///                 Services = 
-    ///                 {
-    ///                     new DigitalOcean.Inputs.AppSpecServiceArgs
-    ///                     {
-    ///                         Alert = 
-    ///                         {
-    ///                             
-    ///                             {
-    ///                                 { "operator", "GREATER_THAN" },
-    ///                                 { "rule", "CPU_UTILIZATION" },
-    ///                                 { "value", 75 },
-    ///                                 { "window", "TEN_MINUTES" },
-    ///                             },
-    ///                         },
-    ///                         EnvironmentSlug = "go",
-    ///                         Github = new DigitalOcean.Inputs.AppSpecServiceGithubArgs
-    ///                         {
-    ///                             Branch = "main",
-    ///                             DeployOnPush = true,
-    ///                             Repo = "username/repo",
-    ///                         },
-    ///                         HttpPort = 3000,
-    ///                         InstanceCount = 2,
-    ///                         InstanceSizeSlug = "professional-xs",
-    ///                         LogDestination = 
-    ///                         {
-    ///                             
-    ///                             {
-    ///                                 { "name", "MyLogs" },
-    ///                                 { "papertrail", 
-    ///                                 {
-    ///                                     { "endpoint", "syslog+tls://example.com:12345" },
-    ///                                 } },
-    ///                             },
-    ///                         },
-    ///                         Name = "api",
-    ///                         Routes = 
-    ///                         {
-    ///                             new DigitalOcean.Inputs.AppSpecServiceRouteArgs
-    ///                             {
-    ///                                 Path = "/api",
-    ///                             },
-    ///                         },
-    ///                         RunCommand = "bin/api",
-    ///                         SourceDir = "api/",
-    ///                     },
-    ///                 },
-    ///                 StaticSites = 
-    ///                 {
-    ///                     new DigitalOcean.Inputs.AppSpecStaticSiteArgs
-    ///                     {
-    ///                         BuildCommand = "npm run build",
-    ///                         Github = new DigitalOcean.Inputs.AppSpecStaticSiteGithubArgs
-    ///                         {
-    ///                             Branch = "main",
-    ///                             DeployOnPush = true,
-    ///                             Repo = "username/repo",
-    ///                         },
-    ///                         Name = "web",
-    ///                         Routes = 
-    ///                         {
-    ///                             new DigitalOcean.Inputs.AppSpecStaticSiteRouteArgs
-    ///                             {
-    ///                                 Path = "/",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -211,7 +94,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/app:App")]
-    public partial class App : Pulumi.CustomResource
+    public partial class App : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID the app's currently active deployment.
@@ -248,6 +131,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The uniform resource identifier for the app.
+        /// </summary>
+        [Output("urn")]
+        public Output<string> Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -293,7 +182,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class AppArgs : Pulumi.ResourceArgs
+    public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A DigitalOcean App spec describing the app.
@@ -304,9 +193,10 @@ namespace Pulumi.DigitalOcean
         public AppArgs()
         {
         }
+        public static new AppArgs Empty => new AppArgs();
     }
 
-    public sealed class AppState : Pulumi.ResourceArgs
+    public sealed class AppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID the app's currently active deployment.
@@ -344,8 +234,15 @@ namespace Pulumi.DigitalOcean
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// The uniform resource identifier for the app.
+        /// </summary>
+        [Input("urn")]
+        public Input<string>? Urn { get; set; }
+
         public AppState()
         {
         }
+        public static new AppState Empty => new AppState();
     }
 }

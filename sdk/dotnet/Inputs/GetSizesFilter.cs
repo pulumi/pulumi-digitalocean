@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetSizesFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetSizesFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -52,5 +52,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetSizesFilterArgs()
         {
         }
+        public static new GetSizesFilterArgs Empty => new GetSizesFilterArgs();
     }
 }

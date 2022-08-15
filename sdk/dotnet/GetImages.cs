@@ -31,75 +31,71 @@ namespace Pulumi.DigitalOcean
         /// For example to find all Ubuntu images:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ubuntu = DigitalOcean.GetImages.Invoke(new()
         ///     {
-        ///         var ubuntu = Output.Create(DigitalOcean.GetImages.InvokeAsync(new DigitalOcean.GetImagesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetImagesFilterArgs
+        ///                 Key = "distribution",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "distribution",
-        ///                     Values = 
-        ///                     {
-        ///                         "Ubuntu",
-        ///                     },
+        ///                     "Ubuntu",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var available = DigitalOcean.GetImages.Invoke(new()
         ///     {
-        ///         var available = Output.Create(DigitalOcean.GetImages.InvokeAsync(new DigitalOcean.GetImagesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetImagesFilterArgs
+        ///                 Key = "distribution",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "distribution",
-        ///                     Values = 
-        ///                     {
-        ///                         "Ubuntu",
-        ///                     },
-        ///                 },
-        ///                 new DigitalOcean.Inputs.GetImagesFilterArgs
-        ///                 {
-        ///                     Key = "regions",
-        ///                     Values = 
-        ///                     {
-        ///                         "nyc3",
-        ///                     },
+        ///                     "Ubuntu",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetImagesSortArgs
+        ///                 Key = "regions",
+        ///                 Values = new[]
         ///                 {
-        ///                     Direction = "desc",
-        ///                     Key = "created",
+        ///                     "nyc3",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetImagesSortInputArgs
+        ///             {
+        ///                 Direction = "desc",
+        ///                 Key = "created",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -127,75 +123,71 @@ namespace Pulumi.DigitalOcean
         /// For example to find all Ubuntu images:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ubuntu = DigitalOcean.GetImages.Invoke(new()
         ///     {
-        ///         var ubuntu = Output.Create(DigitalOcean.GetImages.InvokeAsync(new DigitalOcean.GetImagesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetImagesFilterArgs
+        ///                 Key = "distribution",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "distribution",
-        ///                     Values = 
-        ///                     {
-        ///                         "Ubuntu",
-        ///                     },
+        ///                     "Ubuntu",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var available = DigitalOcean.GetImages.Invoke(new()
         ///     {
-        ///         var available = Output.Create(DigitalOcean.GetImages.InvokeAsync(new DigitalOcean.GetImagesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetImagesFilterArgs
+        ///                 Key = "distribution",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "distribution",
-        ///                     Values = 
-        ///                     {
-        ///                         "Ubuntu",
-        ///                     },
-        ///                 },
-        ///                 new DigitalOcean.Inputs.GetImagesFilterArgs
-        ///                 {
-        ///                     Key = "regions",
-        ///                     Values = 
-        ///                     {
-        ///                         "nyc3",
-        ///                     },
+        ///                     "Ubuntu",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetImagesSortArgs
+        ///                 Key = "regions",
+        ///                 Values = new[]
         ///                 {
-        ///                     Direction = "desc",
-        ///                     Key = "created",
+        ///                     "nyc3",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetImagesSortInputArgs
+        ///             {
+        ///                 Direction = "desc",
+        ///                 Key = "created",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -205,7 +197,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetImagesArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetImagesFilterArgs>? _filters;
@@ -236,9 +228,10 @@ namespace Pulumi.DigitalOcean
         public GetImagesArgs()
         {
         }
+        public static new GetImagesArgs Empty => new GetImagesArgs();
     }
 
-    public sealed class GetImagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetImagesFilterInputArgs>? _filters;
@@ -269,6 +262,7 @@ namespace Pulumi.DigitalOcean
         public GetImagesInvokeArgs()
         {
         }
+        public static new GetImagesInvokeArgs Empty => new GetImagesInvokeArgs();
     }
 
 

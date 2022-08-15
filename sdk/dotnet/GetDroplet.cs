@@ -27,61 +27,56 @@ namespace Pulumi.DigitalOcean
         /// Get the Droplet by name:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
-        ///         {
-        ///             Name = "web",
-        ///         }));
-        ///         this.DropletOutput = example.Apply(example =&gt; example.Ipv4Address);
-        ///     }
+        ///         Name = "web",
+        ///     });
         /// 
-        ///     [Output("dropletOutput")]
-        ///     public Output&lt;string&gt; DropletOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dropletOutput"] = example.Apply(getDropletResult =&gt; getDropletResult.Ipv4Address),
+        ///     };
+        /// });
         /// ```
         /// 
         /// Get the Droplet by tag:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
-        ///         {
-        ///             Tag = "web",
-        ///         }));
-        ///     }
+        ///         Tag = "web",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get the Droplet by ID:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
-        ///         {
-        ///             Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
-        ///         }));
-        ///     }
+        ///         Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -105,61 +100,56 @@ namespace Pulumi.DigitalOcean
         /// Get the Droplet by name:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
-        ///         {
-        ///             Name = "web",
-        ///         }));
-        ///         this.DropletOutput = example.Apply(example =&gt; example.Ipv4Address);
-        ///     }
+        ///         Name = "web",
+        ///     });
         /// 
-        ///     [Output("dropletOutput")]
-        ///     public Output&lt;string&gt; DropletOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dropletOutput"] = example.Apply(getDropletResult =&gt; getDropletResult.Ipv4Address),
+        ///     };
+        /// });
         /// ```
         /// 
         /// Get the Droplet by tag:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
-        ///         {
-        ///             Tag = "web",
-        ///         }));
-        ///     }
+        ///         Tag = "web",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get the Droplet by ID:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDroplet.InvokeAsync(new DigitalOcean.GetDropletArgs
-        ///         {
-        ///             Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
-        ///         }));
-        ///     }
+        ///         Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -169,7 +159,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetDropletArgs : Pulumi.InvokeArgs
+    public sealed class GetDropletArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Droplet
@@ -192,9 +182,10 @@ namespace Pulumi.DigitalOcean
         public GetDropletArgs()
         {
         }
+        public static new GetDropletArgs Empty => new GetDropletArgs();
     }
 
-    public sealed class GetDropletInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDropletInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Droplet
@@ -217,6 +208,7 @@ namespace Pulumi.DigitalOcean
         public GetDropletInvokeArgs()
         {
         }
+        public static new GetDropletInvokeArgs Empty => new GetDropletInvokeArgs();
     }
 
 

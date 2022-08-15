@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecWorkerLogDestinationDatadogArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecWorkerLogDestinationDatadogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Datadog API key.
@@ -27,5 +27,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecWorkerLogDestinationDatadogArgs()
         {
         }
+        public static new AppSpecWorkerLogDestinationDatadogArgs Empty => new AppSpecWorkerLogDestinationDatadogArgs();
     }
 }

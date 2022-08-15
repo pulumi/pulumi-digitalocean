@@ -89,7 +89,7 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly gracefulShutdown!: pulumi.Output<boolean | undefined>;
     /**
-     * The Droplet image ID or slug.
+     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
      */
     public readonly image!: pulumi.Output<string>;
     /**
@@ -307,7 +307,7 @@ export interface DropletState {
      */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
-     * The Droplet image ID or slug.
+     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
      */
     image?: pulumi.Input<string>;
     /**
@@ -430,7 +430,7 @@ export interface DropletArgs {
      */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
-     * The Droplet image ID or slug.
+     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
      */
     image: pulumi.Input<string>;
     /**

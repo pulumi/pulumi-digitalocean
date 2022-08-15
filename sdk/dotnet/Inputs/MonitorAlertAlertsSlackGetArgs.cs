@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class MonitorAlertAlertsSlackGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorAlertAlertsSlackGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("channel", required: true)]
         public Input<string> Channel { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public MonitorAlertAlertsSlackGetArgs()
         {
         }
+        public static new MonitorAlertAlertsSlackGetArgs Empty => new MonitorAlertAlertsSlackGetArgs();
     }
 }

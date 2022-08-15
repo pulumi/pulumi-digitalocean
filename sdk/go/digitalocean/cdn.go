@@ -20,29 +20,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
-// 			Region: pulumi.String("sfo2"),
-// 			Acl:    pulumi.String("public-read"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		mycdn, err := digitalocean.NewCdn(ctx, "mycdn", &digitalocean.CdnArgs{
-// 			Origin: mybucket.BucketDomainName,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("fqdn", mycdn.Endpoint)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
+//				Region: pulumi.String("sfo2"),
+//				Acl:    pulumi.String("public-read"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mycdn, err := digitalocean.NewCdn(ctx, "mycdn", &digitalocean.CdnArgs{
+//				Origin: mybucket.BucketDomainName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("fqdn", mycdn.Endpoint)
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Custom Sub-Domain Example
 //
@@ -50,39 +53,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
-// 			Region: pulumi.String("sfo2"),
-// 			Acl:    pulumi.String("public-read"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-// 			Type: pulumi.String("lets_encrypt"),
-// 			Domains: pulumi.StringArray{
-// 				pulumi.String("static.example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewCdn(ctx, "mycdn", &digitalocean.CdnArgs{
-// 			Origin:          mybucket.BucketDomainName,
-// 			CustomDomain:    pulumi.String("static.example.com"),
-// 			CertificateName: cert.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
+//				Region: pulumi.String("sfo2"),
+//				Acl:    pulumi.String("public-read"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				Type: pulumi.String("lets_encrypt"),
+//				Domains: pulumi.StringArray{
+//					pulumi.String("static.example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewCdn(ctx, "mycdn", &digitalocean.CdnArgs{
+//				Origin:          mybucket.BucketDomainName,
+//				CustomDomain:    pulumi.String("static.example.com"),
+//				CertificateName: cert.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -90,7 +96,9 @@ import (
 // CDN Endpoints can be imported using the CDN `id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
+//
+//	$ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
+//
 // ```
 type Cdn struct {
 	pulumi.CustomResourceState
@@ -243,7 +251,7 @@ func (i *Cdn) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 // CdnArrayInput is an input type that accepts CdnArray and CdnArrayOutput values.
 // You can construct a concrete instance of `CdnArrayInput` via:
 //
-//          CdnArray{ CdnArgs{...} }
+//	CdnArray{ CdnArgs{...} }
 type CdnArrayInput interface {
 	pulumi.Input
 
@@ -268,7 +276,7 @@ func (i CdnArray) ToCdnArrayOutputWithContext(ctx context.Context) CdnArrayOutpu
 // CdnMapInput is an input type that accepts CdnMap and CdnMapOutput values.
 // You can construct a concrete instance of `CdnMapInput` via:
 //
-//          CdnMap{ "key": CdnArgs{...} }
+//	CdnMap{ "key": CdnArgs{...} }
 type CdnMapInput interface {
 	pulumi.Input
 

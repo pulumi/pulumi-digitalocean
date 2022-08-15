@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class DatabaseFirewallRuleArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseFirewallRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date and time when the firewall rule was created.
@@ -39,5 +39,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public DatabaseFirewallRuleArgs()
         {
         }
+        public static new DatabaseFirewallRuleArgs Empty => new DatabaseFirewallRuleArgs();
     }
 }

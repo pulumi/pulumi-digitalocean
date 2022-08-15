@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class LoadBalancerStickySessionsGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerStickySessionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
@@ -33,5 +33,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public LoadBalancerStickySessionsGetArgs()
         {
         }
+        public static new LoadBalancerStickySessionsGetArgs Empty => new LoadBalancerStickySessionsGetArgs();
     }
 }

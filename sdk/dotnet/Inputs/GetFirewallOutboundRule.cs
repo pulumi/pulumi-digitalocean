@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetFirewallOutboundRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallOutboundRuleArgs : global::Pulumi.InvokeArgs
     {
         [Input("destinationAddresses")]
         private List<string>? _destinationAddresses;
@@ -94,5 +94,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetFirewallOutboundRuleArgs()
         {
         }
+        public static new GetFirewallOutboundRuleArgs Empty => new GetFirewallOutboundRuleArgs();
     }
 }

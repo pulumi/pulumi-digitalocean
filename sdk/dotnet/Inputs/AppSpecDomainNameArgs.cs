@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecDomainNameArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecDomainNameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the component.
@@ -39,5 +39,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecDomainNameArgs()
         {
         }
+        public static new AppSpecDomainNameArgs Empty => new AppSpecDomainNameArgs();
     }
 }

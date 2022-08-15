@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetImagesFilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetImagesFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -52,5 +52,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetImagesFilterInputArgs()
         {
         }
+        public static new GetImagesFilterInputArgs Empty => new GetImagesFilterInputArgs();
     }
 }

@@ -20,27 +20,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		list, err := digitalocean.GetTags(ctx, &GetTagsArgs{
-// 			Sorts: []GetTagsSort{
-// 				GetTagsSort{
-// 					Key:       "total_resource_count",
-// 					Direction: pulumi.StringRef("asc"),
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("sortedTags", list.Tags)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			list, err := digitalocean.GetTags(ctx, &GetTagsArgs{
+//				Sorts: []GetTagsSort{
+//					GetTagsSort{
+//						Key:       "total_resource_count",
+//						Direction: pulumi.StringRef("asc"),
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("sortedTags", list.Tags)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
 	var rv GetTagsResult

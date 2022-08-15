@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecServiceCorsAllowOriginsGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecServiceCorsAllowOriginsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
@@ -33,5 +33,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecServiceCorsAllowOriginsGetArgs()
         {
         }
+        public static new AppSpecServiceCorsAllowOriginsGetArgs Empty => new AppSpecServiceCorsAllowOriginsGetArgs();
     }
 }

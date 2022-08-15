@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetSpacesBucketsFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketsFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -50,5 +50,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetSpacesBucketsFilterArgs()
         {
         }
+        public static new GetSpacesBucketsFilterArgs Empty => new GetSpacesBucketsFilterArgs();
     }
 }

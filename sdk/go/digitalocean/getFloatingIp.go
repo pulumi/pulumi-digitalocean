@@ -27,25 +27,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		publicIp := cfg.RequireObject("publicIp")
-// 		example, err := digitalocean.LookupFloatingIp(ctx, &GetFloatingIpArgs{
-// 			IpAddress: publicIp,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("fipOutput", example.DropletId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			publicIp := cfg.RequireObject("publicIp")
+//			example, err := digitalocean.LookupFloatingIp(ctx, &GetFloatingIpArgs{
+//				IpAddress: publicIp,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("fipOutput", example.DropletId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupFloatingIp(ctx *pulumi.Context, args *LookupFloatingIpArgs, opts ...pulumi.InvokeOption) (*LookupFloatingIpResult, error) {
 	var rv LookupFloatingIpResult

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecJobGitGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecJobGitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the branch to use.
@@ -27,5 +27,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecJobGitGetArgs()
         {
         }
+        public static new AppSpecJobGitGetArgs Empty => new AppSpecJobGitGetArgs();
     }
 }

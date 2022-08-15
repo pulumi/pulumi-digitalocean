@@ -17,28 +17,27 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// ### Create a new PostgreSQL database user
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
-    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "pg",
-    ///             Version = "11",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Region = "nyc1",
-    ///             NodeCount = 1,
-    ///         });
-    ///         var user_example = new DigitalOcean.DatabaseUser("user-example", new DigitalOcean.DatabaseUserArgs
-    ///         {
-    ///             ClusterId = postgres_example.Id,
-    ///         });
-    ///     }
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
     /// 
-    /// }
+    ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +49,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/databaseUser:DatabaseUser")]
-    public partial class DatabaseUser : Pulumi.CustomResource
+    public partial class DatabaseUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the original source database cluster.
@@ -126,7 +125,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DatabaseUserArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the original source database cluster.
@@ -149,9 +148,10 @@ namespace Pulumi.DigitalOcean
         public DatabaseUserArgs()
         {
         }
+        public static new DatabaseUserArgs Empty => new DatabaseUserArgs();
     }
 
-    public sealed class DatabaseUserState : Pulumi.ResourceArgs
+    public sealed class DatabaseUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the original source database cluster.
@@ -186,5 +186,6 @@ namespace Pulumi.DigitalOcean
         public DatabaseUserState()
         {
         }
+        public static new DatabaseUserState Empty => new DatabaseUserState();
     }
 }

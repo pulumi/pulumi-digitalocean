@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * });
  * const foobar = new digitalocean.Droplet("foobar", {
  *     size: "s-1vcpu-1gb",
- *     image: "centos-7-x64",
+ *     image: "ubuntu-22-04-x64",
  *     region: "nyc3",
  * });
  * const barfoo = new digitalocean.ProjectResources("barfoo", {

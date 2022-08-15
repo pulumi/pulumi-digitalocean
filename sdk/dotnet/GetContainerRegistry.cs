@@ -27,20 +27,18 @@ namespace Pulumi.DigitalOcean
         /// Get the container registry:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetContainerRegistry.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetContainerRegistry.InvokeAsync(new DigitalOcean.GetContainerRegistryArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///     }
+        ///         Name = "example",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -64,20 +62,18 @@ namespace Pulumi.DigitalOcean
         /// Get the container registry:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetContainerRegistry.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetContainerRegistry.InvokeAsync(new DigitalOcean.GetContainerRegistryArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///     }
+        ///         Name = "example",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -87,7 +83,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetContainerRegistryArgs : Pulumi.InvokeArgs
+    public sealed class GetContainerRegistryArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the container registry.
@@ -98,9 +94,10 @@ namespace Pulumi.DigitalOcean
         public GetContainerRegistryArgs()
         {
         }
+        public static new GetContainerRegistryArgs Empty => new GetContainerRegistryArgs();
     }
 
-    public sealed class GetContainerRegistryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetContainerRegistryInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the container registry.
@@ -111,6 +108,7 @@ namespace Pulumi.DigitalOcean
         public GetContainerRegistryInvokeArgs()
         {
         }
+        public static new GetContainerRegistryInvokeArgs Empty => new GetContainerRegistryInvokeArgs();
     }
 
 

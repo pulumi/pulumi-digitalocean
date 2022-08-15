@@ -1366,30 +1366,6 @@ export interface FirewallPendingChange {
     status?: pulumi.Input<string>;
 }
 
-export interface GetDomainsFilterArgs {
-    /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
-     */
-    all?: pulumi.Input<boolean>;
-    /**
-     * Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * A list of values to match against the `key` field. Only retrieves domains
-     * where the `key` field takes on one or more of the values provided here.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetDomainsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -1412,6 +1388,30 @@ export interface GetDomainsFilter {
      * where the `key` field takes on one or more of the values provided here.
      */
     values: string[];
+}
+
+export interface GetDomainsFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * A list of values to match against the `key` field. Only retrieves domains
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetDomainsSort {
@@ -1490,20 +1490,6 @@ export interface GetDropletsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetDropletsSortArgs {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: pulumi.Input<string>;
-    /**
-     * Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
-     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
-     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
-     * `status`, `urn`, `vcpus`, or `vpcUuid`.
-     */
-    key: pulumi.Input<string>;
-}
-
 export interface GetDropletsSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -1516,6 +1502,20 @@ export interface GetDropletsSort {
      * `status`, `urn`, `vcpus`, or `vpcUuid`.
      */
     key: string;
+}
+
+export interface GetDropletsSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `urn`, `vcpus`, or `vpcUuid`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetFirewallInboundRule {
@@ -1722,18 +1722,6 @@ export interface GetImagesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetImagesSortArgs {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: pulumi.Input<string>;
-    /**
-     * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
-     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
-     */
-    key: pulumi.Input<string>;
-}
-
 export interface GetImagesSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -1744,6 +1732,18 @@ export interface GetImagesSort {
      * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
      */
     key: string;
+}
+
+export interface GetImagesSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetProjectsFilter {
@@ -1894,31 +1894,6 @@ export interface GetRecordsSortArgs {
     key: pulumi.Input<string>;
 }
 
-export interface GetRegionsFilterArgs {
-    /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
-     */
-    all?: pulumi.Input<boolean>;
-    /**
-     * Filter the regions by this key. This may be one of `slug`,
-     * `name`, `available`, `features`, or `sizes`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * A list of values to match against the `key` field. Only retrieves regions
-     * where the `key` field takes on one or more of the values provided here.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetRegionsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -1944,6 +1919,31 @@ export interface GetRegionsFilter {
     values: string[];
 }
 
+export interface GetRegionsFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * Filter the regions by this key. This may be one of `slug`,
+     * `name`, `available`, `features`, or `sizes`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * A list of values to match against the `key` field. Only retrieves regions
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetRegionsSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -1966,32 +1966,6 @@ export interface GetRegionsSortArgs {
      * `name`, or `available`.
      */
     key: pulumi.Input<string>;
-}
-
-export interface GetSizesFilterArgs {
-    /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
-     */
-    all?: pulumi.Input<boolean>;
-    /**
-     * Filter the sizes by this key. This may be one of `slug`,
-     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
-     * `priceHourly`, or `available`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * Only retrieves sizes which keys has value that matches
-     * one of the values provided here.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetSizesFilter {
@@ -2020,16 +1994,30 @@ export interface GetSizesFilter {
     values: string[];
 }
 
-export interface GetSizesSort {
+export interface GetSizesFilterArgs {
     /**
-     * The sort direction. This may be either `asc` or `desc`.
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
      */
-    direction?: string;
+    all?: pulumi.Input<boolean>;
     /**
-     * Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+     * Filter the sizes by this key. This may be one of `slug`,
+     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+     * `priceHourly`, or `available`.
      */
-    key: string;
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * Only retrieves sizes which keys has value that matches
+     * one of the values provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetSizesSortArgs {
@@ -2044,28 +2032,16 @@ export interface GetSizesSortArgs {
     key: pulumi.Input<string>;
 }
 
-export interface GetSpacesBucketsFilterArgs {
+export interface GetSizesSort {
     /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
+     * The sort direction. This may be either `asc` or `desc`.
      */
-    all?: pulumi.Input<boolean>;
+    direction?: string;
     /**
-     * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     * Sort the sizes by this key. This may be one of `slug`,
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      */
-    key: pulumi.Input<string>;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * A list of values to match against the `key` field. Only retrieves Spaces buckets
-     * where the `key` field takes on one or more of the values provided here.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
+    key: string;
 }
 
 export interface GetSpacesBucketsFilter {
@@ -2092,15 +2068,28 @@ export interface GetSpacesBucketsFilter {
     values: string[];
 }
 
-export interface GetSpacesBucketsSort {
+export interface GetSpacesBucketsFilterArgs {
     /**
-     * The sort direction. This may be either `asc` or `desc`.
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
      */
-    direction?: string;
+    all?: pulumi.Input<boolean>;
     /**
-     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
-    key: string;
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * A list of values to match against the `key` field. Only retrieves Spaces buckets
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetSpacesBucketsSortArgs {
@@ -2112,6 +2101,17 @@ export interface GetSpacesBucketsSortArgs {
      * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
     key: pulumi.Input<string>;
+}
+
+export interface GetSpacesBucketsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     */
+    key: string;
 }
 
 export interface GetSshKeysFilter {
@@ -2140,17 +2140,6 @@ export interface GetSshKeysFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSshKeysSortArgs {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: pulumi.Input<string>;
-    /**
-     * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-     */
-    key: pulumi.Input<string>;
-}
-
 export interface GetSshKeysSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -2160,6 +2149,17 @@ export interface GetSshKeysSort {
      * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      */
     key: string;
+}
+
+export interface GetSshKeysSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetTagsFilterArgs {
@@ -2210,17 +2210,6 @@ export interface GetTagsFilter {
     values: string[];
 }
 
-export interface GetTagsSortArgs {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: pulumi.Input<string>;
-    /**
-     * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-     */
-    key: pulumi.Input<string>;
-}
-
 export interface GetTagsSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -2230,6 +2219,17 @@ export interface GetTagsSort {
      * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
     key: string;
+}
+
+export interface GetTagsSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface KubernetesClusterKubeConfig {

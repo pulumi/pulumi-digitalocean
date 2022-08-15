@@ -15,41 +15,40 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new DigitalOcean.Domain("default", new()
     ///     {
-    ///         var @default = new DigitalOcean.Domain("default", new DigitalOcean.DomainArgs
-    ///         {
-    ///             Name = "example.com",
-    ///         });
-    ///         // Add an A record to the domain for www.example.com.
-    ///         var www = new DigitalOcean.DnsRecord("www", new DigitalOcean.DnsRecordArgs
-    ///         {
-    ///             Domain = @default.Id,
-    ///             Type = "A",
-    ///             Value = "192.168.0.11",
-    ///         });
-    ///         // Add a MX record for the example.com domain itself.
-    ///         var mx = new DigitalOcean.DnsRecord("mx", new DigitalOcean.DnsRecordArgs
-    ///         {
-    ///             Domain = @default.Id,
-    ///             Type = "MX",
-    ///             Priority = 10,
-    ///             Value = "mail.example.com.",
-    ///         });
-    ///         this.WwwFqdn = www.Fqdn;
-    ///         this.MxFqdn = mx.Fqdn;
-    ///     }
+    ///         Name = "example.com",
+    ///     });
     /// 
-    ///     [Output("wwwFqdn")]
-    ///     public Output&lt;string&gt; WwwFqdn { get; set; }
-    ///     [Output("mxFqdn")]
-    ///     public Output&lt;string&gt; MxFqdn { get; set; }
-    /// }
+    ///     // Add an A record to the domain for www.example.com.
+    ///     var www = new DigitalOcean.DnsRecord("www", new()
+    ///     {
+    ///         Domain = @default.Id,
+    ///         Type = "A",
+    ///         Value = "192.168.0.11",
+    ///     });
+    /// 
+    ///     // Add a MX record for the example.com domain itself.
+    ///     var mx = new DigitalOcean.DnsRecord("mx", new()
+    ///     {
+    ///         Domain = @default.Id,
+    ///         Type = "MX",
+    ///         Priority = 10,
+    ///         Value = "mail.example.com.",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["wwwFqdn"] = www.Fqdn,
+    ///         ["mxFqdn"] = mx.Fqdn,
+    ///     };
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +60,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/dnsRecord:DnsRecord")]
-    public partial class DnsRecord : Pulumi.CustomResource
+    public partial class DnsRecord : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domain to add the record to.
@@ -173,7 +172,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DnsRecordArgs : Pulumi.ResourceArgs
+    public sealed class DnsRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to add the record to.
@@ -238,9 +237,10 @@ namespace Pulumi.DigitalOcean
         public DnsRecordArgs()
         {
         }
+        public static new DnsRecordArgs Empty => new DnsRecordArgs();
     }
 
-    public sealed class DnsRecordState : Pulumi.ResourceArgs
+    public sealed class DnsRecordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to add the record to.
@@ -311,5 +311,6 @@ namespace Pulumi.DigitalOcean
         public DnsRecordState()
         {
         }
+        public static new DnsRecordState Empty => new DnsRecordState();
     }
 }

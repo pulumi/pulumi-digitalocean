@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetFirewallInboundRuleInputArgs : Pulumi.ResourceArgs
+    public sealed class GetFirewallInboundRuleInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ports on which traffic will be allowed
@@ -92,5 +92,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetFirewallInboundRuleInputArgs()
         {
         }
+        public static new GetFirewallInboundRuleInputArgs Empty => new GetFirewallInboundRuleInputArgs();
     }
 }

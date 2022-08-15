@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class LoadBalancerForwardingRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerForwardingRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
@@ -57,5 +57,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public LoadBalancerForwardingRuleGetArgs()
         {
         }
+        public static new LoadBalancerForwardingRuleGetArgs Empty => new LoadBalancerForwardingRuleGetArgs();
     }
 }

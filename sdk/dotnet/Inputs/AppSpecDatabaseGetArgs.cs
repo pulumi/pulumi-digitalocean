@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecDatabaseGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecDatabaseGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
@@ -57,5 +57,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecDatabaseGetArgs()
         {
         }
+        public static new AppSpecDatabaseGetArgs Empty => new AppSpecDatabaseGetArgs();
     }
 }

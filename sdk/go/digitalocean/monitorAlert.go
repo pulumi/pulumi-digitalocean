@@ -23,7 +23,9 @@ import (
 // Monitor alerts can be imported using the monitor alert `uuid`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
+//
+//	$ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
+//
 // ```
 type MonitorAlert struct {
 	pulumi.CustomResourceState
@@ -270,7 +272,7 @@ func (i *MonitorAlert) ToMonitorAlertOutputWithContext(ctx context.Context) Moni
 // MonitorAlertArrayInput is an input type that accepts MonitorAlertArray and MonitorAlertArrayOutput values.
 // You can construct a concrete instance of `MonitorAlertArrayInput` via:
 //
-//          MonitorAlertArray{ MonitorAlertArgs{...} }
+//	MonitorAlertArray{ MonitorAlertArgs{...} }
 type MonitorAlertArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +297,7 @@ func (i MonitorAlertArray) ToMonitorAlertArrayOutputWithContext(ctx context.Cont
 // MonitorAlertMapInput is an input type that accepts MonitorAlertMap and MonitorAlertMapOutput values.
 // You can construct a concrete instance of `MonitorAlertMapInput` via:
 //
-//          MonitorAlertMap{ "key": MonitorAlertArgs{...} }
+//	MonitorAlertMap{ "key": MonitorAlertArgs{...} }
 type MonitorAlertMapInput interface {
 	pulumi.Input
 

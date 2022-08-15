@@ -25,38 +25,37 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var flatcar = new DigitalOcean.CustomImage("flatcar", new()
     ///     {
-    ///         var flatcar = new DigitalOcean.CustomImage("flatcar", new DigitalOcean.CustomImageArgs
+    ///         Url = "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
+    ///         Regions = new[]
     ///         {
-    ///             Url = "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
-    ///             Regions = 
-    ///             {
-    ///                 "nyc3",
-    ///             },
-    ///         });
-    ///         var example = new DigitalOcean.Droplet("example", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Image = flatcar.Id,
-    ///             Region = "nyc3",
-    ///             Size = "s-1vcpu-1gb",
-    ///             SshKeys = 
-    ///             {
-    ///                 "12345",
-    ///             },
-    ///         });
-    ///     }
+    ///             "nyc3",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var example = new DigitalOcean.Droplet("example", new()
+    ///     {
+    ///         Image = flatcar.Id,
+    ///         Region = "nyc3",
+    ///         Size = "s-1vcpu-1gb",
+    ///         SshKeys = new[]
+    ///         {
+    ///             "12345",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/customImage:CustomImage")]
-    public partial class CustomImage : Pulumi.CustomResource
+    public partial class CustomImage : global::Pulumi.CustomResource
     {
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -162,7 +161,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class CustomImageArgs : Pulumi.ResourceArgs
+    public sealed class CustomImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description for the image.
@@ -215,9 +214,10 @@ namespace Pulumi.DigitalOcean
         public CustomImageArgs()
         {
         }
+        public static new CustomImageArgs Empty => new CustomImageArgs();
     }
 
-    public sealed class CustomImageState : Pulumi.ResourceArgs
+    public sealed class CustomImageState : global::Pulumi.ResourceArgs
     {
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -294,5 +294,6 @@ namespace Pulumi.DigitalOcean
         public CustomImageState()
         {
         }
+        public static new CustomImageState Empty => new CustomImageState();
     }
 }

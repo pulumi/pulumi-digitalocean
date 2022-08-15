@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class SpacesBucketLifecycleRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class SpacesBucketLifecycleRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the number of days after initiating a multipart
@@ -52,5 +52,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public SpacesBucketLifecycleRuleGetArgs()
         {
         }
+        public static new SpacesBucketLifecycleRuleGetArgs Empty => new SpacesBucketLifecycleRuleGetArgs();
     }
 }

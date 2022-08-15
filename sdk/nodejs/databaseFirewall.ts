@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * const web = new digitalocean.Droplet("web", {
  *     size: "s-1vcpu-1gb",
- *     image: "centos-7-x64",
+ *     image: "ubuntu-22-04-x64",
  *     region: "nyc3",
  * });
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {

@@ -21,23 +21,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupSpacesBucket(ctx, &GetSpacesBucketArgs{
-// 			Name:   "my-spaces-bucket",
-// 			Region: "nyc3",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("bucketDomainName", example.BucketDomainName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := digitalocean.LookupSpacesBucket(ctx, &GetSpacesBucketArgs{
+//				Name:   "my-spaces-bucket",
+//				Region: "nyc3",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bucketDomainName", example.BucketDomainName)
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupSpacesBucket(ctx *pulumi.Context, args *LookupSpacesBucketArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketResult, error) {
 	var rv LookupSpacesBucketResult

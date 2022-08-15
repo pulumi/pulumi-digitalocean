@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class MonitorAlertAlertsArgs : Pulumi.ResourceArgs
+    public sealed class MonitorAlertAlertsArgs : global::Pulumi.ResourceArgs
     {
         [Input("emails")]
         private InputList<string>? _emails;
@@ -31,5 +31,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public MonitorAlertAlertsArgs()
         {
         }
+        public static new MonitorAlertAlertsArgs Empty => new MonitorAlertAlertsArgs();
     }
 }

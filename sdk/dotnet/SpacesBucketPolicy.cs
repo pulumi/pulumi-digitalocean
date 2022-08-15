@@ -19,55 +19,51 @@ namespace Pulumi.DigitalOcean
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarSpacesBucket = new DigitalOcean.SpacesBucket("foobarSpacesBucket", new()
     ///     {
-    ///         var foobarSpacesBucket = new DigitalOcean.SpacesBucket("foobarSpacesBucket", new DigitalOcean.SpacesBucketArgs
-    ///         {
-    ///             Region = "nyc3",
-    ///         });
-    ///         var foobarSpacesBucketPolicy = new DigitalOcean.SpacesBucketPolicy("foobarSpacesBucketPolicy", new DigitalOcean.SpacesBucketPolicyArgs
-    ///         {
-    ///             Region = foobarSpacesBucket.Region,
-    ///             Bucket = foobarSpacesBucket.Name,
-    ///             Policy = Output.Tuple(foobarSpacesBucket.Name, foobarSpacesBucket.Name).Apply(values =&gt;
-    ///             {
-    ///                 var foobarSpacesBucketName = values.Item1;
-    ///                 var foobarSpacesBucketName1 = values.Item2;
-    ///                 return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "Version", "2012-10-17" },
-    ///                     { "Statement", new[]
-    ///                         {
-    ///                             new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "Sid", "IPAllow" },
-    ///                                 { "Effect", "Deny" },
-    ///                                 { "Principal", "*" },
-    ///                                 { "Action", "s3:*" },
-    ///                                 { "Resource", new[]
-    ///                                     {
-    ///                                         $"arn:aws:s3:::{foobarSpacesBucketName}",
-    ///                                         $"arn:aws:s3:::{foobarSpacesBucketName1}/*",
-    ///                                     }
-    ///                                  },
-    ///                                 { "Condition", new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     { "NotIpAddress", new Dictionary&lt;string, object?&gt;
-    ///                                     {
-    ///                                         { "aws:SourceIp", "54.240.143.0/24" },
-    ///                                     } },
-    ///                                 } },
-    ///                             },
-    ///                         }
-    ///                      },
-    ///                 });
-    ///             }),
-    ///         });
-    ///     }
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var foobarSpacesBucketPolicy = new DigitalOcean.SpacesBucketPolicy("foobarSpacesBucketPolicy", new()
+    ///     {
+    ///         Region = foobarSpacesBucket.Region,
+    ///         Bucket = foobarSpacesBucket.Name,
+    ///         Policy = Output.Tuple(foobarSpacesBucket.Name, foobarSpacesBucket.Name).Apply(values =&gt;
+    ///         {
+    ///             var foobarSpacesBucketName = values.Item1;
+    ///             var foobarSpacesBucketName1 = values.Item2;
+    ///             return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["Version"] = "2012-10-17",
+    ///                 ["Statement"] = new[]
+    ///                 {
+    ///                     new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["Sid"] = "IPAllow",
+    ///                         ["Effect"] = "Deny",
+    ///                         ["Principal"] = "*",
+    ///                         ["Action"] = "s3:*",
+    ///                         ["Resource"] = new[]
+    ///                         {
+    ///                             $"arn:aws:s3:::{foobarSpacesBucketName}",
+    ///                             $"arn:aws:s3:::{foobarSpacesBucketName1}/*",
+    ///                         },
+    ///                         ["Condition"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["NotIpAddress"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["aws:SourceIp"] = "54.240.143.0/24",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             });
+    ///         }),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// !&gt; **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
@@ -81,7 +77,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy")]
-    public partial class SpacesBucketPolicy : Pulumi.CustomResource
+    public partial class SpacesBucketPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the bucket to which to apply the policy.
@@ -145,7 +141,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class SpacesBucketPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SpacesBucketPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket to which to apply the policy.
@@ -168,9 +164,10 @@ namespace Pulumi.DigitalOcean
         public SpacesBucketPolicyArgs()
         {
         }
+        public static new SpacesBucketPolicyArgs Empty => new SpacesBucketPolicyArgs();
     }
 
-    public sealed class SpacesBucketPolicyState : Pulumi.ResourceArgs
+    public sealed class SpacesBucketPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket to which to apply the policy.
@@ -193,5 +190,6 @@ namespace Pulumi.DigitalOcean
         public SpacesBucketPolicyState()
         {
         }
+        public static new SpacesBucketPolicyState Empty => new SpacesBucketPolicyState();
     }
 }

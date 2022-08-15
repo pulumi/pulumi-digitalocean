@@ -31,19 +31,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewSpacesBucket(ctx, "static-assets", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "static-assets", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -55,31 +58,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobar, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewSpacesBucketObject(ctx, "index", &digitalocean.SpacesBucketObjectArgs{
-// 			Region:      foobar.Region,
-// 			Bucket:      foobar.Name,
-// 			Key:         pulumi.String("index.html"),
-// 			Content:     pulumi.String("<html><body><p>This page is empty.</p></body></html>"),
-// 			ContentType: pulumi.String("text/html"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobar, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewSpacesBucketObject(ctx, "index", &digitalocean.SpacesBucketObjectArgs{
+//				Region:      foobar.Region,
+//				Bucket:      foobar.Name,
+//				Key:         pulumi.String("index.html"),
+//				Content:     pulumi.String("<html><body><p>This page is empty.</p></body></html>"),
+//				ContentType: pulumi.String("text/html"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -341,7 +347,7 @@ func (i *SpacesBucketObject) ToSpacesBucketObjectOutputWithContext(ctx context.C
 // SpacesBucketObjectArrayInput is an input type that accepts SpacesBucketObjectArray and SpacesBucketObjectArrayOutput values.
 // You can construct a concrete instance of `SpacesBucketObjectArrayInput` via:
 //
-//          SpacesBucketObjectArray{ SpacesBucketObjectArgs{...} }
+//	SpacesBucketObjectArray{ SpacesBucketObjectArgs{...} }
 type SpacesBucketObjectArrayInput interface {
 	pulumi.Input
 
@@ -366,7 +372,7 @@ func (i SpacesBucketObjectArray) ToSpacesBucketObjectArrayOutputWithContext(ctx 
 // SpacesBucketObjectMapInput is an input type that accepts SpacesBucketObjectMap and SpacesBucketObjectMapOutput values.
 // You can construct a concrete instance of `SpacesBucketObjectMapInput` via:
 //
-//          SpacesBucketObjectMap{ "key": SpacesBucketObjectArgs{...} }
+//	SpacesBucketObjectMap{ "key": SpacesBucketObjectArgs{...} }
 type SpacesBucketObjectMapInput interface {
 	pulumi.Input
 

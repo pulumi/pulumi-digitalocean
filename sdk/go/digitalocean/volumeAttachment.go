@@ -21,39 +21,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
-// 			Region:                pulumi.String("nyc1"),
-// 			Size:                  pulumi.Int(100),
-// 			InitialFilesystemType: pulumi.String("ext4"),
-// 			Description:           pulumi.String("an example volume"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewVolumeAttachment(ctx, "foobarVolumeAttachment", &digitalocean.VolumeAttachmentArgs{
-// 			DropletId: foobarDroplet.ID(),
-// 			VolumeId:  foobarVolume.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+//				Region:                pulumi.String("nyc1"),
+//				Size:                  pulumi.Int(100),
+//				InitialFilesystemType: pulumi.String("ext4"),
+//				Description:           pulumi.String("an example volume"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewVolumeAttachment(ctx, "foobarVolumeAttachment", &digitalocean.VolumeAttachmentArgs{
+//				DropletId: foobarDroplet.ID(),
+//				VolumeId:  foobarVolume.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type VolumeAttachment struct {
 	pulumi.CustomResourceState
@@ -157,7 +160,7 @@ func (i *VolumeAttachment) ToVolumeAttachmentOutputWithContext(ctx context.Conte
 // VolumeAttachmentArrayInput is an input type that accepts VolumeAttachmentArray and VolumeAttachmentArrayOutput values.
 // You can construct a concrete instance of `VolumeAttachmentArrayInput` via:
 //
-//          VolumeAttachmentArray{ VolumeAttachmentArgs{...} }
+//	VolumeAttachmentArray{ VolumeAttachmentArgs{...} }
 type VolumeAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -182,7 +185,7 @@ func (i VolumeAttachmentArray) ToVolumeAttachmentArrayOutputWithContext(ctx cont
 // VolumeAttachmentMapInput is an input type that accepts VolumeAttachmentMap and VolumeAttachmentMapOutput values.
 // You can construct a concrete instance of `VolumeAttachmentMapInput` via:
 //
-//          VolumeAttachmentMap{ "key": VolumeAttachmentArgs{...} }
+//	VolumeAttachmentMap{ "key": VolumeAttachmentArgs{...} }
 type VolumeAttachmentMapInput interface {
 	pulumi.Input
 

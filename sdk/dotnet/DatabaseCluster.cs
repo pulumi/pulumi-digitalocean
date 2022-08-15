@@ -15,87 +15,79 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// ### Create a new PostgreSQL database cluster
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
-    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "pg",
-    ///             NodeCount = 1,
-    ///             Region = "nyc1",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Version = "11",
-    ///         });
-    ///     }
+    ///         Engine = "pg",
+    ///         NodeCount = 1,
+    ///         Region = "nyc1",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Version = "11",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Create a new MySQL database cluster
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mysql_example = new DigitalOcean.DatabaseCluster("mysql-example", new()
     ///     {
-    ///         var mysql_example = new DigitalOcean.DatabaseCluster("mysql-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "mysql",
-    ///             NodeCount = 1,
-    ///             Region = "nyc1",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Version = "8",
-    ///         });
-    ///     }
+    ///         Engine = "mysql",
+    ///         NodeCount = 1,
+    ///         Region = "nyc1",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Version = "8",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Create a new Redis database cluster
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var redis_example = new DigitalOcean.DatabaseCluster("redis-example", new()
     ///     {
-    ///         var redis_example = new DigitalOcean.DatabaseCluster("redis-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "redis",
-    ///             NodeCount = 1,
-    ///             Region = "nyc1",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Version = "6",
-    ///         });
-    ///     }
+    ///         Engine = "redis",
+    ///         NodeCount = 1,
+    ///         Region = "nyc1",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Version = "6",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Create a new MongoDB database cluster
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mongodb_example = new DigitalOcean.DatabaseCluster("mongodb-example", new()
     ///     {
-    ///         var mongodb_example = new DigitalOcean.DatabaseCluster("mongodb-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "mongodb",
-    ///             NodeCount = 1,
-    ///             Region = "nyc3",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Version = "4",
-    ///         });
-    ///     }
+    ///         Engine = "mongodb",
+    ///         NodeCount = 1,
+    ///         Region = "nyc3",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Version = "4",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -107,7 +99,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/databaseCluster:DatabaseCluster")]
-    public partial class DatabaseCluster : Pulumi.CustomResource
+    public partial class DatabaseCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The uniform resource name of the database cluster.
@@ -273,7 +265,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DatabaseClusterArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
@@ -356,9 +348,10 @@ namespace Pulumi.DigitalOcean
         public DatabaseClusterArgs()
         {
         }
+        public static new DatabaseClusterArgs Empty => new DatabaseClusterArgs();
     }
 
-    public sealed class DatabaseClusterState : Pulumi.ResourceArgs
+    public sealed class DatabaseClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The uniform resource name of the database cluster.
@@ -495,5 +488,6 @@ namespace Pulumi.DigitalOcean
         public DatabaseClusterState()
         {
         }
+        public static new DatabaseClusterState Empty => new DatabaseClusterState();
     }
 }

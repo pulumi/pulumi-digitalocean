@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/kubernetesCluster:KubernetesCluster")]
-    public partial class KubernetesCluster : Pulumi.CustomResource
+    public partial class KubernetesCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -176,7 +176,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class KubernetesClusterArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -247,9 +247,10 @@ namespace Pulumi.DigitalOcean
         public KubernetesClusterArgs()
         {
         }
+        public static new KubernetesClusterArgs Empty => new KubernetesClusterArgs();
     }
 
-    public sealed class KubernetesClusterState : Pulumi.ResourceArgs
+    public sealed class KubernetesClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -376,5 +377,6 @@ namespace Pulumi.DigitalOcean
         public KubernetesClusterState()
         {
         }
+        public static new KubernetesClusterState Empty => new KubernetesClusterState();
     }
 }

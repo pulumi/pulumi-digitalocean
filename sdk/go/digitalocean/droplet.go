@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc2"),
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc2"),
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -44,7 +47,9 @@ import (
 // Droplets can be imported using the Droplet `id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+//
+//	$ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+//
 // ```
 type Droplet struct {
 	pulumi.CustomResourceState
@@ -68,7 +73,7 @@ type Droplet struct {
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
 	GracefulShutdown pulumi.BoolPtrOutput `pulumi:"gracefulShutdown"`
-	// The Droplet image ID or slug.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image pulumi.StringOutput `pulumi:"image"`
 	// The IPv4 address
 	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
@@ -183,7 +188,7 @@ type dropletState struct {
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
-	// The Droplet image ID or slug.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image *string `pulumi:"image"`
 	// The IPv4 address
 	Ipv4Address *string `pulumi:"ipv4Address"`
@@ -261,7 +266,7 @@ type DropletState struct {
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
 	GracefulShutdown pulumi.BoolPtrInput
-	// The Droplet image ID or slug.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image pulumi.StringPtrInput
 	// The IPv4 address
 	Ipv4Address pulumi.StringPtrInput
@@ -337,7 +342,7 @@ type dropletArgs struct {
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
-	// The Droplet image ID or slug.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image string `pulumi:"image"`
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
 	Ipv6 *bool `pulumi:"ipv6"`
@@ -393,7 +398,7 @@ type DropletArgs struct {
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
 	GracefulShutdown pulumi.BoolPtrInput
-	// The Droplet image ID or slug.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image pulumi.StringInput
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
 	Ipv6 pulumi.BoolPtrInput
@@ -460,7 +465,7 @@ func (i *Droplet) ToDropletOutputWithContext(ctx context.Context) DropletOutput 
 // DropletArrayInput is an input type that accepts DropletArray and DropletArrayOutput values.
 // You can construct a concrete instance of `DropletArrayInput` via:
 //
-//          DropletArray{ DropletArgs{...} }
+//	DropletArray{ DropletArgs{...} }
 type DropletArrayInput interface {
 	pulumi.Input
 
@@ -485,7 +490,7 @@ func (i DropletArray) ToDropletArrayOutputWithContext(ctx context.Context) Dropl
 // DropletMapInput is an input type that accepts DropletMap and DropletMapOutput values.
 // You can construct a concrete instance of `DropletMapInput` via:
 //
-//          DropletMap{ "key": DropletArgs{...} }
+//	DropletMap{ "key": DropletArgs{...} }
 type DropletMapInput interface {
 	pulumi.Input
 
@@ -558,7 +563,7 @@ func (o DropletOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
 }
 
-// The Droplet image ID or slug.
+// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 func (o DropletOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)
 }

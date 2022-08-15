@@ -21,30 +21,29 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var list = DigitalOcean.GetTags.Invoke(new()
         ///     {
-        ///         var list = Output.Create(DigitalOcean.GetTags.InvokeAsync(new DigitalOcean.GetTagsArgs
+        ///         Sorts = new[]
         ///         {
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetTagsSortInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetTagsSortArgs
-        ///                 {
-        ///                     Key = "total_resource_count",
-        ///                     Direction = "asc",
-        ///                 },
+        ///                 Key = "total_resource_count",
+        ///                 Direction = "asc",
         ///             },
-        ///         }));
-        ///         this.SortedTags = list.Apply(list =&gt; list.Tags);
-        ///     }
+        ///         },
+        ///     });
         /// 
-        ///     [Output("sortedTags")]
-        ///     public Output&lt;string&gt; SortedTags { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["sortedTags"] = list.Apply(getTagsResult =&gt; getTagsResult.Tags),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -62,30 +61,29 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var list = DigitalOcean.GetTags.Invoke(new()
         ///     {
-        ///         var list = Output.Create(DigitalOcean.GetTags.InvokeAsync(new DigitalOcean.GetTagsArgs
+        ///         Sorts = new[]
         ///         {
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetTagsSortInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetTagsSortArgs
-        ///                 {
-        ///                     Key = "total_resource_count",
-        ///                     Direction = "asc",
-        ///                 },
+        ///                 Key = "total_resource_count",
+        ///                 Direction = "asc",
         ///             },
-        ///         }));
-        ///         this.SortedTags = list.Apply(list =&gt; list.Tags);
-        ///     }
+        ///         },
+        ///     });
         /// 
-        ///     [Output("sortedTags")]
-        ///     public Output&lt;string&gt; SortedTags { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["sortedTags"] = list.Apply(getTagsResult =&gt; getTagsResult.Tags),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,7 +93,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetTagsArgs : Pulumi.InvokeArgs
+    public sealed class GetTagsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetTagsFilterArgs>? _filters;
@@ -126,9 +124,10 @@ namespace Pulumi.DigitalOcean
         public GetTagsArgs()
         {
         }
+        public static new GetTagsArgs Empty => new GetTagsArgs();
     }
 
-    public sealed class GetTagsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetTagsFilterInputArgs>? _filters;
@@ -159,6 +158,7 @@ namespace Pulumi.DigitalOcean
         public GetTagsInvokeArgs()
         {
         }
+        public static new GetTagsInvokeArgs Empty => new GetTagsInvokeArgs();
     }
 
 

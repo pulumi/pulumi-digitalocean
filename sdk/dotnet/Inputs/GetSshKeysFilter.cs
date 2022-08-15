@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetSshKeysFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeysFilterArgs : global::Pulumi.InvokeArgs
     {
         [Input("all")]
         public bool? All { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetSshKeysFilterArgs()
         {
         }
+        public static new GetSshKeysFilterArgs Empty => new GetSshKeysFilterArgs();
     }
 }

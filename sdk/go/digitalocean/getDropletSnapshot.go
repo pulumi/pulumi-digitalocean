@@ -22,23 +22,62 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.LookupDropletSnapshot(ctx, &GetDropletSnapshotArgs{
-// 			MostRecent: pulumi.BoolRef(true),
-// 			NameRegex:  pulumi.StringRef("^web"),
-// 			Region:     pulumi.StringRef("nyc3"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.LookupDropletSnapshot(ctx, &GetDropletSnapshotArgs{
+//				MostRecent: pulumi.BoolRef(true),
+//				NameRegex:  pulumi.StringRef("^web"),
+//				Region:     pulumi.StringRef("nyc3"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create image from snapshot:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			web_snapshot, err := digitalocean.LookupDropletSnapshot(ctx, &GetDropletSnapshotArgs{
+//				NameRegex:  pulumi.StringRef("^web"),
+//				Region:     pulumi.StringRef("nyc3"),
+//				MostRecent: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "from-snapshot", &digitalocean.DropletArgs{
+//				Image:  pulumi.String(web_snapshot.Id),
+//				Region: pulumi.String("nyc3"),
+//				Size:   pulumi.String("s-2vcpu-4gb"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupDropletSnapshot(ctx *pulumi.Context, args *LookupDropletSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupDropletSnapshotResult, error) {
 	var rv LookupDropletSnapshotResult

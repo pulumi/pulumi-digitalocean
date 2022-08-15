@@ -16,103 +16,102 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var webDroplet = new DigitalOcean.Droplet("webDroplet", new()
     ///     {
-    ///         var webDroplet = new DigitalOcean.Droplet("webDroplet", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc3",
-    ///         });
-    ///         var webFirewall = new DigitalOcean.Firewall("webFirewall", new DigitalOcean.FirewallArgs
-    ///         {
-    ///             DropletIds = 
-    ///             {
-    ///                 webDroplet.Id,
-    ///             },
-    ///             InboundRules = 
-    ///             {
-    ///                 new DigitalOcean.Inputs.FirewallInboundRuleArgs
-    ///                 {
-    ///                     Protocol = "tcp",
-    ///                     PortRange = "22",
-    ///                     SourceAddresses = 
-    ///                     {
-    ///                         "192.168.1.0/24",
-    ///                         "2002:1:2::/48",
-    ///                     },
-    ///                 },
-    ///                 new DigitalOcean.Inputs.FirewallInboundRuleArgs
-    ///                 {
-    ///                     Protocol = "tcp",
-    ///                     PortRange = "80",
-    ///                     SourceAddresses = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///                 new DigitalOcean.Inputs.FirewallInboundRuleArgs
-    ///                 {
-    ///                     Protocol = "tcp",
-    ///                     PortRange = "443",
-    ///                     SourceAddresses = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///                 new DigitalOcean.Inputs.FirewallInboundRuleArgs
-    ///                 {
-    ///                     Protocol = "icmp",
-    ///                     SourceAddresses = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             OutboundRules = 
-    ///             {
-    ///                 new DigitalOcean.Inputs.FirewallOutboundRuleArgs
-    ///                 {
-    ///                     Protocol = "tcp",
-    ///                     PortRange = "53",
-    ///                     DestinationAddresses = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///                 new DigitalOcean.Inputs.FirewallOutboundRuleArgs
-    ///                 {
-    ///                     Protocol = "udp",
-    ///                     PortRange = "53",
-    ///                     DestinationAddresses = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///                 new DigitalOcean.Inputs.FirewallOutboundRuleArgs
-    ///                 {
-    ///                     Protocol = "icmp",
-    ///                     DestinationAddresses = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var webFirewall = new DigitalOcean.Firewall("webFirewall", new()
+    ///     {
+    ///         DropletIds = new[]
+    ///         {
+    ///             webDroplet.Id,
+    ///         },
+    ///         InboundRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "22",
+    ///                 SourceAddresses = new[]
+    ///                 {
+    ///                     "192.168.1.0/24",
+    ///                     "2002:1:2::/48",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "80",
+    ///                 SourceAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "443",
+    ///                 SourceAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///                 SourceAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///         OutboundRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "53",
+    ///                 DestinationAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///             {
+    ///                 Protocol = "udp",
+    ///                 PortRange = "53",
+    ///                 DestinationAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///                 DestinationAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -124,7 +123,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/firewall:Firewall")]
-    public partial class Firewall : Pulumi.CustomResource
+    public partial class Firewall : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A time value given in ISO8601 combined date and time format
@@ -226,7 +225,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class FirewallArgs : Pulumi.ResourceArgs
+    public sealed class FirewallArgs : global::Pulumi.ResourceArgs
     {
         [Input("dropletIds")]
         private InputList<int>? _dropletIds;
@@ -288,9 +287,10 @@ namespace Pulumi.DigitalOcean
         public FirewallArgs()
         {
         }
+        public static new FirewallArgs Empty => new FirewallArgs();
     }
 
-    public sealed class FirewallState : Pulumi.ResourceArgs
+    public sealed class FirewallState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A time value given in ISO8601 combined date and time format
@@ -381,5 +381,6 @@ namespace Pulumi.DigitalOcean
         public FirewallState()
         {
         }
+        public static new FirewallState Empty => new FirewallState();
     }
 }

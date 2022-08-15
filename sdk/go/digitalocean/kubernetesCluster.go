@@ -16,7 +16,9 @@ import (
 // Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+//
+//	$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+//
 // ```
 type KubernetesCluster struct {
 	pulumi.CustomResourceState
@@ -254,7 +256,7 @@ func (i *KubernetesCluster) ToKubernetesClusterOutputWithContext(ctx context.Con
 // KubernetesClusterArrayInput is an input type that accepts KubernetesClusterArray and KubernetesClusterArrayOutput values.
 // You can construct a concrete instance of `KubernetesClusterArrayInput` via:
 //
-//          KubernetesClusterArray{ KubernetesClusterArgs{...} }
+//	KubernetesClusterArray{ KubernetesClusterArgs{...} }
 type KubernetesClusterArrayInput interface {
 	pulumi.Input
 
@@ -279,7 +281,7 @@ func (i KubernetesClusterArray) ToKubernetesClusterArrayOutputWithContext(ctx co
 // KubernetesClusterMapInput is an input type that accepts KubernetesClusterMap and KubernetesClusterMapOutput values.
 // You can construct a concrete instance of `KubernetesClusterMapInput` via:
 //
-//          KubernetesClusterMap{ "key": KubernetesClusterArgs{...} }
+//	KubernetesClusterMap{ "key": KubernetesClusterArgs{...} }
 type KubernetesClusterMapInput interface {
 	pulumi.Input
 

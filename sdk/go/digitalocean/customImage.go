@@ -29,35 +29,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		flatcar, err := digitalocean.NewCustomImage(ctx, "flatcar", &digitalocean.CustomImageArgs{
-// 			Url: pulumi.String("https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2"),
-// 			Regions: pulumi.StringArray{
-// 				pulumi.String("nyc3"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
-// 			Image:  flatcar.ID(),
-// 			Region: pulumi.String("nyc3"),
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			SshKeys: pulumi.StringArray{
-// 				pulumi.String("12345"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			flatcar, err := digitalocean.NewCustomImage(ctx, "flatcar", &digitalocean.CustomImageArgs{
+//				Url: pulumi.String("https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2"),
+//				Regions: pulumi.StringArray{
+//					pulumi.String("nyc3"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Image:  flatcar.ID(),
+//				Region: pulumi.String("nyc3"),
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				SshKeys: pulumi.StringArray{
+//					pulumi.String("12345"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type CustomImage struct {
 	pulumi.CustomResourceState
@@ -225,7 +228,7 @@ func (i *CustomImage) ToCustomImageOutputWithContext(ctx context.Context) Custom
 // CustomImageArrayInput is an input type that accepts CustomImageArray and CustomImageArrayOutput values.
 // You can construct a concrete instance of `CustomImageArrayInput` via:
 //
-//          CustomImageArray{ CustomImageArgs{...} }
+//	CustomImageArray{ CustomImageArgs{...} }
 type CustomImageArrayInput interface {
 	pulumi.Input
 
@@ -250,7 +253,7 @@ func (i CustomImageArray) ToCustomImageArrayOutputWithContext(ctx context.Contex
 // CustomImageMapInput is an input type that accepts CustomImageMap and CustomImageMapOutput values.
 // You can construct a concrete instance of `CustomImageMapInput` via:
 //
-//          CustomImageMap{ "key": CustomImageArgs{...} }
+//	CustomImageMap{ "key": CustomImageArgs{...} }
 type CustomImageMapInput interface {
 	pulumi.Input
 

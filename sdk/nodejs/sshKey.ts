@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * import * from "fs";
+ * import * as fs from "fs";
  *
  * // Create a new SSH key
  * const _default = new digitalocean.SshKey("default", {publicKey: fs.readFileSync("/Users/myuser/.ssh/id_rsa.pub")});

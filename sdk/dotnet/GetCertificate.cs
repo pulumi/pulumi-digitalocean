@@ -26,20 +26,18 @@ namespace Pulumi.DigitalOcean
         /// Get the certificate:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetCertificate.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetCertificate.InvokeAsync(new DigitalOcean.GetCertificateArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///     }
+        ///         Name = "example",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -62,20 +60,18 @@ namespace Pulumi.DigitalOcean
         /// Get the certificate:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetCertificate.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetCertificate.InvokeAsync(new DigitalOcean.GetCertificateArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///     }
+        ///         Name = "example",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +81,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetCertificateArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of certificate.
@@ -96,9 +92,10 @@ namespace Pulumi.DigitalOcean
         public GetCertificateArgs()
         {
         }
+        public static new GetCertificateArgs Empty => new GetCertificateArgs();
     }
 
-    public sealed class GetCertificateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of certificate.
@@ -109,6 +106,7 @@ namespace Pulumi.DigitalOcean
         public GetCertificateInvokeArgs()
         {
         }
+        public static new GetCertificateInvokeArgs Empty => new GetCertificateInvokeArgs();
     }
 
 

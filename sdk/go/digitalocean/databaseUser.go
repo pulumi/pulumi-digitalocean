@@ -21,31 +21,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("pg"),
-// 			Version:   pulumi.String("11"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Region:    pulumi.String("nyc1"),
-// 			NodeCount: pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDatabaseUser(ctx, "user-example", &digitalocean.DatabaseUserArgs{
-// 			ClusterId: postgres_example.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseUser(ctx, "user-example", &digitalocean.DatabaseUserArgs{
+//				ClusterId: postgres_example.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+//
+//	$ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+//
 // ```
 type DatabaseUser struct {
 	pulumi.CustomResourceState
@@ -176,7 +181,7 @@ func (i *DatabaseUser) ToDatabaseUserOutputWithContext(ctx context.Context) Data
 // DatabaseUserArrayInput is an input type that accepts DatabaseUserArray and DatabaseUserArrayOutput values.
 // You can construct a concrete instance of `DatabaseUserArrayInput` via:
 //
-//          DatabaseUserArray{ DatabaseUserArgs{...} }
+//	DatabaseUserArray{ DatabaseUserArgs{...} }
 type DatabaseUserArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +206,7 @@ func (i DatabaseUserArray) ToDatabaseUserArrayOutputWithContext(ctx context.Cont
 // DatabaseUserMapInput is an input type that accepts DatabaseUserMap and DatabaseUserMapOutput values.
 // You can construct a concrete instance of `DatabaseUserMapInput` via:
 //
-//          DatabaseUserMap{ "key": DatabaseUserArgs{...} }
+//	DatabaseUserMap{ "key": DatabaseUserArgs{...} }
 type DatabaseUserMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetRegionsFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -51,5 +51,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetRegionsFilterArgs()
         {
         }
+        public static new GetRegionsFilterArgs Empty => new GetRegionsFilterArgs();
     }
 }

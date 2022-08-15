@@ -34,7 +34,7 @@ type AppSpec struct {
 // AppSpecInput is an input type that accepts AppSpecArgs and AppSpecOutput values.
 // You can construct a concrete instance of `AppSpecInput` via:
 //
-//          AppSpecArgs{...}
+//	AppSpecArgs{...}
 type AppSpecInput interface {
 	pulumi.Input
 
@@ -86,11 +86,11 @@ func (i AppSpecArgs) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpecP
 // AppSpecPtrInput is an input type that accepts AppSpecArgs, AppSpecPtr and AppSpecPtrOutput values.
 // You can construct a concrete instance of `AppSpecPtrInput` via:
 //
-//          AppSpecArgs{...}
+//	        AppSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecPtrInput interface {
 	pulumi.Input
 
@@ -342,7 +342,7 @@ type AppSpecAlert struct {
 // AppSpecAlertInput is an input type that accepts AppSpecAlertArgs and AppSpecAlertOutput values.
 // You can construct a concrete instance of `AppSpecAlertInput` via:
 //
-//          AppSpecAlertArgs{...}
+//	AppSpecAlertArgs{...}
 type AppSpecAlertInput interface {
 	pulumi.Input
 
@@ -372,7 +372,7 @@ func (i AppSpecAlertArgs) ToAppSpecAlertOutputWithContext(ctx context.Context) A
 // AppSpecAlertArrayInput is an input type that accepts AppSpecAlertArray and AppSpecAlertArrayOutput values.
 // You can construct a concrete instance of `AppSpecAlertArrayInput` via:
 //
-//          AppSpecAlertArray{ AppSpecAlertArgs{...} }
+//	AppSpecAlertArray{ AppSpecAlertArgs{...} }
 type AppSpecAlertArrayInput interface {
 	pulumi.Input
 
@@ -458,7 +458,7 @@ type AppSpecDatabase struct {
 // AppSpecDatabaseInput is an input type that accepts AppSpecDatabaseArgs and AppSpecDatabaseOutput values.
 // You can construct a concrete instance of `AppSpecDatabaseInput` via:
 //
-//          AppSpecDatabaseArgs{...}
+//	AppSpecDatabaseArgs{...}
 type AppSpecDatabaseInput interface {
 	pulumi.Input
 
@@ -498,7 +498,7 @@ func (i AppSpecDatabaseArgs) ToAppSpecDatabaseOutputWithContext(ctx context.Cont
 // AppSpecDatabaseArrayInput is an input type that accepts AppSpecDatabaseArray and AppSpecDatabaseArrayOutput values.
 // You can construct a concrete instance of `AppSpecDatabaseArrayInput` via:
 //
-//          AppSpecDatabaseArray{ AppSpecDatabaseArgs{...} }
+//	AppSpecDatabaseArray{ AppSpecDatabaseArgs{...} }
 type AppSpecDatabaseArrayInput interface {
 	pulumi.Input
 
@@ -603,7 +603,7 @@ type AppSpecDomainName struct {
 // AppSpecDomainNameInput is an input type that accepts AppSpecDomainNameArgs and AppSpecDomainNameOutput values.
 // You can construct a concrete instance of `AppSpecDomainNameInput` via:
 //
-//          AppSpecDomainNameArgs{...}
+//	AppSpecDomainNameArgs{...}
 type AppSpecDomainNameInput interface {
 	pulumi.Input
 
@@ -637,7 +637,7 @@ func (i AppSpecDomainNameArgs) ToAppSpecDomainNameOutputWithContext(ctx context.
 // AppSpecDomainNameArrayInput is an input type that accepts AppSpecDomainNameArray and AppSpecDomainNameArrayOutput values.
 // You can construct a concrete instance of `AppSpecDomainNameArrayInput` via:
 //
-//          AppSpecDomainNameArray{ AppSpecDomainNameArgs{...} }
+//	AppSpecDomainNameArray{ AppSpecDomainNameArgs{...} }
 type AppSpecDomainNameArrayInput interface {
 	pulumi.Input
 
@@ -727,7 +727,7 @@ type AppSpecEnv struct {
 // AppSpecEnvInput is an input type that accepts AppSpecEnvArgs and AppSpecEnvOutput values.
 // You can construct a concrete instance of `AppSpecEnvInput` via:
 //
-//          AppSpecEnvArgs{...}
+//	AppSpecEnvArgs{...}
 type AppSpecEnvInput interface {
 	pulumi.Input
 
@@ -761,7 +761,7 @@ func (i AppSpecEnvArgs) ToAppSpecEnvOutputWithContext(ctx context.Context) AppSp
 // AppSpecEnvArrayInput is an input type that accepts AppSpecEnvArray and AppSpecEnvArrayOutput values.
 // You can construct a concrete instance of `AppSpecEnvArrayInput` via:
 //
-//          AppSpecEnvArray{ AppSpecEnvArgs{...} }
+//	AppSpecEnvArray{ AppSpecEnvArgs{...} }
 type AppSpecEnvArrayInput interface {
 	pulumi.Input
 
@@ -862,7 +862,7 @@ type AppSpecFunction struct {
 // AppSpecFunctionInput is an input type that accepts AppSpecFunctionArgs and AppSpecFunctionOutput values.
 // You can construct a concrete instance of `AppSpecFunctionInput` via:
 //
-//          AppSpecFunctionArgs{...}
+//	AppSpecFunctionArgs{...}
 type AppSpecFunctionInput interface {
 	pulumi.Input
 
@@ -907,7 +907,7 @@ func (i AppSpecFunctionArgs) ToAppSpecFunctionOutputWithContext(ctx context.Cont
 // AppSpecFunctionArrayInput is an input type that accepts AppSpecFunctionArray and AppSpecFunctionArrayOutput values.
 // You can construct a concrete instance of `AppSpecFunctionArrayInput` via:
 //
-//          AppSpecFunctionArray{ AppSpecFunctionArgs{...} }
+//	AppSpecFunctionArray{ AppSpecFunctionArgs{...} }
 type AppSpecFunctionArrayInput interface {
 	pulumi.Input
 
@@ -1028,7 +1028,7 @@ type AppSpecFunctionAlert struct {
 // AppSpecFunctionAlertInput is an input type that accepts AppSpecFunctionAlertArgs and AppSpecFunctionAlertOutput values.
 // You can construct a concrete instance of `AppSpecFunctionAlertInput` via:
 //
-//          AppSpecFunctionAlertArgs{...}
+//	AppSpecFunctionAlertArgs{...}
 type AppSpecFunctionAlertInput interface {
 	pulumi.Input
 
@@ -1064,7 +1064,7 @@ func (i AppSpecFunctionAlertArgs) ToAppSpecFunctionAlertOutputWithContext(ctx co
 // AppSpecFunctionAlertArrayInput is an input type that accepts AppSpecFunctionAlertArray and AppSpecFunctionAlertArrayOutput values.
 // You can construct a concrete instance of `AppSpecFunctionAlertArrayInput` via:
 //
-//          AppSpecFunctionAlertArray{ AppSpecFunctionAlertArgs{...} }
+//	AppSpecFunctionAlertArray{ AppSpecFunctionAlertArgs{...} }
 type AppSpecFunctionAlertArrayInput interface {
 	pulumi.Input
 
@@ -1163,7 +1163,7 @@ type AppSpecFunctionCors struct {
 // AppSpecFunctionCorsInput is an input type that accepts AppSpecFunctionCorsArgs and AppSpecFunctionCorsOutput values.
 // You can construct a concrete instance of `AppSpecFunctionCorsInput` via:
 //
-//          AppSpecFunctionCorsArgs{...}
+//	AppSpecFunctionCorsArgs{...}
 type AppSpecFunctionCorsInput interface {
 	pulumi.Input
 
@@ -1209,11 +1209,11 @@ func (i AppSpecFunctionCorsArgs) ToAppSpecFunctionCorsPtrOutputWithContext(ctx c
 // AppSpecFunctionCorsPtrInput is an input type that accepts AppSpecFunctionCorsArgs, AppSpecFunctionCorsPtr and AppSpecFunctionCorsPtrOutput values.
 // You can construct a concrete instance of `AppSpecFunctionCorsPtrInput` via:
 //
-//          AppSpecFunctionCorsArgs{...}
+//	        AppSpecFunctionCorsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecFunctionCorsPtrInput interface {
 	pulumi.Input
 
@@ -1389,7 +1389,7 @@ type AppSpecFunctionCorsAllowOrigins struct {
 // AppSpecFunctionCorsAllowOriginsInput is an input type that accepts AppSpecFunctionCorsAllowOriginsArgs and AppSpecFunctionCorsAllowOriginsOutput values.
 // You can construct a concrete instance of `AppSpecFunctionCorsAllowOriginsInput` via:
 //
-//          AppSpecFunctionCorsAllowOriginsArgs{...}
+//	AppSpecFunctionCorsAllowOriginsArgs{...}
 type AppSpecFunctionCorsAllowOriginsInput interface {
 	pulumi.Input
 
@@ -1429,11 +1429,11 @@ func (i AppSpecFunctionCorsAllowOriginsArgs) ToAppSpecFunctionCorsAllowOriginsPt
 // AppSpecFunctionCorsAllowOriginsPtrInput is an input type that accepts AppSpecFunctionCorsAllowOriginsArgs, AppSpecFunctionCorsAllowOriginsPtr and AppSpecFunctionCorsAllowOriginsPtrOutput values.
 // You can construct a concrete instance of `AppSpecFunctionCorsAllowOriginsPtrInput` via:
 //
-//          AppSpecFunctionCorsAllowOriginsArgs{...}
+//	        AppSpecFunctionCorsAllowOriginsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecFunctionCorsAllowOriginsPtrInput interface {
 	pulumi.Input
 
@@ -1566,7 +1566,7 @@ type AppSpecFunctionEnv struct {
 // AppSpecFunctionEnvInput is an input type that accepts AppSpecFunctionEnvArgs and AppSpecFunctionEnvOutput values.
 // You can construct a concrete instance of `AppSpecFunctionEnvInput` via:
 //
-//          AppSpecFunctionEnvArgs{...}
+//	AppSpecFunctionEnvArgs{...}
 type AppSpecFunctionEnvInput interface {
 	pulumi.Input
 
@@ -1600,7 +1600,7 @@ func (i AppSpecFunctionEnvArgs) ToAppSpecFunctionEnvOutputWithContext(ctx contex
 // AppSpecFunctionEnvArrayInput is an input type that accepts AppSpecFunctionEnvArray and AppSpecFunctionEnvArrayOutput values.
 // You can construct a concrete instance of `AppSpecFunctionEnvArrayInput` via:
 //
-//          AppSpecFunctionEnvArray{ AppSpecFunctionEnvArgs{...} }
+//	AppSpecFunctionEnvArray{ AppSpecFunctionEnvArgs{...} }
 type AppSpecFunctionEnvArrayInput interface {
 	pulumi.Input
 
@@ -1686,7 +1686,7 @@ type AppSpecFunctionGit struct {
 // AppSpecFunctionGitInput is an input type that accepts AppSpecFunctionGitArgs and AppSpecFunctionGitOutput values.
 // You can construct a concrete instance of `AppSpecFunctionGitInput` via:
 //
-//          AppSpecFunctionGitArgs{...}
+//	AppSpecFunctionGitArgs{...}
 type AppSpecFunctionGitInput interface {
 	pulumi.Input
 
@@ -1724,11 +1724,11 @@ func (i AppSpecFunctionGitArgs) ToAppSpecFunctionGitPtrOutputWithContext(ctx con
 // AppSpecFunctionGitPtrInput is an input type that accepts AppSpecFunctionGitArgs, AppSpecFunctionGitPtr and AppSpecFunctionGitPtrOutput values.
 // You can construct a concrete instance of `AppSpecFunctionGitPtrInput` via:
 //
-//          AppSpecFunctionGitArgs{...}
+//	        AppSpecFunctionGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecFunctionGitPtrInput interface {
 	pulumi.Input
 
@@ -1844,7 +1844,7 @@ type AppSpecFunctionGithub struct {
 // AppSpecFunctionGithubInput is an input type that accepts AppSpecFunctionGithubArgs and AppSpecFunctionGithubOutput values.
 // You can construct a concrete instance of `AppSpecFunctionGithubInput` via:
 //
-//          AppSpecFunctionGithubArgs{...}
+//	AppSpecFunctionGithubArgs{...}
 type AppSpecFunctionGithubInput interface {
 	pulumi.Input
 
@@ -1884,11 +1884,11 @@ func (i AppSpecFunctionGithubArgs) ToAppSpecFunctionGithubPtrOutputWithContext(c
 // AppSpecFunctionGithubPtrInput is an input type that accepts AppSpecFunctionGithubArgs, AppSpecFunctionGithubPtr and AppSpecFunctionGithubPtrOutput values.
 // You can construct a concrete instance of `AppSpecFunctionGithubPtrInput` via:
 //
-//          AppSpecFunctionGithubArgs{...}
+//	        AppSpecFunctionGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecFunctionGithubPtrInput interface {
 	pulumi.Input
 
@@ -2019,7 +2019,7 @@ type AppSpecFunctionGitlab struct {
 // AppSpecFunctionGitlabInput is an input type that accepts AppSpecFunctionGitlabArgs and AppSpecFunctionGitlabOutput values.
 // You can construct a concrete instance of `AppSpecFunctionGitlabInput` via:
 //
-//          AppSpecFunctionGitlabArgs{...}
+//	AppSpecFunctionGitlabArgs{...}
 type AppSpecFunctionGitlabInput interface {
 	pulumi.Input
 
@@ -2059,11 +2059,11 @@ func (i AppSpecFunctionGitlabArgs) ToAppSpecFunctionGitlabPtrOutputWithContext(c
 // AppSpecFunctionGitlabPtrInput is an input type that accepts AppSpecFunctionGitlabArgs, AppSpecFunctionGitlabPtr and AppSpecFunctionGitlabPtrOutput values.
 // You can construct a concrete instance of `AppSpecFunctionGitlabPtrInput` via:
 //
-//          AppSpecFunctionGitlabArgs{...}
+//	        AppSpecFunctionGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecFunctionGitlabPtrInput interface {
 	pulumi.Input
 
@@ -2196,7 +2196,7 @@ type AppSpecFunctionLogDestination struct {
 // AppSpecFunctionLogDestinationInput is an input type that accepts AppSpecFunctionLogDestinationArgs and AppSpecFunctionLogDestinationOutput values.
 // You can construct a concrete instance of `AppSpecFunctionLogDestinationInput` via:
 //
-//          AppSpecFunctionLogDestinationArgs{...}
+//	AppSpecFunctionLogDestinationArgs{...}
 type AppSpecFunctionLogDestinationInput interface {
 	pulumi.Input
 
@@ -2230,7 +2230,7 @@ func (i AppSpecFunctionLogDestinationArgs) ToAppSpecFunctionLogDestinationOutput
 // AppSpecFunctionLogDestinationArrayInput is an input type that accepts AppSpecFunctionLogDestinationArray and AppSpecFunctionLogDestinationArrayOutput values.
 // You can construct a concrete instance of `AppSpecFunctionLogDestinationArrayInput` via:
 //
-//          AppSpecFunctionLogDestinationArray{ AppSpecFunctionLogDestinationArgs{...} }
+//	AppSpecFunctionLogDestinationArray{ AppSpecFunctionLogDestinationArgs{...} }
 type AppSpecFunctionLogDestinationArrayInput interface {
 	pulumi.Input
 
@@ -2316,7 +2316,7 @@ type AppSpecFunctionLogDestinationDatadog struct {
 // AppSpecFunctionLogDestinationDatadogInput is an input type that accepts AppSpecFunctionLogDestinationDatadogArgs and AppSpecFunctionLogDestinationDatadogOutput values.
 // You can construct a concrete instance of `AppSpecFunctionLogDestinationDatadogInput` via:
 //
-//          AppSpecFunctionLogDestinationDatadogArgs{...}
+//	AppSpecFunctionLogDestinationDatadogArgs{...}
 type AppSpecFunctionLogDestinationDatadogInput interface {
 	pulumi.Input
 
@@ -2354,11 +2354,11 @@ func (i AppSpecFunctionLogDestinationDatadogArgs) ToAppSpecFunctionLogDestinatio
 // AppSpecFunctionLogDestinationDatadogPtrInput is an input type that accepts AppSpecFunctionLogDestinationDatadogArgs, AppSpecFunctionLogDestinationDatadogPtr and AppSpecFunctionLogDestinationDatadogPtrOutput values.
 // You can construct a concrete instance of `AppSpecFunctionLogDestinationDatadogPtrInput` via:
 //
-//          AppSpecFunctionLogDestinationDatadogArgs{...}
+//	        AppSpecFunctionLogDestinationDatadogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecFunctionLogDestinationDatadogPtrInput interface {
 	pulumi.Input
 
@@ -2470,7 +2470,7 @@ type AppSpecFunctionLogDestinationLogtail struct {
 // AppSpecFunctionLogDestinationLogtailInput is an input type that accepts AppSpecFunctionLogDestinationLogtailArgs and AppSpecFunctionLogDestinationLogtailOutput values.
 // You can construct a concrete instance of `AppSpecFunctionLogDestinationLogtailInput` via:
 //
-//          AppSpecFunctionLogDestinationLogtailArgs{...}
+//	AppSpecFunctionLogDestinationLogtailArgs{...}
 type AppSpecFunctionLogDestinationLogtailInput interface {
 	pulumi.Input
 
@@ -2506,11 +2506,11 @@ func (i AppSpecFunctionLogDestinationLogtailArgs) ToAppSpecFunctionLogDestinatio
 // AppSpecFunctionLogDestinationLogtailPtrInput is an input type that accepts AppSpecFunctionLogDestinationLogtailArgs, AppSpecFunctionLogDestinationLogtailPtr and AppSpecFunctionLogDestinationLogtailPtrOutput values.
 // You can construct a concrete instance of `AppSpecFunctionLogDestinationLogtailPtrInput` via:
 //
-//          AppSpecFunctionLogDestinationLogtailArgs{...}
+//	        AppSpecFunctionLogDestinationLogtailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecFunctionLogDestinationLogtailPtrInput interface {
 	pulumi.Input
 
@@ -2607,7 +2607,7 @@ type AppSpecFunctionLogDestinationPapertrail struct {
 // AppSpecFunctionLogDestinationPapertrailInput is an input type that accepts AppSpecFunctionLogDestinationPapertrailArgs and AppSpecFunctionLogDestinationPapertrailOutput values.
 // You can construct a concrete instance of `AppSpecFunctionLogDestinationPapertrailInput` via:
 //
-//          AppSpecFunctionLogDestinationPapertrailArgs{...}
+//	AppSpecFunctionLogDestinationPapertrailArgs{...}
 type AppSpecFunctionLogDestinationPapertrailInput interface {
 	pulumi.Input
 
@@ -2643,11 +2643,11 @@ func (i AppSpecFunctionLogDestinationPapertrailArgs) ToAppSpecFunctionLogDestina
 // AppSpecFunctionLogDestinationPapertrailPtrInput is an input type that accepts AppSpecFunctionLogDestinationPapertrailArgs, AppSpecFunctionLogDestinationPapertrailPtr and AppSpecFunctionLogDestinationPapertrailPtrOutput values.
 // You can construct a concrete instance of `AppSpecFunctionLogDestinationPapertrailPtrInput` via:
 //
-//          AppSpecFunctionLogDestinationPapertrailArgs{...}
+//	        AppSpecFunctionLogDestinationPapertrailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecFunctionLogDestinationPapertrailPtrInput interface {
 	pulumi.Input
 
@@ -2746,7 +2746,7 @@ type AppSpecFunctionRoute struct {
 // AppSpecFunctionRouteInput is an input type that accepts AppSpecFunctionRouteArgs and AppSpecFunctionRouteOutput values.
 // You can construct a concrete instance of `AppSpecFunctionRouteInput` via:
 //
-//          AppSpecFunctionRouteArgs{...}
+//	AppSpecFunctionRouteArgs{...}
 type AppSpecFunctionRouteInput interface {
 	pulumi.Input
 
@@ -2776,7 +2776,7 @@ func (i AppSpecFunctionRouteArgs) ToAppSpecFunctionRouteOutputWithContext(ctx co
 // AppSpecFunctionRouteArrayInput is an input type that accepts AppSpecFunctionRouteArray and AppSpecFunctionRouteArrayOutput values.
 // You can construct a concrete instance of `AppSpecFunctionRouteArrayInput` via:
 //
-//          AppSpecFunctionRouteArray{ AppSpecFunctionRouteArgs{...} }
+//	AppSpecFunctionRouteArray{ AppSpecFunctionRouteArgs{...} }
 type AppSpecFunctionRouteArrayInput interface {
 	pulumi.Input
 
@@ -2884,7 +2884,7 @@ type AppSpecJob struct {
 // AppSpecJobInput is an input type that accepts AppSpecJobArgs and AppSpecJobOutput values.
 // You can construct a concrete instance of `AppSpecJobInput` via:
 //
-//          AppSpecJobArgs{...}
+//	AppSpecJobArgs{...}
 type AppSpecJobInput interface {
 	pulumi.Input
 
@@ -2946,7 +2946,7 @@ func (i AppSpecJobArgs) ToAppSpecJobOutputWithContext(ctx context.Context) AppSp
 // AppSpecJobArrayInput is an input type that accepts AppSpecJobArray and AppSpecJobArrayOutput values.
 // You can construct a concrete instance of `AppSpecJobArrayInput` via:
 //
-//          AppSpecJobArray{ AppSpecJobArgs{...} }
+//	AppSpecJobArray{ AppSpecJobArgs{...} }
 type AppSpecJobArrayInput interface {
 	pulumi.Input
 
@@ -3102,7 +3102,7 @@ type AppSpecJobAlert struct {
 // AppSpecJobAlertInput is an input type that accepts AppSpecJobAlertArgs and AppSpecJobAlertOutput values.
 // You can construct a concrete instance of `AppSpecJobAlertInput` via:
 //
-//          AppSpecJobAlertArgs{...}
+//	AppSpecJobAlertArgs{...}
 type AppSpecJobAlertInput interface {
 	pulumi.Input
 
@@ -3138,7 +3138,7 @@ func (i AppSpecJobAlertArgs) ToAppSpecJobAlertOutputWithContext(ctx context.Cont
 // AppSpecJobAlertArrayInput is an input type that accepts AppSpecJobAlertArray and AppSpecJobAlertArrayOutput values.
 // You can construct a concrete instance of `AppSpecJobAlertArrayInput` via:
 //
-//          AppSpecJobAlertArray{ AppSpecJobAlertArgs{...} }
+//	AppSpecJobAlertArray{ AppSpecJobAlertArgs{...} }
 type AppSpecJobAlertArrayInput interface {
 	pulumi.Input
 
@@ -3233,7 +3233,7 @@ type AppSpecJobEnv struct {
 // AppSpecJobEnvInput is an input type that accepts AppSpecJobEnvArgs and AppSpecJobEnvOutput values.
 // You can construct a concrete instance of `AppSpecJobEnvInput` via:
 //
-//          AppSpecJobEnvArgs{...}
+//	AppSpecJobEnvArgs{...}
 type AppSpecJobEnvInput interface {
 	pulumi.Input
 
@@ -3267,7 +3267,7 @@ func (i AppSpecJobEnvArgs) ToAppSpecJobEnvOutputWithContext(ctx context.Context)
 // AppSpecJobEnvArrayInput is an input type that accepts AppSpecJobEnvArray and AppSpecJobEnvArrayOutput values.
 // You can construct a concrete instance of `AppSpecJobEnvArrayInput` via:
 //
-//          AppSpecJobEnvArray{ AppSpecJobEnvArgs{...} }
+//	AppSpecJobEnvArray{ AppSpecJobEnvArgs{...} }
 type AppSpecJobEnvArrayInput interface {
 	pulumi.Input
 
@@ -3353,7 +3353,7 @@ type AppSpecJobGit struct {
 // AppSpecJobGitInput is an input type that accepts AppSpecJobGitArgs and AppSpecJobGitOutput values.
 // You can construct a concrete instance of `AppSpecJobGitInput` via:
 //
-//          AppSpecJobGitArgs{...}
+//	AppSpecJobGitArgs{...}
 type AppSpecJobGitInput interface {
 	pulumi.Input
 
@@ -3391,11 +3391,11 @@ func (i AppSpecJobGitArgs) ToAppSpecJobGitPtrOutputWithContext(ctx context.Conte
 // AppSpecJobGitPtrInput is an input type that accepts AppSpecJobGitArgs, AppSpecJobGitPtr and AppSpecJobGitPtrOutput values.
 // You can construct a concrete instance of `AppSpecJobGitPtrInput` via:
 //
-//          AppSpecJobGitArgs{...}
+//	        AppSpecJobGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecJobGitPtrInput interface {
 	pulumi.Input
 
@@ -3511,7 +3511,7 @@ type AppSpecJobGithub struct {
 // AppSpecJobGithubInput is an input type that accepts AppSpecJobGithubArgs and AppSpecJobGithubOutput values.
 // You can construct a concrete instance of `AppSpecJobGithubInput` via:
 //
-//          AppSpecJobGithubArgs{...}
+//	AppSpecJobGithubArgs{...}
 type AppSpecJobGithubInput interface {
 	pulumi.Input
 
@@ -3551,11 +3551,11 @@ func (i AppSpecJobGithubArgs) ToAppSpecJobGithubPtrOutputWithContext(ctx context
 // AppSpecJobGithubPtrInput is an input type that accepts AppSpecJobGithubArgs, AppSpecJobGithubPtr and AppSpecJobGithubPtrOutput values.
 // You can construct a concrete instance of `AppSpecJobGithubPtrInput` via:
 //
-//          AppSpecJobGithubArgs{...}
+//	        AppSpecJobGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecJobGithubPtrInput interface {
 	pulumi.Input
 
@@ -3686,7 +3686,7 @@ type AppSpecJobGitlab struct {
 // AppSpecJobGitlabInput is an input type that accepts AppSpecJobGitlabArgs and AppSpecJobGitlabOutput values.
 // You can construct a concrete instance of `AppSpecJobGitlabInput` via:
 //
-//          AppSpecJobGitlabArgs{...}
+//	AppSpecJobGitlabArgs{...}
 type AppSpecJobGitlabInput interface {
 	pulumi.Input
 
@@ -3726,11 +3726,11 @@ func (i AppSpecJobGitlabArgs) ToAppSpecJobGitlabPtrOutputWithContext(ctx context
 // AppSpecJobGitlabPtrInput is an input type that accepts AppSpecJobGitlabArgs, AppSpecJobGitlabPtr and AppSpecJobGitlabPtrOutput values.
 // You can construct a concrete instance of `AppSpecJobGitlabPtrInput` via:
 //
-//          AppSpecJobGitlabArgs{...}
+//	        AppSpecJobGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecJobGitlabPtrInput interface {
 	pulumi.Input
 
@@ -3863,7 +3863,7 @@ type AppSpecJobImage struct {
 // AppSpecJobImageInput is an input type that accepts AppSpecJobImageArgs and AppSpecJobImageOutput values.
 // You can construct a concrete instance of `AppSpecJobImageInput` via:
 //
-//          AppSpecJobImageArgs{...}
+//	AppSpecJobImageArgs{...}
 type AppSpecJobImageInput interface {
 	pulumi.Input
 
@@ -3905,11 +3905,11 @@ func (i AppSpecJobImageArgs) ToAppSpecJobImagePtrOutputWithContext(ctx context.C
 // AppSpecJobImagePtrInput is an input type that accepts AppSpecJobImageArgs, AppSpecJobImagePtr and AppSpecJobImagePtrOutput values.
 // You can construct a concrete instance of `AppSpecJobImagePtrInput` via:
 //
-//          AppSpecJobImageArgs{...}
+//	        AppSpecJobImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecJobImagePtrInput interface {
 	pulumi.Input
 
@@ -4057,7 +4057,7 @@ type AppSpecJobLogDestination struct {
 // AppSpecJobLogDestinationInput is an input type that accepts AppSpecJobLogDestinationArgs and AppSpecJobLogDestinationOutput values.
 // You can construct a concrete instance of `AppSpecJobLogDestinationInput` via:
 //
-//          AppSpecJobLogDestinationArgs{...}
+//	AppSpecJobLogDestinationArgs{...}
 type AppSpecJobLogDestinationInput interface {
 	pulumi.Input
 
@@ -4091,7 +4091,7 @@ func (i AppSpecJobLogDestinationArgs) ToAppSpecJobLogDestinationOutputWithContex
 // AppSpecJobLogDestinationArrayInput is an input type that accepts AppSpecJobLogDestinationArray and AppSpecJobLogDestinationArrayOutput values.
 // You can construct a concrete instance of `AppSpecJobLogDestinationArrayInput` via:
 //
-//          AppSpecJobLogDestinationArray{ AppSpecJobLogDestinationArgs{...} }
+//	AppSpecJobLogDestinationArray{ AppSpecJobLogDestinationArgs{...} }
 type AppSpecJobLogDestinationArrayInput interface {
 	pulumi.Input
 
@@ -4177,7 +4177,7 @@ type AppSpecJobLogDestinationDatadog struct {
 // AppSpecJobLogDestinationDatadogInput is an input type that accepts AppSpecJobLogDestinationDatadogArgs and AppSpecJobLogDestinationDatadogOutput values.
 // You can construct a concrete instance of `AppSpecJobLogDestinationDatadogInput` via:
 //
-//          AppSpecJobLogDestinationDatadogArgs{...}
+//	AppSpecJobLogDestinationDatadogArgs{...}
 type AppSpecJobLogDestinationDatadogInput interface {
 	pulumi.Input
 
@@ -4215,11 +4215,11 @@ func (i AppSpecJobLogDestinationDatadogArgs) ToAppSpecJobLogDestinationDatadogPt
 // AppSpecJobLogDestinationDatadogPtrInput is an input type that accepts AppSpecJobLogDestinationDatadogArgs, AppSpecJobLogDestinationDatadogPtr and AppSpecJobLogDestinationDatadogPtrOutput values.
 // You can construct a concrete instance of `AppSpecJobLogDestinationDatadogPtrInput` via:
 //
-//          AppSpecJobLogDestinationDatadogArgs{...}
+//	        AppSpecJobLogDestinationDatadogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecJobLogDestinationDatadogPtrInput interface {
 	pulumi.Input
 
@@ -4331,7 +4331,7 @@ type AppSpecJobLogDestinationLogtail struct {
 // AppSpecJobLogDestinationLogtailInput is an input type that accepts AppSpecJobLogDestinationLogtailArgs and AppSpecJobLogDestinationLogtailOutput values.
 // You can construct a concrete instance of `AppSpecJobLogDestinationLogtailInput` via:
 //
-//          AppSpecJobLogDestinationLogtailArgs{...}
+//	AppSpecJobLogDestinationLogtailArgs{...}
 type AppSpecJobLogDestinationLogtailInput interface {
 	pulumi.Input
 
@@ -4367,11 +4367,11 @@ func (i AppSpecJobLogDestinationLogtailArgs) ToAppSpecJobLogDestinationLogtailPt
 // AppSpecJobLogDestinationLogtailPtrInput is an input type that accepts AppSpecJobLogDestinationLogtailArgs, AppSpecJobLogDestinationLogtailPtr and AppSpecJobLogDestinationLogtailPtrOutput values.
 // You can construct a concrete instance of `AppSpecJobLogDestinationLogtailPtrInput` via:
 //
-//          AppSpecJobLogDestinationLogtailArgs{...}
+//	        AppSpecJobLogDestinationLogtailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecJobLogDestinationLogtailPtrInput interface {
 	pulumi.Input
 
@@ -4468,7 +4468,7 @@ type AppSpecJobLogDestinationPapertrail struct {
 // AppSpecJobLogDestinationPapertrailInput is an input type that accepts AppSpecJobLogDestinationPapertrailArgs and AppSpecJobLogDestinationPapertrailOutput values.
 // You can construct a concrete instance of `AppSpecJobLogDestinationPapertrailInput` via:
 //
-//          AppSpecJobLogDestinationPapertrailArgs{...}
+//	AppSpecJobLogDestinationPapertrailArgs{...}
 type AppSpecJobLogDestinationPapertrailInput interface {
 	pulumi.Input
 
@@ -4504,11 +4504,11 @@ func (i AppSpecJobLogDestinationPapertrailArgs) ToAppSpecJobLogDestinationPapert
 // AppSpecJobLogDestinationPapertrailPtrInput is an input type that accepts AppSpecJobLogDestinationPapertrailArgs, AppSpecJobLogDestinationPapertrailPtr and AppSpecJobLogDestinationPapertrailPtrOutput values.
 // You can construct a concrete instance of `AppSpecJobLogDestinationPapertrailPtrInput` via:
 //
-//          AppSpecJobLogDestinationPapertrailArgs{...}
+//	        AppSpecJobLogDestinationPapertrailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecJobLogDestinationPapertrailPtrInput interface {
 	pulumi.Input
 
@@ -4642,7 +4642,7 @@ type AppSpecService struct {
 // AppSpecServiceInput is an input type that accepts AppSpecServiceArgs and AppSpecServiceOutput values.
 // You can construct a concrete instance of `AppSpecServiceInput` via:
 //
-//          AppSpecServiceArgs{...}
+//	AppSpecServiceArgs{...}
 type AppSpecServiceInput interface {
 	pulumi.Input
 
@@ -4707,7 +4707,7 @@ func (i AppSpecServiceArgs) ToAppSpecServiceOutputWithContext(ctx context.Contex
 // AppSpecServiceArrayInput is an input type that accepts AppSpecServiceArray and AppSpecServiceArrayOutput values.
 // You can construct a concrete instance of `AppSpecServiceArrayInput` via:
 //
-//          AppSpecServiceArray{ AppSpecServiceArgs{...} }
+//	AppSpecServiceArray{ AppSpecServiceArgs{...} }
 type AppSpecServiceArrayInput interface {
 	pulumi.Input
 
@@ -4878,7 +4878,7 @@ type AppSpecServiceAlert struct {
 // AppSpecServiceAlertInput is an input type that accepts AppSpecServiceAlertArgs and AppSpecServiceAlertOutput values.
 // You can construct a concrete instance of `AppSpecServiceAlertInput` via:
 //
-//          AppSpecServiceAlertArgs{...}
+//	AppSpecServiceAlertArgs{...}
 type AppSpecServiceAlertInput interface {
 	pulumi.Input
 
@@ -4914,7 +4914,7 @@ func (i AppSpecServiceAlertArgs) ToAppSpecServiceAlertOutputWithContext(ctx cont
 // AppSpecServiceAlertArrayInput is an input type that accepts AppSpecServiceAlertArray and AppSpecServiceAlertArrayOutput values.
 // You can construct a concrete instance of `AppSpecServiceAlertArrayInput` via:
 //
-//          AppSpecServiceAlertArray{ AppSpecServiceAlertArgs{...} }
+//	AppSpecServiceAlertArray{ AppSpecServiceAlertArgs{...} }
 type AppSpecServiceAlertArrayInput interface {
 	pulumi.Input
 
@@ -5013,7 +5013,7 @@ type AppSpecServiceCors struct {
 // AppSpecServiceCorsInput is an input type that accepts AppSpecServiceCorsArgs and AppSpecServiceCorsOutput values.
 // You can construct a concrete instance of `AppSpecServiceCorsInput` via:
 //
-//          AppSpecServiceCorsArgs{...}
+//	AppSpecServiceCorsArgs{...}
 type AppSpecServiceCorsInput interface {
 	pulumi.Input
 
@@ -5059,11 +5059,11 @@ func (i AppSpecServiceCorsArgs) ToAppSpecServiceCorsPtrOutputWithContext(ctx con
 // AppSpecServiceCorsPtrInput is an input type that accepts AppSpecServiceCorsArgs, AppSpecServiceCorsPtr and AppSpecServiceCorsPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceCorsPtrInput` via:
 //
-//          AppSpecServiceCorsArgs{...}
+//	        AppSpecServiceCorsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceCorsPtrInput interface {
 	pulumi.Input
 
@@ -5239,7 +5239,7 @@ type AppSpecServiceCorsAllowOrigins struct {
 // AppSpecServiceCorsAllowOriginsInput is an input type that accepts AppSpecServiceCorsAllowOriginsArgs and AppSpecServiceCorsAllowOriginsOutput values.
 // You can construct a concrete instance of `AppSpecServiceCorsAllowOriginsInput` via:
 //
-//          AppSpecServiceCorsAllowOriginsArgs{...}
+//	AppSpecServiceCorsAllowOriginsArgs{...}
 type AppSpecServiceCorsAllowOriginsInput interface {
 	pulumi.Input
 
@@ -5279,11 +5279,11 @@ func (i AppSpecServiceCorsAllowOriginsArgs) ToAppSpecServiceCorsAllowOriginsPtrO
 // AppSpecServiceCorsAllowOriginsPtrInput is an input type that accepts AppSpecServiceCorsAllowOriginsArgs, AppSpecServiceCorsAllowOriginsPtr and AppSpecServiceCorsAllowOriginsPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceCorsAllowOriginsPtrInput` via:
 //
-//          AppSpecServiceCorsAllowOriginsArgs{...}
+//	        AppSpecServiceCorsAllowOriginsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceCorsAllowOriginsPtrInput interface {
 	pulumi.Input
 
@@ -5416,7 +5416,7 @@ type AppSpecServiceEnv struct {
 // AppSpecServiceEnvInput is an input type that accepts AppSpecServiceEnvArgs and AppSpecServiceEnvOutput values.
 // You can construct a concrete instance of `AppSpecServiceEnvInput` via:
 //
-//          AppSpecServiceEnvArgs{...}
+//	AppSpecServiceEnvArgs{...}
 type AppSpecServiceEnvInput interface {
 	pulumi.Input
 
@@ -5450,7 +5450,7 @@ func (i AppSpecServiceEnvArgs) ToAppSpecServiceEnvOutputWithContext(ctx context.
 // AppSpecServiceEnvArrayInput is an input type that accepts AppSpecServiceEnvArray and AppSpecServiceEnvArrayOutput values.
 // You can construct a concrete instance of `AppSpecServiceEnvArrayInput` via:
 //
-//          AppSpecServiceEnvArray{ AppSpecServiceEnvArgs{...} }
+//	AppSpecServiceEnvArray{ AppSpecServiceEnvArgs{...} }
 type AppSpecServiceEnvArrayInput interface {
 	pulumi.Input
 
@@ -5536,7 +5536,7 @@ type AppSpecServiceGit struct {
 // AppSpecServiceGitInput is an input type that accepts AppSpecServiceGitArgs and AppSpecServiceGitOutput values.
 // You can construct a concrete instance of `AppSpecServiceGitInput` via:
 //
-//          AppSpecServiceGitArgs{...}
+//	AppSpecServiceGitArgs{...}
 type AppSpecServiceGitInput interface {
 	pulumi.Input
 
@@ -5574,11 +5574,11 @@ func (i AppSpecServiceGitArgs) ToAppSpecServiceGitPtrOutputWithContext(ctx conte
 // AppSpecServiceGitPtrInput is an input type that accepts AppSpecServiceGitArgs, AppSpecServiceGitPtr and AppSpecServiceGitPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceGitPtrInput` via:
 //
-//          AppSpecServiceGitArgs{...}
+//	        AppSpecServiceGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceGitPtrInput interface {
 	pulumi.Input
 
@@ -5694,7 +5694,7 @@ type AppSpecServiceGithub struct {
 // AppSpecServiceGithubInput is an input type that accepts AppSpecServiceGithubArgs and AppSpecServiceGithubOutput values.
 // You can construct a concrete instance of `AppSpecServiceGithubInput` via:
 //
-//          AppSpecServiceGithubArgs{...}
+//	AppSpecServiceGithubArgs{...}
 type AppSpecServiceGithubInput interface {
 	pulumi.Input
 
@@ -5734,11 +5734,11 @@ func (i AppSpecServiceGithubArgs) ToAppSpecServiceGithubPtrOutputWithContext(ctx
 // AppSpecServiceGithubPtrInput is an input type that accepts AppSpecServiceGithubArgs, AppSpecServiceGithubPtr and AppSpecServiceGithubPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceGithubPtrInput` via:
 //
-//          AppSpecServiceGithubArgs{...}
+//	        AppSpecServiceGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceGithubPtrInput interface {
 	pulumi.Input
 
@@ -5869,7 +5869,7 @@ type AppSpecServiceGitlab struct {
 // AppSpecServiceGitlabInput is an input type that accepts AppSpecServiceGitlabArgs and AppSpecServiceGitlabOutput values.
 // You can construct a concrete instance of `AppSpecServiceGitlabInput` via:
 //
-//          AppSpecServiceGitlabArgs{...}
+//	AppSpecServiceGitlabArgs{...}
 type AppSpecServiceGitlabInput interface {
 	pulumi.Input
 
@@ -5909,11 +5909,11 @@ func (i AppSpecServiceGitlabArgs) ToAppSpecServiceGitlabPtrOutputWithContext(ctx
 // AppSpecServiceGitlabPtrInput is an input type that accepts AppSpecServiceGitlabArgs, AppSpecServiceGitlabPtr and AppSpecServiceGitlabPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceGitlabPtrInput` via:
 //
-//          AppSpecServiceGitlabArgs{...}
+//	        AppSpecServiceGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceGitlabPtrInput interface {
 	pulumi.Input
 
@@ -6050,7 +6050,7 @@ type AppSpecServiceHealthCheck struct {
 // AppSpecServiceHealthCheckInput is an input type that accepts AppSpecServiceHealthCheckArgs and AppSpecServiceHealthCheckOutput values.
 // You can construct a concrete instance of `AppSpecServiceHealthCheckInput` via:
 //
-//          AppSpecServiceHealthCheckArgs{...}
+//	AppSpecServiceHealthCheckArgs{...}
 type AppSpecServiceHealthCheckInput interface {
 	pulumi.Input
 
@@ -6096,11 +6096,11 @@ func (i AppSpecServiceHealthCheckArgs) ToAppSpecServiceHealthCheckPtrOutputWithC
 // AppSpecServiceHealthCheckPtrInput is an input type that accepts AppSpecServiceHealthCheckArgs, AppSpecServiceHealthCheckPtr and AppSpecServiceHealthCheckPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceHealthCheckPtrInput` via:
 //
-//          AppSpecServiceHealthCheckArgs{...}
+//	        AppSpecServiceHealthCheckArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceHealthCheckPtrInput interface {
 	pulumi.Input
 
@@ -6278,7 +6278,7 @@ type AppSpecServiceImage struct {
 // AppSpecServiceImageInput is an input type that accepts AppSpecServiceImageArgs and AppSpecServiceImageOutput values.
 // You can construct a concrete instance of `AppSpecServiceImageInput` via:
 //
-//          AppSpecServiceImageArgs{...}
+//	AppSpecServiceImageArgs{...}
 type AppSpecServiceImageInput interface {
 	pulumi.Input
 
@@ -6320,11 +6320,11 @@ func (i AppSpecServiceImageArgs) ToAppSpecServiceImagePtrOutputWithContext(ctx c
 // AppSpecServiceImagePtrInput is an input type that accepts AppSpecServiceImageArgs, AppSpecServiceImagePtr and AppSpecServiceImagePtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceImagePtrInput` via:
 //
-//          AppSpecServiceImageArgs{...}
+//	        AppSpecServiceImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceImagePtrInput interface {
 	pulumi.Input
 
@@ -6472,7 +6472,7 @@ type AppSpecServiceLogDestination struct {
 // AppSpecServiceLogDestinationInput is an input type that accepts AppSpecServiceLogDestinationArgs and AppSpecServiceLogDestinationOutput values.
 // You can construct a concrete instance of `AppSpecServiceLogDestinationInput` via:
 //
-//          AppSpecServiceLogDestinationArgs{...}
+//	AppSpecServiceLogDestinationArgs{...}
 type AppSpecServiceLogDestinationInput interface {
 	pulumi.Input
 
@@ -6506,7 +6506,7 @@ func (i AppSpecServiceLogDestinationArgs) ToAppSpecServiceLogDestinationOutputWi
 // AppSpecServiceLogDestinationArrayInput is an input type that accepts AppSpecServiceLogDestinationArray and AppSpecServiceLogDestinationArrayOutput values.
 // You can construct a concrete instance of `AppSpecServiceLogDestinationArrayInput` via:
 //
-//          AppSpecServiceLogDestinationArray{ AppSpecServiceLogDestinationArgs{...} }
+//	AppSpecServiceLogDestinationArray{ AppSpecServiceLogDestinationArgs{...} }
 type AppSpecServiceLogDestinationArrayInput interface {
 	pulumi.Input
 
@@ -6592,7 +6592,7 @@ type AppSpecServiceLogDestinationDatadog struct {
 // AppSpecServiceLogDestinationDatadogInput is an input type that accepts AppSpecServiceLogDestinationDatadogArgs and AppSpecServiceLogDestinationDatadogOutput values.
 // You can construct a concrete instance of `AppSpecServiceLogDestinationDatadogInput` via:
 //
-//          AppSpecServiceLogDestinationDatadogArgs{...}
+//	AppSpecServiceLogDestinationDatadogArgs{...}
 type AppSpecServiceLogDestinationDatadogInput interface {
 	pulumi.Input
 
@@ -6630,11 +6630,11 @@ func (i AppSpecServiceLogDestinationDatadogArgs) ToAppSpecServiceLogDestinationD
 // AppSpecServiceLogDestinationDatadogPtrInput is an input type that accepts AppSpecServiceLogDestinationDatadogArgs, AppSpecServiceLogDestinationDatadogPtr and AppSpecServiceLogDestinationDatadogPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceLogDestinationDatadogPtrInput` via:
 //
-//          AppSpecServiceLogDestinationDatadogArgs{...}
+//	        AppSpecServiceLogDestinationDatadogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceLogDestinationDatadogPtrInput interface {
 	pulumi.Input
 
@@ -6746,7 +6746,7 @@ type AppSpecServiceLogDestinationLogtail struct {
 // AppSpecServiceLogDestinationLogtailInput is an input type that accepts AppSpecServiceLogDestinationLogtailArgs and AppSpecServiceLogDestinationLogtailOutput values.
 // You can construct a concrete instance of `AppSpecServiceLogDestinationLogtailInput` via:
 //
-//          AppSpecServiceLogDestinationLogtailArgs{...}
+//	AppSpecServiceLogDestinationLogtailArgs{...}
 type AppSpecServiceLogDestinationLogtailInput interface {
 	pulumi.Input
 
@@ -6782,11 +6782,11 @@ func (i AppSpecServiceLogDestinationLogtailArgs) ToAppSpecServiceLogDestinationL
 // AppSpecServiceLogDestinationLogtailPtrInput is an input type that accepts AppSpecServiceLogDestinationLogtailArgs, AppSpecServiceLogDestinationLogtailPtr and AppSpecServiceLogDestinationLogtailPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceLogDestinationLogtailPtrInput` via:
 //
-//          AppSpecServiceLogDestinationLogtailArgs{...}
+//	        AppSpecServiceLogDestinationLogtailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceLogDestinationLogtailPtrInput interface {
 	pulumi.Input
 
@@ -6883,7 +6883,7 @@ type AppSpecServiceLogDestinationPapertrail struct {
 // AppSpecServiceLogDestinationPapertrailInput is an input type that accepts AppSpecServiceLogDestinationPapertrailArgs and AppSpecServiceLogDestinationPapertrailOutput values.
 // You can construct a concrete instance of `AppSpecServiceLogDestinationPapertrailInput` via:
 //
-//          AppSpecServiceLogDestinationPapertrailArgs{...}
+//	AppSpecServiceLogDestinationPapertrailArgs{...}
 type AppSpecServiceLogDestinationPapertrailInput interface {
 	pulumi.Input
 
@@ -6919,11 +6919,11 @@ func (i AppSpecServiceLogDestinationPapertrailArgs) ToAppSpecServiceLogDestinati
 // AppSpecServiceLogDestinationPapertrailPtrInput is an input type that accepts AppSpecServiceLogDestinationPapertrailArgs, AppSpecServiceLogDestinationPapertrailPtr and AppSpecServiceLogDestinationPapertrailPtrOutput values.
 // You can construct a concrete instance of `AppSpecServiceLogDestinationPapertrailPtrInput` via:
 //
-//          AppSpecServiceLogDestinationPapertrailArgs{...}
+//	        AppSpecServiceLogDestinationPapertrailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecServiceLogDestinationPapertrailPtrInput interface {
 	pulumi.Input
 
@@ -7022,7 +7022,7 @@ type AppSpecServiceRoute struct {
 // AppSpecServiceRouteInput is an input type that accepts AppSpecServiceRouteArgs and AppSpecServiceRouteOutput values.
 // You can construct a concrete instance of `AppSpecServiceRouteInput` via:
 //
-//          AppSpecServiceRouteArgs{...}
+//	AppSpecServiceRouteArgs{...}
 type AppSpecServiceRouteInput interface {
 	pulumi.Input
 
@@ -7052,7 +7052,7 @@ func (i AppSpecServiceRouteArgs) ToAppSpecServiceRouteOutputWithContext(ctx cont
 // AppSpecServiceRouteArrayInput is an input type that accepts AppSpecServiceRouteArray and AppSpecServiceRouteArrayOutput values.
 // You can construct a concrete instance of `AppSpecServiceRouteArrayInput` via:
 //
-//          AppSpecServiceRouteArray{ AppSpecServiceRouteArgs{...} }
+//	AppSpecServiceRouteArray{ AppSpecServiceRouteArgs{...} }
 type AppSpecServiceRouteArrayInput interface {
 	pulumi.Input
 
@@ -7153,7 +7153,7 @@ type AppSpecStaticSite struct {
 // AppSpecStaticSiteInput is an input type that accepts AppSpecStaticSiteArgs and AppSpecStaticSiteOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteInput` via:
 //
-//          AppSpecStaticSiteArgs{...}
+//	AppSpecStaticSiteArgs{...}
 type AppSpecStaticSiteInput interface {
 	pulumi.Input
 
@@ -7208,7 +7208,7 @@ func (i AppSpecStaticSiteArgs) ToAppSpecStaticSiteOutputWithContext(ctx context.
 // AppSpecStaticSiteArrayInput is an input type that accepts AppSpecStaticSiteArray and AppSpecStaticSiteArrayOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteArrayInput` via:
 //
-//          AppSpecStaticSiteArray{ AppSpecStaticSiteArgs{...} }
+//	AppSpecStaticSiteArray{ AppSpecStaticSiteArgs{...} }
 type AppSpecStaticSiteArrayInput interface {
 	pulumi.Input
 
@@ -7356,7 +7356,7 @@ type AppSpecStaticSiteCors struct {
 // AppSpecStaticSiteCorsInput is an input type that accepts AppSpecStaticSiteCorsArgs and AppSpecStaticSiteCorsOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteCorsInput` via:
 //
-//          AppSpecStaticSiteCorsArgs{...}
+//	AppSpecStaticSiteCorsArgs{...}
 type AppSpecStaticSiteCorsInput interface {
 	pulumi.Input
 
@@ -7402,11 +7402,11 @@ func (i AppSpecStaticSiteCorsArgs) ToAppSpecStaticSiteCorsPtrOutputWithContext(c
 // AppSpecStaticSiteCorsPtrInput is an input type that accepts AppSpecStaticSiteCorsArgs, AppSpecStaticSiteCorsPtr and AppSpecStaticSiteCorsPtrOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteCorsPtrInput` via:
 //
-//          AppSpecStaticSiteCorsArgs{...}
+//	        AppSpecStaticSiteCorsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecStaticSiteCorsPtrInput interface {
 	pulumi.Input
 
@@ -7582,7 +7582,7 @@ type AppSpecStaticSiteCorsAllowOrigins struct {
 // AppSpecStaticSiteCorsAllowOriginsInput is an input type that accepts AppSpecStaticSiteCorsAllowOriginsArgs and AppSpecStaticSiteCorsAllowOriginsOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteCorsAllowOriginsInput` via:
 //
-//          AppSpecStaticSiteCorsAllowOriginsArgs{...}
+//	AppSpecStaticSiteCorsAllowOriginsArgs{...}
 type AppSpecStaticSiteCorsAllowOriginsInput interface {
 	pulumi.Input
 
@@ -7622,11 +7622,11 @@ func (i AppSpecStaticSiteCorsAllowOriginsArgs) ToAppSpecStaticSiteCorsAllowOrigi
 // AppSpecStaticSiteCorsAllowOriginsPtrInput is an input type that accepts AppSpecStaticSiteCorsAllowOriginsArgs, AppSpecStaticSiteCorsAllowOriginsPtr and AppSpecStaticSiteCorsAllowOriginsPtrOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteCorsAllowOriginsPtrInput` via:
 //
-//          AppSpecStaticSiteCorsAllowOriginsArgs{...}
+//	        AppSpecStaticSiteCorsAllowOriginsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecStaticSiteCorsAllowOriginsPtrInput interface {
 	pulumi.Input
 
@@ -7759,7 +7759,7 @@ type AppSpecStaticSiteEnv struct {
 // AppSpecStaticSiteEnvInput is an input type that accepts AppSpecStaticSiteEnvArgs and AppSpecStaticSiteEnvOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteEnvInput` via:
 //
-//          AppSpecStaticSiteEnvArgs{...}
+//	AppSpecStaticSiteEnvArgs{...}
 type AppSpecStaticSiteEnvInput interface {
 	pulumi.Input
 
@@ -7793,7 +7793,7 @@ func (i AppSpecStaticSiteEnvArgs) ToAppSpecStaticSiteEnvOutputWithContext(ctx co
 // AppSpecStaticSiteEnvArrayInput is an input type that accepts AppSpecStaticSiteEnvArray and AppSpecStaticSiteEnvArrayOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteEnvArrayInput` via:
 //
-//          AppSpecStaticSiteEnvArray{ AppSpecStaticSiteEnvArgs{...} }
+//	AppSpecStaticSiteEnvArray{ AppSpecStaticSiteEnvArgs{...} }
 type AppSpecStaticSiteEnvArrayInput interface {
 	pulumi.Input
 
@@ -7879,7 +7879,7 @@ type AppSpecStaticSiteGit struct {
 // AppSpecStaticSiteGitInput is an input type that accepts AppSpecStaticSiteGitArgs and AppSpecStaticSiteGitOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteGitInput` via:
 //
-//          AppSpecStaticSiteGitArgs{...}
+//	AppSpecStaticSiteGitArgs{...}
 type AppSpecStaticSiteGitInput interface {
 	pulumi.Input
 
@@ -7917,11 +7917,11 @@ func (i AppSpecStaticSiteGitArgs) ToAppSpecStaticSiteGitPtrOutputWithContext(ctx
 // AppSpecStaticSiteGitPtrInput is an input type that accepts AppSpecStaticSiteGitArgs, AppSpecStaticSiteGitPtr and AppSpecStaticSiteGitPtrOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteGitPtrInput` via:
 //
-//          AppSpecStaticSiteGitArgs{...}
+//	        AppSpecStaticSiteGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecStaticSiteGitPtrInput interface {
 	pulumi.Input
 
@@ -8037,7 +8037,7 @@ type AppSpecStaticSiteGithub struct {
 // AppSpecStaticSiteGithubInput is an input type that accepts AppSpecStaticSiteGithubArgs and AppSpecStaticSiteGithubOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteGithubInput` via:
 //
-//          AppSpecStaticSiteGithubArgs{...}
+//	AppSpecStaticSiteGithubArgs{...}
 type AppSpecStaticSiteGithubInput interface {
 	pulumi.Input
 
@@ -8077,11 +8077,11 @@ func (i AppSpecStaticSiteGithubArgs) ToAppSpecStaticSiteGithubPtrOutputWithConte
 // AppSpecStaticSiteGithubPtrInput is an input type that accepts AppSpecStaticSiteGithubArgs, AppSpecStaticSiteGithubPtr and AppSpecStaticSiteGithubPtrOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteGithubPtrInput` via:
 //
-//          AppSpecStaticSiteGithubArgs{...}
+//	        AppSpecStaticSiteGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecStaticSiteGithubPtrInput interface {
 	pulumi.Input
 
@@ -8212,7 +8212,7 @@ type AppSpecStaticSiteGitlab struct {
 // AppSpecStaticSiteGitlabInput is an input type that accepts AppSpecStaticSiteGitlabArgs and AppSpecStaticSiteGitlabOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteGitlabInput` via:
 //
-//          AppSpecStaticSiteGitlabArgs{...}
+//	AppSpecStaticSiteGitlabArgs{...}
 type AppSpecStaticSiteGitlabInput interface {
 	pulumi.Input
 
@@ -8252,11 +8252,11 @@ func (i AppSpecStaticSiteGitlabArgs) ToAppSpecStaticSiteGitlabPtrOutputWithConte
 // AppSpecStaticSiteGitlabPtrInput is an input type that accepts AppSpecStaticSiteGitlabArgs, AppSpecStaticSiteGitlabPtr and AppSpecStaticSiteGitlabPtrOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteGitlabPtrInput` via:
 //
-//          AppSpecStaticSiteGitlabArgs{...}
+//	        AppSpecStaticSiteGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecStaticSiteGitlabPtrInput interface {
 	pulumi.Input
 
@@ -8385,7 +8385,7 @@ type AppSpecStaticSiteRoute struct {
 // AppSpecStaticSiteRouteInput is an input type that accepts AppSpecStaticSiteRouteArgs and AppSpecStaticSiteRouteOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteRouteInput` via:
 //
-//          AppSpecStaticSiteRouteArgs{...}
+//	AppSpecStaticSiteRouteArgs{...}
 type AppSpecStaticSiteRouteInput interface {
 	pulumi.Input
 
@@ -8415,7 +8415,7 @@ func (i AppSpecStaticSiteRouteArgs) ToAppSpecStaticSiteRouteOutputWithContext(ct
 // AppSpecStaticSiteRouteArrayInput is an input type that accepts AppSpecStaticSiteRouteArray and AppSpecStaticSiteRouteArrayOutput values.
 // You can construct a concrete instance of `AppSpecStaticSiteRouteArrayInput` via:
 //
-//          AppSpecStaticSiteRouteArray{ AppSpecStaticSiteRouteArgs{...} }
+//	AppSpecStaticSiteRouteArray{ AppSpecStaticSiteRouteArgs{...} }
 type AppSpecStaticSiteRouteArrayInput interface {
 	pulumi.Input
 
@@ -8517,7 +8517,7 @@ type AppSpecWorker struct {
 // AppSpecWorkerInput is an input type that accepts AppSpecWorkerArgs and AppSpecWorkerOutput values.
 // You can construct a concrete instance of `AppSpecWorkerInput` via:
 //
-//          AppSpecWorkerArgs{...}
+//	AppSpecWorkerArgs{...}
 type AppSpecWorkerInput interface {
 	pulumi.Input
 
@@ -8573,7 +8573,7 @@ func (i AppSpecWorkerArgs) ToAppSpecWorkerOutputWithContext(ctx context.Context)
 // AppSpecWorkerArrayInput is an input type that accepts AppSpecWorkerArray and AppSpecWorkerArrayOutput values.
 // You can construct a concrete instance of `AppSpecWorkerArrayInput` via:
 //
-//          AppSpecWorkerArray{ AppSpecWorkerArgs{...} }
+//	AppSpecWorkerArray{ AppSpecWorkerArgs{...} }
 type AppSpecWorkerArrayInput interface {
 	pulumi.Input
 
@@ -8720,7 +8720,7 @@ type AppSpecWorkerAlert struct {
 // AppSpecWorkerAlertInput is an input type that accepts AppSpecWorkerAlertArgs and AppSpecWorkerAlertOutput values.
 // You can construct a concrete instance of `AppSpecWorkerAlertInput` via:
 //
-//          AppSpecWorkerAlertArgs{...}
+//	AppSpecWorkerAlertArgs{...}
 type AppSpecWorkerAlertInput interface {
 	pulumi.Input
 
@@ -8756,7 +8756,7 @@ func (i AppSpecWorkerAlertArgs) ToAppSpecWorkerAlertOutputWithContext(ctx contex
 // AppSpecWorkerAlertArrayInput is an input type that accepts AppSpecWorkerAlertArray and AppSpecWorkerAlertArrayOutput values.
 // You can construct a concrete instance of `AppSpecWorkerAlertArrayInput` via:
 //
-//          AppSpecWorkerAlertArray{ AppSpecWorkerAlertArgs{...} }
+//	AppSpecWorkerAlertArray{ AppSpecWorkerAlertArgs{...} }
 type AppSpecWorkerAlertArrayInput interface {
 	pulumi.Input
 
@@ -8851,7 +8851,7 @@ type AppSpecWorkerEnv struct {
 // AppSpecWorkerEnvInput is an input type that accepts AppSpecWorkerEnvArgs and AppSpecWorkerEnvOutput values.
 // You can construct a concrete instance of `AppSpecWorkerEnvInput` via:
 //
-//          AppSpecWorkerEnvArgs{...}
+//	AppSpecWorkerEnvArgs{...}
 type AppSpecWorkerEnvInput interface {
 	pulumi.Input
 
@@ -8885,7 +8885,7 @@ func (i AppSpecWorkerEnvArgs) ToAppSpecWorkerEnvOutputWithContext(ctx context.Co
 // AppSpecWorkerEnvArrayInput is an input type that accepts AppSpecWorkerEnvArray and AppSpecWorkerEnvArrayOutput values.
 // You can construct a concrete instance of `AppSpecWorkerEnvArrayInput` via:
 //
-//          AppSpecWorkerEnvArray{ AppSpecWorkerEnvArgs{...} }
+//	AppSpecWorkerEnvArray{ AppSpecWorkerEnvArgs{...} }
 type AppSpecWorkerEnvArrayInput interface {
 	pulumi.Input
 
@@ -8971,7 +8971,7 @@ type AppSpecWorkerGit struct {
 // AppSpecWorkerGitInput is an input type that accepts AppSpecWorkerGitArgs and AppSpecWorkerGitOutput values.
 // You can construct a concrete instance of `AppSpecWorkerGitInput` via:
 //
-//          AppSpecWorkerGitArgs{...}
+//	AppSpecWorkerGitArgs{...}
 type AppSpecWorkerGitInput interface {
 	pulumi.Input
 
@@ -9009,11 +9009,11 @@ func (i AppSpecWorkerGitArgs) ToAppSpecWorkerGitPtrOutputWithContext(ctx context
 // AppSpecWorkerGitPtrInput is an input type that accepts AppSpecWorkerGitArgs, AppSpecWorkerGitPtr and AppSpecWorkerGitPtrOutput values.
 // You can construct a concrete instance of `AppSpecWorkerGitPtrInput` via:
 //
-//          AppSpecWorkerGitArgs{...}
+//	        AppSpecWorkerGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecWorkerGitPtrInput interface {
 	pulumi.Input
 
@@ -9129,7 +9129,7 @@ type AppSpecWorkerGithub struct {
 // AppSpecWorkerGithubInput is an input type that accepts AppSpecWorkerGithubArgs and AppSpecWorkerGithubOutput values.
 // You can construct a concrete instance of `AppSpecWorkerGithubInput` via:
 //
-//          AppSpecWorkerGithubArgs{...}
+//	AppSpecWorkerGithubArgs{...}
 type AppSpecWorkerGithubInput interface {
 	pulumi.Input
 
@@ -9169,11 +9169,11 @@ func (i AppSpecWorkerGithubArgs) ToAppSpecWorkerGithubPtrOutputWithContext(ctx c
 // AppSpecWorkerGithubPtrInput is an input type that accepts AppSpecWorkerGithubArgs, AppSpecWorkerGithubPtr and AppSpecWorkerGithubPtrOutput values.
 // You can construct a concrete instance of `AppSpecWorkerGithubPtrInput` via:
 //
-//          AppSpecWorkerGithubArgs{...}
+//	        AppSpecWorkerGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecWorkerGithubPtrInput interface {
 	pulumi.Input
 
@@ -9304,7 +9304,7 @@ type AppSpecWorkerGitlab struct {
 // AppSpecWorkerGitlabInput is an input type that accepts AppSpecWorkerGitlabArgs and AppSpecWorkerGitlabOutput values.
 // You can construct a concrete instance of `AppSpecWorkerGitlabInput` via:
 //
-//          AppSpecWorkerGitlabArgs{...}
+//	AppSpecWorkerGitlabArgs{...}
 type AppSpecWorkerGitlabInput interface {
 	pulumi.Input
 
@@ -9344,11 +9344,11 @@ func (i AppSpecWorkerGitlabArgs) ToAppSpecWorkerGitlabPtrOutputWithContext(ctx c
 // AppSpecWorkerGitlabPtrInput is an input type that accepts AppSpecWorkerGitlabArgs, AppSpecWorkerGitlabPtr and AppSpecWorkerGitlabPtrOutput values.
 // You can construct a concrete instance of `AppSpecWorkerGitlabPtrInput` via:
 //
-//          AppSpecWorkerGitlabArgs{...}
+//	        AppSpecWorkerGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecWorkerGitlabPtrInput interface {
 	pulumi.Input
 
@@ -9481,7 +9481,7 @@ type AppSpecWorkerImage struct {
 // AppSpecWorkerImageInput is an input type that accepts AppSpecWorkerImageArgs and AppSpecWorkerImageOutput values.
 // You can construct a concrete instance of `AppSpecWorkerImageInput` via:
 //
-//          AppSpecWorkerImageArgs{...}
+//	AppSpecWorkerImageArgs{...}
 type AppSpecWorkerImageInput interface {
 	pulumi.Input
 
@@ -9523,11 +9523,11 @@ func (i AppSpecWorkerImageArgs) ToAppSpecWorkerImagePtrOutputWithContext(ctx con
 // AppSpecWorkerImagePtrInput is an input type that accepts AppSpecWorkerImageArgs, AppSpecWorkerImagePtr and AppSpecWorkerImagePtrOutput values.
 // You can construct a concrete instance of `AppSpecWorkerImagePtrInput` via:
 //
-//          AppSpecWorkerImageArgs{...}
+//	        AppSpecWorkerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecWorkerImagePtrInput interface {
 	pulumi.Input
 
@@ -9675,7 +9675,7 @@ type AppSpecWorkerLogDestination struct {
 // AppSpecWorkerLogDestinationInput is an input type that accepts AppSpecWorkerLogDestinationArgs and AppSpecWorkerLogDestinationOutput values.
 // You can construct a concrete instance of `AppSpecWorkerLogDestinationInput` via:
 //
-//          AppSpecWorkerLogDestinationArgs{...}
+//	AppSpecWorkerLogDestinationArgs{...}
 type AppSpecWorkerLogDestinationInput interface {
 	pulumi.Input
 
@@ -9709,7 +9709,7 @@ func (i AppSpecWorkerLogDestinationArgs) ToAppSpecWorkerLogDestinationOutputWith
 // AppSpecWorkerLogDestinationArrayInput is an input type that accepts AppSpecWorkerLogDestinationArray and AppSpecWorkerLogDestinationArrayOutput values.
 // You can construct a concrete instance of `AppSpecWorkerLogDestinationArrayInput` via:
 //
-//          AppSpecWorkerLogDestinationArray{ AppSpecWorkerLogDestinationArgs{...} }
+//	AppSpecWorkerLogDestinationArray{ AppSpecWorkerLogDestinationArgs{...} }
 type AppSpecWorkerLogDestinationArrayInput interface {
 	pulumi.Input
 
@@ -9795,7 +9795,7 @@ type AppSpecWorkerLogDestinationDatadog struct {
 // AppSpecWorkerLogDestinationDatadogInput is an input type that accepts AppSpecWorkerLogDestinationDatadogArgs and AppSpecWorkerLogDestinationDatadogOutput values.
 // You can construct a concrete instance of `AppSpecWorkerLogDestinationDatadogInput` via:
 //
-//          AppSpecWorkerLogDestinationDatadogArgs{...}
+//	AppSpecWorkerLogDestinationDatadogArgs{...}
 type AppSpecWorkerLogDestinationDatadogInput interface {
 	pulumi.Input
 
@@ -9833,11 +9833,11 @@ func (i AppSpecWorkerLogDestinationDatadogArgs) ToAppSpecWorkerLogDestinationDat
 // AppSpecWorkerLogDestinationDatadogPtrInput is an input type that accepts AppSpecWorkerLogDestinationDatadogArgs, AppSpecWorkerLogDestinationDatadogPtr and AppSpecWorkerLogDestinationDatadogPtrOutput values.
 // You can construct a concrete instance of `AppSpecWorkerLogDestinationDatadogPtrInput` via:
 //
-//          AppSpecWorkerLogDestinationDatadogArgs{...}
+//	        AppSpecWorkerLogDestinationDatadogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecWorkerLogDestinationDatadogPtrInput interface {
 	pulumi.Input
 
@@ -9949,7 +9949,7 @@ type AppSpecWorkerLogDestinationLogtail struct {
 // AppSpecWorkerLogDestinationLogtailInput is an input type that accepts AppSpecWorkerLogDestinationLogtailArgs and AppSpecWorkerLogDestinationLogtailOutput values.
 // You can construct a concrete instance of `AppSpecWorkerLogDestinationLogtailInput` via:
 //
-//          AppSpecWorkerLogDestinationLogtailArgs{...}
+//	AppSpecWorkerLogDestinationLogtailArgs{...}
 type AppSpecWorkerLogDestinationLogtailInput interface {
 	pulumi.Input
 
@@ -9985,11 +9985,11 @@ func (i AppSpecWorkerLogDestinationLogtailArgs) ToAppSpecWorkerLogDestinationLog
 // AppSpecWorkerLogDestinationLogtailPtrInput is an input type that accepts AppSpecWorkerLogDestinationLogtailArgs, AppSpecWorkerLogDestinationLogtailPtr and AppSpecWorkerLogDestinationLogtailPtrOutput values.
 // You can construct a concrete instance of `AppSpecWorkerLogDestinationLogtailPtrInput` via:
 //
-//          AppSpecWorkerLogDestinationLogtailArgs{...}
+//	        AppSpecWorkerLogDestinationLogtailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecWorkerLogDestinationLogtailPtrInput interface {
 	pulumi.Input
 
@@ -10086,7 +10086,7 @@ type AppSpecWorkerLogDestinationPapertrail struct {
 // AppSpecWorkerLogDestinationPapertrailInput is an input type that accepts AppSpecWorkerLogDestinationPapertrailArgs and AppSpecWorkerLogDestinationPapertrailOutput values.
 // You can construct a concrete instance of `AppSpecWorkerLogDestinationPapertrailInput` via:
 //
-//          AppSpecWorkerLogDestinationPapertrailArgs{...}
+//	AppSpecWorkerLogDestinationPapertrailArgs{...}
 type AppSpecWorkerLogDestinationPapertrailInput interface {
 	pulumi.Input
 
@@ -10122,11 +10122,11 @@ func (i AppSpecWorkerLogDestinationPapertrailArgs) ToAppSpecWorkerLogDestination
 // AppSpecWorkerLogDestinationPapertrailPtrInput is an input type that accepts AppSpecWorkerLogDestinationPapertrailArgs, AppSpecWorkerLogDestinationPapertrailPtr and AppSpecWorkerLogDestinationPapertrailPtrOutput values.
 // You can construct a concrete instance of `AppSpecWorkerLogDestinationPapertrailPtrInput` via:
 //
-//          AppSpecWorkerLogDestinationPapertrailArgs{...}
+//	        AppSpecWorkerLogDestinationPapertrailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppSpecWorkerLogDestinationPapertrailPtrInput interface {
 	pulumi.Input
 
@@ -10225,7 +10225,7 @@ type DatabaseClusterMaintenanceWindow struct {
 // DatabaseClusterMaintenanceWindowInput is an input type that accepts DatabaseClusterMaintenanceWindowArgs and DatabaseClusterMaintenanceWindowOutput values.
 // You can construct a concrete instance of `DatabaseClusterMaintenanceWindowInput` via:
 //
-//          DatabaseClusterMaintenanceWindowArgs{...}
+//	DatabaseClusterMaintenanceWindowArgs{...}
 type DatabaseClusterMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -10255,7 +10255,7 @@ func (i DatabaseClusterMaintenanceWindowArgs) ToDatabaseClusterMaintenanceWindow
 // DatabaseClusterMaintenanceWindowArrayInput is an input type that accepts DatabaseClusterMaintenanceWindowArray and DatabaseClusterMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `DatabaseClusterMaintenanceWindowArrayInput` via:
 //
-//          DatabaseClusterMaintenanceWindowArray{ DatabaseClusterMaintenanceWindowArgs{...} }
+//	DatabaseClusterMaintenanceWindowArray{ DatabaseClusterMaintenanceWindowArgs{...} }
 type DatabaseClusterMaintenanceWindowArrayInput interface {
 	pulumi.Input
 
@@ -10335,7 +10335,7 @@ type DatabaseFirewallRule struct {
 // DatabaseFirewallRuleInput is an input type that accepts DatabaseFirewallRuleArgs and DatabaseFirewallRuleOutput values.
 // You can construct a concrete instance of `DatabaseFirewallRuleInput` via:
 //
-//          DatabaseFirewallRuleArgs{...}
+//	DatabaseFirewallRuleArgs{...}
 type DatabaseFirewallRuleInput interface {
 	pulumi.Input
 
@@ -10369,7 +10369,7 @@ func (i DatabaseFirewallRuleArgs) ToDatabaseFirewallRuleOutputWithContext(ctx co
 // DatabaseFirewallRuleArrayInput is an input type that accepts DatabaseFirewallRuleArray and DatabaseFirewallRuleArrayOutput values.
 // You can construct a concrete instance of `DatabaseFirewallRuleArrayInput` via:
 //
-//          DatabaseFirewallRuleArray{ DatabaseFirewallRuleArgs{...} }
+//	DatabaseFirewallRuleArray{ DatabaseFirewallRuleArgs{...} }
 type DatabaseFirewallRuleArrayInput interface {
 	pulumi.Input
 
@@ -10476,7 +10476,7 @@ type FirewallInboundRule struct {
 // FirewallInboundRuleInput is an input type that accepts FirewallInboundRuleArgs and FirewallInboundRuleOutput values.
 // You can construct a concrete instance of `FirewallInboundRuleInput` via:
 //
-//          FirewallInboundRuleArgs{...}
+//	FirewallInboundRuleArgs{...}
 type FirewallInboundRuleInput interface {
 	pulumi.Input
 
@@ -10527,7 +10527,7 @@ func (i FirewallInboundRuleArgs) ToFirewallInboundRuleOutputWithContext(ctx cont
 // FirewallInboundRuleArrayInput is an input type that accepts FirewallInboundRuleArray and FirewallInboundRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallInboundRuleArrayInput` via:
 //
-//          FirewallInboundRuleArray{ FirewallInboundRuleArgs{...} }
+//	FirewallInboundRuleArray{ FirewallInboundRuleArgs{...} }
 type FirewallInboundRuleArrayInput interface {
 	pulumi.Input
 
@@ -10660,7 +10660,7 @@ type FirewallOutboundRule struct {
 // FirewallOutboundRuleInput is an input type that accepts FirewallOutboundRuleArgs and FirewallOutboundRuleOutput values.
 // You can construct a concrete instance of `FirewallOutboundRuleInput` via:
 //
-//          FirewallOutboundRuleArgs{...}
+//	FirewallOutboundRuleArgs{...}
 type FirewallOutboundRuleInput interface {
 	pulumi.Input
 
@@ -10711,7 +10711,7 @@ func (i FirewallOutboundRuleArgs) ToFirewallOutboundRuleOutputWithContext(ctx co
 // FirewallOutboundRuleArrayInput is an input type that accepts FirewallOutboundRuleArray and FirewallOutboundRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallOutboundRuleArrayInput` via:
 //
-//          FirewallOutboundRuleArray{ FirewallOutboundRuleArgs{...} }
+//	FirewallOutboundRuleArray{ FirewallOutboundRuleArgs{...} }
 type FirewallOutboundRuleArrayInput interface {
 	pulumi.Input
 
@@ -10824,7 +10824,7 @@ type FirewallPendingChange struct {
 // FirewallPendingChangeInput is an input type that accepts FirewallPendingChangeArgs and FirewallPendingChangeOutput values.
 // You can construct a concrete instance of `FirewallPendingChangeInput` via:
 //
-//          FirewallPendingChangeArgs{...}
+//	FirewallPendingChangeArgs{...}
 type FirewallPendingChangeInput interface {
 	pulumi.Input
 
@@ -10855,7 +10855,7 @@ func (i FirewallPendingChangeArgs) ToFirewallPendingChangeOutputWithContext(ctx 
 // FirewallPendingChangeArrayInput is an input type that accepts FirewallPendingChangeArray and FirewallPendingChangeArrayOutput values.
 // You can construct a concrete instance of `FirewallPendingChangeArrayInput` via:
 //
-//          FirewallPendingChangeArray{ FirewallPendingChangeArgs{...} }
+//	FirewallPendingChangeArray{ FirewallPendingChangeArgs{...} }
 type FirewallPendingChangeArrayInput interface {
 	pulumi.Input
 
@@ -10945,7 +10945,7 @@ type KubernetesClusterKubeConfig struct {
 // KubernetesClusterKubeConfigInput is an input type that accepts KubernetesClusterKubeConfigArgs and KubernetesClusterKubeConfigOutput values.
 // You can construct a concrete instance of `KubernetesClusterKubeConfigInput` via:
 //
-//          KubernetesClusterKubeConfigArgs{...}
+//	KubernetesClusterKubeConfigArgs{...}
 type KubernetesClusterKubeConfigInput interface {
 	pulumi.Input
 
@@ -10985,7 +10985,7 @@ func (i KubernetesClusterKubeConfigArgs) ToKubernetesClusterKubeConfigOutputWith
 // KubernetesClusterKubeConfigArrayInput is an input type that accepts KubernetesClusterKubeConfigArray and KubernetesClusterKubeConfigArrayOutput values.
 // You can construct a concrete instance of `KubernetesClusterKubeConfigArrayInput` via:
 //
-//          KubernetesClusterKubeConfigArray{ KubernetesClusterKubeConfigArgs{...} }
+//	KubernetesClusterKubeConfigArray{ KubernetesClusterKubeConfigArgs{...} }
 type KubernetesClusterKubeConfigArrayInput interface {
 	pulumi.Input
 
@@ -11087,7 +11087,7 @@ type KubernetesClusterMaintenancePolicy struct {
 // KubernetesClusterMaintenancePolicyInput is an input type that accepts KubernetesClusterMaintenancePolicyArgs and KubernetesClusterMaintenancePolicyOutput values.
 // You can construct a concrete instance of `KubernetesClusterMaintenancePolicyInput` via:
 //
-//          KubernetesClusterMaintenancePolicyArgs{...}
+//	KubernetesClusterMaintenancePolicyArgs{...}
 type KubernetesClusterMaintenancePolicyInput interface {
 	pulumi.Input
 
@@ -11126,11 +11126,11 @@ func (i KubernetesClusterMaintenancePolicyArgs) ToKubernetesClusterMaintenancePo
 // KubernetesClusterMaintenancePolicyPtrInput is an input type that accepts KubernetesClusterMaintenancePolicyArgs, KubernetesClusterMaintenancePolicyPtr and KubernetesClusterMaintenancePolicyPtrOutput values.
 // You can construct a concrete instance of `KubernetesClusterMaintenancePolicyPtrInput` via:
 //
-//          KubernetesClusterMaintenancePolicyArgs{...}
+//	        KubernetesClusterMaintenancePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KubernetesClusterMaintenancePolicyPtrInput interface {
 	pulumi.Input
 
@@ -11277,7 +11277,7 @@ type KubernetesClusterNodePool struct {
 // KubernetesClusterNodePoolInput is an input type that accepts KubernetesClusterNodePoolArgs and KubernetesClusterNodePoolOutput values.
 // You can construct a concrete instance of `KubernetesClusterNodePoolInput` via:
 //
-//          KubernetesClusterNodePoolArgs{...}
+//	KubernetesClusterNodePoolArgs{...}
 type KubernetesClusterNodePoolInput interface {
 	pulumi.Input
 
@@ -11335,11 +11335,11 @@ func (i KubernetesClusterNodePoolArgs) ToKubernetesClusterNodePoolPtrOutputWithC
 // KubernetesClusterNodePoolPtrInput is an input type that accepts KubernetesClusterNodePoolArgs, KubernetesClusterNodePoolPtr and KubernetesClusterNodePoolPtrOutput values.
 // You can construct a concrete instance of `KubernetesClusterNodePoolPtrInput` via:
 //
-//          KubernetesClusterNodePoolArgs{...}
+//	        KubernetesClusterNodePoolArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KubernetesClusterNodePoolPtrInput interface {
 	pulumi.Input
 
@@ -11611,7 +11611,7 @@ type KubernetesClusterNodePoolNode struct {
 // KubernetesClusterNodePoolNodeInput is an input type that accepts KubernetesClusterNodePoolNodeArgs and KubernetesClusterNodePoolNodeOutput values.
 // You can construct a concrete instance of `KubernetesClusterNodePoolNodeInput` via:
 //
-//          KubernetesClusterNodePoolNodeArgs{...}
+//	KubernetesClusterNodePoolNodeArgs{...}
 type KubernetesClusterNodePoolNodeInput interface {
 	pulumi.Input
 
@@ -11649,7 +11649,7 @@ func (i KubernetesClusterNodePoolNodeArgs) ToKubernetesClusterNodePoolNodeOutput
 // KubernetesClusterNodePoolNodeArrayInput is an input type that accepts KubernetesClusterNodePoolNodeArray and KubernetesClusterNodePoolNodeArrayOutput values.
 // You can construct a concrete instance of `KubernetesClusterNodePoolNodeArrayInput` via:
 //
-//          KubernetesClusterNodePoolNodeArray{ KubernetesClusterNodePoolNodeArgs{...} }
+//	KubernetesClusterNodePoolNodeArray{ KubernetesClusterNodePoolNodeArgs{...} }
 type KubernetesClusterNodePoolNodeArrayInput interface {
 	pulumi.Input
 
@@ -11747,7 +11747,7 @@ type KubernetesClusterNodePoolTaint struct {
 // KubernetesClusterNodePoolTaintInput is an input type that accepts KubernetesClusterNodePoolTaintArgs and KubernetesClusterNodePoolTaintOutput values.
 // You can construct a concrete instance of `KubernetesClusterNodePoolTaintInput` via:
 //
-//          KubernetesClusterNodePoolTaintArgs{...}
+//	KubernetesClusterNodePoolTaintArgs{...}
 type KubernetesClusterNodePoolTaintInput interface {
 	pulumi.Input
 
@@ -11779,7 +11779,7 @@ func (i KubernetesClusterNodePoolTaintArgs) ToKubernetesClusterNodePoolTaintOutp
 // KubernetesClusterNodePoolTaintArrayInput is an input type that accepts KubernetesClusterNodePoolTaintArray and KubernetesClusterNodePoolTaintArrayOutput values.
 // You can construct a concrete instance of `KubernetesClusterNodePoolTaintArrayInput` via:
 //
-//          KubernetesClusterNodePoolTaintArray{ KubernetesClusterNodePoolTaintArgs{...} }
+//	KubernetesClusterNodePoolTaintArray{ KubernetesClusterNodePoolTaintArgs{...} }
 type KubernetesClusterNodePoolTaintArrayInput interface {
 	pulumi.Input
 
@@ -11868,7 +11868,7 @@ type KubernetesNodePoolNode struct {
 // KubernetesNodePoolNodeInput is an input type that accepts KubernetesNodePoolNodeArgs and KubernetesNodePoolNodeOutput values.
 // You can construct a concrete instance of `KubernetesNodePoolNodeInput` via:
 //
-//          KubernetesNodePoolNodeArgs{...}
+//	KubernetesNodePoolNodeArgs{...}
 type KubernetesNodePoolNodeInput interface {
 	pulumi.Input
 
@@ -11906,7 +11906,7 @@ func (i KubernetesNodePoolNodeArgs) ToKubernetesNodePoolNodeOutputWithContext(ct
 // KubernetesNodePoolNodeArrayInput is an input type that accepts KubernetesNodePoolNodeArray and KubernetesNodePoolNodeArrayOutput values.
 // You can construct a concrete instance of `KubernetesNodePoolNodeArrayInput` via:
 //
-//          KubernetesNodePoolNodeArray{ KubernetesNodePoolNodeArgs{...} }
+//	KubernetesNodePoolNodeArray{ KubernetesNodePoolNodeArgs{...} }
 type KubernetesNodePoolNodeArrayInput interface {
 	pulumi.Input
 
@@ -12004,7 +12004,7 @@ type KubernetesNodePoolTaint struct {
 // KubernetesNodePoolTaintInput is an input type that accepts KubernetesNodePoolTaintArgs and KubernetesNodePoolTaintOutput values.
 // You can construct a concrete instance of `KubernetesNodePoolTaintInput` via:
 //
-//          KubernetesNodePoolTaintArgs{...}
+//	KubernetesNodePoolTaintArgs{...}
 type KubernetesNodePoolTaintInput interface {
 	pulumi.Input
 
@@ -12036,7 +12036,7 @@ func (i KubernetesNodePoolTaintArgs) ToKubernetesNodePoolTaintOutputWithContext(
 // KubernetesNodePoolTaintArrayInput is an input type that accepts KubernetesNodePoolTaintArray and KubernetesNodePoolTaintArrayOutput values.
 // You can construct a concrete instance of `KubernetesNodePoolTaintArrayInput` via:
 //
-//          KubernetesNodePoolTaintArray{ KubernetesNodePoolTaintArgs{...} }
+//	KubernetesNodePoolTaintArray{ KubernetesNodePoolTaintArgs{...} }
 type KubernetesNodePoolTaintArrayInput interface {
 	pulumi.Input
 
@@ -12129,7 +12129,7 @@ type LoadBalancerForwardingRule struct {
 // LoadBalancerForwardingRuleInput is an input type that accepts LoadBalancerForwardingRuleArgs and LoadBalancerForwardingRuleOutput values.
 // You can construct a concrete instance of `LoadBalancerForwardingRuleInput` via:
 //
-//          LoadBalancerForwardingRuleArgs{...}
+//	LoadBalancerForwardingRuleArgs{...}
 type LoadBalancerForwardingRuleInput interface {
 	pulumi.Input
 
@@ -12171,7 +12171,7 @@ func (i LoadBalancerForwardingRuleArgs) ToLoadBalancerForwardingRuleOutputWithCo
 // LoadBalancerForwardingRuleArrayInput is an input type that accepts LoadBalancerForwardingRuleArray and LoadBalancerForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerForwardingRuleArrayInput` via:
 //
-//          LoadBalancerForwardingRuleArray{ LoadBalancerForwardingRuleArgs{...} }
+//	LoadBalancerForwardingRuleArray{ LoadBalancerForwardingRuleArgs{...} }
 type LoadBalancerForwardingRuleArrayInput interface {
 	pulumi.Input
 
@@ -12284,7 +12284,7 @@ type LoadBalancerHealthcheck struct {
 // LoadBalancerHealthcheckInput is an input type that accepts LoadBalancerHealthcheckArgs and LoadBalancerHealthcheckOutput values.
 // You can construct a concrete instance of `LoadBalancerHealthcheckInput` via:
 //
-//          LoadBalancerHealthcheckArgs{...}
+//	LoadBalancerHealthcheckArgs{...}
 type LoadBalancerHealthcheckInput interface {
 	pulumi.Input
 
@@ -12332,11 +12332,11 @@ func (i LoadBalancerHealthcheckArgs) ToLoadBalancerHealthcheckPtrOutputWithConte
 // LoadBalancerHealthcheckPtrInput is an input type that accepts LoadBalancerHealthcheckArgs, LoadBalancerHealthcheckPtr and LoadBalancerHealthcheckPtrOutput values.
 // You can construct a concrete instance of `LoadBalancerHealthcheckPtrInput` via:
 //
-//          LoadBalancerHealthcheckArgs{...}
+//	        LoadBalancerHealthcheckArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LoadBalancerHealthcheckPtrInput interface {
 	pulumi.Input
 
@@ -12527,7 +12527,7 @@ type LoadBalancerStickySessions struct {
 // LoadBalancerStickySessionsInput is an input type that accepts LoadBalancerStickySessionsArgs and LoadBalancerStickySessionsOutput values.
 // You can construct a concrete instance of `LoadBalancerStickySessionsInput` via:
 //
-//          LoadBalancerStickySessionsArgs{...}
+//	LoadBalancerStickySessionsArgs{...}
 type LoadBalancerStickySessionsInput interface {
 	pulumi.Input
 
@@ -12567,11 +12567,11 @@ func (i LoadBalancerStickySessionsArgs) ToLoadBalancerStickySessionsPtrOutputWit
 // LoadBalancerStickySessionsPtrInput is an input type that accepts LoadBalancerStickySessionsArgs, LoadBalancerStickySessionsPtr and LoadBalancerStickySessionsPtrOutput values.
 // You can construct a concrete instance of `LoadBalancerStickySessionsPtrInput` via:
 //
-//          LoadBalancerStickySessionsArgs{...}
+//	        LoadBalancerStickySessionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LoadBalancerStickySessionsPtrInput interface {
 	pulumi.Input
 
@@ -12698,7 +12698,7 @@ type MonitorAlertAlerts struct {
 // MonitorAlertAlertsInput is an input type that accepts MonitorAlertAlertsArgs and MonitorAlertAlertsOutput values.
 // You can construct a concrete instance of `MonitorAlertAlertsInput` via:
 //
-//          MonitorAlertAlertsArgs{...}
+//	MonitorAlertAlertsArgs{...}
 type MonitorAlertAlertsInput interface {
 	pulumi.Input
 
@@ -12734,11 +12734,11 @@ func (i MonitorAlertAlertsArgs) ToMonitorAlertAlertsPtrOutputWithContext(ctx con
 // MonitorAlertAlertsPtrInput is an input type that accepts MonitorAlertAlertsArgs, MonitorAlertAlertsPtr and MonitorAlertAlertsPtrOutput values.
 // You can construct a concrete instance of `MonitorAlertAlertsPtrInput` via:
 //
-//          MonitorAlertAlertsArgs{...}
+//	        MonitorAlertAlertsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MonitorAlertAlertsPtrInput interface {
 	pulumi.Input
 
@@ -12846,7 +12846,7 @@ type MonitorAlertAlertsSlack struct {
 // MonitorAlertAlertsSlackInput is an input type that accepts MonitorAlertAlertsSlackArgs and MonitorAlertAlertsSlackOutput values.
 // You can construct a concrete instance of `MonitorAlertAlertsSlackInput` via:
 //
-//          MonitorAlertAlertsSlackArgs{...}
+//	MonitorAlertAlertsSlackArgs{...}
 type MonitorAlertAlertsSlackInput interface {
 	pulumi.Input
 
@@ -12874,7 +12874,7 @@ func (i MonitorAlertAlertsSlackArgs) ToMonitorAlertAlertsSlackOutputWithContext(
 // MonitorAlertAlertsSlackArrayInput is an input type that accepts MonitorAlertAlertsSlackArray and MonitorAlertAlertsSlackArrayOutput values.
 // You can construct a concrete instance of `MonitorAlertAlertsSlackArrayInput` via:
 //
-//          MonitorAlertAlertsSlackArray{ MonitorAlertAlertsSlackArgs{...} }
+//	MonitorAlertAlertsSlackArray{ MonitorAlertAlertsSlackArgs{...} }
 type MonitorAlertAlertsSlackArrayInput interface {
 	pulumi.Input
 
@@ -12952,7 +12952,7 @@ type SpacesBucketCorsRule struct {
 // SpacesBucketCorsRuleInput is an input type that accepts SpacesBucketCorsRuleArgs and SpacesBucketCorsRuleOutput values.
 // You can construct a concrete instance of `SpacesBucketCorsRuleInput` via:
 //
-//          SpacesBucketCorsRuleArgs{...}
+//	SpacesBucketCorsRuleArgs{...}
 type SpacesBucketCorsRuleInput interface {
 	pulumi.Input
 
@@ -12986,7 +12986,7 @@ func (i SpacesBucketCorsRuleArgs) ToSpacesBucketCorsRuleOutputWithContext(ctx co
 // SpacesBucketCorsRuleArrayInput is an input type that accepts SpacesBucketCorsRuleArray and SpacesBucketCorsRuleArrayOutput values.
 // You can construct a concrete instance of `SpacesBucketCorsRuleArrayInput` via:
 //
-//          SpacesBucketCorsRuleArray{ SpacesBucketCorsRuleArgs{...} }
+//	SpacesBucketCorsRuleArray{ SpacesBucketCorsRuleArgs{...} }
 type SpacesBucketCorsRuleArrayInput interface {
 	pulumi.Input
 
@@ -13081,7 +13081,7 @@ type SpacesBucketLifecycleRule struct {
 // SpacesBucketLifecycleRuleInput is an input type that accepts SpacesBucketLifecycleRuleArgs and SpacesBucketLifecycleRuleOutput values.
 // You can construct a concrete instance of `SpacesBucketLifecycleRuleInput` via:
 //
-//          SpacesBucketLifecycleRuleArgs{...}
+//	SpacesBucketLifecycleRuleArgs{...}
 type SpacesBucketLifecycleRuleInput interface {
 	pulumi.Input
 
@@ -13120,7 +13120,7 @@ func (i SpacesBucketLifecycleRuleArgs) ToSpacesBucketLifecycleRuleOutputWithCont
 // SpacesBucketLifecycleRuleArrayInput is an input type that accepts SpacesBucketLifecycleRuleArray and SpacesBucketLifecycleRuleArrayOutput values.
 // You can construct a concrete instance of `SpacesBucketLifecycleRuleArrayInput` via:
 //
-//          SpacesBucketLifecycleRuleArray{ SpacesBucketLifecycleRuleArgs{...} }
+//	SpacesBucketLifecycleRuleArray{ SpacesBucketLifecycleRuleArgs{...} }
 type SpacesBucketLifecycleRuleArrayInput interface {
 	pulumi.Input
 
@@ -13223,7 +13223,7 @@ type SpacesBucketLifecycleRuleExpiration struct {
 // SpacesBucketLifecycleRuleExpirationInput is an input type that accepts SpacesBucketLifecycleRuleExpirationArgs and SpacesBucketLifecycleRuleExpirationOutput values.
 // You can construct a concrete instance of `SpacesBucketLifecycleRuleExpirationInput` via:
 //
-//          SpacesBucketLifecycleRuleExpirationArgs{...}
+//	SpacesBucketLifecycleRuleExpirationArgs{...}
 type SpacesBucketLifecycleRuleExpirationInput interface {
 	pulumi.Input
 
@@ -13265,11 +13265,11 @@ func (i SpacesBucketLifecycleRuleExpirationArgs) ToSpacesBucketLifecycleRuleExpi
 // SpacesBucketLifecycleRuleExpirationPtrInput is an input type that accepts SpacesBucketLifecycleRuleExpirationArgs, SpacesBucketLifecycleRuleExpirationPtr and SpacesBucketLifecycleRuleExpirationPtrOutput values.
 // You can construct a concrete instance of `SpacesBucketLifecycleRuleExpirationPtrInput` via:
 //
-//          SpacesBucketLifecycleRuleExpirationArgs{...}
+//	        SpacesBucketLifecycleRuleExpirationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SpacesBucketLifecycleRuleExpirationPtrInput interface {
 	pulumi.Input
 
@@ -13400,7 +13400,7 @@ type SpacesBucketLifecycleRuleNoncurrentVersionExpiration struct {
 // SpacesBucketLifecycleRuleNoncurrentVersionExpirationInput is an input type that accepts SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs and SpacesBucketLifecycleRuleNoncurrentVersionExpirationOutput values.
 // You can construct a concrete instance of `SpacesBucketLifecycleRuleNoncurrentVersionExpirationInput` via:
 //
-//          SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
+//	SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
 type SpacesBucketLifecycleRuleNoncurrentVersionExpirationInput interface {
 	pulumi.Input
 
@@ -13436,11 +13436,11 @@ func (i SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToSpacesBucket
 // SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput is an input type that accepts SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs, SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtr and SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput values.
 // You can construct a concrete instance of `SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput` via:
 //
-//          SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
+//	        SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput interface {
 	pulumi.Input
 
@@ -13538,7 +13538,7 @@ type SpacesBucketVersioning struct {
 // SpacesBucketVersioningInput is an input type that accepts SpacesBucketVersioningArgs and SpacesBucketVersioningOutput values.
 // You can construct a concrete instance of `SpacesBucketVersioningInput` via:
 //
-//          SpacesBucketVersioningArgs{...}
+//	SpacesBucketVersioningArgs{...}
 type SpacesBucketVersioningInput interface {
 	pulumi.Input
 
@@ -13575,11 +13575,11 @@ func (i SpacesBucketVersioningArgs) ToSpacesBucketVersioningPtrOutputWithContext
 // SpacesBucketVersioningPtrInput is an input type that accepts SpacesBucketVersioningArgs, SpacesBucketVersioningPtr and SpacesBucketVersioningPtrOutput values.
 // You can construct a concrete instance of `SpacesBucketVersioningPtrInput` via:
 //
-//          SpacesBucketVersioningArgs{...}
+//	        SpacesBucketVersioningArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SpacesBucketVersioningPtrInput interface {
 	pulumi.Input
 
@@ -13691,7 +13691,7 @@ type GetAppSpec struct {
 // GetAppSpecInput is an input type that accepts GetAppSpecArgs and GetAppSpecOutput values.
 // You can construct a concrete instance of `GetAppSpecInput` via:
 //
-//          GetAppSpecArgs{...}
+//	GetAppSpecArgs{...}
 type GetAppSpecInput interface {
 	pulumi.Input
 
@@ -13732,7 +13732,7 @@ func (i GetAppSpecArgs) ToGetAppSpecOutputWithContext(ctx context.Context) GetAp
 // GetAppSpecArrayInput is an input type that accepts GetAppSpecArray and GetAppSpecArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecArrayInput` via:
 //
-//          GetAppSpecArray{ GetAppSpecArgs{...} }
+//	GetAppSpecArray{ GetAppSpecArgs{...} }
 type GetAppSpecArrayInput interface {
 	pulumi.Input
 
@@ -13846,7 +13846,7 @@ type GetAppSpecAlert struct {
 // GetAppSpecAlertInput is an input type that accepts GetAppSpecAlertArgs and GetAppSpecAlertOutput values.
 // You can construct a concrete instance of `GetAppSpecAlertInput` via:
 //
-//          GetAppSpecAlertArgs{...}
+//	GetAppSpecAlertArgs{...}
 type GetAppSpecAlertInput interface {
 	pulumi.Input
 
@@ -13876,7 +13876,7 @@ func (i GetAppSpecAlertArgs) ToGetAppSpecAlertOutputWithContext(ctx context.Cont
 // GetAppSpecAlertArrayInput is an input type that accepts GetAppSpecAlertArray and GetAppSpecAlertArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecAlertArrayInput` via:
 //
-//          GetAppSpecAlertArray{ GetAppSpecAlertArgs{...} }
+//	GetAppSpecAlertArray{ GetAppSpecAlertArgs{...} }
 type GetAppSpecAlertArrayInput interface {
 	pulumi.Input
 
@@ -13962,7 +13962,7 @@ type GetAppSpecDatabase struct {
 // GetAppSpecDatabaseInput is an input type that accepts GetAppSpecDatabaseArgs and GetAppSpecDatabaseOutput values.
 // You can construct a concrete instance of `GetAppSpecDatabaseInput` via:
 //
-//          GetAppSpecDatabaseArgs{...}
+//	GetAppSpecDatabaseArgs{...}
 type GetAppSpecDatabaseInput interface {
 	pulumi.Input
 
@@ -14002,7 +14002,7 @@ func (i GetAppSpecDatabaseArgs) ToGetAppSpecDatabaseOutputWithContext(ctx contex
 // GetAppSpecDatabaseArrayInput is an input type that accepts GetAppSpecDatabaseArray and GetAppSpecDatabaseArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecDatabaseArrayInput` via:
 //
-//          GetAppSpecDatabaseArray{ GetAppSpecDatabaseArgs{...} }
+//	GetAppSpecDatabaseArray{ GetAppSpecDatabaseArgs{...} }
 type GetAppSpecDatabaseArrayInput interface {
 	pulumi.Input
 
@@ -14105,7 +14105,7 @@ type GetAppSpecDomain struct {
 // GetAppSpecDomainInput is an input type that accepts GetAppSpecDomainArgs and GetAppSpecDomainOutput values.
 // You can construct a concrete instance of `GetAppSpecDomainInput` via:
 //
-//          GetAppSpecDomainArgs{...}
+//	GetAppSpecDomainArgs{...}
 type GetAppSpecDomainInput interface {
 	pulumi.Input
 
@@ -14180,7 +14180,7 @@ type GetAppSpecEnv struct {
 // GetAppSpecEnvInput is an input type that accepts GetAppSpecEnvArgs and GetAppSpecEnvOutput values.
 // You can construct a concrete instance of `GetAppSpecEnvInput` via:
 //
-//          GetAppSpecEnvArgs{...}
+//	GetAppSpecEnvArgs{...}
 type GetAppSpecEnvInput interface {
 	pulumi.Input
 
@@ -14214,7 +14214,7 @@ func (i GetAppSpecEnvArgs) ToGetAppSpecEnvOutputWithContext(ctx context.Context)
 // GetAppSpecEnvArrayInput is an input type that accepts GetAppSpecEnvArray and GetAppSpecEnvArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecEnvArrayInput` via:
 //
-//          GetAppSpecEnvArray{ GetAppSpecEnvArgs{...} }
+//	GetAppSpecEnvArray{ GetAppSpecEnvArgs{...} }
 type GetAppSpecEnvArrayInput interface {
 	pulumi.Input
 
@@ -14315,7 +14315,7 @@ type GetAppSpecFunction struct {
 // GetAppSpecFunctionInput is an input type that accepts GetAppSpecFunctionArgs and GetAppSpecFunctionOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionInput` via:
 //
-//          GetAppSpecFunctionArgs{...}
+//	GetAppSpecFunctionArgs{...}
 type GetAppSpecFunctionInput interface {
 	pulumi.Input
 
@@ -14360,7 +14360,7 @@ func (i GetAppSpecFunctionArgs) ToGetAppSpecFunctionOutputWithContext(ctx contex
 // GetAppSpecFunctionArrayInput is an input type that accepts GetAppSpecFunctionArray and GetAppSpecFunctionArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionArrayInput` via:
 //
-//          GetAppSpecFunctionArray{ GetAppSpecFunctionArgs{...} }
+//	GetAppSpecFunctionArray{ GetAppSpecFunctionArgs{...} }
 type GetAppSpecFunctionArrayInput interface {
 	pulumi.Input
 
@@ -14481,7 +14481,7 @@ type GetAppSpecFunctionAlert struct {
 // GetAppSpecFunctionAlertInput is an input type that accepts GetAppSpecFunctionAlertArgs and GetAppSpecFunctionAlertOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionAlertInput` via:
 //
-//          GetAppSpecFunctionAlertArgs{...}
+//	GetAppSpecFunctionAlertArgs{...}
 type GetAppSpecFunctionAlertInput interface {
 	pulumi.Input
 
@@ -14517,7 +14517,7 @@ func (i GetAppSpecFunctionAlertArgs) ToGetAppSpecFunctionAlertOutputWithContext(
 // GetAppSpecFunctionAlertArrayInput is an input type that accepts GetAppSpecFunctionAlertArray and GetAppSpecFunctionAlertArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionAlertArrayInput` via:
 //
-//          GetAppSpecFunctionAlertArray{ GetAppSpecFunctionAlertArgs{...} }
+//	GetAppSpecFunctionAlertArray{ GetAppSpecFunctionAlertArgs{...} }
 type GetAppSpecFunctionAlertArrayInput interface {
 	pulumi.Input
 
@@ -14616,7 +14616,7 @@ type GetAppSpecFunctionCors struct {
 // GetAppSpecFunctionCorsInput is an input type that accepts GetAppSpecFunctionCorsArgs and GetAppSpecFunctionCorsOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionCorsInput` via:
 //
-//          GetAppSpecFunctionCorsArgs{...}
+//	GetAppSpecFunctionCorsArgs{...}
 type GetAppSpecFunctionCorsInput interface {
 	pulumi.Input
 
@@ -14662,11 +14662,11 @@ func (i GetAppSpecFunctionCorsArgs) ToGetAppSpecFunctionCorsPtrOutputWithContext
 // GetAppSpecFunctionCorsPtrInput is an input type that accepts GetAppSpecFunctionCorsArgs, GetAppSpecFunctionCorsPtr and GetAppSpecFunctionCorsPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionCorsPtrInput` via:
 //
-//          GetAppSpecFunctionCorsArgs{...}
+//	        GetAppSpecFunctionCorsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecFunctionCorsPtrInput interface {
 	pulumi.Input
 
@@ -14842,7 +14842,7 @@ type GetAppSpecFunctionCorsAllowOrigins struct {
 // GetAppSpecFunctionCorsAllowOriginsInput is an input type that accepts GetAppSpecFunctionCorsAllowOriginsArgs and GetAppSpecFunctionCorsAllowOriginsOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionCorsAllowOriginsInput` via:
 //
-//          GetAppSpecFunctionCorsAllowOriginsArgs{...}
+//	GetAppSpecFunctionCorsAllowOriginsArgs{...}
 type GetAppSpecFunctionCorsAllowOriginsInput interface {
 	pulumi.Input
 
@@ -14882,11 +14882,11 @@ func (i GetAppSpecFunctionCorsAllowOriginsArgs) ToGetAppSpecFunctionCorsAllowOri
 // GetAppSpecFunctionCorsAllowOriginsPtrInput is an input type that accepts GetAppSpecFunctionCorsAllowOriginsArgs, GetAppSpecFunctionCorsAllowOriginsPtr and GetAppSpecFunctionCorsAllowOriginsPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionCorsAllowOriginsPtrInput` via:
 //
-//          GetAppSpecFunctionCorsAllowOriginsArgs{...}
+//	        GetAppSpecFunctionCorsAllowOriginsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecFunctionCorsAllowOriginsPtrInput interface {
 	pulumi.Input
 
@@ -15019,7 +15019,7 @@ type GetAppSpecFunctionEnv struct {
 // GetAppSpecFunctionEnvInput is an input type that accepts GetAppSpecFunctionEnvArgs and GetAppSpecFunctionEnvOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionEnvInput` via:
 //
-//          GetAppSpecFunctionEnvArgs{...}
+//	GetAppSpecFunctionEnvArgs{...}
 type GetAppSpecFunctionEnvInput interface {
 	pulumi.Input
 
@@ -15053,7 +15053,7 @@ func (i GetAppSpecFunctionEnvArgs) ToGetAppSpecFunctionEnvOutputWithContext(ctx 
 // GetAppSpecFunctionEnvArrayInput is an input type that accepts GetAppSpecFunctionEnvArray and GetAppSpecFunctionEnvArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionEnvArrayInput` via:
 //
-//          GetAppSpecFunctionEnvArray{ GetAppSpecFunctionEnvArgs{...} }
+//	GetAppSpecFunctionEnvArray{ GetAppSpecFunctionEnvArgs{...} }
 type GetAppSpecFunctionEnvArrayInput interface {
 	pulumi.Input
 
@@ -15139,7 +15139,7 @@ type GetAppSpecFunctionGit struct {
 // GetAppSpecFunctionGitInput is an input type that accepts GetAppSpecFunctionGitArgs and GetAppSpecFunctionGitOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionGitInput` via:
 //
-//          GetAppSpecFunctionGitArgs{...}
+//	GetAppSpecFunctionGitArgs{...}
 type GetAppSpecFunctionGitInput interface {
 	pulumi.Input
 
@@ -15177,11 +15177,11 @@ func (i GetAppSpecFunctionGitArgs) ToGetAppSpecFunctionGitPtrOutputWithContext(c
 // GetAppSpecFunctionGitPtrInput is an input type that accepts GetAppSpecFunctionGitArgs, GetAppSpecFunctionGitPtr and GetAppSpecFunctionGitPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionGitPtrInput` via:
 //
-//          GetAppSpecFunctionGitArgs{...}
+//	        GetAppSpecFunctionGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecFunctionGitPtrInput interface {
 	pulumi.Input
 
@@ -15297,7 +15297,7 @@ type GetAppSpecFunctionGithub struct {
 // GetAppSpecFunctionGithubInput is an input type that accepts GetAppSpecFunctionGithubArgs and GetAppSpecFunctionGithubOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionGithubInput` via:
 //
-//          GetAppSpecFunctionGithubArgs{...}
+//	GetAppSpecFunctionGithubArgs{...}
 type GetAppSpecFunctionGithubInput interface {
 	pulumi.Input
 
@@ -15337,11 +15337,11 @@ func (i GetAppSpecFunctionGithubArgs) ToGetAppSpecFunctionGithubPtrOutputWithCon
 // GetAppSpecFunctionGithubPtrInput is an input type that accepts GetAppSpecFunctionGithubArgs, GetAppSpecFunctionGithubPtr and GetAppSpecFunctionGithubPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionGithubPtrInput` via:
 //
-//          GetAppSpecFunctionGithubArgs{...}
+//	        GetAppSpecFunctionGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecFunctionGithubPtrInput interface {
 	pulumi.Input
 
@@ -15472,7 +15472,7 @@ type GetAppSpecFunctionGitlab struct {
 // GetAppSpecFunctionGitlabInput is an input type that accepts GetAppSpecFunctionGitlabArgs and GetAppSpecFunctionGitlabOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionGitlabInput` via:
 //
-//          GetAppSpecFunctionGitlabArgs{...}
+//	GetAppSpecFunctionGitlabArgs{...}
 type GetAppSpecFunctionGitlabInput interface {
 	pulumi.Input
 
@@ -15512,11 +15512,11 @@ func (i GetAppSpecFunctionGitlabArgs) ToGetAppSpecFunctionGitlabPtrOutputWithCon
 // GetAppSpecFunctionGitlabPtrInput is an input type that accepts GetAppSpecFunctionGitlabArgs, GetAppSpecFunctionGitlabPtr and GetAppSpecFunctionGitlabPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionGitlabPtrInput` via:
 //
-//          GetAppSpecFunctionGitlabArgs{...}
+//	        GetAppSpecFunctionGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecFunctionGitlabPtrInput interface {
 	pulumi.Input
 
@@ -15649,7 +15649,7 @@ type GetAppSpecFunctionLogDestination struct {
 // GetAppSpecFunctionLogDestinationInput is an input type that accepts GetAppSpecFunctionLogDestinationArgs and GetAppSpecFunctionLogDestinationOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionLogDestinationInput` via:
 //
-//          GetAppSpecFunctionLogDestinationArgs{...}
+//	GetAppSpecFunctionLogDestinationArgs{...}
 type GetAppSpecFunctionLogDestinationInput interface {
 	pulumi.Input
 
@@ -15683,7 +15683,7 @@ func (i GetAppSpecFunctionLogDestinationArgs) ToGetAppSpecFunctionLogDestination
 // GetAppSpecFunctionLogDestinationArrayInput is an input type that accepts GetAppSpecFunctionLogDestinationArray and GetAppSpecFunctionLogDestinationArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionLogDestinationArrayInput` via:
 //
-//          GetAppSpecFunctionLogDestinationArray{ GetAppSpecFunctionLogDestinationArgs{...} }
+//	GetAppSpecFunctionLogDestinationArray{ GetAppSpecFunctionLogDestinationArgs{...} }
 type GetAppSpecFunctionLogDestinationArrayInput interface {
 	pulumi.Input
 
@@ -15771,7 +15771,7 @@ type GetAppSpecFunctionLogDestinationDatadog struct {
 // GetAppSpecFunctionLogDestinationDatadogInput is an input type that accepts GetAppSpecFunctionLogDestinationDatadogArgs and GetAppSpecFunctionLogDestinationDatadogOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionLogDestinationDatadogInput` via:
 //
-//          GetAppSpecFunctionLogDestinationDatadogArgs{...}
+//	GetAppSpecFunctionLogDestinationDatadogArgs{...}
 type GetAppSpecFunctionLogDestinationDatadogInput interface {
 	pulumi.Input
 
@@ -15809,11 +15809,11 @@ func (i GetAppSpecFunctionLogDestinationDatadogArgs) ToGetAppSpecFunctionLogDest
 // GetAppSpecFunctionLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecFunctionLogDestinationDatadogArgs, GetAppSpecFunctionLogDestinationDatadogPtr and GetAppSpecFunctionLogDestinationDatadogPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionLogDestinationDatadogPtrInput` via:
 //
-//          GetAppSpecFunctionLogDestinationDatadogArgs{...}
+//	        GetAppSpecFunctionLogDestinationDatadogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecFunctionLogDestinationDatadogPtrInput interface {
 	pulumi.Input
 
@@ -15925,7 +15925,7 @@ type GetAppSpecFunctionLogDestinationLogtail struct {
 // GetAppSpecFunctionLogDestinationLogtailInput is an input type that accepts GetAppSpecFunctionLogDestinationLogtailArgs and GetAppSpecFunctionLogDestinationLogtailOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionLogDestinationLogtailInput` via:
 //
-//          GetAppSpecFunctionLogDestinationLogtailArgs{...}
+//	GetAppSpecFunctionLogDestinationLogtailArgs{...}
 type GetAppSpecFunctionLogDestinationLogtailInput interface {
 	pulumi.Input
 
@@ -15961,11 +15961,11 @@ func (i GetAppSpecFunctionLogDestinationLogtailArgs) ToGetAppSpecFunctionLogDest
 // GetAppSpecFunctionLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecFunctionLogDestinationLogtailArgs, GetAppSpecFunctionLogDestinationLogtailPtr and GetAppSpecFunctionLogDestinationLogtailPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionLogDestinationLogtailPtrInput` via:
 //
-//          GetAppSpecFunctionLogDestinationLogtailArgs{...}
+//	        GetAppSpecFunctionLogDestinationLogtailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecFunctionLogDestinationLogtailPtrInput interface {
 	pulumi.Input
 
@@ -16062,7 +16062,7 @@ type GetAppSpecFunctionLogDestinationPapertrail struct {
 // GetAppSpecFunctionLogDestinationPapertrailInput is an input type that accepts GetAppSpecFunctionLogDestinationPapertrailArgs and GetAppSpecFunctionLogDestinationPapertrailOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionLogDestinationPapertrailInput` via:
 //
-//          GetAppSpecFunctionLogDestinationPapertrailArgs{...}
+//	GetAppSpecFunctionLogDestinationPapertrailArgs{...}
 type GetAppSpecFunctionLogDestinationPapertrailInput interface {
 	pulumi.Input
 
@@ -16098,11 +16098,11 @@ func (i GetAppSpecFunctionLogDestinationPapertrailArgs) ToGetAppSpecFunctionLogD
 // GetAppSpecFunctionLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecFunctionLogDestinationPapertrailArgs, GetAppSpecFunctionLogDestinationPapertrailPtr and GetAppSpecFunctionLogDestinationPapertrailPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionLogDestinationPapertrailPtrInput` via:
 //
-//          GetAppSpecFunctionLogDestinationPapertrailArgs{...}
+//	        GetAppSpecFunctionLogDestinationPapertrailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecFunctionLogDestinationPapertrailPtrInput interface {
 	pulumi.Input
 
@@ -16201,7 +16201,7 @@ type GetAppSpecFunctionRoute struct {
 // GetAppSpecFunctionRouteInput is an input type that accepts GetAppSpecFunctionRouteArgs and GetAppSpecFunctionRouteOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionRouteInput` via:
 //
-//          GetAppSpecFunctionRouteArgs{...}
+//	GetAppSpecFunctionRouteArgs{...}
 type GetAppSpecFunctionRouteInput interface {
 	pulumi.Input
 
@@ -16231,7 +16231,7 @@ func (i GetAppSpecFunctionRouteArgs) ToGetAppSpecFunctionRouteOutputWithContext(
 // GetAppSpecFunctionRouteArrayInput is an input type that accepts GetAppSpecFunctionRouteArray and GetAppSpecFunctionRouteArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecFunctionRouteArrayInput` via:
 //
-//          GetAppSpecFunctionRouteArray{ GetAppSpecFunctionRouteArgs{...} }
+//	GetAppSpecFunctionRouteArray{ GetAppSpecFunctionRouteArgs{...} }
 type GetAppSpecFunctionRouteArrayInput interface {
 	pulumi.Input
 
@@ -16339,7 +16339,7 @@ type GetAppSpecJob struct {
 // GetAppSpecJobInput is an input type that accepts GetAppSpecJobArgs and GetAppSpecJobOutput values.
 // You can construct a concrete instance of `GetAppSpecJobInput` via:
 //
-//          GetAppSpecJobArgs{...}
+//	GetAppSpecJobArgs{...}
 type GetAppSpecJobInput interface {
 	pulumi.Input
 
@@ -16401,7 +16401,7 @@ func (i GetAppSpecJobArgs) ToGetAppSpecJobOutputWithContext(ctx context.Context)
 // GetAppSpecJobArrayInput is an input type that accepts GetAppSpecJobArray and GetAppSpecJobArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecJobArrayInput` via:
 //
-//          GetAppSpecJobArray{ GetAppSpecJobArgs{...} }
+//	GetAppSpecJobArray{ GetAppSpecJobArgs{...} }
 type GetAppSpecJobArrayInput interface {
 	pulumi.Input
 
@@ -16557,7 +16557,7 @@ type GetAppSpecJobAlert struct {
 // GetAppSpecJobAlertInput is an input type that accepts GetAppSpecJobAlertArgs and GetAppSpecJobAlertOutput values.
 // You can construct a concrete instance of `GetAppSpecJobAlertInput` via:
 //
-//          GetAppSpecJobAlertArgs{...}
+//	GetAppSpecJobAlertArgs{...}
 type GetAppSpecJobAlertInput interface {
 	pulumi.Input
 
@@ -16593,7 +16593,7 @@ func (i GetAppSpecJobAlertArgs) ToGetAppSpecJobAlertOutputWithContext(ctx contex
 // GetAppSpecJobAlertArrayInput is an input type that accepts GetAppSpecJobAlertArray and GetAppSpecJobAlertArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecJobAlertArrayInput` via:
 //
-//          GetAppSpecJobAlertArray{ GetAppSpecJobAlertArgs{...} }
+//	GetAppSpecJobAlertArray{ GetAppSpecJobAlertArgs{...} }
 type GetAppSpecJobAlertArrayInput interface {
 	pulumi.Input
 
@@ -16688,7 +16688,7 @@ type GetAppSpecJobEnv struct {
 // GetAppSpecJobEnvInput is an input type that accepts GetAppSpecJobEnvArgs and GetAppSpecJobEnvOutput values.
 // You can construct a concrete instance of `GetAppSpecJobEnvInput` via:
 //
-//          GetAppSpecJobEnvArgs{...}
+//	GetAppSpecJobEnvArgs{...}
 type GetAppSpecJobEnvInput interface {
 	pulumi.Input
 
@@ -16722,7 +16722,7 @@ func (i GetAppSpecJobEnvArgs) ToGetAppSpecJobEnvOutputWithContext(ctx context.Co
 // GetAppSpecJobEnvArrayInput is an input type that accepts GetAppSpecJobEnvArray and GetAppSpecJobEnvArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecJobEnvArrayInput` via:
 //
-//          GetAppSpecJobEnvArray{ GetAppSpecJobEnvArgs{...} }
+//	GetAppSpecJobEnvArray{ GetAppSpecJobEnvArgs{...} }
 type GetAppSpecJobEnvArrayInput interface {
 	pulumi.Input
 
@@ -16808,7 +16808,7 @@ type GetAppSpecJobGit struct {
 // GetAppSpecJobGitInput is an input type that accepts GetAppSpecJobGitArgs and GetAppSpecJobGitOutput values.
 // You can construct a concrete instance of `GetAppSpecJobGitInput` via:
 //
-//          GetAppSpecJobGitArgs{...}
+//	GetAppSpecJobGitArgs{...}
 type GetAppSpecJobGitInput interface {
 	pulumi.Input
 
@@ -16846,11 +16846,11 @@ func (i GetAppSpecJobGitArgs) ToGetAppSpecJobGitPtrOutputWithContext(ctx context
 // GetAppSpecJobGitPtrInput is an input type that accepts GetAppSpecJobGitArgs, GetAppSpecJobGitPtr and GetAppSpecJobGitPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecJobGitPtrInput` via:
 //
-//          GetAppSpecJobGitArgs{...}
+//	        GetAppSpecJobGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecJobGitPtrInput interface {
 	pulumi.Input
 
@@ -16966,7 +16966,7 @@ type GetAppSpecJobGithub struct {
 // GetAppSpecJobGithubInput is an input type that accepts GetAppSpecJobGithubArgs and GetAppSpecJobGithubOutput values.
 // You can construct a concrete instance of `GetAppSpecJobGithubInput` via:
 //
-//          GetAppSpecJobGithubArgs{...}
+//	GetAppSpecJobGithubArgs{...}
 type GetAppSpecJobGithubInput interface {
 	pulumi.Input
 
@@ -17006,11 +17006,11 @@ func (i GetAppSpecJobGithubArgs) ToGetAppSpecJobGithubPtrOutputWithContext(ctx c
 // GetAppSpecJobGithubPtrInput is an input type that accepts GetAppSpecJobGithubArgs, GetAppSpecJobGithubPtr and GetAppSpecJobGithubPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecJobGithubPtrInput` via:
 //
-//          GetAppSpecJobGithubArgs{...}
+//	        GetAppSpecJobGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecJobGithubPtrInput interface {
 	pulumi.Input
 
@@ -17141,7 +17141,7 @@ type GetAppSpecJobGitlab struct {
 // GetAppSpecJobGitlabInput is an input type that accepts GetAppSpecJobGitlabArgs and GetAppSpecJobGitlabOutput values.
 // You can construct a concrete instance of `GetAppSpecJobGitlabInput` via:
 //
-//          GetAppSpecJobGitlabArgs{...}
+//	GetAppSpecJobGitlabArgs{...}
 type GetAppSpecJobGitlabInput interface {
 	pulumi.Input
 
@@ -17181,11 +17181,11 @@ func (i GetAppSpecJobGitlabArgs) ToGetAppSpecJobGitlabPtrOutputWithContext(ctx c
 // GetAppSpecJobGitlabPtrInput is an input type that accepts GetAppSpecJobGitlabArgs, GetAppSpecJobGitlabPtr and GetAppSpecJobGitlabPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecJobGitlabPtrInput` via:
 //
-//          GetAppSpecJobGitlabArgs{...}
+//	        GetAppSpecJobGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecJobGitlabPtrInput interface {
 	pulumi.Input
 
@@ -17318,7 +17318,7 @@ type GetAppSpecJobImage struct {
 // GetAppSpecJobImageInput is an input type that accepts GetAppSpecJobImageArgs and GetAppSpecJobImageOutput values.
 // You can construct a concrete instance of `GetAppSpecJobImageInput` via:
 //
-//          GetAppSpecJobImageArgs{...}
+//	GetAppSpecJobImageArgs{...}
 type GetAppSpecJobImageInput interface {
 	pulumi.Input
 
@@ -17360,11 +17360,11 @@ func (i GetAppSpecJobImageArgs) ToGetAppSpecJobImagePtrOutputWithContext(ctx con
 // GetAppSpecJobImagePtrInput is an input type that accepts GetAppSpecJobImageArgs, GetAppSpecJobImagePtr and GetAppSpecJobImagePtrOutput values.
 // You can construct a concrete instance of `GetAppSpecJobImagePtrInput` via:
 //
-//          GetAppSpecJobImageArgs{...}
+//	        GetAppSpecJobImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecJobImagePtrInput interface {
 	pulumi.Input
 
@@ -17512,7 +17512,7 @@ type GetAppSpecJobLogDestination struct {
 // GetAppSpecJobLogDestinationInput is an input type that accepts GetAppSpecJobLogDestinationArgs and GetAppSpecJobLogDestinationOutput values.
 // You can construct a concrete instance of `GetAppSpecJobLogDestinationInput` via:
 //
-//          GetAppSpecJobLogDestinationArgs{...}
+//	GetAppSpecJobLogDestinationArgs{...}
 type GetAppSpecJobLogDestinationInput interface {
 	pulumi.Input
 
@@ -17546,7 +17546,7 @@ func (i GetAppSpecJobLogDestinationArgs) ToGetAppSpecJobLogDestinationOutputWith
 // GetAppSpecJobLogDestinationArrayInput is an input type that accepts GetAppSpecJobLogDestinationArray and GetAppSpecJobLogDestinationArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecJobLogDestinationArrayInput` via:
 //
-//          GetAppSpecJobLogDestinationArray{ GetAppSpecJobLogDestinationArgs{...} }
+//	GetAppSpecJobLogDestinationArray{ GetAppSpecJobLogDestinationArgs{...} }
 type GetAppSpecJobLogDestinationArrayInput interface {
 	pulumi.Input
 
@@ -17632,7 +17632,7 @@ type GetAppSpecJobLogDestinationDatadog struct {
 // GetAppSpecJobLogDestinationDatadogInput is an input type that accepts GetAppSpecJobLogDestinationDatadogArgs and GetAppSpecJobLogDestinationDatadogOutput values.
 // You can construct a concrete instance of `GetAppSpecJobLogDestinationDatadogInput` via:
 //
-//          GetAppSpecJobLogDestinationDatadogArgs{...}
+//	GetAppSpecJobLogDestinationDatadogArgs{...}
 type GetAppSpecJobLogDestinationDatadogInput interface {
 	pulumi.Input
 
@@ -17670,11 +17670,11 @@ func (i GetAppSpecJobLogDestinationDatadogArgs) ToGetAppSpecJobLogDestinationDat
 // GetAppSpecJobLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecJobLogDestinationDatadogArgs, GetAppSpecJobLogDestinationDatadogPtr and GetAppSpecJobLogDestinationDatadogPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecJobLogDestinationDatadogPtrInput` via:
 //
-//          GetAppSpecJobLogDestinationDatadogArgs{...}
+//	        GetAppSpecJobLogDestinationDatadogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecJobLogDestinationDatadogPtrInput interface {
 	pulumi.Input
 
@@ -17786,7 +17786,7 @@ type GetAppSpecJobLogDestinationLogtail struct {
 // GetAppSpecJobLogDestinationLogtailInput is an input type that accepts GetAppSpecJobLogDestinationLogtailArgs and GetAppSpecJobLogDestinationLogtailOutput values.
 // You can construct a concrete instance of `GetAppSpecJobLogDestinationLogtailInput` via:
 //
-//          GetAppSpecJobLogDestinationLogtailArgs{...}
+//	GetAppSpecJobLogDestinationLogtailArgs{...}
 type GetAppSpecJobLogDestinationLogtailInput interface {
 	pulumi.Input
 
@@ -17822,11 +17822,11 @@ func (i GetAppSpecJobLogDestinationLogtailArgs) ToGetAppSpecJobLogDestinationLog
 // GetAppSpecJobLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecJobLogDestinationLogtailArgs, GetAppSpecJobLogDestinationLogtailPtr and GetAppSpecJobLogDestinationLogtailPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecJobLogDestinationLogtailPtrInput` via:
 //
-//          GetAppSpecJobLogDestinationLogtailArgs{...}
+//	        GetAppSpecJobLogDestinationLogtailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecJobLogDestinationLogtailPtrInput interface {
 	pulumi.Input
 
@@ -17923,7 +17923,7 @@ type GetAppSpecJobLogDestinationPapertrail struct {
 // GetAppSpecJobLogDestinationPapertrailInput is an input type that accepts GetAppSpecJobLogDestinationPapertrailArgs and GetAppSpecJobLogDestinationPapertrailOutput values.
 // You can construct a concrete instance of `GetAppSpecJobLogDestinationPapertrailInput` via:
 //
-//          GetAppSpecJobLogDestinationPapertrailArgs{...}
+//	GetAppSpecJobLogDestinationPapertrailArgs{...}
 type GetAppSpecJobLogDestinationPapertrailInput interface {
 	pulumi.Input
 
@@ -17959,11 +17959,11 @@ func (i GetAppSpecJobLogDestinationPapertrailArgs) ToGetAppSpecJobLogDestination
 // GetAppSpecJobLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecJobLogDestinationPapertrailArgs, GetAppSpecJobLogDestinationPapertrailPtr and GetAppSpecJobLogDestinationPapertrailPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecJobLogDestinationPapertrailPtrInput` via:
 //
-//          GetAppSpecJobLogDestinationPapertrailArgs{...}
+//	        GetAppSpecJobLogDestinationPapertrailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecJobLogDestinationPapertrailPtrInput interface {
 	pulumi.Input
 
@@ -18097,7 +18097,7 @@ type GetAppSpecService struct {
 // GetAppSpecServiceInput is an input type that accepts GetAppSpecServiceArgs and GetAppSpecServiceOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceInput` via:
 //
-//          GetAppSpecServiceArgs{...}
+//	GetAppSpecServiceArgs{...}
 type GetAppSpecServiceInput interface {
 	pulumi.Input
 
@@ -18162,7 +18162,7 @@ func (i GetAppSpecServiceArgs) ToGetAppSpecServiceOutputWithContext(ctx context.
 // GetAppSpecServiceArrayInput is an input type that accepts GetAppSpecServiceArray and GetAppSpecServiceArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceArrayInput` via:
 //
-//          GetAppSpecServiceArray{ GetAppSpecServiceArgs{...} }
+//	GetAppSpecServiceArray{ GetAppSpecServiceArgs{...} }
 type GetAppSpecServiceArrayInput interface {
 	pulumi.Input
 
@@ -18333,7 +18333,7 @@ type GetAppSpecServiceAlert struct {
 // GetAppSpecServiceAlertInput is an input type that accepts GetAppSpecServiceAlertArgs and GetAppSpecServiceAlertOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceAlertInput` via:
 //
-//          GetAppSpecServiceAlertArgs{...}
+//	GetAppSpecServiceAlertArgs{...}
 type GetAppSpecServiceAlertInput interface {
 	pulumi.Input
 
@@ -18369,7 +18369,7 @@ func (i GetAppSpecServiceAlertArgs) ToGetAppSpecServiceAlertOutputWithContext(ct
 // GetAppSpecServiceAlertArrayInput is an input type that accepts GetAppSpecServiceAlertArray and GetAppSpecServiceAlertArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceAlertArrayInput` via:
 //
-//          GetAppSpecServiceAlertArray{ GetAppSpecServiceAlertArgs{...} }
+//	GetAppSpecServiceAlertArray{ GetAppSpecServiceAlertArgs{...} }
 type GetAppSpecServiceAlertArrayInput interface {
 	pulumi.Input
 
@@ -18468,7 +18468,7 @@ type GetAppSpecServiceCors struct {
 // GetAppSpecServiceCorsInput is an input type that accepts GetAppSpecServiceCorsArgs and GetAppSpecServiceCorsOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceCorsInput` via:
 //
-//          GetAppSpecServiceCorsArgs{...}
+//	GetAppSpecServiceCorsArgs{...}
 type GetAppSpecServiceCorsInput interface {
 	pulumi.Input
 
@@ -18514,11 +18514,11 @@ func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsPtrOutputWithContext(c
 // GetAppSpecServiceCorsPtrInput is an input type that accepts GetAppSpecServiceCorsArgs, GetAppSpecServiceCorsPtr and GetAppSpecServiceCorsPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceCorsPtrInput` via:
 //
-//          GetAppSpecServiceCorsArgs{...}
+//	        GetAppSpecServiceCorsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceCorsPtrInput interface {
 	pulumi.Input
 
@@ -18694,7 +18694,7 @@ type GetAppSpecServiceCorsAllowOrigins struct {
 // GetAppSpecServiceCorsAllowOriginsInput is an input type that accepts GetAppSpecServiceCorsAllowOriginsArgs and GetAppSpecServiceCorsAllowOriginsOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceCorsAllowOriginsInput` via:
 //
-//          GetAppSpecServiceCorsAllowOriginsArgs{...}
+//	GetAppSpecServiceCorsAllowOriginsArgs{...}
 type GetAppSpecServiceCorsAllowOriginsInput interface {
 	pulumi.Input
 
@@ -18734,11 +18734,11 @@ func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOrigi
 // GetAppSpecServiceCorsAllowOriginsPtrInput is an input type that accepts GetAppSpecServiceCorsAllowOriginsArgs, GetAppSpecServiceCorsAllowOriginsPtr and GetAppSpecServiceCorsAllowOriginsPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceCorsAllowOriginsPtrInput` via:
 //
-//          GetAppSpecServiceCorsAllowOriginsArgs{...}
+//	        GetAppSpecServiceCorsAllowOriginsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceCorsAllowOriginsPtrInput interface {
 	pulumi.Input
 
@@ -18871,7 +18871,7 @@ type GetAppSpecServiceEnv struct {
 // GetAppSpecServiceEnvInput is an input type that accepts GetAppSpecServiceEnvArgs and GetAppSpecServiceEnvOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceEnvInput` via:
 //
-//          GetAppSpecServiceEnvArgs{...}
+//	GetAppSpecServiceEnvArgs{...}
 type GetAppSpecServiceEnvInput interface {
 	pulumi.Input
 
@@ -18905,7 +18905,7 @@ func (i GetAppSpecServiceEnvArgs) ToGetAppSpecServiceEnvOutputWithContext(ctx co
 // GetAppSpecServiceEnvArrayInput is an input type that accepts GetAppSpecServiceEnvArray and GetAppSpecServiceEnvArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceEnvArrayInput` via:
 //
-//          GetAppSpecServiceEnvArray{ GetAppSpecServiceEnvArgs{...} }
+//	GetAppSpecServiceEnvArray{ GetAppSpecServiceEnvArgs{...} }
 type GetAppSpecServiceEnvArrayInput interface {
 	pulumi.Input
 
@@ -18991,7 +18991,7 @@ type GetAppSpecServiceGit struct {
 // GetAppSpecServiceGitInput is an input type that accepts GetAppSpecServiceGitArgs and GetAppSpecServiceGitOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceGitInput` via:
 //
-//          GetAppSpecServiceGitArgs{...}
+//	GetAppSpecServiceGitArgs{...}
 type GetAppSpecServiceGitInput interface {
 	pulumi.Input
 
@@ -19029,11 +19029,11 @@ func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitPtrOutputWithContext(ctx
 // GetAppSpecServiceGitPtrInput is an input type that accepts GetAppSpecServiceGitArgs, GetAppSpecServiceGitPtr and GetAppSpecServiceGitPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceGitPtrInput` via:
 //
-//          GetAppSpecServiceGitArgs{...}
+//	        GetAppSpecServiceGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceGitPtrInput interface {
 	pulumi.Input
 
@@ -19149,7 +19149,7 @@ type GetAppSpecServiceGithub struct {
 // GetAppSpecServiceGithubInput is an input type that accepts GetAppSpecServiceGithubArgs and GetAppSpecServiceGithubOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceGithubInput` via:
 //
-//          GetAppSpecServiceGithubArgs{...}
+//	GetAppSpecServiceGithubArgs{...}
 type GetAppSpecServiceGithubInput interface {
 	pulumi.Input
 
@@ -19189,11 +19189,11 @@ func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubPtrOutputWithConte
 // GetAppSpecServiceGithubPtrInput is an input type that accepts GetAppSpecServiceGithubArgs, GetAppSpecServiceGithubPtr and GetAppSpecServiceGithubPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceGithubPtrInput` via:
 //
-//          GetAppSpecServiceGithubArgs{...}
+//	        GetAppSpecServiceGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceGithubPtrInput interface {
 	pulumi.Input
 
@@ -19324,7 +19324,7 @@ type GetAppSpecServiceGitlab struct {
 // GetAppSpecServiceGitlabInput is an input type that accepts GetAppSpecServiceGitlabArgs and GetAppSpecServiceGitlabOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceGitlabInput` via:
 //
-//          GetAppSpecServiceGitlabArgs{...}
+//	GetAppSpecServiceGitlabArgs{...}
 type GetAppSpecServiceGitlabInput interface {
 	pulumi.Input
 
@@ -19364,11 +19364,11 @@ func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabPtrOutputWithConte
 // GetAppSpecServiceGitlabPtrInput is an input type that accepts GetAppSpecServiceGitlabArgs, GetAppSpecServiceGitlabPtr and GetAppSpecServiceGitlabPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceGitlabPtrInput` via:
 //
-//          GetAppSpecServiceGitlabArgs{...}
+//	        GetAppSpecServiceGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceGitlabPtrInput interface {
 	pulumi.Input
 
@@ -19505,7 +19505,7 @@ type GetAppSpecServiceHealthCheck struct {
 // GetAppSpecServiceHealthCheckInput is an input type that accepts GetAppSpecServiceHealthCheckArgs and GetAppSpecServiceHealthCheckOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceHealthCheckInput` via:
 //
-//          GetAppSpecServiceHealthCheckArgs{...}
+//	GetAppSpecServiceHealthCheckArgs{...}
 type GetAppSpecServiceHealthCheckInput interface {
 	pulumi.Input
 
@@ -19551,11 +19551,11 @@ func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckPtrOutpu
 // GetAppSpecServiceHealthCheckPtrInput is an input type that accepts GetAppSpecServiceHealthCheckArgs, GetAppSpecServiceHealthCheckPtr and GetAppSpecServiceHealthCheckPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceHealthCheckPtrInput` via:
 //
-//          GetAppSpecServiceHealthCheckArgs{...}
+//	        GetAppSpecServiceHealthCheckArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceHealthCheckPtrInput interface {
 	pulumi.Input
 
@@ -19733,7 +19733,7 @@ type GetAppSpecServiceImage struct {
 // GetAppSpecServiceImageInput is an input type that accepts GetAppSpecServiceImageArgs and GetAppSpecServiceImageOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceImageInput` via:
 //
-//          GetAppSpecServiceImageArgs{...}
+//	GetAppSpecServiceImageArgs{...}
 type GetAppSpecServiceImageInput interface {
 	pulumi.Input
 
@@ -19775,11 +19775,11 @@ func (i GetAppSpecServiceImageArgs) ToGetAppSpecServiceImagePtrOutputWithContext
 // GetAppSpecServiceImagePtrInput is an input type that accepts GetAppSpecServiceImageArgs, GetAppSpecServiceImagePtr and GetAppSpecServiceImagePtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceImagePtrInput` via:
 //
-//          GetAppSpecServiceImageArgs{...}
+//	        GetAppSpecServiceImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceImagePtrInput interface {
 	pulumi.Input
 
@@ -19927,7 +19927,7 @@ type GetAppSpecServiceLogDestination struct {
 // GetAppSpecServiceLogDestinationInput is an input type that accepts GetAppSpecServiceLogDestinationArgs and GetAppSpecServiceLogDestinationOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceLogDestinationInput` via:
 //
-//          GetAppSpecServiceLogDestinationArgs{...}
+//	GetAppSpecServiceLogDestinationArgs{...}
 type GetAppSpecServiceLogDestinationInput interface {
 	pulumi.Input
 
@@ -19961,7 +19961,7 @@ func (i GetAppSpecServiceLogDestinationArgs) ToGetAppSpecServiceLogDestinationOu
 // GetAppSpecServiceLogDestinationArrayInput is an input type that accepts GetAppSpecServiceLogDestinationArray and GetAppSpecServiceLogDestinationArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceLogDestinationArrayInput` via:
 //
-//          GetAppSpecServiceLogDestinationArray{ GetAppSpecServiceLogDestinationArgs{...} }
+//	GetAppSpecServiceLogDestinationArray{ GetAppSpecServiceLogDestinationArgs{...} }
 type GetAppSpecServiceLogDestinationArrayInput interface {
 	pulumi.Input
 
@@ -20049,7 +20049,7 @@ type GetAppSpecServiceLogDestinationDatadog struct {
 // GetAppSpecServiceLogDestinationDatadogInput is an input type that accepts GetAppSpecServiceLogDestinationDatadogArgs and GetAppSpecServiceLogDestinationDatadogOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceLogDestinationDatadogInput` via:
 //
-//          GetAppSpecServiceLogDestinationDatadogArgs{...}
+//	GetAppSpecServiceLogDestinationDatadogArgs{...}
 type GetAppSpecServiceLogDestinationDatadogInput interface {
 	pulumi.Input
 
@@ -20087,11 +20087,11 @@ func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestin
 // GetAppSpecServiceLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecServiceLogDestinationDatadogArgs, GetAppSpecServiceLogDestinationDatadogPtr and GetAppSpecServiceLogDestinationDatadogPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceLogDestinationDatadogPtrInput` via:
 //
-//          GetAppSpecServiceLogDestinationDatadogArgs{...}
+//	        GetAppSpecServiceLogDestinationDatadogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceLogDestinationDatadogPtrInput interface {
 	pulumi.Input
 
@@ -20203,7 +20203,7 @@ type GetAppSpecServiceLogDestinationLogtail struct {
 // GetAppSpecServiceLogDestinationLogtailInput is an input type that accepts GetAppSpecServiceLogDestinationLogtailArgs and GetAppSpecServiceLogDestinationLogtailOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceLogDestinationLogtailInput` via:
 //
-//          GetAppSpecServiceLogDestinationLogtailArgs{...}
+//	GetAppSpecServiceLogDestinationLogtailArgs{...}
 type GetAppSpecServiceLogDestinationLogtailInput interface {
 	pulumi.Input
 
@@ -20239,11 +20239,11 @@ func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestin
 // GetAppSpecServiceLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecServiceLogDestinationLogtailArgs, GetAppSpecServiceLogDestinationLogtailPtr and GetAppSpecServiceLogDestinationLogtailPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceLogDestinationLogtailPtrInput` via:
 //
-//          GetAppSpecServiceLogDestinationLogtailArgs{...}
+//	        GetAppSpecServiceLogDestinationLogtailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceLogDestinationLogtailPtrInput interface {
 	pulumi.Input
 
@@ -20340,7 +20340,7 @@ type GetAppSpecServiceLogDestinationPapertrail struct {
 // GetAppSpecServiceLogDestinationPapertrailInput is an input type that accepts GetAppSpecServiceLogDestinationPapertrailArgs and GetAppSpecServiceLogDestinationPapertrailOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceLogDestinationPapertrailInput` via:
 //
-//          GetAppSpecServiceLogDestinationPapertrailArgs{...}
+//	GetAppSpecServiceLogDestinationPapertrailArgs{...}
 type GetAppSpecServiceLogDestinationPapertrailInput interface {
 	pulumi.Input
 
@@ -20376,11 +20376,11 @@ func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDes
 // GetAppSpecServiceLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecServiceLogDestinationPapertrailArgs, GetAppSpecServiceLogDestinationPapertrailPtr and GetAppSpecServiceLogDestinationPapertrailPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceLogDestinationPapertrailPtrInput` via:
 //
-//          GetAppSpecServiceLogDestinationPapertrailArgs{...}
+//	        GetAppSpecServiceLogDestinationPapertrailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecServiceLogDestinationPapertrailPtrInput interface {
 	pulumi.Input
 
@@ -20479,7 +20479,7 @@ type GetAppSpecServiceRoute struct {
 // GetAppSpecServiceRouteInput is an input type that accepts GetAppSpecServiceRouteArgs and GetAppSpecServiceRouteOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceRouteInput` via:
 //
-//          GetAppSpecServiceRouteArgs{...}
+//	GetAppSpecServiceRouteArgs{...}
 type GetAppSpecServiceRouteInput interface {
 	pulumi.Input
 
@@ -20509,7 +20509,7 @@ func (i GetAppSpecServiceRouteArgs) ToGetAppSpecServiceRouteOutputWithContext(ct
 // GetAppSpecServiceRouteArrayInput is an input type that accepts GetAppSpecServiceRouteArray and GetAppSpecServiceRouteArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecServiceRouteArrayInput` via:
 //
-//          GetAppSpecServiceRouteArray{ GetAppSpecServiceRouteArgs{...} }
+//	GetAppSpecServiceRouteArray{ GetAppSpecServiceRouteArgs{...} }
 type GetAppSpecServiceRouteArrayInput interface {
 	pulumi.Input
 
@@ -20610,7 +20610,7 @@ type GetAppSpecStaticSite struct {
 // GetAppSpecStaticSiteInput is an input type that accepts GetAppSpecStaticSiteArgs and GetAppSpecStaticSiteOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteInput` via:
 //
-//          GetAppSpecStaticSiteArgs{...}
+//	GetAppSpecStaticSiteArgs{...}
 type GetAppSpecStaticSiteInput interface {
 	pulumi.Input
 
@@ -20665,7 +20665,7 @@ func (i GetAppSpecStaticSiteArgs) ToGetAppSpecStaticSiteOutputWithContext(ctx co
 // GetAppSpecStaticSiteArrayInput is an input type that accepts GetAppSpecStaticSiteArray and GetAppSpecStaticSiteArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteArrayInput` via:
 //
-//          GetAppSpecStaticSiteArray{ GetAppSpecStaticSiteArgs{...} }
+//	GetAppSpecStaticSiteArray{ GetAppSpecStaticSiteArgs{...} }
 type GetAppSpecStaticSiteArrayInput interface {
 	pulumi.Input
 
@@ -20813,7 +20813,7 @@ type GetAppSpecStaticSiteCors struct {
 // GetAppSpecStaticSiteCorsInput is an input type that accepts GetAppSpecStaticSiteCorsArgs and GetAppSpecStaticSiteCorsOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteCorsInput` via:
 //
-//          GetAppSpecStaticSiteCorsArgs{...}
+//	GetAppSpecStaticSiteCorsArgs{...}
 type GetAppSpecStaticSiteCorsInput interface {
 	pulumi.Input
 
@@ -20859,11 +20859,11 @@ func (i GetAppSpecStaticSiteCorsArgs) ToGetAppSpecStaticSiteCorsPtrOutputWithCon
 // GetAppSpecStaticSiteCorsPtrInput is an input type that accepts GetAppSpecStaticSiteCorsArgs, GetAppSpecStaticSiteCorsPtr and GetAppSpecStaticSiteCorsPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteCorsPtrInput` via:
 //
-//          GetAppSpecStaticSiteCorsArgs{...}
+//	        GetAppSpecStaticSiteCorsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecStaticSiteCorsPtrInput interface {
 	pulumi.Input
 
@@ -21039,7 +21039,7 @@ type GetAppSpecStaticSiteCorsAllowOrigins struct {
 // GetAppSpecStaticSiteCorsAllowOriginsInput is an input type that accepts GetAppSpecStaticSiteCorsAllowOriginsArgs and GetAppSpecStaticSiteCorsAllowOriginsOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteCorsAllowOriginsInput` via:
 //
-//          GetAppSpecStaticSiteCorsAllowOriginsArgs{...}
+//	GetAppSpecStaticSiteCorsAllowOriginsArgs{...}
 type GetAppSpecStaticSiteCorsAllowOriginsInput interface {
 	pulumi.Input
 
@@ -21079,11 +21079,11 @@ func (i GetAppSpecStaticSiteCorsAllowOriginsArgs) ToGetAppSpecStaticSiteCorsAllo
 // GetAppSpecStaticSiteCorsAllowOriginsPtrInput is an input type that accepts GetAppSpecStaticSiteCorsAllowOriginsArgs, GetAppSpecStaticSiteCorsAllowOriginsPtr and GetAppSpecStaticSiteCorsAllowOriginsPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteCorsAllowOriginsPtrInput` via:
 //
-//          GetAppSpecStaticSiteCorsAllowOriginsArgs{...}
+//	        GetAppSpecStaticSiteCorsAllowOriginsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecStaticSiteCorsAllowOriginsPtrInput interface {
 	pulumi.Input
 
@@ -21216,7 +21216,7 @@ type GetAppSpecStaticSiteEnv struct {
 // GetAppSpecStaticSiteEnvInput is an input type that accepts GetAppSpecStaticSiteEnvArgs and GetAppSpecStaticSiteEnvOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteEnvInput` via:
 //
-//          GetAppSpecStaticSiteEnvArgs{...}
+//	GetAppSpecStaticSiteEnvArgs{...}
 type GetAppSpecStaticSiteEnvInput interface {
 	pulumi.Input
 
@@ -21250,7 +21250,7 @@ func (i GetAppSpecStaticSiteEnvArgs) ToGetAppSpecStaticSiteEnvOutputWithContext(
 // GetAppSpecStaticSiteEnvArrayInput is an input type that accepts GetAppSpecStaticSiteEnvArray and GetAppSpecStaticSiteEnvArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteEnvArrayInput` via:
 //
-//          GetAppSpecStaticSiteEnvArray{ GetAppSpecStaticSiteEnvArgs{...} }
+//	GetAppSpecStaticSiteEnvArray{ GetAppSpecStaticSiteEnvArgs{...} }
 type GetAppSpecStaticSiteEnvArrayInput interface {
 	pulumi.Input
 
@@ -21336,7 +21336,7 @@ type GetAppSpecStaticSiteGit struct {
 // GetAppSpecStaticSiteGitInput is an input type that accepts GetAppSpecStaticSiteGitArgs and GetAppSpecStaticSiteGitOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteGitInput` via:
 //
-//          GetAppSpecStaticSiteGitArgs{...}
+//	GetAppSpecStaticSiteGitArgs{...}
 type GetAppSpecStaticSiteGitInput interface {
 	pulumi.Input
 
@@ -21374,11 +21374,11 @@ func (i GetAppSpecStaticSiteGitArgs) ToGetAppSpecStaticSiteGitPtrOutputWithConte
 // GetAppSpecStaticSiteGitPtrInput is an input type that accepts GetAppSpecStaticSiteGitArgs, GetAppSpecStaticSiteGitPtr and GetAppSpecStaticSiteGitPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteGitPtrInput` via:
 //
-//          GetAppSpecStaticSiteGitArgs{...}
+//	        GetAppSpecStaticSiteGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecStaticSiteGitPtrInput interface {
 	pulumi.Input
 
@@ -21494,7 +21494,7 @@ type GetAppSpecStaticSiteGithub struct {
 // GetAppSpecStaticSiteGithubInput is an input type that accepts GetAppSpecStaticSiteGithubArgs and GetAppSpecStaticSiteGithubOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteGithubInput` via:
 //
-//          GetAppSpecStaticSiteGithubArgs{...}
+//	GetAppSpecStaticSiteGithubArgs{...}
 type GetAppSpecStaticSiteGithubInput interface {
 	pulumi.Input
 
@@ -21534,11 +21534,11 @@ func (i GetAppSpecStaticSiteGithubArgs) ToGetAppSpecStaticSiteGithubPtrOutputWit
 // GetAppSpecStaticSiteGithubPtrInput is an input type that accepts GetAppSpecStaticSiteGithubArgs, GetAppSpecStaticSiteGithubPtr and GetAppSpecStaticSiteGithubPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteGithubPtrInput` via:
 //
-//          GetAppSpecStaticSiteGithubArgs{...}
+//	        GetAppSpecStaticSiteGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecStaticSiteGithubPtrInput interface {
 	pulumi.Input
 
@@ -21669,7 +21669,7 @@ type GetAppSpecStaticSiteGitlab struct {
 // GetAppSpecStaticSiteGitlabInput is an input type that accepts GetAppSpecStaticSiteGitlabArgs and GetAppSpecStaticSiteGitlabOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteGitlabInput` via:
 //
-//          GetAppSpecStaticSiteGitlabArgs{...}
+//	GetAppSpecStaticSiteGitlabArgs{...}
 type GetAppSpecStaticSiteGitlabInput interface {
 	pulumi.Input
 
@@ -21709,11 +21709,11 @@ func (i GetAppSpecStaticSiteGitlabArgs) ToGetAppSpecStaticSiteGitlabPtrOutputWit
 // GetAppSpecStaticSiteGitlabPtrInput is an input type that accepts GetAppSpecStaticSiteGitlabArgs, GetAppSpecStaticSiteGitlabPtr and GetAppSpecStaticSiteGitlabPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteGitlabPtrInput` via:
 //
-//          GetAppSpecStaticSiteGitlabArgs{...}
+//	        GetAppSpecStaticSiteGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecStaticSiteGitlabPtrInput interface {
 	pulumi.Input
 
@@ -21842,7 +21842,7 @@ type GetAppSpecStaticSiteRoute struct {
 // GetAppSpecStaticSiteRouteInput is an input type that accepts GetAppSpecStaticSiteRouteArgs and GetAppSpecStaticSiteRouteOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteRouteInput` via:
 //
-//          GetAppSpecStaticSiteRouteArgs{...}
+//	GetAppSpecStaticSiteRouteArgs{...}
 type GetAppSpecStaticSiteRouteInput interface {
 	pulumi.Input
 
@@ -21872,7 +21872,7 @@ func (i GetAppSpecStaticSiteRouteArgs) ToGetAppSpecStaticSiteRouteOutputWithCont
 // GetAppSpecStaticSiteRouteArrayInput is an input type that accepts GetAppSpecStaticSiteRouteArray and GetAppSpecStaticSiteRouteArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecStaticSiteRouteArrayInput` via:
 //
-//          GetAppSpecStaticSiteRouteArray{ GetAppSpecStaticSiteRouteArgs{...} }
+//	GetAppSpecStaticSiteRouteArray{ GetAppSpecStaticSiteRouteArgs{...} }
 type GetAppSpecStaticSiteRouteArrayInput interface {
 	pulumi.Input
 
@@ -21974,7 +21974,7 @@ type GetAppSpecWorker struct {
 // GetAppSpecWorkerInput is an input type that accepts GetAppSpecWorkerArgs and GetAppSpecWorkerOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerInput` via:
 //
-//          GetAppSpecWorkerArgs{...}
+//	GetAppSpecWorkerArgs{...}
 type GetAppSpecWorkerInput interface {
 	pulumi.Input
 
@@ -22030,7 +22030,7 @@ func (i GetAppSpecWorkerArgs) ToGetAppSpecWorkerOutputWithContext(ctx context.Co
 // GetAppSpecWorkerArrayInput is an input type that accepts GetAppSpecWorkerArray and GetAppSpecWorkerArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerArrayInput` via:
 //
-//          GetAppSpecWorkerArray{ GetAppSpecWorkerArgs{...} }
+//	GetAppSpecWorkerArray{ GetAppSpecWorkerArgs{...} }
 type GetAppSpecWorkerArrayInput interface {
 	pulumi.Input
 
@@ -22177,7 +22177,7 @@ type GetAppSpecWorkerAlert struct {
 // GetAppSpecWorkerAlertInput is an input type that accepts GetAppSpecWorkerAlertArgs and GetAppSpecWorkerAlertOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerAlertInput` via:
 //
-//          GetAppSpecWorkerAlertArgs{...}
+//	GetAppSpecWorkerAlertArgs{...}
 type GetAppSpecWorkerAlertInput interface {
 	pulumi.Input
 
@@ -22213,7 +22213,7 @@ func (i GetAppSpecWorkerAlertArgs) ToGetAppSpecWorkerAlertOutputWithContext(ctx 
 // GetAppSpecWorkerAlertArrayInput is an input type that accepts GetAppSpecWorkerAlertArray and GetAppSpecWorkerAlertArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerAlertArrayInput` via:
 //
-//          GetAppSpecWorkerAlertArray{ GetAppSpecWorkerAlertArgs{...} }
+//	GetAppSpecWorkerAlertArray{ GetAppSpecWorkerAlertArgs{...} }
 type GetAppSpecWorkerAlertArrayInput interface {
 	pulumi.Input
 
@@ -22308,7 +22308,7 @@ type GetAppSpecWorkerEnv struct {
 // GetAppSpecWorkerEnvInput is an input type that accepts GetAppSpecWorkerEnvArgs and GetAppSpecWorkerEnvOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerEnvInput` via:
 //
-//          GetAppSpecWorkerEnvArgs{...}
+//	GetAppSpecWorkerEnvArgs{...}
 type GetAppSpecWorkerEnvInput interface {
 	pulumi.Input
 
@@ -22342,7 +22342,7 @@ func (i GetAppSpecWorkerEnvArgs) ToGetAppSpecWorkerEnvOutputWithContext(ctx cont
 // GetAppSpecWorkerEnvArrayInput is an input type that accepts GetAppSpecWorkerEnvArray and GetAppSpecWorkerEnvArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerEnvArrayInput` via:
 //
-//          GetAppSpecWorkerEnvArray{ GetAppSpecWorkerEnvArgs{...} }
+//	GetAppSpecWorkerEnvArray{ GetAppSpecWorkerEnvArgs{...} }
 type GetAppSpecWorkerEnvArrayInput interface {
 	pulumi.Input
 
@@ -22428,7 +22428,7 @@ type GetAppSpecWorkerGit struct {
 // GetAppSpecWorkerGitInput is an input type that accepts GetAppSpecWorkerGitArgs and GetAppSpecWorkerGitOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerGitInput` via:
 //
-//          GetAppSpecWorkerGitArgs{...}
+//	GetAppSpecWorkerGitArgs{...}
 type GetAppSpecWorkerGitInput interface {
 	pulumi.Input
 
@@ -22466,11 +22466,11 @@ func (i GetAppSpecWorkerGitArgs) ToGetAppSpecWorkerGitPtrOutputWithContext(ctx c
 // GetAppSpecWorkerGitPtrInput is an input type that accepts GetAppSpecWorkerGitArgs, GetAppSpecWorkerGitPtr and GetAppSpecWorkerGitPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerGitPtrInput` via:
 //
-//          GetAppSpecWorkerGitArgs{...}
+//	        GetAppSpecWorkerGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecWorkerGitPtrInput interface {
 	pulumi.Input
 
@@ -22586,7 +22586,7 @@ type GetAppSpecWorkerGithub struct {
 // GetAppSpecWorkerGithubInput is an input type that accepts GetAppSpecWorkerGithubArgs and GetAppSpecWorkerGithubOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerGithubInput` via:
 //
-//          GetAppSpecWorkerGithubArgs{...}
+//	GetAppSpecWorkerGithubArgs{...}
 type GetAppSpecWorkerGithubInput interface {
 	pulumi.Input
 
@@ -22626,11 +22626,11 @@ func (i GetAppSpecWorkerGithubArgs) ToGetAppSpecWorkerGithubPtrOutputWithContext
 // GetAppSpecWorkerGithubPtrInput is an input type that accepts GetAppSpecWorkerGithubArgs, GetAppSpecWorkerGithubPtr and GetAppSpecWorkerGithubPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerGithubPtrInput` via:
 //
-//          GetAppSpecWorkerGithubArgs{...}
+//	        GetAppSpecWorkerGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecWorkerGithubPtrInput interface {
 	pulumi.Input
 
@@ -22761,7 +22761,7 @@ type GetAppSpecWorkerGitlab struct {
 // GetAppSpecWorkerGitlabInput is an input type that accepts GetAppSpecWorkerGitlabArgs and GetAppSpecWorkerGitlabOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerGitlabInput` via:
 //
-//          GetAppSpecWorkerGitlabArgs{...}
+//	GetAppSpecWorkerGitlabArgs{...}
 type GetAppSpecWorkerGitlabInput interface {
 	pulumi.Input
 
@@ -22801,11 +22801,11 @@ func (i GetAppSpecWorkerGitlabArgs) ToGetAppSpecWorkerGitlabPtrOutputWithContext
 // GetAppSpecWorkerGitlabPtrInput is an input type that accepts GetAppSpecWorkerGitlabArgs, GetAppSpecWorkerGitlabPtr and GetAppSpecWorkerGitlabPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerGitlabPtrInput` via:
 //
-//          GetAppSpecWorkerGitlabArgs{...}
+//	        GetAppSpecWorkerGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecWorkerGitlabPtrInput interface {
 	pulumi.Input
 
@@ -22938,7 +22938,7 @@ type GetAppSpecWorkerImage struct {
 // GetAppSpecWorkerImageInput is an input type that accepts GetAppSpecWorkerImageArgs and GetAppSpecWorkerImageOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerImageInput` via:
 //
-//          GetAppSpecWorkerImageArgs{...}
+//	GetAppSpecWorkerImageArgs{...}
 type GetAppSpecWorkerImageInput interface {
 	pulumi.Input
 
@@ -22980,11 +22980,11 @@ func (i GetAppSpecWorkerImageArgs) ToGetAppSpecWorkerImagePtrOutputWithContext(c
 // GetAppSpecWorkerImagePtrInput is an input type that accepts GetAppSpecWorkerImageArgs, GetAppSpecWorkerImagePtr and GetAppSpecWorkerImagePtrOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerImagePtrInput` via:
 //
-//          GetAppSpecWorkerImageArgs{...}
+//	        GetAppSpecWorkerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecWorkerImagePtrInput interface {
 	pulumi.Input
 
@@ -23132,7 +23132,7 @@ type GetAppSpecWorkerLogDestination struct {
 // GetAppSpecWorkerLogDestinationInput is an input type that accepts GetAppSpecWorkerLogDestinationArgs and GetAppSpecWorkerLogDestinationOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerLogDestinationInput` via:
 //
-//          GetAppSpecWorkerLogDestinationArgs{...}
+//	GetAppSpecWorkerLogDestinationArgs{...}
 type GetAppSpecWorkerLogDestinationInput interface {
 	pulumi.Input
 
@@ -23166,7 +23166,7 @@ func (i GetAppSpecWorkerLogDestinationArgs) ToGetAppSpecWorkerLogDestinationOutp
 // GetAppSpecWorkerLogDestinationArrayInput is an input type that accepts GetAppSpecWorkerLogDestinationArray and GetAppSpecWorkerLogDestinationArrayOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerLogDestinationArrayInput` via:
 //
-//          GetAppSpecWorkerLogDestinationArray{ GetAppSpecWorkerLogDestinationArgs{...} }
+//	GetAppSpecWorkerLogDestinationArray{ GetAppSpecWorkerLogDestinationArgs{...} }
 type GetAppSpecWorkerLogDestinationArrayInput interface {
 	pulumi.Input
 
@@ -23252,7 +23252,7 @@ type GetAppSpecWorkerLogDestinationDatadog struct {
 // GetAppSpecWorkerLogDestinationDatadogInput is an input type that accepts GetAppSpecWorkerLogDestinationDatadogArgs and GetAppSpecWorkerLogDestinationDatadogOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerLogDestinationDatadogInput` via:
 //
-//          GetAppSpecWorkerLogDestinationDatadogArgs{...}
+//	GetAppSpecWorkerLogDestinationDatadogArgs{...}
 type GetAppSpecWorkerLogDestinationDatadogInput interface {
 	pulumi.Input
 
@@ -23290,11 +23290,11 @@ func (i GetAppSpecWorkerLogDestinationDatadogArgs) ToGetAppSpecWorkerLogDestinat
 // GetAppSpecWorkerLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecWorkerLogDestinationDatadogArgs, GetAppSpecWorkerLogDestinationDatadogPtr and GetAppSpecWorkerLogDestinationDatadogPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerLogDestinationDatadogPtrInput` via:
 //
-//          GetAppSpecWorkerLogDestinationDatadogArgs{...}
+//	        GetAppSpecWorkerLogDestinationDatadogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecWorkerLogDestinationDatadogPtrInput interface {
 	pulumi.Input
 
@@ -23406,7 +23406,7 @@ type GetAppSpecWorkerLogDestinationLogtail struct {
 // GetAppSpecWorkerLogDestinationLogtailInput is an input type that accepts GetAppSpecWorkerLogDestinationLogtailArgs and GetAppSpecWorkerLogDestinationLogtailOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerLogDestinationLogtailInput` via:
 //
-//          GetAppSpecWorkerLogDestinationLogtailArgs{...}
+//	GetAppSpecWorkerLogDestinationLogtailArgs{...}
 type GetAppSpecWorkerLogDestinationLogtailInput interface {
 	pulumi.Input
 
@@ -23442,11 +23442,11 @@ func (i GetAppSpecWorkerLogDestinationLogtailArgs) ToGetAppSpecWorkerLogDestinat
 // GetAppSpecWorkerLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecWorkerLogDestinationLogtailArgs, GetAppSpecWorkerLogDestinationLogtailPtr and GetAppSpecWorkerLogDestinationLogtailPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerLogDestinationLogtailPtrInput` via:
 //
-//          GetAppSpecWorkerLogDestinationLogtailArgs{...}
+//	        GetAppSpecWorkerLogDestinationLogtailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecWorkerLogDestinationLogtailPtrInput interface {
 	pulumi.Input
 
@@ -23543,7 +23543,7 @@ type GetAppSpecWorkerLogDestinationPapertrail struct {
 // GetAppSpecWorkerLogDestinationPapertrailInput is an input type that accepts GetAppSpecWorkerLogDestinationPapertrailArgs and GetAppSpecWorkerLogDestinationPapertrailOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerLogDestinationPapertrailInput` via:
 //
-//          GetAppSpecWorkerLogDestinationPapertrailArgs{...}
+//	GetAppSpecWorkerLogDestinationPapertrailArgs{...}
 type GetAppSpecWorkerLogDestinationPapertrailInput interface {
 	pulumi.Input
 
@@ -23579,11 +23579,11 @@ func (i GetAppSpecWorkerLogDestinationPapertrailArgs) ToGetAppSpecWorkerLogDesti
 // GetAppSpecWorkerLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecWorkerLogDestinationPapertrailArgs, GetAppSpecWorkerLogDestinationPapertrailPtr and GetAppSpecWorkerLogDestinationPapertrailPtrOutput values.
 // You can construct a concrete instance of `GetAppSpecWorkerLogDestinationPapertrailPtrInput` via:
 //
-//          GetAppSpecWorkerLogDestinationPapertrailArgs{...}
+//	        GetAppSpecWorkerLogDestinationPapertrailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetAppSpecWorkerLogDestinationPapertrailPtrInput interface {
 	pulumi.Input
 
@@ -23682,7 +23682,7 @@ type GetDatabaseClusterMaintenanceWindow struct {
 // GetDatabaseClusterMaintenanceWindowInput is an input type that accepts GetDatabaseClusterMaintenanceWindowArgs and GetDatabaseClusterMaintenanceWindowOutput values.
 // You can construct a concrete instance of `GetDatabaseClusterMaintenanceWindowInput` via:
 //
-//          GetDatabaseClusterMaintenanceWindowArgs{...}
+//	GetDatabaseClusterMaintenanceWindowArgs{...}
 type GetDatabaseClusterMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -23712,7 +23712,7 @@ func (i GetDatabaseClusterMaintenanceWindowArgs) ToGetDatabaseClusterMaintenance
 // GetDatabaseClusterMaintenanceWindowArrayInput is an input type that accepts GetDatabaseClusterMaintenanceWindowArray and GetDatabaseClusterMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseClusterMaintenanceWindowArrayInput` via:
 //
-//          GetDatabaseClusterMaintenanceWindowArray{ GetDatabaseClusterMaintenanceWindowArgs{...} }
+//	GetDatabaseClusterMaintenanceWindowArray{ GetDatabaseClusterMaintenanceWindowArgs{...} }
 type GetDatabaseClusterMaintenanceWindowArrayInput interface {
 	pulumi.Input
 
@@ -23790,7 +23790,7 @@ type GetDomainsDomain struct {
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
 // You can construct a concrete instance of `GetDomainsDomainInput` via:
 //
-//          GetDomainsDomainArgs{...}
+//	GetDomainsDomainArgs{...}
 type GetDomainsDomainInput interface {
 	pulumi.Input
 
@@ -23822,7 +23822,7 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
-//          GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
 type GetDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -23912,7 +23912,7 @@ type GetDomainsFilter struct {
 // GetDomainsFilterInput is an input type that accepts GetDomainsFilterArgs and GetDomainsFilterOutput values.
 // You can construct a concrete instance of `GetDomainsFilterInput` via:
 //
-//          GetDomainsFilterArgs{...}
+//	GetDomainsFilterArgs{...}
 type GetDomainsFilterInput interface {
 	pulumi.Input
 
@@ -23951,7 +23951,7 @@ func (i GetDomainsFilterArgs) ToGetDomainsFilterOutputWithContext(ctx context.Co
 // GetDomainsFilterArrayInput is an input type that accepts GetDomainsFilterArray and GetDomainsFilterArrayOutput values.
 // You can construct a concrete instance of `GetDomainsFilterArrayInput` via:
 //
-//          GetDomainsFilterArray{ GetDomainsFilterArgs{...} }
+//	GetDomainsFilterArray{ GetDomainsFilterArgs{...} }
 type GetDomainsFilterArrayInput interface {
 	pulumi.Input
 
@@ -24042,7 +24042,7 @@ type GetDomainsSort struct {
 // GetDomainsSortInput is an input type that accepts GetDomainsSortArgs and GetDomainsSortOutput values.
 // You can construct a concrete instance of `GetDomainsSortInput` via:
 //
-//          GetDomainsSortArgs{...}
+//	GetDomainsSortArgs{...}
 type GetDomainsSortInput interface {
 	pulumi.Input
 
@@ -24072,7 +24072,7 @@ func (i GetDomainsSortArgs) ToGetDomainsSortOutputWithContext(ctx context.Contex
 // GetDomainsSortArrayInput is an input type that accepts GetDomainsSortArray and GetDomainsSortArrayOutput values.
 // You can construct a concrete instance of `GetDomainsSortArrayInput` via:
 //
-//          GetDomainsSortArray{ GetDomainsSortArgs{...} }
+//	GetDomainsSortArray{ GetDomainsSortArgs{...} }
 type GetDomainsSortArrayInput interface {
 	pulumi.Input
 
@@ -24192,7 +24192,7 @@ type GetDropletsDroplet struct {
 // GetDropletsDropletInput is an input type that accepts GetDropletsDropletArgs and GetDropletsDropletOutput values.
 // You can construct a concrete instance of `GetDropletsDropletInput` via:
 //
-//          GetDropletsDropletArgs{...}
+//	GetDropletsDropletArgs{...}
 type GetDropletsDropletInput interface {
 	pulumi.Input
 
@@ -24266,7 +24266,7 @@ func (i GetDropletsDropletArgs) ToGetDropletsDropletOutputWithContext(ctx contex
 // GetDropletsDropletArrayInput is an input type that accepts GetDropletsDropletArray and GetDropletsDropletArrayOutput values.
 // You can construct a concrete instance of `GetDropletsDropletArrayInput` via:
 //
-//          GetDropletsDropletArray{ GetDropletsDropletArgs{...} }
+//	GetDropletsDropletArray{ GetDropletsDropletArgs{...} }
 type GetDropletsDropletArrayInput interface {
 	pulumi.Input
 
@@ -24467,7 +24467,7 @@ type GetDropletsFilter struct {
 // GetDropletsFilterInput is an input type that accepts GetDropletsFilterArgs and GetDropletsFilterOutput values.
 // You can construct a concrete instance of `GetDropletsFilterInput` via:
 //
-//          GetDropletsFilterArgs{...}
+//	GetDropletsFilterArgs{...}
 type GetDropletsFilterInput interface {
 	pulumi.Input
 
@@ -24509,7 +24509,7 @@ func (i GetDropletsFilterArgs) ToGetDropletsFilterOutputWithContext(ctx context.
 // GetDropletsFilterArrayInput is an input type that accepts GetDropletsFilterArray and GetDropletsFilterArrayOutput values.
 // You can construct a concrete instance of `GetDropletsFilterArrayInput` via:
 //
-//          GetDropletsFilterArray{ GetDropletsFilterArgs{...} }
+//	GetDropletsFilterArray{ GetDropletsFilterArgs{...} }
 type GetDropletsFilterArrayInput interface {
 	pulumi.Input
 
@@ -24606,7 +24606,7 @@ type GetDropletsSort struct {
 // GetDropletsSortInput is an input type that accepts GetDropletsSortArgs and GetDropletsSortOutput values.
 // You can construct a concrete instance of `GetDropletsSortInput` via:
 //
-//          GetDropletsSortArgs{...}
+//	GetDropletsSortArgs{...}
 type GetDropletsSortInput interface {
 	pulumi.Input
 
@@ -24639,7 +24639,7 @@ func (i GetDropletsSortArgs) ToGetDropletsSortOutputWithContext(ctx context.Cont
 // GetDropletsSortArrayInput is an input type that accepts GetDropletsSortArray and GetDropletsSortArrayOutput values.
 // You can construct a concrete instance of `GetDropletsSortArrayInput` via:
 //
-//          GetDropletsSortArray{ GetDropletsSortArgs{...} }
+//	GetDropletsSortArray{ GetDropletsSortArgs{...} }
 type GetDropletsSortArrayInput interface {
 	pulumi.Input
 
@@ -24736,7 +24736,7 @@ type GetFirewallInboundRule struct {
 // GetFirewallInboundRuleInput is an input type that accepts GetFirewallInboundRuleArgs and GetFirewallInboundRuleOutput values.
 // You can construct a concrete instance of `GetFirewallInboundRuleInput` via:
 //
-//          GetFirewallInboundRuleArgs{...}
+//	GetFirewallInboundRuleArgs{...}
 type GetFirewallInboundRuleInput interface {
 	pulumi.Input
 
@@ -24784,7 +24784,7 @@ func (i GetFirewallInboundRuleArgs) ToGetFirewallInboundRuleOutputWithContext(ct
 // GetFirewallInboundRuleArrayInput is an input type that accepts GetFirewallInboundRuleArray and GetFirewallInboundRuleArrayOutput values.
 // You can construct a concrete instance of `GetFirewallInboundRuleArrayInput` via:
 //
-//          GetFirewallInboundRuleArray{ GetFirewallInboundRuleArgs{...} }
+//	GetFirewallInboundRuleArray{ GetFirewallInboundRuleArgs{...} }
 type GetFirewallInboundRuleArrayInput interface {
 	pulumi.Input
 
@@ -24913,7 +24913,7 @@ type GetFirewallOutboundRule struct {
 // GetFirewallOutboundRuleInput is an input type that accepts GetFirewallOutboundRuleArgs and GetFirewallOutboundRuleOutput values.
 // You can construct a concrete instance of `GetFirewallOutboundRuleInput` via:
 //
-//          GetFirewallOutboundRuleArgs{...}
+//	GetFirewallOutboundRuleArgs{...}
 type GetFirewallOutboundRuleInput interface {
 	pulumi.Input
 
@@ -24963,7 +24963,7 @@ func (i GetFirewallOutboundRuleArgs) ToGetFirewallOutboundRuleOutputWithContext(
 // GetFirewallOutboundRuleArrayInput is an input type that accepts GetFirewallOutboundRuleArray and GetFirewallOutboundRuleArrayOutput values.
 // You can construct a concrete instance of `GetFirewallOutboundRuleArrayInput` via:
 //
-//          GetFirewallOutboundRuleArray{ GetFirewallOutboundRuleArgs{...} }
+//	GetFirewallOutboundRuleArray{ GetFirewallOutboundRuleArgs{...} }
 type GetFirewallOutboundRuleArrayInput interface {
 	pulumi.Input
 
@@ -25075,7 +25075,7 @@ type GetFirewallPendingChange struct {
 // GetFirewallPendingChangeInput is an input type that accepts GetFirewallPendingChangeArgs and GetFirewallPendingChangeOutput values.
 // You can construct a concrete instance of `GetFirewallPendingChangeInput` via:
 //
-//          GetFirewallPendingChangeArgs{...}
+//	GetFirewallPendingChangeArgs{...}
 type GetFirewallPendingChangeInput interface {
 	pulumi.Input
 
@@ -25106,7 +25106,7 @@ func (i GetFirewallPendingChangeArgs) ToGetFirewallPendingChangeOutputWithContex
 // GetFirewallPendingChangeArrayInput is an input type that accepts GetFirewallPendingChangeArray and GetFirewallPendingChangeArrayOutput values.
 // You can construct a concrete instance of `GetFirewallPendingChangeArrayInput` via:
 //
-//          GetFirewallPendingChangeArray{ GetFirewallPendingChangeArgs{...} }
+//	GetFirewallPendingChangeArray{ GetFirewallPendingChangeArgs{...} }
 type GetFirewallPendingChangeArrayInput interface {
 	pulumi.Input
 
@@ -25197,7 +25197,7 @@ type GetImagesFilter struct {
 // GetImagesFilterInput is an input type that accepts GetImagesFilterArgs and GetImagesFilterOutput values.
 // You can construct a concrete instance of `GetImagesFilterInput` via:
 //
-//          GetImagesFilterArgs{...}
+//	GetImagesFilterArgs{...}
 type GetImagesFilterInput interface {
 	pulumi.Input
 
@@ -25238,7 +25238,7 @@ func (i GetImagesFilterArgs) ToGetImagesFilterOutputWithContext(ctx context.Cont
 // GetImagesFilterArrayInput is an input type that accepts GetImagesFilterArray and GetImagesFilterArrayOutput values.
 // You can construct a concrete instance of `GetImagesFilterArrayInput` via:
 //
-//          GetImagesFilterArray{ GetImagesFilterArgs{...} }
+//	GetImagesFilterArray{ GetImagesFilterArgs{...} }
 type GetImagesFilterArrayInput interface {
 	pulumi.Input
 
@@ -25354,7 +25354,7 @@ type GetImagesImage struct {
 // GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
 // You can construct a concrete instance of `GetImagesImageInput` via:
 //
-//          GetImagesImageArgs{...}
+//	GetImagesImageArgs{...}
 type GetImagesImageInput interface {
 	pulumi.Input
 
@@ -25407,7 +25407,7 @@ func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Contex
 // GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
 // You can construct a concrete instance of `GetImagesImageArrayInput` via:
 //
-//          GetImagesImageArray{ GetImagesImageArgs{...} }
+//	GetImagesImageArray{ GetImagesImageArgs{...} }
 type GetImagesImageArrayInput interface {
 	pulumi.Input
 
@@ -25546,7 +25546,7 @@ type GetImagesSort struct {
 // GetImagesSortInput is an input type that accepts GetImagesSortArgs and GetImagesSortOutput values.
 // You can construct a concrete instance of `GetImagesSortInput` via:
 //
-//          GetImagesSortArgs{...}
+//	GetImagesSortArgs{...}
 type GetImagesSortInput interface {
 	pulumi.Input
 
@@ -25577,7 +25577,7 @@ func (i GetImagesSortArgs) ToGetImagesSortOutputWithContext(ctx context.Context)
 // GetImagesSortArrayInput is an input type that accepts GetImagesSortArray and GetImagesSortArrayOutput values.
 // You can construct a concrete instance of `GetImagesSortArrayInput` via:
 //
-//          GetImagesSortArray{ GetImagesSortArgs{...} }
+//	GetImagesSortArray{ GetImagesSortArgs{...} }
 type GetImagesSortArrayInput interface {
 	pulumi.Input
 
@@ -25664,7 +25664,7 @@ type GetKubernetesClusterKubeConfig struct {
 // GetKubernetesClusterKubeConfigInput is an input type that accepts GetKubernetesClusterKubeConfigArgs and GetKubernetesClusterKubeConfigOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterKubeConfigInput` via:
 //
-//          GetKubernetesClusterKubeConfigArgs{...}
+//	GetKubernetesClusterKubeConfigArgs{...}
 type GetKubernetesClusterKubeConfigInput interface {
 	pulumi.Input
 
@@ -25704,7 +25704,7 @@ func (i GetKubernetesClusterKubeConfigArgs) ToGetKubernetesClusterKubeConfigOutp
 // GetKubernetesClusterKubeConfigArrayInput is an input type that accepts GetKubernetesClusterKubeConfigArray and GetKubernetesClusterKubeConfigArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterKubeConfigArrayInput` via:
 //
-//          GetKubernetesClusterKubeConfigArray{ GetKubernetesClusterKubeConfigArgs{...} }
+//	GetKubernetesClusterKubeConfigArray{ GetKubernetesClusterKubeConfigArgs{...} }
 type GetKubernetesClusterKubeConfigArrayInput interface {
 	pulumi.Input
 
@@ -25807,7 +25807,7 @@ type GetKubernetesClusterMaintenancePolicy struct {
 // GetKubernetesClusterMaintenancePolicyInput is an input type that accepts GetKubernetesClusterMaintenancePolicyArgs and GetKubernetesClusterMaintenancePolicyOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterMaintenancePolicyInput` via:
 //
-//          GetKubernetesClusterMaintenancePolicyArgs{...}
+//	GetKubernetesClusterMaintenancePolicyArgs{...}
 type GetKubernetesClusterMaintenancePolicyInput interface {
 	pulumi.Input
 
@@ -25839,7 +25839,7 @@ func (i GetKubernetesClusterMaintenancePolicyArgs) ToGetKubernetesClusterMainten
 // GetKubernetesClusterMaintenancePolicyArrayInput is an input type that accepts GetKubernetesClusterMaintenancePolicyArray and GetKubernetesClusterMaintenancePolicyArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterMaintenancePolicyArrayInput` via:
 //
-//          GetKubernetesClusterMaintenancePolicyArray{ GetKubernetesClusterMaintenancePolicyArgs{...} }
+//	GetKubernetesClusterMaintenancePolicyArray{ GetKubernetesClusterMaintenancePolicyArgs{...} }
 type GetKubernetesClusterMaintenancePolicyArrayInput interface {
 	pulumi.Input
 
@@ -25940,7 +25940,7 @@ type GetKubernetesClusterNodePool struct {
 // GetKubernetesClusterNodePoolInput is an input type that accepts GetKubernetesClusterNodePoolArgs and GetKubernetesClusterNodePoolOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterNodePoolInput` via:
 //
-//          GetKubernetesClusterNodePoolArgs{...}
+//	GetKubernetesClusterNodePoolArgs{...}
 type GetKubernetesClusterNodePoolInput interface {
 	pulumi.Input
 
@@ -25990,7 +25990,7 @@ func (i GetKubernetesClusterNodePoolArgs) ToGetKubernetesClusterNodePoolOutputWi
 // GetKubernetesClusterNodePoolArrayInput is an input type that accepts GetKubernetesClusterNodePoolArray and GetKubernetesClusterNodePoolArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterNodePoolArrayInput` via:
 //
-//          GetKubernetesClusterNodePoolArray{ GetKubernetesClusterNodePoolArgs{...} }
+//	GetKubernetesClusterNodePoolArray{ GetKubernetesClusterNodePoolArgs{...} }
 type GetKubernetesClusterNodePoolArrayInput interface {
 	pulumi.Input
 
@@ -26123,7 +26123,7 @@ type GetKubernetesClusterNodePoolNode struct {
 // GetKubernetesClusterNodePoolNodeInput is an input type that accepts GetKubernetesClusterNodePoolNodeArgs and GetKubernetesClusterNodePoolNodeOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterNodePoolNodeInput` via:
 //
-//          GetKubernetesClusterNodePoolNodeArgs{...}
+//	GetKubernetesClusterNodePoolNodeArgs{...}
 type GetKubernetesClusterNodePoolNodeInput interface {
 	pulumi.Input
 
@@ -26160,7 +26160,7 @@ func (i GetKubernetesClusterNodePoolNodeArgs) ToGetKubernetesClusterNodePoolNode
 // GetKubernetesClusterNodePoolNodeArrayInput is an input type that accepts GetKubernetesClusterNodePoolNodeArray and GetKubernetesClusterNodePoolNodeArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterNodePoolNodeArrayInput` via:
 //
-//          GetKubernetesClusterNodePoolNodeArray{ GetKubernetesClusterNodePoolNodeArgs{...} }
+//	GetKubernetesClusterNodePoolNodeArray{ GetKubernetesClusterNodePoolNodeArgs{...} }
 type GetKubernetesClusterNodePoolNodeArrayInput interface {
 	pulumi.Input
 
@@ -26257,7 +26257,7 @@ type GetKubernetesClusterNodePoolTaint struct {
 // GetKubernetesClusterNodePoolTaintInput is an input type that accepts GetKubernetesClusterNodePoolTaintArgs and GetKubernetesClusterNodePoolTaintOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterNodePoolTaintInput` via:
 //
-//          GetKubernetesClusterNodePoolTaintArgs{...}
+//	GetKubernetesClusterNodePoolTaintArgs{...}
 type GetKubernetesClusterNodePoolTaintInput interface {
 	pulumi.Input
 
@@ -26289,7 +26289,7 @@ func (i GetKubernetesClusterNodePoolTaintArgs) ToGetKubernetesClusterNodePoolTai
 // GetKubernetesClusterNodePoolTaintArrayInput is an input type that accepts GetKubernetesClusterNodePoolTaintArray and GetKubernetesClusterNodePoolTaintArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClusterNodePoolTaintArrayInput` via:
 //
-//          GetKubernetesClusterNodePoolTaintArray{ GetKubernetesClusterNodePoolTaintArgs{...} }
+//	GetKubernetesClusterNodePoolTaintArray{ GetKubernetesClusterNodePoolTaintArgs{...} }
 type GetKubernetesClusterNodePoolTaintArrayInput interface {
 	pulumi.Input
 
@@ -26373,7 +26373,7 @@ type GetLoadBalancerForwardingRule struct {
 // GetLoadBalancerForwardingRuleInput is an input type that accepts GetLoadBalancerForwardingRuleArgs and GetLoadBalancerForwardingRuleOutput values.
 // You can construct a concrete instance of `GetLoadBalancerForwardingRuleInput` via:
 //
-//          GetLoadBalancerForwardingRuleArgs{...}
+//	GetLoadBalancerForwardingRuleArgs{...}
 type GetLoadBalancerForwardingRuleInput interface {
 	pulumi.Input
 
@@ -26406,7 +26406,7 @@ func (i GetLoadBalancerForwardingRuleArgs) ToGetLoadBalancerForwardingRuleOutput
 // GetLoadBalancerForwardingRuleArrayInput is an input type that accepts GetLoadBalancerForwardingRuleArray and GetLoadBalancerForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancerForwardingRuleArrayInput` via:
 //
-//          GetLoadBalancerForwardingRuleArray{ GetLoadBalancerForwardingRuleArgs{...} }
+//	GetLoadBalancerForwardingRuleArray{ GetLoadBalancerForwardingRuleArgs{...} }
 type GetLoadBalancerForwardingRuleArrayInput interface {
 	pulumi.Input
 
@@ -26503,7 +26503,7 @@ type GetLoadBalancerHealthcheck struct {
 // GetLoadBalancerHealthcheckInput is an input type that accepts GetLoadBalancerHealthcheckArgs and GetLoadBalancerHealthcheckOutput values.
 // You can construct a concrete instance of `GetLoadBalancerHealthcheckInput` via:
 //
-//          GetLoadBalancerHealthcheckArgs{...}
+//	GetLoadBalancerHealthcheckArgs{...}
 type GetLoadBalancerHealthcheckInput interface {
 	pulumi.Input
 
@@ -26536,7 +26536,7 @@ func (i GetLoadBalancerHealthcheckArgs) ToGetLoadBalancerHealthcheckOutputWithCo
 // GetLoadBalancerHealthcheckArrayInput is an input type that accepts GetLoadBalancerHealthcheckArray and GetLoadBalancerHealthcheckArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancerHealthcheckArrayInput` via:
 //
-//          GetLoadBalancerHealthcheckArray{ GetLoadBalancerHealthcheckArgs{...} }
+//	GetLoadBalancerHealthcheckArray{ GetLoadBalancerHealthcheckArgs{...} }
 type GetLoadBalancerHealthcheckArrayInput interface {
 	pulumi.Input
 
@@ -26629,7 +26629,7 @@ type GetLoadBalancerStickySession struct {
 // GetLoadBalancerStickySessionInput is an input type that accepts GetLoadBalancerStickySessionArgs and GetLoadBalancerStickySessionOutput values.
 // You can construct a concrete instance of `GetLoadBalancerStickySessionInput` via:
 //
-//          GetLoadBalancerStickySessionArgs{...}
+//	GetLoadBalancerStickySessionArgs{...}
 type GetLoadBalancerStickySessionInput interface {
 	pulumi.Input
 
@@ -26658,7 +26658,7 @@ func (i GetLoadBalancerStickySessionArgs) ToGetLoadBalancerStickySessionOutputWi
 // GetLoadBalancerStickySessionArrayInput is an input type that accepts GetLoadBalancerStickySessionArray and GetLoadBalancerStickySessionArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancerStickySessionArrayInput` via:
 //
-//          GetLoadBalancerStickySessionArray{ GetLoadBalancerStickySessionArgs{...} }
+//	GetLoadBalancerStickySessionArray{ GetLoadBalancerStickySessionArgs{...} }
 type GetLoadBalancerStickySessionArrayInput interface {
 	pulumi.Input
 
@@ -26746,7 +26746,7 @@ type GetProjectsFilter struct {
 // GetProjectsFilterInput is an input type that accepts GetProjectsFilterArgs and GetProjectsFilterOutput values.
 // You can construct a concrete instance of `GetProjectsFilterInput` via:
 //
-//          GetProjectsFilterArgs{...}
+//	GetProjectsFilterArgs{...}
 type GetProjectsFilterInput interface {
 	pulumi.Input
 
@@ -26786,7 +26786,7 @@ func (i GetProjectsFilterArgs) ToGetProjectsFilterOutputWithContext(ctx context.
 // GetProjectsFilterArrayInput is an input type that accepts GetProjectsFilterArray and GetProjectsFilterArrayOutput values.
 // You can construct a concrete instance of `GetProjectsFilterArrayInput` via:
 //
-//          GetProjectsFilterArray{ GetProjectsFilterArgs{...} }
+//	GetProjectsFilterArray{ GetProjectsFilterArgs{...} }
 type GetProjectsFilterArrayInput interface {
 	pulumi.Input
 
@@ -26895,7 +26895,7 @@ type GetProjectsProject struct {
 // GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
 // You can construct a concrete instance of `GetProjectsProjectInput` via:
 //
-//          GetProjectsProjectArgs{...}
+//	GetProjectsProjectArgs{...}
 type GetProjectsProjectInput interface {
 	pulumi.Input
 
@@ -26942,7 +26942,7 @@ func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx contex
 // GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
 // You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
 //
-//          GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
+//	GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
 type GetProjectsProjectArrayInput interface {
 	pulumi.Input
 
@@ -27063,7 +27063,7 @@ type GetProjectsSort struct {
 // GetProjectsSortInput is an input type that accepts GetProjectsSortArgs and GetProjectsSortOutput values.
 // You can construct a concrete instance of `GetProjectsSortInput` via:
 //
-//          GetProjectsSortArgs{...}
+//	GetProjectsSortArgs{...}
 type GetProjectsSortInput interface {
 	pulumi.Input
 
@@ -27094,7 +27094,7 @@ func (i GetProjectsSortArgs) ToGetProjectsSortOutputWithContext(ctx context.Cont
 // GetProjectsSortArrayInput is an input type that accepts GetProjectsSortArray and GetProjectsSortArrayOutput values.
 // You can construct a concrete instance of `GetProjectsSortArrayInput` via:
 //
-//          GetProjectsSortArray{ GetProjectsSortArgs{...} }
+//	GetProjectsSortArray{ GetProjectsSortArgs{...} }
 type GetProjectsSortArrayInput interface {
 	pulumi.Input
 
@@ -27181,7 +27181,7 @@ type GetRecordsFilter struct {
 // GetRecordsFilterInput is an input type that accepts GetRecordsFilterArgs and GetRecordsFilterOutput values.
 // You can construct a concrete instance of `GetRecordsFilterInput` via:
 //
-//          GetRecordsFilterArgs{...}
+//	GetRecordsFilterArgs{...}
 type GetRecordsFilterInput interface {
 	pulumi.Input
 
@@ -27221,7 +27221,7 @@ func (i GetRecordsFilterArgs) ToGetRecordsFilterOutputWithContext(ctx context.Co
 // GetRecordsFilterArrayInput is an input type that accepts GetRecordsFilterArray and GetRecordsFilterArrayOutput values.
 // You can construct a concrete instance of `GetRecordsFilterArrayInput` via:
 //
-//          GetRecordsFilterArray{ GetRecordsFilterArgs{...} }
+//	GetRecordsFilterArray{ GetRecordsFilterArgs{...} }
 type GetRecordsFilterArrayInput interface {
 	pulumi.Input
 
@@ -27321,7 +27321,7 @@ type GetRecordsRecord struct {
 // GetRecordsRecordInput is an input type that accepts GetRecordsRecordArgs and GetRecordsRecordOutput values.
 // You can construct a concrete instance of `GetRecordsRecordInput` via:
 //
-//          GetRecordsRecordArgs{...}
+//	GetRecordsRecordArgs{...}
 type GetRecordsRecordInput interface {
 	pulumi.Input
 
@@ -27359,7 +27359,7 @@ func (i GetRecordsRecordArgs) ToGetRecordsRecordOutputWithContext(ctx context.Co
 // GetRecordsRecordArrayInput is an input type that accepts GetRecordsRecordArray and GetRecordsRecordArrayOutput values.
 // You can construct a concrete instance of `GetRecordsRecordArrayInput` via:
 //
-//          GetRecordsRecordArray{ GetRecordsRecordArgs{...} }
+//	GetRecordsRecordArray{ GetRecordsRecordArgs{...} }
 type GetRecordsRecordArrayInput interface {
 	pulumi.Input
 
@@ -27471,7 +27471,7 @@ type GetRecordsSort struct {
 // GetRecordsSortInput is an input type that accepts GetRecordsSortArgs and GetRecordsSortOutput values.
 // You can construct a concrete instance of `GetRecordsSortInput` via:
 //
-//          GetRecordsSortArgs{...}
+//	GetRecordsSortArgs{...}
 type GetRecordsSortInput interface {
 	pulumi.Input
 
@@ -27502,7 +27502,7 @@ func (i GetRecordsSortArgs) ToGetRecordsSortOutputWithContext(ctx context.Contex
 // GetRecordsSortArrayInput is an input type that accepts GetRecordsSortArray and GetRecordsSortArrayOutput values.
 // You can construct a concrete instance of `GetRecordsSortArrayInput` via:
 //
-//          GetRecordsSortArray{ GetRecordsSortArgs{...} }
+//	GetRecordsSortArray{ GetRecordsSortArgs{...} }
 type GetRecordsSortArrayInput interface {
 	pulumi.Input
 
@@ -27589,7 +27589,7 @@ type GetRegionsFilter struct {
 // GetRegionsFilterInput is an input type that accepts GetRegionsFilterArgs and GetRegionsFilterOutput values.
 // You can construct a concrete instance of `GetRegionsFilterInput` via:
 //
-//          GetRegionsFilterArgs{...}
+//	GetRegionsFilterArgs{...}
 type GetRegionsFilterInput interface {
 	pulumi.Input
 
@@ -27629,7 +27629,7 @@ func (i GetRegionsFilterArgs) ToGetRegionsFilterOutputWithContext(ctx context.Co
 // GetRegionsFilterArrayInput is an input type that accepts GetRegionsFilterArray and GetRegionsFilterArrayOutput values.
 // You can construct a concrete instance of `GetRegionsFilterArrayInput` via:
 //
-//          GetRegionsFilterArray{ GetRegionsFilterArgs{...} }
+//	GetRegionsFilterArray{ GetRegionsFilterArgs{...} }
 type GetRegionsFilterArrayInput interface {
 	pulumi.Input
 
@@ -27727,7 +27727,7 @@ type GetRegionsRegion struct {
 // GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
 // You can construct a concrete instance of `GetRegionsRegionInput` via:
 //
-//          GetRegionsRegionArgs{...}
+//	GetRegionsRegionArgs{...}
 type GetRegionsRegionInput interface {
 	pulumi.Input
 
@@ -27763,7 +27763,7 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
-//          GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
+//	GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
 type GetRegionsRegionArrayInput interface {
 	pulumi.Input
 
@@ -27855,7 +27855,7 @@ type GetRegionsSort struct {
 // GetRegionsSortInput is an input type that accepts GetRegionsSortArgs and GetRegionsSortOutput values.
 // You can construct a concrete instance of `GetRegionsSortInput` via:
 //
-//          GetRegionsSortArgs{...}
+//	GetRegionsSortArgs{...}
 type GetRegionsSortInput interface {
 	pulumi.Input
 
@@ -27886,7 +27886,7 @@ func (i GetRegionsSortArgs) ToGetRegionsSortOutputWithContext(ctx context.Contex
 // GetRegionsSortArrayInput is an input type that accepts GetRegionsSortArray and GetRegionsSortArrayOutput values.
 // You can construct a concrete instance of `GetRegionsSortArrayInput` via:
 //
-//          GetRegionsSortArray{ GetRegionsSortArgs{...} }
+//	GetRegionsSortArray{ GetRegionsSortArgs{...} }
 type GetRegionsSortArrayInput interface {
 	pulumi.Input
 
@@ -27974,7 +27974,7 @@ type GetSizesFilter struct {
 // GetSizesFilterInput is an input type that accepts GetSizesFilterArgs and GetSizesFilterOutput values.
 // You can construct a concrete instance of `GetSizesFilterInput` via:
 //
-//          GetSizesFilterArgs{...}
+//	GetSizesFilterArgs{...}
 type GetSizesFilterInput interface {
 	pulumi.Input
 
@@ -28015,7 +28015,7 @@ func (i GetSizesFilterArgs) ToGetSizesFilterOutputWithContext(ctx context.Contex
 // GetSizesFilterArrayInput is an input type that accepts GetSizesFilterArray and GetSizesFilterArrayOutput values.
 // You can construct a concrete instance of `GetSizesFilterArrayInput` via:
 //
-//          GetSizesFilterArray{ GetSizesFilterArgs{...} }
+//	GetSizesFilterArray{ GetSizesFilterArgs{...} }
 type GetSizesFilterArrayInput interface {
 	pulumi.Input
 
@@ -28122,7 +28122,7 @@ type GetSizesSize struct {
 // GetSizesSizeInput is an input type that accepts GetSizesSizeArgs and GetSizesSizeOutput values.
 // You can construct a concrete instance of `GetSizesSizeInput` via:
 //
-//          GetSizesSizeArgs{...}
+//	GetSizesSizeArgs{...}
 type GetSizesSizeInput interface {
 	pulumi.Input
 
@@ -28166,7 +28166,7 @@ func (i GetSizesSizeArgs) ToGetSizesSizeOutputWithContext(ctx context.Context) G
 // GetSizesSizeArrayInput is an input type that accepts GetSizesSizeArray and GetSizesSizeArrayOutput values.
 // You can construct a concrete instance of `GetSizesSizeArrayInput` via:
 //
-//          GetSizesSizeArray{ GetSizesSizeArgs{...} }
+//	GetSizesSizeArray{ GetSizesSizeArgs{...} }
 type GetSizesSizeArrayInput interface {
 	pulumi.Input
 
@@ -28278,7 +28278,7 @@ type GetSizesSort struct {
 // GetSizesSortInput is an input type that accepts GetSizesSortArgs and GetSizesSortOutput values.
 // You can construct a concrete instance of `GetSizesSortInput` via:
 //
-//          GetSizesSortArgs{...}
+//	GetSizesSortArgs{...}
 type GetSizesSortInput interface {
 	pulumi.Input
 
@@ -28309,7 +28309,7 @@ func (i GetSizesSortArgs) ToGetSizesSortOutputWithContext(ctx context.Context) G
 // GetSizesSortArrayInput is an input type that accepts GetSizesSortArray and GetSizesSortArrayOutput values.
 // You can construct a concrete instance of `GetSizesSortArrayInput` via:
 //
-//          GetSizesSortArray{ GetSizesSortArgs{...} }
+//	GetSizesSortArray{ GetSizesSortArgs{...} }
 type GetSizesSortArrayInput interface {
 	pulumi.Input
 
@@ -28390,7 +28390,7 @@ type GetSpacesBucketsBucket struct {
 // GetSpacesBucketsBucketInput is an input type that accepts GetSpacesBucketsBucketArgs and GetSpacesBucketsBucketOutput values.
 // You can construct a concrete instance of `GetSpacesBucketsBucketInput` via:
 //
-//          GetSpacesBucketsBucketArgs{...}
+//	GetSpacesBucketsBucketArgs{...}
 type GetSpacesBucketsBucketInput interface {
 	pulumi.Input
 
@@ -28424,7 +28424,7 @@ func (i GetSpacesBucketsBucketArgs) ToGetSpacesBucketsBucketOutputWithContext(ct
 // GetSpacesBucketsBucketArrayInput is an input type that accepts GetSpacesBucketsBucketArray and GetSpacesBucketsBucketArrayOutput values.
 // You can construct a concrete instance of `GetSpacesBucketsBucketArrayInput` via:
 //
-//          GetSpacesBucketsBucketArray{ GetSpacesBucketsBucketArgs{...} }
+//	GetSpacesBucketsBucketArray{ GetSpacesBucketsBucketArgs{...} }
 type GetSpacesBucketsBucketArrayInput interface {
 	pulumi.Input
 
@@ -28519,7 +28519,7 @@ type GetSpacesBucketsFilter struct {
 // GetSpacesBucketsFilterInput is an input type that accepts GetSpacesBucketsFilterArgs and GetSpacesBucketsFilterOutput values.
 // You can construct a concrete instance of `GetSpacesBucketsFilterInput` via:
 //
-//          GetSpacesBucketsFilterArgs{...}
+//	GetSpacesBucketsFilterArgs{...}
 type GetSpacesBucketsFilterInput interface {
 	pulumi.Input
 
@@ -28558,7 +28558,7 @@ func (i GetSpacesBucketsFilterArgs) ToGetSpacesBucketsFilterOutputWithContext(ct
 // GetSpacesBucketsFilterArrayInput is an input type that accepts GetSpacesBucketsFilterArray and GetSpacesBucketsFilterArrayOutput values.
 // You can construct a concrete instance of `GetSpacesBucketsFilterArrayInput` via:
 //
-//          GetSpacesBucketsFilterArray{ GetSpacesBucketsFilterArgs{...} }
+//	GetSpacesBucketsFilterArray{ GetSpacesBucketsFilterArgs{...} }
 type GetSpacesBucketsFilterArrayInput interface {
 	pulumi.Input
 
@@ -28649,7 +28649,7 @@ type GetSpacesBucketsSort struct {
 // GetSpacesBucketsSortInput is an input type that accepts GetSpacesBucketsSortArgs and GetSpacesBucketsSortOutput values.
 // You can construct a concrete instance of `GetSpacesBucketsSortInput` via:
 //
-//          GetSpacesBucketsSortArgs{...}
+//	GetSpacesBucketsSortArgs{...}
 type GetSpacesBucketsSortInput interface {
 	pulumi.Input
 
@@ -28679,7 +28679,7 @@ func (i GetSpacesBucketsSortArgs) ToGetSpacesBucketsSortOutputWithContext(ctx co
 // GetSpacesBucketsSortArrayInput is an input type that accepts GetSpacesBucketsSortArray and GetSpacesBucketsSortArrayOutput values.
 // You can construct a concrete instance of `GetSpacesBucketsSortArrayInput` via:
 //
-//          GetSpacesBucketsSortArray{ GetSpacesBucketsSortArgs{...} }
+//	GetSpacesBucketsSortArray{ GetSpacesBucketsSortArgs{...} }
 type GetSpacesBucketsSortArrayInput interface {
 	pulumi.Input
 
@@ -28757,7 +28757,7 @@ type GetSshKeysFilter struct {
 // GetSshKeysFilterInput is an input type that accepts GetSshKeysFilterArgs and GetSshKeysFilterOutput values.
 // You can construct a concrete instance of `GetSshKeysFilterInput` via:
 //
-//          GetSshKeysFilterArgs{...}
+//	GetSshKeysFilterArgs{...}
 type GetSshKeysFilterInput interface {
 	pulumi.Input
 
@@ -28789,7 +28789,7 @@ func (i GetSshKeysFilterArgs) ToGetSshKeysFilterOutputWithContext(ctx context.Co
 // GetSshKeysFilterArrayInput is an input type that accepts GetSshKeysFilterArray and GetSshKeysFilterArrayOutput values.
 // You can construct a concrete instance of `GetSshKeysFilterArrayInput` via:
 //
-//          GetSshKeysFilterArray{ GetSshKeysFilterArgs{...} }
+//	GetSshKeysFilterArray{ GetSshKeysFilterArgs{...} }
 type GetSshKeysFilterArrayInput interface {
 	pulumi.Input
 
@@ -28873,7 +28873,7 @@ type GetSshKeysSort struct {
 // GetSshKeysSortInput is an input type that accepts GetSshKeysSortArgs and GetSshKeysSortOutput values.
 // You can construct a concrete instance of `GetSshKeysSortInput` via:
 //
-//          GetSshKeysSortArgs{...}
+//	GetSshKeysSortArgs{...}
 type GetSshKeysSortInput interface {
 	pulumi.Input
 
@@ -28903,7 +28903,7 @@ func (i GetSshKeysSortArgs) ToGetSshKeysSortOutputWithContext(ctx context.Contex
 // GetSshKeysSortArrayInput is an input type that accepts GetSshKeysSortArray and GetSshKeysSortArrayOutput values.
 // You can construct a concrete instance of `GetSshKeysSortArrayInput` via:
 //
-//          GetSshKeysSortArray{ GetSshKeysSortArgs{...} }
+//	GetSshKeysSortArray{ GetSshKeysSortArgs{...} }
 type GetSshKeysSortArrayInput interface {
 	pulumi.Input
 
@@ -28983,7 +28983,7 @@ type GetSshKeysSshKey struct {
 // GetSshKeysSshKeyInput is an input type that accepts GetSshKeysSshKeyArgs and GetSshKeysSshKeyOutput values.
 // You can construct a concrete instance of `GetSshKeysSshKeyInput` via:
 //
-//          GetSshKeysSshKeyArgs{...}
+//	GetSshKeysSshKeyArgs{...}
 type GetSshKeysSshKeyInput interface {
 	pulumi.Input
 
@@ -29017,7 +29017,7 @@ func (i GetSshKeysSshKeyArgs) ToGetSshKeysSshKeyOutputWithContext(ctx context.Co
 // GetSshKeysSshKeyArrayInput is an input type that accepts GetSshKeysSshKeyArray and GetSshKeysSshKeyArrayOutput values.
 // You can construct a concrete instance of `GetSshKeysSshKeyArrayInput` via:
 //
-//          GetSshKeysSshKeyArray{ GetSshKeysSshKeyArgs{...} }
+//	GetSshKeysSshKeyArray{ GetSshKeysSshKeyArgs{...} }
 type GetSshKeysSshKeyArrayInput interface {
 	pulumi.Input
 
@@ -29112,7 +29112,7 @@ type GetTagsFilter struct {
 // GetTagsFilterInput is an input type that accepts GetTagsFilterArgs and GetTagsFilterOutput values.
 // You can construct a concrete instance of `GetTagsFilterInput` via:
 //
-//          GetTagsFilterArgs{...}
+//	GetTagsFilterArgs{...}
 type GetTagsFilterInput interface {
 	pulumi.Input
 
@@ -29151,7 +29151,7 @@ func (i GetTagsFilterArgs) ToGetTagsFilterOutputWithContext(ctx context.Context)
 // GetTagsFilterArrayInput is an input type that accepts GetTagsFilterArray and GetTagsFilterArrayOutput values.
 // You can construct a concrete instance of `GetTagsFilterArrayInput` via:
 //
-//          GetTagsFilterArray{ GetTagsFilterArgs{...} }
+//	GetTagsFilterArray{ GetTagsFilterArgs{...} }
 type GetTagsFilterArrayInput interface {
 	pulumi.Input
 
@@ -29242,7 +29242,7 @@ type GetTagsSort struct {
 // GetTagsSortInput is an input type that accepts GetTagsSortArgs and GetTagsSortOutput values.
 // You can construct a concrete instance of `GetTagsSortInput` via:
 //
-//          GetTagsSortArgs{...}
+//	GetTagsSortArgs{...}
 type GetTagsSortInput interface {
 	pulumi.Input
 
@@ -29272,7 +29272,7 @@ func (i GetTagsSortArgs) ToGetTagsSortOutputWithContext(ctx context.Context) Get
 // GetTagsSortArrayInput is an input type that accepts GetTagsSortArray and GetTagsSortArrayOutput values.
 // You can construct a concrete instance of `GetTagsSortArrayInput` via:
 //
-//          GetTagsSortArray{ GetTagsSortArgs{...} }
+//	GetTagsSortArray{ GetTagsSortArgs{...} }
 type GetTagsSortArrayInput interface {
 	pulumi.Input
 
@@ -29358,7 +29358,7 @@ type GetTagsTag struct {
 // GetTagsTagInput is an input type that accepts GetTagsTagArgs and GetTagsTagOutput values.
 // You can construct a concrete instance of `GetTagsTagInput` via:
 //
-//          GetTagsTagArgs{...}
+//	GetTagsTagArgs{...}
 type GetTagsTagInput interface {
 	pulumi.Input
 
@@ -29398,7 +29398,7 @@ func (i GetTagsTagArgs) ToGetTagsTagOutputWithContext(ctx context.Context) GetTa
 // GetTagsTagArrayInput is an input type that accepts GetTagsTagArray and GetTagsTagArrayOutput values.
 // You can construct a concrete instance of `GetTagsTagArrayInput` via:
 //
-//          GetTagsTagArray{ GetTagsTagArgs{...} }
+//	GetTagsTagArray{ GetTagsTagArgs{...} }
 type GetTagsTagArrayInput interface {
 	pulumi.Input
 

@@ -23,49 +23,46 @@ namespace Pulumi.DigitalOcean
         /// Get the volume snapshot:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
         ///     {
-        ///         var snapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
-        ///         {
-        ///             MostRecent = true,
-        ///             NameRegex = "^web",
-        ///             Region = "nyc3",
-        ///         }));
-        ///     }
+        ///         MostRecent = true,
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Reuse the data about a volume snapshot to create a new volume based on it:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
         ///     {
-        ///         var snapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
-        ///         {
-        ///             NameRegex = "^web",
-        ///             Region = "nyc3",
-        ///             MostRecent = true,
-        ///         }));
-        ///         var foobar = new DigitalOcean.Volume("foobar", new DigitalOcean.VolumeArgs
-        ///         {
-        ///             Region = "nyc3",
-        ///             Size = 100,
-        ///             SnapshotId = snapshot.Apply(snapshot =&gt; snapshot.Id),
-        ///         });
-        ///     }
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///         MostRecent = true,
+        ///     });
         /// 
-        /// }
+        ///     var foobar = new DigitalOcean.Volume("foobar", new()
+        ///     {
+        ///         Region = "nyc3",
+        ///         Size = 100,
+        ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,49 +82,46 @@ namespace Pulumi.DigitalOcean
         /// Get the volume snapshot:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
         ///     {
-        ///         var snapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
-        ///         {
-        ///             MostRecent = true,
-        ///             NameRegex = "^web",
-        ///             Region = "nyc3",
-        ///         }));
-        ///     }
+        ///         MostRecent = true,
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Reuse the data about a volume snapshot to create a new volume based on it:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
         ///     {
-        ///         var snapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
-        ///         {
-        ///             NameRegex = "^web",
-        ///             Region = "nyc3",
-        ///             MostRecent = true,
-        ///         }));
-        ///         var foobar = new DigitalOcean.Volume("foobar", new DigitalOcean.VolumeArgs
-        ///         {
-        ///             Region = "nyc3",
-        ///             Size = 100,
-        ///             SnapshotId = snapshot.Apply(snapshot =&gt; snapshot.Id),
-        ///         });
-        ///     }
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///         MostRecent = true,
+        ///     });
         /// 
-        /// }
+        ///     var foobar = new DigitalOcean.Volume("foobar", new()
+        ///     {
+        ///         Region = "nyc3",
+        ///         Size = 100,
+        ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -137,7 +131,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetVolumeSnapshotArgs : Pulumi.InvokeArgs
+    public sealed class GetVolumeSnapshotArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// If more than one result is returned, use the most recent volume snapshot.
@@ -166,9 +160,10 @@ namespace Pulumi.DigitalOcean
         public GetVolumeSnapshotArgs()
         {
         }
+        public static new GetVolumeSnapshotArgs Empty => new GetVolumeSnapshotArgs();
     }
 
-    public sealed class GetVolumeSnapshotInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVolumeSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// If more than one result is returned, use the most recent volume snapshot.
@@ -197,6 +192,7 @@ namespace Pulumi.DigitalOcean
         public GetVolumeSnapshotInvokeArgs()
         {
         }
+        public static new GetVolumeSnapshotInvokeArgs Empty => new GetVolumeSnapshotInvokeArgs();
     }
 
 

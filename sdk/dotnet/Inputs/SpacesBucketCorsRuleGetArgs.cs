@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class SpacesBucketCorsRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class SpacesBucketCorsRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedHeaders")]
         private InputList<string>? _allowedHeaders;
@@ -57,5 +57,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public SpacesBucketCorsRuleGetArgs()
         {
         }
+        public static new SpacesBucketCorsRuleGetArgs Empty => new SpacesBucketCorsRuleGetArgs();
     }
 }

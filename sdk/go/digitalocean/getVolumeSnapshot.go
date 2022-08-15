@@ -22,23 +22,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
-// 			MostRecent: pulumi.BoolRef(true),
-// 			NameRegex:  pulumi.StringRef("^web"),
-// 			Region:     pulumi.StringRef("nyc3"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
+//				MostRecent: pulumi.BoolRef(true),
+//				NameRegex:  pulumi.StringRef("^web"),
+//				Region:     pulumi.StringRef("nyc3"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Reuse the data about a volume snapshot to create a new volume based on it:
@@ -47,31 +50,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
-// 			NameRegex:  pulumi.StringRef("^web"),
-// 			Region:     pulumi.StringRef("nyc3"),
-// 			MostRecent: pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
-// 			Region:     pulumi.String("nyc3"),
-// 			Size:       pulumi.Int(100),
-// 			SnapshotId: pulumi.String(snapshot.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
+//				NameRegex:  pulumi.StringRef("^web"),
+//				Region:     pulumi.StringRef("nyc3"),
+//				MostRecent: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
+//				Region:     pulumi.String("nyc3"),
+//				Size:       pulumi.Int(100),
+//				SnapshotId: pulumi.String(snapshot.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupVolumeSnapshotResult, error) {
 	var rv LookupVolumeSnapshotResult

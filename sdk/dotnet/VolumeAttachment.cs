@@ -17,38 +17,38 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
     ///     {
-    ///         var foobarVolume = new DigitalOcean.Volume("foobarVolume", new DigitalOcean.VolumeArgs
-    ///         {
-    ///             Region = "nyc1",
-    ///             Size = 100,
-    ///             InitialFilesystemType = "ext4",
-    ///             Description = "an example volume",
-    ///         });
-    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc1",
-    ///         });
-    ///         var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new DigitalOcean.VolumeAttachmentArgs
-    ///         {
-    ///             DropletId = foobarDroplet.Id,
-    ///             VolumeId = foobarVolume.Id,
-    ///         });
-    ///     }
+    ///         Region = "nyc1",
+    ///         Size = 100,
+    ///         InitialFilesystemType = "ext4",
+    ///         Description = "an example volume",
+    ///     });
     /// 
-    /// }
+    ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc1",
+    ///     });
+    /// 
+    ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new()
+    ///     {
+    ///         DropletId = foobarDroplet.Id,
+    ///         VolumeId = foobarVolume.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/volumeAttachment:VolumeAttachment")]
-    public partial class VolumeAttachment : Pulumi.CustomResource
+    public partial class VolumeAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the Droplet to attach the volume to.
@@ -106,7 +106,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class VolumeAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class VolumeAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the Droplet to attach the volume to.
@@ -123,9 +123,10 @@ namespace Pulumi.DigitalOcean
         public VolumeAttachmentArgs()
         {
         }
+        public static new VolumeAttachmentArgs Empty => new VolumeAttachmentArgs();
     }
 
-    public sealed class VolumeAttachmentState : Pulumi.ResourceArgs
+    public sealed class VolumeAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the Droplet to attach the volume to.
@@ -142,5 +143,6 @@ namespace Pulumi.DigitalOcean
         public VolumeAttachmentState()
         {
         }
+        public static new VolumeAttachmentState Empty => new VolumeAttachmentState();
     }
 }

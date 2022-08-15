@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class SpacesBucketVersioningArgs : Pulumi.ResourceArgs
+    public sealed class SpacesBucketVersioningArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
@@ -22,5 +22,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public SpacesBucketVersioningArgs()
         {
         }
+        public static new SpacesBucketVersioningArgs Empty => new SpacesBucketVersioningArgs();
     }
 }
