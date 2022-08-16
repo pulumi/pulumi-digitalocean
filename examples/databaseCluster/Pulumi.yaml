@@ -1,3 +1,13 @@
 name: database-cluster-digitalocean
 description: A simple database cluster on DigitalOcean.
-runtime: nodejs
+runtime: yaml
+
+resources:
+  example:
+    type: digitalocean:DatabaseCluster
+    properties:
+      engine: pg
+      nodeCount: 1
+      region: nyc3
+      size: db-s-1vcpu-1gb
+      version: 11

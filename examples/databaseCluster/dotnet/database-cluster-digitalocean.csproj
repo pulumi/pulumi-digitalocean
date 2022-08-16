@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Pulumi" Version="3.*" />
+		<ProjectReference Include="/Users/hliuson/pulumi/pulumi-digitalocean/examples/databaseCluster/digitalocean-sdk/dotnet/Pulumi.DigitalOcean.csproj" />
+	</ItemGroup>
+
+</Project>

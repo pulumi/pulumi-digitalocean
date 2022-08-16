@@ -14,10 +14,45 @@ package examples
 
 import (
 	"os"
+	"path/filepath"
 	"testing"
 
-	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
+	i "github.com/pulumi/pulumi/pkg/v3/testing/integration"
+	"github.com/pulumi/pulumi/pkg/v3/testing/matrix"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/workspace"
 )
+
+func TestAll(t *testing.T) {
+	opts := []matrix.TestOptions{
+		opts(t, "databaseCluster"),
+	}
+
+	t.Parallel()
+	for _, o := range opts {
+		t.Run(o.Program.Dir, func(t *testing.T) {
+			t.Parallel()
+			matrix.Test(t, o)
+		})
+	}
+}
+
+func opts(t *testing.T, dir string) matrix.TestOptions {
+	o := getBaseOptions(t)
+	o = o.With(i.ProgramTestOptions{
+		Dir: filepath.Join(getCwd(t), dir),
+	})
+	return matrix.TestOptions{
+		Program:   &o,
+		Languages: allLanguages(),
+		Plugins: []matrix.PluginOptions{
+			{
+				Name: "digitalocean",
+				Kind: workspace.ResourcePlugin,
+				Bin:  "../../bin",
+			},
+		},
+	}
+}
 
 func checkDigitalOceanTokenSet(t *testing.T) {
 	token := os.Getenv("DIGITALOCEAN_TOKEN")
@@ -35,10 +70,31 @@ func getCwd(t *testing.T) string {
 	return cwd
 }
 
-func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+func getBaseOptions(t *testing.T) i.ProgramTestOptions {
 	checkDigitalOceanTokenSet(t)
-	return integration.ProgramTestOptions{
+	return i.ProgramTestOptions{
 		RunUpdateTest:        false, //temporarily skipping these since we have jsut changed the enum types
 		ExpectRefreshChanges: true,
+	}
+}
+
+func allLanguages() []matrix.LangTestOption {
+	return []matrix.LangTestOption{
+		{
+			Language: "go",
+			Opts:     nil,
+		},
+		{
+			Language: "python",
+			Opts:     nil,
+		},
+		{
+			Language: "nodejs",
+			Opts:     nil,
+		},
+		{
+			Language: "dotnet",
+			Opts:     nil,
+		},
 	}
 }

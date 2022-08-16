@@ -1,0 +1,11 @@
+{
+		"name": "database-cluster-digitalocean",
+		"devDependencies": {
+			"@types/node": "^14"
+		},
+		"dependencies": {
+			"typescript": "^4.0.0",
+			"@pulumi/pulumi": "^3.0.0",
+			"@pulumi/digitalocean": "file:/Users/hliuson/pulumi/pulumi-digitalocean/examples/databaseCluster/digitalocean-sdk/nodejs/bin"
+		}
+}
