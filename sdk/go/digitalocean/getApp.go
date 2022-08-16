@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupApp(ctx, &GetAppArgs{
-// 			AppId: "e665d18d-7b56-44a9-92ce-31979174d544",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("defaultIngress", example.DefaultIngress)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := digitalocean.LookupApp(ctx, &GetAppArgs{
+//				AppId: "e665d18d-7b56-44a9-92ce-31979174d544",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("defaultIngress", example.DefaultIngress)
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOption) (*LookupAppResult, error) {
 	var rv LookupAppResult
@@ -69,6 +72,8 @@ type LookupAppResult struct {
 	Specs []GetAppSpec `pulumi:"specs"`
 	// The date and time of when the app was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
+	// The uniform resource identifier for the app.
+	Urn string `pulumi:"urn"`
 }
 
 func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppResultOutput {
@@ -146,6 +151,11 @@ func (o LookupAppResultOutput) Specs() GetAppSpecArrayOutput {
 // The date and time of when the app was last updated.
 func (o LookupAppResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The uniform resource identifier for the app.
+func (o LookupAppResultOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetSshKeysSortInputArgs : Pulumi.ResourceArgs
+    public sealed class GetSshKeysSortInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
@@ -27,5 +27,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetSshKeysSortInputArgs()
         {
         }
+        public static new GetSshKeysSortInputArgs Empty => new GetSshKeysSortInputArgs();
     }
 }

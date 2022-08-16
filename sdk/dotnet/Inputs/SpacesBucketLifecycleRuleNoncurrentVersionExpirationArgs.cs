@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs : Pulumi.ResourceArgs
+    public sealed class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the number of days after which an object's non-current versions expire.
@@ -21,5 +21,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs()
         {
         }
+        public static new SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs Empty => new SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs();
     }
 }

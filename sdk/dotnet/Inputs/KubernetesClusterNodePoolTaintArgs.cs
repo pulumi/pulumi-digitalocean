@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class KubernetesClusterNodePoolTaintArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesClusterNodePoolTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
@@ -33,5 +33,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public KubernetesClusterNodePoolTaintArgs()
         {
         }
+        public static new KubernetesClusterNodePoolTaintArgs Empty => new KubernetesClusterNodePoolTaintArgs();
     }
 }

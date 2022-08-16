@@ -23,22 +23,46 @@ namespace Pulumi.DigitalOcean
         /// Get the Droplet snapshot:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
-        ///         var web_snapshot = Output.Create(DigitalOcean.GetDropletSnapshot.InvokeAsync(new DigitalOcean.GetDropletSnapshotArgs
-        ///         {
-        ///             MostRecent = true,
-        ///             NameRegex = "^web",
-        ///             Region = "nyc3",
-        ///         }));
-        ///     }
+        ///         MostRecent = true,
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        /// }
+        /// });
+        /// ```
+        /// 
+        /// Create image from snapshot:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
+        ///     {
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
+        ///     {
+        ///         Image = web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult).Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
+        ///         Region = "nyc3",
+        ///         Size = "s-2vcpu-4gb",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -58,22 +82,46 @@ namespace Pulumi.DigitalOcean
         /// Get the Droplet snapshot:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
-        ///         var web_snapshot = Output.Create(DigitalOcean.GetDropletSnapshot.InvokeAsync(new DigitalOcean.GetDropletSnapshotArgs
-        ///         {
-        ///             MostRecent = true,
-        ///             NameRegex = "^web",
-        ///             Region = "nyc3",
-        ///         }));
-        ///     }
+        ///         MostRecent = true,
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        /// }
+        /// });
+        /// ```
+        /// 
+        /// Create image from snapshot:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
+        ///     {
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
+        ///     {
+        ///         Image = web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult).Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
+        ///         Region = "nyc3",
+        ///         Size = "s-2vcpu-4gb",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -83,7 +131,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetDropletSnapshotArgs : Pulumi.InvokeArgs
+    public sealed class GetDropletSnapshotArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// If more than one result is returned, use the most recent Droplet snapshot.
@@ -112,9 +160,10 @@ namespace Pulumi.DigitalOcean
         public GetDropletSnapshotArgs()
         {
         }
+        public static new GetDropletSnapshotArgs Empty => new GetDropletSnapshotArgs();
     }
 
-    public sealed class GetDropletSnapshotInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDropletSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// If more than one result is returned, use the most recent Droplet snapshot.
@@ -143,6 +192,7 @@ namespace Pulumi.DigitalOcean
         public GetDropletSnapshotInvokeArgs()
         {
         }
+        public static new GetDropletSnapshotInvokeArgs Empty => new GetDropletSnapshotInvokeArgs();
     }
 
 

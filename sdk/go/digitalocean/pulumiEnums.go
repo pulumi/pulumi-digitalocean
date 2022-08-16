@@ -139,7 +139,7 @@ func (o AlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 // AlgorithmInput is an input type that accepts AlgorithmArgs and AlgorithmOutput values.
 // You can construct a concrete instance of `AlgorithmInput` via:
 //
-//          AlgorithmArgs{...}
+//	AlgorithmArgs{...}
 type AlgorithmInput interface {
 	pulumi.Input
 
@@ -303,7 +303,7 @@ func (o CertificateTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // CertificateTypeInput is an input type that accepts CertificateTypeArgs and CertificateTypeOutput values.
 // You can construct a concrete instance of `CertificateTypeInput` via:
 //
-//          CertificateTypeArgs{...}
+//	CertificateTypeArgs{...}
 type CertificateTypeInput interface {
 	pulumi.Input
 
@@ -472,7 +472,7 @@ func (o DatabaseSlugPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // DatabaseSlugInput is an input type that accepts DatabaseSlugArgs and DatabaseSlugOutput values.
 // You can construct a concrete instance of `DatabaseSlugInput` via:
 //
-//          DatabaseSlugArgs{...}
+//	DatabaseSlugArgs{...}
 type DatabaseSlugInput interface {
 	pulumi.Input
 
@@ -722,7 +722,7 @@ func (o DropletSlugPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // DropletSlugInput is an input type that accepts DropletSlugArgs and DropletSlugOutput values.
 // You can construct a concrete instance of `DropletSlugInput` via:
 //
-//          DropletSlugArgs{...}
+//	DropletSlugArgs{...}
 type DropletSlugInput interface {
 	pulumi.Input
 
@@ -886,7 +886,7 @@ func (o FileSystemTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // FileSystemTypeInput is an input type that accepts FileSystemTypeArgs and FileSystemTypeOutput values.
 // You can construct a concrete instance of `FileSystemTypeInput` via:
 //
-//          FileSystemTypeArgs{...}
+//	FileSystemTypeArgs{...}
 type FileSystemTypeInput interface {
 	pulumi.Input
 
@@ -1053,7 +1053,7 @@ func (o ProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 // ProtocolInput is an input type that accepts ProtocolArgs and ProtocolOutput values.
 // You can construct a concrete instance of `ProtocolInput` via:
 //
-//          ProtocolArgs{...}
+//	ProtocolArgs{...}
 type ProtocolInput interface {
 	pulumi.Input
 
@@ -1223,7 +1223,7 @@ func (o RecordTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // RecordTypeInput is an input type that accepts RecordTypeArgs and RecordTypeOutput values.
 // You can construct a concrete instance of `RecordTypeInput` via:
 //
-//          RecordTypeArgs{...}
+//	RecordTypeArgs{...}
 type RecordTypeInput interface {
 	pulumi.Input
 
@@ -1398,7 +1398,7 @@ func (o RegionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 // RegionInput is an input type that accepts RegionArgs and RegionOutput values.
 // You can construct a concrete instance of `RegionInput` via:
 //
-//          RegionArgs{...}
+//	RegionArgs{...}
 type RegionInput interface {
 	pulumi.Input
 

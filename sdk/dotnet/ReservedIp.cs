@@ -17,29 +17,28 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
     ///     {
-    ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-22-04-x64",
-    ///             Region = "nyc3",
-    ///             Ipv6 = true,
-    ///             PrivateNetworking = true,
-    ///         });
-    ///         var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new DigitalOcean.ReservedIpArgs
-    ///         {
-    ///             DropletId = exampleDroplet.Id,
-    ///             Region = exampleDroplet.Region,
-    ///         });
-    ///     }
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-22-04-x64",
+    ///         Region = "nyc3",
+    ///         Ipv6 = true,
+    ///         PrivateNetworking = true,
+    ///     });
     /// 
-    /// }
+    ///     var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new()
+    ///     {
+    ///         DropletId = exampleDroplet.Id,
+    ///         Region = exampleDroplet.Region,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +50,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/reservedIp:ReservedIp")]
-    public partial class ReservedIp : Pulumi.CustomResource
+    public partial class ReservedIp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of Droplet that the reserved IP will be assigned to.
@@ -121,7 +120,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class ReservedIpArgs : Pulumi.ResourceArgs
+    public sealed class ReservedIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Droplet that the reserved IP will be assigned to.
@@ -144,9 +143,10 @@ namespace Pulumi.DigitalOcean
         public ReservedIpArgs()
         {
         }
+        public static new ReservedIpArgs Empty => new ReservedIpArgs();
     }
 
-    public sealed class ReservedIpState : Pulumi.ResourceArgs
+    public sealed class ReservedIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Droplet that the reserved IP will be assigned to.
@@ -175,5 +175,6 @@ namespace Pulumi.DigitalOcean
         public ReservedIpState()
         {
         }
+        public static new ReservedIpState Empty => new ReservedIpState();
     }
 }

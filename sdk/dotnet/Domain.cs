@@ -15,22 +15,20 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new domain
+    ///     var @default = new DigitalOcean.Domain("default", new()
     ///     {
-    ///         // Create a new domain
-    ///         var @default = new DigitalOcean.Domain("default", new DigitalOcean.DomainArgs
-    ///         {
-    ///             Name = "example.com",
-    ///             IpAddress = digitalocean_droplet.Foo.Ipv4_address,
-    ///         });
-    ///     }
+    ///         Name = "example.com",
+    ///         IpAddress = digitalocean_droplet.Foo.Ipv4_address,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The uniform resource name of the domain
@@ -113,7 +111,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the domain. If specified, this IP
@@ -131,9 +129,10 @@ namespace Pulumi.DigitalOcean
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The uniform resource name of the domain
@@ -163,5 +162,6 @@ namespace Pulumi.DigitalOcean
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

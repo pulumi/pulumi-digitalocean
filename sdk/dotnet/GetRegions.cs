@@ -27,75 +27,71 @@ namespace Pulumi.DigitalOcean
         /// For example to find all available regions:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
-        ///         var available = Output.Create(DigitalOcean.GetRegions.InvokeAsync(new DigitalOcean.GetRegionsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
+        ///                 Key = "available",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "available",
-        ///                     Values = 
-        ///                     {
-        ///                         "true",
-        ///                     },
+        ///                     "true",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
-        ///         var available = Output.Create(DigitalOcean.GetRegions.InvokeAsync(new DigitalOcean.GetRegionsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
+        ///                 Key = "available",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "available",
-        ///                     Values = 
-        ///                     {
-        ///                         "true",
-        ///                     },
-        ///                 },
-        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
-        ///                 {
-        ///                     Key = "features",
-        ///                     Values = 
-        ///                     {
-        ///                         "private_networking",
-        ///                     },
+        ///                     "true",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetRegionsSortArgs
+        ///                 Key = "features",
+        ///                 Values = new[]
         ///                 {
-        ///                     Direction = "desc",
-        ///                     Key = "name",
+        ///                     "private_networking",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetRegionsSortInputArgs
+        ///             {
+        ///                 Direction = "desc",
+        ///                 Key = "name",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -119,75 +115,71 @@ namespace Pulumi.DigitalOcean
         /// For example to find all available regions:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
-        ///         var available = Output.Create(DigitalOcean.GetRegions.InvokeAsync(new DigitalOcean.GetRegionsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
+        ///                 Key = "available",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "available",
-        ///                     Values = 
-        ///                     {
-        ///                         "true",
-        ///                     },
+        ///                     "true",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
-        ///         var available = Output.Create(DigitalOcean.GetRegions.InvokeAsync(new DigitalOcean.GetRegionsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
+        ///                 Key = "available",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "available",
-        ///                     Values = 
-        ///                     {
-        ///                         "true",
-        ///                     },
-        ///                 },
-        ///                 new DigitalOcean.Inputs.GetRegionsFilterArgs
-        ///                 {
-        ///                     Key = "features",
-        ///                     Values = 
-        ///                     {
-        ///                         "private_networking",
-        ///                     },
+        ///                     "true",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetRegionsSortArgs
+        ///                 Key = "features",
+        ///                 Values = new[]
         ///                 {
-        ///                     Direction = "desc",
-        ///                     Key = "name",
+        ///                     "private_networking",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetRegionsSortInputArgs
+        ///             {
+        ///                 Direction = "desc",
+        ///                 Key = "name",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -197,7 +189,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetRegionsArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetRegionsFilterArgs>? _filters;
@@ -228,9 +220,10 @@ namespace Pulumi.DigitalOcean
         public GetRegionsArgs()
         {
         }
+        public static new GetRegionsArgs Empty => new GetRegionsArgs();
     }
 
-    public sealed class GetRegionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetRegionsFilterInputArgs>? _filters;
@@ -261,6 +254,7 @@ namespace Pulumi.DigitalOcean
         public GetRegionsInvokeArgs()
         {
         }
+        public static new GetRegionsInvokeArgs Empty => new GetRegionsInvokeArgs();
     }
 
 

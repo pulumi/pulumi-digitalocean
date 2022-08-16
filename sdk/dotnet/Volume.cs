@@ -15,59 +15,58 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
     ///     {
-    ///         var foobarVolume = new DigitalOcean.Volume("foobarVolume", new DigitalOcean.VolumeArgs
-    ///         {
-    ///             Region = "nyc1",
-    ///             Size = 100,
-    ///             InitialFilesystemType = "ext4",
-    ///             Description = "an example volume",
-    ///         });
-    ///         var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc1",
-    ///         });
-    ///         var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new DigitalOcean.VolumeAttachmentArgs
-    ///         {
-    ///             DropletId = foobarDroplet.Id,
-    ///             VolumeId = foobarVolume.Id,
-    ///         });
-    ///     }
+    ///         Region = "nyc1",
+    ///         Size = 100,
+    ///         InitialFilesystemType = "ext4",
+    ///         Description = "an example volume",
+    ///     });
     /// 
-    /// }
+    ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc1",
+    ///     });
+    /// 
+    ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new()
+    ///     {
+    ///         DropletId = foobarDroplet.Id,
+    ///         VolumeId = foobarVolume.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// You can also create a volume from an existing snapshot.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarVolumeSnapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
     ///     {
-    ///         var foobarVolumeSnapshot = Output.Create(DigitalOcean.GetVolumeSnapshot.InvokeAsync(new DigitalOcean.GetVolumeSnapshotArgs
-    ///         {
-    ///             Name = "baz",
-    ///         }));
-    ///         var foobarVolume = new DigitalOcean.Volume("foobarVolume", new DigitalOcean.VolumeArgs
-    ///         {
-    ///             Region = "lon1",
-    ///             Size = foobarVolumeSnapshot.Apply(foobarVolumeSnapshot =&gt; foobarVolumeSnapshot.MinDiskSize),
-    ///             SnapshotId = foobarVolumeSnapshot.Apply(foobarVolumeSnapshot =&gt; foobarVolumeSnapshot.Id),
-    ///         });
-    ///     }
+    ///         Name = "baz",
+    ///     });
     /// 
-    /// }
+    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
+    ///     {
+    ///         Region = "lon1",
+    ///         Size = foobarVolumeSnapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.MinDiskSize),
+    ///         SnapshotId = foobarVolumeSnapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,7 +78,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/volume:Volume")]
-    public partial class Volume : Pulumi.CustomResource
+    public partial class Volume : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
@@ -197,7 +196,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class VolumeArgs : Pulumi.ResourceArgs
+    public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
@@ -262,9 +261,10 @@ namespace Pulumi.DigitalOcean
         public VolumeArgs()
         {
         }
+        public static new VolumeArgs Empty => new VolumeArgs();
     }
 
-    public sealed class VolumeState : Pulumi.ResourceArgs
+    public sealed class VolumeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
@@ -353,5 +353,6 @@ namespace Pulumi.DigitalOcean
         public VolumeState()
         {
         }
+        public static new VolumeState Empty => new VolumeState();
     }
 }

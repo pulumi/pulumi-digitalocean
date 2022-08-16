@@ -28,19 +28,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewSpacesBucket(ctx, "static-assets", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "static-assets", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -52,21 +55,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create a New Bucket With CORS Rules
 //
@@ -74,49 +80,52 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
-// 			CorsRules: SpacesBucketCorsRuleArray{
-// 				&SpacesBucketCorsRuleArgs{
-// 					AllowedHeaders: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 					AllowedMethods: pulumi.StringArray{
-// 						pulumi.String("GET"),
-// 					},
-// 					AllowedOrigins: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 					MaxAgeSeconds: pulumi.Int(3000),
-// 				},
-// 				&SpacesBucketCorsRuleArgs{
-// 					AllowedHeaders: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 					AllowedMethods: pulumi.StringArray{
-// 						pulumi.String("PUT"),
-// 						pulumi.String("POST"),
-// 						pulumi.String("DELETE"),
-// 					},
-// 					AllowedOrigins: pulumi.StringArray{
-// 						pulumi.String("https://www.example.com"),
-// 					},
-// 					MaxAgeSeconds: pulumi.Int(3000),
-// 				},
-// 			},
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				CorsRules: SpacesBucketCorsRuleArray{
+//					&SpacesBucketCorsRuleArgs{
+//						AllowedHeaders: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						AllowedMethods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//						},
+//						AllowedOrigins: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						MaxAgeSeconds: pulumi.Int(3000),
+//					},
+//					&SpacesBucketCorsRuleArgs{
+//						AllowedHeaders: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						AllowedMethods: pulumi.StringArray{
+//							pulumi.String("PUT"),
+//							pulumi.String("POST"),
+//							pulumi.String("DELETE"),
+//						},
+//						AllowedOrigins: pulumi.StringArray{
+//							pulumi.String("https://www.example.com"),
+//						},
+//						MaxAgeSeconds: pulumi.Int(3000),
+//					},
+//				},
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -124,7 +133,9 @@ import (
 // Buckets can be imported using the `region` and `name` attributes (delimited by a comma)
 //
 // ```sh
-//  $ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
+//
+//	$ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
+//
 // ```
 type SpacesBucket struct {
 	pulumi.CustomResourceState
@@ -284,7 +295,7 @@ func (i *SpacesBucket) ToSpacesBucketOutputWithContext(ctx context.Context) Spac
 // SpacesBucketArrayInput is an input type that accepts SpacesBucketArray and SpacesBucketArrayOutput values.
 // You can construct a concrete instance of `SpacesBucketArrayInput` via:
 //
-//          SpacesBucketArray{ SpacesBucketArgs{...} }
+//	SpacesBucketArray{ SpacesBucketArgs{...} }
 type SpacesBucketArrayInput interface {
 	pulumi.Input
 
@@ -309,7 +320,7 @@ func (i SpacesBucketArray) ToSpacesBucketArrayOutputWithContext(ctx context.Cont
 // SpacesBucketMapInput is an input type that accepts SpacesBucketMap and SpacesBucketMapOutput values.
 // You can construct a concrete instance of `SpacesBucketMapInput` via:
 //
-//          SpacesBucketMap{ "key": SpacesBucketArgs{...} }
+//	SpacesBucketMap{ "key": SpacesBucketArgs{...} }
 type SpacesBucketMapInput interface {
 	pulumi.Input
 

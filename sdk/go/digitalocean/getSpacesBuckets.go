@@ -26,28 +26,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
-// 			Filters: []GetSpacesBucketsFilter{
-// 				GetSpacesBucketsFilter{
-// 					Key: "region",
-// 					Values: []string{
-// 						"nyc3",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
+//				Filters: []GetSpacesBucketsFilter{
+//					GetSpacesBucketsFilter{
+//						Key: "region",
+//						Values: []string{
+//							"nyc3",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // You can sort the results as well:
 //
@@ -55,34 +58,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
-// 			Filters: []GetSpacesBucketsFilter{
-// 				GetSpacesBucketsFilter{
-// 					Key: "region",
-// 					Values: []string{
-// 						"nyc3",
-// 					},
-// 				},
-// 			},
-// 			Sorts: []GetSpacesBucketsSort{
-// 				GetSpacesBucketsSort{
-// 					Direction: pulumi.StringRef("desc"),
-// 					Key:       "name",
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
+//				Filters: []GetSpacesBucketsFilter{
+//					GetSpacesBucketsFilter{
+//						Key: "region",
+//						Values: []string{
+//							"nyc3",
+//						},
+//					},
+//				},
+//				Sorts: []GetSpacesBucketsSort{
+//					GetSpacesBucketsSort{
+//						Direction: pulumi.StringRef("desc"),
+//						Key:       "name",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSpacesBuckets(ctx *pulumi.Context, args *GetSpacesBucketsArgs, opts ...pulumi.InvokeOption) (*GetSpacesBucketsResult, error) {
 	var rv GetSpacesBucketsResult

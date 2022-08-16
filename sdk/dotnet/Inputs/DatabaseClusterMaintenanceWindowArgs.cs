@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class DatabaseClusterMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseClusterMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The day of the week on which to apply maintenance updates.
@@ -27,5 +27,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public DatabaseClusterMaintenanceWindowArgs()
         {
         }
+        public static new DatabaseClusterMaintenanceWindowArgs Empty => new DatabaseClusterMaintenanceWindowArgs();
     }
 }

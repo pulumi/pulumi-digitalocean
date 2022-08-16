@@ -19,28 +19,28 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs
-        ///         {
-        ///             Name = "example-cluster",
-        ///         }));
-        ///         var read_only = example.Apply(example =&gt; Output.Create(DigitalOcean.GetDatabaseReplica.InvokeAsync(new DigitalOcean.GetDatabaseReplicaArgs
-        ///         {
-        ///             ClusterId = example.Id,
-        ///             Name = "terra-test-ro",
-        ///         })));
-        ///         this.ReplicaOutput = read_only.Apply(read_only =&gt; read_only.Uri);
-        ///     }
+        ///         Name = "example-cluster",
+        ///     });
         /// 
-        ///     [Output("replicaOutput")]
-        ///     public Output&lt;string&gt; ReplicaOutput { get; set; }
-        /// }
+        ///     var read_only = DigitalOcean.GetDatabaseReplica.Invoke(new()
+        ///     {
+        ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
+        ///         Name = "terra-test-ro",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["replicaOutput"] = read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult).Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -56,28 +56,28 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetDatabaseCluster.InvokeAsync(new DigitalOcean.GetDatabaseClusterArgs
-        ///         {
-        ///             Name = "example-cluster",
-        ///         }));
-        ///         var read_only = example.Apply(example =&gt; Output.Create(DigitalOcean.GetDatabaseReplica.InvokeAsync(new DigitalOcean.GetDatabaseReplicaArgs
-        ///         {
-        ///             ClusterId = example.Id,
-        ///             Name = "terra-test-ro",
-        ///         })));
-        ///         this.ReplicaOutput = read_only.Apply(read_only =&gt; read_only.Uri);
-        ///     }
+        ///         Name = "example-cluster",
+        ///     });
         /// 
-        ///     [Output("replicaOutput")]
-        ///     public Output&lt;string&gt; ReplicaOutput { get; set; }
-        /// }
+        ///     var read_only = DigitalOcean.GetDatabaseReplica.Invoke(new()
+        ///     {
+        ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
+        ///         Name = "terra-test-ro",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["replicaOutput"] = read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult).Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -87,7 +87,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetDatabaseReplicaArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseReplicaArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the original source database cluster.
@@ -116,9 +116,10 @@ namespace Pulumi.DigitalOcean
         public GetDatabaseReplicaArgs()
         {
         }
+        public static new GetDatabaseReplicaArgs Empty => new GetDatabaseReplicaArgs();
     }
 
-    public sealed class GetDatabaseReplicaInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseReplicaInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the original source database cluster.
@@ -147,6 +148,7 @@ namespace Pulumi.DigitalOcean
         public GetDatabaseReplicaInvokeArgs()
         {
         }
+        public static new GetDatabaseReplicaInvokeArgs Empty => new GetDatabaseReplicaInvokeArgs();
     }
 
 

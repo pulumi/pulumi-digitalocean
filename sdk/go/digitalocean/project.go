@@ -37,23 +37,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewProject(ctx, "playground", &digitalocean.ProjectArgs{
-// 			Description: pulumi.String("A project to represent development resources."),
-// 			Environment: pulumi.String("Development"),
-// 			Purpose:     pulumi.String("Web Application"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewProject(ctx, "playground", &digitalocean.ProjectArgs{
+//				Description: pulumi.String("A project to represent development resources."),
+//				Environment: pulumi.String("Development"),
+//				Purpose:     pulumi.String("Web Application"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // The following example demonstrates the creation of a project with a Droplet resource:
@@ -62,34 +65,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("centos-7-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewProject(ctx, "playground", &digitalocean.ProjectArgs{
-// 			Description: pulumi.String("A project to represent development resources."),
-// 			Purpose:     pulumi.String("Web Application"),
-// 			Environment: pulumi.String("Development"),
-// 			Resources: pulumi.StringArray{
-// 				foobar.DropletUrn,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-22-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewProject(ctx, "playground", &digitalocean.ProjectArgs{
+//				Description: pulumi.String("A project to represent development resources."),
+//				Purpose:     pulumi.String("Web Application"),
+//				Environment: pulumi.String("Development"),
+//				Resources: pulumi.StringArray{
+//					foobar.DropletUrn,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -97,7 +103,9 @@ import (
 // Projects can be imported using the `id` returned from DigitalOcean, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+//
+//	$ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+//
 // ```
 type Project struct {
 	pulumi.CustomResourceState
@@ -108,7 +116,8 @@ type Project struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
-	IsDefault   pulumi.BoolOutput      `pulumi:"isDefault"`
+	// a boolean indicating whether or not the project is the default project. (Default: "false")
+	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
 	// The name of the Project
 	Name pulumi.StringOutput `pulumi:"name"`
 	// the id of the project owner.
@@ -158,7 +167,8 @@ type projectState struct {
 	Description *string `pulumi:"description"`
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment *string `pulumi:"environment"`
-	IsDefault   *bool   `pulumi:"isDefault"`
+	// a boolean indicating whether or not the project is the default project. (Default: "false")
+	IsDefault *bool `pulumi:"isDefault"`
 	// The name of the Project
 	Name *string `pulumi:"name"`
 	// the id of the project owner.
@@ -180,7 +190,8 @@ type ProjectState struct {
 	Description pulumi.StringPtrInput
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment pulumi.StringPtrInput
-	IsDefault   pulumi.BoolPtrInput
+	// a boolean indicating whether or not the project is the default project. (Default: "false")
+	IsDefault pulumi.BoolPtrInput
 	// The name of the Project
 	Name pulumi.StringPtrInput
 	// the id of the project owner.
@@ -204,6 +215,8 @@ type projectArgs struct {
 	Description *string `pulumi:"description"`
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment *string `pulumi:"environment"`
+	// a boolean indicating whether or not the project is the default project. (Default: "false")
+	IsDefault *bool `pulumi:"isDefault"`
 	// The name of the Project
 	Name *string `pulumi:"name"`
 	// the purpose of the project, (Default: "Web Application")
@@ -218,6 +231,8 @@ type ProjectArgs struct {
 	Description pulumi.StringPtrInput
 	// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
 	Environment pulumi.StringPtrInput
+	// a boolean indicating whether or not the project is the default project. (Default: "false")
+	IsDefault pulumi.BoolPtrInput
 	// The name of the Project
 	Name pulumi.StringPtrInput
 	// the purpose of the project, (Default: "Web Application")
@@ -252,7 +267,7 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
-//          ProjectArray{ ProjectArgs{...} }
+//	ProjectArray{ ProjectArgs{...} }
 type ProjectArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +292,7 @@ func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) Proje
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
 // You can construct a concrete instance of `ProjectMapInput` via:
 //
-//          ProjectMap{ "key": ProjectArgs{...} }
+//	ProjectMap{ "key": ProjectArgs{...} }
 type ProjectMapInput interface {
 	pulumi.Input
 
@@ -328,8 +343,9 @@ func (o ProjectOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
-func (o ProjectOutput) IsDefault() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
+// a boolean indicating whether or not the project is the default project. (Default: "false")
+func (o ProjectOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the Project

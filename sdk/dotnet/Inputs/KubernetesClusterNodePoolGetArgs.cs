@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class KubernetesClusterNodePoolGetArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesClusterNodePoolGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
@@ -111,5 +111,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public KubernetesClusterNodePoolGetArgs()
         {
         }
+        public static new KubernetesClusterNodePoolGetArgs Empty => new KubernetesClusterNodePoolGetArgs();
     }
 }

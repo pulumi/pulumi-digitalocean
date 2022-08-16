@@ -19,35 +19,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
-// 			Engine:    pulumi.String("pg"),
-// 			Version:   pulumi.String("11"),
-// 			Size:      pulumi.String("db-s-1vcpu-1gb"),
-// 			Region:    pulumi.String("nyc1"),
-// 			NodeCount: pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDatabaseConnectionPool(ctx, "pool-01", &digitalocean.DatabaseConnectionPoolArgs{
-// 			ClusterId: postgres_example.ID(),
-// 			Mode:      pulumi.String("transaction"),
-// 			Size:      pulumi.Int(20),
-// 			DbName:    pulumi.String("defaultdb"),
-// 			User:      pulumi.String("doadmin"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseConnectionPool(ctx, "pool-01", &digitalocean.DatabaseConnectionPoolArgs{
+//				ClusterId: postgres_example.ID(),
+//				Mode:      pulumi.String("transaction"),
+//				Size:      pulumi.Int(20),
+//				DbName:    pulumi.String("defaultdb"),
+//				User:      pulumi.String("doadmin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // Database connection pools can be imported using the `id` of the source database cluster and the `name` of the connection pool joined with a comma. For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
+//
+//	$ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
+//
 // ```
 type DatabaseConnectionPool struct {
 	pulumi.CustomResourceState
@@ -244,7 +249,7 @@ func (i *DatabaseConnectionPool) ToDatabaseConnectionPoolOutputWithContext(ctx c
 // DatabaseConnectionPoolArrayInput is an input type that accepts DatabaseConnectionPoolArray and DatabaseConnectionPoolArrayOutput values.
 // You can construct a concrete instance of `DatabaseConnectionPoolArrayInput` via:
 //
-//          DatabaseConnectionPoolArray{ DatabaseConnectionPoolArgs{...} }
+//	DatabaseConnectionPoolArray{ DatabaseConnectionPoolArgs{...} }
 type DatabaseConnectionPoolArrayInput interface {
 	pulumi.Input
 
@@ -269,7 +274,7 @@ func (i DatabaseConnectionPoolArray) ToDatabaseConnectionPoolArrayOutputWithCont
 // DatabaseConnectionPoolMapInput is an input type that accepts DatabaseConnectionPoolMap and DatabaseConnectionPoolMapOutput values.
 // You can construct a concrete instance of `DatabaseConnectionPoolMapInput` via:
 //
-//          DatabaseConnectionPoolMap{ "key": DatabaseConnectionPoolArgs{...} }
+//	DatabaseConnectionPoolMap{ "key": DatabaseConnectionPoolArgs{...} }
 type DatabaseConnectionPoolMapInput interface {
 	pulumi.Input
 

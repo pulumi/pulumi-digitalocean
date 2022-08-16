@@ -16,45 +16,44 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc3",
-    ///         });
-    ///         var @public = new DigitalOcean.LoadBalancer("public", new DigitalOcean.LoadBalancerArgs
-    ///         {
-    ///             Region = "nyc3",
-    ///             ForwardingRules = 
-    ///             {
-    ///                 new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
-    ///                 {
-    ///                     EntryPort = 80,
-    ///                     EntryProtocol = "http",
-    ///                     TargetPort = 80,
-    ///                     TargetProtocol = "http",
-    ///                 },
-    ///             },
-    ///             Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs
-    ///             {
-    ///                 Port = 22,
-    ///                 Protocol = "tcp",
-    ///             },
-    ///             DropletIds = 
-    ///             {
-    ///                 web.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var @public = new DigitalOcean.LoadBalancer("public", new()
+    ///     {
+    ///         Region = "nyc3",
+    ///         ForwardingRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
+    ///             {
+    ///                 EntryPort = 80,
+    ///                 EntryProtocol = "http",
+    ///                 TargetPort = 80,
+    ///                 TargetProtocol = "http",
+    ///             },
+    ///         },
+    ///         Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs
+    ///         {
+    ///             Port = 22,
+    ///             Protocol = "tcp",
+    ///         },
+    ///         DropletIds = new[]
+    ///         {
+    ///             web.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
@@ -64,51 +63,51 @@ namespace Pulumi.DigitalOcean
     /// as there cannot be multiple certificates with the same name in an account.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
-    ///         {
-    ///             PrivateKey = "file('key.pem')",
-    ///             LeafCertificate = "file('cert.pem')",
-    ///         });
-    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc3",
-    ///         });
-    ///         var @public = new DigitalOcean.LoadBalancer("public", new DigitalOcean.LoadBalancerArgs
-    ///         {
-    ///             Region = "nyc3",
-    ///             ForwardingRules = 
-    ///             {
-    ///                 new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
-    ///                 {
-    ///                     EntryPort = 443,
-    ///                     EntryProtocol = "https",
-    ///                     TargetPort = 80,
-    ///                     TargetProtocol = "http",
-    ///                     CertificateName = cert.Name,
-    ///                 },
-    ///             },
-    ///             Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs
-    ///             {
-    ///                 Port = 22,
-    ///                 Protocol = "tcp",
-    ///             },
-    ///             DropletIds = 
-    ///             {
-    ///                 web.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         PrivateKey = "file('key.pem')",
+    ///         LeafCertificate = "file('cert.pem')",
+    ///     });
     /// 
-    /// }
+    ///     var web = new DigitalOcean.Droplet("web", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc3",
+    ///     });
+    /// 
+    ///     var @public = new DigitalOcean.LoadBalancer("public", new()
+    ///     {
+    ///         Region = "nyc3",
+    ///         ForwardingRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
+    ///             {
+    ///                 EntryPort = 443,
+    ///                 EntryProtocol = "https",
+    ///                 TargetPort = 80,
+    ///                 TargetProtocol = "http",
+    ///                 CertificateName = cert.Name,
+    ///             },
+    ///         },
+    ///         Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs
+    ///         {
+    ///             Port = 22,
+    ///             Protocol = "tcp",
+    ///         },
+    ///         DropletIds = new[]
+    ///         {
+    ///             web.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -120,7 +119,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/loadBalancer:LoadBalancer")]
-    public partial class LoadBalancer : Pulumi.CustomResource
+    public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The load balancing algorithm used to determine
@@ -277,7 +276,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class LoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The load balancing algorithm used to determine
@@ -393,9 +392,10 @@ namespace Pulumi.DigitalOcean
         public LoadBalancerArgs()
         {
         }
+        public static new LoadBalancerArgs Empty => new LoadBalancerArgs();
     }
 
-    public sealed class LoadBalancerState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The load balancing algorithm used to determine
@@ -523,5 +523,6 @@ namespace Pulumi.DigitalOcean
         public LoadBalancerState()
         {
         }
+        public static new LoadBalancerState Empty => new LoadBalancerState();
     }
 }

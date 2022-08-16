@@ -26,64 +26,59 @@ namespace Pulumi.DigitalOcean
         /// Get the data about a snapshot:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example1 = DigitalOcean.GetImage.Invoke(new()
         ///     {
-        ///         var example1 = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Name = "example-1.0.0",
-        ///         }));
-        ///     }
+        ///         Name = "example-1.0.0",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Reuse the data about a snapshot to create a Droplet:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleImage = DigitalOcean.GetImage.Invoke(new()
         ///     {
-        ///         var exampleImage = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Name = "example-1.0.0",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Image = exampleImage.Apply(exampleImage =&gt; exampleImage.Id),
-        ///             Region = "nyc2",
-        ///             Size = "s-1vcpu-1gb",
-        ///         });
-        ///     }
+        ///         Name = "example-1.0.0",
+        ///     });
         /// 
-        /// }
+        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     {
+        ///         Image = exampleImage.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Region = "nyc2",
+        ///         Size = "s-1vcpu-1gb",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// 
         /// Get the data about an official image:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example2 = DigitalOcean.GetImage.Invoke(new()
         ///     {
-        ///         var example2 = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Slug = "ubuntu-18-04-x64",
-        ///         }));
-        ///     }
+        ///         Slug = "ubuntu-18-04-x64",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -106,64 +101,59 @@ namespace Pulumi.DigitalOcean
         /// Get the data about a snapshot:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example1 = DigitalOcean.GetImage.Invoke(new()
         ///     {
-        ///         var example1 = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Name = "example-1.0.0",
-        ///         }));
-        ///     }
+        ///         Name = "example-1.0.0",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Reuse the data about a snapshot to create a Droplet:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleImage = DigitalOcean.GetImage.Invoke(new()
         ///     {
-        ///         var exampleImage = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Name = "example-1.0.0",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Image = exampleImage.Apply(exampleImage =&gt; exampleImage.Id),
-        ///             Region = "nyc2",
-        ///             Size = "s-1vcpu-1gb",
-        ///         });
-        ///     }
+        ///         Name = "example-1.0.0",
+        ///     });
         /// 
-        /// }
+        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     {
+        ///         Image = exampleImage.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Region = "nyc2",
+        ///         Size = "s-1vcpu-1gb",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// 
         /// Get the data about an official image:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example2 = DigitalOcean.GetImage.Invoke(new()
         ///     {
-        ///         var example2 = Output.Create(DigitalOcean.GetImage.InvokeAsync(new DigitalOcean.GetImageArgs
-        ///         {
-        ///             Slug = "ubuntu-18-04-x64",
-        ///         }));
-        ///     }
+        ///         Slug = "ubuntu-18-04-x64",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -173,7 +163,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetImageArgs : Pulumi.InvokeArgs
+    public sealed class GetImageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the image
@@ -202,9 +192,10 @@ namespace Pulumi.DigitalOcean
         public GetImageArgs()
         {
         }
+        public static new GetImageArgs Empty => new GetImageArgs();
     }
 
-    public sealed class GetImageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the image
@@ -233,6 +224,7 @@ namespace Pulumi.DigitalOcean
         public GetImageInvokeArgs()
         {
         }
+        public static new GetImageInvokeArgs Empty => new GetImageInvokeArgs();
     }
 
 

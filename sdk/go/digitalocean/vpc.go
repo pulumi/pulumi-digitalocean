@@ -22,22 +22,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewVpc(ctx, "example", &digitalocean.VpcArgs{
-// 			IpRange: pulumi.String("10.10.10.0/24"),
-// 			Region:  pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewVpc(ctx, "example", &digitalocean.VpcArgs{
+//				IpRange: pulumi.String("10.10.10.0/24"),
+//				Region:  pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Resource Assignment
 //
@@ -49,30 +52,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleVpc, err := digitalocean.NewVpc(ctx, "exampleVpc", &digitalocean.VpcArgs{
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-// 			Size:    pulumi.String("s-1vcpu-1gb"),
-// 			Image:   pulumi.String("ubuntu-18-04-x64"),
-// 			Region:  pulumi.String("nyc3"),
-// 			VpcUuid: exampleVpc.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleVpc, err := digitalocean.NewVpc(ctx, "exampleVpc", &digitalocean.VpcArgs{
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//				Size:    pulumi.String("s-1vcpu-1gb"),
+//				Image:   pulumi.String("ubuntu-18-04-x64"),
+//				Region:  pulumi.String("nyc3"),
+//				VpcUuid: exampleVpc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -80,7 +86,9 @@ import (
 // A VPC can be imported using its `id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
+//
+//	$ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
+//
 // ```
 type Vpc struct {
 	pulumi.CustomResourceState
@@ -219,7 +227,7 @@ func (i *Vpc) ToVpcOutputWithContext(ctx context.Context) VpcOutput {
 // VpcArrayInput is an input type that accepts VpcArray and VpcArrayOutput values.
 // You can construct a concrete instance of `VpcArrayInput` via:
 //
-//          VpcArray{ VpcArgs{...} }
+//	VpcArray{ VpcArgs{...} }
 type VpcArrayInput interface {
 	pulumi.Input
 
@@ -244,7 +252,7 @@ func (i VpcArray) ToVpcArrayOutputWithContext(ctx context.Context) VpcArrayOutpu
 // VpcMapInput is an input type that accepts VpcMap and VpcMapOutput values.
 // You can construct a concrete instance of `VpcMapInput` via:
 //
-//          VpcMap{ "key": VpcArgs{...} }
+//	VpcMap{ "key": VpcArgs{...} }
 type VpcMapInput interface {
 	pulumi.Input
 

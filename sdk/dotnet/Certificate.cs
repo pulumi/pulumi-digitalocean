@@ -21,46 +21,42 @@ namespace Pulumi.DigitalOcean
     /// ### Custom Certificate
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
-    ///         {
-    ///             Type = "custom",
-    ///             PrivateKey = File.ReadAllText("/Users/myuser/certs/privkey.pem"),
-    ///             LeafCertificate = File.ReadAllText("/Users/myuser/certs/cert.pem"),
-    ///             CertificateChain = File.ReadAllText("/Users/myuser/certs/fullchain.pem"),
-    ///         });
-    ///     }
+    ///         Type = "custom",
+    ///         PrivateKey = File.ReadAllText("/Users/myuser/certs/privkey.pem"),
+    ///         LeafCertificate = File.ReadAllText("/Users/myuser/certs/cert.pem"),
+    ///         CertificateChain = File.ReadAllText("/Users/myuser/certs/fullchain.pem"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Let's Encrypt Certificate
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
+    ///         Domains = new[]
     ///         {
-    ///             Domains = 
-    ///             {
-    ///                 "example.com",
-    ///             },
-    ///             Type = "lets_encrypt",
-    ///         });
-    ///     }
+    ///             "example.com",
+    ///         },
+    ///         Type = "lets_encrypt",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Use with Other Resources
     /// 
@@ -68,41 +64,40 @@ namespace Pulumi.DigitalOcean
     /// including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         var cert = new DigitalOcean.Certificate("cert", new DigitalOcean.CertificateArgs
+    ///         Type = "lets_encrypt",
+    ///         Domains = new[]
     ///         {
-    ///             Type = "lets_encrypt",
-    ///             Domains = 
-    ///             {
-    ///                 "example.com",
-    ///             },
-    ///         });
-    ///         // Create a new Load Balancer with TLS termination
-    ///         var @public = new DigitalOcean.LoadBalancer("public", new DigitalOcean.LoadBalancerArgs
-    ///         {
-    ///             Region = "nyc3",
-    ///             DropletTag = "backend",
-    ///             ForwardingRules = 
-    ///             {
-    ///                 new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
-    ///                 {
-    ///                     EntryPort = 443,
-    ///                     EntryProtocol = "https",
-    ///                     TargetPort = 80,
-    ///                     TargetProtocol = "http",
-    ///                     CertificateName = cert.Name,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             "example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Create a new Load Balancer with TLS termination
+    ///     var @public = new DigitalOcean.LoadBalancer("public", new()
+    ///     {
+    ///         Region = "nyc3",
+    ///         DropletTag = "backend",
+    ///         ForwardingRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
+    ///             {
+    ///                 EntryPort = 443,
+    ///                 EntryProtocol = "https",
+    ///                 TargetPort = 80,
+    ///                 TargetProtocol = "http",
+    ///                 CertificateName = cert.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -114,7 +109,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/certificate:Certificate")]
-    public partial class Certificate : Pulumi.CustomResource
+    public partial class Certificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The full PEM-formatted trust chain
@@ -224,7 +219,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class CertificateArgs : Pulumi.ResourceArgs
+    public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full PEM-formatted trust chain
@@ -278,9 +273,10 @@ namespace Pulumi.DigitalOcean
         public CertificateArgs()
         {
         }
+        public static new CertificateArgs Empty => new CertificateArgs();
     }
 
-    public sealed class CertificateState : Pulumi.ResourceArgs
+    public sealed class CertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full PEM-formatted trust chain
@@ -355,5 +351,6 @@ namespace Pulumi.DigitalOcean
         public CertificateState()
         {
         }
+        public static new CertificateState Empty => new CertificateState();
     }
 }

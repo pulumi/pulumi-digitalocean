@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecWorkerLogDestinationLogtailGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecWorkerLogDestinationLogtailGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Logtail token.
@@ -21,5 +21,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecWorkerLogDestinationLogtailGetArgs()
         {
         }
+        public static new AppSpecWorkerLogDestinationLogtailGetArgs Empty => new AppSpecWorkerLogDestinationLogtailGetArgs();
     }
 }

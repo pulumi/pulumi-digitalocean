@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecFunctionEnvGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecFunctionEnvGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the environment variable.
@@ -39,5 +39,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecFunctionEnvGetArgs()
         {
         }
+        public static new AppSpecFunctionEnvGetArgs Empty => new AppSpecFunctionEnvGetArgs();
     }
 }

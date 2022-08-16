@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class KubernetesNodePoolNodeGetArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesNodePoolNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date and time when the node was created.
@@ -51,5 +51,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public KubernetesNodePoolNodeGetArgs()
         {
         }
+        public static new KubernetesNodePoolNodeGetArgs Empty => new KubernetesNodePoolNodeGetArgs();
     }
 }

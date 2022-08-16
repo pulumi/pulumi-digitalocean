@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetDomainArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the domain.
@@ -48,9 +48,10 @@ namespace Pulumi.DigitalOcean
         public GetDomainArgs()
         {
         }
+        public static new GetDomainArgs Empty => new GetDomainArgs();
     }
 
-    public sealed class GetDomainInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the domain.
@@ -61,6 +62,7 @@ namespace Pulumi.DigitalOcean
         public GetDomainInvokeArgs()
         {
         }
+        public static new GetDomainInvokeArgs Empty => new GetDomainInvokeArgs();
     }
 
 

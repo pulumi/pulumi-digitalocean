@@ -74,7 +74,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    internal sealed class DigitalOceanResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class DigitalOceanResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public DigitalOceanResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

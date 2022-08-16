@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GetRecordsSortArgs : Pulumi.InvokeArgs
+    public sealed class GetRecordsSortArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The sort direction. This may be either `asc` or `desc`.
@@ -28,5 +28,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public GetRecordsSortArgs()
         {
         }
+        public static new GetRecordsSortArgs Empty => new GetRecordsSortArgs();
     }
 }

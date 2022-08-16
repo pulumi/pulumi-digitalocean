@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class SpacesBucketLifecycleRuleExpirationArgs : Pulumi.ResourceArgs
+    public sealed class SpacesBucketLifecycleRuleExpirationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the date/time after which you want applicable objects to expire. The argument uses
@@ -35,5 +35,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public SpacesBucketLifecycleRuleExpirationArgs()
         {
         }
+        public static new SpacesBucketLifecycleRuleExpirationArgs Empty => new SpacesBucketLifecycleRuleExpirationArgs();
     }
 }

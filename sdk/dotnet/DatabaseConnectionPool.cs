@@ -15,32 +15,31 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// ### Create a new PostgreSQL database connection pool
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
-    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "pg",
-    ///             Version = "11",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Region = "nyc1",
-    ///             NodeCount = 1,
-    ///         });
-    ///         var pool_01 = new DigitalOcean.DatabaseConnectionPool("pool-01", new DigitalOcean.DatabaseConnectionPoolArgs
-    ///         {
-    ///             ClusterId = postgres_example.Id,
-    ///             Mode = "transaction",
-    ///             Size = 20,
-    ///             DbName = "defaultdb",
-    ///             User = "doadmin",
-    ///         });
-    ///     }
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
     /// 
-    /// }
+    ///     var pool_01 = new DigitalOcean.DatabaseConnectionPool("pool-01", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///         Mode = "transaction",
+    ///         Size = 20,
+    ///         DbName = "defaultdb",
+    ///         User = "doadmin",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/databaseConnectionPool:DatabaseConnectionPool")]
-    public partial class DatabaseConnectionPool : Pulumi.CustomResource
+    public partial class DatabaseConnectionPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
@@ -170,7 +169,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DatabaseConnectionPoolArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseConnectionPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
@@ -211,9 +210,10 @@ namespace Pulumi.DigitalOcean
         public DatabaseConnectionPoolArgs()
         {
         }
+        public static new DatabaseConnectionPoolArgs Empty => new DatabaseConnectionPoolArgs();
     }
 
-    public sealed class DatabaseConnectionPoolState : Pulumi.ResourceArgs
+    public sealed class DatabaseConnectionPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
@@ -290,5 +290,6 @@ namespace Pulumi.DigitalOcean
         public DatabaseConnectionPoolState()
         {
         }
+        public static new DatabaseConnectionPoolState Empty => new DatabaseConnectionPoolState();
     }
 }

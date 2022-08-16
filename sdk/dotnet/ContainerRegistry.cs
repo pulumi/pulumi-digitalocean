@@ -16,21 +16,19 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new container registry
+    ///     var foobar = new DigitalOcean.ContainerRegistry("foobar", new()
     ///     {
-    ///         // Create a new container registry
-    ///         var foobar = new DigitalOcean.ContainerRegistry("foobar", new DigitalOcean.ContainerRegistryArgs
-    ///         {
-    ///             SubscriptionTierSlug = "starter",
-    ///         });
-    ///     }
+    ///         SubscriptionTierSlug = "starter",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/containerRegistry:ContainerRegistry")]
-    public partial class ContainerRegistry : Pulumi.CustomResource
+    public partial class ContainerRegistry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date and time when the registry was created
@@ -130,7 +128,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class ContainerRegistryArgs : Pulumi.ResourceArgs
+    public sealed class ContainerRegistryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the container_registry
@@ -153,9 +151,10 @@ namespace Pulumi.DigitalOcean
         public ContainerRegistryArgs()
         {
         }
+        public static new ContainerRegistryArgs Empty => new ContainerRegistryArgs();
     }
 
-    public sealed class ContainerRegistryState : Pulumi.ResourceArgs
+    public sealed class ContainerRegistryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date and time when the registry was created
@@ -202,5 +201,6 @@ namespace Pulumi.DigitalOcean
         public ContainerRegistryState()
         {
         }
+        public static new ContainerRegistryState Empty => new ContainerRegistryState();
     }
 }

@@ -20,79 +20,76 @@ namespace Pulumi.DigitalOcean
         /// ### Output a list of all available versions
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync());
-        ///         this.K8s_versions = example.Apply(example =&gt; example.ValidVersions);
-        ///     }
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
-        ///     [Output("k8s-versions")]
-        ///     public Output&lt;string&gt; K8s_versions { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["k8s-versions"] = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.ValidVersions),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% example %}}
         /// ### Create a Kubernetes cluster using the most recent version available
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync());
-        ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
-        ///         {
-        ///             Region = "lon1",
-        ///             Version = example.Apply(example =&gt; example.LatestVersion),
-        ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
-        ///             {
-        ///                 Name = "default",
-        ///                 Size = "s-1vcpu-2gb",
-        ///                 NodeCount = 3,
-        ///             },
-        ///         });
-        ///     }
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
-        /// }
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
+        ///     {
+        ///         Region = "lon1",
+        ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
+        ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+        ///         {
+        ///             Name = "default",
+        ///             Size = "s-1vcpu-2gb",
+        ///             NodeCount = 3,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% example %}}
         /// ### Pin a Kubernetes cluster to a specific minor version
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync(new DigitalOcean.GetKubernetesVersionsArgs
-        ///         {
-        ///             VersionPrefix = "1.22.",
-        ///         }));
-        ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
-        ///         {
-        ///             Region = "lon1",
-        ///             Version = example.Apply(example =&gt; example.LatestVersion),
-        ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
-        ///             {
-        ///                 Name = "default",
-        ///                 Size = "s-1vcpu-2gb",
-        ///                 NodeCount = 3,
-        ///             },
-        ///         });
-        ///     }
+        ///         VersionPrefix = "1.22.",
+        ///     });
         /// 
-        /// }
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
+        ///     {
+        ///         Region = "lon1",
+        ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
+        ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+        ///         {
+        ///             Name = "default",
+        ///             Size = "s-1vcpu-2gb",
+        ///             NodeCount = 3,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -109,79 +106,76 @@ namespace Pulumi.DigitalOcean
         /// ### Output a list of all available versions
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync());
-        ///         this.K8s_versions = example.Apply(example =&gt; example.ValidVersions);
-        ///     }
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
-        ///     [Output("k8s-versions")]
-        ///     public Output&lt;string&gt; K8s_versions { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["k8s-versions"] = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.ValidVersions),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% example %}}
         /// ### Create a Kubernetes cluster using the most recent version available
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync());
-        ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
-        ///         {
-        ///             Region = "lon1",
-        ///             Version = example.Apply(example =&gt; example.LatestVersion),
-        ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
-        ///             {
-        ///                 Name = "default",
-        ///                 Size = "s-1vcpu-2gb",
-        ///                 NodeCount = 3,
-        ///             },
-        ///         });
-        ///     }
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
-        /// }
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
+        ///     {
+        ///         Region = "lon1",
+        ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
+        ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+        ///         {
+        ///             Name = "default",
+        ///             Size = "s-1vcpu-2gb",
+        ///             NodeCount = 3,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% example %}}
         /// ### Pin a Kubernetes cluster to a specific minor version
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetKubernetesVersions.InvokeAsync(new DigitalOcean.GetKubernetesVersionsArgs
-        ///         {
-        ///             VersionPrefix = "1.22.",
-        ///         }));
-        ///         var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new DigitalOcean.KubernetesClusterArgs
-        ///         {
-        ///             Region = "lon1",
-        ///             Version = example.Apply(example =&gt; example.LatestVersion),
-        ///             NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
-        ///             {
-        ///                 Name = "default",
-        ///                 Size = "s-1vcpu-2gb",
-        ///                 NodeCount = 3,
-        ///             },
-        ///         });
-        ///     }
+        ///         VersionPrefix = "1.22.",
+        ///     });
         /// 
-        /// }
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
+        ///     {
+        ///         Region = "lon1",
+        ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
+        ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+        ///         {
+        ///             Name = "default",
+        ///             Size = "s-1vcpu-2gb",
+        ///             NodeCount = 3,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -191,7 +185,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetKubernetesVersionsArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
@@ -202,9 +196,10 @@ namespace Pulumi.DigitalOcean
         public GetKubernetesVersionsArgs()
         {
         }
+        public static new GetKubernetesVersionsArgs Empty => new GetKubernetesVersionsArgs();
     }
 
-    public sealed class GetKubernetesVersionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
@@ -215,6 +210,7 @@ namespace Pulumi.DigitalOcean
         public GetKubernetesVersionsInvokeArgs()
         {
         }
+        public static new GetKubernetesVersionsInvokeArgs Empty => new GetKubernetesVersionsInvokeArgs();
     }
 
 

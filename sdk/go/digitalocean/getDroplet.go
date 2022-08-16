@@ -26,22 +26,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
-// 			Name: pulumi.StringRef("web"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dropletOutput", example.Ipv4Address)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
+//				Name: pulumi.StringRef("web"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dropletOutput", example.Ipv4Address)
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Get the Droplet by tag:
@@ -50,21 +53,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
-// 			Tag: pulumi.StringRef("web"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
+//				Tag: pulumi.StringRef("web"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Get the Droplet by ID:
@@ -73,21 +79,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
-// 			Id: pulumi.IntRef(digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
+//				Id: pulumi.IntRef(digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupDroplet(ctx *pulumi.Context, args *LookupDropletArgs, opts ...pulumi.InvokeOption) (*LookupDropletResult, error) {
 	var rv LookupDropletResult

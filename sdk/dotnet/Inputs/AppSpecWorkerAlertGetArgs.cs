@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecWorkerAlertGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecWorkerAlertGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines whether or not the alert is disabled (default: `false`).
@@ -45,5 +45,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecWorkerAlertGetArgs()
         {
         }
+        public static new AppSpecWorkerAlertGetArgs Empty => new AppSpecWorkerAlertGetArgs();
     }
 }

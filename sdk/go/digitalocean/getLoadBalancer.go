@@ -25,22 +25,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
-// 			Name: pulumi.StringRef("app"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("lbOutput", example.Ip)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
+//				Name: pulumi.StringRef("app"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("lbOutput", example.Ip)
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Get the load balancer by ID:
@@ -49,21 +52,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
-// 			Id: pulumi.StringRef("loadbalancer_id"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
+//				Id: pulumi.StringRef("loadbalancer_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	var rv LookupLoadBalancerResult

@@ -15,26 +15,25 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
     ///     {
-    ///         var foobarVolume = new DigitalOcean.Volume("foobarVolume", new DigitalOcean.VolumeArgs
-    ///         {
-    ///             Region = "nyc1",
-    ///             Size = 100,
-    ///             Description = "an example volume",
-    ///         });
-    ///         var foobarVolumeSnapshot = new DigitalOcean.VolumeSnapshot("foobarVolumeSnapshot", new DigitalOcean.VolumeSnapshotArgs
-    ///         {
-    ///             VolumeId = foobarVolume.Id,
-    ///         });
-    ///     }
+    ///         Region = "nyc1",
+    ///         Size = 100,
+    ///         Description = "an example volume",
+    ///     });
     /// 
-    /// }
+    ///     var foobarVolumeSnapshot = new DigitalOcean.VolumeSnapshot("foobarVolumeSnapshot", new()
+    ///     {
+    ///         VolumeId = foobarVolume.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +45,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/volumeSnapshot:VolumeSnapshot")]
-    public partial class VolumeSnapshot : Pulumi.CustomResource
+    public partial class VolumeSnapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date and time the volume snapshot was created.
@@ -134,7 +133,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class VolumeSnapshotArgs : Pulumi.ResourceArgs
+    public sealed class VolumeSnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A name for the volume snapshot.
@@ -163,9 +162,10 @@ namespace Pulumi.DigitalOcean
         public VolumeSnapshotArgs()
         {
         }
+        public static new VolumeSnapshotArgs Empty => new VolumeSnapshotArgs();
     }
 
-    public sealed class VolumeSnapshotState : Pulumi.ResourceArgs
+    public sealed class VolumeSnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date and time the volume snapshot was created.
@@ -224,5 +224,6 @@ namespace Pulumi.DigitalOcean
         public VolumeSnapshotState()
         {
         }
+        public static new VolumeSnapshotState Empty => new VolumeSnapshotState();
     }
 }

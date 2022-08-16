@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class KubernetesClusterMaintenancePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesClusterMaintenancePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
@@ -30,5 +30,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public KubernetesClusterMaintenancePolicyGetArgs()
         {
         }
+        public static new KubernetesClusterMaintenancePolicyGetArgs Empty => new KubernetesClusterMaintenancePolicyGetArgs();
     }
 }

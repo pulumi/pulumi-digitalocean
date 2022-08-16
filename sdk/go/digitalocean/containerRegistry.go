@@ -20,21 +20,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewContainerRegistry(ctx, "foobar", &digitalocean.ContainerRegistryArgs{
-// 			SubscriptionTierSlug: pulumi.String("starter"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewContainerRegistry(ctx, "foobar", &digitalocean.ContainerRegistryArgs{
+//				SubscriptionTierSlug: pulumi.String("starter"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // Container Registries can be imported using the `name`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
+//
+//	$ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
+//
 // ```
 type ContainerRegistry struct {
 	pulumi.CustomResourceState
@@ -177,7 +182,7 @@ func (i *ContainerRegistry) ToContainerRegistryOutputWithContext(ctx context.Con
 // ContainerRegistryArrayInput is an input type that accepts ContainerRegistryArray and ContainerRegistryArrayOutput values.
 // You can construct a concrete instance of `ContainerRegistryArrayInput` via:
 //
-//          ContainerRegistryArray{ ContainerRegistryArgs{...} }
+//	ContainerRegistryArray{ ContainerRegistryArgs{...} }
 type ContainerRegistryArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +207,7 @@ func (i ContainerRegistryArray) ToContainerRegistryArrayOutputWithContext(ctx co
 // ContainerRegistryMapInput is an input type that accepts ContainerRegistryMap and ContainerRegistryMapOutput values.
 // You can construct a concrete instance of `ContainerRegistryMapInput` via:
 //
-//          ContainerRegistryMap{ "key": ContainerRegistryArgs{...} }
+//	ContainerRegistryMap{ "key": ContainerRegistryArgs{...} }
 type ContainerRegistryMapInput interface {
 	pulumi.Input
 

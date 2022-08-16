@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [DigitalOceanResourceType("pulumi:providers:digitalocean")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// The URL to use for the DigitalOcean API.
@@ -74,7 +74,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL to use for the DigitalOcean API.
@@ -111,5 +111,6 @@ namespace Pulumi.DigitalOcean
             ApiEndpoint = Utilities.GetEnv("DIGITALOCEAN_API_URL") ?? "https://api.digitalocean.com";
             SpacesEndpoint = Utilities.GetEnv("SPACES_ENDPOINT_URL");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

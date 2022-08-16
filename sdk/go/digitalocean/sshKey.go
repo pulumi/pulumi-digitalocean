@@ -22,42 +22,45 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
-// 			PublicKey: readFileOrPanic("/Users/myuser/.ssh/id_rsa.pub"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			SshKeys: pulumi.StringArray{
-// 				_default.Fingerprint,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
+//				PublicKey: readFileOrPanic("/Users/myuser/.ssh/id_rsa.pub"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				SshKeys: pulumi.StringArray{
+//					_default.Fingerprint,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // SSH Keys can be imported using the `ssh key id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
+//
+//	$ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
+//
 // ```
 type SshKey struct {
 	pulumi.CustomResourceState
@@ -177,7 +182,7 @@ func (i *SshKey) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutput {
 // SshKeyArrayInput is an input type that accepts SshKeyArray and SshKeyArrayOutput values.
 // You can construct a concrete instance of `SshKeyArrayInput` via:
 //
-//          SshKeyArray{ SshKeyArgs{...} }
+//	SshKeyArray{ SshKeyArgs{...} }
 type SshKeyArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +207,7 @@ func (i SshKeyArray) ToSshKeyArrayOutputWithContext(ctx context.Context) SshKeyA
 // SshKeyMapInput is an input type that accepts SshKeyMap and SshKeyMapOutput values.
 // You can construct a concrete instance of `SshKeyMapInput` via:
 //
-//          SshKeyMap{ "key": SshKeyArgs{...} }
+//	SshKeyMap{ "key": SshKeyArgs{...} }
 type SshKeyMapInput interface {
 	pulumi.Input
 

@@ -20,48 +20,45 @@ namespace Pulumi.DigitalOcean
     /// Get the container registry:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
     ///     {
-    ///         var example = new DigitalOcean.ContainerRegistryDockerCredentials("example", new DigitalOcean.ContainerRegistryDockerCredentialsArgs
-    ///         {
-    ///             RegistryName = "example",
-    ///         });
-    ///     }
+    ///         RegistryName = "example",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Docker Provider Example
     /// 
     /// Use the `endpoint` and `docker_credentials` with the Docker provider:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleContainerRegistry = DigitalOcean.GetContainerRegistry.Invoke(new()
     ///     {
-    ///         var exampleContainerRegistry = Output.Create(DigitalOcean.GetContainerRegistry.InvokeAsync(new DigitalOcean.GetContainerRegistryArgs
-    ///         {
-    ///             Name = "example",
-    ///         }));
-    ///         var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", new DigitalOcean.ContainerRegistryDockerCredentialsArgs
-    ///         {
-    ///             RegistryName = "example",
-    ///         });
-    ///     }
+    ///         Name = "example",
+    ///     });
     /// 
-    /// }
+    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", new()
+    ///     {
+    ///         RegistryName = "example",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")]
-    public partial class ContainerRegistryDockerCredentials : Pulumi.CustomResource
+    public partial class ContainerRegistryDockerCredentials : global::Pulumi.CustomResource
     {
         [Output("credentialExpirationTime")]
         public Output<string> CredentialExpirationTime { get; private set; } = null!;
@@ -131,7 +128,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class ContainerRegistryDockerCredentialsArgs : Pulumi.ResourceArgs
+    public sealed class ContainerRegistryDockerCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
@@ -154,9 +151,10 @@ namespace Pulumi.DigitalOcean
         public ContainerRegistryDockerCredentialsArgs()
         {
         }
+        public static new ContainerRegistryDockerCredentialsArgs Empty => new ContainerRegistryDockerCredentialsArgs();
     }
 
-    public sealed class ContainerRegistryDockerCredentialsState : Pulumi.ResourceArgs
+    public sealed class ContainerRegistryDockerCredentialsState : global::Pulumi.ResourceArgs
     {
         [Input("credentialExpirationTime")]
         public Input<string>? CredentialExpirationTime { get; set; }
@@ -185,5 +183,6 @@ namespace Pulumi.DigitalOcean
         public ContainerRegistryDockerCredentialsState()
         {
         }
+        public static new ContainerRegistryDockerCredentialsState Empty => new ContainerRegistryDockerCredentialsState();
     }
 }

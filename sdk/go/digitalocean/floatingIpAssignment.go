@@ -23,38 +23,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarFloatingIp, err := digitalocean.NewFloatingIp(ctx, "foobarFloatingIp", &digitalocean.FloatingIpArgs{
-// 			Region: pulumi.String("sgp1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
-// 			Size:              pulumi.String("s-1vcpu-1gb"),
-// 			Image:             pulumi.String("ubuntu-18-04-x64"),
-// 			Region:            pulumi.String("sgp1"),
-// 			Ipv6:              pulumi.Bool(true),
-// 			PrivateNetworking: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewFloatingIpAssignment(ctx, "foobarFloatingIpAssignment", &digitalocean.FloatingIpAssignmentArgs{
-// 			IpAddress: foobarFloatingIp.IpAddress,
-// 			DropletId: foobarDroplet.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarFloatingIp, err := digitalocean.NewFloatingIp(ctx, "foobarFloatingIp", &digitalocean.FloatingIpArgs{
+//				Region: pulumi.String("sgp1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+//				Size:              pulumi.String("s-1vcpu-1gb"),
+//				Image:             pulumi.String("ubuntu-18-04-x64"),
+//				Region:            pulumi.String("sgp1"),
+//				Ipv6:              pulumi.Bool(true),
+//				PrivateNetworking: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewFloatingIpAssignment(ctx, "foobarFloatingIpAssignment", &digitalocean.FloatingIpAssignmentArgs{
+//				IpAddress: foobarFloatingIp.IpAddress,
+//				DropletId: foobarDroplet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // Floating IP assignments can be imported using the Floating IP itself and the `id` of the Droplet joined with a comma. For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index/floatingIpAssignment:FloatingIpAssignment foobar 192.0.2.1,123456
+//
+//	$ pulumi import digitalocean:index/floatingIpAssignment:FloatingIpAssignment foobar 192.0.2.1,123456
+//
 // ```
 type FloatingIpAssignment struct {
 	pulumi.CustomResourceState
@@ -166,7 +171,7 @@ func (i *FloatingIpAssignment) ToFloatingIpAssignmentOutputWithContext(ctx conte
 // FloatingIpAssignmentArrayInput is an input type that accepts FloatingIpAssignmentArray and FloatingIpAssignmentArrayOutput values.
 // You can construct a concrete instance of `FloatingIpAssignmentArrayInput` via:
 //
-//          FloatingIpAssignmentArray{ FloatingIpAssignmentArgs{...} }
+//	FloatingIpAssignmentArray{ FloatingIpAssignmentArgs{...} }
 type FloatingIpAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -191,7 +196,7 @@ func (i FloatingIpAssignmentArray) ToFloatingIpAssignmentArrayOutputWithContext(
 // FloatingIpAssignmentMapInput is an input type that accepts FloatingIpAssignmentMap and FloatingIpAssignmentMapOutput values.
 // You can construct a concrete instance of `FloatingIpAssignmentMapInput` via:
 //
-//          FloatingIpAssignmentMap{ "key": FloatingIpAssignmentArgs{...} }
+//	FloatingIpAssignmentMap{ "key": FloatingIpAssignmentArgs{...} }
 type FloatingIpAssignmentMapInput interface {
 	pulumi.Input
 

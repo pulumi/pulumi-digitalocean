@@ -23,32 +23,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
-// 			Size:              pulumi.String("s-1vcpu-1gb"),
-// 			Image:             pulumi.String("ubuntu-18-04-x64"),
-// 			Region:            pulumi.String("sgp1"),
-// 			Ipv6:              pulumi.Bool(true),
-// 			PrivateNetworking: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewFloatingIp(ctx, "foobarFloatingIp", &digitalocean.FloatingIpArgs{
-// 			DropletId: foobarDroplet.ID(),
-// 			Region:    foobarDroplet.Region,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+//				Size:              pulumi.String("s-1vcpu-1gb"),
+//				Image:             pulumi.String("ubuntu-18-04-x64"),
+//				Region:            pulumi.String("sgp1"),
+//				Ipv6:              pulumi.Bool(true),
+//				PrivateNetworking: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewFloatingIp(ctx, "foobarFloatingIp", &digitalocean.FloatingIpArgs{
+//				DropletId: foobarDroplet.ID(),
+//				Region:    foobarDroplet.Region,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // Floating IPs can be imported using the `ip`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+//
+//	$ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+//
 // ```
 type FloatingIp struct {
 	pulumi.CustomResourceState
@@ -173,7 +178,7 @@ func (i *FloatingIp) ToFloatingIpOutputWithContext(ctx context.Context) Floating
 // FloatingIpArrayInput is an input type that accepts FloatingIpArray and FloatingIpArrayOutput values.
 // You can construct a concrete instance of `FloatingIpArrayInput` via:
 //
-//          FloatingIpArray{ FloatingIpArgs{...} }
+//	FloatingIpArray{ FloatingIpArgs{...} }
 type FloatingIpArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +203,7 @@ func (i FloatingIpArray) ToFloatingIpArrayOutputWithContext(ctx context.Context)
 // FloatingIpMapInput is an input type that accepts FloatingIpMap and FloatingIpMapOutput values.
 // You can construct a concrete instance of `FloatingIpMapInput` via:
 //
-//          FloatingIpMap{ "key": FloatingIpArgs{...} }
+//	FloatingIpMap{ "key": FloatingIpArgs{...} }
 type FloatingIpMapInput interface {
 	pulumi.Input
 

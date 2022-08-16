@@ -20,44 +20,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
-// 			Region: pulumi.String("nyc3"),
-// 			ForwardingRules: LoadBalancerForwardingRuleArray{
-// 				&LoadBalancerForwardingRuleArgs{
-// 					EntryPort:      pulumi.Int(80),
-// 					EntryProtocol:  pulumi.String("http"),
-// 					TargetPort:     pulumi.Int(80),
-// 					TargetProtocol: pulumi.String("http"),
-// 				},
-// 			},
-// 			Healthcheck: &LoadBalancerHealthcheckArgs{
-// 				Port:     pulumi.Int(22),
-// 				Protocol: pulumi.String("tcp"),
-// 			},
-// 			DropletIds: pulumi.IntArray{
-// 				web.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+//				Region: pulumi.String("nyc3"),
+//				ForwardingRules: LoadBalancerForwardingRuleArray{
+//					&LoadBalancerForwardingRuleArgs{
+//						EntryPort:      pulumi.Int(80),
+//						EntryProtocol:  pulumi.String("http"),
+//						TargetPort:     pulumi.Int(80),
+//						TargetProtocol: pulumi.String("http"),
+//					},
+//				},
+//				Healthcheck: &LoadBalancerHealthcheckArgs{
+//					Port:     pulumi.Int(22),
+//					Protocol: pulumi.String("tcp"),
+//				},
+//				DropletIds: pulumi.IntArray{
+//					web.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
@@ -70,52 +73,55 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-// 			PrivateKey:      pulumi.String("file('key.pem')"),
-// 			LeafCertificate: pulumi.String("file('cert.pem')"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
-// 			Region: pulumi.String("nyc3"),
-// 			ForwardingRules: LoadBalancerForwardingRuleArray{
-// 				&LoadBalancerForwardingRuleArgs{
-// 					EntryPort:       pulumi.Int(443),
-// 					EntryProtocol:   pulumi.String("https"),
-// 					TargetPort:      pulumi.Int(80),
-// 					TargetProtocol:  pulumi.String("http"),
-// 					CertificateName: cert.Name,
-// 				},
-// 			},
-// 			Healthcheck: &LoadBalancerHealthcheckArgs{
-// 				Port:     pulumi.Int(22),
-// 				Protocol: pulumi.String("tcp"),
-// 			},
-// 			DropletIds: pulumi.IntArray{
-// 				web.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				PrivateKey:      pulumi.String("file('key.pem')"),
+//				LeafCertificate: pulumi.String("file('cert.pem')"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+//				Region: pulumi.String("nyc3"),
+//				ForwardingRules: LoadBalancerForwardingRuleArray{
+//					&LoadBalancerForwardingRuleArgs{
+//						EntryPort:       pulumi.Int(443),
+//						EntryProtocol:   pulumi.String("https"),
+//						TargetPort:      pulumi.Int(80),
+//						TargetProtocol:  pulumi.String("http"),
+//						CertificateName: cert.Name,
+//					},
+//				},
+//				Healthcheck: &LoadBalancerHealthcheckArgs{
+//					Port:     pulumi.Int(22),
+//					Protocol: pulumi.String("tcp"),
+//				},
+//				DropletIds: pulumi.IntArray{
+//					web.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -123,7 +129,9 @@ import (
 // Load Balancers can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
+//
+//	$ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
+//
 // ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState
@@ -414,7 +422,7 @@ func (i *LoadBalancer) ToLoadBalancerOutputWithContext(ctx context.Context) Load
 // LoadBalancerArrayInput is an input type that accepts LoadBalancerArray and LoadBalancerArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerArrayInput` via:
 //
-//          LoadBalancerArray{ LoadBalancerArgs{...} }
+//	LoadBalancerArray{ LoadBalancerArgs{...} }
 type LoadBalancerArrayInput interface {
 	pulumi.Input
 
@@ -439,7 +447,7 @@ func (i LoadBalancerArray) ToLoadBalancerArrayOutputWithContext(ctx context.Cont
 // LoadBalancerMapInput is an input type that accepts LoadBalancerMap and LoadBalancerMapOutput values.
 // You can construct a concrete instance of `LoadBalancerMapInput` via:
 //
-//          LoadBalancerMap{ "key": LoadBalancerArgs{...} }
+//	LoadBalancerMap{ "key": LoadBalancerArgs{...} }
 type LoadBalancerMapInput interface {
 	pulumi.Input
 

@@ -18,81 +18,80 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new database firewall allowing multiple IP addresses
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
-    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "pg",
-    ///             Version = "11",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Region = "nyc1",
-    ///             NodeCount = 1,
-    ///         });
-    ///         var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new DigitalOcean.DatabaseFirewallArgs
-    ///         {
-    ///             ClusterId = postgres_example.Id,
-    ///             Rules = 
-    ///             {
-    ///                 new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
-    ///                 {
-    ///                     Type = "ip_addr",
-    ///                     Value = "192.168.1.1",
-    ///                 },
-    ///                 new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
-    ///                 {
-    ///                     Type = "ip_addr",
-    ///                     Value = "192.0.2.0",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
     /// 
-    /// }
+    ///     var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///         Rules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///             {
+    ///                 Type = "ip_addr",
+    ///                 Value = "192.168.1.1",
+    ///             },
+    ///             new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///             {
+    ///                 Type = "ip_addr",
+    ///                 Value = "192.0.2.0",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Create a new database firewall allowing a Droplet
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "centos-7-x64",
-    ///             Region = "nyc3",
-    ///         });
-    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "pg",
-    ///             Version = "11",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Region = "nyc1",
-    ///             NodeCount = 1,
-    ///         });
-    ///         var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new DigitalOcean.DatabaseFirewallArgs
-    ///         {
-    ///             ClusterId = postgres_example.Id,
-    ///             Rules = 
-    ///             {
-    ///                 new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
-    ///                 {
-    ///                     Type = "droplet",
-    ///                     Value = web.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-22-04-x64",
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
+    /// 
+    ///     var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///         Rules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///             {
+    ///                 Type = "droplet",
+    ///                 Value = web.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -104,7 +103,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/databaseFirewall:DatabaseFirewall")]
-    public partial class DatabaseFirewall : Pulumi.CustomResource
+    public partial class DatabaseFirewall : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the target database cluster.
@@ -162,7 +161,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DatabaseFirewallArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseFirewallArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the target database cluster.
@@ -185,9 +184,10 @@ namespace Pulumi.DigitalOcean
         public DatabaseFirewallArgs()
         {
         }
+        public static new DatabaseFirewallArgs Empty => new DatabaseFirewallArgs();
     }
 
-    public sealed class DatabaseFirewallState : Pulumi.ResourceArgs
+    public sealed class DatabaseFirewallState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the target database cluster.
@@ -210,5 +210,6 @@ namespace Pulumi.DigitalOcean
         public DatabaseFirewallState()
         {
         }
+        public static new DatabaseFirewallState Empty => new DatabaseFirewallState();
     }
 }

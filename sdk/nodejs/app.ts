@@ -186,6 +186,10 @@ export class App extends pulumi.CustomResource {
      * The date and time of when the app was last updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * The uniform resource identifier for the app.
+     */
+    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -206,6 +210,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["liveUrl"] = state ? state.liveUrl : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
@@ -214,6 +219,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["defaultIngress"] = undefined /*out*/;
             resourceInputs["liveUrl"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(App.__pulumiType, name, resourceInputs, opts);
@@ -248,6 +254,10 @@ export interface AppState {
      * The date and time of when the app was last updated.
      */
     updatedAt?: pulumi.Input<string>;
+    /**
+     * The uniform resource identifier for the app.
+     */
+    urn?: pulumi.Input<string>;
 }
 
 /**

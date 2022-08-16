@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class KubernetesClusterKubeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesClusterKubeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
@@ -57,5 +57,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public KubernetesClusterKubeConfigGetArgs()
         {
         }
+        public static new KubernetesClusterKubeConfigGetArgs Empty => new KubernetesClusterKubeConfigGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecStaticSiteCorsGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecStaticSiteCorsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
@@ -69,5 +69,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecStaticSiteCorsGetArgs()
         {
         }
+        public static new AppSpecStaticSiteCorsGetArgs Empty => new AppSpecStaticSiteCorsGetArgs();
     }
 }

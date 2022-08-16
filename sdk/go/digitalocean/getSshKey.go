@@ -25,32 +25,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleSshKey, err := digitalocean.LookupSshKey(ctx, &GetSshKeyArgs{
-// 			Name: "example",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc2"),
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			SshKeys: pulumi.StringArray{
-// 				pulumi.Int(exampleSshKey.Id),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleSshKey, err := digitalocean.LookupSshKey(ctx, &GetSshKeyArgs{
+//				Name: "example",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc2"),
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				SshKeys: pulumi.StringArray{
+//					pulumi.Int(exampleSshKey.Id),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshKeyResult, error) {
 	var rv LookupSshKeyResult

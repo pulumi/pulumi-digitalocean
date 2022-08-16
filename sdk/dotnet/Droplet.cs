@@ -16,23 +16,21 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Web Droplet in the nyc2 region
+    ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         // Create a new Web Droplet in the nyc2 region
-    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Image = "ubuntu-18-04-x64",
-    ///             Region = "nyc2",
-    ///             Size = "s-1vcpu-1gb",
-    ///         });
-    ///     }
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc2",
+    ///         Size = "s-1vcpu-1gb",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/droplet:Droplet")]
-    public partial class Droplet : Pulumi.CustomResource
+    public partial class Droplet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean controlling if backups are made. Defaults to
@@ -88,7 +86,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> GracefulShutdown { get; private set; } = null!;
 
         /// <summary>
-        /// The Droplet image ID or slug.
+        /// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
         /// </summary>
         [Output("image")]
         public Output<string> Image { get; private set; } = null!;
@@ -271,7 +269,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DropletArgs : Pulumi.ResourceArgs
+    public sealed class DropletArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean controlling if backups are made. Defaults to
@@ -299,7 +297,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? GracefulShutdown { get; set; }
 
         /// <summary>
-        /// The Droplet image ID or slug.
+        /// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
         /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
@@ -408,9 +406,10 @@ namespace Pulumi.DigitalOcean
         public DropletArgs()
         {
         }
+        public static new DropletArgs Empty => new DropletArgs();
     }
 
-    public sealed class DropletState : Pulumi.ResourceArgs
+    public sealed class DropletState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean controlling if backups are made. Defaults to
@@ -454,7 +453,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? GracefulShutdown { get; set; }
 
         /// <summary>
-        /// The Droplet image ID or slug.
+        /// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -614,5 +613,6 @@ namespace Pulumi.DigitalOcean
         public DropletState()
         {
         }
+        public static new DropletState Empty => new DropletState();
     }
 }

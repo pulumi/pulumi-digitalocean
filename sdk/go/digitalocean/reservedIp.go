@@ -21,32 +21,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-// 			Size:              pulumi.String("s-1vcpu-1gb"),
-// 			Image:             pulumi.String("ubuntu-22-04-x64"),
-// 			Region:            pulumi.String("nyc3"),
-// 			Ipv6:              pulumi.Bool(true),
-// 			PrivateNetworking: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewReservedIp(ctx, "exampleReservedIp", &digitalocean.ReservedIpArgs{
-// 			DropletId: exampleDroplet.ID(),
-// 			Region:    exampleDroplet.Region,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//				Size:              pulumi.String("s-1vcpu-1gb"),
+//				Image:             pulumi.String("ubuntu-22-04-x64"),
+//				Region:            pulumi.String("nyc3"),
+//				Ipv6:              pulumi.Bool(true),
+//				PrivateNetworking: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewReservedIp(ctx, "exampleReservedIp", &digitalocean.ReservedIpArgs{
+//				DropletId: exampleDroplet.ID(),
+//				Region:    exampleDroplet.Region,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Reserved IPs can be imported using the `ip`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
+//
+//	$ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
+//
 // ```
 type ReservedIp struct {
 	pulumi.CustomResourceState
@@ -171,7 +176,7 @@ func (i *ReservedIp) ToReservedIpOutputWithContext(ctx context.Context) Reserved
 // ReservedIpArrayInput is an input type that accepts ReservedIpArray and ReservedIpArrayOutput values.
 // You can construct a concrete instance of `ReservedIpArrayInput` via:
 //
-//          ReservedIpArray{ ReservedIpArgs{...} }
+//	ReservedIpArray{ ReservedIpArgs{...} }
 type ReservedIpArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +201,7 @@ func (i ReservedIpArray) ToReservedIpArrayOutputWithContext(ctx context.Context)
 // ReservedIpMapInput is an input type that accepts ReservedIpMap and ReservedIpMapOutput values.
 // You can construct a concrete instance of `ReservedIpMapInput` via:
 //
-//          ReservedIpMap{ "key": ReservedIpArgs{...} }
+//	ReservedIpMap{ "key": ReservedIpArgs{...} }
 type ReservedIpMapInput interface {
 	pulumi.Input
 

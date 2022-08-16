@@ -21,23 +21,22 @@ namespace Pulumi.DigitalOcean
         /// Get the account:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetApp.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetApp.InvokeAsync(new DigitalOcean.GetAppArgs
-        ///         {
-        ///             AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
-        ///         }));
-        ///         this.DefaultIngress = example.Apply(example =&gt; example.DefaultIngress);
-        ///     }
+        ///         AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
+        ///     });
         /// 
-        ///     [Output("defaultIngress")]
-        ///     public Output&lt;string&gt; DefaultIngress { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultIngress"] = example.Apply(getAppResult =&gt; getAppResult.DefaultIngress),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -55,23 +54,22 @@ namespace Pulumi.DigitalOcean
         /// Get the account:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetApp.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetApp.InvokeAsync(new DigitalOcean.GetAppArgs
-        ///         {
-        ///             AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
-        ///         }));
-        ///         this.DefaultIngress = example.Apply(example =&gt; example.DefaultIngress);
-        ///     }
+        ///         AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
+        ///     });
         /// 
-        ///     [Output("defaultIngress")]
-        ///     public Output&lt;string&gt; DefaultIngress { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultIngress"] = example.Apply(getAppResult =&gt; getAppResult.DefaultIngress),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -81,7 +79,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetAppArgs : Pulumi.InvokeArgs
+    public sealed class GetAppArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the app to retrieve information about.
@@ -92,9 +90,10 @@ namespace Pulumi.DigitalOcean
         public GetAppArgs()
         {
         }
+        public static new GetAppArgs Empty => new GetAppArgs();
     }
 
-    public sealed class GetAppInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the app to retrieve information about.
@@ -105,6 +104,7 @@ namespace Pulumi.DigitalOcean
         public GetAppInvokeArgs()
         {
         }
+        public static new GetAppInvokeArgs Empty => new GetAppInvokeArgs();
     }
 
 
@@ -140,6 +140,10 @@ namespace Pulumi.DigitalOcean
         /// The date and time of when the app was last updated.
         /// </summary>
         public readonly string UpdatedAt;
+        /// <summary>
+        /// The uniform resource identifier for the app.
+        /// </summary>
+        public readonly string Urn;
 
         [OutputConstructor]
         private GetAppResult(
@@ -157,7 +161,9 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetAppSpecResult> specs,
 
-            string updatedAt)
+            string updatedAt,
+
+            string urn)
         {
             ActiveDeploymentId = activeDeploymentId;
             AppId = appId;
@@ -167,6 +173,7 @@ namespace Pulumi.DigitalOcean
             LiveUrl = liveUrl;
             Specs = specs;
             UpdatedAt = updatedAt;
+            Urn = urn;
         }
     }
 }

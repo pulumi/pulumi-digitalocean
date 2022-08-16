@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecServiceRouteArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecServiceRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Paths must start with `/` and must be unique within the app.
@@ -27,5 +27,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecServiceRouteArgs()
         {
         }
+        public static new AppSpecServiceRouteArgs Empty => new AppSpecServiceRouteArgs();
     }
 }

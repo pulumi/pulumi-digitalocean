@@ -29,7 +29,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetSpacesBucketObjectsArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketObjectsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Lists object keys in this Spaces bucket
@@ -70,9 +70,10 @@ namespace Pulumi.DigitalOcean
         public GetSpacesBucketObjectsArgs()
         {
         }
+        public static new GetSpacesBucketObjectsArgs Empty => new GetSpacesBucketObjectsArgs();
     }
 
-    public sealed class GetSpacesBucketObjectsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketObjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Lists object keys in this Spaces bucket
@@ -113,6 +114,7 @@ namespace Pulumi.DigitalOcean
         public GetSpacesBucketObjectsInvokeArgs()
         {
         }
+        public static new GetSpacesBucketObjectsInvokeArgs Empty => new GetSpacesBucketObjectsInvokeArgs();
     }
 
 

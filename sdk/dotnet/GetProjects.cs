@@ -29,75 +29,71 @@ namespace Pulumi.DigitalOcean
         /// For example to find all staging environment projects:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var staging = DigitalOcean.GetProjects.Invoke(new()
         ///     {
-        ///         var staging = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 Key = "environment",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "environment",
-        ///                     Values = 
-        ///                     {
-        ///                         "Staging",
-        ///                     },
+        ///                     "Staging",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var non_default_production = DigitalOcean.GetProjects.Invoke(new()
         ///     {
-        ///         var non_default_production = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 Key = "environment",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "environment",
-        ///                     Values = 
-        ///                     {
-        ///                         "Production",
-        ///                     },
-        ///                 },
-        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
-        ///                 {
-        ///                     Key = "is_default",
-        ///                     Values = 
-        ///                     {
-        ///                         "false",
-        ///                     },
+        ///                     "Production",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetProjectsSortArgs
+        ///                 Key = "is_default",
+        ///                 Values = new[]
         ///                 {
-        ///                     Direction = "asc",
-        ///                     Key = "name",
+        ///                     "false",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetProjectsSortInputArgs
+        ///             {
+        ///                 Direction = "asc",
+        ///                 Key = "name",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -123,75 +119,71 @@ namespace Pulumi.DigitalOcean
         /// For example to find all staging environment projects:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var staging = DigitalOcean.GetProjects.Invoke(new()
         ///     {
-        ///         var staging = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 Key = "environment",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "environment",
-        ///                     Values = 
-        ///                     {
-        ///                         "Staging",
-        ///                     },
+        ///                     "Staging",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var non_default_production = DigitalOcean.GetProjects.Invoke(new()
         ///     {
-        ///         var non_default_production = Output.Create(DigitalOcean.GetProjects.InvokeAsync(new DigitalOcean.GetProjectsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
+        ///                 Key = "environment",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "environment",
-        ///                     Values = 
-        ///                     {
-        ///                         "Production",
-        ///                     },
-        ///                 },
-        ///                 new DigitalOcean.Inputs.GetProjectsFilterArgs
-        ///                 {
-        ///                     Key = "is_default",
-        ///                     Values = 
-        ///                     {
-        ///                         "false",
-        ///                     },
+        ///                     "Production",
         ///                 },
         ///             },
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetProjectsSortArgs
+        ///                 Key = "is_default",
+        ///                 Values = new[]
         ///                 {
-        ///                     Direction = "asc",
-        ///                     Key = "name",
+        ///                     "false",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetProjectsSortInputArgs
+        ///             {
+        ///                 Direction = "asc",
+        ///                 Key = "name",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -201,7 +193,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetProjectsArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetProjectsFilterArgs>? _filters;
@@ -232,9 +224,10 @@ namespace Pulumi.DigitalOcean
         public GetProjectsArgs()
         {
         }
+        public static new GetProjectsArgs Empty => new GetProjectsArgs();
     }
 
-    public sealed class GetProjectsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetProjectsFilterInputArgs>? _filters;
@@ -265,6 +258,7 @@ namespace Pulumi.DigitalOcean
         public GetProjectsInvokeArgs()
         {
         }
+        public static new GetProjectsInvokeArgs Empty => new GetProjectsInvokeArgs();
     }
 
 

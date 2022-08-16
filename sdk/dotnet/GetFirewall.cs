@@ -21,23 +21,22 @@ namespace Pulumi.DigitalOcean
         /// Get the firewall:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetFirewall.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetFirewall.InvokeAsync(new DigitalOcean.GetFirewallArgs
-        ///         {
-        ///             FirewallId = "1df48973-6eef-4214-854f-fa7726e7e583",
-        ///         }));
-        ///         this.ExampleFirewallName = example.Apply(example =&gt; example.Name);
-        ///     }
+        ///         FirewallId = "1df48973-6eef-4214-854f-fa7726e7e583",
+        ///     });
         /// 
-        ///     [Output("exampleFirewallName")]
-        ///     public Output&lt;string&gt; ExampleFirewallName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["exampleFirewallName"] = example.Apply(getFirewallResult =&gt; getFirewallResult.Name),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -55,23 +54,22 @@ namespace Pulumi.DigitalOcean
         /// Get the firewall:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetFirewall.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetFirewall.InvokeAsync(new DigitalOcean.GetFirewallArgs
-        ///         {
-        ///             FirewallId = "1df48973-6eef-4214-854f-fa7726e7e583",
-        ///         }));
-        ///         this.ExampleFirewallName = example.Apply(example =&gt; example.Name);
-        ///     }
+        ///         FirewallId = "1df48973-6eef-4214-854f-fa7726e7e583",
+        ///     });
         /// 
-        ///     [Output("exampleFirewallName")]
-        ///     public Output&lt;string&gt; ExampleFirewallName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["exampleFirewallName"] = example.Apply(getFirewallResult =&gt; getFirewallResult.Name),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -81,7 +79,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetFirewallArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallArgs : global::Pulumi.InvokeArgs
     {
         [Input("dropletIds")]
         private List<int>? _dropletIds;
@@ -134,9 +132,10 @@ namespace Pulumi.DigitalOcean
         public GetFirewallArgs()
         {
         }
+        public static new GetFirewallArgs Empty => new GetFirewallArgs();
     }
 
-    public sealed class GetFirewallInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dropletIds")]
         private InputList<int>? _dropletIds;
@@ -189,6 +188,7 @@ namespace Pulumi.DigitalOcean
         public GetFirewallInvokeArgs()
         {
         }
+        public static new GetFirewallInvokeArgs Empty => new GetFirewallInvokeArgs();
     }
 
 

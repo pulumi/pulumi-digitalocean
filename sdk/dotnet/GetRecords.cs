@@ -27,7 +27,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetRecordsArgs : Pulumi.InvokeArgs
+    public sealed class GetRecordsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The domain name to search for DNS records
@@ -64,9 +64,10 @@ namespace Pulumi.DigitalOcean
         public GetRecordsArgs()
         {
         }
+        public static new GetRecordsArgs Empty => new GetRecordsArgs();
     }
 
-    public sealed class GetRecordsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRecordsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The domain name to search for DNS records
@@ -103,6 +104,7 @@ namespace Pulumi.DigitalOcean
         public GetRecordsInvokeArgs()
         {
         }
+        public static new GetRecordsInvokeArgs Empty => new GetRecordsInvokeArgs();
     }
 
 

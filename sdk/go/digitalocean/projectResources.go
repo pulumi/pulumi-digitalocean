@@ -33,38 +33,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.LookupProject(ctx, &GetProjectArgs{
-// 			Name: pulumi.StringRef("playground"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("centos-7-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewProjectResources(ctx, "barfoo", &digitalocean.ProjectResourcesArgs{
-// 			Project: pulumi.Any(data.Digitalocean_project.Foo.Id),
-// 			Resources: pulumi.StringArray{
-// 				foobar.DropletUrn,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.LookupProject(ctx, &GetProjectArgs{
+//				Name: pulumi.StringRef("playground"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-22-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewProjectResources(ctx, "barfoo", &digitalocean.ProjectResourcesArgs{
+//				Project: pulumi.Any(data.Digitalocean_project.Foo.Id),
+//				Resources: pulumi.StringArray{
+//					foobar.DropletUrn,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -172,7 +175,7 @@ func (i *ProjectResources) ToProjectResourcesOutputWithContext(ctx context.Conte
 // ProjectResourcesArrayInput is an input type that accepts ProjectResourcesArray and ProjectResourcesArrayOutput values.
 // You can construct a concrete instance of `ProjectResourcesArrayInput` via:
 //
-//          ProjectResourcesArray{ ProjectResourcesArgs{...} }
+//	ProjectResourcesArray{ ProjectResourcesArgs{...} }
 type ProjectResourcesArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +200,7 @@ func (i ProjectResourcesArray) ToProjectResourcesArrayOutputWithContext(ctx cont
 // ProjectResourcesMapInput is an input type that accepts ProjectResourcesMap and ProjectResourcesMapOutput values.
 // You can construct a concrete instance of `ProjectResourcesMapInput` via:
 //
-//          ProjectResourcesMap{ "key": ProjectResourcesArgs{...} }
+//	ProjectResourcesMap{ "key": ProjectResourcesArgs{...} }
 type ProjectResourcesMapInput interface {
 	pulumi.Input
 

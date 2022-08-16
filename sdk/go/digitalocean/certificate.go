@@ -24,34 +24,37 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-// 			Type:             pulumi.String("custom"),
-// 			PrivateKey:       readFileOrPanic("/Users/myuser/certs/privkey.pem"),
-// 			LeafCertificate:  readFileOrPanic("/Users/myuser/certs/cert.pem"),
-// 			CertificateChain: readFileOrPanic("/Users/myuser/certs/fullchain.pem"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				Type:             pulumi.String("custom"),
+//				PrivateKey:       readFileOrPanic("/Users/myuser/certs/privkey.pem"),
+//				LeafCertificate:  readFileOrPanic("/Users/myuser/certs/cert.pem"),
+//				CertificateChain: readFileOrPanic("/Users/myuser/certs/fullchain.pem"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Let's Encrypt Certificate
 //
@@ -59,24 +62,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-// 			Domains: pulumi.StringArray{
-// 				pulumi.String("example.com"),
-// 			},
-// 			Type: pulumi.String("lets_encrypt"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				Domains: pulumi.StringArray{
+//					pulumi.String("example.com"),
+//				},
+//				Type: pulumi.String("lets_encrypt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Use with Other Resources
 //
@@ -87,40 +93,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-// 			Type: pulumi.String("lets_encrypt"),
-// 			Domains: pulumi.StringArray{
-// 				pulumi.String("example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
-// 			Region:     pulumi.String("nyc3"),
-// 			DropletTag: pulumi.String("backend"),
-// 			ForwardingRules: LoadBalancerForwardingRuleArray{
-// 				&LoadBalancerForwardingRuleArgs{
-// 					EntryPort:       pulumi.Int(443),
-// 					EntryProtocol:   pulumi.String("https"),
-// 					TargetPort:      pulumi.Int(80),
-// 					TargetProtocol:  pulumi.String("http"),
-// 					CertificateName: cert.Name,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				Type: pulumi.String("lets_encrypt"),
+//				Domains: pulumi.StringArray{
+//					pulumi.String("example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+//				Region:     pulumi.String("nyc3"),
+//				DropletTag: pulumi.String("backend"),
+//				ForwardingRules: LoadBalancerForwardingRuleArray{
+//					&LoadBalancerForwardingRuleArgs{
+//						EntryPort:       pulumi.Int(443),
+//						EntryProtocol:   pulumi.String("https"),
+//						TargetPort:      pulumi.Int(80),
+//						TargetProtocol:  pulumi.String("http"),
+//						CertificateName: cert.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -128,7 +137,9 @@ import (
 // Certificates can be imported using the certificate `name`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
+//
+//	$ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
+//
 // ```
 type Certificate struct {
 	pulumi.CustomResourceState
@@ -322,7 +333,7 @@ func (i *Certificate) ToCertificateOutputWithContext(ctx context.Context) Certif
 // CertificateArrayInput is an input type that accepts CertificateArray and CertificateArrayOutput values.
 // You can construct a concrete instance of `CertificateArrayInput` via:
 //
-//          CertificateArray{ CertificateArgs{...} }
+//	CertificateArray{ CertificateArgs{...} }
 type CertificateArrayInput interface {
 	pulumi.Input
 
@@ -347,7 +358,7 @@ func (i CertificateArray) ToCertificateArrayOutputWithContext(ctx context.Contex
 // CertificateMapInput is an input type that accepts CertificateMap and CertificateMapOutput values.
 // You can construct a concrete instance of `CertificateMapInput` via:
 //
-//          CertificateMap{ "key": CertificateArgs{...} }
+//	CertificateMap{ "key": CertificateArgs{...} }
 type CertificateMapInput interface {
 	pulumi.Input
 

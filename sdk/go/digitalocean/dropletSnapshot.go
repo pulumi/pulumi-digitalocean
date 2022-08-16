@@ -19,29 +19,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Image:  pulumi.String("centos-7-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDropletSnapshot(ctx, "web-snapshot", &digitalocean.DropletSnapshotArgs{
-// 			DropletId: web.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-22-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDropletSnapshot(ctx, "web-snapshot", &digitalocean.DropletSnapshotArgs{
+//				DropletId: web.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "from-snapshot", &digitalocean.DropletArgs{
+//				Image:  web_snapshot.ID(),
+//				Region: pulumi.String("nyc3"),
+//				Size:   pulumi.String("s-2vcpu-4gb"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +60,9 @@ import (
 // Droplet Snapshots can be imported using the `snapshot id`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
+//
+//	$ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
+//
 // ```
 type DropletSnapshot struct {
 	pulumi.CustomResourceState
@@ -174,7 +187,7 @@ func (i *DropletSnapshot) ToDropletSnapshotOutputWithContext(ctx context.Context
 // DropletSnapshotArrayInput is an input type that accepts DropletSnapshotArray and DropletSnapshotArrayOutput values.
 // You can construct a concrete instance of `DropletSnapshotArrayInput` via:
 //
-//          DropletSnapshotArray{ DropletSnapshotArgs{...} }
+//	DropletSnapshotArray{ DropletSnapshotArgs{...} }
 type DropletSnapshotArrayInput interface {
 	pulumi.Input
 
@@ -199,7 +212,7 @@ func (i DropletSnapshotArray) ToDropletSnapshotArrayOutputWithContext(ctx contex
 // DropletSnapshotMapInput is an input type that accepts DropletSnapshotMap and DropletSnapshotMapOutput values.
 // You can construct a concrete instance of `DropletSnapshotMapInput` via:
 //
-//          DropletSnapshotMap{ "key": DropletSnapshotArgs{...} }
+//	DropletSnapshotMap{ "key": DropletSnapshotArgs{...} }
 type DropletSnapshotMapInput interface {
 	pulumi.Input
 

@@ -29,34 +29,34 @@ namespace Pulumi.DigitalOcean
     /// The following example assigns a droplet to a Project managed outside of the provider:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var playground = DigitalOcean.GetProject.Invoke(new()
     ///     {
-    ///         var playground = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs
-    ///         {
-    ///             Name = "playground",
-    ///         }));
-    ///         var foobar = new DigitalOcean.Droplet("foobar", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "centos-7-x64",
-    ///             Region = "nyc3",
-    ///         });
-    ///         var barfoo = new DigitalOcean.ProjectResources("barfoo", new DigitalOcean.ProjectResourcesArgs
-    ///         {
-    ///             Project = data.Digitalocean_project.Foo.Id,
-    ///             Resources = 
-    ///             {
-    ///                 foobar.DropletUrn,
-    ///             },
-    ///         });
-    ///     }
+    ///         Name = "playground",
+    ///     });
     /// 
-    /// }
+    ///     var foobar = new DigitalOcean.Droplet("foobar", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-22-04-x64",
+    ///         Region = "nyc3",
+    ///     });
+    /// 
+    ///     var barfoo = new DigitalOcean.ProjectResources("barfoo", new()
+    ///     {
+    ///         Project = data.Digitalocean_project.Foo.Id,
+    ///         Resources = new[]
+    ///         {
+    ///             foobar.DropletUrn,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +64,7 @@ namespace Pulumi.DigitalOcean
     /// Importing this resource is not supported.
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/projectResources:ProjectResources")]
-    public partial class ProjectResources : Pulumi.CustomResource
+    public partial class ProjectResources : global::Pulumi.CustomResource
     {
         /// <summary>
         /// the ID of the project
@@ -122,7 +122,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class ProjectResourcesArgs : Pulumi.ResourceArgs
+    public sealed class ProjectResourcesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the ID of the project
@@ -145,9 +145,10 @@ namespace Pulumi.DigitalOcean
         public ProjectResourcesArgs()
         {
         }
+        public static new ProjectResourcesArgs Empty => new ProjectResourcesArgs();
     }
 
-    public sealed class ProjectResourcesState : Pulumi.ResourceArgs
+    public sealed class ProjectResourcesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the ID of the project
@@ -170,5 +171,6 @@ namespace Pulumi.DigitalOcean
         public ProjectResourcesState()
         {
         }
+        public static new ProjectResourcesState Empty => new ProjectResourcesState();
     }
 }

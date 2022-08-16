@@ -19,25 +19,24 @@ namespace Pulumi.DigitalOcean
         /// Get the reserved IP:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
+        ///     var example = DigitalOcean.GetReservedIp.Invoke(new()
         ///     {
-        ///         var config = new Config();
-        ///         var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///         var example = Output.Create(DigitalOcean.GetReservedIp.InvokeAsync(new DigitalOcean.GetReservedIpArgs
-        ///         {
-        ///             IpAddress = publicIp,
-        ///         }));
-        ///         this.FipOutput = example.Apply(example =&gt; example.DropletId);
-        ///     }
+        ///         IpAddress = publicIp,
+        ///     });
         /// 
-        ///     [Output("fipOutput")]
-        ///     public Output&lt;string&gt; FipOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["fipOutput"] = example.Apply(getReservedIpResult =&gt; getReservedIpResult.DropletId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -53,25 +52,24 @@ namespace Pulumi.DigitalOcean
         /// Get the reserved IP:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
+        ///     var example = DigitalOcean.GetReservedIp.Invoke(new()
         ///     {
-        ///         var config = new Config();
-        ///         var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///         var example = Output.Create(DigitalOcean.GetReservedIp.InvokeAsync(new DigitalOcean.GetReservedIpArgs
-        ///         {
-        ///             IpAddress = publicIp,
-        ///         }));
-        ///         this.FipOutput = example.Apply(example =&gt; example.DropletId);
-        ///     }
+        ///         IpAddress = publicIp,
+        ///     });
         /// 
-        ///     [Output("fipOutput")]
-        ///     public Output&lt;string&gt; FipOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["fipOutput"] = example.Apply(getReservedIpResult =&gt; getReservedIpResult.DropletId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -81,7 +79,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetReservedIpArgs : Pulumi.InvokeArgs
+    public sealed class GetReservedIpArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The allocated IP address of the specific reserved IP to retrieve.
@@ -92,9 +90,10 @@ namespace Pulumi.DigitalOcean
         public GetReservedIpArgs()
         {
         }
+        public static new GetReservedIpArgs Empty => new GetReservedIpArgs();
     }
 
-    public sealed class GetReservedIpInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReservedIpInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The allocated IP address of the specific reserved IP to retrieve.
@@ -105,6 +104,7 @@ namespace Pulumi.DigitalOcean
         public GetReservedIpInvokeArgs()
         {
         }
+        public static new GetReservedIpInvokeArgs Empty => new GetReservedIpInvokeArgs();
     }
 
 

@@ -30,28 +30,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetImages(ctx, &GetImagesArgs{
-// 			Filters: []GetImagesFilter{
-// 				GetImagesFilter{
-// 					Key: "distribution",
-// 					Values: []string{
-// 						"Ubuntu",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetImages(ctx, &GetImagesArgs{
+//				Filters: []GetImagesFilter{
+//					GetImagesFilter{
+//						Key: "distribution",
+//						Values: []string{
+//							"Ubuntu",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // You can filter on multiple fields and sort the results as well:
@@ -60,40 +63,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetImages(ctx, &GetImagesArgs{
-// 			Filters: []GetImagesFilter{
-// 				GetImagesFilter{
-// 					Key: "distribution",
-// 					Values: []string{
-// 						"Ubuntu",
-// 					},
-// 				},
-// 				GetImagesFilter{
-// 					Key: "regions",
-// 					Values: []string{
-// 						"nyc3",
-// 					},
-// 				},
-// 			},
-// 			Sorts: []GetImagesSort{
-// 				GetImagesSort{
-// 					Direction: pulumi.StringRef("desc"),
-// 					Key:       "created",
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetImages(ctx, &GetImagesArgs{
+//				Filters: []GetImagesFilter{
+//					GetImagesFilter{
+//						Key: "distribution",
+//						Values: []string{
+//							"Ubuntu",
+//						},
+//					},
+//					GetImagesFilter{
+//						Key: "regions",
+//						Values: []string{
+//							"nyc3",
+//						},
+//					},
+//				},
+//				Sorts: []GetImagesSort{
+//					GetImagesSort{
+//						Direction: pulumi.StringRef("desc"),
+//						Key:       "created",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	var rv GetImagesResult

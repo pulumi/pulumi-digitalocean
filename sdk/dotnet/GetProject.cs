@@ -20,21 +20,20 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(DigitalOcean.GetProject.InvokeAsync());
-        ///         var staging = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs
-        ///         {
-        ///             Name = "My Staging Project",
-        ///         }));
-        ///     }
+        ///     var @default = DigitalOcean.GetProject.Invoke();
         /// 
-        /// }
+        ///     var staging = DigitalOcean.GetProject.Invoke(new()
+        ///     {
+        ///         Name = "My Staging Project",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -51,21 +50,20 @@ namespace Pulumi.DigitalOcean
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(DigitalOcean.GetProject.InvokeAsync());
-        ///         var staging = Output.Create(DigitalOcean.GetProject.InvokeAsync(new DigitalOcean.GetProjectArgs
-        ///         {
-        ///             Name = "My Staging Project",
-        ///         }));
-        ///     }
+        ///     var @default = DigitalOcean.GetProject.Invoke();
         /// 
-        /// }
+        ///     var staging = DigitalOcean.GetProject.Invoke(new()
+        ///     {
+        ///         Name = "My Staging Project",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +73,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetProjectArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// the ID of the project to retrieve
@@ -93,9 +91,10 @@ namespace Pulumi.DigitalOcean
         public GetProjectArgs()
         {
         }
+        public static new GetProjectArgs Empty => new GetProjectArgs();
     }
 
-    public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// the ID of the project to retrieve
@@ -113,6 +112,7 @@ namespace Pulumi.DigitalOcean
         public GetProjectInvokeArgs()
         {
         }
+        public static new GetProjectInvokeArgs Empty => new GetProjectInvokeArgs();
     }
 
 

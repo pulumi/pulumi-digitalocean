@@ -21,38 +21,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleReservedIp, err := digitalocean.NewReservedIp(ctx, "exampleReservedIp", &digitalocean.ReservedIpArgs{
-// 			Region: pulumi.String("nyc3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-// 			Size:              pulumi.String("s-1vcpu-1gb"),
-// 			Image:             pulumi.String("ubuntu-22-04-x64"),
-// 			Region:            pulumi.String("nyc3"),
-// 			Ipv6:              pulumi.Bool(true),
-// 			PrivateNetworking: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewReservedIpAssignment(ctx, "exampleReservedIpAssignment", &digitalocean.ReservedIpAssignmentArgs{
-// 			IpAddress: exampleReservedIp.IpAddress,
-// 			DropletId: exampleDroplet.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleReservedIp, err := digitalocean.NewReservedIp(ctx, "exampleReservedIp", &digitalocean.ReservedIpArgs{
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//				Size:              pulumi.String("s-1vcpu-1gb"),
+//				Image:             pulumi.String("ubuntu-22-04-x64"),
+//				Region:            pulumi.String("nyc3"),
+//				Ipv6:              pulumi.Bool(true),
+//				PrivateNetworking: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewReservedIpAssignment(ctx, "exampleReservedIpAssignment", &digitalocean.ReservedIpAssignmentArgs{
+//				IpAddress: exampleReservedIp.IpAddress,
+//				DropletId: exampleDroplet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // Reserved IP assignments can be imported using the reserved IP itself and the `id` of the Droplet joined with a comma. For example
 //
 // ```sh
-//  $ pulumi import digitalocean:index/reservedIpAssignment:ReservedIpAssignment foobar 192.0.2.1,123456
+//
+//	$ pulumi import digitalocean:index/reservedIpAssignment:ReservedIpAssignment foobar 192.0.2.1,123456
+//
 // ```
 type ReservedIpAssignment struct {
 	pulumi.CustomResourceState
@@ -164,7 +169,7 @@ func (i *ReservedIpAssignment) ToReservedIpAssignmentOutputWithContext(ctx conte
 // ReservedIpAssignmentArrayInput is an input type that accepts ReservedIpAssignmentArray and ReservedIpAssignmentArrayOutput values.
 // You can construct a concrete instance of `ReservedIpAssignmentArrayInput` via:
 //
-//          ReservedIpAssignmentArray{ ReservedIpAssignmentArgs{...} }
+//	ReservedIpAssignmentArray{ ReservedIpAssignmentArgs{...} }
 type ReservedIpAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +194,7 @@ func (i ReservedIpAssignmentArray) ToReservedIpAssignmentArrayOutputWithContext(
 // ReservedIpAssignmentMapInput is an input type that accepts ReservedIpAssignmentMap and ReservedIpAssignmentMapOutput values.
 // You can construct a concrete instance of `ReservedIpAssignmentMapInput` via:
 //
-//          ReservedIpAssignmentMap{ "key": ReservedIpAssignmentArgs{...} }
+//	ReservedIpAssignmentMap{ "key": ReservedIpAssignmentArgs{...} }
 type ReservedIpAssignmentMapInput interface {
 	pulumi.Input
 

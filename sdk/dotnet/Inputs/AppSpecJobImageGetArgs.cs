@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecJobImageGetArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecJobImageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -39,5 +39,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecJobImageGetArgs()
         {
         }
+        public static new AppSpecJobImageGetArgs Empty => new AppSpecJobImageGetArgs();
     }
 }

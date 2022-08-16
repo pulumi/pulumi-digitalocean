@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetKubernetesClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of Kubernetes cluster.
@@ -48,9 +48,10 @@ namespace Pulumi.DigitalOcean
         public GetKubernetesClusterArgs()
         {
         }
+        public static new GetKubernetesClusterArgs Empty => new GetKubernetesClusterArgs();
     }
 
-    public sealed class GetKubernetesClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of Kubernetes cluster.
@@ -73,6 +74,7 @@ namespace Pulumi.DigitalOcean
         public GetKubernetesClusterInvokeArgs()
         {
         }
+        public static new GetKubernetesClusterInvokeArgs Empty => new GetKubernetesClusterInvokeArgs();
     }
 
 

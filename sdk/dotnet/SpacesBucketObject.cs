@@ -27,20 +27,16 @@ namespace Pulumi.DigitalOcean
     /// example:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var static_assets = new DigitalOcean.SpacesBucket("static-assets", new DigitalOcean.SpacesBucketArgs
-    ///         {
-    ///         });
-    ///         // ...
-    ///     }
+    ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
     /// 
-    /// }
+    ///     // ...
+    /// });
     /// ```
     /// 
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -49,28 +45,27 @@ namespace Pulumi.DigitalOcean
     /// ### Create a Key in a Spaces Bucket
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
-    ///         var foobar = new DigitalOcean.SpacesBucket("foobar", new DigitalOcean.SpacesBucketArgs
-    ///         {
-    ///             Region = "nyc3",
-    ///         });
-    ///         var index = new DigitalOcean.SpacesBucketObject("index", new DigitalOcean.SpacesBucketObjectArgs
-    ///         {
-    ///             Region = foobar.Region,
-    ///             Bucket = foobar.Name,
-    ///             Key = "index.html",
-    ///             Content = "&lt;html&gt;&lt;body&gt;&lt;p&gt;This page is empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
-    ///             ContentType = "text/html",
-    ///         });
-    ///     }
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var index = new DigitalOcean.SpacesBucketObject("index", new()
+    ///     {
+    ///         Region = foobar.Region,
+    ///         Bucket = foobar.Name,
+    ///         Key = "index.html",
+    ///         Content = "&lt;html&gt;&lt;body&gt;&lt;p&gt;This page is empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///         ContentType = "text/html",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -78,7 +73,7 @@ namespace Pulumi.DigitalOcean
     /// Importing this resource is not supported.
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/spacesBucketObject:SpacesBucketObject")]
-    public partial class SpacesBucketObject : Pulumi.CustomResource
+    public partial class SpacesBucketObject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
@@ -227,7 +222,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class SpacesBucketObjectArgs : Pulumi.ResourceArgs
+    public sealed class SpacesBucketObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
@@ -335,9 +330,10 @@ namespace Pulumi.DigitalOcean
         public SpacesBucketObjectArgs()
         {
         }
+        public static new SpacesBucketObjectArgs Empty => new SpacesBucketObjectArgs();
     }
 
-    public sealed class SpacesBucketObjectState : Pulumi.ResourceArgs
+    public sealed class SpacesBucketObjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
@@ -451,5 +447,6 @@ namespace Pulumi.DigitalOcean
         public SpacesBucketObjectState()
         {
         }
+        public static new SpacesBucketObjectState Empty => new SpacesBucketObjectState();
     }
 }

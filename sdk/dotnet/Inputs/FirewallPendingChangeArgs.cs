@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class FirewallPendingChangeArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPendingChangeArgs : global::Pulumi.ResourceArgs
     {
         [Input("dropletId")]
         public Input<int>? DropletId { get; set; }
@@ -28,5 +28,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public FirewallPendingChangeArgs()
         {
         }
+        public static new FirewallPendingChangeArgs Empty => new FirewallPendingChangeArgs();
     }
 }

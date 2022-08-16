@@ -34,53 +34,50 @@ namespace Pulumi.DigitalOcean
     /// The following example demonstrates the creation of an empty project:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var playground = new DigitalOcean.Project("playground", new()
     ///     {
-    ///         var playground = new DigitalOcean.Project("playground", new DigitalOcean.ProjectArgs
-    ///         {
-    ///             Description = "A project to represent development resources.",
-    ///             Environment = "Development",
-    ///             Purpose = "Web Application",
-    ///         });
-    ///     }
+    ///         Description = "A project to represent development resources.",
+    ///         Environment = "Development",
+    ///         Purpose = "Web Application",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// The following example demonstrates the creation of a project with a Droplet resource:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new DigitalOcean.Droplet("foobar", new()
     ///     {
-    ///         var foobar = new DigitalOcean.Droplet("foobar", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "centos-7-x64",
-    ///             Region = "nyc3",
-    ///         });
-    ///         var playground = new DigitalOcean.Project("playground", new DigitalOcean.ProjectArgs
-    ///         {
-    ///             Description = "A project to represent development resources.",
-    ///             Purpose = "Web Application",
-    ///             Environment = "Development",
-    ///             Resources = 
-    ///             {
-    ///                 foobar.DropletUrn,
-    ///             },
-    ///         });
-    ///     }
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-22-04-x64",
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var playground = new DigitalOcean.Project("playground", new()
+    ///     {
+    ///         Description = "A project to represent development resources.",
+    ///         Purpose = "Web Application",
+    ///         Environment = "Development",
+    ///         Resources = new[]
+    ///         {
+    ///             foobar.DropletUrn,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -92,7 +89,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
         /// the date and time when the project was created, (ISO8601)
@@ -112,8 +109,11 @@ namespace Pulumi.DigitalOcean
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
 
+        /// <summary>
+        /// a boolean indicating whether or not the project is the default project. (Default: "false")
+        /// </summary>
         [Output("isDefault")]
-        public Output<bool> IsDefault { get; private set; } = null!;
+        public Output<bool?> IsDefault { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Project
@@ -195,7 +195,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the description of the project
@@ -208,6 +208,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
+
+        /// <summary>
+        /// a boolean indicating whether or not the project is the default project. (Default: "false")
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
 
         /// <summary>
         /// The name of the Project
@@ -236,9 +242,10 @@ namespace Pulumi.DigitalOcean
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the date and time when the project was created, (ISO8601)
@@ -258,6 +265,9 @@ namespace Pulumi.DigitalOcean
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
+        /// <summary>
+        /// a boolean indicating whether or not the project is the default project. (Default: "false")
+        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
@@ -306,5 +316,6 @@ namespace Pulumi.DigitalOcean
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

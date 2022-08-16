@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class AppSpecServiceArgs : Pulumi.ResourceArgs
+    public sealed class AppSpecServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("alerts")]
         private InputList<Inputs.AppSpecServiceAlertArgs>? _alerts;
@@ -161,5 +161,6 @@ namespace Pulumi.DigitalOcean.Inputs
         public AppSpecServiceArgs()
         {
         }
+        public static new AppSpecServiceArgs Empty => new AppSpecServiceArgs();
     }
 }

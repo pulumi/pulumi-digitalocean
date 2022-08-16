@@ -27,46 +27,43 @@ namespace Pulumi.DigitalOcean
         /// ### VPC By Name
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetVpc.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetVpc.InvokeAsync(new DigitalOcean.GetVpcArgs
-        ///         {
-        ///             Name = "example-network",
-        ///         }));
-        ///     }
+        ///         Name = "example-network",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Reuse the data about a VPC to assign a Droplet to it:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleVpc = DigitalOcean.GetVpc.Invoke(new()
         ///     {
-        ///         var exampleVpc = Output.Create(DigitalOcean.GetVpc.InvokeAsync(new DigitalOcean.GetVpcArgs
-        ///         {
-        ///             Name = "example-network",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Size = "s-1vcpu-1gb",
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc3",
-        ///             VpcUuid = exampleVpc.Apply(exampleVpc =&gt; exampleVpc.Id),
-        ///         });
-        ///     }
+        ///         Name = "example-network",
+        ///     });
         /// 
-        /// }
+        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     {
+        ///         Size = "s-1vcpu-1gb",
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = "nyc3",
+        ///         VpcUuid = exampleVpc.Apply(getVpcResult =&gt; getVpcResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -90,46 +87,43 @@ namespace Pulumi.DigitalOcean
         /// ### VPC By Name
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetVpc.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetVpc.InvokeAsync(new DigitalOcean.GetVpcArgs
-        ///         {
-        ///             Name = "example-network",
-        ///         }));
-        ///     }
+        ///         Name = "example-network",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Reuse the data about a VPC to assign a Droplet to it:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleVpc = DigitalOcean.GetVpc.Invoke(new()
         ///     {
-        ///         var exampleVpc = Output.Create(DigitalOcean.GetVpc.InvokeAsync(new DigitalOcean.GetVpcArgs
-        ///         {
-        ///             Name = "example-network",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Size = "s-1vcpu-1gb",
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc3",
-        ///             VpcUuid = exampleVpc.Apply(exampleVpc =&gt; exampleVpc.Id),
-        ///         });
-        ///     }
+        ///         Name = "example-network",
+        ///     });
         /// 
-        /// }
+        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     {
+        ///         Size = "s-1vcpu-1gb",
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = "nyc3",
+        ///         VpcUuid = exampleVpc.Apply(getVpcResult =&gt; getVpcResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -139,7 +133,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetVpcArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique identifier of an existing VPC.
@@ -162,9 +156,10 @@ namespace Pulumi.DigitalOcean
         public GetVpcArgs()
         {
         }
+        public static new GetVpcArgs Empty => new GetVpcArgs();
     }
 
-    public sealed class GetVpcInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique identifier of an existing VPC.
@@ -187,6 +182,7 @@ namespace Pulumi.DigitalOcean
         public GetVpcInvokeArgs()
         {
         }
+        public static new GetVpcInvokeArgs Empty => new GetVpcInvokeArgs();
     }
 
 

@@ -15,30 +15,29 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// ### Create a new PostgreSQL database replica
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
-    ///         var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new DigitalOcean.DatabaseClusterArgs
-    ///         {
-    ///             Engine = "pg",
-    ///             Version = "11",
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Region = "nyc1",
-    ///             NodeCount = 1,
-    ///         });
-    ///         var read_replica = new DigitalOcean.DatabaseReplica("read-replica", new DigitalOcean.DatabaseReplicaArgs
-    ///         {
-    ///             ClusterId = postgres_example.Id,
-    ///             Size = "db-s-1vcpu-1gb",
-    ///             Region = "nyc1",
-    ///         });
-    ///     }
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
     /// 
-    /// }
+    ///     var read_replica = new DigitalOcean.DatabaseReplica("read-replica", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +49,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/databaseReplica:DatabaseReplica")]
-    public partial class DatabaseReplica : Pulumi.CustomResource
+    public partial class DatabaseReplica : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the original source database cluster.
@@ -180,7 +179,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DatabaseReplicaArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseReplicaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the original source database cluster.
@@ -227,9 +226,10 @@ namespace Pulumi.DigitalOcean
         public DatabaseReplicaArgs()
         {
         }
+        public static new DatabaseReplicaArgs Empty => new DatabaseReplicaArgs();
     }
 
-    public sealed class DatabaseReplicaState : Pulumi.ResourceArgs
+    public sealed class DatabaseReplicaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the original source database cluster.
@@ -324,5 +324,6 @@ namespace Pulumi.DigitalOcean
         public DatabaseReplicaState()
         {
         }
+        public static new DatabaseReplicaState Empty => new DatabaseReplicaState();
     }
 }

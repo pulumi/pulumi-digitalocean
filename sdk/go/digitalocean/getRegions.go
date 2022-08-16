@@ -26,28 +26,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetRegions(ctx, &GetRegionsArgs{
-// 			Filters: []GetRegionsFilter{
-// 				GetRegionsFilter{
-// 					Key: "available",
-// 					Values: []string{
-// 						"true",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetRegions(ctx, &GetRegionsArgs{
+//				Filters: []GetRegionsFilter{
+//					GetRegionsFilter{
+//						Key: "available",
+//						Values: []string{
+//							"true",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // You can filter on multiple fields and sort the results as well:
@@ -56,40 +59,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.GetRegions(ctx, &GetRegionsArgs{
-// 			Filters: []GetRegionsFilter{
-// 				GetRegionsFilter{
-// 					Key: "available",
-// 					Values: []string{
-// 						"true",
-// 					},
-// 				},
-// 				GetRegionsFilter{
-// 					Key: "features",
-// 					Values: []string{
-// 						"private_networking",
-// 					},
-// 				},
-// 			},
-// 			Sorts: []GetRegionsSort{
-// 				GetRegionsSort{
-// 					Direction: pulumi.StringRef("desc"),
-// 					Key:       "name",
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetRegions(ctx, &GetRegionsArgs{
+//				Filters: []GetRegionsFilter{
+//					GetRegionsFilter{
+//						Key: "available",
+//						Values: []string{
+//							"true",
+//						},
+//					},
+//					GetRegionsFilter{
+//						Key: "features",
+//						Values: []string{
+//							"private_networking",
+//						},
+//					},
+//				},
+//				Sorts: []GetRegionsSort{
+//					GetRegionsSort{
+//						Direction: pulumi.StringRef("desc"),
+//						Key:       "name",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	var rv GetRegionsResult

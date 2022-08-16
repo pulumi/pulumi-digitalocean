@@ -27,29 +27,28 @@ namespace Pulumi.DigitalOcean
         /// value starting with `text/`) and uses it as the `user_data` for a Droplet:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var bootstrapScript = DigitalOcean.GetSpacesBucketObject.Invoke(new()
         ///     {
-        ///         var bootstrapScript = Output.Create(DigitalOcean.GetSpacesBucketObject.InvokeAsync(new DigitalOcean.GetSpacesBucketObjectArgs
-        ///         {
-        ///             Bucket = "ourcorp-deploy-config",
-        ///             Region = "nyc3",
-        ///             Key = "droplet-bootstrap-script.sh",
-        ///         }));
-        ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc2",
-        ///             Size = "s-1vcpu-1gb",
-        ///             UserData = bootstrapScript.Apply(bootstrapScript =&gt; bootstrapScript.Body),
-        ///         });
-        ///     }
+        ///         Bucket = "ourcorp-deploy-config",
+        ///         Region = "nyc3",
+        ///         Key = "droplet-bootstrap-script.sh",
+        ///     });
         /// 
-        /// }
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = "nyc2",
+        ///         Size = "s-1vcpu-1gb",
+        ///         UserData = bootstrapScript.Apply(getSpacesBucketObjectResult =&gt; getSpacesBucketObjectResult.Body),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,29 +72,28 @@ namespace Pulumi.DigitalOcean
         /// value starting with `text/`) and uses it as the `user_data` for a Droplet:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var bootstrapScript = DigitalOcean.GetSpacesBucketObject.Invoke(new()
         ///     {
-        ///         var bootstrapScript = Output.Create(DigitalOcean.GetSpacesBucketObject.InvokeAsync(new DigitalOcean.GetSpacesBucketObjectArgs
-        ///         {
-        ///             Bucket = "ourcorp-deploy-config",
-        ///             Region = "nyc3",
-        ///             Key = "droplet-bootstrap-script.sh",
-        ///         }));
-        ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc2",
-        ///             Size = "s-1vcpu-1gb",
-        ///             UserData = bootstrapScript.Apply(bootstrapScript =&gt; bootstrapScript.Body),
-        ///         });
-        ///     }
+        ///         Bucket = "ourcorp-deploy-config",
+        ///         Region = "nyc3",
+        ///         Key = "droplet-bootstrap-script.sh",
+        ///     });
         /// 
-        /// }
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = "nyc2",
+        ///         Size = "s-1vcpu-1gb",
+        ///         UserData = bootstrapScript.Apply(getSpacesBucketObjectResult =&gt; getSpacesBucketObjectResult.Body),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -105,7 +103,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetSpacesBucketObjectArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketObjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the bucket to read the object from.
@@ -137,9 +135,10 @@ namespace Pulumi.DigitalOcean
         public GetSpacesBucketObjectArgs()
         {
         }
+        public static new GetSpacesBucketObjectArgs Empty => new GetSpacesBucketObjectArgs();
     }
 
-    public sealed class GetSpacesBucketObjectInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSpacesBucketObjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the bucket to read the object from.
@@ -171,6 +170,7 @@ namespace Pulumi.DigitalOcean
         public GetSpacesBucketObjectInvokeArgs()
         {
         }
+        public static new GetSpacesBucketObjectInvokeArgs Empty => new GetSpacesBucketObjectInvokeArgs();
     }
 
 

@@ -19,40 +19,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := digitalocean.NewDomain(ctx, "default", &digitalocean.DomainArgs{
-// 			Name: pulumi.String("example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		www, err := digitalocean.NewDnsRecord(ctx, "www", &digitalocean.DnsRecordArgs{
-// 			Domain: _default.ID(),
-// 			Type:   pulumi.String("A"),
-// 			Value:  pulumi.String("192.168.0.11"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		mx, err := digitalocean.NewDnsRecord(ctx, "mx", &digitalocean.DnsRecordArgs{
-// 			Domain:   _default.ID(),
-// 			Type:     pulumi.String("MX"),
-// 			Priority: pulumi.Int(10),
-// 			Value:    pulumi.String("mail.example.com."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("wwwFqdn", www.Fqdn)
-// 		ctx.Export("mxFqdn", mx.Fqdn)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDomain(ctx, "default", &digitalocean.DomainArgs{
+//				Name: pulumi.String("example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			www, err := digitalocean.NewDnsRecord(ctx, "www", &digitalocean.DnsRecordArgs{
+//				Domain: _default.ID(),
+//				Type:   pulumi.String("A"),
+//				Value:  pulumi.String("192.168.0.11"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mx, err := digitalocean.NewDnsRecord(ctx, "mx", &digitalocean.DnsRecordArgs{
+//				Domain:   _default.ID(),
+//				Type:     pulumi.String("MX"),
+//				Priority: pulumi.Int(10),
+//				Value:    pulumi.String("mail.example.com."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("wwwFqdn", www.Fqdn)
+//			ctx.Export("mxFqdn", mx.Fqdn)
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // Records can be imported using the domain name and record `id` when joined with a comma. See the following example
 //
 // ```sh
-//  $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
+//
+//	$ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
+//
 // ```
 type DnsRecord struct {
 	pulumi.CustomResourceState
@@ -253,7 +258,7 @@ func (i *DnsRecord) ToDnsRecordOutputWithContext(ctx context.Context) DnsRecordO
 // DnsRecordArrayInput is an input type that accepts DnsRecordArray and DnsRecordArrayOutput values.
 // You can construct a concrete instance of `DnsRecordArrayInput` via:
 //
-//          DnsRecordArray{ DnsRecordArgs{...} }
+//	DnsRecordArray{ DnsRecordArgs{...} }
 type DnsRecordArrayInput interface {
 	pulumi.Input
 
@@ -278,7 +283,7 @@ func (i DnsRecordArray) ToDnsRecordArrayOutputWithContext(ctx context.Context) D
 // DnsRecordMapInput is an input type that accepts DnsRecordMap and DnsRecordMapOutput values.
 // You can construct a concrete instance of `DnsRecordMapInput` via:
 //
-//          DnsRecordMap{ "key": DnsRecordArgs{...} }
+//	DnsRecordMap{ "key": DnsRecordArgs{...} }
 type DnsRecordMapInput interface {
 	pulumi.Input
 

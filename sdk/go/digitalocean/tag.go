@@ -21,30 +21,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobar, err := digitalocean.NewTag(ctx, "foobar", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-// 			Image:  pulumi.String("ubuntu-18-04-x64"),
-// 			Region: pulumi.String("nyc3"),
-// 			Size:   pulumi.String("s-1vcpu-1gb"),
-// 			Tags: pulumi.StringArray{
-// 				foobar.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobar, err := digitalocean.NewTag(ctx, "foobar", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Tags: pulumi.StringArray{
+//					foobar.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -52,7 +55,9 @@ import (
 // Tags can be imported using the `name`, e.g.
 //
 // ```sh
-//  $ pulumi import digitalocean:index/tag:Tag mytag tagname
+//
+//	$ pulumi import digitalocean:index/tag:Tag mytag tagname
+//
 // ```
 type Tag struct {
 	pulumi.CustomResourceState
@@ -176,7 +181,7 @@ func (i *Tag) ToTagOutputWithContext(ctx context.Context) TagOutput {
 // TagArrayInput is an input type that accepts TagArray and TagArrayOutput values.
 // You can construct a concrete instance of `TagArrayInput` via:
 //
-//          TagArray{ TagArgs{...} }
+//	TagArray{ TagArgs{...} }
 type TagArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +206,7 @@ func (i TagArray) ToTagArrayOutputWithContext(ctx context.Context) TagArrayOutpu
 // TagMapInput is an input type that accepts TagMap and TagMapOutput values.
 // You can construct a concrete instance of `TagMapInput` via:
 //
-//          TagMap{ "key": TagArgs{...} }
+//	TagMap{ "key": TagArgs{...} }
 type TagMapInput interface {
 	pulumi.Input
 

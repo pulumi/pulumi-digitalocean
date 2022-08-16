@@ -29,31 +29,29 @@ namespace Pulumi.DigitalOcean
         /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var examples = DigitalOcean.GetDomains.Invoke(new()
         ///     {
-        ///         var examples = Output.Create(DigitalOcean.GetDomains.InvokeAsync(new DigitalOcean.GetDomainsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetDomainsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetDomainsFilterArgs
+        ///                 Key = "name",
+        ///                 MatchBy = "re",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "name",
-        ///                     MatchBy = "re",
-        ///                     Values = 
-        ///                     {
-        ///                         "example\\.com$",
-        ///                     },
+        ///                     "example\\.com$",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,31 +77,29 @@ namespace Pulumi.DigitalOcean
         /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var examples = DigitalOcean.GetDomains.Invoke(new()
         ///     {
-        ///         var examples = Output.Create(DigitalOcean.GetDomains.InvokeAsync(new DigitalOcean.GetDomainsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetDomainsFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetDomainsFilterArgs
+        ///                 Key = "name",
+        ///                 MatchBy = "re",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "name",
-        ///                     MatchBy = "re",
-        ///                     Values = 
-        ///                     {
-        ///                         "example\\.com$",
-        ///                     },
+        ///                     "example\\.com$",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -113,7 +109,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetDomainsArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetDomainsFilterArgs>? _filters;
@@ -144,9 +140,10 @@ namespace Pulumi.DigitalOcean
         public GetDomainsArgs()
         {
         }
+        public static new GetDomainsArgs Empty => new GetDomainsArgs();
     }
 
-    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetDomainsFilterInputArgs>? _filters;
@@ -177,6 +174,7 @@ namespace Pulumi.DigitalOcean
         public GetDomainsInvokeArgs()
         {
         }
+        public static new GetDomainsInvokeArgs Empty => new GetDomainsInvokeArgs();
     }
 
 

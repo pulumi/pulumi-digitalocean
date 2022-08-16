@@ -17,33 +17,33 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new()
     ///     {
-    ///         var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new DigitalOcean.ReservedIpArgs
-    ///         {
-    ///             Region = "nyc3",
-    ///         });
-    ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "ubuntu-22-04-x64",
-    ///             Region = "nyc3",
-    ///             Ipv6 = true,
-    ///             PrivateNetworking = true,
-    ///         });
-    ///         var exampleReservedIpAssignment = new DigitalOcean.ReservedIpAssignment("exampleReservedIpAssignment", new DigitalOcean.ReservedIpAssignmentArgs
-    ///         {
-    ///             IpAddress = exampleReservedIp.IpAddress,
-    ///             DropletId = exampleDroplet.Id,
-    ///         });
-    ///     }
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-22-04-x64",
+    ///         Region = "nyc3",
+    ///         Ipv6 = true,
+    ///         PrivateNetworking = true,
+    ///     });
+    /// 
+    ///     var exampleReservedIpAssignment = new DigitalOcean.ReservedIpAssignment("exampleReservedIpAssignment", new()
+    ///     {
+    ///         IpAddress = exampleReservedIp.IpAddress,
+    ///         DropletId = exampleDroplet.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +55,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/reservedIpAssignment:ReservedIpAssignment")]
-    public partial class ReservedIpAssignment : Pulumi.CustomResource
+    public partial class ReservedIpAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of Droplet that the reserved IP will be assigned to.
@@ -113,7 +113,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class ReservedIpAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class ReservedIpAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Droplet that the reserved IP will be assigned to.
@@ -130,9 +130,10 @@ namespace Pulumi.DigitalOcean
         public ReservedIpAssignmentArgs()
         {
         }
+        public static new ReservedIpAssignmentArgs Empty => new ReservedIpAssignmentArgs();
     }
 
-    public sealed class ReservedIpAssignmentState : Pulumi.ResourceArgs
+    public sealed class ReservedIpAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Droplet that the reserved IP will be assigned to.
@@ -149,5 +150,6 @@ namespace Pulumi.DigitalOcean
         public ReservedIpAssignmentState()
         {
         }
+        public static new ReservedIpAssignmentState Empty => new ReservedIpAssignmentState();
     }
 }

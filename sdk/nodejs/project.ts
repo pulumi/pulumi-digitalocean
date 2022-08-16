@@ -47,7 +47,7 @@ import * as utilities from "./utilities";
  *
  * const foobar = new digitalocean.Droplet("foobar", {
  *     size: "s-1vcpu-1gb",
- *     image: "centos-7-x64",
+ *     image: "ubuntu-22-04-x64",
  *     region: "nyc3",
  * });
  * const playground = new digitalocean.Project("playground", {
@@ -106,7 +106,10 @@ export class Project extends pulumi.CustomResource {
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
     public readonly environment!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly isDefault!: pulumi.Output<boolean>;
+    /**
+     * a boolean indicating whether or not the project is the default project. (Default: "false")
+     */
+    public readonly isDefault!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Project
      */
@@ -159,11 +162,11 @@ export class Project extends pulumi.CustomResource {
             const args = argsOrState as ProjectArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["purpose"] = args ? args.purpose : undefined;
             resourceInputs["resources"] = args ? args.resources : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["isDefault"] = undefined /*out*/;
             resourceInputs["ownerId"] = undefined /*out*/;
             resourceInputs["ownerUuid"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -189,6 +192,9 @@ export interface ProjectState {
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
     environment?: pulumi.Input<string>;
+    /**
+     * a boolean indicating whether or not the project is the default project. (Default: "false")
+     */
     isDefault?: pulumi.Input<boolean>;
     /**
      * The name of the Project
@@ -228,6 +234,10 @@ export interface ProjectArgs {
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
     environment?: pulumi.Input<string>;
+    /**
+     * a boolean indicating whether or not the project is the default project. (Default: "false")
+     */
+    isDefault?: pulumi.Input<boolean>;
     /**
      * The name of the Project
      */

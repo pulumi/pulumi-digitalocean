@@ -27,57 +27,53 @@ namespace Pulumi.DigitalOcean
         /// For example, to find all SSH keys:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
         ///     {
-        ///         var keys = Output.Create(DigitalOcean.GetSshKeys.InvokeAsync(new DigitalOcean.GetSshKeysArgs
+        ///         Sorts = new[]
         ///         {
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetSshKeysSortInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSshKeysSortArgs
-        ///                 {
-        ///                     Direction = "asc",
-        ///                     Key = "name",
-        ///                 },
+        ///                 Direction = "asc",
+        ///                 Key = "name",
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Or to find ones matching specific values:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
         ///     {
-        ///         var keys = Output.Create(DigitalOcean.GetSshKeys.InvokeAsync(new DigitalOcean.GetSshKeysArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetSshKeysFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSshKeysFilterArgs
+        ///                 Key = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "laptop",
-        ///                         "desktop",
-        ///                     },
+        ///                     "laptop",
+        ///                     "desktop",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -101,57 +97,53 @@ namespace Pulumi.DigitalOcean
         /// For example, to find all SSH keys:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
         ///     {
-        ///         var keys = Output.Create(DigitalOcean.GetSshKeys.InvokeAsync(new DigitalOcean.GetSshKeysArgs
+        ///         Sorts = new[]
         ///         {
-        ///             Sorts = 
+        ///             new DigitalOcean.Inputs.GetSshKeysSortInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSshKeysSortArgs
-        ///                 {
-        ///                     Direction = "asc",
-        ///                     Key = "name",
-        ///                 },
+        ///                 Direction = "asc",
+        ///                 Key = "name",
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Or to find ones matching specific values:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
         ///     {
-        ///         var keys = Output.Create(DigitalOcean.GetSshKeys.InvokeAsync(new DigitalOcean.GetSshKeysArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new DigitalOcean.Inputs.GetSshKeysFilterInputArgs
         ///             {
-        ///                 new DigitalOcean.Inputs.GetSshKeysFilterArgs
+        ///                 Key = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "laptop",
-        ///                         "desktop",
-        ///                     },
+        ///                     "laptop",
+        ///                     "desktop",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -161,7 +153,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetSshKeysArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeysArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetSshKeysFilterArgs>? _filters;
@@ -192,9 +184,10 @@ namespace Pulumi.DigitalOcean
         public GetSshKeysArgs()
         {
         }
+        public static new GetSshKeysArgs Empty => new GetSshKeysArgs();
     }
 
-    public sealed class GetSshKeysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeysInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetSshKeysFilterInputArgs>? _filters;
@@ -225,6 +218,7 @@ namespace Pulumi.DigitalOcean
         public GetSshKeysInvokeArgs()
         {
         }
+        public static new GetSshKeysInvokeArgs Empty => new GetSshKeysInvokeArgs();
     }
 
 

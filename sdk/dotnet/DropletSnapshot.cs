@@ -15,26 +15,32 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         var web = new DigitalOcean.Droplet("web", new DigitalOcean.DropletArgs
-    ///         {
-    ///             Size = "s-1vcpu-1gb",
-    ///             Image = "centos-7-x64",
-    ///             Region = "nyc3",
-    ///         });
-    ///         var web_snapshot = new DigitalOcean.DropletSnapshot("web-snapshot", new DigitalOcean.DropletSnapshotArgs
-    ///         {
-    ///             DropletId = web.Id,
-    ///         });
-    ///     }
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-22-04-x64",
+    ///         Region = "nyc3",
+    ///     });
     /// 
-    /// }
+    ///     var web_snapshot = new DigitalOcean.DropletSnapshot("web-snapshot", new()
+    ///     {
+    ///         DropletId = web.Id,
+    ///     });
+    /// 
+    ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
+    ///     {
+    ///         Image = web_snapshot.Id,
+    ///         Region = "nyc3",
+    ///         Size = "s-2vcpu-4gb",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +52,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/dropletSnapshot:DropletSnapshot")]
-    public partial class DropletSnapshot : Pulumi.CustomResource
+    public partial class DropletSnapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date and time the Droplet snapshot was created.
@@ -128,7 +134,7 @@ namespace Pulumi.DigitalOcean
         }
     }
 
-    public sealed class DropletSnapshotArgs : Pulumi.ResourceArgs
+    public sealed class DropletSnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Droplet from which the snapshot will be taken.
@@ -145,9 +151,10 @@ namespace Pulumi.DigitalOcean
         public DropletSnapshotArgs()
         {
         }
+        public static new DropletSnapshotArgs Empty => new DropletSnapshotArgs();
     }
 
-    public sealed class DropletSnapshotState : Pulumi.ResourceArgs
+    public sealed class DropletSnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date and time the Droplet snapshot was created.
@@ -194,5 +201,6 @@ namespace Pulumi.DigitalOcean
         public DropletSnapshotState()
         {
         }
+        public static new DropletSnapshotState Empty => new DropletSnapshotState();
     }
 }

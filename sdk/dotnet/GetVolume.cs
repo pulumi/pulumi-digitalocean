@@ -26,52 +26,50 @@ namespace Pulumi.DigitalOcean
         /// Get the volume:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetVolume.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetVolume.InvokeAsync(new DigitalOcean.GetVolumeArgs
-        ///         {
-        ///             Name = "app-data",
-        ///             Region = "nyc3",
-        ///         }));
-        ///     }
+        ///         Name = "app-data",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Reuse the data about a volume to attach it to a Droplet:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleVolume = DigitalOcean.GetVolume.Invoke(new()
         ///     {
-        ///         var exampleVolume = Output.Create(DigitalOcean.GetVolume.InvokeAsync(new DigitalOcean.GetVolumeArgs
-        ///         {
-        ///             Name = "app-data",
-        ///             Region = "nyc3",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Size = "s-1vcpu-1gb",
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc3",
-        ///         });
-        ///         var foobar = new DigitalOcean.VolumeAttachment("foobar", new DigitalOcean.VolumeAttachmentArgs
-        ///         {
-        ///             DropletId = exampleDroplet.Id,
-        ///             VolumeId = exampleVolume.Apply(exampleVolume =&gt; exampleVolume.Id),
-        ///         });
-        ///     }
+        ///         Name = "app-data",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        /// }
+        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     {
+        ///         Size = "s-1vcpu-1gb",
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = "nyc3",
+        ///     });
+        /// 
+        ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
+        ///     {
+        ///         DropletId = exampleDroplet.Id,
+        ///         VolumeId = exampleVolume.Apply(getVolumeResult =&gt; getVolumeResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -94,52 +92,50 @@ namespace Pulumi.DigitalOcean
         /// Get the volume:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = DigitalOcean.GetVolume.Invoke(new()
         ///     {
-        ///         var example = Output.Create(DigitalOcean.GetVolume.InvokeAsync(new DigitalOcean.GetVolumeArgs
-        ///         {
-        ///             Name = "app-data",
-        ///             Region = "nyc3",
-        ///         }));
-        ///     }
+        ///         Name = "app-data",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Reuse the data about a volume to attach it to a Droplet:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleVolume = DigitalOcean.GetVolume.Invoke(new()
         ///     {
-        ///         var exampleVolume = Output.Create(DigitalOcean.GetVolume.InvokeAsync(new DigitalOcean.GetVolumeArgs
-        ///         {
-        ///             Name = "app-data",
-        ///             Region = "nyc3",
-        ///         }));
-        ///         var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new DigitalOcean.DropletArgs
-        ///         {
-        ///             Size = "s-1vcpu-1gb",
-        ///             Image = "ubuntu-18-04-x64",
-        ///             Region = "nyc3",
-        ///         });
-        ///         var foobar = new DigitalOcean.VolumeAttachment("foobar", new DigitalOcean.VolumeAttachmentArgs
-        ///         {
-        ///             DropletId = exampleDroplet.Id,
-        ///             VolumeId = exampleVolume.Apply(exampleVolume =&gt; exampleVolume.Id),
-        ///         });
-        ///     }
+        ///         Name = "app-data",
+        ///         Region = "nyc3",
+        ///     });
         /// 
-        /// }
+        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     {
+        ///         Size = "s-1vcpu-1gb",
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = "nyc3",
+        ///     });
+        /// 
+        ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
+        ///     {
+        ///         DropletId = exampleDroplet.Id,
+        ///         VolumeId = exampleVolume.Apply(getVolumeResult =&gt; getVolumeResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -149,7 +145,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetVolumeArgs : Pulumi.InvokeArgs
+    public sealed class GetVolumeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Text describing a block storage volume.
@@ -172,9 +168,10 @@ namespace Pulumi.DigitalOcean
         public GetVolumeArgs()
         {
         }
+        public static new GetVolumeArgs Empty => new GetVolumeArgs();
     }
 
-    public sealed class GetVolumeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVolumeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Text describing a block storage volume.
@@ -197,6 +194,7 @@ namespace Pulumi.DigitalOcean
         public GetVolumeInvokeArgs()
         {
         }
+        public static new GetVolumeInvokeArgs Empty => new GetVolumeInvokeArgs();
     }
 
 

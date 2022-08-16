@@ -28,25 +28,24 @@ namespace Pulumi.DigitalOcean
         /// Get the floating IP:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
+        ///     var example = DigitalOcean.GetFloatingIp.Invoke(new()
         ///     {
-        ///         var config = new Config();
-        ///         var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///         var example = Output.Create(DigitalOcean.GetFloatingIp.InvokeAsync(new DigitalOcean.GetFloatingIpArgs
-        ///         {
-        ///             IpAddress = publicIp,
-        ///         }));
-        ///         this.FipOutput = example.Apply(example =&gt; example.DropletId);
-        ///     }
+        ///         IpAddress = publicIp,
+        ///     });
         /// 
-        ///     [Output("fipOutput")]
-        ///     public Output&lt;string&gt; FipOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["fipOutput"] = example.Apply(getFloatingIpResult =&gt; getFloatingIpResult.DropletId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,25 +70,24 @@ namespace Pulumi.DigitalOcean
         /// Get the floating IP:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
+        ///     var example = DigitalOcean.GetFloatingIp.Invoke(new()
         ///     {
-        ///         var config = new Config();
-        ///         var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///         var example = Output.Create(DigitalOcean.GetFloatingIp.InvokeAsync(new DigitalOcean.GetFloatingIpArgs
-        ///         {
-        ///             IpAddress = publicIp,
-        ///         }));
-        ///         this.FipOutput = example.Apply(example =&gt; example.DropletId);
-        ///     }
+        ///         IpAddress = publicIp,
+        ///     });
         /// 
-        ///     [Output("fipOutput")]
-        ///     public Output&lt;string&gt; FipOutput { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["fipOutput"] = example.Apply(getFloatingIpResult =&gt; getFloatingIpResult.DropletId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -99,7 +97,7 @@ namespace Pulumi.DigitalOcean
     }
 
 
-    public sealed class GetFloatingIpArgs : Pulumi.InvokeArgs
+    public sealed class GetFloatingIpArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The allocated IP address of the specific floating IP to retrieve.
@@ -110,9 +108,10 @@ namespace Pulumi.DigitalOcean
         public GetFloatingIpArgs()
         {
         }
+        public static new GetFloatingIpArgs Empty => new GetFloatingIpArgs();
     }
 
-    public sealed class GetFloatingIpInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFloatingIpInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The allocated IP address of the specific floating IP to retrieve.
@@ -123,6 +122,7 @@ namespace Pulumi.DigitalOcean
         public GetFloatingIpInvokeArgs()
         {
         }
+        public static new GetFloatingIpInvokeArgs Empty => new GetFloatingIpInvokeArgs();
     }
 
 
