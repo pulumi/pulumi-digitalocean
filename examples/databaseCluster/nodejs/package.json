@@ -6,6 +6,6 @@
 		"dependencies": {
 			"typescript": "^4.0.0",
 			"@pulumi/pulumi": "^3.0.0",
-			"@pulumi/digitalocean": "file:/Users/hliuson/pulumi/pulumi-digitalocean/examples/databaseCluster/digitalocean-sdk/nodejs/bin"
+			"@pulumi/digitalocean": "4.16.0-alpha.1660683823+b99f823e.dirty"
 		}
 }

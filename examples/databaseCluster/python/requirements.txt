@@ -1,2 +1,2 @@
 pulumi>=3.0.0,<4.0.0
-/Users/hliuson/pulumi/pulumi-digitalocean/examples/databaseCluster/digitalocean-sdk/python
+pulumi-digitalocean==4.16.0-alpha.1660683823+b99f823e.dirty

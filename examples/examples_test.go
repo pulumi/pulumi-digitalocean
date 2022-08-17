@@ -13,7 +13,6 @@
 package examples
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
@@ -22,39 +21,42 @@ import (
 	i "github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"github.com/pulumi/pulumi/pkg/v3/testing/matrix"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/workspace"
+	//"github.com/stretchr/testify/assert"
 )
 
-func TestAll(t *testing.T) {
-	opts := []matrix.TestOptions{
-		opts(t, "databaseCluster"),
-	}
-
-	t.Parallel()
-	for _, o := range opts {
-		t.Run(o.Program.Dir, func(t *testing.T) {
-			t.Parallel()
-			matrix.Test(t, o)
-		})
+func DigitalOceanPlugins(t *testing.T) []matrix.PluginOptions {
+	return []matrix.PluginOptions{
+		{
+			Name:    "digitalocean",
+			Kind:    workspace.ResourcePlugin,
+			Bin:     "../bin",
+			Version: semver.MustParse("0.0.0"),
+		},
 	}
 }
 
-func opts(t *testing.T, dir string) matrix.TestOptions {
+func testLang(t *testing.T, lang string) {
+	tester, err := matrix.NewTester(
+		DigitalOceanPlugins(t),
+		[]matrix.LangTestOption{
+			{
+				Language: lang,
+			},
+		},
+		nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	tester.TestLang(t, opts(t, "databaseCluster"), lang)
+}
+
+func opts(t *testing.T, dir string) *i.ProgramTestOptions {
 	o := getBaseOptions(t)
 	o = o.With(i.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), dir),
 	})
-	return matrix.TestOptions{
-		Program:   &o,
-		Languages: allLanguages(),
-		Plugins: []matrix.PluginOptions{
-			{
-				Name:    "digitalocean",
-				Kind:    workspace.ResourcePlugin,
-				Bin:     "../../bin",
-				Version: semver.MustParse("0.0.0"),
-			},
-		},
-	}
+	return &o
 }
 
 func checkDigitalOceanTokenSet(t *testing.T) {
@@ -78,26 +80,5 @@ func getBaseOptions(t *testing.T) i.ProgramTestOptions {
 	return i.ProgramTestOptions{
 		RunUpdateTest:        false, //temporarily skipping these since we have jsut changed the enum types
 		ExpectRefreshChanges: true,
-	}
-}
-
-func allLanguages() []matrix.LangTestOption {
-	return []matrix.LangTestOption{
-		{
-			Language: "go",
-			Opts:     nil,
-		},
-		{
-			Language: "python",
-			Opts:     nil,
-		},
-		{
-			Language: "nodejs",
-			Opts:     nil,
-		},
-		{
-			Language: "dotnet",
-			Opts:     nil,
-		},
 	}
 }
