@@ -2,3 +2,7 @@
 **/bin/
 node_modules/
 /*/digitalocean-sdk
+/*/dotnet
+/*/go
+/*/nodejs
+/*/python

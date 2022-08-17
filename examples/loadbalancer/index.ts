@@ -45,7 +45,7 @@ const lb = new digitalocean.LoadBalancer("public", {
         port: 22,
         protocol: "tcp",
     },
-    region: digitalocean.Regions.NYC3,
+    region: digitalocean.Region.NYC3,
 });
 
 export let status = lb.status;

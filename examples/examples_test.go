@@ -13,10 +13,12 @@
 package examples
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
 
+	"github.com/blang/semver"
 	i "github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"github.com/pulumi/pulumi/pkg/v3/testing/matrix"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/workspace"
@@ -46,9 +48,10 @@ func opts(t *testing.T, dir string) matrix.TestOptions {
 		Languages: allLanguages(),
 		Plugins: []matrix.PluginOptions{
 			{
-				Name: "digitalocean",
-				Kind: workspace.ResourcePlugin,
-				Bin:  "../../bin",
+				Name:    "digitalocean",
+				Kind:    workspace.ResourcePlugin,
+				Bin:     "../../bin",
+				Version: semver.MustParse("0.0.0"),
 			},
 		},
 	}
