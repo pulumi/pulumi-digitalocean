@@ -1,8 +1,8 @@
 .pulumi/
 **/bin/
 node_modules/
-/*/digitalocean-sdk
-/*/dotnet
-/*/go
-/*/nodejs
-/*/python
+digitalocean-sdk
+*/dotnet
+*/go
+*/nodejs
+*/python

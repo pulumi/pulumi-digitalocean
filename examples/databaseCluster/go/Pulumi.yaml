@@ -1,8 +1,0 @@
-name: database-cluster-digitalocean
-runtime: go
-description: A simple database cluster on DigitalOcean.
-plugins:
-  providers:
-  - name: digitalocean
-    version: 0.0.0
-    path: /Users/hliuson/pulumi/pulumi-digitalocean/bin

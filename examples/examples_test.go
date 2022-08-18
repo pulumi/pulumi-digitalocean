@@ -17,7 +17,6 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/blang/semver"
 	i "github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"github.com/pulumi/pulumi/pkg/v3/testing/matrix"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/workspace"
@@ -27,10 +26,9 @@ import (
 func DigitalOceanPlugins(t *testing.T) []matrix.PluginOptions {
 	return []matrix.PluginOptions{
 		{
-			Name:    "digitalocean",
-			Kind:    workspace.ResourcePlugin,
-			Bin:     "../bin",
-			Version: semver.MustParse("0.0.0"),
+			Name: "digitalocean",
+			Kind: workspace.ResourcePlugin,
+			Bin:  "../bin",
 		},
 	}
 }
@@ -77,8 +75,15 @@ func getCwd(t *testing.T) string {
 
 func getBaseOptions(t *testing.T) i.ProgramTestOptions {
 	checkDigitalOceanTokenSet(t)
+	//get ~ dir
+	home, err := os.UserHomeDir()
+	if err != nil {
+		t.FailNow()
+	}
 	return i.ProgramTestOptions{
 		RunUpdateTest:        false, //temporarily skipping these since we have jsut changed the enum types
 		ExpectRefreshChanges: true,
+		//for dev purposes. Once matrix testing is merged and released this can be omitted
+		PulumiBin: filepath.Join(home, ".pulumi-dev", "bin", "pulumi"),
 	}
 }
