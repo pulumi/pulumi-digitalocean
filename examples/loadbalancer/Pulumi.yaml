@@ -1,3 +1,39 @@
 name: loadbalancer-digitalocean
 description: A simple LoadBalancer on DigitalOcean.
 runtime: nodejs
+
+resources:
+  my-private-key:
+    type: tls:PrivateKey
+    algorithm: RSA
+  my-ssh-key:
+    type: digitalocean:SshKey
+    properties:
+      publicKey: ${my-private-key.publicKeyOpenssh}
+  foobar:
+    type: digitalocean:Tag
+  web:
+    type: digitalocean:Droplet
+    properties:
+      image: ubuntu-18-04-x64
+      region: nyc3
+      size: s1-vcpu-1gb
+      tags: ["${foobar.id}"]
+      sshKeys: ["${my-ssh-key.id}"]
+  public:
+    type: digitalocean:LoadBalancer
+    properties:
+      dropletTag: "${foobar.name}"
+      forwardingRules:
+        entryProtocol: http
+        entryPort: 80
+        targetProtocol: http
+        targetPort: 80
+      healthCheck:
+        port: 22
+        protocol: tcp
+      region: nyc3
+
+outputs:
+  status: ${public.status}
+          

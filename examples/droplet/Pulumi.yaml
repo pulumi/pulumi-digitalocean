@@ -1,3 +1,24 @@
 name: droplet-digitalocean
 description: A simple droplet on DigitalOcean.
-runtime: nodejs
+runtime: yaml
+
+resources:
+  my-private-key:
+    type: tls:PrivateKey
+    properties:
+      algorithm: RSA
+  my-ssh-key:
+    type: digitalocean:SshKey
+    properties:
+      publicKey: ${my-private-key.publicKeyOpenssh}
+  web:
+    type: digitalocean:Droplet
+    properties:
+      image: ubuntu-18-04-x64
+      region: nyc3
+      size: s1-vcpu-1gb
+      sshKeys: ["${my-ssh-key.id}"]
+
+outputs:
+  ipAddress: ${web.ipv4Address}
+  status: ${web.status}

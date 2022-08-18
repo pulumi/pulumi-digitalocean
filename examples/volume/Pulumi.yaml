@@ -1,0 +1,13 @@
+name: volume-go
+runtime: yaml
+description: A minimal Go Pulumi program
+
+properties:
+  my-volume:
+    type: digitalocean:NewVolume
+    properties:
+      region: nyc3
+      size: 10
+
+outputs:
+  name: ${my-volume.name}

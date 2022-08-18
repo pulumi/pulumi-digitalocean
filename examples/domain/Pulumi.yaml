@@ -1,3 +1,14 @@
 name: domain-digitalocean
 description: A simple domain on DigitalOcean.
-runtime: nodejs
+runtime: yaml
+
+resources:
+  my-random-domain-name:
+    type: random:RandomPet
+  my-domain:
+    type: digitalocean:Domain
+    properties:
+      name: ${my-random-domain-name.id}.io
+
+outputs:
+  name: ${my-domain.name}

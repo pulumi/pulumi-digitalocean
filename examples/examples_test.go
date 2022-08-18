@@ -47,6 +47,11 @@ func testLang(t *testing.T, lang string) {
 	}
 
 	tester.TestLang(t, opts(t, "databaseCluster"), lang)
+	tester.TestLang(t, opts(t, "domain"), lang)
+	tester.TestLang(t, opts(t, "droplet"), lang)
+	tester.TestLang(t, opts(t, "floatingip"), lang)
+	tester.TestLang(t, opts(t, "loadbalancer"), lang)
+	tester.TestLang(t, opts(t, "volume"), lang)
 }
 
 func opts(t *testing.T, dir string) *i.ProgramTestOptions {
