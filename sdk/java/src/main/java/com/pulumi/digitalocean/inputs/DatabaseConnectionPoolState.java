@@ -182,14 +182,14 @@ public final class DatabaseConnectionPoolState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the database user for use with the connection pool.
+     * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return The name of the database user for use with the connection pool.
+     * @return The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      * 
      */
     public Optional<Output<String>> user() {
@@ -463,7 +463,7 @@ public final class DatabaseConnectionPoolState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param user The name of the database user for use with the connection pool.
+         * @param user The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class DatabaseConnectionPoolState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param user The name of the database user for use with the connection pool.
+         * @param user The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
          * 
          * @return builder
          * 

@@ -14,7 +14,8 @@ import * as utilities from "./utilities";
  * Let's Encrypt.
  *
  * ## Example Usage
- * ### Custom Certificate
+ *
+ * #### Custom Certificate
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,7 +29,8 @@ import * as utilities from "./utilities";
  *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem"),
  * });
  * ```
- * ### Let's Encrypt Certificate
+ *
+ * #### Let's Encrypt Certificate
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +41,8 @@ import * as utilities from "./utilities";
  *     type: "lets_encrypt",
  * });
  * ```
- * ### Use with Other Resources
+ *
+ * #### Use with Other Resources
  *
  * Both custom and Let's Encrypt certificates can be used with other resources
  * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.

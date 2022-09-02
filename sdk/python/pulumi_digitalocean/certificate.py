@@ -329,7 +329,8 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
-        ### Custom Certificate
+
+        #### Custom Certificate
 
         ```python
         import pulumi
@@ -341,7 +342,8 @@ class Certificate(pulumi.CustomResource):
             leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
             certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
         ```
-        ### Let's Encrypt Certificate
+
+        #### Let's Encrypt Certificate
 
         ```python
         import pulumi
@@ -351,7 +353,8 @@ class Certificate(pulumi.CustomResource):
             domains=["example.com"],
             type="lets_encrypt")
         ```
-        ### Use with Other Resources
+
+        #### Use with Other Resources
 
         Both custom and Let's Encrypt certificates can be used with other resources
         including the `LoadBalancer` and `Cdn` resources.
@@ -415,7 +418,8 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
-        ### Custom Certificate
+
+        #### Custom Certificate
 
         ```python
         import pulumi
@@ -427,7 +431,8 @@ class Certificate(pulumi.CustomResource):
             leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
             certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
         ```
-        ### Let's Encrypt Certificate
+
+        #### Let's Encrypt Certificate
 
         ```python
         import pulumi
@@ -437,7 +442,8 @@ class Certificate(pulumi.CustomResource):
             domains=["example.com"],
             type="lets_encrypt")
         ```
-        ### Use with Other Resources
+
+        #### Use with Other Resources
 
         Both custom and Let's Encrypt certificates can be used with other resources
         including the `LoadBalancer` and `Cdn` resources.

@@ -120,10 +120,10 @@ namespace Pulumi.DigitalOcean
         public Output<string> Uri { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database user for use with the connection pool.
+        /// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         /// </summary>
         [Output("user")]
-        public Output<string> User { get; private set; } = null!;
+        public Output<string?> User { get; private set; } = null!;
 
 
         /// <summary>
@@ -202,10 +202,10 @@ namespace Pulumi.DigitalOcean
         public Input<int> Size { get; set; } = null!;
 
         /// <summary>
-        /// The name of the database user for use with the connection pool.
+        /// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         /// </summary>
-        [Input("user", required: true)]
-        public Input<string> User { get; set; } = null!;
+        [Input("user")]
+        public Input<string>? User { get; set; }
 
         public DatabaseConnectionPoolArgs()
         {
@@ -282,7 +282,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Uri { get; set; }
 
         /// <summary>
-        /// The name of the database user for use with the connection pool.
+        /// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }

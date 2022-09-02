@@ -110,9 +110,9 @@ export class DatabaseConnectionPool extends pulumi.CustomResource {
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
     /**
-     * The name of the database user for use with the connection pool.
+     * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      */
-    public readonly user!: pulumi.Output<string>;
+    public readonly user!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DatabaseConnectionPool resource with the given unique name, arguments, and options.
@@ -152,9 +152,6 @@ export class DatabaseConnectionPool extends pulumi.CustomResource {
             }
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
-            }
-            if ((!args || args.user === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'user'");
             }
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["dbName"] = args ? args.dbName : undefined;
@@ -223,7 +220,7 @@ export interface DatabaseConnectionPoolState {
      */
     uri?: pulumi.Input<string>;
     /**
-     * The name of the database user for use with the connection pool.
+     * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      */
     user?: pulumi.Input<string>;
 }
@@ -253,7 +250,7 @@ export interface DatabaseConnectionPoolArgs {
      */
     size: pulumi.Input<number>;
     /**
-     * The name of the database user for use with the connection pool.
+     * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      */
-    user: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
 }

@@ -169,7 +169,7 @@ class App(pulumi.CustomResource):
 
         ## Example Usage
 
-        To create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/references/app-specification-reference/) specifying the app's components.
+        To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
         ### Basic Example
 
         ```python
@@ -235,7 +235,7 @@ class App(pulumi.CustomResource):
 
         ## Example Usage
 
-        To create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/references/app-specification-reference/) specifying the app's components.
+        To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
         ### Basic Example
 
         ```python

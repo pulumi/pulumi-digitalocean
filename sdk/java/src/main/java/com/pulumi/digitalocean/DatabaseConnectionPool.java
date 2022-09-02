@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.DatabaseConnectionPoolState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -228,18 +229,18 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
         return this.uri;
     }
     /**
-     * The name of the database user for use with the connection pool.
+     * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      * 
      */
     @Export(name="user", type=String.class, parameters={})
-    private Output<String> user;
+    private Output</* @Nullable */ String> user;
 
     /**
-     * @return The name of the database user for use with the connection pool.
+     * @return The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      * 
      */
-    public Output<String> user() {
-        return this.user;
+    public Output<Optional<String>> user() {
+        return Codegen.optional(this.user);
     }
 
     /**

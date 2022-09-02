@@ -18,7 +18,8 @@ import (
 // Let's Encrypt.
 //
 // ## Example Usage
-// ### Custom Certificate
+//
+// #### Custom Certificate
 //
 // ```go
 // package main
@@ -56,7 +57,8 @@ import (
 //	}
 //
 // ```
-// ### Let's Encrypt Certificate
+//
+// #### Let's Encrypt Certificate
 //
 // ```go
 // package main
@@ -84,7 +86,8 @@ import (
 //	}
 //
 // ```
-// ### Use with Other Resources
+//
+// #### Use with Other Resources
 //
 // Both custom and Let's Encrypt certificates can be used with other resources
 // including the `LoadBalancer` and `Cdn` resources.
