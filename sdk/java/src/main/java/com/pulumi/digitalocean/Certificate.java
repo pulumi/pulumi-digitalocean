@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * Let&#39;s Encrypt.
  * 
  * ## Example Usage
- * ### Custom Certificate
+ * 
+ * #### Custom Certificate
  * ```java
  * package generated_program;
  * 
@@ -56,7 +57,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Let&#39;s Encrypt Certificate
+ * 
+ * #### Let&#39;s Encrypt Certificate
  * ```java
  * package generated_program;
  * 
@@ -86,7 +88,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Use with Other Resources
+ * 
+ * #### Use with Other Resources
  * 
  * Both custom and Let&#39;s Encrypt certificates can be used with other resources
  * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.

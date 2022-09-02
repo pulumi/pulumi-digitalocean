@@ -18,24 +18,25 @@ class DatabaseConnectionPoolArgs:
                  db_name: pulumi.Input[str],
                  mode: pulumi.Input[str],
                  size: pulumi.Input[int],
-                 user: pulumi.Input[str],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DatabaseConnectionPool resource.
         :param pulumi.Input[str] cluster_id: The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
         :param pulumi.Input[str] db_name: The database for use with the connection pool.
         :param pulumi.Input[str] mode: The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
         :param pulumi.Input[int] size: The desired size of the PGBouncer connection pool.
-        :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
         :param pulumi.Input[str] name: The name for the database connection pool.
+        :param pulumi.Input[str] user: The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "db_name", db_name)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "user", user)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -87,18 +88,6 @@ class DatabaseConnectionPoolArgs:
 
     @property
     @pulumi.getter
-    def user(self) -> pulumi.Input[str]:
-        """
-        The name of the database user for use with the connection pool.
-        """
-        return pulumi.get(self, "user")
-
-    @user.setter
-    def user(self, value: pulumi.Input[str]):
-        pulumi.set(self, "user", value)
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for the database connection pool.
@@ -108,6 +97,18 @@ class DatabaseConnectionPoolArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
@@ -138,7 +139,7 @@ class _DatabaseConnectionPoolState:
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[int] size: The desired size of the PGBouncer connection pool.
         :param pulumi.Input[str] uri: The full URI for connecting to the database connection pool.
-        :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
+        :param pulumi.Input[str] user: The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -301,7 +302,7 @@ class _DatabaseConnectionPoolState:
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the database user for use with the connection pool.
+        The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         """
         return pulumi.get(self, "user")
 
@@ -360,7 +361,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
         :param pulumi.Input[str] name: The name for the database connection pool.
         :param pulumi.Input[int] size: The desired size of the PGBouncer connection pool.
-        :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
+        :param pulumi.Input[str] user: The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         """
         ...
     @overload
@@ -442,8 +443,6 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
-            if user is None and not opts.urn:
-                raise TypeError("Missing required property 'user'")
             __props__.__dict__["user"] = user
             __props__.__dict__["host"] = None
             __props__.__dict__["password"] = None
@@ -491,7 +490,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[int] size: The desired size of the PGBouncer connection pool.
         :param pulumi.Input[str] uri: The full URI for connecting to the database connection pool.
-        :param pulumi.Input[str] user: The name of the database user for use with the connection pool.
+        :param pulumi.Input[str] user: The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -601,9 +600,9 @@ class DatabaseConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> pulumi.Output[str]:
+    def user(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the database user for use with the connection pool.
+        The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
         """
         return pulumi.get(self, "user")
 

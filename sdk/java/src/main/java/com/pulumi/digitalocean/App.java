@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * To create an app, provide a [DigitalOcean app spec](https://www.digitalocean.com/docs/app-platform/references/app-specification-reference/) specifying the app&#39;s components.
+ * To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app&#39;s components.
  * ### Basic Example
  * ```java
  * package generated_program;

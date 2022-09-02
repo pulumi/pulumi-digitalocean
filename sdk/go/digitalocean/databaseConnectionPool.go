@@ -87,8 +87,8 @@ type DatabaseConnectionPool struct {
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The full URI for connecting to the database connection pool.
 	Uri pulumi.StringOutput `pulumi:"uri"`
-	// The name of the database user for use with the connection pool.
-	User pulumi.StringOutput `pulumi:"user"`
+	// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
+	User pulumi.StringPtrOutput `pulumi:"user"`
 }
 
 // NewDatabaseConnectionPool registers a new resource with the given unique name, arguments, and options.
@@ -109,9 +109,6 @@ func NewDatabaseConnectionPool(ctx *pulumi.Context,
 	}
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
-	}
-	if args.User == nil {
-		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource DatabaseConnectionPool
 	err := ctx.RegisterResource("digitalocean:index/databaseConnectionPool:DatabaseConnectionPool", name, args, &resource, opts...)
@@ -157,7 +154,7 @@ type databaseConnectionPoolState struct {
 	Size *int `pulumi:"size"`
 	// The full URI for connecting to the database connection pool.
 	Uri *string `pulumi:"uri"`
-	// The name of the database user for use with the connection pool.
+	// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
 	User *string `pulumi:"user"`
 }
 
@@ -184,7 +181,7 @@ type DatabaseConnectionPoolState struct {
 	Size pulumi.IntPtrInput
 	// The full URI for connecting to the database connection pool.
 	Uri pulumi.StringPtrInput
-	// The name of the database user for use with the connection pool.
+	// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
 	User pulumi.StringPtrInput
 }
 
@@ -203,8 +200,8 @@ type databaseConnectionPoolArgs struct {
 	Name *string `pulumi:"name"`
 	// The desired size of the PGBouncer connection pool.
 	Size int `pulumi:"size"`
-	// The name of the database user for use with the connection pool.
-	User string `pulumi:"user"`
+	// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
+	User *string `pulumi:"user"`
 }
 
 // The set of arguments for constructing a DatabaseConnectionPool resource.
@@ -219,8 +216,8 @@ type DatabaseConnectionPoolArgs struct {
 	Name pulumi.StringPtrInput
 	// The desired size of the PGBouncer connection pool.
 	Size pulumi.IntInput
-	// The name of the database user for use with the connection pool.
-	User pulumi.StringInput
+	// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
+	User pulumi.StringPtrInput
 }
 
 func (DatabaseConnectionPoolArgs) ElementType() reflect.Type {
@@ -365,9 +362,9 @@ func (o DatabaseConnectionPoolOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
 }
 
-// The name of the database user for use with the connection pool.
-func (o DatabaseConnectionPoolOutput) User() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
+func (o DatabaseConnectionPoolOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseConnectionPool) pulumi.StringPtrOutput { return v.User }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseConnectionPoolArrayOutput struct{ *pulumi.OutputState }

@@ -92,18 +92,18 @@ public final class DatabaseConnectionPoolArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The name of the database user for use with the connection pool.
+     * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      * 
      */
-    @Import(name="user", required=true)
-    private Output<String> user;
+    @Import(name="user")
+    private @Nullable Output<String> user;
 
     /**
-     * @return The name of the database user for use with the connection pool.
+     * @return The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      * 
      */
-    public Output<String> user() {
-        return this.user;
+    public Optional<Output<String>> user() {
+        return Optional.ofNullable(this.user);
     }
 
     private DatabaseConnectionPoolArgs() {}
@@ -241,18 +241,18 @@ public final class DatabaseConnectionPoolArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param user The name of the database user for use with the connection pool.
+         * @param user The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
          * 
          * @return builder
          * 
          */
-        public Builder user(Output<String> user) {
+        public Builder user(@Nullable Output<String> user) {
             $.user = user;
             return this;
         }
 
         /**
-         * @param user The name of the database user for use with the connection pool.
+         * @param user The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
          * 
          * @return builder
          * 
@@ -266,7 +266,6 @@ public final class DatabaseConnectionPoolArgs extends com.pulumi.resources.Resou
             $.dbName = Objects.requireNonNull($.dbName, "expected parameter 'dbName' to be non-null");
             $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
             $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
             return $;
         }
     }

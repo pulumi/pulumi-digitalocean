@@ -129,6 +129,33 @@ public final class DigitaloceanFunctions {
      * 
      * ## Example Usage
      * 
+     * Get the account:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getAccount();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountResult> getAccount() {
         return getAccount(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -137,6 +164,33 @@ public final class DigitaloceanFunctions {
      * Get information on your DigitalOcean account.
      * 
      * ## Example Usage
+     * 
+     * Get the account:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getAccount();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain() {
@@ -147,6 +201,33 @@ public final class DigitaloceanFunctions {
      * 
      * ## Example Usage
      * 
+     * Get the account:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getAccount();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args) {
         return getAccount(args, InvokeOptions.Empty);
@@ -155,6 +236,33 @@ public final class DigitaloceanFunctions {
      * Get information on your DigitalOcean account.
      * 
      * ## Example Usage
+     * 
+     * Get the account:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getAccount();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args) {
@@ -165,6 +273,33 @@ public final class DigitaloceanFunctions {
      * 
      * ## Example Usage
      * 
+     * Get the account:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getAccount();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
@@ -173,6 +308,33 @@ public final class DigitaloceanFunctions {
      * Get information on your DigitalOcean account.
      * 
      * ## Example Usage
+     * 
+     * Get the account:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getAccount();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
