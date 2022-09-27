@@ -10,23 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSshKeyResult {
-    private final String fingerprint;
-    private final Integer id;
-    private final String name;
-    private final String publicKey;
+    private String fingerprint;
+    private Integer id;
+    private String name;
+    private String publicKey;
 
-    @CustomType.Constructor
-    private GetSshKeyResult(
-        @CustomType.Parameter("fingerprint") String fingerprint,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("publicKey") String publicKey) {
-        this.fingerprint = fingerprint;
-        this.id = id;
-        this.name = name;
-        this.publicKey = publicKey;
-    }
-
+    private GetSshKeyResult() {}
     public String fingerprint() {
         return this.fingerprint;
     }
@@ -47,17 +36,13 @@ public final class GetSshKeyResult {
     public static Builder builder(GetSshKeyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String fingerprint;
         private Integer id;
         private String name;
         private String publicKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSshKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fingerprint = defaults.fingerprint;
@@ -66,23 +51,33 @@ public final class GetSshKeyResult {
     	      this.publicKey = defaults.publicKey;
         }
 
+        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder publicKey(String publicKey) {
             this.publicKey = Objects.requireNonNull(publicKey);
             return this;
-        }        public GetSshKeyResult build() {
-            return new GetSshKeyResult(fingerprint, id, name, publicKey);
+        }
+        public GetSshKeyResult build() {
+            final var o = new GetSshKeyResult();
+            o.fingerprint = fingerprint;
+            o.id = id;
+            o.name = name;
+            o.publicKey = publicKey;
+            return o;
         }
     }
 }

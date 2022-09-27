@@ -10,48 +10,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRecordResult {
-    private final String data;
-    private final String domain;
-    private final Integer flags;
+    private String data;
+    private String domain;
+    private Integer flags;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final Integer port;
-    private final Integer priority;
-    private final String tag;
-    private final Integer ttl;
-    private final String type;
-    private final Integer weight;
+    private String id;
+    private String name;
+    private Integer port;
+    private Integer priority;
+    private String tag;
+    private Integer ttl;
+    private String type;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetRecordResult(
-        @CustomType.Parameter("data") String data,
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("flags") Integer flags,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("tag") String tag,
-        @CustomType.Parameter("ttl") Integer ttl,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.data = data;
-        this.domain = domain;
-        this.flags = flags;
-        this.id = id;
-        this.name = name;
-        this.port = port;
-        this.priority = priority;
-        this.tag = tag;
-        this.ttl = ttl;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private GetRecordResult() {}
     public String data() {
         return this.data;
     }
@@ -97,7 +72,7 @@ public final class GetRecordResult {
     public static Builder builder(GetRecordResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String data;
         private String domain;
@@ -110,11 +85,7 @@ public final class GetRecordResult {
         private Integer ttl;
         private String type;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRecordResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.data = defaults.data;
@@ -130,51 +101,75 @@ public final class GetRecordResult {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder data(String data) {
             this.data = Objects.requireNonNull(data);
             return this;
         }
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder flags(Integer flags) {
             this.flags = Objects.requireNonNull(flags);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder tag(String tag) {
             this.tag = Objects.requireNonNull(tag);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetRecordResult build() {
-            return new GetRecordResult(data, domain, flags, id, name, port, priority, tag, ttl, type, weight);
+        }
+        public GetRecordResult build() {
+            final var o = new GetRecordResult();
+            o.data = data;
+            o.domain = domain;
+            o.flags = flags;
+            o.id = id;
+            o.name = name;
+            o.port = port;
+            o.priority = priority;
+            o.tag = tag;
+            o.ttl = ttl;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

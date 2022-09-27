@@ -27,143 +27,100 @@ public final class AppSpecService {
      * @return Describes an alert policy for the component.
      * 
      */
-    private final @Nullable List<AppSpecServiceAlert> alerts;
+    private @Nullable List<AppSpecServiceAlert> alerts;
     /**
      * @return An optional build command to run while building this component from source.
      * 
      */
-    private final @Nullable String buildCommand;
+    private @Nullable String buildCommand;
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
-    private final @Nullable AppSpecServiceCors cors;
+    private @Nullable AppSpecServiceCors cors;
     /**
      * @return The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      * 
      */
-    private final @Nullable String dockerfilePath;
+    private @Nullable String dockerfilePath;
     /**
      * @return An environment slug describing the type of this app.
      * 
      */
-    private final @Nullable String environmentSlug;
+    private @Nullable String environmentSlug;
     /**
      * @return Describes an environment variable made available to an app competent.
      * 
      */
-    private final @Nullable List<AppSpecServiceEnv> envs;
+    private @Nullable List<AppSpecServiceEnv> envs;
     /**
      * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      * 
      */
-    private final @Nullable AppSpecServiceGit git;
+    private @Nullable AppSpecServiceGit git;
     /**
      * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      * 
      */
-    private final @Nullable AppSpecServiceGithub github;
+    private @Nullable AppSpecServiceGithub github;
     /**
      * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      * 
      */
-    private final @Nullable AppSpecServiceGitlab gitlab;
+    private @Nullable AppSpecServiceGitlab gitlab;
     /**
      * @return A health check to determine the availability of this component.
      * 
      */
-    private final @Nullable AppSpecServiceHealthCheck healthCheck;
+    private @Nullable AppSpecServiceHealthCheck healthCheck;
     /**
      * @return The internal port on which this service&#39;s run command will listen.
      * 
      */
-    private final @Nullable Integer httpPort;
+    private @Nullable Integer httpPort;
     /**
      * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
      * 
      */
-    private final @Nullable AppSpecServiceImage image;
+    private @Nullable AppSpecServiceImage image;
     /**
      * @return The amount of instances that this component should be scaled to.
      * 
      */
-    private final @Nullable Integer instanceCount;
+    private @Nullable Integer instanceCount;
     /**
      * @return The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      * 
      */
-    private final @Nullable String instanceSizeSlug;
+    private @Nullable String instanceSizeSlug;
     /**
      * @return A list of ports on which this service will listen for internal traffic.
      * 
      */
-    private final @Nullable List<Integer> internalPorts;
+    private @Nullable List<Integer> internalPorts;
     /**
      * @return Describes a log forwarding destination.
      * 
      */
-    private final @Nullable List<AppSpecServiceLogDestination> logDestinations;
+    private @Nullable List<AppSpecServiceLogDestination> logDestinations;
     /**
      * @return The name of the component.
      * 
      */
-    private final String name;
-    private final @Nullable List<AppSpecServiceRoute> routes;
+    private String name;
+    private @Nullable List<AppSpecServiceRoute> routes;
     /**
      * @return An optional run command to override the component&#39;s default.
      * 
      */
-    private final @Nullable String runCommand;
+    private @Nullable String runCommand;
     /**
      * @return An optional path to the working directory to use for the build.
      * 
      */
-    private final @Nullable String sourceDir;
+    private @Nullable String sourceDir;
 
-    @CustomType.Constructor
-    private AppSpecService(
-        @CustomType.Parameter("alerts") @Nullable List<AppSpecServiceAlert> alerts,
-        @CustomType.Parameter("buildCommand") @Nullable String buildCommand,
-        @CustomType.Parameter("cors") @Nullable AppSpecServiceCors cors,
-        @CustomType.Parameter("dockerfilePath") @Nullable String dockerfilePath,
-        @CustomType.Parameter("environmentSlug") @Nullable String environmentSlug,
-        @CustomType.Parameter("envs") @Nullable List<AppSpecServiceEnv> envs,
-        @CustomType.Parameter("git") @Nullable AppSpecServiceGit git,
-        @CustomType.Parameter("github") @Nullable AppSpecServiceGithub github,
-        @CustomType.Parameter("gitlab") @Nullable AppSpecServiceGitlab gitlab,
-        @CustomType.Parameter("healthCheck") @Nullable AppSpecServiceHealthCheck healthCheck,
-        @CustomType.Parameter("httpPort") @Nullable Integer httpPort,
-        @CustomType.Parameter("image") @Nullable AppSpecServiceImage image,
-        @CustomType.Parameter("instanceCount") @Nullable Integer instanceCount,
-        @CustomType.Parameter("instanceSizeSlug") @Nullable String instanceSizeSlug,
-        @CustomType.Parameter("internalPorts") @Nullable List<Integer> internalPorts,
-        @CustomType.Parameter("logDestinations") @Nullable List<AppSpecServiceLogDestination> logDestinations,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("routes") @Nullable List<AppSpecServiceRoute> routes,
-        @CustomType.Parameter("runCommand") @Nullable String runCommand,
-        @CustomType.Parameter("sourceDir") @Nullable String sourceDir) {
-        this.alerts = alerts;
-        this.buildCommand = buildCommand;
-        this.cors = cors;
-        this.dockerfilePath = dockerfilePath;
-        this.environmentSlug = environmentSlug;
-        this.envs = envs;
-        this.git = git;
-        this.github = github;
-        this.gitlab = gitlab;
-        this.healthCheck = healthCheck;
-        this.httpPort = httpPort;
-        this.image = image;
-        this.instanceCount = instanceCount;
-        this.instanceSizeSlug = instanceSizeSlug;
-        this.internalPorts = internalPorts;
-        this.logDestinations = logDestinations;
-        this.name = name;
-        this.routes = routes;
-        this.runCommand = runCommand;
-        this.sourceDir = sourceDir;
-    }
-
+    private AppSpecService() {}
     /**
      * @return Describes an alert policy for the component.
      * 
@@ -308,7 +265,7 @@ public final class AppSpecService {
     public static Builder builder(AppSpecService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AppSpecServiceAlert> alerts;
         private @Nullable String buildCommand;
@@ -330,11 +287,7 @@ public final class AppSpecService {
         private @Nullable List<AppSpecServiceRoute> routes;
         private @Nullable String runCommand;
         private @Nullable String sourceDir;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
@@ -359,6 +312,7 @@ public final class AppSpecService {
     	      this.sourceDir = defaults.sourceDir;
         }
 
+        @CustomType.Setter
         public Builder alerts(@Nullable List<AppSpecServiceAlert> alerts) {
             this.alerts = alerts;
             return this;
@@ -366,22 +320,27 @@ public final class AppSpecService {
         public Builder alerts(AppSpecServiceAlert... alerts) {
             return alerts(List.of(alerts));
         }
+        @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
             this.buildCommand = buildCommand;
             return this;
         }
+        @CustomType.Setter
         public Builder cors(@Nullable AppSpecServiceCors cors) {
             this.cors = cors;
             return this;
         }
+        @CustomType.Setter
         public Builder dockerfilePath(@Nullable String dockerfilePath) {
             this.dockerfilePath = dockerfilePath;
             return this;
         }
+        @CustomType.Setter
         public Builder environmentSlug(@Nullable String environmentSlug) {
             this.environmentSlug = environmentSlug;
             return this;
         }
+        @CustomType.Setter
         public Builder envs(@Nullable List<AppSpecServiceEnv> envs) {
             this.envs = envs;
             return this;
@@ -389,38 +348,47 @@ public final class AppSpecService {
         public Builder envs(AppSpecServiceEnv... envs) {
             return envs(List.of(envs));
         }
+        @CustomType.Setter
         public Builder git(@Nullable AppSpecServiceGit git) {
             this.git = git;
             return this;
         }
+        @CustomType.Setter
         public Builder github(@Nullable AppSpecServiceGithub github) {
             this.github = github;
             return this;
         }
+        @CustomType.Setter
         public Builder gitlab(@Nullable AppSpecServiceGitlab gitlab) {
             this.gitlab = gitlab;
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheck(@Nullable AppSpecServiceHealthCheck healthCheck) {
             this.healthCheck = healthCheck;
             return this;
         }
+        @CustomType.Setter
         public Builder httpPort(@Nullable Integer httpPort) {
             this.httpPort = httpPort;
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable AppSpecServiceImage image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceCount(@Nullable Integer instanceCount) {
             this.instanceCount = instanceCount;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceSizeSlug(@Nullable String instanceSizeSlug) {
             this.instanceSizeSlug = instanceSizeSlug;
             return this;
         }
+        @CustomType.Setter
         public Builder internalPorts(@Nullable List<Integer> internalPorts) {
             this.internalPorts = internalPorts;
             return this;
@@ -428,6 +396,7 @@ public final class AppSpecService {
         public Builder internalPorts(Integer... internalPorts) {
             return internalPorts(List.of(internalPorts));
         }
+        @CustomType.Setter
         public Builder logDestinations(@Nullable List<AppSpecServiceLogDestination> logDestinations) {
             this.logDestinations = logDestinations;
             return this;
@@ -435,10 +404,12 @@ public final class AppSpecService {
         public Builder logDestinations(AppSpecServiceLogDestination... logDestinations) {
             return logDestinations(List.of(logDestinations));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder routes(@Nullable List<AppSpecServiceRoute> routes) {
             this.routes = routes;
             return this;
@@ -446,15 +417,39 @@ public final class AppSpecService {
         public Builder routes(AppSpecServiceRoute... routes) {
             return routes(List.of(routes));
         }
+        @CustomType.Setter
         public Builder runCommand(@Nullable String runCommand) {
             this.runCommand = runCommand;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceDir(@Nullable String sourceDir) {
             this.sourceDir = sourceDir;
             return this;
-        }        public AppSpecService build() {
-            return new AppSpecService(alerts, buildCommand, cors, dockerfilePath, environmentSlug, envs, git, github, gitlab, healthCheck, httpPort, image, instanceCount, instanceSizeSlug, internalPorts, logDestinations, name, routes, runCommand, sourceDir);
+        }
+        public AppSpecService build() {
+            final var o = new AppSpecService();
+            o.alerts = alerts;
+            o.buildCommand = buildCommand;
+            o.cors = cors;
+            o.dockerfilePath = dockerfilePath;
+            o.environmentSlug = environmentSlug;
+            o.envs = envs;
+            o.git = git;
+            o.github = github;
+            o.gitlab = gitlab;
+            o.healthCheck = healthCheck;
+            o.httpPort = httpPort;
+            o.image = image;
+            o.instanceCount = instanceCount;
+            o.instanceSizeSlug = instanceSizeSlug;
+            o.internalPorts = internalPorts;
+            o.logDestinations = logDestinations;
+            o.name = name;
+            o.routes = routes;
+            o.runCommand = runCommand;
+            o.sourceDir = sourceDir;
+            return o;
         }
     }
 }

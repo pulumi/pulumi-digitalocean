@@ -15,49 +15,34 @@ public final class KubernetesClusterNodePoolNode {
      * @return The date and time when the node was created.
      * 
      */
-    private final @Nullable String createdAt;
+    private @Nullable String createdAt;
     /**
      * @return The id of the node&#39;s droplet
      * 
      */
-    private final @Nullable String dropletId;
+    private @Nullable String dropletId;
     /**
      * @return A unique ID that can be used to identify and reference the node.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return A name for the node pool.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return A string indicating the current status of the individual node.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The date and time when the node was last updated.
      * 
      */
-    private final @Nullable String updatedAt;
+    private @Nullable String updatedAt;
 
-    @CustomType.Constructor
-    private KubernetesClusterNodePoolNode(
-        @CustomType.Parameter("createdAt") @Nullable String createdAt,
-        @CustomType.Parameter("dropletId") @Nullable String dropletId,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("updatedAt") @Nullable String updatedAt) {
-        this.createdAt = createdAt;
-        this.dropletId = dropletId;
-        this.id = id;
-        this.name = name;
-        this.status = status;
-        this.updatedAt = updatedAt;
-    }
-
+    private KubernetesClusterNodePoolNode() {}
     /**
      * @return The date and time when the node was created.
      * 
@@ -108,7 +93,7 @@ public final class KubernetesClusterNodePoolNode {
     public static Builder builder(KubernetesClusterNodePoolNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String createdAt;
         private @Nullable String dropletId;
@@ -116,11 +101,7 @@ public final class KubernetesClusterNodePoolNode {
         private @Nullable String name;
         private @Nullable String status;
         private @Nullable String updatedAt;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KubernetesClusterNodePoolNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -131,31 +112,45 @@ public final class KubernetesClusterNodePoolNode {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
         public Builder createdAt(@Nullable String createdAt) {
             this.createdAt = createdAt;
             return this;
         }
+        @CustomType.Setter
         public Builder dropletId(@Nullable String dropletId) {
             this.dropletId = dropletId;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(@Nullable String updatedAt) {
             this.updatedAt = updatedAt;
             return this;
-        }        public KubernetesClusterNodePoolNode build() {
-            return new KubernetesClusterNodePoolNode(createdAt, dropletId, id, name, status, updatedAt);
+        }
+        public KubernetesClusterNodePoolNode build() {
+            final var o = new KubernetesClusterNodePoolNode();
+            o.createdAt = createdAt;
+            o.dropletId = dropletId;
+            o.id = id;
+            o.name = name;
+            o.status = status;
+            o.updatedAt = updatedAt;
+            return o;
         }
     }
 }

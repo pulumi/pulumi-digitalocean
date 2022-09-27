@@ -21,91 +21,64 @@ public final class KubernetesClusterNodePool {
      * @return A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
      * 
      */
-    private final @Nullable Integer actualNodeCount;
+    private @Nullable Integer actualNodeCount;
     /**
      * @return Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
      * 
      */
-    private final @Nullable Boolean autoScale;
+    private @Nullable Boolean autoScale;
     /**
      * @return A unique ID that can be used to identify and reference the node.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      * 
      */
-    private final @Nullable Integer maxNodes;
+    private @Nullable Integer maxNodes;
     /**
      * @return If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
      * 
      */
-    private final @Nullable Integer minNodes;
+    private @Nullable Integer minNodes;
     /**
      * @return A name for the node pool.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      * 
      */
-    private final @Nullable Integer nodeCount;
+    private @Nullable Integer nodeCount;
     /**
      * @return A list of nodes in the pool. Each node exports the following attributes:
      * 
      */
-    private final @Nullable List<KubernetesClusterNodePoolNode> nodes;
+    private @Nullable List<KubernetesClusterNodePoolNode> nodes;
     /**
      * @return The slug identifier for the type of Droplet to be used as workers in the node pool.
      * 
      */
-    private final String size;
+    private String size;
     /**
      * @return A list of tag names to be applied to the Kubernetes cluster.
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
      * 
      */
-    private final @Nullable List<KubernetesClusterNodePoolTaint> taints;
+    private @Nullable List<KubernetesClusterNodePoolTaint> taints;
 
-    @CustomType.Constructor
-    private KubernetesClusterNodePool(
-        @CustomType.Parameter("actualNodeCount") @Nullable Integer actualNodeCount,
-        @CustomType.Parameter("autoScale") @Nullable Boolean autoScale,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("maxNodes") @Nullable Integer maxNodes,
-        @CustomType.Parameter("minNodes") @Nullable Integer minNodes,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeCount") @Nullable Integer nodeCount,
-        @CustomType.Parameter("nodes") @Nullable List<KubernetesClusterNodePoolNode> nodes,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("taints") @Nullable List<KubernetesClusterNodePoolTaint> taints) {
-        this.actualNodeCount = actualNodeCount;
-        this.autoScale = autoScale;
-        this.id = id;
-        this.labels = labels;
-        this.maxNodes = maxNodes;
-        this.minNodes = minNodes;
-        this.name = name;
-        this.nodeCount = nodeCount;
-        this.nodes = nodes;
-        this.size = size;
-        this.tags = tags;
-        this.taints = taints;
-    }
-
+    private KubernetesClusterNodePool() {}
     /**
      * @return A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
      * 
@@ -198,7 +171,7 @@ public final class KubernetesClusterNodePool {
     public static Builder builder(KubernetesClusterNodePool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer actualNodeCount;
         private @Nullable Boolean autoScale;
@@ -212,11 +185,7 @@ public final class KubernetesClusterNodePool {
         private String size;
         private @Nullable List<String> tags;
         private @Nullable List<KubernetesClusterNodePoolTaint> taints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KubernetesClusterNodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actualNodeCount = defaults.actualNodeCount;
@@ -233,38 +202,47 @@ public final class KubernetesClusterNodePool {
     	      this.taints = defaults.taints;
         }
 
+        @CustomType.Setter
         public Builder actualNodeCount(@Nullable Integer actualNodeCount) {
             this.actualNodeCount = actualNodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder autoScale(@Nullable Boolean autoScale) {
             this.autoScale = autoScale;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder maxNodes(@Nullable Integer maxNodes) {
             this.maxNodes = maxNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder minNodes(@Nullable Integer minNodes) {
             this.minNodes = minNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
             this.nodeCount = nodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder nodes(@Nullable List<KubernetesClusterNodePoolNode> nodes) {
             this.nodes = nodes;
             return this;
@@ -272,10 +250,12 @@ public final class KubernetesClusterNodePool {
         public Builder nodes(KubernetesClusterNodePoolNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -283,14 +263,29 @@ public final class KubernetesClusterNodePool {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder taints(@Nullable List<KubernetesClusterNodePoolTaint> taints) {
             this.taints = taints;
             return this;
         }
         public Builder taints(KubernetesClusterNodePoolTaint... taints) {
             return taints(List.of(taints));
-        }        public KubernetesClusterNodePool build() {
-            return new KubernetesClusterNodePool(actualNodeCount, autoScale, id, labels, maxNodes, minNodes, name, nodeCount, nodes, size, tags, taints);
+        }
+        public KubernetesClusterNodePool build() {
+            final var o = new KubernetesClusterNodePool();
+            o.actualNodeCount = actualNodeCount;
+            o.autoScale = autoScale;
+            o.id = id;
+            o.labels = labels;
+            o.maxNodes = maxNodes;
+            o.minNodes = minNodes;
+            o.name = name;
+            o.nodeCount = nodeCount;
+            o.nodes = nodes;
+            o.size = size;
+            o.tags = tags;
+            o.taints = taints;
+            return o;
         }
     }
 }

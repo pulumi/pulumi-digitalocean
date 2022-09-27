@@ -21,56 +21,39 @@ public final class LoadBalancerForwardingRule {
      * 
      */
     @Deprecated /* Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead. */
-    private final @Nullable String certificateId;
+    private @Nullable String certificateId;
     /**
      * @return The unique name of the TLS certificate to be used for SSL termination.
      * 
      */
-    private final @Nullable String certificateName;
+    private @Nullable String certificateName;
     /**
      * @return An integer representing the port on which the Load Balancer instance will listen.
      * 
      */
-    private final Integer entryPort;
+    private Integer entryPort;
     /**
      * @return The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
      * 
      */
-    private final String entryProtocol;
+    private String entryProtocol;
     /**
      * @return An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
      * 
      */
-    private final Integer targetPort;
+    private Integer targetPort;
     /**
      * @return The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
      * 
      */
-    private final String targetProtocol;
+    private String targetProtocol;
     /**
      * @return A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
      * 
      */
-    private final @Nullable Boolean tlsPassthrough;
+    private @Nullable Boolean tlsPassthrough;
 
-    @CustomType.Constructor
-    private LoadBalancerForwardingRule(
-        @CustomType.Parameter("certificateId") @Nullable String certificateId,
-        @CustomType.Parameter("certificateName") @Nullable String certificateName,
-        @CustomType.Parameter("entryPort") Integer entryPort,
-        @CustomType.Parameter("entryProtocol") String entryProtocol,
-        @CustomType.Parameter("targetPort") Integer targetPort,
-        @CustomType.Parameter("targetProtocol") String targetProtocol,
-        @CustomType.Parameter("tlsPassthrough") @Nullable Boolean tlsPassthrough) {
-        this.certificateId = certificateId;
-        this.certificateName = certificateName;
-        this.entryPort = entryPort;
-        this.entryProtocol = entryProtocol;
-        this.targetPort = targetPort;
-        this.targetProtocol = targetProtocol;
-        this.tlsPassthrough = tlsPassthrough;
-    }
-
+    private LoadBalancerForwardingRule() {}
     /**
      * @return **Deprecated** The ID of the TLS certificate to be used for SSL termination.
      * 
@@ -132,7 +115,7 @@ public final class LoadBalancerForwardingRule {
     public static Builder builder(LoadBalancerForwardingRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificateId;
         private @Nullable String certificateName;
@@ -141,11 +124,7 @@ public final class LoadBalancerForwardingRule {
         private Integer targetPort;
         private String targetProtocol;
         private @Nullable Boolean tlsPassthrough;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LoadBalancerForwardingRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateId = defaults.certificateId;
@@ -157,35 +136,51 @@ public final class LoadBalancerForwardingRule {
     	      this.tlsPassthrough = defaults.tlsPassthrough;
         }
 
+        @CustomType.Setter
         public Builder certificateId(@Nullable String certificateId) {
             this.certificateId = certificateId;
             return this;
         }
+        @CustomType.Setter
         public Builder certificateName(@Nullable String certificateName) {
             this.certificateName = certificateName;
             return this;
         }
+        @CustomType.Setter
         public Builder entryPort(Integer entryPort) {
             this.entryPort = Objects.requireNonNull(entryPort);
             return this;
         }
+        @CustomType.Setter
         public Builder entryProtocol(String entryProtocol) {
             this.entryProtocol = Objects.requireNonNull(entryProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder targetPort(Integer targetPort) {
             this.targetPort = Objects.requireNonNull(targetPort);
             return this;
         }
+        @CustomType.Setter
         public Builder targetProtocol(String targetProtocol) {
             this.targetProtocol = Objects.requireNonNull(targetProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder tlsPassthrough(@Nullable Boolean tlsPassthrough) {
             this.tlsPassthrough = tlsPassthrough;
             return this;
-        }        public LoadBalancerForwardingRule build() {
-            return new LoadBalancerForwardingRule(certificateId, certificateName, entryPort, entryProtocol, targetPort, targetProtocol, tlsPassthrough);
+        }
+        public LoadBalancerForwardingRule build() {
+            final var o = new LoadBalancerForwardingRule();
+            o.certificateId = certificateId;
+            o.certificateName = certificateName;
+            o.entryPort = entryPort;
+            o.entryProtocol = entryProtocol;
+            o.targetPort = targetPort;
+            o.targetProtocol = targetProtocol;
+            o.tlsPassthrough = tlsPassthrough;
+            return o;
         }
     }
 }

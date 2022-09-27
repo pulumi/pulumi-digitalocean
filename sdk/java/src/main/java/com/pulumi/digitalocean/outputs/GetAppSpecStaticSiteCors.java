@@ -18,49 +18,34 @@ public final class GetAppSpecStaticSiteCors {
      * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      * 
      */
-    private final @Nullable Boolean allowCredentials;
+    private @Nullable Boolean allowCredentials;
     /**
      * @return The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
      * 
      */
-    private final @Nullable List<String> allowHeaders;
+    private @Nullable List<String> allowHeaders;
     /**
      * @return The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
      * 
      */
-    private final @Nullable List<String> allowMethods;
+    private @Nullable List<String> allowMethods;
     /**
      * @return The `Access-Control-Allow-Origin` can be
      * 
      */
-    private final @Nullable GetAppSpecStaticSiteCorsAllowOrigins allowOrigins;
+    private @Nullable GetAppSpecStaticSiteCorsAllowOrigins allowOrigins;
     /**
      * @return The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
      * 
      */
-    private final @Nullable List<String> exposeHeaders;
+    private @Nullable List<String> exposeHeaders;
     /**
      * @return An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
      * 
      */
-    private final @Nullable String maxAge;
+    private @Nullable String maxAge;
 
-    @CustomType.Constructor
-    private GetAppSpecStaticSiteCors(
-        @CustomType.Parameter("allowCredentials") @Nullable Boolean allowCredentials,
-        @CustomType.Parameter("allowHeaders") @Nullable List<String> allowHeaders,
-        @CustomType.Parameter("allowMethods") @Nullable List<String> allowMethods,
-        @CustomType.Parameter("allowOrigins") @Nullable GetAppSpecStaticSiteCorsAllowOrigins allowOrigins,
-        @CustomType.Parameter("exposeHeaders") @Nullable List<String> exposeHeaders,
-        @CustomType.Parameter("maxAge") @Nullable String maxAge) {
-        this.allowCredentials = allowCredentials;
-        this.allowHeaders = allowHeaders;
-        this.allowMethods = allowMethods;
-        this.allowOrigins = allowOrigins;
-        this.exposeHeaders = exposeHeaders;
-        this.maxAge = maxAge;
-    }
-
+    private GetAppSpecStaticSiteCors() {}
     /**
      * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      * 
@@ -111,7 +96,7 @@ public final class GetAppSpecStaticSiteCors {
     public static Builder builder(GetAppSpecStaticSiteCors defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowCredentials;
         private @Nullable List<String> allowHeaders;
@@ -119,11 +104,7 @@ public final class GetAppSpecStaticSiteCors {
         private @Nullable GetAppSpecStaticSiteCorsAllowOrigins allowOrigins;
         private @Nullable List<String> exposeHeaders;
         private @Nullable String maxAge;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecStaticSiteCors defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowCredentials = defaults.allowCredentials;
@@ -134,10 +115,12 @@ public final class GetAppSpecStaticSiteCors {
     	      this.maxAge = defaults.maxAge;
         }
 
+        @CustomType.Setter
         public Builder allowCredentials(@Nullable Boolean allowCredentials) {
             this.allowCredentials = allowCredentials;
             return this;
         }
+        @CustomType.Setter
         public Builder allowHeaders(@Nullable List<String> allowHeaders) {
             this.allowHeaders = allowHeaders;
             return this;
@@ -145,6 +128,7 @@ public final class GetAppSpecStaticSiteCors {
         public Builder allowHeaders(String... allowHeaders) {
             return allowHeaders(List.of(allowHeaders));
         }
+        @CustomType.Setter
         public Builder allowMethods(@Nullable List<String> allowMethods) {
             this.allowMethods = allowMethods;
             return this;
@@ -152,10 +136,12 @@ public final class GetAppSpecStaticSiteCors {
         public Builder allowMethods(String... allowMethods) {
             return allowMethods(List.of(allowMethods));
         }
+        @CustomType.Setter
         public Builder allowOrigins(@Nullable GetAppSpecStaticSiteCorsAllowOrigins allowOrigins) {
             this.allowOrigins = allowOrigins;
             return this;
         }
+        @CustomType.Setter
         public Builder exposeHeaders(@Nullable List<String> exposeHeaders) {
             this.exposeHeaders = exposeHeaders;
             return this;
@@ -163,11 +149,20 @@ public final class GetAppSpecStaticSiteCors {
         public Builder exposeHeaders(String... exposeHeaders) {
             return exposeHeaders(List.of(exposeHeaders));
         }
+        @CustomType.Setter
         public Builder maxAge(@Nullable String maxAge) {
             this.maxAge = maxAge;
             return this;
-        }        public GetAppSpecStaticSiteCors build() {
-            return new GetAppSpecStaticSiteCors(allowCredentials, allowHeaders, allowMethods, allowOrigins, exposeHeaders, maxAge);
+        }
+        public GetAppSpecStaticSiteCors build() {
+            final var o = new GetAppSpecStaticSiteCors();
+            o.allowCredentials = allowCredentials;
+            o.allowHeaders = allowHeaders;
+            o.allowMethods = allowMethods;
+            o.allowOrigins = allowOrigins;
+            o.exposeHeaders = exposeHeaders;
+            o.maxAge = maxAge;
+            return o;
         }
     }
 }

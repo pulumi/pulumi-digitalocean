@@ -15,21 +15,14 @@ public final class GetAppSpecFunctionLogDestinationDatadog {
      * @return Datadog API key.
      * 
      */
-    private final String apiKey;
+    private String apiKey;
     /**
      * @return Datadog HTTP log intake endpoint.
      * 
      */
-    private final @Nullable String endpoint;
+    private @Nullable String endpoint;
 
-    @CustomType.Constructor
-    private GetAppSpecFunctionLogDestinationDatadog(
-        @CustomType.Parameter("apiKey") String apiKey,
-        @CustomType.Parameter("endpoint") @Nullable String endpoint) {
-        this.apiKey = apiKey;
-        this.endpoint = endpoint;
-    }
-
+    private GetAppSpecFunctionLogDestinationDatadog() {}
     /**
      * @return Datadog API key.
      * 
@@ -52,30 +45,32 @@ public final class GetAppSpecFunctionLogDestinationDatadog {
     public static Builder builder(GetAppSpecFunctionLogDestinationDatadog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String apiKey;
         private @Nullable String endpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecFunctionLogDestinationDatadog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
     	      this.endpoint = defaults.endpoint;
         }
 
+        @CustomType.Setter
         public Builder apiKey(String apiKey) {
             this.apiKey = Objects.requireNonNull(apiKey);
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
             this.endpoint = endpoint;
             return this;
-        }        public GetAppSpecFunctionLogDestinationDatadog build() {
-            return new GetAppSpecFunctionLogDestinationDatadog(apiKey, endpoint);
+        }
+        public GetAppSpecFunctionLogDestinationDatadog build() {
+            final var o = new GetAppSpecFunctionLogDestinationDatadog();
+            o.apiKey = apiKey;
+            o.endpoint = endpoint;
+            return o;
         }
     }
 }

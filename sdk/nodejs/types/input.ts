@@ -493,6 +493,10 @@ export interface AppSpecJobGitlab {
 
 export interface AppSpecJobImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecJobImageDeployOnPush>[]>;
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: pulumi.Input<string>;
@@ -508,6 +512,13 @@ export interface AppSpecJobImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface AppSpecJobLogDestination {
@@ -788,6 +799,10 @@ export interface AppSpecServiceHealthCheck {
 
 export interface AppSpecServiceImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceImageDeployOnPush>[]>;
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: pulumi.Input<string>;
@@ -803,6 +818,13 @@ export interface AppSpecServiceImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface AppSpecServiceLogDestination {
@@ -1181,6 +1203,10 @@ export interface AppSpecWorkerGitlab {
 
 export interface AppSpecWorkerImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerImageDeployOnPush>[]>;
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: pulumi.Input<string>;
@@ -1196,6 +1222,13 @@ export interface AppSpecWorkerImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface AppSpecWorkerLogDestination {

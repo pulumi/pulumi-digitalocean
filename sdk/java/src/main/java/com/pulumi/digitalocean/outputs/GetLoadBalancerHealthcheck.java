@@ -10,32 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancerHealthcheck {
-    private final Integer checkIntervalSeconds;
-    private final Integer healthyThreshold;
-    private final String path;
-    private final Integer port;
-    private final String protocol;
-    private final Integer responseTimeoutSeconds;
-    private final Integer unhealthyThreshold;
+    private Integer checkIntervalSeconds;
+    private Integer healthyThreshold;
+    private String path;
+    private Integer port;
+    private String protocol;
+    private Integer responseTimeoutSeconds;
+    private Integer unhealthyThreshold;
 
-    @CustomType.Constructor
-    private GetLoadBalancerHealthcheck(
-        @CustomType.Parameter("checkIntervalSeconds") Integer checkIntervalSeconds,
-        @CustomType.Parameter("healthyThreshold") Integer healthyThreshold,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("responseTimeoutSeconds") Integer responseTimeoutSeconds,
-        @CustomType.Parameter("unhealthyThreshold") Integer unhealthyThreshold) {
-        this.checkIntervalSeconds = checkIntervalSeconds;
-        this.healthyThreshold = healthyThreshold;
-        this.path = path;
-        this.port = port;
-        this.protocol = protocol;
-        this.responseTimeoutSeconds = responseTimeoutSeconds;
-        this.unhealthyThreshold = unhealthyThreshold;
-    }
-
+    private GetLoadBalancerHealthcheck() {}
     public Integer checkIntervalSeconds() {
         return this.checkIntervalSeconds;
     }
@@ -65,7 +48,7 @@ public final class GetLoadBalancerHealthcheck {
     public static Builder builder(GetLoadBalancerHealthcheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer checkIntervalSeconds;
         private Integer healthyThreshold;
@@ -74,11 +57,7 @@ public final class GetLoadBalancerHealthcheck {
         private String protocol;
         private Integer responseTimeoutSeconds;
         private Integer unhealthyThreshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancerHealthcheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkIntervalSeconds = defaults.checkIntervalSeconds;
@@ -90,35 +69,51 @@ public final class GetLoadBalancerHealthcheck {
     	      this.unhealthyThreshold = defaults.unhealthyThreshold;
         }
 
+        @CustomType.Setter
         public Builder checkIntervalSeconds(Integer checkIntervalSeconds) {
             this.checkIntervalSeconds = Objects.requireNonNull(checkIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
             this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder responseTimeoutSeconds(Integer responseTimeoutSeconds) {
             this.responseTimeoutSeconds = Objects.requireNonNull(responseTimeoutSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
             this.unhealthyThreshold = Objects.requireNonNull(unhealthyThreshold);
             return this;
-        }        public GetLoadBalancerHealthcheck build() {
-            return new GetLoadBalancerHealthcheck(checkIntervalSeconds, healthyThreshold, path, port, protocol, responseTimeoutSeconds, unhealthyThreshold);
+        }
+        public GetLoadBalancerHealthcheck build() {
+            final var o = new GetLoadBalancerHealthcheck();
+            o.checkIntervalSeconds = checkIntervalSeconds;
+            o.healthyThreshold = healthyThreshold;
+            o.path = path;
+            o.port = port;
+            o.protocol = protocol;
+            o.responseTimeoutSeconds = responseTimeoutSeconds;
+            o.unhealthyThreshold = unhealthyThreshold;
+            return o;
         }
     }
 }

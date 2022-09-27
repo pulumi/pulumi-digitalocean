@@ -11,32 +11,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancerForwardingRule {
-    private final String certificateId;
-    private final String certificateName;
-    private final Integer entryPort;
-    private final String entryProtocol;
-    private final Integer targetPort;
-    private final String targetProtocol;
-    private final Boolean tlsPassthrough;
+    private String certificateId;
+    private String certificateName;
+    private Integer entryPort;
+    private String entryProtocol;
+    private Integer targetPort;
+    private String targetProtocol;
+    private Boolean tlsPassthrough;
 
-    @CustomType.Constructor
-    private GetLoadBalancerForwardingRule(
-        @CustomType.Parameter("certificateId") String certificateId,
-        @CustomType.Parameter("certificateName") String certificateName,
-        @CustomType.Parameter("entryPort") Integer entryPort,
-        @CustomType.Parameter("entryProtocol") String entryProtocol,
-        @CustomType.Parameter("targetPort") Integer targetPort,
-        @CustomType.Parameter("targetProtocol") String targetProtocol,
-        @CustomType.Parameter("tlsPassthrough") Boolean tlsPassthrough) {
-        this.certificateId = certificateId;
-        this.certificateName = certificateName;
-        this.entryPort = entryPort;
-        this.entryProtocol = entryProtocol;
-        this.targetPort = targetPort;
-        this.targetProtocol = targetProtocol;
-        this.tlsPassthrough = tlsPassthrough;
-    }
-
+    private GetLoadBalancerForwardingRule() {}
     public String certificateId() {
         return this.certificateId;
     }
@@ -66,7 +49,7 @@ public final class GetLoadBalancerForwardingRule {
     public static Builder builder(GetLoadBalancerForwardingRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String certificateId;
         private String certificateName;
@@ -75,11 +58,7 @@ public final class GetLoadBalancerForwardingRule {
         private Integer targetPort;
         private String targetProtocol;
         private Boolean tlsPassthrough;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancerForwardingRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateId = defaults.certificateId;
@@ -91,35 +70,51 @@ public final class GetLoadBalancerForwardingRule {
     	      this.tlsPassthrough = defaults.tlsPassthrough;
         }
 
+        @CustomType.Setter
         public Builder certificateId(String certificateId) {
             this.certificateId = Objects.requireNonNull(certificateId);
             return this;
         }
+        @CustomType.Setter
         public Builder certificateName(String certificateName) {
             this.certificateName = Objects.requireNonNull(certificateName);
             return this;
         }
+        @CustomType.Setter
         public Builder entryPort(Integer entryPort) {
             this.entryPort = Objects.requireNonNull(entryPort);
             return this;
         }
+        @CustomType.Setter
         public Builder entryProtocol(String entryProtocol) {
             this.entryProtocol = Objects.requireNonNull(entryProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder targetPort(Integer targetPort) {
             this.targetPort = Objects.requireNonNull(targetPort);
             return this;
         }
+        @CustomType.Setter
         public Builder targetProtocol(String targetProtocol) {
             this.targetProtocol = Objects.requireNonNull(targetProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder tlsPassthrough(Boolean tlsPassthrough) {
             this.tlsPassthrough = Objects.requireNonNull(tlsPassthrough);
             return this;
-        }        public GetLoadBalancerForwardingRule build() {
-            return new GetLoadBalancerForwardingRule(certificateId, certificateName, entryPort, entryProtocol, targetPort, targetProtocol, tlsPassthrough);
+        }
+        public GetLoadBalancerForwardingRule build() {
+            final var o = new GetLoadBalancerForwardingRule();
+            o.certificateId = certificateId;
+            o.certificateName = certificateName;
+            o.entryPort = entryPort;
+            o.entryProtocol = entryProtocol;
+            o.targetPort = targetPort;
+            o.targetProtocol = targetProtocol;
+            o.tlsPassthrough = tlsPassthrough;
+            return o;
         }
     }
 }

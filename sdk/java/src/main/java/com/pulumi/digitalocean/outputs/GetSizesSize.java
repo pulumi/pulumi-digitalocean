@@ -17,70 +17,49 @@ public final class GetSizesSize {
      * @return This represents whether new Droplets can be created with this size.
      * 
      */
-    private final Boolean available;
+    private Boolean available;
     /**
      * @return The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
      * 
      */
-    private final Integer disk;
+    private Integer disk;
     /**
      * @return The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
      * 
      */
-    private final Integer memory;
+    private Integer memory;
     /**
      * @return The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
      * 
      */
-    private final Double priceHourly;
+    private Double priceHourly;
     /**
      * @return The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
      * 
      */
-    private final Double priceMonthly;
+    private Double priceMonthly;
     /**
      * @return List of region slugs where Droplets can be created in this size.
      * 
      */
-    private final List<String> regions;
+    private List<String> regions;
     /**
      * @return A human-readable string that is used to uniquely identify each size.
      * 
      */
-    private final String slug;
+    private String slug;
     /**
      * @return The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
      * 
      */
-    private final Double transfer;
+    private Double transfer;
     /**
      * @return The number of CPUs allocated to Droplets of this size.
      * 
      */
-    private final Integer vcpus;
+    private Integer vcpus;
 
-    @CustomType.Constructor
-    private GetSizesSize(
-        @CustomType.Parameter("available") Boolean available,
-        @CustomType.Parameter("disk") Integer disk,
-        @CustomType.Parameter("memory") Integer memory,
-        @CustomType.Parameter("priceHourly") Double priceHourly,
-        @CustomType.Parameter("priceMonthly") Double priceMonthly,
-        @CustomType.Parameter("regions") List<String> regions,
-        @CustomType.Parameter("slug") String slug,
-        @CustomType.Parameter("transfer") Double transfer,
-        @CustomType.Parameter("vcpus") Integer vcpus) {
-        this.available = available;
-        this.disk = disk;
-        this.memory = memory;
-        this.priceHourly = priceHourly;
-        this.priceMonthly = priceMonthly;
-        this.regions = regions;
-        this.slug = slug;
-        this.transfer = transfer;
-        this.vcpus = vcpus;
-    }
-
+    private GetSizesSize() {}
     /**
      * @return This represents whether new Droplets can be created with this size.
      * 
@@ -152,7 +131,7 @@ public final class GetSizesSize {
     public static Builder builder(GetSizesSize defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean available;
         private Integer disk;
@@ -163,11 +142,7 @@ public final class GetSizesSize {
         private String slug;
         private Double transfer;
         private Integer vcpus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSizesSize defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.available = defaults.available;
@@ -181,26 +156,32 @@ public final class GetSizesSize {
     	      this.vcpus = defaults.vcpus;
         }
 
+        @CustomType.Setter
         public Builder available(Boolean available) {
             this.available = Objects.requireNonNull(available);
             return this;
         }
+        @CustomType.Setter
         public Builder disk(Integer disk) {
             this.disk = Objects.requireNonNull(disk);
             return this;
         }
+        @CustomType.Setter
         public Builder memory(Integer memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
+        @CustomType.Setter
         public Builder priceHourly(Double priceHourly) {
             this.priceHourly = Objects.requireNonNull(priceHourly);
             return this;
         }
+        @CustomType.Setter
         public Builder priceMonthly(Double priceMonthly) {
             this.priceMonthly = Objects.requireNonNull(priceMonthly);
             return this;
         }
+        @CustomType.Setter
         public Builder regions(List<String> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
@@ -208,19 +189,33 @@ public final class GetSizesSize {
         public Builder regions(String... regions) {
             return regions(List.of(regions));
         }
+        @CustomType.Setter
         public Builder slug(String slug) {
             this.slug = Objects.requireNonNull(slug);
             return this;
         }
+        @CustomType.Setter
         public Builder transfer(Double transfer) {
             this.transfer = Objects.requireNonNull(transfer);
             return this;
         }
+        @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
             this.vcpus = Objects.requireNonNull(vcpus);
             return this;
-        }        public GetSizesSize build() {
-            return new GetSizesSize(available, disk, memory, priceHourly, priceMonthly, regions, slug, transfer, vcpus);
+        }
+        public GetSizesSize build() {
+            final var o = new GetSizesSize();
+            o.available = available;
+            o.disk = disk;
+            o.memory = memory;
+            o.priceHourly = priceHourly;
+            o.priceMonthly = priceMonthly;
+            o.regions = regions;
+            o.slug = slug;
+            o.transfer = transfer;
+            o.vcpus = vcpus;
+            return o;
         }
     }
 }

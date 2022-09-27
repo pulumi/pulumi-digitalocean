@@ -19,68 +19,43 @@ public final class GetVolumeSnapshotResult {
      * @return The date and time the volume snapshot was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
      * 
      */
-    private final Integer minDiskSize;
-    private final @Nullable Boolean mostRecent;
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
-    private final @Nullable String region;
+    private Integer minDiskSize;
+    private @Nullable Boolean mostRecent;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
+    private @Nullable String region;
     /**
      * @return A list of DigitalOcean region &#34;slugs&#34; indicating where the volume snapshot is available.
      * 
      */
-    private final List<String> regions;
+    private List<String> regions;
     /**
      * @return The billable size of the volume snapshot in gigabytes.
      * 
      */
-    private final Double size;
+    private Double size;
     /**
      * @return A list of the tags associated to the volume snapshot.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return The ID of the volume from which the volume snapshot originated.
      * 
      */
-    private final String volumeId;
+    private String volumeId;
 
-    @CustomType.Constructor
-    private GetVolumeSnapshotResult(
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("minDiskSize") Integer minDiskSize,
-        @CustomType.Parameter("mostRecent") @Nullable Boolean mostRecent,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("regions") List<String> regions,
-        @CustomType.Parameter("size") Double size,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("volumeId") String volumeId) {
-        this.createdAt = createdAt;
-        this.id = id;
-        this.minDiskSize = minDiskSize;
-        this.mostRecent = mostRecent;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.region = region;
-        this.regions = regions;
-        this.size = size;
-        this.tags = tags;
-        this.volumeId = volumeId;
-    }
-
+    private GetVolumeSnapshotResult() {}
     /**
      * @return The date and time the volume snapshot was created.
      * 
@@ -150,7 +125,7 @@ public final class GetVolumeSnapshotResult {
     public static Builder builder(GetVolumeSnapshotResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createdAt;
         private String id;
@@ -163,11 +138,7 @@ public final class GetVolumeSnapshotResult {
         private Double size;
         private List<String> tags;
         private String volumeId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVolumeSnapshotResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -183,34 +154,42 @@ public final class GetVolumeSnapshotResult {
     	      this.volumeId = defaults.volumeId;
         }
 
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder minDiskSize(Integer minDiskSize) {
             this.minDiskSize = Objects.requireNonNull(minDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
             this.mostRecent = mostRecent;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder regions(List<String> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
@@ -218,10 +197,12 @@ public final class GetVolumeSnapshotResult {
         public Builder regions(String... regions) {
             return regions(List.of(regions));
         }
+        @CustomType.Setter
         public Builder size(Double size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -229,11 +210,25 @@ public final class GetVolumeSnapshotResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder volumeId(String volumeId) {
             this.volumeId = Objects.requireNonNull(volumeId);
             return this;
-        }        public GetVolumeSnapshotResult build() {
-            return new GetVolumeSnapshotResult(createdAt, id, minDiskSize, mostRecent, name, nameRegex, region, regions, size, tags, volumeId);
+        }
+        public GetVolumeSnapshotResult build() {
+            final var o = new GetVolumeSnapshotResult();
+            o.createdAt = createdAt;
+            o.id = id;
+            o.minDiskSize = minDiskSize;
+            o.mostRecent = mostRecent;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.region = region;
+            o.regions = regions;
+            o.size = size;
+            o.tags = tags;
+            o.volumeId = volumeId;
+            return o;
         }
     }
 }

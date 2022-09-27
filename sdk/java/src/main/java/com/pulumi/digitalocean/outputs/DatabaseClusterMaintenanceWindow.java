@@ -13,21 +13,14 @@ public final class DatabaseClusterMaintenanceWindow {
      * @return The day of the week on which to apply maintenance updates.
      * 
      */
-    private final String day;
+    private String day;
     /**
      * @return The hour in UTC at which maintenance updates will be applied in 24 hour format.
      * 
      */
-    private final String hour;
+    private String hour;
 
-    @CustomType.Constructor
-    private DatabaseClusterMaintenanceWindow(
-        @CustomType.Parameter("day") String day,
-        @CustomType.Parameter("hour") String hour) {
-        this.day = day;
-        this.hour = hour;
-    }
-
+    private DatabaseClusterMaintenanceWindow() {}
     /**
      * @return The day of the week on which to apply maintenance updates.
      * 
@@ -50,30 +43,32 @@ public final class DatabaseClusterMaintenanceWindow {
     public static Builder builder(DatabaseClusterMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String day;
         private String hour;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseClusterMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
     	      this.hour = defaults.hour;
         }
 
+        @CustomType.Setter
         public Builder day(String day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder hour(String hour) {
             this.hour = Objects.requireNonNull(hour);
             return this;
-        }        public DatabaseClusterMaintenanceWindow build() {
-            return new DatabaseClusterMaintenanceWindow(day, hour);
+        }
+        public DatabaseClusterMaintenanceWindow build() {
+            final var o = new DatabaseClusterMaintenanceWindow();
+            o.day = day;
+            o.hour = hour;
+            return o;
         }
     }
 }

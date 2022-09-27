@@ -5,7 +5,9 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.AppSpecServiceImageDeployOnPushArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class AppSpecServiceImageArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppSpecServiceImageArgs Empty = new AppSpecServiceImageArgs();
+
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     * 
+     */
+    @Import(name="deployOnPushes")
+    private @Nullable Output<List<AppSpecServiceImageDeployOnPushArgs>> deployOnPushes;
+
+    /**
+     * @return Whether to automatically deploy new commits made to the repo.
+     * 
+     */
+    public Optional<Output<List<AppSpecServiceImageDeployOnPushArgs>>> deployOnPushes() {
+        return Optional.ofNullable(this.deployOnPushes);
+    }
 
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -78,6 +95,7 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
     private AppSpecServiceImageArgs() {}
 
     private AppSpecServiceImageArgs(AppSpecServiceImageArgs $) {
+        this.deployOnPushes = $.deployOnPushes;
         this.registry = $.registry;
         this.registryType = $.registryType;
         this.repository = $.repository;
@@ -100,6 +118,37 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
 
         public Builder(AppSpecServiceImageArgs defaults) {
             $ = new AppSpecServiceImageArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployOnPushes(@Nullable Output<List<AppSpecServiceImageDeployOnPushArgs>> deployOnPushes) {
+            $.deployOnPushes = deployOnPushes;
+            return this;
+        }
+
+        /**
+         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployOnPushes(List<AppSpecServiceImageDeployOnPushArgs> deployOnPushes) {
+            return deployOnPushes(Output.of(deployOnPushes));
+        }
+
+        /**
+         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployOnPushes(AppSpecServiceImageDeployOnPushArgs... deployOnPushes) {
+            return deployOnPushes(List.of(deployOnPushes));
         }
 
         /**

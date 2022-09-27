@@ -14,32 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectsResult {
-    private final @Nullable List<GetProjectsFilter> filters;
+    private @Nullable List<GetProjectsFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A set of projects satisfying any `filter` and `sort` criteria. Each project has
      * the following attributes:
      * 
      */
-    private final List<GetProjectsProject> projects;
-    private final @Nullable List<GetProjectsSort> sorts;
+    private List<GetProjectsProject> projects;
+    private @Nullable List<GetProjectsSort> sorts;
 
-    @CustomType.Constructor
-    private GetProjectsResult(
-        @CustomType.Parameter("filters") @Nullable List<GetProjectsFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("projects") List<GetProjectsProject> projects,
-        @CustomType.Parameter("sorts") @Nullable List<GetProjectsSort> sorts) {
-        this.filters = filters;
-        this.id = id;
-        this.projects = projects;
-        this.sorts = sorts;
-    }
-
+    private GetProjectsResult() {}
     public List<GetProjectsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -69,17 +58,13 @@ public final class GetProjectsResult {
     public static Builder builder(GetProjectsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetProjectsFilter> filters;
         private String id;
         private List<GetProjectsProject> projects;
         private @Nullable List<GetProjectsSort> sorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -88,6 +73,7 @@ public final class GetProjectsResult {
     	      this.sorts = defaults.sorts;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetProjectsFilter> filters) {
             this.filters = filters;
             return this;
@@ -95,10 +81,12 @@ public final class GetProjectsResult {
         public Builder filters(GetProjectsFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder projects(List<GetProjectsProject> projects) {
             this.projects = Objects.requireNonNull(projects);
             return this;
@@ -106,14 +94,21 @@ public final class GetProjectsResult {
         public Builder projects(GetProjectsProject... projects) {
             return projects(List.of(projects));
         }
+        @CustomType.Setter
         public Builder sorts(@Nullable List<GetProjectsSort> sorts) {
             this.sorts = sorts;
             return this;
         }
         public Builder sorts(GetProjectsSort... sorts) {
             return sorts(List.of(sorts));
-        }        public GetProjectsResult build() {
-            return new GetProjectsResult(filters, id, projects, sorts);
+        }
+        public GetProjectsResult build() {
+            final var o = new GetProjectsResult();
+            o.filters = filters;
+            o.id = id;
+            o.projects = projects;
+            o.sorts = sorts;
+            return o;
         }
     }
 }

@@ -16,21 +16,14 @@ public final class AppSpecAlert {
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
      */
-    private final @Nullable Boolean disabled;
+    private @Nullable Boolean disabled;
     /**
      * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      * 
      */
-    private final String rule;
+    private String rule;
 
-    @CustomType.Constructor
-    private AppSpecAlert(
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("rule") String rule) {
-        this.disabled = disabled;
-        this.rule = rule;
-    }
-
+    private AppSpecAlert() {}
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -53,30 +46,32 @@ public final class AppSpecAlert {
     public static Builder builder(AppSpecAlert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disabled;
         private String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecAlert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder rule(String rule) {
             this.rule = Objects.requireNonNull(rule);
             return this;
-        }        public AppSpecAlert build() {
-            return new AppSpecAlert(disabled, rule);
+        }
+        public AppSpecAlert build() {
+            final var o = new AppSpecAlert();
+            o.disabled = disabled;
+            o.rule = rule;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class AppSpecServiceLogDestinationLogtail {
      * @return Logtail token.
      * 
      */
-    private final String token;
+    private String token;
 
-    @CustomType.Constructor
-    private AppSpecServiceLogDestinationLogtail(@CustomType.Parameter("token") String token) {
-        this.token = token;
-    }
-
+    private AppSpecServiceLogDestinationLogtail() {}
     /**
      * @return Logtail token.
      * 
@@ -35,24 +31,24 @@ public final class AppSpecServiceLogDestinationLogtail {
     public static Builder builder(AppSpecServiceLogDestinationLogtail defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String token;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecServiceLogDestinationLogtail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.token = defaults.token;
         }
 
+        @CustomType.Setter
         public Builder token(String token) {
             this.token = Objects.requireNonNull(token);
             return this;
-        }        public AppSpecServiceLogDestinationLogtail build() {
-            return new AppSpecServiceLogDestinationLogtail(token);
+        }
+        public AppSpecServiceLogDestinationLogtail build() {
+            final var o = new AppSpecServiceLogDestinationLogtail();
+            o.token = token;
+            return o;
         }
     }
 }

@@ -13,31 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSshKeysFilter {
-    private final @Nullable Boolean all;
+    private @Nullable Boolean all;
     /**
      * @return Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
      * 
      */
-    private final String key;
-    private final @Nullable String matchBy;
+    private String key;
+    private @Nullable String matchBy;
     /**
      * @return A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private GetSshKeysFilter(
-        @CustomType.Parameter("all") @Nullable Boolean all,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("matchBy") @Nullable String matchBy,
-        @CustomType.Parameter("values") List<String> values) {
-        this.all = all;
-        this.key = key;
-        this.matchBy = matchBy;
-        this.values = values;
-    }
-
+    private GetSshKeysFilter() {}
     public Optional<Boolean> all() {
         return Optional.ofNullable(this.all);
     }
@@ -66,17 +55,13 @@ public final class GetSshKeysFilter {
     public static Builder builder(GetSshKeysFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean all;
         private String key;
         private @Nullable String matchBy;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSshKeysFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.all = defaults.all;
@@ -85,26 +70,36 @@ public final class GetSshKeysFilter {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
             this.all = all;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder matchBy(@Nullable String matchBy) {
             this.matchBy = matchBy;
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public GetSshKeysFilter build() {
-            return new GetSshKeysFilter(all, key, matchBy, values);
+        }
+        public GetSshKeysFilter build() {
+            final var o = new GetSshKeysFilter();
+            o.all = all;
+            o.key = key;
+            o.matchBy = matchBy;
+            o.values = values;
+            return o;
         }
     }
 }

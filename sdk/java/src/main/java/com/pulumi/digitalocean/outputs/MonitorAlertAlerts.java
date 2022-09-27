@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorAlertAlerts {
-    private final @Nullable List<String> emails;
-    private final @Nullable List<MonitorAlertAlertsSlack> slacks;
+    private @Nullable List<String> emails;
+    private @Nullable List<MonitorAlertAlertsSlack> slacks;
 
-    @CustomType.Constructor
-    private MonitorAlertAlerts(
-        @CustomType.Parameter("emails") @Nullable List<String> emails,
-        @CustomType.Parameter("slacks") @Nullable List<MonitorAlertAlertsSlack> slacks) {
-        this.emails = emails;
-        this.slacks = slacks;
-    }
-
+    private MonitorAlertAlerts() {}
     public List<String> emails() {
         return this.emails == null ? List.of() : this.emails;
     }
@@ -37,21 +30,18 @@ public final class MonitorAlertAlerts {
     public static Builder builder(MonitorAlertAlerts defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> emails;
         private @Nullable List<MonitorAlertAlertsSlack> slacks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorAlertAlerts defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.emails = defaults.emails;
     	      this.slacks = defaults.slacks;
         }
 
+        @CustomType.Setter
         public Builder emails(@Nullable List<String> emails) {
             this.emails = emails;
             return this;
@@ -59,14 +49,19 @@ public final class MonitorAlertAlerts {
         public Builder emails(String... emails) {
             return emails(List.of(emails));
         }
+        @CustomType.Setter
         public Builder slacks(@Nullable List<MonitorAlertAlertsSlack> slacks) {
             this.slacks = slacks;
             return this;
         }
         public Builder slacks(MonitorAlertAlertsSlack... slacks) {
             return slacks(List.of(slacks));
-        }        public MonitorAlertAlerts build() {
-            return new MonitorAlertAlerts(emails, slacks);
+        }
+        public MonitorAlertAlerts build() {
+            final var o = new MonitorAlertAlerts();
+            o.emails = emails;
+            o.slacks = slacks;
+            return o;
         }
     }
 }

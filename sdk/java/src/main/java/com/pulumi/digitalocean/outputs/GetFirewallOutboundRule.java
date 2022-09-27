@@ -19,20 +19,20 @@ public final class GetFirewallOutboundRule {
      * outbound traffic will be allowed.
      * 
      */
-    private final @Nullable List<String> destinationAddresses;
+    private @Nullable List<String> destinationAddresses;
     /**
      * @return An array containing the IDs of
      * the Droplets to which the outbound traffic will be allowed.
      * 
      */
-    private final @Nullable List<Integer> destinationDropletIds;
-    private final @Nullable List<String> destinationKubernetesIds;
+    private @Nullable List<Integer> destinationDropletIds;
+    private @Nullable List<String> destinationKubernetesIds;
     /**
      * @return An array containing the IDs
      * of the Load Balancers to which the outbound traffic will be allowed.
      * 
      */
-    private final @Nullable List<String> destinationLoadBalancerUids;
+    private @Nullable List<String> destinationLoadBalancerUids;
     /**
      * @return An array containing the names of Tags
      * corresponding to groups of Droplets to which the outbound traffic will
@@ -40,7 +40,7 @@ public final class GetFirewallOutboundRule {
      * traffic.
      * 
      */
-    private final @Nullable List<String> destinationTags;
+    private @Nullable List<String> destinationTags;
     /**
      * @return The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. &#34;8000-9000&#34;),
@@ -48,32 +48,15 @@ public final class GetFirewallOutboundRule {
      * `tcp` or `udp`.
      * 
      */
-    private final @Nullable String portRange;
+    private @Nullable String portRange;
     /**
      * @return The type of traffic to be allowed.
      * This may be one of &#34;tcp&#34;, &#34;udp&#34;, or &#34;icmp&#34;.
      * 
      */
-    private final String protocol;
+    private String protocol;
 
-    @CustomType.Constructor
-    private GetFirewallOutboundRule(
-        @CustomType.Parameter("destinationAddresses") @Nullable List<String> destinationAddresses,
-        @CustomType.Parameter("destinationDropletIds") @Nullable List<Integer> destinationDropletIds,
-        @CustomType.Parameter("destinationKubernetesIds") @Nullable List<String> destinationKubernetesIds,
-        @CustomType.Parameter("destinationLoadBalancerUids") @Nullable List<String> destinationLoadBalancerUids,
-        @CustomType.Parameter("destinationTags") @Nullable List<String> destinationTags,
-        @CustomType.Parameter("portRange") @Nullable String portRange,
-        @CustomType.Parameter("protocol") String protocol) {
-        this.destinationAddresses = destinationAddresses;
-        this.destinationDropletIds = destinationDropletIds;
-        this.destinationKubernetesIds = destinationKubernetesIds;
-        this.destinationLoadBalancerUids = destinationLoadBalancerUids;
-        this.destinationTags = destinationTags;
-        this.portRange = portRange;
-        this.protocol = protocol;
-    }
-
+    private GetFirewallOutboundRule() {}
     /**
      * @return An array of strings containing the IPv4
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
@@ -138,7 +121,7 @@ public final class GetFirewallOutboundRule {
     public static Builder builder(GetFirewallOutboundRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> destinationAddresses;
         private @Nullable List<Integer> destinationDropletIds;
@@ -147,11 +130,7 @@ public final class GetFirewallOutboundRule {
         private @Nullable List<String> destinationTags;
         private @Nullable String portRange;
         private String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallOutboundRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinationAddresses = defaults.destinationAddresses;
@@ -163,6 +142,7 @@ public final class GetFirewallOutboundRule {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder destinationAddresses(@Nullable List<String> destinationAddresses) {
             this.destinationAddresses = destinationAddresses;
             return this;
@@ -170,6 +150,7 @@ public final class GetFirewallOutboundRule {
         public Builder destinationAddresses(String... destinationAddresses) {
             return destinationAddresses(List.of(destinationAddresses));
         }
+        @CustomType.Setter
         public Builder destinationDropletIds(@Nullable List<Integer> destinationDropletIds) {
             this.destinationDropletIds = destinationDropletIds;
             return this;
@@ -177,6 +158,7 @@ public final class GetFirewallOutboundRule {
         public Builder destinationDropletIds(Integer... destinationDropletIds) {
             return destinationDropletIds(List.of(destinationDropletIds));
         }
+        @CustomType.Setter
         public Builder destinationKubernetesIds(@Nullable List<String> destinationKubernetesIds) {
             this.destinationKubernetesIds = destinationKubernetesIds;
             return this;
@@ -184,6 +166,7 @@ public final class GetFirewallOutboundRule {
         public Builder destinationKubernetesIds(String... destinationKubernetesIds) {
             return destinationKubernetesIds(List.of(destinationKubernetesIds));
         }
+        @CustomType.Setter
         public Builder destinationLoadBalancerUids(@Nullable List<String> destinationLoadBalancerUids) {
             this.destinationLoadBalancerUids = destinationLoadBalancerUids;
             return this;
@@ -191,6 +174,7 @@ public final class GetFirewallOutboundRule {
         public Builder destinationLoadBalancerUids(String... destinationLoadBalancerUids) {
             return destinationLoadBalancerUids(List.of(destinationLoadBalancerUids));
         }
+        @CustomType.Setter
         public Builder destinationTags(@Nullable List<String> destinationTags) {
             this.destinationTags = destinationTags;
             return this;
@@ -198,15 +182,26 @@ public final class GetFirewallOutboundRule {
         public Builder destinationTags(String... destinationTags) {
             return destinationTags(List.of(destinationTags));
         }
+        @CustomType.Setter
         public Builder portRange(@Nullable String portRange) {
             this.portRange = portRange;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }        public GetFirewallOutboundRule build() {
-            return new GetFirewallOutboundRule(destinationAddresses, destinationDropletIds, destinationKubernetesIds, destinationLoadBalancerUids, destinationTags, portRange, protocol);
+        }
+        public GetFirewallOutboundRule build() {
+            final var o = new GetFirewallOutboundRule();
+            o.destinationAddresses = destinationAddresses;
+            o.destinationDropletIds = destinationDropletIds;
+            o.destinationKubernetesIds = destinationKubernetesIds;
+            o.destinationLoadBalancerUids = destinationLoadBalancerUids;
+            o.destinationTags = destinationTags;
+            o.portRange = portRange;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

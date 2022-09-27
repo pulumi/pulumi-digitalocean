@@ -22,108 +22,75 @@ public final class GetAppSpecStaticSite {
      * @return An optional build command to run while building this component from source.
      * 
      */
-    private final @Nullable String buildCommand;
+    private @Nullable String buildCommand;
     /**
      * @return The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
      * 
      */
-    private final @Nullable String catchallDocument;
+    private @Nullable String catchallDocument;
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
-    private final @Nullable GetAppSpecStaticSiteCors cors;
+    private @Nullable GetAppSpecStaticSiteCors cors;
     /**
      * @return The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      * 
      */
-    private final @Nullable String dockerfilePath;
+    private @Nullable String dockerfilePath;
     /**
      * @return An environment slug describing the type of this app.
      * 
      */
-    private final @Nullable String environmentSlug;
+    private @Nullable String environmentSlug;
     /**
      * @return Describes an environment variable made available to an app competent.
      * 
      */
-    private final @Nullable List<GetAppSpecStaticSiteEnv> envs;
+    private @Nullable List<GetAppSpecStaticSiteEnv> envs;
     /**
      * @return The name of the error document to use when serving this static site.
      * 
      */
-    private final @Nullable String errorDocument;
+    private @Nullable String errorDocument;
     /**
      * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      * 
      */
-    private final @Nullable GetAppSpecStaticSiteGit git;
+    private @Nullable GetAppSpecStaticSiteGit git;
     /**
      * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      * 
      */
-    private final @Nullable GetAppSpecStaticSiteGithub github;
+    private @Nullable GetAppSpecStaticSiteGithub github;
     /**
      * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      * 
      */
-    private final @Nullable GetAppSpecStaticSiteGitlab gitlab;
+    private @Nullable GetAppSpecStaticSiteGitlab gitlab;
     /**
      * @return The name of the index document to use when serving this static site.
      * 
      */
-    private final @Nullable String indexDocument;
+    private @Nullable String indexDocument;
     /**
      * @return The name of the component.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      * 
      */
-    private final @Nullable String outputDir;
-    private final List<GetAppSpecStaticSiteRoute> routes;
+    private @Nullable String outputDir;
+    private List<GetAppSpecStaticSiteRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
      * 
      */
-    private final @Nullable String sourceDir;
+    private @Nullable String sourceDir;
 
-    @CustomType.Constructor
-    private GetAppSpecStaticSite(
-        @CustomType.Parameter("buildCommand") @Nullable String buildCommand,
-        @CustomType.Parameter("catchallDocument") @Nullable String catchallDocument,
-        @CustomType.Parameter("cors") @Nullable GetAppSpecStaticSiteCors cors,
-        @CustomType.Parameter("dockerfilePath") @Nullable String dockerfilePath,
-        @CustomType.Parameter("environmentSlug") @Nullable String environmentSlug,
-        @CustomType.Parameter("envs") @Nullable List<GetAppSpecStaticSiteEnv> envs,
-        @CustomType.Parameter("errorDocument") @Nullable String errorDocument,
-        @CustomType.Parameter("git") @Nullable GetAppSpecStaticSiteGit git,
-        @CustomType.Parameter("github") @Nullable GetAppSpecStaticSiteGithub github,
-        @CustomType.Parameter("gitlab") @Nullable GetAppSpecStaticSiteGitlab gitlab,
-        @CustomType.Parameter("indexDocument") @Nullable String indexDocument,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("outputDir") @Nullable String outputDir,
-        @CustomType.Parameter("routes") List<GetAppSpecStaticSiteRoute> routes,
-        @CustomType.Parameter("sourceDir") @Nullable String sourceDir) {
-        this.buildCommand = buildCommand;
-        this.catchallDocument = catchallDocument;
-        this.cors = cors;
-        this.dockerfilePath = dockerfilePath;
-        this.environmentSlug = environmentSlug;
-        this.envs = envs;
-        this.errorDocument = errorDocument;
-        this.git = git;
-        this.github = github;
-        this.gitlab = gitlab;
-        this.indexDocument = indexDocument;
-        this.name = name;
-        this.outputDir = outputDir;
-        this.routes = routes;
-        this.sourceDir = sourceDir;
-    }
-
+    private GetAppSpecStaticSite() {}
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -233,7 +200,7 @@ public final class GetAppSpecStaticSite {
     public static Builder builder(GetAppSpecStaticSite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String buildCommand;
         private @Nullable String catchallDocument;
@@ -250,11 +217,7 @@ public final class GetAppSpecStaticSite {
         private @Nullable String outputDir;
         private List<GetAppSpecStaticSiteRoute> routes;
         private @Nullable String sourceDir;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecStaticSite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.buildCommand = defaults.buildCommand;
@@ -274,26 +237,32 @@ public final class GetAppSpecStaticSite {
     	      this.sourceDir = defaults.sourceDir;
         }
 
+        @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
             this.buildCommand = buildCommand;
             return this;
         }
+        @CustomType.Setter
         public Builder catchallDocument(@Nullable String catchallDocument) {
             this.catchallDocument = catchallDocument;
             return this;
         }
+        @CustomType.Setter
         public Builder cors(@Nullable GetAppSpecStaticSiteCors cors) {
             this.cors = cors;
             return this;
         }
+        @CustomType.Setter
         public Builder dockerfilePath(@Nullable String dockerfilePath) {
             this.dockerfilePath = dockerfilePath;
             return this;
         }
+        @CustomType.Setter
         public Builder environmentSlug(@Nullable String environmentSlug) {
             this.environmentSlug = environmentSlug;
             return this;
         }
+        @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecStaticSiteEnv> envs) {
             this.envs = envs;
             return this;
@@ -301,34 +270,42 @@ public final class GetAppSpecStaticSite {
         public Builder envs(GetAppSpecStaticSiteEnv... envs) {
             return envs(List.of(envs));
         }
+        @CustomType.Setter
         public Builder errorDocument(@Nullable String errorDocument) {
             this.errorDocument = errorDocument;
             return this;
         }
+        @CustomType.Setter
         public Builder git(@Nullable GetAppSpecStaticSiteGit git) {
             this.git = git;
             return this;
         }
+        @CustomType.Setter
         public Builder github(@Nullable GetAppSpecStaticSiteGithub github) {
             this.github = github;
             return this;
         }
+        @CustomType.Setter
         public Builder gitlab(@Nullable GetAppSpecStaticSiteGitlab gitlab) {
             this.gitlab = gitlab;
             return this;
         }
+        @CustomType.Setter
         public Builder indexDocument(@Nullable String indexDocument) {
             this.indexDocument = indexDocument;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder outputDir(@Nullable String outputDir) {
             this.outputDir = outputDir;
             return this;
         }
+        @CustomType.Setter
         public Builder routes(List<GetAppSpecStaticSiteRoute> routes) {
             this.routes = Objects.requireNonNull(routes);
             return this;
@@ -336,11 +313,29 @@ public final class GetAppSpecStaticSite {
         public Builder routes(GetAppSpecStaticSiteRoute... routes) {
             return routes(List.of(routes));
         }
+        @CustomType.Setter
         public Builder sourceDir(@Nullable String sourceDir) {
             this.sourceDir = sourceDir;
             return this;
-        }        public GetAppSpecStaticSite build() {
-            return new GetAppSpecStaticSite(buildCommand, catchallDocument, cors, dockerfilePath, environmentSlug, envs, errorDocument, git, github, gitlab, indexDocument, name, outputDir, routes, sourceDir);
+        }
+        public GetAppSpecStaticSite build() {
+            final var o = new GetAppSpecStaticSite();
+            o.buildCommand = buildCommand;
+            o.catchallDocument = catchallDocument;
+            o.cors = cors;
+            o.dockerfilePath = dockerfilePath;
+            o.environmentSlug = environmentSlug;
+            o.envs = envs;
+            o.errorDocument = errorDocument;
+            o.git = git;
+            o.github = github;
+            o.gitlab = gitlab;
+            o.indexDocument = indexDocument;
+            o.name = name;
+            o.outputDir = outputDir;
+            o.routes = routes;
+            o.sourceDir = sourceDir;
+            return o;
         }
     }
 }

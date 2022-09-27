@@ -16,56 +16,39 @@ public final class LoadBalancerHealthcheck {
      * @return The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
      * 
      */
-    private final @Nullable Integer checkIntervalSeconds;
+    private @Nullable Integer checkIntervalSeconds;
     /**
      * @return The number of times a health check must pass for a backend Droplet to be marked &#34;healthy&#34; and be re-added to the pool. If not specified, the default value is `5`.
      * 
      */
-    private final @Nullable Integer healthyThreshold;
+    private @Nullable Integer healthyThreshold;
     /**
      * @return The path on the backend Droplets to which the Load Balancer instance will send a request.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return An integer representing the port on the backend Droplets on which the health check will attempt a connection.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
      * 
      */
-    private final @Nullable Integer responseTimeoutSeconds;
+    private @Nullable Integer responseTimeoutSeconds;
     /**
      * @return The number of times a health check must fail for a backend Droplet to be marked &#34;unhealthy&#34; and be removed from the pool. If not specified, the default value is `3`.
      * 
      */
-    private final @Nullable Integer unhealthyThreshold;
+    private @Nullable Integer unhealthyThreshold;
 
-    @CustomType.Constructor
-    private LoadBalancerHealthcheck(
-        @CustomType.Parameter("checkIntervalSeconds") @Nullable Integer checkIntervalSeconds,
-        @CustomType.Parameter("healthyThreshold") @Nullable Integer healthyThreshold,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("responseTimeoutSeconds") @Nullable Integer responseTimeoutSeconds,
-        @CustomType.Parameter("unhealthyThreshold") @Nullable Integer unhealthyThreshold) {
-        this.checkIntervalSeconds = checkIntervalSeconds;
-        this.healthyThreshold = healthyThreshold;
-        this.path = path;
-        this.port = port;
-        this.protocol = protocol;
-        this.responseTimeoutSeconds = responseTimeoutSeconds;
-        this.unhealthyThreshold = unhealthyThreshold;
-    }
-
+    private LoadBalancerHealthcheck() {}
     /**
      * @return The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
      * 
@@ -123,7 +106,7 @@ public final class LoadBalancerHealthcheck {
     public static Builder builder(LoadBalancerHealthcheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer checkIntervalSeconds;
         private @Nullable Integer healthyThreshold;
@@ -132,11 +115,7 @@ public final class LoadBalancerHealthcheck {
         private String protocol;
         private @Nullable Integer responseTimeoutSeconds;
         private @Nullable Integer unhealthyThreshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LoadBalancerHealthcheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkIntervalSeconds = defaults.checkIntervalSeconds;
@@ -148,35 +127,51 @@ public final class LoadBalancerHealthcheck {
     	      this.unhealthyThreshold = defaults.unhealthyThreshold;
         }
 
+        @CustomType.Setter
         public Builder checkIntervalSeconds(@Nullable Integer checkIntervalSeconds) {
             this.checkIntervalSeconds = checkIntervalSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder healthyThreshold(@Nullable Integer healthyThreshold) {
             this.healthyThreshold = healthyThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder responseTimeoutSeconds(@Nullable Integer responseTimeoutSeconds) {
             this.responseTimeoutSeconds = responseTimeoutSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder unhealthyThreshold(@Nullable Integer unhealthyThreshold) {
             this.unhealthyThreshold = unhealthyThreshold;
             return this;
-        }        public LoadBalancerHealthcheck build() {
-            return new LoadBalancerHealthcheck(checkIntervalSeconds, healthyThreshold, path, port, protocol, responseTimeoutSeconds, unhealthyThreshold);
+        }
+        public LoadBalancerHealthcheck build() {
+            final var o = new LoadBalancerHealthcheck();
+            o.checkIntervalSeconds = checkIntervalSeconds;
+            o.healthyThreshold = healthyThreshold;
+            o.path = path;
+            o.port = port;
+            o.protocol = protocol;
+            o.responseTimeoutSeconds = responseTimeoutSeconds;
+            o.unhealthyThreshold = unhealthyThreshold;
+            return o;
         }
     }
 }

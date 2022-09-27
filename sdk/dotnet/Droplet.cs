@@ -158,7 +158,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool> PrivateNetworking { get; private set; } = null!;
 
         /// <summary>
-        /// The region to start in.
+        /// The region where the Droplet will be created.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -330,10 +330,10 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? PrivateNetworking { get; set; }
 
         /// <summary>
-        /// The region to start in.
+        /// The region where the Droplet will be created.
         /// </summary>
-        [Input("region", required: true)]
-        public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
+        [Input("region")]
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// Boolean controlling whether to increase the disk
@@ -525,7 +525,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? PrivateNetworking { get; set; }
 
         /// <summary>
-        /// The region to start in.
+        /// The region where the Droplet will be created.
         /// </summary>
         [Input("region")]
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }

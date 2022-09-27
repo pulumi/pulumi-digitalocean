@@ -15,35 +15,24 @@ public final class DatabaseFirewallRule {
      * @return The date and time when the firewall rule was created.
      * 
      */
-    private final @Nullable String createdAt;
+    private @Nullable String createdAt;
     /**
      * @return The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return A unique identifier for the firewall rule.
      * 
      */
-    private final @Nullable String uuid;
+    private @Nullable String uuid;
     /**
      * @return The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private DatabaseFirewallRule(
-        @CustomType.Parameter("createdAt") @Nullable String createdAt,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("uuid") @Nullable String uuid,
-        @CustomType.Parameter("value") String value) {
-        this.createdAt = createdAt;
-        this.type = type;
-        this.uuid = uuid;
-        this.value = value;
-    }
-
+    private DatabaseFirewallRule() {}
     /**
      * @return The date and time when the firewall rule was created.
      * 
@@ -80,17 +69,13 @@ public final class DatabaseFirewallRule {
     public static Builder builder(DatabaseFirewallRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String createdAt;
         private String type;
         private @Nullable String uuid;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseFirewallRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -99,23 +84,33 @@ public final class DatabaseFirewallRule {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder createdAt(@Nullable String createdAt) {
             this.createdAt = createdAt;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
             this.uuid = uuid;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public DatabaseFirewallRule build() {
-            return new DatabaseFirewallRule(createdAt, type, uuid, value);
+        }
+        public DatabaseFirewallRule build() {
+            final var o = new DatabaseFirewallRule();
+            o.createdAt = createdAt;
+            o.type = type;
+            o.uuid = uuid;
+            o.value = value;
+            return o;
         }
     }
 }

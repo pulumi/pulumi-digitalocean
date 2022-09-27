@@ -13,45 +13,30 @@ public final class GetKubernetesClusterNodePoolNode {
      * @return The date and time when the node was created.
      * 
      */
-    private final String createdAt;
-    private final String dropletId;
+    private String createdAt;
+    private String dropletId;
     /**
      * @return A unique ID that can be used to identify and reference the node.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of Kubernetes cluster.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return A string indicating the current status of the individual node.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The date and time when the node was last updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
 
-    @CustomType.Constructor
-    private GetKubernetesClusterNodePoolNode(
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("dropletId") String dropletId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("updatedAt") String updatedAt) {
-        this.createdAt = createdAt;
-        this.dropletId = dropletId;
-        this.id = id;
-        this.name = name;
-        this.status = status;
-        this.updatedAt = updatedAt;
-    }
-
+    private GetKubernetesClusterNodePoolNode() {}
     /**
      * @return The date and time when the node was created.
      * 
@@ -98,7 +83,7 @@ public final class GetKubernetesClusterNodePoolNode {
     public static Builder builder(GetKubernetesClusterNodePoolNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createdAt;
         private String dropletId;
@@ -106,11 +91,7 @@ public final class GetKubernetesClusterNodePoolNode {
         private String name;
         private String status;
         private String updatedAt;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesClusterNodePoolNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -121,31 +102,45 @@ public final class GetKubernetesClusterNodePoolNode {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder dropletId(String dropletId) {
             this.dropletId = Objects.requireNonNull(dropletId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
-        }        public GetKubernetesClusterNodePoolNode build() {
-            return new GetKubernetesClusterNodePoolNode(createdAt, dropletId, id, name, status, updatedAt);
+        }
+        public GetKubernetesClusterNodePoolNode build() {
+            final var o = new GetKubernetesClusterNodePoolNode();
+            o.createdAt = createdAt;
+            o.dropletId = dropletId;
+            o.id = id;
+            o.name = name;
+            o.status = status;
+            o.updatedAt = updatedAt;
+            return o;
         }
     }
 }

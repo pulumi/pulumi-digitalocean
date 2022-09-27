@@ -13,24 +13,15 @@ public final class GetDatabaseCaResult {
      * @return The CA certificate used to secure database connections decoded to a string.
      * 
      */
-    private final String certificate;
-    private final String clusterId;
+    private String certificate;
+    private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetDatabaseCaResult(
-        @CustomType.Parameter("certificate") String certificate,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("id") String id) {
-        this.certificate = certificate;
-        this.clusterId = clusterId;
-        this.id = id;
-    }
-
+    private GetDatabaseCaResult() {}
     /**
      * @return The CA certificate used to secure database connections decoded to a string.
      * 
@@ -56,16 +47,12 @@ public final class GetDatabaseCaResult {
     public static Builder builder(GetDatabaseCaResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String certificate;
         private String clusterId;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseCaResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -73,19 +60,27 @@ public final class GetDatabaseCaResult {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder certificate(String certificate) {
             this.certificate = Objects.requireNonNull(certificate);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetDatabaseCaResult build() {
-            return new GetDatabaseCaResult(certificate, clusterId, id);
+        }
+        public GetDatabaseCaResult build() {
+            final var o = new GetDatabaseCaResult();
+            o.certificate = certificate;
+            o.clusterId = clusterId;
+            o.id = id;
+            return o;
         }
     }
 }

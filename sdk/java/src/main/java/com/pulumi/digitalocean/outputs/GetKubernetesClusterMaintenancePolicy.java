@@ -13,28 +13,19 @@ public final class GetKubernetesClusterMaintenancePolicy {
      * @return The day for the service window of the Kubernetes cluster.
      * 
      */
-    private final String day;
+    private String day;
     /**
      * @return The duration of the operation.
      * 
      */
-    private final String duration;
+    private String duration;
     /**
      * @return The start time of the upgrade operation.
      * 
      */
-    private final String startTime;
+    private String startTime;
 
-    @CustomType.Constructor
-    private GetKubernetesClusterMaintenancePolicy(
-        @CustomType.Parameter("day") String day,
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.day = day;
-        this.duration = duration;
-        this.startTime = startTime;
-    }
-
+    private GetKubernetesClusterMaintenancePolicy() {}
     /**
      * @return The day for the service window of the Kubernetes cluster.
      * 
@@ -64,16 +55,12 @@ public final class GetKubernetesClusterMaintenancePolicy {
     public static Builder builder(GetKubernetesClusterMaintenancePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String day;
         private String duration;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesClusterMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
@@ -81,19 +68,27 @@ public final class GetKubernetesClusterMaintenancePolicy {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder day(String day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public GetKubernetesClusterMaintenancePolicy build() {
-            return new GetKubernetesClusterMaintenancePolicy(day, duration, startTime);
+        }
+        public GetKubernetesClusterMaintenancePolicy build() {
+            final var o = new GetKubernetesClusterMaintenancePolicy();
+            o.day = day;
+            o.duration = duration;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

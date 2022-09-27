@@ -18,35 +18,24 @@ public final class AppSpecFunctionLogDestination {
      * @return Datadog configuration.
      * 
      */
-    private final @Nullable AppSpecFunctionLogDestinationDatadog datadog;
+    private @Nullable AppSpecFunctionLogDestinationDatadog datadog;
     /**
      * @return Logtail configuration.
      * 
      */
-    private final @Nullable AppSpecFunctionLogDestinationLogtail logtail;
+    private @Nullable AppSpecFunctionLogDestinationLogtail logtail;
     /**
      * @return The name of the component.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Papertrail configuration.
      * 
      */
-    private final @Nullable AppSpecFunctionLogDestinationPapertrail papertrail;
+    private @Nullable AppSpecFunctionLogDestinationPapertrail papertrail;
 
-    @CustomType.Constructor
-    private AppSpecFunctionLogDestination(
-        @CustomType.Parameter("datadog") @Nullable AppSpecFunctionLogDestinationDatadog datadog,
-        @CustomType.Parameter("logtail") @Nullable AppSpecFunctionLogDestinationLogtail logtail,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("papertrail") @Nullable AppSpecFunctionLogDestinationPapertrail papertrail) {
-        this.datadog = datadog;
-        this.logtail = logtail;
-        this.name = name;
-        this.papertrail = papertrail;
-    }
-
+    private AppSpecFunctionLogDestination() {}
     /**
      * @return Datadog configuration.
      * 
@@ -83,17 +72,13 @@ public final class AppSpecFunctionLogDestination {
     public static Builder builder(AppSpecFunctionLogDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AppSpecFunctionLogDestinationDatadog datadog;
         private @Nullable AppSpecFunctionLogDestinationLogtail logtail;
         private String name;
         private @Nullable AppSpecFunctionLogDestinationPapertrail papertrail;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecFunctionLogDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datadog = defaults.datadog;
@@ -102,23 +87,33 @@ public final class AppSpecFunctionLogDestination {
     	      this.papertrail = defaults.papertrail;
         }
 
+        @CustomType.Setter
         public Builder datadog(@Nullable AppSpecFunctionLogDestinationDatadog datadog) {
             this.datadog = datadog;
             return this;
         }
+        @CustomType.Setter
         public Builder logtail(@Nullable AppSpecFunctionLogDestinationLogtail logtail) {
             this.logtail = logtail;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder papertrail(@Nullable AppSpecFunctionLogDestinationPapertrail papertrail) {
             this.papertrail = papertrail;
             return this;
-        }        public AppSpecFunctionLogDestination build() {
-            return new AppSpecFunctionLogDestination(datadog, logtail, name, papertrail);
+        }
+        public AppSpecFunctionLogDestination build() {
+            final var o = new AppSpecFunctionLogDestination();
+            o.datadog = datadog;
+            o.logtail = logtail;
+            o.name = name;
+            o.papertrail = papertrail;
+            return o;
         }
     }
 }

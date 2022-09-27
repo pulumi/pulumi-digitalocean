@@ -19,61 +19,38 @@ public final class GetDropletSnapshotResult {
      * @return The date and time the Droplet snapshot was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The ID of the Droplet from which the Droplet snapshot originated.
      * 
      */
-    private final String dropletId;
+    private String dropletId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The minimum size in gigabytes required for a Droplet to be created based on this Droplet snapshot.
      * 
      */
-    private final Integer minDiskSize;
-    private final @Nullable Boolean mostRecent;
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
-    private final @Nullable String region;
+    private Integer minDiskSize;
+    private @Nullable Boolean mostRecent;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
+    private @Nullable String region;
     /**
      * @return A list of DigitalOcean region &#34;slugs&#34; indicating where the Droplet snapshot is available.
      * 
      */
-    private final List<String> regions;
+    private List<String> regions;
     /**
      * @return The billable size of the Droplet snapshot in gigabytes.
      * 
      */
-    private final Double size;
+    private Double size;
 
-    @CustomType.Constructor
-    private GetDropletSnapshotResult(
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("dropletId") String dropletId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("minDiskSize") Integer minDiskSize,
-        @CustomType.Parameter("mostRecent") @Nullable Boolean mostRecent,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("regions") List<String> regions,
-        @CustomType.Parameter("size") Double size) {
-        this.createdAt = createdAt;
-        this.dropletId = dropletId;
-        this.id = id;
-        this.minDiskSize = minDiskSize;
-        this.mostRecent = mostRecent;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.region = region;
-        this.regions = regions;
-        this.size = size;
-    }
-
+    private GetDropletSnapshotResult() {}
     /**
      * @return The date and time the Droplet snapshot was created.
      * 
@@ -136,7 +113,7 @@ public final class GetDropletSnapshotResult {
     public static Builder builder(GetDropletSnapshotResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createdAt;
         private String dropletId;
@@ -148,11 +125,7 @@ public final class GetDropletSnapshotResult {
         private @Nullable String region;
         private List<String> regions;
         private Double size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDropletSnapshotResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -167,38 +140,47 @@ public final class GetDropletSnapshotResult {
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder dropletId(String dropletId) {
             this.dropletId = Objects.requireNonNull(dropletId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder minDiskSize(Integer minDiskSize) {
             this.minDiskSize = Objects.requireNonNull(minDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
             this.mostRecent = mostRecent;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder regions(List<String> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
@@ -206,11 +188,24 @@ public final class GetDropletSnapshotResult {
         public Builder regions(String... regions) {
             return regions(List.of(regions));
         }
+        @CustomType.Setter
         public Builder size(Double size) {
             this.size = Objects.requireNonNull(size);
             return this;
-        }        public GetDropletSnapshotResult build() {
-            return new GetDropletSnapshotResult(createdAt, dropletId, id, minDiskSize, mostRecent, name, nameRegex, region, regions, size);
+        }
+        public GetDropletSnapshotResult build() {
+            final var o = new GetDropletSnapshotResult();
+            o.createdAt = createdAt;
+            o.dropletId = dropletId;
+            o.id = id;
+            o.minDiskSize = minDiskSize;
+            o.mostRecent = mostRecent;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.region = region;
+            o.regions = regions;
+            o.size = size;
+            return o;
         }
     }
 }

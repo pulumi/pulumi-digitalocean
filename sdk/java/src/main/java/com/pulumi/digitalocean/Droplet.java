@@ -328,14 +328,14 @@ public class Droplet extends com.pulumi.resources.CustomResource {
         return this.privateNetworking;
     }
     /**
-     * The region to start in.
+     * The region where the Droplet will be created.
      * 
      */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
-     * @return The region to start in.
+     * @return The region where the Droplet will be created.
      * 
      */
     public Output<String> region() {

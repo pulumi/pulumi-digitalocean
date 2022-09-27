@@ -3850,6 +3850,8 @@ func (o AppSpecJobGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type AppSpecJobImage struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes []AppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -3872,6 +3874,8 @@ type AppSpecJobImageInput interface {
 }
 
 type AppSpecJobImageArgs struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes AppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -3959,6 +3963,11 @@ func (o AppSpecJobImageOutput) ToAppSpecJobImagePtrOutputWithContext(ctx context
 	}).(AppSpecJobImagePtrOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecJobImageOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v AppSpecJobImage) []AppSpecJobImageDeployOnPush { return v.DeployOnPushes }).(AppSpecJobImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -4003,6 +4012,16 @@ func (o AppSpecJobImagePtrOutput) Elem() AppSpecJobImageOutput {
 	}).(AppSpecJobImageOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecJobImagePtrOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v *AppSpecJobImage) []AppSpecJobImageDeployOnPush {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPushes
+	}).(AppSpecJobImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecJobImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecJobImage) *string {
@@ -4041,6 +4060,103 @@ func (o AppSpecJobImagePtrOutput) Tag() pulumi.StringPtrOutput {
 		}
 		return v.Tag
 	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobImageDeployOnPush struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AppSpecJobImageDeployOnPushInput is an input type that accepts AppSpecJobImageDeployOnPushArgs and AppSpecJobImageDeployOnPushOutput values.
+// You can construct a concrete instance of `AppSpecJobImageDeployOnPushInput` via:
+//
+//	AppSpecJobImageDeployOnPushArgs{...}
+type AppSpecJobImageDeployOnPushInput interface {
+	pulumi.Input
+
+	ToAppSpecJobImageDeployOnPushOutput() AppSpecJobImageDeployOnPushOutput
+	ToAppSpecJobImageDeployOnPushOutputWithContext(context.Context) AppSpecJobImageDeployOnPushOutput
+}
+
+type AppSpecJobImageDeployOnPushArgs struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AppSpecJobImageDeployOnPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobImageDeployOnPush)(nil)).Elem()
+}
+
+func (i AppSpecJobImageDeployOnPushArgs) ToAppSpecJobImageDeployOnPushOutput() AppSpecJobImageDeployOnPushOutput {
+	return i.ToAppSpecJobImageDeployOnPushOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobImageDeployOnPushArgs) ToAppSpecJobImageDeployOnPushOutputWithContext(ctx context.Context) AppSpecJobImageDeployOnPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobImageDeployOnPushOutput)
+}
+
+// AppSpecJobImageDeployOnPushArrayInput is an input type that accepts AppSpecJobImageDeployOnPushArray and AppSpecJobImageDeployOnPushArrayOutput values.
+// You can construct a concrete instance of `AppSpecJobImageDeployOnPushArrayInput` via:
+//
+//	AppSpecJobImageDeployOnPushArray{ AppSpecJobImageDeployOnPushArgs{...} }
+type AppSpecJobImageDeployOnPushArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecJobImageDeployOnPushArrayOutput() AppSpecJobImageDeployOnPushArrayOutput
+	ToAppSpecJobImageDeployOnPushArrayOutputWithContext(context.Context) AppSpecJobImageDeployOnPushArrayOutput
+}
+
+type AppSpecJobImageDeployOnPushArray []AppSpecJobImageDeployOnPushInput
+
+func (AppSpecJobImageDeployOnPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecJobImageDeployOnPush)(nil)).Elem()
+}
+
+func (i AppSpecJobImageDeployOnPushArray) ToAppSpecJobImageDeployOnPushArrayOutput() AppSpecJobImageDeployOnPushArrayOutput {
+	return i.ToAppSpecJobImageDeployOnPushArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobImageDeployOnPushArray) ToAppSpecJobImageDeployOnPushArrayOutputWithContext(ctx context.Context) AppSpecJobImageDeployOnPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobImageDeployOnPushArrayOutput)
+}
+
+type AppSpecJobImageDeployOnPushOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobImageDeployOnPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobImageDeployOnPush)(nil)).Elem()
+}
+
+func (o AppSpecJobImageDeployOnPushOutput) ToAppSpecJobImageDeployOnPushOutput() AppSpecJobImageDeployOnPushOutput {
+	return o
+}
+
+func (o AppSpecJobImageDeployOnPushOutput) ToAppSpecJobImageDeployOnPushOutputWithContext(ctx context.Context) AppSpecJobImageDeployOnPushOutput {
+	return o
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o AppSpecJobImageDeployOnPushOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecJobImageDeployOnPush) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AppSpecJobImageDeployOnPushArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobImageDeployOnPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecJobImageDeployOnPush)(nil)).Elem()
+}
+
+func (o AppSpecJobImageDeployOnPushArrayOutput) ToAppSpecJobImageDeployOnPushArrayOutput() AppSpecJobImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o AppSpecJobImageDeployOnPushArrayOutput) ToAppSpecJobImageDeployOnPushArrayOutputWithContext(ctx context.Context) AppSpecJobImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o AppSpecJobImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) AppSpecJobImageDeployOnPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecJobImageDeployOnPush {
+		return vs[0].([]AppSpecJobImageDeployOnPush)[vs[1].(int)]
+	}).(AppSpecJobImageDeployOnPushOutput)
 }
 
 type AppSpecJobLogDestination struct {
@@ -6265,6 +6381,8 @@ func (o AppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput
 }
 
 type AppSpecServiceImage struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes []AppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -6287,6 +6405,8 @@ type AppSpecServiceImageInput interface {
 }
 
 type AppSpecServiceImageArgs struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes AppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -6374,6 +6494,11 @@ func (o AppSpecServiceImageOutput) ToAppSpecServiceImagePtrOutputWithContext(ctx
 	}).(AppSpecServiceImagePtrOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecServiceImageOutput) DeployOnPushes() AppSpecServiceImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v AppSpecServiceImage) []AppSpecServiceImageDeployOnPush { return v.DeployOnPushes }).(AppSpecServiceImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -6418,6 +6543,16 @@ func (o AppSpecServiceImagePtrOutput) Elem() AppSpecServiceImageOutput {
 	}).(AppSpecServiceImageOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecServiceImagePtrOutput) DeployOnPushes() AppSpecServiceImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v *AppSpecServiceImage) []AppSpecServiceImageDeployOnPush {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPushes
+	}).(AppSpecServiceImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecServiceImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceImage) *string {
@@ -6456,6 +6591,103 @@ func (o AppSpecServiceImagePtrOutput) Tag() pulumi.StringPtrOutput {
 		}
 		return v.Tag
 	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceImageDeployOnPush struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AppSpecServiceImageDeployOnPushInput is an input type that accepts AppSpecServiceImageDeployOnPushArgs and AppSpecServiceImageDeployOnPushOutput values.
+// You can construct a concrete instance of `AppSpecServiceImageDeployOnPushInput` via:
+//
+//	AppSpecServiceImageDeployOnPushArgs{...}
+type AppSpecServiceImageDeployOnPushInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceImageDeployOnPushOutput() AppSpecServiceImageDeployOnPushOutput
+	ToAppSpecServiceImageDeployOnPushOutputWithContext(context.Context) AppSpecServiceImageDeployOnPushOutput
+}
+
+type AppSpecServiceImageDeployOnPushArgs struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AppSpecServiceImageDeployOnPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (i AppSpecServiceImageDeployOnPushArgs) ToAppSpecServiceImageDeployOnPushOutput() AppSpecServiceImageDeployOnPushOutput {
+	return i.ToAppSpecServiceImageDeployOnPushOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceImageDeployOnPushArgs) ToAppSpecServiceImageDeployOnPushOutputWithContext(ctx context.Context) AppSpecServiceImageDeployOnPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceImageDeployOnPushOutput)
+}
+
+// AppSpecServiceImageDeployOnPushArrayInput is an input type that accepts AppSpecServiceImageDeployOnPushArray and AppSpecServiceImageDeployOnPushArrayOutput values.
+// You can construct a concrete instance of `AppSpecServiceImageDeployOnPushArrayInput` via:
+//
+//	AppSpecServiceImageDeployOnPushArray{ AppSpecServiceImageDeployOnPushArgs{...} }
+type AppSpecServiceImageDeployOnPushArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceImageDeployOnPushArrayOutput() AppSpecServiceImageDeployOnPushArrayOutput
+	ToAppSpecServiceImageDeployOnPushArrayOutputWithContext(context.Context) AppSpecServiceImageDeployOnPushArrayOutput
+}
+
+type AppSpecServiceImageDeployOnPushArray []AppSpecServiceImageDeployOnPushInput
+
+func (AppSpecServiceImageDeployOnPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (i AppSpecServiceImageDeployOnPushArray) ToAppSpecServiceImageDeployOnPushArrayOutput() AppSpecServiceImageDeployOnPushArrayOutput {
+	return i.ToAppSpecServiceImageDeployOnPushArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceImageDeployOnPushArray) ToAppSpecServiceImageDeployOnPushArrayOutputWithContext(ctx context.Context) AppSpecServiceImageDeployOnPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceImageDeployOnPushArrayOutput)
+}
+
+type AppSpecServiceImageDeployOnPushOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceImageDeployOnPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (o AppSpecServiceImageDeployOnPushOutput) ToAppSpecServiceImageDeployOnPushOutput() AppSpecServiceImageDeployOnPushOutput {
+	return o
+}
+
+func (o AppSpecServiceImageDeployOnPushOutput) ToAppSpecServiceImageDeployOnPushOutputWithContext(ctx context.Context) AppSpecServiceImageDeployOnPushOutput {
+	return o
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o AppSpecServiceImageDeployOnPushOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceImageDeployOnPush) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AppSpecServiceImageDeployOnPushArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceImageDeployOnPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (o AppSpecServiceImageDeployOnPushArrayOutput) ToAppSpecServiceImageDeployOnPushArrayOutput() AppSpecServiceImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceImageDeployOnPushArrayOutput) ToAppSpecServiceImageDeployOnPushArrayOutputWithContext(ctx context.Context) AppSpecServiceImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) AppSpecServiceImageDeployOnPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecServiceImageDeployOnPush {
+		return vs[0].([]AppSpecServiceImageDeployOnPush)[vs[1].(int)]
+	}).(AppSpecServiceImageDeployOnPushOutput)
 }
 
 type AppSpecServiceLogDestination struct {
@@ -9468,6 +9700,8 @@ func (o AppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type AppSpecWorkerImage struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes []AppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -9490,6 +9724,8 @@ type AppSpecWorkerImageInput interface {
 }
 
 type AppSpecWorkerImageArgs struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes AppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -9577,6 +9813,11 @@ func (o AppSpecWorkerImageOutput) ToAppSpecWorkerImagePtrOutputWithContext(ctx c
 	}).(AppSpecWorkerImagePtrOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecWorkerImageOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush { return v.DeployOnPushes }).(AppSpecWorkerImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -9621,6 +9862,16 @@ func (o AppSpecWorkerImagePtrOutput) Elem() AppSpecWorkerImageOutput {
 	}).(AppSpecWorkerImageOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecWorkerImagePtrOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v *AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPushes
+	}).(AppSpecWorkerImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecWorkerImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerImage) *string {
@@ -9659,6 +9910,103 @@ func (o AppSpecWorkerImagePtrOutput) Tag() pulumi.StringPtrOutput {
 		}
 		return v.Tag
 	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerImageDeployOnPush struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AppSpecWorkerImageDeployOnPushInput is an input type that accepts AppSpecWorkerImageDeployOnPushArgs and AppSpecWorkerImageDeployOnPushOutput values.
+// You can construct a concrete instance of `AppSpecWorkerImageDeployOnPushInput` via:
+//
+//	AppSpecWorkerImageDeployOnPushArgs{...}
+type AppSpecWorkerImageDeployOnPushInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerImageDeployOnPushOutput() AppSpecWorkerImageDeployOnPushOutput
+	ToAppSpecWorkerImageDeployOnPushOutputWithContext(context.Context) AppSpecWorkerImageDeployOnPushOutput
+}
+
+type AppSpecWorkerImageDeployOnPushArgs struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AppSpecWorkerImageDeployOnPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerImageDeployOnPush)(nil)).Elem()
+}
+
+func (i AppSpecWorkerImageDeployOnPushArgs) ToAppSpecWorkerImageDeployOnPushOutput() AppSpecWorkerImageDeployOnPushOutput {
+	return i.ToAppSpecWorkerImageDeployOnPushOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerImageDeployOnPushArgs) ToAppSpecWorkerImageDeployOnPushOutputWithContext(ctx context.Context) AppSpecWorkerImageDeployOnPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerImageDeployOnPushOutput)
+}
+
+// AppSpecWorkerImageDeployOnPushArrayInput is an input type that accepts AppSpecWorkerImageDeployOnPushArray and AppSpecWorkerImageDeployOnPushArrayOutput values.
+// You can construct a concrete instance of `AppSpecWorkerImageDeployOnPushArrayInput` via:
+//
+//	AppSpecWorkerImageDeployOnPushArray{ AppSpecWorkerImageDeployOnPushArgs{...} }
+type AppSpecWorkerImageDeployOnPushArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerImageDeployOnPushArrayOutput() AppSpecWorkerImageDeployOnPushArrayOutput
+	ToAppSpecWorkerImageDeployOnPushArrayOutputWithContext(context.Context) AppSpecWorkerImageDeployOnPushArrayOutput
+}
+
+type AppSpecWorkerImageDeployOnPushArray []AppSpecWorkerImageDeployOnPushInput
+
+func (AppSpecWorkerImageDeployOnPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerImageDeployOnPush)(nil)).Elem()
+}
+
+func (i AppSpecWorkerImageDeployOnPushArray) ToAppSpecWorkerImageDeployOnPushArrayOutput() AppSpecWorkerImageDeployOnPushArrayOutput {
+	return i.ToAppSpecWorkerImageDeployOnPushArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerImageDeployOnPushArray) ToAppSpecWorkerImageDeployOnPushArrayOutputWithContext(ctx context.Context) AppSpecWorkerImageDeployOnPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerImageDeployOnPushArrayOutput)
+}
+
+type AppSpecWorkerImageDeployOnPushOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerImageDeployOnPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerImageDeployOnPush)(nil)).Elem()
+}
+
+func (o AppSpecWorkerImageDeployOnPushOutput) ToAppSpecWorkerImageDeployOnPushOutput() AppSpecWorkerImageDeployOnPushOutput {
+	return o
+}
+
+func (o AppSpecWorkerImageDeployOnPushOutput) ToAppSpecWorkerImageDeployOnPushOutputWithContext(ctx context.Context) AppSpecWorkerImageDeployOnPushOutput {
+	return o
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o AppSpecWorkerImageDeployOnPushOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerImageDeployOnPush) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AppSpecWorkerImageDeployOnPushArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerImageDeployOnPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerImageDeployOnPush)(nil)).Elem()
+}
+
+func (o AppSpecWorkerImageDeployOnPushArrayOutput) ToAppSpecWorkerImageDeployOnPushArrayOutput() AppSpecWorkerImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerImageDeployOnPushArrayOutput) ToAppSpecWorkerImageDeployOnPushArrayOutputWithContext(ctx context.Context) AppSpecWorkerImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerImageDeployOnPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorkerImageDeployOnPush {
+		return vs[0].([]AppSpecWorkerImageDeployOnPush)[vs[1].(int)]
+	}).(AppSpecWorkerImageDeployOnPushOutput)
 }
 
 type AppSpecWorkerLogDestination struct {
@@ -17305,6 +17653,8 @@ func (o GetAppSpecJobGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type GetAppSpecJobImage struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes []GetAppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -17327,6 +17677,8 @@ type GetAppSpecJobImageInput interface {
 }
 
 type GetAppSpecJobImageArgs struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes GetAppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -17414,6 +17766,11 @@ func (o GetAppSpecJobImageOutput) ToGetAppSpecJobImagePtrOutputWithContext(ctx c
 	}).(GetAppSpecJobImagePtrOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecJobImageOutput) DeployOnPushes() GetAppSpecJobImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v GetAppSpecJobImage) []GetAppSpecJobImageDeployOnPush { return v.DeployOnPushes }).(GetAppSpecJobImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -17458,6 +17815,16 @@ func (o GetAppSpecJobImagePtrOutput) Elem() GetAppSpecJobImageOutput {
 	}).(GetAppSpecJobImageOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecJobImagePtrOutput) DeployOnPushes() GetAppSpecJobImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecJobImage) []GetAppSpecJobImageDeployOnPush {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPushes
+	}).(GetAppSpecJobImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecJobImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecJobImage) *string {
@@ -17496,6 +17863,103 @@ func (o GetAppSpecJobImagePtrOutput) Tag() pulumi.StringPtrOutput {
 		}
 		return v.Tag
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecJobImageDeployOnPush struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GetAppSpecJobImageDeployOnPushInput is an input type that accepts GetAppSpecJobImageDeployOnPushArgs and GetAppSpecJobImageDeployOnPushOutput values.
+// You can construct a concrete instance of `GetAppSpecJobImageDeployOnPushInput` via:
+//
+//	GetAppSpecJobImageDeployOnPushArgs{...}
+type GetAppSpecJobImageDeployOnPushInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobImageDeployOnPushOutput() GetAppSpecJobImageDeployOnPushOutput
+	ToGetAppSpecJobImageDeployOnPushOutputWithContext(context.Context) GetAppSpecJobImageDeployOnPushOutput
+}
+
+type GetAppSpecJobImageDeployOnPushArgs struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetAppSpecJobImageDeployOnPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobImageDeployOnPush)(nil)).Elem()
+}
+
+func (i GetAppSpecJobImageDeployOnPushArgs) ToGetAppSpecJobImageDeployOnPushOutput() GetAppSpecJobImageDeployOnPushOutput {
+	return i.ToGetAppSpecJobImageDeployOnPushOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobImageDeployOnPushArgs) ToGetAppSpecJobImageDeployOnPushOutputWithContext(ctx context.Context) GetAppSpecJobImageDeployOnPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobImageDeployOnPushOutput)
+}
+
+// GetAppSpecJobImageDeployOnPushArrayInput is an input type that accepts GetAppSpecJobImageDeployOnPushArray and GetAppSpecJobImageDeployOnPushArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecJobImageDeployOnPushArrayInput` via:
+//
+//	GetAppSpecJobImageDeployOnPushArray{ GetAppSpecJobImageDeployOnPushArgs{...} }
+type GetAppSpecJobImageDeployOnPushArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobImageDeployOnPushArrayOutput() GetAppSpecJobImageDeployOnPushArrayOutput
+	ToGetAppSpecJobImageDeployOnPushArrayOutputWithContext(context.Context) GetAppSpecJobImageDeployOnPushArrayOutput
+}
+
+type GetAppSpecJobImageDeployOnPushArray []GetAppSpecJobImageDeployOnPushInput
+
+func (GetAppSpecJobImageDeployOnPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecJobImageDeployOnPush)(nil)).Elem()
+}
+
+func (i GetAppSpecJobImageDeployOnPushArray) ToGetAppSpecJobImageDeployOnPushArrayOutput() GetAppSpecJobImageDeployOnPushArrayOutput {
+	return i.ToGetAppSpecJobImageDeployOnPushArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobImageDeployOnPushArray) ToGetAppSpecJobImageDeployOnPushArrayOutputWithContext(ctx context.Context) GetAppSpecJobImageDeployOnPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobImageDeployOnPushArrayOutput)
+}
+
+type GetAppSpecJobImageDeployOnPushOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobImageDeployOnPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobImageDeployOnPush)(nil)).Elem()
+}
+
+func (o GetAppSpecJobImageDeployOnPushOutput) ToGetAppSpecJobImageDeployOnPushOutput() GetAppSpecJobImageDeployOnPushOutput {
+	return o
+}
+
+func (o GetAppSpecJobImageDeployOnPushOutput) ToGetAppSpecJobImageDeployOnPushOutputWithContext(ctx context.Context) GetAppSpecJobImageDeployOnPushOutput {
+	return o
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o GetAppSpecJobImageDeployOnPushOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobImageDeployOnPush) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetAppSpecJobImageDeployOnPushArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobImageDeployOnPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecJobImageDeployOnPush)(nil)).Elem()
+}
+
+func (o GetAppSpecJobImageDeployOnPushArrayOutput) ToGetAppSpecJobImageDeployOnPushArrayOutput() GetAppSpecJobImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o GetAppSpecJobImageDeployOnPushArrayOutput) ToGetAppSpecJobImageDeployOnPushArrayOutputWithContext(ctx context.Context) GetAppSpecJobImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o GetAppSpecJobImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobImageDeployOnPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecJobImageDeployOnPush {
+		return vs[0].([]GetAppSpecJobImageDeployOnPush)[vs[1].(int)]
+	}).(GetAppSpecJobImageDeployOnPushOutput)
 }
 
 type GetAppSpecJobLogDestination struct {
@@ -19720,6 +20184,8 @@ func (o GetAppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOut
 }
 
 type GetAppSpecServiceImage struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes []GetAppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -19742,6 +20208,8 @@ type GetAppSpecServiceImageInput interface {
 }
 
 type GetAppSpecServiceImageArgs struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes GetAppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -19829,6 +20297,11 @@ func (o GetAppSpecServiceImageOutput) ToGetAppSpecServiceImagePtrOutputWithConte
 	}).(GetAppSpecServiceImagePtrOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceImageOutput) DeployOnPushes() GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) []GetAppSpecServiceImageDeployOnPush { return v.DeployOnPushes }).(GetAppSpecServiceImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -19873,6 +20346,16 @@ func (o GetAppSpecServiceImagePtrOutput) Elem() GetAppSpecServiceImageOutput {
 	}).(GetAppSpecServiceImageOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceImagePtrOutput) DeployOnPushes() GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) []GetAppSpecServiceImageDeployOnPush {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPushes
+	}).(GetAppSpecServiceImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecServiceImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
@@ -19911,6 +20394,103 @@ func (o GetAppSpecServiceImagePtrOutput) Tag() pulumi.StringPtrOutput {
 		}
 		return v.Tag
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceImageDeployOnPush struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GetAppSpecServiceImageDeployOnPushInput is an input type that accepts GetAppSpecServiceImageDeployOnPushArgs and GetAppSpecServiceImageDeployOnPushOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceImageDeployOnPushInput` via:
+//
+//	GetAppSpecServiceImageDeployOnPushArgs{...}
+type GetAppSpecServiceImageDeployOnPushInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceImageDeployOnPushOutput() GetAppSpecServiceImageDeployOnPushOutput
+	ToGetAppSpecServiceImageDeployOnPushOutputWithContext(context.Context) GetAppSpecServiceImageDeployOnPushOutput
+}
+
+type GetAppSpecServiceImageDeployOnPushArgs struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetAppSpecServiceImageDeployOnPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceImageDeployOnPushArgs) ToGetAppSpecServiceImageDeployOnPushOutput() GetAppSpecServiceImageDeployOnPushOutput {
+	return i.ToGetAppSpecServiceImageDeployOnPushOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceImageDeployOnPushArgs) ToGetAppSpecServiceImageDeployOnPushOutputWithContext(ctx context.Context) GetAppSpecServiceImageDeployOnPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceImageDeployOnPushOutput)
+}
+
+// GetAppSpecServiceImageDeployOnPushArrayInput is an input type that accepts GetAppSpecServiceImageDeployOnPushArray and GetAppSpecServiceImageDeployOnPushArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceImageDeployOnPushArrayInput` via:
+//
+//	GetAppSpecServiceImageDeployOnPushArray{ GetAppSpecServiceImageDeployOnPushArgs{...} }
+type GetAppSpecServiceImageDeployOnPushArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceImageDeployOnPushArrayOutput() GetAppSpecServiceImageDeployOnPushArrayOutput
+	ToGetAppSpecServiceImageDeployOnPushArrayOutputWithContext(context.Context) GetAppSpecServiceImageDeployOnPushArrayOutput
+}
+
+type GetAppSpecServiceImageDeployOnPushArray []GetAppSpecServiceImageDeployOnPushInput
+
+func (GetAppSpecServiceImageDeployOnPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceImageDeployOnPushArray) ToGetAppSpecServiceImageDeployOnPushArrayOutput() GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return i.ToGetAppSpecServiceImageDeployOnPushArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceImageDeployOnPushArray) ToGetAppSpecServiceImageDeployOnPushArrayOutputWithContext(ctx context.Context) GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceImageDeployOnPushArrayOutput)
+}
+
+type GetAppSpecServiceImageDeployOnPushOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceImageDeployOnPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceImageDeployOnPushOutput) ToGetAppSpecServiceImageDeployOnPushOutput() GetAppSpecServiceImageDeployOnPushOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImageDeployOnPushOutput) ToGetAppSpecServiceImageDeployOnPushOutputWithContext(ctx context.Context) GetAppSpecServiceImageDeployOnPushOutput {
+	return o
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o GetAppSpecServiceImageDeployOnPushOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImageDeployOnPush) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetAppSpecServiceImageDeployOnPushArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceImageDeployOnPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceImageDeployOnPushArrayOutput) ToGetAppSpecServiceImageDeployOnPushArrayOutput() GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImageDeployOnPushArrayOutput) ToGetAppSpecServiceImageDeployOnPushArrayOutputWithContext(ctx context.Context) GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceImageDeployOnPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceImageDeployOnPush {
+		return vs[0].([]GetAppSpecServiceImageDeployOnPush)[vs[1].(int)]
+	}).(GetAppSpecServiceImageDeployOnPushOutput)
 }
 
 type GetAppSpecServiceLogDestination struct {
@@ -22925,6 +23505,8 @@ func (o GetAppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type GetAppSpecWorkerImage struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes []GetAppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -22947,6 +23529,8 @@ type GetAppSpecWorkerImageInput interface {
 }
 
 type GetAppSpecWorkerImageArgs struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes GetAppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -23034,6 +23618,11 @@ func (o GetAppSpecWorkerImageOutput) ToGetAppSpecWorkerImagePtrOutputWithContext
 	}).(GetAppSpecWorkerImagePtrOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecWorkerImageOutput) DeployOnPushes() GetAppSpecWorkerImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerImage) []GetAppSpecWorkerImageDeployOnPush { return v.DeployOnPushes }).(GetAppSpecWorkerImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -23078,6 +23667,16 @@ func (o GetAppSpecWorkerImagePtrOutput) Elem() GetAppSpecWorkerImageOutput {
 	}).(GetAppSpecWorkerImageOutput)
 }
 
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecWorkerImagePtrOutput) DeployOnPushes() GetAppSpecWorkerImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerImage) []GetAppSpecWorkerImageDeployOnPush {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPushes
+	}).(GetAppSpecWorkerImageDeployOnPushArrayOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecWorkerImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerImage) *string {
@@ -23116,6 +23715,103 @@ func (o GetAppSpecWorkerImagePtrOutput) Tag() pulumi.StringPtrOutput {
 		}
 		return v.Tag
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerImageDeployOnPush struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GetAppSpecWorkerImageDeployOnPushInput is an input type that accepts GetAppSpecWorkerImageDeployOnPushArgs and GetAppSpecWorkerImageDeployOnPushOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerImageDeployOnPushInput` via:
+//
+//	GetAppSpecWorkerImageDeployOnPushArgs{...}
+type GetAppSpecWorkerImageDeployOnPushInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerImageDeployOnPushOutput() GetAppSpecWorkerImageDeployOnPushOutput
+	ToGetAppSpecWorkerImageDeployOnPushOutputWithContext(context.Context) GetAppSpecWorkerImageDeployOnPushOutput
+}
+
+type GetAppSpecWorkerImageDeployOnPushArgs struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetAppSpecWorkerImageDeployOnPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerImageDeployOnPush)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerImageDeployOnPushArgs) ToGetAppSpecWorkerImageDeployOnPushOutput() GetAppSpecWorkerImageDeployOnPushOutput {
+	return i.ToGetAppSpecWorkerImageDeployOnPushOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerImageDeployOnPushArgs) ToGetAppSpecWorkerImageDeployOnPushOutputWithContext(ctx context.Context) GetAppSpecWorkerImageDeployOnPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerImageDeployOnPushOutput)
+}
+
+// GetAppSpecWorkerImageDeployOnPushArrayInput is an input type that accepts GetAppSpecWorkerImageDeployOnPushArray and GetAppSpecWorkerImageDeployOnPushArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerImageDeployOnPushArrayInput` via:
+//
+//	GetAppSpecWorkerImageDeployOnPushArray{ GetAppSpecWorkerImageDeployOnPushArgs{...} }
+type GetAppSpecWorkerImageDeployOnPushArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerImageDeployOnPushArrayOutput() GetAppSpecWorkerImageDeployOnPushArrayOutput
+	ToGetAppSpecWorkerImageDeployOnPushArrayOutputWithContext(context.Context) GetAppSpecWorkerImageDeployOnPushArrayOutput
+}
+
+type GetAppSpecWorkerImageDeployOnPushArray []GetAppSpecWorkerImageDeployOnPushInput
+
+func (GetAppSpecWorkerImageDeployOnPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerImageDeployOnPush)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerImageDeployOnPushArray) ToGetAppSpecWorkerImageDeployOnPushArrayOutput() GetAppSpecWorkerImageDeployOnPushArrayOutput {
+	return i.ToGetAppSpecWorkerImageDeployOnPushArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerImageDeployOnPushArray) ToGetAppSpecWorkerImageDeployOnPushArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerImageDeployOnPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerImageDeployOnPushArrayOutput)
+}
+
+type GetAppSpecWorkerImageDeployOnPushOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerImageDeployOnPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerImageDeployOnPush)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerImageDeployOnPushOutput) ToGetAppSpecWorkerImageDeployOnPushOutput() GetAppSpecWorkerImageDeployOnPushOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerImageDeployOnPushOutput) ToGetAppSpecWorkerImageDeployOnPushOutputWithContext(ctx context.Context) GetAppSpecWorkerImageDeployOnPushOutput {
+	return o
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o GetAppSpecWorkerImageDeployOnPushOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerImageDeployOnPush) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetAppSpecWorkerImageDeployOnPushArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerImageDeployOnPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerImageDeployOnPush)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerImageDeployOnPushArrayOutput) ToGetAppSpecWorkerImageDeployOnPushArrayOutput() GetAppSpecWorkerImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerImageDeployOnPushArrayOutput) ToGetAppSpecWorkerImageDeployOnPushArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerImageDeployOnPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorkerImageDeployOnPush {
+		return vs[0].([]GetAppSpecWorkerImageDeployOnPush)[vs[1].(int)]
+	}).(GetAppSpecWorkerImageDeployOnPushOutput)
 }
 
 type GetAppSpecWorkerLogDestination struct {
@@ -29540,6 +30236,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGitlabPtrInput)(nil)).Elem(), AppSpecJobGitlabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobImageInput)(nil)).Elem(), AppSpecJobImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobImagePtrInput)(nil)).Elem(), AppSpecJobImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobImageDeployOnPushInput)(nil)).Elem(), AppSpecJobImageDeployOnPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobImageDeployOnPushArrayInput)(nil)).Elem(), AppSpecJobImageDeployOnPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationInput)(nil)).Elem(), AppSpecJobLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationArrayInput)(nil)).Elem(), AppSpecJobLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationDatadogInput)(nil)).Elem(), AppSpecJobLogDestinationDatadogArgs{})
@@ -29568,6 +30266,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceHealthCheckPtrInput)(nil)).Elem(), AppSpecServiceHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImageInput)(nil)).Elem(), AppSpecServiceImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImagePtrInput)(nil)).Elem(), AppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImageDeployOnPushInput)(nil)).Elem(), AppSpecServiceImageDeployOnPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImageDeployOnPushArrayInput)(nil)).Elem(), AppSpecServiceImageDeployOnPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationInput)(nil)).Elem(), AppSpecServiceLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationArrayInput)(nil)).Elem(), AppSpecServiceLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationDatadogInput)(nil)).Elem(), AppSpecServiceLogDestinationDatadogArgs{})
@@ -29608,6 +30308,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitlabPtrInput)(nil)).Elem(), AppSpecWorkerGitlabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImageInput)(nil)).Elem(), AppSpecWorkerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImagePtrInput)(nil)).Elem(), AppSpecWorkerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImageDeployOnPushInput)(nil)).Elem(), AppSpecWorkerImageDeployOnPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImageDeployOnPushArrayInput)(nil)).Elem(), AppSpecWorkerImageDeployOnPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationInput)(nil)).Elem(), AppSpecWorkerLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationArrayInput)(nil)).Elem(), AppSpecWorkerLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationDatadogInput)(nil)).Elem(), AppSpecWorkerLogDestinationDatadogArgs{})
@@ -29709,6 +30411,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGitlabPtrInput)(nil)).Elem(), GetAppSpecJobGitlabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobImageInput)(nil)).Elem(), GetAppSpecJobImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobImagePtrInput)(nil)).Elem(), GetAppSpecJobImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobImageDeployOnPushInput)(nil)).Elem(), GetAppSpecJobImageDeployOnPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobImageDeployOnPushArrayInput)(nil)).Elem(), GetAppSpecJobImageDeployOnPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationInput)(nil)).Elem(), GetAppSpecJobLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationArrayInput)(nil)).Elem(), GetAppSpecJobLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecJobLogDestinationDatadogArgs{})
@@ -29737,6 +30441,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceHealthCheckPtrInput)(nil)).Elem(), GetAppSpecServiceHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImagePtrInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageDeployOnPushInput)(nil)).Elem(), GetAppSpecServiceImageDeployOnPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageDeployOnPushArrayInput)(nil)).Elem(), GetAppSpecServiceImageDeployOnPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationInput)(nil)).Elem(), GetAppSpecServiceLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationArrayInput)(nil)).Elem(), GetAppSpecServiceLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecServiceLogDestinationDatadogArgs{})
@@ -29777,6 +30483,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitlabPtrInput)(nil)).Elem(), GetAppSpecWorkerGitlabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImageInput)(nil)).Elem(), GetAppSpecWorkerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImagePtrInput)(nil)).Elem(), GetAppSpecWorkerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImageDeployOnPushInput)(nil)).Elem(), GetAppSpecWorkerImageDeployOnPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImageDeployOnPushArrayInput)(nil)).Elem(), GetAppSpecWorkerImageDeployOnPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationArrayInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationDatadogArgs{})
@@ -29919,6 +30627,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecJobGitlabPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecJobImageOutput{})
 	pulumi.RegisterOutputType(AppSpecJobImagePtrOutput{})
+	pulumi.RegisterOutputType(AppSpecJobImageDeployOnPushOutput{})
+	pulumi.RegisterOutputType(AppSpecJobImageDeployOnPushArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationDatadogOutput{})
@@ -29947,6 +30657,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceImageOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceImagePtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceImageDeployOnPushOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceImageDeployOnPushArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationDatadogOutput{})
@@ -29987,6 +30699,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerGitlabPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerImageOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerImagePtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerImageDeployOnPushOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerImageDeployOnPushArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationDatadogOutput{})
@@ -30088,6 +30802,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobGitlabPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobImageOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobImagePtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobImageDeployOnPushOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobImageDeployOnPushArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationDatadogOutput{})
@@ -30116,6 +30832,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceImageOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceImagePtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceImageDeployOnPushOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceImageDeployOnPushArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationDatadogOutput{})
@@ -30156,6 +30874,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerGitlabPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerImageOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerImagePtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerImageDeployOnPushOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerImageDeployOnPushArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationDatadogOutput{})

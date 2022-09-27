@@ -10,39 +10,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCertificateResult {
-    private final List<String> domains;
+    private List<String> domains;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final String notAfter;
-    private final String sha1Fingerprint;
-    private final String state;
-    private final String type;
-    private final String uuid;
+    private String id;
+    private String name;
+    private String notAfter;
+    private String sha1Fingerprint;
+    private String state;
+    private String type;
+    private String uuid;
 
-    @CustomType.Constructor
-    private GetCertificateResult(
-        @CustomType.Parameter("domains") List<String> domains,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("notAfter") String notAfter,
-        @CustomType.Parameter("sha1Fingerprint") String sha1Fingerprint,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("uuid") String uuid) {
-        this.domains = domains;
-        this.id = id;
-        this.name = name;
-        this.notAfter = notAfter;
-        this.sha1Fingerprint = sha1Fingerprint;
-        this.state = state;
-        this.type = type;
-        this.uuid = uuid;
-    }
-
+    private GetCertificateResult() {}
     public List<String> domains() {
         return this.domains;
     }
@@ -79,7 +60,7 @@ public final class GetCertificateResult {
     public static Builder builder(GetCertificateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> domains;
         private String id;
@@ -89,11 +70,7 @@ public final class GetCertificateResult {
         private String state;
         private String type;
         private String uuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCertificateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domains = defaults.domains;
@@ -106,6 +83,7 @@ public final class GetCertificateResult {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
         public Builder domains(List<String> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -113,35 +91,52 @@ public final class GetCertificateResult {
         public Builder domains(String... domains) {
             return domains(List.of(domains));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder notAfter(String notAfter) {
             this.notAfter = Objects.requireNonNull(notAfter);
             return this;
         }
+        @CustomType.Setter
         public Builder sha1Fingerprint(String sha1Fingerprint) {
             this.sha1Fingerprint = Objects.requireNonNull(sha1Fingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
-        }        public GetCertificateResult build() {
-            return new GetCertificateResult(domains, id, name, notAfter, sha1Fingerprint, state, type, uuid);
+        }
+        public GetCertificateResult build() {
+            final var o = new GetCertificateResult();
+            o.domains = domains;
+            o.id = id;
+            o.name = name;
+            o.notAfter = notAfter;
+            o.sha1Fingerprint = sha1Fingerprint;
+            o.state = state;
+            o.type = type;
+            o.uuid = uuid;
+            return o;
         }
     }
 }

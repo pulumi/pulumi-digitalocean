@@ -37,6 +37,7 @@ __all__ = [
     'AppSpecJobGithub',
     'AppSpecJobGitlab',
     'AppSpecJobImage',
+    'AppSpecJobImageDeployOnPush',
     'AppSpecJobLogDestination',
     'AppSpecJobLogDestinationDatadog',
     'AppSpecJobLogDestinationLogtail',
@@ -51,6 +52,7 @@ __all__ = [
     'AppSpecServiceGitlab',
     'AppSpecServiceHealthCheck',
     'AppSpecServiceImage',
+    'AppSpecServiceImageDeployOnPush',
     'AppSpecServiceLogDestination',
     'AppSpecServiceLogDestinationDatadog',
     'AppSpecServiceLogDestinationLogtail',
@@ -71,6 +73,7 @@ __all__ = [
     'AppSpecWorkerGithub',
     'AppSpecWorkerGitlab',
     'AppSpecWorkerImage',
+    'AppSpecWorkerImageDeployOnPush',
     'AppSpecWorkerLogDestination',
     'AppSpecWorkerLogDestinationDatadog',
     'AppSpecWorkerLogDestinationLogtail',
@@ -121,6 +124,7 @@ __all__ = [
     'GetAppSpecJobGithubResult',
     'GetAppSpecJobGitlabResult',
     'GetAppSpecJobImageResult',
+    'GetAppSpecJobImageDeployOnPushResult',
     'GetAppSpecJobLogDestinationResult',
     'GetAppSpecJobLogDestinationDatadogResult',
     'GetAppSpecJobLogDestinationLogtailResult',
@@ -135,6 +139,7 @@ __all__ = [
     'GetAppSpecServiceGitlabResult',
     'GetAppSpecServiceHealthCheckResult',
     'GetAppSpecServiceImageResult',
+    'GetAppSpecServiceImageDeployOnPushResult',
     'GetAppSpecServiceLogDestinationResult',
     'GetAppSpecServiceLogDestinationDatadogResult',
     'GetAppSpecServiceLogDestinationLogtailResult',
@@ -155,6 +160,7 @@ __all__ = [
     'GetAppSpecWorkerGithubResult',
     'GetAppSpecWorkerGitlabResult',
     'GetAppSpecWorkerImageResult',
+    'GetAppSpecWorkerImageDeployOnPushResult',
     'GetAppSpecWorkerLogDestinationResult',
     'GetAppSpecWorkerLogDestinationDatadogResult',
     'GetAppSpecWorkerLogDestinationLogtailResult',
@@ -1886,6 +1892,8 @@ class AppSpecJobImage(dict):
         suggest = None
         if key == "registryType":
             suggest = "registry_type"
+        elif key == "deployOnPushes":
+            suggest = "deploy_on_pushes"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AppSpecJobImage. Access the value via the '{suggest}' property getter instead.")
@@ -1901,16 +1909,20 @@ class AppSpecJobImage(dict):
     def __init__(__self__, *,
                  registry_type: str,
                  repository: str,
+                 deploy_on_pushes: Optional[Sequence['outputs.AppSpecJobImageDeployOnPush']] = None,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
+        :param Sequence['AppSpecJobImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
+        if deploy_on_pushes is not None:
+            pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
@@ -1933,6 +1945,14 @@ class AppSpecJobImage(dict):
         return pulumi.get(self, "repository")
 
     @property
+    @pulumi.getter(name="deployOnPushes")
+    def deploy_on_pushes(self) -> Optional[Sequence['outputs.AppSpecJobImageDeployOnPush']]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_pushes")
+
+    @property
     @pulumi.getter
     def registry(self) -> Optional[str]:
         """
@@ -1947,6 +1967,25 @@ class AppSpecJobImage(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class AppSpecJobImageDeployOnPush(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether to automatically deploy images pushed to DOCR.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -2913,6 +2952,8 @@ class AppSpecServiceImage(dict):
         suggest = None
         if key == "registryType":
             suggest = "registry_type"
+        elif key == "deployOnPushes":
+            suggest = "deploy_on_pushes"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceImage. Access the value via the '{suggest}' property getter instead.")
@@ -2928,16 +2969,20 @@ class AppSpecServiceImage(dict):
     def __init__(__self__, *,
                  registry_type: str,
                  repository: str,
+                 deploy_on_pushes: Optional[Sequence['outputs.AppSpecServiceImageDeployOnPush']] = None,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
+        :param Sequence['AppSpecServiceImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
+        if deploy_on_pushes is not None:
+            pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
@@ -2960,6 +3005,14 @@ class AppSpecServiceImage(dict):
         return pulumi.get(self, "repository")
 
     @property
+    @pulumi.getter(name="deployOnPushes")
+    def deploy_on_pushes(self) -> Optional[Sequence['outputs.AppSpecServiceImageDeployOnPush']]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_pushes")
+
+    @property
     @pulumi.getter
     def registry(self) -> Optional[str]:
         """
@@ -2974,6 +3027,25 @@ class AppSpecServiceImage(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class AppSpecServiceImageDeployOnPush(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether to automatically deploy images pushed to DOCR.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -4304,6 +4376,8 @@ class AppSpecWorkerImage(dict):
         suggest = None
         if key == "registryType":
             suggest = "registry_type"
+        elif key == "deployOnPushes":
+            suggest = "deploy_on_pushes"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerImage. Access the value via the '{suggest}' property getter instead.")
@@ -4319,16 +4393,20 @@ class AppSpecWorkerImage(dict):
     def __init__(__self__, *,
                  registry_type: str,
                  repository: str,
+                 deploy_on_pushes: Optional[Sequence['outputs.AppSpecWorkerImageDeployOnPush']] = None,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
+        :param Sequence['AppSpecWorkerImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
+        if deploy_on_pushes is not None:
+            pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
@@ -4351,6 +4429,14 @@ class AppSpecWorkerImage(dict):
         return pulumi.get(self, "repository")
 
     @property
+    @pulumi.getter(name="deployOnPushes")
+    def deploy_on_pushes(self) -> Optional[Sequence['outputs.AppSpecWorkerImageDeployOnPush']]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_pushes")
+
+    @property
     @pulumi.getter
     def registry(self) -> Optional[str]:
         """
@@ -4365,6 +4451,25 @@ class AppSpecWorkerImage(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class AppSpecWorkerImageDeployOnPush(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether to automatically deploy images pushed to DOCR.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -7521,22 +7626,33 @@ class GetAppSpecJobGitlabResult(dict):
 @pulumi.output_type
 class GetAppSpecJobImageResult(dict):
     def __init__(__self__, *,
+                 deploy_on_pushes: Sequence['outputs.GetAppSpecJobImageDeployOnPushResult'],
                  registry_type: str,
                  repository: str,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
+        :param Sequence['GetAppSpecJobImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="deployOnPushes")
+    def deploy_on_pushes(self) -> Sequence['outputs.GetAppSpecJobImageDeployOnPushResult']:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_pushes")
 
     @property
     @pulumi.getter(name="registryType")
@@ -7569,6 +7685,25 @@ class GetAppSpecJobImageResult(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetAppSpecJobImageDeployOnPushResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether to automatically deploy images pushed to DOCR.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -8368,22 +8503,33 @@ class GetAppSpecServiceHealthCheckResult(dict):
 @pulumi.output_type
 class GetAppSpecServiceImageResult(dict):
     def __init__(__self__, *,
+                 deploy_on_pushes: Sequence['outputs.GetAppSpecServiceImageDeployOnPushResult'],
                  registry_type: str,
                  repository: str,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
+        :param Sequence['GetAppSpecServiceImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="deployOnPushes")
+    def deploy_on_pushes(self) -> Sequence['outputs.GetAppSpecServiceImageDeployOnPushResult']:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_pushes")
 
     @property
     @pulumi.getter(name="registryType")
@@ -8416,6 +8562,25 @@ class GetAppSpecServiceImageResult(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetAppSpecServiceImageDeployOnPushResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether to automatically deploy images pushed to DOCR.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -9497,22 +9662,33 @@ class GetAppSpecWorkerGitlabResult(dict):
 @pulumi.output_type
 class GetAppSpecWorkerImageResult(dict):
     def __init__(__self__, *,
+                 deploy_on_pushes: Sequence['outputs.GetAppSpecWorkerImageDeployOnPushResult'],
                  registry_type: str,
                  repository: str,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
+        :param Sequence['GetAppSpecWorkerImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="deployOnPushes")
+    def deploy_on_pushes(self) -> Sequence['outputs.GetAppSpecWorkerImageDeployOnPushResult']:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_pushes")
 
     @property
     @pulumi.getter(name="registryType")
@@ -9545,6 +9721,25 @@ class GetAppSpecWorkerImageResult(dict):
         The repository tag. Defaults to `latest` if not provided.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetAppSpecWorkerImageDeployOnPushResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether to automatically deploy images pushed to DOCR.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

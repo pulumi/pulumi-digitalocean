@@ -169,18 +169,18 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region to start in.
+     * The region where the Droplet will be created.
      * 
      */
-    @Import(name="region", required=true)
-    private Output<Either<String,Region>> region;
+    @Import(name="region")
+    private @Nullable Output<Either<String,Region>> region;
 
     /**
-     * @return The region to start in.
+     * @return The region where the Droplet will be created.
      * 
      */
-    public Output<Either<String,Region>> region() {
-        return this.region;
+    public Optional<Output<Either<String,Region>>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     /**
@@ -540,18 +540,18 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region to start in.
+         * @param region The region where the Droplet will be created.
          * 
          * @return builder
          * 
          */
-        public Builder region(Output<Either<String,Region>> region) {
+        public Builder region(@Nullable Output<Either<String,Region>> region) {
             $.region = region;
             return this;
         }
 
         /**
-         * @param region The region to start in.
+         * @param region The region where the Droplet will be created.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region to start in.
+         * @param region The region where the Droplet will be created.
          * 
          * @return builder
          * 
@@ -571,7 +571,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region to start in.
+         * @param region The region where the Droplet will be created.
          * 
          * @return builder
          * 
@@ -800,7 +800,6 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
 
         public DropletArgs build() {
             $.image = Objects.requireNonNull($.image, "expected parameter 'image' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
             $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
             return $;
         }

@@ -20,49 +20,34 @@ public final class SpacesBucketLifecycleRule {
      * upload when the multipart upload must be completed or else Spaces will abort the upload.
      * 
      */
-    private final @Nullable Integer abortIncompleteMultipartUploadDays;
+    private @Nullable Integer abortIncompleteMultipartUploadDays;
     /**
      * @return Specifies lifecycle rule status.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Specifies a time period after which applicable objects expire (documented below).
      * 
      */
-    private final @Nullable SpacesBucketLifecycleRuleExpiration expiration;
+    private @Nullable SpacesBucketLifecycleRuleExpiration expiration;
     /**
      * @return Unique identifier for the rule.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return Specifies when non-current object versions expire (documented below).
      * 
      */
-    private final @Nullable SpacesBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration;
+    private @Nullable SpacesBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration;
     /**
      * @return Object key prefix identifying one or more objects to which the rule applies.
      * 
      */
-    private final @Nullable String prefix;
+    private @Nullable String prefix;
 
-    @CustomType.Constructor
-    private SpacesBucketLifecycleRule(
-        @CustomType.Parameter("abortIncompleteMultipartUploadDays") @Nullable Integer abortIncompleteMultipartUploadDays,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("expiration") @Nullable SpacesBucketLifecycleRuleExpiration expiration,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("noncurrentVersionExpiration") @Nullable SpacesBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration,
-        @CustomType.Parameter("prefix") @Nullable String prefix) {
-        this.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
-        this.enabled = enabled;
-        this.expiration = expiration;
-        this.id = id;
-        this.noncurrentVersionExpiration = noncurrentVersionExpiration;
-        this.prefix = prefix;
-    }
-
+    private SpacesBucketLifecycleRule() {}
     /**
      * @return Specifies the number of days after initiating a multipart
      * upload when the multipart upload must be completed or else Spaces will abort the upload.
@@ -114,7 +99,7 @@ public final class SpacesBucketLifecycleRule {
     public static Builder builder(SpacesBucketLifecycleRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer abortIncompleteMultipartUploadDays;
         private Boolean enabled;
@@ -122,11 +107,7 @@ public final class SpacesBucketLifecycleRule {
         private @Nullable String id;
         private @Nullable SpacesBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration;
         private @Nullable String prefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SpacesBucketLifecycleRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.abortIncompleteMultipartUploadDays = defaults.abortIncompleteMultipartUploadDays;
@@ -137,31 +118,45 @@ public final class SpacesBucketLifecycleRule {
     	      this.prefix = defaults.prefix;
         }
 
+        @CustomType.Setter
         public Builder abortIncompleteMultipartUploadDays(@Nullable Integer abortIncompleteMultipartUploadDays) {
             this.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder expiration(@Nullable SpacesBucketLifecycleRuleExpiration expiration) {
             this.expiration = expiration;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder noncurrentVersionExpiration(@Nullable SpacesBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration) {
             this.noncurrentVersionExpiration = noncurrentVersionExpiration;
             return this;
         }
+        @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
             this.prefix = prefix;
             return this;
-        }        public SpacesBucketLifecycleRule build() {
-            return new SpacesBucketLifecycleRule(abortIncompleteMultipartUploadDays, enabled, expiration, id, noncurrentVersionExpiration, prefix);
+        }
+        public SpacesBucketLifecycleRule build() {
+            final var o = new SpacesBucketLifecycleRule();
+            o.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
+            o.enabled = enabled;
+            o.expiration = expiration;
+            o.id = id;
+            o.noncurrentVersionExpiration = noncurrentVersionExpiration;
+            o.prefix = prefix;
+            return o;
         }
     }
 }

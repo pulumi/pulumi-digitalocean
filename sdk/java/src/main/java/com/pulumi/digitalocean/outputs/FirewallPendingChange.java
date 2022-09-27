@@ -13,25 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FirewallPendingChange {
-    private final @Nullable Integer dropletId;
-    private final @Nullable Boolean removing;
+    private @Nullable Integer dropletId;
+    private @Nullable Boolean removing;
     /**
      * @return A status string indicating the current state of the Firewall.
      * This can be &#34;waiting&#34;, &#34;succeeded&#34;, or &#34;failed&#34;.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private FirewallPendingChange(
-        @CustomType.Parameter("dropletId") @Nullable Integer dropletId,
-        @CustomType.Parameter("removing") @Nullable Boolean removing,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.dropletId = dropletId;
-        this.removing = removing;
-        this.status = status;
-    }
-
+    private FirewallPendingChange() {}
     public Optional<Integer> dropletId() {
         return Optional.ofNullable(this.dropletId);
     }
@@ -54,16 +45,12 @@ public final class FirewallPendingChange {
     public static Builder builder(FirewallPendingChange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer dropletId;
         private @Nullable Boolean removing;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FirewallPendingChange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dropletId = defaults.dropletId;
@@ -71,19 +58,27 @@ public final class FirewallPendingChange {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder dropletId(@Nullable Integer dropletId) {
             this.dropletId = dropletId;
             return this;
         }
+        @CustomType.Setter
         public Builder removing(@Nullable Boolean removing) {
             this.removing = removing;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public FirewallPendingChange build() {
-            return new FirewallPendingChange(dropletId, removing, status);
+        }
+        public FirewallPendingChange build() {
+            final var o = new FirewallPendingChange();
+            o.dropletId = dropletId;
+            o.removing = removing;
+            o.status = status;
+            return o;
         }
     }
 }

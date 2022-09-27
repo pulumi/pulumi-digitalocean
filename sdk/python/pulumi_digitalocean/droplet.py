@@ -16,7 +16,6 @@ __all__ = ['DropletArgs', 'Droplet']
 class DropletArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[str],
-                 region: pulumi.Input[Union[str, 'Region']],
                  size: pulumi.Input[Union[str, 'DropletSlug']],
                  backups: Optional[pulumi.Input[bool]] = None,
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
@@ -25,6 +24,7 @@ class DropletArgs:
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_networking: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -34,7 +34,6 @@ class DropletArgs:
         """
         The set of arguments for constructing a Droplet resource.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
-        :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
@@ -53,6 +52,7 @@ class DropletArgs:
         :param pulumi.Input[str] name: The Droplet name.
         :param pulumi.Input[bool] private_networking: **Deprecated** Boolean controlling if private networking
                is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+        :param pulumi.Input[Union[str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
@@ -69,7 +69,6 @@ class DropletArgs:
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
         pulumi.set(__self__, "image", image)
-        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "size", size)
         if backups is not None:
             pulumi.set(__self__, "backups", backups)
@@ -88,6 +87,8 @@ class DropletArgs:
             pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
         if private_networking is not None:
             pulumi.set(__self__, "private_networking", private_networking)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if resize_disk is not None:
             pulumi.set(__self__, "resize_disk", resize_disk)
         if ssh_keys is not None:
@@ -112,18 +113,6 @@ class DropletArgs:
     @image.setter
     def image(self, value: pulumi.Input[str]):
         pulumi.set(self, "image", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[Union[str, 'Region']]:
-        """
-        The region to start in.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[Union[str, 'Region']]):
-        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
@@ -230,6 +219,18 @@ class DropletArgs:
     @private_networking.setter
     def private_networking(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "private_networking", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
+        """
+        The region where the Droplet will be created.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[Union[str, 'Region']]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="resizeDisk")
@@ -372,7 +373,7 @@ class _DropletState:
         :param pulumi.Input[float] price_monthly: Droplet monthly price
         :param pulumi.Input[bool] private_networking: **Deprecated** Boolean controlling if private networking
                is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
-        :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
+        :param pulumi.Input[Union[str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
@@ -676,7 +677,7 @@ class _DropletState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
-        The region to start in.
+        The region where the Droplet will be created.
         """
         return pulumi.get(self, "region")
 
@@ -868,7 +869,7 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Droplet name.
         :param pulumi.Input[bool] private_networking: **Deprecated** Boolean controlling if private networking
                is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
-        :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
+        :param pulumi.Input[Union[str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
@@ -969,8 +970,6 @@ class Droplet(pulumi.CustomResource):
                 warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
                 pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
             __props__.__dict__["private_networking"] = private_networking
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["resize_disk"] = resize_disk
             if size is None and not opts.urn:
@@ -1065,7 +1064,7 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[float] price_monthly: Droplet monthly price
         :param pulumi.Input[bool] private_networking: **Deprecated** Boolean controlling if private networking
                is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
-        :param pulumi.Input[Union[str, 'Region']] region: The region to start in.
+        :param pulumi.Input[Union[str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
@@ -1271,7 +1270,7 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region to start in.
+        The region where the Droplet will be created.
         """
         return pulumi.get(self, "region")
 

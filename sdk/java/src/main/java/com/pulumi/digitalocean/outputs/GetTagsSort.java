@@ -15,21 +15,14 @@ public final class GetTagsSort {
      * @return The sort direction. This may be either `asc` or `desc`.
      * 
      */
-    private final @Nullable String direction;
+    private @Nullable String direction;
     /**
      * @return Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
      * 
      */
-    private final String key;
+    private String key;
 
-    @CustomType.Constructor
-    private GetTagsSort(
-        @CustomType.Parameter("direction") @Nullable String direction,
-        @CustomType.Parameter("key") String key) {
-        this.direction = direction;
-        this.key = key;
-    }
-
+    private GetTagsSort() {}
     /**
      * @return The sort direction. This may be either `asc` or `desc`.
      * 
@@ -52,30 +45,32 @@ public final class GetTagsSort {
     public static Builder builder(GetTagsSort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
         private String key;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTagsSort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
         public Builder direction(@Nullable String direction) {
             this.direction = direction;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
-        }        public GetTagsSort build() {
-            return new GetTagsSort(direction, key);
+        }
+        public GetTagsSort build() {
+            final var o = new GetTagsSort();
+            o.direction = direction;
+            o.key = key;
+            return o;
         }
     }
 }

@@ -14,27 +14,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTagsResult {
-    private final @Nullable List<GetTagsFilter> filters;
+    private @Nullable List<GetTagsFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable List<GetTagsSort> sorts;
-    private final List<GetTagsTag> tags;
+    private String id;
+    private @Nullable List<GetTagsSort> sorts;
+    private List<GetTagsTag> tags;
 
-    @CustomType.Constructor
-    private GetTagsResult(
-        @CustomType.Parameter("filters") @Nullable List<GetTagsFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("sorts") @Nullable List<GetTagsSort> sorts,
-        @CustomType.Parameter("tags") List<GetTagsTag> tags) {
-        this.filters = filters;
-        this.id = id;
-        this.sorts = sorts;
-        this.tags = tags;
-    }
-
+    private GetTagsResult() {}
     public List<GetTagsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -59,17 +48,13 @@ public final class GetTagsResult {
     public static Builder builder(GetTagsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetTagsFilter> filters;
         private String id;
         private @Nullable List<GetTagsSort> sorts;
         private List<GetTagsTag> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTagsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -78,6 +63,7 @@ public final class GetTagsResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetTagsFilter> filters) {
             this.filters = filters;
             return this;
@@ -85,10 +71,12 @@ public final class GetTagsResult {
         public Builder filters(GetTagsFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder sorts(@Nullable List<GetTagsSort> sorts) {
             this.sorts = sorts;
             return this;
@@ -96,14 +84,21 @@ public final class GetTagsResult {
         public Builder sorts(GetTagsSort... sorts) {
             return sorts(List.of(sorts));
         }
+        @CustomType.Setter
         public Builder tags(List<GetTagsTag> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(GetTagsTag... tags) {
             return tags(List.of(tags));
-        }        public GetTagsResult build() {
-            return new GetTagsResult(filters, id, sorts, tags);
+        }
+        public GetTagsResult build() {
+            final var o = new GetTagsResult();
+            o.filters = filters;
+            o.id = id;
+            o.sorts = sorts;
+            o.tags = tags;
+            return o;
         }
     }
 }

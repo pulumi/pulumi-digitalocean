@@ -15,22 +15,15 @@ public final class GetRecordsSort {
      * @return The sort direction. This may be either `asc` or `desc`.
      * 
      */
-    private final @Nullable String direction;
+    private @Nullable String direction;
     /**
      * @return Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
      * `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
      * 
      */
-    private final String key;
+    private String key;
 
-    @CustomType.Constructor
-    private GetRecordsSort(
-        @CustomType.Parameter("direction") @Nullable String direction,
-        @CustomType.Parameter("key") String key) {
-        this.direction = direction;
-        this.key = key;
-    }
-
+    private GetRecordsSort() {}
     /**
      * @return The sort direction. This may be either `asc` or `desc`.
      * 
@@ -54,30 +47,32 @@ public final class GetRecordsSort {
     public static Builder builder(GetRecordsSort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
         private String key;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRecordsSort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
         public Builder direction(@Nullable String direction) {
             this.direction = direction;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
-        }        public GetRecordsSort build() {
-            return new GetRecordsSort(direction, key);
+        }
+        public GetRecordsSort build() {
+            final var o = new GetRecordsSort();
+            o.direction = direction;
+            o.key = key;
+            return o;
         }
     }
 }

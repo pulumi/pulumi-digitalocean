@@ -17,42 +17,29 @@ public final class GetAppSpecFunctionAlert {
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
      */
-    private final @Nullable Boolean disabled;
+    private @Nullable Boolean disabled;
     /**
      * @return The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
      * 
      */
-    private final String operator;
+    private String operator;
     /**
      * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      * 
      */
-    private final String rule;
+    private String rule;
     /**
      * @return The threshold for the type of the warning.
      * 
      */
-    private final Double value;
+    private Double value;
     /**
      * @return The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      * 
      */
-    private final String window;
+    private String window;
 
-    @CustomType.Constructor
-    private GetAppSpecFunctionAlert(
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("operator") String operator,
-        @CustomType.Parameter("rule") String rule,
-        @CustomType.Parameter("value") Double value,
-        @CustomType.Parameter("window") String window) {
-        this.disabled = disabled;
-        this.operator = operator;
-        this.rule = rule;
-        this.value = value;
-        this.window = window;
-    }
-
+    private GetAppSpecFunctionAlert() {}
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -96,18 +83,14 @@ public final class GetAppSpecFunctionAlert {
     public static Builder builder(GetAppSpecFunctionAlert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disabled;
         private String operator;
         private String rule;
         private Double value;
         private String window;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecFunctionAlert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
@@ -117,27 +100,39 @@ public final class GetAppSpecFunctionAlert {
     	      this.window = defaults.window;
         }
 
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
+        @CustomType.Setter
         public Builder rule(String rule) {
             this.rule = Objects.requireNonNull(rule);
             return this;
         }
+        @CustomType.Setter
         public Builder value(Double value) {
             this.value = Objects.requireNonNull(value);
             return this;
         }
+        @CustomType.Setter
         public Builder window(String window) {
             this.window = Objects.requireNonNull(window);
             return this;
-        }        public GetAppSpecFunctionAlert build() {
-            return new GetAppSpecFunctionAlert(disabled, operator, rule, value, window);
+        }
+        public GetAppSpecFunctionAlert build() {
+            final var o = new GetAppSpecFunctionAlert();
+            o.disabled = disabled;
+            o.operator = operator;
+            o.rule = rule;
+            o.value = value;
+            o.window = window;
+            return o;
         }
     }
 }

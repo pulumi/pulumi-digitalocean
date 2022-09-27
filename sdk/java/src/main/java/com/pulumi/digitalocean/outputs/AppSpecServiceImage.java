@@ -4,7 +4,9 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.AppSpecServiceImageDeployOnPush;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,38 +14,39 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecServiceImage {
     /**
+     * @return Whether to automatically deploy new commits made to the repo.
+     * 
+     */
+    private @Nullable List<AppSpecServiceImageDeployOnPush> deployOnPushes;
+    /**
      * @return The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      * 
      */
-    private final @Nullable String registry;
+    private @Nullable String registry;
     /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      * 
      */
-    private final String registryType;
+    private String registryType;
     /**
      * @return The repository name.
      * 
      */
-    private final String repository;
+    private String repository;
     /**
      * @return The repository tag. Defaults to `latest` if not provided.
      * 
      */
-    private final @Nullable String tag;
+    private @Nullable String tag;
 
-    @CustomType.Constructor
-    private AppSpecServiceImage(
-        @CustomType.Parameter("registry") @Nullable String registry,
-        @CustomType.Parameter("registryType") String registryType,
-        @CustomType.Parameter("repository") String repository,
-        @CustomType.Parameter("tag") @Nullable String tag) {
-        this.registry = registry;
-        this.registryType = registryType;
-        this.repository = repository;
-        this.tag = tag;
+    private AppSpecServiceImage() {}
+    /**
+     * @return Whether to automatically deploy new commits made to the repo.
+     * 
+     */
+    public List<AppSpecServiceImageDeployOnPush> deployOnPushes() {
+        return this.deployOnPushes == null ? List.of() : this.deployOnPushes;
     }
-
     /**
      * @return The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      * 
@@ -80,42 +83,59 @@ public final class AppSpecServiceImage {
     public static Builder builder(AppSpecServiceImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AppSpecServiceImageDeployOnPush> deployOnPushes;
         private @Nullable String registry;
         private String registryType;
         private String repository;
         private @Nullable String tag;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecServiceImage defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deployOnPushes = defaults.deployOnPushes;
     	      this.registry = defaults.registry;
     	      this.registryType = defaults.registryType;
     	      this.repository = defaults.repository;
     	      this.tag = defaults.tag;
         }
 
+        @CustomType.Setter
+        public Builder deployOnPushes(@Nullable List<AppSpecServiceImageDeployOnPush> deployOnPushes) {
+            this.deployOnPushes = deployOnPushes;
+            return this;
+        }
+        public Builder deployOnPushes(AppSpecServiceImageDeployOnPush... deployOnPushes) {
+            return deployOnPushes(List.of(deployOnPushes));
+        }
+        @CustomType.Setter
         public Builder registry(@Nullable String registry) {
             this.registry = registry;
             return this;
         }
+        @CustomType.Setter
         public Builder registryType(String registryType) {
             this.registryType = Objects.requireNonNull(registryType);
             return this;
         }
+        @CustomType.Setter
         public Builder repository(String repository) {
             this.repository = Objects.requireNonNull(repository);
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
-        }        public AppSpecServiceImage build() {
-            return new AppSpecServiceImage(registry, registryType, repository, tag);
+        }
+        public AppSpecServiceImage build() {
+            final var o = new AppSpecServiceImage();
+            o.deployOnPushes = deployOnPushes;
+            o.registry = registry;
+            o.registryType = registryType;
+            o.repository = repository;
+            o.tag = tag;
+            return o;
         }
     }
 }

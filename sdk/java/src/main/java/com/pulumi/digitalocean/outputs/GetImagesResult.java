@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetImagesResult {
-    private final @Nullable List<GetImagesFilter> filters;
+    private @Nullable List<GetImagesFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
      * - `slug`: Unique text identifier of the image.
@@ -28,21 +28,10 @@ public final class GetImagesResult {
      * - `type`: Type of the image.
      * 
      */
-    private final List<GetImagesImage> images;
-    private final @Nullable List<GetImagesSort> sorts;
+    private List<GetImagesImage> images;
+    private @Nullable List<GetImagesSort> sorts;
 
-    @CustomType.Constructor
-    private GetImagesResult(
-        @CustomType.Parameter("filters") @Nullable List<GetImagesFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("images") List<GetImagesImage> images,
-        @CustomType.Parameter("sorts") @Nullable List<GetImagesSort> sorts) {
-        this.filters = filters;
-        this.id = id;
-        this.images = images;
-        this.sorts = sorts;
-    }
-
+    private GetImagesResult() {}
     public List<GetImagesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -75,17 +64,13 @@ public final class GetImagesResult {
     public static Builder builder(GetImagesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetImagesFilter> filters;
         private String id;
         private List<GetImagesImage> images;
         private @Nullable List<GetImagesSort> sorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImagesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -94,6 +79,7 @@ public final class GetImagesResult {
     	      this.sorts = defaults.sorts;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetImagesFilter> filters) {
             this.filters = filters;
             return this;
@@ -101,10 +87,12 @@ public final class GetImagesResult {
         public Builder filters(GetImagesFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder images(List<GetImagesImage> images) {
             this.images = Objects.requireNonNull(images);
             return this;
@@ -112,14 +100,21 @@ public final class GetImagesResult {
         public Builder images(GetImagesImage... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder sorts(@Nullable List<GetImagesSort> sorts) {
             this.sorts = sorts;
             return this;
         }
         public Builder sorts(GetImagesSort... sorts) {
             return sorts(List.of(sorts));
-        }        public GetImagesResult build() {
-            return new GetImagesResult(filters, id, images, sorts);
+        }
+        public GetImagesResult build() {
+            final var o = new GetImagesResult();
+            o.filters = filters;
+            o.id = id;
+            o.images = images;
+            o.sorts = sorts;
+            return o;
         }
     }
 }

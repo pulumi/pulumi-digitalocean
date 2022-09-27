@@ -14,63 +14,44 @@ public final class GetContainerRegistryResult {
      * @return The date and time when the registry was created
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the container registry
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The slug identifier for the  region
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The domain of the container registry. Ex: `registry.digitalocean.com`
      * 
      */
-    private final String serverUrl;
+    private String serverUrl;
     /**
      * @return The amount of storage used in the registry in bytes.
      * 
      */
-    private final Integer storageUsageBytes;
+    private Integer storageUsageBytes;
     /**
      * @return The slug identifier for the subscription tier
      * 
      */
-    private final String subscriptionTierSlug;
+    private String subscriptionTierSlug;
 
-    @CustomType.Constructor
-    private GetContainerRegistryResult(
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("serverUrl") String serverUrl,
-        @CustomType.Parameter("storageUsageBytes") Integer storageUsageBytes,
-        @CustomType.Parameter("subscriptionTierSlug") String subscriptionTierSlug) {
-        this.createdAt = createdAt;
-        this.endpoint = endpoint;
-        this.id = id;
-        this.name = name;
-        this.region = region;
-        this.serverUrl = serverUrl;
-        this.storageUsageBytes = storageUsageBytes;
-        this.subscriptionTierSlug = subscriptionTierSlug;
-    }
-
+    private GetContainerRegistryResult() {}
     /**
      * @return The date and time when the registry was created
      * 
@@ -135,7 +116,7 @@ public final class GetContainerRegistryResult {
     public static Builder builder(GetContainerRegistryResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createdAt;
         private String endpoint;
@@ -145,11 +126,7 @@ public final class GetContainerRegistryResult {
         private String serverUrl;
         private Integer storageUsageBytes;
         private String subscriptionTierSlug;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerRegistryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -162,39 +139,57 @@ public final class GetContainerRegistryResult {
     	      this.subscriptionTierSlug = defaults.subscriptionTierSlug;
         }
 
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder serverUrl(String serverUrl) {
             this.serverUrl = Objects.requireNonNull(serverUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder storageUsageBytes(Integer storageUsageBytes) {
             this.storageUsageBytes = Objects.requireNonNull(storageUsageBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptionTierSlug(String subscriptionTierSlug) {
             this.subscriptionTierSlug = Objects.requireNonNull(subscriptionTierSlug);
             return this;
-        }        public GetContainerRegistryResult build() {
-            return new GetContainerRegistryResult(createdAt, endpoint, id, name, region, serverUrl, storageUsageBytes, subscriptionTierSlug);
+        }
+        public GetContainerRegistryResult build() {
+            final var o = new GetContainerRegistryResult();
+            o.createdAt = createdAt;
+            o.endpoint = endpoint;
+            o.id = id;
+            o.name = name;
+            o.region = region;
+            o.serverUrl = serverUrl;
+            o.storageUsageBytes = storageUsageBytes;
+            o.subscriptionTierSlug = subscriptionTierSlug;
+            return o;
         }
     }
 }

@@ -18,29 +18,20 @@ public final class SpacesBucketLifecycleRuleExpiration {
      * RFC3339 format, e.g. &#34;2020-03-22T15:03:55Z&#34; or parts thereof e.g. &#34;2019-02-28&#34;.
      * 
      */
-    private final @Nullable String date;
+    private @Nullable String date;
     /**
      * @return Specifies the number of days after object creation when the applicable objects will expire.
      * 
      */
-    private final @Nullable Integer days;
+    private @Nullable Integer days;
     /**
      * @return On a versioned bucket (versioning-enabled or versioning-suspended
      * bucket), setting this to true directs Spaces to delete expired object delete markers.
      * 
      */
-    private final @Nullable Boolean expiredObjectDeleteMarker;
+    private @Nullable Boolean expiredObjectDeleteMarker;
 
-    @CustomType.Constructor
-    private SpacesBucketLifecycleRuleExpiration(
-        @CustomType.Parameter("date") @Nullable String date,
-        @CustomType.Parameter("days") @Nullable Integer days,
-        @CustomType.Parameter("expiredObjectDeleteMarker") @Nullable Boolean expiredObjectDeleteMarker) {
-        this.date = date;
-        this.days = days;
-        this.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
-    }
-
+    private SpacesBucketLifecycleRuleExpiration() {}
     /**
      * @return Specifies the date/time after which you want applicable objects to expire. The argument uses
      * RFC3339 format, e.g. &#34;2020-03-22T15:03:55Z&#34; or parts thereof e.g. &#34;2019-02-28&#34;.
@@ -72,16 +63,12 @@ public final class SpacesBucketLifecycleRuleExpiration {
     public static Builder builder(SpacesBucketLifecycleRuleExpiration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String date;
         private @Nullable Integer days;
         private @Nullable Boolean expiredObjectDeleteMarker;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SpacesBucketLifecycleRuleExpiration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.date = defaults.date;
@@ -89,19 +76,27 @@ public final class SpacesBucketLifecycleRuleExpiration {
     	      this.expiredObjectDeleteMarker = defaults.expiredObjectDeleteMarker;
         }
 
+        @CustomType.Setter
         public Builder date(@Nullable String date) {
             this.date = date;
             return this;
         }
+        @CustomType.Setter
         public Builder days(@Nullable Integer days) {
             this.days = days;
             return this;
         }
+        @CustomType.Setter
         public Builder expiredObjectDeleteMarker(@Nullable Boolean expiredObjectDeleteMarker) {
             this.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
             return this;
-        }        public SpacesBucketLifecycleRuleExpiration build() {
-            return new SpacesBucketLifecycleRuleExpiration(date, days, expiredObjectDeleteMarker);
+        }
+        public SpacesBucketLifecycleRuleExpiration build() {
+            final var o = new SpacesBucketLifecycleRuleExpiration();
+            o.date = date;
+            o.days = days;
+            o.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
+            return o;
         }
     }
 }

@@ -19,26 +19,26 @@ public final class GetFirewallResult {
      * that represents when the Firewall was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The list of the IDs of the Droplets assigned to
      * the Firewall.
      * 
      */
-    private final List<Integer> dropletIds;
-    private final String firewallId;
+    private List<Integer> dropletIds;
+    private String firewallId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetFirewallInboundRule> inboundRules;
+    private String id;
+    private List<GetFirewallInboundRule> inboundRules;
     /**
      * @return The name of the Firewall.
      * 
      */
-    private final String name;
-    private final List<GetFirewallOutboundRule> outboundRules;
+    private String name;
+    private List<GetFirewallOutboundRule> outboundRules;
     /**
      * @return A set of object containing the fields, `droplet_id`,
      * `removing`, and `status`.  It is provided to detail exactly which Droplets
@@ -46,43 +46,20 @@ public final class GetFirewallResult {
      * have been successfully applied.
      * 
      */
-    private final List<GetFirewallPendingChange> pendingChanges;
+    private List<GetFirewallPendingChange> pendingChanges;
     /**
      * @return A status string indicating the current state of the Firewall.
      * This can be &#34;waiting&#34;, &#34;succeeded&#34;, or &#34;failed&#34;.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The names of the Tags assigned to the Firewall.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
 
-    @CustomType.Constructor
-    private GetFirewallResult(
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("dropletIds") List<Integer> dropletIds,
-        @CustomType.Parameter("firewallId") String firewallId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inboundRules") List<GetFirewallInboundRule> inboundRules,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("outboundRules") List<GetFirewallOutboundRule> outboundRules,
-        @CustomType.Parameter("pendingChanges") List<GetFirewallPendingChange> pendingChanges,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") List<String> tags) {
-        this.createdAt = createdAt;
-        this.dropletIds = dropletIds;
-        this.firewallId = firewallId;
-        this.id = id;
-        this.inboundRules = inboundRules;
-        this.name = name;
-        this.outboundRules = outboundRules;
-        this.pendingChanges = pendingChanges;
-        this.status = status;
-        this.tags = tags;
-    }
-
+    private GetFirewallResult() {}
     /**
      * @return A time value given in ISO8601 combined date and time format
      * that represents when the Firewall was created.
@@ -155,7 +132,7 @@ public final class GetFirewallResult {
     public static Builder builder(GetFirewallResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createdAt;
         private List<Integer> dropletIds;
@@ -167,11 +144,7 @@ public final class GetFirewallResult {
         private List<GetFirewallPendingChange> pendingChanges;
         private String status;
         private List<String> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -186,10 +159,12 @@ public final class GetFirewallResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder dropletIds(List<Integer> dropletIds) {
             this.dropletIds = Objects.requireNonNull(dropletIds);
             return this;
@@ -197,14 +172,17 @@ public final class GetFirewallResult {
         public Builder dropletIds(Integer... dropletIds) {
             return dropletIds(List.of(dropletIds));
         }
+        @CustomType.Setter
         public Builder firewallId(String firewallId) {
             this.firewallId = Objects.requireNonNull(firewallId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inboundRules(List<GetFirewallInboundRule> inboundRules) {
             this.inboundRules = Objects.requireNonNull(inboundRules);
             return this;
@@ -212,10 +190,12 @@ public final class GetFirewallResult {
         public Builder inboundRules(GetFirewallInboundRule... inboundRules) {
             return inboundRules(List.of(inboundRules));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder outboundRules(List<GetFirewallOutboundRule> outboundRules) {
             this.outboundRules = Objects.requireNonNull(outboundRules);
             return this;
@@ -223,6 +203,7 @@ public final class GetFirewallResult {
         public Builder outboundRules(GetFirewallOutboundRule... outboundRules) {
             return outboundRules(List.of(outboundRules));
         }
+        @CustomType.Setter
         public Builder pendingChanges(List<GetFirewallPendingChange> pendingChanges) {
             this.pendingChanges = Objects.requireNonNull(pendingChanges);
             return this;
@@ -230,18 +211,32 @@ public final class GetFirewallResult {
         public Builder pendingChanges(GetFirewallPendingChange... pendingChanges) {
             return pendingChanges(List.of(pendingChanges));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
-        }        public GetFirewallResult build() {
-            return new GetFirewallResult(createdAt, dropletIds, firewallId, id, inboundRules, name, outboundRules, pendingChanges, status, tags);
+        }
+        public GetFirewallResult build() {
+            final var o = new GetFirewallResult();
+            o.createdAt = createdAt;
+            o.dropletIds = dropletIds;
+            o.firewallId = firewallId;
+            o.id = id;
+            o.inboundRules = inboundRules;
+            o.name = name;
+            o.outboundRules = outboundRules;
+            o.pendingChanges = pendingChanges;
+            o.status = status;
+            o.tags = tags;
+            return o;
         }
     }
 }

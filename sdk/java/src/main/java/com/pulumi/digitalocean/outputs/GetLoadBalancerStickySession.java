@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancerStickySession {
-    private final String cookieName;
-    private final Integer cookieTtlSeconds;
-    private final String type;
+    private String cookieName;
+    private Integer cookieTtlSeconds;
+    private String type;
 
-    @CustomType.Constructor
-    private GetLoadBalancerStickySession(
-        @CustomType.Parameter("cookieName") String cookieName,
-        @CustomType.Parameter("cookieTtlSeconds") Integer cookieTtlSeconds,
-        @CustomType.Parameter("type") String type) {
-        this.cookieName = cookieName;
-        this.cookieTtlSeconds = cookieTtlSeconds;
-        this.type = type;
-    }
-
+    private GetLoadBalancerStickySession() {}
     public String cookieName() {
         return this.cookieName;
     }
@@ -41,16 +32,12 @@ public final class GetLoadBalancerStickySession {
     public static Builder builder(GetLoadBalancerStickySession defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cookieName;
         private Integer cookieTtlSeconds;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancerStickySession defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cookieName = defaults.cookieName;
@@ -58,19 +45,27 @@ public final class GetLoadBalancerStickySession {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder cookieName(String cookieName) {
             this.cookieName = Objects.requireNonNull(cookieName);
             return this;
         }
+        @CustomType.Setter
         public Builder cookieTtlSeconds(Integer cookieTtlSeconds) {
             this.cookieTtlSeconds = Objects.requireNonNull(cookieTtlSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetLoadBalancerStickySession build() {
-            return new GetLoadBalancerStickySession(cookieName, cookieTtlSeconds, type);
+        }
+        public GetLoadBalancerStickySession build() {
+            final var o = new GetLoadBalancerStickySession();
+            o.cookieName = cookieName;
+            o.cookieTtlSeconds = cookieTtlSeconds;
+            o.type = type;
+            return o;
         }
     }
 }

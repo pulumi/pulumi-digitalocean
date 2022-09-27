@@ -493,6 +493,10 @@ export interface AppSpecJobGitlab {
 
 export interface AppSpecJobImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes: outputs.AppSpecJobImageDeployOnPush[];
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
@@ -508,6 +512,13 @@ export interface AppSpecJobImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface AppSpecJobImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: boolean;
 }
 
 export interface AppSpecJobLogDestination {
@@ -788,6 +799,10 @@ export interface AppSpecServiceHealthCheck {
 
 export interface AppSpecServiceImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes: outputs.AppSpecServiceImageDeployOnPush[];
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
@@ -803,6 +818,13 @@ export interface AppSpecServiceImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface AppSpecServiceImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: boolean;
 }
 
 export interface AppSpecServiceLogDestination {
@@ -1181,6 +1203,10 @@ export interface AppSpecWorkerGitlab {
 
 export interface AppSpecWorkerImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes: outputs.AppSpecWorkerImageDeployOnPush[];
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
@@ -1196,6 +1222,13 @@ export interface AppSpecWorkerImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface AppSpecWorkerImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: boolean;
 }
 
 export interface AppSpecWorkerLogDestination {
@@ -1829,6 +1862,10 @@ export interface GetAppSpecJobGitlab {
 
 export interface GetAppSpecJobImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes: outputs.GetAppSpecJobImageDeployOnPush[];
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
@@ -1844,6 +1881,13 @@ export interface GetAppSpecJobImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface GetAppSpecJobImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: boolean;
 }
 
 export interface GetAppSpecJobLogDestination {
@@ -2124,6 +2168,10 @@ export interface GetAppSpecServiceHealthCheck {
 
 export interface GetAppSpecServiceImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes: outputs.GetAppSpecServiceImageDeployOnPush[];
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
@@ -2139,6 +2187,13 @@ export interface GetAppSpecServiceImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface GetAppSpecServiceImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: boolean;
 }
 
 export interface GetAppSpecServiceLogDestination {
@@ -2517,6 +2572,10 @@ export interface GetAppSpecWorkerGitlab {
 
 export interface GetAppSpecWorkerImage {
     /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPushes: outputs.GetAppSpecWorkerImageDeployOnPush[];
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
@@ -2532,6 +2591,13 @@ export interface GetAppSpecWorkerImage {
      * The repository tag. Defaults to `latest` if not provided.
      */
     tag?: string;
+}
+
+export interface GetAppSpecWorkerImageDeployOnPush {
+    /**
+     * Whether to automatically deploy images pushed to DOCR.
+     */
+    enabled?: boolean;
 }
 
 export interface GetAppSpecWorkerLogDestination {

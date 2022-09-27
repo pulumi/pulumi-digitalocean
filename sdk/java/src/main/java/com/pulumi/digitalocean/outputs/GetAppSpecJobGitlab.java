@@ -16,28 +16,19 @@ public final class GetAppSpecJobGitlab {
      * @return The name of the branch to use.
      * 
      */
-    private final @Nullable String branch;
+    private @Nullable String branch;
     /**
      * @return Whether to automatically deploy new commits made to the repo.
      * 
      */
-    private final @Nullable Boolean deployOnPush;
+    private @Nullable Boolean deployOnPush;
     /**
      * @return The name of the repo in the format `owner/repo`.
      * 
      */
-    private final @Nullable String repo;
+    private @Nullable String repo;
 
-    @CustomType.Constructor
-    private GetAppSpecJobGitlab(
-        @CustomType.Parameter("branch") @Nullable String branch,
-        @CustomType.Parameter("deployOnPush") @Nullable Boolean deployOnPush,
-        @CustomType.Parameter("repo") @Nullable String repo) {
-        this.branch = branch;
-        this.deployOnPush = deployOnPush;
-        this.repo = repo;
-    }
-
+    private GetAppSpecJobGitlab() {}
     /**
      * @return The name of the branch to use.
      * 
@@ -67,16 +58,12 @@ public final class GetAppSpecJobGitlab {
     public static Builder builder(GetAppSpecJobGitlab defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String branch;
         private @Nullable Boolean deployOnPush;
         private @Nullable String repo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecJobGitlab defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
@@ -84,19 +71,27 @@ public final class GetAppSpecJobGitlab {
     	      this.repo = defaults.repo;
         }
 
+        @CustomType.Setter
         public Builder branch(@Nullable String branch) {
             this.branch = branch;
             return this;
         }
+        @CustomType.Setter
         public Builder deployOnPush(@Nullable Boolean deployOnPush) {
             this.deployOnPush = deployOnPush;
             return this;
         }
+        @CustomType.Setter
         public Builder repo(@Nullable String repo) {
             this.repo = repo;
             return this;
-        }        public GetAppSpecJobGitlab build() {
-            return new GetAppSpecJobGitlab(branch, deployOnPush, repo);
+        }
+        public GetAppSpecJobGitlab build() {
+            final var o = new GetAppSpecJobGitlab();
+            o.branch = branch;
+            o.deployOnPush = deployOnPush;
+            o.repo = repo;
+            return o;
         }
     }
 }

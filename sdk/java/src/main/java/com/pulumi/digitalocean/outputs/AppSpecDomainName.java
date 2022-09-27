@@ -16,35 +16,24 @@ public final class AppSpecDomainName {
      * @return The name of the component.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The type of the environment variable, `GENERAL` or `SECRET`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
     /**
      * @return A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
      * 
      */
-    private final @Nullable Boolean wildcard;
+    private @Nullable Boolean wildcard;
     /**
      * @return If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private AppSpecDomainName(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("wildcard") @Nullable Boolean wildcard,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.name = name;
-        this.type = type;
-        this.wildcard = wildcard;
-        this.zone = zone;
-    }
-
+    private AppSpecDomainName() {}
     /**
      * @return The name of the component.
      * 
@@ -81,17 +70,13 @@ public final class AppSpecDomainName {
     public static Builder builder(AppSpecDomainName defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private @Nullable String type;
         private @Nullable Boolean wildcard;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecDomainName defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -100,23 +85,33 @@ public final class AppSpecDomainName {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder wildcard(@Nullable Boolean wildcard) {
             this.wildcard = wildcard;
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public AppSpecDomainName build() {
-            return new AppSpecDomainName(name, type, wildcard, zone);
+        }
+        public AppSpecDomainName build() {
+            final var o = new AppSpecDomainName();
+            o.name = name;
+            o.type = type;
+            o.wildcard = wildcard;
+            o.zone = zone;
+            return o;
         }
     }
 }

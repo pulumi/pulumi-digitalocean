@@ -13,24 +13,24 @@ import java.util.Objects;
 
 @CustomType
 public final class GetImagesImage {
-    private final String created;
-    private final String description;
+    private String created;
+    private String description;
     /**
      * @return The name of the distribution of the OS of the image.
      * - `min_disk_size`: The minimum &#39;disk&#39; required for the image.
      * - `size_gigabytes`: The size of the image in GB.
      * 
      */
-    private final String distribution;
-    private final String errorMessage;
-    private final Integer id;
+    private String distribution;
+    private String errorMessage;
+    private Integer id;
     /**
      * @return The id of the image (legacy parameter).
      * 
      */
-    private final String image;
-    private final Integer minDiskSize;
-    private final String name;
+    private String image;
+    private Integer minDiskSize;
+    private String name;
     /**
      * @return Is image a public image or not. Public images represent
      * Linux distributions or One-Click Applications, while non-public images represent
@@ -42,48 +42,15 @@ public final class GetImagesImage {
      * - `error_message`: Any applicable error message pertaining to the image
      * 
      */
-    private final Boolean private_;
-    private final List<String> regions;
-    private final Double sizeGigabytes;
-    private final String slug;
-    private final String status;
-    private final List<String> tags;
-    private final String type;
+    private Boolean private_;
+    private List<String> regions;
+    private Double sizeGigabytes;
+    private String slug;
+    private String status;
+    private List<String> tags;
+    private String type;
 
-    @CustomType.Constructor
-    private GetImagesImage(
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("distribution") String distribution,
-        @CustomType.Parameter("errorMessage") String errorMessage,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("minDiskSize") Integer minDiskSize,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("private") Boolean private_,
-        @CustomType.Parameter("regions") List<String> regions,
-        @CustomType.Parameter("sizeGigabytes") Double sizeGigabytes,
-        @CustomType.Parameter("slug") String slug,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("type") String type) {
-        this.created = created;
-        this.description = description;
-        this.distribution = distribution;
-        this.errorMessage = errorMessage;
-        this.id = id;
-        this.image = image;
-        this.minDiskSize = minDiskSize;
-        this.name = name;
-        this.private_ = private_;
-        this.regions = regions;
-        this.sizeGigabytes = sizeGigabytes;
-        this.slug = slug;
-        this.status = status;
-        this.tags = tags;
-        this.type = type;
-    }
-
+    private GetImagesImage() {}
     public String created() {
         return this.created;
     }
@@ -158,7 +125,7 @@ public final class GetImagesImage {
     public static Builder builder(GetImagesImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String created;
         private String description;
@@ -175,11 +142,7 @@ public final class GetImagesImage {
         private String status;
         private List<String> tags;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImagesImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -199,42 +162,52 @@ public final class GetImagesImage {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder distribution(String distribution) {
             this.distribution = Objects.requireNonNull(distribution);
             return this;
         }
+        @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
             this.errorMessage = Objects.requireNonNull(errorMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder minDiskSize(Integer minDiskSize) {
             this.minDiskSize = Objects.requireNonNull(minDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter("private")
         public Builder private_(Boolean private_) {
             this.private_ = Objects.requireNonNull(private_);
             return this;
         }
+        @CustomType.Setter
         public Builder regions(List<String> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
@@ -242,18 +215,22 @@ public final class GetImagesImage {
         public Builder regions(String... regions) {
             return regions(List.of(regions));
         }
+        @CustomType.Setter
         public Builder sizeGigabytes(Double sizeGigabytes) {
             this.sizeGigabytes = Objects.requireNonNull(sizeGigabytes);
             return this;
         }
+        @CustomType.Setter
         public Builder slug(String slug) {
             this.slug = Objects.requireNonNull(slug);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -261,11 +238,29 @@ public final class GetImagesImage {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetImagesImage build() {
-            return new GetImagesImage(created, description, distribution, errorMessage, id, image, minDiskSize, name, private_, regions, sizeGigabytes, slug, status, tags, type);
+        }
+        public GetImagesImage build() {
+            final var o = new GetImagesImage();
+            o.created = created;
+            o.description = description;
+            o.distribution = distribution;
+            o.errorMessage = errorMessage;
+            o.id = id;
+            o.image = image;
+            o.minDiskSize = minDiskSize;
+            o.name = name;
+            o.private_ = private_;
+            o.regions = regions;
+            o.sizeGigabytes = sizeGigabytes;
+            o.slug = slug;
+            o.status = status;
+            o.tags = tags;
+            o.type = type;
+            return o;
         }
     }
 }

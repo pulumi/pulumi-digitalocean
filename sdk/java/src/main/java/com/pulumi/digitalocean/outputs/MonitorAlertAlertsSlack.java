@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorAlertAlertsSlack {
-    private final String channel;
-    private final String url;
+    private String channel;
+    private String url;
 
-    @CustomType.Constructor
-    private MonitorAlertAlertsSlack(
-        @CustomType.Parameter("channel") String channel,
-        @CustomType.Parameter("url") String url) {
-        this.channel = channel;
-        this.url = url;
-    }
-
+    private MonitorAlertAlertsSlack() {}
     public String channel() {
         return this.channel;
     }
@@ -34,30 +27,32 @@ public final class MonitorAlertAlertsSlack {
     public static Builder builder(MonitorAlertAlertsSlack defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String channel;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorAlertAlertsSlack defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channel = defaults.channel;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder channel(String channel) {
             this.channel = Objects.requireNonNull(channel);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public MonitorAlertAlertsSlack build() {
-            return new MonitorAlertAlertsSlack(channel, url);
+        }
+        public MonitorAlertAlertsSlack build() {
+            final var o = new MonitorAlertAlertsSlack();
+            o.channel = channel;
+            o.url = url;
+            return o;
         }
     }
 }
