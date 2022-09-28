@@ -12,6 +12,18 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecJobImageArgs : global::Pulumi.ResourceArgs
     {
+        [Input("deployOnPushes")]
+        private InputList<Inputs.AppSpecJobImageDeployOnPushArgs>? _deployOnPushes;
+
+        /// <summary>
+        /// Whether to automatically deploy new commits made to the repo.
+        /// </summary>
+        public InputList<Inputs.AppSpecJobImageDeployOnPushArgs> DeployOnPushes
+        {
+            get => _deployOnPushes ?? (_deployOnPushes = new InputList<Inputs.AppSpecJobImageDeployOnPushArgs>());
+            set => _deployOnPushes = value;
+        }
+
         /// <summary>
         /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         /// </summary>

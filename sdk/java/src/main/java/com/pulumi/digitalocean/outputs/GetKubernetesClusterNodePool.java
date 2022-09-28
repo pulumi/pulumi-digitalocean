@@ -19,91 +19,64 @@ public final class GetKubernetesClusterNodePool {
      * @return The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
      * 
      */
-    private final Integer actualNodeCount;
+    private Integer actualNodeCount;
     /**
      * @return A boolean indicating whether auto-scaling is enabled on the node pool.
      * 
      */
-    private final Boolean autoScale;
+    private Boolean autoScale;
     /**
      * @return A unique ID that can be used to identify and reference the node.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
     /**
      * @return If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      * 
      */
-    private final Integer maxNodes;
+    private Integer maxNodes;
     /**
      * @return If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
      * 
      */
-    private final Integer minNodes;
+    private Integer minNodes;
     /**
      * @return The name of Kubernetes cluster.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The number of Droplet instances in the node pool.
      * 
      */
-    private final Integer nodeCount;
+    private Integer nodeCount;
     /**
      * @return A list of nodes in the pool. Each node exports the following attributes:
      * 
      */
-    private final List<GetKubernetesClusterNodePoolNode> nodes;
+    private List<GetKubernetesClusterNodePoolNode> nodes;
     /**
      * @return The slug identifier for the type of Droplet used as workers in the node pool.
      * 
      */
-    private final String size;
+    private String size;
     /**
      * @return A list of tag names applied to the node pool.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return A list of taints applied to all nodes in the pool. Each taint exports the following attributes:
      * 
      */
-    private final List<GetKubernetesClusterNodePoolTaint> taints;
+    private List<GetKubernetesClusterNodePoolTaint> taints;
 
-    @CustomType.Constructor
-    private GetKubernetesClusterNodePool(
-        @CustomType.Parameter("actualNodeCount") Integer actualNodeCount,
-        @CustomType.Parameter("autoScale") Boolean autoScale,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("maxNodes") Integer maxNodes,
-        @CustomType.Parameter("minNodes") Integer minNodes,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeCount") Integer nodeCount,
-        @CustomType.Parameter("nodes") List<GetKubernetesClusterNodePoolNode> nodes,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("taints") List<GetKubernetesClusterNodePoolTaint> taints) {
-        this.actualNodeCount = actualNodeCount;
-        this.autoScale = autoScale;
-        this.id = id;
-        this.labels = labels;
-        this.maxNodes = maxNodes;
-        this.minNodes = minNodes;
-        this.name = name;
-        this.nodeCount = nodeCount;
-        this.nodes = nodes;
-        this.size = size;
-        this.tags = tags;
-        this.taints = taints;
-    }
-
+    private GetKubernetesClusterNodePool() {}
     /**
      * @return The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
      * 
@@ -196,7 +169,7 @@ public final class GetKubernetesClusterNodePool {
     public static Builder builder(GetKubernetesClusterNodePool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer actualNodeCount;
         private Boolean autoScale;
@@ -210,11 +183,7 @@ public final class GetKubernetesClusterNodePool {
         private String size;
         private List<String> tags;
         private List<GetKubernetesClusterNodePoolTaint> taints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesClusterNodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actualNodeCount = defaults.actualNodeCount;
@@ -231,38 +200,47 @@ public final class GetKubernetesClusterNodePool {
     	      this.taints = defaults.taints;
         }
 
+        @CustomType.Setter
         public Builder actualNodeCount(Integer actualNodeCount) {
             this.actualNodeCount = Objects.requireNonNull(actualNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder autoScale(Boolean autoScale) {
             this.autoScale = Objects.requireNonNull(autoScale);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder maxNodes(Integer maxNodes) {
             this.maxNodes = Objects.requireNonNull(maxNodes);
             return this;
         }
+        @CustomType.Setter
         public Builder minNodes(Integer minNodes) {
             this.minNodes = Objects.requireNonNull(minNodes);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
             this.nodeCount = Objects.requireNonNull(nodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder nodes(List<GetKubernetesClusterNodePoolNode> nodes) {
             this.nodes = Objects.requireNonNull(nodes);
             return this;
@@ -270,10 +248,12 @@ public final class GetKubernetesClusterNodePool {
         public Builder nodes(GetKubernetesClusterNodePoolNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -281,14 +261,29 @@ public final class GetKubernetesClusterNodePool {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder taints(List<GetKubernetesClusterNodePoolTaint> taints) {
             this.taints = Objects.requireNonNull(taints);
             return this;
         }
         public Builder taints(GetKubernetesClusterNodePoolTaint... taints) {
             return taints(List.of(taints));
-        }        public GetKubernetesClusterNodePool build() {
-            return new GetKubernetesClusterNodePool(actualNodeCount, autoScale, id, labels, maxNodes, minNodes, name, nodeCount, nodes, size, tags, taints);
+        }
+        public GetKubernetesClusterNodePool build() {
+            final var o = new GetKubernetesClusterNodePool();
+            o.actualNodeCount = actualNodeCount;
+            o.autoScale = autoScale;
+            o.id = id;
+            o.labels = labels;
+            o.maxNodes = maxNodes;
+            o.minNodes = minNodes;
+            o.name = name;
+            o.nodeCount = nodeCount;
+            o.nodes = nodes;
+            o.size = size;
+            o.tags = tags;
+            o.taints = taints;
+            return o;
         }
     }
 }

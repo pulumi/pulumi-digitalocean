@@ -14,56 +14,39 @@ public final class GetTagsTag {
      * @return A count of the database clusters that the tag is applied to.
      * 
      */
-    private final Integer databasesCount;
+    private Integer databasesCount;
     /**
      * @return A count of the Droplets the tag is applied to.
      * 
      */
-    private final Integer dropletsCount;
+    private Integer dropletsCount;
     /**
      * @return A count of the images that the tag is applied to.
      * 
      */
-    private final Integer imagesCount;
+    private Integer imagesCount;
     /**
      * @return The name of the tag.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return A count of the total number of resources that the tag is applied to.
      * 
      */
-    private final Integer totalResourceCount;
+    private Integer totalResourceCount;
     /**
      * @return A count of the volume snapshots that the tag is applied to.
      * 
      */
-    private final Integer volumeSnapshotsCount;
+    private Integer volumeSnapshotsCount;
     /**
      * @return A count of the volumes that the tag is applied to.
      * 
      */
-    private final Integer volumesCount;
+    private Integer volumesCount;
 
-    @CustomType.Constructor
-    private GetTagsTag(
-        @CustomType.Parameter("databasesCount") Integer databasesCount,
-        @CustomType.Parameter("dropletsCount") Integer dropletsCount,
-        @CustomType.Parameter("imagesCount") Integer imagesCount,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("totalResourceCount") Integer totalResourceCount,
-        @CustomType.Parameter("volumeSnapshotsCount") Integer volumeSnapshotsCount,
-        @CustomType.Parameter("volumesCount") Integer volumesCount) {
-        this.databasesCount = databasesCount;
-        this.dropletsCount = dropletsCount;
-        this.imagesCount = imagesCount;
-        this.name = name;
-        this.totalResourceCount = totalResourceCount;
-        this.volumeSnapshotsCount = volumeSnapshotsCount;
-        this.volumesCount = volumesCount;
-    }
-
+    private GetTagsTag() {}
     /**
      * @return A count of the database clusters that the tag is applied to.
      * 
@@ -121,7 +104,7 @@ public final class GetTagsTag {
     public static Builder builder(GetTagsTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer databasesCount;
         private Integer dropletsCount;
@@ -130,11 +113,7 @@ public final class GetTagsTag {
         private Integer totalResourceCount;
         private Integer volumeSnapshotsCount;
         private Integer volumesCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTagsTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databasesCount = defaults.databasesCount;
@@ -146,35 +125,51 @@ public final class GetTagsTag {
     	      this.volumesCount = defaults.volumesCount;
         }
 
+        @CustomType.Setter
         public Builder databasesCount(Integer databasesCount) {
             this.databasesCount = Objects.requireNonNull(databasesCount);
             return this;
         }
+        @CustomType.Setter
         public Builder dropletsCount(Integer dropletsCount) {
             this.dropletsCount = Objects.requireNonNull(dropletsCount);
             return this;
         }
+        @CustomType.Setter
         public Builder imagesCount(Integer imagesCount) {
             this.imagesCount = Objects.requireNonNull(imagesCount);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder totalResourceCount(Integer totalResourceCount) {
             this.totalResourceCount = Objects.requireNonNull(totalResourceCount);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeSnapshotsCount(Integer volumeSnapshotsCount) {
             this.volumeSnapshotsCount = Objects.requireNonNull(volumeSnapshotsCount);
             return this;
         }
+        @CustomType.Setter
         public Builder volumesCount(Integer volumesCount) {
             this.volumesCount = Objects.requireNonNull(volumesCount);
             return this;
-        }        public GetTagsTag build() {
-            return new GetTagsTag(databasesCount, dropletsCount, imagesCount, name, totalResourceCount, volumeSnapshotsCount, volumesCount);
+        }
+        public GetTagsTag build() {
+            final var o = new GetTagsTag();
+            o.databasesCount = databasesCount;
+            o.dropletsCount = dropletsCount;
+            o.imagesCount = imagesCount;
+            o.name = name;
+            o.totalResourceCount = totalResourceCount;
+            o.volumeSnapshotsCount = volumeSnapshotsCount;
+            o.volumesCount = volumesCount;
+            return o;
         }
     }
 }

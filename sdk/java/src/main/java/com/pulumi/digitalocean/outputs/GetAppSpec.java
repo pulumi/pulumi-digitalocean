@@ -24,58 +24,33 @@ public final class GetAppSpec {
      * @return Describes an alert policy for the component.
      * 
      */
-    private final @Nullable List<GetAppSpecAlert> alerts;
-    private final @Nullable List<GetAppSpecDatabase> databases;
+    private @Nullable List<GetAppSpecAlert> alerts;
+    private @Nullable List<GetAppSpecDatabase> databases;
     /**
      * @deprecated
      * This attribute has been replaced by `domain` which supports additional functionality.
      * 
      */
     @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
-    private final List<String> domains;
+    private List<String> domains;
     /**
      * @return Describes an environment variable made available to an app competent.
      * 
      */
-    private final @Nullable List<GetAppSpecEnv> envs;
-    private final @Nullable List<GetAppSpecFunction> functions;
-    private final @Nullable List<GetAppSpecJob> jobs;
+    private @Nullable List<GetAppSpecEnv> envs;
+    private @Nullable List<GetAppSpecFunction> functions;
+    private @Nullable List<GetAppSpecJob> jobs;
     /**
      * @return The name of the component.
      * 
      */
-    private final String name;
-    private final @Nullable String region;
-    private final @Nullable List<GetAppSpecService> services;
-    private final @Nullable List<GetAppSpecStaticSite> staticSites;
-    private final @Nullable List<GetAppSpecWorker> workers;
+    private String name;
+    private @Nullable String region;
+    private @Nullable List<GetAppSpecService> services;
+    private @Nullable List<GetAppSpecStaticSite> staticSites;
+    private @Nullable List<GetAppSpecWorker> workers;
 
-    @CustomType.Constructor
-    private GetAppSpec(
-        @CustomType.Parameter("alerts") @Nullable List<GetAppSpecAlert> alerts,
-        @CustomType.Parameter("databases") @Nullable List<GetAppSpecDatabase> databases,
-        @CustomType.Parameter("domains") List<String> domains,
-        @CustomType.Parameter("envs") @Nullable List<GetAppSpecEnv> envs,
-        @CustomType.Parameter("functions") @Nullable List<GetAppSpecFunction> functions,
-        @CustomType.Parameter("jobs") @Nullable List<GetAppSpecJob> jobs,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("services") @Nullable List<GetAppSpecService> services,
-        @CustomType.Parameter("staticSites") @Nullable List<GetAppSpecStaticSite> staticSites,
-        @CustomType.Parameter("workers") @Nullable List<GetAppSpecWorker> workers) {
-        this.alerts = alerts;
-        this.databases = databases;
-        this.domains = domains;
-        this.envs = envs;
-        this.functions = functions;
-        this.jobs = jobs;
-        this.name = name;
-        this.region = region;
-        this.services = services;
-        this.staticSites = staticSites;
-        this.workers = workers;
-    }
-
+    private GetAppSpec() {}
     /**
      * @return Describes an alert policy for the component.
      * 
@@ -135,7 +110,7 @@ public final class GetAppSpec {
     public static Builder builder(GetAppSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetAppSpecAlert> alerts;
         private @Nullable List<GetAppSpecDatabase> databases;
@@ -148,11 +123,7 @@ public final class GetAppSpec {
         private @Nullable List<GetAppSpecService> services;
         private @Nullable List<GetAppSpecStaticSite> staticSites;
         private @Nullable List<GetAppSpecWorker> workers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
@@ -168,6 +139,7 @@ public final class GetAppSpec {
     	      this.workers = defaults.workers;
         }
 
+        @CustomType.Setter
         public Builder alerts(@Nullable List<GetAppSpecAlert> alerts) {
             this.alerts = alerts;
             return this;
@@ -175,6 +147,7 @@ public final class GetAppSpec {
         public Builder alerts(GetAppSpecAlert... alerts) {
             return alerts(List.of(alerts));
         }
+        @CustomType.Setter
         public Builder databases(@Nullable List<GetAppSpecDatabase> databases) {
             this.databases = databases;
             return this;
@@ -182,6 +155,7 @@ public final class GetAppSpec {
         public Builder databases(GetAppSpecDatabase... databases) {
             return databases(List.of(databases));
         }
+        @CustomType.Setter
         public Builder domains(List<String> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -189,6 +163,7 @@ public final class GetAppSpec {
         public Builder domains(String... domains) {
             return domains(List.of(domains));
         }
+        @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecEnv> envs) {
             this.envs = envs;
             return this;
@@ -196,6 +171,7 @@ public final class GetAppSpec {
         public Builder envs(GetAppSpecEnv... envs) {
             return envs(List.of(envs));
         }
+        @CustomType.Setter
         public Builder functions(@Nullable List<GetAppSpecFunction> functions) {
             this.functions = functions;
             return this;
@@ -203,6 +179,7 @@ public final class GetAppSpec {
         public Builder functions(GetAppSpecFunction... functions) {
             return functions(List.of(functions));
         }
+        @CustomType.Setter
         public Builder jobs(@Nullable List<GetAppSpecJob> jobs) {
             this.jobs = jobs;
             return this;
@@ -210,14 +187,17 @@ public final class GetAppSpec {
         public Builder jobs(GetAppSpecJob... jobs) {
             return jobs(List.of(jobs));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder services(@Nullable List<GetAppSpecService> services) {
             this.services = services;
             return this;
@@ -225,6 +205,7 @@ public final class GetAppSpec {
         public Builder services(GetAppSpecService... services) {
             return services(List.of(services));
         }
+        @CustomType.Setter
         public Builder staticSites(@Nullable List<GetAppSpecStaticSite> staticSites) {
             this.staticSites = staticSites;
             return this;
@@ -232,14 +213,28 @@ public final class GetAppSpec {
         public Builder staticSites(GetAppSpecStaticSite... staticSites) {
             return staticSites(List.of(staticSites));
         }
+        @CustomType.Setter
         public Builder workers(@Nullable List<GetAppSpecWorker> workers) {
             this.workers = workers;
             return this;
         }
         public Builder workers(GetAppSpecWorker... workers) {
             return workers(List.of(workers));
-        }        public GetAppSpec build() {
-            return new GetAppSpec(alerts, databases, domains, envs, functions, jobs, name, region, services, staticSites, workers);
+        }
+        public GetAppSpec build() {
+            final var o = new GetAppSpec();
+            o.alerts = alerts;
+            o.databases = databases;
+            o.domains = domains;
+            o.envs = envs;
+            o.functions = functions;
+            o.jobs = jobs;
+            o.name = name;
+            o.region = region;
+            o.services = services;
+            o.staticSites = staticSites;
+            o.workers = workers;
+            return o;
         }
     }
 }

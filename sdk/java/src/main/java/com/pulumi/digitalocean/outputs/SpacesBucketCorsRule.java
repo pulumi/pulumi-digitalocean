@@ -17,35 +17,24 @@ public final class SpacesBucketCorsRule {
      * @return A list of headers that will be included in the CORS preflight request&#39;s `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
      * 
      */
-    private final @Nullable List<String> allowedHeaders;
+    private @Nullable List<String> allowedHeaders;
     /**
      * @return A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
      * 
      */
-    private final List<String> allowedMethods;
+    private List<String> allowedMethods;
     /**
      * @return A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
      * 
      */
-    private final List<String> allowedOrigins;
+    private List<String> allowedOrigins;
     /**
      * @return The time in seconds that browser can cache the response for a preflight request.
      * 
      */
-    private final @Nullable Integer maxAgeSeconds;
+    private @Nullable Integer maxAgeSeconds;
 
-    @CustomType.Constructor
-    private SpacesBucketCorsRule(
-        @CustomType.Parameter("allowedHeaders") @Nullable List<String> allowedHeaders,
-        @CustomType.Parameter("allowedMethods") List<String> allowedMethods,
-        @CustomType.Parameter("allowedOrigins") List<String> allowedOrigins,
-        @CustomType.Parameter("maxAgeSeconds") @Nullable Integer maxAgeSeconds) {
-        this.allowedHeaders = allowedHeaders;
-        this.allowedMethods = allowedMethods;
-        this.allowedOrigins = allowedOrigins;
-        this.maxAgeSeconds = maxAgeSeconds;
-    }
-
+    private SpacesBucketCorsRule() {}
     /**
      * @return A list of headers that will be included in the CORS preflight request&#39;s `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
      * 
@@ -82,17 +71,13 @@ public final class SpacesBucketCorsRule {
     public static Builder builder(SpacesBucketCorsRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedHeaders;
         private List<String> allowedMethods;
         private List<String> allowedOrigins;
         private @Nullable Integer maxAgeSeconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SpacesBucketCorsRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedHeaders = defaults.allowedHeaders;
@@ -101,6 +86,7 @@ public final class SpacesBucketCorsRule {
     	      this.maxAgeSeconds = defaults.maxAgeSeconds;
         }
 
+        @CustomType.Setter
         public Builder allowedHeaders(@Nullable List<String> allowedHeaders) {
             this.allowedHeaders = allowedHeaders;
             return this;
@@ -108,6 +94,7 @@ public final class SpacesBucketCorsRule {
         public Builder allowedHeaders(String... allowedHeaders) {
             return allowedHeaders(List.of(allowedHeaders));
         }
+        @CustomType.Setter
         public Builder allowedMethods(List<String> allowedMethods) {
             this.allowedMethods = Objects.requireNonNull(allowedMethods);
             return this;
@@ -115,6 +102,7 @@ public final class SpacesBucketCorsRule {
         public Builder allowedMethods(String... allowedMethods) {
             return allowedMethods(List.of(allowedMethods));
         }
+        @CustomType.Setter
         public Builder allowedOrigins(List<String> allowedOrigins) {
             this.allowedOrigins = Objects.requireNonNull(allowedOrigins);
             return this;
@@ -122,11 +110,18 @@ public final class SpacesBucketCorsRule {
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
         }
+        @CustomType.Setter
         public Builder maxAgeSeconds(@Nullable Integer maxAgeSeconds) {
             this.maxAgeSeconds = maxAgeSeconds;
             return this;
-        }        public SpacesBucketCorsRule build() {
-            return new SpacesBucketCorsRule(allowedHeaders, allowedMethods, allowedOrigins, maxAgeSeconds);
+        }
+        public SpacesBucketCorsRule build() {
+            final var o = new SpacesBucketCorsRule();
+            o.allowedHeaders = allowedHeaders;
+            o.allowedMethods = allowedMethods;
+            o.allowedOrigins = allowedOrigins;
+            o.maxAgeSeconds = maxAgeSeconds;
+            return o;
         }
     }
 }

@@ -16,49 +16,34 @@ public final class AppSpecServiceHealthCheck {
      * @return The number of failed health checks before considered unhealthy.
      * 
      */
-    private final @Nullable Integer failureThreshold;
+    private @Nullable Integer failureThreshold;
     /**
      * @return The route path used for the HTTP health check ping.
      * 
      */
-    private final @Nullable String httpPath;
+    private @Nullable String httpPath;
     /**
      * @return The number of seconds to wait before beginning health checks.
      * 
      */
-    private final @Nullable Integer initialDelaySeconds;
+    private @Nullable Integer initialDelaySeconds;
     /**
      * @return The number of seconds to wait between health checks.
      * 
      */
-    private final @Nullable Integer periodSeconds;
+    private @Nullable Integer periodSeconds;
     /**
      * @return The number of successful health checks before considered healthy.
      * 
      */
-    private final @Nullable Integer successThreshold;
+    private @Nullable Integer successThreshold;
     /**
      * @return The number of seconds after which the check times out.
      * 
      */
-    private final @Nullable Integer timeoutSeconds;
+    private @Nullable Integer timeoutSeconds;
 
-    @CustomType.Constructor
-    private AppSpecServiceHealthCheck(
-        @CustomType.Parameter("failureThreshold") @Nullable Integer failureThreshold,
-        @CustomType.Parameter("httpPath") @Nullable String httpPath,
-        @CustomType.Parameter("initialDelaySeconds") @Nullable Integer initialDelaySeconds,
-        @CustomType.Parameter("periodSeconds") @Nullable Integer periodSeconds,
-        @CustomType.Parameter("successThreshold") @Nullable Integer successThreshold,
-        @CustomType.Parameter("timeoutSeconds") @Nullable Integer timeoutSeconds) {
-        this.failureThreshold = failureThreshold;
-        this.httpPath = httpPath;
-        this.initialDelaySeconds = initialDelaySeconds;
-        this.periodSeconds = periodSeconds;
-        this.successThreshold = successThreshold;
-        this.timeoutSeconds = timeoutSeconds;
-    }
-
+    private AppSpecServiceHealthCheck() {}
     /**
      * @return The number of failed health checks before considered unhealthy.
      * 
@@ -109,7 +94,7 @@ public final class AppSpecServiceHealthCheck {
     public static Builder builder(AppSpecServiceHealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer failureThreshold;
         private @Nullable String httpPath;
@@ -117,11 +102,7 @@ public final class AppSpecServiceHealthCheck {
         private @Nullable Integer periodSeconds;
         private @Nullable Integer successThreshold;
         private @Nullable Integer timeoutSeconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecServiceHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.failureThreshold = defaults.failureThreshold;
@@ -132,31 +113,45 @@ public final class AppSpecServiceHealthCheck {
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
 
+        @CustomType.Setter
         public Builder failureThreshold(@Nullable Integer failureThreshold) {
             this.failureThreshold = failureThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder httpPath(@Nullable String httpPath) {
             this.httpPath = httpPath;
             return this;
         }
+        @CustomType.Setter
         public Builder initialDelaySeconds(@Nullable Integer initialDelaySeconds) {
             this.initialDelaySeconds = initialDelaySeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder periodSeconds(@Nullable Integer periodSeconds) {
             this.periodSeconds = periodSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder successThreshold(@Nullable Integer successThreshold) {
             this.successThreshold = successThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
             this.timeoutSeconds = timeoutSeconds;
             return this;
-        }        public AppSpecServiceHealthCheck build() {
-            return new AppSpecServiceHealthCheck(failureThreshold, httpPath, initialDelaySeconds, periodSeconds, successThreshold, timeoutSeconds);
+        }
+        public AppSpecServiceHealthCheck build() {
+            final var o = new AppSpecServiceHealthCheck();
+            o.failureThreshold = failureThreshold;
+            o.httpPath = httpPath;
+            o.initialDelaySeconds = initialDelaySeconds;
+            o.periodSeconds = periodSeconds;
+            o.successThreshold = successThreshold;
+            o.timeoutSeconds = timeoutSeconds;
+            return o;
         }
     }
 }

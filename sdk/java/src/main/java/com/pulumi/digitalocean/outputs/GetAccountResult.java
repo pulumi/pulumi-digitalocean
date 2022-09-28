@@ -11,39 +11,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountResult {
-    private final Integer dropletLimit;
-    private final String email;
-    private final Boolean emailVerified;
-    private final Integer floatingIpLimit;
+    private Integer dropletLimit;
+    private String email;
+    private Boolean emailVerified;
+    private Integer floatingIpLimit;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String status;
-    private final String statusMessage;
-    private final String uuid;
+    private String id;
+    private String status;
+    private String statusMessage;
+    private String uuid;
 
-    @CustomType.Constructor
-    private GetAccountResult(
-        @CustomType.Parameter("dropletLimit") Integer dropletLimit,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("emailVerified") Boolean emailVerified,
-        @CustomType.Parameter("floatingIpLimit") Integer floatingIpLimit,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("statusMessage") String statusMessage,
-        @CustomType.Parameter("uuid") String uuid) {
-        this.dropletLimit = dropletLimit;
-        this.email = email;
-        this.emailVerified = emailVerified;
-        this.floatingIpLimit = floatingIpLimit;
-        this.id = id;
-        this.status = status;
-        this.statusMessage = statusMessage;
-        this.uuid = uuid;
-    }
-
+    private GetAccountResult() {}
     public Integer dropletLimit() {
         return this.dropletLimit;
     }
@@ -80,7 +61,7 @@ public final class GetAccountResult {
     public static Builder builder(GetAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer dropletLimit;
         private String email;
@@ -90,11 +71,7 @@ public final class GetAccountResult {
         private String status;
         private String statusMessage;
         private String uuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dropletLimit = defaults.dropletLimit;
@@ -107,39 +84,57 @@ public final class GetAccountResult {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
         public Builder dropletLimit(Integer dropletLimit) {
             this.dropletLimit = Objects.requireNonNull(dropletLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder emailVerified(Boolean emailVerified) {
             this.emailVerified = Objects.requireNonNull(emailVerified);
             return this;
         }
+        @CustomType.Setter
         public Builder floatingIpLimit(Integer floatingIpLimit) {
             this.floatingIpLimit = Objects.requireNonNull(floatingIpLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
             this.statusMessage = Objects.requireNonNull(statusMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
-        }        public GetAccountResult build() {
-            return new GetAccountResult(dropletLimit, email, emailVerified, floatingIpLimit, id, status, statusMessage, uuid);
+        }
+        public GetAccountResult build() {
+            final var o = new GetAccountResult();
+            o.dropletLimit = dropletLimit;
+            o.email = email;
+            o.emailVerified = emailVerified;
+            o.floatingIpLimit = floatingIpLimit;
+            o.id = id;
+            o.status = status;
+            o.statusMessage = statusMessage;
+            o.uuid = uuid;
+            return o;
         }
     }
 }

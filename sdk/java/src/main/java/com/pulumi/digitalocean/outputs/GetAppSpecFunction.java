@@ -24,73 +24,50 @@ public final class GetAppSpecFunction {
      * @return Describes an alert policy for the component.
      * 
      */
-    private final @Nullable List<GetAppSpecFunctionAlert> alerts;
+    private @Nullable List<GetAppSpecFunctionAlert> alerts;
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
-    private final @Nullable GetAppSpecFunctionCors cors;
+    private @Nullable GetAppSpecFunctionCors cors;
     /**
      * @return Describes an environment variable made available to an app competent.
      * 
      */
-    private final @Nullable List<GetAppSpecFunctionEnv> envs;
+    private @Nullable List<GetAppSpecFunctionEnv> envs;
     /**
      * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
      * 
      */
-    private final @Nullable GetAppSpecFunctionGit git;
+    private @Nullable GetAppSpecFunctionGit git;
     /**
      * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      * 
      */
-    private final @Nullable GetAppSpecFunctionGithub github;
+    private @Nullable GetAppSpecFunctionGithub github;
     /**
      * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      * 
      */
-    private final @Nullable GetAppSpecFunctionGitlab gitlab;
+    private @Nullable GetAppSpecFunctionGitlab gitlab;
     /**
      * @return Describes a log forwarding destination.
      * 
      */
-    private final @Nullable List<GetAppSpecFunctionLogDestination> logDestinations;
+    private @Nullable List<GetAppSpecFunctionLogDestination> logDestinations;
     /**
      * @return The name of the component.
      * 
      */
-    private final String name;
-    private final List<GetAppSpecFunctionRoute> routes;
+    private String name;
+    private List<GetAppSpecFunctionRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
      * 
      */
-    private final @Nullable String sourceDir;
+    private @Nullable String sourceDir;
 
-    @CustomType.Constructor
-    private GetAppSpecFunction(
-        @CustomType.Parameter("alerts") @Nullable List<GetAppSpecFunctionAlert> alerts,
-        @CustomType.Parameter("cors") @Nullable GetAppSpecFunctionCors cors,
-        @CustomType.Parameter("envs") @Nullable List<GetAppSpecFunctionEnv> envs,
-        @CustomType.Parameter("git") @Nullable GetAppSpecFunctionGit git,
-        @CustomType.Parameter("github") @Nullable GetAppSpecFunctionGithub github,
-        @CustomType.Parameter("gitlab") @Nullable GetAppSpecFunctionGitlab gitlab,
-        @CustomType.Parameter("logDestinations") @Nullable List<GetAppSpecFunctionLogDestination> logDestinations,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("routes") List<GetAppSpecFunctionRoute> routes,
-        @CustomType.Parameter("sourceDir") @Nullable String sourceDir) {
-        this.alerts = alerts;
-        this.cors = cors;
-        this.envs = envs;
-        this.git = git;
-        this.github = github;
-        this.gitlab = gitlab;
-        this.logDestinations = logDestinations;
-        this.name = name;
-        this.routes = routes;
-        this.sourceDir = sourceDir;
-    }
-
+    private GetAppSpecFunction() {}
     /**
      * @return Describes an alert policy for the component.
      * 
@@ -165,7 +142,7 @@ public final class GetAppSpecFunction {
     public static Builder builder(GetAppSpecFunction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetAppSpecFunctionAlert> alerts;
         private @Nullable GetAppSpecFunctionCors cors;
@@ -177,11 +154,7 @@ public final class GetAppSpecFunction {
         private String name;
         private List<GetAppSpecFunctionRoute> routes;
         private @Nullable String sourceDir;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
@@ -196,6 +169,7 @@ public final class GetAppSpecFunction {
     	      this.sourceDir = defaults.sourceDir;
         }
 
+        @CustomType.Setter
         public Builder alerts(@Nullable List<GetAppSpecFunctionAlert> alerts) {
             this.alerts = alerts;
             return this;
@@ -203,10 +177,12 @@ public final class GetAppSpecFunction {
         public Builder alerts(GetAppSpecFunctionAlert... alerts) {
             return alerts(List.of(alerts));
         }
+        @CustomType.Setter
         public Builder cors(@Nullable GetAppSpecFunctionCors cors) {
             this.cors = cors;
             return this;
         }
+        @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecFunctionEnv> envs) {
             this.envs = envs;
             return this;
@@ -214,18 +190,22 @@ public final class GetAppSpecFunction {
         public Builder envs(GetAppSpecFunctionEnv... envs) {
             return envs(List.of(envs));
         }
+        @CustomType.Setter
         public Builder git(@Nullable GetAppSpecFunctionGit git) {
             this.git = git;
             return this;
         }
+        @CustomType.Setter
         public Builder github(@Nullable GetAppSpecFunctionGithub github) {
             this.github = github;
             return this;
         }
+        @CustomType.Setter
         public Builder gitlab(@Nullable GetAppSpecFunctionGitlab gitlab) {
             this.gitlab = gitlab;
             return this;
         }
+        @CustomType.Setter
         public Builder logDestinations(@Nullable List<GetAppSpecFunctionLogDestination> logDestinations) {
             this.logDestinations = logDestinations;
             return this;
@@ -233,10 +213,12 @@ public final class GetAppSpecFunction {
         public Builder logDestinations(GetAppSpecFunctionLogDestination... logDestinations) {
             return logDestinations(List.of(logDestinations));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder routes(List<GetAppSpecFunctionRoute> routes) {
             this.routes = Objects.requireNonNull(routes);
             return this;
@@ -244,11 +226,24 @@ public final class GetAppSpecFunction {
         public Builder routes(GetAppSpecFunctionRoute... routes) {
             return routes(List.of(routes));
         }
+        @CustomType.Setter
         public Builder sourceDir(@Nullable String sourceDir) {
             this.sourceDir = sourceDir;
             return this;
-        }        public GetAppSpecFunction build() {
-            return new GetAppSpecFunction(alerts, cors, envs, git, github, gitlab, logDestinations, name, routes, sourceDir);
+        }
+        public GetAppSpecFunction build() {
+            final var o = new GetAppSpecFunction();
+            o.alerts = alerts;
+            o.cors = cors;
+            o.envs = envs;
+            o.git = git;
+            o.github = github;
+            o.gitlab = gitlab;
+            o.logDestinations = logDestinations;
+            o.name = name;
+            o.routes = routes;
+            o.sourceDir = sourceDir;
+            return o;
         }
     }
 }

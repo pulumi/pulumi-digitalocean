@@ -15,49 +15,34 @@ public final class GetRegionResult {
      * @return A boolean value that represents whether new Droplets can be created in this region.
      * 
      */
-    private final Boolean available;
+    private Boolean available;
     /**
      * @return A set of features available in this region.
      * 
      */
-    private final List<String> features;
+    private List<String> features;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The display name of the region.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return A set of identifying slugs for the Droplet sizes available in this region.
      * 
      */
-    private final List<String> sizes;
+    private List<String> sizes;
     /**
      * @return A human-readable string that is used as a unique identifier for each region.
      * 
      */
-    private final String slug;
+    private String slug;
 
-    @CustomType.Constructor
-    private GetRegionResult(
-        @CustomType.Parameter("available") Boolean available,
-        @CustomType.Parameter("features") List<String> features,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("sizes") List<String> sizes,
-        @CustomType.Parameter("slug") String slug) {
-        this.available = available;
-        this.features = features;
-        this.id = id;
-        this.name = name;
-        this.sizes = sizes;
-        this.slug = slug;
-    }
-
+    private GetRegionResult() {}
     /**
      * @return A boolean value that represents whether new Droplets can be created in this region.
      * 
@@ -108,7 +93,7 @@ public final class GetRegionResult {
     public static Builder builder(GetRegionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean available;
         private List<String> features;
@@ -116,11 +101,7 @@ public final class GetRegionResult {
         private String name;
         private List<String> sizes;
         private String slug;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.available = defaults.available;
@@ -131,10 +112,12 @@ public final class GetRegionResult {
     	      this.slug = defaults.slug;
         }
 
+        @CustomType.Setter
         public Builder available(Boolean available) {
             this.available = Objects.requireNonNull(available);
             return this;
         }
+        @CustomType.Setter
         public Builder features(List<String> features) {
             this.features = Objects.requireNonNull(features);
             return this;
@@ -142,14 +125,17 @@ public final class GetRegionResult {
         public Builder features(String... features) {
             return features(List.of(features));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder sizes(List<String> sizes) {
             this.sizes = Objects.requireNonNull(sizes);
             return this;
@@ -157,11 +143,20 @@ public final class GetRegionResult {
         public Builder sizes(String... sizes) {
             return sizes(List.of(sizes));
         }
+        @CustomType.Setter
         public Builder slug(String slug) {
             this.slug = Objects.requireNonNull(slug);
             return this;
-        }        public GetRegionResult build() {
-            return new GetRegionResult(available, features, id, name, sizes, slug);
+        }
+        public GetRegionResult build() {
+            final var o = new GetRegionResult();
+            o.available = available;
+            o.features = features;
+            o.id = id;
+            o.name = name;
+            o.sizes = sizes;
+            o.slug = slug;
+            return o;
         }
     }
 }

@@ -18,27 +18,16 @@ public final class GetDropletsResult {
      * @return A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:
      * 
      */
-    private final List<GetDropletsDroplet> droplets;
-    private final @Nullable List<GetDropletsFilter> filters;
+    private List<GetDropletsDroplet> droplets;
+    private @Nullable List<GetDropletsFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable List<GetDropletsSort> sorts;
+    private String id;
+    private @Nullable List<GetDropletsSort> sorts;
 
-    @CustomType.Constructor
-    private GetDropletsResult(
-        @CustomType.Parameter("droplets") List<GetDropletsDroplet> droplets,
-        @CustomType.Parameter("filters") @Nullable List<GetDropletsFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("sorts") @Nullable List<GetDropletsSort> sorts) {
-        this.droplets = droplets;
-        this.filters = filters;
-        this.id = id;
-        this.sorts = sorts;
-    }
-
+    private GetDropletsResult() {}
     /**
      * @return A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:
      * 
@@ -67,17 +56,13 @@ public final class GetDropletsResult {
     public static Builder builder(GetDropletsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDropletsDroplet> droplets;
         private @Nullable List<GetDropletsFilter> filters;
         private String id;
         private @Nullable List<GetDropletsSort> sorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDropletsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.droplets = defaults.droplets;
@@ -86,6 +71,7 @@ public final class GetDropletsResult {
     	      this.sorts = defaults.sorts;
         }
 
+        @CustomType.Setter
         public Builder droplets(List<GetDropletsDroplet> droplets) {
             this.droplets = Objects.requireNonNull(droplets);
             return this;
@@ -93,6 +79,7 @@ public final class GetDropletsResult {
         public Builder droplets(GetDropletsDroplet... droplets) {
             return droplets(List.of(droplets));
         }
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetDropletsFilter> filters) {
             this.filters = filters;
             return this;
@@ -100,18 +87,26 @@ public final class GetDropletsResult {
         public Builder filters(GetDropletsFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder sorts(@Nullable List<GetDropletsSort> sorts) {
             this.sorts = sorts;
             return this;
         }
         public Builder sorts(GetDropletsSort... sorts) {
             return sorts(List.of(sorts));
-        }        public GetDropletsResult build() {
-            return new GetDropletsResult(droplets, filters, id, sorts);
+        }
+        public GetDropletsResult build() {
+            final var o = new GetDropletsResult();
+            o.droplets = droplets;
+            o.filters = filters;
+            o.id = id;
+            o.sorts = sorts;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
      * @return Specifies the number of days after which an object&#39;s non-current versions expire.
      * 
      */
-    private final @Nullable Integer days;
+    private @Nullable Integer days;
 
-    @CustomType.Constructor
-    private SpacesBucketLifecycleRuleNoncurrentVersionExpiration(@CustomType.Parameter("days") @Nullable Integer days) {
-        this.days = days;
-    }
-
+    private SpacesBucketLifecycleRuleNoncurrentVersionExpiration() {}
     /**
      * @return Specifies the number of days after which an object&#39;s non-current versions expire.
      * 
@@ -37,24 +33,24 @@ public final class SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
     public static Builder builder(SpacesBucketLifecycleRuleNoncurrentVersionExpiration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer days;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SpacesBucketLifecycleRuleNoncurrentVersionExpiration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.days = defaults.days;
         }
 
+        @CustomType.Setter
         public Builder days(@Nullable Integer days) {
             this.days = days;
             return this;
-        }        public SpacesBucketLifecycleRuleNoncurrentVersionExpiration build() {
-            return new SpacesBucketLifecycleRuleNoncurrentVersionExpiration(days);
+        }
+        public SpacesBucketLifecycleRuleNoncurrentVersionExpiration build() {
+            final var o = new SpacesBucketLifecycleRuleNoncurrentVersionExpiration();
+            o.days = days;
+            return o;
         }
     }
 }

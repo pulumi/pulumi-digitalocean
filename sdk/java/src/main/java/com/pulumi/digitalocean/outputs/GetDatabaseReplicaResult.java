@@ -12,93 +12,62 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseReplicaResult {
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return Name of the replica&#39;s default database.
      * 
      */
-    private final String database;
+    private String database;
     /**
      * @return Database replica&#39;s hostname.
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
+    private String id;
+    private String name;
     /**
      * @return Password for the replica&#39;s default user.
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return Network port that the database replica is listening on.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return Same as `host`, but only accessible from resources within the account and in the same region.
      * 
      */
-    private final String privateHost;
-    private final String privateNetworkUuid;
+    private String privateHost;
+    private String privateNetworkUuid;
     /**
      * @return Same as `uri`, but only accessible from resources within the account and in the same region.
      * 
      */
-    private final String privateUri;
-    private final String region;
+    private String privateUri;
+    private String region;
     /**
      * @return A list of tag names to be applied to the database replica.
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return The full URI for connecting to the database replica.
      * 
      */
-    private final String uri;
+    private String uri;
     /**
      * @return Username for the replica&#39;s default user.
      * 
      */
-    private final String user;
+    private String user;
 
-    @CustomType.Constructor
-    private GetDatabaseReplicaResult(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("database") String database,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("privateHost") String privateHost,
-        @CustomType.Parameter("privateNetworkUuid") String privateNetworkUuid,
-        @CustomType.Parameter("privateUri") String privateUri,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("uri") String uri,
-        @CustomType.Parameter("user") String user) {
-        this.clusterId = clusterId;
-        this.database = database;
-        this.host = host;
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.port = port;
-        this.privateHost = privateHost;
-        this.privateNetworkUuid = privateNetworkUuid;
-        this.privateUri = privateUri;
-        this.region = region;
-        this.tags = tags;
-        this.uri = uri;
-        this.user = user;
-    }
-
+    private GetDatabaseReplicaResult() {}
     public String clusterId() {
         return this.clusterId;
     }
@@ -189,7 +158,7 @@ public final class GetDatabaseReplicaResult {
     public static Builder builder(GetDatabaseReplicaResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private String database;
@@ -205,11 +174,7 @@ public final class GetDatabaseReplicaResult {
         private @Nullable List<String> tags;
         private String uri;
         private String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseReplicaResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -228,50 +193,62 @@ public final class GetDatabaseReplicaResult {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder database(String database) {
             this.database = Objects.requireNonNull(database);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder privateHost(String privateHost) {
             this.privateHost = Objects.requireNonNull(privateHost);
             return this;
         }
+        @CustomType.Setter
         public Builder privateNetworkUuid(String privateNetworkUuid) {
             this.privateNetworkUuid = Objects.requireNonNull(privateNetworkUuid);
             return this;
         }
+        @CustomType.Setter
         public Builder privateUri(String privateUri) {
             this.privateUri = Objects.requireNonNull(privateUri);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -279,15 +256,33 @@ public final class GetDatabaseReplicaResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }        public GetDatabaseReplicaResult build() {
-            return new GetDatabaseReplicaResult(clusterId, database, host, id, name, password, port, privateHost, privateNetworkUuid, privateUri, region, tags, uri, user);
+        }
+        public GetDatabaseReplicaResult build() {
+            final var o = new GetDatabaseReplicaResult();
+            o.clusterId = clusterId;
+            o.database = database;
+            o.host = host;
+            o.id = id;
+            o.name = name;
+            o.password = password;
+            o.port = port;
+            o.privateHost = privateHost;
+            o.privateNetworkUuid = privateNetworkUuid;
+            o.privateUri = privateUri;
+            o.region = region;
+            o.tags = tags;
+            o.uri = uri;
+            o.user = user;
+            return o;
         }
     }
 }

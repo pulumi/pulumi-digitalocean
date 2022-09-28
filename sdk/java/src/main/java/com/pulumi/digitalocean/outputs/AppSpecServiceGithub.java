@@ -16,28 +16,19 @@ public final class AppSpecServiceGithub {
      * @return The name of the branch to use.
      * 
      */
-    private final @Nullable String branch;
+    private @Nullable String branch;
     /**
      * @return Whether to automatically deploy new commits made to the repo.
      * 
      */
-    private final @Nullable Boolean deployOnPush;
+    private @Nullable Boolean deployOnPush;
     /**
      * @return The name of the repo in the format `owner/repo`.
      * 
      */
-    private final @Nullable String repo;
+    private @Nullable String repo;
 
-    @CustomType.Constructor
-    private AppSpecServiceGithub(
-        @CustomType.Parameter("branch") @Nullable String branch,
-        @CustomType.Parameter("deployOnPush") @Nullable Boolean deployOnPush,
-        @CustomType.Parameter("repo") @Nullable String repo) {
-        this.branch = branch;
-        this.deployOnPush = deployOnPush;
-        this.repo = repo;
-    }
-
+    private AppSpecServiceGithub() {}
     /**
      * @return The name of the branch to use.
      * 
@@ -67,16 +58,12 @@ public final class AppSpecServiceGithub {
     public static Builder builder(AppSpecServiceGithub defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String branch;
         private @Nullable Boolean deployOnPush;
         private @Nullable String repo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecServiceGithub defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
@@ -84,19 +71,27 @@ public final class AppSpecServiceGithub {
     	      this.repo = defaults.repo;
         }
 
+        @CustomType.Setter
         public Builder branch(@Nullable String branch) {
             this.branch = branch;
             return this;
         }
+        @CustomType.Setter
         public Builder deployOnPush(@Nullable Boolean deployOnPush) {
             this.deployOnPush = deployOnPush;
             return this;
         }
+        @CustomType.Setter
         public Builder repo(@Nullable String repo) {
             this.repo = repo;
             return this;
-        }        public AppSpecServiceGithub build() {
-            return new AppSpecServiceGithub(branch, deployOnPush, repo);
+        }
+        public AppSpecServiceGithub build() {
+            final var o = new AppSpecServiceGithub();
+            o.branch = branch;
+            o.deployOnPush = deployOnPush;
+            o.repo = repo;
+            return o;
         }
     }
 }

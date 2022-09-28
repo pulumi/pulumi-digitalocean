@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecJobImage
     {
         /// <summary>
+        /// Whether to automatically deploy new commits made to the repo.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppSpecJobImageDeployOnPush> DeployOnPushes;
+        /// <summary>
         /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         /// </summary>
         public readonly string? Registry;
@@ -32,6 +36,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private AppSpecJobImage(
+            ImmutableArray<Outputs.AppSpecJobImageDeployOnPush> deployOnPushes,
+
             string? registry,
 
             string registryType,
@@ -40,6 +46,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? tag)
         {
+            DeployOnPushes = deployOnPushes;
             Registry = registry;
             RegistryType = registryType;
             Repository = repository;

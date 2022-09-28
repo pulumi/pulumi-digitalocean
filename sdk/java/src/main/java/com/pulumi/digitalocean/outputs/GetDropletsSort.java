@@ -15,7 +15,7 @@ public final class GetDropletsSort {
      * @return The sort direction. This may be either `asc` or `desc`.
      * 
      */
-    private final @Nullable String direction;
+    private @Nullable String direction;
     /**
      * @return Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
      * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
@@ -23,16 +23,9 @@ public final class GetDropletsSort {
      * `status`, `urn`, `vcpus`, or `vpc_uuid`.
      * 
      */
-    private final String key;
+    private String key;
 
-    @CustomType.Constructor
-    private GetDropletsSort(
-        @CustomType.Parameter("direction") @Nullable String direction,
-        @CustomType.Parameter("key") String key) {
-        this.direction = direction;
-        this.key = key;
-    }
-
+    private GetDropletsSort() {}
     /**
      * @return The sort direction. This may be either `asc` or `desc`.
      * 
@@ -58,30 +51,32 @@ public final class GetDropletsSort {
     public static Builder builder(GetDropletsSort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
         private String key;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDropletsSort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
         public Builder direction(@Nullable String direction) {
             this.direction = direction;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
-        }        public GetDropletsSort build() {
-            return new GetDropletsSort(direction, key);
+        }
+        public GetDropletsSort build() {
+            final var o = new GetDropletsSort();
+            o.direction = direction;
+            o.key = key;
+            return o;
         }
     }
 }

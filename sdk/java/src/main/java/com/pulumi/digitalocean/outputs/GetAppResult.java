@@ -15,66 +15,45 @@ public final class GetAppResult {
      * @return The ID the app&#39;s currently active deployment.
      * 
      */
-    private final String activeDeploymentId;
-    private final String appId;
+    private String activeDeploymentId;
+    private String appId;
     /**
      * @return The date and time of when the app was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The default URL to access the app.
      * 
      */
-    private final String defaultIngress;
+    private String defaultIngress;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The live URL of the app.
      * 
      */
-    private final String liveUrl;
+    private String liveUrl;
     /**
      * @return A DigitalOcean App spec describing the app.
      * 
      */
-    private final List<GetAppSpec> specs;
+    private List<GetAppSpec> specs;
     /**
      * @return The date and time of when the app was last updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
     /**
      * @return The uniform resource identifier for the app.
      * 
      */
-    private final String urn;
+    private String urn;
 
-    @CustomType.Constructor
-    private GetAppResult(
-        @CustomType.Parameter("activeDeploymentId") String activeDeploymentId,
-        @CustomType.Parameter("appId") String appId,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("defaultIngress") String defaultIngress,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("liveUrl") String liveUrl,
-        @CustomType.Parameter("specs") List<GetAppSpec> specs,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("urn") String urn) {
-        this.activeDeploymentId = activeDeploymentId;
-        this.appId = appId;
-        this.createdAt = createdAt;
-        this.defaultIngress = defaultIngress;
-        this.id = id;
-        this.liveUrl = liveUrl;
-        this.specs = specs;
-        this.updatedAt = updatedAt;
-        this.urn = urn;
-    }
-
+    private GetAppResult() {}
     /**
      * @return The ID the app&#39;s currently active deployment.
      * 
@@ -142,7 +121,7 @@ public final class GetAppResult {
     public static Builder builder(GetAppResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String activeDeploymentId;
         private String appId;
@@ -153,11 +132,7 @@ public final class GetAppResult {
         private List<GetAppSpec> specs;
         private String updatedAt;
         private String urn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeDeploymentId = defaults.activeDeploymentId;
@@ -171,30 +146,37 @@ public final class GetAppResult {
     	      this.urn = defaults.urn;
         }
 
+        @CustomType.Setter
         public Builder activeDeploymentId(String activeDeploymentId) {
             this.activeDeploymentId = Objects.requireNonNull(activeDeploymentId);
             return this;
         }
+        @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultIngress(String defaultIngress) {
             this.defaultIngress = Objects.requireNonNull(defaultIngress);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder liveUrl(String liveUrl) {
             this.liveUrl = Objects.requireNonNull(liveUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder specs(List<GetAppSpec> specs) {
             this.specs = Objects.requireNonNull(specs);
             return this;
@@ -202,15 +184,28 @@ public final class GetAppResult {
         public Builder specs(GetAppSpec... specs) {
             return specs(List.of(specs));
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder urn(String urn) {
             this.urn = Objects.requireNonNull(urn);
             return this;
-        }        public GetAppResult build() {
-            return new GetAppResult(activeDeploymentId, appId, createdAt, defaultIngress, id, liveUrl, specs, updatedAt, urn);
+        }
+        public GetAppResult build() {
+            final var o = new GetAppResult();
+            o.activeDeploymentId = activeDeploymentId;
+            o.appId = appId;
+            o.createdAt = createdAt;
+            o.defaultIngress = defaultIngress;
+            o.id = id;
+            o.liveUrl = liveUrl;
+            o.specs = specs;
+            o.updatedAt = updatedAt;
+            o.urn = urn;
+            return o;
         }
     }
 }

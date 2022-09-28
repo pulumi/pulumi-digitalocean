@@ -15,24 +15,15 @@ public final class KubernetesClusterMaintenancePolicy {
      * @return The day of the maintenance window policy. May be one of &#34;monday&#34; through &#34;sunday&#34;, or &#34;any&#34; to indicate an arbitrary week day.
      * 
      */
-    private final @Nullable String day;
-    private final @Nullable String duration;
+    private @Nullable String day;
+    private @Nullable String duration;
     /**
      * @return The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
 
-    @CustomType.Constructor
-    private KubernetesClusterMaintenancePolicy(
-        @CustomType.Parameter("day") @Nullable String day,
-        @CustomType.Parameter("duration") @Nullable String duration,
-        @CustomType.Parameter("startTime") @Nullable String startTime) {
-        this.day = day;
-        this.duration = duration;
-        this.startTime = startTime;
-    }
-
+    private KubernetesClusterMaintenancePolicy() {}
     /**
      * @return The day of the maintenance window policy. May be one of &#34;monday&#34; through &#34;sunday&#34;, or &#34;any&#34; to indicate an arbitrary week day.
      * 
@@ -58,16 +49,12 @@ public final class KubernetesClusterMaintenancePolicy {
     public static Builder builder(KubernetesClusterMaintenancePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String day;
         private @Nullable String duration;
         private @Nullable String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KubernetesClusterMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
@@ -75,19 +62,27 @@ public final class KubernetesClusterMaintenancePolicy {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder day(@Nullable String day) {
             this.day = day;
             return this;
         }
+        @CustomType.Setter
         public Builder duration(@Nullable String duration) {
             this.duration = duration;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }        public KubernetesClusterMaintenancePolicy build() {
-            return new KubernetesClusterMaintenancePolicy(day, duration, startTime);
+        }
+        public KubernetesClusterMaintenancePolicy build() {
+            final var o = new KubernetesClusterMaintenancePolicy();
+            o.day = day;
+            o.duration = duration;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

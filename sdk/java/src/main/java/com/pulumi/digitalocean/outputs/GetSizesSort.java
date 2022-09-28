@@ -15,22 +15,15 @@ public final class GetSizesSort {
      * @return The sort direction. This may be either `asc` or `desc`.
      * 
      */
-    private final @Nullable String direction;
+    private @Nullable String direction;
     /**
      * @return Sort the sizes by this key. This may be one of `slug`,
      * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
      * 
      */
-    private final String key;
+    private String key;
 
-    @CustomType.Constructor
-    private GetSizesSort(
-        @CustomType.Parameter("direction") @Nullable String direction,
-        @CustomType.Parameter("key") String key) {
-        this.direction = direction;
-        this.key = key;
-    }
-
+    private GetSizesSort() {}
     /**
      * @return The sort direction. This may be either `asc` or `desc`.
      * 
@@ -54,30 +47,32 @@ public final class GetSizesSort {
     public static Builder builder(GetSizesSort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
         private String key;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSizesSort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
         public Builder direction(@Nullable String direction) {
             this.direction = direction;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
-        }        public GetSizesSort build() {
-            return new GetSizesSort(direction, key);
+        }
+        public GetSizesSort build() {
+            final var o = new GetSizesSort();
+            o.direction = direction;
+            o.key = key;
+            return o;
         }
     }
 }

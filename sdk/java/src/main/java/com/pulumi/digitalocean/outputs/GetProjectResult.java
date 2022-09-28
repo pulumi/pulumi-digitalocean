@@ -16,72 +16,47 @@ public final class GetProjectResult {
      * @return The date and time when the project was created, (ISO8601)
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The description of the project
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The environment of the project&#39;s resources. The possible values are: `Development`, `Staging`, `Production`.
      * 
      */
-    private final String environment;
-    private final String id;
-    private final Boolean isDefault;
-    private final String name;
+    private String environment;
+    private String id;
+    private Boolean isDefault;
+    private String name;
     /**
      * @return The ID of the project owner.
      * 
      */
-    private final Integer ownerId;
+    private Integer ownerId;
     /**
      * @return The unique universal identifier of the project owner.
      * 
      */
-    private final String ownerUuid;
+    private String ownerUuid;
     /**
      * @return The purpose of the project, (Default: &#34;Web Application&#34;)
      * 
      */
-    private final String purpose;
+    private String purpose;
     /**
      * @return A set of uniform resource names (URNs) for the resources associated with the project
      * 
      */
-    private final List<String> resources;
+    private List<String> resources;
     /**
      * @return The date and time when the project was last updated, (ISO8601)
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
 
-    @CustomType.Constructor
-    private GetProjectResult(
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("environment") String environment,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isDefault") Boolean isDefault,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("ownerId") Integer ownerId,
-        @CustomType.Parameter("ownerUuid") String ownerUuid,
-        @CustomType.Parameter("purpose") String purpose,
-        @CustomType.Parameter("resources") List<String> resources,
-        @CustomType.Parameter("updatedAt") String updatedAt) {
-        this.createdAt = createdAt;
-        this.description = description;
-        this.environment = environment;
-        this.id = id;
-        this.isDefault = isDefault;
-        this.name = name;
-        this.ownerId = ownerId;
-        this.ownerUuid = ownerUuid;
-        this.purpose = purpose;
-        this.resources = resources;
-        this.updatedAt = updatedAt;
-    }
-
+    private GetProjectResult() {}
     /**
      * @return The date and time when the project was created, (ISO8601)
      * 
@@ -155,7 +130,7 @@ public final class GetProjectResult {
     public static Builder builder(GetProjectResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createdAt;
         private String description;
@@ -168,11 +143,7 @@ public final class GetProjectResult {
         private String purpose;
         private List<String> resources;
         private String updatedAt;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -188,42 +159,52 @@ public final class GetProjectResult {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder environment(String environment) {
             this.environment = Objects.requireNonNull(environment);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
             this.isDefault = Objects.requireNonNull(isDefault);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerId(Integer ownerId) {
             this.ownerId = Objects.requireNonNull(ownerId);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerUuid(String ownerUuid) {
             this.ownerUuid = Objects.requireNonNull(ownerUuid);
             return this;
         }
+        @CustomType.Setter
         public Builder purpose(String purpose) {
             this.purpose = Objects.requireNonNull(purpose);
             return this;
         }
+        @CustomType.Setter
         public Builder resources(List<String> resources) {
             this.resources = Objects.requireNonNull(resources);
             return this;
@@ -231,11 +212,25 @@ public final class GetProjectResult {
         public Builder resources(String... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
-        }        public GetProjectResult build() {
-            return new GetProjectResult(createdAt, description, environment, id, isDefault, name, ownerId, ownerUuid, purpose, resources, updatedAt);
+        }
+        public GetProjectResult build() {
+            final var o = new GetProjectResult();
+            o.createdAt = createdAt;
+            o.description = description;
+            o.environment = environment;
+            o.id = id;
+            o.isDefault = isDefault;
+            o.name = name;
+            o.ownerId = ownerId;
+            o.ownerUuid = ownerUuid;
+            o.purpose = purpose;
+            o.resources = resources;
+            o.updatedAt = updatedAt;
+            return o;
         }
     }
 }

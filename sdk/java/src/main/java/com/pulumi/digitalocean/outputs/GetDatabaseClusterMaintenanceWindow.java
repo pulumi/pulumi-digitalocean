@@ -13,21 +13,14 @@ public final class GetDatabaseClusterMaintenanceWindow {
      * @return The day of the week on which to apply maintenance updates.
      * 
      */
-    private final String day;
+    private String day;
     /**
      * @return The hour in UTC at which maintenance updates will be applied in 24 hour format.
      * 
      */
-    private final String hour;
+    private String hour;
 
-    @CustomType.Constructor
-    private GetDatabaseClusterMaintenanceWindow(
-        @CustomType.Parameter("day") String day,
-        @CustomType.Parameter("hour") String hour) {
-        this.day = day;
-        this.hour = hour;
-    }
-
+    private GetDatabaseClusterMaintenanceWindow() {}
     /**
      * @return The day of the week on which to apply maintenance updates.
      * 
@@ -50,30 +43,32 @@ public final class GetDatabaseClusterMaintenanceWindow {
     public static Builder builder(GetDatabaseClusterMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String day;
         private String hour;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseClusterMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
     	      this.hour = defaults.hour;
         }
 
+        @CustomType.Setter
         public Builder day(String day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder hour(String hour) {
             this.hour = Objects.requireNonNull(hour);
             return this;
-        }        public GetDatabaseClusterMaintenanceWindow build() {
-            return new GetDatabaseClusterMaintenanceWindow(day, hour);
+        }
+        public GetDatabaseClusterMaintenanceWindow build() {
+            final var o = new GetDatabaseClusterMaintenanceWindow();
+            o.day = day;
+            o.hour = hour;
+            return o;
         }
     }
 }

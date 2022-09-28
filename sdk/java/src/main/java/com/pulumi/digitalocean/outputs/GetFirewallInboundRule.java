@@ -20,58 +20,41 @@ public final class GetFirewallInboundRule {
      * `tcp` or `udp`.
      * 
      */
-    private final @Nullable String portRange;
+    private @Nullable String portRange;
     /**
      * @return The type of traffic to be allowed.
      * This may be one of &#34;tcp&#34;, &#34;udp&#34;, or &#34;icmp&#34;.
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return An array of strings containing the IPv4
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
      * inbound traffic will be accepted.
      * 
      */
-    private final @Nullable List<String> sourceAddresses;
+    private @Nullable List<String> sourceAddresses;
     /**
      * @return An array containing the IDs of
      * the Droplets from which the inbound traffic will be accepted.
      * 
      */
-    private final @Nullable List<Integer> sourceDropletIds;
-    private final @Nullable List<String> sourceKubernetesIds;
+    private @Nullable List<Integer> sourceDropletIds;
+    private @Nullable List<String> sourceKubernetesIds;
     /**
      * @return An array containing the IDs
      * of the Load Balancers from which the inbound traffic will be accepted.
      * 
      */
-    private final @Nullable List<String> sourceLoadBalancerUids;
+    private @Nullable List<String> sourceLoadBalancerUids;
     /**
      * @return A set of names of Tags corresponding to group of
      * Droplets from which the inbound traffic will be accepted.
      * 
      */
-    private final @Nullable List<String> sourceTags;
+    private @Nullable List<String> sourceTags;
 
-    @CustomType.Constructor
-    private GetFirewallInboundRule(
-        @CustomType.Parameter("portRange") @Nullable String portRange,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("sourceAddresses") @Nullable List<String> sourceAddresses,
-        @CustomType.Parameter("sourceDropletIds") @Nullable List<Integer> sourceDropletIds,
-        @CustomType.Parameter("sourceKubernetesIds") @Nullable List<String> sourceKubernetesIds,
-        @CustomType.Parameter("sourceLoadBalancerUids") @Nullable List<String> sourceLoadBalancerUids,
-        @CustomType.Parameter("sourceTags") @Nullable List<String> sourceTags) {
-        this.portRange = portRange;
-        this.protocol = protocol;
-        this.sourceAddresses = sourceAddresses;
-        this.sourceDropletIds = sourceDropletIds;
-        this.sourceKubernetesIds = sourceKubernetesIds;
-        this.sourceLoadBalancerUids = sourceLoadBalancerUids;
-        this.sourceTags = sourceTags;
-    }
-
+    private GetFirewallInboundRule() {}
     /**
      * @return The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. &#34;8000-9000&#34;),
@@ -134,7 +117,7 @@ public final class GetFirewallInboundRule {
     public static Builder builder(GetFirewallInboundRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String portRange;
         private String protocol;
@@ -143,11 +126,7 @@ public final class GetFirewallInboundRule {
         private @Nullable List<String> sourceKubernetesIds;
         private @Nullable List<String> sourceLoadBalancerUids;
         private @Nullable List<String> sourceTags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallInboundRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.portRange = defaults.portRange;
@@ -159,14 +138,17 @@ public final class GetFirewallInboundRule {
     	      this.sourceTags = defaults.sourceTags;
         }
 
+        @CustomType.Setter
         public Builder portRange(@Nullable String portRange) {
             this.portRange = portRange;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceAddresses(@Nullable List<String> sourceAddresses) {
             this.sourceAddresses = sourceAddresses;
             return this;
@@ -174,6 +156,7 @@ public final class GetFirewallInboundRule {
         public Builder sourceAddresses(String... sourceAddresses) {
             return sourceAddresses(List.of(sourceAddresses));
         }
+        @CustomType.Setter
         public Builder sourceDropletIds(@Nullable List<Integer> sourceDropletIds) {
             this.sourceDropletIds = sourceDropletIds;
             return this;
@@ -181,6 +164,7 @@ public final class GetFirewallInboundRule {
         public Builder sourceDropletIds(Integer... sourceDropletIds) {
             return sourceDropletIds(List.of(sourceDropletIds));
         }
+        @CustomType.Setter
         public Builder sourceKubernetesIds(@Nullable List<String> sourceKubernetesIds) {
             this.sourceKubernetesIds = sourceKubernetesIds;
             return this;
@@ -188,6 +172,7 @@ public final class GetFirewallInboundRule {
         public Builder sourceKubernetesIds(String... sourceKubernetesIds) {
             return sourceKubernetesIds(List.of(sourceKubernetesIds));
         }
+        @CustomType.Setter
         public Builder sourceLoadBalancerUids(@Nullable List<String> sourceLoadBalancerUids) {
             this.sourceLoadBalancerUids = sourceLoadBalancerUids;
             return this;
@@ -195,14 +180,24 @@ public final class GetFirewallInboundRule {
         public Builder sourceLoadBalancerUids(String... sourceLoadBalancerUids) {
             return sourceLoadBalancerUids(List.of(sourceLoadBalancerUids));
         }
+        @CustomType.Setter
         public Builder sourceTags(@Nullable List<String> sourceTags) {
             this.sourceTags = sourceTags;
             return this;
         }
         public Builder sourceTags(String... sourceTags) {
             return sourceTags(List.of(sourceTags));
-        }        public GetFirewallInboundRule build() {
-            return new GetFirewallInboundRule(portRange, protocol, sourceAddresses, sourceDropletIds, sourceKubernetesIds, sourceLoadBalancerUids, sourceTags);
+        }
+        public GetFirewallInboundRule build() {
+            final var o = new GetFirewallInboundRule();
+            o.portRange = portRange;
+            o.protocol = protocol;
+            o.sourceAddresses = sourceAddresses;
+            o.sourceDropletIds = sourceDropletIds;
+            o.sourceKubernetesIds = sourceKubernetesIds;
+            o.sourceLoadBalancerUids = sourceLoadBalancerUids;
+            o.sourceTags = sourceTags;
+            return o;
         }
     }
 }

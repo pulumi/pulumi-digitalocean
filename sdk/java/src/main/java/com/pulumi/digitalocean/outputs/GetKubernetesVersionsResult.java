@@ -16,31 +16,20 @@ public final class GetKubernetesVersionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The most recent version available.
      * 
      */
-    private final String latestVersion;
+    private String latestVersion;
     /**
      * @return A list of available versions.
      * 
      */
-    private final List<String> validVersions;
-    private final @Nullable String versionPrefix;
+    private List<String> validVersions;
+    private @Nullable String versionPrefix;
 
-    @CustomType.Constructor
-    private GetKubernetesVersionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("latestVersion") String latestVersion,
-        @CustomType.Parameter("validVersions") List<String> validVersions,
-        @CustomType.Parameter("versionPrefix") @Nullable String versionPrefix) {
-        this.id = id;
-        this.latestVersion = latestVersion;
-        this.validVersions = validVersions;
-        this.versionPrefix = versionPrefix;
-    }
-
+    private GetKubernetesVersionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -73,17 +62,13 @@ public final class GetKubernetesVersionsResult {
     public static Builder builder(GetKubernetesVersionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String latestVersion;
         private List<String> validVersions;
         private @Nullable String versionPrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -92,14 +77,17 @@ public final class GetKubernetesVersionsResult {
     	      this.versionPrefix = defaults.versionPrefix;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder latestVersion(String latestVersion) {
             this.latestVersion = Objects.requireNonNull(latestVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder validVersions(List<String> validVersions) {
             this.validVersions = Objects.requireNonNull(validVersions);
             return this;
@@ -107,11 +95,18 @@ public final class GetKubernetesVersionsResult {
         public Builder validVersions(String... validVersions) {
             return validVersions(List.of(validVersions));
         }
+        @CustomType.Setter
         public Builder versionPrefix(@Nullable String versionPrefix) {
             this.versionPrefix = versionPrefix;
             return this;
-        }        public GetKubernetesVersionsResult build() {
-            return new GetKubernetesVersionsResult(id, latestVersion, validVersions, versionPrefix);
+        }
+        public GetKubernetesVersionsResult build() {
+            final var o = new GetKubernetesVersionsResult();
+            o.id = id;
+            o.latestVersion = latestVersion;
+            o.validVersions = validVersions;
+            o.versionPrefix = versionPrefix;
+            return o;
         }
     }
 }

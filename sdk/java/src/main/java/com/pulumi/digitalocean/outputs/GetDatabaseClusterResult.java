@@ -17,132 +17,91 @@ public final class GetDatabaseClusterResult {
      * @return Name of the cluster&#39;s default database.
      * 
      */
-    private final String database;
+    private String database;
     /**
      * @return Database engine used by the cluster (ex. `pg` for PostreSQL).
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return Database cluster&#39;s hostname.
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Defines when the automatic maintenance should be performed for the database cluster.
      * 
      */
-    private final List<GetDatabaseClusterMaintenanceWindow> maintenanceWindows;
-    private final String name;
+    private List<GetDatabaseClusterMaintenanceWindow> maintenanceWindows;
+    private String name;
     /**
      * @return Number of nodes that will be included in the cluster.
      * 
      */
-    private final Integer nodeCount;
+    private Integer nodeCount;
     /**
      * @return Password for the cluster&#39;s default user.
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return Network port that the database cluster is listening on.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return Same as `host`, but only accessible from resources within the account and in the same region.
      * 
      */
-    private final String privateHost;
+    private String privateHost;
     /**
      * @return The ID of the VPC where the database cluster is located.
      * 
      */
-    private final String privateNetworkUuid;
+    private String privateNetworkUuid;
     /**
      * @return Same as `uri`, but only accessible from resources within the account and in the same region.
      * 
      */
-    private final String privateUri;
+    private String privateUri;
     /**
      * @return DigitalOcean region where the cluster will reside.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      * 
      */
-    private final String size;
-    private final @Nullable List<String> tags;
+    private String size;
+    private @Nullable List<String> tags;
     /**
      * @return The full URI for connecting to the database cluster.
      * 
      */
-    private final String uri;
+    private String uri;
     /**
      * @return The uniform resource name of the database cluster.
      * 
      */
-    private final String urn;
+    private String urn;
     /**
      * @return Username for the cluster&#39;s default user.
      * 
      */
-    private final String user;
+    private String user;
     /**
      * @return Engine version used by the cluster (ex. `11` for PostgreSQL 11).
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private GetDatabaseClusterResult(
-        @CustomType.Parameter("database") String database,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("maintenanceWindows") List<GetDatabaseClusterMaintenanceWindow> maintenanceWindows,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeCount") Integer nodeCount,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("privateHost") String privateHost,
-        @CustomType.Parameter("privateNetworkUuid") String privateNetworkUuid,
-        @CustomType.Parameter("privateUri") String privateUri,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("uri") String uri,
-        @CustomType.Parameter("urn") String urn,
-        @CustomType.Parameter("user") String user,
-        @CustomType.Parameter("version") String version) {
-        this.database = database;
-        this.engine = engine;
-        this.host = host;
-        this.id = id;
-        this.maintenanceWindows = maintenanceWindows;
-        this.name = name;
-        this.nodeCount = nodeCount;
-        this.password = password;
-        this.port = port;
-        this.privateHost = privateHost;
-        this.privateNetworkUuid = privateNetworkUuid;
-        this.privateUri = privateUri;
-        this.region = region;
-        this.size = size;
-        this.tags = tags;
-        this.uri = uri;
-        this.urn = urn;
-        this.user = user;
-        this.version = version;
-    }
-
+    private GetDatabaseClusterResult() {}
     /**
      * @return Name of the cluster&#39;s default database.
      * 
@@ -276,7 +235,7 @@ public final class GetDatabaseClusterResult {
     public static Builder builder(GetDatabaseClusterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String database;
         private String engine;
@@ -297,11 +256,7 @@ public final class GetDatabaseClusterResult {
         private String urn;
         private String user;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
@@ -325,22 +280,27 @@ public final class GetDatabaseClusterResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder database(String database) {
             this.database = Objects.requireNonNull(database);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder maintenanceWindows(List<GetDatabaseClusterMaintenanceWindow> maintenanceWindows) {
             this.maintenanceWindows = Objects.requireNonNull(maintenanceWindows);
             return this;
@@ -348,42 +308,52 @@ public final class GetDatabaseClusterResult {
         public Builder maintenanceWindows(GetDatabaseClusterMaintenanceWindow... maintenanceWindows) {
             return maintenanceWindows(List.of(maintenanceWindows));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
             this.nodeCount = Objects.requireNonNull(nodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder privateHost(String privateHost) {
             this.privateHost = Objects.requireNonNull(privateHost);
             return this;
         }
+        @CustomType.Setter
         public Builder privateNetworkUuid(String privateNetworkUuid) {
             this.privateNetworkUuid = Objects.requireNonNull(privateNetworkUuid);
             return this;
         }
+        @CustomType.Setter
         public Builder privateUri(String privateUri) {
             this.privateUri = Objects.requireNonNull(privateUri);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -391,23 +361,48 @@ public final class GetDatabaseClusterResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
         }
+        @CustomType.Setter
         public Builder urn(String urn) {
             this.urn = Objects.requireNonNull(urn);
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetDatabaseClusterResult build() {
-            return new GetDatabaseClusterResult(database, engine, host, id, maintenanceWindows, name, nodeCount, password, port, privateHost, privateNetworkUuid, privateUri, region, size, tags, uri, urn, user, version);
+        }
+        public GetDatabaseClusterResult build() {
+            final var o = new GetDatabaseClusterResult();
+            o.database = database;
+            o.engine = engine;
+            o.host = host;
+            o.id = id;
+            o.maintenanceWindows = maintenanceWindows;
+            o.name = name;
+            o.nodeCount = nodeCount;
+            o.password = password;
+            o.port = port;
+            o.privateHost = privateHost;
+            o.privateNetworkUuid = privateNetworkUuid;
+            o.privateUri = privateUri;
+            o.region = region;
+            o.size = size;
+            o.tags = tags;
+            o.uri = uri;
+            o.urn = urn;
+            o.user = user;
+            o.version = version;
+            return o;
         }
     }
 }

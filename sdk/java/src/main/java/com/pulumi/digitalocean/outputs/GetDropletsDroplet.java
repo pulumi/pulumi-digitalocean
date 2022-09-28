@@ -17,174 +17,121 @@ public final class GetDropletsDroplet {
      * @return Whether backups are enabled.
      * 
      */
-    private final Boolean backups;
-    private final String createdAt;
+    private Boolean backups;
+    private String createdAt;
     /**
      * @return The size of the Droplet&#39;s disk in GB.
      * 
      */
-    private final Integer disk;
+    private Integer disk;
     /**
      * @return The ID of the Droplet.
      * 
      */
-    private final Integer id;
+    private Integer id;
     /**
      * @return The Droplet image ID or slug.
      * 
      */
-    private final String image;
+    private String image;
     /**
      * @return The Droplet&#39;s public IPv4 address
      * 
      */
-    private final String ipv4Address;
+    private String ipv4Address;
     /**
      * @return The Droplet&#39;s private IPv4 address
      * 
      */
-    private final String ipv4AddressPrivate;
+    private String ipv4AddressPrivate;
     /**
      * @return Whether IPv6 is enabled.
      * 
      */
-    private final Boolean ipv6;
+    private Boolean ipv6;
     /**
      * @return The Droplet&#39;s public IPv6 address
      * 
      */
-    private final String ipv6Address;
+    private String ipv6Address;
     /**
      * @return The Droplet&#39;s private IPv6 address
      * 
      */
-    private final String ipv6AddressPrivate;
+    private String ipv6AddressPrivate;
     /**
      * @return Whether the Droplet is locked.
      * 
      */
-    private final Boolean locked;
+    private Boolean locked;
     /**
      * @return The amount of the Droplet&#39;s memory in MB.
      * 
      */
-    private final Integer memory;
+    private Integer memory;
     /**
      * @return Whether monitoring agent is installed.
      * 
      */
-    private final Boolean monitoring;
-    private final String name;
+    private Boolean monitoring;
+    private String name;
     /**
      * @return Droplet hourly price.
      * 
      */
-    private final Double priceHourly;
+    private Double priceHourly;
     /**
      * @return Droplet monthly price.
      * 
      */
-    private final Double priceMonthly;
+    private Double priceMonthly;
     /**
      * @return Whether private networks are enabled.
      * 
      */
-    private final Boolean privateNetworking;
+    private Boolean privateNetworking;
     /**
      * @return The region the Droplet is running in.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The unique slug that identifies the type of Droplet.
      * 
      */
-    private final String size;
+    private String size;
     /**
      * @return The status of the Droplet.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A list of the tags associated to the Droplet.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return The uniform resource name of the Droplet
      * 
      */
-    private final String urn;
+    private String urn;
     /**
      * @return The number of the Droplet&#39;s virtual CPUs.
      * 
      */
-    private final Integer vcpus;
+    private Integer vcpus;
     /**
      * @return List of the IDs of each volumes attached to the Droplet.
      * 
      */
-    private final List<String> volumeIds;
+    private List<String> volumeIds;
     /**
      * @return The ID of the VPC where the Droplet is located.
      * 
      */
-    private final String vpcUuid;
+    private String vpcUuid;
 
-    @CustomType.Constructor
-    private GetDropletsDroplet(
-        @CustomType.Parameter("backups") Boolean backups,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("disk") Integer disk,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("ipv4Address") String ipv4Address,
-        @CustomType.Parameter("ipv4AddressPrivate") String ipv4AddressPrivate,
-        @CustomType.Parameter("ipv6") Boolean ipv6,
-        @CustomType.Parameter("ipv6Address") String ipv6Address,
-        @CustomType.Parameter("ipv6AddressPrivate") String ipv6AddressPrivate,
-        @CustomType.Parameter("locked") Boolean locked,
-        @CustomType.Parameter("memory") Integer memory,
-        @CustomType.Parameter("monitoring") Boolean monitoring,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("priceHourly") Double priceHourly,
-        @CustomType.Parameter("priceMonthly") Double priceMonthly,
-        @CustomType.Parameter("privateNetworking") Boolean privateNetworking,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("urn") String urn,
-        @CustomType.Parameter("vcpus") Integer vcpus,
-        @CustomType.Parameter("volumeIds") List<String> volumeIds,
-        @CustomType.Parameter("vpcUuid") String vpcUuid) {
-        this.backups = backups;
-        this.createdAt = createdAt;
-        this.disk = disk;
-        this.id = id;
-        this.image = image;
-        this.ipv4Address = ipv4Address;
-        this.ipv4AddressPrivate = ipv4AddressPrivate;
-        this.ipv6 = ipv6;
-        this.ipv6Address = ipv6Address;
-        this.ipv6AddressPrivate = ipv6AddressPrivate;
-        this.locked = locked;
-        this.memory = memory;
-        this.monitoring = monitoring;
-        this.name = name;
-        this.priceHourly = priceHourly;
-        this.priceMonthly = priceMonthly;
-        this.privateNetworking = privateNetworking;
-        this.region = region;
-        this.size = size;
-        this.status = status;
-        this.tags = tags;
-        this.urn = urn;
-        this.vcpus = vcpus;
-        this.volumeIds = volumeIds;
-        this.vpcUuid = vpcUuid;
-    }
-
+    private GetDropletsDroplet() {}
     /**
      * @return Whether backups are enabled.
      * 
@@ -360,7 +307,7 @@ public final class GetDropletsDroplet {
     public static Builder builder(GetDropletsDroplet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean backups;
         private String createdAt;
@@ -387,11 +334,7 @@ public final class GetDropletsDroplet {
         private Integer vcpus;
         private List<String> volumeIds;
         private String vpcUuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDropletsDroplet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backups = defaults.backups;
@@ -421,86 +364,107 @@ public final class GetDropletsDroplet {
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
+        @CustomType.Setter
         public Builder backups(Boolean backups) {
             this.backups = Objects.requireNonNull(backups);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder disk(Integer disk) {
             this.disk = Objects.requireNonNull(disk);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4Address(String ipv4Address) {
             this.ipv4Address = Objects.requireNonNull(ipv4Address);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4AddressPrivate(String ipv4AddressPrivate) {
             this.ipv4AddressPrivate = Objects.requireNonNull(ipv4AddressPrivate);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6(Boolean ipv6) {
             this.ipv6 = Objects.requireNonNull(ipv6);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
             this.ipv6Address = Objects.requireNonNull(ipv6Address);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6AddressPrivate(String ipv6AddressPrivate) {
             this.ipv6AddressPrivate = Objects.requireNonNull(ipv6AddressPrivate);
             return this;
         }
+        @CustomType.Setter
         public Builder locked(Boolean locked) {
             this.locked = Objects.requireNonNull(locked);
             return this;
         }
+        @CustomType.Setter
         public Builder memory(Integer memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
+        @CustomType.Setter
         public Builder monitoring(Boolean monitoring) {
             this.monitoring = Objects.requireNonNull(monitoring);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder priceHourly(Double priceHourly) {
             this.priceHourly = Objects.requireNonNull(priceHourly);
             return this;
         }
+        @CustomType.Setter
         public Builder priceMonthly(Double priceMonthly) {
             this.priceMonthly = Objects.requireNonNull(priceMonthly);
             return this;
         }
+        @CustomType.Setter
         public Builder privateNetworking(Boolean privateNetworking) {
             this.privateNetworking = Objects.requireNonNull(privateNetworking);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -508,14 +472,17 @@ public final class GetDropletsDroplet {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder urn(String urn) {
             this.urn = Objects.requireNonNull(urn);
             return this;
         }
+        @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
             this.vcpus = Objects.requireNonNull(vcpus);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeIds(List<String> volumeIds) {
             this.volumeIds = Objects.requireNonNull(volumeIds);
             return this;
@@ -523,11 +490,39 @@ public final class GetDropletsDroplet {
         public Builder volumeIds(String... volumeIds) {
             return volumeIds(List.of(volumeIds));
         }
+        @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
             this.vpcUuid = Objects.requireNonNull(vpcUuid);
             return this;
-        }        public GetDropletsDroplet build() {
-            return new GetDropletsDroplet(backups, createdAt, disk, id, image, ipv4Address, ipv4AddressPrivate, ipv6, ipv6Address, ipv6AddressPrivate, locked, memory, monitoring, name, priceHourly, priceMonthly, privateNetworking, region, size, status, tags, urn, vcpus, volumeIds, vpcUuid);
+        }
+        public GetDropletsDroplet build() {
+            final var o = new GetDropletsDroplet();
+            o.backups = backups;
+            o.createdAt = createdAt;
+            o.disk = disk;
+            o.id = id;
+            o.image = image;
+            o.ipv4Address = ipv4Address;
+            o.ipv4AddressPrivate = ipv4AddressPrivate;
+            o.ipv6 = ipv6;
+            o.ipv6Address = ipv6Address;
+            o.ipv6AddressPrivate = ipv6AddressPrivate;
+            o.locked = locked;
+            o.memory = memory;
+            o.monitoring = monitoring;
+            o.name = name;
+            o.priceHourly = priceHourly;
+            o.priceMonthly = priceMonthly;
+            o.privateNetworking = privateNetworking;
+            o.region = region;
+            o.size = size;
+            o.status = status;
+            o.tags = tags;
+            o.urn = urn;
+            o.vcpus = vcpus;
+            o.volumeIds = volumeIds;
+            o.vpcUuid = vpcUuid;
+            return o;
         }
     }
 }

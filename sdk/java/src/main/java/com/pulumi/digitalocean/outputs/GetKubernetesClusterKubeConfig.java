@@ -13,56 +13,39 @@ public final class GetKubernetesClusterKubeConfig {
      * @return The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
      * 
      */
-    private final String clientCertificate;
+    private String clientCertificate;
     /**
      * @return The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
      * 
      */
-    private final String clientKey;
+    private String clientKey;
     /**
      * @return The base64 encoded public certificate for the cluster&#39;s certificate authority.
      * 
      */
-    private final String clusterCaCertificate;
+    private String clusterCaCertificate;
     /**
      * @return The date and time when the credentials will expire and need to be regenerated.
      * 
      */
-    private final String expiresAt;
+    private String expiresAt;
     /**
      * @return The URL of the API server on the Kubernetes master node.
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return The full contents of the Kubernetes cluster&#39;s kubeconfig file.
      * 
      */
-    private final String rawConfig;
+    private String rawConfig;
     /**
      * @return The DigitalOcean API access token used by clients to access the cluster.
      * 
      */
-    private final String token;
+    private String token;
 
-    @CustomType.Constructor
-    private GetKubernetesClusterKubeConfig(
-        @CustomType.Parameter("clientCertificate") String clientCertificate,
-        @CustomType.Parameter("clientKey") String clientKey,
-        @CustomType.Parameter("clusterCaCertificate") String clusterCaCertificate,
-        @CustomType.Parameter("expiresAt") String expiresAt,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("rawConfig") String rawConfig,
-        @CustomType.Parameter("token") String token) {
-        this.clientCertificate = clientCertificate;
-        this.clientKey = clientKey;
-        this.clusterCaCertificate = clusterCaCertificate;
-        this.expiresAt = expiresAt;
-        this.host = host;
-        this.rawConfig = rawConfig;
-        this.token = token;
-    }
-
+    private GetKubernetesClusterKubeConfig() {}
     /**
      * @return The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
      * 
@@ -120,7 +103,7 @@ public final class GetKubernetesClusterKubeConfig {
     public static Builder builder(GetKubernetesClusterKubeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientCertificate;
         private String clientKey;
@@ -129,11 +112,7 @@ public final class GetKubernetesClusterKubeConfig {
         private String host;
         private String rawConfig;
         private String token;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesClusterKubeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientCertificate = defaults.clientCertificate;
@@ -145,35 +124,51 @@ public final class GetKubernetesClusterKubeConfig {
     	      this.token = defaults.token;
         }
 
+        @CustomType.Setter
         public Builder clientCertificate(String clientCertificate) {
             this.clientCertificate = Objects.requireNonNull(clientCertificate);
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(String clientKey) {
             this.clientKey = Objects.requireNonNull(clientKey);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterCaCertificate(String clusterCaCertificate) {
             this.clusterCaCertificate = Objects.requireNonNull(clusterCaCertificate);
             return this;
         }
+        @CustomType.Setter
         public Builder expiresAt(String expiresAt) {
             this.expiresAt = Objects.requireNonNull(expiresAt);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder rawConfig(String rawConfig) {
             this.rawConfig = Objects.requireNonNull(rawConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder token(String token) {
             this.token = Objects.requireNonNull(token);
             return this;
-        }        public GetKubernetesClusterKubeConfig build() {
-            return new GetKubernetesClusterKubeConfig(clientCertificate, clientKey, clusterCaCertificate, expiresAt, host, rawConfig, token);
+        }
+        public GetKubernetesClusterKubeConfig build() {
+            final var o = new GetKubernetesClusterKubeConfig();
+            o.clientCertificate = clientCertificate;
+            o.clientKey = clientKey;
+            o.clusterCaCertificate = clusterCaCertificate;
+            o.expiresAt = expiresAt;
+            o.host = host;
+            o.rawConfig = rawConfig;
+            o.token = token;
+            return o;
         }
     }
 }

@@ -15,35 +15,24 @@ public final class AppSpecStaticSiteEnv {
      * @return The name of the environment variable.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
      * 
      */
-    private final @Nullable String scope;
+    private @Nullable String scope;
     /**
      * @return The type of the environment variable, `GENERAL` or `SECRET`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
     /**
      * @return The threshold for the type of the warning.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private AppSpecStaticSiteEnv(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("scope") @Nullable String scope,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.scope = scope;
-        this.type = type;
-        this.value = value;
-    }
-
+    private AppSpecStaticSiteEnv() {}
     /**
      * @return The name of the environment variable.
      * 
@@ -80,17 +69,13 @@ public final class AppSpecStaticSiteEnv {
     public static Builder builder(AppSpecStaticSiteEnv defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String scope;
         private @Nullable String type;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecStaticSiteEnv defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -99,23 +84,33 @@ public final class AppSpecStaticSiteEnv {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder scope(@Nullable String scope) {
             this.scope = scope;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public AppSpecStaticSiteEnv build() {
-            return new AppSpecStaticSiteEnv(key, scope, type, value);
+        }
+        public AppSpecStaticSiteEnv build() {
+            final var o = new AppSpecStaticSiteEnv();
+            o.key = key;
+            o.scope = scope;
+            o.type = type;
+            o.value = value;
+            return o;
         }
     }
 }

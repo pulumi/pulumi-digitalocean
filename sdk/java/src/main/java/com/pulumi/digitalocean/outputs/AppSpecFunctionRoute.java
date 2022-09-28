@@ -16,21 +16,14 @@ public final class AppSpecFunctionRoute {
      * @return Paths must start with `/` and must be unique within the app.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return An optional flag to preserve the path that is forwarded to the backend service.
      * 
      */
-    private final @Nullable Boolean preservePathPrefix;
+    private @Nullable Boolean preservePathPrefix;
 
-    @CustomType.Constructor
-    private AppSpecFunctionRoute(
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("preservePathPrefix") @Nullable Boolean preservePathPrefix) {
-        this.path = path;
-        this.preservePathPrefix = preservePathPrefix;
-    }
-
+    private AppSpecFunctionRoute() {}
     /**
      * @return Paths must start with `/` and must be unique within the app.
      * 
@@ -53,30 +46,32 @@ public final class AppSpecFunctionRoute {
     public static Builder builder(AppSpecFunctionRoute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String path;
         private @Nullable Boolean preservePathPrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppSpecFunctionRoute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
     	      this.preservePathPrefix = defaults.preservePathPrefix;
         }
 
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder preservePathPrefix(@Nullable Boolean preservePathPrefix) {
             this.preservePathPrefix = preservePathPrefix;
             return this;
-        }        public AppSpecFunctionRoute build() {
-            return new AppSpecFunctionRoute(path, preservePathPrefix);
+        }
+        public AppSpecFunctionRoute build() {
+            final var o = new AppSpecFunctionRoute();
+            o.path = path;
+            o.preservePathPrefix = preservePathPrefix;
+            return o;
         }
     }
 }

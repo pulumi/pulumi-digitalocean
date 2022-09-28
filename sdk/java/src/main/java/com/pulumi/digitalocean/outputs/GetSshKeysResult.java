@@ -14,31 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSshKeysResult {
-    private final @Nullable List<GetSshKeysFilter> filters;
+    private @Nullable List<GetSshKeysFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable List<GetSshKeysSort> sorts;
+    private String id;
+    private @Nullable List<GetSshKeysSort> sorts;
     /**
      * @return A list of SSH Keys. Each SSH Key has the following attributes:
      * 
      */
-    private final List<GetSshKeysSshKey> sshKeys;
+    private List<GetSshKeysSshKey> sshKeys;
 
-    @CustomType.Constructor
-    private GetSshKeysResult(
-        @CustomType.Parameter("filters") @Nullable List<GetSshKeysFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("sorts") @Nullable List<GetSshKeysSort> sorts,
-        @CustomType.Parameter("sshKeys") List<GetSshKeysSshKey> sshKeys) {
-        this.filters = filters;
-        this.id = id;
-        this.sorts = sorts;
-        this.sshKeys = sshKeys;
-    }
-
+    private GetSshKeysResult() {}
     public List<GetSshKeysFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -67,17 +56,13 @@ public final class GetSshKeysResult {
     public static Builder builder(GetSshKeysResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetSshKeysFilter> filters;
         private String id;
         private @Nullable List<GetSshKeysSort> sorts;
         private List<GetSshKeysSshKey> sshKeys;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSshKeysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -86,6 +71,7 @@ public final class GetSshKeysResult {
     	      this.sshKeys = defaults.sshKeys;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetSshKeysFilter> filters) {
             this.filters = filters;
             return this;
@@ -93,10 +79,12 @@ public final class GetSshKeysResult {
         public Builder filters(GetSshKeysFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder sorts(@Nullable List<GetSshKeysSort> sorts) {
             this.sorts = sorts;
             return this;
@@ -104,14 +92,21 @@ public final class GetSshKeysResult {
         public Builder sorts(GetSshKeysSort... sorts) {
             return sorts(List.of(sorts));
         }
+        @CustomType.Setter
         public Builder sshKeys(List<GetSshKeysSshKey> sshKeys) {
             this.sshKeys = Objects.requireNonNull(sshKeys);
             return this;
         }
         public Builder sshKeys(GetSshKeysSshKey... sshKeys) {
             return sshKeys(List.of(sshKeys));
-        }        public GetSshKeysResult build() {
-            return new GetSshKeysResult(filters, id, sorts, sshKeys);
+        }
+        public GetSshKeysResult build() {
+            final var o = new GetSshKeysResult();
+            o.filters = filters;
+            o.id = id;
+            o.sorts = sorts;
+            o.sshKeys = sshKeys;
+            return o;
         }
     }
 }

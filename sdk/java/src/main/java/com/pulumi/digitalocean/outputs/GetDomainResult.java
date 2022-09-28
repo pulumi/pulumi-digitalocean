@@ -15,30 +15,17 @@ public final class GetDomainResult {
      * * `zone_file`: The zone file of the domain.
      * 
      */
-    private final String domainUrn;
+    private String domainUrn;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final Integer ttl;
-    private final String zoneFile;
+    private String id;
+    private String name;
+    private Integer ttl;
+    private String zoneFile;
 
-    @CustomType.Constructor
-    private GetDomainResult(
-        @CustomType.Parameter("domainUrn") String domainUrn,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("ttl") Integer ttl,
-        @CustomType.Parameter("zoneFile") String zoneFile) {
-        this.domainUrn = domainUrn;
-        this.id = id;
-        this.name = name;
-        this.ttl = ttl;
-        this.zoneFile = zoneFile;
-    }
-
+    private GetDomainResult() {}
     /**
      * @return The uniform resource name of the domain
      * * `zone_file`: The zone file of the domain.
@@ -71,18 +58,14 @@ public final class GetDomainResult {
     public static Builder builder(GetDomainResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domainUrn;
         private String id;
         private String name;
         private Integer ttl;
         private String zoneFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainUrn = defaults.domainUrn;
@@ -92,27 +75,39 @@ public final class GetDomainResult {
     	      this.zoneFile = defaults.zoneFile;
         }
 
+        @CustomType.Setter
         public Builder domainUrn(String domainUrn) {
             this.domainUrn = Objects.requireNonNull(domainUrn);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneFile(String zoneFile) {
             this.zoneFile = Objects.requireNonNull(zoneFile);
             return this;
-        }        public GetDomainResult build() {
-            return new GetDomainResult(domainUrn, id, name, ttl, zoneFile);
+        }
+        public GetDomainResult build() {
+            final var o = new GetDomainResult();
+            o.domainUrn = domainUrn;
+            o.id = id;
+            o.name = name;
+            o.ttl = ttl;
+            o.zoneFile = zoneFile;
+            return o;
         }
     }
 }

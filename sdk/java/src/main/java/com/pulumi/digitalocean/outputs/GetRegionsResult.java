@@ -14,31 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegionsResult {
-    private final @Nullable List<GetRegionsFilter> filters;
+    private @Nullable List<GetRegionsFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
      * 
      */
-    private final List<GetRegionsRegion> regions;
-    private final @Nullable List<GetRegionsSort> sorts;
+    private List<GetRegionsRegion> regions;
+    private @Nullable List<GetRegionsSort> sorts;
 
-    @CustomType.Constructor
-    private GetRegionsResult(
-        @CustomType.Parameter("filters") @Nullable List<GetRegionsFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("regions") List<GetRegionsRegion> regions,
-        @CustomType.Parameter("sorts") @Nullable List<GetRegionsSort> sorts) {
-        this.filters = filters;
-        this.id = id;
-        this.regions = regions;
-        this.sorts = sorts;
-    }
-
+    private GetRegionsResult() {}
     public List<GetRegionsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -67,17 +56,13 @@ public final class GetRegionsResult {
     public static Builder builder(GetRegionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetRegionsFilter> filters;
         private String id;
         private List<GetRegionsRegion> regions;
         private @Nullable List<GetRegionsSort> sorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -86,6 +71,7 @@ public final class GetRegionsResult {
     	      this.sorts = defaults.sorts;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetRegionsFilter> filters) {
             this.filters = filters;
             return this;
@@ -93,10 +79,12 @@ public final class GetRegionsResult {
         public Builder filters(GetRegionsFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder regions(List<GetRegionsRegion> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
@@ -104,14 +92,21 @@ public final class GetRegionsResult {
         public Builder regions(GetRegionsRegion... regions) {
             return regions(List.of(regions));
         }
+        @CustomType.Setter
         public Builder sorts(@Nullable List<GetRegionsSort> sorts) {
             this.sorts = sorts;
             return this;
         }
         public Builder sorts(GetRegionsSort... sorts) {
             return sorts(List.of(sorts));
-        }        public GetRegionsResult build() {
-            return new GetRegionsResult(filters, id, regions, sorts);
+        }
+        public GetRegionsResult build() {
+            final var o = new GetRegionsResult();
+            o.filters = filters;
+            o.id = id;
+            o.regions = regions;
+            o.sorts = sorts;
+            return o;
         }
     }
 }

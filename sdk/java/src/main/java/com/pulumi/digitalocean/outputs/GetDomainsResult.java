@@ -18,27 +18,16 @@ public final class GetDomainsResult {
      * @return A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:
      * 
      */
-    private final List<GetDomainsDomain> domains;
-    private final @Nullable List<GetDomainsFilter> filters;
+    private List<GetDomainsDomain> domains;
+    private @Nullable List<GetDomainsFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable List<GetDomainsSort> sorts;
+    private String id;
+    private @Nullable List<GetDomainsSort> sorts;
 
-    @CustomType.Constructor
-    private GetDomainsResult(
-        @CustomType.Parameter("domains") List<GetDomainsDomain> domains,
-        @CustomType.Parameter("filters") @Nullable List<GetDomainsFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("sorts") @Nullable List<GetDomainsSort> sorts) {
-        this.domains = domains;
-        this.filters = filters;
-        this.id = id;
-        this.sorts = sorts;
-    }
-
+    private GetDomainsResult() {}
     /**
      * @return A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:
      * 
@@ -67,17 +56,13 @@ public final class GetDomainsResult {
     public static Builder builder(GetDomainsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDomainsDomain> domains;
         private @Nullable List<GetDomainsFilter> filters;
         private String id;
         private @Nullable List<GetDomainsSort> sorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domains = defaults.domains;
@@ -86,6 +71,7 @@ public final class GetDomainsResult {
     	      this.sorts = defaults.sorts;
         }
 
+        @CustomType.Setter
         public Builder domains(List<GetDomainsDomain> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -93,6 +79,7 @@ public final class GetDomainsResult {
         public Builder domains(GetDomainsDomain... domains) {
             return domains(List.of(domains));
         }
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetDomainsFilter> filters) {
             this.filters = filters;
             return this;
@@ -100,18 +87,26 @@ public final class GetDomainsResult {
         public Builder filters(GetDomainsFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder sorts(@Nullable List<GetDomainsSort> sorts) {
             this.sorts = sorts;
             return this;
         }
         public Builder sorts(GetDomainsSort... sorts) {
             return sorts(List.of(sorts));
-        }        public GetDomainsResult build() {
-            return new GetDomainsResult(domains, filters, id, sorts);
+        }
+        public GetDomainsResult build() {
+            final var o = new GetDomainsResult();
+            o.domains = domains;
+            o.filters = filters;
+            o.id = id;
+            o.sorts = sorts;
+            return o;
         }
     }
 }

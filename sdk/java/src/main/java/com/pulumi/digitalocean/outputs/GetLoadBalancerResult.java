@@ -17,68 +17,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancerResult {
-    private final String algorithm;
-    private final Boolean disableLetsEncryptDnsRecords;
-    private final List<Integer> dropletIds;
-    private final String dropletTag;
-    private final Boolean enableBackendKeepalive;
-    private final Boolean enableProxyProtocol;
-    private final List<GetLoadBalancerForwardingRule> forwardingRules;
-    private final List<GetLoadBalancerHealthcheck> healthchecks;
-    private final @Nullable String id;
-    private final String ip;
-    private final String loadBalancerUrn;
-    private final @Nullable String name;
-    private final Boolean redirectHttpToHttps;
-    private final String region;
-    private final String size;
-    private final Integer sizeUnit;
-    private final String status;
-    private final List<GetLoadBalancerStickySession> stickySessions;
-    private final String vpcUuid;
+    private String algorithm;
+    private Boolean disableLetsEncryptDnsRecords;
+    private List<Integer> dropletIds;
+    private String dropletTag;
+    private Boolean enableBackendKeepalive;
+    private Boolean enableProxyProtocol;
+    private List<GetLoadBalancerForwardingRule> forwardingRules;
+    private List<GetLoadBalancerHealthcheck> healthchecks;
+    private @Nullable String id;
+    private String ip;
+    private String loadBalancerUrn;
+    private @Nullable String name;
+    private Boolean redirectHttpToHttps;
+    private String region;
+    private String size;
+    private Integer sizeUnit;
+    private String status;
+    private List<GetLoadBalancerStickySession> stickySessions;
+    private String vpcUuid;
 
-    @CustomType.Constructor
-    private GetLoadBalancerResult(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("disableLetsEncryptDnsRecords") Boolean disableLetsEncryptDnsRecords,
-        @CustomType.Parameter("dropletIds") List<Integer> dropletIds,
-        @CustomType.Parameter("dropletTag") String dropletTag,
-        @CustomType.Parameter("enableBackendKeepalive") Boolean enableBackendKeepalive,
-        @CustomType.Parameter("enableProxyProtocol") Boolean enableProxyProtocol,
-        @CustomType.Parameter("forwardingRules") List<GetLoadBalancerForwardingRule> forwardingRules,
-        @CustomType.Parameter("healthchecks") List<GetLoadBalancerHealthcheck> healthchecks,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("ip") String ip,
-        @CustomType.Parameter("loadBalancerUrn") String loadBalancerUrn,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("redirectHttpToHttps") Boolean redirectHttpToHttps,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("sizeUnit") Integer sizeUnit,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("stickySessions") List<GetLoadBalancerStickySession> stickySessions,
-        @CustomType.Parameter("vpcUuid") String vpcUuid) {
-        this.algorithm = algorithm;
-        this.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
-        this.dropletIds = dropletIds;
-        this.dropletTag = dropletTag;
-        this.enableBackendKeepalive = enableBackendKeepalive;
-        this.enableProxyProtocol = enableProxyProtocol;
-        this.forwardingRules = forwardingRules;
-        this.healthchecks = healthchecks;
-        this.id = id;
-        this.ip = ip;
-        this.loadBalancerUrn = loadBalancerUrn;
-        this.name = name;
-        this.redirectHttpToHttps = redirectHttpToHttps;
-        this.region = region;
-        this.size = size;
-        this.sizeUnit = sizeUnit;
-        this.status = status;
-        this.stickySessions = stickySessions;
-        this.vpcUuid = vpcUuid;
-    }
-
+    private GetLoadBalancerResult() {}
     public String algorithm() {
         return this.algorithm;
     }
@@ -144,7 +103,7 @@ public final class GetLoadBalancerResult {
     public static Builder builder(GetLoadBalancerResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private Boolean disableLetsEncryptDnsRecords;
@@ -165,11 +124,7 @@ public final class GetLoadBalancerResult {
         private String status;
         private List<GetLoadBalancerStickySession> stickySessions;
         private String vpcUuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
@@ -193,14 +148,17 @@ public final class GetLoadBalancerResult {
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder disableLetsEncryptDnsRecords(Boolean disableLetsEncryptDnsRecords) {
             this.disableLetsEncryptDnsRecords = Objects.requireNonNull(disableLetsEncryptDnsRecords);
             return this;
         }
+        @CustomType.Setter
         public Builder dropletIds(List<Integer> dropletIds) {
             this.dropletIds = Objects.requireNonNull(dropletIds);
             return this;
@@ -208,18 +166,22 @@ public final class GetLoadBalancerResult {
         public Builder dropletIds(Integer... dropletIds) {
             return dropletIds(List.of(dropletIds));
         }
+        @CustomType.Setter
         public Builder dropletTag(String dropletTag) {
             this.dropletTag = Objects.requireNonNull(dropletTag);
             return this;
         }
+        @CustomType.Setter
         public Builder enableBackendKeepalive(Boolean enableBackendKeepalive) {
             this.enableBackendKeepalive = Objects.requireNonNull(enableBackendKeepalive);
             return this;
         }
+        @CustomType.Setter
         public Builder enableProxyProtocol(Boolean enableProxyProtocol) {
             this.enableProxyProtocol = Objects.requireNonNull(enableProxyProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder forwardingRules(List<GetLoadBalancerForwardingRule> forwardingRules) {
             this.forwardingRules = Objects.requireNonNull(forwardingRules);
             return this;
@@ -227,6 +189,7 @@ public final class GetLoadBalancerResult {
         public Builder forwardingRules(GetLoadBalancerForwardingRule... forwardingRules) {
             return forwardingRules(List.of(forwardingRules));
         }
+        @CustomType.Setter
         public Builder healthchecks(List<GetLoadBalancerHealthcheck> healthchecks) {
             this.healthchecks = Objects.requireNonNull(healthchecks);
             return this;
@@ -234,42 +197,52 @@ public final class GetLoadBalancerResult {
         public Builder healthchecks(GetLoadBalancerHealthcheck... healthchecks) {
             return healthchecks(List.of(healthchecks));
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder ip(String ip) {
             this.ip = Objects.requireNonNull(ip);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerUrn(String loadBalancerUrn) {
             this.loadBalancerUrn = Objects.requireNonNull(loadBalancerUrn);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder redirectHttpToHttps(Boolean redirectHttpToHttps) {
             this.redirectHttpToHttps = Objects.requireNonNull(redirectHttpToHttps);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder sizeUnit(Integer sizeUnit) {
             this.sizeUnit = Objects.requireNonNull(sizeUnit);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder stickySessions(List<GetLoadBalancerStickySession> stickySessions) {
             this.stickySessions = Objects.requireNonNull(stickySessions);
             return this;
@@ -277,11 +250,33 @@ public final class GetLoadBalancerResult {
         public Builder stickySessions(GetLoadBalancerStickySession... stickySessions) {
             return stickySessions(List.of(stickySessions));
         }
+        @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
             this.vpcUuid = Objects.requireNonNull(vpcUuid);
             return this;
-        }        public GetLoadBalancerResult build() {
-            return new GetLoadBalancerResult(algorithm, disableLetsEncryptDnsRecords, dropletIds, dropletTag, enableBackendKeepalive, enableProxyProtocol, forwardingRules, healthchecks, id, ip, loadBalancerUrn, name, redirectHttpToHttps, region, size, sizeUnit, status, stickySessions, vpcUuid);
+        }
+        public GetLoadBalancerResult build() {
+            final var o = new GetLoadBalancerResult();
+            o.algorithm = algorithm;
+            o.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
+            o.dropletIds = dropletIds;
+            o.dropletTag = dropletTag;
+            o.enableBackendKeepalive = enableBackendKeepalive;
+            o.enableProxyProtocol = enableProxyProtocol;
+            o.forwardingRules = forwardingRules;
+            o.healthchecks = healthchecks;
+            o.id = id;
+            o.ip = ip;
+            o.loadBalancerUrn = loadBalancerUrn;
+            o.name = name;
+            o.redirectHttpToHttps = redirectHttpToHttps;
+            o.region = region;
+            o.size = size;
+            o.sizeUnit = sizeUnit;
+            o.status = status;
+            o.stickySessions = stickySessions;
+            o.vpcUuid = vpcUuid;
+            return o;
         }
     }
 }

@@ -20,135 +20,92 @@ public final class GetKubernetesClusterResult {
      * * `kube_config.0` - A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
      * 
      */
-    private final Boolean autoUpgrade;
+    private Boolean autoUpgrade;
     /**
      * @return The range of IP addresses in the overlay network of the Kubernetes cluster.
      * 
      */
-    private final String clusterSubnet;
+    private String clusterSubnet;
     /**
      * @return The date and time when the node was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The base URL of the API server on the Kubernetes master node.
      * 
      */
-    private final String endpoint;
-    private final Boolean ha;
+    private String endpoint;
+    private Boolean ha;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The public IPv4 address of the Kubernetes master node.
      * 
      */
-    private final String ipv4Address;
-    private final List<GetKubernetesClusterKubeConfig> kubeConfigs;
+    private String ipv4Address;
+    private List<GetKubernetesClusterKubeConfig> kubeConfigs;
     /**
      * @return The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
      * 
      */
-    private final List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies;
+    private List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies;
     /**
      * @return The auto-generated name for the node.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return A list of node pools associated with the cluster. Each node pool exports the following attributes:
      * 
      */
-    private final List<GetKubernetesClusterNodePool> nodePools;
+    private List<GetKubernetesClusterNodePool> nodePools;
     /**
      * @return The slug identifier for the region where the Kubernetes cluster is located.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The range of assignable IP addresses for services running in the Kubernetes cluster.
      * 
      */
-    private final String serviceSubnet;
+    private String serviceSubnet;
     /**
      * @return A string indicating the current status of the individual node.
      * 
      */
-    private final String status;
-    private final Boolean surgeUpgrade;
+    private String status;
+    private Boolean surgeUpgrade;
     /**
      * @return A list of tag names applied to the node pool.
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return The date and time when the node was last updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
     /**
      * @return The uniform resource name (URN) for the Kubernetes cluster.
      * 
      */
-    private final String urn;
+    private String urn;
     /**
      * @return The slug identifier for the version of Kubernetes used for the cluster.
      * 
      */
-    private final String version;
+    private String version;
     /**
      * @return The ID of the VPC where the Kubernetes cluster is located.
      * 
      */
-    private final String vpcUuid;
+    private String vpcUuid;
 
-    @CustomType.Constructor
-    private GetKubernetesClusterResult(
-        @CustomType.Parameter("autoUpgrade") Boolean autoUpgrade,
-        @CustomType.Parameter("clusterSubnet") String clusterSubnet,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("ha") Boolean ha,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipv4Address") String ipv4Address,
-        @CustomType.Parameter("kubeConfigs") List<GetKubernetesClusterKubeConfig> kubeConfigs,
-        @CustomType.Parameter("maintenancePolicies") List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodePools") List<GetKubernetesClusterNodePool> nodePools,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("serviceSubnet") String serviceSubnet,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("surgeUpgrade") Boolean surgeUpgrade,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("urn") String urn,
-        @CustomType.Parameter("version") String version,
-        @CustomType.Parameter("vpcUuid") String vpcUuid) {
-        this.autoUpgrade = autoUpgrade;
-        this.clusterSubnet = clusterSubnet;
-        this.createdAt = createdAt;
-        this.endpoint = endpoint;
-        this.ha = ha;
-        this.id = id;
-        this.ipv4Address = ipv4Address;
-        this.kubeConfigs = kubeConfigs;
-        this.maintenancePolicies = maintenancePolicies;
-        this.name = name;
-        this.nodePools = nodePools;
-        this.region = region;
-        this.serviceSubnet = serviceSubnet;
-        this.status = status;
-        this.surgeUpgrade = surgeUpgrade;
-        this.tags = tags;
-        this.updatedAt = updatedAt;
-        this.urn = urn;
-        this.version = version;
-        this.vpcUuid = vpcUuid;
-    }
-
+    private GetKubernetesClusterResult() {}
     /**
      * @return A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      * * `kube_config.0` - A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
@@ -286,7 +243,7 @@ public final class GetKubernetesClusterResult {
     public static Builder builder(GetKubernetesClusterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean autoUpgrade;
         private String clusterSubnet;
@@ -308,11 +265,7 @@ public final class GetKubernetesClusterResult {
         private String urn;
         private String version;
         private String vpcUuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoUpgrade = defaults.autoUpgrade;
@@ -337,34 +290,42 @@ public final class GetKubernetesClusterResult {
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
+        @CustomType.Setter
         public Builder autoUpgrade(Boolean autoUpgrade) {
             this.autoUpgrade = Objects.requireNonNull(autoUpgrade);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterSubnet(String clusterSubnet) {
             this.clusterSubnet = Objects.requireNonNull(clusterSubnet);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder ha(Boolean ha) {
             this.ha = Objects.requireNonNull(ha);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4Address(String ipv4Address) {
             this.ipv4Address = Objects.requireNonNull(ipv4Address);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeConfigs(List<GetKubernetesClusterKubeConfig> kubeConfigs) {
             this.kubeConfigs = Objects.requireNonNull(kubeConfigs);
             return this;
@@ -372,6 +333,7 @@ public final class GetKubernetesClusterResult {
         public Builder kubeConfigs(GetKubernetesClusterKubeConfig... kubeConfigs) {
             return kubeConfigs(List.of(kubeConfigs));
         }
+        @CustomType.Setter
         public Builder maintenancePolicies(List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies) {
             this.maintenancePolicies = Objects.requireNonNull(maintenancePolicies);
             return this;
@@ -379,10 +341,12 @@ public final class GetKubernetesClusterResult {
         public Builder maintenancePolicies(GetKubernetesClusterMaintenancePolicy... maintenancePolicies) {
             return maintenancePolicies(List.of(maintenancePolicies));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodePools(List<GetKubernetesClusterNodePool> nodePools) {
             this.nodePools = Objects.requireNonNull(nodePools);
             return this;
@@ -390,22 +354,27 @@ public final class GetKubernetesClusterResult {
         public Builder nodePools(GetKubernetesClusterNodePool... nodePools) {
             return nodePools(List.of(nodePools));
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceSubnet(String serviceSubnet) {
             this.serviceSubnet = Objects.requireNonNull(serviceSubnet);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder surgeUpgrade(Boolean surgeUpgrade) {
             this.surgeUpgrade = Objects.requireNonNull(surgeUpgrade);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -413,23 +382,49 @@ public final class GetKubernetesClusterResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder urn(String urn) {
             this.urn = Objects.requireNonNull(urn);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
             this.vpcUuid = Objects.requireNonNull(vpcUuid);
             return this;
-        }        public GetKubernetesClusterResult build() {
-            return new GetKubernetesClusterResult(autoUpgrade, clusterSubnet, createdAt, endpoint, ha, id, ipv4Address, kubeConfigs, maintenancePolicies, name, nodePools, region, serviceSubnet, status, surgeUpgrade, tags, updatedAt, urn, version, vpcUuid);
+        }
+        public GetKubernetesClusterResult build() {
+            final var o = new GetKubernetesClusterResult();
+            o.autoUpgrade = autoUpgrade;
+            o.clusterSubnet = clusterSubnet;
+            o.createdAt = createdAt;
+            o.endpoint = endpoint;
+            o.ha = ha;
+            o.id = id;
+            o.ipv4Address = ipv4Address;
+            o.kubeConfigs = kubeConfigs;
+            o.maintenancePolicies = maintenancePolicies;
+            o.name = name;
+            o.nodePools = nodePools;
+            o.region = region;
+            o.serviceSubnet = serviceSubnet;
+            o.status = status;
+            o.surgeUpgrade = surgeUpgrade;
+            o.tags = tags;
+            o.updatedAt = updatedAt;
+            o.urn = urn;
+            o.version = version;
+            o.vpcUuid = vpcUuid;
+            return o;
         }
     }
 }

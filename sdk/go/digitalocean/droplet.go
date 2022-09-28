@@ -101,7 +101,7 @@ type Droplet struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolOutput `pulumi:"privateNetworking"`
-	// The region to start in.
+	// The region where the Droplet will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Boolean controlling whether to increase the disk
 	// size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -140,9 +140,6 @@ func NewDroplet(ctx *pulumi.Context,
 
 	if args.Image == nil {
 		return nil, errors.New("invalid value for required argument 'Image'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
@@ -216,7 +213,7 @@ type dropletState struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
-	// The region to start in.
+	// The region where the Droplet will be created.
 	Region *string `pulumi:"region"`
 	// Boolean controlling whether to increase the disk
 	// size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -294,7 +291,7 @@ type DropletState struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolPtrInput
-	// The region to start in.
+	// The region where the Droplet will be created.
 	Region pulumi.StringPtrInput
 	// Boolean controlling whether to increase the disk
 	// size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -357,8 +354,8 @@ type dropletArgs struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
-	// The region to start in.
-	Region string `pulumi:"region"`
+	// The region where the Droplet will be created.
+	Region *string `pulumi:"region"`
 	// Boolean controlling whether to increase the disk
 	// size when resizing a Droplet. It defaults to `true`. When set to `false`,
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
@@ -413,8 +410,8 @@ type DropletArgs struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolPtrInput
-	// The region to start in.
-	Region pulumi.StringInput
+	// The region where the Droplet will be created.
+	Region pulumi.StringPtrInput
 	// Boolean controlling whether to increase the disk
 	// size when resizing a Droplet. It defaults to `true`. When set to `false`,
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
@@ -627,7 +624,7 @@ func (o DropletOutput) PrivateNetworking() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolOutput { return v.PrivateNetworking }).(pulumi.BoolOutput)
 }
 
-// The region to start in.
+// The region where the Droplet will be created.
 func (o DropletOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

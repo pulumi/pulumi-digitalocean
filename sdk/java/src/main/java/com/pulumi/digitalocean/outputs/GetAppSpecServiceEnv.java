@@ -15,35 +15,24 @@ public final class GetAppSpecServiceEnv {
      * @return The name of the environment variable.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
      * 
      */
-    private final @Nullable String scope;
+    private @Nullable String scope;
     /**
      * @return The type of the environment variable, `GENERAL` or `SECRET`.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The threshold for the type of the warning.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private GetAppSpecServiceEnv(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("scope") @Nullable String scope,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.scope = scope;
-        this.type = type;
-        this.value = value;
-    }
-
+    private GetAppSpecServiceEnv() {}
     /**
      * @return The name of the environment variable.
      * 
@@ -80,17 +69,13 @@ public final class GetAppSpecServiceEnv {
     public static Builder builder(GetAppSpecServiceEnv defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String scope;
         private String type;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecServiceEnv defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -99,23 +84,33 @@ public final class GetAppSpecServiceEnv {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder scope(@Nullable String scope) {
             this.scope = scope;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public GetAppSpecServiceEnv build() {
-            return new GetAppSpecServiceEnv(key, scope, type, value);
+        }
+        public GetAppSpecServiceEnv build() {
+            final var o = new GetAppSpecServiceEnv();
+            o.key = key;
+            o.scope = scope;
+            o.type = type;
+            o.value = value;
+            return o;
         }
     }
 }

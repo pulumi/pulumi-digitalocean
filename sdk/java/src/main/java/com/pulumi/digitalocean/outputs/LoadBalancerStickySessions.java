@@ -16,28 +16,19 @@ public final class LoadBalancerStickySessions {
      * @return The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
      * 
      */
-    private final @Nullable String cookieName;
+    private @Nullable String cookieName;
     /**
      * @return The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
      * 
      */
-    private final @Nullable Integer cookieTtlSeconds;
+    private @Nullable Integer cookieTtlSeconds;
     /**
      * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private LoadBalancerStickySessions(
-        @CustomType.Parameter("cookieName") @Nullable String cookieName,
-        @CustomType.Parameter("cookieTtlSeconds") @Nullable Integer cookieTtlSeconds,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.cookieName = cookieName;
-        this.cookieTtlSeconds = cookieTtlSeconds;
-        this.type = type;
-    }
-
+    private LoadBalancerStickySessions() {}
     /**
      * @return The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
      * 
@@ -67,16 +58,12 @@ public final class LoadBalancerStickySessions {
     public static Builder builder(LoadBalancerStickySessions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cookieName;
         private @Nullable Integer cookieTtlSeconds;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LoadBalancerStickySessions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cookieName = defaults.cookieName;
@@ -84,19 +71,27 @@ public final class LoadBalancerStickySessions {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder cookieName(@Nullable String cookieName) {
             this.cookieName = cookieName;
             return this;
         }
+        @CustomType.Setter
         public Builder cookieTtlSeconds(@Nullable Integer cookieTtlSeconds) {
             this.cookieTtlSeconds = cookieTtlSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public LoadBalancerStickySessions build() {
-            return new LoadBalancerStickySessions(cookieName, cookieTtlSeconds, type);
+        }
+        public LoadBalancerStickySessions build() {
+            final var o = new LoadBalancerStickySessions();
+            o.cookieName = cookieName;
+            o.cookieTtlSeconds = cookieTtlSeconds;
+            o.type = type;
+            return o;
         }
     }
 }

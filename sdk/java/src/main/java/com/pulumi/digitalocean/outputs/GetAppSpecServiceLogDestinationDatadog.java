@@ -15,21 +15,14 @@ public final class GetAppSpecServiceLogDestinationDatadog {
      * @return Datadog API key.
      * 
      */
-    private final String apiKey;
+    private String apiKey;
     /**
      * @return Datadog HTTP log intake endpoint.
      * 
      */
-    private final @Nullable String endpoint;
+    private @Nullable String endpoint;
 
-    @CustomType.Constructor
-    private GetAppSpecServiceLogDestinationDatadog(
-        @CustomType.Parameter("apiKey") String apiKey,
-        @CustomType.Parameter("endpoint") @Nullable String endpoint) {
-        this.apiKey = apiKey;
-        this.endpoint = endpoint;
-    }
-
+    private GetAppSpecServiceLogDestinationDatadog() {}
     /**
      * @return Datadog API key.
      * 
@@ -52,30 +45,32 @@ public final class GetAppSpecServiceLogDestinationDatadog {
     public static Builder builder(GetAppSpecServiceLogDestinationDatadog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String apiKey;
         private @Nullable String endpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecServiceLogDestinationDatadog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
     	      this.endpoint = defaults.endpoint;
         }
 
+        @CustomType.Setter
         public Builder apiKey(String apiKey) {
             this.apiKey = Objects.requireNonNull(apiKey);
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
             this.endpoint = endpoint;
             return this;
-        }        public GetAppSpecServiceLogDestinationDatadog build() {
-            return new GetAppSpecServiceLogDestinationDatadog(apiKey, endpoint);
+        }
+        public GetAppSpecServiceLogDestinationDatadog build() {
+            final var o = new GetAppSpecServiceLogDestinationDatadog();
+            o.apiKey = apiKey;
+            o.endpoint = endpoint;
+            return o;
         }
     }
 }

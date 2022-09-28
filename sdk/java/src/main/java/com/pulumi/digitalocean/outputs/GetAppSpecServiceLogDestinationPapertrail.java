@@ -13,13 +13,9 @@ public final class GetAppSpecServiceLogDestinationPapertrail {
      * @return Datadog HTTP log intake endpoint.
      * 
      */
-    private final String endpoint;
+    private String endpoint;
 
-    @CustomType.Constructor
-    private GetAppSpecServiceLogDestinationPapertrail(@CustomType.Parameter("endpoint") String endpoint) {
-        this.endpoint = endpoint;
-    }
-
+    private GetAppSpecServiceLogDestinationPapertrail() {}
     /**
      * @return Datadog HTTP log intake endpoint.
      * 
@@ -35,24 +31,24 @@ public final class GetAppSpecServiceLogDestinationPapertrail {
     public static Builder builder(GetAppSpecServiceLogDestinationPapertrail defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecServiceLogDestinationPapertrail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoint = defaults.endpoint;
         }
 
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
-        }        public GetAppSpecServiceLogDestinationPapertrail build() {
-            return new GetAppSpecServiceLogDestinationPapertrail(endpoint);
+        }
+        public GetAppSpecServiceLogDestinationPapertrail build() {
+            final var o = new GetAppSpecServiceLogDestinationPapertrail();
+            o.endpoint = endpoint;
+            return o;
         }
     }
 }

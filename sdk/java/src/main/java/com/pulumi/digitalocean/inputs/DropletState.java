@@ -307,14 +307,14 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region to start in.
+     * The region where the Droplet will be created.
      * 
      */
     @Import(name="region")
     private @Nullable Output<Either<String,Region>> region;
 
     /**
-     * @return The region to start in.
+     * @return The region where the Droplet will be created.
      * 
      */
     public Optional<Output<Either<String,Region>>> region() {
@@ -908,7 +908,7 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region to start in.
+         * @param region The region where the Droplet will be created.
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region to start in.
+         * @param region The region where the Droplet will be created.
          * 
          * @return builder
          * 
@@ -929,7 +929,7 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region to start in.
+         * @param region The region where the Droplet will be created.
          * 
          * @return builder
          * 
@@ -939,7 +939,7 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region to start in.
+         * @param region The region where the Droplet will be created.
          * 
          * @return builder
          * 

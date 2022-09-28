@@ -10,30 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFloatingIpResult {
-    private final Integer dropletId;
-    private final String floatingIpUrn;
+    private Integer dropletId;
+    private String floatingIpUrn;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String ipAddress;
-    private final String region;
+    private String id;
+    private String ipAddress;
+    private String region;
 
-    @CustomType.Constructor
-    private GetFloatingIpResult(
-        @CustomType.Parameter("dropletId") Integer dropletId,
-        @CustomType.Parameter("floatingIpUrn") String floatingIpUrn,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("region") String region) {
-        this.dropletId = dropletId;
-        this.floatingIpUrn = floatingIpUrn;
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.region = region;
-    }
-
+    private GetFloatingIpResult() {}
     public Integer dropletId() {
         return this.dropletId;
     }
@@ -61,18 +48,14 @@ public final class GetFloatingIpResult {
     public static Builder builder(GetFloatingIpResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer dropletId;
         private String floatingIpUrn;
         private String id;
         private String ipAddress;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFloatingIpResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dropletId = defaults.dropletId;
@@ -82,27 +65,39 @@ public final class GetFloatingIpResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder dropletId(Integer dropletId) {
             this.dropletId = Objects.requireNonNull(dropletId);
             return this;
         }
+        @CustomType.Setter
         public Builder floatingIpUrn(String floatingIpUrn) {
             this.floatingIpUrn = Objects.requireNonNull(floatingIpUrn);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetFloatingIpResult build() {
-            return new GetFloatingIpResult(dropletId, floatingIpUrn, id, ipAddress, region);
+        }
+        public GetFloatingIpResult build() {
+            final var o = new GetFloatingIpResult();
+            o.dropletId = dropletId;
+            o.floatingIpUrn = floatingIpUrn;
+            o.id = id;
+            o.ipAddress = ipAddress;
+            o.region = region;
+            return o;
         }
     }
 }

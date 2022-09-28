@@ -1324,6 +1324,18 @@
         },
         "digitalocean:index/AppSpecJobImage:AppSpecJobImage": {
             "properties": {
+                "deployOnPushes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecJobImageDeployOnPush:AppSpecJobImageDeployOnPush"
+                    },
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "registry": {
                     "type": "string",
                     "description": "The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.\n",
@@ -1365,7 +1377,30 @@
             "required": [
                 "registryType",
                 "repository"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deployOnPushes",
+                        "registryType",
+                        "repository"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/AppSpecJobImageDeployOnPush:AppSpecJobImageDeployOnPush": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy images pushed to DOCR.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecJobLogDestination:AppSpecJobLogDestination": {
             "properties": {
@@ -2035,6 +2070,18 @@
         },
         "digitalocean:index/AppSpecServiceImage:AppSpecServiceImage": {
             "properties": {
+                "deployOnPushes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecServiceImageDeployOnPush:AppSpecServiceImageDeployOnPush"
+                    },
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "registry": {
                     "type": "string",
                     "description": "The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.\n",
@@ -2076,7 +2123,30 @@
             "required": [
                 "registryType",
                 "repository"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deployOnPushes",
+                        "registryType",
+                        "repository"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/AppSpecServiceImageDeployOnPush:AppSpecServiceImageDeployOnPush": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy images pushed to DOCR.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecServiceLogDestination:AppSpecServiceLogDestination": {
             "properties": {
@@ -2964,6 +3034,18 @@
         },
         "digitalocean:index/AppSpecWorkerImage:AppSpecWorkerImage": {
             "properties": {
+                "deployOnPushes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecWorkerImageDeployOnPush:AppSpecWorkerImageDeployOnPush"
+                    },
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "registry": {
                     "type": "string",
                     "description": "The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.\n",
@@ -3005,7 +3087,30 @@
             "required": [
                 "registryType",
                 "repository"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deployOnPushes",
+                        "registryType",
+                        "repository"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/AppSpecWorkerImageDeployOnPush:AppSpecWorkerImageDeployOnPush": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy images pushed to DOCR.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecWorkerLogDestination:AppSpecWorkerLogDestination": {
             "properties": {
@@ -5555,6 +5660,18 @@
         },
         "digitalocean:index/getAppSpecJobImage:getAppSpecJobImage": {
             "properties": {
+                "deployOnPushes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecJobImageDeployOnPush:getAppSpecJobImageDeployOnPush"
+                    },
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "registry": {
                     "type": "string",
                     "description": "The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.\n",
@@ -5594,6 +5711,7 @@
             },
             "type": "object",
             "required": [
+                "deployOnPushes",
                 "registryType",
                 "repository"
             ],
@@ -5602,6 +5720,20 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecJobImageDeployOnPush:getAppSpecJobImageDeployOnPush": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy images pushed to DOCR.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecJobLogDestination:getAppSpecJobLogDestination": {
             "properties": {
@@ -6295,6 +6427,18 @@
         },
         "digitalocean:index/getAppSpecServiceImage:getAppSpecServiceImage": {
             "properties": {
+                "deployOnPushes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecServiceImageDeployOnPush:getAppSpecServiceImageDeployOnPush"
+                    },
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "registry": {
                     "type": "string",
                     "description": "The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.\n",
@@ -6334,6 +6478,7 @@
             },
             "type": "object",
             "required": [
+                "deployOnPushes",
                 "registryType",
                 "repository"
             ],
@@ -6342,6 +6487,20 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecServiceImageDeployOnPush:getAppSpecServiceImageDeployOnPush": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy images pushed to DOCR.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecServiceLogDestination:getAppSpecServiceLogDestination": {
             "properties": {
@@ -7259,6 +7418,18 @@
         },
         "digitalocean:index/getAppSpecWorkerImage:getAppSpecWorkerImage": {
             "properties": {
+                "deployOnPushes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecWorkerImageDeployOnPush:getAppSpecWorkerImageDeployOnPush"
+                    },
+                    "description": "Whether to automatically deploy new commits made to the repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "registry": {
                     "type": "string",
                     "description": "The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.\n",
@@ -7298,6 +7469,7 @@
             },
             "type": "object",
             "required": [
+                "deployOnPushes",
                 "registryType",
                 "repository"
             ],
@@ -7306,6 +7478,20 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecWorkerImageDeployOnPush:getAppSpecWorkerImageDeployOnPush": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy images pushed to DOCR.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecWorkerLogDestination:getAppSpecWorkerLogDestination": {
             "properties": {
@@ -12506,7 +12692,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region to start in.\n"
+                    "description": "The region where the Droplet will be created.\n"
                 },
                 "resizeDisk": {
                     "type": "boolean",
@@ -12623,7 +12809,7 @@
                             "$ref": "#/types/digitalocean:index:Region"
                         }
                     ],
-                    "description": "The region to start in.\n",
+                    "description": "The region where the Droplet will be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "resizeDisk": {
@@ -12678,7 +12864,6 @@
             },
             "requiredInputs": [
                 "image",
-                "region",
                 "size"
             ],
             "stateInputs": {
@@ -12769,7 +12954,7 @@
                                 "$ref": "#/types/digitalocean:index:Region"
                             }
                         ],
-                        "description": "The region to start in.\n",
+                        "description": "The region where the Droplet will be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "resizeDisk": {

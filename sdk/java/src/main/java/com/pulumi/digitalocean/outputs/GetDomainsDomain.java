@@ -15,24 +15,15 @@ public final class GetDomainsDomain {
      * - `ttl`-  The TTL of the domain.
      * 
      */
-    private final String name;
-    private final Integer ttl;
+    private String name;
+    private Integer ttl;
     /**
      * @return The uniform resource name of the domain
      * 
      */
-    private final String urn;
+    private String urn;
 
-    @CustomType.Constructor
-    private GetDomainsDomain(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("ttl") Integer ttl,
-        @CustomType.Parameter("urn") String urn) {
-        this.name = name;
-        this.ttl = ttl;
-        this.urn = urn;
-    }
-
+    private GetDomainsDomain() {}
     /**
      * @return (Required) The name of the domain.
      * - `ttl`-  The TTL of the domain.
@@ -59,16 +50,12 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private Integer ttl;
         private String urn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -76,19 +63,27 @@ public final class GetDomainsDomain {
     	      this.urn = defaults.urn;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
         }
+        @CustomType.Setter
         public Builder urn(String urn) {
             this.urn = Objects.requireNonNull(urn);
             return this;
-        }        public GetDomainsDomain build() {
-            return new GetDomainsDomain(name, ttl, urn);
+        }
+        public GetDomainsDomain build() {
+            final var o = new GetDomainsDomain();
+            o.name = name;
+            o.ttl = ttl;
+            o.urn = urn;
+            return o;
         }
     }
 }

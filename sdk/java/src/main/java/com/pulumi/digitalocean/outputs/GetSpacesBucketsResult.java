@@ -18,27 +18,16 @@ public final class GetSpacesBucketsResult {
      * @return A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:
      * 
      */
-    private final List<GetSpacesBucketsBucket> buckets;
-    private final @Nullable List<GetSpacesBucketsFilter> filters;
+    private List<GetSpacesBucketsBucket> buckets;
+    private @Nullable List<GetSpacesBucketsFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable List<GetSpacesBucketsSort> sorts;
+    private String id;
+    private @Nullable List<GetSpacesBucketsSort> sorts;
 
-    @CustomType.Constructor
-    private GetSpacesBucketsResult(
-        @CustomType.Parameter("buckets") List<GetSpacesBucketsBucket> buckets,
-        @CustomType.Parameter("filters") @Nullable List<GetSpacesBucketsFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("sorts") @Nullable List<GetSpacesBucketsSort> sorts) {
-        this.buckets = buckets;
-        this.filters = filters;
-        this.id = id;
-        this.sorts = sorts;
-    }
-
+    private GetSpacesBucketsResult() {}
     /**
      * @return A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:
      * 
@@ -67,17 +56,13 @@ public final class GetSpacesBucketsResult {
     public static Builder builder(GetSpacesBucketsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetSpacesBucketsBucket> buckets;
         private @Nullable List<GetSpacesBucketsFilter> filters;
         private String id;
         private @Nullable List<GetSpacesBucketsSort> sorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSpacesBucketsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.buckets = defaults.buckets;
@@ -86,6 +71,7 @@ public final class GetSpacesBucketsResult {
     	      this.sorts = defaults.sorts;
         }
 
+        @CustomType.Setter
         public Builder buckets(List<GetSpacesBucketsBucket> buckets) {
             this.buckets = Objects.requireNonNull(buckets);
             return this;
@@ -93,6 +79,7 @@ public final class GetSpacesBucketsResult {
         public Builder buckets(GetSpacesBucketsBucket... buckets) {
             return buckets(List.of(buckets));
         }
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetSpacesBucketsFilter> filters) {
             this.filters = filters;
             return this;
@@ -100,18 +87,26 @@ public final class GetSpacesBucketsResult {
         public Builder filters(GetSpacesBucketsFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder sorts(@Nullable List<GetSpacesBucketsSort> sorts) {
             this.sorts = sorts;
             return this;
         }
         public Builder sorts(GetSpacesBucketsSort... sorts) {
             return sorts(List.of(sorts));
-        }        public GetSpacesBucketsResult build() {
-            return new GetSpacesBucketsResult(buckets, filters, id, sorts);
+        }
+        public GetSpacesBucketsResult build() {
+            final var o = new GetSpacesBucketsResult();
+            o.buckets = buckets;
+            o.filters = filters;
+            o.id = id;
+            o.sorts = sorts;
+            return o;
         }
     }
 }

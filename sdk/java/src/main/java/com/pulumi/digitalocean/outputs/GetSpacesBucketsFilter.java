@@ -19,38 +19,27 @@ public final class GetSpacesBucketsFilter {
      * that all of the `values` are present in the list or set.
      * 
      */
-    private final @Nullable Boolean all;
+    private @Nullable Boolean all;
     /**
      * @return Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      * 
      */
-    private final @Nullable String matchBy;
+    private @Nullable String matchBy;
     /**
      * @return A list of values to match against the `key` field. Only retrieves Spaces buckets
      * where the `key` field takes on one or more of the values provided here.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private GetSpacesBucketsFilter(
-        @CustomType.Parameter("all") @Nullable Boolean all,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("matchBy") @Nullable String matchBy,
-        @CustomType.Parameter("values") List<String> values) {
-        this.all = all;
-        this.key = key;
-        this.matchBy = matchBy;
-        this.values = values;
-    }
-
+    private GetSpacesBucketsFilter() {}
     /**
      * @return Set to `true` to require that a field match all of the `values` instead of just one or more of
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -92,17 +81,13 @@ public final class GetSpacesBucketsFilter {
     public static Builder builder(GetSpacesBucketsFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean all;
         private String key;
         private @Nullable String matchBy;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSpacesBucketsFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.all = defaults.all;
@@ -111,26 +96,36 @@ public final class GetSpacesBucketsFilter {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
             this.all = all;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder matchBy(@Nullable String matchBy) {
             this.matchBy = matchBy;
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public GetSpacesBucketsFilter build() {
-            return new GetSpacesBucketsFilter(all, key, matchBy, values);
+        }
+        public GetSpacesBucketsFilter build() {
+            final var o = new GetSpacesBucketsFilter();
+            o.all = all;
+            o.key = key;
+            o.matchBy = matchBy;
+            o.values = values;
+            return o;
         }
     }
 }

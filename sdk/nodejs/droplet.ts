@@ -139,7 +139,7 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly privateNetworking!: pulumi.Output<boolean>;
     /**
-     * The region to start in.
+     * The region where the Droplet will be created.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -232,9 +232,6 @@ export class Droplet extends pulumi.CustomResource {
             const args = argsOrState as DropletArgs | undefined;
             if ((!args || args.image === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'image'");
-            }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
             }
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
@@ -357,7 +354,7 @@ export interface DropletState {
      */
     privateNetworking?: pulumi.Input<boolean>;
     /**
-     * The region to start in.
+     * The region where the Droplet will be created.
      */
     region?: pulumi.Input<string | enums.Region>;
     /**
@@ -455,9 +452,9 @@ export interface DropletArgs {
      */
     privateNetworking?: pulumi.Input<boolean>;
     /**
-     * The region to start in.
+     * The region where the Droplet will be created.
      */
-    region: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,

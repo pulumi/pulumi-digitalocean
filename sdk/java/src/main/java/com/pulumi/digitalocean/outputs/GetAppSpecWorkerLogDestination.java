@@ -18,35 +18,24 @@ public final class GetAppSpecWorkerLogDestination {
      * @return Datadog configuration.
      * 
      */
-    private final @Nullable GetAppSpecWorkerLogDestinationDatadog datadog;
+    private @Nullable GetAppSpecWorkerLogDestinationDatadog datadog;
     /**
      * @return Logtail configuration.
      * 
      */
-    private final @Nullable GetAppSpecWorkerLogDestinationLogtail logtail;
+    private @Nullable GetAppSpecWorkerLogDestinationLogtail logtail;
     /**
      * @return The name of the component.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Papertrail configuration.
      * 
      */
-    private final @Nullable GetAppSpecWorkerLogDestinationPapertrail papertrail;
+    private @Nullable GetAppSpecWorkerLogDestinationPapertrail papertrail;
 
-    @CustomType.Constructor
-    private GetAppSpecWorkerLogDestination(
-        @CustomType.Parameter("datadog") @Nullable GetAppSpecWorkerLogDestinationDatadog datadog,
-        @CustomType.Parameter("logtail") @Nullable GetAppSpecWorkerLogDestinationLogtail logtail,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("papertrail") @Nullable GetAppSpecWorkerLogDestinationPapertrail papertrail) {
-        this.datadog = datadog;
-        this.logtail = logtail;
-        this.name = name;
-        this.papertrail = papertrail;
-    }
-
+    private GetAppSpecWorkerLogDestination() {}
     /**
      * @return Datadog configuration.
      * 
@@ -83,17 +72,13 @@ public final class GetAppSpecWorkerLogDestination {
     public static Builder builder(GetAppSpecWorkerLogDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetAppSpecWorkerLogDestinationDatadog datadog;
         private @Nullable GetAppSpecWorkerLogDestinationLogtail logtail;
         private String name;
         private @Nullable GetAppSpecWorkerLogDestinationPapertrail papertrail;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppSpecWorkerLogDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datadog = defaults.datadog;
@@ -102,23 +87,33 @@ public final class GetAppSpecWorkerLogDestination {
     	      this.papertrail = defaults.papertrail;
         }
 
+        @CustomType.Setter
         public Builder datadog(@Nullable GetAppSpecWorkerLogDestinationDatadog datadog) {
             this.datadog = datadog;
             return this;
         }
+        @CustomType.Setter
         public Builder logtail(@Nullable GetAppSpecWorkerLogDestinationLogtail logtail) {
             this.logtail = logtail;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder papertrail(@Nullable GetAppSpecWorkerLogDestinationPapertrail papertrail) {
             this.papertrail = papertrail;
             return this;
-        }        public GetAppSpecWorkerLogDestination build() {
-            return new GetAppSpecWorkerLogDestination(datadog, logtail, name, papertrail);
+        }
+        public GetAppSpecWorkerLogDestination build() {
+            final var o = new GetAppSpecWorkerLogDestination();
+            o.datadog = datadog;
+            o.logtail = logtail;
+            o.name = name;
+            o.papertrail = papertrail;
+            return o;
         }
     }
 }

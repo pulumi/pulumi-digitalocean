@@ -13,57 +13,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSpacesBucketObjectsResult {
-    private final String bucket;
+    private String bucket;
     /**
      * @return List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` &#34;directory&#34;); the list is only returned when you specify `delimiter`
      * 
      */
-    private final List<String> commonPrefixes;
-    private final @Nullable String delimiter;
-    private final @Nullable String encodingType;
+    private List<String> commonPrefixes;
+    private @Nullable String delimiter;
+    private @Nullable String encodingType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return List of strings representing object keys
      * 
      */
-    private final List<String> keys;
-    private final @Nullable Integer maxKeys;
+    private List<String> keys;
+    private @Nullable Integer maxKeys;
     /**
      * @return List of strings representing object owner IDs
      * 
      */
-    private final List<String> owners;
-    private final @Nullable String prefix;
-    private final String region;
+    private List<String> owners;
+    private @Nullable String prefix;
+    private String region;
 
-    @CustomType.Constructor
-    private GetSpacesBucketObjectsResult(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("commonPrefixes") List<String> commonPrefixes,
-        @CustomType.Parameter("delimiter") @Nullable String delimiter,
-        @CustomType.Parameter("encodingType") @Nullable String encodingType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("keys") List<String> keys,
-        @CustomType.Parameter("maxKeys") @Nullable Integer maxKeys,
-        @CustomType.Parameter("owners") List<String> owners,
-        @CustomType.Parameter("prefix") @Nullable String prefix,
-        @CustomType.Parameter("region") String region) {
-        this.bucket = bucket;
-        this.commonPrefixes = commonPrefixes;
-        this.delimiter = delimiter;
-        this.encodingType = encodingType;
-        this.id = id;
-        this.keys = keys;
-        this.maxKeys = maxKeys;
-        this.owners = owners;
-        this.prefix = prefix;
-        this.region = region;
-    }
-
+    private GetSpacesBucketObjectsResult() {}
     public String bucket() {
         return this.bucket;
     }
@@ -118,7 +95,7 @@ public final class GetSpacesBucketObjectsResult {
     public static Builder builder(GetSpacesBucketObjectsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private List<String> commonPrefixes;
@@ -130,11 +107,7 @@ public final class GetSpacesBucketObjectsResult {
         private List<String> owners;
         private @Nullable String prefix;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSpacesBucketObjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -149,10 +122,12 @@ public final class GetSpacesBucketObjectsResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder commonPrefixes(List<String> commonPrefixes) {
             this.commonPrefixes = Objects.requireNonNull(commonPrefixes);
             return this;
@@ -160,18 +135,22 @@ public final class GetSpacesBucketObjectsResult {
         public Builder commonPrefixes(String... commonPrefixes) {
             return commonPrefixes(List.of(commonPrefixes));
         }
+        @CustomType.Setter
         public Builder delimiter(@Nullable String delimiter) {
             this.delimiter = delimiter;
             return this;
         }
+        @CustomType.Setter
         public Builder encodingType(@Nullable String encodingType) {
             this.encodingType = encodingType;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder keys(List<String> keys) {
             this.keys = Objects.requireNonNull(keys);
             return this;
@@ -179,10 +158,12 @@ public final class GetSpacesBucketObjectsResult {
         public Builder keys(String... keys) {
             return keys(List.of(keys));
         }
+        @CustomType.Setter
         public Builder maxKeys(@Nullable Integer maxKeys) {
             this.maxKeys = maxKeys;
             return this;
         }
+        @CustomType.Setter
         public Builder owners(List<String> owners) {
             this.owners = Objects.requireNonNull(owners);
             return this;
@@ -190,15 +171,29 @@ public final class GetSpacesBucketObjectsResult {
         public Builder owners(String... owners) {
             return owners(List.of(owners));
         }
+        @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
             this.prefix = prefix;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetSpacesBucketObjectsResult build() {
-            return new GetSpacesBucketObjectsResult(bucket, commonPrefixes, delimiter, encodingType, id, keys, maxKeys, owners, prefix, region);
+        }
+        public GetSpacesBucketObjectsResult build() {
+            final var o = new GetSpacesBucketObjectsResult();
+            o.bucket = bucket;
+            o.commonPrefixes = commonPrefixes;
+            o.delimiter = delimiter;
+            o.encodingType = encodingType;
+            o.id = id;
+            o.keys = keys;
+            o.maxKeys = maxKeys;
+            o.owners = owners;
+            o.prefix = prefix;
+            o.region = region;
+            return o;
         }
     }
 }

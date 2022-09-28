@@ -16,13 +16,9 @@ public final class SpacesBucketVersioning {
      * state. You can, however, suspend versioning on that bucket.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private SpacesBucketVersioning(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private SpacesBucketVersioning() {}
     /**
      * @return Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
      * state. You can, however, suspend versioning on that bucket.
@@ -39,24 +35,24 @@ public final class SpacesBucketVersioning {
     public static Builder builder(SpacesBucketVersioning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SpacesBucketVersioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public SpacesBucketVersioning build() {
-            return new SpacesBucketVersioning(enabled);
+        }
+        public SpacesBucketVersioning build() {
+            final var o = new SpacesBucketVersioning();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

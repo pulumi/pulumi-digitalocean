@@ -17,65 +17,42 @@ public final class GetVolumeResult {
      * @return Text describing a block storage volume.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return A list of associated Droplet ids.
      * 
      */
-    private final List<Integer> dropletIds;
+    private List<Integer> dropletIds;
     /**
      * @return Filesystem label currently in-use on the block storage volume.
      * 
      */
-    private final String filesystemLabel;
+    private String filesystemLabel;
     /**
      * @return Filesystem type currently in-use on the block storage volume.
      * 
      */
-    private final String filesystemType;
+    private String filesystemType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final @Nullable String region;
+    private String id;
+    private String name;
+    private @Nullable String region;
     /**
      * @return The size of the block storage volume in GiB.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return A list of the tags associated to the Volume.
      * 
      */
-    private final List<String> tags;
-    private final String urn;
+    private List<String> tags;
+    private String urn;
 
-    @CustomType.Constructor
-    private GetVolumeResult(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("dropletIds") List<Integer> dropletIds,
-        @CustomType.Parameter("filesystemLabel") String filesystemLabel,
-        @CustomType.Parameter("filesystemType") String filesystemType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("urn") String urn) {
-        this.description = description;
-        this.dropletIds = dropletIds;
-        this.filesystemLabel = filesystemLabel;
-        this.filesystemType = filesystemType;
-        this.id = id;
-        this.name = name;
-        this.region = region;
-        this.size = size;
-        this.tags = tags;
-        this.urn = urn;
-    }
-
+    private GetVolumeResult() {}
     /**
      * @return Text describing a block storage volume.
      * 
@@ -142,7 +119,7 @@ public final class GetVolumeResult {
     public static Builder builder(GetVolumeResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private List<Integer> dropletIds;
@@ -154,11 +131,7 @@ public final class GetVolumeResult {
         private Integer size;
         private List<String> tags;
         private String urn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVolumeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -173,10 +146,12 @@ public final class GetVolumeResult {
     	      this.urn = defaults.urn;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder dropletIds(List<Integer> dropletIds) {
             this.dropletIds = Objects.requireNonNull(dropletIds);
             return this;
@@ -184,30 +159,37 @@ public final class GetVolumeResult {
         public Builder dropletIds(Integer... dropletIds) {
             return dropletIds(List.of(dropletIds));
         }
+        @CustomType.Setter
         public Builder filesystemLabel(String filesystemLabel) {
             this.filesystemLabel = Objects.requireNonNull(filesystemLabel);
             return this;
         }
+        @CustomType.Setter
         public Builder filesystemType(String filesystemType) {
             this.filesystemType = Objects.requireNonNull(filesystemType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -215,11 +197,24 @@ public final class GetVolumeResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder urn(String urn) {
             this.urn = Objects.requireNonNull(urn);
             return this;
-        }        public GetVolumeResult build() {
-            return new GetVolumeResult(description, dropletIds, filesystemLabel, filesystemType, id, name, region, size, tags, urn);
+        }
+        public GetVolumeResult build() {
+            final var o = new GetVolumeResult();
+            o.description = description;
+            o.dropletIds = dropletIds;
+            o.filesystemLabel = filesystemLabel;
+            o.filesystemType = filesystemType;
+            o.id = id;
+            o.name = name;
+            o.region = region;
+            o.size = size;
+            o.tags = tags;
+            o.urn = urn;
+            return o;
         }
     }
 }

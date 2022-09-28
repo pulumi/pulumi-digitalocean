@@ -10,30 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetReservedIpResult {
-    private final Integer dropletId;
+    private Integer dropletId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String ipAddress;
-    private final String region;
-    private final String urn;
+    private String id;
+    private String ipAddress;
+    private String region;
+    private String urn;
 
-    @CustomType.Constructor
-    private GetReservedIpResult(
-        @CustomType.Parameter("dropletId") Integer dropletId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("urn") String urn) {
-        this.dropletId = dropletId;
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.region = region;
-        this.urn = urn;
-    }
-
+    private GetReservedIpResult() {}
     public Integer dropletId() {
         return this.dropletId;
     }
@@ -61,18 +48,14 @@ public final class GetReservedIpResult {
     public static Builder builder(GetReservedIpResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer dropletId;
         private String id;
         private String ipAddress;
         private String region;
         private String urn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetReservedIpResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dropletId = defaults.dropletId;
@@ -82,27 +65,39 @@ public final class GetReservedIpResult {
     	      this.urn = defaults.urn;
         }
 
+        @CustomType.Setter
         public Builder dropletId(Integer dropletId) {
             this.dropletId = Objects.requireNonNull(dropletId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder urn(String urn) {
             this.urn = Objects.requireNonNull(urn);
             return this;
-        }        public GetReservedIpResult build() {
-            return new GetReservedIpResult(dropletId, id, ipAddress, region, urn);
+        }
+        public GetReservedIpResult build() {
+            final var o = new GetReservedIpResult();
+            o.dropletId = dropletId;
+            o.id = id;
+            o.ipAddress = ipAddress;
+            o.region = region;
+            o.urn = urn;
+            return o;
         }
     }
 }
