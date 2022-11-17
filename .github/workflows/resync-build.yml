@@ -66,16 +66,18 @@ jobs:
       run: cp -r ci-mgmt/provider-ci/providers/$PROVIDER/repo/. .
     - name: Remove ci-mgmt directory
       run: rm -rf ci-mgmt
-    - name: Add required lines into .gitignore
+    - name: Required entries for gitignore
       run: |-
         cat <<- EOF > $RUNNER_TEMP/gitignore
-                  sdk/java/build
-                  sdk/java/.gradle
-                  sdk/java/gradle
-                  sdk/java/gradlew
-                  sdk/java/gradlew.bat
-                  EOF &&
-        grep -F -x -v -f $RUNNER_TEMP/gitignore .gitignore >> .gitignore
+        sdk/java/build
+        sdk/java/.gradle
+        sdk/java/gradle
+        sdk/java/gradlew
+        sdk/java/gradlew.bat
+        EOF
+      shell: bash
+    - name: Adding missing lines to .gitignore
+      run: comm -23 <(sort $RUNNER_TEMP/gitignore) <(sort .gitignore) >> .gitignore
       shell: bash
     - name: Build
       run: make build
