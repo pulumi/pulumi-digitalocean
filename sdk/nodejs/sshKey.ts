@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as fs from "fs";
  *
  * // Create a new SSH key
- * const _default = new digitalocean.SshKey("default", {publicKey: fs.readFileSync("/Users/myuser/.ssh/id_rsa.pub")});
+ * const _default = new digitalocean.SshKey("default", {publicKey: fs.readFileSync("/Users/myuser/.ssh/id_rsa.pub", "utf-8")});
  * // Create a new Droplet using the SSH key
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
