@@ -306,6 +306,7 @@ func Provider() tfbridge.ProviderInfo {
 					{Name: "SFO2", Value: "sfo2"},
 					{Name: "SFO3", Value: "sfo3"},
 					{Name: "BLR1", Value: "blr1"},
+					{Name: "SYD1", Value: "syd1"},
 				},
 			},
 			"digitalocean:index:RecordType": {

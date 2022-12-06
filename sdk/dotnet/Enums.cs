@@ -326,6 +326,7 @@ namespace Pulumi.DigitalOcean
         public static Region SFO2 { get; } = new Region("sfo2");
         public static Region SFO3 { get; } = new Region("sfo3");
         public static Region BLR1 { get; } = new Region("blr1");
+        public static Region SYD1 { get; } = new Region("syd1");
 
         public static bool operator ==(Region left, Region right) => left.Equals(right);
         public static bool operator !=(Region left, Region right) => !left.Equals(right);

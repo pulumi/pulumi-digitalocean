@@ -10757,6 +10757,10 @@
                 {
                     "name": "BLR1",
                     "value": "blr1"
+                },
+                {
+                    "name": "SYD1",
+                    "value": "syd1"
                 }
             ]
         }

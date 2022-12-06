@@ -1274,6 +1274,7 @@ const (
 	RegionSFO2 = Region("sfo2")
 	RegionSFO3 = Region("sfo3")
 	RegionBLR1 = Region("blr1")
+	RegionSYD1 = Region("syd1")
 )
 
 func (Region) ElementType() reflect.Type {
